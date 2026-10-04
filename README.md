@@ -27,7 +27,7 @@ python3 make_xlsx.py
 
 The built spreadsheet, CSV and JSON are attached to the
 [latest release](https://github.com/eliza-research/billpay-research/releases/latest) rather than
-committed (the JSON is about 90 MB):
+committed (the JSON is about 80 MB):
 
 - `billers.xlsx`: README, coverage, Detailed and All billers sheets
 - `billers.csv`: one row per biller
