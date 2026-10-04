@@ -1,373 +1,6 @@
 {
  "category": "pharmacy-dme",
  "description": "Pharmacies and medical equipment suppliers",
- "research_files": [
-  "health-memberships-ambulance-concierge",
-  "pharmacy-labs-dme"
- ],
- "coverage_notes": "[health-memberships-ambulance-concierge] Built 2026-09-30/10-02 from official provider pages fetched live (custom urllib crawler + WebFetch); WebSearch was unavailable (session search budget exhausted), so discovery relied on (a) known national programs, (b) reciprocity/participant lists published by the programs themselves (Seneca Area EMS reciprocal list for western PA; Life Flight Network FireMed/LifeMed agency terms; REMSA AAMMP partner links; ambulancemembership.com platform roster), and (c) probing official domains. Skipped as already present: AirMedCare Network and Life Flight Network (medical-physician-ambulance-billing.json), One Medical visit billing (medical-billing.json; this file adds the One Medical membership fee), Amazon Pharmacy/RxPass and Blink Health (pharmacy-labs-dme.json). Cost Plus Drugs appears in both pharmacy-labs-dme.json and here (roster) because it was explicitly in scope. COMPLETENESS: Air - all major national/regional membership sellers covered (AMCN brands, PHI Cares, Life Flight [existing], Mercy Flights, REMSA Care Flight, CareFlite, Apollo MedFlight, Survival Flight, Haynes Life Flight, LifeMed Alaska, Enloe FlightCare); checked and found NO consumer membership page for MedFlight (Ohio), North Memorial Air Care (MN), Mercy Flight (WNY), AirLife Denver, Life Link III, LifeFlight of Maine, Flight For Life; Air Methods no longer sells memberships (entry included). Ground - Oregon FireMed is well covered (12 agencies + LifeGuard platform agencies); western PA partially (MFPAA, Tri-Community South, Seneca + 13 reciprocal agencies as roster); LA/MS/TX (Acadian), OK (EMSAcare), TX/AR (LifeNet), NV/CA (REMSA, Sierra Saver). Concierge/DPC - national concierge brands (MDVIP, SignatureMD, PartnerMD, Specialdocs, Private Medical, Sollis, Duke Signature Care, Parsley, One Medical) and two DPC examples; DPC Frontier mapper shows 3,208 DPC practices (2,647 pure, 453 hybrid) which are NOT individually enumerated (mapper exposes coordinates only). Telehealth/Rx - Teladoc, Amwell, MDLIVE, Sesame Plus, PlushCare, Ro, GoodRx Companion (formerly Gold), with SingleCare, Cost Plus, Walgreens Prescription Savings Club, K Health and Doctor On Demand at roster tier because their sites blocked automated fetch. REVIEW PASS 2026-10-02 (second agent): WebSearch budget still exhausted and WebFetch hit a session limit, so the review used curl plus a read-only browser pane (which gets past the Cloudflare/403 blocks that stopped the first pass). All 166 URLs in the file were status-checked; fixed redirected AirMedCare FAQ/apply URLs, a dead Pioneer LifeGuard form link, and Seneca EMS (https certificate fails; http works). Content re-verified on about 30 entries. Changes: MASA rebranded to 'Medical Access & Service Advantage' (masaaccess.com) and is now fully detailed (phone, renewal, auto-renew, plan prices); Enloe FlightCare verified (Cognito Forms enrollment); the AMCN brand pointers now note the $9/month recurring option, non-refundable terms and the site contact line 833-819-3454; GoodRx Companion, PlushCare, Parsley, Sesame and Ro gained cancel, invoice and receipt help articles. Parsley's Medicare note was corrected: its clinicians have opted out of Medicare. PlushCare auto-enrolls first-visit patients in a 30-day trial that then bills. Apollo MedFlight eligibility corrected to TX and OK. Ross/West View EMS turned out to be a MANDATORY municipal annual EMS fee collected by Jordan Tax Service, not a voluntary subscription, and was reclassified. West Deer EMS, Doctor On Demand, SingleCare (free; no bill) and Cost Plus were upgraded to detailed. K Health no longer shows consumer pricing; it now sells to health systems. ADDED: Airlift Northwest (WA/AK, $85/yr, eServices, no auto-renew yet), Air St. Luke's (ID), Lancaster EMS (PA; senior rates $55/$75) and Good Fellowship Ambulance (West Chester PA; senior rates $65/$90). Still no ground-ambulance subscription found for OH, MN or KS. Domain guessing for Missoula, Tri-State (WI/MN), Valley Med Flight, Cal-Ore Life Flight, Mountain Lifeflight and Air Idaho Rescue found nothing usable. Many program sites also publish no auto-renew or cancel page; for those the links stay null and the notes say to call. PASS 3 (2026-10-02, third agent): WebSearch worked for ~20 queries before the session budget ran out, then discovery continued with curl probes of official domains, the amr.net and airmedcarenetwork.com sitemaps, and a read-only browser for Cloudflare-blocked city pages (bot-challenge pages such as Pasadena's were left unread, not bypassed). ADDED 71 entries: ground subscriptions in CO (Arvada, North Metro Fire, AMR Pueblo), AZ (Golder Ranch, Arizona Fire & Medical Authority - Sun City West area), NV (Storey County), KS/MO (AMR LifeCare Topeka, Kansas City metro, Linn County - closing the Kansas gap), MI (Emergent Health Member Plus, Livonia), NC (Wake $60, Johnston $60, Gaston GEMS-Care), VA (Franklin), FL (Pinellas Sunstar FirstCare), TX (Bedford, Hurst, Crowley, Jacksonville, UT Health East Texas), OK (Edmond utility-bill program), AR/LA/MS/OK/TX (Pafford; AMR Mississippi), KY/TN (KenTenn), ID (Ada County Vital Ride), IN (New Haven), DE (Millville), CA (Burbank, Fullerton, Monterey Park, Arcadia, Pasadena roster), more Oregon (Polk County, Keizer Capital FireMed, Canby, Woodburn, South Lane, AMR Josephine Paramed) and Pennsylvania (EmergyCare Erie, TowerDIRECT, VMSC, Central Bucks, Suburban, NOVA, Longwood, East Pennsboro, South Central, Susquehanna Twp, First Capital York, Silver Spring, Penn Mahoning, Pittston Twp, NorthWest EMS, Harmony; Plum EMS upgraded). AIR/TRAVEL: MedFlight of Ohio DOES sell a membership (Advantage $69.99; Global $269.99/$369.99; ages 18-75, auto-renews), which corrects pass 1; plus BannerAir (AZ), Hawaii Life Flight, Rural Medevac Alliance, legacy AeroCare/CALSTAR, and the travel-transport memberships Medjet (Diamond tier for ages 75-84), SkyMed and Global Rescue. AMCN brand entries now point to the AMCN support form that handles cancellation, billing updates and replacement cards. TELEHEALTH/CONCIERGE: LifeMD+ (monthly auto-renew; cancel in portal), Lemonaid, Hims & Hers, Talkspace, BetterHelp and Noom (roster); Concierge Choice Physicians upgraded to detailed; Baptist Health South Florida concierge added. Walgreens Prescription Savings Club URL now loads an 'Rx Savings Finder' coupon page, so the paid club appears to be discontinued. STILL MISSING: no ground subscription found for Minnesota (North Memorial, Ridgeview and others show none) or Washington (WA cities use mandatory utility-bill ambulance fees, e.g. Walla Walla, rather than voluntary memberships; Airlift Northwest and Life Flight cover air). Ohio is covered by MedFlight only on the air side. Thousands of small volunteer-corps subscription drives (PA, NJ, NY, DE, MD) and city programs (TX, CA, CO) exist; this file has the larger and representative ones, not every corps. The national DPC universe (about 3,200 practices per DPC Frontier) is not enumerated. Hospital-system concierge programs beyond Duke and Baptist South Florida (Cleveland Clinic, Penn, Hopkins, Mount Sinai and others) could not be confirmed: pages 404'd or blocked fetch. REVIEWER PASS 2026-10-02: 162 entries (130 detailed, 32 roster, 150 verified). WebSearch was unavailable (session budget exhausted), so the review could not do new open-web discovery. It used a curl status sweep of all 398 URLs in the file and about 45 WebFetch/API page reads. Many zero-status (000) or 403 results are bot blocks: costplusdrugs, singlecare, goodrx and plushcare support, UW Airlift NW, enloe, lemsa, and city sites (Burbank, Fullerton, Hurst, Crowley). For Zendesk help centers, articles were confirmed through the public /api/v2/help_center endpoints instead of the blocked pages. FIXES: (1) Shaler Area EMS website shems.org was a German religious-community site; it is now null and the entry is unverified. (2) Talkspace and Hims & Hers were upgraded to detailed with billing-history, invoice, cancel and payment articles; Talkspace therapy is Medicare Part B covered, which is noted. (3) BetterHelp got its FAQ/contact links. LifeMD+ got cancel and Medicare articles. GoodRx Companion got terms and legacy Gold links. (4) Prices, renewal rules and phones were refreshed from live pages for Pinellas FirstCare (now $89/$133, April-March year, application URL), Mercy Flights (membership phone 541-858-2646), EMSAcare, REMSA, Survival Flight, MFPAA (eServices subscribe URL), Wake, Ada, North Metro, Storey, Acadian, PHI Cares, MedFlight, Life Flight/FireMed, MDVIP, KerixHealth, Sollis (regional phones), Pafford and Concierge Choice. (5) Bend FireMed appears in BOTH Life Flight Network and AMCN FireMed terms; this is noted. (6) Added 5 AMCN FireMed agencies as roster entries: Crescent RFPD, Blue Mountain Hospital, Crook County, Harney District, Rocky Point/Chemult. (7) Every AMCN brand entry now notes that the general AMCN terms do not spell out annual auto-renewal; confirm by phone. (8) SingleCare is confirmed free (no recurring bill). KNOWN REMAINING GAPS: autopay_cancel and statements_history are still null for most local ground-subscription programs, because these are annual mail or online renewals with no auto-renew or statement feature. Nine western-PA reciprocal agencies are roster/unverified with no confirmed website. AMR Mississippi is still unverified because its page returns HTTP 500. Pasadena is bot-challenged. There is no new open-web discovery of OH, MN or WA ground programs, of hospital concierge programs (Cleveland Clinic concierge URL 404s), or of Tri-State CareFlight and Life Flight Eagle (unreachable or bot-challenged). Everside Health (large DPC) no longer exists at everside.com, which is now an unrelated investment firm.\n\n[pharmacy-labs-dme] [Updated 2026-09-30 after link backfill + reviewer pass] File now has 1,638 entries: 135 detailed (126 verified) and 1,503 roster; 405 entries verified overall. Detailed link fill: view_bill 78, pay_bill 101, autopay_setup 29, autopay_cancel 25, statements_history 53, paperless 21, payment_assistance 69; payment_processor 91. Reviewer pass: status-checked all 379 URLs on detailed entries (363 returned 200; the rest were bot walls or HTTP/2 timeouts that load with HTTP/1.1, e.g. Kroger, Hoveround, Liberator, PatientWallet portals) and keyword-checked 370 link fields against page text. Removed two autopay_setup links whose pages do not describe autopay (Labcorp: payment plans only and card deleted after each payment; Byram: automatic shipments, not payments). Repointed Inogen and Solara autopay/statement/paperless links from the portal root to the Brightree hmebillpay FAQ, and filled the same FAQ links for Nationwide Medical and Reliable Respiratory. Pacific Medical now has its PersonaPay pay link and confirmed contact data. Payment processors were filled for BAYADA (PatientNotebook), Sonic AP and Aegis (PersonaPay) and Coram (InstaMed). Senderra Specialty Pharmacy was added. Elixir is now MedImpact, noted on the MedImpact entry. Spot-checked 9 of the 176 DME websites added by DBA mapping against the NPPES API, and all DBAs matched (for example Cashflow Solutions = Lympha Press and Roth Medical = Summit Respiratory). No roster DME supplier at or above 30,000 Medicare beneficiaries remains roster-tier; Express Healthcare, with 29,761, is the largest. Earlier text below may quote older counts. 1593 entries (108 detailed, 1485 roster). Checked against: (1) the CMS 2024 DME-by-supplier file; every non-pharmacy organizational supplier with 2,000 or more Medicare beneficiaries is present as a detailed or roster entry, and the largest (Lincare, Apria, AdaptHealth family, Byram, North Coast/Advanced Diabetes Supply, Edgepark, 180 Medical, Hanger, Solara, US MED, Rotech, Numotion, Breg, ZOLL LifeVest, VieMed, Strive) are detailed. Websites were added this pass for 44 more high-volume roster suppliers by probing the likely domain and confirming the homepage name and city. (2) The CMS Dialysis Facility listing: DaVita, Fresenius, U.S. Renal Care, DCI (securebillpay portal), Innovative Renal Care/ARA, Satellite Healthcare and Northwest Kidney Centers are detailed; all other chains and independent facilities (~880) are roster entries with phone. (3) CMS Home Health and Hospice listings: national chains are detailed or roster (Enhabit now bills through ClearBalance/Doorstep digital statements), but the ~12k agencies and ~6.7k hospices are NOT listed one by one; use the CMS files in sources. Medicare pays home health and hospice in full for eligible patients, so bills there are rare (hospice room and board and private-duty care are the exceptions). (4) Pharmacies: national, grocery, PBM mail-order, specialty and LTC pharmacies are hand-curated. This pass also harvested the NPPES registry (all community/retail pharmacy NPIs by ZIP prefix), which surfaced 17 regional chains that were missing (Medicap, Lewis Drug, Coborn's, NuCara, Yoke's, Fruth, Realo, AHF, Hayat, King Kullen, Big Y, Save Mart, Market Basket, WinCo, Homeland, Reasor's, ARcare). About 38k independent pharmacies are in rosters/pharmacies_independent_nppes.csv, with one pointer entry here. Retail pharmacies usually collect copays at pickup and do not send monthly bills; independent pharmacies' house charge accounts are the main exception. (5) Labs: Quest, Labcorp, BioReference, the Sonic Healthcare USA family (CPL, Sunrise, Clinical Labs of Hawaii, anatomic pathology), TriCore, ACL and the main genetic/oncology labs are detailed. Blocked or JS-only sites: walmart.com and samsclub.com (CAPTCHA), Kroger-family domains (connection refused), H-E-B help (JavaScript), Mark Cuban Cost Plus, Liberator Medical, AllianceRx, Mayo Clinic Labs and Enovis/DJO (403), Sonora Quest (single-page app), PathGroup (JavaScript challenge), and the Caremark help center (JavaScript app). Walmart, Kroger and H-E-B details come from search snippets and are marked verified=false. Documented autopay: AdaptHealth (mandatory AutoPAY for rentals), Medical Service Company, Rotech (by phone), 180 Medical, BAYADA, Hanger/InstaMed, Inogen/hmebillpay, Express Scripts (charge on ship), Walgreens ExpressPay, CVS Specialty (scheduled monthly payments), Innovative Renal Care, HDIS auto-ship. DaVita's InstaMed portal explicitly has NO autopay. Common processors: InstaMed, hmebillpay.com, AR Allegiance CollectPay (US MED, VieMed, Binson's, Norco), PatientWallet (180 Medical, Amerita), PatientNotebook (Soleo, Onco360), DXLink and payments.sonichealthcareusa.com (Sonic labs), Simplee/Flywire, PayTrace (Numotion), securebillpay.net (DCI, NWKC), e-BillExpress (Genoa), XIFIN, iLabBill. Rite Aid closed all pharmacies; its records page sends patients to the pharmacy that received their prescriptions. Kroger Specialty Pharmacy is now BioPlus. Still missing: detailed support pages for Walmart, Sam's Club, Kroger, H-E-B and the other grocery chains; regional hospital outreach labs and pathology groups (usually billed under the hospital, see the medical category); PathGroup, AEL and Poplar billing pages; individual home health and hospice agencies; DME suppliers under 2,000 Medicare beneficiaries (in the CMS file); websites for most smaller programmatic DME roster entries.\n\nREVIEWER PASS (2026-09-29, second pass): Web search budget was exhausted, so all checks used direct fetches and curl. (1) Link health: curl-checked all ~317 distinct URLs in detailed entries. Most return 200. Timeouts or 403s are bot protection (Kroger, Express Scripts, Soleo, ACL, Natera and others). Publix login returned 404 and was fixed to rx.publix.com/en/mypatients. Solara's portal redirects to adapthealthsolara.hmebillpay.com and was updated. Option Care's pay-bill page redirects to PatientSimple and now uses the target. (2) Re-fetched and verified the content of about 30 detailed entries: Apria, AdaptHealth (guest-pay URL; AutoPAY cancel by phone), Rotech (portal myrotechportal.com), Byram (hardship waiver), CCS Medical, 180 Medical, Aeroflow (mail address), Lincare (billerpayments.com guest pay), Quest (paperless and history in MyQuest), Labcorp (mail address, portal), Exact Sciences (PatientWallet, mail address), BioReference, Express Scripts (AutoPay cancel under Account preferences), CVS retail, Costco, Walgreens (ExpressPay delete), CenterWell Pharmacy, Optum Rx, Accredo, DaVita, Fresenius, Enhabit, Amedisys, Numotion, Option Care, Publix, Solara, Inogen and Hanger. CORRECTIONS: DaVita autopay_setup removed (its InstaMed portal says there is no recurring option). Optum Rx customer-service phones no longer include the Medicare fraud line or the prescriber prior-auth line. Numotion's note wrongly called NSM an alias. Walmart, Kroger, H-E-B, CVS Caremark, Sonora Quest, Edgepark and Amazon help could not be fetched again (CAPTCHA, reset, JavaScript shell, timeout or 503). (3) Completeness: re-joined the CMS DMEPOS 2024 supplier file on normalized names and found 76 suppliers with 2,000 or more beneficiaries that were not matched by name. 16 are subsidiaries of existing brands (Apria, Byram, Lincare Pharmacy, Binson's, Rotech, Tactile, AdaptHealth West/MN/MO, MiniMed, Shield CA, Accredo, Coram, Hoveround) and are noted on those entries. About 20 are orthopedic or physician practices and hospitals that belong in the medical category. The other 40 were added as roster entries. The earlier claim that every supplier with 2,000 or more beneficiaries was present was therefore not fully accurate. Also added as detailed entries: National Seating & Mobility, PathGroup, Interpath Laboratory, Addus HomeCare and Capsule Pharmacy. Added The Pennant Group as a roster entry. Duplicates merged: 'United States Medical Supply, Llc' into US MED, 'Kindred Hospice (now Gentiva)' into Gentiva, and 'Encompass / Enhabit legacy' into Enhabit. Spectra Laboratories (Fresenius renal lab) sold assets to Quest, noted on the Quest and Fresenius entries. Four CMS suppliers with very high Medicare payment per beneficiary (Sunshine Senior Solutions, Almaz Med Supply, Express Healthcare, Southeastern Medequip) now carry a data flag telling seniors to check their Medicare Summary Notice.\n\nREVIEWER PASS 3 (2026-09-30): The file now has 1637 entries (116 detailed, 1521 roster, 221 verified=true). The web-search budget was already used up, so checks used curl and sitemaps, and a real browser pane for JavaScript-only or bot-protected sites. CAPTCHA and Cloudflare challenges were NOT bypassed: H-E-B (Imperva block), AllianceRx (Cloudflare challenge) and Cost Plus Drugs (page would not render) are still uncaptured.\n\n(1) Link health: all 351 distinct URLs in detailed entries were curl-checked. 324 returned 200/202 and 22 returned 403 (bot protection). The 5 Kroger URLs that curl could not reach were confirmed in the browser. There were no 404s. The redirect audit found that Ambry's portal and the Sonic DXLink portals (CPL, Sunrise) now land on the XIFIN patient portal; processors were updated.\n\n(2) Content re-verified this pass (about 40 entries): Apria, Byram (paperless statements page, 2 years of history), 180 Medical (auto-pay by phone, receipt verification, itemized statements), Labcorp (payment plans; Labcorp says it is NOT affiliated with Doxo), Accredo (FAQ mail address PO Box 954041, St. Louis), Lincare, BioReference, DaVita (no InstaMed autopay confirmed), Enhabit, CenterWell Pharmacy, Publix, Exact Sciences, Myriad, NeoGenomics (iLabBill and XIFIN portals), MiniMed, Edgepark (now confirmed, with payment-plan lines), Optum Rx, Walgreens, Inogen, Tandem, Aeroflow, CCS Medical, Compassus (all Bill Pay buttons go to securebillpay.net/AscensionHealthatHome), Crossroads Hospice (PayTrace link for each location), Hoveround, Fresenius (FreseniusRx bills at rxbillpay.fmcna.com, which redirects to Paymentus), U.S. Renal Care, Satellite, Elara, Interim, BioPlus, CVS retail, and Amazon Pharmacy.\n\nEntries previously marked UNVERIFIED are now confirmed in the browser: Walmart (Download Pharmacy History gives 24 months as PDF or CSV; a snippet-sourced article URL now redirects and was dropped), Kroger (Pay Online steps; expense reports and history in My Prescriptions) and CVS Caremark. The help center DOES publish a general number, 1-800-552-8159; the earlier claim that there was none was wrong.\n\n(3) Corrections: Satellite Healthcare's '866-671-8772' is U.S. Renal Care's hotline (1-866-671-USRC) and appears only in a shared storm banner. It was replaced with Satellite's own lines (800-367-8292 and 855-396-2212). The duplicate roster entry 'Satellite Dialysis (dialysis)' was merged into Satellite Healthcare. Guardian Pharmacy's website is https://guardianpharmacy.com; the www host refuses connections. A retail-pharmacy boilerplate sentence ('copays are paid at pickup') had been attached by mistake to 13 PBM, mail-order, specialty, LTC and Kaiser entries; each was replaced with an accurate billing description.\n\n(4) Upgraded to detailed: Sonora Quest (pay.sonoraquest.com, automated pay line 800-853-4288, PO Box 52880 Phoenix, no Doxo partnership), Remedi SeniorCare (LTC pharmacy, e-BillExpress portal) and Liberator Medical (B. Braun; pays through HME Patient Hub). Mayo Clinic Laboratories stays a roster entry because it bills institutions; its billing office line was added.\n\n(5) Added: Tempus AI (financial assistance via access.tempus.com; billing@tempus.com) and American Esoteric Laboratories (Sonic, Memphis; roster, website null because the domain could not be confirmed; aellab.com is an unrelated lab). Merger notes: Enzo Clinical Labs is now Labcorp (enzoclinicallabs.com redirects to labcorp.com).\n\nRemaining gaps: H-E-B, AllianceRx, Cost Plus Drugs and Sam's Club billing pages; Poplar Healthcare (domain not confirmed; not added); the official AEL domain; autopay-cancel documentation, which most DME/lab billers do not publish (cancel is by phone). [Link backfill 2026-09-30] Detailed entries now 134 (116 + 18 upgraded roster suppliers with 30k+ Medicare beneficiaries). Detailed link fill: view_bill 78, pay_bill 100, autopay_setup 29 (22%), autopay_cancel 23 (17%), statements_history 52 (39%), paperless 20 (15%), payment_assistance 68. Method: crawled each detailed biller's sitemap/robots and existing billing pages, scanned candidate pages for autopay/card-on-file, statement/receipt/history, paperless, rental and assistance wording, and added only links whose page text matched; facts without a dedicated page (e.g., 'call billing to stop autopay', 'card deleted after each payment', 'no card on file required') went into notes. Many labs, home-health and hospice billers publish no autopay/paperless pages at all (one-time bills or Medicare-paid care), and the big retail/PBM pharmacy sites (CVS, Caremark, Walmart, Kroger, Amazon, H-E-B, Optum Rx) block automated fetches or render help content client-side, so their autopay/receipt pages remain partly unfilled. DME websites: the top 400 website-less roster DME suppliers by 2024 Medicare beneficiaries (rosters/dme_suppliers_cms_2024.csv) were processed; 176 got a website confirmed by fetch (homepage name/title match plus NPPES phone/city/ZIP/street match, a chain/health-system page named in the NPPES DBA, or an AdaptHealth/Rotech company page), and 383 got an NPPES phone plus practice address. Roster entries still without a website: 1208 (879 dialysis facilities/chains, which bill through the facility, plus 329 DME suppliers: ~220 from the top 400 where no site could be confirmed and all suppliers below ~2,400 beneficiaries, which were not probed). Upgraded to detailed: Sunshine Senior Solutions, DJO (Enovis/PersonaPay), DEGC (=CCS Medical), Main Street DME, Med Star (=AdaptHealth NY), Almaz Med Supply, Pacific Medical, Verus (AdaptHealth), Absolute Medical Supplies Services, Ocean Home Health (AdaptHealth), ND Medical Solutions, JL Webb DME (Priority 1 Medical Equipment), Prism Medical Products, Wound Care Concepts (Gentell), KCI USA (Solventum), Tricounty Medical Equipment, Surgi-Care and Nationwide Medical. Six of these (Sunshine, Main Street, Almaz, Absolute, ND Medical, JL Webb) have no website and unusually high Medicare payments per beneficiary; they carry a fraud-awareness note instead of billing links (Express Healthcare, 29.8k beneficiaries, stays roster with a similar flag). Second reviewer pass 2026-09-30: re-status-checked all 387 detailed-entry URLs (all resolve except Kroger, which resets bot connections, and pages behind bot walls that return 403/202: Pacific Medical, Liberator, Soleo, PathGroup, Amerita/ES PatientWallet) and keyword-checked every autopay/statement/paperless/assistance link against page text. Fixes: NSM payment_assistance cleared (its payment page offers no assistance); HDIS note corrected (public FAQ only documents changing the Personalized Delivery Plan, not card-on-file charging). New domain-variant probing (legal name and NPPES DBA, abbreviations like homemed/hme) found websites the first pass missed: Regional Home Care (regionalhc.com, 29.5k beneficiaries), Medical Services of America (msahealthcare.com, DBA Medi Home Care), Performance Modalities (performancehomemed.com, DBA Performance Home Medical, 23.8k), Synergy Orthopedics (synergyortho.com), Gould's Discount Medical (domain now redirects to AdaptHealth, so it is an AdaptHealth brand) and 21 smaller suppliers; each was confirmed by matching the NPPES phone or practice city on the fetched page. Regional Home Care, Medical Services of America and Performance Home Medical were upgraded to detailed with Brightree hmebillpay portal links, pay-by-phone and mail addresses. After review 2: 1638 entries, 138 detailed (129 verified), 430 verified overall. Detailed link fill: view_bill 81, pay_bill 104, autopay_setup 32, autopay_cancel 25, statements_history 56, paperless 24, payment_assistance 70; payment_processor 94. Caveat: most autopay_cancel links reuse the setup/portal page where the page only says autopay or the card is managed there; only Medical Service Company publishes an explicit 'Can I stop AutoPay?' answer, and the notes say when cancelling requires a phone call. 1182 roster DME suppliers (mostly under ~2,000 Medicare beneficiaries) still have no website; WebSearch was unavailable in this pass, so remaining gaps were only probed by domain guessing. KCI/Solventum still has no public patient-billing page or phone, and the 7 website-less 30k+ suppliers (Sunshine Senior Solutions, Main Street DME, Almaz, Absolute Medical, ND Medical, JL Webb/Priority 1, Prism Medical Products, Tricounty) remain unverified with NPPES phones only.",
- "sources": [
-  {
-   "title": "Life Flight Network membership page (FireMed/LifeMed participating-agency terms)",
-   "url": "https://www.lifeflight.org/membership/",
-   "why_useful": "Lists Oregon FireMed agencies and pricing; enroll/renew portal links"
-  },
-  {
-   "title": "Seneca Area EMS subscription page (reciprocal agencies)",
-   "url": "https://www.senecaems.org/donatesubscribenow.html",
-   "why_useful": "Roster of western-PA EMS agencies honoring reciprocal subscriptions"
-  },
-  {
-   "title": "ambulancemembership.com",
-   "url": "https://ambulancemembership.com/",
-   "why_useful": "Platform roster of Oregon LifeGuard ambulance memberships (Bay Cities, Medix, Pacific West, Pioneer, Roseburg FireMed)"
-  },
-  {
-   "title": "REMSA Health Membership Plus",
-   "url": "https://www.remsahealth.com/membership-plus/",
-   "why_useful": "AAMMP reciprocal partner links (e.g., Enloe FlightCare)"
-  },
-  {
-   "title": "AirMedCare Network provider membership pages (Air Evac Lifeteam, REACH, Guardian Flight, Med-Trans)",
-   "url": "https://www.lifeteam.net/membership",
-   "why_useful": "AMCN pricing incl. $79 senior rate and membership phone"
-  },
-  {
-   "title": "Air Methods Membership Facts",
-   "url": "https://www.airmethods.com/membership-facts/",
-   "why_useful": "Medicare Part B / Medicaid air-ambulance coverage explanation and membership cancellation guidance"
-  },
-  {
-   "title": "DPC Frontier Mapper",
-   "url": "https://mapper.dpcfrontier.com",
-   "why_useful": "National map of 3,208 direct primary care practices (completeness reference for DPC)"
-  },
-  {
-   "title": "MDVIP patient FAQ",
-   "url": "https://www.mdvip.com/patients/faq",
-   "why_useful": "Concierge fee payment options, refunds, Medicare relationship"
-  },
-  {
-   "title": "GoodRx Companion page",
-   "url": "https://www.goodrx.com/companion",
-   "why_useful": "Confirms GoodRx Gold rebrand, pricing, auto-renew and cancel steps"
-  },
-  {
-   "title": "Teladoc Health FAQ",
-   "url": "https://www.teladochealth.com/start/faq",
-   "why_useful": "Visit pricing; not a provider for fee-for-service Medicare"
-  },
-  {
-   "title": "CMS ambulance supplier roster (project file)",
-   "url": "rosters/ambulance_suppliers_cms_2024.csv",
-   "why_useful": "Checked to avoid duplicating ambulance transport billers already in medical-physician-ambulance-billing.json"
-  },
-  {
-   "title": "MASA payment & renewal FAQ",
-   "url": "https://masaaccess.com/faq/pricing-and-payment/",
-   "why_useful": "Renewal, auto-renew opt-in and payment-change instructions; rebrand from masamts.com"
-  },
-  {
-   "title": "AirMedCare Network terms & conditions",
-   "url": "https://www.airmedcarenetwork.com/terms-conditions",
-   "why_useful": "Rates incl. $79 senior annual and $9 monthly options; refund/cancellation state exceptions"
-  },
-  {
-   "title": "Airlift Northwest membership",
-   "url": "https://www.uwmedicine.org/airliftnw/membership",
-   "why_useful": "WA/AK air membership pricing, renewal, auto-renew status, Medicaid note"
-  },
-  {
-   "title": "Lancaster EMS membership FAQ",
-   "url": "https://www.lemsa.com/membershipfaq.php",
-   "why_useful": "Central-PA ground subscription model with senior rates"
-  },
-  {
-   "title": "Ross/West View EMS annual EMS fee",
-   "url": "https://rwvems.org/levy/",
-   "why_useful": "Example of a mandatory municipal EMS fee (not a subscription) with hardship forgiveness"
-  },
-  {
-   "title": "PlushCare support center",
-   "url": "https://support.plushcare.com/hc/en-us",
-   "why_useful": "Membership price, trial auto-enrollment, cancellation, invoices via Apero Health"
-  },
-  {
-   "title": "Parsley Health help center",
-   "url": "https://help.parsleyhealth.com/",
-   "why_useful": "Cancel, invoices, auto-renew, Medicare opt-out disclosure"
-  },
-  {
-   "title": "GoodRx Companion cancel article",
-   "url": "https://support.goodrx.com/hc/en-us/articles/50326672510491-How-do-I-cancel-my-Companion-membership",
-   "why_useful": "Step-by-step cancellation of the GoodRx Gold successor"
-  },
-  {
-   "title": "amr.net sitemap (membership program pages)",
-   "url": "https://www.amr.net/sitemap.xml",
-   "why_useful": "Enumerates every AMR location with a published membership program (Pueblo CO, KS City/Topeka/Linn County KS, South Mississippi, West Michigan, Josephine County OR)"
-  },
-  {
-   "title": "EMSecurePay member portal (EMS Management & Consultants)",
-   "url": "https://emsecurepay.emsbilling.com/membership/site/login",
-   "why_useful": "Shared membership portal for Wake/Johnston NC, AFMA AZ, Storey NV, Livonia MI"
-  },
-  {
-   "title": "ambulance-membership.com portal",
-   "url": "https://www.ambulance-membership.com/",
-   "why_useful": "Lists participating programs (UT Health East Texas EMS, Rural Medevac Alliance)"
-  },
-  {
-   "title": "MedFlight membership page",
-   "url": "https://www.medflight.com/membership/",
-   "why_useful": "Ohio air/ground membership; corrects earlier 'no membership' finding"
-  },
-  {
-   "title": "Medjet membership options",
-   "url": "https://medjetassist.com/membership-options",
-   "why_useful": "Travel medical-transport membership tiers incl. age 75-84 Diamond"
-  },
-  {
-   "title": "SkyMed FAQ / plans",
-   "url": "https://skymed.com/faq/",
-   "why_useful": "Senior/RV travel evacuation membership pricing"
-  },
-  {
-   "title": "Hawaii Life Flight membership page",
-   "url": "https://www.hawaiilifeflight.com/Membership",
-   "why_useful": "AMCN brand pricing incl. $79 senior rate"
-  },
-  {
-   "title": "WebSearch discovery queries (2026-10-02)",
-   "url": "https://www.ems1.com/ems-products/billing-administration/articles/how-ambulance-membership-programs-help-patients-defray-ambulance-cost-xewUtZeS7FnfTrmG/",
-   "why_useful": "Industry overview of ambulance membership pricing ($45-$135/yr) used alongside search results to find state programs"
-  },
-  {
-   "title": "AirMedCare Network sitemap",
-   "url": "https://www.airmedcarenetwork.com/sitemap.xml",
-   "why_useful": "Brand/provider pages (BannerAir, Hawaii Life Flight, FireMed ground, member services/support)"
-  },
-  {
-   "title": "Talkspace Help Center (Zendesk API)",
-   "url": "https://help.talkspace.com/hc/en-us",
-   "why_useful": "Billing history, invoices, cancellation and Medicare Part B coverage articles; read through the public Help Center API because direct fetches return 403"
-  },
-  {
-   "title": "Hims & Hers Help Center",
-   "url": "https://support.hims.com/hc/en-us",
-   "why_useful": "Subscription cancel, payment update, and payment processors (Stripe/Adyen)"
-  },
-  {
-   "title": "AirMedCare Network FireMed terms",
-   "url": "https://www.airmedcarenetwork.com/terms-and-conditions-fire-med",
-   "why_useful": "Lists Oregon FireMed agencies sold with AMCN (Bend, Crescent RFPD, Blue Mountain Hospital, Crook County, Harney District, Klamath Falls District 1, Rocky Point/Chemult)"
-  },
-  {
-   "title": "LifeMD Help Center",
-   "url": "https://support.lifemd.com/hc/en-us",
-   "why_useful": "LifeMD+ auto-renew/cancel and Medicare acceptance"
-  },
-  {
-   "title": "CMS Medicare Durable Medical Equipment, Devices & Supplies - by Supplier (data year 2024, release 2026-07)",
-   "url": "https://data.cms.gov/sites/default/files/2026-07/037d1a55-7ae6-4500-9a6c-f86603705cdd/mup_dme_ry26_p05_v10_dy24_supr.csv",
-   "why_useful": "Every DMEPOS supplier that billed Medicare Part B in 2024, with beneficiary counts, specialty and location. Used to rank DME billers and generate ~500 roster entries (suppliers with 2,000 or more Medicare beneficiaries)."
-  },
-  {
-   "title": "CMS Dialysis Facility - Listing by Facility (Care Compare)",
-   "url": "https://data.cms.gov/provider-data/sites/default/files/resources/c04d84bc5c641284494bee4f20f17f9c_1781625941/DFC_FACILITY.csv",
-   "why_useful": "All 7,490 Medicare-certified dialysis facilities with chain organization and phone. Used for chain counts and for roster entries for every independent, 'Other', state-owned and VA facility plus smaller chains."
-  },
-  {
-   "title": "CMS Home Health Care Agencies (Jul 2026)",
-   "url": "https://data.cms.gov/provider-data/sites/default/files/resources/0260f790d69086d7330c10bcd51b9c3c_1782764087/HH_Provider_Jul2026.csv",
-   "why_useful": "All 12,460 Medicare-certified home health agencies with phone. Used to size chains; agency-level lookup source for the app."
-  },
-  {
-   "title": "CMS Hospice - General Information (Aug 2026)",
-   "url": "https://data.cms.gov/provider-data/sites/default/files/resources/18afea60c672e37d2f0d6e8ed984eaa6_1787169953/Hospice_General-Information_Aug2026_2.csv",
-   "why_useful": "All 6,669 Medicare-certified hospices with phone. Used to size chains; agency-level lookup source."
-  },
-  {
-   "title": "CMS data catalog (data.json)",
-   "url": "https://data.cms.gov/data.json",
-   "why_useful": "Index used to find the current DME supplier file; also lists 'Medicare Durable Medical Equipment - by Referring Provider and Service' and DMEPOS geography files."
-  },
-  {
-   "title": "CMS Provider Data Catalog metastore API",
-   "url": "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/23ew-n7w9",
-   "why_useful": "Programmatic discovery of current download URLs for the dialysis (23ew-n7w9), home health (6jpm-sxkc) and hospice (yc9t-dgbk) datasets."
-  },
-  {
-   "title": "Medicare.gov Medical Equipment & Suppliers directory",
-   "url": "https://www.medicare.gov/medical-equipment-suppliers",
-   "why_useful": "Consumer lookup of DMEPOS supplier locations by ZIP; useful for in-app 'find my supplier'. Not fetched this session."
-  },
-  {
-   "title": "Official biller billing/help pages (fetched)",
-   "url": "https://www.lincare.com/resources/patient-support/Billing-FAQ",
-   "why_useful": "Each detailed entry's URLs were fetched with curl or WebFetch on 2026-09-29. A final link-check pass found 203 of 205 detailed-entry URLs return HTTP 200."
-  },
-  {
-   "title": "Derived roster: rosters/dme_suppliers_cms_2024.csv",
-   "url": "file:docs/research/billers/rosters/dme_suppliers_cms_2024.csv",
-   "why_useful": "3,447 organizational DMEPOS supplier NPIs with 500 or more Medicare beneficiaries (2024), extracted from the CMS file above (the raw 31MB file was deleted). Raw dialysis/home health/hospice CSVs are kept in rosters/_raw/."
-  },
-  {
-   "title": "NPPES NPI Registry API (CMS) - Community/Retail Pharmacy organization NPIs by ZIP prefix",
-   "url": "https://npiregistry.cms.hhs.gov/api/?version=2.1",
-   "why_useful": "Harvested ~89k pharmacy NPIs this session; filtered to ~38k non-chain community pharmacies in rosters/pharmacies_independent_nppes.csv and used to find missing regional chains."
-  },
-  {
-   "title": "Derived roster: rosters/pharmacies_independent_nppes.csv",
-   "url": "file:docs/research/billers/rosters/pharmacies_independent_nppes.csv",
-   "why_useful": "Independent community pharmacies with address and phone, all states and territories (raw API pages deleted after extraction)."
-  },
-  {
-   "title": "Official biller sitemaps (robots.txt / sitemap.xml) grep for pay/bill/statement pages",
-   "url": "https://www.usmed.com/sitemap.xml",
-   "why_useful": "Found billing pages (US MED, DCI, Enhabit, Numotion, Soleo, Amerita, Onco360, Sunrise/CPL/Clinical Labs of Hawaii, Breg, CareDx, Millennium) after the shared web-search budget ran out; each page was then fetched."
-  },
-  {
-   "title": "CVS Pharmacy help: Prices, Insurance and Payments",
-   "url": "https://www.cvs.com/retail/help/help-subtopic-prices-insurance-and-payments",
-   "why_useful": "Retail pharmacy payment rules (pay at pickup)."
-  },
-  {
-   "title": "Costco Pharmacy FAQ",
-   "url": "https://www.costco.com/pharmacy/frequently-asked-questions.html",
-   "why_useful": "Mail-order payment methods and contact numbers."
-  },
-  {
-   "title": "PathGroup patient billing, Quick Pay and FAQ",
-   "url": "https://www.pathgroup.com/patients/billing",
-   "why_useful": "PersonaPay portals and billing phone numbers for a large Southeastern pathology lab (added in review)."
-  },
-  {
-   "title": "Fresenius Medical Care: divestment of select Spectra Laboratories assets to Quest Diagnostics",
-   "url": "https://freseniusmedicalcare.com/en/media/newsroom/divestment-of-select-laboratory-assets-to-quest-diagnostics/",
-   "why_useful": "Explains why spectra-labs.com redirects; dialysis lab testing moving to Quest (2025-2026)."
-  },
-  {
-   "title": "National Seating & Mobility - Make a Payment",
-   "url": "https://www.nsm-seating.com/make-a-payment/",
-   "why_useful": "Payment page for a national complex-rehab wheelchair supplier missing from the earlier pass."
-  },
-  {
-   "title": "Addus HomeCare - Clients & Family billing FAQ",
-   "url": "https://addus.com/clients-family/",
-   "why_useful": "Billing cadence, PatientNotebook pay link and reimbursement phone for a large in-home care/home health/hospice operator."
-  },
-  {
-   "title": "Sonora Quest Laboratories - Patient Billing FAQ",
-   "url": "https://www.sonoraquest.com/patients/knowledge-center/knowledge-pages/patient-billing-frequently-asked-questions/",
-   "why_useful": "Online and phone payment options, mail address, payment plans and the Doxo warning (read in a browser; JavaScript-only site)."
-  },
-  {
-   "title": "CVS Caremark Help & Messaging",
-   "url": "https://www.caremark.com/pharmacy/benefits/public/help-and-messaging",
-   "why_useful": "Publishes the general Customer Service number 1-800-552-8159 and the Payments and Billing FAQ categories."
-  },
-  {
-   "title": "Walmart Help - Download Pharmacy History",
-   "url": "https://www.walmart.com/help/article/download-pharmacy-history/6d27cbcaee704e4d9e7a6406f1a380af",
-   "why_useful": "Up to 24 months of pharmacy history as PDF or CSV (statements_history for Walmart Pharmacy)."
-  },
-  {
-   "title": "Kroger Pharmacy Account Setup FAQ",
-   "url": "https://www.kroger.com/health/pharmacy/faqs/account-setup",
-   "why_useful": "My Prescriptions: expense reports, prescription history, Access Another Adult for caregivers."
-  },
-  {
-   "title": "Labcorp Billing & Insurance",
-   "url": "https://www.labcorp.com/patients/billing",
-   "why_useful": "Payment plans, pay-by-phone, mail address, and the statement that Labcorp is not affiliated with Doxo."
-  },
-  {
-   "title": "Compassus Bill Pay",
-   "url": "https://www.compassus.com/bill-pay/",
-   "why_useful": "Shows that Compassus and its health-system JV brands all pay through securebillpay.net."
-  },
-  {
-   "title": "AdaptHealth company pages (sitemap: adapthealth.com/pages/company-*)",
-   "url": "https://adapthealth.com/pages/company-verushealthcare",
-   "why_useful": "Confirms Verus Healthcare, Ocean Home Health, Family Medical Supply, Cape Medical, WeCare Medical, Airway Oxygen, Total Home Health and Respiratory Services of WNY are AdaptHealth companies, with their pay links."
-  },
-  {
-   "title": "SEC EDGAR full-text search: AdaptHealth 8-K (2020-12-14) on AeroCare Holdings",
-   "url": "https://www.sec.gov/Archives/edgar/data/1725255/000110465920135025/tm2037721d4_8k.htm",
-   "why_useful": "Basis for mapping NPPES 'AeroCare' DBAs to AdaptHealth."
-  },
-  {
-   "title": "Enovis (DJO) Billing FAQs and Payment FAQs",
-   "url": "https://enovis.com/billing-faqs",
-   "why_useful": "DJO patient billing: PersonaPay portal, payment history, wallet, payment plans, pay-by-phone."
-  },
-  {
-   "title": "Brightree hmebillpay patient portal FAQ (shared by many HME suppliers)",
-   "url": "https://wellstart.hmebillpay.com/Home/Faq",
-   "why_useful": "AutoPAY setup, changing card, payment history and eDelivery wording reused for each tenant's FAQ URL."
-  },
-  {
-   "title": "Nationwide Medical - Get In Touch / Patients",
-   "url": "https://www.nationwidemedical.com/get-in-touch/",
-   "why_useful": "HQ address/phone match to CMS/NPPES and the hmebillpay pay link."
-  },
-  {
-   "title": "Supplier homepages fetched by domain probe (name/DBA x suffix x TLD candidates)",
-   "url": "https://www.britkarehomemedical.com/",
-   "why_useful": "Website accepted only when the homepage (or its contact/about page) contained the supplier name and an NPPES phone, city, ZIP or street match."
-  },
-  {
-   "title": "Lincare general FAQ",
-   "url": "https://www.lincare.com/en/resources/patient-support/faq",
-   "why_useful": "Recurring payment/payment-method management and paperless toggle in the Lincare portal."
-  },
-  {
-   "title": "Express Scripts FAQ",
-   "url": "https://www.express-scripts.com/frequently-asked-questions",
-   "why_useful": "Autopay per shipment with max limit, Claims History for taxes/FSA, Extended Payment Plan, MPPP."
-  },
-  {
-   "title": "Walgreens Pharmacy Help",
-   "url": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp",
-   "why_useful": "ExpressPay card storage/removal and prescription Records printout for FSA/taxes."
-  },
-  {
-   "title": "Labcorp Bill Pay",
-   "url": "https://www.labcorp.com/patients/bill-pay",
-   "why_useful": "Pay-by-phone, mail address, payment plans, card deletion after payment, payment summary."
-  },
-  {
-   "title": "NPPES NPI Registry API (CMS) - organization record lookups by NPI",
-   "url": "https://npiregistry.cms.hhs.gov/api/?version=2.1&number=1437154010",
-   "why_useful": "Practice-location phone, address and doing-business-as names for the top 400 website-less DME suppliers; DBA names revealed AdaptHealth, AeroCare, Rotech, Lincare, Quipt, CCS Medical, NSM and health-system ownership (example lookup: Med Star = ADAPTHEALTH NY)."
-  },
-  {
-   "title": "Brightree hmebillpay patient portal FAQs (Inogen, Solara, Nationwide Medical, Reliable Respiratory tenants)",
-   "url": "https://reliablerespiratory.hmebillpay.com/Home/Faq",
-   "why_useful": "AutoPAY sign-up, change card, payment history and eDelivery on one page; reviewer reused per tenant."
-  },
-  {
-   "title": "Elixir Solutions homepage",
-   "url": "https://www.elixirsolutions.com/",
-   "why_useful": "States Elixir is now MedImpact (former Rite Aid PBM)."
-  },
-  {
-   "title": "Senderra Specialty Pharmacy patients and financial assistance pages",
-   "url": "https://www.senderrarx.com/financial-assistance",
-   "why_useful": "Card-on-file refills, financial assistance, patient phone."
-  },
-  {
-   "title": "Brightree HME BillPay patient portal FAQs (regionalhc, medicalservicesofamerica, performancehomemed subdomains)",
-   "url": "https://regionalhc.hmebillpay.com/Home/Faq",
-   "why_useful": "Standard AutoPAY / card on file / payment history / eDelivery wording used by many HME suppliers"
-  },
-  {
-   "title": "Medical Services of America - Pay Your Bill",
-   "url": "https://www.msahealthcare.com/pay-your-bill",
-   "why_useful": "Portal, payment plan, autopay, pay-by-phone and remittance address for a multi-state HME supplier"
-  }
- ],
  "entries": [
   {
    "name": "ARcare Pharmacy",
@@ -401,7 +34,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -438,7 +71,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -472,7 +105,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -506,7 +139,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -540,7 +173,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. Website added 2026-09-30 (domain probe: homepage name match + phone match to NPPES location).",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -574,7 +207,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. Website not researched. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -616,7 +249,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -651,7 +284,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -686,7 +319,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -720,7 +353,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -754,7 +387,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -798,7 +431,7 @@
     "android": "https://play.google.com/store/apps/details?id=com.publix.pharmacyonline"
    },
    "senior_programs": "Publix pharmacy page advertises $50 copays on certain GLP-1 drugs for eligible Medicare Part D patients and Rx savings via its marketplace (check current terms).",
-   "notes": "Pharmacy page (fetched) says prescriptions can be managed and paid for online through the Publix Pharmacy account/app (rx.publix.com); order history is in the app. No phone number is listed on that page; call the store pharmacy or use https://www.publix.com/contact. Copays are normally paid at pickup. [Review 2026-09-29] CORRECTION: the old login URL rx.publix.com/en/mypatient returned 404. The pharmacy page (re-fetched) links login at https://rx.publix.com/en/mypatients.",
+   "notes": "Pharmacy page  says prescriptions can be managed and paid for online through the Publix Pharmacy account/app (rx.publix.com); order history is in the app. Call the store pharmacy or use https://www.publix.com/contact. Copays are normally paid at pickup. The pharmacy page  links login at https://rx.publix.com/en/mypatients.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -839,7 +472,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -875,7 +508,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -914,7 +547,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -950,7 +583,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -993,7 +626,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage is bot-protected; URL not confirmed this session. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1027,7 +660,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -1061,7 +694,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. Website not researched. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1095,7 +728,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -1130,7 +763,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. Website not researched. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1164,7 +797,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -1198,7 +831,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -1233,7 +866,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage is bot-protected; URL not confirmed this session. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1269,7 +902,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -1303,7 +936,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -1337,7 +970,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. Website added 2026-09-30 (domain probe: homepage name match + phone/city/zip/street match to NPPES location).",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1379,7 +1012,7 @@
    "payment_processor": "e-BillExpress (Fiserv) — ww2.e-billexpress.com/ebpp/Remedi",
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200). [Review 3, 2026-09-30] UPGRADED to detailed. The Residents & Families page (fetched) has a 'Need to make a payment?' block with Pay Online and Pay By Phone. The header 'Bill Pay' link goes to the e-BillExpress portal above. The page's 'Pay Online' button points to http://www.remedirxpay.com/, which returned 404 on 2026-09-30, so use the e-BillExpress link. No phone number was shown in the page text. Remedi accepts Medicare Part D and most plans, bills retrospectively (you pay only for medications dispensed) and dispenses at most a 3-day supply. Backfill 2026-09-30: Remedi's E-Bill Express (Fiserv) page lets you pay as a guest with account number and PO Box from the coupon, or enroll to 'view and pay bills, and see your account status and payment history'.",
+   "notes": "The Residents & Families page  has a 'Need to make a payment?' block with Pay Online and Pay By Phone. Remedi accepts Medicare Part D and most plans, bills retrospectively (you pay only for medications dispensed) and dispenses at most a 3-day supply. Remedi's E-Bill Express (Fiserv) page lets you pay as a guest with account number and PO Box from the coupon, or enroll to 'view and pay bills, and see your account status and payment history'.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1414,7 +1047,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -1466,7 +1099,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1500,7 +1133,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1539,7 +1172,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1573,7 +1206,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. Website added 2026-09-30 (known operator domain; homepage fetched and title/name matched).",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1614,7 +1247,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -1650,7 +1283,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -1685,7 +1318,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -1723,7 +1356,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1757,7 +1390,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -1796,7 +1429,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -1830,7 +1463,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. Website added 2026-09-30 (domain probe: homepage name match + city/zip/street match to NPPES location).",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1869,7 +1502,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1903,7 +1536,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -1937,7 +1570,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -1979,7 +1612,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2015,7 +1648,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2050,7 +1683,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2089,7 +1722,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2123,7 +1756,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -2157,7 +1790,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2191,7 +1824,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2225,7 +1858,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2261,7 +1894,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2295,7 +1928,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -2329,7 +1962,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. Website added 2026-09-30 (known operator domain; homepage fetched and title/name matched).",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2369,7 +2002,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -2407,7 +2040,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2443,7 +2076,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2480,7 +2113,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2514,7 +2147,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "heb.com help pages render with JavaScript and could not be read; details from search snippets (NOT fetched): prescription and vaccine history for the last two years can be viewed and downloaded as a PDF under Pharmacy > View your prescriptions; HSA/FSA cards and Apple Pay are accepted at the counter. Copays are paid at pickup. Numbers page: https://www.heb.com/help/our-numbers. [Review 2026-09-29] A re-fetch on 2026-09-29 was blocked again (CAPTCHA, empty JavaScript shell, or JS-only help center), so the links are still not confirmed by fetch.",
+   "notes": "Details from search snippets: prescription and vaccine history for the last two years can be viewed and downloaded as a PDF under Pharmacy > View your prescriptions; HSA/FSA cards and Apple Pay are accepted at the counter. Copays are paid at pickup. Numbers page: https://www.heb.com/help/our-numbers.",
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -2548,7 +2181,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Added in review 2026-09-29: this supplier had 2,000 or more Medicare beneficiaries in CMS 'Medicare DME, Devices & Supplies - by Supplier' (2024 data year) but was missing from the file. If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud. 2026-09-30: no official website found by domain probing (name, DBA and suffix variants); phone is from the NPPES NPI registry.",
+   "notes": "If a senior gets a bill or letter from an unfamiliar DME supplier, check the Medicare Summary Notice for possible fraud.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -2583,7 +2216,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2619,7 +2252,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2657,7 +2290,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2691,7 +2324,7 @@
    "payment_processor": "in-house (Accredo/Evernorth account)",
    "app": null,
    "senior_programs": "Copay assistance search (foundation and manufacturer programs). Manufacturer copay cards exclude Medicare, Medicaid, VA and TRICARE; nonprofit foundations may still help Medicare patients.",
-   "notes": "Contact page (fetched) lists a dedicated Billing & Payments line. Homepage 'Make a Payment' goes to https://accredo.evernorth.com/new-patient/payment (JavaScript app). Copay assistance page (fetched): enroll with the program, then add it in the Accredo account. Accredo is Express Scripts/Evernorth (Cigna) specialty pharmacy. [Review 2026-09-29] Homepage (re-fetched) still links Make a Payment at accredo.evernorth.com/new-patient/payment (a JavaScript app) and the Copay Assistance tool. Customer service 800-803-2523. [Review 2026-09-29] CMS DMEPOS 2024 supplier 'Accredo Health Group Inc' (Warrendale, PA; 5,846 Medicare beneficiaries) belongs to this brand. [Review 3, 2026-09-30] FAQ (fetched) Payments section: pay by debit/credit card, checking account or FSA through the Accredo app or website, or mail a check to the PO box above. Cost is quoted during the order-scheduling call; no shipping charge. The app shows medication history and lets you pay balances. Copay-assistance cards can be stored under Profile > Payment Methods. Backfill 2026-09-30: Accredo FAQ: pay by debit/credit card, checking account or FSA card in the Accredo app or website; copay-assistance cards can be stored under Payment Methods in your profile. No public autopay or paperless instructions found.",
+   "notes": "Contact page  lists a dedicated Billing & Payments line. Copay assistance page: enroll with the program, then add it in the Accredo account. Accredo is Express Scripts/Evernorth (Cigna) specialty pharmacy. Customer service 800-803-2523. CMS DMEPOS 2024 supplier 'Accredo Health Group Inc' (Warrendale, PA; 5,846 Medicare beneficiaries) belongs to this brand. FAQ  Payments section: pay by debit/credit card, checking account or FSA through the Accredo app or website, or mail a check to the PO box above. Cost is quoted during the order-scheduling call; no shipping charge. The app shows medication history and lets you pay balances. Copay-assistance cards can be stored under Profile > Payment Methods. Accredo FAQ: pay by debit/credit card, checking account or FSA card in the Accredo app or website; copay-assistance cards can be stored under Payment Methods in your profile.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2725,7 +2358,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2759,7 +2392,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Health FAQs (Sincerely Health app, fetched) say you pay and sign for prescriptions at the pharmacy when picking up; prepaying in the app is planned for a future release. A guest payment page exists at https://www.safeway.com/health/pharmacy/managepayment?op=ch (seen in search results, not fetched). Specialty pharmacy: https://www.safeway.com/pharmacy/care-services/specialty-pharmacy.html.",
+   "notes": "Health FAQs  say you pay and sign for prescriptions at the pharmacy when picking up; prepaying in the app is planned for a future release. A guest payment page exists at https://www.safeway.com/health/pharmacy/managepayment?op=ch. Specialty pharmacy: https://www.safeway.com/pharmacy/care-services/specialty-pharmacy.html.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2793,7 +2426,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -2827,7 +2460,7 @@
    "payment_processor": "in-house (card on file in the Alto app)",
    "app": null,
    "senior_programs": null,
-   "notes": "FAQs page (fetched) covers accounts, the Alto app, and scheduling delivery and payment (copays are paid in the app when scheduling delivery); secure messaging from the account.",
+   "notes": "FAQs page  covers accounts, the Alto app, and scheduling delivery and payment (copays are paid in the app when scheduling delivery); secure messaging from the account.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2861,7 +2494,7 @@
    "payment_processor": "Amazon Payments (cards on the Amazon account; FSA/HSA accepted)",
    "app": null,
    "senior_programs": null,
-   "notes": "Help topics: pricing, payments & insurance (nodeId Tl7kRK0Obfzjlm1sXG); RxPass FAQ, including how to cancel RxPass and Medicare eligibility (nodeId TOvcDkXewHROYvyIR8); account settings (nodeId TeosA22Kz56fpFa3cj); helping someone with their medications / caregiver access (nodeId TGtviUXJwOswuVT1ss). Orders are charged at checkout, so there is no separate bill. RxPass is a recurring subscription charge. [Review 2026-09-29] The 2026-09-29 re-fetch of the Amazon help page returned 503, so it was not re-confirmed this pass. [Review 3, 2026-09-30] Pricing, payments and insurance help page, read in a real browser on 2026-09-30 (previously 503): it has sections on adding and managing payment methods, accepted payment methods, declined payments, the Prime prescription savings benefit, copay cards and insurance. Orders are charged at checkout; past charges appear under Your Orders in the Amazon account.",
+   "notes": "Help topics: pricing, payments & insurance (nodeId Tl7kRK0Obfzjlm1sXG); RxPass FAQ, including how to cancel RxPass and Medicare eligibility (nodeId TOvcDkXewHROYvyIR8); account settings (nodeId TeosA22Kz56fpFa3cj); helping someone with their medications / caregiver access (nodeId TGtviUXJwOswuVT1ss). Orders are charged at checkout, so there is no separate bill. RxPass is a recurring subscription charge. Orders are charged at checkout; past charges appear under Your Orders in the Amazon account.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2895,7 +2528,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -2929,7 +2562,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Kroger Specialty Pharmacy is now BioPlus Specialty Pharmacy (krogerspecialtypharmacy.com redirects to bioplusrx.com, fetched). Financial Assistance page: a financial counselor screens for foundation and manufacturer programs by household income and enrolls you. No public online bill-pay page found; contact: https://bioplusrx.com/contact/",
+   "notes": "Kroger Specialty Pharmacy is now BioPlus Specialty Pharmacy. Financial Assistance page: a financial counselor screens for foundation and manufacturer programs by household income and enrolls you. Contact: https://bioplusrx.com/contact/.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2963,7 +2596,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2997,7 +2630,7 @@
    "payment_processor": "in-house (card on file in Capsule account)",
    "app": null,
    "senior_programs": null,
-   "notes": "FAQ fetched this session: delivery is free, you pay only the insurance copay, and the price is shown before delivery is scheduled. Receipts: sign in (iOS app or website), open Your Orders, then View Receipt to export a PDF FSA receipt. The FAQ does not say how to change payment methods or whether there is autopay. Operating footprint (metros served) was not confirmed this session.",
+   "notes": "Delivery is free, you pay only the insurance copay, and the price is shown before delivery is scheduled. Receipts: sign in (iOS app or website), open Your Orders, then View Receipt to export a PDF FSA receipt. The FAQ does not say how to change payment methods or whether there is autopay.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3031,7 +2664,7 @@
    "payment_processor": "in-house (CarelonRx member portal; e-check, Visa, Mastercard, Amex)",
    "app": null,
    "senior_programs": null,
-   "notes": "FAQs (fetched): home delivery (CarelonRx Pharmacy mail order) and specialty prescriptions are paid by logging in to the CarelonRx member portal or calling member services; accepts electronic check and Visa/Mastercard/Amex credit or debit. Serves Anthem/Elevance Medicare Advantage and Part D members. No public autopay or statement doc. Backfill 2026-09-30: CarelonRx FAQ (fetched): pay for home delivery or specialty prescriptions in the CarelonRx member portal or by calling member services on the ID card; accepts e-check, Visa, Mastercard, Amex and debit. No public autopay, history or paperless instructions.",
+   "notes": "FAQs: home delivery (CarelonRx Pharmacy mail order) and specialty prescriptions are paid by logging in to the CarelonRx member portal or calling member services; accepts electronic check and Visa/Mastercard/Amex credit or debit. Serves Anthem/Elevance Medicare Advantage and Part D members. No public autopay or statement doc. CarelonRx FAQ: pay for home delivery or specialty prescriptions in the CarelonRx member portal or by calling member services on the ID card; accepts e-check, Visa, Mastercard, Amex and debit. No public autopay, history or paperless instructions.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3065,7 +2698,7 @@
    "payment_processor": "in-house; Afterpay pay-in-4 is offered for balances",
    "app": null,
    "senior_programs": "Pharmacy technicians help with drug-manufacturer patient assistance programs and nonprofit foundation funding (844-645-7262). Humana Medicare members can use OTC allowance ordering.",
-   "notes": "Pay an outstanding balance: sign in, then 'Pay outstanding balance' (website) or menu > Pay balance (app). Accepts debit, credit, HSA and FSA cards. Afterpay pay-in-4 (website only) can be set to auto-charge, but that is Afterpay's autopay, not CenterWell's. Specialty patients are called to arrange payment. Auto refills article: https://www.centerwellpharmacy.com/articles/take-advantage-of-automatic-refills.html. No autopay-for-balance doc found. [Review 2026-09-29] FAQ (re-fetched): pay an outstanding balance online (Outstanding balance on the dashboard), in the app (Account tab) or by phone at 800-379-0092. Mail orders also take personal checks and money orders. Financial assistance line 844-645-7262. Afterpay help 855-620-8172. Backfill 2026-09-30: CenterWell Pharmacy FAQ (fetched): pay with debit, credit, HSA or FSA card, or check/money order by mail; Afterpay pay-in-4 plans can be set to auto-charge. Specialty patient-assistance and foundation help: 844-645-7262. No public instructions for a standing autopay on the pharmacy account or for paperless statements.",
+   "notes": "Pay an outstanding balance: sign in, then 'Pay outstanding balance' (website) or menu > Pay balance (app). Accepts debit, credit, HSA and FSA cards. Afterpay pay-in-4 (website only) can be set to auto-charge, but that is Afterpay's autopay, not CenterWell's. Specialty patients are called to arrange payment. Auto refills article: https://www.centerwellpharmacy.com/articles/take-advantage-of-automatic-refills.html. FAQ: pay an outstanding balance online (Outstanding balance on the dashboard), in the app (Account tab) or by phone at 800-379-0092. Mail orders also take personal checks and money orders. Financial assistance line 844-645-7262. Afterpay help 855-620-8172. CenterWell Pharmacy FAQ: pay with debit, credit, HSA or FSA card, or check/money order by mail; Afterpay pay-in-4 plans can be set to auto-charge. Specialty patient-assistance and foundation help: 844-645-7262. No public instructions for a standing autopay on the pharmacy account or for paperless statements.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3099,7 +2732,7 @@
    "payment_processor": "in-house (card on file)",
    "app": null,
    "senior_programs": "Costco Member Prescription Program discount card for uninsured members; drug directory shows cash prices.",
-   "notes": "The FAQ says mail order accepts Visa, Mastercard, Discover and the Costco credit card; payment card and insurance are updated in the Patient Profile (https://www.costco.com/pharmacy/patient-profile). Order history is under the account's Buy Again / orders area. rx.costco.com offers Pay Ahead for store pickup (pay online, show a QR code at the counter); https://rx.costco.com/pay-ahead is a JS app. Email webpharmacy@costco.com. [Review 2026-09-29] FAQ (re-fetched): home delivery pharmacy takes Visa, MasterCard, Discover and Costco credit card. Card changes are made by updating the Patient Profile. Email webpharmacy@costco.com. Processing takes 1-4 days, then delivery 6-14 days. Backfill 2026-09-30: Costco Pharmacy FAQ (fetched) says Home Delivery accepts Visa, Mastercard, Discover and Costco credit cards and directs account changes to the online Patient Profile; it gives no autopay-cancel, receipt-history, paperless or assistance instructions. Pharmacy help 1-800-607-6861 (M-F 5am-7pm PT, Sat 9:30am-2pm PT), webpharmacy@costco.com.",
+   "notes": "The FAQ says mail order accepts Visa, Mastercard, Discover and the Costco credit card; payment card and insurance are updated in the Patient Profile (https://www.costco.com/pharmacy/patient-profile). Order history is under the account's Buy Again / orders area. rx.costco.com offers Pay Ahead for store pickup (pay online, show a QR code at the counter); https://rx.costco.com/pay-ahead is a JS app. Email webpharmacy@costco.com. FAQ: home delivery pharmacy takes Visa, MasterCard, Discover and Costco credit card. Card changes are made by updating the Patient Profile. Processing takes 1-4 days, then delivery 6-14 days. Costco Pharmacy FAQ  says Home Delivery accepts Visa, Mastercard, Discover and Costco credit cards and directs account changes to the online Patient Profile; it gives no autopay-cancel, receipt-history, paperless or assistance instructions. Pharmacy help 1-800-607-6861 (M-F 5am-7pm PT, Sat 9:30am-2pm PT), webpharmacy@costco.com.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3133,7 +2766,7 @@
    "payment_processor": "in-house",
    "app": null,
    "senior_programs": null,
-   "notes": "The Help Center (JavaScript app; its content could not be read by fetch) has 'Payments and billing', 'Order status and history' and 'Cost and coverage' topics. Contact page: https://www.caremark.com/about-us/contact-us.html. Order status: https://www.caremark.com/pharmacy/-/orders. Specific autopay docs could not be reached; robots.txt disallows most of the site. [Review 2026-09-29] A re-fetch on 2026-09-29 was blocked again (CAPTCHA, empty JavaScript shell, or JS-only help center), so the links are still not confirmed by fetch. [Review 3, 2026-09-30] CORRECTION: the help center, read in a real browser this pass, redirects to /help-and-messaging and DOES list a general Customer Service number, 1-800-552-8159. Correspondence (not payments): CVS Caremark Customer Care Correspondence, PO Box 6590, Lee's Summit, MO 64064-6590. The 'Payments and Billing' category lists FAQs on finding your account balance, forms of payment, paying an outstanding balance online without ordering, updating the credit card, duplicate charges and mail-order refunds. The 'Cost and Coverage' category covers how far back you can view past prescription costs. The answers expand only inside the app, so their text was not captured.",
+   "notes": "The Help Center  has 'Payments and billing', 'Order status and history' and 'Cost and coverage' topics. Contact page: https://www.caremark.com/about-us/contact-us.html. Order status: https://www.caremark.com/pharmacy/-/orders. Robots.txt disallows most of the site. General Customer Service number: 1-800-552-8159. Correspondence (not payments): CVS Caremark Customer Care Correspondence, PO Box 6590, Lee's Summit, MO 64064-6590. The answers expand only inside the app, so their text was not captured.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3167,7 +2800,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": "CVS Health Savings Pass (discount generic program for uninsured; ask a pharmacist). FSA cards accepted for copays. Fee-for-service Medicaid accepted.",
-   "notes": "The Prices, Insurance and Payments help page says in-store pickup orders are paid at the pharmacy when picked up; the out-of-pocket cost is known only after the insurance claim is processed and posts to the online account after a few hours. CVS does not post cash prices online. Contact page: https://www.cvs.com/help/help_contact_us.jsp. No public autopay or statement doc for retail. CVS Specialty (specialty drugs) and CVS Caremark (mail order/PBM) are separate entries with their own billing. [Review 2026-09-29] Prices, Insurance and Payments help (re-fetched): in-store pickup orders are paid at the pharmacy counter. FSA cards are accepted for copays. Cash prices are not posted online. Contact page: https://www.cvs.com/help/help_contact_us.jsp. [Review 3, 2026-09-30] Prices, Insurance and Payments help page, read in a real browser on 2026-09-30, confirms: in-store pickup orders are paid at pickup; FSA cards are accepted for copays; if insurance does not cover a drug, CVS may bill you directly so you can seek reimbursement; order totals post to the online prescription-management account after processing. CVS accepts fee-for-service Medicaid but not out-of-state Medicaid.",
+   "notes": "The Prices, Insurance and Payments help page says in-store pickup orders are paid at the pharmacy when picked up; the out-of-pocket cost is known only after the insurance claim is processed and posts to the online account after a few hours. CVS does not post cash prices online. Contact page: https://www.cvs.com/help/help_contact_us.jsp. No public autopay or statement doc for retail. Prices, Insurance and Payments help: in-store pickup orders are paid at the pharmacy counter. FSA cards are accepted for copays. Cash prices are not posted online. FSA cards are accepted for copays; if insurance does not cover a drug, CVS may bill you directly so you can seek reimbursement; order totals post to the online prescription-management account after processing. CVS accepts fee-for-service Medicaid but not out-of-state Medicaid.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3201,7 +2834,7 @@
    "payment_processor": "in-house",
    "app": null,
    "senior_programs": "Care team connects patients to manufacturer copay cards and patient assistance foundations.",
-   "notes": "The homepage 'Make a payment' link opens an account lookup by phone number and date of birth. FAQ: online payments accept Visa, Mastercard, Amex, Discover or e-check; phone and mail also take checks, HSA/FSA cards and money orders (mail only). Autopay can be scheduled for a fixed day each month, for a set amount or the balance up to a pre-authorized limit. The payments video page walks through Balance and Payments, Set Up Automatic Payment, and payment history (same page used for view, autopay, and history).",
+   "notes": "FAQ: online payments accept Visa, Mastercard, Amex, Discover or e-check; phone and mail also take checks, HSA/FSA cards and money orders (mail only). Autopay can be scheduled for a fixed day each month, for a set amount or the balance up to a pre-authorized limit. The payments video page walks through Balance and Payments, Set Up Automatic Payment, and payment history (same page used for view, autopay, and history).",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3234,8 +2867,8 @@
    "mail_payment_address": null,
    "payment_processor": "in-house (checking account, credit/debit, PayPal)",
    "app": null,
-   "senior_programs": "Extended Payment Plan (3 interest-free monthly installments). The Medicare Prescription Payment Plan is run by the Part D plan (see medicare category).",
-   "notes": "The FAQ explains: payment methods; Autopay, which charges automatically each time a prescription ships and lets you set a maximum amount above which you are asked to confirm; no charge until the order ships; and Claims History (Prescriptions > Claims History) for out-of-pocket spend by date range. The Extended Payment Plan splits eligible prescription costs into 3 equal monthly card payments with no fee. The logged-in Pay a Bill deeplink is https://www.express-scripts.com/deeplink/makepayment. No public page on cancelling Autopay; change it in the account or call member services. [Review 2026-09-29] The FAQ (re-fetched) is the one page for all tasks. Pay with card, checking account or PayPal. The Extended Payment Plan splits eligible orders into 3 interest-free monthly card payments. AutoPay charges only when an order ships, and you can set a maximum amount it may charge. Stop or change AutoPay under Account preferences, or call (800) 282-2881. Order status and Claims History are in the online account. Backfill 2026-09-30: Express Scripts FAQ: Autopay charges your saved card or account each time a prescription ships, with an optional maximum charge limit; manage it under payment settings after signing in. Claims History (Prescriptions menu) shows out-of-pocket costs for the last 6-24 months and can be downloaded/printed for taxes or FSA. Extended Payment Plan splits eligible prescription costs into three monthly card payments with no fee; Medicare Prescription Payment Plan info at esrx.com/mppp. Customer service (800) 282-2881.",
+   "senior_programs": "Extended Payment Plan (3 interest-free monthly installments). The Medicare Prescription Payment Plan is run by the Part D plan.",
+   "notes": "The FAQ explains: payment methods; Autopay, which charges automatically each time a prescription ships and lets you set a maximum amount above which you are asked to confirm; no charge until the order ships; and Claims History (Prescriptions > Claims History) for out-of-pocket spend by date range. The Extended Payment Plan splits eligible prescription costs into 3 equal monthly card payments with no fee. The logged-in Pay a Bill deeplink is https://www.express-scripts.com/deeplink/makepayment. No public page on cancelling Autopay; change it in the account or call member services. The FAQ  is the one page for all tasks. Pay with card, checking account or PayPal. The Extended Payment Plan splits eligible orders into 3 interest-free monthly card payments. AutoPay charges only when an order ships, and you can set a maximum amount it may charge. Stop or change AutoPay under Account preferences, or call (800) 282-2881. Order status and Claims History are in the online account. Express Scripts FAQ: Autopay charges your saved card or account each time a prescription ships, with an optional maximum charge limit; manage it under payment settings after signing in. Claims History (Prescriptions menu) shows out-of-pocket costs for the last 6-24 months and can be downloaded/printed for taxes or FSA. Extended Payment Plan splits eligible prescription costs into three monthly card payments with no fee; Medicare Prescription Payment Plan info at esrx.com/mppp. Customer service (800) 282-2881.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3269,7 +2902,7 @@
    "payment_processor": "e-BillExpress (Fiserv)",
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage and contact page (fetched) link 'Pay my bill' to an e-BillExpress portal. Genoa (Optum) runs pharmacies inside community mental health centers and assisted living. No phone on the contact page (web form only); call your Genoa pharmacy. Backfill 2026-09-30: Genoa's E-Bill Express (Fiserv) page lets you pay now with account number and ZIP, or enroll to view and pay bills and see account status and payment history.",
+   "notes": "Genoa (Optum) runs pharmacies inside community mental health centers and assisted living. No phone on the contact page (web form only); call your Genoa pharmacy. Genoa's E-Bill Express (Fiserv) page lets you pay now with account number and ZIP, or enroll to view and pay bills and see account status and payment history.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3303,7 +2936,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3337,7 +2970,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed. [Review 3, 2026-09-30] Review 3: https://www.guardianpharmacy.com refuses connections, but guardianpharmacy.net redirects to https://guardianpharmacy.com/ and that loads (fetched 2026-09-30). The site has no central bill-pay or family billing page. Billing is done by each local Guardian pharmacy (about 50 locally branded pharmacies, e.g. Middle Tennessee Pharmacy Services); use the locations page https://guardianpharmacy.com/locations/ and the number on the monthly statement.",
+   "notes": "Https://www.guardianpharmacy.com refuses connections, but guardianpharmacy.net redirects to https://guardianpharmacy.com/ and that loads. The site has no central bill-pay or family billing page. Billing is done by each local Guardian pharmacy (about 50 locally branded pharmacies, e.g. Middle Tennessee Pharmacy Services); use the locations page https://guardianpharmacy.com/locations/ and the number on the monthly statement.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3371,7 +3004,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3405,7 +3038,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -3439,7 +3072,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Pointer entry for small independent pharmacies, which are too many to list individually here. Small-town independents are the pharmacies most likely to offer a monthly house charge account (a real monthly bill for seniors); ask the store how to pay it (in person, by phone, or by mail). Many independents belong to Health Mart, Good Neighbor Pharmacy (AmerisourceBergen/Cencora), Medicine Shoppe or Medicap networks (separate entries).",
+   "notes": "Small-town independents are the pharmacies most likely to offer a monthly house charge account (a real monthly bill for seniors); ask the store how to pay it (in person, by phone, or by mail). Many independents belong to Health Mart, Good Neighbor Pharmacy (AmerisourceBergen/Cencora), Medicine Shoppe or Medicap networks.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3473,7 +3106,7 @@
    "payment_processor": "in-house (My Prescriptions Pay Online; requires a Shopper's Card)",
    "app": null,
    "senior_programs": null,
-   "notes": "Kroger domains refuse automated connections; these FAQ URLs and details come from search results and were NOT fetched. Per the snippets: My Prescriptions (web and app) lets you set up Auto Refill, pay online (Shopper's Card required), review expense reports and view prescription history. Same FAQ paths exist on banner domains (e.g. https://www.fredmeyer.com/health/pharmacy/faqs/account-setup). Kroger Specialty Pharmacy FAQ: https://www.krogerspecialtypharmacy.com/patient/faq.php. [Review 2026-09-29] A re-fetch of the online-payment FAQ on 2026-09-29 failed with ECONNRESET. The links are still unconfirmed. [Review 3, 2026-09-30] VERIFIED this pass in a real browser (the pages load there; curl is refused). Online-payment FAQ: in My Prescriptions go to Prescription Status > Pay Online, pick the prescriptions and a card from My Wallet. The card is pre-authorized for $0 and charged at pickup. A Shopper's Card must be linked, and new or transferred prescriptions cannot be paid online the first time. Payment cards are managed in My Wallet, which is the closest thing to autopay, so autopay_setup points to this FAQ. The Account Setup FAQ says My Prescriptions shows prescription history and expense reports (statements_history). Caregivers use 'Access Another Adult'; the other adult must create their own account and grant access. The online-payment FAQ URL was previously marked unverified. It has now been fetched and matches.",
+   "notes": "My Prescriptions (web and app) lets you set up Auto Refill, pay online (Shopper's Card required), review expense reports and view prescription history. Kroger Specialty Pharmacy FAQ: https://www.krogerspecialtypharmacy.com/patient/faq.php. Online-payment FAQ: in My Prescriptions go to Prescription Status > Pay Online, pick the prescriptions and a card from My Wallet. The card is pre-authorized for $0 and charged at pickup. A Shopper's Card must be linked, and new or transferred prescriptions cannot be paid online the first time. The Account Setup FAQ says My Prescriptions shows prescription history and expense reports. Caregivers use 'Access Another Adult'; the other adult must create their own account and grant access.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3507,7 +3140,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -3541,7 +3174,7 @@
    "payment_processor": "in-house (card on file; auto-refill charges the card on file)",
    "app": null,
    "senior_programs": null,
-   "notes": "No membership fee (pay per order: cost +15% + pharmacy fee + shipping). The FAQ has an 'Automatic Refills' section (sign up, skip or cancel an auto-refill, which card is charged) and 'Where can I find my receipt?' / 'How do I view my order history?' questions; account Order Status and Payments pages require sign-in. Support is by web contact form (no phone published). FAQ includes an insurance section; check whether your Part D plan is accepted before paying cash. Also listed in pharmacy-labs-dme.json. MEDICARE: A discount card or Rx membership price cannot be combined with Medicare Part D on the same prescription. Paying cash with a discount usually does not count toward the Part D deductible or the 2026 out-of-pocket cap ($2,100) unless the pharmacy submits it to the plan, so compare the cash price with the Part D copay. The membership fee itself is not covered by Medicare.",
+   "notes": "No membership fee (pay per order: cost +15% + pharmacy fee + shipping). The FAQ has an 'Automatic Refills' section (sign up, skip or cancel an auto-refill, which card is charged) and 'Where can I find my receipt?' / 'How do I view my order history?' questions; account Order Status and Payments pages require sign-in. Support is by web contact form (no phone published). FAQ includes an insurance section; check whether your Part D plan is accepted before paying cash. MEDICARE: A discount card or Rx membership price cannot be combined with Medicare Part D on the same prescription. Paying cash with a discount usually does not count toward the Part D deductible or the 2026 out-of-pocket cap ($2,100) unless the pharmacy submits it to the plan, so compare the cash price with the Part D copay. The membership fee itself is not covered by Medicare.",
    "verified": true,
    "last_checked": "2026-10-02"
   },
@@ -3575,7 +3208,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3609,7 +3242,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200). [Backfill review 2026-09-30] elixirsolutions.com (fetched) says 'Elixir is now MedImpact': former Elixir (Rite Aid's PBM / Elixir mail order) members keep their card and now deal with MedImpact; Rite Aid itself closed its stores in 2025 (prescription files largely moved to CVS and others).",
+   "notes": "Former Elixir (Rite Aid's PBM / Elixir mail order) members keep their card and now deal with MedImpact; Rite Aid itself closed its stores in 2025 (prescription files largely moved to CVS and others).",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3643,7 +3276,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: bot-blocked or connection refused, so the page content was not confirmed.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -3679,8 +3312,8 @@
     "ios": "myOnco360 (App Store)",
     "android": "myOnco360 (Google Play)"
    },
-   "senior_programs": "OncoAdvocate team finds third-party copay foundation funding; 67% of patients had $0 out-of-pocket in 2025 (per site).",
-   "notes": "Bill Pay Options page (fetched): pay online (account number + Statement ID), by check with the monthly statement, or in the myOnco360 app/portal; e-statement enrollment and view/print statements with account number and statement ID. Accepts cards, HSA/FSA, paper or electronic checks. BrightSpring subsidiary.",
+   "senior_programs": "OncoAdvocate team finds third-party copay foundation funding; 67% of patients had $0 out-of-pocket in 2025.",
+   "notes": "Bill Pay Options page: pay online (account number + Statement ID), by check with the monthly statement, or in the myOnco360 app/portal; e-statement enrollment and view/print statements with account number and statement ID. Accepts cards, HSA/FSA, paper or electronic checks. BrightSpring subsidiary.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3714,7 +3347,7 @@
    "payment_processor": "in-house",
    "app": null,
    "senior_programs": null,
-   "notes": "The Manage Account page covers payment methods (bank account, credit/debit, FSA/HSA). A 'preferred' payment method is charged automatically for orders such as automatic refills (the closest thing to autopay). The same page covers caregiver access and managing plan members, which is useful for adult children paying for a senior. Contact page: https://www.optumrx.com/en/contact-us.html. No public balance/statement doc found. [Review 2026-09-29] CORRECTION: removed 800-633-4227 and 800-711-4555 from the customer-service phones. The contact page (re-fetched) lists them as the Medicare fraud line (1-800-MEDICARE) and the prescriber prior-authorization line, which are not member billing lines.",
+   "notes": "The Manage Account page covers payment methods (bank account, credit/debit, FSA/HSA). A 'preferred' payment method is charged automatically for orders such as automatic refills (the closest thing to autopay). The same page covers caregiver access and managing plan members, which is useful for adult children paying for a senior. Contact page: https://www.optumrx.com/en/contact-us.html. The contact page  lists them as the Medicare fraud line (1-800-MEDICARE) and the prescriber prior-authorization line, which are not member billing lines.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3748,7 +3381,7 @@
    "payment_processor": "BillTrax",
    "app": null,
    "senior_programs": null,
-   "notes": "The homepage 'Pay Your Bill' link goes to pharmerica.billtrax.com. Omnicare (the CVS LTC pharmacy) went through bankruptcy and wind-down in 2025; former Omnicare residents may now be billed by another LTC pharmacy.",
+   "notes": "Omnicare (the CVS LTC pharmacy) went through bankruptcy and wind-down in 2025; former Omnicare residents may now be billed by another LTC pharmacy.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3782,7 +3415,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3816,7 +3449,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Pharmacy Records page (fetched): Rite Aid retail locations closed; the Medchart records-request system stopped taking requests Dec 31, 2025. Active prescriptions moved to a nearby pharmacy (usually Walgreens, CVS or a local independent; the receiving pharmacy name is on late-2024 bottles), which can print prescription history. Insurers keep full claims history. Rite Aid no longer issues pharmacy bills; for old balances or receipts, contact the receiving pharmacy or your insurer.",
+   "notes": "Pharmacy Records page: Rite Aid retail locations closed; the Medchart records-request system stopped taking requests Dec 31, 2025. Active prescriptions moved to a nearby pharmacy (usually Walgreens, CVS or a local independent; the receiving pharmacy name is on late-2024 bottles), which can print prescription history. Insurers keep full claims history. Rite Aid no longer issues pharmacy bills; for old balances or receipts, contact the receiving pharmacy or your insurer.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3850,7 +3483,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3884,7 +3517,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": "Copay and financial assistance team enrolls patients in manufacturer and foundation assistance programs.",
-   "notes": "Added in backfill review 2026-09-30. Patients page (fetched) says Senderra keeps your payment information on file for refills (card-on-file auto-charge per refill shipment); no public page on removing it, so call 888-777-5547 to change or remove the card. Financial Assistance page (fetched) invites patients to contact the financial assistance team. Contact page: patients/refills 888-777-5547 (24/7 pharmacist), fax 888-777-5645. No online bill-pay or statements page found.",
+   "notes": "Patients page  says Senderra keeps your payment information on file for refills (card-on-file auto-charge per refill shipment); no public page on removing it, so call 888-777-5547 to change or remove the card. Financial Assistance page  invites patients to contact the financial assistance team. Contact page: patients/refills 888-777-5547 (24/7 pharmacist), fax 888-777-5645.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3918,7 +3551,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3952,7 +3585,7 @@
    "payment_processor": "in-house",
    "app": null,
    "senior_programs": null,
-   "notes": "The Pharmacy Help FAQ covers most tasks. Pay an outstanding balance: Account Home > Prescriptions > Settings > Make a Payment (card or check); View recent transactions on the Pharmacy Account Balance page to confirm a payment posted. ExpressPay (stored card that is auto-charged when prescriptions are filled) is set up under Settings > ExpressPay and removed with the Delete link on the same screen. Prescription history can be viewed and printed for the last 18 months. The myWalgreens credit card is billed separately by Synchrony (walgreens.syf.com) and belongs in the store-card category. [Review 2026-09-29] Pharmacy help FAQ (re-fetched): to remove ExpressPay, go to Your Account > Settings > ExpressPay and click Delete, then Yes (same settings page as setup, now in autopay_cancel). Prescription records: Prescriptions > Records > choose dates > Print, available for 18 months. Older records need a request form. Backfill 2026-09-30: Walgreens pharmacy help: ExpressPay stores a card for prescription pickups (set up at /rx-settings/rxsettings/pay; remove it with the delete link in Rx settings); cards are managed under Account > Profile > Payment Methods. Auto Refill is managed at walgreens.com/rx-refillhub/autorefill. For FSA/tax records, Account Home > Prescriptions > Records prints all prescription transactions for the year (online records cover about 18 months; older records by mailing the PHI access request form).",
+   "notes": "The Pharmacy Help FAQ covers most tasks. Pay an outstanding balance: Account Home > Prescriptions > Settings > Make a Payment (card or check); View recent transactions on the Pharmacy Account Balance page to confirm a payment posted. ExpressPay (stored card that is auto-charged when prescriptions are filled) is set up under Settings > ExpressPay and removed with the Delete link on the same screen. Prescription history can be viewed and printed for the last 18 months. Pharmacy help FAQ: to remove ExpressPay, go to Your Account > Settings > ExpressPay and click Delete, then Yes. Prescription records: Prescriptions > Records > choose dates > Print, available for 18 months. Older records need a request form. Walgreens pharmacy help: ExpressPay stores a card for prescription pickups (set up at /rx-settings/rxsettings/pay; remove it with the delete link in Rx settings); cards are managed under Account > Profile > Payment Methods. Auto Refill is managed at walgreens.com/rx-refillhub/autorefill. For FSA/tax records, Account Home > Prescriptions > Records prints all prescription transactions for the year (online records cover about 18 months; older records by mailing the PHI access request form).",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3986,7 +3619,7 @@
    "payment_processor": "in-house (Walmart account payment methods; HSA/FSA, credit/debit, gift cards, PayPal)",
    "app": null,
    "senior_programs": "Walmart $4 generic prescription list; Walmart+ members get free Rx delivery where available; Specialty Pharmacy screens copays for patient assistance programs.",
-   "notes": "walmart.com serves a CAPTCHA to automated fetches, so these help articles were found by search and NOT fetched this session. Refill order payment type is changed with Edit in the Payment field (per search snippet). Mail order page: https://www.walmart.com/cp/pharmacy-mail-order/1042239. [Review 2026-09-29] A re-fetch on 2026-09-29 was blocked again (CAPTCHA, empty JavaScript shell, or JS-only help center), so the links are still not confirmed by fetch. [Review 3, 2026-09-30] VERIFIED this pass in a real browser. Download Pharmacy History article: sign in > Pharmacy > Pharmacy history shows up to 24 months for you and managed family members, downloadable as PDF or CSV. This is useful for tax and medical-expense records. The Prescription Status and Pharmacy Refill Orders article (view_bill) says the refill order's payment type is changed with Edit in the Payment field; there is no separate pharmacy bill. The article URL 'managing-your-pharmacy-payment-methods', found in search results, now redirects to the pharmacy home page, so it is not used. The Walmart Help Center lists pharmacy articles under Health and Wellness (Estimated Prescription Refill Costs, Manage Family Prescriptions, Add or Update Insurance). Prescription history page: https://www.walmart.com/health-and-wellness/pharmacy/rx/history (sign-in required).",
+   "notes": "Refill order payment type is changed with Edit in the Payment field (per search snippet). Mail order page: https://www.walmart.com/cp/pharmacy-mail-order/1042239. Download Pharmacy History article: sign in > Pharmacy > Pharmacy history shows up to 24 months for you and managed family members, downloadable as PDF or CSV. This is useful for tax and medical-expense records. The Prescription Status and Pharmacy Refill Orders article  says the refill order's payment type is changed with Edit in the Payment field; there is no separate pharmacy bill. The Walmart Help Center lists pharmacy articles under Health and Wellness (Estimated Prescription Refill Costs, Manage Family Prescriptions, Add or Update Insurance). Prescription history page: https://www.walmart.com/health-and-wellness/pharmacy/rx/history (sign-in required).",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -4020,7 +3653,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -4055,7 +3688,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -4089,7 +3722,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -4124,7 +3757,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage checked with curl this session: reachable (HTTP 200).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -4159,7 +3792,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage fetched this session and title matched. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -4194,7 +3827,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage is bot-protected; URL not confirmed this session. Added from NPPES regional-chain analysis (see rosters/pharmacies_independent_nppes.csv).",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   }

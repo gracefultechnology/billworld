@@ -1,153 +1,6 @@
 {
  "category": "storage-funeral",
  "description": "Self-storage and funeral or cemetery plans",
- "research_files": [
-  "link-backfill-storage-funeral",
-  "storage-funeral-misc"
- ],
- "coverage_notes": "[link-backfill-storage-funeral] LINK BACKFILL 2026-09-30 (change set: categories/link-backfill-storage-funeral.json; edited in place here). Scope: self-storage, funeral/cemetery/pre-need and pet-plan entries (child-support, court and bill-pay-agent entries were not in scope and were not touched). Method: web search budget was exhausted, so every link comes from direct curl/WebFetch reads of official sites, their sitemaps, FAQ JSON-LD and linked PDFs; nothing was logged into. (1) Storage/funeral/pet detailed entries went from 21 to 40; across them view_bill 8->12, autopay_setup 13->23, autopay_cancel 7->10, statements_history 4->8, paperless 0->1, payment_assistance 0->5, pay-by-phone 4->9. Late-fee, lien/auction, move-out notice, invoice/receipt and hardship statements were added to notes for Public Storage, CubeSmart (state fee schedule), SmartStop, StorageMart, U-Haul, StorQuest, 10 Federal, Storage Sense, Devon and Compass. Added storage operators Safeguard, Price, Trojan, AAA Storage, Dollar Self Storage, STOR-N-LOCK and StoragePRO. (2) Funeral/cemetery went from 12 to 52 entries (18 detailed). Everstory (memorialplanning.com -> Paymentus) and NorthStar (cpp.nsmg.com customer portal) were upgraded to detailed; NGL detailed from an archived page (verified=false); Dignity Memorial gained its installment page; Homesteaders, Forethought and Security National gained autopay/cancel, fee, mail and reinstatement details. New: Archdiocese of Philadelphia Catholic Cemeteries (Everstory/Paymentus), Smart Cremation (NorthStar), cemeteries with online payment pages (Spring Grove, Forest Lawn Buffalo, Cypress Lawn, Hollywood Forever/PSN, Green Lawn Columbus/Square, Westview Atlanta, Riverside NJ) or published installment terms (Lake View Cleveland, Holy Cross SF), and roster entries for Green-Wood, Woodlawn, Mount Auburn, Laurel Hill, Mount Sinai, Catholic cemetery systems of LA, Seattle, Brooklyn, Newark and Cleveland, Kensico, Ferncliff, Pinelawn, Cypress Hills and other large independent cemeteries, plus SCI's Neptune Society, National Cremation Society and Trident Society. Still missing: Extra Space, Rose Hills, Neptune/NCS/Trident, many NorthStar local sites, Catholic Cemeteries Chicago and Detroit, and nglic.com returned bot walls (403/429) and could not be read. Carriage Services, Park Lawn and Foundation Partners publish no consumer pay page, so families pay the local business. American Memorial Life (Assurant) and Funeral Directors Life have no reachable official site. There is no national roster of the ~9,000 U.S. cemeteries; coverage was checked only against well-known large independent and archdiocesan systems. Crown Hill, Evergreen-Washelli, Wasatch Lawn and Lake Lawn Metairie redirect to Dignity Memorial (SCI). REVIEWER PASS (2026-09-30, link-backfill-storage-funeral): every one of the 177 URLs in the change set was re-requested with curl. None returned 404. The 403/429 responses come from bot walls: Extra Space, CubeSmart, Dignity Memorial, Rose Hills, Neptune/NCS/Trident, nglic.com, Paymentus. Content checks were run on all 94 link fields of the 39 detailed entries, and each page was confirmed to cover its topic. Script-rendered portals such as SSM ERP, AAA myaccount and the Security National auth0 login were accepted as pay or login pages. Web search was unavailable (budget exhausted). Bot-walled pages were read from Internet Archive snapshots (May-Sep 2026), and entries resting on those snapshots are verified=false. Fixes and upgrades: (a) Rose Hills is SCI-owned (Dignity Memorial platform). It was upgraded to detailed: pay.rosehills.com bill-pay portal, customer-care page (payment history, receipts), PSN 'Pay my bill' link (acc RT23093), 562-699-0921. (b) Neptune Society, National Cremation Society and Trident Society were upgraded to detailed. Each has its own SCI pay.<brand>.com 'My Account' portal (previously assumed to be pay.dignitymemorial.com), and phones were added: 800-637-8863, 855-469-9474, 888-987-4336. (c) NGL: pay_bill now points to the live iPay portal payment.nglic.com/iPay (billed premiums only; loans by mailed check), with help page, hours and policyholder email. verified=true via the live portal. (d) Extra Space: late-fee (5 days, not waivable), overlock, autopay-retry, auction and move-out FAQs were confirmed from the archive. (e) Everstory: the claim about cancelling AutoPay was corrected. The platform page and PDF cover enrollment and management only; there are no explicit cancel steps. Added 844-808-3310. (f) SecureSpace was upgraded to detailed (one page covers pay, Auto-Pay setup, the 'Cancel Auto-Pay' button with 10-day lead time, and payment history). Moove In was upgraded to detailed (SSM ERP pay portal; 30 days' written notice for autopay accounts; late fees after 5 days; auction after about 2 months). (g) Added Storage Rentals of America (SROA; storamerica.com redirects there; no partial payments), Mini U Storage (SiteLink), Mount Hebron Cemetery (Queens; Stripe pay center by online bill number) and Calvary & Allied Cemeteries (Archdiocese of New York; interest-free perpetual-care payment plans; roster). (h) Merger and redirect notes: ezstorage.com -> Public Storage, snapboxselfstorage.com -> Go Store It. (i) Phones were added for the Archdiocese of Philadelphia cemeteries, Green Lawn, Westview, Riverside and A-American; Storage King USA gained login and FAQ URLs. After review, the in-scope storage/funeral/pet entries number 96 (49 detailed). Across those 49: view_bill 16, autopay_setup 27, autopay_cancel 12, statements_history 10, paperless 1, payment_assistance 5, pay-by-phone 8, processor 34. Funeral/cemetery has 54 entries, 23 of them detailed. Still open: Prime Storage, Stor-All, catholiccemeterieschicago.org, cfcsdetroit.org and ccdom.org (Dallas) are behind Cloudflare. Thrive Pet Healthcare and Petco Vital Care pages are script-rendered or blocked. Carriage, Park Lawn, Foundation Partners and Precoa publish no consumer pay page. Most large independent cemeteries (Green-Wood, Woodlawn, Mount Auburn, Kensico, Ferncliff, the LA, Seattle, Brooklyn and Newark Catholic systems) publish no online payment page; their sitemaps were checked. There is still no national cemetery roster. Pet insurance and Lincoln Heritage final-expense policies are covered in insurance-home-auto-life.json, not here. REVIEWER PASS 3 (2026-09-30). Web search was still exhausted. Checks: every URL in this change set (208 unique) was re-requested with curl. 179 returned 200 and the rest were the known bot walls (SCI brands, Extra Space, CubeSmart, nglic, Paymentus) or auth redirects; there were no 404s. 115 detailed link fields were content-checked by keyword, and these were re-read live through WebFetch: CubeSmart FAQ, the Dignity Memorial payment-plan, contact and pay pages, Hollywood Forever payments, and the Security National forms. Notes were corrected for those. Storage operators with autopay_cancel=null were re-read. Their public FAQs (Morningstar, StorQuest, 10 Federal, Storage Sense, West Coast, Devon, A-American, Compass, Safeguard, Price, Trojan, AAA, STOR-N-LOCK, SROA, Mini U) give no cancel steps, so the nulls stand. Added: TruStage prepaid funeral plans (American Memorial Life, the former Assurant Preneed). This fills a gap earlier passes called unreachable. It has autopay start/stop steps, phones 800-533-2220 and 855-591-9026, and a live cyber-incident outage notice (online payments down, mail payments accepted, no lapse). Also added Investors Heritage Life (pre-need; no online pay; Premium Accounting ext. 4127), Forest Lawn Omaha (Authorize.Net pay page), Lakewood Cemetery Minneapolis, Space Shop Self Storage (No Late Fee Guarantee autopay), Sparebox, Self Storage Plus and National Self Storage (Tenant Inc). Rose Hills, Neptune, National Cremation and Trident pay portals are still 403 even to WebFetch, so they remain verified=false. Great Western Insurance and Funeral Directors Life (fdlic) still have no reachable official site. After pass 3, this file has 89 in-scope storage/funeral/pet entries, 52 of them detailed. Link counts across those detailed entries: {'view_bill': 16, 'pay_bill': 51, 'autopay_setup': 29, 'autopay_cancel': 13, 'statements_history': 11, 'paperless': 1, 'payment_assistance': 5}. Funeral/cemetery: 57 entries, 26 detailed.\n\n[storage-funeral-misc] Checked 2026-09-29. Child support: one entry for every state + DC + Puerto Rico + Guam (53); completeness checked programmatically against the 50 USPS state codes + DC. 46 have a fetched official agency page and most have the payment-options page, processor (SMART e-Pay, ExpertPay, iPayOnline, MoneyGram, PayNearMe, TouchPay, Value Payment Systems), mailing address and pay-by-phone where published. Alimony/spousal support paid through a state SDU uses the same channels (noted in each entry). Not verified or no payment page: AZ (des.az.gov bot wall), MN (bot CAPTCHA), NH (403), NY (connection reset); LA, NM, DE, PR, GU have agency pages but no payment how-to page; US Virgin Islands and tribal programs not covered. Courts: one statewide judiciary entry per state + DC (51); 38 detailed with a statewide online fine/fee payment link, 13 roster where fines go to county/municipal courts (FL, GA, LA, MI, MS, OH, TN, TX, WA) or the site blocked fetches (KS, MA, MN, NV, NH, NY, NC; NJ NJMCdirect unverified). Individual county/municipal courts are NOT enumerated; parking tickets are in dmv-tolls-municipal.json. Self-storage: the six named national operators are detailed (Extra Space's autopay-cancel and statement pages not public). Consolidation confirmed by redirects: NSA/iStorage/SecurCare/Northwest and Simply Self Storage -> Public Storage; Life Storage -> Extra Space. Plus ~15 regional operators; thousands of independent facilities (often on storEDGE/SiteLink tenant portals) are not listed. No authoritative national facility roster was available offline. Funeral/cemetery: SCI/Dignity Memorial (bill pay portal), Forest Lawn, Everstory (ex-StoneMor), Carriage, NorthStar, Park Lawn, Foundation Partners, plus pre-need insurers Homesteaders, Forethought/Global Atlantic, Security National, NGL (unverified), Precoa. Except SCI and Forest Lawn, the chains publish no consumer bill-pay page; payments go to the local funeral home/cemetery. The ~19,000 independent funeral homes are not enumerated. Pets: Banfield and VCA CareClub are detailed; Petco Vital Care and Thrive are roster only. Pet insurance is in insurance-home-auto-life.json. Bill-pay agents: MoneyGram, Western Union, PayNearMe, CheckFreePay, ACE, Amscot, Check Into Cash, doxo (fee warning), ExpertPay, Value Payment Systems. Golf/marina/RV (Invited, Troon, Safe Harbor, Suntex, Good Sam) are roster only because dues are billed per club/marina behind a member login. The web search budget was used up, so every URL comes from direct fetches of official sites, navigation links on those sites, or subdomain probes. REVIEW (2026-09-30, second pass): All ~400 URLs in the file were re-requested with curl; none returned 404 except the Oregon child-support portal login (script-rendered; kept with a note). 403/429 responses are bot walls (Extra Space, CubeSmart, Dignity Memorial, des.az.gov, mass.gov, mncourts, kscourts, nvcourts, courts.nh.gov, nglic.com, petco.com), not dead links. About 50 pages were re-fetched and read this pass (27 child support payment pages, 11 court payment pages, storage operator FAQs, VCA CareClub, ACE, PAYOMATIC). This filled missing customer-service and pay-by-phone numbers, mailing addresses, processors and recurring-payment/cancel/history links for NJ, OH, WA, FL, NC, ND, WI, WY, SD, VA, AR, ME, HI, MD, MS, OK, UT, WV, SC, IL, GA, NE, KS, ID, VT, CO and MO child support. It also corrected the WV pay-by-phone number to 1-855-303-4094. Added PAYOMATIC (NY check casher/bill pay), PODS, 1-800-PACK-RAT, SecureSpace and Moove In. New merger findings: sentryselfstorage.com redirects to Prime Storage, and storageexpress.com to Extra Space. Funeral chains Carriage, Everstory, NorthStar and Park Lawn were re-checked and still publish no consumer pay page, so they stay roster. amlinsurance.com and greatwesterninsurance.com are parked domains, so American Memorial Life and Great Western (pre-need insurers) were NOT added; their official sites were not found. Web search was unavailable for this pass (budget exhausted) and the Internet Archive rate-limited requests, so blocked court and child-support sites (AZ, MN, NH, NY, KS, MA, NV, NC) could not be upgraded. LINK BACKFILL 2026-09-30 (change set: categories/link-backfill-storage-funeral.json; edited in place here). Scope: self-storage, funeral/cemetery/pre-need and pet-plan entries (child-support, court and bill-pay-agent entries were not in scope and were not touched). Method: web search budget was exhausted, so every link comes from direct curl/WebFetch reads of official sites, their sitemaps, FAQ JSON-LD and linked PDFs; nothing was logged into. (1) Storage/funeral/pet detailed entries went from 21 to 40; across them view_bill 8->12, autopay_setup 13->23, autopay_cancel 7->10, statements_history 4->8, paperless 0->1, payment_assistance 0->5, pay-by-phone 4->9. Late-fee, lien/auction, move-out notice, invoice/receipt and hardship statements were added to notes for Public Storage, CubeSmart (state fee schedule), SmartStop, StorageMart, U-Haul, StorQuest, 10 Federal, Storage Sense, Devon and Compass. Added storage operators Safeguard, Price, Trojan, AAA Storage, Dollar Self Storage, STOR-N-LOCK and StoragePRO. (2) Funeral/cemetery went from 12 to 52 entries (18 detailed). Everstory (memorialplanning.com -> Paymentus) and NorthStar (cpp.nsmg.com customer portal) were upgraded to detailed; NGL detailed from an archived page (verified=false); Dignity Memorial gained its installment page; Homesteaders, Forethought and Security National gained autopay/cancel, fee, mail and reinstatement details. New: Archdiocese of Philadelphia Catholic Cemeteries (Everstory/Paymentus), Smart Cremation (NorthStar), cemeteries with online payment pages (Spring Grove, Forest Lawn Buffalo, Cypress Lawn, Hollywood Forever/PSN, Green Lawn Columbus/Square, Westview Atlanta, Riverside NJ) or published installment terms (Lake View Cleveland, Holy Cross SF), and roster entries for Green-Wood, Woodlawn, Mount Auburn, Laurel Hill, Mount Sinai, Catholic cemetery systems of LA, Seattle, Brooklyn, Newark and Cleveland, Kensico, Ferncliff, Pinelawn, Cypress Hills and other large independent cemeteries, plus SCI's Neptune Society, National Cremation Society and Trident Society. Still missing: Extra Space, Rose Hills, Neptune/NCS/Trident, many NorthStar local sites, Catholic Cemeteries Chicago and Detroit, and nglic.com returned bot walls (403/429) and could not be read. Carriage Services, Park Lawn and Foundation Partners publish no consumer pay page, so families pay the local business. American Memorial Life (Assurant) and Funeral Directors Life have no reachable official site. There is no national roster of the ~9,000 U.S. cemeteries; coverage was checked only against well-known large independent and archdiocesan systems. Crown Hill, Evergreen-Washelli, Wasatch Lawn and Lake Lawn Metairie redirect to Dignity Memorial (SCI). REVIEWER PASS (2026-09-30, link-backfill-storage-funeral): every one of the 177 URLs in the change set was re-requested with curl. None returned 404. The 403/429 responses come from bot walls: Extra Space, CubeSmart, Dignity Memorial, Rose Hills, Neptune/NCS/Trident, nglic.com, Paymentus. Content checks were run on all 94 link fields of the 39 detailed entries, and each page was confirmed to cover its topic. Script-rendered portals such as SSM ERP, AAA myaccount and the Security National auth0 login were accepted as pay or login pages. Web search was unavailable (budget exhausted). Bot-walled pages were read from Internet Archive snapshots (May-Sep 2026), and entries resting on those snapshots are verified=false. Fixes and upgrades: (a) Rose Hills is SCI-owned (Dignity Memorial platform). It was upgraded to detailed: pay.rosehills.com bill-pay portal, customer-care page (payment history, receipts), PSN 'Pay my bill' link (acc RT23093), 562-699-0921. (b) Neptune Society, National Cremation Society and Trident Society were upgraded to detailed. Each has its own SCI pay.<brand>.com 'My Account' portal (previously assumed to be pay.dignitymemorial.com), and phones were added: 800-637-8863, 855-469-9474, 888-987-4336. (c) NGL: pay_bill now points to the live iPay portal payment.nglic.com/iPay (billed premiums only; loans by mailed check), with help page, hours and policyholder email. verified=true via the live portal. (d) Extra Space: late-fee (5 days, not waivable), overlock, autopay-retry, auction and move-out FAQs were confirmed from the archive. (e) Everstory: the claim about cancelling AutoPay was corrected. The platform page and PDF cover enrollment and management only; there are no explicit cancel steps. Added 844-808-3310. (f) SecureSpace was upgraded to detailed (one page covers pay, Auto-Pay setup, the 'Cancel Auto-Pay' button with 10-day lead time, and payment history). Moove In was upgraded to detailed (SSM ERP pay portal; 30 days' written notice for autopay accounts; late fees after 5 days; auction after about 2 months). (g) Added Storage Rentals of America (SROA; storamerica.com redirects there; no partial payments), Mini U Storage (SiteLink), Mount Hebron Cemetery (Queens; Stripe pay center by online bill number) and Calvary & Allied Cemeteries (Archdiocese of New York; interest-free perpetual-care payment plans; roster). (h) Merger and redirect notes: ezstorage.com -> Public Storage, snapboxselfstorage.com -> Go Store It. (i) Phones were added for the Archdiocese of Philadelphia cemeteries, Green Lawn, Westview, Riverside and A-American; Storage King USA gained login and FAQ URLs. After review, the in-scope storage/funeral/pet entries number 96 (49 detailed). Across those 49: view_bill 16, autopay_setup 27, autopay_cancel 12, statements_history 10, paperless 1, payment_assistance 5, pay-by-phone 8, processor 34. Funeral/cemetery has 54 entries, 23 of them detailed. Still open: Prime Storage, Stor-All, catholiccemeterieschicago.org, cfcsdetroit.org and ccdom.org (Dallas) are behind Cloudflare. Thrive Pet Healthcare and Petco Vital Care pages are script-rendered or blocked. Carriage, Park Lawn, Foundation Partners and Precoa publish no consumer pay page. Most large independent cemeteries (Green-Wood, Woodlawn, Mount Auburn, Kensico, Ferncliff, the LA, Seattle, Brooklyn and Newark Catholic systems) publish no online payment page; their sitemaps were checked. There is still no national cemetery roster. Pet insurance and Lincoln Heritage final-expense policies are covered in insurance-home-auto-life.json, not here. REVIEWER PASS 3 (2026-09-30). Web search was still exhausted. Checks: every URL in this change set (208 unique) was re-requested with curl. 179 returned 200 and the rest were the known bot walls (SCI brands, Extra Space, CubeSmart, nglic, Paymentus) or auth redirects; there were no 404s. 115 detailed link fields were content-checked by keyword, and these were re-read live through WebFetch: CubeSmart FAQ, the Dignity Memorial payment-plan, contact and pay pages, Hollywood Forever payments, and the Security National forms. Notes were corrected for those. Storage operators with autopay_cancel=null were re-read. Their public FAQs (Morningstar, StorQuest, 10 Federal, Storage Sense, West Coast, Devon, A-American, Compass, Safeguard, Price, Trojan, AAA, STOR-N-LOCK, SROA, Mini U) give no cancel steps, so the nulls stand. Added: TruStage prepaid funeral plans (American Memorial Life, the former Assurant Preneed). This fills a gap earlier passes called unreachable. It has autopay start/stop steps, phones 800-533-2220 and 855-591-9026, and a live cyber-incident outage notice (online payments down, mail payments accepted, no lapse). Also added Investors Heritage Life (pre-need; no online pay; Premium Accounting ext. 4127), Forest Lawn Omaha (Authorize.Net pay page), Lakewood Cemetery Minneapolis, Space Shop Self Storage (No Late Fee Guarantee autopay), Sparebox, Self Storage Plus and National Self Storage (Tenant Inc). Rose Hills, Neptune, National Cremation and Trident pay portals are still 403 even to WebFetch, so they remain verified=false. Great Western Insurance and Funeral Directors Life (fdlic) still have no reachable official site. After pass 3, this file has 108 in-scope storage/funeral/pet entries, 53 of them detailed. Link counts across those detailed entries: {'view_bill': 17, 'pay_bill': 52, 'autopay_setup': 30, 'autopay_cancel': 14, 'statements_history': 11, 'paperless': 1, 'payment_assistance': 5}. Funeral/cemetery: 58 entries, 26 detailed.",
- "sources": [
-  {
-   "title": "Public Storage Help Center (help.publicstorage.com sitemap and Payments/Rental FAQ articles)",
-   "url": "https://help.publicstorage.com/sitemap.xml",
-   "why_useful": "Pay-by-phone number, AutoPay, payment history, lien/auction and move-out policies"
-  },
-  {
-   "title": "CubeSmart FAQ, Fee Schedule and Mobile App pages",
-   "url": "https://www.cubesmart.com/feeschedule",
-   "why_useful": "State-by-state late, lien, NSF and convenience fees; app balance/history"
-  },
-  {
-   "title": "SmartStop, StorageMart, StorQuest, 10 Federal, Storage Sense, Devon, Compass, West Coast, A-American FAQs and sitemaps",
-   "url": "https://smartstopselfstorage.com/support/faqs",
-   "why_useful": "Autopay, invoices/receipts, late-fee, lien-sale, move-out notice and hardship statements"
-  },
-  {
-   "title": "Everstory Partners / MemorialPlanning.com Payment Platform Update and PDF guides",
-   "url": "https://memorialplanning.com/payment-platform-update/",
-   "why_useful": "Paymentus customer portal, AutoPay, payment history and fees for Everstory (ex-StoneMor) pre-need contracts"
-  },
-  {
-   "title": "NorthStar Memorial Group location directory and customer portal",
-   "url": "https://cpp.nsmg.com/chaseportal?SA=0810",
-   "why_useful": "Shared NorthStar pay portal and recurring-payment stop instructions"
-  },
-  {
-   "title": "Homesteaders Life Policy Owner Payment Options; Global Atlantic Support Center (Preneed); Security National Life forms",
-   "url": "https://www.homesteaderslife.com/policy-owner-payments",
-   "why_useful": "Pre-need insurer autopay setup/cancel, fees, mail address, reinstatement"
-  },
-  {
-   "title": "Internet Archive snapshot of nglic.com/make-a-payment (2026-06-10)",
-   "url": "http://web.archive.org/web/20260610181524/https://nglic.com/make-a-payment",
-   "why_useful": "NGL payment terms when the live site blocked fetches"
-  },
-  {
-   "title": "Independent and Catholic cemetery association websites (homepages, sitemaps, payment pages)",
-   "url": "https://www.springgrove.org/payments/",
-   "why_useful": "Online pre-need/installment payment pages and phones for ~35 cemeteries"
-  },
-  {
-   "title": "Internet Archive snapshots of bot-walled funeral/storage sites (rosehills.com, neptunesociety.com, nationalcremation.com, tridentsociety.com, dignitymemorial.com payment-plan, nglic.com, extraspace.com FAQ)",
-   "url": "https://web.archive.org/",
-   "why_useful": "Read pages that return Cloudflare/Vercel 403/429 to live fetches; entries relying on them are verified=false"
-  },
-  {
-   "title": "NGL iPay payment portal",
-   "url": "https://payment.nglic.com/iPay/Customer?code=NGL",
-   "why_useful": "Live NGL premium payment page (billed premiums only)"
-  },
-  {
-   "title": "SecureSpace Pay Your Bill",
-   "url": "https://securespace.com/pay-your-bill",
-   "why_useful": "Auto-Pay setup/cancel and payment history steps"
-  },
-  {
-   "title": "Storage Rentals of America FAQ",
-   "url": "https://www.sroa.com/faq",
-   "why_useful": "Invoice alerts, Auto Pay, no partial payments"
-  },
-  {
-   "title": "Mount Hebron Cemetery Payment Center",
-   "url": "https://www.mounthebroncemetery.com/bills/",
-   "why_useful": "Online cemetery bill payment by bill/account number (Stripe)"
-  },
-  {
-   "title": "TruStage - Funeral Preplanning & Final Expense policyholder resources",
-   "url": "https://www.trustage.com/my-account/help/prepaid-funeral-plan-policyholders",
-   "why_useful": "Servicing page for American Memorial Life (former Assurant Preneed) pre-need policies: payments, forms, phones"
-  },
-  {
-   "title": "TruStage Payment Information FAQs",
-   "url": "https://www.trustage.com/my-account/help/payment-information-faqs",
-   "why_useful": "Automatic payment start/stop and payment-plan management steps"
-  },
-  {
-   "title": "Investors Heritage FAQ",
-   "url": "https://investorsheritage.com/faq/",
-   "why_useful": "Pre-need premium payment, draft change, department phone extensions"
-  },
-  {
-   "title": "Operator websites (Public Storage, Extra Space, CubeSmart, U-Haul, SmartStop, StorageMart and ~20 regional operators)",
-   "url": "https://help.publicstorage.com/",
-   "why_useful": "Official help/FAQ pages for pay, autopay, payment history; redirect checks showed nsastorage.com/securcare.com/simplyss.com now land on publicstorage.com and lifestorage.com on extraspace.com"
-  },
-  {
-   "title": "Dignity Memorial (SCI) contact and bill pay",
-   "url": "https://www.dignitymemorial.com/contact-us",
-   "why_useful": "Official pre-need/cemetery bill pay portal link and 24/7 phone"
-  },
-  {
-   "title": "Global Atlantic / Forethought contact page",
-   "url": "https://www.globalatlantic.com/individual/contact",
-   "why_useful": "Preneed and final expense service line"
-  },
-  {
-   "title": "Banfield Optimum Wellness Plan FAQs",
-   "url": "https://www.banfield.com/products/optimum-wellness-plan/FAQs",
-   "why_useful": "Monthly plan billing, AutoPay and cancellation"
-  },
-  {
-   "title": "VCA CareClub",
-   "url": "https://vcahospitals.com/careclub",
-   "why_useful": "Wellness plan billing, auto-renewal and cancellation rules"
-  },
-  {
-   "title": "State child support agency websites (50 states + DC + PR + GU)",
-   "url": "https://www.njchildsupport.gov/payments/paymentoptions",
-   "why_useful": "Each state's official payment-options page; used to build one entry per state SDU"
-  },
-  {
-   "title": "SMART e-Pay state portals (xx.smartchildsupport.com)",
-   "url": "https://oh.smartchildsupport.com/",
-   "why_useful": "Probed all 50 state subdomains; confirmed live portals for CO, CT, DC, FL, GA, ID, MD, MA, MO, NC, OH, OK, RI, TN, TX, WV"
-  },
-  {
-   "title": "State judiciary websites (50 states + DC)",
-   "url": "https://www.pacourts.us/",
-   "why_useful": "Statewide court fine/fee payment portals"
-  },
-  {
-   "title": "California Courts Self-Help Guide - traffic tickets",
-   "url": "https://selfhelp.courts.ca.gov/traffic",
-   "why_useful": "Paying tickets and asking for lower fine/payment plan in county-run system"
-  },
-  {
-   "title": "MoneyGram Bill Pay, Western Union, PayNearMe, CheckFreePay, ExpertPay",
-   "url": "https://www.moneygram.com/us/en/services/bill-pay",
-   "why_useful": "Walk-in/cash bill-pay agents used by SDUs, courts and utilities"
-  },
-  {
-   "title": "FTC Funeral Rule (context)",
-   "url": "https://www.ftc.gov/business-guidance/resources/complying-funeral-rule",
-   "why_useful": "Consumer rights on funeral pricing; listed in rosters/discovery_resources.json (not re-fetched)"
-  },
-  {
-   "title": "PAYOMATIC bill pay",
-   "url": "https://www.payomatic.com/store-services/bill-pay/",
-   "why_useful": "NYC-area walk-in bill pay agent, fees and support phone"
-  }
- ],
  "entries": [
   {
    "name": "Sparebox Storage",
@@ -186,7 +39,7 @@
    "payment_processor": "in-house Sparebox tenant app (app.spareboxstorage.com; guest Make a Payment looks up the account by email)",
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage Make a Payment goes to a guest lookup by email; My Account/Register is at app.spareboxstorage.com/login. FAQ notes rent changes on 30 days notice; no autopay or late-fee details are published.",
+   "notes": "My Account/Register is at app.spareboxstorage.com/login. FAQ notes rent changes on 30 days notice; no autopay or late-fee details are published.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -307,7 +160,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage links Make a Payment and My Account. No public FAQ on autopay/late fees.",
+   "notes": "No public FAQ on autopay/late fees.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -378,7 +231,7 @@
    "payment_processor": "NorthStar Customer Portal (cpp.nsmg.com, Chase payment portal) with Quick Pay guest payments",
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage Log In goes to the NorthStar customer portal (SA=8301). Portal text: sign in or use Quick Pay for a one-time payment; if you have a recurring payment arrangement, notify contract@nsmg.com when the final payment has been completed so recurring charges stop.",
+   "notes": "Portal text: sign in or use Quick Pay for a one-time payment; if you have a recurring payment arrangement, notify contract@nsmg.com when the final payment has been completed so recurring charges stop.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -412,7 +265,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill-pay link found on the homepage; payments through the cemetery office.",
+   "notes": "Payments through the cemetery office.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -446,7 +299,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Family Pay page (fetched 2026-09-30) offers online payments and says to contact accounts receivable at (650) 550-8896 or your family counselor with payment questions. Payment widget is script-rendered; processor not visible. No public autopay or history page.",
+   "notes": "Family Pay page  offers online payments and says to contact accounts receivable at (650) 550-8896 or your family counselor with payment questions. No public autopay or history page.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -480,7 +333,7 @@
    "payment_processor": "Forest Lawn-hosted bill pay (billpay.forestlawn.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "Pay My Bill page is for pre-need/cemetery installment accounts; for questions call Client Accounts; for in-person payment call the park cashier. [Link backfill 2026-09-30] Bill Pay page (re-read 2026-09-30): pre-need (\"ahead of need\") accounts only, card (Visa/MC/Discover) with the account number from the monthly statement, posts within 2 business days, no login; at-need balances are paid through the park cashier. FAQ (https://forestlawn.com/cemetery-funeral-arrangements/faqs/): payment plans for at-need and pre-need set by the memorial counselor; NO formal low-income assistance program, but families can meet a counselor to discuss special circumstances; general line (888) 204-3131; property transfers 800-204-3131 ext. 4673.",
+   "notes": "Pay My Bill page is for pre-need/cemetery installment accounts; for questions call Client Accounts; for in-person payment call the park cashier. Bill Pay page: pre-need (\"ahead of need\") accounts only, card (Visa/MC/Discover) with the account number from the monthly statement, posts within 2 business days, no login; at-need balances are paid through the park cashier. FAQ (https://forestlawn.com/cemetery-funeral-arrangements/faqs/): payment plans for at-need and pre-need set by the memorial counselor; NO formal low-income assistance program, but families can meet a counselor to discuss special circumstances; general line (888) 204-3131; property transfers 800-204-3131 ext.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -514,7 +367,7 @@
    "payment_processor": "Payment Service Network (PSN) - https://www.paymentservicenetwork.com/login.aspx?acc=RT26626",
    "app": null,
    "senior_programs": null,
-   "notes": "Account Payments page lists 5 ways to pay: online 24/7 through PSN; ACH automatic bank withdrawal set up by calling customer service; mail a check with the monthly payment stub; credit card by phone; walk-in at reception. To stop ACH withdrawals call customer service (not documented separately). [Review 3 2026-09-30] Payments page re-read: five ways to pay. (1) PSN online 24/7 (acc RT26626). (2) ACH automatic bank withdrawal, set up by calling customer service during business hours; stopping it presumably also by phone, which the page does not state. (3) Mail a check with the payment stub. (4) Credit card by phone. (5) Walk-in at reception. Toll-free 877-844-3837; email payments@hollywoodforever.com.",
+   "notes": "Account Payments page lists 5 ways to pay: online 24/7 through PSN; ACH automatic bank withdrawal set up by calling customer service; mail a check with the monthly payment stub; credit card by phone; walk-in at reception. To stop ACH withdrawals, call customer service. Payments page re-read: five ways to pay. (1) PSN online 24/7 (acc RT26626). (2) ACH automatic bank withdrawal, set up by calling customer service during business hours; stopping it presumably also by phone, which the page does not state. (3) Mail a check with the payment stub. (4) Credit card by phone. (5) Walk-in at reception. Toll-free 877-844-3837; email payments@hollywoodforever.com.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -548,7 +401,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "holycrosscemeteries.com and holycrosscemetery.org redirect here. Preplanning Payment Terms page shows sample installment plans (actual terms vary). No online bill-pay page found.",
+   "notes": "Holycrosscemeteries.com and holycrosscemetery.org redirect here. Preplanning Payment Terms page shows sample installment plans (actual terms vary).",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -582,7 +435,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found on the public site; call for pre-need account payments.",
+   "notes": "Call for pre-need account payments.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -616,7 +469,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "FAQ: pay online at www.paymystoragerent.com (named on the FAQ), in person or by phone; cash, check, card or recurring automatic payments. AutoPay: log in and click AutoPay Setup (agreement form) or enroll at the office. Cancel steps not published.",
+   "notes": "FAQ: pay online at www.paymystoragerent.com (named on the FAQ), in person or by phone; cash, check, card or recurring automatic payments. AutoPay: log in and click AutoPay Setup (agreement form) or enroll at the office.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -650,7 +503,7 @@
    "payment_processor": "SCI 'Rose Hills Online Bill Pay & Secure Account Management' portal (pay.rosehills.com); the customer-care 'Pay my bill' button links Payment Service Network (PSN) account RT23093",
    "app": null,
    "senior_programs": null,
-   "notes": "rosehills.com and pay.rosehills.com return a Cloudflare 403 to live fetches. The pages were read from Internet Archive snapshots (homepage 2026-07-14 and the customer-care page), so verified=false. The header 'Bill Pay' links to pay.rosehills.com, titled 'Rose Hills Online Bill Pay & Secure Account Management' (the same SCI platform as pay.dignitymemorial.com). The Customer Care page (https://www.rosehills.com/customer-care) says the online bill pay portal lets you see payment history, make a payment and print receipts. Its 'Pay my bill' button goes to https://www.paymentservicenetwork.com/login.aspx?acc=RT23093 (Payment Service Network). If one route does not find the account, try the other or call 562-699-0921. The homepage advertised cemetery-property financing at 2.9% interest for 7 years with 60-day payment relief (a promotion; terms may change). No autopay or hardship page is published.",
+   "notes": "Bill Pay is at pay.rosehills.com (Rose Hills Online Bill Pay & Secure Account Management). The Customer Care page (https://www.rosehills.com/customer-care) says the online bill pay portal lets you see payment history, make a payment and print receipts. Its 'Pay my bill' button goes to https://www.paymentservicenetwork.com/login.aspx?acc=RT23093 (Payment Service Network). If one route does not find the account, try the other or call 562-699-0921. No autopay or hardship page is published.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -689,7 +542,7 @@
    "payment_processor": "storEDGE (Storable) rental-center tenant portal, one login link per facility",
    "app": null,
    "senior_programs": null,
-   "notes": "[Link backfill 2026-09-30] Help backfill 2026-09-30: Pay Online page lists per-facility storEDGE rental-center login links (rental-center.storedge.com). FAQ has no billing/autopay/late-fee answers - ask the facility.",
+   "notes": "Pay Online page lists per-facility storEDGE rental-center login links (rental-center.storedge.com). FAQ has no billing/autopay/late-fee answers - ask the facility.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -767,7 +620,7 @@
     "android": null
    },
    "senior_programs": null,
-   "notes": "FAQ describes 'direct pay' option that automatically charges a credit card monthly. Quick pay: https://www.westcoastselfstorage.com/quickpay/. [Link backfill 2026-09-30] Help backfill 2026-09-30: FAQ 'direct pay' = automatic monthly credit-card charge (setup only; cancel via facility, not published). First month prorated for mid-month move-ins. iOS app linked from Pay Online page. Managed by Self Storage Property Management.",
+   "notes": "FAQ describes 'direct pay' option that automatically charges a credit card monthly. Quick pay: https://www.westcoastselfstorage.com/quickpay/. 'Direct pay' is an automatic monthly credit-card charge; to cancel, contact the facility. First month prorated for mid-month move-ins. iOS app linked from Pay Online page. Managed by Self Storage Property Management.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -851,7 +704,7 @@
    "payment_processor": "SSM ERP hosted payment portal (ire-storally-payment.ssm-erp.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "Pay Online (https://www.moovein.com/pay-bill) redirects to the SSM ERP hosted portal (ire-storally-payment.ssm-erp.com), the same platform as Compass and Devon. FAQ (https://www.moovein.com/faq/, fetched 2026-09-30): pay by card, check or cash, online, in person or by phone, and most properties offer automatic monthly card payments. Moving out takes 7-10 days' verbal or written notice, or 30 days' written notice if the account is on autopay; this is the practical autopay-stop rule. Late fees start once payment is 5 days late and access is barred. Units can go to auction after about two months of non-payment (varies by state); proceeds go to the balance and any shortfall goes to collections. Refunds and cancellations are handled by the local property manager. No statement-history or hardship page.",
+   "notes": "Pay Online (https://www.moovein.com/pay-bill) redirects to the SSM ERP hosted portal (ire-storally-payment.ssm-erp.com), the same platform as Compass and Devon. FAQ: pay by card, check or cash, online, in person or by phone, and most properties offer automatic monthly card payments. Moving out takes 7-10 days' verbal or written notice, or 30 days' written notice if the account is on autopay; this is the practical autopay-stop rule. Late fees start once payment is 5 days late and access is barred. Units can go to auction after about two months of non-payment (varies by state); proceeds go to the balance and any shortfall goes to collections. Refunds and cancellations are handled by the local property manager. No statement-history or hardship page.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -890,7 +743,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage Pay Online goes to the MySafeguard tenant portal. FAQ covers access/app only; no public autopay, late-fee or history page.",
+   "notes": "FAQ covers access/app only; no public autopay, late-fee or history page.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -924,7 +777,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -964,7 +817,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage links Pay Online; the page is script-rendered so the processor could not be identified. Contact: https://www.selfstorageplus.com/contact/. No public autopay or billing FAQ found.",
+   "notes": "Contact: https://www.selfstorageplus.com/contact/.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1004,7 +857,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Site behind Cloudflare challenge this session; not read.",
+   "notes": null,
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -1074,7 +927,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Payments & Purchases page has a Make an Account Payment form (account holder name and contract number). No autopay/history page published. [Reviewer 2026-09-30] Phone and address (1680 Westview Drive SW, Atlanta, GA 30310) taken from the site footer.",
+   "notes": "Payments & Purchases page has a Make an Account Payment form (account holder name and contract number). No autopay/history page published.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1108,7 +961,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1142,7 +995,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1176,7 +1029,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1244,7 +1097,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Pre-planning https://www.bellefontainecemetery.org/pre-planning. No online bill pay found.",
+   "notes": "Pre-planning https://www.bellefontainecemetery.org/pre-planning.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1285,7 +1138,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Make A Payment and My Account links in site nav. Review 2 (2026-09-30): Make a Payment page offers account sign-in, new-account creation, or Pay as Guest (/pay-as-guest, needs location, unit number and phone from contract). FAQ page has no billing answers; autopay not described publicly - call 1-800-671-7552. [Link backfill 2026-09-30] Help backfill 2026-09-30: FAQ page has no billing answers (12-month rate guarantee only); Make a Payment page offers sign-in or guest pay. Call 1-800-671-7552 for autopay or late-fee questions.",
+   "notes": "Make a Payment page offers account sign-in, new-account creation, or Pay as Guest (/pay-as-guest, needs location, unit number and phone from contract). FAQ page has no billing answers; autopay not described publicly - call 1-800-671-7552. FAQ page has no billing answers (12-month rate guarantee only); Make a Payment page offers sign-in or guest pay. Call 1-800-671-7552 for autopay or late-fee questions.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1353,7 +1206,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage and contact page fetched 2026-09-30; no online bill pay or phone captured.",
+   "notes": "No online bill pay or phone captured.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1387,7 +1240,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1422,7 +1275,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage links ONLINE PAYMENTS to /online-payment (secure payment widget, script-rendered). No other billing help published. [Reviewer 2026-09-30] Phone taken from the site.",
+   "notes": "No other billing help published.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1456,7 +1309,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage and Annual & Perpetual Care page fetched 2026-09-30. Annual Care bills can be replaced by a one-time Perpetual Care fee, currently $1,230 per grave, with interest-free payment plans available. The Preplanning page mentions 'attractive payment options' for advance purchases. No online bill-pay page was found; pay by the instructions on the bill or call the cemetery office. Main office: 488 Madison Ave, 3rd Floor, New York, NY 10022. Roster tier because no online payment page exists.",
+   "notes": "Annual Care bills can be replaced by a one-time Perpetual Care fee, currently $1,230 per grave, with interest-free payment plans available. The Preplanning page mentions 'attractive payment options' for advance purchases. Pay by the instructions on the bill or call the cemetery office. Main office: 488 Madison Ave, 3rd Floor, New York, NY 10022.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1490,7 +1343,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Pre-planning: https://ccbklyn.org/sales/pre-planning/. No online bill pay found.",
+   "notes": "Pre-planning: https://ccbklyn.org/sales/pre-planning/.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1558,7 +1411,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1592,7 +1445,7 @@
    "payment_processor": "Website card form (Visa/MC/Discover/Amex) on forest-lawn.com",
    "app": null,
    "senior_programs": null,
-   "notes": "Make a Contract Payment page: enter payment amount and the contract number(s) from the upper-right box of your statement; card payment only online; page warns the payment goes to the Buffalo, NY cemetery. It has a link to request recurring payments by check or credit card. No public cancel/history page - call (716) 885-1600.",
+   "notes": "Make a Contract Payment page: enter payment amount and the contract number(s) from the upper-right box of your statement; card payment only online; page warns the payment goes to the Buffalo, NY cemetery. No public cancel/history page - call (716) 885-1600.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1626,7 +1479,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Contact page lists an Installment Sales department (Mon-Fri, closes 4pm) for pre-need installment accounts; no online bill pay found (the /my-account/ page is a gift-shop login).",
+   "notes": "Contact page lists an Installment Sales department (Mon-Fri, closes 4pm) for pre-need installment accounts.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1660,7 +1513,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1694,7 +1547,7 @@
    "payment_processor": "Stripe (online card payments)",
    "app": null,
    "senior_programs": null,
-   "notes": "Payments page (https://www.mounthebroncemetery.com/bills/, fetched 2026-09-30) is a Payment Center. Search by the Online Bill Number in bold on the estimate (NOT the account number), by account number (/bills/accounts/), or by interment, then 'Pay Bills'. It is used for seasonal/annual care and other estimates. You can tick a box to ask for a Perpetual Care endowment estimate. Card payments go through Stripe. Office: 130-04 Horace Harding Expressway, Flushing, NY 11367; fax 718-445-4282; info@thecemeteries.com. No autopay.",
+   "notes": "Payments page  is a Payment Center. Search by the Online Bill Number in bold on the estimate (NOT the account number), by account number (/bills/accounts/), or by interment, then 'Pay Bills'. It is used for seasonal/annual care and other estimates. You can tick a box to ask for a Perpetual Care endowment estimate. Card payments go through Stripe. Office: 130-04 Horace Harding Expressway, Flushing, NY 11367; fax 718-445-4282; info@thecemeteries.com.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1728,7 +1581,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Site code references a payment-plan product type in its online store; no consumer bill-pay page found.",
+   "notes": "Site code references a payment-plan product type in its online store.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1796,7 +1649,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online payment link found on the homepage or contact page; call the cemetery office for installment accounts.",
+   "notes": "Call the cemetery office for installment accounts.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1833,7 +1686,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Also publishes an article on handling a deceased tenant's unit: https://www.storagepost.com/blog/what-happens-deceased-tenants-units. Review 2026-09-30: moved to roster tier because no public view/pay/autopay/history page exists or could be found; payments go through the local location or the channels above.",
+   "notes": "Also publishes an article on handling a deceased tenant's unit: https://www.storagepost.com/blog/what-happens-deceased-tenants-units. Payments go through the local location or the channels above.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -1867,7 +1720,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "clevelandcatholiccemeteries.org redirects here. No consumer bill pay found (site has only a Funeral Home Portal).",
+   "notes": "Clevelandcatholiccemeteries.org redirects here.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1901,7 +1754,7 @@
    "payment_processor": "Square online checkout (linked as MAKE A PAYMENT on the homepage)",
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage MAKE A PAYMENT links to a Square checkout. Payment Plans page: pre-need monthly installments or pay in full, in-house financing with no credit check (no impact from age or health). No autopay/history page. [Reviewer 2026-09-30] Main phone 614-444-1123 taken from the site header.",
+   "notes": "Payment Plans page: pre-need monthly installments or pay in full, in-house financing with no credit check (no impact from age or health). No autopay/history page. Main phone 614-444-1123.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1935,7 +1788,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Payments & Financing page: at-need must be paid in full; pre-need can be paid in full or with 20% down and the balance interest-free over 24-48 months. The site nav also links Bill Pay (https://www.lakeviewcemetery.com/bill-pay) but it returned HTTP 404 on 2026-09-30, so pay_bill is left null - call 216-421-2665.",
+   "notes": "Payments & Financing page: at-need must be paid in full; pre-need can be paid in full or with 20% down and the balance interest-free over 24-48 months.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -1969,7 +1822,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage links Cemetery Payments (https://www.springgrove.org/payments/). On 2026-09-30 the page said the online payment site was temporarily down for maintenance and to call (513) 853-6867 to pay by credit card. No public autopay/statement page.",
+   "notes": "No public autopay/statement page.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2003,7 +1856,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2037,7 +1890,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Pre-need planning page https://alleghenycemetery.com/pre-planning/. No online bill pay found.",
+   "notes": "Pre-need planning page https://alleghenycemetery.com/pre-planning/.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2071,7 +1924,7 @@
    "payment_processor": "Paymentus (ipn4.paymentus.com/cp/evst - shared Everstory customer payment platform)",
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage (fetched 2026-09-30) links My Account to the Everstory Paymentus portal and a Payment Platform Update page. The Everstory AutoPay guide PDF explicitly says to reach the platform from MemorialPlanning.com or ArchdioceseofPhiladelphia.org. Same terms as Everstory: re-register on the new platform; ACH autopay carried over but card autopay must be re-enrolled; 3% surcharge on credit cards (none on debit/ACH); payment history in the portal; guest one-time Pay Now available. Help: the family service counselor or the cemetery office. [Reviewer 2026-09-30] Added the 844-451-9614 assistance number from the site header and FAQ page.",
+   "notes": "The Everstory AutoPay guide PDF explicitly says to reach the platform from MemorialPlanning.com or ArchdioceseofPhiladelphia.org. Same terms as Everstory: re-register on the new platform; ACH autopay carried over but card autopay must be re-enrolled; 3% surcharge on credit cards (none on debit/ACH); payment history in the portal; guest one-time Pay Now available. Help: the family service counselor or the cemetery office. Added the 844-451-9614 assistance number from the site header and FAQ page.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2105,7 +1958,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Pre-planning page https://laurelhillphl.com/cemetery-funeral-offerings/pre-planning/. No online bill pay found.",
+   "notes": "Pre-planning page https://laurelhillphl.com/cemetery-funeral-offerings/pre-planning/.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2141,7 +1994,7 @@
    "payment_processor": "SiteLink (Storable) per-location tenant login (smdservers.net)",
    "app": null,
    "senior_programs": null,
-   "notes": "Pay Online page lists per-location SiteLink tenant-portal logins. Service-area states are approximate (from location list on homepage).",
+   "notes": "Pay Online page lists per-location SiteLink tenant-portal logins. Service-area states are approximate.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2175,7 +2028,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2209,7 +2062,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2248,7 +2101,7 @@
    "payment_processor": "in-house SecureSpace online account (Pay Your Bill page)",
    "app": null,
    "senior_programs": null,
-   "notes": "Pay Your Bill page (https://securespace.com/pay-your-bill, fetched 2026-09-30) holds every how-to on one page. Register with your unit number and gate access code. Auto-Pay: log in, choose 'Auto-Pay' on the left menu, enter a card and click 'Update Auto-Pay'; the card is charged on the 1st of each month with an email reminder first. To cancel: log in > Auto-Pay > grey 'Cancel Auto-Pay' button, or cancel in store; cancellations and card changes take up to 10 days, so act at least 10 days before the due date. Payment History: log in > 'Payment History' on the left menu (stores recently converted to SecureSpace show only about a month before the transition). Help is by chat or phone.",
+   "notes": "Pay Your Bill page  holds every how-to on one page. Register with your unit number and gate access code. Auto-Pay: log in, choose 'Auto-Pay' on the left menu, enter a card and click 'Update Auto-Pay'; the card is charged on the 1st of each month with an email reminder first. To cancel: log in > Auto-Pay > grey 'Cancel Auto-Pay' button, or cancel in store; cancellations and card changes take up to 10 days, so act at least 10 days before the due date. Payment History: log in > 'Payment History' on the left menu (stores recently converted to SecureSpace show only about a month before the transition). Help is by chat or phone.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2282,7 +2135,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage (fetched 2026-09-30) links customer login and FAQs; no public billing/autopay how-to page found. Roster tier.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -2316,7 +2169,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Contactless storage; FAQ explains auto-pay setup in the Customer Portal account settings. Quick Pay at myaccount.10federalstorage.com/quick-pay. [Link backfill 2026-09-30] Help backfill 2026-09-30: Storage FAQs page covers the Customer Portal (pay, set up auto-pay under account settings > Auto Pay, view payment and transaction history, rental documents, schedule move-out online), customer support (910) 991-0784, and missed payments (late fees, access suspended, eventual lien sale under state law). Month-to-month, no refunds for unused days. Autopay cancel steps not published (account settings in portal).",
+   "notes": "Contactless storage; FAQ explains auto-pay setup in the Customer Portal account settings. Quick Pay at myaccount.10federalstorage.com/quick-pay. Storage FAQs page covers the Customer Portal (pay, set up auto-pay under account settings > Auto Pay, view payment and transaction history, rental documents, schedule move-out online), customer support (910) 991-0784, and missed payments (late fees, access suspended, eventual lien sale under state law). Month-to-month, no refunds for unused days. To cancel autopay, use account settings in the portal.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2350,7 +2203,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Carriage operates under local funeral home names; pre-need contract and cemetery property payments are made to the local business. Corporate HQ 3400 Post Oak Blvd. Suite 300, Houston, TX 77056. No public online bill-pay page found at corporate level. Review 2026-09-30: moved to roster tier because no public view/pay/autopay/history page exists or could be found; payments go through the local location or the channels above. [Link backfill 2026-09-30] Re-checked 2026-09-30: carriageservices.com business pages and the Plan Ahead page publish no payment portal or local-site links; corporate HQ (866) 332-8400. Stay roster.",
+   "notes": "Carriage operates under local funeral home names; pre-need contract and cemetery property payments are made to the local business. Payments go through the local location or the channels above.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2384,7 +2237,7 @@
    "payment_processor": "SSM ERP hosted payment portal (compass-payment.ssm-erp.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "[Link backfill 2026-09-30] Help backfill 2026-09-30: FAQ - automatic monthly payment encouraged to avoid late fees; monthly invoices are NOT normally sent but can be requested; refunds/cancellations handled by the site manager.",
+   "notes": "FAQ - automatic monthly payment encouraged to avoid late fees; monthly invoices are NOT normally sent but can be requested; refunds/cancellations handled by the site manager.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2421,7 +2274,7 @@
     "android": "https://play.google.com/store/apps/details?id=com.cubesmart.customer"
    },
    "senior_programs": "None specific.",
-   "notes": "FAQ page explains ACH AutoPay (no fee), card AutoPay and one-time payments (3% convenience fee online/phone), in-store cash/check payments with no fee, online bill pay via Customer Center; seriously past-due accounts must call the store. Contact page: https://www.cubesmart.com/about-us/contact-us/. Review 2026-09-30: cubesmart.com returned HTTP 403 to automated fetches in the review pass, so the FAQ could not be re-read; links kept from the original pass. [Link backfill 2026-09-30] Help backfill 2026-09-30: Mobile App page (https://www.cubesmart.com/mobileapp/) says the app shows account balances and payment history, pays bills and sets up AutoPay; app help line 833-940-2949. Fee Schedule (https://www.cubesmart.com/feeschedule) lists by state the admin rental fee ($29), $1/month admin invoice fee, late fees (e.g. AL $10 on day 6 and day 16; AZ greater of $10 or 20% of rent on day 11), Administrative Lien Fee ($110 if rent unpaid by day 30) and $30 NSF fee; ACH AutoPay and in-store payments carry no fee, card AutoPay/online/phone payments carry a 3% convenience fee. FAQ: rent changes are noticed 30 days in advance by mail or certified e-mail; move-out notice appreciated but not required (month-to-month); seriously past-due accounts must call the store. No public autopay-cancel how-to; manage AutoPay in Customer Center/app or call. Active-duty military discount only; no senior or hardship program published. [Review 3 2026-09-30] The FAQ was re-read live through WebFetch (curl gets a 403). It confirms: rent is due on the move-in day each month; ACH AutoPay has no convenience fee and card AutoPay carries a 3% fee; you can pay in the Customer Center (mycube.cubesmart.com), in the app, in store, or on the automated line 855-535-5785; general line 1-877-279-7585. It still has no cancel-AutoPay steps; turn it off in the Customer Center or app, or ask the store.",
+   "notes": "FAQ page explains ACH AutoPay (no fee), card AutoPay and one-time payments (3% convenience fee online/phone), in-store cash/check payments with no fee, online bill pay via Customer Center; seriously past-due accounts must call the store. Contact page: https://www.cubesmart.com/about-us/contact-us/. Mobile App page (https://www.cubesmart.com/mobileapp/) says the app shows account balances and payment history, pays bills and sets up AutoPay; app help line 833-940-2949. Fee Schedule (https://www.cubesmart.com/feeschedule) lists by state the admin rental fee ($29), $1/month admin invoice fee, late fees (e.g. AL $10 on day 6 and day 16; AZ greater of $10 or 20% of rent on day 11), Administrative Lien Fee ($110 if rent unpaid by day 30) and $30 NSF fee; ACH AutoPay and in-store payments carry no fee, card AutoPay/online/phone payments carry a 3% convenience fee. FAQ: rent changes are noticed 30 days in advance by mail or certified e-mail; move-out notice appreciated but not required (month-to-month); seriously past-due accounts must call the store. No public autopay-cancel how-to; manage AutoPay in Customer Center/app or call. Active-duty military discount only; no senior or hardship program published. The FAQ was re-read live through WebFetch. It confirms: rent is due on the move-in day each month; ACH AutoPay has no convenience fee and card AutoPay carries a 3% fee; you can pay in the Customer Center (mycube.cubesmart.com), in the app, in store, or on the automated line 855-535-5785; general line 1-877-279-7585. It still has no cancel-AutoPay steps; turn it off in the Customer Center or app, or ask the store.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2455,7 +2308,7 @@
    "payment_processor": "SSM ERP hosted payment portal (pay-online redirects to devon-payment.ssm-erp.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "[Link backfill 2026-09-30] Help backfill 2026-09-30: FAQ - cash/check/card, automatic credit-card payment sign-up, online pay; rent due end of first business day of each month; late fees vary by state per rental agreement; written notice at least 3 days ahead to move out (sign intent to vacate). /pay-online redirects to https://devon-payment.ssm-erp.com.",
+   "notes": "FAQ - cash/check/card, automatic credit-card payment sign-up, online pay; rent due end of first business day of each month; late fees vary by state per rental agreement; written notice at least 3 days ahead to move out (sign intent to vacate). /pay-online redirects to https://devon-payment.ssm-erp.com.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2489,7 +2342,7 @@
    "payment_processor": "SCI-hosted 'Dignity Memorial Online Bill Pay & Secure Account Management' portal",
    "app": null,
    "senior_programs": "Pre-need plans are typically paid in monthly installments; payment plan terms, autopay and cancellation rights vary by state preneed law and contract.",
-   "notes": "Dignity Memorial homepage and Contact Us page link 'Bill Pay' to pay.dignitymemorial.com (portal content not readable without JS). Pre-planning info: https://www.dignitymemorial.com/pre-planning/prepaid-funeral-plans. Site is Cloudflare-protected; content read via fetch tool this session. Autopay/statement instructions not published publicly - call 800-343-4464 or the local location. [Link backfill 2026-09-30] Backfill 2026-09-30: 'How to pay in installments' page (https://www.dignitymemorial.com/pre-planning/funeral-costs/payment-plan) describes monthly payment plans for pre-need contracts but gives no terms; it links Bill Pay (pay.dignitymemorial.com, 'Online Bill Pay & Secure Account Management', Cloudflare-protected) and 800-343-4464. Contact form has a billing/payment-information option. SCI cremation brands Neptune Society, National Cremation Society and Trident Society are listed as separate roster entries; Crown Hill (Indianapolis), Evergreen-Washelli (Seattle), Wasatch Lawn (Salt Lake) and Lake Lawn Metairie (New Orleans) websites now redirect to Dignity Memorial location pages, so their contracts are paid through Dignity Memorial bill pay. [Reviewer 2026-09-30] The payment-plan page was re-read from an Internet Archive snapshot (2026-07-28) because the live site returns a Cloudflare 403. It describes paying for prearranged funeral, cremation or cemetery plans in monthly installments and links 'Bill Pay'. It publishes no interest, autopay or cancellation terms. SCI brands run their own copies of the same 'Online Bill Pay & Secure Account Management' portal: pay.rosehills.com, pay.neptunesociety.com, pay.nationalcremation.com and pay.tridentsociety.com (see those entries). Families should pay at the brand named on their contract. [Review 3 2026-09-30] Payment-plan page and contact page re-read live through WebFetch. pay.dignitymemorial.com is titled \"Dignity Memorial Online Bill Pay & Secure Account Management\". The contact page offers Billing / Payment Information requests through the 24/7 line 800-343-4464. The payment-plan page gives no interest rate, term or autopay details.",
+   "notes": "Pre-planning info: https://www.dignitymemorial.com/pre-planning/prepaid-funeral-plans. Site is Cloudflare-protected. For autopay and statement instructions, call 800-343-4464 or the local location. Monthly payment plans are available for pre-need contracts. Pay online at pay.dignitymemorial.com or call 800-343-4464. Contact form has a billing/payment-information option. Crown Hill (Indianapolis), Evergreen-Washelli (Seattle), Wasatch Lawn (Salt Lake) and Lake Lawn Metairie (New Orleans) websites now redirect to Dignity Memorial location pages, so their contracts are paid through Dignity Memorial bill pay. It describes paying for prearranged funeral, cremation or cemetery plans in monthly installments and links 'Bill Pay'. It publishes no interest, autopay or cancellation terms. SCI brands run their own copies of the same 'Online Bill Pay & Secure Account Management' portal: pay.rosehills.com, pay.neptunesociety.com, pay.nationalcremation.com and pay.tridentsociety.com. Families should pay at the brand named on their contract. pay.dignitymemorial.com is Dignity Memorial Online Bill Pay & Secure Account Management. The contact page offers Billing / Payment Information requests through the 24/7 line 800-343-4464. The payment-plan page gives no interest rate, term or autopay details.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2523,7 +2376,7 @@
    "payment_processor": "Paymentus (customer payment platform at ipn4.paymentus.com/cp/evst; My Account on MemorialPlanning.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "Corporate site offers only a contact form; pre-need/cemetery installment payments are handled through the local cemetery or funeral home named on the contract (location sites). stonemor.com no longer resolves. No public online bill-pay page found. Review 2026-09-30: moved to roster tier because no public view/pay/autopay/history page exists or could be found; payments go through the local location or the channels above. [Link backfill 2026-09-30] everstorypartners.com links its consumer site memorialplanning.com, whose My Account goes to the Paymentus platform. Payment Platform Update page (https://memorialplanning.com/payment-platform-update/): contract terms, amount and due date unchanged; create a new profile and link the account (account number, last name, ZIP); one-time guest Pay Now; payment history, saved wallet and AutoPay are in the platform; existing ACH AutoPay carried over automatically, but card AutoPay must be re-enrolled (manage/stop AutoPay in the AutoPay section of the same platform); 3% surcharge on credit cards (2% in CO, none in PR), no fee for debit or eCheck; multiple contracts per profile; monthly statements continue. Step-by-step PDFs: enrollment (https://memorialplanning.com/wp-content/uploads/2026/08/Everstory-Customer-Portal-Guide-4.pdf), AutoPay (https://memorialplanning.com/wp-content/uploads/2026/08/Autopay-Guide-Customer-Payment-Platform.pdf), wallet and make-a-payment guides. Help: the Family Service Counselor or the location serving the account. The Archdiocese of Philadelphia Catholic cemeteries use the same platform (separate entry). [Reviewer 2026-09-30] Re-read the Payment Platform Update page. It says you can manage payments online, including AutoPay enrollment, payment history and saved payment methods. Neither that page nor the AutoPay PDF gives explicit steps to cancel AutoPay; the PDF covers enrollment only. autopay_cancel therefore points to the platform page where AutoPay is managed. To be sure AutoPay is stopped, call the serving location or 844-808-3310.",
+   "notes": "Corporate site offers only a contact form; pre-need/cemetery installment payments are handled through the local cemetery or funeral home named on the contract (location sites). stonemor.com no longer resolves. Payments go through the local location or the channels above. Payment Platform Update page (https://memorialplanning.com/payment-platform-update/): contract terms, amount and due date unchanged; create a new profile and link the account (account number, last name, ZIP); one-time guest Pay Now; payment history, saved wallet and AutoPay are in the platform; existing ACH AutoPay carried over automatically, but card AutoPay must be re-enrolled (manage/stop AutoPay in the AutoPay section of the same platform); 3% surcharge on credit cards (2% in CO, none in PR), no fee for debit or eCheck; multiple contracts per profile; monthly statements continue. Step-by-step PDFs: enrollment (https://memorialplanning.com/wp-content/uploads/2026/08/Everstory-Customer-Portal-Guide-4.pdf), AutoPay (https://memorialplanning.com/wp-content/uploads/2026/08/Autopay-Guide-Customer-Payment-Platform.pdf), wallet and make-a-payment guides. Help: the Family Service Counselor or the location serving the account. The Archdiocese of Philadelphia Catholic cemeteries use the same platform. Re-read the Payment Platform Update page. It says you can manage payments online, including AutoPay enrollment, payment history and saved payment methods. Neither that page nor the AutoPay PDF gives explicit steps to cancel AutoPay. To be sure AutoPay is stopped, call the serving location or 844-808-3310.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2557,7 +2410,7 @@
    "payment_processor": "in-house (My Account portal; 'Easy Pay' autopay)",
    "app": null,
    "senior_programs": "None specific.",
-   "notes": "Current-customer FAQ page covers payment options (online via My Account, phone 888-STORAGE, mail, in-store cash/check/card), Easy Pay automatic payments (My Account > Pay Online > Easy Pay tab, or Easy Pay form at the facility), late fees (charged 5 days after missed due date), autopay failure notifications. Contact page: https://www.extraspace.com/help/contact/. Autopay cancellation not described on public pages; use My Account or call. Site blocks some bot user agents. Review 2026-09-30: replaced anchor links with the individual FAQ articles (payment options: store, online, phone 888-STORAGE, mailed check; Easy Pay setup via My Account > Pay Online > Easy Pay tab or facility form; My Account portal: one-time payments, autopay enrollment). Autopay failure FAQ: https://www.extraspace.com/self-storage/faq/what-happens-if-my-auto-pay-fails/. Email opt-out FAQ: https://www.extraspace.com/self-storage/faq/how-can-i-change-my-email-options/. Still no public article on cancelling Easy Pay or viewing past statements. Review 2 (2026-09-30): storageexpress.com redirects to extraspace.com/storage-express/ and lifestorage.com to extraspace.com (both re-checked). [Link backfill 2026-09-30] Backfill attempt 2026-09-30: extraspace.com returned HTTP 403 to every fetch this session, so no new links were added as verified. Search-result titles (not fetched) show official FAQ pages 'What Happens If My Automatic Payment Fails?' (https://www.extraspace.com/self-storage/faq/what-happens-if-my-auto-pay-fails/) and 'Can I enter my storage unit if my balance is past due?' (https://www.extraspace.com/self-storage/faq/can-i-enter-my-storage-unit-if-my-balance-is-past-due/, URL from the site's storage-101 sitemap). To stop Easy Pay, use My Account > Pay Online > Easy Pay or call the facility / 1-888-609-8483. [Reviewer 2026-09-30] Live site still 403s automated fetches, so the current-customer FAQ was read from the Internet Archive snapshot of 2026-05-11. It confirms: pay online in My Account, by phone 888-STORAGE, by mail, or in store (cash, check, card); Easy Pay set up in My Account > Pay Online > Easy Pay tab or by a facility form; late fees are charged 5 days after a missed due date and cannot be waived, gate access is removed and the unit over-locked until paid in full; failed autopay is retried for 3 days and must be fixed within 5 days of the due date to avoid a late fee; auction timing follows state law after written notice, sale proceeds are applied to the balance (surplus refunded by check, shortfall sent to collections). Late-payment FAQ: https://www.extraspace.com/self-storage/faq/what-happens-if-im-late-making-a-payment/ ; auction FAQ: https://www.extraspace.com/self-storage/faq/how-long-after-my-account-is-delinquent-will-my-belongings-go-to-auction/ ; move-out notice FAQ: https://www.extraspace.com/self-storage/faq/how-much-notice-is-required-to-move-out/. No public Easy Pay cancel or statement-history article exists; stop Easy Pay in My Account or call 888-609-8483. The ezstorage.com domain now redirects to publicstorage.com (see Public Storage).",
+   "notes": "Current-customer FAQ page covers payment options (online via My Account, phone 888-STORAGE, mail, in-store cash/check/card), Easy Pay automatic payments (My Account > Pay Online > Easy Pay tab, or Easy Pay form at the facility), late fees (charged 5 days after missed due date), autopay failure notifications. Contact page: https://www.extraspace.com/help/contact/. Use My Account or call. Replaced anchor links with the individual FAQ articles (payment options: store, online, phone 888-STORAGE, mailed check; Easy Pay setup via My Account > Pay Online > Easy Pay tab or facility form; My Account portal: one-time payments, autopay enrollment). Autopay failure FAQ: https://www.extraspace.com/self-storage/faq/what-happens-if-my-auto-pay-fails/. Email opt-out FAQ: https://www.extraspace.com/self-storage/faq/how-can-i-change-my-email-options/. Still no public article on cancelling Easy Pay or viewing past statements. Storageexpress.com redirects to extraspace.com/storage-express/ and lifestorage.com to extraspace.com. Extra Space FAQ pages: What Happens If My Automatic Payment Fails? (https://www.extraspace.com/self-storage/faq/what-happens-if-my-auto-pay-fails/) and Can I enter my storage unit if my balance is past due? To stop Easy Pay, use My Account > Pay Online > Easy Pay or call the facility / 1-888-609-8483. Pay online in My Account, by phone 888-STORAGE, by mail, or in store (cash, check, card); Easy Pay set up in My Account > Pay Online > Easy Pay tab or by a facility form; late fees are charged 5 days after a missed due date and cannot be waived, gate access is removed and the unit over-locked until paid in full; failed autopay is retried for 3 days and must be fixed within 5 days of the due date to avoid a late fee; auction timing follows state law after written notice, sale proceeds are applied to the balance (surplus refunded by check, shortfall sent to collections). Late-payment FAQ: https://www.extraspace.com/self-storage/faq/what-happens-if-im-late-making-a-payment/; auction FAQ: https://www.extraspace.com/self-storage/faq/how-long-after-my-account-is-delinquent-will-my-belongings-go-to-auction/; move-out notice FAQ: https://www.extraspace.com/self-storage/faq/how-much-notice-is-required-to-move-out/. No public Easy Pay cancel or statement-history article exists; stop Easy Pay in My Account or call 888-609-8483. The ezstorage.com domain now redirects to publicstorage.com (see Public Storage).",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2591,7 +2444,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "HQ 4307 Vineland Road, Suite H-17-19, Orlando, FL 32811. Payments made to local funeral home. Review 2026-09-30: moved to roster tier because no public view/pay/autopay/history page exists or could be found; payments go through the local location or the channels above. [Link backfill 2026-09-30] Re-checked 2026-09-30: foundationpartners.com has no consumer pay link; brands are listed only in news posts. Stay roster.",
+   "notes": "Payments made to local funeral home. Payments go through the local location or the channels above.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2625,7 +2478,7 @@
    "payment_processor": "Online bank payment via epayment.epymtservice.com (no fee); credit card via Simply Easier Payments (SEP); automatic bank draft (no fee)",
    "app": null,
    "senior_programs": null,
-   "notes": "Preneed Portal Login is primarily for agents/funeral homes; policyholders call the preneed line. No public payment how-to page found. Review 2026-09-30: Policyholder Support Center (Preneed tab) has a Make a Payment section: online bill pay from checking/savings with no fee (https://epayment.epymtservice.com/epay.jhtml?billerGroupId=FTF&billerId=FTF&productCode=EPayment&disallowLogin=N), fee-free automatic bank draft set up by calling (800) 331-8853, coupon book/check by mail, and one-time or early pay-off card payments through Simply Easier Payments. Cancelling a bank draft is not described; call (800) 331-8853. Global Atlantic has a preneed partnership with SCI/Dignity Memorial (newsroom), so many Dignity Memorial pre-need plans are Forethought policies. [Link backfill 2026-09-30] Help backfill 2026-09-30: Support Center Preneed tab - automatic bank draft can be started any time during the premium-paying period if the policy is current (call 800-331-8853 or send the Bank Authorization Form https://www.globalatlantic.com/content/dam/global-atlantic/corporate-agnostic/pdfs/15036-eft-authorizatiion-direct-pmts.pdf with a voided check; the form asks for advance notice to the Home Office for changes - call the same number to stop a draft). Coupon book/check payments to the P.O. Box above. Early pay-off quotes by phone, then pay via SEP. State reinstatement forms for lapsed policies are on the same page.",
+   "notes": "Preneed Portal Login is primarily for agents/funeral homes; policyholders call the preneed line. Policyholder Support Center (Preneed tab) has a Make a Payment section: online bill pay from checking/savings with no fee (https://epayment.epymtservice.com/epay.jhtml?billerGroupId=FTF&billerId=FTF&productCode=EPayment&disallowLogin=N), fee-free automatic bank draft set up by calling (800) 331-8853, coupon book/check by mail, and one-time or early pay-off card payments through Simply Easier Payments. Cancelling a bank draft is not described; call (800) 331-8853. Global Atlantic has a preneed partnership with SCI/Dignity Memorial (newsroom), so many Dignity Memorial pre-need plans are Forethought policies. Support Center Preneed tab - automatic bank draft can be started any time during the premium-paying period if the policy is current (call 800-331-8853 or send the Bank Authorization Form https://www.globalatlantic.com/content/dam/global-atlantic/corporate-agnostic/pdfs/15036-eft-authorizatiion-direct-pmts.pdf with a voided check; the form asks for advance notice to the Home Office for changes - call the same number to stop a draft). Coupon book/check payments to the P.O. Box above. Early pay-off quotes by phone, then pay via SEP. State reinstatement forms for lapsed policies are on the same page.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2659,7 +2512,7 @@
    "payment_processor": "StoreEase tenant portal (portal.storeease.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "Homepage 'My Account' links to a StoreEase billing portal (verification step before billing). No public autopay/history how-to found. [Reviewer 2026-09-30] snapboxselfstorage.com now redirects to gostoreit.com, so former Snapbox Self Storage tenants should use Go Store It's StoreEase billing portal.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2693,7 +2546,7 @@
    "payment_processor": "Simply Easier Payments (card/eCheck, one-time or recurring; card fees $4 up to $300 then 3%); in-house fee-free ACH automatic payment plan (form L100)",
    "app": null,
    "senior_programs": null,
-   "notes": "Policy Owner Payment Options page: online card/eCheck via Simply Easier Payments (https://lookup.simply-easier-payments.com/PaymentLookup/Provider/homesteaders/PaymentLookup.faces); fee-free automatic ACH plan set up with the 'Request for Automatic Payment Plan' form (L100); payments NOT accepted by phone; customer service can help set up or change automatic payments. FAQs for both on the same page. [Link backfill 2026-09-30] Help backfill 2026-09-30 (Policy Owner Payment Options page): fee-free automatic ACH plan via 'Request for Automatic Payment Plan' form L100 (https://www.homesteaderslife.com/hubfs/master-website-assets-2025/03-for-policy-owners/03-a-policy-owner-forms/forms-for-hub-db/03-request-for-automatic-payment-plan/Request%20for%20Automatic%20Payment%20Plan%20L100%20Rev%2012-2022%20English%20Fillable.pdf) plus voided check; recurring card payments in Simply Easier Payments are cancelled via 'Modify My Recurring Payment Option' (same page explains); billing notices keep coming while on recurring pay; card/ACH payments not accepted on policies already on the automatic plan or on lapsed policies; early payoff available (call 800-477-3633); lapsed policies use the Application for Reinstatement (form L156, linked on the page). Policy owner forms: https://www.homesteaderslife.com/policy-owner-forms.",
+   "notes": "Policy Owner Payment Options page: online card/eCheck via Simply Easier Payments (https://lookup.simply-easier-payments.com/PaymentLookup/Provider/homesteaders/PaymentLookup.faces); fee-free automatic ACH plan set up with the 'Request for Automatic Payment Plan' form (L100); payments NOT accepted by phone; customer service can help set up or change automatic payments. Fee-free automatic ACH plan via 'Request for Automatic Payment Plan' form L100 (https://www.homesteaderslife.com/hubfs/master-website-assets-2025/03-for-policy-owners/03-a-policy-owner-forms/forms-for-hub-db/03-request-for-automatic-payment-plan/Request%20for%20Automatic%20Payment%20Plan%20L100%20Rev%2012-2022%20English%20Fillable.pdf) plus voided check; recurring card payments in Simply Easier Payments are cancelled via 'Modify My Recurring Payment Option' (same page explains); billing notices keep coming while on recurring pay; card/ACH payments not accepted on policies already on the automatic plan or on lapsed policies; early payoff available (call 800-477-3633); lapsed policies use the Application for Reinstatement (form L156, linked on the page). Policy owner forms: https://www.homesteaderslife.com/policy-owner-forms.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2727,7 +2580,7 @@
    "payment_processor": "in-house (no online premium payment)",
    "app": null,
    "senior_programs": "None published.",
-   "notes": "FAQ, Payment section: online premium payment is not offered; call Premium Accounting at ext. 4127. Bank or credit-card draft details are changed with a form linked from the FAQ or by calling ext. 4127. Changing payment method or frequency (including stopping a draft) goes through Premium Accounting or Customer Service at ext. 5600, and may change the premium. Premium notices go out automatically; a second notice is sent if payment is not received 15 days after the due date. Investors Heritage administers pre-need policies issued by Franklin American Life Insurance Company, which is not Franklin Life/AIG. Client Portal: client.ihlic.com. Claims: ext. 4126. Email ihlic@ihlic.com.",
+   "notes": "FAQ, Payment section: online premium payment is not offered; call Premium Accounting at ext. Bank or credit-card draft details are changed with a form from the FAQ or by calling the office. Changing payment method or frequency (including stopping a draft) goes through Premium Accounting or Customer Service at ext. 5600, and may change the premium. Premium notices go out automatically; a second notice is sent if payment is not received 15 days after the due date. Investors Heritage administers pre-need policies issued by Franklin American Life Insurance Company, which is not Franklin Life/AIG. Client Portal: client.ihlic.com. Email ihlic@ihlic.com.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2761,7 +2614,7 @@
    "payment_processor": "SiteLink (Storable) tenant portal (site footer links SiteLink privacy/terms; Pay Bill page offers guest pay or account login)",
    "app": null,
    "senior_programs": null,
-   "notes": "Pay Bill page (fetched 2026-09-30) offers 'Pay as guest' or login/registration. FAQ: pay 24/7 online through the tenant portal, by phone, by mail or in person, with automatic monthly card payments available. No public autopay-cancel, statement or late-fee page; the site has an Auctions page for lien sales.",
+   "notes": "Pay Bill page  offers 'Pay as guest' or login/registration. FAQ: pay 24/7 online through the tenant portal, by phone, by mail or in person, with automatic monthly card payments available. No public autopay-cancel, statement or late-fee page; the site has an Auctions page for lien sales.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2795,7 +2648,7 @@
    "payment_processor": "SCI-hosted online bill pay portal (pay.nationalcremation.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "Live site returns Cloudflare 403. The Contact Us page was read from an Internet Archive snapshot of 2026-09-21, so verified=false. Its 'Bill Pay', 'My Account' and 'Manage my Account' links all go to pay.nationalcremation.com (SCI bill-pay platform). Phone 855.4MY.WISH (855-469-9474). No autopay or statement how-to is published.",
+   "notes": "Its 'Bill Pay', 'My Account' and 'Manage my Account' links all go to pay.nationalcremation.com (SCI bill-pay platform). No autopay or statement how-to is published.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -2829,7 +2682,7 @@
    "payment_processor": "NGL iPay (payment.nglic.com/iPay) - card or checking/savings, billed premiums only; no online recurring setup",
    "app": null,
    "senior_programs": null,
-   "notes": "Site returned bot checkpoint (HTTP 429) this session; not verified. [Link backfill 2026-09-30] nglic.com returned HTTP 429 (Vercel bot checkpoint) to live fetches; content read from the Internet Archive snapshot of 2026-06-10, so verified=false. Make A Payment page: pay from Visa/Discover/Mastercard, checking or savings with the policy number from the upper right of the billing statement; payment info is not stored; one policy per payment; recurring payments are NOT available to set up online; to pay off a policy call 800-988-0826. [Reviewer 2026-09-30] The NGL iPay payment portal (https://payment.nglic.com/iPay/Customer?code=NGL) was fetched live and is reachable. You search by policy number and the insured's last name. Only billed premium payments can be made there; loan payments must be mailed as a check or money order. The nglic.com pages still return a Vercel 429 bot check. The Make a Payment information page (https://nglic.com/make-a-payment) and the Help page (https://nglic.com/help) were read from Internet Archive snapshots. The Help page lists preneed policyholder service at 800-988-0826 and PNService@nglic.com. It gives a general mailing address of 123 Town Square Place PMB 749, Jersey City, NJ 07310; this is not stated to be a payment address, so mail_payment_address is left null. NGL Medicare Supplement and long-term care have separate administrators (Medicare Supplement 877-888-1511; LTC 888-505-2332), and those products are covered in the insurance categories. verified=true now reflects the live iPay portal.",
+   "notes": "Make A Payment page: pay from Visa/Discover/Mastercard, checking or savings with the policy number from the upper right of the billing statement; payment info is not stored; one policy per payment; recurring payments are NOT available to set up online; to pay off a policy call 800-988-0826. You search by policy number and the insured's last name. Only billed premium payments can be made there; loan payments must be mailed as a check or money order. The Make a Payment information page (https://nglic.com/make-a-payment) and the Help page (https://nglic.com/help) were read from Internet Archive snapshots. The Help page lists preneed policyholder service at 800-988-0826 and PNService@nglic.com. It gives a general mailing address of 123 Town Square Place PMB 749, Jersey City, NJ 07310. Medicare Supplement and long-term care have separate administrators (Medicare Supplement 877-888-1511; LTC 888-505-2332).",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2863,7 +2716,7 @@
    "payment_processor": "SCI-hosted online bill pay / 'My Account' portal (pay.neptunesociety.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "Live site returns Cloudflare 403. The homepage (2026-07-25), FAQ and Contact Us pages were read from Internet Archive snapshots, so verified=false. The header 'My Account' links to pay.neptunesociety.com, the SCI bill-pay portal (same platform as Dignity Memorial). The Contact Us form has an 'I want to update my account' option that takes a contract number. The FAQ notes that pre-need payments are placed in trust or insurance as each state requires. No autopay, statement or hardship how-to is published; call 1-800-637-8863.",
+   "notes": "'My Account' goes to pay.neptunesociety.com, the SCI bill-pay portal (same platform as Dignity Memorial). The Contact Us form has an 'I want to update my account' option that takes a contract number. The FAQ notes that pre-need payments are placed in trust or insurance as each state requires. No autopay, statement or hardship how-to is published; call 1-800-637-8863.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -2897,7 +2750,7 @@
    "payment_processor": "NorthStar Customer Portal (cpp.nsmg.com/chaseportal, per-location SA code) with Quick Pay",
    "app": null,
    "senior_programs": null,
-   "notes": "Location directory https://www.nsmg.com/locations/; payments go to the local location. No corporate online payment page found. Review 2026-09-30: moved to roster tier because no public view/pay/autopay/history page exists or could be found; payments go through the local location or the channels above. [Link backfill 2026-09-30] NorthStar local sites (e.g., Chapel of the Chimes Oakland -> SA=0810, Mountain View Tacoma -> SA=0511, Smart Cremation -> SA=8301) link Pay Online to the NorthStar Customer Portal at cpp.nsmg.com/chaseportal?SA=<location code>. Portal (fetched 2026-09-30): register/sign in to view and pay, or Quick Pay one-time without signing in; customers with a recurring payment arrangement are asked to email contract@nsmg.com once the final payment is made so charges stop; login help (888) 979-2878. Many NorthStar location sites (Restland, Evergreen Tucson, Skylawn, Memorial Park Memphis, Royal Palm, memorialplan.net) were behind Cloudflare and were not read; use the Pay Online link on your own location site.",
+   "notes": "Location directory https://www.nsmg.com/locations/; payments go to the local location. Payments go through the local location or the channels above. NorthStar local sites (e.g., Chapel of the Chimes Oakland, Mountain View Tacoma, Smart Cremation) link Pay Online to the NorthStar Customer Portal at cpp.nsmg.com/chaseportal?SA=<location code>. Portal: register/sign in to view and pay, or Quick Pay one-time without signing in; customers with a recurring payment arrangement are asked to email contract@nsmg.com once the final payment is made so charges stop; login help (888) 979-2878. Use the Pay Online link on your own location's site.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2931,7 +2784,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Operates under local brand names; pay the local business named on the contract. No corporate online bill-pay page found. Review 2026-09-30: moved to roster tier because no public view/pay/autopay/history page exists or could be found; payments go through the local location or the channels above. [Link backfill 2026-09-30] Re-checked 2026-09-30: parklawncorp.com has only corporate pages (17 U.S. states, 2 Canadian provinces); no consumer pay link or brand-site list. Stay roster.",
+   "notes": "Operates under local brand names; pay the local business named on the contract. Payments go through the local location or the channels above.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -2965,7 +2818,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "FAQ page (fetched 2026-09-30) links the customer account at my.pods.com (auth.pods.com/login) and cancellation policy at https://www.pods.com/cancel; it does not describe monthly billing, autopay or invoices publicly - customers manage payments in the account or by phone. Roster tier because no public pay/autopay how-to page was found.",
+   "notes": "Customer account at my.pods.com (auth.pods.com/login); cancellation policy at https://www.pods.com/cancel; manage payments in the account or by phone.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3033,7 +2886,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Site behind Cloudflare challenge this session; not read. Review 2 (2026-09-30): sentryselfstorage.com now redirects to primestorage.com, so former Sentry Self Storage tenants pay through Prime Storage.",
+   "notes": "Sentryselfstorage.com now redirects to primestorage.com, so former Sentry Self Storage tenants pay through Prime Storage.",
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -3067,7 +2920,7 @@
    "payment_processor": "in-house (online account, app, kiosk, facility office)",
    "app": null,
    "senior_programs": "None specific. Help center has 'Edit Authorized Users' and 'Transfer Account' articles useful for caregivers/estates.",
-   "notes": "Help center 'Payments' section has separate articles: Make a Payment, Manage AutoPay (setup and cancel on same page), Payment History, View Balance, Help with AutoPay (https://help.publicstorage.com/manage-your-account/payments/z-help-with-autopay), Help with Payments (payment failed). Payments can be made in the Public Storage app, online account, kiosk or facility. Authorized users: https://help.publicstorage.com/manage-your-account/account-management/edit-authorized-users. Quick Pay bill-pay login at /simplified/bill-pay/login. [Link backfill 2026-09-30] Help-center backfill 2026-09-30: Make a Payment article gives pay-by-phone 866-444-4747 (small fee), ACH/debit/Visa/MC/Discover/Amex accepted, kiosk or office in person. Manage AutoPay article: app or online account > Payments > 'Turn On AutoPay'/'Manage AutoPay' (change payment method there); the article does not spell out how to turn AutoPay off, so to stop AutoPay use the same Manage AutoPay screen or call 800-742-8048. Payment History article: Payments > Payment History (use this as the receipt/rent ledger). Lien/auction policy: https://help.publicstorage.com/rent-a-unit/rental-faqs/zzzzz-Storage_Auctions_and_the_Lien_Process (multiple contact attempts by mail/email, then state-law lien sale online or in person; keep contact info current; call 800-742-8048 if you receive an auction notice). Move-out: https://help.publicstorage.com/rent-a-unit/rental-faqs/zzz-Vacating_Your_Storage_Unit_(Moving_Out) - give at least 7 days notice; moving out on/after the due date is charged the full month (no proration). Rent increases: https://help.publicstorage.com/rent-a-unit/rental-faqs/zzzz-Understanding_Pricing_and_Rent_Increases. Failed AutoPay troubleshooting: https://help.publicstorage.com/troubleshooting/technical-issues/autopay-issue. No paperless or hardship program page published. [Reviewer 2026-09-30] ezstorage.com and simplyss.com both redirect to publicstorage.com (re-checked); former ezStorage and Simply Self Storage tenants pay through Public Storage.",
+   "notes": "Help center 'Payments' section has separate articles: Make a Payment, Manage AutoPay (setup and cancel on same page), Payment History, View Balance, Help with AutoPay (https://help.publicstorage.com/manage-your-account/payments/z-help-with-autopay), Help with Payments (payment failed). Payments can be made in the Public Storage app, online account, kiosk or facility. Authorized users: https://help.publicstorage.com/manage-your-account/account-management/edit-authorized-users. Quick Pay bill-pay login at /simplified/bill-pay/login. Make a Payment article gives pay-by-phone 866-444-4747 (small fee), ACH/debit/Visa/MC/Discover/Amex accepted, kiosk or office in person. Manage AutoPay article: app or online account > Payments > 'Turn On AutoPay'/'Manage AutoPay' (change payment method there); the article does not spell out how to turn AutoPay off, so to stop AutoPay use the same Manage AutoPay screen or call 800-742-8048. Payment History article: Payments > Payment History (use this as the receipt/rent ledger). Lien/auction policy: https://help.publicstorage.com/rent-a-unit/rental-faqs/zzzzz-Storage_Auctions_and_the_Lien_Process (multiple contact attempts by mail/email, then state-law lien sale online or in person; keep contact info current; call 800-742-8048 if you receive an auction notice). Move-out: https://help.publicstorage.com/rent-a-unit/rental-faqs/zzz-Vacating_Your_Storage_Unit_(Moving_Out) - give at least 7 days notice; moving out on/after the due date is charged the full month (no proration). Rent increases: https://help.publicstorage.com/rent-a-unit/rental-faqs/zzzz-Understanding_Pricing_and_Rent_Increases. Failed AutoPay troubleshooting: https://help.publicstorage.com/troubleshooting/technical-issues/autopay-issue. No paperless or hardship program page published. Former ezStorage and Simply Self Storage tenants pay through Public Storage.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3135,7 +2988,7 @@
    "payment_processor": "Security National customer portal (customerportal.securitynational.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "HQ 433 W. Ascension Way, Salt Lake City, UT 84123. Review 2026-09-30: Security National Life site (securitynationallife.com) links \"Make a Payment\" to customerportal.securitynational.com and \"Policy Holder Login\" to customers.securitynational.com. Corporate mailing address P.O. Box 57220, Salt Lake City, UT 84157; home service office (800) 826-6803, P.O. Box 320609, Flowood, MS 39232. SNL mortuaries/cemeteries (Memorial Mortuaries & Cemeteries, memorialutah.com, 801-262-4631) link online payments to Payment Service Network (paymentservicenetwork.com). Preneed plans and final expense policies are sold through this insurer. Autopay/statement how-to not published. [Link backfill 2026-09-30] Help backfill 2026-09-30: Download Forms page has 'Change of Name, Address or Mode of Payment' form (https://securitynationallife.com/wp-content/uploads/2020/04/NameChangeForm-GM-1-25-16-fillable2.pdf) used to change how premiums are paid, and a Reinstatement Form for lapsed policies. Make a Payment portal (customerportal.securitynational.com) requires sign-in (Auth0). [Review 3 2026-09-30] The Download Forms page lists the EFT Authorization Form and Credit Card Authorization Form (to set up a recurring draft), plus Change of Name, Address or Mode of Payment (to change or stop it). The customer portal redirects to an auth0 login, as expected.",
+   "notes": "Ascension Way, Salt Lake City, UT 84123. Security National Life: 'Make a Payment' at customerportal.securitynational.com and 'Policy Holder Login' at customers.securitynational.com. Corporate mailing address P.O. Box 57220, Salt Lake City, UT 84157; home service office (800) 826-6803, P.O. Box 320609, Flowood, MS 39232. Memorial Mortuaries & Cemeteries (memorialutah.com, 801-262-4631) take online payments through Payment Service Network (paymentservicenetwork.com). Preneed plans and final expense policies are sold through this insurer. Download Forms page has 'Change of Name, Address or Mode of Payment' form (https://securitynationallife.com/wp-content/uploads/2020/04/NameChangeForm-GM-1-25-16-fillable2.pdf) used to change how premiums are paid, and a Reinstatement Form for lapsed policies. Make a Payment portal (customerportal.securitynational.com) requires sign-in (Auth0). The Download Forms page lists the EFT Authorization Form and Credit Card Authorization Form (to set up a recurring draft), plus Change of Name, Address or Mode of Payment (to change or stop it). The customer portal redirects to an auth0 login, as expected.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3203,7 +3056,7 @@
    "payment_processor": "in-house",
    "app": null,
    "senior_programs": "None specific.",
-   "notes": "Site nav has Make a Payment and Payment History (account area). Autopay not described on public FAQ; manage in My Account or call. Contact: https://smartstopselfstorage.com/support/contact-us. Review 2026-09-30: FAQ says automatic payments are set up with an automatic payment form from the property manager (no online self-enrollment described); cancellation presumably also via the property manager (not stated). Monthly emailed invoices available on request from the store manager. Refund & cancellation policy: https://smartstopselfstorage.com/refund-and-cancellation-policy. Review 2 (2026-09-30): FAQ re-fetched - to cancel automatic payments contact the property manager (same FAQ page); payment history under the Payment History tab in My Account; phone payments carry a $10 fee. [Link backfill 2026-09-30] Help backfill 2026-09-30: Mobile App page (https://smartstopselfstorage.com/support/mobile-app) - app dashboard shows units and lets you pay ('Payments') and enroll in SmartPay automatic payments; app help 833-374-0597 (Mon-Sun 5am-10pm PT). FAQ: automatic payments can also be set up with an automatic-payment form from the property manager; monthly emailed invoices are available on request from the store manager (no paperless toggle); 10 days written or verbal notice required to move out. Late/lien policy (FAQ): grace period varies by state lien law; after it a late fee is charged that 'cannot be waived', partial payments and payment plans are NOT accepted, delinquent units are over-locked and gate code revoked, and after state-law notices units go to online auction (https://smartstopselfstorage.com/self-storage-auctions); surplus sale proceeds are mailed to the tenant, shortfalls go to collections. Refund/cancellation questions: 888-977-8672 (https://smartstopselfstorage.com/refund-and-cancellation-policy). No hardship program.",
+   "notes": "Site nav has Make a Payment and Payment History (account area). Autopay not described on public FAQ; manage in My Account or call. Contact: https://smartstopselfstorage.com/support/contact-us. Automatic payments are set up with an automatic payment form from the property manager; ask the property manager how to cancel. Monthly emailed invoices available on request from the store manager. Refund & cancellation policy: https://smartstopselfstorage.com/refund-and-cancellation-policy. Payment history under the Payment History tab in My Account; phone payments carry a $10 fee. Mobile App page (https://smartstopselfstorage.com/support/mobile-app) - app dashboard shows units and lets you pay ('Payments') and enroll in SmartPay automatic payments; app help 833-374-0597 (Mon-Sun 5am-10pm PT). FAQ: automatic payments can also be set up with an automatic-payment form from the property manager; monthly emailed invoices are available on request from the store manager (no paperless toggle); 10 days written or verbal notice required to move out. Late/lien policy (FAQ): grace period varies by state lien law; after it a late fee is charged that 'cannot be waived', partial payments and payment plans are NOT accepted, delinquent units are over-locked and gate code revoked, and after state-law notices units go to online auction (https://smartstopselfstorage.com/self-storage-auctions); surplus sale proceeds are mailed to the tenant, shortfalls go to collections. Refund/cancellation questions: 888-977-8672 (https://smartstopselfstorage.com/refund-and-cancellation-policy). No hardship program.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3237,7 +3090,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": " [Reviewer 2026-09-30] Site has a tenant Login page (/login/) and an FAQ page. The FAQ content is script-rendered and could not be read, so the entry stays at roster tier.",
+   "notes": "Site has a tenant Login page (/login/) and an FAQ page.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3271,7 +3124,7 @@
    "payment_processor": "in-house SROA online account (My Account > Pay Your Bill)",
    "app": null,
    "senior_programs": null,
-   "notes": "FAQ (https://www.sroa.com/faq, fetched 2026-09-30): each tenant gets a monthly invoice alert with a personal payment link, or can pay in the online account at sroa.com/login (redirects to /my-account/login, which has 'Pay Your Bill' at /my-account/billing). Payments are due on the 1st. Auto Pay is managed in the online account; no separate cancel how-to is published. Partial payments are NOT accepted, and payment can be made by cash, money order or debit/credit card. The Storage Specialist team can send a payment link. storamerica.com redirects to sroa.com.",
+   "notes": "FAQ: each tenant gets a monthly invoice alert with a personal payment link, or can pay in the online account at sroa.com/login (redirects to /my-account/login, which has 'Pay Your Bill' at /my-account/billing). Payments are due on the 1st. Auto Pay is managed in the online account; no separate cancel how-to is published. Partial payments are NOT accepted, and payment can be made by cash, money order or debit/credit card. The Storage Specialist team can send a payment link. storamerica.com redirects to sroa.com.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3305,7 +3158,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Pay Bill quick-pay link on homepage. [Link backfill 2026-09-30] Help backfill 2026-09-30: FAQ (https://www.storagesense.com/self-storage-faq/) says lien-sale auctions are held online at Lockerfox.com or StorageAuctions.com after the state lien procedure; month-to-month leases. No public autopay, history or late-fee how-to. Operated by Storage Asset Management.",
+   "notes": "FAQ (https://www.storagesense.com/self-storage-faq/) says lien-sale auctions are held online at Lockerfox.com or StorageAuctions.com after the state lien procedure; month-to-month leases. No public autopay, history or late-fee how-to. Operated by Storage Asset Management.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3339,7 +3192,7 @@
    "payment_processor": "in-house tenant portal (my-account.storage-mart.com)",
    "app": null,
    "senior_programs": "None specific.",
-   "notes": "Pay My Bill and Tenant Portal links on homepage point to my-account.storage-mart.com; autopay details not on public FAQ. Review 2026-09-30: Billing FAQ covers paying online (My Account > Payment), by phone with customer service, or in person, and autopay enrollment (My Units). Your Account FAQ covers viewing/printing invoices and receipts (View Invoice; past invoices under My Units) and turning autopay on or off in My Units, with the onsite manager, or 24/7 by phone with customer service. Rent due on the 1st. Review 2 (2026-09-30): Billing FAQ re-fetched; rent due on the 1st with no grace period; cards accepted Visa/Mastercard/Discover/Amex. [Link backfill 2026-09-30] Help backfill 2026-09-30: Your Account FAQ says invoices and receipts are viewed/printed in My Account ('View Invoice'; past invoices and receipts under 'My Units') and AutoPay is turned on OR OFF under My Account > My Units, or by the onsite manager or 24/7 phone customer service. Billing FAQ: rent due the 1st of every month with NO grace period; partial payments never accepted; late fees per lease; 15 calendar days notice required to move out; auctions are a last resort after multiple lien-law notices. 'What if I can't pay my bill?' - contact the facility manager as early as possible to make a plan (only hardship statement published).",
+   "notes": "Autopay details not on public FAQ. Billing FAQ covers paying online (My Account > Payment), by phone with customer service, or in person, and autopay enrollment (My Units). Your Account FAQ covers viewing/printing invoices and receipts (View Invoice; past invoices under My Units) and turning autopay on or off in My Units, with the onsite manager, or 24/7 by phone with customer service. Rent due on the 1st. Rent due on the 1st with no grace period; cards accepted Visa/Mastercard/Discover/Amex. Your Account FAQ says invoices and receipts are viewed/printed in My Account ('View Invoice'; past invoices and receipts under 'My Units') and AutoPay is turned on OR OFF under My Account > My Units, or by the onsite manager or 24/7 phone customer service. Billing FAQ: rent due the 1st of every month with NO grace period; partial payments never accepted; late fees per lease; 15 calendar days notice required to move out; auctions are a last resort after multiple lien-law notices. 'What if I can't pay my bill?' - contact the facility manager as early as possible to make a plan (only hardship statement published).",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3373,7 +3226,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "HQ 330 E. Crown Point Road, Winter Garden, FL 34787. Site offers 'RapidPay' and account login. Review 2026-09-30: moved to roster tier because no public view/pay/autopay/history page exists or could be found; payments go through the local location or the channels above.",
+   "notes": "Crown Point Road, Winter Garden, FL 34787. Site offers 'RapidPay' and account login. Payments go through the local location or the channels above.",
    "verified": true,
    "last_checked": "2026-09-29"
   },
@@ -3407,7 +3260,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "FAQ page has 'How can I make a payment?', 'Can I pay my storage bill online?' and 'Do you offer automatic payments?' entries. [Link backfill 2026-09-30] Help backfill 2026-09-30 (FAQ JSON-LD on https://www.storquest.com/faqs): pay online, in person or by mail; autopay (credit card) is set up through the local StorQuest manager; missing a payment brings a state-specific late fee per the lease; rent due on the move-in anniversary; written notice at least 7 days before moving out; rent is NOT prorated or refunded at move-out. [Reviewer 2026-09-30] The homepage also lists a 24/7 line, (800) 784-9176.",
+   "notes": "Pay online, in person or by mail; autopay (credit card) is set up through the local StorQuest manager; missing a payment brings a state-specific late fee per the lease; rent is due on the move-in anniversary; written notice is required at least 7 days before moving out; rent is NOT prorated or refunded at move-out.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3475,7 +3328,7 @@
    "payment_processor": "SCI-hosted online bill pay / 'My Account' portal (pay.tridentsociety.com)",
    "app": null,
    "senior_programs": null,
-   "notes": "Live site returns Cloudflare 403. The Contact Us page was read from an Internet Archive snapshot of 2026-09-20, so verified=false. 'My Account' links to pay.tridentsociety.com (SCI bill-pay platform). The account-update form includes 'Need to change payment information (requires call back)', so changes to card or bank autopay are made by phone callback, not self-service.",
+   "notes": "Pay your bill at pay.tridentsociety.com. The account-update form includes 'Need to change payment information (requires call back)', so changes to card or bank autopay are made by phone callback, not self-service.",
    "verified": false,
    "last_checked": "2026-09-30"
   },
@@ -3509,7 +3362,7 @@
    "payment_processor": "in-house TruStage My Account / guest pay; the policyholder page links Make a payment to preneedpay.com (not reachable this session)",
    "app": null,
    "senior_programs": "None specific. Policy forms allow releasing policy information to a designated person and changing the designated funeral home.",
-   "notes": "American Memorial Life (AML) pre-need policies, sold through funeral homes and formerly branded Assurant Preneed, are now serviced by TruStage, which names AML as one of its issuing companies. The Funeral Preplanning policyholder page has Payment Options (Make a payment), claims and forms (owner, beneficiary and funeral-home changes), email psdocuments@trustage.com and fax 605-719-0601. Its Make a payment button links to http://www.preneedpay.com, which did not resolve this session; TruStage guest pay is https://my.trustage.com/my-account/guest-pay. The general Payment Information FAQ covers: in My account > Make a payment > Payment Overview, use Turn On under Automatic Payments to start; use Manage Payment Plan to change the draft day or stop automatic deductions; a one-time payment replaces the next scheduled draft; no paper bill is mailed while on automatic payments; paying the minimum on an inactive policy reinstates coverage. That FAQ is TruStage-wide and does not say every pre-need policy is supported online; it says to call if an option is missing. OUTAGE: on 2026-09-30, after a cybersecurity attack, TruStage says online one-time payments are unavailable (guest pay redirects to /outage/individual/payments), bills cannot be mailed, and customers will not lose coverage for being unable to pay during the disruption. Mail payments with the policy number on the check. The outage page lists no AML or pre-need mailing address, so call 800-533-2220 for it.",
+   "notes": "American Memorial Life (AML) pre-need policies, sold through funeral homes and formerly branded Assurant Preneed, are now serviced by TruStage, which names AML as one of its issuing companies. The Funeral Preplanning policyholder page has Payment Options (Make a payment), claims and forms (owner, beneficiary and funeral-home changes), email psdocuments@trustage.com and fax 605-719-0601. TruStage guest pay is https://my.trustage.com/my-account/guest-pay. The general Payment Information FAQ covers: in My account > Make a payment > Payment Overview, use Turn On under Automatic Payments to start; use Manage Payment Plan to change the draft day or stop automatic deductions; a one-time payment replaces the next scheduled draft; no paper bill is mailed while on automatic payments; paying the minimum on an inactive policy reinstates coverage. The FAQ does not say every pre-need policy is supported online; call if an option is missing. Mail payments with the policy number on the check. The outage page lists no AML or pre-need mailing address, so call 800-533-2220 for it.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3543,7 +3396,7 @@
    "payment_processor": "in-house",
    "app": null,
    "senior_programs": "None specific.",
-   "notes": "'How to Pay Your Storage Unit Rent' article covers online (account > My Rentals/Reservations), app, in-person, phone payments, Manage Auto Pay enrollment, viewing payment receipts, rent reminders and adding authorized-access people. Payments hub for unpaid rental charges/citations: https://www.uhaul.com/Payments/. Self-storage FAQ: https://www.uhaul.com/FrequentlyAskedQuestions/Self-Storage/. Review 2026-09-30: article (updated Feb 19 2026) describes enrolling via My Rentals/Reservations > Manage Auto Pay; it does not explicitly describe unenrolling - autopay_cancel points to the same page because Manage Auto Pay is the same control; confirm with the facility. Review 2 (2026-09-30): article re-fetched; accepts cards, cash, checks and ACH; lists View Payment Receipts as an account feature. [Link backfill 2026-09-30] Help backfill 2026-09-30: Self-Storage FAQ (https://www.uhaul.com/FrequentlyAskedQuestions/Self-Storage/) confirms Manage Auto Pay under My Rentals/Reservations, failed-autopay causes (expired card, insufficient funds), late payment fee that varies by location/region, and rent due on the move-in date each month. No public hardship or paperless page.",
+   "notes": "'How to Pay Your Storage Unit Rent' article covers online (account > My Rentals/Reservations), app, in-person, phone payments, Manage Auto Pay enrollment, viewing payment receipts, rent reminders and adding authorized-access people. Payments hub for unpaid rental charges/citations: https://www.uhaul.com/Payments/. Self-storage FAQ: https://www.uhaul.com/FrequentlyAskedQuestions/Self-Storage/. Article (updated Feb 19 2026) describes enrolling via My Rentals/Reservations > Manage Auto Pay; confirm with the facility. Accepts cards, cash, checks and ACH; lists View Payment Receipts as an account feature. Self-Storage FAQ (https://www.uhaul.com/FrequentlyAskedQuestions/Self-Storage/) confirms Manage Auto Pay under My Rentals/Reservations, failed-autopay causes (expired card, insufficient funds), late payment fee that varies by location/region, and rent due on the move-in date each month. No public hardship or paperless page.",
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3577,7 +3430,7 @@
    "payment_processor": "storEDGE rental center",
    "app": null,
    "senior_programs": null,
-   "notes": "Example of a small operator using storEDGE (Storable) rental-center for online payment; many independent storage facilities use storEDGE, SiteLink (Storable) or Easy Storage Solutions tenant portals linked from their own website. Review 2026-09-30: /pay-my-bill returned HTTP 404; link removed.",
+   "notes": "Many independent storage facilities use storEDGE, SiteLink or Easy Storage Solutions tenant portals linked from their own website.",
    "verified": false,
    "last_checked": "2026-09-29"
   },
@@ -3611,7 +3464,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "No online bill pay found.",
+   "notes": null,
    "verified": true,
    "last_checked": "2026-09-30"
   },
@@ -3645,7 +3498,7 @@
    "payment_processor": null,
    "app": null,
    "senior_programs": null,
-   "notes": "Pre-planning page https://mycatholiccemetery.org/portfolio-items/pre-planning/. No online bill pay found.",
+   "notes": "Pre-planning page https://mycatholiccemetery.org/portfolio-items/pre-planning/.",
    "verified": true,
    "last_checked": "2026-09-30"
   }

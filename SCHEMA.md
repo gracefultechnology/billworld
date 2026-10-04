@@ -1,24 +1,22 @@
 # Biller research schema
 
-Each category file `categories/<group>.json` holds one bill group (electric, gas, water-sewer,
-credit-cards, medicare, …) and is a JSON object:
+Each file `categories/<group>.json` holds one bill group (electric, gas, water-sewer,
+credit-cards, medicare, …):
 
 ```json
 {
   "category": "electric",
-  "description": "what this file covers",
-  "research_files": ["electric-southeast", "link-backfill-electric-mid-atlantic-south-central", "..."],
-  "coverage_notes": "[research-file] how complete it is, rosters checked against, known gaps (one paragraph per research file)",
-  "sources": [{"title": "", "url": "", "why_useful": ""}],
+  "description": "what this group covers",
   "entries": [ ENTRY, ... ]
 }
 ```
 
-The research was gathered in about 120 smaller files (regional electric, link backfills,
-roster backfills, detail upgrades). `finalize.py` merged them into these group files, joining
-duplicate billers (same name, group and service area) and keeping the most complete entry, with
-gaps filled from the others. `research_files` lists the files that fed each group; they remain
-in git history.
+New research goes in a separate file of the same shape and is merged with
+`finalize.py categories,<new_dir> <out_dir>`: entries for the same biller (same name, group and
+service area) are joined, the newer file's values win, and gaps are filled from the older entry.
+A research file may also carry `coverage_notes`, `sources` and `link_corrections`
+(`[{name, field, old}]`, links found to be wrong); the merge applies the corrections and drops
+the rest. `clean_notes.py` then removes research commentary from `notes` and `senior_programs`.
 
 ENTRY:
 
@@ -50,7 +48,7 @@ ENTRY:
   "payment_processor": "Paymentus | Kubra | Invoice Cloud | Doxo | in-house | ...",
   "app": {"ios": "", "android": ""},
   "senior_programs": "any senior/fixed-income discount or third-party notification program",
-  "notes": "",
+  "notes": "practical facts only: how to pay, fees, due dates, tips; no research commentary",
   "verified": true,                   // true only if you fetched the URLs this session and they resolved to the right content
   "last_checked": "2026-09-29"
 }

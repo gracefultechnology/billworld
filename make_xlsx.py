@@ -28,13 +28,12 @@ def sheet(name, data, columns, widths=None):
 det = [e for e in rows if e["tier"] == "detailed"]
 ws = wb.add_worksheet("README")
 info = [
-    "U.S. biller research for the Senior Care bill-paying assistant",
+    "U.S. billers with official pages for viewing and paying bills, autopay and statements",
     "Source of truth: categories/*.json (one file per bill group). Rebuild: build.py then make_xlsx.py.",
     f"Entries: {len(rows)}  |  detailed: {len(det)}  |  verified: {sum(1 for e in rows if e['verified'] == 'True')}",
     "Detailed sheet: billers whose official help pages were researched (view bill, pay, autopay setup/cancel, statements, paperless, assistance).",
     "All billers sheet: every entry incl. roster tier (identity + website) from EIA-861, FDIC, NCUA, EPA SDWIS, FCC, CMS, CFPB rosters.",
-    "verified=True: page fetched and matched during research. Blank link = not found (never guessed). Re-verify links before showing to users.",
-    "Research data only: the app must not log in to, scrape or pay any biller without a reviewed integration and user consent.",
+    "verified=True: the pages were opened and checked. A blank link was not found. Links were checked Sep 29 - Oct 3, 2026.",
 ]
 for i, t in enumerate(info):
     ws.write(i, 0, t, bold if i == 0 else None)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Merge categories/*.json into billers.json, billers.csv and COVERAGE.md."""
-import csv, glob, json, os, re, collections
+import csv, glob, json, os, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LINKS = ["view_bill", "pay_bill", "autopay_setup", "autopay_cancel",
@@ -73,10 +73,5 @@ md += ["", "## Detailed electric/gas/water entries per state", "",
 for s in sorted(k for k in state_type if len(k) == 2 and k != "US"):
     c = state_type[s]
     md.append(f"| {s} | {c['electric']} | {c['gas']} | {c['water']} | {c['sewer']} |")
-md += ["", "## Known gaps (from each category's coverage_notes)", ""]
-for slug, doc, _ in cats:
-    # coverage_notes joins one "[research-file] ..." paragraph per source file; trim each.
-    parts = re.split(r"\n\n(?=\[[a-z0-9-]+\] )", (doc.get("coverage_notes") or "").strip())
-    md.append(f"### {slug}\n\n" + "\n\n".join(p[:1500] for p in parts) + "\n")
 open(os.path.join(HERE, "COVERAGE.md"), "w").write("\n".join(md))
 print(len(rows), "entries,", len(det), "detailed,", len(cats), "categories", bad or "")

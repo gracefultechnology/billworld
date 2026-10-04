@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
-"""One-time consolidation: merge categories/*.json into one file per bill group,
-dedupe entries, apply cleaned notes, and drop research metadata.
+"""Merge research files into one file per bill group: dedupe entries (same name, group and
+service area; the most complete entry wins and gaps are filled from the others), apply
+cleaned notes, and drop research metadata.
 
-usage: finalize.py <src_categories_dir> <dest_dir> [clean_out_dir]
+usage: finalize.py <src_dir>[,<newer_src_dir>...] <dest_dir> [clean_out_dir]
+
+Entries from later source dirs win over earlier ones for the same biller. A file's
+"link_corrections" list ({name, field, old, ...}) clears links an audit found wrong, so
+they are not filled back in from older copies.
 """
 import glob, hashlib, json, os, re, sys, collections
 
@@ -119,15 +124,15 @@ def merge(a, b):
     return out
 
 missing = collections.Counter()
-entries, files = [], sorted(glob.glob(os.path.join(SRC, "*.json")))
-src_docs = {}
-for f in files:
-    doc = json.load(open(f))
-    slug = os.path.basename(f)[:-5]
-    src_docs[slug] = doc
-    for e in doc.get("entries", []):
-        e["_src"] = slug
-        entries.append(e)
+entries, corrections = [], []
+for rank, src in enumerate(SRC.split(",")):
+    for f in sorted(glob.glob(os.path.join(src, "*.json"))):
+        doc = json.load(open(f))
+        for e in doc.get("entries", []):
+            e["_rank"] = rank
+            entries.append(e)
+        corrections += doc.get("link_corrections") or []
+bad_links = {(c.get("name"), c.get("field"), c.get("old")) for c in corrections if c.get("old")}
 
 buckets = collections.OrderedDict()
 for e in entries:
@@ -136,10 +141,8 @@ for e in entries:
     buckets.setdefault(key, []).append(e)
 
 out = collections.defaultdict(list)
-group_srcs = collections.defaultdict(set)
 for key, es in buckets.items():
-    group_srcs[key[1]].update(e["_src"] for e in es)
-    es = sorted(es, key=score, reverse=True)
+    es = sorted(es, key=lambda e: (e["_rank"], score(e)), reverse=True)
     m = es[0]
     for other in es[1:]:
         m = merge(m, other)
@@ -150,7 +153,12 @@ for key, es in buckets.items():
             v = cleaned(k, v)
         if k == "links":
             v = {lk: (v or {}).get(lk) for lk in LINKS}
+            for lk in LINKS:
+                if (m.get("name"), lk, v[lk]) in bad_links:
+                    v[lk] = None
         if k == "app" and isinstance(v, dict) and not any(v.values()):
+            v = None
+        if isinstance(v, str) and (m.get("name"), k, v) in bad_links:
             v = None
         if v in ("", [], {}) and k not in ("links",):
             v = None
@@ -162,18 +170,7 @@ for key, es in buckets.items():
 os.makedirs(DEST, exist_ok=True)
 for g, es in sorted(out.items()):
     es.sort(key=lambda e: (",".join(e.get("service_area") or []), (e.get("name") or "").lower()))
-    srcs = sorted(group_srcs[g])
-    notes = "\n\n".join(f"[{s}] {src_docs[s]['coverage_notes'].strip()}" for s in srcs
-                         if (src_docs[s].get("coverage_notes") or "").strip())
-    sources, seen = [], set()
-    for s in srcs:
-        for x in src_docs[s].get("sources") or []:
-            u = isinstance(x, dict) and x.get("url")
-            if u and u not in seen:
-                seen.add(u)
-                sources.append(x)
-    json.dump({"category": g, "description": GROUPS[g], "research_files": srcs,
-               "coverage_notes": notes, "sources": sources, "entries": es},
+    json.dump({"category": g, "description": GROUPS[g], "entries": es},
               open(os.path.join(DEST, g + ".json"), "w"), indent=1, ensure_ascii=False)
 total = sum(len(v) for v in out.values())
 print(f"{len(entries)} source entries -> {total} after dedupe in {len(out)} files; "
