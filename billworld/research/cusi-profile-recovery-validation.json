@@ -1,0 +1,114 @@
+{
+  "recorded_at": "2026-10-04T22:17:59.604498+00:00",
+  "kind": "cusi_profile_recovery_validation",
+  "scope": "Construction CUSI recovery recipient behavior; no task or released coverage added",
+  "behavior": [
+    "Reset link and password-change notices use registered profile email, legacy fallback uses utility contact",
+    "Utility contact identity remains separate",
+    "A registered email does not grant scoped mailbox ownership"
+  ],
+  "source_fidelity": "Private recipient policy remains synthetic/unobserved; no production account interaction",
+  "validation": {
+    "javascript_checks_passed": 210,
+    "research_checks_passed": 81,
+    "targeted_cusi_checks_passed": 26,
+    "browser": {
+      "kind": "cusi_registered_profile_email_recovery",
+      "released": false,
+      "scenarios": [
+        "UI registration with distinct utility contact, Gmail recovery delivery, single reset and new-credential login"
+      ],
+      "page_errors": [],
+      "outbound_requests": [],
+      "all_passed": true
+    },
+    "browser_log": "billworld/artifacts/cusi-profile-recovery-browser-retry.log"
+  },
+  "initial_failures": [
+    {
+      "file": "billworld/artifacts/cusi-profile-recovery-browser/initial-launch-failure.json",
+      "sha256": "e70f86ac5c514213e6a4134ecaa1817f6ff0176bf7b871a63a8c0a757bb47034",
+      "reason": "Chromium WS startup exceeded 30 seconds; retry with 60-second startup passed"
+    },
+    {
+      "file": "billworld/artifacts/cusi-profile-recovery-full-domain.log",
+      "sha256": "888b110d81361163e49f2a19538c220280229823394bf8460d31515724d2dc8e",
+      "reason": "Parallel suite: 209 passed, one MCP request aborted; sequential suite: 210 passed"
+    },
+    {
+      "file": "billworld/artifacts/cusi-profile-recovery-infinity.log",
+      "sha256": "f7af4fdd27953c2f6f67441b8cd08f1735f82997fd92d348516002232a8c3af8",
+      "reason": "System Python lacked requests; rerun with existing smoke-venv"
+    }
+  ],
+  "construction_regression": {
+    "status": "complete",
+    "pid": 91236,
+    "session_id": 84025,
+    "artifacts": "billworld/artifacts/infinity/cusi-profile-recovery-construction",
+    "completed_reference_results_observed": [
+      {
+        "task_id": "task_c1",
+        "passed": true,
+        "termination": "completed"
+      },
+      {
+        "task_id": "task_c2",
+        "passed": true,
+        "termination": "completed"
+      },
+      {
+        "task_id": "task_c3",
+        "passed": true,
+        "termination": "completed"
+      },
+      {
+        "task_id": "task_c4",
+        "passed": true,
+        "termination": "completed"
+      },
+      {
+        "task_id": "task_c5",
+        "passed": true,
+        "termination": "completed"
+      },
+      {
+        "task_id": "task_c6",
+        "passed": true,
+        "termination": "completed"
+      },
+      {
+        "task_id": "task_c7",
+        "passed": true,
+        "termination": "completed"
+      }
+    ],
+    "required_tasks": 7,
+    "previous_full_reference_validation": "lazy-snapshot-validation.json",
+    "construction_reference_tasks_passed": 7,
+    "summary": "billworld/artifacts/infinity/cusi-profile-recovery-construction/summary.json",
+    "summary_sha256": "4ddb672e50820b3e60c0075927b819fef5212b73e19b792b1c80b6f4f0041b8f",
+    "source_scope": "Completed predecessor regression; already-registered registration branch is verified separately"
+  },
+  "source_hashes": {
+    "billworld/engine.mjs": "261a4c663a5bb6bf0eee7da2f2c14ba0b609de4bd9c11d05f785bc6ed877116d",
+    "billworld/sites/lockwood.json": "e1ca6be4426d7476f4822cf8c43578945c8ab537bc9742b66841798b85148a57",
+    "billworld/tests/cusi-registration.test.mjs": "fa26a9d1e78838d5de24f78f093bc1468d88e7929070682c3bee0ec637a6fb60",
+    "billworld/tests/cusi-profile-recovery-browser.mjs": "8a437878be30e09b7440e39274fd6bb7314c51e3378b32ba04cb28084fb10a31",
+    "billworld/artifacts/cusi-profile-recovery-full-domain-sequential.log": "157ba057d1d5027e8fc80d24479019190c2df54e23605aea55a8d2b532a94f58",
+    "billworld/artifacts/cusi-profile-recovery-research.log": "b2a29716edc9933ade3984adaa69ae8b0ffaf67c443042c2d57db6d3033f2407",
+    "billworld/artifacts/cusi-profile-recovery-browser/report.json": "5a925abac61e5eac785cb6e02e57f79519da9c77e6ad888e50cb2713dc799108"
+  },
+  "coverage": {
+    "catalog_records": 59477,
+    "released_sites": 9,
+    "released_tasks": 31,
+    "construction_tasks": 7,
+    "independent_fidelity_certifications": 0,
+    "autonomous_agent_scores": 0
+  },
+  "unfinished": [
+    "Alternate mailbox identities/aliases and independent original delivery-policy evidence",
+    "All-catalog reconstruction, isolation, held-out tasks and autonomous measurements"
+  ]
+}

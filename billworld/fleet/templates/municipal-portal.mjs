@@ -1,0 +1,211 @@
+// Municipal online services (city / district utility billing) modeled on the Tyler "Municipal Online
+// Services" family (municipalonlinepayments.com) with Munis/BS&A/Edmunds-style account search:
+// a white Material app bar ("Utility Account" + app launcher + "Sign In / Register"), a hero band with
+// two cards (Quick pay / Sign in or sign up), a separate identity sign-in (email → Next → password),
+// "Let's find your account" quick pay (account number + name on bill), and a signed-in drawer menu.
+import { html, raw, doc, logo, alert, form, field, select, checkbox, button, hidden, dateField, table, paymentRows, helpList, helpBody, helpSearchForm, money, fmtDate, methodText } from '../kit.mjs';
+import { applyProfile, siteNav, profileDocTitle, heroBanner, heroText, loginProfile, socialBlock, helpExcerpts, naNotice, PROFILE_CSS, mfaSent, mfaResend } from './_profile-parts.mjs';
+import { offline, sup, isTax, cardFeeText, bankFeeText, methodFields, savedMethods, amountRadios, reviewRows, reviewForm, receiptRows, cancelBody, autopayBody, stepper } from './_municipal-portal-gov.mjs';
+
+export const meta = {
+  id: 'municipal-portal',
+  name: 'Municipal online services (city utility billing)',
+  description: 'City, county and district utility-billing portals in the style of Tyler Municipal Online Services / Munis Self Service / BS&A / Edmunds WIPP: Quick pay by account number and name on bill, community identity sign-in, multi-account "My accounts" dashboard, e-Billing, Autopay and Stop service.',
+  families: ['tyler-municipal-online-services', 'munis-self-service', 'bsa-online', 'edmunds-wipp', 'starnik', 'utility-district'],
+  sources: [
+    'https://duluthmn.municipalonlinepayments.com/duluthmn/utilities',
+    'https://duluthmn.municipalonlinepayments.com/duluthmn/utilities/quickpay',
+    'https://duluthmn.municipalonlinepayments.com/duluthmn',
+    'https://identity.tylerportico.com/ (sign-in page reached from the Duluth portal; captured, not submitted)',
+    'https://www.tuscaloosa.com/onlineservices',
+    'https://www.bsasoftware.com/solutions/bsaonline/bsa-online-services-public-records-search/'
+  ],
+  evidence: {
+    observed_public: [
+      'App bar with municipality seal, service title "Utility Account", app-launcher grid icon and "Sign In / Register" button (billworld/captures/duluth-portal)',
+      'Landing hero with two cards: "Quick pay" ("Just need to pay your bill? … No login necessary.") and "Sign in or sign up" ("manage single & multi-accounts, multi-bill pay, and e-Billing")',
+      'Side cards "Accepted payment methods", "Have a question?" (phone/email + Contact us) and "Frequently asked questions"',
+      'Quick pay lookup titled "Let\'s find your account" with Account Number + Name on Bill, Cancel / Find bill buttons and "Sign in to manage account" link (captures/duluth-quickpay)',
+      'Identity sign-in is a separate page: "Sign in to community access services for <city>", Email address, Keep me signed in, Next; then password; Help / Create an account links (captures/duluth-signin)',
+      'Footer link row (city site | FAQs | Terms and conditions | Contact us) and Stop Service / Transfer Service links',
+      'Material styling: indigo raised buttons, white elevated cards, Roboto-like sans type'
+    ],
+    documented: [
+      'BS&A Online: record search by account/parcel, amount entry, payment with card or e-check plus convenience fee',
+      'City service centers offer eBill enrollment, cancel/transfer service and pay water bill with account + customer number (tuscaloosa.com/onlineservices)'
+    ],
+    synthetic: [
+      'Signed-in drawer labels and page wording (My accounts, Bills, Payment history, Wallet, e-Billing, Autopay, Stop service) — the signed-in portal was not observed',
+      'Three-step payment (Amount → Payment method → Review) and review/receipt wording',
+      'Name on bill is matched on the last name only (engine lookup contract)',
+      'Hero imagery replaced with a CSS gradient; logo replaced with a monogram'
+    ]
+  }
+};
+
+export const routes = {
+  home: '/', login: '/identity/signin', loginPassword: '/identity/signin/password', mfa: '/identity/signin/verify', register: '/identity/create-account', verify: '/identity/create-account/verify', forgot: '/identity/forgot-password', reset: '/identity/reset-password',
+  guest: '/utilities/quickpay', guestPay: '/utilities/quickpay/bill', guestReview: '/utilities/quickpay/checkout', guestReceipt: '/utilities/quickpay/receipt/:id',
+  dashboard: '/utilities/accounts', bill: '/utilities/accounts/bill-details', statements: '/utilities/accounts/bills', statement: '/utilities/accounts/bills/:id.pdf',
+  pay: '/utilities/payment', payMethod: '/utilities/payment/method', payReview: '/utilities/payment/review', payReceipt: '/utilities/payment/receipt/:id',
+  history: '/utilities/accounts/payment-history', autopay: '/utilities/accounts/autopay', paperless: '/utilities/accounts/ebilling', wallet: '/utilities/wallet', cancel: '/utilities/accounts/stop-service', plan: '/utilities/accounts/service-plan',
+  arrangement: '/utilities/accounts/payment-arrangement', contact: '/utilities/contact-us', profile: '/identity/profile', logout: '/identity/signout',
+  help: '/utilities/faqs', helpArticle: '/utilities/faqs/:slug', helpSearch: '/utilities/faq-search'
+};
+export const flow = { paySteps: ['pay', 'payMethod', 'payReview'], loginSteps: 2, guestSteps: ['guest', 'guestPay', 'guestReview'] };
+
+const incomeTax = vm => isTax(vm) && vm.biller.billType === 'income-tax';
+const parcel = vm => isTax(vm) && !incomeTax(vm);
+const service = vm => incomeTax(vm) ? 'Income Tax' : isTax(vm) ? 'Property Tax' : vm.biller.kind === 'utility' ? 'Utility Account' : 'Online Payments';
+const icon = {
+  apps: raw('<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 10h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 16h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4z"/></svg>'),
+  card: raw('<svg class="art" viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="42" fill="#dfe3f6"/><rect x="10" y="26" width="76" height="46" rx="5" fill="#f6c343" stroke="#3949ab" stroke-width="2"/><rect x="10" y="36" width="76" height="9" fill="#3949ab"/><rect x="18" y="54" width="40" height="6" rx="2" fill="#fff"/></svg>'),
+  person: raw('<svg class="art" viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="42" fill="#dfe3f6"/><rect x="24" y="12" width="48" height="72" rx="6" fill="#fff" stroke="#3949ab" stroke-width="2"/><circle cx="48" cy="36" r="12" fill="#7fb7e5" stroke="#3949ab" stroke-width="2"/><rect x="34" y="56" width="28" height="3" fill="#9fa8da"/><rect x="34" y="64" width="28" height="3" fill="#9fa8da"/></svg>'),
+  search: raw('<svg class="art" viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="42" fill="#dfe3f6"/><rect x="22" y="16" width="44" height="58" rx="3" fill="#fff" stroke="#3949ab" stroke-width="2"/><rect x="22" y="16" width="44" height="8" fill="#4fc3c8"/><circle cx="50" cy="52" r="13" fill="none" stroke="#3949ab" stroke-width="4"/><path d="M59 61l12 12" stroke="#3949ab" stroke-width="5" stroke-linecap="round"/></svg>'),
+  question: raw('<svg class="qico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#dfe3f6"/><path d="M10 34V14a6 6 0 0 1 6-6h16a6 6 0 0 1 6 6v12a6 6 0 0 1-6 6H18l-8 6z" fill="#fff" stroke="#3949ab" stroke-width="2"/><text x="24" y="27" text-anchor="middle" font-size="16" font-weight="700" fill="#3949ab" font-family="Arial">?</text></svg>')
+};
+
+function appBar(vm) {
+  const right = offline(vm) ? '' : vm.authenticated
+    ? html`<div class="acct-menu"><span class="who">${vm.persona.name}</span><a class="btn-flat" href="${vm.url('profile')}">My profile</a><a class="btn-raised-w" href="${vm.url('logout')}">Sign out</a></div>`
+    : html`<a class="btn-raised-w" href="${vm.url('login')}">Sign In / Register</a>`;
+  return html`<header class="appbar"><a class="brand" href="${vm.url(vm.authenticated ? 'dashboard' : 'home')}">${logo(vm)}<span class="svc">${service(vm)}</span><span class="org">${vm.biller.brand.shortName}</span></a><div class="right"><a class="launcher" href="${vm.url('help')}" title="All services and FAQs" aria-label="All services">${icon.apps}</a>${right}</div></header>`;
+}
+function drawer(vm) {
+  const c = (pg, label) => html`<a href="${vm.url(pg)}"${vm.page === pg ? raw(' aria-current="page" class="on"') : ''}>${label}</a>`;
+  return html`<nav class="drawer" aria-label="Account menu"><p class="dh">Account</p>${c('dashboard', 'My accounts')}${c('bill', 'Bill details')}${c('pay', 'Make a payment')}${c('statements', 'Bills')}${c('history', 'Payment history')}<p class="dh">Manage</p>${c('autopay', 'Autopay')}${c('paperless', 'e-Billing')}${c('wallet', 'Wallet')}${c('arrangement', 'Payment arrangement')}${sup(vm, 'cancel_service') ? c('cancel', vm.biller.kind === 'utility' ? 'Stop service' : 'Close account') : ''}${vm.plans?.length ? c('plan', 'Service plan') : ''}<p class="dh">Support</p>${c('contact', 'Contact us')}${c('help', 'FAQs')}${c('profile', 'My profile')}</nav>`;
+}
+function footer(vm) {
+  return html`<footer class="foot"><nav aria-label="Footer"><span>${vm.biller.name}</span> | <a href="${vm.url('help')}">FAQs</a> | <a href="${vm.url('helpArticle', { slug: 'pay-your-bill' })}">Ways to pay</a> | <a href="${vm.url('helpArticle', { slug: 'contact-us' })}">Contact us</a></nav><p>©2026 Municipal Online Services · Secure payments · Payments are subject to the payment terms shown before you submit.</p></footer>`;
+}
+function shell(vm, title, body, { account = vm.authenticated, hero = false } = {}) {
+  return doc(vm, { title: profileDocTitle(vm) || `${title} - ${vm.biller.brand.shortName} - Municipal Online Services`, bodyClass: account ? 'signed-in' : 'public', body: html`<a class="skip" href="#main">Skip to main content</a>${appBar(vm)}${siteNav(vm, { cls: 'pf-nav-light' })}${hero ? html`<div class="hero-band" aria-hidden="true"></div>` : ''}<div class="${account ? 'layout' : 'layout-public'}">${account ? drawer(vm) : ''}<main id="main" class="${hero ? 'over-hero' : ''}">${alert(vm)}${body}</main></div>${footer(vm)}` });
+}
+const h1 = t => html`<h1>${t}</h1>`;
+const card = (inner, cls = '') => html`<section class="mcard ${cls}">${inner}</section>`;
+const questionCard = vm => card(html`<h2>Have a question?</h2><div class="q">${icon.question}<div>${vm.biller.phone ? html`<p>${vm.biller.phone}</p>` : html`<p>Call the number on your bill.</p>`}${vm.biller.serviceArea ? html`<p class="muted">${vm.biller.serviceArea}</p>` : ''}</div></div><p class="right"><a class="btn-outline" href="${vm.url('helpArticle', { slug: 'contact-us' })}">Contact us</a></p>`, 'side');
+const methodsCard = vm => card(html`<h2>Accepted payment methods</h2><ul class="marks"><li>VISA</li><li>MC</li><li>DISC</li><li>AMEX</li><li>eCheck</li></ul><p class="muted small">Card payments: ${cardFeeText(vm)}. eCheck: ${bankFeeText(vm)}.</p>`, 'side');
+const acctLabel = vm => parcel(vm) ? `Parcel ${vm.account.parcelId}` : incomeTax(vm) ? `Taxpayer account ${vm.account.accountNumber}` : `Account ${vm.account.accountNumber}`;
+
+const pages = {
+  home(vm) {
+    if (offline(vm)) return shell(vm, 'Paying your bill', html`<div class="grid-main">${card(html`${h1(`Paying your ${vm.biller.name} bill`)}<p class="lead">Online account access and online bill payment are not available for this account. Use one of the payment options below.</p>${helpBody(vm.help.find(a => a.slug === 'pay-your-bill'))}`)}<aside>${questionCard(vm)}</aside></div>`, { hero: true });
+    return shell(vm, service(vm), html`<h1 class="sr-only">${vm.biller.name} ${service(vm)}</h1>${heroText(vm) ? card(heroBanner(vm), 'pf-herocard') : ''}<div class="two">${card(html`${icon.card}<h2>Quick pay</h2><p>Just need to pay your bill? Click quick pay below. You'll need your ${parcel(vm) ? 'account or parcel number' : incomeTax(vm) ? 'taxpayer account number' : 'account number'}. No login necessary.</p><p><a class="btn-raised" href="${vm.url('guest')}">Quick pay</a></p>`, 'tile')}${card(html`${icon.person}<h2>Sign in or sign up</h2><p>Create an account to view details, manage single &amp; multi-accounts, multi-bill pay, and e-Billing.</p><p><a class="btn-raised" href="${vm.url('login')}">Sign in or sign up</a></p><p class="small"><a href="${vm.url('register')}">Create an account</a></p>`, 'tile')}</div><div class="grid-side">${card(html`<h2>Utility billing services</h2><ul class="svc-links"><li><a href="${vm.url('helpArticle', { slug: 'pay-your-bill' })}">Ways to pay</a></li><li><a href="${vm.url('helpArticle', { slug: 'view-your-bill' })}">Reading your bill</a></li>${sup(vm, 'autopay') ? html`<li><a href="${vm.url('helpArticle', { slug: 'autopay' })}">Autopay</a></li>` : ''}${sup(vm, 'paperless') ? html`<li><a href="${vm.url('helpArticle', { slug: 'paperless' })}">e-Billing</a></li>` : ''}${sup(vm, 'cancel_service') ? html`<li><a href="${vm.url('helpArticle', { slug: 'cancel-service' })}">Start, transfer or stop service</a></li>` : ''}</ul>`)}<aside>${methodsCard(vm)}${questionCard(vm)}${card(html`<h2>Frequently asked questions</h2>${helpSearchForm(vm, { placeholder: 'Search FAQs' })}<p><a href="${vm.url('help')}">Utility Billing FAQs</a></p>`, 'side')}</aside></div>`, { hero: true });
+  },
+  login(vm) {
+    const lp = loginProfile(vm), acctFirst = lp.userLabel === 'Account number';
+    return idShell(vm, 'Sign in', html`<h1 class="id-title">Sign in to community access services for ${vm.biller.name}.</h1>${form(vm, 'login', html`${hidden('next', vm.query.next || '')}${field(vm, { name: 'username', label: acctFirst ? 'Account number' : 'Email address', autocomplete: 'username', help: acctFirst ? lp.userHelp : 'You can also use your account number.' })}<label class="check"><input type="checkbox" checked> <span>Keep me signed in</span></label><div class="actions">${button(lp.submit && /^(next|continue)$/i.test(lp.submit) ? lp.submit : 'Next', { cls: 'btn-raised wide' })}</div>`)}${socialBlock(vm)}<p class="or"><span>OR</span></p><p class="id-links"><a href="${vm.url('forgot')}">Unlock account?</a> · <a href="${vm.url('helpArticle', { slug: 'reset-password' })}">Help</a></p><p class="id-links"><a href="${vm.url('register')}">Create an account</a></p>`);
+  },
+  loginPassword(vm) {
+    const lp = loginProfile(vm);
+    return idShell(vm, 'Verify with your password', html`<h1 class="id-title">Verify with your password</h1><p class="id-user">${vm.values.username || ''}</p>${form(vm, 'loginPassword', html`${hidden('username', vm.values.username || '')}${hidden('next', vm.query.next || '')}${field(vm, { name: 'password', label: 'Password', type: 'password', autocomplete: 'current-password' })}<div class="actions">${button(lp.submit && !/^(next|continue)$/i.test(lp.submit) ? lp.submit : 'Verify', { cls: 'btn-raised wide' })}</div>`)}<p class="id-links"><a href="${vm.url('forgot')}">Forgot password?</a> · <a href="${vm.url('login')}">Back to sign in</a></p>`);
+  },
+  mfa(vm) { return idShell(vm, vm.mfaChannel === 'sms' ? 'Verify with text message' : 'Verify with email', html`<h1 class="id-title">${vm.mfaChannel === 'sms' ? 'Verify with a text message' : 'Verify with your email'}</h1><p>${mfaSent(vm, 'We sent a verification code to the email address on your profile. Enter it below.')}</p>${form(vm, 'mfa', html`${hidden('next', vm.query.next || '')}${field(vm, { name: 'code', label: 'Enter code', inputmode: 'numeric', maxlength: 6, autocomplete: 'one-time-code' })}<div class="actions">${button('Verify', { cls: 'btn-raised wide' })}</div>`)}${mfaResend(vm)}<p class="id-links"><a href="${vm.url('login')}">Back to sign in</a></p>`); },
+  register(vm) { return idShell(vm, 'Create an account', html`<h1 class="id-title">Create an account</h1><p>Link your ${service(vm).toLowerCase()} by entering the account number from your bill.</p>${form(vm, 'register', html`${field(vm, { name: 'accountNumber', label: 'Account number', inputmode: 'numeric', help: 'Enter digits only.' })}${field(vm, { name: 'lastName', label: 'Last name on bill' })}${field(vm, { name: 'email', label: 'Email address', type: 'email', autocomplete: 'email' })}${field(vm, { name: 'password', label: 'Password', type: 'password', autocomplete: 'new-password', help: 'At least 8 characters, including upper and lower case letters, a number and a symbol.' })}${field(vm, { name: 'confirm', label: 'Confirm password', type: 'password', autocomplete: 'new-password' })}<div class="actions">${button('Create account', { cls: 'btn-raised wide' })}</div>`)}<p class="id-links"><a href="${vm.url('login')}">Already have an account? Sign in</a></p>`); },
+  verify(vm) { return idShell(vm, 'Activate your account', html`<h1 class="id-title">Activate your account</h1><p>We sent an activation link to your email address. Open it to finish creating your account.</p><p class="id-links"><a href="${vm.url('login')}">Back to sign in</a></p>`); },
+  forgot(vm) { return idShell(vm, 'Reset password', html`<h1 class="id-title">Reset password</h1><p>Enter your email address and we'll send a verification code.</p>${form(vm, 'forgot', html`${field(vm, { name: 'identifier', label: 'Email or username', autocomplete: 'username' })}<div class="actions">${button('Reset via email', { cls: 'btn-raised wide' })}</div>`)}<p class="id-links"><a href="${vm.url('login')}">Back to sign in</a></p>`); },
+  reset(vm) { return idShell(vm, 'Set new password', html`<h1 class="id-title">Set a new password</h1>${form(vm, 'reset', html`${vm.query.token ? hidden('token', vm.query.token) : field(vm, { name: 'code', label: 'Verification code', inputmode: 'numeric', autocomplete: 'one-time-code' })}${field(vm, { name: 'password', label: 'New password', type: 'password', autocomplete: 'new-password' })}${field(vm, { name: 'confirm', label: 'Repeat password', type: 'password', autocomplete: 'new-password' })}<div class="actions">${button('Reset password', { cls: 'btn-raised wide' })}</div>`)}`); },
+
+  guest(vm) {
+    return shell(vm, 'Quick pay', html`<div class="grid-main">${card(html`<div class="center">${icon.search}<h1>Let's find your account</h1></div>${form(vm, 'guest', html`${field(vm, { name: 'accountNumber', label: parcel(vm) ? 'Account or parcel number' : incomeTax(vm) ? 'Taxpayer account number' : 'Account Number', help: 'Please include all digits exactly as shown on your bill.' })}${field(vm, { name: 'lastName', label: 'Last name on bill', help: 'Enter the last name exactly as it appears on your bill. Remove any spaces before or after the name.' })}<div class="actions center"><a class="btn-outline" href="${vm.url('home')}">Cancel</a> ${button('Find bill', { cls: 'btn-raised' })}</div>`)}<hr><p class="center"><a class="caps" href="${vm.url('login')}">Sign in to manage account</a></p>`)}<aside>${questionCard(vm)}</aside></div>`, { account: false });
+  },
+  guestPay(vm) {
+    return shell(vm, 'Quick pay', html`${stepper(['Find account', 'Payment', 'Review'], 1)}<div class="grid-main">${card(html`${h1('Pay your bill')}<dl class="kv"><dt>Account</dt><dd>${vm.accountMasked}</dd><dt>Service address</dt><dd>${vm.account.serviceAddress}</dd><dt>Amount due</dt><dd><strong>${money(vm.balanceCents)}</strong> due ${vm.dueText}</dd></dl>${form(vm, 'guestPay', html`${amountRadios(vm, { due: 'Amount due', installment: 'Next installment' }, 'How much would you like to pay?')}<fieldset><legend>Payment information</legend>${methodFields(vm, { bankLabel: `eCheck (${bankFeeText(vm)})`, cardLabel: `Credit or debit card (${cardFeeText(vm)})`, save: false })}</fieldset><div class="actions"><a class="btn-outline" href="${vm.url('guest')}">Cancel</a> ${button('Continue', { cls: 'btn-raised' })}</div>`)}`)}<aside>${methodsCard(vm)}</aside></div>`, { account: false });
+  },
+  guestReview(vm) { return reviewPage(vm, 'guestReview'); },
+  guestReceipt(vm) { return receiptPage(vm); },
+
+  dashboard(vm) {
+    const inv = vm.invoice;
+    return shell(vm, 'My accounts', html`<div class="title-row">${h1('My accounts')}<a class="btn-raised" href="${vm.url('pay')}">Pay</a></div>${vm.pendingPayments.length ? html`<p class="banner">You have ${vm.pendingPayments.length} payment(s) processing. They may take 1–2 business days to post.</p>` : ''}${card(html`<div class="acct-head"><div><h2>${acctLabel(vm)}</h2><p class="muted">${vm.account.serviceAddress}</p></div><div class="due"><span class="label">Amount due</span><span class="big">${money(vm.balanceCents)}</span><span class="muted">Due ${vm.dueText}</span></div></div><div class="acct-actions"><a class="btn-raised" href="${vm.url('pay')}">Make a payment</a><a class="btn-outline" href="${vm.url('bill')}">View bill</a><a class="btn-flat" href="${vm.url('statements')}">Bills</a><a class="btn-flat" href="${vm.url('history')}">Payment history</a></div>`, 'acct')}<div class="two">${card(html`<h2>Account settings</h2><dl class="kv"><dt>Autopay</dt><dd>${vm.autopay.enrolled ? 'Enrolled' : 'Not enrolled'} · <a href="${vm.url('autopay')}">${vm.autopay.enrolled ? 'Manage' : 'Set up'}</a></dd><dt>e-Billing</dt><dd>${vm.account.paperless ? 'Enrolled' : 'Paper bill'} · <a href="${vm.url('paperless')}">Manage</a></dd><dt>Service status</dt><dd>${vm.service.status === 'active' ? 'Active' : vm.service.status === 'cancel_pending' ? `Stop scheduled ${fmtDate(vm.service.cancelAt)}` : 'Inactive'}</dd>${parcel(vm) && vm.account.installments ? html`<dt>Installments</dt><dd>${vm.account.installments.map(i => `#${i.n} ${money(i.cents)} ${i.paid ? 'paid' : `due ${fmtDate(i.dueAt)}`}`).join(' · ')}</dd>` : ''}</dl>`)}${card(html`<h2>Latest bill</h2><p>Bill ${inv.number} · ${inv.period}</p><p>Billed ${money(inv.amountCents)} · due ${fmtDate(inv.dueAt)}</p><p><a href="${vm.url('statement', { id: inv.id })}">Download bill (PDF)</a></p>`)}</div>`);
+  },
+  bill(vm) {
+    const inv = vm.invoice;
+    return shell(vm, 'Bill details', html`<p class="crumbs"><a href="${vm.url('dashboard')}">My accounts</a> › Bill details</p>${h1('Bill details')}${card(html`<dl class="kv"><dt>${parcel(vm) ? 'Parcel' : incomeTax(vm) ? 'Taxpayer account number' : 'Account number'}</dt><dd>${parcel(vm) ? vm.account.parcelId : vm.accountMasked}</dd><dt>Bill number</dt><dd>${inv.number}</dd><dt>Billing period</dt><dd>${inv.period}</dd><dt>Bill date</dt><dd>${fmtDate(inv.issuedAt)}</dd><dt>Due date</dt><dd>${fmtDate(inv.dueAt)}</dd></dl>${table(['Charge', 'Amount'], [...inv.lines.map(l => [l.desc, money(l.cents)]), [html`<strong>Current charges</strong>`, html`<strong>${money(inv.amountCents)}</strong>`]])}<p class="due-line">Total amount due <strong>${money(vm.balanceCents)}</strong></p><div class="acct-actions"><a class="btn-raised" href="${vm.url('pay')}">Pay now</a><a class="btn-outline" href="${vm.url('statement', { id: inv.id })}">Download bill (PDF)</a><a class="btn-flat" href="${vm.url('statements')}">All bills</a></div>`)}`);
+  },
+  statements(vm) { return shell(vm, 'Bills', html`${h1('Bills')}${card(table(['Bill date', 'Bill number', 'Amount', 'Due date', ''], vm.invoices.map(i => [fmtDate(i.issuedAt), i.number, money(i.amountCents), fmtDate(i.dueAt), html`<a href="${vm.url('statement', { id: i.id })}">View bill</a>`])))}`); },
+  pay(vm) {
+    return shell(vm, 'Make a payment', html`${h1('Make a payment')}${stepper(['Amount', 'Payment method', 'Review'], 0)}${card(html`<p>${acctLabel(vm)} · Amount due <strong>${money(vm.balanceCents)}</strong> · Due ${vm.dueText}</p>${form(vm, 'pay', html`${amountRadios(vm, { due: 'Amount due', installment: 'Next installment' }, 'Payment amount')}${dateField(vm, { label: 'Payment date' })}<div class="actions">${button('Next', { cls: 'btn-raised' })}</div>`)}`)}`);
+  },
+  payMethod(vm) {
+    return shell(vm, 'Payment method', html`${h1('Make a payment')}${stepper(['Amount', 'Payment method', 'Review'], 1)}${card(html`<p>Paying <strong>${vm.draft?.amountCents ? money(vm.draft.amountCents) : money(vm.balanceCents)}</strong>${vm.draft?.payOn ? ` on ${vm.draft.payOn}` : ''}. <a href="${vm.url('pay')}">Change amount</a></p>${form(vm, 'payMethod', html`${savedMethods(vm, { legend: 'Select from wallet', newLabel: 'Add a new payment method', fields: { bankLabel: `eCheck (${bankFeeText(vm)})`, cardLabel: `Credit or debit card (${cardFeeText(vm)})` } })}<div class="actions">${button('Continue to review', { cls: 'btn-raised' })}</div>`)}`)}`);
+  },
+  payReview(vm) { return reviewPage(vm, 'payReview'); },
+  payReceipt(vm) { return receiptPage(vm); },
+  history(vm) { return shell(vm, 'Payment history', html`${h1('Payment history')}${card(table(['Date', 'Amount', 'Method', 'Confirmation', 'Status', ''], paymentRows(vm)))}`); },
+  autopay(vm) { return shell(vm, 'Autopay', html`${card(autopayBody(vm, { title: 'Autopay', intro: 'Autopay is not set up. Your bill will be paid automatically on the due date from the payment method you choose.', methodsBlock: savedMethods(vm, { legend: 'Pay from', fields: { save: false } }) }))}`); },
+  paperless(vm) {
+    return shell(vm, 'e-Billing', html`${card(html`${h1('e-Billing')}<p>e-Billing is <strong>${vm.account.paperless ? 'on' : 'off'}</strong>. ${vm.account.paperless ? 'You receive an email when your bill is ready instead of a paper bill.' : 'Enroll to receive an email when your bill is ready and stop paper bills.'}</p>${form(vm, 'paperless', html`${hidden('paperless', vm.account.paperless ? 'off' : 'on')}${!vm.account.paperless ? html`${field(vm, { name: 'email', label: 'Email for bill notifications', type: 'email', value: vm.persona.email })}<p class="small muted">By enrolling you accept the e-Billing terms and conditions.</p>` : ''}<div class="actions">${button(vm.account.paperless ? 'Unenroll from e-Billing' : 'Enroll in e-Billing', { cls: 'btn-raised' })}</div>`)}`)}`);
+  },
+  wallet(vm) {
+    return shell(vm, 'Wallet', html`${h1('Wallet')}${card(html`<h2>Saved payment methods</h2>${vm.methods.length ? html`<ul class="wallet">${vm.methods.map(m => html`<li><span>${methodText(m)}${m.nickname ? html` <span class="muted">(${m.nickname})</span>` : ''}</span>${form(vm, 'wallet', html`${hidden('op', 'remove')}${hidden('methodId', m.id)}${button('Remove', { cls: 'btn btn-link' })}`)}</li>`)}</ul>` : html`<p>No saved payment methods.</p>`}`)}${card(html`<h2>Add payment method</h2>${form(vm, 'wallet', html`${hidden('op', 'add')}${methodFields(vm, { bankLabel: 'eCheck (bank account)', save: false })}${field(vm, { name: 'nickname', label: 'Nickname (optional)', required: false })}<div class="actions">${button('Save to wallet', { cls: 'btn-raised' })}</div>`)}`)}`);
+  },
+  cancel(vm) {
+    if (!sup(vm, 'cancel_service')) return shell(vm, 'Service requests', card(html`${h1('Service requests')}<p>This account cannot be closed online. Contact us at ${vm.biller.phone || 'the number on your bill'}.</p>`));
+    return shell(vm, 'Stop service', card(cancelBody(vm, { noun: vm.biller.kind === 'utility' ? 'utility service' : 'service', title: vm.biller.kind === 'utility' ? 'Stop service' : 'Close account' })));
+  },
+  plan(vm) { return shell(vm, 'Service plan', card(html`${h1('Service plan')}${vm.plans.length ? form(vm, 'plan', html`<fieldset><legend>Choose a plan</legend>${vm.plans.map(p => html`<label class="radio"><input type="radio" name="planId" value="${p.id}"${p.current ? raw(' checked') : ''}> ${p.name}${p.cents ? ` – ${money(p.cents)}/mo` : ''}${p.current ? ' (current)' : ''}</label>`)}</fieldset>${button('Update plan', { cls: 'btn-raised' })}`) : html`<p>Rate schedules are set by ordinance and cannot be changed online. See the published utility rates or contact us.</p>`}`)); },
+  arrangement(vm) { return shell(vm, 'Payment arrangement', card(html`${h1('Payment arrangement')}${vm.account.arrangement ? html`<p>Your arrangement: ${money(vm.account.arrangement.monthlyCents)} per month for ${vm.account.arrangement.months} months, in addition to current charges.</p>` : form(vm, 'arrangement', html`<p>Request an arrangement to pay your balance of ${money(vm.balanceCents)} in monthly installments. Current charges must still be paid by each due date.</p>${select(vm, { name: 'months', label: 'Number of installments', options: [['3', '3 months'], ['6', '6 months'], ['12', '12 months']] })}${button('Request arrangement', { cls: 'btn-raised' })}`)}`)); },
+  contact(vm) { return shell(vm, 'Contact us', html`${h1('Contact us')}<div class="two">${card(html`<h2>Send a message</h2>${form(vm, 'contact', html`${select(vm, { name: 'subject', label: 'Topic', options: [['Billing question', 'Billing question'], ['Payment question', 'Payment question'], ['Start, stop or transfer service', 'Start, stop or transfer service'], ['Other', 'Other']] })}<div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" required>${vm.values.message || ''}</textarea></div>${button('Send', { cls: 'btn-raised' })}`)}`)}<div>${questionCard(vm)}${vm.account.messages.length ? card(html`<h2>Your messages</h2><ul>${vm.account.messages.map(m => html`<li>${fmtDate(m.at)} – ${m.subject} (${m.status})</li>`)}</ul>`) : ''}</div></div>`); },
+  profile(vm) { return shell(vm, 'My profile', card(html`${h1('My profile')}<dl class="kv"><dt>Name</dt><dd>${vm.persona.name}</dd><dt>Email address</dt><dd>${vm.persona.email}</dd><dt>Phone</dt><dd>${vm.account.phone || 'Not provided'}</dd></dl>${form(vm, 'profile', html`${field(vm, { name: 'phone', label: 'Mobile phone', type: 'tel' })}${button('Save', { cls: 'btn-raised' })}`)}`)); },
+  help(vm) { return shell(vm, 'FAQs', html`<div class="grid-main">${card(html`${h1(offline(vm) ? 'Help' : 'Utility Billing FAQs')}${helpSearchForm(vm, { placeholder: 'Search FAQs' })}${helpList(vm)}${helpExcerpts(vm, null, { cls: 'pf-flat' })}`)}<aside>${questionCard(vm)}</aside></div>`, { account: vm.authenticated && !offline(vm) }); },
+  helpArticle(vm) { return shell(vm, vm.article.title, html`<div class="grid-main">${card(html`<p class="crumbs"><a href="${vm.url('help')}">FAQs</a> ›</p>${h1(vm.article.title)}${helpBody(vm.article)}${helpExcerpts(vm, vm.article.slug, { cls: 'pf-flat' })}${helpSearchForm(vm, { placeholder: 'Search FAQs' })}`)}<aside>${questionCard(vm)}</aside></div>`, { account: vm.authenticated && !offline(vm) }); },
+  helpSearch(vm) { return shell(vm, 'Search FAQs', html`<div class="grid-main">${card(html`${h1('Search FAQs')}${naNotice(vm)}${helpSearchForm(vm, { placeholder: 'Search FAQs' })}${vm.results.length ? helpList(vm, vm.results) : html`<p>No FAQs match “${vm.query.q || ''}”. <a href="${vm.url('help')}">See all FAQs</a></p>`}`)}<aside>${questionCard(vm)}</aside></div>`, { account: vm.authenticated && !offline(vm) }); }
+};
+
+function idShell(vm, title, body) {
+  return doc(vm, { title: profileDocTitle(vm) || `${title} - Community Access`, bodyClass: 'identity', body: html`<main id="main" class="id-wrap"><div class="id-card"><a class="id-brand" href="${vm.url('home')}">${logo(vm)}<span>${vm.biller.brand.shortName}</span></a>${alert(vm)}${body}</div><p class="id-foot"><a href="${vm.url('home')}">${service(vm)} home</a> · <a href="${vm.url('help')}">Help</a></p></main>` });
+}
+function reviewPage(vm, page) {
+  const guest = page === 'guestReview';
+  return shell(vm, 'Review payment', html`${h1(guest ? 'Review and pay' : 'Make a payment')}${stepper(guest ? ['Find account', 'Payment', 'Review'] : ['Amount', 'Payment method', 'Review'], 2)}${card(html`<h2>Review your payment</h2>${reviewRows(vm, { feeLabel: 'Convenience fee', extra: [['Account', vm.accountMasked]] })}${reviewForm(vm, page, { terms: `I authorize ${vm.biller.name} to charge the payment method above for the total shown and agree to the terms and conditions.`, submit: 'Submit payment', edit: 'Back to payment' })}`)}`, { account: !guest });
+}
+function receiptPage(vm) {
+  const p = vm.payment;
+  return shell(vm, 'Payment receipt', html`${card(html`<div class="center ok-head"><span class="check" aria-hidden="true">✓</span>${h1(p.status === 'scheduled' ? 'Your payment is scheduled' : 'Thank you! Your payment was received.')}</div>${receiptRows(vm, { extra: [['Account', vm.accountMasked]] })}<p>${vm.authenticated ? html`<a class="btn-raised" href="${vm.url('dashboard')}">Back to my accounts</a> <a class="btn-flat" href="${vm.url('history')}">Payment history</a>` : html`<a class="btn-raised" href="${vm.url('home')}">Done</a>`}</p>`)}`, { account: vm.authenticated });
+}
+
+export function render(page, vm) { const fn = pages[page]; if (!fn) throw new Error(`municipal-portal cannot render ${page}`); return fn(applyProfile(vm)); }
+
+export const css = `*{box-sizing:border-box}html{background:#fafafa}body{margin:0;font:15px/1.5 Roboto,"Helvetica Neue",Arial,sans-serif;color:#212121;background:#fafafa;letter-spacing:.01em}a{color:#3949ab}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;padding:8px;z-index:9}
+.appbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2)}
+.brand{display:flex;align-items:center;gap:12px;color:#212121;text-decoration:none}.brand .logo{width:34px;height:34px}.svc{font-size:20px;font-weight:500}.org{font-size:13px;color:#616161;border-left:1px solid #ddd;padding-left:12px}
+.right{display:flex;align-items:center;gap:14px}.launcher{color:#424242;display:flex}.ico{width:24px;height:24px}.acct-menu{display:flex;align-items:center;gap:10px}.who{font-size:14px;color:#424242}
+.btn-raised,.btn-raised-w,.btn-outline,.btn-flat,.btn,button{font:inherit;font-weight:500;letter-spacing:.06em;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block;border-radius:4px;padding:8px 22px;line-height:20px}
+.btn-raised,.btn-primary,button.btn-raised{background:#3f51b5;color:#fff;border:0;box-shadow:0 2px 2px rgba(0,0,0,.24)}.btn-raised:hover{background:#303f9f}.wide{width:100%}
+.btn-raised-w{background:#fff;color:#212121;border:0;box-shadow:0 1px 3px rgba(0,0,0,.3)}.btn-outline{border:1px solid #3f51b5;color:#3f51b5;background:#fff}.btn-flat{color:#3f51b5;background:none;border:0}
+.btn{border:1px solid #3f51b5;background:#fff;color:#3f51b5}.btn-danger{background:#c62828;color:#fff;border:0}.btn-link{border:0;background:none;padding:0;color:#3949ab;text-decoration:underline;letter-spacing:0}
+.hero-band{height:330px;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.15)),linear-gradient(180deg,#9fbfe0 0%,#d7e3ee 45%,#6f8f6a 46%,#46664a 70%,var(--brand) 100%)}
+.layout-public{max-width:1040px;margin:0 auto;padding:24px 16px}.layout-public main.over-hero{margin-top:-210px}
+.layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 130px)}.layout main{padding:24px 32px;max-width:1000px;min-width:0}
+.drawer{background:#fff;border-right:1px solid #e0e0e0;padding:12px 0}.drawer a{display:block;padding:10px 24px;color:#212121;text-decoration:none;font-size:14px}.drawer a:hover{background:#f5f5f5}.drawer a.on{background:#e8eaf6;color:#283593;font-weight:500;border-left:4px solid #3f51b5;padding-left:20px}.dh{margin:14px 24px 4px;font-size:12px;text-transform:uppercase;color:#757575;letter-spacing:.08em}
+.mcard{background:#fff;border:1px solid #e0e0e0;border-radius:4px;padding:24px;margin-bottom:24px;box-shadow:0 1px 2px rgba(0,0,0,.06)}.mcard h2{font-size:20px;font-weight:500;margin:0 0 10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.tile{text-align:center}.tile p{max-width:440px;margin:8px auto}.art{width:96px;height:96px}
+.grid-side{display:grid;grid-template-columns:1fr 330px;gap:16px;align-items:start}.grid-main{display:grid;grid-template-columns:1fr 310px;gap:16px;align-items:start}.side h2{font-size:19px}
+.q{display:flex;gap:14px;align-items:center}.q p{margin:2px 0}.qico{width:52px;height:52px;flex:none}.right{text-align:right}.marks{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 8px}.marks li{border:1px solid #ccc;border-radius:3px;padding:4px 8px;font-size:12px;font-weight:700;color:#1a237e;background:#f7f7fb}
+.svc-links{padding-left:18px}.svc-links li{margin:6px 0}
+h1{font-size:26px;font-weight:400;margin:0 0 16px}.lead{font-size:17px;color:#424242}.muted{color:#757575}.small{font-size:13px}.center{text-align:center}.caps{text-transform:none;font-weight:500;letter-spacing:.06em}
+.field{margin:14px 0}.field label{display:block;font-size:13px;color:#616161;margin-bottom:4px}.field:has([required]) label::before{content:"* ";color:#c62828}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #9e9e9e;border-radius:4px;font:inherit;background:#fff}.field input:focus,.field select:focus{outline:2px solid #3f51b5;border-color:#3f51b5}.field textarea{min-height:120px}.help{display:block;font-size:12px;color:#424242;margin-top:3px}
+fieldset{border:1px solid #e0e0e0;border-radius:4px;padding:12px 16px;margin:16px 0}legend{font-weight:500;padding:0 6px}.radio,.check{display:block;margin:10px 0}.other-amount{width:120px;padding:6px;border:1px solid #9e9e9e;border-radius:4px}.amt{margin-left:6px}.fee-tag{font-size:12px;color:#757575;margin-left:6px}
+.pm-new .bank-fields,.pm-new .card-fields{display:none}.pm-new:has(select[name=methodType] option[value=bank]:checked) .bank-fields{display:block}.pm-new:has(select[name=methodType] option[value=card]:checked) .card-fields{display:block}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+details summary{cursor:pointer;color:#3949ab;font-weight:500;margin:10px 0}.actions{margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.actions.center{justify-content:center}hr{border:0;border-top:1px solid #e0e0e0;margin:20px 0}
+.alert{padding:12px 16px;border-radius:4px;margin-bottom:16px}.alert-error{background:#fdecea;color:#b71c1c;border-left:4px solid #c62828}.alert-ok{background:#e8f5e9;color:#1b5e20;border-left:4px solid #2e7d32}
+.stepper{display:flex;gap:0;list-style:none;padding:0;margin:0 0 20px;counter-reset:s}.stepper li{flex:1;display:flex;align-items:center;gap:8px;color:#9e9e9e;font-size:14px;padding:8px 0;border-bottom:2px solid #e0e0e0}.stepper .n{display:inline-flex;width:24px;height:24px;border-radius:50%;background:#bdbdbd;color:#fff;align-items:center;justify-content:center;font-size:12px}.stepper .current{color:#212121;border-color:#3f51b5;font-weight:500}.stepper .current .n,.stepper .done .n{background:#3f51b5}.stepper .done{color:#424242}
+.title-row{display:flex;justify-content:space-between;align-items:center}.acct-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.due{text-align:right;display:flex;flex-direction:column}.due .label{font-size:13px;color:#616161}.big{font-size:32px;font-weight:400}.acct-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;border-top:1px solid #eee;padding-top:16px}.acct{border-top:4px solid var(--brand)}
+.banner{background:#fff8e1;border:1px solid #ffe082;padding:10px 14px;border-radius:4px}.due-line{font-size:18px;text-align:right}
+.kv,.review{display:grid;grid-template-columns:max-content 1fr;gap:8px 24px;margin:0 0 16px}.kv dt,.review dt{color:#616161}.kv dd,.review dd{margin:0}.conf{font-size:18px;letter-spacing:.04em}
+.table{width:100%;border-collapse:collapse}.table th{text-align:left;font-size:13px;color:#616161;font-weight:500;border-bottom:1px solid #e0e0e0;padding:10px 8px}.table td{padding:12px 8px;border-bottom:1px solid #eee}.table form{display:inline}.empty{color:#757575}
+.wallet{list-style:none;padding:0}.wallet li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee}.wallet form{display:inline}
+.help-search{display:flex;gap:8px;margin:12px 0}.help-search input{flex:1;padding:10px;border:1px solid #9e9e9e;border-radius:4px;font:inherit}.help-search .btn{padding:8px 16px}.help-list{padding-left:18px}.help-list li{margin:8px 0}.crumbs{font-size:13px;color:#616161;margin:0 0 8px}
+.ok-head .check{display:inline-flex;width:56px;height:56px;border-radius:50%;background:#2e7d32;color:#fff;font-size:30px;align-items:center;justify-content:center}
+.foot{background:#fff;border-top:1px solid #e0e0e0;text-align:center;font-size:13px;color:#616161;padding:20px 16px}.foot nav span{margin:0 4px}.foot a{margin:0 4px}
+.identity{background:#f2f2f2}.id-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px}.id-card{background:#fff;width:100%;max-width:420px;border-radius:4px;border:1px solid #ddd;box-shadow:0 2px 6px rgba(0,0,0,.08);padding:32px 40px}.id-brand{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:#424242;font-size:14px;border-bottom:1px solid #eee;padding-bottom:18px;margin-bottom:16px}.id-brand .logo{width:56px;height:56px}.id-title{font-size:16px;font-weight:600;text-align:center;color:#1d1d21}.id-user{text-align:center;color:#616161}.id-links{text-align:center;font-size:14px}.id-foot{font-size:13px}.or{text-align:center;color:#9e9e9e;font-size:12px;border-top:1px solid #eee;margin:20px 0 0;padding-top:10px}.identity .field label::before{content:""}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:860px){.two,.grid-side,.grid-main{grid-template-columns:1fr}.layout{grid-template-columns:minmax(0,1fr)}.drawer{display:flex;flex-wrap:wrap;border-right:0;border-bottom:1px solid #e0e0e0}.drawer a{padding:8px 12px}.dh{display:none}.org{display:none}.layout main{padding:16px}}
+.appbar{max-width:100%;gap:10px}.brand{min-width:0}.svc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.right{flex:none}
+@media(max-width:600px){.appbar{padding:0 12px}.who{display:none}.svc{font-size:17px}.acct-menu{gap:4px}.acct-menu .btn-flat,.acct-menu .btn-raised-w,.right>.btn-raised-w{padding:6px 10px;letter-spacing:.02em}.table{display:block;overflow-x:auto}.kv,.review{grid-template-columns:1fr;gap:2px 0}.kv dd,.review dd{margin-bottom:8px;overflow-wrap:anywhere}}
+@media(max-width:420px){.acct-menu .btn-flat{display:none}.brand .logo{width:28px;height:28px}.id-card{padding:24px 18px}}
+${PROFILE_CSS}
+.pf-flat{border:0;padding:0;background:none}.pf-herocard .pf-hero{margin:0}
+`;

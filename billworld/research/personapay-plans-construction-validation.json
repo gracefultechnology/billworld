@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-10-04T11:31:22.362193+00:00",
+  "kind": "personapay_plan_domain_and_http_construction",
+  "deployed": true,
+  "released_environment": "0.17.0",
+  "released_site_count": 9,
+  "released_task_count": 31,
+  "public_evidence": {
+    "file": "billworld/research/western-dental-config.json",
+    "sha256": "08492254c1a734d4980854719fb3d6e53ff5ae0f4c3d3aa0be0d3da85014211c",
+    "recurrence": [
+      "Monthly",
+      "BiWeekly",
+      "Weekly"
+    ],
+    "first_payment_max_delay_days": 7,
+    "future_payment_max_delay_days": 4,
+    "maximum_months": 36,
+    "minimum_recurring_total_cents": 10000,
+    "default_offer": {
+      "cycles": 36,
+      "initial_cents": 10000,
+      "minimum_installment_cents": 10000
+    },
+    "single_open_recurring_plan": true,
+    "scheduled_retry_enabled": false,
+    "close_on_initial_decline": true,
+    "close_on_scheduled_decline": false,
+    "restrict_one_time_payment_while_plan_open": false
+  },
+  "implemented": [
+    "Consented, idempotent recurring and future-payment enrollment",
+    "Charge selection and calendar-anchored installment scheduling",
+    "Separate dental scheduler with no inherited water/sewer invoices",
+    "Automatic installment commit, card expiry, decline and failure state",
+    "Cancellation without refunding completed installments",
+    "Balance caps after concurrent one-time payments",
+    "Same-origin plan HTTP APIs and HttpOnly review cookie",
+    "One-time task graders reject additional dental plans",
+    "Account-to-plan navigation, instrument entry, review, consent, confirmation and cancellation UI",
+    "Versioned recurring and future-payment tasks, private graders and Infinity references"
+  ],
+  "synthetic_policy": [
+    "Manual cycle selection and private eligibility are synthetic; the public configuration contains a default 36-cycle offer, not proof every alternative is offered.",
+    "Equal installment rounding, UTC dates and same-day cutoff use deterministic local policies.",
+    "Installments cap to remaining selected debt and may fall below enrollment minimum after one-time payments; no overpayment credit is created by scheduled installments.",
+    "Successful payment posting and pending reservations are simulated.",
+    "Future schedules may coexist with recurring plans; public configuration does not establish this private interaction."
+  ],
+  "verification": {
+    "full_node_suite": {
+      "artifact": "billworld/artifacts/domain-0.17.log",
+      "sha256": "d08fb053007bf2473f34dabb55f5206b0c03548bddf537ac33a70673b767aa28",
+      "tests": 154,
+      "passed": 154
+    },
+    "research": {
+      "artifact": "billworld/artifacts/research-0.17.log",
+      "sha256": "f636b1579f9af7ed2c46bc007c6ff2dbdec6810730b5979a5d6eba5dc613b56b",
+      "tests": 34,
+      "passed": 34
+    },
+    "plan_browser": {
+      "kind": "synthetic_plan_browser_construction",
+      "runtime_activated": true,
+      "all_passed": true,
+      "scenarios": [
+        {
+          "name": "recurring browser enrollment, consent, review reload and authoritative task grade",
+          "passed": true
+        },
+        {
+          "name": "future browser enrollment, consent, review reload and authoritative task grade",
+          "passed": true
+        },
+        {
+          "name": "cancel confirmation stops future installments and preserves the first posted payment",
+          "passed": true
+        },
+        {
+          "name": "invalid installment amount and first-date limits produce recoverable browser errors",
+          "passed": true
+        },
+        {
+          "name": "expired enrollment cannot create a plan",
+          "passed": true
+        }
+      ],
+      "page_errors": [],
+      "outbound_requests": [],
+      "artifact": "billworld/artifacts/personapay-plans-browser/report.json",
+      "sha256": "77616adf4d4c2d143dc18d2bcc0f1125fd431e9c43d204ccc3034ef53c7d6d9e"
+    },
+    "payment_browser_regression": {
+      "kind": "synthetic_checkout_browser_construction",
+      "runtime_activated": true,
+      "all_passed": true,
+      "scenarios": [
+        {
+          "name": "homepage, account-help modal, identifier login, full bank payment and receipt reload",
+          "passed": true
+        },
+        {
+          "name": "failed identity matches persist across reload, require local CAPTCHA and allow correction",
+          "passed": true
+        },
+        {
+          "name": "edited partial payment preserves cents and remaining charge balances",
+          "passed": true
+        },
+        {
+          "name": "card overpayment creates explicit local credit without a negative balance",
+          "passed": true
+        },
+        {
+          "name": "selected charge payment leaves the separate charge unpaid",
+          "passed": true
+        },
+        {
+          "name": "invalid bank data and declined card cannot change balances or issue paid receipts",
+          "passed": true
+        },
+        {
+          "name": "expired review and signed-out account cannot commit a payment",
+          "passed": true
+        },
+        {
+          "name": "captured financing, privacy, terms and contact pages load on the active site routes",
+          "passed": true
+        }
+      ],
+      "page_errors": [],
+      "outbound_requests": [],
+      "artifact": "billworld/artifacts/personapay-active-browser/report.json",
+      "sha256": "b575d6c3180547ed12228ef04de8f9678e8f3dbccae88017e032ea9be6977538"
+    },
+    "infinity": {
+      "artifact": "billworld/artifacts/infinity/0.17-full/summary.json",
+      "sha256": "0abc0b6968ccba79bfe8e376986b95b8a03bc85f2325ef1c20d3bfae03c8f0e3",
+      "task_ids": [
+        "task_m1",
+        "task_m2",
+        "task_h1",
+        "task_h2",
+        "task_h3",
+        "task_h4",
+        "task_m3",
+        "task_m4",
+        "task_h5",
+        "task_m5",
+        "task_h6",
+        "task_h7",
+        "task_h8",
+        "task_m6",
+        "task_h9",
+        "task_m7",
+        "task_m8",
+        "task_h10",
+        "task_h11",
+        "task_m9",
+        "task_m10",
+        "task_m11",
+        "task_h12",
+        "task_h13",
+        "task_h14",
+        "task_h15",
+        "task_m12",
+        "task_h16",
+        "task_h17",
+        "task_h18",
+        "task_h19"
+      ],
+      "passed": 31,
+      "kind": "reference_script",
+      "upstream_revision": "1ca77813bf8d8e4011aa3fb1f740f70d78bd522d",
+      "report": "billworld/artifacts/infinity/0.17-full/report.html"
+    }
+  },
+  "unfinished": [
+    "eBill preferences/delivery",
+    "Independent source fidelity review",
+    "Autonomous-agent baseline",
+    "Held-out cases and deployment isolation"
+  ],
+  "next_step": "Implement eBill using reviewed public configuration and continue the full catalog reconstruction."
+}

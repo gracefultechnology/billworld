@@ -1,0 +1,38 @@
+{
+  "id": "western-dental-future-plan-v1",
+  "version": 1,
+  "site_id": "western-dental",
+  "evidence_cohort": "public_config_and_synthetic_plan",
+  "prompt": "Access Western Dental account 123001048 using ZIP 56007 and DOB 04/12/1985. Schedule a single future $100.00 payment on October 7, 2026, applied to both unpaid charges. Do not make an initial payment. Use checking ending 1048, authorize the scheduled payments, and report the plan confirmation. Keep other accounts, wallet and utility AutoPay unchanged. This local enrollment is authorized. Private enrollment, eligibility, installment rounding and execution are synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "dental_plan_enrollment",
+    "account_id": "acct-primary",
+    "plan_type": "future",
+    "amount_cents": 10000,
+    "recurrence": null,
+    "invoice_ids": [
+      "inv-current",
+      "inv-second"
+    ],
+    "installments": [
+      {
+        "date": "2026-10-07",
+        "amountCents": 10000
+      }
+    ],
+    "method_kind": "bank",
+    "method_last4": "1048",
+    "remaining_cents": {
+      "inv-current": 8432,
+      "inv-second": 12500,
+      "inv-old": 0,
+      "inv-other": 5190
+    },
+    "routing": "021000021",
+    "bank_account_number": "000001048"
+  }
+}

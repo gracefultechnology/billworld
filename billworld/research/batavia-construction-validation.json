@@ -1,0 +1,108 @@
+{
+  "validated_at": "2026-10-04T12:23:25.390330+00:00",
+  "kind": "public_pages_documents_and_tenant_policy_research",
+  "catalog_id": "biller_c8edde62f56ee14f50e0",
+  "runtime_implemented": false,
+  "released_site_count": 9,
+  "released_task_count": 31,
+  "usable_public_pages": 3,
+  "blocked_portal": {
+    "url": "https://ipn2.paymentus.com/cp/cobi",
+    "status": 403,
+    "copied_as_usable_reference": false
+  },
+  "documents": [
+    {
+      "id": "paymentus-faq",
+      "url": "https://5il.co/3a7g3",
+      "final_url": "https://files-backend.assets.thrillshare.com/documents/asset/uploaded_file/5349/Cob/9f6e80fc-e392-4fe1-8208-e0275593db95/Visit_the_Paymentus_Bill_Payment_Service___F.pdf?disposition=inline",
+      "file": "batavia-docs/paymentus-faq.pdf",
+      "sha256": "32565303fca734dfc07e205061db682017c1d0a25b890882f7ab70d120000b41",
+      "bytes": 133586,
+      "evidence_type": "documented_public"
+    },
+    {
+      "id": "paymentus-guide",
+      "url": "https://5il.co/3a7g4",
+      "final_url": "https://files-backend.assets.thrillshare.com/documents/asset/uploaded_file/5349/Cob/d353a8c0-8fe4-4123-aedc-c5215ab560ec/View_the_Instructions_for_Getting_Started_with.pdf?disposition=inline",
+      "file": "batavia-docs/paymentus-guide.pdf",
+      "sha256": "392b955d93f21efacb6130f6aebb5b2f1860c132396364791e310b5b93213632",
+      "bytes": 326086,
+      "evidence_type": "documented_public"
+    },
+    {
+      "id": "city-draft-enrollment",
+      "url": "https://5il.co/3emxt",
+      "final_url": "https://files-backend.assets.thrillshare.com/documents/asset/uploaded_file/5349/Cob/38e5ca92-d872-46fc-985b-cecefd735393/Direct-Payment-Application-Form-PDF_2024092716.pdf?disposition=inline",
+      "file": "batavia-docs/city-draft-enrollment.pdf",
+      "sha256": "47baf6f779a0a886a72f13268abd6e63b2b7e34308e764d104530da4f96ddfb5",
+      "bytes": 404746,
+      "evidence_type": "documented_public"
+    }
+  ],
+  "document_review": {
+    "paymentus-guide": "All six pages visually reviewed; historical sample layout, fees and timestamps kept distinct from current live behavior.",
+    "paymentus-faq": "All three pages visually reviewed; December 2020 rollout identified.",
+    "city-draft-enrollment": "Both pages visually reviewed; offline return, checking/savings, signatures and cancellation notice, no sensitive email submission."
+  },
+  "new_evidence": [
+    "Current municipal page separates free offline city direct draft from fee-bearing Paymentus AutoPay and explicitly warns of duplicate payments.",
+    "Official linked guide documents email/password, registration fields, address-prefix account verification, paperless/notification choices, menu and emailed recovery instructions.",
+    "FAQ rollout and guide examples are dated 2020; numerical fees and limits are documentary historical evidence, not current live checkout verification."
+  ],
+  "verification": {
+    "public_browser": {
+      "artifact": "billworld/artifacts/batavia-public-browser/report.json",
+      "sha256": "aa40d8351887902a6466d1a19bf54d9844616e659150c8e766683db217e0199e",
+      "scenarios": 3,
+      "all_passed": true,
+      "page_errors": [],
+      "outbound_requests": []
+    },
+    "research": {
+      "artifact": "billworld/artifacts/research-batavia.log",
+      "sha256": "98b446c09a6a1585418ddc5de5489305aa8c02665fcaa9ac11f42e3f9bcc6e61",
+      "tests": 36,
+      "passed": 36
+    },
+    "visual_review": {
+      "original": "billworld/captures/biller_c8edde62f56ee14f50e0-billing/screenshot.png",
+      "local": "billworld/artifacts/batavia-public-browser/billing.png",
+      "finding": "Branding, layout and payment-policy text compared. Original live chat widget removed; menu/search/translation and uncaptured links are inert. Not independent fidelity certification."
+    },
+    "catalog_index": {
+      "artifact": "billworld/artifacts/catalog-index-batavia.log",
+      "sha256": "e7db0dc6412e9c62f362756c2070ee5a74dc2cf22eaa3e97aeed42208e60dfb0",
+      "counts": {
+        "catalog_records": 59477,
+        "records_without_family_signal": 48877,
+        "records_with_multiple_url_families": 121,
+        "runnable_first_slices": 9,
+        "fidelity_certified_records": 0
+      }
+    }
+  },
+  "source_packet": {
+    "directory": "/Users/shawwalters/billpay-research/billworld/research-data/packets/biller_c8edde62f56ee14f50e0/5bbdeeeec131f43a",
+    "metadata_sha256": "f04742d5778ae82c655c3d3c3dc1b6fb8f4d31cf722b07dcc66f9bb278cbe1e4",
+    "usable_candidate_pages": 3,
+    "documents": 3,
+    "site_manifest_matches_current": true
+  },
+  "source_hashes": {
+    "billworld/sites/batavia.json": "e072196f720bc9e19cf30087e3d0804bb49c0330fcf54475c23bf9b4a9bb255d",
+    "billworld/research/batavia-public.json": "06aa53151a45f031d5adc0e0cd60157a850f20a82d5c7f05817644200169431a",
+    "billworld/tests/batavia-public-browser.mjs": "1fe52a8ce17320e45e71d0380b513fe1e2b3c819713092049a6a786d8c165449"
+  },
+  "reused": [
+    "Existing public Puppeteer collector and hash-verified source packet export",
+    "Existing generic local snapshot builder and benchmark server",
+    "Existing catalog coverage index; researched site is excluded from runnable coverage"
+  ],
+  "unfinished": [
+    "Live tenant auth/registration/recovery and private checkout evidence",
+    "Runtime binding to shared auth/mail/ledger and Infinity tasks",
+    "Current exact fees, limits, calendar and posting rules",
+    "Independent source fidelity and autonomous-agent scores"
+  ]
+}

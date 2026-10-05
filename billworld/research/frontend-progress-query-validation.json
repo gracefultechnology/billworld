@@ -1,0 +1,50 @@
+{
+  "recorded_at": "2026-10-04T20:36:07.241105+00:00",
+  "kind": "catalog_frontend_progress_query_upgrade",
+  "scope": "Full catalog static frontend asset capture; no runtime/fidelity coverage added",
+  "change": "Biller and same-host pending counts use existence checks rather than expanding duplicate references",
+  "validation": {
+    "research_tests_passed": 66,
+    "research_log": "billworld/artifacts/frontend-progress-research-final.log",
+    "deduplication_and_performance_test": "billworld/artifacts/frontend-progress-query-specific.log",
+    "fixture": "100 pages share 100 assets, with 80 same-host and 20 third-party assets, 50 captured and 50 pending; an unreferenced pending asset excluded",
+    "expected_counts": {
+      "billers_with_static_references": 5,
+      "same_host_pending": 40,
+      "active_captured": 50,
+      "active_pending": 50
+    },
+    "sqlite_instruction_requirement": "Each new count uses less than one fifth of previous VM instructions; assertion passed"
+  },
+  "maintenance": {
+    "requested_at": "2026-10-04T20:29:03.253892+00:00",
+    "pid": 28642,
+    "action": "graceful_stop_after_current_batch_for_progress_query_upgrade",
+    "source_file": "billworld/research_frontends.py",
+    "source_sha256": "8d2ce50bf3c8333ab9b5c6ce842df297cb9f5f10bd4bf7a607bab0f9fd3686dd",
+    "resume_condition": "Owned collector is terminal or PID missing; retain current evidence and pending queue",
+    "reason": "Avoid duplicate expansion in same-host pending and biller-count progress queries; functional and SQLite instruction checks passed",
+    "forced_stop_requested_at": "2026-10-04T20:34:20.078849+00:00",
+    "forced_stop_reason": "Committed last attempt verified; sampled single remaining thread is in SQLite progress aggregation. Graceful signal pending; stop for tested query upgrade.",
+    "resumed_pid": 15885,
+    "resumed_at": "2026-10-04T20:34:38.139850+00:00",
+    "phase": "successor_started",
+    "log": "billworld/artifacts/frontend-capture-progress-upgrade.log"
+  },
+  "successor_verified_live_pid": 15885,
+  "previous_last_committed_attempt": {
+    "url": "https://www.bangorwater.org/packs/public-acf73b817b35de7076a5.js",
+    "status": "too_large",
+    "attempted_at": "2026-10-04T19:47:40.210702+00:00"
+  },
+  "source_hashes": {
+    "billworld/research_frontends.py": "8d2ce50bf3c8333ab9b5c6ce842df297cb9f5f10bd4bf7a607bab0f9fd3686dd",
+    "billworld/tests/test_research_frontends.py": "06b93ddac8b60c7b896d6a3cb29a283d02e3bcb06a8dab310e80a1a3d9a1a4fc",
+    "billworld/artifacts/frontend-progress-query-specific.log": "a0347cebd1aa07c01504615ad7ff453d6ec1dc61eb4d8f2bb512f78a6a7b19f6",
+    "billworld/artifacts/frontend-progress-research-final.log": "81e9ebab98d461302c122137fce1885eb06ddcdd33d1a9502f618be0843f222c"
+  },
+  "limits": [
+    "The whole queue is unfinished; current snapshots can lag while batch progress is counted",
+    "Assets remain unexecuted source evidence; static references do not prove dependency completeness or replicas"
+  ]
+}

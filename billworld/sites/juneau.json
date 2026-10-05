@@ -1,0 +1,75 @@
+{
+  "id": "juneau-utilities",
+  "name": "City and Borough of Juneau Utilities",
+  "portal_family": "InvoiceCloud",
+  "revision": "0.1.0",
+  "implementation_status": "first_slice",
+  "evidence": [
+    {
+      "url": "https://juneau.org/engineering-public-works/utilities-division/faq",
+      "type": "documented",
+      "checked": "2026-10-03",
+      "supports": [
+        "guest_search",
+        "guest_payment",
+        "registration",
+        "password_login",
+        "payment_methods",
+        "autopay_setup",
+        "card_fee",
+        "autopay_day"
+      ]
+    },
+    {
+      "url": "https://juneau.org/engineering-public-works/utilities-division/payment-information",
+      "type": "documented",
+      "checked": "2026-10-03",
+      "supports": [
+        "payment_entry",
+        "card_fee",
+        "autopay_day"
+      ]
+    }
+  ],
+  "capabilities": {
+    "guest_payment": "documented",
+    "password_login": "documented",
+    "registration": "documented",
+    "autopay_setup": "documented",
+    "autopay_cancel": "synthetic",
+    "password_reset": "synthetic",
+    "email_otp": "synthetic_optional_scenario",
+    "google_login": "unknown_not_implemented",
+    "paperless": "unknown_not_implemented",
+    "scheduled_payment": "synthetic_implemented",
+    "recurring_execution": "synthetic_implemented",
+    "statement_pdf": "not_implemented"
+  },
+  "billing_policy": {
+    "card_fee_basis_points": 329,
+    "card_fee_minimum_cents": 295,
+    "ach_fee_cents": 0,
+    "autopay_day": 20,
+    "rounding": "nearest_cent_half_up_synthetic",
+    "settlement": "immediate_posting_synthetic_default"
+  },
+  "fidelity_limits": [
+    "Public landing page reconstructed from screenshot and DOM capture; authenticated screens remain reconstructed from documentation without screenshots.",
+    "Reset, optional email MFA, cancellation, validation, rounding, and settlement semantics are synthetic until directly observed.",
+    "No Google login has been inferred or added to Juneau.",
+    "Only this initial slice is implemented; it does not establish catalog-wide coverage."
+  ],
+  "capture_manifest": "research/juneau-public.json",
+  "catalog_records": [
+    {
+      "category": "water-sewer",
+      "name": "City and Borough of Juneau Utilities (water/sewer)"
+    }
+  ],
+  "default_task_id": "juneau-pay-current-no-fee-v1",
+  "runtime": {
+    "kind": "utility",
+    "mail_sender_slug": "juneau",
+    "guest_lookup": "customer_number"
+  }
+}

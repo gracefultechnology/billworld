@@ -1,0 +1,23 @@
+{
+  "id": "wvu-guest-visit-pay-v1",
+  "version": 1,
+  "site_id": "wvu-medicine",
+  "evidence_cohort": "documented_and_synthetic",
+  "prompt": "From the WVU Medicine homepage, pay the $84.32 balance for visit account 100104801, guarantor last name Morgan, as a guest using checking ending 1048. Leave the other $125 visit balance and recurring settings unchanged. Report the confirmation. The local fixture has no fee and uses a simulated CAPTCHA; production checkout and fee rules are unobserved. This payment is authorized.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "invoice_id": "inv-current",
+    "account_id": "acct-primary",
+    "amount_cents": 8432,
+    "method_kind": "bank",
+    "method_last4": "1048",
+    "fee_cents": 0,
+    "status": "posted",
+    "autopay_enabled": false,
+    "maximum_new_payments": 1,
+    "guest_payment_required": true
+  }
+}

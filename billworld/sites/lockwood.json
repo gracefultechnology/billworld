@@ -1,0 +1,127 @@
+{
+  "id": "lockwood",
+  "name": "Lockwood Water & Light Company",
+  "portal_family": "ePay Utilities/CUSI",
+  "implementation_status": "construction_slice",
+  "catalog_records": [
+    {
+      "category": "electric",
+      "name": "Lockwood Water & Light Company"
+    }
+  ],
+  "capture_manifest": "research/lockwood-public.json",
+  "observed_public": {
+    "identity": "City of Lockwood, Missouri; official homepage payment link points to lockwoodmo.epayub.com",
+    "login": "User Name and Password; Show password control; username recovery; no Google sign-in observed",
+    "registration": "Step 1 account lookup; account number and associated phone number; text mentions SSN suffix/TaxID alternatives but those inputs are not visible in this tenant capture",
+    "registration_steps": [
+      "Search Account",
+      "Verify Account",
+      "Register User Info",
+      "Complete"
+    ],
+    "recovery": "Username input and submit button; response and email grant unobserved",
+    "portal_footer": "Continental Utility Solutions, Inc.; CUSI Terms of Service and Privacy Policy",
+    "cookie_banner": "Required/all consent controls observed; shadow-root rendering not reconstructed"
+  },
+  "documented_policy": {
+    "source_url": "https://www.lockwoodmo.com/services",
+    "billing_day": 1,
+    "due_day": 15,
+    "late_penalty_percent": 10,
+    "disconnect_after_day": 25,
+    "service_types": [
+      "Electric",
+      "Sewer",
+      "Water"
+    ],
+    "deposit_rental_cents": 30000,
+    "deposit_homeowner_cents": 10000,
+    "deposit_business_cents": 10000,
+    "deposit_refund": "after final bill payment",
+    "trash_monthly_cents": 1300,
+    "online_payment_fees": "unobserved"
+  },
+  "contact": {
+    "phone": "417-232-4221",
+    "address": "400 Main Street, Lockwood, MO 65682",
+    "hours": "Monday\u2013Friday 7:30 am\u20134:00 pm"
+  },
+  "fidelity_limits": [
+    "This is the Missouri electric catalog record, not the unrelated Montana Lockwood Water and Sewer District.",
+    "Original scripts remain inert; captured login/recovery forms are bound only on explicitly enabled construction workers.",
+    "No production account lookup, login, registration or recovery submission was performed.",
+    "Private billing/card screens and $2.50 construction card fee are synthetic. Actual payment fees, bank verification provider, AutoPay and paperless remain unobserved. Registration stages and client-side field rules follow captured public code; continuation layouts, account lookup responses, duplicate-account recovery modal and private validation remain unobserved. Recovery grant, password maximum/character-class interpretation, case normalization and session lifetime are synthetic. Minimum length and required character classes come from public company configuration.",
+    "Captured policy text has not been exercised by a runtime scheduler.",
+    "Four construction-only tasks exist; this site is absent from the released registry and released Infinity task inventory."
+  ],
+  "runtime": {
+    "kind": "cusi",
+    "frontend": "cusi",
+    "mail_sender_slug": "lockwood"
+  },
+  "default_task_id": "lockwood-username-login-v1",
+  "construction_stage": "auth_recovery_registration_card_payment_not_released",
+  "construction_draft": {
+    "activated_in_release": false,
+    "authentication": "Captured username/password login bound to authoritative sessions",
+    "recovery": "Captured username/Email Link request with synthetic Gmail grant, password reset and revocation",
+    "validation_manifest": "research/cusi-construction-validation.json",
+    "capabilities_unimplemented": [
+      "AutoPay",
+      "paperless",
+      "preferences",
+      "original CAPTCHA",
+      "complete cookie settings",
+      "slideshow animation",
+      "bank verification/payments",
+      "faithful private billing layout and original fee policy",
+      "faithful private registration layout and validation",
+      "already-registered account recovery modal",
+      "alternative registration email ownership and mailbox delivery"
+    ],
+    "payment": "Synthetic account/bill/card review/receipt backed by existing ledger; $2.50 fixture fee",
+    "payment_validation_manifest": "research/cusi-payment-construction-validation.json",
+    "registration": "Captured account/phone lookup and public client stage sequence with synthetic matched-account review, consent, credential creation, receipt and new-user login"
+  },
+  "construction_payment_policy": {
+    "synthetic": true,
+    "card_fee_cents": 250,
+    "description": "Construction fixture only: $2.50 per card payment. Lockwood online fees remain unobserved. This fee is not a claim about the live tenant.",
+    "supported_methods": [
+      "card"
+    ],
+    "bank_verification": "unimplemented; Plaid/MicroBilt deployment unknown"
+  },
+  "family_payment_evidence": "research/cusi-payment-evidence.json",
+  "password_policy": {
+    "minimum_length": 8,
+    "maximum_length": 128,
+    "digit": true,
+    "lowercase": true,
+    "uppercase": true,
+    "non_alphanumeric": true,
+    "evidence": "observed_public_company_configuration",
+    "source_url": "https://lockwoodmo.epayub.com/api/companies/1/password-preferences",
+    "source_sha256": "2d685e00ba5354abaf7b08a546991da9ad6136ee165573ebf82a2b3e5c74db33",
+    "research_manifest": "research/lockwood-password-policy.json",
+    "synthetic_limits": [
+      "maximum_length",
+      "ASCII interpretation of character classes; exact backend Unicode/symbol handling unobserved"
+    ]
+  },
+  "construction_registration_policy": {
+    "lookup": "Captured account number and associated phone option; local fixture lookup and continuation synthetic",
+    "stages": [
+      "Search Account",
+      "Verify Account",
+      "Register User Info",
+      "Complete"
+    ],
+    "username": "No spaces, unique username; case normalization and 128-character maximum synthetic",
+    "email": "Editable valid email stored separately from utility contact identity; synthetic recovery and password-change messages use the registered profile email. Alternative mailbox ownership remains unfinished",
+    "consent": "Explicit terms/privacy acceptance; exact continuation label unobserved",
+    "already_registered": "Public family client has a reset-email dialog when multi-registration is disabled. Local draft uses matched account/phone, reviewed account grant and idempotent reset email; tenant flag, dialog layout and private delivery are synthetic/unobserved",
+    "grant": "Synthetic ten-minute episode-bound enrollment grant; confirmation and credential creation are separate"
+  }
+}

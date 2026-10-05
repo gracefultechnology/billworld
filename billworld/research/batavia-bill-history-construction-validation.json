@@ -1,0 +1,142 @@
+{
+  "recorded_at": "2026-10-05T06:31:49.313796+00:00",
+  "kind": "batavia_bill_history_construction",
+  "site_id": "batavia-utilities",
+  "released": false,
+  "implemented": [
+    "Bill History navigation with synthetic linked-account invoice summaries",
+    "Original invoice amount, posted credit, pending reservation and remaining availability distinguished",
+    "Construction payment fees excluded from invoice credit",
+    "Paid status requires posted coverage; pending full payment blocks duplicate offering without claiming settlement",
+    "Live-session/account-link authorization and read-only history events"
+  ],
+  "validation": {
+    "javascript_checks_passed": 233,
+    "research_checks_passed": 89,
+    "focused_bill_history_checks_passed": 3,
+    "browser_report": {
+      "file": "billworld/artifacts/paymentus-history-browser/report.json",
+      "sha256": "e566ba9f83358a726575f68d27ac45d26e23b1aec9c06839a52cbf36d1008429",
+      "kind": "synthetic_paymentus_history_documented_navigation",
+      "released": false,
+      "scenarios": [
+        "Accounts/history navigation, seeded record, new bank payment, required post-payment history verification, exact totals and reload without duplicates",
+        "Bill History shows posted bill credit separately from construction fee and retains account scope on reload",
+        "Caller account query cannot widen history scope; logout protects UI and API",
+        "Pending ledger payment appears as pending rather than paid",
+        "Bill History reserves pending full payment without claiming settlement or offering duplicate payment"
+      ],
+      "page_errors": [],
+      "outbound_requests": [],
+      "all_passed": true
+    },
+    "infinity": {
+      "file": "billworld/artifacts/infinity/batavia-bill-history-construction/summary.json",
+      "sha256": "6aa98a1507bc7f14b3012c2ad3d951492d0a7f1c1e3af1387d4a939c9a483ba4",
+      "passed_task_ids": [
+        "task_c1",
+        "task_c2",
+        "task_c3",
+        "task_c4",
+        "task_c5",
+        "task_c6",
+        "task_c7",
+        "task_c8",
+        "task_c9",
+        "task_c10"
+      ],
+      "negative_rejected": true,
+      "legacy_lifecycle_passed": true,
+      "repetition_lineage_passed": true,
+      "worker_recovery": {
+        "taskId": "lockwood-username-login-v1",
+        "episodeId": "episode-Wd2SHTAGdn3xw2k33jL0hEmdcuV8P_VV",
+        "success": false,
+        "checks": {
+          "username_verified": false,
+          "account_opened_after_login": false,
+          "live_primary_session": false,
+          "no_payments": true,
+          "no_schedules": true,
+          "no_autopay": true,
+          "no_wallet": true,
+          "balances_unchanged": true,
+          "other_identity_unchanged": true,
+          "no_registration": true,
+          "no_reset": true
+        },
+        "evidenceCohort": "observed_public_auth_and_synthetic_continuation",
+        "withinTimeBudget": true,
+        "elapsedMilliseconds": 272,
+        "finishedAt": "2026-10-05T06:30:59.742Z",
+        "seed": 1,
+        "siteId": "lockwood",
+        "kind": "grader_validation",
+        "agent": "infinity-puppeteer-reference-v1",
+        "accessMode": "browser_only",
+        "runId": "afd0e8ea4efe45d98d0dc7131e651bd6",
+        "model": null,
+        "scaffold": "webarena-infinity@1ca77813bf8d8e4011aa3fb1f740f70d78bd522d",
+        "attemptNumber": 1,
+        "termination": "environment_error",
+        "failureReasons": [
+          "username_verified",
+          "account_opened_after_login",
+          "live_primary_session",
+          "environment_error"
+        ],
+        "agentSteps": null,
+        "agentElapsedMilliseconds": null,
+        "constructionSlice": true,
+        "environmentRevision": "0.17.0",
+        "evaluatorRevision": "0.17.0",
+        "environmentBuildId": "b7cb8efa1507f1b57762d3a8d0954b0869465b082066c3a947d41c2a24ecc4a3",
+        "evaluatorBuildId": "715f9e0827b6ed6c185293c0ab65a3131a9a61312c777831beee8fd826b07102",
+        "buildProvenanceSchema": 1,
+        "buildChangedDuringEpisode": false,
+        "taskVersion": 1,
+        "portalFamily": "ePay Utilities/CUSI",
+        "actionBudgetEnforced": false
+      },
+      "environment_build_id": "b7cb8efa1507f1b57762d3a8d0954b0869465b082066c3a947d41c2a24ecc4a3",
+      "evaluator_build_id": "715f9e0827b6ed6c185293c0ab65a3131a9a61312c777831beee8fd826b07102",
+      "current_build_ids_match": true
+    },
+    "visual_inspection": "Bill History inspected: source amount/posted/pending/availability/status and explicit synthetic/statement limitations",
+    "logs": {
+      "billworld/artifacts/paymentus-bill-history-targeted.log": "a4f936c54e6936462dbf1f8bb980f782f0f54ac7ca4e5bf9a51d1becfbdb07fd",
+      "billworld/artifacts/paymentus-bill-history-full-domain.log": "00b4f91f89462b9e003357e33cc8bf17e8ab866d851e5b36db3a812a2fadaec0",
+      "billworld/artifacts/paymentus-bill-history-full-research.log": "6712ab7070b6775904f10345282c5f6cc94940816b2846bd09e5e19fef52ff6d",
+      "billworld/artifacts/paymentus-bill-history-browser.log": "e566ba9f83358a726575f68d27ac45d26e23b1aec9c06839a52cbf36d1008429",
+      "billworld/artifacts/batavia-bill-history-infinity.log": "87346dd34b3fa8d6fe447ac7300e315a3b8b2a3b7613c52521fac6dc24dffa9b"
+    }
+  },
+  "construction_packet": {
+    "revision": "90dea86caa40d4a5",
+    "metadata": "billworld/research-data/packets/biller_c8edde62f56ee14f50e0/90dea86caa40d4a5/metadata.json",
+    "metadata_sha256": "bc14b495b6694f26546c4219243360a6cdcde97b787abf1fa9eb4869752fa713"
+  },
+  "source_files_sha256": {
+    "billworld/engine.mjs": "f6cd54df3a073eb6cf1952d71049cdd9ef110eac5e1b3f770f729be669eb4ab5",
+    "billworld/server.mjs": "bde0e85b5dc1458fcd5b7c523792ec979aed1226cc556ae50257a206ce86560c",
+    "billworld/public/paymentus.js": "5f043cffe900f0c2fc048f414786569d6e4bf6cef7faba7dca6a8f167ade32dc",
+    "billworld/sites/batavia.json": "b0324c024158355e020566a170e89ff9204e3ebe688c339a3ba08fdea6b91f3a",
+    "billworld/tests/paymentus-bill-history.test.mjs": "e996bc379cde350683bb7cd3426abe2106df9dc4888999705865a79fc5b5312e",
+    "billworld/tests/paymentus-history-browser.mjs": "2bf83a08f137f04aa2e23cf103f1a3bbbda527fbc8708d40cd03836ac0578071"
+  },
+  "coverage": {
+    "catalog_records": 59477,
+    "released_sites": 9,
+    "released_tasks": 31,
+    "construction_tasks": 10,
+    "independent_fidelity_certifications": 0,
+    "autonomous_agent_scores": 0
+  },
+  "limits": [
+    "Original statement PDFs and itemized bill content unimplemented",
+    "Current private bill-history layout and retention/channel coverage unverified",
+    "Original Paymentus auth capture remains denied; historical published guide is not current private observation",
+    "Shared authoritative synthetic posting does not establish external funding debit or production settlement",
+    "No additional task/released/fidelity credit from this page"
+  ]
+}

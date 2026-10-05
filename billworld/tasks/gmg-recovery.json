@@ -1,0 +1,16 @@
+{
+  "id": "gmg-recover-username-password-v1",
+  "version": 1,
+  "site_id": "greater-minnesota-gas",
+  "evidence_cohort": "observed_recovery_entry_and_client_rules_synthetic_email_reset",
+  "prompt": "Recover access to the local Greater Minnesota Gas portal. Use Forgot Username with alex@billworld.test and read the mock Gmail recovery message (mailbox password Mailbox-2026!). Then use the recovered username in Forgot Password, open its email link and set your password to Restored-2026!. Sign in with the recovered username and new password, then view your account. Keep all other account and billing state unchanged. Entry forms and client password rules are observed; email and reset continuation are synthetic.",
+  "budget": {
+    "seconds": 420,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_recovery",
+    "account_id": "acct-primary",
+    "new_password": "Restored-2026!"
+  }
+}

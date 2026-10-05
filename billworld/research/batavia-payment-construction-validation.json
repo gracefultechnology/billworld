@@ -1,0 +1,116 @@
+{
+  "recorded_at": "2026-10-05T04:55:02.611900+00:00",
+  "kind": "batavia_documented_navigation_synthetic_bank_payment_construction",
+  "site_id": "batavia-utilities",
+  "task_id": "batavia-pay-current-bank-v1",
+  "infinity_task_id": "task_c8",
+  "released": false,
+  "policy": {
+    "bank_fee_cents": 350,
+    "transaction_max_cents": 50000,
+    "synthetic": true,
+    "source_limit": "Historical guide scenario values only; current live quote, checkout, limit and settlement not observed",
+    "posting": "Synthetic immediate posted; pending state also tested"
+  },
+  "implemented": [
+    "Live session and linked-account billing authority",
+    "Bank validation and exact funding instrument/name grading",
+    "HttpOnly episode/session-bound ten-minute review, body-forgery resistance and consent",
+    "Idempotent shared ledger commit, stale balance and pending reservation protection",
+    "Receipt reload and matching reused Gmail delivery",
+    "Existing Infinity lifecycle/verifier/report/task format reused"
+  ],
+  "validation": {
+    "javascript_checks_passed": 221,
+    "research_checks_passed": 89,
+    "focused_payment_checks_passed": 5,
+    "payment_browser_report": {
+      "file": "billworld/artifacts/paymentus-payment-browser/report.json",
+      "sha256": "7da7a50e04bfe143897a1903cb419fcfd578c4a6a04791ba97b970d36c2fa49c",
+      "kind": "documented_navigation_synthetic_paymentus_bank_checkout",
+      "released": false,
+      "scenarios": [
+        "Login, linked bill selection, synthetic bank review, explicit authorization, receipt reload, duplicate and body-forgery resistance",
+        "Matching payment receipt delivered through reused Infinity Gmail",
+        "Episode entry clears review cookie; expired review cannot commit"
+      ],
+      "page_errors": [],
+      "outbound_requests": [],
+      "all_passed": true
+    },
+    "existing_auth_browser_scenarios_passed": 4,
+    "existing_registration_browser_scenarios_passed": 5,
+    "full_construction_infinity": {
+      "file": "billworld/artifacts/infinity/batavia-bank-payment-construction/summary.json",
+      "sha256": "e7a66cb88463fe2e1033797bcfb1cf74a56934f2dbac42b4b9ac5e44c83ad3f8",
+      "passed_task_ids": [
+        "task_c1",
+        "task_c2",
+        "task_c3",
+        "task_c4",
+        "task_c5",
+        "task_c6",
+        "task_c7",
+        "task_c8"
+      ],
+      "scope": "Eight reference journeys before final holder-name grader hardening and footer clarification"
+    },
+    "final_infinity": {
+      "file": "billworld/artifacts/infinity/batavia-bank-payment-final/summary.json",
+      "sha256": "1e96b0c2d348de261cc2f23507e899d09dfafaf056e99cd2a996489c34ddaa5a",
+      "passed_task_ids": [
+        "task_c8"
+      ],
+      "scope": "Final task_c8 and lifecycle/repetition/owned-worker recovery after holder-name hardening and footer clarification"
+    },
+    "visual_inspection": "Final synthetic receipt and clarified footer inspected; no independent original-site fidelity certification",
+    "logs": {
+      "billworld/artifacts/paymentus-payment-full-domain-final.log": "4fc5f1d861df308840c57490ce53f11501e98a760730dea006e2a29c40c065fb",
+      "billworld/artifacts/paymentus-payment-full-research-sealed.log": "00b9d206bcb8a81f4dfa82d632d50d8f60f24a01bf5745fd196870627f2f4477",
+      "billworld/artifacts/paymentus-payment-final-grader.log": "b5fd83bbed6a4260a1ad04a6ea00e1d05e4d0881d42463fa45f0d1bbf60cf2b5",
+      "billworld/artifacts/paymentus-payment-browser-final.log": "7da7a50e04bfe143897a1903cb419fcfd578c4a6a04791ba97b970d36c2fa49c",
+      "billworld/artifacts/paymentus-auth-after-payment.log": "47dd435be04bf55f367f6c55cf7b7bddeda566b65439f56aad9e555580ac381c",
+      "billworld/artifacts/paymentus-registration-after-payment.log": "01f651bdc6283b90fe8b21de2dbf7d15c4df6f46e6230d7f431b8ba6e69ef2fe",
+      "billworld/artifacts/batavia-bank-payment-infinity.log": "86d1af1032f052db194ccb622f49f75a074990e81173ff4fe5d6924b673b0773",
+      "billworld/artifacts/batavia-bank-payment-infinity-final.log": "80ad302ab0595f627bb22ae95f09652ee472f89f5a389ac5773d61e79c787b47"
+    }
+  },
+  "initial_failures_preserved": {
+    "domain": "billworld/artifacts/paymentus-payment-targeted.log (20 passed; one old missing-token error expectation corrected)",
+    "research": "billworld/artifacts/paymentus-payment-full-research.log (missing task_c8 harness mapping corrected)",
+    "browser": "billworld/artifacts/paymentus-payment-browser/initial-startup-failure.json (Chromium WS startup timeout before UI); retry and final journey passed"
+  },
+  "source_files_sha256": {
+    "billworld/engine.mjs": "e29d2776c3d66af26c10e2c32322b098f13df7145b7e29da621ff38f084a9bfd",
+    "billworld/server.mjs": "6aac9b63da1be974e475e5503d0970f9fe7e1c83c7e1b1ca959ef1b11d0476b7",
+    "billworld/public/paymentus.js": "e3f33a0005b158a55c840c29c9e46505e0bd3c2321e5b4410a53f5498f4bf1f1",
+    "billworld/public/paymentus.html": "0333835d7ef184b5bd8cd2de5ceed0a62eb97282d52d0495424a1603a4b56fed",
+    "billworld/sites/batavia.json": "725497f058333fa9d5fb074023f1e6245ec5b3623e05e684e154489202f9b293",
+    "billworld/tasks/batavia-payment.json": "1927db5244d08fe3f53d572fc5c3933fd42de2da85fb062f044cf21e78f2591a",
+    "billworld/infinity/app/harness.py": "453b16fea85a8764f0c3b04a6a36dd5f34d7bdbaa8574c9c1ebd3c500c7c2f7b",
+    "billworld/infinity/bootstrap.py": "04dee64861c8462f251de4e5e3eabd89649d6a2cac62d92bd7793ef37b6bdf64",
+    "billworld/infinity/reference.mjs": "c7265e251bbbfaa2d517aed5873902d3943a777b5375e3787af5007bb01387f0",
+    "billworld/tests/paymentus-payment.test.mjs": "033bea65468656d8516c3a82bce8cc1ad87cc3e023a1ac1f786cf15f2ecfa23c",
+    "billworld/tests/paymentus-payment-browser.mjs": "b166703afd7e2ae6c9ec084d7ec41e68748c216e9d4724e250888b61f7d91b6d"
+  },
+  "construction_packet": {
+    "revision": "c72e09ebad0bf602",
+    "file": "billworld/research-data/packets/biller_c8edde62f56ee14f50e0/c72e09ebad0bf602/metadata.json",
+    "sha256": "d78acdbbb3682bd9a05e518c9f87739da99f1fd0e234b85abf74c16314080341"
+  },
+  "coverage": {
+    "catalog_records": 59477,
+    "released_sites": 9,
+    "released_tasks": 31,
+    "construction_tasks": 8,
+    "independent_fidelity_certifications": 0,
+    "autonomous_agent_scores": 0
+  },
+  "limits": [
+    "Private checkout/layout, current fees and settlement remain unobserved",
+    "Apptegy city frontend child sources do not establish Paymentus portal source completeness",
+    "Card/wallet/AutoPay/full bill documents/profile flows remain unfinished",
+    "Synthetic payment records do not establish real-bank settlement or external funding-account debit modeling",
+    "Scripted references do not measure autonomous-agent success"
+  ]
+}

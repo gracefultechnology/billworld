@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-10-04T11:14:47.572568+00:00",
+  "kind": "personapay_construction_checkpoint",
+  "runtime_activated": true,
+  "runtime_site_count": 9,
+  "runtime_task_count": 29,
+  "implemented_domain": [
+    "account number, ZIP, date-of-birth validation and synthetic exact account matching",
+    "persistent failure counter and mock CAPTCHA after three failed matches",
+    "episode-bound session, logout and synthetic thirty-minute expiry",
+    "block inherited password registration, login, recovery and utility guest lookup",
+    "Authenticated account statement",
+    "Selected charges, default weighted allocation and edited allocation",
+    "Card/ACH input validation with no raw instruments or CVV persisted",
+    "Episode/session-bound quote, review, commit and receipt",
+    "Idempotent posting, stale-review rejection and simulated decline",
+    "Mock Gmail payment confirmation",
+    "Separate posted and pending account credit",
+    "Same-origin HTTP APIs with HttpOnly session/review cookies"
+  ],
+  "public_reconstruction": {
+    "pages": 8,
+    "artifacts": "billworld/artifacts/western-dental-public-build.json",
+    "original_scripts_executed": false,
+    "forms_disabled": "Original capture snapshots inert; server binds synthetic PersonaPay behavior on active fixture routes",
+    "draft_routes_not_main_server": "Implemented server routes; verified using isolated ephemeral test servers, not deployed to existing main process",
+    "visual_inspection": "Portal and help screenshots inspected; modal transparency and support-section background restored by preserving inline declaration precedence",
+    "missing_asset_urls": "Recorded per page; includes unrequested alternative font formats and missing source assets; not all assets complete"
+  },
+  "verification": {
+    "full_domain": {
+      "tests": 136,
+      "passed": 136,
+      "artifact": "billworld/artifacts/domain-personapay-http.log"
+    },
+    "personaPay_domain": {
+      "tests": 6,
+      "passed": 6,
+      "rerun_after_fixture_password_removal": true
+    },
+    "research": {
+      "tests": 34,
+      "passed": 34
+    },
+    "public_browser": {
+      "kind": "inert_source_reconstruction_preview",
+      "runtime_activated": false,
+      "scenarios": [
+        "Three source identifiers, original logo and account instructions render; production forms/scripts inert",
+        "Original account-number and ZIP statement help image renders in captured dialog",
+        "Source homepage payment link navigates to local PersonaPay login",
+        "Financing, terms, privacy and contact documents load locally without original scripts"
+      ],
+      "outbound_requests": [],
+      "page_errors": [],
+      "all_passed": true
+    },
+    "artifacts": {
+      "domain": {
+        "file": "billworld/artifacts/domain-personapay-construction.log",
+        "sha256": "f6cd9c7f88e288e884a42e4ae0a4ca46ef8c0ee5f310b3dfc80174d889b445ee"
+      },
+      "personapay_domain": {
+        "file": "billworld/artifacts/personapay-domain.log",
+        "sha256": "fc083e833dab507b6daa6252ad82b804e3a4e3632feac8d3ca5bbd153f6272d2"
+      },
+      "research": {
+        "file": "billworld/artifacts/research-personapay-construction.log",
+        "sha256": "8b8b5797545a6e8a02e05c8bbd5e614f79372fccb9dd23632dcb7f1ae342354c"
+      },
+      "public_browser": {
+        "file": "billworld/artifacts/personapay-public-browser.log",
+        "sha256": "909eb81a2b69f2cbea56e1036005f8fb73661834c522352c7a493bbba01414d2"
+      }
+    }
+  },
+  "unfinished": [
+    "Recurring payment plans and eBill",
+    "Independent fidelity certification, autonomous baseline and held-out evaluation",
+    "Full catalog reconstruction"
+  ],
+  "next_steps": [
+    "Add authoritative account-level payment graders and Infinity reference tasks.",
+    "Run the full Infinity reference suite before activating Western Dental and incrementing runtime coverage.",
+    "Implement payment plans and eBill and obtain independent fidelity review."
+  ],
+  "payment_construction_report": "billworld/research/personapay-payment-validation.json",
+  "frontend_validation_manifest": "billworld/research/personapay-frontend-validation.json",
+  "runtime_validation_manifest": "billworld/research/personapay-runtime-validation.json"
+}

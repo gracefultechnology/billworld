@@ -1,0 +1,111 @@
+{
+  "id": "avec-electric",
+  "name": "Alaska Village Electric Cooperative",
+  "portal_family": "SmartHub",
+  "implementation_status": "first_slice",
+  "capture_manifest": "research/avec-public.json",
+  "public_routes": {
+    "login": "https://avec.smarthub.coop/ui/#/login",
+    "recovery": "https://avec.smarthub.coop/ui/#/accountAccess",
+    "registration": "https://avec.smarthub.coop/ui/#/registration",
+    "guest_payment": "https://avec.smarthub.coop/ui/#/paynow"
+  },
+  "observed_public": {
+    "portal_version": "26.19.0",
+    "login_fields": [
+      "Email",
+      "Password"
+    ],
+    "recovery_fields": [
+      "Billing Account Number",
+      "Last Name or Business Name",
+      "Email"
+    ],
+    "recovery_tabs": [
+      "Reset Password",
+      "Recover Registered Email"
+    ],
+    "registration_first_step": [
+      "Billing Account Number",
+      "Last Name or Business Name",
+      "Email",
+      "Confirm Email"
+    ],
+    "guest_lookup_fields": [
+      "Account Number",
+      "Last Name or Business Name"
+    ],
+    "guest_recaptcha_notice": true
+  },
+  "documented": {
+    "source": "https://avec.org/customer-service/billing-and-payment-options/",
+    "payment_methods": [
+      "Visa",
+      "Mastercard",
+      "American Express",
+      "Discover",
+      "PayPal",
+      "Apple Pay",
+      "E-check/ACH"
+    ],
+    "registration_requirements": [
+      "account number",
+      "last four SSN digits",
+      "phone",
+      "email"
+    ],
+    "autopay": [
+      "due date or chosen recurring day"
+    ],
+    "scheduled_payment": true
+  },
+  "fidelity_limits": [
+    "Catalog login_url is actually recovery; preserve raw catalog and use corrected evidence routes.",
+    "Browser capture returned HTTP 403 for the main website and help pages; web research supplied documented billing facts.",
+    "Registration capture observes only the first step; documentation lists further requirements. No form was submitted.",
+    "Public frontend bundle routes do not prove biller-enabled or authenticated capabilities.",
+    "No account, payment, MFA or processor fee behavior has been observed after authentication.",
+    "Captured branding and code redistribution rights remain unresolved.",
+    "Only public login, registration first step, recovery and Pay Now screens match captured navigation. Authenticated layouts and deeper forms are synthetic.",
+    "The AVEC marketing homepage remains uncaptured and unimplemented; the episode starts at SmartHub login.",
+    "PayPal, Apple Pay, paperless billing, statements and service management are still unimplemented."
+  ],
+  "revision": "0.3.0",
+  "capabilities": {
+    "password_login": "observed_public_reconstructed",
+    "registration": "observed_first_step_documented_requirements_synthetic_completion",
+    "password_reset": "observed_first_step_synthetic_email_completion",
+    "recover_registered_email": "observed_tab_synthetic_delivery",
+    "guest_lookup": "observed_public_reconstructed",
+    "bank_payment": "documented_synthetic_private_screens",
+    "card_payment": "documented_synthetic_private_screens",
+    "autopay": "documented_synthetic_layout_execution",
+    "scheduled_payment": "documented_synthetic_layout_execution",
+    "google_login": "unknown_not_implemented",
+    "paypal": "documented_not_implemented",
+    "apple_pay": "documented_not_implemented",
+    "statement_pdf": "not_implemented"
+  },
+  "billing_policy": {
+    "fee_cents": 0,
+    "fee_evidence": "synthetic_unknown_production_fees",
+    "autopay_day": "configurable_1_to_31",
+    "short_month_day": "clamp_to_last_day_synthetic",
+    "cutoff": "00:00_UTC_synthetic",
+    "settlement": "immediate_posting_synthetic_default",
+    "invoice_generation": "monthly_on_first_synthetic",
+    "default_invoice_due_day": 20
+  },
+  "catalog_records": [
+    {
+      "category": "electric",
+      "name": "Alaska Village Electric Cooperative (AVEC)"
+    }
+  ],
+  "default_task_id": "avec-pay-current-v1",
+  "runtime": {
+    "kind": "utility",
+    "mail_sender_slug": "avec",
+    "guest_lookup": "account_number_and_last_name"
+  }
+}

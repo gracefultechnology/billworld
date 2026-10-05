@@ -1,0 +1,75 @@
+{
+  "id": "charlotte-county-utilities",
+  "name": "Charlotte County Utilities",
+  "portal_family": "Paymentus",
+  "implementation_status": "researched_not_implemented",
+  "catalog_records": [
+    {
+      "category": "water-sewer",
+      "name": "Charlotte County Utilities"
+    }
+  ],
+  "capture_manifest": "research/charlotte-county-public.json",
+  "observed_public": {
+    "identity": "Charlotte County Florida utilities; not Charlotte Water in North Carolina or the County Tax Collector.",
+    "entry": "Official county utility billing page links directly to https://ipn4.paymentus.com/cp/ccfl",
+    "portal": "HTTP 403 access-denied response; not a usable portal UI reference",
+    "public_pages": [
+      "Utilities Department homepage",
+      "Utilities Department FAQ",
+      "Pay My Utility Bill"
+    ]
+  },
+  "documented_payment_policy": {
+    "sources": [
+      "https://www.charlottecountyfl.gov/departments/utilities/billing/",
+      "https://www.charlottecountyfl.gov/core/fileparse.php/1162/urlt/payment-options.pdf"
+    ],
+    "ach_fee_cents": 100,
+    "card_fee_cents": 295,
+    "wallet_fee_cents": 295,
+    "accepted_cards": [
+      "Visa",
+      "Mastercard",
+      "Discover"
+    ],
+    "documented_wallets": [
+      "PayPal",
+      "PayPal Credit",
+      "Venmo",
+      "Apple Pay",
+      "Google Pay"
+    ],
+    "autopay_fees": "ACH $1; debit/credit $2.95",
+    "posting": "Payment chart states same business day before 8 p.m.; otherwise next business day. Time zone and calendar need explicit runtime policy.",
+    "fees_recipient": "Payment provider, not county utilities"
+  },
+  "source_conflicts_and_limits": [
+    "The How to Read Your Bill document uses a 2010/2011 example; its amounts, fees and dates are illustrative and are not runtime policy.",
+    "FAQ Setup/Automatic Payments wording may reflect the earlier eBill system; actual Paymentus controls are unobserved.",
+    "County employee Password Self-Service is not utility customer authentication.",
+    "Digital payment wallets are not observed Google account login providers.",
+    "No production login, registration, recovery or payment form was submitted."
+  ],
+  "public_reconstruction": {
+    "pages": 3,
+    "original_scripts_executed": false,
+    "local_controls": [
+      "captured public collapse accordions"
+    ],
+    "documents": 2,
+    "validation_manifest": "research/charlotte-county-construction-validation.json"
+  },
+  "contact": {
+    "phone": "941-764-4300",
+    "customer_service_hours": "Monday-Friday 8:30 a.m.-4:30 p.m., except holidays",
+    "payment_center": "3280 South Tamiami Trail, Unit 505, Port Charlotte, FL"
+  },
+  "unfinished": [
+    "Usable Paymentus tenant auth/registration/recovery captures",
+    "Private bills, checkout and receipt screens",
+    "Runtime payment/auth and task integration",
+    "Scheduled payments, AutoPay, paperless and wallets",
+    "Independent source fidelity review and agent baseline"
+  ]
+}

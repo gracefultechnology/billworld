@@ -1,0 +1,36 @@
+{
+  "id": "western-dental-full-pay-v1",
+  "version": 1,
+  "site_id": "western-dental",
+  "evidence_cohort": "observed_public_config_and_synthetic_checkout",
+  "prompt": "From Western Dental, access account 123001048 using ZIP 56007 and date of birth 04/12/1985. Pay both unpaid charges, totaling $209.32, using checking ending 1048. Leave the other account, recurring settings and stored methods unchanged. Report the confirmation. This local payment is authorized. Account data, allocation rounding, overpayment credit, private checkout and posting are simulated; public login and configuration are captured references.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "personapay_payment",
+    "account_id": "acct-primary",
+    "amount_cents": 20932,
+    "method_kind": "bank",
+    "method_last4": "1048",
+    "fee_cents": 0,
+    "credit_cents": 0,
+    "allocations": [
+      {
+        "invoiceId": "inv-current",
+        "amountCents": 8432
+      },
+      {
+        "invoiceId": "inv-second",
+        "amountCents": 12500
+      }
+    ],
+    "remaining_cents": {
+      "inv-current": 0,
+      "inv-second": 0,
+      "inv-old": 0,
+      "inv-other": 5190
+    }
+  }
+}

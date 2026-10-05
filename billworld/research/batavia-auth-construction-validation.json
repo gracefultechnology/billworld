@@ -1,0 +1,128 @@
+{
+  "validated_at": "2026-10-04T12:32:12.259824+00:00",
+  "kind": "construction_email_auth_and_gmail_recovery",
+  "released": false,
+  "site_id": "batavia-utilities",
+  "catalog_id": "biller_c8edde62f56ee14f50e0",
+  "draft_task_count": 2,
+  "all_construction_tasks": 5,
+  "released_site_count": 9,
+  "released_task_count": 31,
+  "fidelity_certified": false,
+  "autonomous_agent_scores": false,
+  "reuse": [
+    "Shared password/session/reset services, authoritative mailbox and Infinity Gmail frontend",
+    "Existing benchmark server, episode isolation, private graders and cohort reports",
+    "Pinned Infinity construction app, bootstrap, runner, harness and reference script"
+  ],
+  "evidence": {
+    "guide": "https://5il.co/3a7g4",
+    "capture_manifest": "research/batavia-public.json",
+    "live_portal_status": 403,
+    "observed_in_document": [
+      "Login email/password fields, Register Now and Forgot your password labels",
+      "Email entry and emailed recovery instructions",
+      "Accounts and other navigation labels"
+    ],
+    "unobserved_or_synthetic": [
+      "Exact recovery-entry layout, reset-link format and post-link screen",
+      "15-minute one-use reset grant, supersession, 10\u2013128-character passwords and session revocation",
+      "Private Accounts shell and synthetic persona/credentials",
+      "No current live login, registration or checkout completed"
+    ]
+  },
+  "tasks": [
+    "batavia-email-login-v1",
+    "batavia-recover-login-v1"
+  ],
+  "grading": [
+    "Correct primary account login followed by protected Accounts access and a live session",
+    "Recovery requires delivered grant opened before one reset, expected password and subsequent login",
+    "Business accounts/invoices/payments/schedules unchanged and no forbidden operation events",
+    "Wrong account, password changes to another persona, fake Accounts display, and expired/superseded grants cannot pass"
+  ],
+  "verification": {
+    "domain": {
+      "artifact": "billworld/artifacts/domain-paymentus-auth.log",
+      "sha256": "9cb638530702b5ea209dd4df42a716da4540e58007d6d4a5fab1c672160ccb03",
+      "tests": 179,
+      "passed": 179,
+      "new_paymentus_checks": 8
+    },
+    "research": {
+      "artifact": "billworld/artifacts/research-paymentus-auth.log",
+      "sha256": "b9110a92e0db32033d5d1cbf5c3d6e2f97ce61ee06e5ccbfa8df69f376bad6d7",
+      "tests": 36,
+      "passed": 36
+    },
+    "browser": {
+      "artifact": "billworld/artifacts/paymentus-auth-browser/report.json",
+      "sha256": "5ffd94e8235e8ee47db9e112a5fb1192c277e0d6541f4cc62f9c1d050a289bb0",
+      "scenarios": 4,
+      "all_passed": true,
+      "page_errors": [],
+      "outbound_requests": []
+    },
+    "infinity_construction": {
+      "artifact": "billworld/artifacts/infinity/paymentus-auth-domain-guard/summary.json",
+      "sha256": "e60ba4b727b8747b605043b144be97a0eb2001d2de7c0f7a2a7a6b92aee89b0b",
+      "tasks": 5,
+      "passed": 5,
+      "released_trials": 0,
+      "scope": "Final backend guards; 3 Lockwood and 2 Batavia scripted references and lifecycle checks"
+    },
+    "infinity_released": {
+      "artifact": "billworld/artifacts/infinity/paymentus-auth-released-regression/summary.json",
+      "sha256": "25679144c3f38b3914f1404852a4df259eecc4c7937b8bb45c297a3cc55aba99",
+      "tasks": 31,
+      "passed": 31,
+      "construction_trials": 0,
+      "scope": "Shared auth/mail/server additions. Later backend guards apply only to Paymentus; final domain regression passes."
+    },
+    "catalog_index": {
+      "artifact": "billworld/artifacts/catalog-index-batavia-auth.log",
+      "sha256": "2b97f978c66b46d352a6bbb316941a0aad4d03c7cfdbd07588dcc41058126e6f",
+      "counts": {
+        "catalog_records": 59477,
+        "records_without_family_signal": 48875,
+        "records_with_multiple_url_families": 121,
+        "runnable_first_slices": 9,
+        "fidelity_certified_records": 0
+      }
+    }
+  },
+  "source_packet": {
+    "directory": "/Users/shawwalters/billpay-research/billworld/research-data/packets/biller_c8edde62f56ee14f50e0/594c769282b08c23",
+    "metadata_sha256": "71fdd3510d1dab026e824df6c376e4de81d8d7f02c0aa7dc7b42e11bd622f756",
+    "site_manifest_matches_current": true,
+    "usable_public_pages": 3,
+    "documents": 3
+  },
+  "source_hashes": {
+    "billworld/engine.mjs": "e2953682a219e35cbca3903e5a990ec696c759eba9c062f373938e7031fddc1c",
+    "billworld/server.mjs": "7eb19b259e00f8eb069a1aa5c42a8341b763574e76e07409ee40b2886d2004f7",
+    "billworld/public/paymentus.html": "30c1b85bdc34b6edc2e7e9bb36d85ad0153ef5a44c6ed8575039d90c5c4f47d2",
+    "billworld/public/paymentus.js": "d69ee6a23e173a04b0946489a42cce5bbde4bd85f6c35977f19c554c8c232e5f",
+    "billworld/public/paymentus.css": "c2e5d303ef2fedcd33ff4c452523cf15f98edfcb9e5e0ef6d316ec752430bbec",
+    "billworld/public/gmail/bridge.js": "a078c6c7f4824fc9dff917336be9e539cab64577deaa43c0f6b964f41c3c523e",
+    "billworld/sites/batavia.json": "aeb2eb3b1a6d5dcd73eeb236200ac0bf915a988922fe534816181b099e95cc8e",
+    "billworld/tasks/batavia-login.json": "3931adac660016c6049ce4f39269d4b9fd3affb9b771bcff593b28bd216a6113",
+    "billworld/tasks/batavia-recovery.json": "02bb08dd36d0e1d0f35ba02a55a4ab4e6aca1e500fe75ae98a88a945fc064a2c",
+    "billworld/infinity/bootstrap.py": "849bb7dc3c68c12d55a64e1c776d22581aadc8dd112a64a8e3734222f57accc0",
+    "billworld/infinity/app/harness.py": "ad85caad39b4581b1c19d812aacb9446e4372354d81dedeadba0d4ba8c9675ff",
+    "billworld/infinity/reference.mjs": "4bb89eae82b37438f41f48a0966485ff49e124b911c7077dc6c499535eed91a3"
+  },
+  "preview": {
+    "port": 3113,
+    "pid": 9038,
+    "exec_session": 17325,
+    "command": "BILLWORLD_PREVIEW_PORT=3113 node billworld/preview-construction.mjs batavia-utilities"
+  },
+  "unfinished": [
+    "Registration and account linking, private bill viewing, payment checkout and receipt",
+    "Current numeric fees, settlement, processor versus city draft semantics",
+    "Wallets, scheduled payments, paperless, notifications and AutoPay controls",
+    "Live auth fidelity and independent review",
+    "Autonomous baseline, heldout evaluation and deployment isolation"
+  ]
+}

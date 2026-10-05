@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-04T19:01:41.756157+00:00",
+  "status": "inventory_complete_public_source_collection_running",
+  "scope": "Static public script/style/modulepreload/preload references from saved catalog HTML; source construction evidence for the existing Infinity pipeline, no original code execution.",
+  "inventory": {
+    "pid": 9529,
+    "phase": "completed",
+    "started_at": "2026-10-04T18:51:37.172739+00:00",
+    "command": "python3 -m billworld.research_frontends init",
+    "previous_attempt": {
+      "pid": 25337,
+      "phase": "terminated_before_commit",
+      "exec_session": 41500
+    },
+    "exit_code": 0,
+    "ended_at": "2026-10-04T18:59:40.916924+00:00"
+  },
+  "inventory_progress": {
+    "html_pages": 62514,
+    "integrity_failures": 0,
+    "reused_pages": 0,
+    "phase": "completed"
+  },
+  "inventory_log": {
+    "file": "billworld/artifacts/frontend-inventory-checkpointed.log",
+    "sha256": "124c4005d32c5d798d28bf8cc1add8277367ea1ce73308bbd346b59d6ffaee01"
+  },
+  "current_capture_job": {
+    "pid": 19238,
+    "phase": "collecting",
+    "started_at": "2026-10-04T18:59:26.455580+00:00",
+    "scope": "Static public script/style references including third-party CDNs; GET only, no execution",
+    "workers": 4,
+    "batch_limit": 100,
+    "min_free_gib": 2,
+    "batches_completed": 3,
+    "previous_attempt": {
+      "pid": 12511,
+      "phase": "failed",
+      "exit_code": 1,
+      "last_observed_at": "2026-10-04T18:56:09.121192+00:00"
+    },
+    "counts": {
+      "schema_version": 1,
+      "html_pages": 62514,
+      "billers_with_static_references": 38678,
+      "reference_counts_by_scope": {
+        "same_host": 1140108,
+        "third_party": 289260
+      },
+      "active_asset_status_counts": {
+        "frontend_captured": 466,
+        "http_error": 3,
+        "pending": 713632,
+        "too_large": 1
+      },
+      "same_host_pending": 645529,
+      "meaning": "Static script/style references and raw source evidence. Not executable replicas, dynamic dependency completeness, flow coverage or fidelity certification."
+    }
+  },
+  "capture_pid_confirmed_live": true,
+  "counts_snapshot": {
+    "schema_version": 1,
+    "html_pages": 62514,
+    "billers_with_static_references": 38678,
+    "reference_counts_by_scope": {
+      "same_host": 1140108,
+      "third_party": 289260
+    },
+    "active_asset_status_counts": {
+      "frontend_captured": 366,
+      "http_error": 1,
+      "pending": 713734,
+      "too_large": 1
+    },
+    "same_host_pending": 645621,
+    "meaning": "Static script/style references and raw source evidence. Not executable replicas, dynamic dependency completeness, flow coverage or fidelity certification."
+  },
+  "unique_asset_urls_identified": 714102,
+  "real_packet_validation": {
+    "packet": "billworld/research-data/packets/biller_752fc542b54b15526907/de9472405ab51400",
+    "biller": "First Internet Bank of Indiana",
+    "asset_urls": 19,
+    "downloaded_assets_hash_verified": 1,
+    "metadata_sha256": "37a76d69bcf9a29308a2d8f30c3dc23a0ab229bf2ab21ba2358a16f96ee153a1",
+    "execution_policy": "reference_only_not_runtime",
+    "flow_verification": false
+  },
+  "research_tests": {
+    "passed": 51,
+    "failed": 0,
+    "log": "billworld/artifacts/frontend-research-tests.log",
+    "log_sha256": "1e8e4bb17df41662638e2c57b4e6a3d7ff38bb6454c513919164c8dc82d3836c",
+    "coverage": "Dependency parsing/scope, integrity/path checks, dedup/provenance, stale-page exclusion, packet revision/export, interrupted inventory resume, persisted retries, supervisor lifecycle/live-PID guard, writer contention and capacity reserve."
+  },
+  "execution_notes": [
+    "First atomic inventory attempt terminated before commit; the checkpointed successor completed.",
+    "The completed inventory job used 250-page commits. Current tested code commits each page to release the shared writer before parsing the next one.",
+    "Capture attempt PID 12511 failed on SQLite writer contention; committed captures survived. The current resumed collector uses a 30-second busy timeout."
+  ],
+  "source_hashes_current": {
+    "billworld/research_frontends.py": "44f6a63f602b7a31f69348b10efacca3e6cf74be9fe899d19e813c2cd2e24fce",
+    "billworld/research_frontend_queue.py": "52a0ed01025f00acfd666d6680934119e2aa7a4017990320117c1ab06432ba2c",
+    "billworld/research_catalog.py": "732e6a41ca3af546aba9f4f9db4550b58f3aa2e05235038d0e8de441dba02f75",
+    "billworld/source_packet.py": "a427b93d26d5f6a41c68088cf2141787f1dd53cbee17764d5f98d47dea1f8e91",
+    "billworld/tests/test_research_frontends.py": "745afced840708f9f1a7db4e8e694a85cf944c5c07399c189af8e6cc4d14d25e",
+    "billworld/tests/test_research_frontend_queue.py": "1361bebcbf1adf06986cd5776209ec1ab01228e480d9482d0bd6cb048fa7c9c6"
+  },
+  "coverage": {
+    "released_sites": 9,
+    "released_tasks": 31,
+    "construction_tasks": 6,
+    "independently_fidelity_certified_sites": 0,
+    "autonomous_agent_scores": 0,
+    "new_released_coverage_from_source_collection": 0
+  },
+  "unfinished": [
+    "Remaining public asset downloads and failed/oversized response review",
+    "Lazy imports, CSS imports, source maps, fonts/images and computed SPA-route dependency capture",
+    "Content/challenge relevance review and source rights provenance",
+    "Original private auth/payment evidence and faithful site-specific reconstruction across all 59477 catalog records",
+    "Complete Puppeteer journeys, independent fidelity certification, isolated deployment, held-out scenarios and autonomous-agent measurement"
+  ]
+}

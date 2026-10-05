@@ -1,0 +1,151 @@
+{
+  "id": "duluth-comfortsystems",
+  "name": "Comfort Systems (City of Duluth natural gas)",
+  "portal_family": "Municipal Online Payments / Tyler Utility Access",
+  "implementation_status": "first_slice",
+  "catalog_records": [
+    {
+      "category": "gas",
+      "name": "Comfort Systems (City of Duluth natural gas)"
+    }
+  ],
+  "capture_manifest": "research/duluth-public.json",
+  "public_routes": {
+    "homepage": "https://comfortsystemsduluth.com/",
+    "portal": "https://duluthmn.municipalonlinepayments.com/duluthmn/utilities",
+    "login": "https://duluthmn.municipalonlinepayments.com/duluthmn/login?returnUrl=%2Fduluthmn%2Futilities",
+    "guest": "https://duluthmn.municipalonlinepayments.com/duluthmn/utilities/quickpay",
+    "help": "https://comfortsystemsduluth.com/billing-info/customer-portal/",
+    "identity_help": "https://duluthmn.municipalonlinepayments.com/duluthmn/signinfaq"
+  },
+  "capabilities": {
+    "email_first_login": "observed_public_first_step_reconstructed_local_challenge",
+    "password_login": "documented_local_password_completion",
+    "registration": "observed_public_form_local_seeded_profile",
+    "email_verification": "documented_email_code_local_delivery",
+    "google_login": "observed_option_local_oidc",
+    "apple_login": "observed_public_option_not_implemented",
+    "microsoft_login": "observed_public_option_not_implemented",
+    "facebook_login": "observed_public_option_not_implemented",
+    "account_unlock": "observed_first_step_synthetic_reset_link_completion",
+    "password_recovery": "documented_synthetic_reset_email",
+    "account_linking": "documented_exact_name_local_validation",
+    "guest_payment": "observed_lookup_documented_synthetic_checkout",
+    "bank_payment": "documented_synthetic_ledger",
+    "card_payment": "documented_synthetic_ledger",
+    "scheduled_payment": "documented_synthetic_edit_cancel_execution",
+    "autopay": "documented_synthetic_saved_method_execution",
+    "paperless": "documented_local_contact_preferences",
+    "saved_payment_methods": "documented_add_edit_delete_default_local_authoritative_wallet",
+    "optional_mfa": "documented_not_observed"
+  },
+  "documented_policy": {
+    "source_urls": [
+      "https://comfortsystemsduluth.com/billing-info/customer-portal/",
+      "https://duluthmn.municipalonlinepayments.com/duluthmn/signinfaq",
+      "https://duluthmn.municipalonlinepayments.com/duluthmn/faq/utilities"
+    ],
+    "registration_password_requirements": [
+      "minimum eight characters",
+      "lowercase",
+      "uppercase",
+      "number",
+      "exclude parts of username",
+      "reject commonly used or known breached passwords"
+    ],
+    "account_number_format": [
+      "123456789-001",
+      "123456789S-001"
+    ],
+    "account_match": "name exactly as printed on bill",
+    "paperless_scope": "per account, optional apply to all",
+    "receipt_email": "required by documented payment form",
+    "payment_review_before_charge": true,
+    "scheduled_payment_method_storage": "method retained to process selected date",
+    "billing_frequency": "monthly roughly thirty days apart",
+    "payment_fee_cents": null,
+    "autopay_default_day": null,
+    "settlement_policy": null
+  },
+  "fidelity_limits": [
+    "No authenticated production session, lookup, registration submission or payment was performed.",
+    "Public guide screenshots illustrate private flows; success, error, posting and fee rules remain unobserved.",
+    "Catalog routes include an older www host; the live official page links a tenant-specific host and newer identity service.",
+    "Optional MFA enrollment and downstream login challenges need a source-specific specification.",
+    "Copied assets remain construction references with unresolved redistribution rights.",
+    "Local identity routes reproduce the public first steps; a separate Tyler identity origin, identity migration, Apple/Microsoft/Facebook, optional MFA enrollment and breach-password service are unfinished.",
+    "The prototype uses synthetic zero fees, immediate posting, challenge expiry and a single seeded profile/account; it does not establish production policy.",
+    "Multiple linked accounts, statement PDFs, identity migration and the complete municipal homepage remain unfinished.",
+    "Common-password rejection uses a small synthetic denylist; no live breach-password database is consulted.",
+    "Password recovery and unlock completion use a synthetic local link; production recovery verification choices remain unobserved.",
+    "Wallet dependency blocking, quote invalidation, instrument validation and masked storage are synthetic local policy; the public guide documents controls, not these backend rules. Card expiration is checked at execution; scheduled saved methods use their current expiration. These are synthetic local rules."
+  ],
+  "revision": "0.5.0",
+  "default_task_id": "duluth-pay-current-v1",
+  "runtime": {
+    "kind": "utility",
+    "mail_sender_slug": "duluth",
+    "guest_lookup": "account_number_and_full_name",
+    "profile_flow": "email_code_then_account_link"
+  },
+  "billing_policy": {
+    "fee_cents": 0,
+    "fee_evidence": "synthetic_unknown_production_fees",
+    "autopay_day": "configurable_1_to_31_synthetic",
+    "settlement": "immediate_posting_synthetic",
+    "invoice_generation": "monthly_on_first_synthetic",
+    "default_invoice_due_day": 20,
+    "saved_method_execution": "resolve_current_saved_expiry_at_execution_synthetic"
+  },
+  "reference_assets": [
+    {
+      "file": "public/reference-assets/duluth-banner.jpg",
+      "source_capture": "duluth-portal",
+      "source_url": "https://duluthmn.municipalonlinepayments.com/duluthmn/images/Banner?t=639092666695642635",
+      "sha256": "40efedb204705417e4efb4ce2313da5ec131fb943be0579a7d5740f0156d4bb7",
+      "reuse": "captured_branding_reference"
+    },
+    {
+      "file": "public/reference-assets/duluth-logo.jpg",
+      "source_capture": "duluth-portal",
+      "source_url": "https://duluthmn.municipalonlinepayments.com/duluthmn/images/logo?filetype=jpg&v=639092666695642635",
+      "sha256": "2bd3c6c3dc0182cf79e28f23b096cae77fad3f6f2dcfd7bed7629238920e2d2b",
+      "reuse": "captured_branding_reference"
+    },
+    {
+      "file": "public/reference-assets/duluth-identity.webp",
+      "source_capture": "duluth-signin",
+      "source_url": "https://tcp-branding.tylerportico.com/org/cityofduluthmn/app/logo.webp?versionId=KEfo8o_s66M.3EggicNOyLC_pFmfvOZX",
+      "sha256": "d6a679b6eb380d9457ea53790dca3d7088afbffcc9cf68f7614ba56bafcc67c3",
+      "reuse": "captured_branding_reference"
+    },
+    {
+      "file": "public/reference-assets/duluth-google.svg",
+      "source_capture": "duluth-signin",
+      "source_kind": "embedded_svg_in_captured_dom",
+      "sha256": "9e45bfe018f8ad4ba204a4de759a2e13454f238725e4c4e34863204c9cb1815f",
+      "reuse": "captured_provider_icon_reference"
+    },
+    {
+      "file": "public/reference-assets/duluth-apple.svg",
+      "source_capture": "duluth-signin",
+      "source_kind": "embedded_svg_in_captured_dom",
+      "sha256": "d293f944ffb52ceba753239ceacd1576c8bacead173afb51df791ec86fb2c7a8",
+      "reuse": "captured_provider_icon_reference"
+    },
+    {
+      "file": "public/reference-assets/duluth-microsoft.svg",
+      "source_capture": "duluth-signin",
+      "source_kind": "embedded_svg_in_captured_dom",
+      "sha256": "14812890573eae4a517499c5d91fae72ec2d519168ee3eeaadaa40687af20a0e",
+      "reuse": "captured_provider_icon_reference"
+    },
+    {
+      "file": "public/reference-assets/duluth-facebook.svg",
+      "source_capture": "duluth-signin",
+      "source_kind": "embedded_svg_in_captured_dom",
+      "sha256": "e327549c390d287204c4811338c4ddfb75505b889c0504f97591428f8ffcaeb6",
+      "reuse": "captured_provider_icon_reference"
+    }
+  ]
+}

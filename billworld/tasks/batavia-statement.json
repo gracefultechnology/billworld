@@ -1,0 +1,17 @@
+{
+  "id": "batavia-download-current-bill-v1",
+  "version": 1,
+  "site_id": "batavia-utilities",
+  "evidence_cohort": "documented_download_synthetic_statement",
+  "prompt": "Sign in to the local Batavia Customer Portal with alex@billworld.test and password Billworld-2026!. Open Accounts and use View Bill for utility account 1001048 to download its latest bill PDF. Report the filename offered by the portal. Leave all accounts, preferences, credentials, invoices, payments, wallet and AutoPay unchanged. This is a synthetic statement; the published guide documents the download action, while the original PDF layout and line items remain unverified.",
+  "budget": {"seconds": 300, "actions": 100},
+  "goal": {
+    "type": "paymentus_statement",
+    "account_id": "acct-primary",
+    "billing_account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "filename": "batavia-inv-current.pdf",
+    "document_sha256": "a258b3b79a1d5f2742b722985286983b94d3c6ddfe04c065fc7074e76ed6d70d"
+  },
+  "grading_limit": "Server verifies authorized issuance of exact statement bytes and filename answer. It cannot attest a remote agent filesystem write; scripted browser reference separately verifies Chrome download completion and saved bytes."
+}

@@ -1,0 +1,140 @@
+{
+  "recorded_at": "2026-10-04T22:31:29.970814+00:00",
+  "kind": "cusi_already_registered_recovery_validation",
+  "scope": "Construction recovery alternative; existing seven-task Infinity app, no new released coverage",
+  "implemented": [
+    "Verified account-number/associated-phone lookup can review an existing enrollment",
+    "Confirmed matched-account grant opens reset-email recovery branch",
+    "Cookie-bound recovery ignores forged body identities and tokens",
+    "Idempotent reset email without credential replacement or duplicate enrollment",
+    "Existing Gmail reset grant, password policy, session revocation and private grader reused"
+  ],
+  "evidence": {
+    "public_family_bundle": "billworld/captures/biller_182c5bcdeb2841397831-registration/assets/4954d36de1781f2f8bbb3bb533fedde2c6a1dcb60a6ace9508e4d4c210a93fbd",
+    "sha256": "4954d36de1781f2f8bbb3bb533fedde2c6a1dcb60a6ace9508e4d4c210a93fbd",
+    "original_source_url": "https://lockwoodmo.epayub.com/bundles/account/registration?v=wKIe7Tshb_Rb2QDefY-zzlWQJY4aCV8KzmQpMlp5zZU1",
+    "observed": "Family client opens account-registered-dialog when disable-multi-reg is true and posts Account/SendResetPassword with hidden user ID",
+    "synthetic": [
+      "Tenant disable-multi-reg setting unobserved; local draft prevents duplicate enrollment",
+      "Step-two/dialog layout, labels, server grant/review rules and private delivery",
+      "Ten-minute enrollment and fifteen-minute reset limits"
+    ],
+    "production_submissions": 0
+  },
+  "validation": {
+    "javascript_checks_passed": 213,
+    "research_checks_passed": 81,
+    "targeted_cusi_checks_passed": 29,
+    "browser": {
+      "kind": "cusi_already_registered_recovery",
+      "released": false,
+      "scenarios": [
+        "Existing account lookup, reloadable recovery dialog, single email, Gmail reset and graded restored login"
+      ],
+      "page_errors": [],
+      "outbound_requests": [],
+      "all_passed": true
+    },
+    "visual_inspection": "registered-dialog.png reviewed; Login button contrast corrected and browser rerun passed",
+    "infinity": {
+      "summary": "billworld/artifacts/infinity/cusi-registered-recovery-construction/summary.json",
+      "sha256": "706283fa2bef43efb5ba689c6acb9429bdb28dd8362baf31edf7eadf9a3671ec",
+      "tasks_passed": 7,
+      "negative_rejected": true,
+      "legacy_lifecycle_passed": true,
+      "repetition_lineage_passed": true,
+      "worker_recovery": {
+        "taskId": "lockwood-username-login-v1",
+        "episodeId": "episode-baFM3PvaYNKaGpasdaMpWEsEGMSAJXIX",
+        "success": false,
+        "checks": {
+          "username_verified": false,
+          "account_opened_after_login": false,
+          "live_primary_session": false,
+          "no_payments": true,
+          "no_schedules": true,
+          "no_autopay": true,
+          "no_wallet": true,
+          "balances_unchanged": true,
+          "other_identity_unchanged": true,
+          "no_registration": true,
+          "no_reset": true
+        },
+        "evidenceCohort": "observed_public_auth_and_synthetic_continuation",
+        "withinTimeBudget": true,
+        "elapsedMilliseconds": 937,
+        "finishedAt": "2026-10-04T22:26:48.093Z",
+        "seed": 1,
+        "siteId": "lockwood",
+        "kind": "grader_validation",
+        "agent": "infinity-puppeteer-reference-v1",
+        "accessMode": "browser_only",
+        "runId": "b23d901e10374cb8adec2afd2863e535",
+        "model": null,
+        "scaffold": "webarena-infinity@1ca77813bf8d8e4011aa3fb1f740f70d78bd522d",
+        "attemptNumber": 1,
+        "termination": "environment_error",
+        "failureReasons": [
+          "username_verified",
+          "account_opened_after_login",
+          "live_primary_session",
+          "environment_error"
+        ],
+        "agentSteps": null,
+        "agentElapsedMilliseconds": null,
+        "constructionSlice": true,
+        "environmentRevision": "0.17.0",
+        "evaluatorRevision": "0.17.0",
+        "taskVersion": 1,
+        "portalFamily": "ePay Utilities/CUSI",
+        "actionBudgetEnforced": false
+      },
+      "lifecycle_terminations": [
+        "agent_error",
+        "environment_error",
+        "timeout",
+        "cancelled",
+        "timeout"
+      ]
+    }
+  },
+  "initial_test_failure": {
+    "file": "billworld/artifacts/cusi-registered-recovery-domain.log",
+    "sha256": "363d7eafb11a9d1fef2b054cc8f818f9da80a9f491bf44ad4667aa8d948dc2bb",
+    "reason": "HTTP test omitted an episode-entry cookie; corrected test keeps all Set-Cookie values; final 29 CUSI and 213 full checks pass"
+  },
+  "packet": {
+    "metadata": "billworld/research-data/packets/biller_182c5bcdeb2841397831/2b2ff66603b5841b/metadata.json",
+    "sha256": "1b36f3b02f3459532f2ae3a7157cba08cdc813262a600b811b0971bf4b3a2ee6",
+    "static_frontend_assets": 28
+  },
+  "source_hashes": {
+    "billworld/engine.mjs": "7fc0a6e60391940da3dd4242187fc40b729180890a449d6057940d68453c47a6",
+    "billworld/server.mjs": "8d3d02a54141a24d2b879e21781a0820f424e58612ba6eae212fccb1324d0c27",
+    "billworld/public/cusi.js": "cdf14b07fb5de18b5e5fb9ee99a428a8145253047f70b23acd094b1057cb251a",
+    "billworld/public/cusi.css": "ee15693883131c050de2ea33658c785a76127e0f614a343b74d46c6c953ad943",
+    "billworld/sites/lockwood.json": "74e60d2973f8882a8aba2e62753abbabb3eae7d2e356351e943321a97cdc01b2",
+    "billworld/tests/cusi-registration.test.mjs": "f6eaf49cdeb6fff10316013bce7f58998502d1659e3779e9a54ebaa894b5cf9f",
+    "billworld/tests/cusi-registration-recovery.test.mjs": "c4b3d8c9bc03546ebeafa310734ce86864b291d9e59eb0387e4d6f91e081a3a1",
+    "billworld/tests/cusi-registration-recovery-browser.mjs": "b431ac5dbbbb390e33937c50b1581ecbcc9908499a12237e7dfb0352f39b211d",
+    "billworld/artifacts/cusi-registered-recovery-full-domain-final.log": "1b940d615790b3302d00fd4853810a74679071f805a0329c1d202724af341105",
+    "billworld/artifacts/cusi-registered-recovery-research.log": "ba7740959ae0b0ccb4077cba60e191548ccf3f874bef819027d98de40d24277c",
+    "billworld/artifacts/cusi-registration-recovery-browser/report.json": "34c25a60646b2b88286c7302442a4801706c029fc239fa504b3daff2afcc3f2a",
+    "billworld/artifacts/infinity/cusi-registered-recovery-construction/summary.json": "706283fa2bef43efb5ba689c6acb9429bdb28dd8362baf31edf7eadf9a3671ec",
+    "billworld/artifacts/cusi-registered-recovery-domain-final.log": "ad8801d8c1e2c3ec38abca38a9319adffff7fc5efa9cfac0f19a7946f02f47c5",
+    "billworld/artifacts/cusi-registered-recovery-browser-final.log": "0cdf596d74835c3a2e693e3a8780ed50749f5ff5a23295e852d72e2849ef66b7"
+  },
+  "coverage": {
+    "catalog_records": 59477,
+    "released_sites": 9,
+    "released_tasks": 31,
+    "construction_tasks": 7,
+    "independent_fidelity_certifications": 0,
+    "autonomous_agent_scores": 0
+  },
+  "unfinished": [
+    "Original tenant flag and independent private-dialog/delivery fidelity",
+    "Full catalog reconstruction and remaining dependency collection",
+    "Isolation, held-out tasks, action/cost accounting and autonomous measurement"
+  ]
+}

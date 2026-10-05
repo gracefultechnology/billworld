@@ -1,0 +1,67 @@
+{
+  "id": "western-dental",
+  "name": "Western Dental & Orthodontics",
+  "portal_family": "PersonaPay",
+  "implementation_status": "first_slice",
+  "catalog_records": [
+    {
+      "category": "dental-vision-hearing",
+      "name": "Western Dental & Orthodontics"
+    }
+  ],
+  "capture_manifest": "research/western-dental-public.json",
+  "public_configuration_manifest": "research/western-dental-config.json",
+  "observed_public": {
+    "homepage": "captured",
+    "insurance_financing": "captured",
+    "terms_privacy_contact": "captured",
+    "login": "account number, ZIP code and date of birth; Continue button",
+    "account_help": "non-submit button opens captured statement help image",
+    "password_google_login": "not observed",
+    "financing_options": "captured; CareCredit, Sunbit and in-office financing are separate from observed PersonaPay login"
+  },
+  "configured_public": {
+    "captcha_after_failed_attempts": 3,
+    "payment_fees_enabled": false,
+    "wallet_enabled": false,
+    "underpayment_allowed": true,
+    "overpayment_allowed": true,
+    "recurring_plan_enabled": true,
+    "ebill_enabled": true
+  },
+  "fidelity_limits": [
+    "Configuration flags describe this public tenant configuration, not observed private account eligibility or successful payment behavior.",
+    "Account-number help instructs nine digits with zero padding, while public input validation accepts lengths five through ten. Preserve this difference rather than silently choosing one.",
+    "Google Pay and Apple Pay SDK requests do not establish Google login or enabled payment methods.",
+    "No production account lookup, identity submission, payment or plan enrollment was performed.",
+    "Session duration, failure responses, statement content, posting and private navigation remain unobserved.",
+    "Loan/credit applications, approval and third-party financing accounts are not implemented or observed.",
+    "Only this explicit Western Dental catalog record is implemented; PersonaPay family tenants are not implied.",
+    "Recurring plans and future-payment schedules use public configuration limits with synthetic private eligibility, offers and execution; eBill remains unimplemented.",
+    "First slice activation is conditional on browser/domain/Infinity reference validation; no fidelity certification."
+  ],
+  "construction_draft": {
+    "activated": true,
+    "authentication": "account number + ZIP + DOB; persistent failures and local CAPTCHA",
+    "payments": "selected charges, weighted/edited partial payment and overpayment with synthetic account credit",
+    "validation_manifest": "research/personapay-runtime-validation.json",
+    "remaining": "eBill, independent fidelity review and autonomous baseline",
+    "frontend": "captured login bound to account, payment review/receipt and synthetic plan enrollment/review/cancellation APIs",
+    "frontend_validation_manifest": "research/personapay-frontend-validation.json",
+    "plans_validation_manifest": "research/personapay-plans-construction-validation.json"
+  },
+  "revision": "0.17.0",
+  "default_task_id": "western-dental-full-pay-v1",
+  "runtime": {
+    "kind": "personapay",
+    "frontend": "personapay",
+    "mail_sender_slug": "western-dental"
+  },
+  "billing_policy": {
+    "fee_cents": 0,
+    "fee_evidence": "public_tenant_configuration_Fees_EnableFees_false",
+    "settlement": "synthetic_posted_or_pending",
+    "allocation_rounding": "synthetic_largest_remainder",
+    "overpayment": "synthetic_credit_not_observed_private_checkout"
+  }
+}

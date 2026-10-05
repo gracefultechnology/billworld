@@ -1,0 +1,110 @@
+{
+  "validated_at": "2026-10-04T12:16:51.058733+00:00",
+  "kind": "public_pages_documents_and_reusable_catalog_snapshot",
+  "catalog_id": "biller_7b18707708e2ec35fd63",
+  "runtime_implemented": false,
+  "released_environment": "0.17.0",
+  "released_site_count": 9,
+  "released_task_count": 31,
+  "captured_public_pages": 4,
+  "usable_public_pages": 3,
+  "blocked_portal": {
+    "url": "https://ipn4.paymentus.com/cp/ccfl",
+    "status": 403,
+    "copied_as_usable_reference": false
+  },
+  "documents": [
+    {
+      "id": "payment-options",
+      "url": "https://www.charlottecountyfl.gov/core/fileparse.php/1162/urlt/payment-options.pdf",
+      "file": "charlotte-county-docs/payment-options.pdf",
+      "sha256": "05168840746d481118f20f867a3100e93c08f7e81032812b322b706e2e13ad3f",
+      "bytes": 108242,
+      "evidence_type": "documented_public"
+    },
+    {
+      "id": "read-my-bill",
+      "url": "https://www.charlottecountyfl.gov/core/fileparse.php/1162/urlt/read-my-bill.pdf",
+      "file": "charlotte-county-docs/read-my-bill.pdf",
+      "sha256": "68900aa8a911fb17e48fd09126dcbc90d4298567accb6387c107b6a1b615b3f7",
+      "bytes": 110494,
+      "evidence_type": "documented_public"
+    }
+  ],
+  "document_review": {
+    "payment_options": "One-page payment/posting chart reviewed; fixed ACH/card fees agree with the current county payment page.",
+    "read_my_bill": "Both pages reviewed; 2010/2011 example and charges are illustrative, not current runtime policy."
+  },
+  "reused": [
+    "Existing public Puppeteer capture, content hashing and source-packet construction pipeline",
+    "Existing snapshot parser, local asset mapping and server hash validation",
+    "Existing benchmark server and pinned Infinity lifecycle/report for regression"
+  ],
+  "generic_extension": [
+    "Safe catalog capture IDs and optional evidence manifest",
+    "Usable same-biller captures and verified PDF destinations only",
+    "Local native public collapse controls; source scripts/forms remain inert",
+    "Validated generated catalog snapshots discoverable by the existing server"
+  ],
+  "verification": {
+    "domain": {
+      "artifact": "billworld/artifacts/domain-catalog-snapshot.log",
+      "sha256": "2cac24073b7bbee8c00e09f276c0c4c74e7625f0e0bdf7701e6443e166096286",
+      "tests": 171,
+      "passed": 171
+    },
+    "research": {
+      "artifact": "billworld/artifacts/research-catalog-snapshot.log",
+      "sha256": "b2160f44a4cab2ca27c0bb5a5fa3e49aa9ccc178a4d645985ff9684b09a3899e",
+      "tests": 36,
+      "passed": 36
+    },
+    "browser": {
+      "kind": "public_reconstruction_not_runtime",
+      "scenarios": [
+        "Official homepage to billing navigation and keyboard-capable local fee/FAQ accordions",
+        "HTTP 403 portal is excluded, and unavailable payment navigation is disabled",
+        "Help page retains source content while forms and original scripts remain inert",
+        "Both official PDF links serve byte-identical hash-verified documents locally"
+      ],
+      "page_errors": [],
+      "outbound_requests": [],
+      "all_passed": true,
+      "artifact": "billworld/artifacts/charlotte-county-public-browser/report.json",
+      "sha256": "87d7cc94363348568db746d69d6ca7e61befdc752d2a3e5d9109d12803490b45"
+    },
+    "released_infinity_regression": {
+      "artifact": "billworld/artifacts/infinity/catalog-snapshot-regression/summary.json",
+      "sha256": "6f9b6053314b236bce92eafb69851d4ba1aed5bc80152cd3e372e0e66d72fd5e",
+      "tasks": 31,
+      "passed": 31,
+      "scope": "Broader generated-snapshot loader; final catalog-public.js allowlist addition exercised by the public browser check."
+    }
+  },
+  "source_packet": {
+    "directory": "/Users/shawwalters/billpay-research/billworld/research-data/packets/biller_7b18707708e2ec35fd63/110b195072785888",
+    "metadata_sha256": "a79fa62cb2cf9991368b79adf685aeb7029a54a93f236a20aeb3355d5f335d78",
+    "usable_candidate_pages": 3,
+    "document_count": 2,
+    "site_manifest_matches_current": true
+  },
+  "source_hashes": {
+    "billworld/build_public_snapshot.py": "af15555a6036cbac0985a246647c78bfa0a26bca8ab42158de8456eb6014fa3b",
+    "billworld/public/catalog-public.js": "2b4a46b7bf0221d6c8026aff0f13dc67119789f9d8cd301d4f9f7408ac2de3b7",
+    "billworld/server.mjs": "6034ae4ea047f3b67b1f008debb53947e12e07696486a562a7ac81a263082e18"
+  },
+  "preview": {
+    "port": 3112,
+    "pid": 2896,
+    "exec_session": 4369,
+    "command": "node billworld/preview-public.mjs biller_7b18707708e2ec35fd63-website",
+    "url": "http://127.0.0.1:3112/reference-pages/biller_7b18707708e2ec35fd63-website/index.html"
+  },
+  "fidelity_limits": [
+    "Some unused fonts/asset URLs were not captured and remain absent.",
+    "Only captured pages, accordions and PDFs are supported; remaining menus, search, accessibility widget and news routes are disabled or inert.",
+    "Source forms cannot perform authentication or payment; this is not runnable biller coverage.",
+    "Independent source fidelity certification is unfinished."
+  ],
+  "next_step": "Obtain usable tenant Paymentus auth/checkout evidence, then bind those flows to existing authoritative auth, ledger and Infinity lifecycle services."
+}

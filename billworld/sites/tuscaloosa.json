@@ -1,0 +1,54 @@
+{
+  "id": "tuscaloosa-water",
+  "name": "City of Tuscaloosa Water and Sewer",
+  "portal_family": "Paymentus",
+  "implementation_status": "researched_not_implemented",
+  "catalog_records": [
+    {
+      "category": "water-sewer",
+      "name": "City of Tuscaloosa Water and Sewer"
+    }
+  ],
+  "capture_manifest": "research/tuscaloosa-public.json",
+  "documented_policy": {
+    "source_urls": [
+      "https://www.tuscaloosa.com/billinfo",
+      "https://www.tuscaloosa.com/ach",
+      "https://www.tuscaloosa.com/onlineservices"
+    ],
+    "payment_methods": [
+      "PayPal",
+      "PayPal Credit",
+      "Venmo",
+      "Apple Pay",
+      "Google Pay",
+      "Amazon Pay",
+      "eCheck/ACH",
+      "debit/credit cards"
+    ],
+    "payment_fee_cents": 0,
+    "autopay_timing": "bill due date, either 1st or 15th",
+    "autopay_activation": "immediate; first draft on following due date",
+    "enrollment_email_delay_minutes": [
+      5,
+      10
+    ],
+    "insufficient_funds_fee_cents": 3000,
+    "lookup_identifiers": [
+      "account number",
+      "customer number"
+    ],
+    "email_billing": "eBill enrollment through municipal website"
+  },
+  "observed_public": {
+    "city_homepage": "captured",
+    "billing_docs": "captured",
+    "processor_login": "HTTP 403; not usable as billing UI reference"
+  },
+  "fidelity_limits": [
+    "Processor login, recovery, registration, payment and private navigation remain unobserved.",
+    "HTTP 403 assets belong to the failure response and must not be reused as application code.",
+    "Catalog verified flag does not establish environment fidelity.",
+    "No runtime or scored task exists yet."
+  ]
+}

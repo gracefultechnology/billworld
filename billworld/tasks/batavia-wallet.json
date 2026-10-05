@@ -1,0 +1,21 @@
+{
+  "id": "batavia-manage-wallet-v1",
+  "version": 1,
+  "site_id": "batavia-utilities",
+  "evidence_cohort": "documented_wallet_navigation_synthetic_private_forms",
+  "prompt": "Sign in to the local Batavia Customer Portal with alex@billworld.test and password Billworld-2026!. Open My Wallet. Update Visa ending 4242 to expiration 12/31. Add Mastercard 5555555555554444, expiration 12/29, security code 123, holder Alex Morgan. Remove checking ending 1048. Reopen the wallet to verify the changes. Keep other methods, accounts, credentials, preferences and AutoPay unchanged. Do not pay or schedule a bill. Wallet navigation is documented; the edit forms and storage behavior are synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "paymentus_wallet",
+    "account_id": "acct-primary",
+    "existing_card_id": "card-4242",
+    "expiry": "12/31",
+    "new_card_number": "5555555555554444",
+    "new_card_expiry": "12/29",
+    "holder_name": "Alex Morgan",
+    "remove_method_id": "bank-1048"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "id": "wvu-medicine",
+  "name": "WVU Medicine",
+  "portal_family": "Epic MyChart",
+  "implementation_status": "first_slice",
+  "catalog_records": [
+    {
+      "category": "medical",
+      "name": "WVU Medicine"
+    }
+  ],
+  "capture_manifest": "research/wvu-public.json",
+  "observed_public": {
+    "source": "Public captures reviewed October 4, 2026; no account lookup or production form submitted",
+    "login_entry": "Username or Epic ID first; Continue button; password input exists in HTML but is initially hidden",
+    "guest_lookup": [
+      "Account #",
+      "Guarantor last name"
+    ],
+    "guest_lookup_instructions": "Drop the alpha character; either guarantor account number or specific visit account number",
+    "captcha": "Visible reCAPTCHA on guest lookup; production challenge not attempted",
+    "activation": "Two-part activation code; alternatives Continue with your Epic ID and Sign up with your information",
+    "google_login": "No Google sign-in observed; Epic ID is a separate provider",
+    "signup_capture": "Redirected to /MyChart/app/signup; contact-entry markup present but visually hidden; not a usable reference",
+    "recovery_capture": "Login-help choice distinguishes local MyWVUChart and Epic ID; local recovery entry requires email address or phone number previously used for two-step verification and Send code. No production request submitted."
+  },
+  "documented_policy": {
+    "source_urls": [
+      "https://wvumedicine.org/billing-and-insurance/pay-a-bill/",
+      "https://wvumedicine.org/billing-and-insurance/pay-a-bill/understanding-billing/",
+      "https://wvumedicine.org/billing-and-insurance/financial-assistance/",
+      "https://mywvuchart.com/MyChart/Authentication/Login/StandardFile?option=Faq"
+    ],
+    "signed_in_payment_navigation": "Billing icon, then Account Summary",
+    "guest_payment": "Available without a MyWVUChart account",
+    "statement": "Consolidated hospital and professional billing; a visit can contain separate facility and professional charges",
+    "guarantor": "Person responsible for paying the bill; guarantor name and account number appear on statement",
+    "visit_account": "Billing activity grouped for a visit; multiple visit accounts can have separate balances",
+    "payment_plans": "Zero-interest plans offered; terms and enrollment continuation unobserved",
+    "financial_assistance": "May be requested through MyWVUChart; qualification and submission continuation unobserved",
+    "home_medical_equipment": "Separate payment link; do not assume it shares the main patient portal balance",
+    "billing_phone": "855-778-2922",
+    "financial_counselor_phone": "304-598-6260",
+    "two_step_verification": "Optional email or text code in addition to username/password; rendered challenge continuation unobserved",
+    "recovery_identity_verification": "Portal FAQ describes two-step verification for username/password recovery; rendered sequence not yet established",
+    "idle_logout_minutes": 10,
+    "activation_code": "Expires after an unspecified period and is single-use; do not invent source duration",
+    "portal_support_phone": "1-866-982-4278"
+  },
+  "capabilities": {
+    "guest_lookup_entry": "observed_public",
+    "guest_payment_continuation": "unknown",
+    "password_login_continuation": "unknown",
+    "epic_identity_continuation": "unknown",
+    "activation_code_continuation": "unknown",
+    "registration_information_entry": "unknown",
+    "recovery": "entry_observed_public; post-code continuation documented_not_observed",
+    "signed_in_billing": "documented_not_observed",
+    "autopay": "unknown",
+    "fees_and_posting": "unknown",
+    "portal_help": "observed_public"
+  },
+  "fidelity_limits": [
+    "Local reference validation passes; no independent fidelity certification or autonomous evaluation.",
+    "Hidden DOM fields and scripts are reference material, not proof of visible required inputs or successful flows.",
+    "Public guest lookup was not submitted; result, payment review and receipt screens remain unobserved.",
+    "Private billing, identity-provider continuation, account activation and password recovery require further evidence.",
+    "Catalog autopay links point to guest payment; this does not establish recurring-payment support.",
+    "Captured original scripts must not run against production APIs in the local benchmark.",
+    "Original direct recovery shell and signup are excluded; navigated recovery choice/contact entries are usable. Post-code sequence is unobserved.",
+    "Activation account setup, username/password rules, 24-hour code expiry, ten-minute setup grant and attempt limit are synthetic.",
+    "Recovery code and grant expiry, attempt limits, enrolled email, error messages and downstream reset/username UI are synthetic; SMS and Epic ID recovery remain unavailable."
+  ],
+  "revision": "0.15.0",
+  "default_task_id": "wvu-guest-visit-pay-v1",
+  "runtime": {
+    "kind": "medical",
+    "frontend": "mychart",
+    "mail_sender_slug": "wvu"
+  },
+  "billing_policy": {
+    "fee_cents": 0,
+    "fee_evidence": "synthetic_zero_fee_fixture; production checkout unobserved",
+    "settlement": "immediate_posting_synthetic"
+  },
+  "implemented_local": {
+    "guest_payment": "visit-scoped lookup, selection, bank/card review, commit and reloadable receipt",
+    "password_login": "observed username-first entry with synthetic password continuation",
+    "email_mfa": "documented optional email verification with synthetic challenge screen, code lifetime and mock Gmail delivery",
+    "session_idle_timeout_minutes": 10,
+    "public_pages": [
+      "homepage",
+      "billing guide",
+      "billing FAQ",
+      "understanding billing",
+      "financial assistance",
+      "portal FAQ"
+    ],
+    "unimplemented": [
+      "Epic ID",
+      "registration without activation code",
+      "SMS MFA",
+      "payment plans",
+      "financial-assistance applications",
+      "separate HME billing",
+      "AutoPay"
+    ],
+    "public_interactions": [
+      "desktop billing dropdown",
+      "mobile menu and billing submenu",
+      "billing FAQ mouse/keyboard accordion"
+    ],
+    "activation": "captured two-part code entry, mock Gmail code delivery, single-use verification, synthetic username/password setup and subsequent login",
+    "activation_policy": {
+      "code_expiry_hours": 24,
+      "setup_expiry_minutes": 10,
+      "failed_attempt_limit": 5,
+      "evidence": "synthetic durations/attempt limit; expiry and single use documented"
+    },
+    "public_documents": {
+      "manifest": "research/wvu-documents.json",
+      "count": 3,
+      "preserved_original_bytes": true,
+      "policy": "reference documents; qualification and collections behavior not simulated"
+    },
+    "email_recovery": "captured choice/contact entry, mock Gmail code, single-use episode-bound verification and reset grant, username display, new-password sign-in; post-code screens, enrolled-email fixture, ten-minute deadlines and five-attempt limit synthetic"
+  }
+}

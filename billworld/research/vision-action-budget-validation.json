@@ -1,0 +1,78 @@
+{
+  "recorded_at": "2026-10-05T16:29:03.789455+00:00",
+  "kind": "real_native_vision_action_budget_validation",
+  "runtime_revision": "0.19.0",
+  "environment_build_id": "f2b85b14b65075b13c7ab0354c21dd8d48e566c68e21ad785ca145f6caf973f9",
+  "evaluator_build_id": "6d0a4546db4804716d8d384fdd5f5273f37b039c894ca206206d1a3d016dc353",
+  "validation": {
+    "kind": "grader_validation",
+    "autonomous_agent_score": false,
+    "passed": true,
+    "startup_seconds": 0.1148522910000338,
+    "result": {
+      "task_id": "task_c4",
+      "difficulty": "medium",
+      "instruction": "Sign in to the local City of Batavia Customer Portal using email alex@billworld.test and password Billworld-2026!, and open Accounts. Do not change bills, payment methods, AutoPay or profile settings. The login screen follows the published guide; private account continuation is simulated. Construction-only synthetic persona: Alex Morgan; email alex@billworld.test. Mailbox password: Mailbox-2026!. Private account/reset continuation is simulated. Return an empty JSON object when done.",
+      "site_cohort": "construction",
+      "passed": false,
+      "verifier_message": "Failed: action_budget, action_budget_exceeded",
+      "elapsed": 36.595650791000025,
+      "steps": 101,
+      "is_done": false,
+      "final_result": null,
+      "errors": [
+        "action_budget_exceeded during agent"
+      ],
+      "termination": "action_budget_exceeded",
+      "phase": "agent",
+      "finalization_status": "persisted",
+      "environment_build_id": "f2b85b14b65075b13c7ab0354c21dd8d48e566c68e21ad785ca145f6caf973f9",
+      "evaluator_build_id": "6d0a4546db4804716d8d384fdd5f5273f37b039c894ca206206d1a3d016dc353",
+      "build_changed_during_episode": false,
+      "action_budget_enforced": true,
+      "action_budget_unit": "vision_action",
+      "action_limit": 100,
+      "actions_used": 100,
+      "failure_reasons": [
+        "action_budget",
+        "action_budget_exceeded"
+      ],
+      "run_id": "7c67a74b31b141bc8fc25ec592995c63",
+      "attempt_number": 1,
+      "episode_id": "episode-HgTmsBQExo4MjBdBpbL-ewHKfIJ2WF-9"
+    },
+    "last_allowed_action_completed_login": true,
+    "over_budget_logout_reached_browser": false,
+    "attempted_actions": 101,
+    "pre_exhaustion_checks": {
+      "account_opened_after_login": true,
+      "live_primary_session": true,
+      "business_state_unchanged": true,
+      "no_forbidden_operations": true,
+      "other_identity_unchanged": true,
+      "no_password_reset": true
+    },
+    "chromium_version": "154.0.8037.57",
+    "sdk_versions": {
+      "playwright": "1.63.0",
+      "browser-use": "0.11.9",
+      "pydantic": "2.13.4"
+    }
+  },
+  "native_sdk_regressions_passed": 4,
+  "artifacts": {
+    "billworld/artifacts/infinity/vision-action-budget-real/summary.json": "0d7070bb015015af5e8a9b11558376d796f083286e425317b21339bfee030ce6",
+    "billworld/infinity/vision_budget_smoke.py": "c3f3f3c4af805004910a905b5bf92d4f0f5a6426ff104f981864b8304bb83c54",
+    "billworld/artifacts/vision-budget-sdk-regression.log": "9ce4a74d6d159c589eb0cee529353f656ee40e5f04861b6f55770af9563aedf9",
+    "billworld/artifacts/vision-action-budget-real.log": "da8790829eab38c5403eaa6116cda0dbe759e29b448c76e099e9aa9bb828c64a",
+    "billworld/artifacts/infinity/vision-action-budget-real/task_c4/result.json": "330767d17035a585902dc4c4ddbe9ccab5f95a53ad76dcfec0f1a159b54ecbdc",
+    "billworld/artifacts/infinity/vision-action-budget-real/task_c4/history.json": "553b400e98cbacbd4c4ac7901a0028539956d95c6ee7d9e12658c94552cd7688",
+    "billworld/artifacts/infinity/vision-action-budget-real/task_c4/screenshots/blocked-logout.png": "232617c58a0e6caff62008c9eabac07a72a8834ede26ea60eaa0a07a9dd1e82c",
+    "billworld/artifacts/infinity/vision-action-budget-real/task_c4/screenshots/last-allowed-action.png": "232617c58a0e6caff62008c9eabac07a72a8834ede26ea60eaa0a07a9dd1e82c"
+  },
+  "limitations": [
+    "Scripted loop replaces model reasoning; no model calls or autonomous score",
+    "Original website fidelity remains uncertified",
+    "Private action meter is a trusted scaffold boundary, not an OS sandbox"
+  ]
+}

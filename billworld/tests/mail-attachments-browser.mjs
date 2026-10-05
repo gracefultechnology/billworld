@@ -1,0 +1,42 @@
+import puppeteer from 'puppeteer';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {mkdirSync,writeFileSync,readFileSync,mkdtempSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {start} from '../server.mjs';
+const dir=new URL('../artifacts/mail-attachments-browser/',import.meta.url);mkdirSync(dir,{recursive:true});
+const downloads=mkdtempSync(join(tmpdir(),'billworld-mail-download-'));
+const r=await start({port:0,adminPort:0,dbPath:':memory:'});let browser,page;
+const report={kind:'synthetic_mail_attachment_ui_connector_parity',scenarios:[],page_errors:[],outbound_requests:[]};
+try{
+ const f=r.world.create();const text='Synthetic Billworld statement\nAccount: 1001048\nAmount due: $84.32\n';const bytes=Buffer.from(text);
+ r.world.transact(f.episodeId,s=>{s.mail.find(m=>m.id==='mail-2').attachments=[{id:'attachment-1',name:'statement.txt',mimeType:'text/plain',sizeBytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),dataBase64:bytes.toString('base64')}];});
+ browser=await puppeteer.launch({headless:true});page=await browser.newPage();
+ await page.setRequestInterception(true);page.on('request',q=>{if(q.url().startsWith(r.baseUrl)||q.url().startsWith('data:'))q.continue();else{report.outbound_requests.push(q.url());q.abort();}});page.on('pageerror',e=>report.page_errors.push(e.message));
+ await page.goto(r.baseUrl+`/enter/${f.episodeId}/${f.entryToken}`);await page.goto(r.baseUrl+'/mail');
+ await page.locator('[name=email]').fill('alex@billworld.test');await page.locator('[name=password]').fill('Mailbox-2026!');
+ await Promise.all([page.waitForNavigation(),page.locator('form[data-action=mail-login] button').click()]);
+ await page.waitForSelector('#searchInput');await page.locator('#searchInput').fill('has:attachment');await page.focus('#searchInput');await page.keyboard.press('Enter');
+ await page.waitForFunction(()=>document.querySelectorAll('.email-item').length===1);
+ await page.locator('[data-testid="email-item-2"] .email-content').click();await page.waitForSelector('[data-testid="download-attachment-1"]');
+ assert.match(await page.$eval('[data-testid="message-attachments-2"]',e=>e.textContent),/statement.txt/);
+ const link=await page.$eval('[data-testid="download-attachment-1"]',e=>e.href);
+ const session=await browser.target().createCDPSession();await session.send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:downloads,eventsEnabled:true});
+ const downloaded=new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('Attachment download timed out')),10000);session.on('Browser.downloadProgress',event=>{if(event.state==='completed'){clearTimeout(timer);resolve();}if(event.state==='canceled'){clearTimeout(timer);reject(new Error('Attachment download canceled'));}});});
+ await page.locator('[data-testid="download-attachment-1"]').click();await downloaded;
+ assert.deepEqual(readFileSync(join(downloads,'statement.txt')),bytes);
+ const headers={Authorization:`Bearer ${f.connectorToken}`,'X-Billworld-Episode':f.episodeId};
+ const connector=await (await fetch(r.baseUrl+'/connector/attachment?messageId=mail-2&attachmentId=attachment-1',{headers})).json();
+ assert.deepEqual(Buffer.from(connector.attachment.dataBase64,'base64'),bytes);
+ report.scenarios.push('Gmail attachment search, metadata, visible download and connector return identical bytes');
+ await page.reload();await page.waitForSelector('[data-testid="download-attachment-1"]');
+ await page.screenshot({path:new URL('attachment.png',dir).pathname,fullPage:true});
+ report.scenarios.push('Attachment remains available after reload');
+ await page.locator('#mail-signout').click();await page.waitForFunction(()=>document.querySelector('h1')?.textContent==='Sign in to Gmail');
+ assert.equal(await page.evaluate(async url=>(await fetch(url)).status,link),403);
+ report.scenarios.push('Mailbox logout blocks attachment download');
+ assert.deepEqual(report.page_errors,[]);assert.deepEqual(report.outbound_requests,[]);report.all_passed=true;
+ console.log(JSON.stringify(report,null,2));
+}catch(error){report.all_passed=false;report.error=error.message;if(page&&!page.isClosed())await page.screenshot({path:new URL('failure.png',dir).pathname,fullPage:true});throw error;}
+finally{writeFileSync(new URL('report.json',dir),JSON.stringify(report,null,2)+'\n');await browser?.close();await r.close();rmSync(downloads,{recursive:true,force:true});}

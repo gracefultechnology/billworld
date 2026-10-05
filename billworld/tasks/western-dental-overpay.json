@@ -1,0 +1,36 @@
+{
+  "id": "western-dental-overpay-pay-v1",
+  "version": 1,
+  "site_id": "western-dental",
+  "evidence_cohort": "observed_public_config_and_synthetic_checkout",
+  "prompt": "From Western Dental, access account 123001048 using ZIP 56007 and date of birth 04/12/1985. Pay $300.00 using the Visa ending 4242. Apply both unpaid charges and leave the $90.68 excess as local account credit. Leave the other account, recurring settings and stored methods unchanged. Report the confirmation. This local payment is authorized. Account data, allocation rounding, overpayment credit, private checkout and posting are simulated; public login and configuration are captured references.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "personapay_payment",
+    "account_id": "acct-primary",
+    "amount_cents": 30000,
+    "method_kind": "card",
+    "method_last4": "4242",
+    "fee_cents": 0,
+    "credit_cents": 9068,
+    "allocations": [
+      {
+        "invoiceId": "inv-current",
+        "amountCents": 8432
+      },
+      {
+        "invoiceId": "inv-second",
+        "amountCents": 12500
+      }
+    ],
+    "remaining_cents": {
+      "inv-current": 0,
+      "inv-second": 0,
+      "inv-old": 0,
+      "inv-other": 5190
+    }
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "recorded_at": "2026-10-05T05:03:57.341573+00:00",
+  "kind": "batavia_synthetic_card_checkout_construction",
+  "site_id": "batavia-utilities",
+  "task_id": "batavia-pay-current-card-v1",
+  "infinity_task_id": "task_c9",
+  "released": false,
+  "source_scope": {
+    "public_card_capability": "Saved city billing text documents credit-card Paymentus AutoPay with fees; private one-time checkout is synthetic",
+    "captured_text": "billworld/captures/biller_c8edde62f56ee14f50e0-billing/visible-text.txt",
+    "captured_text_sha256": "287486c9d2c4347a2e3a07ae53ffb9e3b43a3b38d5ea746fd40a2cbf41afff66",
+    "source_url": "https://www.bataviail.gov/o/cob/page/billing-payment",
+    "fresh_web_read": "Search reader returned only Apptegy page shell, not positive current checkout/fee evidence"
+  },
+  "implemented": [
+    "Shared bank/card review and commit policy",
+    "Card checksum, expiry and CVV validation without full card number or CVV persistence",
+    "Explicit authorization, decline without payment/reservation, visible recovery navigation",
+    "Idempotent ledger, pending reservation and stale balance protection",
+    "Grading exact instrument fingerprint, holder name and expiry",
+    "Existing Infinity harness/runner/report used with ninth construction task"
+  ],
+  "policy": {
+    "synthetic": true,
+    "card_fee_cents": 350,
+    "transaction_max_cents": 50000,
+    "description": "Fixture values only; current quote, limit and settlement unverified"
+  },
+  "validation": {
+    "javascript_checks_passed": 226,
+    "research_checks_passed": 89,
+    "focused_paymentus_checks_passed": 26,
+    "browser_reports": {
+      "card": {
+        "file": "billworld/artifacts/paymentus-card-browser/report.json",
+        "sha256": "6c328a129a7a1f6905b02268a37eb3171abcb0f87ae1455ee4f3655f5e330bde",
+        "scenarios": [
+          "Card choice disables bank fields; expired card rejected; corrected card review, authorization, receipt reload and forged duplicate fields preserve one payment",
+          "Declined card leaves balance unchanged; visible Back to bills permits corrected review and one successful payment"
+        ]
+      },
+      "bank": {
+        "file": "billworld/artifacts/paymentus-payment-browser/report.json",
+        "sha256": "7da7a50e04bfe143897a1903cb419fcfd578c4a6a04791ba97b970d36c2fa49c",
+        "scenarios": [
+          "Login, linked bill selection, synthetic bank review, explicit authorization, receipt reload, duplicate and body-forgery resistance",
+          "Matching payment receipt delivered through reused Infinity Gmail",
+          "Episode entry clears review cookie; expired review cannot commit"
+        ]
+      }
+    },
+    "full_construction_infinity": {
+      "file": "billworld/artifacts/infinity/batavia-card-payment-construction/summary.json",
+      "sha256": "41017af632201c1af03714b338541d9bc6277662598dc0443f78c25ead951073",
+      "passed_task_ids": [
+        "task_c1",
+        "task_c2",
+        "task_c3",
+        "task_c4",
+        "task_c5",
+        "task_c6",
+        "task_c7",
+        "task_c8",
+        "task_c9"
+      ],
+      "negative_rejected": true,
+      "legacy_lifecycle_passed": true,
+      "repetition_lineage_passed": true,
+      "worker_recovery": {
+        "taskId": "lockwood-username-login-v1",
+        "episodeId": "episode-CmauxtFzGv52mUp6eVMtFNGCIWGMx223",
+        "success": false,
+        "checks": {
+          "username_verified": false,
+          "account_opened_after_login": false,
+          "live_primary_session": false,
+          "no_payments": true,
+          "no_schedules": true,
+          "no_autopay": true,
+          "no_wallet": true,
+          "balances_unchanged": true,
+          "other_identity_unchanged": true,
+          "no_registration": true,
+          "no_reset": true
+        },
+        "evidenceCohort": "observed_public_auth_and_synthetic_continuation",
+        "withinTimeBudget": true,
+        "elapsedMilliseconds": 1412,
+        "finishedAt": "2026-10-05T05:01:22.237Z",
+        "seed": 1,
+        "siteId": "lockwood",
+        "kind": "grader_validation",
+        "agent": "infinity-puppeteer-reference-v1",
+        "accessMode": "browser_only",
+        "runId": "fea79d6b40cb4ac5a2e8b483032c4301",
+        "model": null,
+        "scaffold": "webarena-infinity@1ca77813bf8d8e4011aa3fb1f740f70d78bd522d",
+        "attemptNumber": 1,
+        "termination": "environment_error",
+        "failureReasons": [
+          "username_verified",
+          "account_opened_after_login",
+          "live_primary_session",
+          "environment_error"
+        ],
+        "agentSteps": null,
+        "agentElapsedMilliseconds": null,
+        "constructionSlice": true,
+        "environmentRevision": "0.17.0",
+        "evaluatorRevision": "0.17.0",
+        "environmentBuildId": "3c0f2583932be12e9359c7be087c7fa30bfcdef3e34977c66266826c16b1dcfa",
+        "evaluatorBuildId": "94ed8aea28006c682af1b04b0eef0e9f1515e07d86875361f3053c6f335d3b89",
+        "buildProvenanceSchema": 1,
+        "buildChangedDuringEpisode": false,
+        "taskVersion": 1,
+        "portalFamily": "ePay Utilities/CUSI",
+        "actionBudgetEnforced": false
+      },
+      "environment_build_ids": [
+        "3c0f2583932be12e9359c7be087c7fa30bfcdef3e34977c66266826c16b1dcfa"
+      ],
+      "evaluator_build_ids": [
+        "94ed8aea28006c682af1b04b0eef0e9f1515e07d86875361f3053c6f335d3b89"
+      ],
+      "current_source_build_ids_match": true,
+      "build_inputs": "billworld/artifacts/paymentus-card-build-inputs.json"
+    },
+    "visual_inspection": "Decline screen inspected; explicit construction fee and visible Back to bills recovery link; no original private-layout certification",
+    "logs": {
+      "billworld/artifacts/paymentus-card-full-domain.log": "5452356ba22a8b7a62d208b1678265a534e76a46a0aa6ebeafcefa017be8d919",
+      "billworld/artifacts/paymentus-card-full-research.log": "57ad869c611ba8fbfd07397be833adfb42608146915572c4675819dace9f1867",
+      "billworld/artifacts/paymentus-card-targeted.log": "36e97fe758d3982eb6f9f7de6a8a28c5024949fc2a3989a87d529bdb04719224",
+      "billworld/artifacts/paymentus-card-browser.log": "6c328a129a7a1f6905b02268a37eb3171abcb0f87ae1455ee4f3655f5e330bde",
+      "billworld/artifacts/paymentus-bank-after-card.log": "7da7a50e04bfe143897a1903cb419fcfd578c4a6a04791ba97b970d36c2fa49c",
+      "billworld/artifacts/batavia-card-payment-infinity.log": "5e6bda481378d5db95a977a56a92b5e8f07bcf436e4852c2ae72b93ae3d24d70"
+    }
+  },
+  "source_files_sha256": {
+    "billworld/engine.mjs": "d631ab8a900d62b7040b6e0e02591916687219f7044277ff50359a06aec0aa0f",
+    "billworld/public/paymentus.js": "73f3a83c82b5b4c34aba7cdf1ca119ab5c33b506ac3ec9dd7b8e2f9aaf0ee277",
+    "billworld/sites/batavia.json": "3dfde9e562013e23c0640e15e33ed3724a354ef85fb34f1d0a5dc9e74889c677",
+    "billworld/tasks/batavia-payment.json": "1f28ccea27e1a026a7f186651c1e9ebba6a0da42c7cd52155fd02534bd44048c",
+    "billworld/tasks/batavia-card-payment.json": "7bc511a07b154ad69247adbcffeb8943cb735dc944fc895d14a78f22ecdd8702",
+    "billworld/infinity/app/harness.py": "6118cedeb2a791d217d3c6c30ab9151695d24884295a91cacb5188a8ee41a2ea",
+    "billworld/infinity/bootstrap.py": "dbf01e4ab6fa56c5e0676c1729c8293686acfdaca575860bc375ea501f13714e",
+    "billworld/infinity/reference.mjs": "48cd8630cc61ad705f0e8e215c5aab8b7f46cf8536ab2452199f0c48532c8944",
+    "billworld/tests/paymentus-card.test.mjs": "24bf3d4c1e3b197187b605d2392715c9111e310c8349832726cbea47c7d430dc",
+    "billworld/tests/paymentus-card-browser.mjs": "86faae4169222b92be6c1282a4108fe563f785c7f36186c78b97d76132197369"
+  },
+  "construction_packet": {
+    "revision": "6b82015e7d6d2ad2",
+    "metadata": "billworld/research-data/packets/biller_c8edde62f56ee14f50e0/6b82015e7d6d2ad2/metadata.json",
+    "metadata_sha256": "0b49c536b80f8148141c9f67871c66ae50123860663ecc9cd28145118d147b5c"
+  },
+  "coverage": {
+    "catalog_records": 59477,
+    "released_sites": 9,
+    "released_tasks": 31,
+    "construction_tasks": 9,
+    "independent_fidelity_certifications": 0,
+    "autonomous_agent_scores": 0
+  },
+  "limits": [
+    "Current private card/receipt layout, numeric fees and settlement unverified",
+    "Saved wallet, AutoPay, complete statements/history/profile still unfinished",
+    "City Apptegy source bundles do not establish Paymentus SPA source completeness",
+    "Synthetic bank/card postings do not establish external funding ledger debit or real settlement",
+    "Reference success is not autonomous-agent performance"
+  ]
+}

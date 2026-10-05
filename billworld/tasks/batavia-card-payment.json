@@ -1,0 +1,29 @@
+{
+  "id": "batavia-pay-current-card-v1",
+  "version": 1,
+  "site_id": "batavia-utilities",
+  "evidence_cohort": "documented_payment_capability_synthetic_card_checkout",
+  "prompt": "Sign in to the local City of Batavia portal with alex@billworld.test and password Billworld-2026!. Open Pay My Bill, view the current $84.32 bill and pay it once with synthetic Visa 4242424242424242, expiry 12/29, CVV 123, name Alex Morgan. This construction fixture charges $3.50 ($87.82 total), not a verified current Batavia fee. Review, authorize once and report the confirmation. Do not save the card, enroll in AutoPay or change other bills, paperless or profiles. Private checkout and immediate posting are synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "paymentus_payment",
+    "account_id": "acct-primary",
+    "billing_account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "amount_cents": 8432,
+    "fee_cents": 350,
+    "method_last4": "4242",
+    "remaining_cents": {
+      "inv-current": 0,
+      "inv-old": 0,
+      "inv-other": 5190
+    },
+    "method_name": "Alex Morgan",
+    "method_kind": "card",
+    "card_number": "4242424242424242",
+    "expiry": "12/29"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "validated_at": "2026-10-04T11:14:47.572568+00:00",
+  "environment_revision": "0.16.0",
+  "kind": "reference_script_domain_grader_and_browser_tests",
+  "runtime_site_count": 9,
+  "runtime_task_count": 29,
+  "domain": {
+    "artifact": "billworld/artifacts/domain-0.16.log",
+    "sha256": "5baf46d4c963a0199d2a93cb0a1e18f522529db8c5fad5efe89e06eb250f72a3",
+    "tests": 140,
+    "passed": 140
+  },
+  "research": {
+    "artifact": "billworld/artifacts/research-0.16.log",
+    "sha256": "461855d5298aa2ee3b8e3fff73f30a5820faab10d9947d9624993af0b1301348",
+    "tests": 34,
+    "passed": 34
+  },
+  "browser": {
+    "personapay": {
+      "kind": "synthetic_checkout_browser_construction",
+      "runtime_activated": true,
+      "all_passed": true,
+      "scenarios": [
+        {
+          "name": "homepage, account-help modal, identifier login, full bank payment and receipt reload",
+          "passed": true
+        },
+        {
+          "name": "failed identity matches persist across reload, require local CAPTCHA and allow correction",
+          "passed": true
+        },
+        {
+          "name": "edited partial payment preserves cents and remaining charge balances",
+          "passed": true
+        },
+        {
+          "name": "card overpayment creates explicit local credit without a negative balance",
+          "passed": true
+        },
+        {
+          "name": "selected charge payment leaves the separate charge unpaid",
+          "passed": true
+        },
+        {
+          "name": "invalid bank data and declined card cannot change balances or issue paid receipts",
+          "passed": true
+        },
+        {
+          "name": "expired review and signed-out account cannot commit a payment",
+          "passed": true
+        },
+        {
+          "name": "captured financing, privacy, terms and contact pages load on the active site routes",
+          "passed": true
+        }
+      ],
+      "page_errors": [],
+      "outbound_requests": [],
+      "artifact": "billworld/artifacts/personapay-active-browser/report.json",
+      "sha256": "b575d6c3180547ed12228ef04de8f9678e8f3dbccae88017e032ea9be6977538"
+    },
+    "prior_mychart_router_regression": {
+      "report": "billworld/research/personapay-frontend-validation.json",
+      "revision": "0.15.0",
+      "scenarios": 6,
+      "passed": 6
+    }
+  },
+  "infinity": {
+    "artifact": "billworld/artifacts/infinity/0.16-full/summary.json",
+    "sha256": "e1a462daf506d65ed6963f67154c71b3ce407f0763d1f5622b8ece123060e591",
+    "task_ids": [
+      "task_m1",
+      "task_m2",
+      "task_h1",
+      "task_h2",
+      "task_h3",
+      "task_h4",
+      "task_m3",
+      "task_m4",
+      "task_h5",
+      "task_m5",
+      "task_h6",
+      "task_h7",
+      "task_h8",
+      "task_m6",
+      "task_h9",
+      "task_m7",
+      "task_m8",
+      "task_h10",
+      "task_h11",
+      "task_m9",
+      "task_m10",
+      "task_m11",
+      "task_h12",
+      "task_h13",
+      "task_h14",
+      "task_h15",
+      "task_m12",
+      "task_h16",
+      "task_h17"
+    ],
+    "passed": 29,
+    "kind": "reference_script",
+    "scope": "all current tasks; lifecycle, retry lineage and owned worker interruption/recovery checks"
+  },
+  "autonomous_evaluation": {
+    "completed": false,
+    "success_rate": null
+  },
+  "fidelity_certified": false,
+  "previous_release_validation": "billworld/research/runtime-validation-0.15.json",
+  "deployment": {
+    "main_server_pid": 18807,
+    "main_exec_session_id": 41538,
+    "health": "http://127.0.0.1:3100/health returned 0.16.0",
+    "log": "billworld/artifacts/server-0.16.log",
+    "preview": "Western Dental full-payment fixture queued in Codex browser"
+  },
+  "limits": [
+    "Nine explicit catalog records, not all PersonaPay tenants or all 59,477 billers.",
+    "Private PersonaPay checkout, identity matching, allocation rounding, account credit and settlement synthetic.",
+    "Payment plans and eBill remain unfinished.",
+    "No independent fidelity certification, autonomous score, held-out evaluation or deployment isolation."
+  ],
+  "source_packet": {
+    "directory": "/Users/shawwalters/billpay-research/billworld/research-data/packets/biller_3af3809e3e5a5bc0b943/8c9951cf1e43019a",
+    "metadata_sha256": "31ba023ab7a6f194cb4471e1a6c641b4d443e12e66da8c884d666121b77dc964",
+    "candidate_pages": 8,
+    "site_manifest_matches_current": true
+  }
+}

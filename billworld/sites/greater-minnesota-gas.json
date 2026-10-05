@@ -1,0 +1,123 @@
+{
+  "id": "greater-minnesota-gas",
+  "name": "Greater Minnesota Gas",
+  "portal_family": "Starnik",
+  "implementation_status": "construction_slice",
+  "catalog_records": [
+    {
+      "category": "gas",
+      "name": "Greater Minnesota Gas"
+    }
+  ],
+  "capture_manifest": "research/gmg-public.json",
+  "observed_public": {
+    "homepage_billing_autopay_understanding_assistance_faq": "captured and inertly reconstructed",
+    "login": "ASP.NET username/password, no visible Google button",
+    "registration": "React /RP/signup: security code, email, confirm email, Send Verification Email",
+    "password_recovery": "React /RP/forgot-password: username, Send Recovery Email",
+    "username_recovery": "React /RP/forgot-username: email address, Retrieve Username",
+    "guest_lookup": "Angular /starnikERP/#/rp_guestpay/rp_guestpay: security code and service ZIP code, Verify"
+  },
+  "documented_policy": {
+    "source_urls": [
+      "https://greatermngas.com/my-account/pay-my-bill/",
+      "https://greatermngas.com/my-account/billing-autopay-information/"
+    ],
+    "bank_fee_cents": 0,
+    "card_fee_basis_points": 275,
+    "card_fee_minimum_cents": 150,
+    "card_brands": [
+      "Visa",
+      "Mastercard",
+      "Discover"
+    ],
+    "autopay_days_before_due": 3,
+    "portal_capabilities": [
+      "bills and payment history",
+      "AutoPay",
+      "payments",
+      "multiple accounts",
+      "paperless",
+      "billing-address updates"
+    ],
+    "registration_notice": "Official billing page mentions account number and security code; current signup entry shows only security code and email. Preserve the distinction."
+  },
+  "source_conflicts_and_limits": [
+    "Legacy RP_ForgotPassword.aspx?Type=1 redirects to password recovery; use observed current /RP/forgot-username for username recovery.",
+    "Guest SPA fragment is required; fragmentless starnikERP/ renders filenotfound and is excluded.",
+    "Registration Sign In navigation returns to RP_Default.aspx; migrated forms do not imply migrated login.",
+    "React recovery and registration anchors use client handlers with # hrefs; inert snapshots do not implement these transitions.",
+    "Captured JS is source evidence, never executed in the reconstructed environment.",
+    "Original private payment, wallet, history, registration continuation and recovery delivery are unobserved."
+  ],
+  "unfinished": [
+    "Alternate registration mailbox ownership, multiple-account linking and original private auth fidelity",
+    "Authenticated-account billing, production fee rounding/limits and settlement verification; guest payment benchmark tasks/private grader",
+    "Wallet, three-days-before-due AutoPay, multiple accounts, paperless and profile management",
+    "Source-resource completeness, local responsive menus, independent visual and behavioral fidelity",
+    "Private graders, Puppeteer reference tasks, isolated deployment and autonomous scoring"
+  ],
+  "public_reference_pages": [
+    "biller_97db8399eb95ee4cb710-website",
+    "biller_97db8399eb95ee4cb710-login_url",
+    "biller_97db8399eb95ee4cb710-links-view_bill",
+    "biller_97db8399eb95ee4cb710-links-autopay_setup",
+    "biller_97db8399eb95ee4cb710-links-payment_assistance",
+    "biller_97db8399eb95ee4cb710-portal-login",
+    "biller_97db8399eb95ee4cb710-portal-register",
+    "biller_97db8399eb95ee4cb710-portal-forgot-password",
+    "biller_97db8399eb95ee4cb710-portal-username-current",
+    "biller_97db8399eb95ee4cb710-portal-guest-current",
+    "biller_97db8399eb95ee4cb710-faq"
+  ],
+  "runtime": {
+    "kind": "starnik",
+    "frontend": "starnik",
+    "mail_sender_slug": "gmg"
+  },
+  "default_task_id": "gmg-username-login-v1",
+  "construction_stage": "observed_auth_recovery_signup_synthetic_private_continuations_not_released",
+  "construction_auth_policy": {
+    "username": "Case-insensitive with surrounding whitespace removed; synthetic normalization",
+    "session_minutes": 30,
+    "account_view": "Synthetic profile-scoped read-only balances; private original layout unobserved",
+    "google": "No button observed; unavailable"
+  },
+  "construction_recovery_policy": {
+    "request_username": "Observed 6\u201350 ASCII letters/digits/dot/@/underscore/hyphen, starts alphanumeric, no whitespace",
+    "reset_password": "Observed client: 8\u201324 characters, ASCII letter, digit and listed special character, no whitespace or angle brackets",
+    "delivery": "Synthetic same episode mailbox, uniform request response",
+    "grant": "Synthetic 15-minute one-use link; newer request invalidates prior link",
+    "reset": "Revokes all sessions and reset grants for target account only",
+    "source_evidence": "research/starnik-recovery-client-evidence.json"
+  },
+  "construction_registration_policy": {
+    "source_sequence": "Security code/email, verification, username availability, credentials, completion, login",
+    "security_code": "GMG1048 is synthetic; lookup uses hash",
+    "mailbox": "Only the fixture contact mailbox is supported; alternate addresses remain unimplemented",
+    "grants": "Synthetic 30-minute expiry. Pending/resend credential cannot verify; newer requests supersede prior links",
+    "verification": "Email possession required before username check or creation",
+    "username": "Observed 6\u201350 ASCII letters/digits/dot/@/underscore/hyphen, starts alphanumeric; local case-insensitive uniqueness rechecked at commit",
+    "password": "Same observed client requirements as password recovery",
+    "continuation_layout": "Synthetic; private original not visited"
+  },
+  "construction_guest_policy": {
+    "lookup": "Observed security-code and service-ZIP entry; synthetic exact fixture match, trimming outer whitespace",
+    "fixture_service_zips": {
+      "1001048": "56001",
+      "2002099": "55001"
+    },
+    "grant": "Separate HttpOnly browser capability, episode/account scoped, synthetic 25-minute expiry; failed lookup clears browser grant",
+    "balance": "Synthetic aggregate outstanding invoices for verified account only",
+    "checkout": "Local bank/card entry, review, authorization, idempotent commit and receipt; private original layout unobserved",
+    "payment_semantics": {
+      "rounding": "Synthetic nearest cent, half up",
+      "amount": "Positive cents up to aggregate outstanding balance; no overpayment",
+      "allocation": "Synthetic oldest-due invoice first; fee assessed once",
+      "settlement": "Synthetic immediate posting; decline fixture ends 0002",
+      "review": "Synthetic 10-minute quote bound to guest capability, explicit review read and authorization, commit-time balance check",
+      "instruments": "Only masked instrument details and deterministic digest retained; never PAN/CVV/routing/account number",
+      "receipt": "Optional mock email; receipt remains available while guest grant is valid"
+    }
+  }
+}

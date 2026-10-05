@@ -1,0 +1,214 @@
+// Resident portal (RentCafe / AppFolio / HOA / senior-living style): the sign-in box lives on the property
+// landing page, the signed-in home is a tile dashboard, and the top tab bar is Home · Payments · Ledger ·
+// Maintenance · Documents · Lease. "Pay Now" starts with the payment account, then amount/date, then review
+// (AppFolio order). Auto-pay is bank-account only with a day-of-month (RentCafe "Auto-pay Setup").
+import { observe, finish, obsNav, obsFooter, heroText, heroLine, idLabel, submitLabel, social, helpExcerpts, articleExcerpt, mfaLead, mfaResend, OBS_CSS } from './_observed.mjs';
+import { html, raw, doc, logo, alert, form, field, select, checkbox, button, hidden, amountChooser, methodChooser, newMethodFields, dateField, table, paymentRows, helpList, helpBody, helpSearchForm, money, fmtDate, methodText, statusLabel } from '../kit.mjs';
+
+export const meta = {
+  id: 'rent-portal',
+  name: 'Resident / homeowner portal',
+  description: 'Property-management resident portal for apartments, public housing, HOAs and senior living: property landing page with resident login, tile dashboard, Payments (Pay Now, Auto-pay Setup, Payment Accounts, Payment History), ledger of charges, maintenance requests, documents, lease info and notice to vacate.',
+  families: ['rentcafe', 'appfolio', 'pha-web', 'buildium', 'rent-manager', 'hoa-portal', 'senior-living-portal'],
+  sources: [
+    'https://www.appfolio.com/help/online-portal',
+    'https://appfolio.com/help/HOA-online-portal (search result summary)',
+    'https://www.yardi.com/product/rentcafe-resident-portal/ (search result summary)',
+    'https://boulderhousing.org/wp-content/uploads/2023/06/rentcafe_resident_portal_user_manual_-_large_text_version.pdf (search result summary)',
+    'https://www.communityhousingpartners.org/wp-content/uploads/2021/07/RENTCafe-Online-Rent-Payments-Guide-for-Residents.pdf'
+  ],
+  evidence: {
+    observed_public: [
+      'AppFolio resident portal tabs: Home, Payments, Maintenance, Account Profile, Shared Documents, Property Details, Insurance, Contact Us.',
+      'AppFolio one-time payment: Home shows balance -> "Pay Now" -> choose payment method (eCheck or credit/debit card) -> amount -> review date and balance -> "Make This Payment Now" -> confirmation email.',
+      'AppFolio autopay: "Set Up Autopay" on Home or Payments -> payment method -> fixed amount or outstanding balance -> start date -> "Create Autopay"; also "Scheduled Payments", "View full account ledger".',
+      'RentCafe: recurring payments via "Auto-pay Setup" with day of the month and amount; auto-pay requires a bank account payment method; non-emergency maintenance requests via a "Maintenance Request" tab.'
+    ],
+    documented: ['Biller name, phone, mailing address and notes in help articles come from each biller research record.'],
+    synthetic: [
+      'Tab set and tile dashboard are a composite of RentCafe and AppFolio, not a copy of either.',
+      'HOA ("Assessments", "Lot/Unit") and senior-living ("Monthly fees", "Move-out notice") wording variants are synthesized from the bill type.',
+      'Auto-pay start/end dates are not modeled (the engine stores day of month and amount policy only).',
+      'Maintenance requests reuse the secure-message action (subject = request category).'
+    ]
+  }
+};
+
+export const routes = {
+  home: '/', login: '/resident-login', loginPassword: '/resident-login/password', mfa: '/resident-login/verification', register: '/resident-registration', verify: '/resident-registration/verify', forgot: '/resident-login/forgot-password', reset: '/resident-login/reset-password',
+  guest: '/one-time-payment', guestPay: '/one-time-payment/details', guestReview: '/one-time-payment/review', guestReceipt: '/one-time-payment/receipt/:id',
+  dashboard: '/resident/home', bill: '/resident/ledger', statements: '/resident/documents', statement: '/resident/documents/:id.pdf',
+  payMethod: '/resident/payments/pay-now', pay: '/resident/payments/pay-now/amount', payReview: '/resident/payments/pay-now/review', payReceipt: '/resident/payments/receipt/:id',
+  history: '/resident/payments', autopay: '/resident/payments/autopay-setup', paperless: '/resident/profile/notifications', wallet: '/resident/payments/payment-accounts',
+  cancel: '/resident/lease/notice-to-vacate', plan: '/resident/lease', arrangement: '/resident/payments/payment-arrangement', contact: '/resident/maintenance', profile: '/resident/profile', logout: '/resident-logout',
+  help: '/resident-help', helpArticle: '/resident-help/topic/:slug', helpSearch: '/resident-help/search'
+};
+export const flow = { paySteps: ['payMethod', 'pay', 'payReview'], loginSteps: 1, guestSteps: ['guest', 'guestPay', 'guestReview'] };
+
+// Wording varies by community type.
+function terms(vm) {
+  const t = vm.biller.billType;
+  if (t === 'hoa') return { kind: 'hoa', who: 'Homeowner', portal: 'Homeowner Portal', unit: 'Lot / unit', charge: 'Assessments', rent: 'assessment', lease: 'Association', leaveTitle: 'Sale or transfer notice', leaveVerb: 'Submit transfer notice', leaveDate: 'Closing / transfer date', idLabel: 'Homeowner account number' };
+  if (t === 'senior-living') return { kind: 'senior', who: 'Resident', portal: 'Resident & Family Portal', unit: 'Apartment / suite', charge: 'Monthly fees', rent: 'monthly fee', lease: 'Residency agreement', leaveTitle: 'Move-out notice', leaveVerb: 'Submit move-out notice', leaveDate: 'Move-out date', idLabel: 'Resident account number' };
+  return { kind: 'rent', who: 'Resident', portal: 'Resident Portal', unit: 'Unit', charge: 'Rent & charges', rent: 'rent', lease: 'Lease', leaveTitle: 'Notice to vacate', leaveVerb: 'Submit notice to vacate', leaveDate: 'Move-out date', idLabel: 'Resident ID / account number' };
+}
+const offline = vm => vm.biller.capabilities.online_account.support === 'unsupported';
+const guestOk = vm => vm.biller.capabilities.guest_pay.support === 'supported';
+const cap = (vm, k) => vm.biller.capabilities[k]?.support === 'supported';
+const h1 = t => html`<h1>${t}</h1>`;
+const unitText = vm => vm.account?.unit ? vm.account.unit.replace(/^Unit /, '') : '';
+
+function tabs(vm) {
+  const T = terms(vm);
+  const sec = { dashboard: 'home', payMethod: 'pay', pay: 'pay', payReview: 'pay', payReceipt: 'pay', history: 'pay', autopay: 'pay', wallet: 'pay', arrangement: 'pay', bill: 'ledger', contact: 'maint', statements: 'docs', plan: 'lease', cancel: 'lease', profile: 'profile', paperless: 'profile' }[vm.page];
+  const tab = (key, pg, label) => html`<a class="${sec === key ? 'on' : ''}" href="${vm.url(pg)}">${label}</a>`;
+  return html`<nav class="tabs" aria-label="Resident menu"><div class="wrap">${tab('home', 'dashboard', 'Home')}${tab('pay', 'history', 'Payments')}${tab('ledger', 'bill', T.kind === 'hoa' ? 'Account History' : 'Ledger')}${tab('maint', 'contact', T.kind === 'hoa' ? 'Requests' : 'Maintenance')}${tab('docs', 'statements', 'Documents')}${tab('lease', 'plan', T.lease)}${tab('profile', 'profile', 'My Profile')}<a href="${vm.url('help')}">Help</a></div></nav>`;
+}
+const paySubnav = vm => html`<nav class="subnav" aria-label="Payments"><a class="${['payMethod', 'pay', 'payReview'].includes(vm.page) ? 'on' : ''}" href="${vm.url('payMethod')}">Make a Payment</a>${cap(vm, 'autopay') ? html`<a class="${vm.page === 'autopay' ? 'on' : ''}" href="${vm.url('autopay')}">Auto-pay Setup</a>` : ''}<a class="${vm.page === 'wallet' ? 'on' : ''}" href="${vm.url('wallet')}">Payment Accounts</a><a class="${vm.page === 'history' ? 'on' : ''}" href="${vm.url('history')}">Payment History</a><a class="${vm.page === 'arrangement' ? 'on' : ''}" href="${vm.url('arrangement')}">Payment Arrangement</a></nav>`;
+
+function shell(vm, title, body, { payments = false } = {}) {
+  const T = terms(vm); const authed = vm.authenticated && !offline(vm);
+  return doc(vm, {
+    title: `${title} - ${vm.biller.brand.shortName} ${T.portal}`, bodyClass: authed ? 'in' : 'out',
+    body: html`<header class="top"><div class="wrap"><a class="brand" href="${vm.url(authed ? 'dashboard' : 'home')}">${logo(vm)}<span><strong>${vm.biller.brand.shortName}</strong><small>${T.portal}</small></span></a>${offline(vm) ? '' : authed ? html`<div class="who"><span class="avatar" aria-hidden="true">${vm.persona.first[0]}</span><span>${vm.persona.name}${vm.account?.unit ? html`<small>${T.unit} ${unitText(vm)}</small>` : ''}</span><a class="btn btn-ghost" href="${vm.url('logout')}">Log Out</a></div>` : html`<div class="who"><a href="${vm.url('help')}">Help</a><a class="btn btn-ghost" href="${vm.url('login')}">${T.who} Login</a></div>`}</div></header>
+${obsNav(vm)}${authed ? tabs(vm) : ''}<main class="wrap">${payments && authed ? paySubnav(vm) : ''}${alert(vm)}${body}</main>
+<footer class="foot"><div class="wrap"><p>${vm.biller.name}${vm.biller.phone ? html` · Office ${vm.biller.phone}` : ''}</p><p><a href="${vm.url('helpArticle', { slug: 'contact-us' })}">Contact the office</a> · <a href="${vm.url('help')}">Resident help</a> · Equal Housing Opportunity</p>${!vm.authenticated ? obsFooter(vm) : ''}</div></footer>`
+  });
+}
+
+const pages = {
+  home(vm) {
+    const T = terms(vm);
+    if (offline(vm)) return shell(vm, 'Paying your rent', html`${h1(`Paying ${vm.biller.name}`)}<p class="lead">Online account access and online rent payment are not available for this biller.</p><section class="box"><h2>How to pay</h2>${helpBody(vm.help.find(a => a.slug === 'pay-your-bill'))}</section>${vm.biller.phone ? html`<p>Questions? Call the office at <strong>${vm.biller.phone}</strong>.</p>` : html`<p>Contact your property office.</p>`}<p><a href="${vm.url('help')}">Help</a></p>`);
+    return shell(vm, 'Welcome', html`<section class="landing"><div class="welcome"><p class="eyebrow">${T.portal}</p>${h1(`Welcome to ${vm.biller.brand.shortName}`)}${heroLine(vm)}<p class="lead">Pay your ${T.rent} online, set up auto-pay, submit ${T.kind === 'hoa' ? 'requests to the association' : 'maintenance requests'} and view documents — any time.</p><ul class="ticks"><li>Pay by eCheck (bank account) or credit/debit card</li><li>Recurring auto-pay from your bank account</li><li>${T.kind === 'hoa' ? 'Architectural and maintenance requests' : 'Maintenance requests 24/7'}</li></ul></div>
+<div class="box login-box"><h2>${T.who} Login</h2>${form(vm, 'login', html`${hidden('next', vm.query.next || '')}${field(vm, { name: 'username', label: idLabel(vm, 'Username (email)'), autocomplete: 'username' })}${field(vm, { name: 'password', label: 'Password', type: 'password', autocomplete: 'current-password' })}${button(submitLabel(vm, 'Log In'), { cls: 'btn btn-primary btn-block' })}`)}<p class="links"><a href="${vm.url('forgot')}">Forgot password?</a><a href="${vm.url('register')}">New ${T.who.toLowerCase()}? Register</a></p>${guestOk(vm) ? html`<p class="links"><a href="${vm.url('guest')}">Make a one-time payment without logging in</a></p>` : ''}</div></section>
+<section class="tiles3"><div class="box"><h3>Ways to pay</h3><p>Online, by mail${vm.biller.mailAddress ? '' : ' or at the office'}.</p><a href="${vm.url('helpArticle', { slug: 'pay-your-bill' })}">Payment options</a></div><div class="box"><h3>Office contact</h3><p>${vm.biller.phone || 'See your lease for office hours and phone.'}</p><a href="${vm.url('helpArticle', { slug: 'contact-us' })}">Contact the office</a></div><div class="box"><h3>Resident help</h3>${helpSearchForm(vm, { placeholder: 'Search resident help' })}</div></section>`);
+  },
+  login(vm) {
+    const T = terms(vm);
+    return shell(vm, `${T.who} Login`, html`<div class="narrow box">${h1(`${T.who} Login`)}${form(vm, 'login', html`${hidden('next', vm.query.next || '')}${field(vm, { name: 'username', label: idLabel(vm, 'Username (email)'), autocomplete: 'username' })}${field(vm, { name: 'password', label: 'Password', type: 'password', autocomplete: 'current-password' })}${button(submitLabel(vm, 'Log In'), { cls: 'btn btn-primary btn-block' })}`)}${social(vm)}<p class="links"><a href="${vm.url('forgot')}">Forgot password?</a><a href="${vm.url('register')}">New ${T.who.toLowerCase()}? Register</a></p></div>`);
+  },
+  loginPassword(vm) { return pages.login(vm); },
+  mfa(vm) { return shell(vm, 'Verification', html`<div class="narrow box">${h1('Two-step verification')}<p>${mfaLead(vm, `Enter the 6-digit code we just emailed you.`)}</p>${form(vm, 'mfa', html`${hidden('next', vm.query.next || '')}${field(vm, { name: 'code', label: 'Verification code', inputmode: 'numeric', maxlength: 6, autocomplete: 'one-time-code' })}${button('Verify', { cls: 'btn btn-primary btn-block' })}`)}${mfaResend(vm)}</div>`); },
+  register(vm) {
+    const T = terms(vm);
+    return shell(vm, 'Register', html`<div class="narrow box wide">${h1(`${T.who} Registration`)}<p>Use the account number from your ${T.kind === 'hoa' ? 'assessment coupon or welcome letter' : 'lease packet or move-in letter'}. The email must match the one the office has on file.</p>${form(vm, 'register', html`${field(vm, { name: 'accountNumber', label: T.idLabel, inputmode: 'numeric' })}${field(vm, { name: 'lastName', label: 'Last name', autocomplete: 'family-name' })}${field(vm, { name: 'email', label: 'Email (this will be your username)', type: 'email', autocomplete: 'email' })}${field(vm, { name: 'password', label: 'Password', type: 'password', autocomplete: 'new-password', help: '8+ characters with upper and lower case letters, a number and a symbol.' })}${field(vm, { name: 'confirm', label: 'Confirm password', type: 'password', autocomplete: 'new-password' })}${button('Register', { cls: 'btn btn-primary' })}`)}<p class="links"><a href="${vm.url('login')}">Already registered? Log in</a></p></div>`);
+  },
+  verify(vm) { return shell(vm, 'Verify email', html`<div class="narrow box">${h1('Confirm your email')}<p>We emailed you a confirmation link. Open it to activate your portal account.</p></div>`); },
+  forgot(vm) { return shell(vm, 'Forgot password', html`<div class="narrow box">${h1('Forgot password')}<p>Enter your username (email). We'll email you a code to reset your password.</p>${form(vm, 'forgot', html`${field(vm, { name: 'identifier', label: 'Username (email) or account number', autocomplete: 'username' })}${button('Submit', { cls: 'btn btn-primary btn-block' })}`)}<p class="links"><a href="${vm.url('login')}">Back to login</a></p></div>`); },
+  reset(vm) { return shell(vm, 'Reset password', html`<div class="narrow box">${h1('Reset password')}${form(vm, 'reset', html`${vm.query.token ? hidden('token', vm.query.token) : field(vm, { name: 'code', label: 'Code from email', inputmode: 'numeric', autocomplete: 'one-time-code' })}${field(vm, { name: 'password', label: 'New password', type: 'password', autocomplete: 'new-password' })}${field(vm, { name: 'confirm', label: 'Confirm new password', type: 'password', autocomplete: 'new-password' })}${button('Save password', { cls: 'btn btn-primary btn-block' })}`)}</div>`); },
+  guest(vm) {
+    const T = terms(vm);
+    return shell(vm, 'One-time payment', html`<div class="narrow box wide">${h1('One-time payment')}<p>Pay without logging in. Enter your account number and last name exactly as they appear on your ${T.kind === 'hoa' ? 'statement' : 'lease'}.</p>${form(vm, 'guest', html`${field(vm, { name: 'accountNumber', label: T.idLabel })}${field(vm, { name: 'lastName', label: 'Last name', autocomplete: 'family-name' })}${button('Find my balance', { cls: 'btn btn-primary' })}`)}</div>`);
+  },
+  guestPay(vm) {
+    const T = terms(vm);
+    return shell(vm, 'One-time payment', html`${h1('One-time payment')}<div class="balance-bar"><span>Account ${vm.accountMasked}${vm.account.unit ? ` · ${T.unit} ${unitText(vm)}` : ''}</span><span>Balance due <strong>${money(vm.balanceCents)}</strong></span></div>${form(vm, 'guestPay', html`<div class="two"><section class="box">${amountChooser(vm, { labels: { legend: 'Payment amount', due: 'Total balance', other: 'Other amount' } })}</section><section class="box"><fieldset><legend>Payment type</legend>${newMethodFields(vm)}</fieldset></section></div>${button('Continue', { cls: 'btn btn-primary' })}`)}`);
+  },
+  guestReview(vm) { return reviewPage(vm, 'guestReview'); },
+  guestReceipt(vm) { return receiptPage(vm); },
+  dashboard(vm) {
+    const T = terms(vm); const recent = vm.account.payments.slice(-3).reverse();
+    return shell(vm, 'Home', html`<p class="eyebrow">${T.portal}</p>${h1(`Welcome home, ${vm.persona.first}`)}
+<section class="dash"><div class="box balance-tile"><p class="lbl">Current balance</p><p class="big">${money(vm.balanceCents)}</p><p>${T.charge} due ${vm.dueText}</p>${vm.pendingPayments.length ? html`<p class="pill">${vm.pendingPayments.length} payment(s) processing</p>` : ''}<p class="row"><a class="btn btn-primary" href="${vm.url('payMethod')}">Pay Now</a>${cap(vm, 'autopay') ? html`<a class="btn btn-ghost-dark" href="${vm.url('autopay')}">${vm.autopay.enrolled ? 'Manage Auto-pay' : 'Set Up Auto-pay'}</a>` : ''}</p><p><a href="${vm.url('bill')}">View full account ledger</a></p></div>
+<div class="box"><h2>${T.lease} information</h2><dl class="kv"><dt>${T.unit}</dt><dd>${unitText(vm) || '—'}</dd><dt>Address</dt><dd>${vm.account.serviceAddress}</dd>${T.kind !== 'hoa' ? html`<dt>${T.kind === 'senior' ? 'Agreement renews' : 'Lease ends'}</dt><dd>${vm.account.leaseEnds || '—'}</dd>` : ''}<dt>Account</dt><dd>${vm.accountMasked}</dd><dt>Status</dt><dd>${vm.service.status === 'active' ? 'Current resident' : vm.service.status === 'cancel_pending' ? `Notice given · ${fmtDate(vm.service.cancelAt)}` : 'Former resident'}</dd></dl><p><a href="${vm.url('plan')}">${T.lease} details</a>${cap(vm, 'cancel_service') ? html` · <a href="${vm.url('cancel')}">${T.leaveTitle}</a>` : ''}</p></div>
+<div class="box"><h2>Recent payments</h2>${recent.length ? html`<ul class="plain">${recent.map(p => html`<li><span>${p.payOn || fmtDate(p.createdAt)}</span><strong>${money(p.amountCents)}</strong><span class="pill">${statusLabel(p.status)}</span></li>`)}</ul>` : html`<p class="muted">No recent payments.</p>`}<p><a href="${vm.url('history')}">Payment History</a></p></div></section>
+<section class="tiles4"><a class="qt" href="${vm.url('contact')}"><strong>${T.kind === 'hoa' ? 'Submit a Request' : 'Maintenance Request'}</strong><span>${T.kind === 'hoa' ? 'Contact the association' : 'Report a non-emergency issue'}</span></a><a class="qt" href="${vm.url('statements')}"><strong>Documents</strong><span>Statements and notices</span></a><a class="qt" href="${vm.url('wallet')}"><strong>Payment Accounts</strong><span>Bank accounts and cards</span></a>${cap(vm, 'paperless') ? html`<a class="qt" href="${vm.url('paperless')}"><strong>e-Statements</strong><span>${vm.account.paperless ? 'On — email delivery' : 'Go paperless'}</span></a>` : html`<a class="qt" href="${vm.url('profile')}"><strong>My Profile</strong><span>Contact information</span></a>`}</section>`);
+  },
+  bill(vm) {
+    const T = terms(vm); const inv = vm.invoice; let bal = 0;
+    const rows = [];
+    for (const i of vm.invoices.slice(0, 4).reverse()) { for (const l of i.lines) { bal += l.cents; rows.push([fmtDate(i.issuedAt), l.desc === 'Rent' && T.kind === 'hoa' ? 'Assessment' : l.desc === 'Rent' && T.kind === 'senior' ? 'Monthly service fee' : l.desc, money(l.cents), '', money(bal)]); } if (i.balanceCents === 0) { bal -= i.amountCents; rows.push([fmtDate(i.dueAt), 'Payment - thank you', '', money(i.amountCents), money(bal)]); } }
+    return shell(vm, 'Ledger', html`${h1(T.kind === 'hoa' ? 'Account History' : 'Resident Ledger')}<div class="balance-bar"><span>${T.charge} for ${inv.period}</span><span>Balance due <strong>${money(vm.balanceCents)}</strong> by ${fmtDate(inv.dueAt)}</span></div>
+<section class="box"><h2>Current charges</h2>${table(['Charge', 'Amount'], [...inv.lines.map(l => [l.desc === 'Rent' && T.kind === 'hoa' ? 'Assessment' : l.desc === 'Rent' && T.kind === 'senior' ? 'Monthly service fee' : l.desc, money(l.cents)]), [html`<strong>Statement total</strong>`, html`<strong>${money(inv.amountCents)}</strong>`]])}<p class="row"><a class="btn btn-primary" href="${vm.url('payMethod')}">Pay Now</a><a class="btn btn-ghost-dark" href="${vm.url('statement', { id: inv.id })}">Download statement (PDF)</a></p></section>
+<section class="box"><h2>Recent activity</h2>${table(['Date', 'Description', 'Charges', 'Payments', 'Balance'], rows)}</section>`);
+  },
+  statements(vm) { const T = terms(vm); return shell(vm, 'Documents', html`${h1('Documents')}<p>Monthly ${T.kind === 'hoa' ? 'assessment' : 'resident'} statements for the last 12 months.</p>${table(['Statement date', 'Period', 'Amount', 'Due', ''], vm.invoices.map(i => [fmtDate(i.issuedAt), i.period, money(i.amountCents), fmtDate(i.dueAt), html`<a href="${vm.url('statement', { id: i.id })}">View PDF</a>`]))}`); },
+  payMethod(vm) {
+    return shell(vm, 'Make a Payment', html`${h1('Make a Payment')}${steps(1)}<div class="balance-bar"><span>Current balance</span><strong>${money(vm.balanceCents)}</strong></div>${form(vm, 'payMethod', html`<section class="box">${methodChooser(vm, { title: 'Select a payment account' })}<p class="small muted">eCheck payments are free. Credit and debit card payments may include a convenience fee.</p></section>${button('Continue', { cls: 'btn btn-primary' })}`)}`, { payments: true });
+  },
+  pay(vm) {
+    return shell(vm, 'Make a Payment', html`${h1('Make a Payment')}${steps(2)}${vm.draft?.method ? html`<p>Paying with <strong>${methodText(vm.draft.method)}</strong> · <a href="${vm.url('payMethod')}">Change</a></p>` : ''}${form(vm, 'pay', html`<section class="box">${amountChooser(vm, { labels: { legend: 'Payment amount', due: 'Total balance due', other: 'Edit amount' } })}${dateField(vm, { label: 'Payment date' })}${!vm.draft?.methodId ? methodChooser(vm, { title: 'Payment account' }) : ''}</section>${button('Review Payment', { cls: 'btn btn-primary' })}`)}`, { payments: true });
+  },
+  payReview(vm) { return reviewPage(vm, 'payReview'); },
+  payReceipt(vm) { return receiptPage(vm); },
+  history(vm) {
+    return shell(vm, 'Payments', html`${h1('Payments')}<div class="balance-bar"><span>Current balance <strong>${money(vm.balanceCents)}</strong></span><a class="btn btn-primary" href="${vm.url('payMethod')}">Pay Now</a></div>${vm.scheduled.length ? html`<p class="warn">You have ${vm.scheduled.length} scheduled payment(s). Scheduled payments can be deleted until they process.</p>` : ''}<h2>Payment History</h2>${table(['Date', 'Amount', 'Paid with', 'Reference #', 'Status', ''], paymentRows(vm))}`, { payments: true });
+  },
+  autopay(vm) {
+    const ap = vm.autopay; const T = terms(vm);
+    const dayOpts = Array.from({ length: 28 }, (_, i) => [String(i + 1), `Day ${i + 1} of each month`]);
+    return shell(vm, 'Auto-pay Setup', html`${h1('Auto-pay Setup')}<p>A recurring payment is drafted automatically each month from your bank account. Auto-pay can only use a bank account (eCheck).</p>
+${ap.enrolled ? html`<section class="box current"><h2>Your recurring payment</h2><dl class="kv"><dt>Amount</dt><dd>${ap.policy === 'fixed' ? money(ap.fixedCents) : 'Total balance due'}</dd><dt>Day of month</dt><dd>${ap.day || 'Due date'}</dd><dt>From</dt><dd>${vm.autopayMethod ? methodText(vm.autopayMethod) : 'Bank account'}</dd></dl>${form(vm, 'autopay', html`${hidden('action', 'cancel')}${checkbox(vm, { name: 'confirm', label: `I understand I must pay my ${T.rent} manually after auto-pay is cancelled.` })}${button('Cancel Auto-pay', { cls: 'btn btn-danger' })}`)}</section><h2>Edit Auto-pay</h2>` : ''}
+${form(vm, 'autopay', html`${hidden('action', 'enroll')}<section class="box">${methodChooser(vm, { title: 'Bank account', allowCard: false })}${select(vm, { name: 'policy', label: 'How much to pay', options: [['full', 'Total balance due each month'], ['fixed', 'A fixed amount']] })}${field(vm, { name: 'fixedAmount', label: 'Fixed amount (if selected)', required: false, inputmode: 'decimal' })}${select(vm, { name: 'day', label: 'Day of the month to pay', options: dayOpts, value: vm.values.day || ap.day || '1' })}${checkbox(vm, { name: 'acceptTerms', label: `I authorize ${vm.biller.brand.shortName} to debit my bank account each month until I cancel auto-pay.` })}</section>${button(ap.enrolled ? 'Update Auto-pay' : 'Create Auto-pay', { cls: 'btn btn-primary' })}`)}`, { payments: true });
+  },
+  paperless(vm) { return shell(vm, 'Notifications', html`${h1('Notifications & e-Statements')}<section class="box"><p>Monthly statements are delivered by <strong>${vm.account.paperless ? 'email (e-Statements)' : 'mail'}</strong>.</p>${form(vm, 'paperless', html`${hidden('paperless', vm.account.paperless ? 'off' : 'on')}${!vm.account.paperless ? field(vm, { name: 'email', label: 'Email for e-Statements', type: 'email', value: vm.persona.email }) : ''}${button(vm.account.paperless ? 'Turn off e-Statements' : 'Turn on e-Statements', { cls: 'btn btn-primary' })}`)}</section><p><a href="${vm.url('profile')}">Back to My Profile</a></p>`); },
+  wallet(vm) { return shell(vm, 'Payment Accounts', html`${h1('Payment Accounts')}<section class="box"><ul class="plain">${vm.methods.map(m => html`<li><span>${methodText(m)}${m.nickname ? html` <span class="muted">(${m.nickname})</span>` : ''}</span>${form(vm, 'wallet', html`${hidden('op', 'remove')}${hidden('methodId', m.id)}${button('Delete', { cls: 'btn btn-link' })}`)}</li>`)}</ul></section><section class="box"><h2>Add Payment Account</h2>${form(vm, 'wallet', html`${hidden('op', 'add')}${newMethodFields(vm)}${field(vm, { name: 'nickname', label: 'Account nickname (optional)', required: false })}${button('Save Payment Account', { cls: 'btn btn-primary' })}`)}</section>`, { payments: true }); },
+  cancel(vm) {
+    const T = terms(vm);
+    if (vm.service.status !== 'active' && vm.step !== 'done') return shell(vm, T.leaveTitle, html`${h1(T.leaveTitle)}<section class="box"><p>${vm.service.status === 'cancel_pending' ? `Your notice is on file. ${T.leaveDate}: ${fmtDate(vm.service.cancelAt)}.` : 'Your residency has ended.'}</p>${vm.service.status === 'cancel_pending' ? form(vm, 'cancel', html`${hidden('step', 'undo')}${button('Withdraw my notice', { cls: 'btn btn-primary' })}`) : ''}</section>`);
+    const s = {
+      reason: html`${h1(T.leaveTitle)}<p>${T.kind === 'rent' ? 'Most leases require written notice before you move out (often 30 or 60 days). Check your lease for the required notice period.' : T.kind === 'senior' ? 'Your residency agreement describes the required notice period before moving out.' : 'Let the association know about a sale or transfer so the account can be closed and the new owner set up.'}</p>${form(vm, 'cancel', html`${hidden('step', 'reason')}<section class="box">${select(vm, { name: 'reason', label: 'Reason', options: [['', 'Select a reason'], ['moving', T.kind === 'hoa' ? 'Selling / moving' : 'Moving out of the area'], ['cost', 'Cost'], ['purchase', 'Purchasing a home'], ['care', 'Change in care needs'], ['other', 'Other']] })}</section>${button('Next', { cls: 'btn btn-primary' })}`)}`,
+      offer: html`${h1('Before you go')}<section class="box"><p>Renew now and lock in your current rate.</p>${form(vm, 'cancel', html`${hidden('step', 'offer')}${button('Renew my lease', { name: 'accept', value: 'yes' })} ${button('No thanks, continue', { cls: 'btn btn-ghost-dark', name: 'accept', value: 'no' })}`)}</section>`,
+      confirm: html`${h1(T.leaveTitle)}${form(vm, 'cancel', html`${hidden('step', 'confirm')}<section class="box">${dateField(vm, { name: 'effectiveDate', label: T.leaveDate })}${checkbox(vm, { name: 'confirm', label: 'I understand this notice is binding once the office accepts it, and charges continue through the date above.' })}</section>${button(T.leaveVerb, { cls: 'btn btn-danger' })}`)}`,
+      done: html`${h1('Notice received')}<section class="box current"><p>${T.leaveDate}: <strong>${vm.service.cancelAt ? fmtDate(vm.service.cancelAt) : ''}</strong>. Confirmation <strong>${vm.service.confirmation || ''}</strong>. The office will contact you about move-out inspection and your final statement.</p><p><a href="${vm.url('dashboard')}">Back to Home</a></p></section>`,
+      kept: html`${h1('Thank you')}<section class="box"><p>The leasing office will contact you to complete your renewal.</p></section>`
+    };
+    return shell(vm, T.leaveTitle, s[vm.step]);
+  },
+  plan(vm) {
+    const T = terms(vm);
+    return shell(vm, T.lease, html`${h1(`${T.lease} information`)}<section class="box"><dl class="kv"><dt>${T.who}</dt><dd>${vm.persona.name}</dd><dt>${T.unit}</dt><dd>${unitText(vm) || '—'}</dd><dt>Address</dt><dd>${vm.account.serviceAddress}</dd>${T.kind !== 'hoa' ? html`<dt>${T.kind === 'senior' ? 'Agreement renews' : 'Lease ends'}</dt><dd>${vm.account.leaseEnds || '—'}</dd>` : ''}<dt>Monthly ${T.rent}</dt><dd>${money(vm.invoice.amountCents)}</dd></dl></section>${vm.plans.length ? form(vm, 'plan', html`<fieldset>${vm.plans.map(p => html`<label class="radio"><input type="radio" name="planId" value="${p.id}"${p.current ? raw(' checked') : ''}> <span>${p.name}</span></label>`)}</fieldset>${button('Update')}`) : html`<p>${T.kind === 'hoa' ? 'Questions about your assessment?' : 'Renewal offers are sent by the leasing office before your lease ends.'} <a href="${vm.url('contact')}">Contact the office</a></p>`}${cap(vm, 'cancel_service') ? html`<p><a href="${vm.url('cancel')}">${T.leaveTitle}</a></p>` : ''}`);
+  },
+  arrangement(vm) { return shell(vm, 'Payment Arrangement', html`${h1('Payment Arrangement')}${vm.account.arrangement ? html`<section class="box current"><p>You're paying ${money(vm.account.arrangement.monthlyCents)} per month for ${vm.account.arrangement.months} months in addition to your regular charges.</p></section>` : form(vm, 'arrangement', html`<section class="box"><p>Request a repayment agreement for your balance of <strong>${money(vm.balanceCents)}</strong>. The office must approve the agreement.</p>${select(vm, { name: 'months', label: 'Repay over', options: [['3', '3 months'], ['6', '6 months'], ['12', '12 months']] })}</section>${button('Request arrangement', { cls: 'btn btn-primary' })}`)}`, { payments: true }); },
+  contact(vm) {
+    const T = terms(vm);
+    return shell(vm, 'Maintenance', html`${h1(T.kind === 'hoa' ? 'Submit a Request' : 'Maintenance Request')}<p class="warn">For emergencies such as fire, flooding or gas leaks, call 911 and then the office${vm.biller.phone ? ` at ${vm.biller.phone}` : ''}. Do not submit emergencies online.</p>${vm.account.messages.length ? html`<section class="box"><h2>Open requests</h2>${table(['Submitted', 'Category', 'Status'], vm.account.messages.map(m => [fmtDate(m.at), m.subject, m.status === 'received' ? 'Submitted' : m.status]))}</section>` : ''}${form(vm, 'contact', html`<section class="box">${select(vm, { name: 'subject', label: 'Category', options: [['', 'Select a category'], ...(T.kind === 'hoa' ? ['Common area maintenance', 'Architectural request', 'Billing question', 'General question'] : ['Plumbing', 'Electrical', 'Appliance', 'Heating / air conditioning', 'Pest control', 'Billing question', 'Other']).map(c => [c, c])] })}<div class="field"><label for="f-message">Describe the problem</label><textarea id="f-message" name="message" rows="5" required>${vm.values.message || ''}</textarea></div>${checkbox(vm, { name: 'permission', label: 'Permission to enter when I am not home' })}</section>${button('Submit request', { cls: 'btn btn-primary' })}`)}`);
+  },
+  profile(vm) { return shell(vm, 'My Profile', html`${h1('My Profile')}<section class="box"><dl class="kv"><dt>Name</dt><dd>${vm.persona.name}</dd><dt>Username</dt><dd>${vm.persona.email}</dd><dt>Phone</dt><dd>${vm.account.phone || 'Not provided'}</dd></dl></section>${form(vm, 'profile', html`<section class="box">${field(vm, { name: 'phone', label: 'Mobile phone', type: 'tel' })}</section>${button('Save', { cls: 'btn btn-primary' })}`)}${cap(vm, 'paperless') ? html`<p><a href="${vm.url('paperless')}">Notifications &amp; e-Statements</a></p>` : ''}`); },
+  help(vm) { return shell(vm, 'Help', html`${h1('Resident help')}${offline(vm) ? html`<p class="lead">Online account access is not available for this biller.</p>` : helpSearchForm(vm, { placeholder: 'Search resident help' })}<section class="box">${helpList(vm)}</section>${helpExcerpts(vm)}`); },
+  helpArticle(vm) { return shell(vm, vm.article.title, html`<p class="crumbs"><a href="${vm.url('help')}">Resident help</a> / ${vm.article.title}</p>${h1(vm.article.title)}<section class="box">${helpBody(vm.article)}</section>${articleExcerpt(vm)}${!offline(vm) ? helpSearchForm(vm, { placeholder: 'Search resident help' }) : ''}`); },
+  helpSearch(vm) { return shell(vm, 'Search', html`<p class="crumbs"><a href="${vm.url('help')}">Resident help</a> / Search</p>${h1('Search results')}${helpSearchForm(vm, { placeholder: 'Search resident help' })}<section class="box">${vm.results.length ? helpList(vm, vm.results) : html`<p>No topics match “${vm.query.q || ''}”.</p>`}</section>`); }
+};
+
+const steps = n => html`<ol class="steps-bar">${['Payment account', 'Amount & date', 'Review'].map((s, i) => html`<li class="${i + 1 === n ? 'cur' : i + 1 < n ? 'done' : ''}">${s}</li>`)}</ol>`;
+
+function reviewPage(vm, page) {
+  const d = vm.draft;
+  return shell(vm, 'Review Payment', html`${h1(page === 'payReview' ? 'Make a Payment' : 'Review payment')}${page === 'payReview' ? steps(3) : ''}<section class="box"><h2>Review your payment</h2><dl class="kv"><dt>Payment amount</dt><dd>${money(d.amountCents)}</dd>${d.feeCents ? html`<dt>Convenience fee</dt><dd>${money(d.feeCents)}</dd>` : ''}<dt>Total</dt><dd><strong>${money(d.totalCents)}</strong></dd><dt>Payment account</dt><dd>${methodText(d.method)}</dd><dt>Payment date</dt><dd>${d.payOn || 'Today'}</dd></dl>${form(vm, page, html`${hidden('token', d.token)}${hidden('op', 'submit')}${checkbox(vm, { name: 'acceptTerms', label: 'I authorize this payment and agree to the payment terms and conditions.' })}${button(d.payOn ? 'Schedule This Payment' : 'Make This Payment Now', { cls: 'btn btn-primary' })}`)}${page === 'payReview' ? form(vm, page, html`${hidden('op', 'edit')}${button('Edit payment', { cls: 'btn btn-link' })}`) : ''}</section>`, { payments: page === 'payReview' });
+}
+function receiptPage(vm) {
+  const p = vm.payment;
+  return shell(vm, 'Payment Receipt', html`${h1(p.status === 'scheduled' ? 'Payment scheduled' : 'Payment submitted')}<section class="box current"><p>Thank you! A receipt has been emailed to you.</p><dl class="kv"><dt>Reference number</dt><dd><strong>${p.confirmation}</strong></dd><dt>Amount</dt><dd>${money(p.amountCents)}</dd>${p.feeCents ? html`<dt>Convenience fee</dt><dd>${money(p.feeCents)}</dd>` : ''}<dt>Paid with</dt><dd>${vm.paymentMethod ? methodText(vm.paymentMethod) : `****${p.methodLast4}`}</dd><dt>Date</dt><dd>${p.payOn || fmtDate(p.createdAt)}</dd><dt>Status</dt><dd>${statusLabel(p.status)}</dd></dl></section>${vm.authenticated ? html`<p class="row"><a class="btn btn-primary" href="${vm.url('dashboard')}">Back to Home</a><a href="${vm.url('history')}">Payment History</a></p>` : html`<p><a class="btn btn-primary" href="${vm.url('home')}">Done</a></p>`}`, { payments: false });
+}
+
+export function render(page, vm) { const fn = pages[page]; if (!fn) throw new Error(`rent-portal template cannot render ${page}`); vm = observe(vm); return finish(vm, fn(vm)); }
+
+export const css = `*{box-sizing:border-box}html{background:#f2f2f0}body{margin:0;font:15px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;color:#2d2d2d;background:#f2f2f0}a{color:var(--brand)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 18px}main.wrap{padding-top:24px;padding-bottom:40px;min-height:60vh}
+.top{background:var(--brand);color:#fff}.top .wrap{display:flex;justify-content:space-between;align-items:center;min-height:68px}.brand{display:flex;gap:12px;align-items:center;color:#fff;text-decoration:none}.brand span{display:flex;flex-direction:column;line-height:1.2}.brand strong{font-size:18px}.brand small{font-size:12px;opacity:.85;text-transform:uppercase;letter-spacing:1px}.logo{width:40px;height:40px;border:2px solid rgba(255,255,255,.7);border-radius:10px}
+.who{display:flex;gap:14px;align-items:center}.who a{color:#fff}.who span{display:flex;flex-direction:column;line-height:1.2;font-weight:600}.who small{font-weight:400;opacity:.85}.avatar{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.25);align-items:center;justify-content:center;font-weight:700}
+.tabs{background:#fff;border-bottom:1px solid #dcdcd6;box-shadow:0 2px 4px rgba(0,0,0,.04)}.tabs .wrap{display:flex;gap:4px;overflow-x:auto}.tabs a{padding:14px 16px;color:#4a4a4a;text-decoration:none;font-weight:600;font-size:14px;border-bottom:3px solid transparent;white-space:nowrap}.tabs a:hover{color:var(--brand)}.tabs a.on{color:var(--brand);border-bottom-color:var(--brand)}
+.subnav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}.subnav a{padding:7px 14px;border-radius:18px;background:#e6e6e1;color:#2d2d2d;text-decoration:none;font-size:14px;font-weight:600}.subnav a.on{background:var(--brand);color:#fff}
+h1{font-size:26px;font-weight:300;margin:0 0 16px}h2{font-size:17px;margin:0 0 10px;font-weight:700}h3{margin:0 0 6px;font-size:16px}.eyebrow{text-transform:uppercase;letter-spacing:1.5px;font-size:12px;color:#6d6d66;margin:0 0 4px}
+.btn{display:inline-block;padding:10px 20px;border-radius:3px;border:1px solid var(--brand);background:#fff;color:var(--brand);font:inherit;font-weight:700;text-decoration:none;cursor:pointer;text-transform:uppercase;letter-spacing:.5px;font-size:13px}.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn-block{display:block;width:100%;text-align:center}.btn-ghost{border-color:rgba(255,255,255,.8);background:transparent;color:#fff;padding:7px 14px}.btn-ghost-dark{background:transparent}.btn-danger{background:#a4262c;border-color:#a4262c;color:#fff}.btn-link{border:0;background:none;padding:0;color:#a4262c;text-transform:none;letter-spacing:0;text-decoration:underline}
+.box{background:#fff;border:1px solid #e1e1db;border-radius:4px;padding:20px 22px;margin-bottom:18px}.current{border-left:4px solid #2e7d32}
+.landing{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;margin:10px 0 26px}.landing h1{font-size:38px}.welcome{padding:20px 6px}.ticks{padding-left:20px}.ticks li{margin:4px 0}.login-box{border-top:5px solid var(--accent);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.links{display:flex;justify-content:space-between;gap:10px;font-size:14px;flex-wrap:wrap}
+.narrow{max-width:440px;margin:10px auto}.narrow.wide{max-width:560px}
+.tiles3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.tiles4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.dash{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:18px}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:860px){.tiles3,.tiles4,.dash,.landing,.two{grid-template-columns:1fr}}
+.balance-tile{background:linear-gradient(160deg,var(--brand),#1c1c1c);color:#fff;border:0}.balance-tile a{color:#fff}.balance-tile .btn-ghost-dark{border-color:#fff;color:#fff}.lbl{text-transform:uppercase;letter-spacing:1px;font-size:12px;opacity:.85;margin:0}.big{font-size:38px;font-weight:300;margin:4px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.pill{display:inline-block;background:#ececE6;color:#2d2d2d;border-radius:12px;padding:1px 10px;font-size:12px;font-weight:700}
+.qt{display:block;background:#fff;border:1px solid #e1e1db;border-radius:4px;padding:16px;text-decoration:none;color:#2d2d2d;border-top:4px solid var(--accent)}.qt strong{display:block;color:var(--brand)}.qt span{font-size:13px;color:#6d6d66}
+.balance-bar{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #e1e1db;border-left:5px solid var(--accent);padding:12px 18px;margin-bottom:18px;border-radius:4px;gap:12px}
+.steps-bar{display:flex;list-style:none;padding:0;margin:0 0 18px;counter-reset:st}.steps-bar li{flex:1;text-align:center;padding:8px;border-bottom:4px solid #dcdcd6;color:#6d6d66;font-weight:600;font-size:14px;counter-increment:st}.steps-bar li::before{content:counter(st) ". "}.steps-bar li.cur{border-bottom-color:var(--accent);color:#2d2d2d}.steps-bar li.done{border-bottom-color:var(--brand)}
+ul.plain{list-style:none;padding:0;margin:0}ul.plain li{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #eee}ul.plain form{display:inline}
+.field{margin:12px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:4px;color:#4a4a4a}.field input,.field select,.field textarea{width:100%;padding:9px 10px;border:1px solid #bdbdb5;border-radius:3px;font:inherit;background:#fff}.help{color:#6d6d66;font-size:12px}
+fieldset{border:0;padding:0;margin:8px 0}legend{font-weight:700;margin-bottom:6px}.radio,.check{display:flex;gap:8px;align-items:center;margin:8px 0}.amt{margin-left:6px}.other-amount{width:120px;padding:5px 8px;border:1px solid #bdbdb5;border-radius:3px}
+.alert{padding:12px 16px;border-radius:3px;margin-bottom:16px}.alert-error{background:#fbe9e9;color:#8a1f24;border:1px solid #efb8bb}.alert-ok{background:#e8f4e9;color:#1e5b22;border:1px solid #b6dbb8}.warn{background:#fff6e0;border:1px solid #f0d58c;padding:10px 14px;border-radius:3px}
+.table{width:100%;border-collapse:collapse}.table th,.table td{padding:9px 10px;border-bottom:1px solid #e8e8e2;text-align:left}.table th{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:#6d6d66;background:#fafaf7}.table form{margin:0}
+dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:6px 18px;margin:0 0 10px}dt{color:#6d6d66}dd{margin:0}.muted{color:#6d6d66}.small{font-size:13px}.lead{font-size:17px;color:#4a4a4a}.crumbs{font-size:13px;color:#6d6d66}
+.help-search{display:flex;gap:6px;margin:10px 0}.help-search input{flex:1;padding:8px 10px;border:1px solid #bdbdb5;border-radius:3px;font:inherit}.help-list li{margin:6px 0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}details summary{cursor:pointer;color:var(--brand);font-weight:700;margin:8px 0}
+.foot{border-top:1px solid #dcdcd6;background:#fff;color:#6d6d66;font-size:13px;padding:18px 0}
+@media(max-width:860px){.top .wrap{flex-wrap:wrap;gap:8px 14px;padding-top:8px;padding-bottom:8px}.who{flex-wrap:wrap;gap:8px 12px;margin-left:auto}.help-search input{min-width:0}.dash>*,.two>*,.landing>*{min-width:0}.table{display:block;overflow-x:auto;max-width:100%}dd{overflow-wrap:anywhere}}` + OBS_CSS;

@@ -1,0 +1,232 @@
+{
+  "id": "swepsonville-water",
+  "name": "Town of Swepsonville",
+  "portal_family": "AuthorityPay/Muni-Link with InvoiceCloud QuickPay handoff",
+  "implementation_status": "first_slice",
+  "revision": "0.10.0",
+  "catalog_records": [
+    {
+      "category": "water-sewer",
+      "name": "Swepsonville, Town Of"
+    }
+  ],
+  "capture_manifest": "research/swepsonville-public.json",
+  "public_routes": {
+    "homepage": "https://www.swepsonvillenc.com/",
+    "portal": "https://swepsonville.authoritypay.com/",
+    "login": "https://swepsonville.authoritypay.com/site/login",
+    "registration": "https://swepsonville.authoritypay.com/site/register",
+    "recovery": "https://swepsonville.authoritypay.com/site/request-password-reset",
+    "attachments": "https://swepsonville.authoritypay.com/reports/list",
+    "quickpay": "https://www.invoicecloud.com/townofswepsonvillenc",
+    "utilities": "https://www.swepsonvillenc.com/departments/utilities/index.php",
+    "faq": "https://www.swepsonvillenc.com/faq/index.php",
+    "autopay_form": "https://form.jotform.com/SwepsNC/bank-draft-form",
+    "utility-lookup": "https://www.invoicecloud.com/portal/2/customerlocator.aspx?iti=102&bg=a0f7e09b-c65e-4d00-8a5c-8d173fc940b1&vsii=1127&return=1&CultureName=en-US",
+    "deposits": "https://www.invoicecloud.com/portal/2/cloudstore.aspx?cs=EB6F69BC-923E-4015-82C2-1B8B53E4584C&bg=a0f7e09b-c65e-4d00-8a5c-8d173fc940b1&return=1",
+    "payment-contact": "https://www.invoicecloud.com/portal/2/ContactUs.aspx?bg=a0f7e09b-c65e-4d00-8a5c-8d173fc940b1"
+  },
+  "observed_public": {
+    "portal_build": "2026.09.1807",
+    "registration_fields": [
+      "First Name",
+      "Last Name",
+      "Account Number",
+      "CID",
+      "Email Address",
+      "Confirm Email Address",
+      "Password",
+      "Confirm Password"
+    ],
+    "login_fields": [
+      "Email Address",
+      "Password"
+    ],
+    "recovery_fields": [
+      "Email Address"
+    ],
+    "google_signin_observed": false,
+    "guest_navigation": "literal button location.href to InvoiceCloud",
+    "municipal_autopay_navigation": "Set Up AutoPay link to Jotform bank-draft form",
+    "attachments": "Public list currently has no results",
+    "quickpay_choices": [
+      "Utility",
+      "Deposits"
+    ],
+    "quickpay_registration": "InvoiceCloud landing page states no registration required for One Time Pay",
+    "guest_utility_lookup_fields": [
+      "Account Number",
+      "Last Name"
+    ],
+    "deposit_fields": [
+      "Account Number (e.g. 1234-5)",
+      "Name",
+      "Service Address",
+      "Deposit Amount"
+    ]
+  },
+  "fidelity_limits": [
+    "Public navigation only; no production forms submitted or accounts queried.",
+    "CID is required for registration; do not replace it with surname-only matching or another tenant identity question.",
+    "Private verification, password policy, sessions, authenticated billing and email delivery remain unobserved.",
+    "QuickPay uses InvoiceCloud. Its public account-number/surname lookup is captured; downstream review, fees and completion remain unobserved.",
+    "Municipal AutoPay links to a separate bank-draft form; do not assume AuthorityPay dashboard enrollment is equivalent.",
+    "No Google identity button observed; no provider support inferred from a payment wallet or external platform.",
+    "First slice implements CID registration with synthetic immediate activation, email recovery and guest utility payment. Password limits, welcome email, private dashboard and downstream payment layout are synthetic.",
+    "The fixture has zero online fee; source fee review is unobserved. Municipal penalty fees are not convenience fees.",
+    "Bank-draft activation/approval and cancellation, billing-cycle penalties, presentment retries, account closure and further municipal routes remain unfinished.",
+    "AuthorityPay and InvoiceCloud use separate local route namespaces on one browser origin; production origin separation is not reproduced. Server-side guest lookup prevents AuthorityPay session bypass.",
+    "The observed public bank-draft form now creates an idempotent local pending request. Matching bill details, routing checks, extra explicit consent, receipt grants, acknowledgement email and pending town review are synthetic; production submission/activation is unobserved. Signature is an observed typed text field. No immediate draft, AutoPay activation or credit report occurs.",
+    "Deposits entry fields and Town Hall amount instruction are observed. Local $150 approved obligation, exact identity matching, continuation/review/receipt, zero fee, immediate posting and expiring grants are synthetic; no production deposit continuation submitted. Deposit payments are separate from utility invoices.",
+    "Municipal homepage, Utilities and FAQ reuse hash-checked HTML/CSS/assets with local menu, carousel and FAQ controls. Original scripts, CMS login, translation/share widgets, search, calendar and other unimplemented destinations are disabled. Uncaptured font/image URLs are listed in snapshot manifests; production backend functionality is not inferred."
+  ],
+  "documented_policy": {
+    "sources": [
+      "https://form.jotform.com/SwepsNC/bank-draft-form",
+      "https://www.swepsonvillenc.com/2026-2027%20Fee%20Schedule%20(use).pdf",
+      "https://www.swepsonvillenc.com/WATER%20POLICIES%205-16-22.pdf"
+    ],
+    "fee_schedule_effective": "2026-07-01",
+    "autopay_window": "last week of each month; exact date/cutoff unspecified",
+    "autopay_methods": [
+      "checking",
+      "savings"
+    ],
+    "autopay_form_fields": [
+      "Account Number",
+      "Customer Name",
+      "Service Address",
+      "Bank Name",
+      "Bank Account Number",
+      "Bank Routing Number",
+      "Bank Account Type",
+      "Mobile Phone Number",
+      "Email Address",
+      "Signature",
+      "Date"
+    ],
+    "autopay_signature_disclosure": "Form states signature authorizes access to a credit report; local consent must be explicit; no live credit report",
+    "billing_policy_document_version": "linked 2022 policy; current continuation not independently confirmed",
+    "billing_issue": "approximately 20th or next business day",
+    "past_due": "9am on 11th of following month or next business day following the 10th; exact holiday interpretation needs review",
+    "late_fee_rule": "after 9am on 12th for balance over $15; first delinquency exempt once",
+    "late_fee_cents": 1500,
+    "returned_check_draft_fee_cents": 1200,
+    "ach_reject_fee_cents": 1500,
+    "nonpayment_fee_cents": 3000,
+    "paper_bill_fee_cents": 35,
+    "returned_check_draft_presentments": 2,
+    "partial_payment_allocation": [
+      "Penalties/Fees",
+      "Sewer",
+      "Water"
+    ],
+    "online_convenience_fee": "not observed; not inferred from municipal penalty schedule",
+    "unknowns": [
+      "precise draft execution date and processing timezone",
+      "registration email challenge and activation",
+      "recovery continuation and expiry",
+      "guest payment review/fee/settlement",
+      "current private AutoPay controls and cancellation"
+    ]
+  },
+  "default_task_id": "swepsonville-guest-pay-v1",
+  "runtime": {
+    "kind": "utility",
+    "frontend": "authoritypay",
+    "mail_sender_slug": "swepsonville",
+    "guest_lookup": "account_number_and_last_name",
+    "profile_flow": "cid_registration_synthetic_activation",
+    "bank_draft": "public_form_pending_review_synthetic"
+  },
+  "billing_policy": {
+    "fee_cents": 0,
+    "fee_evidence": "synthetic_no_fee_fixture_online_fees_unobserved",
+    "settlement": "immediate_posting_synthetic",
+    "invoice_generation": "monthly_on_first_synthetic",
+    "default_invoice_due_day": 11
+  },
+  "reference_assets": [
+    {
+      "file": "public/reference-assets/ml-logo.png",
+      "source_url": "https://swepsonville.muni-link.com/images/customer-logos/swepsonville.png",
+      "sha256": "d757ab7058cfe3d7a28729781e71289742437c628a444a3c8112b3d53c7491be"
+    },
+    {
+      "file": "public/reference-assets/ml-water.jpg",
+      "source_url": "https://swepsonville.authoritypay.com/images/water-hand.jpg",
+      "sha256": "fc81bef6b58dec78cac94f2210f92248d5dbb67b5828ad76594a355abaa1bb76"
+    },
+    {
+      "file": "public/reference-assets/ml-karla.woff2",
+      "source_url": "https://fonts.gstatic.com/s/karla/v33/qkBIXvYC6trAT55ZBi1ueQVIjQTD-JqaE0lKZbLXGhmR.woff2",
+      "sha256": "ff95840b57b1d71b23b3954a117a7c42f2e7dc38d2675a0c273247d7c715f612"
+    },
+    {
+      "file": "public/reference-assets/ml-lora.woff2",
+      "source_url": "https://fonts.gstatic.com/s/lora/v37/0QI6MX1D_JOuGQbT0gvTJPa787z5vBJBkq18ndeYxZ0.woff2",
+      "sha256": "f288a6520c483e8316c14110d20db399ccd2b3f59c8a9b6248394f30f6913b02"
+    },
+    {
+      "file": "public/reference-assets/sweps-invoicecloud.png",
+      "source_url": "https://icblobstorage.blob.core.windows.net/ic-resources/a56a224c-a374-4bcc-9346-0d655a0a21a5.png",
+      "sha256": "27deefb5122d017990add450915d7ca73826d8c080ccfab49060c949bc59657b"
+    },
+    {
+      "file": "public/reference-assets/sweps-draft-logo.png",
+      "source_url": "https://files.jotform.com/jufs/SwepsNC%2Fform_files%2F0c642feb323b97af182fce4fe0ce14c6.636162520eac42.04092457.png?md5=oe1YZavglcCIf5_NnYEeXA&expires=1791101393",
+      "sha256": "760991be6413ed43d4d3beb96f932196f9768e14f4181612b223a728844581a5"
+    },
+    {
+      "file": "public/reference-assets/sweps-visa.gif",
+      "source_url": "https://www.invoicecloud.com/portal/(S(iuhe2yu4ls3xhjbsjuygl1s4))/images/visa_icon.gif",
+      "sha256": "86e55ebbd2220e20147a0e82c497959e41863ed1879fdff3c65f2e8f7058e755"
+    },
+    {
+      "file": "public/reference-assets/sweps-mastercard.gif",
+      "source_url": "https://www.invoicecloud.com/portal/(S(iuhe2yu4ls3xhjbsjuygl1s4))/images/mastercard_icon.gif",
+      "sha256": "3c9ba83e12d4a276b3c8aedebefd9630e35641f2a41492f14fd901ac5e47d9c2"
+    },
+    {
+      "file": "public/reference-assets/sweps-amex.gif",
+      "source_url": "https://www.invoicecloud.com/portal/(S(iuhe2yu4ls3xhjbsjuygl1s4))/images/american_express_icon.gif",
+      "sha256": "8887b68f1cf01e098e6a514979be53219396f819dd08bb6660dc14818fdecca9"
+    },
+    {
+      "file": "public/reference-assets/sweps-discover.gif",
+      "source_url": "https://www.invoicecloud.com/portal/(S(iuhe2yu4ls3xhjbsjuygl1s4))/images/discover_icon.gif",
+      "sha256": "516b3516bd79fe72e3fe9775b713bcaa459c87842cbe48f37506fdec0599a6a3"
+    },
+    {
+      "file": "public/reference-assets/sweps-bank.png",
+      "source_url": "https://www.invoicecloud.com/portal/(S(iuhe2yu4ls3xhjbsjuygl1s4))/2/images/bankIcon.png",
+      "sha256": "b9cdac978db8f2d1f4bcb42ee9b18966e9c4fd8ffbdd2f3ffeb18f390192c44b"
+    }
+  ],
+  "public_reconstructions": [
+    {
+      "path": "/",
+      "manifest": "public/reference-pages/biller_a46a4680fecf8553bc8a-home/manifest.json",
+      "controls": [
+        "local menu dropdowns",
+        "carousel"
+      ]
+    },
+    {
+      "path": "/utilities",
+      "manifest": "public/reference-pages/biller_a46a4680fecf8553bc8a-utilities/manifest.json",
+      "controls": [
+        "local menu dropdowns",
+        "official PDF navigation"
+      ]
+    },
+    {
+      "path": "/faq",
+      "manifest": "public/reference-pages/biller_a46a4680fecf8553bc8a-faq/manifest.json",
+      "controls": [
+        "local menu dropdowns",
+        "FAQ search and expansion"
+      ]
+    }
+  ]
+}

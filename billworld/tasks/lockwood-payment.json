@@ -1,0 +1,26 @@
+{
+  "id": "lockwood-pay-current-card-v1",
+  "version": 1,
+  "site_id": "lockwood",
+  "evidence_cohort": "observed_public_auth_family_documented_navigation_synthetic_card_checkout",
+  "prompt": "Sign in to the local City of Lockwood Missouri portal with username alex.morgan and password Billworld-2026!. View the current bill, then pay its $84.32 balance with synthetic Visa 4242424242424242, expiration 12/29, CVV 123, name Alex Morgan. The construction fixture charges a declared $2.50 card fee ($86.82 total); this is not the live Lockwood fee. Authorize once, report the confirmation, and leave all other bills, saved methods, AutoPay and profile settings unchanged. Private payment screens are synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "cusi_payment",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "amount_cents": 8432,
+    "fee_cents": 250,
+    "method_last4": "4242",
+    "remaining_cents": {
+      "inv-current": 0,
+      "inv-old": 0,
+      "inv-other": 5190
+    },
+    "card_number": "4242424242424242",
+    "method_name": "Alex Morgan"
+  }
+}

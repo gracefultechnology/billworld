@@ -1,0 +1,162 @@
+{
+  "id": "gvp-electric",
+  "name": "Grand Valley Power",
+  "portal_family": "SmartHub",
+  "implementation_status": "first_slice",
+  "revision": "0.6.0",
+  "catalog_records": [
+    {
+      "category": "electric",
+      "name": "Grand Valley Power"
+    }
+  ],
+  "capture_manifest": "research/gvp-public.json",
+  "public_routes": {
+    "homepage": "https://www.gvp.org/",
+    "billing_help": "https://www.gvp.org/ways-pay",
+    "portal_guide": "https://www.gvp.org/SmartHub",
+    "login": "https://gvp.smarthub.coop/ui/#/login",
+    "registration": "https://gvp.smarthub.coop/ui/#/registration",
+    "recovery": "https://gvp.smarthub.coop/ui/#/accountAccess",
+    "guest": "https://gvp.smarthub.coop/ui/#/paynow",
+    "paperless_help": "https://www.gvp.org/paperless"
+  },
+  "documented_policy": {
+    "sources": [
+      "https://www.gvp.org/ways-pay",
+      "https://www.gvp.org/SmartHub",
+      "https://www.gvp.org/paperless",
+      "https://www.gvp.org/sites/gvp/files/PDFs/SmartHub/SmartHub_How-To_Register_Web_TU.pdf"
+    ],
+    "online_fee_cents": 0,
+    "autopay_day": 18,
+    "autopay_rollover": "first business day thereafter",
+    "autopay_methods": [
+      "checking",
+      "savings",
+      "credit/debit card"
+    ],
+    "shared_savings_eligibility": "automatic bank draft only; credit/debit cards excluded",
+    "guest_payment": "PayNow without creating an account or login",
+    "paperless": "email notification when statement is available; printed bills stop",
+    "registration_legacy_guide": [
+      "remove period from old account number",
+      "match last name/business name",
+      "provide email",
+      "answer location-specific verification questions",
+      "retrieve temporary password from email",
+      "sign in with temporary password",
+      "change password on first login"
+    ],
+    "paperless_navigation_variants": [
+      "Settings > Paperless Billing > Go Paperless (ways-pay page)",
+      "My Profile > My Information > Update My Paperless Settings > confirm Yes (paperless page)"
+    ]
+  },
+  "fidelity_limits": [
+    "No production login, registration submission, account lookup or payment was performed.",
+    "The linked registration guide shows a temporary emailed password; current verification questions and authenticated continuation remain unobserved. Do not inherit AVEC SSN/phone verification.",
+    "Official paperless documents give different navigation generations; private current navigation needs verification.",
+    "Business-day calendar, holidays, cutoff time, settlement, insufficient-funds fees and exact retry behavior remain unspecified.",
+    "The source links Google Home voice integration; this is not evidence of Google sign-in.",
+    "Public frontend assets are reference material; redistribution rights are unresolved.",
+    "Current public first steps are reconstructed; private forms, fixtures, posting and registration continuation are synthetic implementations of documented flows.",
+    "Registration uses a declared synthetic current-bill-amount question; temporary passwords expire after 15 minutes and change grants after 5 minutes.",
+    "AutoPay rolls Saturday/Sunday to Monday; unobserved holidays are not included.",
+    "Savings, Shared Savings credits, usage/outage/service management, statement PDFs and the complete marketing homepage remain unfinished.",
+    "The public guest screen displays a reCAPTCHA notice; production challenge solving is not implemented.",
+    "Homepage uses a static public capture; search, original scripts, unsupported marketing destinations and uncaptured assets remain unfinished."
+  ],
+  "implementation_requirements": [
+    "source-matched public homepage/login/recovery/registration/PayNow",
+    "server-enforced GVP identifiers and no online payment fee",
+    "tenant-specific AutoPay day and calendar, explicit synthetic gaps",
+    "temporary-password mailbox flow with restricted first-login password change if current source confirms it",
+    "paperless preference and billing/history pages",
+    "Infinity task manifests, private negative predicates and Puppeteer references",
+    "independent authenticated fidelity review"
+  ],
+  "observed_public": {
+    "portal_version": "26.19.0",
+    "login_fields": [
+      "Email",
+      "Password"
+    ],
+    "registration_first_step": [
+      "Billing Account Number (numbers only)",
+      "Last Name or Business Name",
+      "Email",
+      "Confirm Email"
+    ],
+    "recovery_tabs": [
+      "Reset Password",
+      "Recover Registered Email"
+    ],
+    "recovery_first_step": [
+      "Billing Account Number",
+      "Last Name or Business Name",
+      "Email"
+    ],
+    "guest_lookup": [
+      "Account Number",
+      "Last Name or Business Name"
+    ],
+    "google_sign_in": "not observed on captured login"
+  },
+  "default_task_id": "gvp-pay-current-v1",
+  "runtime": {
+    "kind": "utility",
+    "frontend": "smarthub",
+    "mail_sender_slug": "gvp",
+    "guest_lookup": "account_number_and_last_name",
+    "profile_flow": "temporary_password_then_change"
+  },
+  "billing_policy": {
+    "fee_cents": 0,
+    "fee_evidence": "documented_official_portals_no_additional_fees",
+    "autopay_day": 18,
+    "autopay_rollover": "weekends_only_synthetic_holidays_unobserved",
+    "settlement": "immediate_posting_synthetic",
+    "invoice_generation": "monthly_on_first_synthetic",
+    "default_invoice_due_day": 20
+  },
+  "branding": {
+    "title": "Grand Valley Power SmartHub",
+    "name": "Grand Valley Power",
+    "footer": "Grand Valley Power | 845 22 RD, Grand Junction, CO 81505 | 970-242-0040",
+    "logo": "/reference-assets/gvp-logo.png",
+    "background": "/reference-assets/gvp-background.png"
+  },
+  "capabilities": {
+    "password_login": "observed_public_reconstructed",
+    "temporary_password_registration": "legacy_documented_synthetic_question_and_grants",
+    "password_recovery": "observed_first_step_synthetic_delivery",
+    "guest_payment": "observed_lookup_documented_synthetic_payment",
+    "bank_card_payment": "documented_synthetic_ledger",
+    "autopay": "documented_day_18_synthetic_weekend_calendar",
+    "paperless": "documented_navigation_variants_local_preference",
+    "google_login": "not_observed_not_implemented"
+  },
+  "reference_assets": [
+    {
+      "file": "public/reference-assets/gvp-logo.png",
+      "source_url": "https://gvp.smarthub.coop/services/themes/resources?resource=2019%20Logo%20Files/SmartHub_Header_2019_GVP.png",
+      "sha256": "605cafdb6311ef3450de54d2ba4c567a3e09e1c64739ed392f4eb8f588b8f01f",
+      "reuse": "captured_branding_reference"
+    },
+    {
+      "file": "public/reference-assets/gvp-background.png",
+      "source_url": "https://gvp.smarthub.coop/services/themes/resources?resource=2019%20Logo%20Files/2019_GVP_Login.png",
+      "sha256": "f5ab2739aaf0bb3b8852b23cacf6a5df70c0a9f088996d39e7976d8a4752beaa",
+      "reuse": "captured_branding_reference"
+    }
+  ],
+  "implemented_public_navigation": {
+    "homepage": "captured static HTML/CSS/fonts/images when reference bundle is built; local billing links; scripts and unsupported destinations disabled",
+    "ways_pay": "eight payment-option tabs with local portal links",
+    "smarthub_guide": "registration and AutoPay guidance",
+    "paperless_guide": "separate E-Bill page; both documentation generations retained",
+    "layout": "local SmartHub shell; municipal marketing layout unverified"
+  },
+  "public_snapshot_builder": "build_public_snapshot.py"
+}

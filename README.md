@@ -23,6 +23,26 @@ python3 build.py
 python3 make_xlsx.py
 ```
 
+## Billworld planning
+
+[BILLWORLD_PLAN.md](BILLWORLD_PLAN.md) audits this catalog and defines the proposed
+site simulations, mock authentication and email services, billing state, Puppeteer
+verification, and agent benchmark. It distinguishes observed, documented, inferred,
+and synthetic behavior. Initial Juneau, Spotify, AVEC/SmartHub and Homer/Xpress slices are documented in
+[billworld/README.md](billworld/README.md); the full gym remains in progress.
+
+Billworld extends WebArena-Infinity with billing environments. See the
+[reuse review](billworld/infinity/REVIEW.md) and
+[extension setup](billworld/infinity/README.md).
+
+```bash
+python3 audit_billworld.py
+```
+
+This produces a summary, an entry-level research backlog, and documentation-ranked
+pilot candidates in `billworld-audit/`. Portal-family matches are research heuristics,
+not proof of identical flows. The audit preserves the source category records.
+
 ## Downloads
 
 The built spreadsheet, CSV and JSON are attached to the

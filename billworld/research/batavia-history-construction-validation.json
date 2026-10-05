@@ -1,0 +1,157 @@
+{
+  "recorded_at": "2026-10-05T06:26:57.483295+00:00",
+  "kind": "batavia_payment_history_construction",
+  "site_id": "batavia-utilities",
+  "task_id": "batavia-pay-verify-history-v1",
+  "infinity_task_id": "task_c10",
+  "released": false,
+  "implemented": [
+    "Documented Payment History navigation with synthetic local ledger rendering",
+    "Live-session access scoped to verified account links; caller account query cannot widen scope",
+    "Masked method, invoice/account identity, exact amount/fee/total/status/confirmation",
+    "Stable newest-first ordering, pending status and no duplicate on reload",
+    "Separate task requires authenticated post-payment history containing the committed payment ID; previous tasks retain requirements"
+  ],
+  "validation": {
+    "javascript_checks_passed": 230,
+    "research_checks_passed": 89,
+    "focused_history_checks_passed": 4,
+    "browser_report": {
+      "file": "billworld/artifacts/paymentus-history-browser/report.json",
+      "sha256": "8044393f19c1f3e7ddcde37c9e654815c76f547f953675890518e9fe442197dd",
+      "kind": "synthetic_paymentus_history_documented_navigation",
+      "released": false,
+      "scenarios": [
+        "Accounts/history navigation, seeded record, new bank payment, required post-payment history verification, exact totals and reload without duplicates",
+        "Caller account query cannot widen history scope; logout protects UI and API",
+        "Pending ledger payment appears as pending rather than paid"
+      ],
+      "page_errors": [],
+      "outbound_requests": [],
+      "all_passed": true
+    },
+    "full_construction_infinity": {
+      "file": "billworld/artifacts/infinity/batavia-history-construction-retry/summary.json",
+      "sha256": "a7d628650626d098bac9af133374993d8483992a159986701301db92205f633e",
+      "passed_task_ids": [
+        "task_c1",
+        "task_c2",
+        "task_c3",
+        "task_c4",
+        "task_c5",
+        "task_c6",
+        "task_c7",
+        "task_c8",
+        "task_c9",
+        "task_c10"
+      ],
+      "negative_rejected": true,
+      "legacy_lifecycle_passed": true,
+      "repetition_lineage_passed": true,
+      "worker_recovery": {
+        "taskId": "lockwood-username-login-v1",
+        "episodeId": "episode-XcMMF6BIr-wDj8mO6edVtOTc2aJSIC00",
+        "success": false,
+        "checks": {
+          "username_verified": false,
+          "account_opened_after_login": false,
+          "live_primary_session": false,
+          "no_payments": true,
+          "no_schedules": true,
+          "no_autopay": true,
+          "no_wallet": true,
+          "balances_unchanged": true,
+          "other_identity_unchanged": true,
+          "no_registration": true,
+          "no_reset": true
+        },
+        "evidenceCohort": "observed_public_auth_and_synthetic_continuation",
+        "withinTimeBudget": true,
+        "elapsedMilliseconds": 492,
+        "finishedAt": "2026-10-05T06:26:19.174Z",
+        "seed": 1,
+        "siteId": "lockwood",
+        "kind": "grader_validation",
+        "agent": "infinity-puppeteer-reference-v1",
+        "accessMode": "browser_only",
+        "runId": "dd6740859f50490a883917295e9bd8b6",
+        "model": null,
+        "scaffold": "webarena-infinity@1ca77813bf8d8e4011aa3fb1f740f70d78bd522d",
+        "attemptNumber": 1,
+        "termination": "environment_error",
+        "failureReasons": [
+          "username_verified",
+          "account_opened_after_login",
+          "live_primary_session",
+          "environment_error"
+        ],
+        "agentSteps": null,
+        "agentElapsedMilliseconds": null,
+        "constructionSlice": true,
+        "environmentRevision": "0.17.0",
+        "evaluatorRevision": "0.17.0",
+        "environmentBuildId": "6cc8e7f92b904625f0f575c702969012862f268cea0426adf2e4461842eb7410",
+        "evaluatorBuildId": "577e1d247a9d6c3768d38b4630b10c0d2e2e898affd2bd4c3a7047d068383413",
+        "buildProvenanceSchema": 1,
+        "buildChangedDuringEpisode": false,
+        "taskVersion": 1,
+        "portalFamily": "ePay Utilities/CUSI",
+        "actionBudgetEnforced": false
+      },
+      "environment_build_id": "6cc8e7f92b904625f0f575c702969012862f268cea0426adf2e4461842eb7410",
+      "evaluator_build_id": "577e1d247a9d6c3768d38b4630b10c0d2e2e898affd2bd4c3a7047d068383413",
+      "current_build_ids_match": true
+    },
+    "visual_inspection": "History screenshot inspected: two masked records, exact fixture totals/statuses and explicit live-retention limitation",
+    "logs": {
+      "billworld/artifacts/paymentus-history-full-domain.log": "b679ffa808062ede0010f858d06ea8110b030d267896d53bd2ed4c1489871568",
+      "billworld/artifacts/paymentus-history-full-research.log": "a85cd2858d0ebbbae591003ec90f9fb49c03595e2960d086ebfb20fe4866038c",
+      "billworld/artifacts/paymentus-history-targeted.log": "df05cba019663a8f74a402f3b1687daef18061738552b0fe88b94229fecebce1",
+      "billworld/artifacts/paymentus-history-browser.log": "8044393f19c1f3e7ddcde37c9e654815c76f547f953675890518e9fe442197dd",
+      "billworld/artifacts/batavia-history-infinity-retry.log": "87346dd34b3fa8d6fe447ac7300e315a3b8b2a3b7613c52521fac6dc24dffa9b"
+    }
+  },
+  "prior_incomplete_run": {
+    "log": "billworld/artifacts/batavia-history-infinity.log",
+    "directory": "billworld/artifacts/infinity/batavia-history-construction",
+    "status": "incomplete; original process absent and no summary. Interruption cause not established; separate retry completed",
+    "no_pass_credit": true
+  },
+  "source_files_sha256": {
+    "billworld/engine.mjs": "82aa421cadc73b3bd77ac59b6552975c310d0b0a97cadfb9d8d9a771f9299cf2",
+    "billworld/server.mjs": "292f52aa2678a51669fca7a65c141629046b1c3639ae8584b4f01207823d271c",
+    "billworld/public/paymentus.js": "760505782563d30fd064cda0f6e67d46c5ab0d40315f8594736a81631f2519e1",
+    "billworld/sites/batavia.json": "257535da6736fa5e9d242d87a9c3288a1dba10d93be38ff19e61492372b4e9ce",
+    "billworld/tasks/batavia-payment-history.json": "bc9c3b7b4df85c7b4a999d218aabc0b8a479fe991aca86bb0c3d123ed960b10c",
+    "billworld/infinity/app/harness.py": "7685718d485a712a88c385298d3e17ddf9ade87ddc579611d418074153c43c01",
+    "billworld/infinity/bootstrap.py": "165a4345b7721e8e1fdf804e41ab7b612e85b93c15a584795770e980cf30cace",
+    "billworld/infinity/reference.mjs": "f3d345760065f30d3ffa5912fd881d72c4e4556e07055930ea7736287d9ec590",
+    "billworld/tests/paymentus-history.test.mjs": "7bb428ce407937f2525d2efbfd5eed59110c923a696f86e5c8dfced88fb19d26",
+    "billworld/tests/paymentus-history-browser.mjs": "09d25358ef4b89df2effb38dfd437db9111febc145675910b8dba435f77bd729"
+  },
+  "construction_packet": {
+    "revision": "b1494973401d633c",
+    "metadata": "billworld/research-data/packets/biller_c8edde62f56ee14f50e0/b1494973401d633c/metadata.json",
+    "sha256": "0dcc83d59928654af5ef3f4b0792daa6985b404cb8503d47f14697c1984086a0"
+  },
+  "source_collection": {
+    "capacity_resume_record": "billworld/research/frontend-capacity-resume.json",
+    "prior_terminal_capacity_exit": true,
+    "successor_pid": 6339,
+    "no_evidence_deleted": true
+  },
+  "coverage": {
+    "catalog_records": 59477,
+    "released_sites": 9,
+    "released_tasks": 31,
+    "construction_tasks": 10,
+    "independent_fidelity_certifications": 0,
+    "autonomous_agent_scores": 0
+  },
+  "limits": [
+    "Private live history layout/retention/channel completeness unverified",
+    "Seeded and local submitted records only; no production accounts accessed",
+    "Card/wallet/AutoPay/current policy/statement/profile fidelity remains incomplete across catalog",
+    "Scripted reference success is not autonomous-agent performance"
+  ]
+}

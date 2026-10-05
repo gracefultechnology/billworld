@@ -1,0 +1,42 @@
+{
+  "id": "western-dental-recurring-plan-v1",
+  "version": 1,
+  "site_id": "western-dental",
+  "evidence_cohort": "public_config_and_synthetic_plan",
+  "prompt": "Access Western Dental account 123001048 using ZIP 56007 and DOB 04/12/1985. Enroll a monthly plan for both unpaid charges, total $209.32, with no initial payment and two $104.66 installments dated October 10 and November 10, 2026. Use checking ending 1048, authorize the scheduled payments, and report the plan confirmation. Keep other accounts, wallet and utility AutoPay unchanged. This local enrollment is authorized. Private enrollment, eligibility, installment rounding and execution are synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "dental_plan_enrollment",
+    "account_id": "acct-primary",
+    "plan_type": "recurring",
+    "amount_cents": 20932,
+    "recurrence": "Monthly",
+    "invoice_ids": [
+      "inv-current",
+      "inv-second"
+    ],
+    "installments": [
+      {
+        "date": "2026-10-10",
+        "amountCents": 10466
+      },
+      {
+        "date": "2026-11-10",
+        "amountCents": 10466
+      }
+    ],
+    "method_kind": "bank",
+    "method_last4": "1048",
+    "remaining_cents": {
+      "inv-current": 8432,
+      "inv-second": 12500,
+      "inv-old": 0,
+      "inv-other": 5190
+    },
+    "routing": "021000021",
+    "bank_account_number": "000001048"
+  }
+}

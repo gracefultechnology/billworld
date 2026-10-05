@@ -1,0 +1,104 @@
+{
+  "recorded_at": "2026-10-05T16:22:00.240399+00:00",
+  "kind": "private_native_runner_action_budgets",
+  "runtime_revision": "0.19.0",
+  "environment_build_id": "f2b85b14b65075b13c7ab0354c21dd8d48e566c68e21ad785ca145f6caf973f9",
+  "evaluator_build_id": "6d0a4546db4804716d8d384fdd5f5273f37b039c894ca206206d1a3d016dc353",
+  "implemented": [
+    "Private server derives immutable action limit from the task and persists reservations",
+    "Native BrowserUse registry dispatch hook includes MCP and done tools",
+    "Native vision dispatch hook reserves before GUI side effects",
+    "Budget-control exceptions escape ordinary tool-error feedback loops and retain partial trajectories",
+    "Missing/invalid meter response stops execution; unsupported autonomous runners fail before agent phase",
+    "Exhaustion prevents later domain mutations and successful grading",
+    "Reports expose meter units and counts with unit filters and separate repetition cohorts"
+  ],
+  "units": {
+    "browser_tool_invocation": "One registered tool dispatch, including failed tools, MCP tools and done; no count of internal operations",
+    "vision_action": "One parsed action dispatched to the native Playwright method; composite input remains one action"
+  },
+  "validation": {
+    "javascript_passed": 250,
+    "standard_research_tests_run": 112,
+    "standard_research_passed": 111,
+    "standard_research_skipped": 1,
+    "native_sdk_tests_passed": 4,
+    "native_skip_resolved_in_sdk_environment": true,
+    "native_browser_use_tools_act_verified": true,
+    "vision_native_method_dispatch_verified_with_mock_page": true,
+    "real_vision_playwright_session_tested": false,
+    "independent_fidelity_certifications_added": 0,
+    "autonomous_agent_scores_added": 0
+  },
+  "regressions": {
+    "released": {
+      "ui_references_passed": 31,
+      "ui_reference_metering": "Explicitly unmetered scripted UI track",
+      "action_budget_probe": {
+        "termination": "action_budget_exceeded",
+        "allowed_dispatches": 100,
+        "limit": 100,
+        "next_dispatch_blocked": true,
+        "finalization_status": "persisted"
+      },
+      "negative_rejected": true,
+      "legacy_lifecycle_passed": true,
+      "repetition_lineage_passed": true,
+      "worker_recovery_passed": true,
+      "summary": "billworld/artifacts/infinity/released-action-budget-final/summary.json",
+      "sha256": "7b8750d402cf76aa228677fbf651cbbdc99bc8fe006c54c8e84aea3e65461b93"
+    },
+    "construction": {
+      "ui_references_passed": 12,
+      "ui_reference_metering": "Explicitly unmetered scripted UI track",
+      "action_budget_probe": {
+        "termination": "action_budget_exceeded",
+        "allowed_dispatches": 100,
+        "limit": 100,
+        "next_dispatch_blocked": true,
+        "finalization_status": "persisted"
+      },
+      "negative_rejected": true,
+      "legacy_lifecycle_passed": true,
+      "repetition_lineage_passed": true,
+      "worker_recovery_passed": true,
+      "summary": "billworld/artifacts/infinity/construction-action-budget-final/summary.json",
+      "sha256": "a8d475b0757ec57082b0a03b1476f2fa85346edc1266642e1ed901d15cb3e701"
+    }
+  },
+  "sdk_versions": {
+    "browser-use": {
+      "installed": true,
+      "version": "0.11.9"
+    },
+    "playwright": {
+      "installed": false
+    },
+    "pydantic": {
+      "installed": true,
+      "version": "2.13.4"
+    }
+  },
+  "artifacts": {
+    "billworld/artifacts/action-budget-domain.log": "84416919a127f20ab5298d0385d2d13b14cc5b1eb515142b62101f128a182d34",
+    "billworld/artifacts/action-budget-research-final.log": "4715eba53aabf06a07a348813bbbf74f6e09ed188199740655ff0a6a198d23b5",
+    "billworld/artifacts/action-budget-native-sdk-final.log": "659ce80af7134437576ff2457af5cf641a63a87c193fe7337c5f1640f9d959de",
+    "billworld/artifacts/action-budget-sdk-versions.json": "aabb6d68754363a8f6aa03d868fe38ffa183d588e1294f186c5e41414a6dbd9e",
+    "billworld/artifacts/action-budget-current-build.json": "0288ffb01f7e7beef15b84ae2d9aa18a44d3e1fdfadb862d7b80b193faba67be",
+    "billworld/engine.mjs": "7b1a39b0acdd3f3e86334f742633c07aa4833adb383dbb702b0972e3215d1029",
+    "billworld/server.mjs": "86c36a3ad1dde71b611aba3ce3def8b5c79f7261bf3b7a63578aa513ff031650",
+    "billworld/tests/action-budget.test.mjs": "fd1367c96099b0e0ea1e2d8ed921b043dddbf98f3c02bfd2c9e0ede3389491f3",
+    "billworld/tests/test_infinity_action_budget.py": "1d36b0663850cdbcf60e5c4e6ae397ec5cb83a8865a4b158c21d63f21a59cdd3",
+    "billworld/infinity/app/harness.py": "5527ed3f94052752fefb999c02ceebc36d02e7b5c2aaefc138ea9c16cfe14b50",
+    "billworld/infinity/bootstrap.py": "a964ae3bdba3e962421798b3e1feb54f802be9db568740375039c51e6cad41a8",
+    "billworld/infinity/smoke.py": "1afe150f7048c408ce0166276fb28faad8e854e96de2fa5492e31e6afb98ba35"
+  },
+  "limits": [
+    "Trusted scaffold dispatch boundary, not an adversarial OS sandbox",
+    "A dispatched tool or composite vision action may perform multiple internal browser operations",
+    "Model calls, automatic observations and browser setup do not count toward this action unit; runner step/time limits remain separate",
+    "Vision method interception was verified with a mock page; the review environment does not currently install Python Playwright",
+    "Existing scripted UI references and legacy unmetered records remain explicitly unmetered; compare matching units/builds",
+    "Whole catalog reconstruction, isolated deployment, independent fidelity review and autonomous scores remain unfinished"
+  ]
+}

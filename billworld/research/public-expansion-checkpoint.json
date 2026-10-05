@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-04T10:55:33.975593+00:00",
+  "kind": "public_source_expansion_checkpoint",
+  "runtime_revision": "0.15.0",
+  "runtime_sites": 8,
+  "runtime_tasks": 26,
+  "new_runtime_sites": 0,
+  "new_certified_sites": 0,
+  "source_packets": {
+    "western-dental": {
+      "packet": "/Users/shawwalters/billpay-research/billworld/research-data/packets/biller_3af3809e3e5a5bc0b943/908fe4c7e9110793",
+      "biller": "Western Dental & Orthodontics",
+      "public_browser_pages": 9,
+      "copied_candidate_reference_pages": 8,
+      "status": "construction_input_requires_review",
+      "metadata_sha256": "5b4719896aa807248debcd7090a448246aa78c35e2dd5dd0f5689b084852092c"
+    },
+    "malden": {
+      "packet": "/Users/shawwalters/billpay-research/billworld/research-data/packets/biller_34e035827712c07332b7/bb5709b60577069e",
+      "biller": "City of Malden",
+      "public_browser_pages": 4,
+      "copied_candidate_reference_pages": 3,
+      "status": "construction_input_requires_review",
+      "metadata_sha256": "1810e0913cdf92e4c405cd83cbebe6c0bcba187d562861fb8aea5002d30ce292"
+    }
+  },
+  "gaps": {
+    "tuscaloosa": "Paymentus retry HTTP 403; processor failure response excluded",
+    "malden": "HTTP 200 empty WIPP Angular app; failed public metadata CORS preflight; excluded",
+    "western-dental": "Private account/payment/plan flows unobserved; source packet ready for reconstruction"
+  },
+  "verification": {
+    "research_tests": 34,
+    "passed": 34,
+    "capture_browser_assertion_groups": 4,
+    "passed_capture_groups": 4,
+    "original_catalog_files_modified": false
+  },
+  "next_construction_requirements": [
+    "PersonaPay account-number, ZIP and date-of-birth authentication distinct from password/OAuth/medical guarantor lookup.",
+    "Episode-scoped failure counter and mock CAPTCHA after three failures, grounded in public tenant configuration.",
+    "Preserve source field validation vs nine-digit padding guidance discrepancy.",
+    "Card/ACH and balance allocation require labeled synthetic semantics until private flow evidence exists.",
+    "Payment plans, eBill, underpayment and overpayment require their own server-side state transitions and graders; no family-wide coverage claim.",
+    "Reference browser journeys and negative domain checks before activating the new site."
+  ]
+}

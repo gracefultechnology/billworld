@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-04T10:53:09.858048+00:00",
+  "evidence_type": "public_tenant_configuration",
+  "source": {
+    "source_url": "https://www.personapay.com/api/OrgMgr/V1/Org/SiteName?SiteName=western-dental&AppName=Consumer",
+    "retrieved_at": "2026-10-04T10:48:22.491519+00:00",
+    "method": "public_GET",
+    "evidence": "Public tenant configuration requested automatically by the observed unauthenticated portal",
+    "bytes": 796102,
+    "sha256": "c83c74d3212756b4ee9369728403e116666d9bceb2b534864b8077ad8b2e3620",
+    "production_account_query": false,
+    "runtime_execution": "reference_only"
+  },
+  "captured_asset": {
+    "capture_id": "biller_3af3809e3e5a5bc0b943-portal",
+    "url": "https://www.personapay.com/api/OrgMgr/V1/Org/SiteName?SiteName=western-dental&AppName=Consumer",
+    "resourceType": "public_metadata",
+    "sha256": "c83c74d3212756b4ee9369728403e116666d9bceb2b534864b8077ad8b2e3620",
+    "bytes": 796102,
+    "contentType": "application/json",
+    "file": "assets/c83c74d3212756b4ee9369728403e116666d9bceb2b534864b8077ad8b2e3620",
+    "retrieval": "public_GET_metadata",
+    "execution_policy": "reference_only_not_runtime"
+  },
+  "authentication_configuration": {
+    "EnableLinkAccount": false,
+    "RequiredCaptcha": true,
+    "EnableGuestPay": false,
+    "NumberOfFailureAttemptsToTurnOnCaptcha": 3,
+    "AdvancedAuthentication": false,
+    "Form": [
+      {
+        "Type": "group",
+        "Elements": [
+          {
+            "DataKey": "Validation1",
+            "Label": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation1_Label",
+            "Type": "Input",
+            "InputType": "Text",
+            "Validation": {
+              "Required": {
+                "Message": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation1_Validation_Required_Message"
+              },
+              "MinLength": {
+                "Message": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation1_Validation_MinLength_Message",
+                "Parameters": [
+                  5
+                ]
+              },
+              "MaxLength": {
+                "Message": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation1_Validation_MaxLength_Message",
+                "Parameters": [
+                  10
+                ]
+              }
+            },
+            "Regex": {
+              "Mask": "000000000000000",
+              "Prefix": "",
+              "DropSpecialCharacters": true
+            }
+          }
+        ]
+      },
+      {
+        "Type": "group",
+        "Elements": [
+          {
+            "DataKey": "Validation3",
+            "Label": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation3_Label",
+            "Type": "Input",
+            "InputType": "Text",
+            "Validation": {
+              "Required": {
+                "Message": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation3_Validation_Required_Message"
+              },
+              "MinLength": {
+                "Message": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation3_Validation_MinLength_Message",
+                "Parameters": [
+                  5
+                ]
+              },
+              "MaxLength": {
+                "Message": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation3_Validation_MaxLength_Message",
+                "Parameters": [
+                  5
+                ]
+              },
+              "Regex": {
+                "Message": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation3_Validation_Regex_Message",
+                "Parameters": [
+                  "[0-9]+",
+                  "g"
+                ]
+              }
+            },
+            "Regex": {
+              "Pattern": [
+                "[0-9]+",
+                "g"
+              ],
+              "Mask": "00000",
+              "Prefix": "",
+              "DropSpecialCharacters": false
+            }
+          }
+        ]
+      },
+      {
+        "Type": "group",
+        "Elements": [
+          {
+            "DataKey": "Validation2",
+            "Label": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation2_Label",
+            "Type": "Input",
+            "InputType": "Text",
+            "Validation": {
+              "Required": {
+                "Message": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation2_Validation_Required_Message"
+              },
+              "InvalidDate": {
+                "Message": "ConsumerAuthenticationPage_LoginSection_Form_Elements_0_Validation2_Validation_InvalidDate_Message"
+              }
+            },
+            "Regex": {
+              "Pattern": [
+                "",
+                ""
+              ],
+              "Mask": "00/00/0000",
+              "Prefix": "",
+              "DropSpecialCharacters": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "payment_configuration": {
+    "PaymentDistribution": {
+      "DistributionType": "WeightedSplit",
+      "DisplayDistributionInfo": true,
+      "EditDistributionAmount": true,
+      "BundleFee": true,
+      "CombineFee": true,
+      "BundleLineItem": true,
+      "AccountSelection": true,
+      "AutoFillPaymentAmountInPartialPay": false,
+      "AutoPostOverPaymentType": "None"
+    },
+    "PaymentAmountRestriction": {
+      "AllowClientAdminToUnderPay": true,
+      "AllowClientAdminToOverPay": true,
+      "AllowConsumerToUnderPay": true,
+      "AllowConsumerToOverPay": true,
+      "PayLineItemInFullIrrespectiveOfMinimumAmountRestriction": false,
+      "Operator": "$",
+      "AmountRestriction": {
+        "Card": {
+          "LineItem": {
+            "Minimum": {
+              "Number": "1.00"
+            },
+            "Maximum": {
+              "Number": "1000000.00"
+            }
+          },
+          "TotalPayment": {
+            "Minimum": {
+              "Number": "1.00"
+            },
+            "Maximum": {
+              "Number": "2000000.00"
+            }
+          }
+        },
+        "ACH": {
+          "LineItem": {
+            "Minimum": {
+              "Number": "1.00"
+            },
+            "Maximum": {
+              "Number": "1000000.00"
+            }
+          },
+          "TotalPayment": {
+            "Minimum": {
+              "Number": "1.00"
+            },
+            "Maximum": {
+              "Number": "2000000.00"
+            }
+          }
+        }
+      }
+    },
+    "Miscellaneous": {
+      "RestrictDuplicatePaymentWithIn24Hours": false,
+      "EnableWallet": false,
+      "CollectBillingInfo": false,
+      "AllowDebitCardOnly": false,
+      "RestrictConsumerWebCheckoutThroughCard": false,
+      "RestrictConsumerWebCheckoutThroughACH": false,
+      "RestrictClientAdminWebCheckoutThroughCard": false,
+      "RestrictClientAdminWebCheckoutThroughACH": false,
+      "CollectCardType": false,
+      "RestrictConsumerCheckoutThroughPromiseToPay": true,
+      "UseExternalWalletTokenDataSourceForCard": false,
+      "UseExternalWalletTokenDataSourceForACH": false,
+      "CollectHealthCareAccountType": false,
+      "AutoCheckAddToWalletInPaymentCheckOut": false,
+      "EnableRevSpringAnalytics": true,
+      "EnableProvisionalBalance": false
+    },
+    "PaymentAgreementSetting": {
+      "EnablePaymentAgreement": false
+    },
+    "Ebill": {
+      "EnableEbill": true,
+      "DeliveryMethods": [
+        "Email",
+        "Sms"
+      ],
+      "ReDeliveryAttemptInDays": [
+        1000
+      ],
+      "MaximumWaitForOptOutInDays": 1000,
+      "SkipEbillDelivery": true
+    },
+    "PaymentPlanRestriction": {
+      "OneTimeFuture": {
+        "EnableOneTimeFuture": true,
+        "MaximumNoOfDaysToDelayForOneTimeFuturePayment": 4,
+        "PlanRunMode": "Normal"
+      },
+      "OneTime": {
+        "EnableOneTime": false,
+        "OneTimeDiscountThroughDataLevel": "Consumer"
+      },
+      "PromptPay": {
+        "EnablePromptPay": false
+      },
+      "PromiseToPay": {
+        "EnablePromiseToPay": false
+      },
+      "Recurring": {
+        "EnableRecurringPlan": true,
+        "MaximumNoOfMonthsAllowedToSchedule": 36,
+        "MaximumNoOfDaysToDelayForFirstScheduledPayment": 7,
+        "AllowedRecurrence": [
+          "Monthly",
+          "BiWeekly",
+          "Weekly"
+        ],
+        "RequirePlanInitialAmount": false,
+        "PayAdditionalAmountOnPaymentPlan": false,
+        "AllowMultiplePaymentPlan": false,
+        "CloseRecurringPlanIfInitialAmountIsDeclined": true,
+        "CloseRecurringPlanAfterScheduledPaymentsDecline": false,
+        "RestrictPaymentIfPlanIsOpen": false,
+        "PlanRunMode": "Normal",
+        "RunOpenPaymentAccountAsNormalMode": false,
+        "MinimumInitialAmount": "0.00",
+        "MinimumTotalPlanAmount": "100.00",
+        "NumberOfHoursToWaitForUpdatedLineItem": 24,
+        "EnableDiscount": false,
+        "EnableInterest": false,
+        "EnablePlanCriteria": false,
+        "RecurringPlanRetry": {
+          "EnableRecurringPlanRetry": false
+        },
+        "PlanBuilder": [
+          {
+            "MinimumAmount": "100.00",
+            "MaximumAmount": "999999.99",
+            "Plans": [
+              {
+                "Interval": "Monthly",
+                "NumOfCycles": 36,
+                "InitialAmount": "100.00",
+                "MinimumInstallmentAmount": "100.00",
+                "OfferId": "",
+                "MaximumNoOfMonthsAllowedToSchedule": 36
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Fees": {
+      "EnableFees": false
+    },
+    "Feature": {
+      "Feature": [
+        "Generic",
+        "PaymentPlan",
+        "Statement"
+      ]
+    }
+  },
+  "interpretation_limits": [
+    "Configuration flags describe this public tenant configuration, not observed private account eligibility or successful payment behavior.",
+    "Account-number help instructs nine digits with zero padding, while public input validation accepts lengths five through ten. Preserve this difference rather than silently choosing one.",
+    "Google Pay and Apple Pay SDK requests do not establish Google login or enabled payment methods.",
+    "No production account lookup, identity submission, payment or plan enrollment was performed.",
+    "Session duration, failure responses, statement content, posting and private navigation remain unobserved."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "recorded_at": "2026-10-05T06:45:54.090954+00:00",
+  "kind": "infinity_billing_construction_contract",
+  "upstream_revision": "1ca77813bf8d8e4011aa3fb1f740f70d78bd522d",
+  "files": {
+    "billworld/infinity/prepare_generation.py": "4d76369b676693f7033de8d863bb3dc270c017f5b228e43f165bad2bba4c7802",
+    "billworld/tests/test_generation_contract.py": "b1ec022e194048af8a6d774a242d6f529146642b366f249f6323068200af18d3",
+    "billworld/source_packet.py": "9c5f39c734642298d77d719e498cae64b13db84cbd00fede95d55ce71b54cafe"
+  },
+  "implemented": [
+    "Pinned-checkout validation",
+    "Billing protocol required across all seven pipeline phase prompts",
+    "Original upstream protocol preserved",
+    "All prompt/protocol inputs checked before mutation",
+    "Repeatable preparation with original/replacement SHA-256 receipt",
+    "Source packets and workflow require billing preparation"
+  ],
+  "tests": {
+    "research_passed": 98,
+    "log": "billworld/artifacts/generation-contract-research-tests.log",
+    "log_sha256": "0d9171fb7fae62b96c4d1e26013268ced281bf8d94952660944abf6b38f09ef9",
+    "targeted_passed": 4
+  },
+  "limits": [
+    "Prompt instructions do not enforce runtime invariants",
+    "No paid generation pipeline invoked",
+    "No new reconstructed site or fidelity certificate",
+    "Non-billing builds need an unmodified checkout",
+    "Multi-file mutation is not an atomic transaction; repeatable rerun can recover interrupted writes"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "validated_at": "2026-10-04T11:57:23.252899+00:00",
+  "kind": "construction_card_payment_domain_transport_browser_and_grader",
+  "released": false,
+  "released_environment": "0.17.0",
+  "released_site_count": 9,
+  "released_task_count": 31,
+  "construction_site": "lockwood",
+  "construction_task_count": 3,
+  "implemented": [
+    "Owned account current/history bill viewing",
+    "Authenticated synthetic card instrument validation and explicit fixture fee",
+    "Session-bound HttpOnly payment review, explicit authorization and idempotent ledger commit",
+    "Reloadable receipt and authoritative Infinity Gmail delivery",
+    "Construction-only payment grader with exact bill/amount/fee/account, balance and side-effect checks"
+  ],
+  "synthetic_policy": [
+    "All private billing/payment layouts and fields",
+    "Card fee 250 cents; actual Lockwood fee remains unobserved",
+    "Fixture invoices, accepted card tender and payment posting behavior",
+    "Ten-minute review expiry and receipt scoped to the live login session"
+  ],
+  "verification": {
+    "domain": {
+      "artifact": "billworld/artifacts/domain-cusi-infinity-grader.log",
+      "sha256": "7a1e192e8e79dfae02473bd6968ed0e5ac361e56bca614c15d02dae8813c284a",
+      "tests": 171,
+      "passed": 171
+    },
+    "research": {
+      "artifact": "billworld/artifacts/research-cusi-payment.log",
+      "sha256": "78a51ee42e1139b004a98ade20a5bede2a629a80fcc09b306b97076124b618cb",
+      "tests": 35,
+      "passed": 35
+    },
+    "payment_browser": {
+      "kind": "construction_card_payment",
+      "released": false,
+      "scenarios": [
+        "Captured username login, current bill, card review reload, authorization, receipt reload and idempotent commit",
+        "Existing Infinity Gmail displays the authoritative payment receipt",
+        "Declined card and expired review do not debit the ledger",
+        "Other-account bill access and signed-out payment review are denied"
+      ],
+      "outbound_requests": [],
+      "page_errors": [],
+      "all_passed": true,
+      "artifact": "billworld/artifacts/cusi-payment-browser/report.json",
+      "sha256": "396c035b31e98069c459910b0fb3fe33b7fceb6233e679c996e674de43a1f0d3"
+    },
+    "auth_browser_regression": {
+      "kind": "construction_username_and_mail_recovery",
+      "released": false,
+      "scenarios": [
+        "Homepage, cookie acceptance, wrong-password correction, username login and protected account reload",
+        "Logout protects account access and unimplemented billing/preferences routes fail explicitly",
+        "Username recovery through authoritative Gmail, HttpOnly grant reload, matching passwords and new-password login",
+        "Expired recovery grant cannot reset credentials"
+      ],
+      "outbound_requests": [],
+      "page_errors": [],
+      "all_passed": true,
+      "artifact": "billworld/artifacts/cusi-construction-browser/report.json",
+      "sha256": "68d61454851496db59617605f5619d7a20475e0b486ea30b203cafa798c3d90f"
+    }
+  },
+  "family_evidence": {
+    "artifact": "billworld/research/cusi-payment-evidence.json",
+    "sha256": "98909985783724adb861daebe797f1ba6fadbe231e468ea03f14a40aa2fa7244"
+  },
+  "source_packet": {
+    "directory": "/Users/shawwalters/billpay-research/billworld/research-data/packets/biller_182c5bcdeb2841397831/ae3cf8ef3cb69146",
+    "metadata_sha256": "30aa6bb8b6559db088db28fdb52feb1f833bc52fefc1848e67bcb82887c16e35",
+    "candidate_pages": 8,
+    "site_manifest_matches_current": true
+  },
+  "preview": {
+    "port": 3110,
+    "pid": 97174,
+    "exec_session": 49629,
+    "command": "node billworld/preview-construction.mjs lockwood",
+    "log": "billworld/artifacts/cusi-preview.log",
+    "scores_and_registry": "Construction only; excluded from released coverage and scores"
+  },
+  "unfinished": [
+    "Original Lockwood private billing layouts, bill document and transaction fees",
+    "Tenant ACH vendor verification and bank payments",
+    "Registration continuation, AutoPay, paperless and complete preferences",
+    "Independent source fidelity certification and autonomous model baseline",
+    "Released CUSI promotion after tenant evidence and independent fidelity review"
+  ],
+  "next_step": "Expand tenant-observed/documented flows and review source fidelity before promoting the independently tested construction cohort.",
+  "infinity_integration_validation": {
+    "artifact": "billworld/research/infinity-cusi-construction-validation.json",
+    "sha256": "3929f1620bf484444748299d8c817a1d984a5f8d02d981782254df1f09312fe8"
+  }
+}

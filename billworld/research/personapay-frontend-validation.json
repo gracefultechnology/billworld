@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-10-04T11:09:05.783381+00:00",
+  "kind": "personapay_active_frontend_construction",
+  "runtime_activated": false,
+  "runtime_sites": 8,
+  "runtime_tasks": 26,
+  "frontend_bound": [
+    "Captured account-number, ZIP and DOB fields with source-shaped validation",
+    "Captured account help image in local modal",
+    "Persistent failure status and mock CAPTCHA",
+    "Account charges, selection, amount and edited allocation",
+    "Card and ACH inputs, review, commit, receipt reload and sign out",
+    "Local financing, terms, privacy and contact routes"
+  ],
+  "evidence_boundary": "Login fields and public documents captured; matching, private account data, checkout UI, allocation rounding, overpayment credit and settlement synthetic",
+  "verification": {
+    "browser": {
+      "kind": "synthetic_checkout_browser_construction",
+      "runtime_activated": false,
+      "all_passed": true,
+      "scenarios": [
+        {
+          "name": "homepage, account-help modal, identifier login, full bank payment and receipt reload",
+          "passed": true
+        },
+        {
+          "name": "failed identity matches persist across reload, require local CAPTCHA and allow correction",
+          "passed": true
+        },
+        {
+          "name": "edited partial payment preserves cents and remaining charge balances",
+          "passed": true
+        },
+        {
+          "name": "card overpayment creates explicit local credit without a negative balance",
+          "passed": true
+        },
+        {
+          "name": "selected charge payment leaves the separate charge unpaid",
+          "passed": true
+        },
+        {
+          "name": "invalid bank data and declined card cannot change balances or issue paid receipts",
+          "passed": true
+        },
+        {
+          "name": "expired review and signed-out account cannot commit a payment",
+          "passed": true
+        },
+        {
+          "name": "captured financing, privacy, terms and contact pages load on the active site routes",
+          "passed": true
+        }
+      ],
+      "page_errors": [],
+      "outbound_requests": []
+    },
+    "mychart_regression": {
+      "scenarios": 6,
+      "all_passed": true,
+      "results": [
+        {
+          "name": "homepage, billing guide, scoped guest visit payment and receipt reload",
+          "passed": true
+        },
+        {
+          "name": "guarantor lookup preserves the other unpaid visit",
+          "passed": true
+        },
+        {
+          "name": "wrong guarantor surname cannot reveal or pay a visit",
+          "passed": true
+        },
+        {
+          "name": "username-first password login, signed-in account summary and payment",
+          "passed": true
+        },
+        {
+          "name": "local billing and authentication help preserve source information",
+          "passed": true
+        },
+        {
+          "name": "username/password, Gmail verification code and authenticated medical payment",
+          "passed": true
+        }
+      ],
+      "page_errors": [],
+      "outbound_requests": []
+    },
+    "full_node_suite": {
+      "tests": 136,
+      "passed": 136,
+      "artifact": "billworld/artifacts/domain-personapay-frontend.log"
+    },
+    "artifacts": {
+      "public/personapay.js": {
+        "file": "billworld/public/personapay.js",
+        "sha256": "2428fa35f173b1e1c93dea775b6817bfdbbc5cf712ba42b6b8dc124cd176eb73"
+      },
+      "public/personapay.css": {
+        "file": "billworld/public/personapay.css",
+        "sha256": "96d4621d81a7c33830777969dc07417d2a56aad2f2d15a06c0e7b08d59129e7d"
+      },
+      "artifacts/personapay-active-browser.log": {
+        "file": "billworld/artifacts/personapay-active-browser.log",
+        "sha256": "985e0bb15273ec4a71bc113d0b5250717cda1f52cc0ed13c485836e6689f6295"
+      },
+      "artifacts/domain-personapay-frontend.log": {
+        "file": "billworld/artifacts/domain-personapay-frontend.log",
+        "sha256": "371437848d258ce944f7887d369bb1627c02974600aead9bbeafdde39a8b09a8"
+      },
+      "artifacts/mychart-personapay-router-regression.log": {
+        "file": "billworld/artifacts/mychart-personapay-router-regression.log",
+        "sha256": "e87cb84b7d0640d9f60903ee8718c2078ff288aace872803e23334e595e1998f"
+      }
+    }
+  },
+  "unfinished": [
+    "PersonaPay authoritative task graders and Infinity task/app entries",
+    "Payment plans and eBill",
+    "Independent fidelity certification and autonomous-agent baseline"
+  ],
+  "deployment": "Validated through ephemeral servers and construction fixtures; existing main eight-site process not restarted."
+}

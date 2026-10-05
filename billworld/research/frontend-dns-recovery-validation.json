@@ -1,0 +1,115 @@
+{
+  "recorded_at": "2026-10-05T16:07:33.691983+00:00",
+  "kind": "catalog_frontend_dns_failure_recovery",
+  "finding": {
+    "failed_rows_at_triage": 132561,
+    "direct_dns_errors": 132023,
+    "interpretation": "Concentration during 14:00\u201316:00 UTC and successful controlled retries support a transient name-resolution failure; exact operating-system cause not established"
+  },
+  "controlled_retry": {
+    "attempted": 30,
+    "captured_after_dns_retry": 29,
+    "remaining_error": "Unescaped space in source URL",
+    "captured_after_transport_fix": 1,
+    "total_sample_sources_recovered": 30
+  },
+  "requeue": {
+    "window_since": "2026-10-05T14:00:00Z",
+    "window_until_exclusive": "2026-10-05T16:00:00Z",
+    "additional_requeued": 131913,
+    "durable_audit_rows_including_probe": 131943,
+    "current_distinct_asset_status_counts": {
+      "fetch_error": 1,
+      "frontend_captured": 414,
+      "http_error": 7,
+      "not_frontend_content": 1,
+      "pending": 131520
+    },
+    "previous_evidence_and_attempts_retained": true
+  },
+  "implemented": [
+    "Main capture supervisor stops after a widespread DNS failure batch",
+    "Explicit finite UTC-window recovery sharing the supervisor lock",
+    "Transactional previous-evidence requeue audit",
+    "HTTP encoding for spaces and Unicode with original URL identity preserved",
+    "Unchanged public-address/redirect checks and inert source policy"
+  ],
+  "validation": {
+    "focused_tests_passed": 31,
+    "full_research_tests_passed": 108,
+    "runtime_js_changed": false,
+    "runtime_revision": "0.18.0",
+    "released_sites_added": 0,
+    "fidelity_certifications_added": 0,
+    "autonomous_agent_scores_added": 0
+  },
+  "resumed_jobs": [
+    {
+      "checkpoint": "billworld/research-data/frontends/capture-job.json",
+      "pid": 6165,
+      "phase": "collecting",
+      "live_at_observation": true,
+      "command": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -u -m billworld.research_frontend_queue --min-free-gib 3",
+      "batches_completed": 3,
+      "billers_visited": null,
+      "candidate_billers": null,
+      "last_batch_status_counts": {
+        "fetch_error": 1,
+        "frontend_captured": 96,
+        "http_error": 2,
+        "not_frontend_content": 1
+      },
+      "min_free_gib": 3.0
+    },
+    {
+      "checkpoint": "billworld/research-data/frontends/dependency-job.json",
+      "pid": 6281,
+      "phase": "analyzing",
+      "live_at_observation": true,
+      "command": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -u -m billworld.research_dependency_queue --batch-limit 500",
+      "batches_completed": 3,
+      "billers_visited": null,
+      "candidate_billers": null,
+      "last_batch_status_counts": {
+        "partial": 1,
+        "parsed": 11
+      },
+      "min_free_gib": 2
+    },
+    {
+      "checkpoint": "billworld/research-data/frontends/dependency-source/catalog-job.json",
+      "pid": 6282,
+      "phase": "collecting",
+      "live_at_observation": true,
+      "command": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -u -m billworld.research_dependency_catalog --min-free-gib 4",
+      "batches_completed": null,
+      "billers_visited": 4,
+      "candidate_billers": 6662,
+      "last_batch_status_counts": null,
+      "min_free_gib": 4.0
+    }
+  ],
+  "artifacts": {
+    "billworld/artifacts/frontend-failure-triage.json": "8682cfbc0a6a2815ddcbbce368bc20a6f417cb4ca847c180a535e9b2efa903b3",
+    "billworld/artifacts/frontend-dns-recovery-probe-requeue.json": "1277f49fe355b9342be706fada6c1b574e570cb01f5c90c4bddaaf65e14bae06",
+    "billworld/artifacts/frontend-dns-recovery-probe-results.json": "4cf585ce162f4aa6bd03df40777f2460ccff178caaf86492c4d6211302e0aeba",
+    "billworld/artifacts/frontend-url-encoding-probe-results.json": "994cead873eb23e5ad4b68a35a0385565f65be6bd9c2d10efc19d0c0a9e98231",
+    "billworld/artifacts/frontend-dns-window-requeue.json": "e7bcbff5c1236c3c5161af8939108483e7102038be847dff7af97faefed3c105",
+    "billworld/artifacts/frontend-recovery-final-research-tests.log": "ea8530e8a205aaa42936695d0c265ba6b4ddb6aba77cb5fd81cbb08bbe62b02b",
+    "billworld/artifacts/capture-6339-capacity.json": "0e32af717e2ea551e998e525bcec79c3c609f3b4618f8b0712ffc55b3e905f85",
+    "billworld/artifacts/analysis-31447-missing-process.json": "18a057b14e6138a247c6f2addf1b6e71b44b1bee3f227d225bd76f6f89a9a103",
+    "billworld/artifacts/child-56426-capacity.json": "d544efab414f8c62badcb9878867f9a1f31a35cdb287f00f64f63d2306743b62",
+    "billworld/research_catalog.py": "0ba94a295c242e76e4d74f44aad31c52c1bc952f45aae38c5bb1257c0f68f17a",
+    "billworld/research_frontend_queue.py": "767bb5ae0fda1f0a54ca548dfa9e4914c348b5c8c3e8f5b01541d60fc48a7787",
+    "billworld/research_frontend_recovery.py": "b493519472563ddeb6079625fd996a0678327a3e2324cd84f01aba55e3cce5b0",
+    "billworld/tests/test_frontend_dns_recovery.py": "9a653bae22dc03adc3ecb533a087f1675ba9130de9901edce3f71bdc34404bec",
+    "billworld/tests/test_research_catalog.py": "1cb9f95a0dec30b751d1303fae019b58422211dd33468568738292cc7595a10a"
+  },
+  "limits": [
+    "Pending requeued assets are not recovered-source coverage",
+    "DNS burst threshold is a heuristic and deliberately requires diagnosis before restart",
+    "HTTP errors and unrelated failures remain explicit; no automatic retry loop",
+    "Disk reserves can stop collection again",
+    "Computed dependencies, authenticated source and complete site reconstruction remain unfinished"
+  ]
+}

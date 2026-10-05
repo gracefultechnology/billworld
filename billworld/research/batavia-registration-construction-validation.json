@@ -1,0 +1,129 @@
+{
+  "validated_at": "2026-10-04T12:47:44.215374+00:00",
+  "kind": "construction_registration_account_linking_and_preferences",
+  "released": false,
+  "site_id": "batavia-utilities",
+  "catalog_id": "biller_c8edde62f56ee14f50e0",
+  "new_task": "batavia-register-link-v1",
+  "site_construction_tasks": 3,
+  "all_construction_tasks": 6,
+  "released_sites": 9,
+  "released_tasks": 31,
+  "fidelity_certified": false,
+  "autonomous_score": false,
+  "reused": [
+    "Shared server-owned password/session/challenge/mail services and utility fixture data",
+    "Existing private grading, cohort isolation, Infinity bootstrap/harness/runner/report",
+    "Existing source packets and captured municipal/PDF references"
+  ],
+  "documented": [
+    "Official six-page guide: login/Register Now, six registration fields, separate utility Add Account stage",
+    "Account Number and complete service-address prefix; examples include letters and hyphens",
+    "Paperless No/Yes, Verify Account Information, billing address/name review, email/SMS choices and authorization checkbox",
+    "Add Account, Account Created and Back to Accounts"
+  ],
+  "synthetic_or_unobserved": [
+    "Live tenant portal remains HTTP 403; guide snapshots use December 2020 sample data",
+    "Password length 10\u2013128, ten-digit phone, five-digit ZIP and fixture identities/addresses",
+    "Ten-minute session-bound verification grants, supersession, retry semantics and local terms",
+    "Exact current registration layout/validation and live authorization terms",
+    "Notification preferences are stored; real SMS delivery and downstream paperless timing are not implemented"
+  ],
+  "verification": {
+    "domain": {
+      "artifact": "billworld/artifacts/domain-paymentus-registration.log",
+      "sha256": "7ecc73d4754e2fb5d9d55233768a7e9fbdb7ce9529783c505fcf6be370b1389a",
+      "tests": 187,
+      "passed": 187,
+      "new_registration_checks": 8
+    },
+    "research": {
+      "artifact": "billworld/artifacts/research-paymentus-registration.log",
+      "sha256": "d01e9e9935c3d20e49e27d1f46796daee29a9ed88635d5e72af49d35650c7813",
+      "tests": 36,
+      "passed": 36
+    },
+    "registration_browser": {
+      "artifact": "billworld/artifacts/paymentus-registration-browser/report.json",
+      "sha256": "72482b4069cd3ab9b8d8698201ba3f1f8a2e2d832de718a3c78f069f14aa983c",
+      "scenarios": 5,
+      "all_passed": true,
+      "page_errors": [],
+      "outbound_requests": []
+    },
+    "auth_browser_regression": {
+      "artifact": "billworld/artifacts/paymentus-auth-registration-regression.log",
+      "sha256": "47dd435be04bf55f367f6c55cf7b7bddeda566b65439f56aad9e555580ac381c",
+      "scenarios": 4,
+      "passed": 4,
+      "scope": "Registration/UI additions; final privacy serialization additionally covered by domain and six-task construction references"
+    },
+    "infinity_construction": {
+      "artifact": "billworld/artifacts/infinity/paymentus-registration-privacy/summary.json",
+      "sha256": "fddfe4458faff08fe0a9af91ca3d86795699b600eb019475ebe404c9838c32f9",
+      "tasks": 6,
+      "passed": 6,
+      "released_trials": 0
+    },
+    "infinity_released": {
+      "artifact": "billworld/artifacts/infinity/paymentus-registration-final-released/summary.json",
+      "sha256": "c96c9277714077996a83ad51df71619694a0f9069b234de30a152f5a5e1ac796",
+      "tasks": 31,
+      "passed": 31,
+      "construction_trials": 0
+    }
+  },
+  "grading": [
+    "One portal registration with requested profile and new password",
+    "One linked utility account after verified identifiers, correct paperless/email/SMS preferences",
+    "Logout/new-password login after linking and protected Accounts view with a live session",
+    "No payments, method/AutoPay changes, password resets or other-account/ledger modifications"
+  ],
+  "visual_review": {
+    "guide_pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "artifacts": [
+      "billworld/artifacts/paymentus-registration-browser/verification.png",
+      "billworld/artifacts/paymentus-registration-browser/accounts.png"
+    ],
+    "scope": "Labels/stages compared against previously reviewed official PDF; recreated layout and data are draft, not independent fidelity certification"
+  },
+  "source_packet": {
+    "directory": "/Users/shawwalters/billpay-research/billworld/research-data/packets/biller_c8edde62f56ee14f50e0/88dafba8012e5b97",
+    "metadata_sha256": "d4fcfc3bf058478bb942d52d932e424ea24ce1a418c21b766f91b2c9f173b7bb",
+    "site_manifest_matches_current": true,
+    "usable_public_pages": 3,
+    "documents": 3,
+    "route_discovery_snapshot": "Export precedes the completed-fetch route refresh; original catalog and captured browser/PDF evidence are retained."
+  },
+  "source_hashes": {
+    "billworld/engine.mjs": "e26bc42ab23da4cb3c16dc71e815ff8e90555bfcfcb10a98b9529f053b16dcb2",
+    "billworld/server.mjs": "5af3b210b962cfbcf1b3768c4338dcb1927b6e97dbddab6337712e65631314d8",
+    "billworld/public/paymentus.js": "e829680c9205a82cac2f1a3712815b06d0cb8679a03d5bf65c092293525336fe",
+    "billworld/public/paymentus.css": "f57d2327c1dd70075aa58114bbe1c4c6ed41ca26fc222cad45d1fc6bb1be433f",
+    "billworld/sites/batavia.json": "be8929a3b585f0a7d29000bddaeb7b96ebdc4035d61e568392559bd588ecd99f",
+    "billworld/tasks/batavia-registration.json": "0505c77752600851ae9f8f0949ad7dbfb88f20a87803bf344fbab2e5e1205f98",
+    "billworld/tests/paymentus-registration.test.mjs": "ac8c5bcfed6c794c8d15c0b33b514551c5629c9cd0d3ab124d6ab4aee6c83919",
+    "billworld/tests/paymentus-registration-browser.mjs": "5321eee23764ca49dd46a76a8e20454ff019c8365af402e54bcd434ef3d24fd6",
+    "billworld/infinity/bootstrap.py": "4c3c48a77a87d44ec7a0f0dd25f05e327eca1f21a7fd04dd8332d21040da769c",
+    "billworld/infinity/app/harness.py": "613cf73635befdfe8aaeb8d0af74ae63bb1d354233b1cf3ee2a758c0486c04c7",
+    "billworld/infinity/reference.mjs": "9a3aaf6b2c9018c719390a2b73fbb82f80f04ab6e0460f065e5af75ba2f7c639"
+  },
+  "preview": {
+    "port": 3113,
+    "pid": 19169,
+    "exec_session": 90924,
+    "command": "BILLWORLD_PREVIEW_PORT=3113 node billworld/preview-construction.mjs batavia-utilities"
+  },
+  "unfinished": [
+    "Private bills, checkout and receipts, current fees and limits",
+    "City draft versus Paymentus AutoPay, schedules, wallet and history",
+    "Preference edits, SMS delivery and downstream paperless processing",
+    "Current live auth and independent fidelity certification",
+    "Autonomous baseline, heldout tasks and isolated deployment"
+  ]
+}

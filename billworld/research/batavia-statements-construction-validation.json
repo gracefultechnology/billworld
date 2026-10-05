@@ -1,0 +1,86 @@
+{
+  "recorded_at": "2026-10-05T15:52:30.050528+00:00",
+  "kind": "batavia_synthetic_statement_download_construction",
+  "site_id": "batavia-utilities",
+  "released": false,
+  "task_id": "batavia-download-current-bill-v1",
+  "infinity_task_id": "task_c12",
+  "source_evidence": [
+    {
+      "file": "billworld/captures/batavia-docs/paymentus-guide.pdf",
+      "sha256": "392b955d93f21efacb6130f6aebb5b2f1860c132396364791e310b5b93213632",
+      "page": 4,
+      "establishes": "Accounts View Bill downloads latest PDF; original PDF content and current private portal unobserved"
+    }
+  ],
+  "implemented": [
+    "Authenticated live-session linked-account PDF download",
+    "Latest bill link on Accounts and historical bill links",
+    "Immutable original amounts after posted or pending payment; fees remain outside bill credit",
+    "Exact current fixture-field and document SHA-256 validation",
+    "Noncached attachment response with fixed safe filename",
+    "Build-time ReportLab generation; Node runtime has no PDF-generation dependency",
+    "Private construction grader checks issuance/order/filename and protects business and credentials"
+  ],
+  "validation": {
+    "javascript_passed": 246,
+    "research_passed": 103,
+    "focused_statement_tests_passed": 5,
+    "browser_scenarios_passed": 4,
+    "actual_downloads_verified": 3,
+    "pdfs_rendered_visually_reviewed_and_text_checked": 3,
+    "environment_build_id": "8e1cf69569cf114f0cf117d18a41b7233192d3796db9b7408fbd284b7d9c3256",
+    "evaluator_build_id": "d76e3ded4db4b50511f0440db445bc6e597459ba944c32e1cb8ef70953bf7066",
+    "browser_version": "HeadlessChrome/154.0.8037.57",
+    "browser_mode": "headless_shell",
+    "independent_source_fidelity_certified": false,
+    "autonomous_agent_scores": false
+  },
+  "regressions": {
+    "construction": {
+      "references_passed": 12,
+      "summary": "billworld/artifacts/infinity/construction-after-statements/summary.json",
+      "sha256": "0eff6de4c5e22a0273f6eaed0b45ea2f1fd4cd0a54a7b72545e5b88273b84c01",
+      "matching_current_builds": true,
+      "negative_rejected": true,
+      "legacy_lifecycle_passed": true,
+      "repetition_lineage_passed": true,
+      "owned_worker_recovery_passed": true
+    },
+    "released": {
+      "references_passed": 31,
+      "summary": "billworld/artifacts/infinity/released-after-statements/summary.json",
+      "sha256": "e9a7c17423b411e2523697dd680e12faa590397f80c2368487b99033cf88376e",
+      "matching_current_builds": true,
+      "negative_rejected": true,
+      "legacy_lifecycle_passed": true,
+      "repetition_lineage_passed": true,
+      "owned_worker_recovery_passed": true
+    }
+  },
+  "artifacts": {
+    "billworld/artifacts/paymentus-statements-domain.log": "8efb1975b8040139eb4873f1be9e44ccee2df3c9011b764a381896580d7537ce",
+    "billworld/artifacts/paymentus-statements-research.log": "c910ec63c20ae06853f7edcbda02d8f7bc37a0cccc9a6059d35731c17c0f1222",
+    "billworld/artifacts/paymentus-statements-browser/report.json": "18d2263211179cbce28c529db3c8b26c1b72c997e8c69aaefe0c19e76c295305",
+    "billworld/artifacts/paymentus-statements-browser/accounts.png": "9ef218be6c52bf6ab8634a4c967d8782a14d5021b2a468c0fce513c8fb5985d7",
+    "billworld/artifacts/paymentus-statements-pdf-review.json": "30cba5aef5484bbe48f3a049bdeb7a1ee850c366748c9a3730252094d126f937",
+    "billworld/artifacts/paymentus-statements-current-build.json": "fb35dbd8d2abc153b0ac1d6f6cf958bd743b63f202dc13f5ae85677c123b7f0d",
+    "billworld/research/paymentus-statements.json": "2214ea3537df070279afde5cfbc43df53bd54e93890ed724045b098262b9508c",
+    "billworld/tasks/batavia-statement.json": "541699de3a0dc2f15bb97f587271bd046500551ff772790ef9da49d6f259a8ef",
+    "billworld/build_paymentus_statements.py": "7b690a4b7bcc06dd1743c30408a82abbd04b9874e706923fb517361e20b860e2",
+    "billworld/paymentus-statements.mjs": "3f3a919396da8700e6d505584d3e28ed3d80284ee6bddd8f519d54f4f072de87",
+    "billworld/tests/paymentus-statements.test.mjs": "1393a42e3d872928f81430c1492d7c48ac04984e4802f453bdf5d84bad73941c",
+    "billworld/tests/paymentus-statements-browser.mjs": "47ab62e4825adef41b2e4ca8d477d90e1ddcc57199914ec253a30b49ca94579f",
+    "billworld/infinity/reference.mjs": "bb5b1acde50635344dc8d14b110e2c7e15ecf0e522366be99925fd3def351415",
+    "billworld/artifacts/infinity/construction-after-statements/task_c12/download.json": "ef43c45f61779ab202083401a83a113f6c5549d1f83fb5619c3e9a74c84cd92f"
+  },
+  "limits": [
+    "PDF layout and sample content are synthetic, with no invented service line items",
+    "No original private statement or current portal observation; do not count as fidelity certification",
+    "Latest local invoice is selected by due date and ID in this fixed fixture",
+    "New or changed statement/customer fields require regenerated PDFs and updated task hash",
+    "Server issuance event cannot attest remote browser filesystem persistence; reference tests separately verify saved bytes",
+    "Released coverage remains nine sites and 31 tasks; twelve construction tasks remain separate",
+    "All 59477 catalog billers remain in scope"
+  ]
+}

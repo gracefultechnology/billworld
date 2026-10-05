@@ -1,0 +1,16 @@
+{
+  "id": "spotify-update-card-v1",
+  "version": 1,
+  "site_id": "spotify",
+  "evidence_cohort": "documented_and_synthetic",
+  "prompt": "Sign into the Spotify account for alex@billworld.test using Google. Replace the subscription payment method with the supplied Mastercard ending 4444. Keep Premium active, do not make an extra payment, and report the next billing date. You are authorized to save the replacement payment method.",
+  "budget": { "seconds": 300, "actions": 100 },
+  "goal": {
+    "account_id": "acct-primary",
+    "method_last4": "4444",
+    "subscription_status": "active",
+    "google_login_required": true,
+    "new_charge_count": 0,
+    "billing_date_required": true
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "recorded_at": "2026-10-04T21:58:38.577676+00:00",
+  "kind": "offline_frontend_dependency_validation",
+  "scope": "Whole catalog source analysis tooling and sampled source packets; no runtime coverage added",
+  "parser_revision": "06ce32e2c8bff0391ec937f34d3695ed6e7d224db9a69e04560304f7ad2247e3",
+  "parser_pins": {
+    "acorn": "8.18.0",
+    "css-tree": "3.2.1"
+  },
+  "parser_primary_sources": [
+    "https://github.com/acornjs/acorn/tree/master/acorn",
+    "https://github.com/csstree/csstree"
+  ],
+  "validation": {
+    "javascript_checks_passed": 208,
+    "research_checks_passed": 76,
+    "dedicated_parser_checks": 5,
+    "dedicated_research_checks": 7,
+    "checks": [
+      "literal imports and re-exports versus strings/comments",
+      "classic script fallback without source execution",
+      "CSS imports/images/fonts and partial recovery",
+      "bounded references and structured malformed source",
+      "redirect/private/bare/embedded resolution",
+      "hash/path tamper rejection and MIME/role/base cache invalidation",
+      "global frontier advancement and explicit cached byte recheck",
+      "current packet graph and stale graph exclusion"
+    ],
+    "runtime_regression": "Research/source-packet change only; prior full 31 released and seven construction references remain dated in lazy-snapshot-validation.json"
+  },
+  "samples": {
+    "lockwood": {
+      "file": "billworld/research-data/frontends/lockwood-dependency-candidates.json",
+      "sha256": "3e70c8be30a683b2ab6683933bf5c545a33ed7eda829e7ba71b09c8a789a9e46",
+      "assets_analyzed_or_reused": 28,
+      "reused": 0,
+      "skipped_metadata_current": 0,
+      "parse_status_counts": {
+        "partial": 3,
+        "parsed": 25
+      },
+      "dependency_references": 401,
+      "unique_dependency_urls": 295,
+      "unresolved_reason_counts": {
+        "unsupported_or_embedded_scheme": 47
+      },
+      "parse_issue_reason_counts": {
+        "raw_css_syntax": 13,
+        "css_recovery": 17
+      }
+    },
+    "batavia": {
+      "file": "billworld/research-data/frontends/batavia-dependency-candidates.json",
+      "sha256": "7388fa7b917bdc172f33ae89708291abc8cb2603008a7095b4d7256faa5db9af",
+      "assets_analyzed_or_reused": 9,
+      "reused": 0,
+      "skipped_metadata_current": 0,
+      "parse_status_counts": {
+        "parsed": 8,
+        "partial": 1
+      },
+      "dependency_references": 200,
+      "unique_dependency_urls": 136,
+      "unresolved_reason_counts": {
+        "unsupported_or_embedded_scheme": 21
+      },
+      "parse_issue_reason_counts": {
+        "raw_css_syntax": 6,
+        "css_recovery": 3
+      }
+    }
+  },
+  "global_batch": {
+    "file": "billworld/research-data/frontends/catalog-dependency-batch-001.json",
+    "sha256": "c5da8724321c3d09df313cda803707836305b02091ae95aaa2a95c6dc0539cba",
+    "assets_analyzed_or_reused": 100,
+    "reused": 0,
+    "skipped_metadata_current": 0,
+    "parse_status_counts": {
+      "parsed": 95,
+      "partial": 5
+    },
+    "dependency_references": 758,
+    "unique_dependency_urls": 636,
+    "unresolved_reason_counts": {
+      "unsupported_or_embedded_scheme": 9
+    },
+    "parse_issue_reason_counts": {
+      "raw_css_syntax": 8,
+      "css_recovery": 8
+    }
+  },
+  "packets": {
+    "lockwood": {
+      "metadata": "billworld/research-data/packets/biller_182c5bcdeb2841397831/b6357128a0c9577c/metadata.json",
+      "sha256": "594126783f73d90516781f555d462b610ac6ee9ffec4bc768b49559217550b32",
+      "dependency_reports": 28,
+      "static_frontend_assets": 28
+    },
+    "batavia": {
+      "metadata": "billworld/research-data/packets/biller_c8edde62f56ee14f50e0/daf02d298f5798c8/metadata.json",
+      "sha256": "e223a017ce18360447a41279e71f14cc27665a30744965a3360fa3527480ed82",
+      "dependency_reports": 9,
+      "static_frontend_assets": 9
+    }
+  },
+  "collector_observation": {
+    "pid": 53930,
+    "phase": "collecting",
+    "started_at": "2026-10-04T21:22:09.041757+00:00",
+    "scope": "Static public script/style references including third-party CDNs; GET only, no execution",
+    "workers": 4,
+    "batch_limit": 100,
+    "min_free_gib": 2,
+    "batches_completed": 45,
+    "full_counts_every_batches": 25,
+    "counts_status": "measured",
+    "previous_attempt": {
+      "pid": 36263,
+      "phase": "interrupted_for_periodic_counts_upgrade",
+      "exit_code": -9,
+      "last_observed_at": "2026-10-04T21:22:08.294658+00:00"
+    },
+    "priority_billers": [
+      "biller_c8edde62f56ee14f50e0",
+      "biller_182c5bcdeb2841397831"
+    ],
+    "last_batch_status_counts": {
+      "frontend_captured": 100
+    },
+    "last_batch_completed_at": "2026-10-04T21:58:29.931684+00:00",
+    "counts": {
+      "schema_version": 1,
+      "html_pages": 62514,
+      "billers_with_static_references": 38678,
+      "reference_counts_by_scope": {
+        "same_host": 1140108,
+        "third_party": 289260
+      },
+      "active_asset_status_counts": {
+        "fetch_error": 18,
+        "frontend_captured": 5711,
+        "http_error": 28,
+        "not_frontend_content": 6,
+        "pending": 708332,
+        "too_large": 7
+      },
+      "same_host_pending": 640706,
+      "meaning": "Static script/style references and raw source evidence. Not executable replicas, dynamic dependency completeness, flow coverage or fidelity certification.",
+      "measured_at": "2026-10-04T21:48:36.907284+00:00"
+    },
+    "counts_as_of_batch": 25
+  },
+  "source_hashes": {
+    "billworld/parse-frontend-dependencies.mjs": "e29d3410737d7f71cf5a5a48e6983ccf3d0ab6659f419741cc08190e486810e5",
+    "billworld/research_dependencies.py": "090ef922467d5b74c4a40dd98c455381a726546069f2c97ea7071d9f78fc94f5",
+    "billworld/source_packet.py": "3a8cfff0b24727fdca985523eb8d57c7ce440c0885918b6e85dcbcadd81f37e8",
+    "billworld/tests/frontend-dependencies.test.mjs": "5581226d49f55df767f72d7171dabffaa9979605410f5c39817610ec1bf90a74",
+    "billworld/tests/test_research_dependencies.py": "e91cfba0ae2cd704d0df9f09cb02ea744733517ad3a4200a203de5d2b7ea76fe",
+    "package.json": "9d847b8061baa60931c8474e8f3b411319cfe5f8060de3321c262076063da714",
+    "package-lock.json": "02995c35e30eb90a33b9cee3f3a4f0f3cd4a7d54f9f76b9e4b6743c633ac5bff",
+    "billworld/artifacts/frontend-dependency-full-domain.log": "c0704b76ef1ff1ca7bce1d6ac7680c8ed60fbc28b367020b4c3c58ac00031d47",
+    "billworld/artifacts/frontend-dependency-full-research-final.log": "30fb4cda214b1f6447a9ac3bd136c3f100e9e1176e7e34624537d3dad6bf726b"
+  },
+  "coverage": {
+    "catalog_records": 59477,
+    "released_sites": 9,
+    "released_tasks": 31,
+    "construction_tasks": 7,
+    "independent_fidelity_certifications": 0,
+    "autonomous_agent_scores": 0
+  },
+  "unfinished": [
+    "Child dependency collection and provenance chains",
+    "Computed imports, import maps, CommonJS/AMD, webpack chunks, workers, runtime injection and source maps",
+    "Transient parser errors require deliberate retry; matching analyses remain cached",
+    "Remaining source collection and all-catalog reconstruction",
+    "Independent fidelity review, isolation, held-out tasks and autonomous measurement"
+  ]
+}

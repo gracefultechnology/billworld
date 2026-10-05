@@ -1,0 +1,68 @@
+{
+  "recorded_at": "2026-10-04T21:24:59.067468+00:00",
+  "kind": "catalog_frontend_periodic_progress_validation",
+  "scope": "Whole-catalog static frontend source queue; no executable/fidelity coverage added",
+  "implemented": [
+    "Existence checks preserve counts for shared and unreferenced assets without expanding duplicate references",
+    "Covering asset/scope index prevents extra reference-row lookups",
+    "Database initialization has a durable owner and failure record",
+    "Committed outcomes recorded for every 100-asset batch",
+    "Dated full-catalog counts sampled every 25 batches and at clean completion/stop, with explicit counts_as_of_batch"
+  ],
+  "validation": {
+    "research_tests_passed": 69,
+    "log": "billworld/artifacts/frontend-periodic-progress-research-final.log",
+    "deduplication_and_instruction_test": "Large shared-reference fixture preserves exact totals and uses less than one fifth of prior SQLite instructions for each tested count",
+    "progress_cadence_test": "201 assets processed in 100/100/1 batches; default interval measures once at completion, interval two measures at batch two and completion; final counts and same-host pending exact",
+    "failure_test": "Database initialization failure records owner/terminal failure and restores signal handlers; retry works"
+  },
+  "verified_live_collector": {
+    "pid": 53930,
+    "job_file": "billworld/research-data/frontends/capture-job.json",
+    "observed_job": {
+      "pid": 53930,
+      "phase": "collecting",
+      "started_at": "2026-10-04T21:22:09.041757+00:00",
+      "scope": "Static public script/style references including third-party CDNs; GET only, no execution",
+      "workers": 4,
+      "batch_limit": 100,
+      "min_free_gib": 2,
+      "batches_completed": 3,
+      "full_counts_every_batches": 25,
+      "counts_status": "not_yet_measured",
+      "previous_attempt": {
+        "pid": 36263,
+        "phase": "interrupted_for_periodic_counts_upgrade",
+        "exit_code": -9,
+        "last_observed_at": "2026-10-04T21:22:08.294658+00:00"
+      },
+      "priority_billers": [
+        "biller_c8edde62f56ee14f50e0",
+        "biller_182c5bcdeb2841397831"
+      ],
+      "last_batch_status_counts": {
+        "frontend_captured": 99,
+        "not_frontend_content": 1
+      },
+      "last_batch_completed_at": "2026-10-04T21:24:33.306163+00:00"
+    },
+    "completed_full_100_asset_batches_observed": 3,
+    "log": "billworld/artifacts/frontend-capture-periodic-progress.log"
+  },
+  "maintenance_records": [
+    "billworld/research-data/frontends/capture-index-maintenance.json",
+    "billworld/research-data/frontends/capture-periodic-maintenance.json"
+  ],
+  "source_hashes": {
+    "billworld/research_frontends.py": "c9dd3bec80b48630187cc51c34a06d9a8ce50d4086a9a0a940da3aa165c819cf",
+    "billworld/research_frontend_queue.py": "7c7790154ad0e4bd77d4a41d54b3a5914f068face6209b29e26ee9abf5de426a",
+    "billworld/tests/test_research_frontends.py": "76d1ad9bf172b64decc95a1c9e3c66a4409ddb254a0d368c550796cc3d5922a0",
+    "billworld/tests/test_research_frontend_queue.py": "46bc8039f272e2fda0ad8845ace33d4f0467255431b20df7cdbdb808d82c69b8",
+    "billworld/artifacts/frontend-periodic-progress-research-final.log": "74ba0a919b462c9bb2cd35c911c9e9f083862b6fe2774eda9ca5b4e936619f32"
+  },
+  "unfinished": [
+    "Remaining static source downloads and source dependency discovery",
+    "Periodic full-catalog count can still be expensive; per-batch committed outcomes stay current",
+    "All-catalog reconstruction, independent fidelity review, isolation, held-out tasks and autonomous measurement"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "spotify",
+  "name": "Spotify",
+  "portal_family": "Spotify account",
+  "revision": "0.1.0",
+  "implementation_status": "first_slice",
+  "evidence": [
+    {
+      "url": "https://accounts.spotify.com/en/login",
+      "type": "observed_public",
+      "checked": "2026-10-03",
+      "supports": [
+        "google_login",
+        "login_entry"
+      ]
+    },
+    {
+      "url": "https://support.spotify.com/us/article/google-login-help/",
+      "type": "documented",
+      "checked": "2026-10-03",
+      "supports": [
+        "google_login",
+        "login_linking",
+        "password_recovery"
+      ]
+    },
+    {
+      "url": "https://support.spotify.com/us/article/change-payment-details/",
+      "type": "documented",
+      "checked": "2026-10-03",
+      "supports": [
+        "change_payment_method",
+        "partner_billing"
+      ]
+    },
+    {
+      "url": "https://support.spotify.com/us/article/cancel-premium/",
+      "type": "documented",
+      "checked": "2026-10-03",
+      "supports": [
+        "cancel_subscription",
+        "remaining_premium_access"
+      ]
+    }
+  ],
+  "capabilities": {
+    "google_login": "documented",
+    "password_login": "documented",
+    "password_reset": "documented_flow_synthetic_delivery",
+    "change_payment_method": "documented",
+    "cancel_subscription": "documented",
+    "guest_payment": "unsupported",
+    "apple_login": "not_implemented",
+    "google_account_linking": "not_implemented",
+    "receipts": "not_implemented",
+    "facebook_login": "not_implemented"
+  },
+  "fidelity_limits": [
+    "Login and support pages are publicly observable; private billing layouts remain reconstructed.",
+    "Subscription price, renewal date, identifiers, cards and payment validation are synthetic fixtures.",
+    "Google identity UI and signed-token protocol are a local simulation, not a live Google integration.",
+    "Unlinked Google identities are refused in this slice; new Spotify account creation and linking remain unfinished.",
+    "Only direct card billing is implemented; partner billing is a limitation scenario.",
+    "Email-first login entry is observed; password-stage layout remains reconstructed. Temporary card authorization holds are not simulated yet."
+  ],
+  "capture_manifest": "research/spotify-public.json",
+  "catalog_records": [
+    {
+      "category": "streaming-subscriptions",
+      "name": "Spotify Premium"
+    }
+  ],
+  "default_task_id": "spotify-update-card-v1",
+  "runtime": {
+    "kind": "subscription",
+    "mail_sender_slug": "spotify",
+    "guest_lookup": "none"
+  }
+}

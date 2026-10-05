@@ -1,0 +1,62 @@
+{
+  "reviewed_at": "2026-10-04T11:56:05.841244+00:00",
+  "portal_family": "ePay Utilities/CUSI",
+  "tenant_id": "lockwood",
+  "classification": "family_reference_only_not_tenant_private_observation",
+  "sources": [
+    {
+      "id": "cusi-plaid-2024",
+      "publisher": "CUSI; public utility-hosted copy",
+      "host": "Forestville Water District",
+      "url": "https://www.forestvillewd.com/files/faa6af2bb/Plaid%2BVerification%2BGuide-v10-20240130_180027.pdf",
+      "document_export_date": "2024-01-30",
+      "file": "billworld/research-data/cusi-docs/plaid-verification-2024.pdf",
+      "sha256": "85c443d2bcffb8a1b76585d85eccf4c3c649d35d6e953a07569c5703c128bd33",
+      "pages": 15,
+      "visually_reviewed_pages": [
+        5,
+        11
+      ],
+      "observations": [
+        "Page 5 depicts View Current Bill and Make A Payment navigation, card/E-check/scheduled-bank-draft choices.",
+        "Page 11 depicts linked bank account status and verification-related controls."
+      ],
+      "limits": [
+        "Historical family guide; screenshots are not Lockwood private pages.",
+        "Neither this guide nor Lockwood public pages identify this tenant\u2019s transaction fee or verification deployment."
+      ]
+    },
+    {
+      "id": "cusi-microbilt-announcement",
+      "publisher": "CUSI",
+      "url": "https://cusi.com/project/enhancing-payment-security-user-experience-with-microbilt/",
+      "status": 200,
+      "fetched_at": "2026-10-04T11:52:06.329Z",
+      "file": "billworld/research-data/cusi-docs/microbilt-announcement.html",
+      "sha256": "957556080983952b975d0b0497aba29d08b646de6fb98173a43edbb14272e9bf",
+      "text_file": "billworld/research-data/cusi-docs/microbilt-announcement.txt",
+      "text_sha256": "902af6ff9751e31a7da95acb133d3c520305678679c56e13ffb1a0dd36b8d7fd",
+      "observations": [
+        "Vendor describes bank-holder, routing and account-number verification for signed-in ACH payments.",
+        "Deployment can be scheduled; rollout is not evidence of Lockwood activation."
+      ],
+      "limits": [
+        "No MicroBilt guide hyperlink appeared in the captured announcement.",
+        "Free verification is not a statement that card or ACH transactions are free."
+      ]
+    }
+  ],
+  "construction_decisions": {
+    "navigation": "Use family-documented View Current Bill / Make A Payment labels; private layouts remain synthetic.",
+    "payment_backend": "Reuse the existing authoritative invoice ledger, quote expiry, balance checks, idempotent commit and mailbox receipt.",
+    "fee": "Explicit synthetic fixture card fee 250 cents; live Lockwood fee remains unobserved.",
+    "bank": "Do not enable ACH until a tenant deployment is specified and its verification flow reconstructed.",
+    "release": "Construction only; no released or fidelity-certified coverage added."
+  },
+  "next_evidence_needed": [
+    "Lockwood private dashboard and bill document",
+    "Tenant card review/receipt/fee policy",
+    "Tenant ACH verification vendor and enrollment screens",
+    "Registration continuation, AutoPay and paperless preference flows"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "homer-utilities",
+  "name": "City of Homer Water/Sewer Utility",
+  "portal_family": "Xpress Bill Pay",
+  "implementation_status": "first_slice",
+  "revision": "0.4.0",
+  "capture_manifest": "research/homer-public.json",
+  "public_routes": {
+    "homepage": "https://www.cityofhomer-ak.gov/",
+    "login": "https://xpressbillpay.com/#/?org=cityofhomer11061",
+    "registration": "https://xpressbillpay.com/customer/#/register/register",
+    "recovery": "https://xpressbillpay.com/#/forgot-password",
+    "guest": "https://guest.xpressbillpay.com/refer/cityofhomer11061",
+    "help": "https://www.cityofhomer-ak.gov/finance/create-log-and-make-utility-payments-xpress-bill-pay"
+  },
+  "documented": {
+    "guide_pdf": "https://www.cityofhomer-ak.gov/sites/default/files/fileattachments/finance/page/79584/xbpinstructionsforfirsttimeusersenglish.pdf",
+    "registration": ["create profile", "verify email", "optional SMS notifications", "select organization", "match account number and surname", "confirm account and optional paperless", "optional AutoPay"],
+    "payment": ["Accounts", "Make a Payment", "Bill Cart", "Proceed to Checkout", "Select Pay Method", "Confirm method details", "Review and Confirm", "Submit Payment", "SUCCESS and emailed receipt"],
+    "methods": ["checking or savings", "credit/debit card"],
+    "scheduled_payment": true
+  },
+  "capabilities": {
+    "password_login": "observed_public_reconstructed",
+    "registration": "observed_public_form_documented_email_linking_synthetic_identity",
+    "email_verification": "documented_local_delivery",
+    "account_linking": "documented_guide_layout_synthetic_identity",
+    "paperless": "documented_synthetic_state",
+    "bank_payment": "documented_guide_layout_synthetic_ledger",
+    "card_payment": "documented_guide_layout_synthetic_ledger",
+    "password_reset": "observed_first_step_synthetic_email_completion",
+    "guest_payment": "observed_lookup_synthetic_private_checkout",
+    "autopay": "documented_synthetic_layout_execution",
+    "scheduled_payment": "documented_cart_synthetic_edit_cancel_execution",
+    "payment_history": "documented_synthetic_ledger_view",
+    "google_login": "not_observed_not_implemented",
+    "mobile_login": "observed_option_not_implemented",
+    "sms_notifications": "documented_not_implemented",
+    "statement_pdf": "not_implemented"
+  },
+  "billing_policy": {
+    "fee_cents": 0,
+    "fee_evidence": "synthetic_unknown_production_fees",
+    "autopay_day": "configurable_1_to_31_synthetic",
+    "short_month_day": "clamp_to_last_day_synthetic",
+    "settlement": "immediate_posting_synthetic_default",
+    "invoice_generation": "monthly_on_first_synthetic",
+    "default_invoice_due_day": 20
+  },
+  "fidelity_limits": [
+    "No authenticated production session or payment has been observed.",
+    "Official guide screenshots illustrate generic Xpress screens; Homer private branding, account data and execution policies are synthetic.",
+    "Production guest checkout opens a separate origin; this slice uses a local route and its deeper guest screens are synthetic.",
+    "Current public registration password rules supersede the older PDF description.",
+    "This slice supports one seeded personal profile and one matching utility account; business profiles, other organizations, multiple payers and takeover are unfinished.",
+    "The municipal homepage remains a navigation subset; mobile login, SMS, wallet editing and statement PDFs remain unfinished.",
+    "Captured third-party asset redistribution rights remain unresolved."
+  ],
+  "catalog_records": [{"category": "water-sewer", "name": "City of Homer Water/Sewer Utility"}],
+  "default_task_id": "homer-pay-current-v1",
+  "runtime": {"kind": "utility", "mail_sender_slug": "homer", "guest_lookup": "account_number_and_last_name", "profile_flow": "email_verification_then_account_link"}
+}

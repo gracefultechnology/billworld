@@ -1,0 +1,57 @@
+{
+  "validated_at": "2026-10-04T11:04:18.982805+00:00",
+  "kind": "personapay_payment_and_http_construction",
+  "runtime_activated": false,
+  "synthetic_private_behavior": [
+    "Two dental charges and fixture matching rules",
+    "Largest-remainder weighted allocation in integer cents",
+    "Overpayment credit from selected charges",
+    "Posted versus pending simulated settlement",
+    "Ten-minute review and thirty-minute session expiry"
+  ],
+  "public_configuration_basis": [
+    "WeightedSplit, editable distribution and account selection",
+    "Underpayment and overpayment allowed",
+    "No stored wallet or payment fees",
+    "Total payment minimum $1, maximum $2,000,000; per-charge minimum $1, maximum $1,000,000"
+  ],
+  "implemented": [
+    "Authenticated account statement",
+    "Selected charges, default weighted allocation and edited allocation",
+    "Card/ACH input validation with no raw instruments or CVV persisted",
+    "Episode/session-bound quote, review, commit and receipt",
+    "Idempotent posting, stale-review rejection and simulated decline",
+    "Mock Gmail payment confirmation",
+    "Separate posted and pending account credit",
+    "Same-origin HTTP APIs with HttpOnly session/review cookies"
+  ],
+  "verification": {
+    "full_node_suite": {
+      "tests": 136,
+      "passed": 136
+    },
+    "personapay_domain_tests": 13,
+    "personapay_http_tests": 1,
+    "test_artifacts": {
+      "domain-personapay-http.log": {
+        "file": "billworld/artifacts/domain-personapay-http.log",
+        "sha256": "aeeb9d318fa305db1cad71b7ff3ec39d356fe8485f5d472a2fcc90ce9a7af260"
+      },
+      "personapay-payment-domain.log": {
+        "file": "billworld/artifacts/personapay-payment-domain.log",
+        "sha256": "c331637b92cabfe87eb742f926c42e6164476d5a1c38fb0aae5353375e05fb05"
+      },
+      "personapay-http.log": {
+        "file": "billworld/artifacts/personapay-http.log",
+        "sha256": "81118c727c564c464a3cf5f22f83fa2e61593aae64de0702096b57f1aee4959a"
+      }
+    }
+  },
+  "limits": [
+    "Private checkout screens and settlement were not observed; downstream UI and semantics must remain labeled synthetic.",
+    "Frontend still an inert source reconstruction; active login and payment UI have not been bound to these APIs.",
+    "Payment plans, eBill and Infinity task/grader integration remain unfinished.",
+    "Main eight-site runtime process was not restarted; this HTTP integration was verified on a separate ephemeral test server.",
+    "No new runtime-site coverage, certification or agent score is claimed."
+  ]
+}
