@@ -5,14 +5,37 @@
   "name": "Costco Pharmacy",
   "category": "pharmacy-dme",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from the public Costco Pharmacy FAQ on costco.com and the public rx.costco.com home and Pay Ahead pages (no sign-in). Warehouse pickups are paid at the pharmacy, or ahead online with Pay Ahead: the payment method is collected while ordering and saved to the profile for future orders; Pay Ahead accepts Visa credit, Visa debit, FSA and HSA; controlled substances and veterinary prescriptions are excluded; a QR code (sent by SMS/email and shown in Order History) is scanned at the pharmacy; orders not picked up within 10 days go back to stock and are refunded in 3-5 days. Costco membership is not required. Mail-order (Home Delivery) Pharmacy accepts Visa, Mastercard, Discover and the Costco credit card; card and insurance changes are made in the Patient Profile. The mock models Pay Ahead as paying the balance; bank-account payment is a simulation contract (Costco takes cards only). No AutoPay, payment plan, guest payment or paperless bill is described (unsupported, inferred). rx.costco.com account menu shows Account Details, Addresses, Payment Methods, Agreements, Auto-Refill.",
-  "officialDomains": ["costco.com"],
-  "sources": [
-    { "url": "https://www.costco.com/pharmacy/frequently-asked-questions.html", "title": "Costco Pharmacy Frequently Asked Questions", "fetchedAt": "2026-10-09", "kind": "help" },
-    { "url": "https://rx.costco.com/pay-ahead", "title": "Pay Ahead", "fetchedAt": "2026-10-09", "kind": "pay" },
-    { "url": "https://rx.costco.com/", "title": "Costco Pharmacy (rx.costco.com)", "fetchedAt": "2026-10-09", "kind": "login" }
+  "notes": "Researched from the public Costco Pharmacy FAQ on costco.com and the public rx.costco.com home and Pay Ahead pages (no sign-in). Warehouse pickups are paid at the pharmacy, or ahead online with Pay Ahead: the payment method is collected while ordering and saved to the profile for future orders; Pay Ahead accepts Visa credit, Visa debit, FSA and HSA; controlled substances and veterinary prescriptions are excluded; a QR code (sent by SMS/email and shown in Order History) is scanned at the pharmacy; orders not picked up within 10 days go back to stock and are refunded in 3-5 days. Costco membership is not required. Mail-order (Home Delivery) Pharmacy accepts Visa, Mastercard, Discover and the Costco credit card; card and insurance changes are made in the Patient Profile. The mock models Pay Ahead as paying the balance; online payment is card-only (billing.methods card), as Costco lists only cards. No AutoPay, payment plan, guest payment or paperless bill is described (unsupported, inferred). rx.costco.com account menu shows Account Details, Addresses, Payment Methods, Agreements, Auto-Refill. Reviewer: contact.phone set to Pharmacy Member Service so the page header no longer shows the fax number as a billing phone.",
+  "officialDomains": [
+    "costco.com"
   ],
-  "brand": { "displayName": "Costco Pharmacy", "shortName": "Costco Pharmacy", "primary": "#005dab", "accent": "#c8102e", "monogram": "C" },
+  "sources": [
+    {
+      "url": "https://www.costco.com/pharmacy/frequently-asked-questions.html",
+      "title": "Costco Pharmacy Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://rx.costco.com/pay-ahead",
+      "title": "Pay Ahead",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://rx.costco.com/",
+      "title": "Costco Pharmacy (rx.costco.com)",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Costco Pharmacy",
+    "shortName": "Costco Pharmacy",
+    "primary": "#005dab",
+    "accent": "#c8102e",
+    "monogram": "C"
+  },
   "labels": {
     "signIn": "Sign In",
     "register": "Create Account",
@@ -25,33 +48,110 @@
   },
   "nav": {
     "public": [
-      { "label": "Sign In", "page": "login" },
-      { "label": "Create Account", "page": "register" },
-      { "label": "Learn More About Pay Ahead", "helpSlug": "pay-your-bill" },
-      { "label": "Help", "page": "help" }
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create Account",
+        "page": "register"
+      },
+      {
+        "label": "Learn More About Pay Ahead",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
     ],
     "account": [
-      { "label": "Account Details", "page": "dashboard" },
-      { "label": "Pay Ahead", "page": "pay" },
-      { "label": "Order History", "page": "history" },
-      { "label": "Payment Methods", "page": "wallet" },
-      { "label": "Patient Profile", "page": "profile" },
-      { "label": "Contact", "page": "contact" }
+      {
+        "label": "Account Details",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Ahead",
+        "page": "pay"
+      },
+      {
+        "label": "Order History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Patient Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Contact",
+        "page": "contact"
+      }
     ]
   },
   "capabilities": {
-    "pay_online": { "support": "supported", "evidence": "observed_public", "source": "https://rx.costco.com/pay-ahead" },
-    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://rx.costco.com/pay-ahead", "note": "There is no guest payment: use Pay Ahead from the link in your Rx-ready message while signed in, or pay at the pharmacy. Pharmacy Member Service: 1-800-607-6861.", "channel": "phone", "phone": "800-607-6861" },
-    "autopay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html", "note": "Costco Pharmacy has no AutoPay. Mail orders charge the card in your Patient Profile; warehouse pickups are paid at the pharmacy or with Pay Ahead.", "channel": "none" },
-    "autopay_cancel": { "support": "not_applicable", "evidence": "inferred", "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html" },
-    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html", "note": "Payment plans are not offered for prescriptions. Call Pharmacy Member Service at 1-800-607-6861.", "channel": "phone", "phone": "800-607-6861" },
-    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html", "note": "Costco Pharmacy does not mail bills; orders and Pay Ahead QR codes are in Order History.", "channel": "none" },
-    "scheduled_payment": { "support": "unsupported", "evidence": "inferred", "source": "https://rx.costco.com/pay-ahead", "note": "Pay Ahead collects payment when you order; payments cannot be scheduled for later.", "channel": "none" },
-    "pay_by_phone": { "support": "supported", "evidence": "inferred", "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html", "phone": "800-607-6861" }
+    "pay_online": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://rx.costco.com/pay-ahead"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://rx.costco.com/pay-ahead",
+      "note": "There is no guest payment: use Pay Ahead from the link in your Rx-ready message while signed in, or pay at the pharmacy. Pharmacy Member Service: 1-800-607-6861.",
+      "channel": "phone",
+      "phone": "800-607-6861"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html",
+      "note": "Costco Pharmacy has no AutoPay. Mail orders charge the card in your Patient Profile; warehouse pickups are paid at the pharmacy or with Pay Ahead.",
+      "channel": "none"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html",
+      "note": "Payment plans are not offered for prescriptions. Call Pharmacy Member Service at 1-800-607-6861.",
+      "channel": "phone",
+      "phone": "800-607-6861"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html",
+      "note": "Costco Pharmacy does not mail bills; orders and Pay Ahead QR codes are in Order History.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://rx.costco.com/pay-ahead",
+      "note": "Pay Ahead collects payment when you order; payments cannot be scheduled for later.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html",
+      "phone": "800-607-6861"
+    }
   },
   "billing": {
     "source": "https://rx.costco.com/pay-ahead",
-    "methods": ["bank", "card"]
+    "methods": [
+      "card"
+    ]
   },
   "help": [
     {
@@ -63,7 +163,12 @@
         "Your payment method is collected while you order and saved to your profile for future orders. Pay Ahead accepts Visa credit, Visa debit, FSA and HSA cards.",
         "When your order is packaged you get a text or email with a link to a QR code, also shown in Order History. Show it to the pharmacy cashier, who scans it to finish the pickup."
       ],
-      "steps": ["Open the link in your Rx-ready message.", "Check eligibility and order.", "Enter or choose a payment method.", "Show the QR code at the pharmacy."],
+      "steps": [
+        "Open the link in your Rx-ready message.",
+        "Check eligibility and order.",
+        "Enter or choose a payment method.",
+        "Show the QR code at the pharmacy."
+      ],
       "source": "https://rx.costco.com/pay-ahead"
     },
     {
@@ -99,27 +204,123 @@
       {
         "slug": "pay-ahead-refund",
         "intent": "I paid ahead for a Costco Pharmacy prescription but I'm traveling and can't pick it up. How many days until it goes back to stock, and how long does the refund take? Answer from Costco's help; change nothing.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["10"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["10"] },
-        "tags": ["help", "information", "payments"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
         "evidence": "observed_public",
-        "solution": [{ "op": "answer", "text": "After 10 days it returns to stock; the refund reaches the card in 3-5 days." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "After 10 days it returns to stock; the refund reaches the card in 3-5 days."
+          }
+        ]
       },
       {
         "slug": "mail-order-cards",
         "intent": "Does the Costco Pharmacy mail-order (Home Delivery) pharmacy take American Express? Check the FAQ and answer; do not pay anything.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["does not", "doesn't", "not accept", "no,", "no.", "no -"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["does not", "doesn't", "not accept", "no,", "no.", "no -"] },
-        "tags": ["help", "information", "payments"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "does not",
+              "doesn't",
+              "not accept",
+              "no,",
+              "no.",
+              "no -"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "does not",
+            "doesn't",
+            "not accept",
+            "no,",
+            "no.",
+            "no -"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
         "evidence": "documented_official",
-        "solution": [{ "op": "answer", "text": "No. It accepts Visa, Mastercard, Discover and the Costco credit card." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. It accepts Visa, Mastercard, Discover and the Costco credit card."
+          }
+        ]
       }
     ]
   },
   "testExpectations": [
-    { "page": "pay", "signedIn": true, "label": "payBill" },
-    { "page": "dashboard", "signedIn": true, "contains": ["Pay Ahead", "Order History"] },
-    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "QR code" },
-    { "page": "helpArticle", "slug": "contact-us", "contains": "1-800-607-6861" }
-  ]
+    {
+      "page": "pay",
+      "signedIn": true,
+      "label": "payBill"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Ahead",
+        "Order History"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "QR code"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "1-800-607-6861"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": "checking"
+    }
+  ],
+  "contact": {
+    "phone": "800-607-6861",
+    "source": "https://www.costco.com/pharmacy/frequently-asked-questions.html"
+  }
 }

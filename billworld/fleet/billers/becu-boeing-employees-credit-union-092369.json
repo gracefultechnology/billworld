@@ -4,17 +4,50 @@
   "status": "dedicated",
   "name": "BECU",
   "category": "credit-unions",
-  "reviewedAt": "2026-10-09",
+  "reviewedAt": "2026-10-10",
   "notes": "Researched from public becu.org pages only (no sign-in). The bill is a BECU loan or credit card payment. In Online Banking: Payments > BECU Payments > Pay BECU Accounts opens Make a Payment on a BECU Account, with a Pay menu offering Set up / Manage autopay. Online Autopay only draws from a personal external account (business accounts not allowed); autopay from a BECU account needs the Manage Autopay from a BECU Account form (term loans) or the Visa Automatic Payment form (cards, up to 10 business days). Recurring payments from a BECU deposit account are scheduled in Online Banking. Autopay changes are allowed only up to 3 business days before the due date; one-time external loan payments can be cancelled up to 3 business days before the payment date; card payments cannot be changed or cancelled online. Credit cards can autopay the Minimum Payment Due or the Last Statement Balance (described in help; the loan mock's autopay form offers regular/fixed). External payments in the mobile app are not available (Online Banking only). Sign-in is User ID + password with one-time passcodes by text or email; forgot User ID/password needs User ID or identity details plus a passcode. eStatements: 18 months online, kept 7 years; enrolled under Account Services > Enroll for eStatements. HELOC/line-of-credit payments must come from a BECU account. No public no-login payment page found. Pending SAFE Credit Union merger is not modelled.",
-  "officialDomains": ["becu.org"],
-  "sources": [
-    { "url": "https://www.becu.org/support/online-payments-to-a-becu-loan-or-credit-card", "title": "Online Payments to a BECU Loan or Credit Card | BECU", "fetchedAt": "2026-10-09", "kind": "autopay" },
-    { "url": "https://www.becu.org/support/payments-for-any-situation", "title": "Payments for Any Situation | BECU", "fetchedAt": "2026-10-09", "kind": "pay" },
-    { "url": "https://www.becu.org/everyday-banking/eStatements", "title": "eStatements | BECU", "fetchedAt": "2026-10-09", "kind": "other" },
-    { "url": "https://www.becu.org/fraud-and-security-center/security-verification-codes", "title": "Security Verification Codes | BECU", "fetchedAt": "2026-10-09", "kind": "login" },
-    { "url": "https://www.becu.org/support/online-banking", "title": "Online and mobile banking | BECU", "fetchedAt": "2026-10-09", "kind": "login" }
+  "officialDomains": [
+    "becu.org"
   ],
-  "brand": { "shortName": "BECU", "displayName": "BECU", "primary": "#003b71", "accent": "#00664f", "monogram": "BE" },
+  "sources": [
+    {
+      "url": "https://www.becu.org/support/online-payments-to-a-becu-loan-or-credit-card",
+      "title": "Online Payments to a BECU Loan or Credit Card | BECU",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.becu.org/support/payments-for-any-situation",
+      "title": "Payments for Any Situation | BECU",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.becu.org/everyday-banking/eStatements",
+      "title": "eStatements | BECU",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.becu.org/fraud-and-security-center/security-verification-codes",
+      "title": "Security Verification Codes | BECU",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.becu.org/support/online-banking",
+      "title": "Online and mobile banking | BECU",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "BECU",
+    "displayName": "BECU",
+    "primary": "#003b71",
+    "accent": "#00664f",
+    "monogram": "BE"
+  },
   "labels": {
     "payBill": "Pay BECU Accounts",
     "autopay": "Autopay",
@@ -23,47 +56,141 @@
     "signIn": "Member Login",
     "forgot": "Forgot your password",
     "register": "Enroll Now",
-    "dashboard": "Accounts",
+    "dashboard": "Account Summary",
     "profile": "Account Services",
-    "username": "User ID"
+    "username": "User ID",
+    "wallet": "Manage External Accounts"
   },
   "nav": {
     "public": [
-      { "label": "Member Login", "page": "login" },
-      { "label": "Enroll Now", "page": "register" },
-      { "label": "Payments for Any Situation", "helpSlug": "pay-your-bill" },
-      { "label": "Support", "page": "help" }
+      {
+        "label": "Member Login",
+        "page": "login"
+      },
+      {
+        "label": "Enroll Now",
+        "page": "register"
+      },
+      {
+        "label": "Payments for Any Situation",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
     ],
     "account": [
-      { "label": "Accounts", "page": "dashboard" },
-      { "label": "Pay BECU Accounts", "page": "pay" },
-      { "label": "Autopay", "page": "autopay" },
-      { "label": "Payment Activity", "page": "history" },
-      { "label": "eStatements", "page": "statements" },
-      { "label": "Account Services", "page": "paperless" },
-      { "label": "Messages", "page": "contact" }
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay BECU Accounts",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Manage External Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "eStatements",
+        "page": "statements"
+      },
+      {
+        "label": "Account Services",
+        "page": "paperless"
+      },
+      {
+        "label": "Messenger",
+        "page": "contact"
+      }
     ]
   },
   "auth": {
     "identifier": "username",
     "mfa": "email_or_sms",
-    "registrationFields": ["accountNumber"],
+    "registrationFields": [
+      "accountNumber"
+    ],
     "evidence": "documented_official",
     "source": "https://www.becu.org/fraud-and-security-center/security-verification-codes"
   },
   "capabilities": {
-    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.becu.org/support/payments-for-any-situation", "note": "Online Banking pays from a BECU account or an external account; the mobile app pays from BECU accounts only." },
-    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.becu.org/support/online-payments-to-a-becu-loan-or-credit-card", "note": "Online Autopay draws from a personal external account. Autopay from a BECU account is set up with a form." },
-    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.becu.org/support/online-payments-to-a-becu-loan-or-credit-card", "note": "Use Pay > Manage > Turn Off Autopay, up to 3 business days before the due date." },
-    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.becu.org/support/payments-for-any-situation" },
-    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.becu.org/everyday-banking/eStatements" },
-    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.becu.org/everyday-banking/eStatements" },
-    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.becu.org/support/payments-for-any-situation", "phone": "800-233-2328", "note": "Phone payments come from a BECU deposit account." },
-    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.becu.org/support/payments-for-any-situation" }
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.becu.org/support/payments-for-any-situation",
+      "note": "Online Banking pays from a BECU account or an external account; the mobile app pays from BECU accounts only."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.becu.org/support/online-payments-to-a-becu-loan-or-credit-card",
+      "note": "Online Autopay draws from a personal external account. Autopay from a BECU account is set up with a form."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.becu.org/support/online-payments-to-a-becu-loan-or-credit-card",
+      "note": "Use Pay > Manage > Turn Off Autopay, up to 3 business days before the due date."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.becu.org/support/payments-for-any-situation"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.becu.org/everyday-banking/eStatements"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.becu.org/everyday-banking/eStatements"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.becu.org/support/payments-for-any-situation",
+      "phone": "800-233-2328",
+      "note": "Phone payments come from a BECU deposit account."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.becu.org/support/payments-for-any-situation"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.becu.org/support/payments-for-any-situation",
+      "phone": "800-233-2328",
+      "note": "BECU loan and card payments are made in Online Banking or the app after logging in, at a branch, by phone at 800-233-2328 or by mail; there is no pay-without-logging-in option."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.becu.org/support/payments-for-any-situation",
+      "phone": "800-233-2328",
+      "note": "There is no online repayment-plan request for BECU loans. Call BECU at 800-233-2328 to discuss options."
+    }
   },
   "billing": {
-    "methods": ["bank"],
-    "autopay": { "days": "due_date", "methodTypes": ["bank"] },
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    },
     "source": "https://www.becu.org/support/payments-for-any-situation"
   },
   "help": [
@@ -75,7 +202,12 @@
         "You can also pay in person from a BECU deposit account at any location, by phone at 800-233-2328 from a BECU deposit account, or by mailing a check to BECU's Seattle payment post office box.",
         "Payments from a BECU account to a loan made before 7 p.m. Pacific post the same day; card payments must be made by noon Pacific. External one-time payments post effective the scheduled date, but the money can take up to four business days to leave the other account."
       ],
-      "steps": ["Log in to Online Banking and choose Payments.", "Under BECU Payments, click Pay BECU Accounts.", "Pick the loan or card and the account to pay from.", "Enter the amount and date and confirm."],
+      "steps": [
+        "Log in to Online Banking and choose Payments.",
+        "Under BECU Payments, click Pay BECU Accounts.",
+        "Pick the loan or card in Pay and the account in Pay From.",
+        "Choose the payment type (for example Regular Payment), enter the amount and date and confirm."
+      ],
       "source": "https://www.becu.org/support/payments-for-any-situation"
     },
     {
@@ -86,7 +218,12 @@
         "To change it, open Pay > Manage to see Autopay Details. To stop it, click Turn Off Autopay and confirm. Autopay can be changed only while no payment is in process, up to 3 business days before the due date.",
         "Autopay from a BECU account uses a form instead: Manage Autopay from a BECU Account for term loans, or the Visa Automatic Payment form for credit cards (allow up to 10 business days)."
       ],
-      "steps": ["Payments > Pay BECU Accounts.", "Choose the loan or card.", "Pay menu > Set up.", "Choose Pay From, continue, accept the consent and click Schedule Autopay."],
+      "steps": [
+        "Payments > Pay BECU Accounts.",
+        "Choose the loan or card.",
+        "Pay menu > Set up.",
+        "Choose Pay From, continue, accept the consent and click Schedule Autopay."
+      ],
       "source": "https://www.becu.org/support/online-payments-to-a-becu-loan-or-credit-card"
     },
     {
@@ -94,7 +231,8 @@
       "title": "Cancelling a scheduled payment",
       "topic": "billing",
       "paragraphs": [
-        "A one-time payment to a loan from an external account can be cancelled if it has not been processed, up to 3 business days before the payment date. Payments to credit cards cannot be modified or cancelled in Online Banking."
+        "A one-time payment to a loan from an external account can be cancelled if it has not been processed, up to 3 business days before the payment date: open Account Summary, select the loan, choose View Details in the Scheduled Payment banner, then Cancel Payment and confirm. Payments to credit cards from an external account cannot be changed or cancelled in Online Banking; contact the other institution.",
+        "Disconnecting an external institution (Profile, Profile Settings, Manage External Accounts) does not cancel its scheduled payments or Autopay, so cancel those first."
       ],
       "source": "https://www.becu.org/support/online-payments-to-a-becu-loan-or-credit-card"
     },
@@ -131,29 +269,119 @@
       {
         "slug": "estatement-months-online",
         "intent": "Using BECU's help pages, find how many months of consumer statement history are kept in Online Banking. Do not make a payment or change any settings.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["18"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["18"] },
-        "tags": ["help", "information", "statements"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "18"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "18"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
         "evidence": "documented_official",
-        "solution": [{ "op": "answer", "text": "18 months of statement history are kept online." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "18 months of statement history are kept online."
+          }
+        ]
       },
       {
         "slug": "autopay-change-deadline",
         "intent": "Using BECU's help pages, find how many business days before the due date is the last chance to change Autopay on a BECU loan. Do not make a payment or change any settings.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["3 business days", "three business days", "3"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["3 business days", "three business days", "3"] },
-        "tags": ["help", "information", "autopay"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3 business days",
+              "three business days",
+              "3"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3 business days",
+            "three business days",
+            "3"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
         "evidence": "documented_official",
-        "solution": [{ "op": "answer", "text": "Up to 3 business days before the due date." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 3 business days before the due date."
+          }
+        ]
       }
     ]
   },
   "testExpectations": [
-    { "page": "home", "contains": ["Member Login", "Enroll Now"] },
-    { "page": "login", "contains": "User ID" },
-    { "page": "dashboard", "signedIn": true, "contains": ["Pay BECU Accounts", "Autopay"] },
-    { "page": "autopay", "signedIn": true, "label": "autopay" },
-    { "page": "helpArticle", "slug": "paperless", "contains": "18 months" },
-    { "page": "helpArticle", "slug": "autopay", "contains": "Turn Off Autopay" }
+    {
+      "page": "home",
+      "contains": [
+        "Member Login",
+        "Enroll Now"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "User ID"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay BECU Accounts",
+        "Autopay"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "18 months"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Turn Off Autopay"
+    }
   ]
 }

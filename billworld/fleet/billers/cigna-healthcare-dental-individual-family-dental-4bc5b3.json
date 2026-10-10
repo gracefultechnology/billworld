@@ -5,34 +5,104 @@
   "name": "Cigna Healthcare Dental (individual & family dental plans)",
   "category": "dental-vision-hearing",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public cigna.com pages only (no sign-in; dental.cigna.com renders by JavaScript and showed no text). The individual dental plans page lists the plan line-up with 'from' prices (national averages for one person) and points members to myCigna, but it has no billing text. Cigna's individual & family plans page lists three ways to pay a premium: online ('Pay your premium online'), by check to the address on the bill, or by phone at 1 (877) 900-1237 (TTY 711, M-F 8am-8pm ET); renewing and existing customers log in to myCigna to pay, and the first premium must be paid before a plan is activated. That page is written for individual & family plans generally, so the payment capabilities are recorded as 'inferred' for dental. AutoPay, cancellation, paperless, fees, grace period, sign-in identifier and MFA are not published for dental plans and keep family defaults. Plan prices are 'from' national averages that vary by area, so no plan list is modelled. Signed-in nav labels other than myCigna are generic (synthetic). No public nav: see the insurance-template cross-owner request.",
-  "officialDomains": ["cigna.com"],
-  "sources": [
-    { "url": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/", "title": "Health Insurance Plans for Individuals & Families | Cigna Healthcare", "fetchedAt": "2026-10-09", "kind": "pay" },
-    { "url": "https://www.cigna.com/individuals-families/plans-services/dental-insurance-plans/", "title": "Dental Insurance Plans for Individuals & Families | Cigna Healthcare", "fetchedAt": "2026-10-09", "kind": "plans" }
+  "notes": "Researched from public cigna.com pages only (no sign-in; dental.cigna.com renders by JavaScript and showed no text). The individual dental plans page lists the plan line-up with 'from' prices (national averages for one person) and points members to myCigna, but it has no billing text. Cigna's individual & family plans page lists three ways to pay a premium: online ('Pay your premium online'), by check to the address on the bill, or by phone at 1 (877) 900-1237 (TTY 711, M-F 8am-8pm ET); renewing and existing customers log in to myCigna to pay, and the first premium must be paid before a plan is activated. That page is written for individual & family plans generally, so the payment capabilities are recorded as 'inferred' for dental. AutoPay, cancellation, paperless, fees, grace period, sign-in identifier and MFA are not published for dental plans and keep family defaults. Plan prices are 'from' national averages that vary by area, so no plan list is modelled. Signed-in nav labels other than myCigna are generic (synthetic). Review 2026-10-09: the dental plans page's sign-in link reads Log in to myCigna, now the sign-in label. Re-checked: the payment page still lists online, check and phone for individual & family plans and notes Cigna Dental plans continue for 2027, so payment evidence stays inferred for dental. Public nav added.",
+  "officialDomains": [
+    "cigna.com"
   ],
-  "brand": { "displayName": "Cigna Healthcare Dental", "shortName": "Cigna", "primary": "#00508f", "accent": "#1d5b79", "monogram": "C" },
+  "sources": [
+    {
+      "url": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/",
+      "title": "Health Insurance Plans for Individuals & Families | Cigna Healthcare",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cigna.com/individuals-families/plans-services/dental-insurance-plans/",
+      "title": "Dental Insurance Plans for Individuals & Families | Cigna Healthcare",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Cigna Healthcare Dental",
+    "shortName": "Cigna",
+    "primary": "#00508f",
+    "accent": "#1d5b79",
+    "monogram": "C"
+  },
   "labels": {
     "dashboard": "myCigna",
-    "payBill": "Pay your premium"
+    "payBill": "Pay your premium",
+    "signIn": "Log in to myCigna"
   },
   "nav": {
+    "public": [
+      {
+        "label": "Log in to myCigna",
+        "page": "login"
+      },
+      {
+        "label": "Pay your premium",
+        "helpSlug": "pay-your-premium"
+      },
+      {
+        "label": "Dental plans",
+        "helpSlug": "dental-plans"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
     "account": [
-      { "label": "myCigna", "page": "dashboard" },
-      { "label": "Pay your premium", "page": "pay" },
-      { "label": "Payment history", "page": "history" },
-      { "label": "Automatic payments", "page": "autopay" },
-      { "label": "Contact us", "page": "contact" }
+      {
+        "label": "myCigna",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay your premium",
+        "page": "pay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Automatic payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
     ]
   },
   "capabilities": {
-    "pay_online": { "support": "supported", "evidence": "inferred", "source": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/", "note": "Existing customers log in to myCigna to pay their premium." },
-    "pay_by_phone": { "support": "supported", "evidence": "inferred", "source": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/", "phone": "8779001237" },
-    "pay_by_mail": { "support": "supported", "evidence": "inferred", "source": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/", "note": "Mail a check to the address printed on your bill." }
+    "pay_online": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/",
+      "note": "Existing customers log in to myCigna to pay their premium."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/",
+      "phone": "8779001237"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/",
+      "note": "Mail a check to the address printed on your bill."
+    }
   },
   "billing": {
     "source": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/",
-    "methods": ["bank", "card"]
+    "methods": [
+      "bank",
+      "card"
+    ]
   },
   "help": [
     {
@@ -43,7 +113,12 @@
         "Cigna's individual and family plan pages list three ways to pay: online, by check, or by phone.",
         "Online: if you are renewing or already a customer, log in to myCigna to pay. By check: use the mailing address printed on your bill and follow the instructions there. By phone: call 1 (877) 900-1237 (TTY 711), Monday to Friday 8am to 8pm Eastern."
       ],
-      "steps": ["Log in to myCigna.", "Choose Pay your premium.", "Enter the amount and payment method.", "Review and submit."],
+      "steps": [
+        "Log in to myCigna.",
+        "Choose Pay your premium.",
+        "Enter the amount and payment method.",
+        "Review and submit."
+      ],
       "source": "https://www.cigna.com/individuals-families/plans-services/health-insurance-plans/"
     },
     {
@@ -81,27 +156,109 @@
       {
         "slug": "premium-phone-line",
         "intent": "Using the Cigna help pages, find the phone number to call to pay an individual plan premium by phone. Do not make a payment or change any settings.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8779001237"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "phone", "expected": ["8779001237"] },
-        "tags": ["help", "information", "payments"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8779001237"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8779001237"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
         "evidence": "inferred",
-        "solution": [{ "op": "answer", "text": "1 (877) 900-1237" }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1 (877) 900-1237"
+          }
+        ]
       },
       {
         "slug": "plan-activation-rule",
         "intent": "Using the Cigna help pages, find what has to happen before a newly purchased individual plan becomes active. Do not make a payment or change any settings.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["first premium", "first payment"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["first premium", "first payment"] },
-        "tags": ["help", "information", "billing"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "first premium",
+              "first payment"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "first premium",
+            "first payment"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
         "evidence": "inferred",
-        "solution": [{ "op": "answer", "text": "The first premium payment must be made before the plan is activated." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The first premium payment must be made before the plan is activated."
+          }
+        ]
       }
     ]
   },
   "testExpectations": [
-    { "page": "dashboard", "signedIn": true, "contains": ["myCigna", "Pay your premium"] },
-    { "page": "helpArticle", "slug": "pay-your-premium", "contains": ["1 (877) 900-1237", "log in to myCigna"] },
-    { "page": "helpArticle", "slug": "dental-plans", "contains": "Cigna Dental 3000/100" },
-    { "page": "pay", "signedIn": true, "label": "payBill" }
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "myCigna",
+        "Pay your premium"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-premium",
+      "contains": [
+        "1 (877) 900-1237",
+        "log in to myCigna"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "dental-plans",
+      "contains": "Cigna Dental 3000/100"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "label": "payBill"
+    }
   ]
 }

@@ -5,19 +5,66 @@
   "name": "Duke Energy Carolinas",
   "category": "electric",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public duke-energy.com pages only, read in a browser with the North Carolina location selected (no sign-in). Sign-in uses the profile email (older usernames that match the email also work); password reset sends a 6-digit code to the profile email; passkeys are optional. Whether every sign-in asks for a one-time code is not stated, so MFA stays at the family default. Pay as Guest looks the account up by account number or phone number, then a verify step (fields not shown before submitting); the format models account number + ZIP. Phone payments are same-day via Speedpay at 800-777-9898; Speedpay card fees are described only as a small convenience fee, so no card fee is modelled. Auto Pay is free and drafts the full amount from a bank account on the due date (customers cannot pick the draft day; Pick Your Due Date is a separate program). Installment Plans (no down payment) and Due Date Extensions (1-10 business days, twice a year) are both offered under Payment Assistance; the engine models one arrangement flow. No late-fee rate is stated on the pages read, so none is modelled. labels.autopay is intentionally not set (kubra template renders it as the AutoPay turn-off link text; see FPL dossier notes); nav and help still say 'Auto Pay'.",
-  "officialDomains": ["duke-energy.com"],
-  "sources": [
-    { "url": "https://www.duke-energy.com/home/billing", "title": "Pay Bill - Duke Energy", "fetchedAt": "2026-10-09", "kind": "pay" },
-    { "url": "https://www.duke-energy.com/pay-as-guest", "title": "Pay As a Guest - Duke Energy", "fetchedAt": "2026-10-09", "kind": "pay" },
-    { "url": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan", "title": "Auto Pay - Duke Energy", "fetchedAt": "2026-10-09", "kind": "autopay" },
-    { "url": "https://www.duke-energy.com/home/billing/options/paperless", "title": "Paperless Billing - For Your Home - Duke Energy", "fetchedAt": "2026-10-09", "kind": "other" },
-    { "url": "https://www.duke-energy.com/home/billing/assistance/installment-plans", "title": "Installment Plans - Duke Energy", "fetchedAt": "2026-10-09", "kind": "plans" },
-    { "url": "https://www.duke-energy.com/home/billing/assistance/due-date-extensions", "title": "Due Date Extensions - Duke Energy", "fetchedAt": "2026-10-09", "kind": "plans" },
-    { "url": "https://www.duke-energy.com/start-stop-move/landing", "title": "Start, Stop or Move Service - Duke Energy", "fetchedAt": "2026-10-09", "kind": "cancel" },
-    { "url": "https://www.duke-energy.com/need-help-sign-in", "title": "Help Signing In - Duke Energy", "fetchedAt": "2026-10-09", "kind": "login" }
+  "notes": "Researched from public duke-energy.com pages only, read in a browser with the North Carolina location selected (no sign-in). Sign-in uses the profile email (older usernames that match the email also work); password reset sends a 6-digit code to the profile email; passkeys are optional. Whether every sign-in asks for a one-time code is not stated, so MFA stays at the family default. Pay as Guest looks the account up by account number or phone number, then a verify step (fields not shown before submitting); the format models account number + ZIP. Phone payments are same-day via Speedpay at 800-777-9898; Speedpay card fees are described only as a small convenience fee, so no card fee is modelled. Auto Pay is free and drafts the full amount from a bank account on the due date (customers cannot pick the draft day; Pick Your Due Date is a separate program). Installment Plans (no down payment) and Due Date Extensions (1-10 business days, twice a year) are both offered under Payment Assistance; the engine models one arrangement flow. No late-fee rate is stated on the pages read, so none is modelled. Reviewed 2026-10-09: labels.autopay set to \"Auto Pay\" now that the kubra template uses the label as a noun (\"Turn off Auto Pay\").",
+  "officialDomains": [
+    "duke-energy.com"
   ],
-  "brand": { "shortName": "Duke Energy", "primary": "#00597c", "accent": "#00425c", "monogram": "DE" },
+  "sources": [
+    {
+      "url": "https://www.duke-energy.com/home/billing",
+      "title": "Pay Bill - Duke Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.duke-energy.com/pay-as-guest",
+      "title": "Pay As a Guest - Duke Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan",
+      "title": "Auto Pay - Duke Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.duke-energy.com/home/billing/options/paperless",
+      "title": "Paperless Billing - For Your Home - Duke Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.duke-energy.com/home/billing/assistance/installment-plans",
+      "title": "Installment Plans - Duke Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.duke-energy.com/home/billing/assistance/due-date-extensions",
+      "title": "Due Date Extensions - Duke Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.duke-energy.com/start-stop-move/landing",
+      "title": "Start, Stop or Move Service - Duke Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.duke-energy.com/need-help-sign-in",
+      "title": "Help Signing In - Duke Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Duke Energy",
+    "primary": "#00597c",
+    "accent": "#00425c",
+    "monogram": "DE"
+  },
   "labels": {
     "payBill": "Pay Bill",
     "paperless": "Paperless Billing",
@@ -27,48 +74,135 @@
     "guestPay": "Pay as Guest",
     "arrangement": "Payment Assistance Options",
     "cancel": "Stop My Service",
-    "username": "Email"
+    "username": "Email",
+    "autopay": "Auto Pay"
   },
   "nav": {
     "public": [
-      { "label": "Sign In / Register", "page": "login" },
-      { "label": "Pay as Guest", "page": "guest" },
-      { "label": "Billing & Payment Options", "helpSlug": "pay-your-bill" },
-      { "label": "Start/Stop Service", "helpSlug": "cancel-service" },
-      { "label": "Financial Help", "helpSlug": "payment-assistance" },
-      { "label": "Customer Service", "page": "help" }
+      {
+        "label": "Sign In / Register",
+        "page": "login"
+      },
+      {
+        "label": "Pay as Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Billing & Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Start/Stop Service",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "Financial Help",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
     ],
     "account": [
-      { "label": "My Account", "page": "dashboard" },
-      { "label": "Pay Bill", "page": "pay" },
-      { "label": "Auto Pay", "page": "autopay" },
-      { "label": "Paperless Billing", "page": "paperless" },
-      { "label": "Payment Assistance Options", "page": "arrangement" },
-      { "label": "Stop My Service", "page": "cancel" }
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Assistance Options",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop My Service",
+        "page": "cancel"
+      }
     ]
   },
   "auth": {
     "identifier": "email",
     "loginSteps": 1,
     "socialProviders": [],
-    "guestLookupFields": ["accountNumber", "zip"],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
     "evidence": "documented_official",
     "source": "https://www.duke-energy.com/need-help-sign-in"
   },
   "capabilities": {
-    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://www.duke-energy.com/pay-as-guest", "note": "Pay as Guest finds your account by account number or phone number, then asks you to verify it." },
-    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan", "note": "Auto Pay is free and drafts the full bill from a bank account on the due date; you cannot choose a different draft day." },
-    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing/options/paperless" },
-    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing/assistance/installment-plans" },
-    "cancel_service": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/start-stop-move/landing" },
-    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing", "phone": "8007779898", "note": "Phone payments are one-time, same-day payments through the third-party vendor Speedpay." },
-    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing" }
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.duke-energy.com/pay-as-guest",
+      "note": "Pay as Guest finds your account by account number or phone number, then asks you to verify it."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan",
+      "note": "Auto Pay is free and drafts the full bill from a bank account on the due date; you cannot choose a different draft day."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.duke-energy.com/home/billing/options/paperless"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.duke-energy.com/home/billing/assistance/installment-plans"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.duke-energy.com/start-stop-move/landing"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.duke-energy.com/home/billing",
+      "phone": "8007779898",
+      "note": "Phone payments are one-time, same-day payments through the third-party vendor Speedpay."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.duke-energy.com/home/billing"
+    }
   },
   "billing": {
     "source": "https://www.duke-energy.com/home/billing",
-    "fees": { "bankCents": 0, "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan" },
-    "methods": ["bank", "card"],
-    "autopay": { "policies": ["full"], "days": "due_date", "methodTypes": ["bank"] }
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
   },
   "help": [
     {
@@ -159,37 +293,120 @@
         "slug": "extension-business-days",
         "intent": "Using Duke Energy's help pages, find out the most business days a due date extension can add. Do not request an extension or change any settings.",
         "predicates": [
-          { "type": "no_payment" },
-          { "type": "answer", "kind": "contains", "expected": ["10"] },
-          { "type": "no_unrequested_changes", "allow": [] }
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
         ],
-        "answer": { "kind": "contains", "expected": ["10"] },
-        "tags": ["help", "information", "arrangement"],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "arrangement"
+        ],
         "evidence": "documented_official",
-        "solution": [ { "op": "answer", "text": "Up to 10 business days, twice per year." } ]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 10 business days, twice per year."
+          }
+        ]
       },
       {
         "slug": "autopay-draft-day",
         "intent": "Find out on what day Duke Energy Auto Pay drafts the bill from your bank account and whether you can choose a different day. Do not enroll or change any settings.",
         "predicates": [
-          { "type": "no_payment" },
-          { "type": "answer", "kind": "contains", "expected": ["due date"] },
-          { "type": "no_unrequested_changes", "allow": [] }
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "due date"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
         ],
-        "answer": { "kind": "contains", "expected": ["due date"] },
-        "tags": ["help", "information", "autopay"],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "due date"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
         "evidence": "documented_official",
-        "solution": [ { "op": "answer", "text": "It drafts the full bill on the bill due date; you cannot pick another day (Pick Your Due Date can change the due date)." } ]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "It drafts the full bill on the bill due date; you cannot pick another day (Pick Your Due Date can change the due date)."
+          }
+        ]
       }
     ]
   },
   "testExpectations": [
-    { "page": "home", "label": "guestPay" },
-    { "page": "home", "contains": ["Billing & Payment Options", "Financial Help"] },
-    { "page": "login", "contains": "Email" },
-    { "page": "dashboard", "signedIn": true, "contains": ["Auto Pay", "Payment Assistance Options"] },
-    { "page": "autopay", "signedIn": true, "notContains": ["Debit or credit card"] },
-    { "page": "helpArticle", "slug": "due-date-extension", "contains": "1 to 10 business days" },
-    { "page": "helpArticle", "slug": "autopay", "contains": "due date" }
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Billing & Payment Options",
+        "Financial Help"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Email"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay",
+        "Payment Assistance Options"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date-extension",
+      "contains": "1 to 10 business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "due date"
+    }
   ]
 }

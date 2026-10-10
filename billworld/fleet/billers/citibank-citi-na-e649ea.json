@@ -5,16 +5,27 @@
   "name": "Citibank (Citi), N.A.",
   "category": "banks",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public citi.com pages only (no sign-in). The mock bill is a Citi Personal Loan. Citi publishes: no late fees, no prepayment penalty, no origination fees; a 0.25% APR discount only for enrolling in automatic payments at origination; automatic payments are monthly withdrawals from a qualifying checking, savings or money market account; one-time payments in any amount must satisfy the monthly statement balance; principal-only payments are not allowed (not enforceable in the engine). Loan servicing phone 1-800-685-0935. Online statements and Online Bill Payment pages render only client-side (text not retrievable), so statement retention and bill-pay details come from the catalog record (24 months) and are kept out of help text. Sign-in field is User ID (citi.com login page); MFA channel not documented on fetched U.S. pages, kept at sms (inferred). Guest pay not found (inferred). Late fee set to $0 per the published no-late-fee policy.",
+  "notes": "Researched from public citi.com pages only (no sign-in). The mock bill is a Citi Personal Loan. Citi publishes: no late fees, no prepayment penalty, no origination fees; a 0.25% APR discount only for enrolling in automatic payments at origination; automatic payments are monthly withdrawals from a qualifying checking, savings or money market account; one-time payments in any amount must satisfy the monthly statement balance; principal-only payments are not allowed (not enforceable in the engine). Loan servicing phone 1-800-685-0935. Online statements and Online Bill Payment pages render only client-side (text not retrievable), so statement retention and bill-pay details come from the catalog record (24 months) and are kept out of help text. Sign-on page (citi.com/login) shows User ID, Password, Remember me, Sign On, Register / Activate, Forgot User ID or Password, plus passwordless QR sign-on through the Citi Mobile app; MFA channel not documented on fetched U.S. pages, kept at sms (inferred). Guest pay not found (inferred). Late fee set to $0 per the published no-late-fee policy. Reviewed 2026-10-09: register label corrected to Register / Activate and sign-on help added from the public sign-on page; fee, autopay-discount, principal-only and default-APR facts re-verified on citi.com/personal-loans. Footer/service phone set to the loan servicing line (contact.phone). Integrated 2026-10-10: labels.accountName \"Personal Loan\" (pages no longer say \"Consumer Loan\").",
   "officialDomains": [
     "citi.com"
   ],
+  "contact": {
+    "phone": "1-800-685-0935",
+    "source": "https://www.citi.com/personal-loans",
+    "evidence": "documented_official"
+  },
   "sources": [
     {
       "url": "https://www.citi.com/personal-loans",
       "title": "Personal Loans | Citi",
       "fetchedAt": "2026-10-09",
       "kind": "fees"
+    },
+    {
+      "url": "https://www.citi.com/login",
+      "title": "Sign On | Citi.com",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
     }
   ],
   "brand": {
@@ -32,8 +43,10 @@
     "signIn": "Sign On",
     "signOut": "Sign Off",
     "username": "User ID",
-    "register": "Register for Online Access",
-    "help": "Help & Support"
+    "register": "Register / Activate",
+    "help": "Help & Support",
+    "forgot": "Forgot User ID or Password",
+    "accountName": "Personal Loan"
   },
   "nav": {
     "public": [
@@ -42,7 +55,7 @@
         "page": "login"
       },
       {
-        "label": "Register for Online Access",
+        "label": "Register / Activate",
         "page": "register"
       },
       {
@@ -86,7 +99,7 @@
     "loginSteps": 1,
     "mfa": "sms",
     "evidence": "inferred",
-    "source": "https://www.citi.com/personal-loans"
+    "source": "https://www.citi.com/login"
   },
   "capabilities": {
     "pay_online": {
@@ -164,6 +177,16 @@
       ],
       "source": "https://www.citi.com/personal-loans",
       "mode": "replace"
+    },
+    {
+      "slug": "sign-on",
+      "title": "Signing on to Citi Online",
+      "topic": "account",
+      "paragraphs": [
+        "Sign on with your User ID and password. New to online access? Choose Register / Activate. Locked out? Use Forgot User ID or Password.",
+        "Passwordless sign-on: scan the QR code on the sign-on page with your phone camera or the Citi Mobile app. It works for customers enrolled in Face ID, Touch ID, biometrics or a 6-digit PIN."
+      ],
+      "source": "https://www.citi.com/login"
     }
   ],
   "tasks": {
@@ -285,6 +308,10 @@
       "page": "helpArticle",
       "slug": "contact-us",
       "contains": "1-800-685-0935"
+    },
+    {
+      "page": "home",
+      "contains": "Register / Activate"
     }
   ]
 }

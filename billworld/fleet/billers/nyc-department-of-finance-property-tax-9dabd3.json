@@ -1,0 +1,455 @@
+{
+  "id": "nyc-department-of-finance-property-tax-9dabd3",
+  "version": 1,
+  "status": "dedicated",
+  "name": "NYC Department of Finance (Property Tax)",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-09",
+  "notes": "Added by the property-tax reviewer (2026-10-09) in place of Travis County: NYC Department of Finance bills property tax for all five boroughs (about 8.5M residents), the largest property-tax collector in the U.S. Researched from public nyc.gov, CityPay and NYCePay pages only (no sign-in, no BBL search). Two online systems: CityPay takes one-time payments without an account by borough-block-lot (BBL) or address, eCheck free or card 2% (non-refundable); NYCePay (First Data, linked from nyc.gov as the property-tax EFT site) is the account: Username + Password, an emailed verification code at every log in (MFA instructions), Forgot username, Forgot/Update Expired Password, Register; it pays from saved bank accounts only (no cards), schedules pending payments (cancel up to the day before) and runs autopay monthly (first business day, email 10 days ahead), quarterly/semi-annual (Auto Debit) or annually (July 1 with the early-payment discount); cancel autopay on Edit a Property and cancel pending payments too; $20 fee for a returned payment. The mock signed-in site follows NYCePay, so methods are bank only, while guest (CityPay) takes bank or card. Payment plans are applied for online (Property Tax Payment Agreement Application): standard plan up to 10 years, monthly or quarterly, no down payment required; PT AID and a 2.5% reduced-interest plan; the template plan form (3/6/12 months) does not show these terms (help has them). No phone payment is listed (online, mail, business center by appointment). Bills are mailed and posted online; there is no paperless-bill enrollment on any page read, only payment-credited notifications, so paperless is unsupported (inferred). Late interest compounds daily at 6%/9%/16% by assessed value (FY2027) and is not a one-time fee, so no lateFee is set. Early-payment discounts (0.50%/0.33%/0.17%) cannot be expressed (help only).",
+  "officialDomains": [
+    "nyc.gov",
+    "govone.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.nyc.gov/site/finance/property/property-bills-and-payments.page",
+      "title": "Property tax bills and payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.nyc.gov/site/finance/property/property-due-dates.page",
+      "title": "Due Dates",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.nyc.gov/site/finance/pay-now/pay.page",
+      "title": "Payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://a836-citypay.nyc.gov/citypay/PropertyTax?stage=procurement",
+      "title": "CityPay - NYC Department of Finance Property Tax and Charges",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://a836-citypay.nyc.gov/assets/citypay-faq.html",
+      "title": "CityPay frequently asked questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.nyc.gov/site/finance/property/property-tax-automatic-payments.page",
+      "title": "Property tax automatic payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.nyc.gov/site/finance/property/monthly-property-tax-payments.page",
+      "title": "Monthly advance property tax payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.govone.com/nycefile/Account/Logon",
+      "title": "Welcome to NYCePay",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.govone.com/nycefile/Help/FAQ",
+      "title": "NYCePay Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.nyc.gov/site/finance/property/property-payment-plans.page",
+      "title": "Payment plans",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.nyc.gov/site/finance/property/property-late-payments.page",
+      "title": "Late payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "NYC Department of Finance",
+    "shortName": "NYC Department of Finance",
+    "primary": "#00539a",
+    "accent": "#7a3b00",
+    "monogram": "NY"
+  },
+  "labels": {
+    "guestPay": "Property Taxes and Charges",
+    "payBill": "Make a Payment",
+    "dashboard": "My Properties",
+    "history": "Property History",
+    "autopay": "Autopay",
+    "wallet": "Bank Account",
+    "statements": "Property tax bills",
+    "arrangement": "Payment plans",
+    "signIn": "Log In",
+    "register": "Register",
+    "forgot": "Forgot/Update Expired Password",
+    "username": "Username",
+    "password": "Password",
+    "help": "FAQs",
+    "contact": "Contact Us",
+    "profile": "User Profile"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Property Taxes and Charges",
+        "page": "guest"
+      },
+      {
+        "label": "Due Dates",
+        "helpSlug": "due-dates"
+      },
+      {
+        "label": "Property tax automatic payments",
+        "helpSlug": "autopay-nycepay"
+      },
+      {
+        "label": "Payment plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Property History",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Bank Account",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment plans",
+        "page": "arrangement"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "email",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "source": "https://www.govone.com/nycefile/Account/Logon",
+    "evidence": "observed_public"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://a836-citypay.nyc.gov/citypay/PropertyTax?stage=procurement",
+      "note": "Pay on CityPay without an account by borough-block-lot (BBL) or property address: eCheck has no fee; credit and debit cards cost 2% of the payment."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/finance/property/property-tax-automatic-payments.page",
+      "note": "Enroll on NYCePay from a bank account: monthly (first business day), quarterly or semi-annual (Auto Debit), or annual on July 1 with the early-payment discount. Past-due taxes are not included."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.govone.com/nycefile/Help/FAQ",
+      "note": "Cancel autopay on the Edit a Property page, and also cancel any pending payments."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.govone.com/nycefile/Help/FAQ",
+      "note": "Pending payments can be cancelled up to the day before the payment date."
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.nyc.gov/site/finance/property/property-bills-and-payments.page",
+      "note": "Property tax bills are mailed and posted on the Department of Finance website about a month before each due date; there is no paperless-bill sign-up. You can register for notifications when a payment is credited.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/finance/property/property-payment-plans.page",
+      "note": "Apply online with the Property Tax Payment Agreement Application: the standard plan runs up to 10 years, paid monthly or quarterly, with no required down payment. Interest keeps accruing, and missing installments and new charges for six months defaults the plan."
+    },
+    "pay_by_phone": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.nyc.gov/site/finance/pay-now/pay.page",
+      "note": "Property taxes are paid online (CityPay or NYCePay), by mail, or at a DOF business center by appointment; no phone payment line is listed.",
+      "channel": "none"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/finance/pay-now/pay.page",
+      "note": "Mail a check payable to NYC Department of Finance, with the BBL and tax period, to P.O. Box 5536, Binghamton, NY 13902-5536."
+    }
+  },
+  "billing": {
+    "source": "https://a836-citypay.nyc.gov/assets/citypay-faq.html",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2,
+      "evidence": "documented_official",
+      "source": "https://a836-citypay.nyc.gov/assets/citypay-faq.html",
+      "notes": [
+        "Returned NYCePay payment (insufficient funds, wrong account, stopped): $20"
+      ]
+    },
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay property taxes",
+      "topic": "payments",
+      "source": "https://www.nyc.gov/site/finance/pay-now/pay.page",
+      "paragraphs": [
+        "Pay online at CityPay with no account: search by borough-block-lot (BBL) or property address. An eCheck has no fee. Visa, MasterCard, Discover and American Express credit cards, and debit cards with a Visa or MasterCard logo, cost 2% of the payment; the fee is not refundable and shows as a separate charge. A confirmation email follows, and the payment can take two or more business days to show on the site.",
+        "With an NYCePay account you can pay from a saved bank account, schedule payments ahead and set up autopay. Owners whose combined property tax is over $300,000 must pay electronically.",
+        "By mail, send a check payable to NYC Department of Finance with the BBL and tax period to P.O. Box 5536, Binghamton, NY 13902-5536; do not send cash. You can also pay at a DOF business center by appointment."
+      ]
+    },
+    {
+      "slug": "due-dates",
+      "title": "Due dates, grace periods and discounts",
+      "topic": "billing",
+      "source": "https://www.nyc.gov/site/finance/property/property-due-dates.page",
+      "paragraphs": [
+        "The property tax year runs July 1 to June 30. Properties assessed at $250,000 or less pay quarterly, on July 1, October 1, January 1 and April 1, with an interest-free grace period to the 15th of that month. Properties assessed above $250,000 pay twice a year, on July 1 and January 1. A due date on a weekend or federal holiday moves to the next business day.",
+        "Paying the rest of the year early earns a discount: 0.50% if the full year is paid by the July date, 0.33% on the last three quarters paid in October, and 0.17% on the last six months paid in January. Late taxes accrue interest from the original due date."
+      ]
+    },
+    {
+      "slug": "autopay-nycepay",
+      "title": "Autopay and scheduled payments with NYCePay",
+      "topic": "autopay",
+      "source": "https://www.govone.com/nycefile/Help/FAQ",
+      "paragraphs": [
+        "Register on NYCePay, add your property and bank account, and choose an autopay option: Monthly Pay (deducted on the first business day of each month, which pays upcoming taxes ahead of the due date), Auto Debit for quarterly or semi-annual payments on each due date, or Annual Pay on July 1 with the early-payment discount. You get an email 10 days before each monthly deduction. Autopay pays the upcoming bill, not past-due charges.",
+        "Payments scheduled ahead stay pending until they are deducted and can be cancelled up to the day before the payment date (Payment > Property History). To stop autopay, edit the property on the Edit a Property page and also cancel any pending payments. A payment your bank returns costs $20."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "source": "https://www.nyc.gov/site/finance/property/property-payment-plans.page",
+      "paragraphs": [
+        "Three plans let you pay property taxes over time. The standard plan suits most owners: apply online with the Property Tax Payment Agreement Application and proof of identity and of your relationship to the property, then pay monthly or quarterly for up to 10 years. No down payment is required, but a larger one lowers the installments.",
+        "The Property Tax and Interest Deferral (PT AID) program lets eligible homeowners defer taxes or pay a share based on income. Owners of a class one home assessed at $250,000 or less, lived in for a year, with household income up to $200,000 may get a 2.5% reduced-interest plan.",
+        "Interest keeps accruing, so a plan costs more in total. You must pay both the installment and new charges; six months without both puts the plan in default, opens the property to collection and lien sale, and bars a new plan for five years in most cases."
+      ]
+    },
+    {
+      "slug": "late-interest",
+      "title": "Late payment interest",
+      "topic": "billing",
+      "source": "https://www.nyc.gov/site/finance/property/property-late-payments.page",
+      "paragraphs": [
+        "A payment not received or postmarked by its due date is late, and interest compounds daily. For July 1, 2026 through June 30, 2027 the yearly rate is 6% for properties assessed at $250,000 or less, 9% above $250,000 up to $450,000, and 16% above $450,000."
+      ]
+    },
+    {
+      "slug": "nycepay-log-in",
+      "title": "Logging in to NYCePay",
+      "topic": "account",
+      "source": "https://www.govone.com/nycefile/Help/FAQ",
+      "paragraphs": [
+        "NYCePay uses a username and password. Each time you log in or register, an email with a verification code is sent; enter it to continue. Use Forgot username to get your username by email, or Forgot/Update Expired Password to answer your security question and set a new password. Sessions end after 20 minutes without activity."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-rate",
+        "intent": "Using the NYC Department of Finance website help pages, find the fee for paying property taxes online by credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2%",
+              "2 percent",
+              "two percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2%",
+            "2 percent",
+            "two percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments on CityPay cost 2% of the payment; eCheck is free."
+          }
+        ]
+      },
+      {
+        "slug": "early-payment-discount",
+        "intent": "Using the NYC Department of Finance website help pages, find the discount for paying the full year's property taxes by the July due date. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "0.5%",
+              "0.50%",
+              "0.5 percent",
+              "half a percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "0.5%",
+            "0.50%",
+            "0.5 percent",
+            "half a percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Paying the full year by the July due date earns a 0.50% discount."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Due Dates",
+        "Payment plans"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Forgot/Update Expired Password"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Property History",
+        "Bank Account"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2%",
+        "P.O. Box 5536"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay-nycepay",
+      "contains": [
+        "Edit a Property",
+        "$20"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": "10 years"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-interest",
+      "contains": "16%"
+    }
+  ]
+}

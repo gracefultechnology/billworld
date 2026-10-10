@@ -4,14 +4,32 @@
   "status": "dedicated",
   "name": "PenFed Credit Union",
   "category": "credit-unions",
-  "reviewedAt": "2026-10-09",
+  "reviewedAt": "2026-10-10",
   "notes": "Researched from public penfed.org pages only (no sign-in; penfed.org refuses scripted fetches, pages were read in a normal browser). The bill is a PenFed loan or credit card payment made with Make a Payment in PenFed Online or the mobile app (same-day processing). Funding comes from a PenFed account or an external account linked under Transfers > Link External Account; no public page documents paying a loan with a debit card, so online methods are bank only (inferred). Credit card Monthly autopay offers Minimum Payment, Last Statement Balance or a Fixed Amount; the loan mock's autopay form only offers the regular amount or a fixed amount, so the card choices are described in help only. Personal loan payments can be monthly or biweekly when repaid from a PenFed account. Late fee on personal loans: $29 when a payment is more than 5 days late (not modelled as an engine late fee because it is product-specific). Paperless is chosen on the Go Paperless tab. Forgotten username or password: 'Set up your online account or get help signing in' on the login page (email with username / online reset). Login MFA is not documented publicly, so the family default stays. Account closure is through a Member Service Representative (not modelled for a loan). No public no-login payment page was found.",
-  "officialDomains": ["penfed.org"],
-  "sources": [
-    { "url": "https://www.penfed.org/credit-cards/resource-center/payments", "title": "Making a Credit Card Payment Online | PenFed", "fetchedAt": "2026-10-09", "kind": "pay" },
-    { "url": "https://www.penfed.org/frequently-asked-questions/personal-loans", "title": "Frequently Asked Questions (FAQs) | PenFed", "fetchedAt": "2026-10-09", "kind": "help" }
+  "officialDomains": [
+    "penfed.org"
   ],
-  "brand": { "shortName": "PenFed", "displayName": "PenFed Credit Union", "primary": "#003a70", "accent": "#2a6b2f", "monogram": "PF" },
+  "sources": [
+    {
+      "url": "https://www.penfed.org/credit-cards/resource-center/payments",
+      "title": "Making a Credit Card Payment Online | PenFed",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.penfed.org/frequently-asked-questions",
+      "title": "Frequently Asked Questions (FAQs) | PenFed",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "PenFed",
+    "displayName": "PenFed Credit Union",
+    "primary": "#003a70",
+    "accent": "#2a6b2f",
+    "monogram": "PF"
+  },
   "labels": {
     "payBill": "Make a Payment",
     "autopay": "Monthly autopay",
@@ -26,37 +44,116 @@
   },
   "nav": {
     "public": [
-      { "label": "Log In", "page": "login" },
-      { "label": "Set up your online account", "page": "register" },
-      { "label": "Make a credit card payment", "helpSlug": "pay-your-bill" },
-      { "label": "FAQs", "page": "help" }
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Set up your online account",
+        "page": "register"
+      },
+      {
+        "label": "Make a credit card payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
     ],
     "account": [
-      { "label": "My Accounts", "page": "dashboard" },
-      { "label": "Make a Payment", "page": "pay" },
-      { "label": "Monthly autopay", "page": "autopay" },
-      { "label": "Manage Payments", "page": "history" },
-      { "label": "Transfers", "page": "wallet" },
-      { "label": "Go Paperless", "page": "paperless" },
-      { "label": "Statements", "page": "statements" }
+      {
+        "label": "My Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Monthly autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Manage Payments",
+        "page": "history"
+      },
+      {
+        "label": "Transfers",
+        "page": "wallet"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      }
     ]
   },
   "auth": {
     "identifier": "username",
     "evidence": "documented_official",
-    "source": "https://www.penfed.org/frequently-asked-questions/personal-loans"
+    "source": "https://www.penfed.org/frequently-asked-questions"
   },
   "capabilities": {
-    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.penfed.org/credit-cards/resource-center/payments", "note": "Make a Payment in PenFed Online or the app processes the same day." },
-    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.penfed.org/credit-cards/resource-center/payments", "note": "Choose Monthly autopay as the frequency on Make a Payment." },
-    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.penfed.org/credit-cards/resource-center/payments" },
-    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.penfed.org/frequently-asked-questions/personal-loans" },
-    "password_reset": { "support": "supported", "evidence": "documented_official", "source": "https://www.penfed.org/frequently-asked-questions/personal-loans" },
-    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.penfed.org/frequently-asked-questions/personal-loans" }
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.penfed.org/credit-cards/resource-center/payments",
+      "note": "Make a Payment in PenFed Online or the app processes the same day."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.penfed.org/credit-cards/resource-center/payments",
+      "note": "Choose Monthly autopay as the frequency on Make a Payment."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.penfed.org/credit-cards/resource-center/payments"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.penfed.org/frequently-asked-questions"
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.penfed.org/frequently-asked-questions"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.penfed.org/frequently-asked-questions"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.penfed.org/frequently-asked-questions",
+      "phone": "1-800-247-5626",
+      "note": "PenFed payments are made after logging in to PenFed Online or the app, or by mailed check; there is no pay-without-logging-in page. Call 1-800-247-5626 for help."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.penfed.org/frequently-asked-questions",
+      "phone": "1-800-247-5626",
+      "note": "There is no online repayment-plan request for PenFed loans. Call a Member Service Representative at 1-800-247-5626 to discuss options."
+    }
   },
   "billing": {
-    "methods": ["bank"],
-    "autopay": { "methodTypes": ["bank"] },
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
     "source": "https://www.penfed.org/credit-cards/resource-center/payments"
   },
   "help": [
@@ -65,10 +162,14 @@
       "title": "Make a payment online",
       "paragraphs": [
         "For fast, same-day processing, log in to PenFed Online or the PenFed mobile app, open the credit card or loan you want to pay and choose Make a Payment, then follow the prompts.",
-        "To pay from another bank, first add that account: open Transfers from the main menu, choose Link External Account and follow the on-screen steps. Linked accounts then appear in the pay-from dropdown.",
-        "You can also mail a check with your account number to PenFed's Omaha loan payment post office box; do not send cash."
+        "To pay from another bank, first add that account: open Transfers from the main menu, choose Link External Account and follow the on-screen steps. Linked accounts then appear in the pay-from dropdown."
       ],
-      "steps": ["Log in to PenFed Online or the app.", "Open the card or loan.", "Select Make a Payment.", "Pick the pay-from account, amount and date, then submit."],
+      "steps": [
+        "Log in to PenFed Online or the app.",
+        "Open the card or loan.",
+        "Select Make a Payment.",
+        "Pick the pay-from account, amount and date, then submit."
+      ],
       "source": "https://www.penfed.org/credit-cards/resource-center/payments"
     },
     {
@@ -78,7 +179,12 @@
         "On Make a Payment, pick Monthly autopay under Frequency and then choose what to pay under Payment Amount. Credit cards offer three choices: the Minimum Payment, the Last Statement Balance, or a Fixed Amount you set yourself (it can be below the minimum).",
         "Extra one-time payments do not cancel autopay. If your fixed amount is less than the minimum due, make an additional payment so you are not charged a late fee."
       ],
-      "steps": ["Log in.", "Click Make a Payment on the account.", "Choose Monthly autopay under Frequency.", "Choose the amount under Payment Amount and confirm."],
+      "steps": [
+        "Log in.",
+        "Click Make a Payment on the account.",
+        "Choose Monthly autopay under Frequency.",
+        "Choose the amount under Payment Amount and confirm."
+      ],
       "source": "https://www.penfed.org/credit-cards/resource-center/payments"
     },
     {
@@ -97,7 +203,7 @@
       "paragraphs": [
         "Log in to PenFed Online and select the Go Paperless tab at the top of the page. You can opt in to all electronic messages or pick specific ones: consolidated account statements, credit card bills and statements, other PenFed communications, or IRS tax statements."
       ],
-      "source": "https://www.penfed.org/frequently-asked-questions/personal-loans"
+      "source": "https://www.penfed.org/frequently-asked-questions"
     },
     {
       "slug": "reset-password",
@@ -105,7 +211,7 @@
       "paragraphs": [
         "On the login page choose the option to set up your online account or get help signing in. Follow the instructions to get your username by email or to reset your password online."
       ],
-      "source": "https://www.penfed.org/frequently-asked-questions/personal-loans"
+      "source": "https://www.penfed.org/frequently-asked-questions"
     },
     {
       "slug": "late-fee-and-payoff",
@@ -115,7 +221,16 @@
         "A personal loan payment that is more than 5 days late is charged a $29 late fee. If your PenFed account is your repayment account, you can customize your payment online and pay monthly or every two weeks.",
         "For an auto loan payoff amount, call 1-800-247-5626 or request a quote online, choosing a payoff date at least 15 days in the future to allow for mail and processing. An auto loan can be paid off early at any time without a penalty, at a branch, by check, by ACH or by wire."
       ],
-      "source": "https://www.penfed.org/frequently-asked-questions/personal-loans"
+      "source": "https://www.penfed.org/frequently-asked-questions"
+    },
+    {
+      "slug": "pay-by-mail",
+      "title": "Pay by mail",
+      "topic": "billing",
+      "paragraphs": [
+        "Paying online is faster and free, but you can mail a check. Personal loan payments go to PenFed's Omaha loan payment post office box; credit card payments go to a separate Omaha box. Write the account number on the check's memo line, include the payment coupon and allow five to seven business days for mail handling. Do not send cash."
+      ],
+      "source": "https://www.penfed.org/frequently-asked-questions"
     }
   ],
   "tasks": {
@@ -123,29 +238,123 @@
       {
         "slug": "personal-loan-late-fee",
         "intent": "Using PenFed's help pages, find the late fee PenFed charges on a personal loan and how many days late a payment must be before it applies. Do not make a payment or change any settings.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["$29", "29"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["$29", "29"] },
-        "tags": ["help", "information", "fees"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$29",
+              "29"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$29",
+            "29"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
         "evidence": "documented_official",
-        "solution": [{ "op": "answer", "text": "A $29 late fee once a payment is more than 5 days late." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $29 late fee once a payment is more than 5 days late."
+          }
+        ]
       },
       {
         "slug": "payoff-quote-lead-time",
         "intent": "You want to pay off your PenFed auto loan. Using PenFed's help pages, find how far in the future the payoff date on a payoff quote should be. Do not make a payment or change any settings.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["15 days", "15"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["15 days", "15"] },
-        "tags": ["help", "information", "payoff"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "15 days",
+              "15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "15 days",
+            "15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payoff"
+        ],
         "evidence": "documented_official",
-        "solution": [{ "op": "answer", "text": "Pick a payoff date at least 15 days in the future." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Pick a payoff date at least 15 days in the future."
+          }
+        ]
       }
     ]
   },
   "testExpectations": [
-    { "page": "home", "contains": ["Log In", "Set up your online account"] },
-    { "page": "login", "contains": "Username" },
-    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "Monthly autopay"] },
-    { "page": "paperless", "signedIn": true, "label": "paperless" },
-    { "page": "helpArticle", "slug": "autopay", "contains": "Last Statement Balance" },
-    { "page": "helpArticle", "slug": "late-fee-and-payoff", "contains": "$29" }
-  ]
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Set up your online account"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Monthly autopay"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Last Statement Balance"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-fee-and-payoff",
+      "contains": "$29"
+    }
+  ],
+  "contact": {
+    "phone": "1-800-247-5626",
+    "source": "https://www.penfed.org/frequently-asked-questions"
+  }
 }

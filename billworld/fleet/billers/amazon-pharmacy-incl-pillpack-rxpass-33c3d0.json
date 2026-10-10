@@ -5,15 +5,43 @@
   "name": "Amazon Pharmacy (incl. PillPack, RxPass)",
   "category": "pharmacy-dme",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public pharmacy.amazon.com pages (Pricing, RxPass) and RxPass help/terms text seen in search extracts of amazon.com help (the amazon.com help pages timed out for direct fetch). Prescription orders are paid at checkout with major credit/debit cards, the Amazon Store Card or Amazon Rewards Visa; FSA/HSA funds work for eligible items; gift cards, checking accounts and Shop with Points are NOT accepted (bank payment in the mock is a simulation contract required by the dossier format). The recurring charge is RxPass: $5/month for eligible generics, Prime members only, one person per Amazon account, not for Medicaid/CHIP enrollees, not shipped to CA or WA, first month prorated then charged on the 1st, HSA/FSA not allowed for the fee. RxPass is cancelled online from Pharmacy Settings (Subscription tab) or by calling customer service; cancelling within 30 days refunds 100%, later the cancellation takes effect at month end; cancelling Prime also cancels RxPass. Modelled: cancel service = Cancel RxPass; RxPass's own monthly charge is the AutoPay-like recurring payment but AutoPay itself is marked unsupported for prescription orders. No payment plans or paper bills. Sign-in identifier is the Amazon email (inferred; Amazon also accepts mobile numbers).",
-  "officialDomains": ["amazon.com"],
-  "sources": [
-    { "url": "https://pharmacy.amazon.com/pricing", "title": "Amazon Pharmacy: Pricing", "fetchedAt": "2026-10-09", "kind": "pay" },
-    { "url": "https://pharmacy.amazon.com/rxpass", "title": "Amazon Pharmacy: RxPass", "fetchedAt": "2026-10-09", "kind": "plans" },
-    { "url": "https://pharmacy.amazon.com/rxpass/terms", "title": "Amazon Pharmacy: RxPass Terms of Use", "fetchedAt": "2026-10-09", "kind": "cancel" },
-    { "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=TOvcDkXewHROYvyIR8", "title": "RxPass and Amazon Pharmacy - Amazon Customer Service", "fetchedAt": "2026-10-09", "kind": "cancel" }
+  "notes": "Researched from public pharmacy.amazon.com pages (Pricing, RxPass) and RxPass help/terms text seen in search extracts of amazon.com help (the amazon.com help pages timed out for direct fetch). Prescription orders are paid at checkout with major credit/debit cards, the Amazon Store Card or Amazon Rewards Visa; FSA/HSA funds work for eligible items; gift cards, checking accounts and Shop with Points are NOT accepted (billing.methods card). The recurring charge is RxPass: $5/month for eligible generics, Prime members only, one person per Amazon account, not for Medicaid/CHIP enrollees, not shipped to CA or WA (the RxPass terms also list Texas as unavailable), first month prorated then charged on the 1st, HSA/FSA not allowed for the fee. RxPass is cancelled online from Pharmacy Settings (Subscription tab) or by calling customer service; cancelling within 30 days refunds 100%, later the cancellation takes effect at month end; cancelling Prime also cancels RxPass. Modelled: cancel service = Cancel RxPass; RxPass's own monthly charge is the AutoPay-like recurring payment but AutoPay itself is marked unsupported for prescription orders. No payment plans or paper bills. Sign-in identifier is the Amazon email (inferred; Amazon also accepts mobile numbers). Reviewer: the family cancel flow offers a 50%-off retention discount that RxPass does not publish, so the accept-retention task is suppressed (the offer step itself is template-owned).",
+  "officialDomains": [
+    "amazon.com"
   ],
-  "brand": { "displayName": "Amazon Pharmacy", "shortName": "Amazon Pharmacy", "primary": "#232f3e", "accent": "#005dab", "monogram": "AP" },
+  "sources": [
+    {
+      "url": "https://pharmacy.amazon.com/pricing",
+      "title": "Amazon Pharmacy: Pricing",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://pharmacy.amazon.com/rxpass",
+      "title": "Amazon Pharmacy: RxPass",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://pharmacy.amazon.com/rxpass/terms",
+      "title": "Amazon Pharmacy: RxPass Terms of Use",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=TOvcDkXewHROYvyIR8",
+      "title": "RxPass and Amazon Pharmacy - Amazon Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Amazon Pharmacy",
+    "shortName": "Amazon Pharmacy",
+    "primary": "#232f3e",
+    "accent": "#005dab",
+    "monogram": "AP"
+  },
   "labels": {
     "signIn": "Sign in",
     "register": "Create your Amazon account",
@@ -27,18 +55,48 @@
   },
   "nav": {
     "public": [
-      { "label": "Sign in", "page": "login" },
-      { "label": "Create your Amazon account", "page": "register" },
-      { "label": "RxPass", "helpSlug": "rxpass" },
-      { "label": "Pricing, payments & insurance", "page": "help" }
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Create your Amazon account",
+        "page": "register"
+      },
+      {
+        "label": "RxPass",
+        "helpSlug": "rxpass"
+      },
+      {
+        "label": "Pricing, payments & insurance",
+        "page": "help"
+      }
     ],
     "account": [
-      { "label": "Your Orders", "page": "history" },
-      { "label": "Checkout", "page": "pay" },
-      { "label": "Payment methods", "page": "wallet" },
-      { "label": "Pharmacy Settings", "page": "profile" },
-      { "label": "Cancel RxPass", "page": "cancel" },
-      { "label": "Account home", "page": "dashboard" }
+      {
+        "label": "Your Orders",
+        "page": "history"
+      },
+      {
+        "label": "Checkout",
+        "page": "pay"
+      },
+      {
+        "label": "Payment methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Pharmacy Settings",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel RxPass",
+        "page": "cancel"
+      },
+      {
+        "label": "Account home",
+        "page": "dashboard"
+      }
     ]
   },
   "auth": {
@@ -48,18 +106,63 @@
     "source": "https://pharmacy.amazon.com/pricing"
   },
   "capabilities": {
-    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://pharmacy.amazon.com/pricing" },
-    "cancel_service": { "support": "supported", "evidence": "documented_official", "source": "https://pharmacy.amazon.com/rxpass/terms" },
-    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://pharmacy.amazon.com/pricing", "note": "Amazon Pharmacy orders are paid at checkout in your Amazon account; there is no guest payment. Help: 855-206-3605.", "channel": "phone", "phone": "855-206-3605" },
-    "autopay": { "support": "unsupported", "evidence": "inferred", "source": "https://pharmacy.amazon.com/pricing", "note": "Prescription orders are charged at checkout, so there is no AutoPay to set up. Only the RxPass subscription renews and charges automatically on the 1st of each month.", "channel": "none" },
-    "autopay_cancel": { "support": "not_applicable", "evidence": "inferred", "source": "https://pharmacy.amazon.com/pricing" },
-    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "source": "https://pharmacy.amazon.com/pricing", "note": "Amazon Pharmacy does not offer payment plans. Compare your insurance copay with Prime Rx savings at checkout.", "channel": "none" },
-    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://pharmacy.amazon.com/pricing", "note": "Amazon Pharmacy does not mail bills; receipts and charges are in Your Orders.", "channel": "none" },
-    "scheduled_payment": { "support": "unsupported", "evidence": "inferred", "source": "https://pharmacy.amazon.com/pricing", "note": "Orders are charged at checkout; payments cannot be scheduled for later.", "channel": "none" }
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://pharmacy.amazon.com/pricing"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://pharmacy.amazon.com/rxpass/terms"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://pharmacy.amazon.com/pricing",
+      "note": "Amazon Pharmacy orders are paid at checkout in your Amazon account; there is no guest payment. Help: 855-206-3605.",
+      "channel": "phone",
+      "phone": "855-206-3605"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://pharmacy.amazon.com/pricing",
+      "note": "Prescription orders are charged at checkout, so there is no AutoPay to set up. Only the RxPass subscription renews and charges automatically on the 1st of each month.",
+      "channel": "none"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://pharmacy.amazon.com/pricing"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://pharmacy.amazon.com/pricing",
+      "note": "Amazon Pharmacy does not offer payment plans. Compare your insurance copay with Prime Rx savings at checkout.",
+      "channel": "none"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://pharmacy.amazon.com/pricing",
+      "note": "Amazon Pharmacy does not mail bills; receipts and charges are in Your Orders.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://pharmacy.amazon.com/pricing",
+      "note": "Orders are charged at checkout; payments cannot be scheduled for later.",
+      "channel": "none"
+    }
   },
   "billing": {
     "source": "https://pharmacy.amazon.com/pricing",
-    "methods": ["bank", "card"]
+    "methods": [
+      "card"
+    ]
   },
   "help": [
     {
@@ -77,7 +180,7 @@
       "title": "RxPass",
       "topic": "plans",
       "paragraphs": [
-        "RxPass is a Prime-only subscription: $5 a month in total for all your eligible generic medicines, refilled as often as needed. It is not insurance. Only one person per Amazon account can enroll, people with state-funded coverage such as Medicaid or CHIP are not eligible, and RxPass orders cannot ship to California or Washington.",
+        "RxPass is a Prime-only subscription: $5 a month in total for all your eligible generic medicines, refilled as often as needed. It is not insurance. Only one person per Amazon account can enroll, people with state-funded coverage such as Medicaid or CHIP are not eligible, and RxPass medicines cannot be sent to California or Washington (the RxPass terms also list Texas as not available).",
         "Your first month is prorated; after that the fee is charged to your selected payment method on the 1st of each month. HSA and FSA funds cannot pay the RxPass fee."
       ],
       "source": "https://pharmacy.amazon.com/rxpass"
@@ -90,7 +193,11 @@
         "Cancel any time in Pharmacy Settings on the Subscription tab, or call Amazon Pharmacy customer service. If you cancel within the first 30 days you get all your RxPass fees back and the cancellation is immediate; after that it takes effect on the last day of the month you cancel, you keep RxPass until then and are not charged again.",
         "RxPass renews automatically until you cancel, and ending your Prime membership also ends RxPass."
       ],
-      "steps": ["Sign in and open Pharmacy Settings.", "Choose the Subscription tab.", "Select Cancel RxPass and confirm."],
+      "steps": [
+        "Sign in and open Pharmacy Settings.",
+        "Choose the Subscription tab.",
+        "Select Cancel RxPass and confirm."
+      ],
       "source": "https://pharmacy.amazon.com/rxpass/terms"
     },
     {
@@ -108,28 +215,122 @@
       {
         "slug": "rxpass-refund-window",
         "intent": "I signed up for Amazon Pharmacy RxPass two weeks ago and want out. Check the RxPass terms: within how many days do I get a full refund? Answer only; do not cancel anything yet.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["30"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["30"] },
-        "tags": ["help", "information", "cancel"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
         "evidence": "documented_official",
-        "solution": [{ "op": "answer", "text": "Within the first 30 days you get a 100% refund." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Within the first 30 days you get a 100% refund."
+          }
+        ]
       },
       {
         "slug": "rxpass-hsa",
         "intent": "Can I pay the Amazon Pharmacy RxPass monthly fee with my HSA card? Look it up and answer; change nothing.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["cannot", "can't", "not allowed", "not be used", "no,", "no."] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["cannot", "can't", "not allowed", "not be used", "no,", "no."] },
-        "tags": ["help", "information", "plans"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "cannot",
+              "can't",
+              "not allowed",
+              "not be used",
+              "no,",
+              "no."
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "cannot",
+            "can't",
+            "not allowed",
+            "not be used",
+            "no,",
+            "no."
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
         "evidence": "documented_official",
-        "solution": [{ "op": "answer", "text": "No, HSA and FSA funds cannot be used for the RxPass fee." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No, HSA and FSA funds cannot be used for the RxPass fee."
+          }
+        ]
       }
+    ],
+    "suppress": [
+      "accept-retention"
     ]
   },
   "testExpectations": [
-    { "page": "login", "contains": "Email or mobile phone number" },
-    { "page": "cancel", "signedIn": true, "label": "cancel" },
-    { "page": "helpArticle", "slug": "rxpass", "contains": "$5 a month" },
-    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "checking accounts" },
-    { "page": "home", "contains": "no AutoPay" }
+    {
+      "page": "login",
+      "contains": "Email or mobile phone number"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "rxpass",
+      "contains": "$5 a month"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "checking accounts"
+    },
+    {
+      "page": "home",
+      "contains": "no AutoPay"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": "checking"
+    }
   ]
 }

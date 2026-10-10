@@ -5,7 +5,7 @@
   "name": "NTTA TollTag and ZipCash (North Texas Tollway Authority)",
   "category": "vehicle-tolls",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public ntta.org pages (Pay Your Bill, Get A TollTag). TollTag accounts ($10, $20 or $40 prepaid options) replenish automatically from a linked credit or debit card: $10/$20 accounts recharge their opening amount at a $5 balance, $40 accounts recharge $40 below $10 (another $40 per three extra vehicles). Cash and check also fund accounts. The site describes cards only for automatic replenishment. Online access is set up after the TollTag and account number arrive; three failed sign-ins lock you out until customer service emails a temporary password and User ID. ZipCash (pay-by-mail) bills: 25 days to pay; first notice adds $10, second notice another $25; ZipCash autopay (card only, needs electronic billing) saves 25%. Payment plans exist only by opening or fixing a TollTag account (or a Settlement Agreement for registration blocks/impoundment), so payment_arrangement is modelled as not available online. TollTags can be cancelled online or by phone; closing a whole account is not described. Reviewer (2026-10-09): home page nav confirmed 'Login/Open Account', 'Pay ZipCash Bill', 'Get A TollTag', 'Pay Your Bill', 'Contact Us'; the account-side tab names (Automatic Replenishment, Account Summary) are not public and are descriptive, except 'Payments'/'Make a Payment' and 'Preference' which the FAQs name. Contact Us lists an Ombudsman (469-801-3662) for unresolved concerns. The catalog's customer-service phone (469-801-3662) is NTTA's Ombudsman line, not the Customer Service Center (972-818-NTTA / 817-731-NTTA); contact.phone replaces it. Integrated 2026-10-09: billing.autopay.methodTypes ['card']: AutoPay tasks use the saved Visa.",
+  "notes": "Researched from public ntta.org pages (Pay Your Bill, Get A TollTag). TollTag accounts ($10, $20 or $40 prepaid options) replenish automatically from a linked credit or debit card: $10/$20 accounts recharge their opening amount at a $5 balance, $40 accounts recharge $40 below $10 (another $40 per three extra vehicles). Cash and check also fund accounts. The site describes cards only for automatic replenishment. Online access is set up after the TollTag and account number arrive; three failed sign-ins lock you out until customer service emails a temporary password and User ID. ZipCash (pay-by-mail) bills: 25 days to pay; first notice adds $10, second notice another $25; ZipCash autopay (card only, needs electronic billing) saves 25%. Payment plans exist only by opening or fixing a TollTag account (or a Settlement Agreement for registration blocks/impoundment), so payment_arrangement is modelled as not available online. TollTags can be cancelled online or by phone; closing a whole account is not described. Reviewer (2026-10-09): home page nav confirmed 'Login/Open Account', 'Pay ZipCash Bill', 'Get A TollTag', 'Pay Your Bill', 'Contact Us'; the account-side tab names (Automatic Replenishment, Account Summary) are not public and are descriptive, except 'Payments'/'Make a Payment' and 'Preference' which the FAQs name. Contact Us lists an Ombudsman (469-801-3662) for unresolved concerns. The catalog's customer-service phone (469-801-3662) is NTTA's Ombudsman line, not the Customer Service Center (972-818-NTTA / 817-731-NTTA); contact.phone replaces it. Integrated 2026-10-09: billing.autopay.methodTypes ['card']: AutoPay tasks use the saved Visa. Reviewer (2026-10-09, run 2): the public pages name only credit/debit cards for online payments (ZipCash bills and TollTag top-ups; cash and checks are in person or by mail), so billing.methods is now ['card'] and the mock no longer seeds a checking account.",
   "officialDomains": [
     "ntta.org"
   ],
@@ -160,7 +160,10 @@
       "methodTypes": [
         "card"
       ]
-    }
+    },
+    "methods": [
+      "card"
+    ]
   },
   "help": [
     {

@@ -4,16 +4,44 @@
   "status": "dedicated",
   "name": "Suncoast Credit Union",
   "category": "credit-unions",
-  "reviewedAt": "2026-10-09",
+  "reviewedAt": "2026-10-10",
   "notes": "Researched from public suncoast.com pages only (no sign-in; the site blocks scripted fetches, pages were read in a normal browser). The bill is a Suncoast loan payment. Members transfer funds or set up recurring payments from Suncoast accounts in SunNet Online Banking or the SunMobile app. Payments from another bank can be made one time without logging in through Speedpay (modelled by the family guest-pay flow; Speedpay's fee and accepted methods are not stated on the page, so no guest fee is set). Automatic ACH payments from outside accounts are also offered. Past-due loans can be paid or put on a payment plan / promise-to-pay in the Payment Solutions portal (verification: last 4 of SSN, email on file, ZIP); only past-due loans show there. Phone payments at 1-800-999-5887 cost $8.00 (phone fee, not an online fee). moBill puts the monthly loan statement in Apple Wallet / Google Pay with reminders 7, 5 and 1 days before the due date. eStatements are enrolled under My Profile > Account Preferences & Settings. Digital banking enrollment needs a member number or SSN. Sign-in identifier and MFA are not documented publicly (family defaults). Online methods bank only (inferred).",
-  "officialDomains": ["suncoast.com"],
-  "sources": [
-    { "url": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments", "title": "How to Make Loan Payments | Suncoast Credit Union", "fetchedAt": "2026-10-09", "kind": "pay" },
-    { "url": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments/Financial-Hardships", "title": "Financial Hardship | Suncoast Credit Union", "fetchedAt": "2026-10-09", "kind": "plans" },
-    { "url": "https://www.suncoast.com/Mortgage-Resource-Hub/Mortgage-Payments", "title": "Mortgage Payments | Suncoast Credit Union", "fetchedAt": "2026-10-09", "kind": "other" },
-    { "url": "https://www.suncoast.com/Why-Suncoast/Digital-Banking", "title": "Digital Banking | Suncoast Credit Union", "fetchedAt": "2026-10-09", "kind": "login" }
+  "officialDomains": [
+    "suncoast.com"
   ],
-  "brand": { "shortName": "Suncoast", "displayName": "Suncoast Credit Union", "primary": "#004a80", "accent": "#a3410c", "monogram": "SC" },
+  "sources": [
+    {
+      "url": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments",
+      "title": "How to Make Loan Payments | Suncoast Credit Union",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments/Financial-Hardships",
+      "title": "Financial Hardship | Suncoast Credit Union",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.suncoast.com/Mortgage-Resource-Hub/Mortgage-Payments",
+      "title": "Mortgage Payments | Suncoast Credit Union",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.suncoast.com/Why-Suncoast/Digital-Banking",
+      "title": "Digital Banking | Suncoast Credit Union",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Suncoast",
+    "displayName": "Suncoast Credit Union",
+    "primary": "#004a80",
+    "accent": "#a3410c",
+    "monogram": "SC"
+  },
   "labels": {
     "payBill": "Make a Payment",
     "autopay": "Recurring Payments",
@@ -26,40 +54,121 @@
   },
   "nav": {
     "public": [
-      { "label": "Log In", "page": "login" },
-      { "label": "Make a Payment", "helpSlug": "pay-your-bill" },
-      { "label": "Pay Online with Speedpay", "page": "guest" },
-      { "label": "Enroll", "page": "register" },
-      { "label": "Contact Us", "page": "help" }
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Pay Online with Speedpay",
+        "page": "guest"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      }
     ],
     "account": [
-      { "label": "Accounts", "page": "dashboard" },
-      { "label": "Make a Payment", "page": "pay" },
-      { "label": "Recurring Payments", "page": "autopay" },
-      { "label": "Payment Solutions", "page": "arrangement" },
-      { "label": "Statements", "page": "statements" },
-      { "label": "eStatement Enrollment", "page": "paperless" },
-      { "label": "My Profile", "page": "profile" }
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Solutions",
+        "page": "arrangement"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "eStatement Enrollment",
+        "page": "paperless"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      }
     ]
   },
   "auth": {
-    "registrationFields": ["accountNumber"],
+    "registrationFields": [
+      "accountNumber"
+    ],
     "evidence": "documented_official",
     "source": "https://www.suncoast.com/Why-Suncoast/Digital-Banking"
   },
   "capabilities": {
-    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments" },
-    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments", "note": "One-time payments from another bank without logging in, through Speedpay." },
-    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments", "note": "Recurring payments from Suncoast accounts in SunNet or SunMobile; ACH automatic payments from outside accounts." },
-    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments" },
-    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments/Financial-Hardships", "note": "Only past-due loans appear in the Payment Solutions portal." },
-    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments/Financial-Hardships" },
-    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.suncoast.com/Mortgage-Resource-Hub/Mortgage-Payments" },
-    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments/Financial-Hardships", "phone": "1-800-999-5887", "note": "Phone payments carry an $8.00 fee." }
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments",
+      "note": "One-time payments from another bank without logging in, through Speedpay."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments",
+      "note": "Recurring payments from Suncoast accounts in SunNet or SunMobile; ACH automatic payments from outside accounts."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments/Financial-Hardships",
+      "note": "Only past-due loans appear in the Payment Solutions portal."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments/Financial-Hardships"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suncoast.com/Mortgage-Resource-Hub/Mortgage-Payments"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments/Financial-Hardships",
+      "phone": "1-800-999-5887",
+      "note": "Phone payments carry an $8.00 fee."
+    }
   },
   "billing": {
-    "methods": ["bank"],
-    "autopay": { "methodTypes": ["bank"] },
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
     "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments"
   },
   "help": [
@@ -69,7 +178,7 @@
       "paragraphs": [
         "Members can transfer funds or set up recurring payments from a Suncoast account in SunNet Online Banking, or make one-time and scheduled recurring payments in the SunMobile app.",
         "Paying with money from another financial institution? You can make a one-time online payment without logging in through Speedpay, or set up automatic ACH payments from the outside account.",
-        "You can also pay at a branch or by phone at 1-800-999-5887; phone payments carry an $8.00 fee."
+        "You can also pay in person at a Suncoast branch or by phone at 1-800-999-5887. Members with a past-due loan can use the Payment Solutions portal to pay or set up a payment plan around the clock."
       ],
       "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments"
     },
@@ -79,7 +188,8 @@
       "topic": "billing",
       "paragraphs": [
         "If a loan is past due, the Payment Solutions portal lets you make a payment, set up a payment plan or promise to pay, or ask to talk to a Member Solutions Advocate, any time of day. Only past-due or delinquent loans appear there.",
-        "To log in to the portal you need the last 4 digits of your Social Security number, the email address on file and your ZIP code. The Member Solutions Center is at (813) 280-4541 or (800) 999-5887, Monday to Friday 7 a.m. to 8 p.m. and Saturday 8 a.m. to 1 p.m. Eastern."
+        "To log in to the portal you need the last 4 digits of your Social Security number, the email address on file and your ZIP code. The Member Solutions Center is at (813) 280-4541 or (800) 999-5887, Monday to Friday 7 a.m. to 8 p.m. and Saturday 8 a.m. to 1 p.m. Eastern.",
+        "Ways to pay a loan include transfers from a Suncoast account, one-time payments from an outside account, recurring payments, a branch visit, Payment Solutions for past-due loans, and phone payments, which carry an $8.00 fee."
       ],
       "source": "https://www.suncoast.com/For-You/Loans-and-Credit-Cards/Payments/Financial-Hardships"
     },
@@ -116,28 +226,112 @@
       {
         "slug": "phone-payment-fee",
         "intent": "Using Suncoast Credit Union's help pages, find what it costs to make a loan payment by phone. Do not make a payment or change any settings.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["$8", "8.00"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["$8", "8.00"] },
-        "tags": ["help", "information", "fees"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$8",
+              "8.00"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$8",
+            "8.00"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
         "evidence": "documented_official",
-        "solution": [{ "op": "answer", "text": "Phone payments cost $8.00." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Phone payments cost $8.00."
+          }
+        ]
       },
       {
         "slug": "mobill-reminder-days",
         "intent": "Using Suncoast's help pages, find how many days before the due date moBill sends its first payment reminder. Do not make a payment or change any settings.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["7"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["7"] },
-        "tags": ["help", "information", "billing"],
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "7"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "7"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
         "evidence": "documented_official",
-        "solution": [{ "op": "answer", "text": "7 days before the due date (then 5 days and 1 day)." }]
+        "solution": [
+          {
+            "op": "answer",
+            "text": "7 days before the due date (then 5 days and 1 day)."
+          }
+        ]
       }
     ]
   },
   "testExpectations": [
-    { "page": "home", "contains": ["Log In", "Pay Online with Speedpay"] },
-    { "page": "guest", "label": "guestPay" },
-    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "Recurring Payments"] },
-    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "$8.00" },
-    { "page": "helpArticle", "slug": "payment-plan", "contains": "promise to pay" }
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Pay Online with Speedpay"
+      ]
+    },
+    {
+      "page": "guest",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Recurring Payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plan",
+      "contains": "$8.00"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plan",
+      "contains": "promise to pay"
+    }
   ]
 }

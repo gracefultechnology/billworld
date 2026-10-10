@@ -82,13 +82,19 @@ Each template's `meta.evidence` and `meta.sources` record what was observed and 
 
 ## Dedicated tier (researched per-biller dossiers)
 
-The most popular billers get a researched dossier, `billers/<billerId>.json`, which makes that biller `tier: 'dedicated'` (every other biller is `tier: 'family'`). The goal is 10 popular billers per catalog category, each validated and browser-tested green before the rest. A dossier can set the biller's own wording (`labels`, used through `kit.L()` in every template), ordered navigation (`nav`, placed in each template's `meta.navSlots`), sign-in rules (identifier, one- or two-step, MFA, password rule, lockout, required registration and guest-lookup fields), capability overrides with notes for things not available online (shown on the site and in help; the engine refuses them; `*-limitation` tasks expect the offline route), payment methods, AutoPay options, scheduling and amount limits, fees, real plans, card minimums, late fees, help articles, extra tasks with reference solutions, task suppressions and biller-specific browser expectations. It can also state rules the engine enforces: "greater of N% or $X" late charges, full-balance-only payments, a cap on pending scheduled payments, phone-number or exact-field guest lookups, separate card-AutoPay and pay-without-signing-in fees, plan changes that are offline only (`change_plan`), and customer-service or pay-by-phone numbers that replace the catalog's. Without a dossier, `vm.labels` is empty and every template renders its family wording; the generic fixes made while integrating the tier (for example the AutoPay label used as a noun in "Turn off …", forms hidden where a capability is offline, the energy-usage panel only on metered bills, captured public text quoted at most 200 characters) apply to every biller.
+The most popular billers get a researched dossier, `billers/<billerId>.json`, which makes that biller `tier: 'dedicated'` (every other biller is `tier: 'family'`). The goal is 10 popular billers per catalog category, each validated and browser-tested green before the rest. A dossier can set the biller's own wording (`labels`, used through `kit.L()` in every template), ordered navigation (`nav`, placed in each template's `meta.navSlots`), sign-in rules (identifier, one- or two-step, MFA, password rule, lockout, required registration and guest-lookup fields), capability overrides with notes for things not available online (shown on the site and in help; the engine refuses them; `*-limitation` tasks expect the offline route), payment methods, AutoPay options, scheduling and amount limits, fees, real plans, card minimums, late fees, help articles, extra tasks with reference solutions, task suppressions and biller-specific browser expectations. It can also state rules the engine enforces: "greater of N% or $X" late charges, full-balance-only payments, a cap on pending scheduled payments, phone-number or exact-field guest lookups, separate card-AutoPay and pay-without-signing-in fees, a minimum on percentage card fees (`cardMinCents`), AutoPay drafted N days after the bill date (`daysAfterBill`), payments capped at the balance (`maxPaymentBalance`), plan changes that are offline only (`change_plan`), and customer-service or pay-by-phone numbers that replace the catalog's. Without a dossier, `vm.labels` is empty and every template renders its family wording; the generic fixes made while integrating the tier (for example the AutoPay label used as a noun in "Turn off …", forms hidden where a capability is offline, the energy-usage panel only on metered bills, captured public text quoted at most 200 characters) apply to every biller.
 
 - Format, builder checklist and evidence rules: [`billers/README.md`](billers/README.md) (schema: `billers/schema.mjs`).
 - `node billworld/fleet/billers/validate.mjs [id ...]` validates dossiers and proves every task of each biller.
 - `FLEET_TIMEOUT=120000 node billworld/fleet/tests/dedicated.mjs --billers <id,...> --tag <unique>` (or `--category <c>`, `--dossiers all`) runs every standard and extended flow plus `dossier_contract` and `testExpectations`.
 - `node billworld/fleet/billers/status.mjs [--next 10]` shows progress per category.
 - Pilot: Consolidated Edison (`consolidated-edison-company-of-new-york-con-edis-1ac80c`). `FLEET_DOSSIERS=0` disables the tier.
+- **Tier 1 is complete:** 283 dossiers (10 per category in all 28 categories, plus 3 extras), every one valid and green:
+  9,998/9,998 browser flows on 2026-10-10, run one category at a time. Per-category table, integrated requests and the
+  open list: [`billers/README.md`](billers/README.md#tier-1-status-and-the-next-tier).
+- **Next tier (remaining popular billers):** `status.mjs --category <c> --next 10 --goal 20` lists the next picks; the
+  same build, review, integrate loop follows, one category at a time (`billers/README.md`). `dedicated.mjs` relaunches a
+  crashed Chrome and retries the affected flow once, so a crash costs one flow, not the rest of the run.
 
 ## Observed public profiles
 
@@ -241,7 +247,17 @@ Answers: the runner passes the agent's final message as `answer` to `/evaluate` 
 - `google-login-pay` is excluded from exports, because it needs the IdP's second origin.
 - Exports are snapshots. Re-export after any Fleet change.
 
-## Verification (2026-10-05, this revision)
+## Verification (2026-10-10, dedicated tier integrated)
+
+| Check | Result |
+|---|---|
+| `node billworld/fleet/billers/validate.mjs` | 283/283 dossiers valid (every task proven by the reference solver, no-op fails) |
+| `tests/dedicated.mjs --category <c>` for all 28 categories (concurrency 2) | 9,998/9,998 flows, 283/283 billers green, 0 skipped, 0 browser relaunches; `status.mjs`: 280/280 picks green |
+| `npm run fleet:test` | 135/135 pass |
+| `node billworld/fleet/tests/sweep.mjs` (all 59,477 billers) | 0 failures: http 751,310; authed 42,641; engine 59,477; tasks 821,024; links 881,037 (111 s) |
+| `browser.mjs --per-template 1 --concurrency 2` (27 templates, desktop, standard flows) | 437/437 flows passed (27 billers) |
+
+## Verification (2026-10-05, family tier)
 
 | Check | Result |
 |---|---|

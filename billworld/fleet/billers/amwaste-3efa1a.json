@@ -5,7 +5,7 @@
   "name": "Amwaste",
   "category": "trash",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from Amwaste's public site, its official Help Center (amwasteusa.zendesk.com, linked from amwasteusa.com) and its official Invoice Cloud payment page (invoicecloud.com/Amwaste, linked as Pay My Bill); never signed in or paid. Residential service is prepaid and billed quarterly: invoices generate on the 10th of the month before the quarter and are due on the 1st of the quarter; suspensions can start 30 days after the invoice date. AutoPay runs on the invoice generation date (the engine has no 'days after invoice' rule, so the family default timing is kept). Card payments carry a 2.95% convenience fee with a $2.95 minimum (percentage modelled); ACH/e-check is free online; the automated phone line (877-461-2246) adds $0.50 per payment. A $50 reinstatement fee applies after a non-payment suspension. Paperless invoices can be on without an online portal account. Customer Care: AL/GA 888-449-6277, LA 985-878-9998 (Mon-Fri 7-4 CT). Cancellation and payment-plan policies are not published (family defaults kept). A Help Center announcement says Amwaste suspended operations in Georgia (and Chambers County, AL) on 1/21/2025; the Georgia mailing address and phone are kept because the help articles still list them. nav.account is deliberately omitted: on the invoicecloud template the dossier account nav replaces the header link group that also holds Sign Out (see cross-owner request), and the template's own My Account / My Profile menus already match the real Invoice Cloud portal. Integrated 2026-10-09: contact.phone 888-449-6277 (AL/GA Customer Care) replaces the unsourced catalog number.",
+  "notes": "Researched from Amwaste's public site, its official Help Center (amwasteusa.zendesk.com, linked from amwasteusa.com) and its official Invoice Cloud payment page (invoicecloud.com/Amwaste, linked as Pay My Bill); never signed in or paid. Residential service is prepaid and billed quarterly: invoices generate on the 10th of the month before the quarter and are due on the 1st of the quarter; suspensions can start 30 days after the invoice date. AutoPay runs on the invoice generation date. Card payments carry a 2.95% convenience fee with a $2.95 minimum (billing.fees.cardMinCents); ACH/e-check is free online; the automated phone line (877-461-2246) adds $0.50 per payment. A $50 reinstatement fee applies after a non-payment suspension. Paperless invoices can be on without an online portal account. Customer Care: AL/GA 888-449-6277, LA 985-878-9998 (Mon-Fri 7-4 CT). Cancellation and payment-plan policies are not published, so both are marked unsupported online (inferred; call Customer Care). A Help Center announcement says Amwaste suspended operations in Georgia (and Chambers County, AL) on 1/21/2025; the Georgia mailing address and phone are kept because the help articles still list them. nav.account is not set because the invoicecloud template's own My Account / My Profile menus already match the real Invoice Cloud portal. Integrated 2026-10-09: contact.phone 888-449-6277 (AL/GA Customer Care) replaces the unsourced catalog number. Integrated 2026-10-10: card fee minimum $2.95 modelled (billing.fees.cardMinCents). Integrated 2026-10-10: billing.autopay.daysAfterBill 0: AutoPay drafts on the bill date.",
   "officialDomains": [
     "amwasteusa.com",
     "invoicecloud.com",
@@ -109,6 +109,22 @@
     ]
   },
   "capabilities": {
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://amwasteusa.zendesk.com/hc/en-us/articles/18131720411035-How-do-I-contact-Customer-Care",
+      "channel": "phone",
+      "phone": "888-449-6277",
+      "note": "Payment plans are not offered online. Call Amwaste Customer Care (1-888-449-6277 in Alabama, 985-878-9998 in Louisiana) about a past-due balance."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://amwasteusa.zendesk.com/hc/en-us/articles/18131720411035-How-do-I-contact-Customer-Care",
+      "channel": "phone",
+      "phone": "888-449-6277",
+      "note": "Service cannot be cancelled online. Call Amwaste Customer Care (1-888-449-6277 in Alabama, 985-878-9998 in Louisiana) to stop service."
+    },
     "guest_pay": {
       "support": "supported",
       "evidence": "documented_official",
@@ -148,7 +164,8 @@
       "bankCents": 0,
       "cardPercent": 2.95,
       "evidence": "documented_official",
-      "source": "https://www.invoicecloud.com/Amwaste"
+      "source": "https://www.invoicecloud.com/Amwaste",
+      "cardMinCents": 295
     },
     "methods": [
       "bank",
@@ -165,7 +182,8 @@
       "methodTypes": [
         "bank",
         "card"
-      ]
+      ],
+      "daysAfterBill": 0
     }
   },
   "help": [

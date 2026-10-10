@@ -5,7 +5,7 @@
   "name": "Credit One Bank",
   "category": "credit-cards",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from Credit One Bank's public FAQ pages only (no sign-in). Sign-in uses a Username ('Choose Your Username' at setup) and Password, with 'Forgot Username?' and 'Forgot Password?' links. 'Pay Bill' offers Standard Payment (bank account only, no fee, no agent, available credit restored within 7 days) and Express Payment (bank account or debit card with live agent assistance for a fee whose amount is not published, quicker available credit). Only Standard Payment is modelled online (bank only; no card methods, no fee). Minimum online payment $1.00; the maximum is the balance (engine cannot cap at balance). Standard Payments can be scheduled up to 30 days ahead from checking/savings; only one future-dated payment may be pending; cancel from 'Pay Bill' by 11:59 p.m. PT the day before. Posting: by 2 p.m. PT Sun-Fri posts same day. AutoPay: 'Pay Bill' > 'AutoPay' 'Set Up'; 'Pay From' selector; Minimum Payment Due, Last Statement Balance or Other Amount; drafted on the Payment Due Date; cancel via 'AutoPay: On' > 'Cancel AutoPay'. 'full' kept for the reference solver. Paperless Documents via 'Settings' or 'Documents & Statements'; 24 months of statements online. Up to four bank accounts on file ('Bank Account Information' in Settings). MoneyGram receive code 1430; Western Union code city CREDITONEBANK, state NV. Mail: Payment Services, P.O. Box 60500, City of Industry, CA 91716-0500. Customer Service 1-877-825-3242; outside U.S. 1-702-405-2042. No pay-without-sign-in (inferred from the 'Sign In to Pay Your Bill' home CTA). Account closure is not described on public FAQs; cancel_service left at family default. Review 2026-10-09: Standard/Express Payment, $1.00 minimum, balance maximum, 30-day scheduling with one pending payment, AutoPay steps and options, 2 p.m. PT posting, MoneyGram 1430, mail address, 24-month statements and the sign-in widget re-verified on the FAQ data and home page. 'Overview' (dashboard) is generic (inferred). Integrated 2026-10-09: billing.scheduled.maxPending 1.",
+  "notes": "Researched from Credit One Bank's public FAQ pages only (no sign-in). Sign-in uses a Username ('Choose Your Username' at setup) and Password, with 'Forgot Username?' and 'Forgot Password?' links. 'Pay Bill' offers Standard Payment (bank account only, no fee, no agent, available credit restored within 7 days) and Express Payment (bank account or debit card with live agent assistance for a fee whose amount is not published, quicker available credit). Only Standard Payment is modelled online (bank only; no card methods, no fee). Minimum online payment $1.00; the maximum is the balance (billing.maxPaymentBalance). Standard Payments can be scheduled up to 30 days ahead from checking/savings; only one future-dated payment may be pending; cancel from 'Pay Bill' by 11:59 p.m. PT the day before. Posting: by 2 p.m. PT Sun-Fri posts same day. AutoPay: 'Pay Bill' > 'AutoPay' 'Set Up'; 'Pay From' selector; Minimum Payment Due, Last Statement Balance or Other Amount; drafted on the Payment Due Date; cancel via 'AutoPay: On' > 'Cancel AutoPay'. Paperless Documents via 'Settings' or 'Documents & Statements'; 24 months of statements online. Up to four bank accounts on file ('Bank Account Information' in Settings). MoneyGram receive code 1430; Western Union code city CREDITONEBANK, state NV. Mail: Payment Services, P.O. Box 60500, City of Industry, CA 91716-0500. Customer Service 1-877-825-3242; outside U.S. 1-702-405-2042. No pay-without-sign-in (inferred from the 'Sign In to Pay Your Bill' home CTA). Account closure is not described on public FAQs; cancel_service left at family default. Review 2026-10-09: Standard/Express Payment, $1.00 minimum, balance maximum, 30-day scheduling with one pending payment, AutoPay steps and options, 2 p.m. PT posting, MoneyGram 1430, mail address, 24-month statements and the sign-in widget re-verified on the FAQ data and home page. 'Overview' (dashboard) is generic (inferred). Integrated 2026-10-09: billing.scheduled.maxPending 1. Review 2 (2026-10-09): AutoPay policy 'full' (current balance) removed now that the reference solver uses 'statement' when 'full' is absent; no issuer page lists the current balance as an AutoPay amount. Integrated 2026-10-10: billing.maxPaymentBalance set.",
   "officialDomains": [
     "creditonebank.com"
   ],
@@ -178,8 +178,7 @@
       "policies": [
         "minimum",
         "statement",
-        "fixed",
-        "full"
+        "fixed"
       ],
       "days": "due_date",
       "methodTypes": [
@@ -190,7 +189,8 @@
       "maxDaysAhead": 30,
       "maxPending": 1
     },
-    "minPaymentCents": 100
+    "minPaymentCents": 100,
+    "maxPaymentBalance": true
   },
   "help": [
     {

@@ -5,7 +5,7 @@
   "name": "Liberty Mutual (personal insurance)",
   "category": "insurance",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public libertymutual.com customer-support pages only (no sign-in). Pay after logging in with a major credit card or checking/savings account; pay without logging in using name and birthday (the schema needs a primary identifier, so the guest form is modelled as policy number + last name + date of birth); online banking with the policy number; payroll deduction (800-290-8102, employer affinity relationship required); automated phone 800-824-7317; mail to Personal Market - RPC, PO Box 1604, New York, NY 10116-1604. Credit card fees apply and vary by state, but no amount is published, so no fee is modelled. Autopay and paperless billing are set up online; past transactions under Billing > Transaction History; documents under the Documents tab. Gift and prepaid cards cannot be used to buy a policy. Policies are 12 months and renew automatically. Review 2026-10-09: the public pay-without-login form asks for policyholder first name, last name and date of birth (button Find a policy); the schema cannot express a name-only lookup, so it stays account number + last name + date of birth. The public log-in form shows User name and Password on one screen. Cancellation and MFA are not documented publicly.",
+  "notes": "Researched from public libertymutual.com customer-support pages only (no sign-in). Pay after logging in with a major credit card or checking/savings account; pay without logging in using name and birthday (the schema needs a primary identifier, so the guest form is modelled as policy number + last name + date of birth); online banking with the policy number; payroll deduction (800-290-8102, employer affinity relationship required); automated phone 800-824-7317; mail to Personal Market - RPC, PO Box 1604, New York, NY 10116-1604. Credit card fees apply and vary by state, but no amount is published, so no fee is modelled. Autopay and paperless billing are set up online; past transactions under Billing > Transaction History; documents under the Documents tab. Gift and prepaid cards cannot be used to buy a policy. Policies are 12 months and renew automatically. Review 2026-10-09: the public pay-without-login form asks for policyholder first name, last name and date of birth (button Find a policy); the schema cannot express a name-only lookup, so it stays account number + last name + date of birth. The public log-in form shows User name and Password on one screen. Cancellation and MFA are not documented publicly. Review 2026-10-10: guest form set to exactly policy number + last name + date of birth (guestLookupExact), dropping the family's ZIP field; the real form needs no policy number (first name + last name + date of birth), which the format still cannot express.",
   "officialDomains": [
     "libertymutual.com"
   ],
@@ -94,7 +94,8 @@
     "evidence": "observed_public",
     "source": "https://eservice.libertymutual.com/account/billing/pwol/",
     "identifier": "username",
-    "loginSteps": 1
+    "loginSteps": 1,
+    "guestLookupExact": true
   },
   "capabilities": {
     "pay_online": {

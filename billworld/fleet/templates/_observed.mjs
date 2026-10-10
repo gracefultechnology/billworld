@@ -117,7 +117,10 @@ const navItem = (vm, label) => { const href = mapLabel(vm, label); return href ?
 // The real site's top-level navigation, shown on public (signed-out) pages under the template header.
 export const obsNav = vm => vm.obs?.nav?.length && !vm.authenticated ? html`<nav class="obs-nav" aria-label="${vm.biller.brand.shortName} site"><div class="obs-in">${vm.obs.nav.map(l => navItem(vm, l))}</div></nav>` : '';
 // Footer labels as one line of mapped links / plain text.
-export const obsFooter = vm => vm.obs?.footer?.length ? html`<p class="obs-foot">${vm.obs.footer.map((l, i) => html`${i ? ' · ' : ''}${navItem(vm, l)}`)}</p>` : '';
+// Captured footer text: drop logo alt text, social links and "opens in new window" hints everywhere, and long promo lines
+// on dedicated sites (their dossier writes the wording).
+const FOOT_NOISE = /\blogo\b|facebook|twitter|\bx\.com\b|instagram|tiktok|linkedin|youtube|pinterest|opens in (?:a )?new (?:window|tab)/i;
+export const obsFooter = vm => { const f = (vm.obs?.footer || []).filter(l => !FOOT_NOISE.test(l) && !(vm.tier === 'dedicated' && l.length > 40)); return f.length ? html`<p class="obs-foot">${f.map((l, i) => html`${i ? ' · ' : ''}${navItem(vm, l)}`)}</p>` : ''; };
 // Hero heading from the biller's public homepage (or the given fallback).
 // Dedicated billers skip the captured hero headline (often a stale promotion); their dossier wording stands.
 export const heroText = (vm, fallback) => (vm.tier === 'dedicated' ? null : vm.obs?.hero) || fallback;

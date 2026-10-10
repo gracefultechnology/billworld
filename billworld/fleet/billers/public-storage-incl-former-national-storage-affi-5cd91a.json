@@ -5,7 +5,7 @@
   "name": "Public Storage",
   "category": "storage-funeral",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public publicstorage.com pages and its help center only (no sign-in, no account lookup). Sign-in is by the email address tied to the rental plus a password; extra verification by email or phone may be asked. Payments: checking account (ACH) or Visa/Mastercard/Discover/American Express credit or debit; no online fee stated, phone payments carry an unstated small fee. AutoPay is turned on under Payments and drafts on the rent due date (rent is generally due on the 1st). Moving out needs at least seven days' notice and can be started from the online account, chat or by phone (800-742-8048); no proration after the due date. Late fees vary by state/agreement and are not published, so none is modelled. The real no-login 'Pay Your Bill' page finds the account by phone number + ZIP code; the dossier schema has no phone guest field, so the family guest lookup is kept (see report). Storage rentals have no plan tiers, retention offers or payment plans documented, so those built-in tasks are suppressed. Reviewer 2026-10-09: dropped the unseen \"Rent Due Date\" label (no rent-due-date wording is shown by the template; it only produced a warning).",
+  "notes": "Researched from public publicstorage.com pages and its help center only (no sign-in, no account lookup). Sign-in is by the email address tied to the rental plus a password; extra verification by email or phone may be asked. Payments: checking account (ACH) or Visa/Mastercard/Discover/American Express credit or debit; no online fee stated, phone payments carry an unstated small fee. AutoPay is turned on under Payments and drafts on the rent due date (rent is generally due on the 1st). Moving out needs at least seven days' notice and can be started from the online account, chat or by phone (800-742-8048); no proration after the due date. Late fees vary by state/agreement and are not published, so none is modelled. The real no-login 'Pay Your Bill' page finds the account by phone number + ZIP code; modelled as an exact phone + ZIP guest lookup. Storage rentals have no plan tiers, retention offers or payment plans documented, so those built-in tasks are suppressed. Reviewer 2026-10-09: dropped the unseen \"Rent Due Date\" label (no rent-due-date wording is shown by the template; it only produced a warning). Reviewer 2026-10-09 (pass 2): Pay Your Bill re-checked (Phone number, Zip Code, Pay bill); guest lookup now phone + ZIP since the schema supports it.",
   "officialDomains": [
     "publicstorage.com"
   ],
@@ -122,7 +122,12 @@
       "email"
     ],
     "evidence": "documented_official",
-    "source": "https://www.publicstorage.com/blog/public-storage/your-guide-to-the-public-storage-login.html"
+    "source": "https://www.publicstorage.com/blog/public-storage/your-guide-to-the-public-storage-login.html",
+    "guestLookupFields": [
+      "phone",
+      "zip"
+    ],
+    "guestLookupExact": true
   },
   "capabilities": {
     "pay_online": {

@@ -5,7 +5,7 @@
   "name": "Guardian Dental (Guardian Direct individual dental)",
   "category": "dental-vision-hearing",
   "reviewedAt": "2026-10-09",
-  "notes": "Modelled as Guardian's direct individual dental plans (Member Dashboard on guardianlife.com). Researched from public guardianlife.com FAQ pages only (no sign-in); both FAQ pages render by JavaScript, so their answers were read from the page's embedded content data. Billing FAQ: recurring premiums are monthly, quarterly or annual on a credit card, debit card or ACH (eCheck) draft; invoiced check/money-order billing is for South Carolina only; cards and ACH are processed on or around the 26th for the next month's coverage (next business day on weekends/holidays), modelled as AutoPay day 26; the initial payment is due at enrollment and the details are stored for later payments; 31-day grace period with no interest, but two missed consecutive payments may end membership; premium changes come with at least 60 days' notice. To change the payment method sign in to the Member Dashboard, open the Billing & Payments tab and choose 'Update Payment Settings'; frequency changes go through the Digital to Consumer Service Team, 1-866-569-9900 (M-F 9am-9pm ET). Dental FAQ: a plan can be terminated at any time by the main subscriber, effective the last day of the month of the request (or of the last paid month), with a 12-month wait to re-enroll; the channel for the request is not stated, so cancel_service is recorded as supported with evidence 'inferred'. Plans renew automatically (PPO every 12 months, DHMO each January 1) with a 60-day reminder. Guardian's separate dental-exchange product (Softheon billing) is not modelled. Fees, sign-in identifier and MFA are not published. Signed-in labels other than Member Dashboard, Billing & Payments and Update Payment Settings are generic (synthetic). No public nav: see the insurance-template cross-owner request.",
+  "notes": "Modelled as Guardian's direct individual dental plans (Member Dashboard on guardianlife.com). Researched from public guardianlife.com FAQ pages only (no sign-in); both FAQ pages render by JavaScript, so their answers were read from the page's embedded content data. Billing FAQ: recurring premiums are monthly, quarterly or annual on a credit card, debit card or ACH (eCheck) draft; invoiced check/money-order billing is for South Carolina only; cards and ACH are processed on or around the 26th for the next month's coverage (next business day on weekends/holidays), modelled as AutoPay day 26; the initial payment is due at enrollment and the details are stored for later payments; 31-day grace period with no interest, but two missed consecutive payments may end membership; premium changes come with at least 60 days' notice. To change the payment method sign in to the Member Dashboard, open the Billing & Payments tab and choose 'Update Payment Settings'; frequency changes go through the Digital to Consumer Service Team, 1-866-569-9900 (M-F 9am-9pm ET). Dental FAQ: a plan can be terminated at any time by the main subscriber, effective the last day of the month of the request (or of the last paid month), with a 12-month wait to re-enroll; the channel for the request is not stated, so cancel_service is recorded as supported with evidence 'inferred'. Plans renew automatically (PPO every 12 months, DHMO each January 1) with a 60-day reminder. Guardian's separate dental-exchange product (Softheon billing) is not modelled. Fees, sign-in identifier and MFA are not published. Signed-in labels other than Member Dashboard, Billing & Payments and Update Payment Settings are generic (synthetic). Review 2026-10-09: re-checked the billing and dental FAQ data (26th processing, 31-day grace, South Carolina invoices, Update Payment Settings, main-subscriber termination with a 12-month wait). Public nav added. Contact phone set to the published member/billing line so the footer no longer mixes in unrelated catalog numbers.",
   "officialDomains": [
     "guardianlife.com"
   ],
@@ -36,6 +36,20 @@
     "wallet": "Update Payment Settings"
   },
   "nav": {
+    "public": [
+      {
+        "label": "Member Dashboard",
+        "page": "login"
+      },
+      {
+        "label": "Billing & Payment FAQ",
+        "helpSlug": "payment-options"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
     "account": [
       {
         "label": "Member Dashboard",
@@ -286,5 +300,10 @@
       "signedIn": true,
       "label": "wallet"
     }
-  ]
+  ],
+  "contact": {
+    "evidence": "documented_official",
+    "phone": "866-569-9900",
+    "source": "https://www.guardianlife.com/faq/billing"
+  }
 }

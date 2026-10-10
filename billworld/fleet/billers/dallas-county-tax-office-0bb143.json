@@ -6,7 +6,7 @@
   "category": "property-tax",
   "reviewedAt": "2026-10-09",
   "template": "property-tax",
-  "notes": "Researched from public dallascounty.org pages only (the taxoffice.dallascounty.org help center returned 403 and was not used). Moved from the paymentus family to property-tax: the Property Tax Lookup/Payment Application is a parcel/account search with Paymentus as processor. Fees: ACH $0.00; credit card and digital wallets 2.05% with a $2.85 minimum; debit card flat $2.85 (minimum and debit flat fee not expressible, 2.05% used). Pay by phone 1-877-253-0150. eStatement enrollment is per account (search, open account, eStatement button), open November 1 through September 15. Partial payments apply pro-rata to tax, penalty, interest and collection penalty. No automatic payment program is listed. Payment arrangements exist (help-center article) but their terms could not be read; payment_arrangement stays at family default. No public sign-in for the lookup; email sign-in is synthetic.",
+  "notes": "Researched from public dallascounty.org pages only. Moved from the paymentus family to property-tax: the Property Tax Lookup/Payment Application is a parcel/account search with Paymentus as processor. Fees: ACH $0.00; credit card and digital wallets 2.05% with a $2.85 minimum; debit card flat $2.85 (minimum and debit flat fee not expressible, 2.05% used). Pay by phone 1-877-253-0150. eStatement enrollment is per account (search, open account, eStatement button), open November 1 through September 15. Partial payments apply pro-rata to tax, penalty, interest and collection penalty. No automatic payment program is listed. No public sign-in for the lookup; email sign-in is synthetic. Review 2 (2026-10-09): the taxoffice.dallascounty.org help center now loads publicly; its payment-arrangement article says plans are self-enrolled online from the account's payment plan options tab (quarter pay for over-65/disabled homesteads, homestead and non-homestead agreements subject to approval), so payment_arrangement is supported with that note and a help article; Customer Care Center 214-653-7811 set as contact. The mock plan form offers 3/6/12 months, not the real plan types (template limit).",
   "officialDomains": [
     "dallascounty.org"
   ],
@@ -22,6 +22,12 @@
       "title": "eStatement Enrollment",
       "fetchedAt": "2026-10-09",
       "kind": "other"
+    },
+    {
+      "url": "https://taxoffice.dallascounty.org/hc/en-us/articles/52865143833243-Are-payment-arrangements-available",
+      "title": "Are payment arrangements available?",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
     }
   ],
   "brand": {
@@ -35,7 +41,7 @@
     "guestPay": "Property Tax Lookup/Payment",
     "payBill": "Pay Property Tax",
     "paperless": "eStatement Enrollment",
-    "arrangement": "Payment Arrangements",
+    "arrangement": "Payment Plan Options",
     "contact": "Customer Care Center"
   },
   "nav": {
@@ -51,6 +57,10 @@
       {
         "label": "eStatement Enrollment",
         "helpSlug": "estatements"
+      },
+      {
+        "label": "Payment Plan Options",
+        "helpSlug": "payment-plan-options"
       },
       {
         "label": "FAQ",
@@ -77,6 +87,10 @@
       {
         "label": "eStatement Enrollment",
         "page": "paperless"
+      },
+      {
+        "label": "Payment Plan Options",
+        "page": "arrangement"
       },
       {
         "label": "Customer Care Center",
@@ -119,6 +133,12 @@
       "source": "https://www.dallascounty.org/departments/tax/pay-property-tax.php",
       "note": "Card payments; debit and credit processing fees apply.",
       "phone": "8772530150"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://taxoffice.dallascounty.org/hc/en-us/articles/52865143833243-Are-payment-arrangements-available",
+      "note": "Open your account in the Property Tax Lookup/Payment Application and choose the payment plan options tab to see the plans you can self-enroll in: quarter pay for over-65, disabled or disabled-veteran homesteads, and homestead or non-homestead payment agreements (subject to approval)."
     }
   },
   "billing": {
@@ -158,6 +178,17 @@
       "paragraphs": [
         "To get statements electronically, search for your property, click the blue account number to open it, then click the eStatement enrollment button.",
         "Enrollment is open from November 1 through September 15 each year."
+      ]
+    },
+    {
+      "slug": "payment-plan-options",
+      "title": "Payment plan options",
+      "topic": "assistance",
+      "source": "https://taxoffice.dallascounty.org/hc/en-us/articles/52865143833243-Are-payment-arrangements-available",
+      "paragraphs": [
+        "Statements are mailed in October; taxes are due on receipt and become delinquent after January 31, when state law adds penalty and interest. Partial payments in any amount are accepted at any time, and only the unpaid balance accrues penalty and interest; partial payments on delinquent taxes go to the oldest year first.",
+        "To see the plans open to your account, find it in the Property Tax Lookup/Payment Application, select it and open the payment plan options tab. Homesteads with an over-65, disabled or disabled-veteran exemption can use quarter pay: four equal payments due January 31, March 31, May 31 and July 31, with no penalty or interest if the first quarter is paid before the delinquency date.",
+        "Homestead and non-homestead payment agreements spread taxes plus accrued penalty and interest over installments. They need approval and depend on the first payment and every later payment arriving on time; the county's collection firm handles questions about them."
       ]
     }
   ],
@@ -274,6 +305,19 @@
       "page": "helpArticle",
       "slug": "estatements",
       "contains": "September 15"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plan-options",
+      "contains": [
+        "January 31",
+        "July 31"
+      ]
     }
-  ]
+  ],
+  "contact": {
+    "phone": "214-653-7811",
+    "payPhone": "1-877-253-0150",
+    "source": "https://www.dallascounty.org/departments/tax/pay-property-tax.php"
+  }
 }

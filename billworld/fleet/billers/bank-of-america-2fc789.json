@@ -5,10 +5,15 @@
   "name": "Bank of America",
   "category": "banks",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public bankofamerica.com pages only (no sign-in). The mock bill is a Bank of America auto loan. Online payments go through Online Banking (Bill Pay one-time or recurring, from checking or money market; customers without a deposit account may set up electronic payments from another bank), so methods are bank only. Automatic payments are set up in Bill Pay, on the paper form in the welcome package, or by phone; a confirmation letter with the start date arrives within 3-4 weeks and customers must keep paying until then (not modelled). Enrolling twice can cause double drafts. Phone payments: automated 800-215-6195, 24/7; agent-assisted phone payments carry a fee whose amount is not published (not modelled). Mail: PO Box 17237, Wilmington, DE 19886-7237. Up to 18 months of auto loan statements online; paperless path Profile & Settings > Paperless settings. Sign-in field is labelled Online ID; a 6-digit one-time code by text or email is requested on unrecognized devices. No pay-without-sign-in option found for auto loans (inferred).",
+  "notes": "Researched from public bankofamerica.com pages only (no sign-in). The mock bill is a Bank of America auto loan. Online payments go through Online Banking (Bill Pay one-time or recurring, from checking or money market; customers without a deposit account may set up electronic payments from another bank), so methods are bank only. Automatic payments are set up in Bill Pay, on the paper form in the welcome package, or by phone; a confirmation letter with the start date arrives within 3-4 weeks and customers must keep paying until then (not modelled). Enrolling twice can cause double drafts. Phone payments: automated 800-215-6195, 24/7; agent-assisted phone payments carry a fee whose amount is not published (not modelled). Mail: PO Box 17237, Wilmington, DE 19886-7237. Up to 18 months of auto loan statements online; paperless path Profile & Settings > Paperless settings. Sign-in page asks for User ID and Password (links: Forgot user ID, Forgot password, Enroll). Customers who opted into an authorization code choose where it is sent; password reset sends a code to the phone (channel modelled as email_or_sms, inferred). No pay-without-sign-in option found for auto loans (inferred). Reviewed 2026-10-09: sign-in label corrected from Online ID to User ID (public sign-in page); added login help; apply line 844-892-6002 is for new applications. Footer/service phone set to the loan servicing line (contact.phone). Integrated 2026-10-10: labels.accountName \"Auto Loan\" (pages no longer say \"Consumer Loan\").",
   "officialDomains": [
     "bankofamerica.com"
   ],
+  "contact": {
+    "phone": "800-215-6195",
+    "source": "https://www.bankofamerica.com/customer-service/contact-us/auto-loans/",
+    "evidence": "documented_official"
+  },
   "sources": [
     {
       "url": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/",
@@ -27,6 +32,12 @@
       "title": "Online and Mobile Banking Features and Digital Services",
       "fetchedAt": "2026-10-09",
       "kind": "other"
+    },
+    {
+      "url": "https://secure.bankofamerica.com/login/sign-in/signOnV2Screen.go",
+      "title": "Log in to Online Banking | Bank of America",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
     }
   ],
   "brand": {
@@ -41,11 +52,13 @@
     "autopay": "Automatic/Recurring payments",
     "paperless": "Paperless settings",
     "profile": "Profile & Settings",
-    "username": "Online ID",
+    "username": "User ID",
     "signIn": "Log In",
     "signOut": "Log Out",
     "register": "Enroll",
-    "statements": "Statements & Documents"
+    "statements": "Statements & Documents",
+    "forgot": "Forgot password",
+    "accountName": "Auto Loan"
   },
   "nav": {
     "public": [
@@ -98,7 +111,7 @@
     "loginSteps": 1,
     "mfa": "email_or_sms",
     "evidence": "inferred",
-    "source": "https://info.bankofamerica.com/en/digital-banking"
+    "source": "https://secure.bankofamerica.com/login/sign-in/signOnV2Screen.go"
   },
   "capabilities": {
     "pay_online": {
@@ -173,7 +186,7 @@
       "slug": "autopay",
       "title": "Setting up automatic payments",
       "paragraphs": [
-        "Log in to Online Banking and choose the Automatic/Recurring payments link in the Bill Pay menu, then follow the steps. You can also return the form from your welcome package with a voided check by mail or fax, or call 800-215-6195.",
+        "Log in to Online Banking and choose the Automatic/Recurring payments link in the Bill Pay menu, then follow the steps. You can also return the paper sign-up form from your welcome package (or the New Automatic Payment Sign Up section on the back of your statement) with a voided check by mail or fax, or call 800-215-6195 for help.",
         "Within 3 to 4 weeks you will get a letter confirming when drafts begin. Keep making your payments until it arrives so you are not charged late fees.",
         "Use only one enrollment method. Signing up both on paper and online can cause more than one payment to be taken each month."
       ],
@@ -218,10 +231,20 @@
       "slug": "contact-us",
       "title": "Contact auto loan customer service",
       "paragraphs": [
-        "Existing auto loan customers can call 800-215-6195, Monday to Friday 8 a.m. to 8 p.m. ET. New customers can call 844-892-6002. Relay calls (711) are accepted and interpreters are free."
+        "Existing auto loan customers can call 800-215-6195, Monday to Friday 8 a.m. to 8 p.m. ET; automated phone payments and payoff quotes are available 24/7. To apply for a loan by phone, call 844-892-6002. Relay calls (711) are accepted and interpreters are free."
       ],
       "source": "https://www.bankofamerica.com/customer-service/contact-us/auto-loans/",
       "mode": "replace"
+    },
+    {
+      "slug": "login-help",
+      "title": "Help logging in",
+      "topic": "account",
+      "paragraphs": [
+        "Enter your user ID and password. If you chose to use an authorization code, pick where the code should be sent and enter it. You may also be asked your challenge questions.",
+        "Forgot your user ID? Choose Forgot user ID and enter the email address tied to it; the ID is emailed to you. Forgot your password? Choose Forgot password, confirm your identity with a code sent to your phone, then set a new password of 8 to 20 characters."
+      ],
+      "source": "https://secure.bankofamerica.com/login/sign-in/signOnV2Screen.go"
     }
   ],
   "tasks": {
@@ -311,7 +334,7 @@
   "testExpectations": [
     {
       "page": "login",
-      "contains": "Online ID"
+      "contains": "User ID"
     },
     {
       "page": "home",

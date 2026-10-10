@@ -4,7 +4,7 @@ import http from 'node:http';
 import { randomBytes, timingSafeEqual, createHmac } from 'node:crypto';
 import { readdirSync, writeFileSync, mkdirSync, chmodSync, rmSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { FleetWorld, Fault, isoDate, fmtDate, money, PASSWORD, FLEET_REVISION, methodTypesFor, autopayPoliciesFor, paymentLimits } from './engine.mjs';
+import { FleetWorld, Fault, isoDate, fmtDate, money, PASSWORD, FLEET_REVISION, methodTypesFor, autopayPoliciesFor, autopayTimingText, paymentLimits } from './engine.mjs';
 import { helpArticles, searchHelp } from './help.mjs';
 import { search as searchCatalog } from './catalog.mjs';
 import { textPdf } from './pdf.mjs';
@@ -92,6 +92,8 @@ function withAutopayOptions(out, vm) {
   if (pol) for (const v of ['minimum', 'statement', 'fixed', 'full'].filter(v => !pol.includes(v))) {
     out = out.replace(new RegExp(`<label[^>]*>(?:(?!</label>)[\\s\\S])*?name="policy" value="${v}"(?:(?!</label>)[\\s\\S])*?</label>`, 'g'), '').replace(new RegExp(`<option value="${v}"[^>]*>[^<]*</option>`, 'g'), '');
   }
+  // AutoPay drafted N days after the bill date: the family's "on each due date" wording follows the dossier.
+  if (vm.billing.autopayDaysAfterBill != null) out = out.replace(/\bon (?:each|every|your)(?: invoice| bill| payment)? due date\b/gi, vm.billing.autopayTiming);
   if (days === 'due_date' || Array.isArray(days)) out = out.replace(/(<select[^>]*name="day"[^>]*>)([\s\S]*?)(<\/select>)/g, (m, a, body, c) => a + body.replace(/<option value="(\d+)"[^>]*>[^<]*<\/option>/g, (o, n) => days === 'due_date' || !days.includes(Number(n)) ? '' : o) + c);
   return out;
 }
@@ -150,7 +152,7 @@ export const decorate = (out, vm, t = null) => withDossierNav(decorateBase(out, 
 // the capability note (added next) tells the user how to do it instead.
 // The wizard chrome around a removed form (progress steppers, "we hate to see you go" lines, emptied boxes) goes too.
 // AutoPay: enrollment forms go when AutoPay is not offered online, the turn-off form and link when cancelling is not.
-const PRIMARY_CAP = { arrangement: 'payment_arrangement', paperless: 'paperless', cancel: 'cancel_service', plan: 'change_plan' };
+const PRIMARY_CAP = { arrangement: 'payment_arrangement', paperless: 'paperless', cancel: 'cancel_service', plan: 'change_plan', guest: 'guest_pay' };
 const STEPPER = /<ol\b[^>]*class="(?:progress|kstep|stepper|steps-bar|wiz|wizard|dsteps|psteps|hp-steps|mc-steps|pp-track)"[^>]*>[\s\S]*?<\/ol>/g;
 const FORM = /<form\b[^>]*>(?:(?!<\/form>)[\s\S])*<\/form>/g;
 const offline = (vm, cap) => { const s = vm.biller?.capabilities?.[cap]; return !!s?.dossier && !!s.support && s.support !== 'supported'; };
@@ -260,7 +262,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
       tier: biller.tier || 'family', labels: biller.dossier?.labels || {}, nav: biller.dossier?.nav || null,
       auth: biller.dossier?.auth ? { identifier: biller.dossier.auth.identifier || null, loginSteps: t.flow.loginSteps, mfa: biller.dossier.auth.mfa || null, registrationFields: biller.dossier.auth.registrationFields || [], guestLookupFields: biller.dossier.auth.guestLookupFields || [], guestLookupExact: !!biller.dossier.auth.guestLookupExact } : null,
       capabilityNotes: biller.dossier ? capabilityNotesFor(biller) : [],
-      billing: biller.dossier ? { methods: methodTypesFor(biller), guestMethods: methodTypesFor(biller, { guest: true }), autopayMethodTypes: methodTypesFor(biller, { autopay: true }), autopayPolicies: autopayPoliciesFor(biller), autopayDays: biller.dossier.billing?.autopay?.days || null, autopayLeadDays: biller.dossier.billing?.autopay?.leadDays ?? null, limits: paymentLimits(biller), lateFeePercent: biller.dossier.billing?.lateFeePercent ?? null, lateFeeCents: biller.dossier.billing?.lateFeeCents ?? null } : null,
+      billing: biller.dossier ? { methods: methodTypesFor(biller), guestMethods: methodTypesFor(biller, { guest: true }), autopayMethodTypes: methodTypesFor(biller, { autopay: true }), autopayPolicies: autopayPoliciesFor(biller), autopayDays: biller.dossier.billing?.autopay?.days || null, autopayLeadDays: biller.dossier.billing?.autopay?.leadDays ?? null, autopayDaysAfterBill: biller.dossier.billing?.autopay?.daysAfterBill ?? null, dossierPlans: !!biller.dossier.billing?.plans, autopayTiming: autopayTimingText(biller), limits: paymentLimits(biller), lateFeePercent: biller.dossier.billing?.lateFeePercent ?? null, lateFeeCents: biller.dossier.billing?.lateFeeCents ?? null } : null,
       // Payment method types this page may offer (kit.methodChooser / newMethodFields honor it).
       methodTypes: biller.dossier ? methodTypesFor(biller, { guest: ['guest', 'guestPay', 'guestReview'].includes(page), autopay: page === 'autopay' }) : null,
       dossier: biller.dossier ? { id: biller.dossier.id, reviewedAt: biller.dossier.reviewedAt || null, sources: (biller.dossier.sources || []).map(x => ({ title: x.title, kind: x.kind })) } : null,

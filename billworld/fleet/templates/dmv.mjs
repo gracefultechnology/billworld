@@ -59,7 +59,7 @@ const acctName = vm => isCounty(vm) ? 'Online Tag Services' : 'MyDMV';
 // Card fee wording mirrors engine.fee(): documented percent/flat, else the synthetic government default.
 function cardFee(vm, cents) {
   const f = vm.biller.fees;
-  if (f.cardPercent != null) return { text: `${f.cardPercent}% of the transaction`, cents: Math.round(cents * f.cardPercent / 100) };
+  if (f.cardPercent != null) return { text: `${f.cardPercent}% of the transaction${f.cardMinCents ? ` (minimum ${money(f.cardMinCents)})` : ''}`, cents: Math.max(f.cardMinCents || 0, Math.round(cents * f.cardPercent / 100)) };
   if (f.cardCents != null) return { text: f.cardCents ? `${money(f.cardCents)} per transaction` : 'no processing fee', cents: f.cardCents };
   return { text: '2.35% (minimum $1.95)', cents: Math.max(195, Math.round(cents * 0.0235)) };
 }

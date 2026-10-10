@@ -20,6 +20,43 @@ templates, so every dedicated biller benefits (see "Integrated requests" below).
 measured state after the integration run (`tests/dedicated.mjs --dossiers all`).
 
 <!-- coverage-table -->
+Measured 2026-10-10 (integration round 2): `tests/dedicated.mjs --category <c> --concurrency 2 --tag integrate-dedicated-3-<c>`,
+one category at a time, every standard and extended flow plus `dossier_contract` and `testExpectations`, desktop. 0
+flows skipped, 0 browser relaunches. 283 dossiers (280 picks plus three extras: one each in medicare, property-tax and
+streaming-subscriptions); `status.mjs`: 280/280 picks green, 283 green in total.
+
+| Category | Dossiers | Green | Flows passed | Templates |
+|---|---|---|---|---|
+| banks | 10 | 10/10 | 330/330 | bank-billpay |
+| credit-cards | 10 | 10/10 | 341/341 | card-servicer |
+| credit-unions | 10 | 10/10 | 336/336 | bank-billpay |
+| dental-vision-hearing | 10 | 10/10 | 357/357 | insurance |
+| electric | 10 | 10/10 | 376/376 | kubra, paymentus, utility-account |
+| gas | 10 | 10/10 | 373/373 | kubra, paymentus, utility-account |
+| government | 10 | 10/10 | 350/350 | income-tax |
+| home-services | 10 | 10/10 | 344/344 | invoice-portal, streaming |
+| housing | 10 | 10/10 | 359/359 | rent-portal |
+| insurance | 10 | 10/10 | 374/374 | insurance |
+| internet | 10 | 10/10 | 366/366 | telecom |
+| loans | 10 | 10/10 | 337/337 | loan-servicer |
+| medical | 10 | 10/10 | 362/362 | mychart, patient-pay |
+| medicare | 11 | 11/11 | 397/397 | health-plan |
+| mortgage | 10 | 10/10 | 329/329 | loan-servicer |
+| other | 10 | 10/10 | 342/342 | invoice-portal |
+| pharmacy-dme | 10 | 10/10 | 321/321 | patient-pay |
+| phone-landline | 10 | 10/10 | 372/372 | telecom |
+| phone-wireless | 10 | 10/10 | 344/344 | telecom |
+| propane-heating-oil | 10 | 10/10 | 362/362 | utility-account |
+| property-tax | 11 | 11/11 | 391/391 | property-tax |
+| senior-services | 10 | 10/10 | 347/347 | streaming |
+| storage-funeral | 10 | 10/10 | 356/356 | invoice-portal, streaming |
+| streaming-subscriptions | 11 | 11/11 | 357/357 | streaming |
+| trash | 10 | 10/10 | 367/367 | invoicecloud, kubra, waste-hauler |
+| tv | 10 | 10/10 | 373/373 | telecom |
+| vehicle-tolls | 10 | 10/10 | 364/364 | dmv, toll-account |
+| water-sewer | 10 | 10/10 | 371/371 | kubra, municipal-portal, paymentus, utility-account |
+| **total** | **283** | **283/283** | **9998/9998** | |
+<!-- /coverage-table -->
 
 **Next tier (the remaining popular billers).** Same loop, one category at a time:
 
@@ -36,11 +73,13 @@ measured state after the integration run (`tests/dedicated.mjs --dossiers all`).
    `tests/browser.mjs --per-template 1` and `tests/dedicated.mjs --dossiers all` until all are green, and update the
    table above. `status.mjs --goal 20` then shows the tier's progress.
 
-Still open after tier 1 (requests that need new flows rather than a rule; dossiers keep them in `notes`): AutoPay drafted N
-days after the bill date, AutoPay schedules other than monthly, AutoPay enrollment by form or phone with a pending
-state, due-date changes, pause/hold for subscriptions, plan changes that take effect next cycle, a numeric-PIN password,
-`controlDate`/`securityCode` lookup and registration fields, an early-payment cap, and personas living in the biller's
-service area.
+Still open after tier 1 (requests that need new flows or pages rather than a rule; dossiers keep them in `notes`):
+AutoPay schedules other than monthly (bi-weekly, twice a month), AutoPay enrollment by form or phone with a pending
+state, due-date changes, pause/hold for subscriptions, plan downgrades that take effect next cycle (and upgrades online
+while downgrades are phone-only), `pay_online` offline for an otherwise online portal, annual plan prices, a numeric-PIN
+password, `controlDate`/`securityCode`/date-of-birth/Express-Pay-ID lookup and registration fields, an early-payment cap,
+card-type-specific fees (credit only), a community picker for rent portals, and personas living in the biller's service
+area.
 
 ### Integrated requests (tier 1)
 
@@ -60,6 +99,19 @@ service area.
 - Engine/schema: `lateFeeMinCents`, `fullBalanceOnly`, `scheduled.maxPending`, `maxDaysAhead: 0` allows paying today,
   `fees.autopayCard*` / `fees.guest*` / `fees.notes`, `contact` and `pay_by_phone.phone` overrides, `change_plan`,
   `email_or_account`, guest lookup by `phone`, `guestLookupExact`, AutoPay day picker in utility-account.
+- Round 2 (2026-10-10): `fees.cardMinCents` ("3%, minimum $1.50"), `autopay.daysAfterBill` (AutoPay drafted N days
+  after the bill date, never after the due date; the family's "on each due date" wording follows it),
+  `maxPaymentBalance` (payments cannot exceed the balance), `labels.accountName` (bank-billpay product name instead of
+  "Consumer Loan"); full-balance-only billers no longer show "Pay another amount"; kubra AutoPay amount list and fixed
+  field follow `autopay.policies`; card-servicer hides "Current Balance" AutoPay unless the dossier lists it and uses
+  the AutoPay label in headings and buttons; paymentus cancel heading/button and utility-account dashboard rows use
+  labels; utility-account, telecom and bank-billpay "ways to pay" text lists only supported channels; telecom hides
+  AutoPay/paperless rows, sub-nav and aside links where a dossier says they are not offered, builds its home lead from
+  capabilities, drops the "11:59 p.m." cutoff and the synthetic plan price for dedicated billers; waste-hauler AutoPay
+  timing text; loan-servicer "Continue" on the first of two sign-in steps and no "monthly" when an AutoPay note
+  exists; bank-billpay guest page drops its form when guest pay is offline; captured footers drop logo/social/"opens
+  in new window" text; footer phones drop research annotations; a capability set to `unknown` with a note shows a
+  neutral "contact us" page (Optimum TV, WOW!).
 - Tests: solver picks the dossier's AutoPay amount; the contact-phone check uses only cleaned numbers; the AutoPay
   cancel control is found by "Cancel/Stop … pay"; captured public text is quoted at most 200 characters and never on
   a topic the dossier writes; untouched accounts grade as active service.
@@ -107,7 +159,7 @@ service area.
 | `name`, `category`, `reviewedAt`, `notes`, `officialDomains` | bookkeeping | — |
 | `template` | move the biller to another portal family (online templates only) | catalog |
 | `brand` `{displayName, shortName, primary, accent, monogram}` | name used in pages, mail, tasks; colors (≥ 4.5:1 on white) | catalog, every page |
-| `labels` | the biller's words for canonical concepts: `payBill viewBill autopay paperless history wallet cancel plan help signIn signOut register forgot guestPay dashboard statements contact profile arrangement amountDue dueDate accountNumber username password home` | `kit.L()` in every template, help, tasks |
+| `labels` | the biller's words for canonical concepts: `payBill viewBill autopay paperless history wallet cancel plan help signIn signOut register forgot guestPay dashboard statements contact profile arrangement amountDue dueDate accountNumber accountName username password home` | `kit.L()` in every template, help, tasks |
 | `nav` `{public:[{label,page\|helpSlug}], account:[...]}` | ordered top-level navigation. Public pages: `home login register guest help`; account adds `dashboard bill statements pay history autopay paperless wallet cancel plan arrangement contact profile`. Pages you leave out appear under **More** so every flow stays reachable | server `withDossierNav` + template `meta.navSlots` |
 | `auth.identifier` | `email \| username \| account \| phone \| email_or_username \| email_or_account`: what the engine accepts and the field label (`account` tasks get the account number from the bill notice) | engine, kit, tasks, driver |
 | `auth.loginSteps` | `1` or `2` (two-step: identifier first, then password) | server (per-biller flow), kit |
@@ -118,13 +170,13 @@ service area.
 | `auth.guestLookupExact` | `true`: the guest form asks for exactly `guestLookupFields` (the family's other lookup fields are removed and one identifier is enough, e.g. account number alone) | engine, server, kubra home text |
 | `auth.socialProviders` | `["google"]` shows Sign in with Google; `[]` hides it | google.mjs |
 | `capabilities.<key>` `{support, evidence, source, note, channel, phone}` | override any capability (`online_account registration password_reset view_bill statements pay_online guest_pay autopay autopay_cancel scheduled_payment paperless cancel_service payment_assistance payment_arrangement pay_by_phone pay_by_mail google_login change_plan`). `unsupported` + `note` (required) → the note shows on home, dashboard, help and the feature's page; the engine refuses it; a `*-limitation` task asks the agent to report the offline route (phone from `phone`, else the catalog phones) | catalog, engine, server, help, tasks |
-| `billing.fees` `{bankCents, cardCents, cardPercent, autopayCardCents, autopayCardPercent, guestBankCents, guestCardCents, notes, evidence, source}` | convenience fees charged by the engine (AutoPay card charges and pay-without-signing-in charges can differ); `notes` lists fees that exist but whose amount is not published (help only) | engine, help |
+| `billing.fees` `{bankCents, cardCents, cardPercent, cardMinCents, autopayCardCents, autopayCardPercent, guestBankCents, guestCardCents, notes, evidence, source}` | convenience fees charged by the engine (AutoPay card charges and pay-without-signing-in charges can differ; `cardMinCents` is the floor of a percentage fee); `notes` lists fees that exist but whose amount is not published (help only) | engine, help |
 | `contact` `{phone, payPhone, source}` | customer-service / pay-by-phone numbers that replace the catalog's (footer, contact article, phone tasks). `capabilities.pay_by_phone.phone` also sets the pay-by-phone number | catalog, every page, tasks |
 | `billing.methods`, `billing.guestMethods` | `["bank","card"]` subsets accepted online. Card-only billers (`["card"]`) get no saved checking account; generated tasks and reference solutions use the saved Visa, and `declined-retry` / `register-and-pay` (which need a bank account) are dropped | engine, kit, tasks, driver |
-| `billing.autopay` `{policies, days, leadDays, methodTypes}` | AutoPay amount options, `"due_date"` or allowed days, draft days before due date, method types | engine, server, kit |
+| `billing.autopay` `{policies, days, leadDays, daysAfterBill, methodTypes}` | AutoPay amount options, `"due_date"` or allowed days, draft days before due date or days after the bill date (0-28, capped at the due date), method types | engine, server, kit |
 | `billing.scheduled` `{maxDaysAhead, maxPending}` | how far ahead payments may be dated (0 = today only; the date picker is hidden where the template supports it) and how many scheduled payments may be pending at once | engine, telecom |
 | `billing.fullBalanceOnly` | online payments must equal the full balance; payment plans are refused; `pay-minimum`, `pay-partial-card` and `setup-payment-plan` tasks are dropped | engine, tasks, driver, help |
-| `billing.minPaymentCents`, `maxPaymentCents` | single-payment limits (min ≤ $25, max ≥ $5,000) | engine |
+| `billing.minPaymentCents`, `maxPaymentCents`, `maxPaymentBalance` | single-payment limits (min ≤ $25, max ≥ $5,000); `maxPaymentBalance: true` refuses payments above the current balance | engine |
 | `billing.plans` `[{id,name,cents,current}]` | real plan names/prices; the current plan must not be the cheapest | engine, tasks (`downgrade-plan`) |
 | `billing.cardMinimum` `{percent, floorCents, plusInterest}` | card minimum-payment model | engine |
 | `billing.lateFeeCents` / `lateFeePercent` (+ `lateFeeMinCents`) | late payment charge on past-due balances; with `lateFeeMinCents` the charge is the greater of the percentage or that amount | engine, help |
@@ -132,6 +184,9 @@ service area.
 | `tasks.extra[]` `{slug,intent,scenario,predicates,answer,tags,evidence, solver\|solution}` | extra tasks; predicates from the engine's types; `solution` steps: `login pay autopay cancelAutopay paperless cancelService changePlan arrangement contact removeMethod reset answer` (`answer.text` may use `{{balance}} {{dueDate}} {{phone}} {{payPhone}} {{confirmation}}`); answer kinds `amount_due confirmation phone contact contains abstain` | tasks, tests/solve.mjs |
 | `tasks.suppress[]` | built-in task slugs that do not apply to this biller | tasks |
 | `testExpectations[]` `{page, slug?, signedIn?, contains?, notContains?, label?}` | biller-specific checks run by `tests/dedicated.mjs` | dedicated.mjs |
+
+**Capability notes are customer-facing**: they appear on the live site as if the biller wrote them. Record research
+remarks and inferences in `notes`, never in a capability note.
 
 A capability `note` on a **supported** capability (a rule such as "no AutoPay while past due") shows on that feature's own page only. When a capability is unsupported online, the server removes that page's forms together with their wizard chrome (progress steppers, emptied boxes), the AutoPay enroll form when `autopay` is offline and the turn-off form and link when `autopay_cancel` is offline. `change_plan` unsupported gives a `plan-change-limitation` task instead of `downgrade-plan`.
 
@@ -146,6 +201,11 @@ node billworld/fleet/billers/validate.mjs [id ...]                       # all d
 FLEET_TIMEOUT=120000 node billworld/fleet/tests/dedicated.mjs --billers id1,id2 --tag me-x   # or --category electric | --dossiers all
 node billworld/fleet/billers/status.mjs [--category electric] [--next 10] [--json]
 ```
+
+For many billers prefer one run per category (`--category <c>`) over `--dossiers all`, so a problem costs one chunk. If
+the shared Chrome dies mid-run, a flow that failed because the browser went away (or was relaunched by the other worker
+while it ran) is retried once on a relaunched browser before it counts; `browserRelaunches` and `retriedFlows` in
+`results.json` report it, and each retried flow is marked `retried: true`.
 
 Results: `fleet/.artifacts/<tag>/results.json` (run) and `fleet/.artifacts/dedicated/<billerId>.json` (latest full run per
 biller, read by `status.mjs`). Set `FLEET_DOSSIERS=0` to run the whole fleet without dossiers.

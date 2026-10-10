@@ -6,7 +6,7 @@
   "category": "home-services",
   "template": "streaming",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from the public AHS FAQs page and the public MyAccount sign-in page only (never signed in). MyAccount sign-in is a single form with Email and Password, Forgot Password?, Log in with Google and Log in with Apple, and Create Account. Plans are billed monthly or annually (no finance fee for monthly) to a checking account or credit/debit card. Automatic payments also make the plan auto-renew each year; without them the plan does not auto-renew and is renewed in MyAccount or by phone (844-954-3743). Choosing the monthly billing day is by phone (888-543-2902). Plan changes (upgrade, downgrade, add-ons) are only within 60 days of the start date and by phone (855-799-3434), so the built-in downgrade-plan task is suppressed and replaced by a phone-lookup task; plan prices are quote-based and not published, so the plan page keeps the family's synthetic plans. Cancellation is by phone: AHS first offers pause, transfer or downgrade at 844-300-5270 and processes cancellations at 855-822-7419; refunds are full within 30 days (less claims costs) and prorated after, less an administrative fee of up to one month's payment. The $100 or $125 service fee per request is not a bill-payment fee and is not modelled. Guest payment, paperless and autopay cancellation are not documented publicly and stay at family defaults. Reviewer (2026-10-09): moved from utility-account to streaming, because AHS bills a home-warranty plan subscription that renews automatically, and the utility template showed an energy-usage chart and Start, Stop or Move.",
+  "notes": "Researched from the public AHS FAQs page and the public MyAccount sign-in page only (never signed in). MyAccount sign-in is a single form with Email and Password, Forgot Password?, Log in with Google and Log in with Apple, and Create Account. Plans are billed monthly or annually (no finance fee for monthly) to a checking account or credit/debit card. Automatic payments also make the plan auto-renew each year; without them the plan does not auto-renew and is renewed in MyAccount or by phone (844-954-3743). Choosing the monthly billing day is by phone (888-543-2902). Plan changes (upgrade, downgrade, add-ons) are only within 60 days of the start date and by phone (855-799-3434), so the built-in downgrade-plan task is suppressed and replaced by a phone-lookup task; plan prices are quote-based and not published, so the plan page keeps the family's synthetic plans. Cancellation is by phone: AHS first offers pause, transfer or downgrade at 844-300-5270 and processes cancellations at 855-822-7419; refunds are full within 30 days (less claims costs) and prorated after, less an administrative fee of up to one month's payment. The $100 or $125 service fee per request is not a bill-payment fee and is not modelled. Guest payment, paperless and autopay cancellation are not documented publicly and stay at family defaults. Reviewer (2026-10-09): moved from utility-account to streaming, because AHS bills a home-warranty plan subscription that renews automatically, and the utility template showed an energy-usage chart and Start, Stop or Move. Reviewer (2026-10-09): with the integrated change_plan capability, plan changes are now marked unsupported online (phone 855-799-3434, within 60 days), which replaces the downgrade-plan task with plan-change-limitation; the downgrade-plan suppression was removed.",
   "officialDomains": [
     "ahs.com"
   ],
@@ -113,6 +113,13 @@
       "support": "supported",
       "evidence": "observed_public",
       "source": "https://myaccount.ahs.com/"
+    },
+    "change_plan": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.ahs.com/faqs/",
+      "phone": "8557993434",
+      "note": "Plan changes (upgrade, downgrade or optional coverage) are made by phone at 855-799-3434, and only within 60 days of the plan start date."
     }
   },
   "billing": {
@@ -185,9 +192,6 @@
     }
   ],
   "tasks": {
-    "suppress": [
-      "downgrade-plan"
-    ],
     "extra": [
       {
         "slug": "plan-change-phone",

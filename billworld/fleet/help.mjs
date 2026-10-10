@@ -51,7 +51,7 @@ export function helpArticles(biller, labels = {}) {
   const c = biller.contact || contactInfo(e);
   const phone = c.phone, payPhone = c.payPhone, mailAddr = c.mailAddress;
   const notes = e.notes;
-  const feeText = f.cardPercent != null ? `A convenience fee of ${f.cardPercent}% applies to card payments.` : f.cardCents ? `A convenience fee of ${money(f.cardCents)} applies to card payments.` : f.cardCents === 0 ? 'There is no fee to pay online.' : null;
+  const feeText = f.cardPercent != null ? `A convenience fee of ${f.cardPercent}%${f.cardMinCents ? ` (minimum ${money(f.cardMinCents)})` : ''} applies to card payments.` : f.cardCents ? `A convenience fee of ${money(f.cardCents)} applies to card payments.` : f.cardCents === 0 ? 'There is no fee to pay online.' : null;
   const a = [];
   const add = (slug, title, topic, paragraphs, source, steps = null) => a.push({ slug, title, topic, paragraphs: paragraphs.filter(Boolean), steps, source: source || null, evidence: source ? 'documented_link' : 'synthetic_from_catalog' });
   const inPerson = about(notes, /in[- ]person|walk-?in|drop ?box|night drop|at (?:the|our|any) (?:office|branch|front desk|counter)|cash/i)[0];

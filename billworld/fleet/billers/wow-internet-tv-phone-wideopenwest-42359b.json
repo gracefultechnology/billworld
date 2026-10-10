@@ -5,7 +5,7 @@
   "name": "WOW! Internet, TV & Phone (WideOpenWest)",
   "category": "tv",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public wowway.com help-center articles and the public WOW! login page only (no sign-in). The login page asks for 'Username (this may be your email)' and Password on one page, with Forgot Username, Forgot Password, Login, Sign in with Google and a register link, so identifier is email_or_username, loginSteps 1 and Google sign-in is offered (observed). The help center adds that the login uses the chosen Account Email, and that registering needs the last 4 digits of the account number, the account holder's last name and the service ZIP (registrationFields, added by the 2026-10-09 review). The online account manager is My Account; its Billing & Payment section holds Make a Payment / Submit Payment, WOW! AutoPay, Turn AutoPay Off and Paperless Statements. Ways to pay: AutoPay, one-time online payment, automated phone 1-866-496-9669, agent (fee charged, amount not stated), drop box or mail. AutoPay uses a bank account or credit card, must be set up 5 days before a billing period to apply to that bill, and does not stop paper statements; if a balance exists when enrolling, pay it first or the first draft covers both statements. Paperless Statements avoids the fee WOW! charges for paper statements (amount not stated) and needs an email confirmation. WOW! now offers YouTube TV for new TV customers; this record keeps legacy WOW! TV billing. How to cancel service is not documented in the help center pages found, so cancel_service keeps the family default (gap). Plans and fee amounts are left out.",
+  "notes": "Researched from public wowway.com help-center articles and the public WOW! login page only (no sign-in). The login page asks for 'Username (this may be your email)' and Password on one page, with Forgot Username, Forgot Password, Login, Sign in with Google and a register link, so identifier is email_or_username, loginSteps 1 and Google sign-in is offered (observed). The help center adds that the login uses the chosen Account Email, and that registering needs the last 4 digits of the account number, the account holder's last name and the service ZIP (registrationFields, added by the 2026-10-09 review). The online account manager is My Account; its Billing & Payment section holds Make a Payment / Submit Payment, WOW! AutoPay, Turn AutoPay Off and Paperless Statements. Ways to pay: AutoPay, one-time online payment, automated phone 1-866-496-9669, agent (fee charged, amount not stated), drop box or mail. AutoPay uses a bank account or credit card, must be set up 5 days before a billing period to apply to that bill, and does not stop paper statements; if a balance exists when enrolling, pay it first or the first draft covers both statements. Paperless Statements avoids the fee WOW! charges for paper statements (amount not stated) and needs an email confirmation. WOW! now offers YouTube TV for new TV customers; this record keeps legacy WOW! TV billing. How to cancel service is not documented in the help center pages found, so cancel_service is 'unknown' (the page asks the customer to contact customer service). Plans and fee amounts are left out. Integrated 2026-10-10: cancel_service 'unknown': the cancel page shows a neutral contact note instead of an online flow.",
   "officialDomains": [
     "wowway.com"
   ],
@@ -153,6 +153,12 @@
       "support": "supported",
       "evidence": "documented_official",
       "source": "https://www.wowway.com/help-center/account-billing/how-can-i-pay-my-bill"
+    },
+    "cancel_service": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "note": "WOW! does not describe online cancellation; contact WOW! customer service to discuss changes to your service.",
+      "channel": "phone"
     }
   },
   "billing": {
@@ -260,39 +266,111 @@
         "slug": "autopay-enroll-deadline",
         "intent": "Using the WOW! help center, find how many days before a billing period begins you must enroll in AutoPay for that bill to be paid automatically. Do not change any settings.",
         "predicates": [
-          { "type": "no_payment" },
-          { "type": "answer", "kind": "contains", "expected": ["5", "five"] },
-          { "type": "no_unrequested_changes", "allow": [] }
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5",
+              "five"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
         ],
-        "answer": { "kind": "contains", "expected": ["5", "five"] },
-        "tags": ["help", "information", "autopay"],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5",
+            "five"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
         "evidence": "documented_official",
         "solution": [
-          { "op": "answer", "text": "Enroll at least 5 days before the billing period begins." }
+          {
+            "op": "answer",
+            "text": "Enroll at least 5 days before the billing period begins."
+          }
         ]
       },
       {
         "slug": "autopay-stops-paper",
         "intent": "Find out on the WOW! help pages whether turning on AutoPay stops paper statements, and if not, what you need to turn on. Do not change any settings.",
         "predicates": [
-          { "type": "no_payment" },
-          { "type": "answer", "kind": "contains", "expected": ["paperless"] },
-          { "type": "no_unrequested_changes", "allow": [] }
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "paperless"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
         ],
-        "answer": { "kind": "contains", "expected": ["paperless"] },
-        "tags": ["help", "information", "paperless"],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "paperless"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "paperless"
+        ],
         "evidence": "documented_official",
         "solution": [
-          { "op": "answer", "text": "No, AutoPay does not stop paper statements; you also need to enroll in Paperless Statements." }
+          {
+            "op": "answer",
+            "text": "No, AutoPay does not stop paper statements; you also need to enroll in Paperless Statements."
+          }
         ]
       }
     ]
   },
   "testExpectations": [
-    { "page": "login", "contains": ["Username (this may be your email)"] },
-    { "page": "dashboard", "signedIn": true, "contains": ["WOW! AutoPay", "Paperless Statements"] },
-    { "page": "helpArticle", "slug": "autopay", "contains": "5 days" },
-    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "1-866-496-9669" },
-    { "page": "helpArticle", "slug": "cancel-autopay", "contains": "Turn AutoPay Off" }
+    {
+      "page": "login",
+      "contains": [
+        "Username (this may be your email)"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "WOW! AutoPay",
+        "Paperless Statements"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "5 days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "1-866-496-9669"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-autopay",
+      "contains": "Turn AutoPay Off"
+    }
   ]
 }

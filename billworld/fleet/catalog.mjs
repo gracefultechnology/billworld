@@ -328,6 +328,9 @@ export function displayPhone(raw) {
   const text = cleanContactText(raw); const phones = phoneDigits(raw);
   if (!text) return phones.length ? phones.map(formatPhone).join('; ') : null;
   if (PROVENANCE.test(text) || text.length > 90) return phones.length ? phones.slice(0, 3).map(formatPhone).join('; ') : null;
+  // Research-style annotations ("(billing dept)", "; sales", "via ...") are not footer text: show the numbers alone.
+  const shown = phoneDigits(text); // numbers in the cleaned text only (provenance snippets can quote other numbers)
+  if (shown.length && /\(|;|\bsupport\b|\bsales\b|\bvia\b/i.test(text.replace(/\((?:TTY|TDD|TTY\/TDD)[^()]*\)/gi, ''))) return shown.slice(0, 3).map(formatPhone).join('; ');
   return text.replace(/^customer service:?\s*/i, '');
 }
 const RESEARCHY_AREA = /\bHQ\b|;|\bmostly\b|\bissuer\b|research|\bper\b|fetched|\(|\bcustomers?\b/i;

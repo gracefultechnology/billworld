@@ -5,7 +5,7 @@
   "name": "USAA (auto & property insurance)",
   "category": "insurance",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public usaa.com billing support and FAQ pages only (no sign-in). One monthly bill for all auto and property policies, viewed under Insurance Bill (Payments tab = history). Pay online, Express Pay without logging on (Bill ID + ZIP, debit/credit card only, no Discover, no fee, one-time only), app, phone 800-531-8722, mail, or another bank's bill pay. Automatic Payment Plan (APP) set up online; starts with the next due date; cancel under Insurance > Bills > Manage Automatic Payments. Pending payments can be changed or cancelled at least 1 business day before the due date. Installment fees: $2 for paper statements and $3 for one-time (non-automatic) payments, billed on the statement, so they are described in help rather than charged as a convenience fee. Need more time to pay: pause an APP payment, carry over, or spread the balance over the next three bills (modelled as payment_arrangement). Bills under $5 roll forward. Review 2026-10-09: the public Log On page asks for an Online ID and then Next (two-step; username sign-in). MFA is not documented publicly. Express Pay takes cards only and not Discover; bank accounts are listed as coming later. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template).",
+  "notes": "Researched from public usaa.com billing support and FAQ pages only (no sign-in). One monthly bill for all auto and property policies, viewed under Insurance Bill (Payments tab = history). Pay online, Express Pay without logging on (Bill ID + ZIP, debit/credit card only, no Discover, no fee, one-time only), app, phone 800-531-8722, mail, or another bank's bill pay. Automatic Payment Plan (APP) set up online; starts with the next due date; cancel under Insurance > Bills > Manage Automatic Payments. Pending payments can be changed or cancelled at least 1 business day before the due date. Installment fees: $2 for paper statements and $3 for one-time (non-automatic) payments, billed on the statement, so they are described in help rather than charged as a convenience fee. Need more time to pay: pause an APP payment, carry over, or spread the balance over the next three bills (modelled as payment_arrangement). Bills under $5 roll forward. Review 2026-10-09: the public Log On page asks for an Online ID and then Next (two-step; username sign-in). MFA is not documented publicly. Express Pay takes cards only and not Discover; bank accounts are listed as coming later. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template). Review 2026-10-10: guest form set to exactly Bill ID (statement number field) + ZIP (guestLookupExact); it previously also asked for policy number and last name.",
   "officialDomains": [
     "usaa.com"
   ],
@@ -89,7 +89,8 @@
     "evidence": "observed_public",
     "source": "https://www.usaa.com/my/logon",
     "identifier": "username",
-    "loginSteps": 2
+    "loginSteps": 2,
+    "guestLookupExact": true
   },
   "capabilities": {
     "pay_online": {

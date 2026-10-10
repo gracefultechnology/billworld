@@ -218,3 +218,29 @@ test('card-only dossier: Visa is the primary method; tasks switch to it and stay
     assert.ok(r.success, `${t.id}: ${JSON.stringify(r.results.filter(x => !x.pass))}`);
   }
 });
+
+// Tier-1 integration (round 2): card fee minimum, AutoPay N days after the bill date, payments capped at the balance,
+// full-balance-only billers offer no "other amount".
+const RULES2 = dedicate(tel, 'zz-dedicated-rules2-000005', {
+  billing: { maxPaymentBalance: true, autopay: { daysAfterBill: 5 }, fees: { bankCents: 0, cardPercent: 3, cardMinCents: 150, evidence: 'documented_official', source: S } }
+});
+test('engine follows cardMinCents, autopay.daysAfterBill and maxPaymentBalance; schema checks them', () => {
+  const w = new FleetWorld(); const id = RULES2.id;
+  assert.equal(w.fee(id, { type: 'card' }, 2500), 150, 'greater of 3% or $1.50'); assert.equal(w.fee(id, { type: 'card' }, 10000), 300);
+  const ep = w.createEpisode({ seed: 'rules2-pay' }); const sid = login(w, ep, id); const bal = w.balance(w.account(ep, id));
+  assert.throws(() => w.draftPayment(ep, id, sid, { amountChoice: 'other', amount: ((bal + 100) / 100).toFixed(2), methodId: 'pm-chk' }), e => e.code === 'amount_over_balance');
+  assert.ok(w.draftPayment(ep, id, sid, { amountChoice: 'other', amount: '25.00', methodId: 'pm-chk' }));
+  const ep2 = w.createEpisode({ seed: 'rules2-ap', scenario: { [id]: { autopay: true } } }); const a2 = w.account(ep2, id);
+  const inv = a2.invoices.at(-1); const issued = inv.issuedAt, due = inv.dueAt;
+  assert.ok(issued + 5 * 86400000 < due, "mock bill gives at least 5 days before the due date");
+  if (ep2.clock < issued + 5 * 86400000) {
+    w.advance(ep2, issued + 6 * 86400000 - ep2.clock);
+    assert.ok(a2.payments.some(p => p.source === 'autopay') || inv.autopaid, 'AutoPay drafted 5 days after the bill date, before the due date');
+  }
+  assert.ok(!w.amountOptions(w.account(w.createEpisode({ seed: 'rules-opts' }), RULES.id)).some(o => o.key === 'other'), 'full-balance-only: no other amount');
+  const bad = k => validateDossier({ ...base, billing: k }, {});
+  assert.ok(bad({ fees: { cardMinCents: 150, evidence: 'synthetic' } }).some(e => /cardMinCents/.test(e)));
+  assert.ok(bad({ autopay: { daysAfterBill: 40 } }).some(e => /daysAfterBill/.test(e)));
+  assert.ok(bad({ autopay: { daysAfterBill: 5, leadDays: 2 } }).some(e => /daysAfterBill/.test(e)));
+  assert.ok(bad({ maxPaymentBalance: 'yes' }).some(e => /maxPaymentBalance/.test(e)));
+});

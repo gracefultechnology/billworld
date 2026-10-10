@@ -4,7 +4,7 @@
   "name": "Verizon (postpaid mobile)",
   "category": "phone-wireless",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public verizon.com support FAQ pages only (no sign-in). My Verizon sign-in takes a User ID or the 10-digit Verizon mobile number, then a password (or approving a push on the phone); the dossier models this as a two-step phone-number sign-in. The sign-in help page documents a password or a push approval on the phone; the text-code second factor (mfa sms) is inferred. Online payments (My Verizon or Pay my bill without signing in using account number + ZIP) accept checking, credit/debit cards and Verizon Gift Cards with no fee; agent-assisted payments carry a $10 Agent Assistance fee; #PMT is free. Auto Pay accepts bank, debit or credit card, but only bank account or Verizon Visa earn the discount (up to $10/line on current myPlan tiers, up to $5 on older plans) and only together with paper-free billing; the discount-by-method rule cannot be expressed. Payment arrangements (scheduled payment or promise to pay, 1-2 payments, usually up to about 2 weeks past due) are self-service in My Verizon. Late fee is the greater of $10 or 5% on past-due balances over $10; only the 5% part is modelled. Disconnecting a line or closing the account is done through Chat with us in My Verizon or by phone (agent), not a self-service form, so cancel_service is marked unsupported online. Plan prices are not modelled: myPlan prices on the public pages were inconsistent (family default plans kept).",
+  "notes": "Researched from public verizon.com support FAQ pages only (no sign-in). My Verizon sign-in takes a User ID or the 10-digit Verizon mobile number, then a password (or approving a push on the phone); the dossier models this as a two-step phone-number sign-in. The sign-in help page documents a password or a push approval on the phone; the text-code second factor (mfa sms) is inferred. Online payments (My Verizon or Pay my bill without signing in using account number + ZIP) accept checking, credit/debit cards and Verizon Gift Cards with no fee; agent-assisted payments carry a $10 Agent Assistance fee; #PMT is free. Auto Pay accepts bank, debit or credit card, but only bank account or Verizon Visa earn the discount (up to $10/line on current myPlan tiers, up to $5 on older plans) and only together with paper-free billing; the discount-by-method rule cannot be expressed. Payment arrangements (scheduled payment or promise to pay, 1-2 payments, usually up to about 2 weeks past due) are self-service in My Verizon. Late fee is the greater of $10 or 5% on past-due balances over $10; modelled as lateFeePercent 5 with lateFeeMinCents 1000 (the $10 threshold on small balances is not modelled). Disconnecting a line or closing the account is done through Chat with us in My Verizon or by phone (agent), not a self-service form, so cancel_service is marked unsupported online. Plan prices are not modelled: myPlan prices on the public pages were inconsistent (family default plans kept).",
   "officialDomains": [
     "verizon.com"
   ],
@@ -226,7 +226,8 @@
         "card"
       ]
     },
-    "lateFeePercent": 5
+    "lateFeePercent": 5,
+    "lateFeeMinCents": 1000
   },
   "help": [
     {

@@ -4,8 +4,8 @@
   "status": "dedicated",
   "name": "AmeriGas Propane",
   "category": "propane-heating-oil",
-  "reviewedAt": "2026-10-05",
-  "notes": "Researched from public amerigas.com and myamerigas.com pages only (no sign-in, no guest lookup). Sign-in is MyAmeriGas with Email Address + Password on one page; the forgot-password link is labelled Login Help. No MFA is described publicly, so the family default is kept. Auto Pay is a toggle under Billing & Payments > Payment Methods and processes on the invoice due date; the accepted Auto Pay method types are not published (family default kept). Closing an account is phone-only (1-888-495-7697, Moving Out page). Late charge is the GREATER of 1.5% of the average daily balance or $36.00 (Maryland differs). Credit-card surcharge varies by state and is capped at cost of acceptance (debit/ACH exempt), so no card fee is modelled. $3.99 paper invoice fee (waived with paperless; not in ME, NY, NJ, RI) is in help only. Integrated 2026-10-09: late charge modelled as the greater of 1.5% or $36.00 (billing.lateFeeMinCents).",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public amerigas.com and myamerigas.com pages only (no sign-in, no guest lookup). Sign-in is MyAmeriGas with Email Address + Password on one page; the forgot-password link is labelled Login Help. No MFA is described publicly, so the family default is kept. Auto Pay is a toggle under Billing & Payments > Payment Methods and processes on the invoice due date; the accepted Auto Pay method types are not published (family default kept). Closing an account is phone-only (1-888-495-7697, Moving Out page). Late charge is the GREATER of 1.5% of the average daily balance or $36.00 (Maryland differs). Credit-card surcharge varies by state and is capped at cost of acceptance (debit/ACH exempt), so no card fee is modelled. $3.99 paper invoice fee (waived with paperless; not in ME, NY, NJ, RI) is in help only. Integrated 2026-10-09: late charge modelled as the greater of 1.5% or $36.00 (billing.lateFeeMinCents). Independent review 2026-10-09: login page re-checked (Email Address, Password, Log In, Forgot password?, Login Help, Create Account, Guest Pay & Order); forgot/register/guest labels corrected to the visible wording. Pay steps now follow How To Pay My Bill (Payment Due / Pay By Invoice, Confirm Payment); paperless steps added (Billing Notifications toggle); Auto Pay turn-off is not described publicly, so the help now says the toggle is assumed. Fees re-checked on Fees and Rates ($36.00 / 1.5%, $33.00 returned payment, $3.99 paper invoice). Review 2026-10-09 (2): the inferred autopay_cancel note was removed from the capability because supported-capability notes render on the AutoPay page as if the biller said them; the inference is recorded here instead.",
   "officialDomains": [
     "amerigas.com",
     "myamerigas.com"
@@ -68,9 +68,9 @@
     "paperless": "Paperless Billing",
     "wallet": "Payment Methods",
     "signIn": "Log In",
-    "forgot": "Login Help",
-    "register": "Create a MyAmeriGas Online Account",
-    "guestPay": "Pay or Order As a Guest",
+    "forgot": "Forgot password?",
+    "register": "Create Account",
+    "guestPay": "Guest Pay & Order",
     "username": "Email Address",
     "help": "Support"
   },
@@ -81,11 +81,11 @@
         "page": "login"
       },
       {
-        "label": "Pay or Order As a Guest",
+        "label": "Guest Pay & Order",
         "page": "guest"
       },
       {
-        "label": "Create a MyAmeriGas Online Account",
+        "label": "Create Account",
         "page": "register"
       },
       {
@@ -152,8 +152,7 @@
     "autopay_cancel": {
       "support": "supported",
       "evidence": "inferred",
-      "source": "https://www.amerigas.com/support/billing-payment/enroll-in-automatic-payments",
-      "note": "Auto Pay is an on/off toggle in MyAmeriGas, so it is turned off with the same toggle."
+      "source": "https://www.amerigas.com/support/billing-payment/enroll-in-automatic-payments"
     },
     "paperless": {
       "support": "supported",
@@ -211,8 +210,8 @@
       "title": "How to pay your AmeriGas bill",
       "topic": "payments",
       "paragraphs": [
-        "Log in to MyAmeriGas and choose Make a Payment from your Account Summary. You can pay the amount due or pay specific invoices, pick a payment date, and use a saved payment method or add a new one.",
-        "You can also pay or order as a guest without logging in, pay by phone at any hour at 1-800-263-7442, or mail a check or money order to AmeriGas, PO Box 371473, Pittsburgh, PA 15250."
+        "Log in to MyAmeriGas, pick the account if you have more than one, and choose Make a Payment from your Account Summary. Choose Payment Due to pay the amount due (or pay ahead when nothing is due), or Pay By Invoice to pick specific invoices. Then set the payment date, use a saved payment method or add a new one, select Next, review and select Confirm Payment. You get an on-screen confirmation and an email.",
+        "You can also use Guest Pay & Order without logging in, pay by phone at any hour at 1-800-263-7442, or mail a check or money order with your account number to AmeriGas, PO Box 371473, Pittsburgh, PA 15250."
       ],
       "steps": [
         "Log in to MyAmeriGas.",
@@ -228,8 +227,8 @@
       "title": "Enroll in Auto Pay",
       "topic": "autopay",
       "paragraphs": [
-        "Auto Pay charges your saved payment method automatically on the day each invoice is due, so you do not need to log in or schedule payments. You can opt in to text reminders a few days before an Auto Pay payment runs.",
-        "Auto Pay is a switch on the Payment Methods screen in MyAmeriGas; switch it off the same way to stop automatic payments."
+        "Auto Pay charges your chosen payment method on the day each invoice is due, so you do not need to log in or schedule payments. AmeriGas can text you a reminder a few days before an Auto Pay payment runs.",
+        "To enroll, log in to MyAmeriGas, open Payment Methods from the Billing & Payments menu, review or add a payment method, toggle Auto Pay on, choose the method, review the program details and select Confirm. To stop Auto Pay later, manage it from the same Payment Methods page or contact AmeriGas."
       ],
       "steps": [
         "Log in to MyAmeriGas.",
@@ -244,7 +243,7 @@
       "title": "Enroll in Paperless Billing",
       "topic": "billing",
       "paragraphs": [
-        "With Paperless Billing your invoices arrive by email instead of by mail, and they stay available in MyAmeriGas. Invoice history goes back two years whether or not you are enrolled.",
+        "To go paperless, log in to MyAmeriGas, choose Billing Notifications from the Billing & Payments menu and switch on the paperless toggle in the Billing & Payment Email Notifications section, then check the email address used for billing notices. Invoices then arrive by email, and MyAmeriGas keeps up to two years of invoice history whether or not you are enrolled.",
         "Customers who keep paper invoices pay a $3.99 paper invoice fee per invoice. Enrolling in Paperless Billing avoids it. The fee does not apply in Maine, New York, New Jersey or Rhode Island."
       ],
       "steps": [
@@ -273,7 +272,7 @@
       "paragraphs": [
         "Pay Per Month (Convenience Pay) spreads your yearly propane cost over twelve monthly payments that are recalculated every three months. It requires a soft credit check.",
         "Pay Per Delivery means you pay for each fill-up, either in advance (no credit check) or after delivery (soft credit check). Choose a plan when you get a quote or in MyAmeriGas.",
-        "AmeriGas accepts LIHEAP and other energy assistance payments."
+        "AmeriGas generally accepts LIHEAP and other energy assistance payments; the agency must provide proof of assistance. Call 1-800-263-7442 to use assistance."
       ],
       "source": "https://www.amerigas.com/propane-pricing-delivery/payment-plans"
     },
@@ -376,7 +375,7 @@
       "page": "login",
       "contains": [
         "Email Address",
-        "Login Help"
+        "Forgot password?"
       ]
     },
     {

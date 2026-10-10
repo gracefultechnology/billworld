@@ -15,7 +15,7 @@ export const LABEL_KEYS = {
   help: 'Help center', signIn: 'Sign in', signOut: 'Sign out', register: 'Create an online account', forgot: 'Forgot password link',
   guestPay: 'Pay without signing in', dashboard: 'Signed-in account home', statements: 'Statements / bill history', contact: 'Contact / secure messages',
   profile: 'Profile settings', arrangement: 'Payment arrangement / agreement', amountDue: 'Amount due', dueDate: 'Due date',
-  accountNumber: 'Account number', username: 'Sign-in identifier field label', password: 'Password field label', home: 'Public home'
+  accountNumber: 'Account number', accountName: 'Name of the billed account or product (e.g. Auto Loan)', username: 'Sign-in identifier field label', password: 'Password field label', home: 'Public home'
 };
 // Template page -> label key (pages missing here have no dossier label).
 export const PAGE_LABEL = {
@@ -169,7 +169,8 @@ export function validateDossier(d, { biller = null, templateIds = null, fileId =
     const b = d.billing;
     if (!isObj(b)) e('billing', 'object');
     else {
-      for (const k of Object.keys(b)) if (!['fees', 'methods', 'guestMethods', 'autopay', 'scheduled', 'minPaymentCents', 'maxPaymentCents', 'plans', 'cardMinimum', 'lateFeeCents', 'lateFeePercent', 'lateFeeMinCents', 'fullBalanceOnly', 'source'].includes(k)) e(`billing.${k}`, 'unknown field');
+      for (const k of Object.keys(b)) if (!['fees', 'methods', 'guestMethods', 'autopay', 'scheduled', 'minPaymentCents', 'maxPaymentCents', 'plans', 'cardMinimum', 'lateFeeCents', 'lateFeePercent', 'lateFeeMinCents', 'fullBalanceOnly', 'maxPaymentBalance', 'source'].includes(k)) e(`billing.${k}`, 'unknown field');
+      for (const k of ['maxPaymentBalance']) if (b[k] != null && typeof b[k] !== 'boolean') e(`billing.${k}`, 'boolean');
       if (b.fullBalanceOnly != null && typeof b.fullBalanceOnly !== 'boolean') e('billing.fullBalanceOnly', 'boolean (online payments must be the full balance; no payment plans)');
       if (b.lateFeeMinCents != null && b.lateFeePercent == null) e('billing.lateFeeMinCents', 'needs lateFeePercent (the charge is the greater of the two)');
       checkSource('billing.source', b.source);
@@ -177,8 +178,9 @@ export function validateDossier(d, { biller = null, templateIds = null, fileId =
       if (b.fees != null) {
         if (!isObj(b.fees)) e('billing.fees', 'object');
         else {
-          for (const k of Object.keys(b.fees)) if (!['bankCents', 'cardCents', 'cardPercent', 'autopayCardCents', 'autopayCardPercent', 'guestBankCents', 'guestCardCents', 'notes', 'evidence', 'source'].includes(k)) e(`billing.fees.${k}`, 'unknown field');
-          for (const k of ['bankCents', 'cardCents', 'autopayCardCents', 'guestBankCents', 'guestCardCents']) cents(`billing.fees.${k}`, b.fees[k], 5000);
+          for (const k of Object.keys(b.fees)) if (!['bankCents', 'cardCents', 'cardPercent', 'cardMinCents', 'autopayCardCents', 'autopayCardPercent', 'guestBankCents', 'guestCardCents', 'notes', 'evidence', 'source'].includes(k)) e(`billing.fees.${k}`, 'unknown field');
+          if (b.fees.cardMinCents != null && b.fees.cardPercent == null) e('billing.fees.cardMinCents', 'only with cardPercent (the minimum of a percentage fee)');
+          for (const k of ['bankCents', 'cardCents', 'cardMinCents', 'autopayCardCents', 'guestBankCents', 'guestCardCents']) cents(`billing.fees.${k}`, b.fees[k], 5000);
           for (const k of ['cardPercent', 'autopayCardPercent']) if (b.fees[k] != null && !(typeof b.fees[k] === 'number' && b.fees[k] >= 0 && b.fees[k] < 10)) e(`billing.fees.${k}`, 'number 0-10');
           if (b.fees.notes != null && (!Array.isArray(b.fees.notes) || b.fees.notes.length > 6 || b.fees.notes.some(n => !str(n, 300)))) e('billing.fees.notes', 'up to 6 strings ≤ 300 (fees that exist but whose amount is not published; shown in help)');
           if (!EVIDENCE.includes(b.fees.evidence)) e('billing.fees.evidence', EVIDENCE.join('|'));
@@ -195,6 +197,8 @@ export function validateDossier(d, { biller = null, templateIds = null, fileId =
           if (ap.policies && !ap.policies.includes('full') && !ap.policies.includes('statement')) e('billing.autopay.policies', "must include 'full' or 'statement' (the generated AutoPay tasks pay the full balance)");
           if (ap.days != null && ap.days !== 'due_date' && !(Array.isArray(ap.days) && ap.days.length && ap.days.every(x => Number.isInteger(x) && x >= 1 && x <= 28))) e('billing.autopay.days', "'due_date' or array of days 1-28");
           if (ap.leadDays != null && !(Number.isInteger(ap.leadDays) && ap.leadDays >= 0 && ap.leadDays <= 15)) e('billing.autopay.leadDays', 'integer 0-15');
+          if (ap.daysAfterBill != null && !(Number.isInteger(ap.daysAfterBill) && ap.daysAfterBill >= 0 && ap.daysAfterBill <= 28)) e('billing.autopay.daysAfterBill', 'integer 0-28 (days after the bill date; never later than the due date)');
+          if (ap.daysAfterBill != null && (ap.leadDays != null || ap.days === 'due_date')) e('billing.autopay.daysAfterBill', 'not with leadDays or days: due_date');
           if (ap.methodTypes != null && (!Array.isArray(ap.methodTypes) || !ap.methodTypes.length || ap.methodTypes.some(m => !METHOD_TYPES.includes(m)))) e('billing.autopay.methodTypes', 'non-empty subset of bank, card');
         }
       }

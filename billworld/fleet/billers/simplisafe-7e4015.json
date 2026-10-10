@@ -5,7 +5,7 @@
   "name": "SimpliSafe",
   "category": "home-services",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public support.simplisafe.com articles and the public SimpliSafe sign-in page only (never signed in). Monitoring is charged monthly to the default credit card on file (Visa, Mastercard, American Express, Discover; prepaid cards not accepted for professional monitoring) on the activation-day of the month after a three-day Practice Mode. There is no guest payment, AutoPay enrollment, paper bill or payment plan, so those are not_applicable. Card only. Sign-in is email-first on auth.simplisafe.com (Email address, Continue, then password), so loginSteps is 2. Upgrades can be made online at any time, but downgrades are by phone (1-888-783-8441) or chat only and only by the Account Owner; the dossier cannot mark plan downgrades as offline-only, so the built-in downgrade-plan task is suppressed and a phone-lookup task replaces it (see CROSS-OWNER request). Cancellation is by chat or phone, with an online request form only in some states during business hours; modelled as unsupported online with the phone. Plan prices are published only as daily rates (Standard 76 cents/day, Core $1.10/day, Pro and Pro Plus $1.66-$2.66/day), not monthly, so the plan page keeps the family's synthetic plans. Due-date changes are by request to Support and take effect within 10 days. Permit and false-alarm fee invoices are not shown online. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public support.simplisafe.com articles and the public SimpliSafe sign-in page only (never signed in). Monitoring is charged monthly to the default credit card on file (Visa, Mastercard, American Express, Discover; prepaid cards not accepted for professional monitoring) on the activation-day of the month after a three-day Practice Mode. There is no guest payment, AutoPay enrollment, paper bill or payment plan, so those are not_applicable. Card only. Sign-in is email-first on auth.simplisafe.com (Email address, Continue, then password), so loginSteps is 2. Upgrades can be made online at any time, but downgrades are by phone only (1-888-783-8441) and only by the Account Owner; the dossier cannot mark plan downgrades as offline-only, so the built-in downgrade-plan task is suppressed and a phone-lookup task replaces it (see CROSS-OWNER request). Cancellation is by chat or phone, with an online request form only in some states during business hours; modelled as unsupported online with the phone. Plan prices are published only as daily rates (Standard 76 cents/day, Core $1.10/day, Pro and Pro Plus $1.66-$2.66/day), not monthly, so the plan page keeps the family's synthetic plans. Due-date changes are by request to Support and take effect within 10 days. Permit and false-alarm fee invoices are not shown online. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. Reviewer (2026-10-09): downgrades are phone-only per the change-plan article (chat is for cancelling), so help and the downgrade answer no longer mention chat; change_plan stays supported (upgrades are online) with a note that downgrades are by phone. Reviewer (2026-10-09): payment_arrangement is now not_applicable (the subscription is charged in full to the card on file and no installment option is published); the mock Split a payment page previously offered a 3/6/12-month installment form.",
   "officialDomains": [
     "simplisafe.com"
   ],
@@ -156,6 +156,17 @@
       "note": "Only the Account Owner can cancel, by chat or by calling 1-888-783-8441 (have your Safe Word ready). Some states offer an online request form during business hours.",
       "channel": "phone",
       "phone": "8887838441"
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.simplisafe.com/articles/account-billing/how-do-i-change-my-monitoring-plan?lang=en-US",
+      "note": "Upgrades can be made online at any time. Downgrades are by phone only: the Account Owner calls 1-888-783-8441."
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.simplisafe.com/articles/account-billing/how-to-update-your-payment-method?lang=en-US"
     }
   },
   "billing": {
@@ -177,7 +188,7 @@
       "topic": "plans",
       "paragraphs": [
         "Upgrades can be made at any time. In the online account, choose Monitoring on the left, select Upgrade under your current plan and pick the new plan; repeat for each location. In the app, open Plan & Billing.",
-        "Downgrades cannot be made online. The Account Owner must call 1-888-783-8441 or contact Support by chat, and may need to give the Safe Word.",
+        "Downgrades cannot be made online. Only the Account Owner can downgrade, by calling 1-888-783-8441, and may need to give the Safe Word first.",
         "SimpliSafe lists residential monitoring at daily rates: Standard about 76 cents a day, Core $1.10 a day, and Pro or Pro Plus between $1.66 and $2.66 a day. Self Monitoring with camera recordings is about 33 cents a day."
       ],
       "source": "https://support.simplisafe.com/articles/account-billing/how-do-i-change-my-monitoring-plan?lang=en-US"
@@ -278,7 +289,7 @@
         "solution": [
           {
             "op": "answer",
-            "text": "Downgrades are by chat or by calling 1-888-783-8441."
+            "text": "Call 1-888-783-8441 (downgrades are by phone only)."
           }
         ]
       },

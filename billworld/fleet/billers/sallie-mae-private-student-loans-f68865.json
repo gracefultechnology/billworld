@@ -4,7 +4,7 @@
   "status": "dedicated",
   "name": "Sallie Mae (private student loans)",
   "category": "loans",
-  "reviewedAt": "2026-10-05",
+  "reviewedAt": "2026-10-09",
   "notes": "Researched from public salliemae.com pages only (no sign-in). Sign-in is by username (the FAQ's forgot-username flow retrieves it with SSN or Customer ID and birthdate). Auto Debit drafts a bank account and earns a 0.25% interest rate reduction; card payments are not described on the public ways-to-pay page, so payments are modelled as bank-only. Late fee applies when the Current Amount Due is unpaid 15 days after the due date; the fee amount is not published, so it is not modelled. No guest (unauthenticated) payment is documented. Hardship options: Loan Modification, Payment Extension, Reduced Payment Plan. Closing a loan is not a customer action (paid off loans close), so cancel service stays not applicable.",
   "officialDomains": ["salliemae.com"],
   "sources": [
@@ -121,6 +121,15 @@
         "tags": ["help", "information", "autopay"],
         "evidence": "documented_official",
         "solution": [{ "op": "answer", "text": "Enrolling in Auto Debit gives a 0.25% interest rate reduction." }]
+      },
+      {
+        "slug": "mail-payment-address",
+        "intent": "Using the Sallie Mae website's help pages, find the P.O. Box a borrower (not a cosigner) should use to mail a student loan payment. Do not make a payment.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["8459"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["8459"] },
+        "tags": ["help", "information", "mail"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Borrowers mail payments to Sallie Mae, P.O. Box 8459, Philadelphia PA 19101-8459." }]
       }
     ]
   },
@@ -130,6 +139,7 @@
     { "page": "autopay", "signedIn": true, "label": "autopay" },
     { "page": "pay", "signedIn": true, "notContains": ["Debit card"] },
     { "page": "helpArticle", "slug": "autopay", "contains": "0.25%" },
-    { "page": "helpArticle", "slug": "late-fees", "contains": "15 days" }
+    { "page": "helpArticle", "slug": "late-fees", "contains": "15 days" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "8459" }
   ]
 }

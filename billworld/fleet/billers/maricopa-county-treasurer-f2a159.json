@@ -6,7 +6,7 @@
   "category": "property-tax",
   "reviewedAt": "2026-10-09",
   "template": "property-tax",
-  "notes": "Researched from public treasurer.maricopa.gov pages only. Moved from the paymentus family to property-tax: the Treasurer's own site is a parcel-based tax office (I Want To > Pay My Property Taxes), with Paymentus only as the card processor. Card/digital wallet payments cost 2.25% (credit and PayPal/Venmo/Apple Pay/Google Pay) or 1.80% (debit), no minimum, one card per transaction, up to $2,000,000; the engine charges one card rate, so 2.25% is used and the debit rate is stated in help. E-check fee is not stated on the pages read (bank fee left at default). Paperless is through eNoticesOnline with the authorization code on the bill. No automatic payment program is listed. My MCTO exists in the header but its sign-in page did not load publicly, so email/none sign-in is synthetic. Interest rate on delinquent taxes was not confirmed on a fetched page and is left out. Second-half dates (March 1 / May 1) were not on the calendar page read and are left out. Review 2026-10-09: the Payment Options page points to the website e-check as the way to pay without an additional fee, so bankCents is 0.",
+  "notes": "Researched from public treasurer.maricopa.gov pages only. Moved from the paymentus family to property-tax: the Treasurer's own site is a parcel-based tax office (I Want To > Pay My Property Taxes), with Paymentus only as the card processor. Card/digital wallet payments cost 2.25% (credit and PayPal/Venmo/Apple Pay/Google Pay) or 1.80% (debit), no minimum, one card per transaction, up to $2,000,000; the engine charges one card rate, so 2.25% is used and the debit rate is stated in help. E-check fee is not stated on the pages read (bank fee left at default). Paperless is through eNoticesOnline with the authorization code on the bill. No automatic payment program is listed. Review 2026-10-09: the Payment Options page points to the website e-check as the way to pay without an additional fee, so bankCents is 0. Review 2 (2026-10-09): the My MCTO sign-in page now loads publicly (User Name field backed by an email id, Password, Forgot Password?, Create Account), so auth is observed_public; the FAQ gives the second-half dates (March 1 / May 1) and 16% yearly interest (in help, not a one-time fee); no phone payment and no installment agreement are listed, so pay_by_phone and payment_arrangement are unsupported (inferred); main line (602) 506-8511 set as contact.",
   "officialDomains": [
     "treasurer.maricopa.gov"
   ],
@@ -28,6 +28,18 @@
       "title": "Property Tax Information - Calendar",
       "fetchedAt": "2026-10-09",
       "kind": "help"
+    },
+    {
+      "url": "https://treasurer.maricopa.gov/FAQ",
+      "title": "Frequently Asked Questions - Property Tax",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://treasurer.maricopa.gov/mymcto",
+      "title": "My MCTO sign in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
     }
   ],
   "brand": {
@@ -43,7 +55,11 @@
     "paperless": "Go Paperless with eNotices",
     "dashboard": "My MCTO",
     "help": "FAQs",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "signIn": "Sign In",
+    "register": "Create Account",
+    "forgot": "Forgot Password?",
+    "username": "User Name"
   },
   "nav": {
     "public": [
@@ -98,7 +114,8 @@
     "guestLookupFields": [
       "parcelId"
     ],
-    "evidence": "synthetic"
+    "source": "https://treasurer.maricopa.gov/mymcto",
+    "evidence": "observed_public"
   },
   "capabilities": {
     "guest_pay": {
@@ -123,7 +140,23 @@
     "pay_by_mail": {
       "support": "supported",
       "evidence": "documented_official",
-      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions"
+      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions",
+      "note": "Mail a check or money order with the payment coupon to Maricopa County Treasurer, PO Box 52133, Phoenix, AZ 85072-2133; it must be postmarked by the due date."
+    },
+    "pay_by_phone": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions",
+      "note": "Payment Options lists no phone payment. Pay online by e-check (no fee) or card, through your bank bill pay, at an Arizona Chase branch, by mail or at 301 W. Jefferson St.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://treasurer.maricopa.gov/FAQ",
+      "note": "No installment agreement is offered online. Taxes are paid in two halves or in full by December 31; unpaid taxes accrue 16% yearly interest and can go to the February tax lien sale. Call (602) 506-8511 with questions.",
+      "channel": "phone",
+      "phone": "602-506-8511"
     }
   },
   "billing": {
@@ -158,10 +191,11 @@
       "slug": "due-dates",
       "title": "Key property tax dates",
       "topic": "billing",
-      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/calendar/",
+      "source": "https://treasurer.maricopa.gov/FAQ",
       "paragraphs": [
-        "First-half 2026 taxes are due October 1 and become delinquent after 5 p.m. on November 2, 2026.",
-        "If you miss the first-half date, you can still pay the full year by December 31 without interest when the bill is over $100. Full-year bills of $100 or less become delinquent after 5 p.m. on December 31. When December 31 is a weekend or holiday, interest starts after 5 p.m. on the next business day."
+        "Tax bills are issued each September and can be paid in two halves or in one full payment. The first half is due October 1 and becomes delinquent after 5 p.m. on November 1 (November 2 in 2026). The second half is due March 1 of the following year and becomes delinquent after 5 p.m. on May 1.",
+        "If you miss the first-half date, you can still pay the full year by December 31 without interest when the bill is over $100. Full-year bills of $100 or less become delinquent after 5 p.m. on December 31. When a delinquency date is a weekend or holiday, it moves to 5 p.m. on the next business day.",
+        "Delinquent taxes accrue interest of 16% per year, and parcels still unpaid at the end of December are offered at the tax lien sale the following February. Not receiving a bill does not waive interest."
       ]
     },
     {
@@ -257,6 +291,46 @@
             "text": "The full year can be paid without interest through December 31."
           }
         ]
+      },
+      {
+        "slug": "delinquent-interest-rate",
+        "intent": "Using the Maricopa County Treasurer's website help pages, find the yearly interest rate charged on delinquent property taxes. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "16%",
+              "16 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "16%",
+            "16 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Delinquent taxes accrue interest of 16% per year."
+          }
+        ]
       }
     ]
   },
@@ -289,6 +363,22 @@
       "page": "helpArticle",
       "slug": "due-dates",
       "contains": "December 31"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-dates",
+      "contains": [
+        "March 1",
+        "16%"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "User Name"
     }
-  ]
+  ],
+  "contact": {
+    "phone": "602-506-8511",
+    "source": "https://treasurer.maricopa.gov/"
+  }
 }

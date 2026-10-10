@@ -82,8 +82,10 @@ export function methodTypesFor(b, { guest = false, autopay = false } = {}) {
 // The saved method generated tasks and reference solutions use: the checking account, or the Visa for card-only billers.
 export const hasBank = b => methodTypesFor(b).includes('bank') || methodTypesFor(b, { autopay: true }).includes('bank');
 export const primaryMethodId = (b, { autopay = false } = {}) => methodTypesFor(b, { autopay }).includes('bank') ? 'pm-chk' : 'pm-card';
+// When AutoPay drafts, in words (no chosen day): the dossier's daysAfterBill / leadDays, else the due date.
+export function autopayTimingText(b) { const ap = dossier(b)?.billing?.autopay || {}; return ap.daysAfterBill != null ? (ap.daysAfterBill ? `${ap.daysAfterBill} days after each bill date` : 'on each bill date') : ap.leadDays ? `${ap.leadDays} day${ap.leadDays === 1 ? '' : 's'} before each due date` : 'on each due date'; }
 export function autopayPoliciesFor(b) { return dossier(b)?.billing?.autopay?.policies || null; }
-export function paymentLimits(b) { const bl = dossier(b)?.billing || {}; return { minCents: bl.minPaymentCents ?? 100, maxCents: bl.maxPaymentCents ?? MAX_PAYMENT_CENTS, maxDaysAhead: bl.scheduled?.maxDaysAhead ?? 365, maxPending: bl.scheduled?.maxPending ?? null, fullBalanceOnly: !!bl.fullBalanceOnly }; }
+export function paymentLimits(b) { const bl = dossier(b)?.billing || {}; return { minCents: bl.minPaymentCents ?? 100, maxCents: bl.maxPaymentCents ?? MAX_PAYMENT_CENTS, maxDaysAhead: bl.scheduled?.maxDaysAhead ?? 365, maxPending: bl.scheduled?.maxPending ?? null, fullBalanceOnly: !!bl.fullBalanceOnly, maxPaymentBalance: !!bl.maxPaymentBalance }; }
 export const lockoutAttempts = b => dossier(b)?.auth?.lockoutAttempts ?? 5;
 // mfa scenario 'default' (or true) means "the biller's own second factor" from its dossier (email unless it texts).
 const mfaDefault = b => { const m = dossier(b)?.auth?.mfa; return m === 'sms' ? 'sms' : m === 'none' ? 'none' : 'email'; };
@@ -468,7 +470,7 @@ export class FleetWorld {
     if (autopay && method.type === 'card' && f.autopayCardPercent != null) return Math.round(cents * f.autopayCardPercent / 100);
     if (autopay && method.type === 'card' && f.autopayCardCents != null) return f.autopayCardCents;
     if (method.type === 'bank') return f.bankCents ?? 0;
-    if (f.cardPercent != null) return Math.round(cents * f.cardPercent / 100);
+    if (f.cardPercent != null) return Math.max(f.cardMinCents || 0, Math.round(cents * f.cardPercent / 100)); // cardMinCents: "3% (minimum $1.50)"
     if (f.cardCents != null) return f.cardCents;
     return ['tax', 'government', 'medical'].includes(this.biller(billerId).kind) ? Math.max(195, Math.round(cents * 0.0235)) : ['utility'].includes(this.biller(billerId).kind) ? 295 : 0; // synthetic defaults
   }
@@ -495,7 +497,8 @@ export class FleetWorld {
         opts.push({ key: 'installment', label: `Installment ${inst.n}`, cents: Math.min(bal, pastDue + Math.max(0, cumulative - paid)) });
       }
     }
-    opts.push({ key: 'other', label: 'Other amount', cents: null });
+    // fullBalanceOnly: no "other amount" while there is a balance to pay (the engine would refuse it anyway).
+    if (!(paymentLimits(this.catalog.billers.get(acct.billerId)).fullBalanceOnly && bal > 0)) opts.push({ key: 'other', label: 'Other amount', cents: null });
     return opts;
   }
   syncInstallments(acct) {
@@ -512,6 +515,7 @@ export class FleetWorld {
       const opts = this.amountOptions(acct);
       const choice = input.amountChoice || 'other';
       const opt = opts.find(o => o.key === choice) || (filled(input.amount) ? opts.find(o => o.key === 'other') : null);
+      if (!opt && paymentLimits(b).fullBalanceOnly && this.balance(acct) > 0) throw new Fault(`Online payments must be for the full balance of ${money(this.balance(acct))}.`, 400, 'full_balance_only');
       if (!opt) throw new Fault('Choose a payment amount.', 400, 'bad_amount_choice');
       let cents;
       if (opt.cents != null) {
@@ -525,6 +529,7 @@ export class FleetWorld {
       const lim = paymentLimits(b);
       if (cents < lim.minCents) throw new Fault(`The minimum payment is ${money(lim.minCents)}.`, 400, 'min_amount');
       if (lim.fullBalanceOnly && this.balance(acct) > 0 && cents !== this.balance(acct)) throw new Fault(`Online payments must be for the full balance of ${money(this.balance(acct))}.`, 400, 'full_balance_only');
+      if (lim.maxPaymentBalance && cents > Math.max(0, this.balance(acct))) throw new Fault(`Online payments cannot exceed your current balance of ${money(Math.max(0, this.balance(acct)))}.`, 400, 'amount_over_balance');
       if (cents > lim.maxCents || (acct.kind !== 'card' && acct.kind !== 'toll' && cents > Math.max(this.balance(acct), 0) + 500000)) throw new Fault('That amount exceeds the maximum allowed for a single payment.', 400, 'max_amount');
       d.amountCents = cents; d.amountKey = opt.key;
       d.amountMatches = opts.filter(o => o.cents === cents).map(o => o.key); // "Other" typed to exactly the amount due still counts as the amount due
@@ -652,7 +657,7 @@ export class FleetWorld {
     Object.assign(ap, { enrolled: true, methodId: m.id, policy, fixedCents: fixed, day, updatedAt: ep.clock, enrolledAt: was ? ap.enrolledAt ?? ep.clock : ep.clock }); ap.history.push({ at: ep.clock, action: was ? 'updated' : 'enrolled' });
     this.event(ep, billerId, was ? 'autopay_updated' : 'autopay_enrolled', { methodId: m.id, methodType: m.type, policy, fixedCents: fixed, day });
     const what = policy === 'fixed' ? `fixed amount of ${money(fixed)} (or your balance, if it is lower)` : policy === 'minimum' ? 'minimum payment due' : policy === 'statement' ? 'statement balance' : 'full balance';
-    this.mail(ep, billerId, { subject: was ? 'Your AutoPay settings were updated' : 'You\'re enrolled in AutoPay', text: `AutoPay will pay your ${what} ${day ? `on day ${day} of each month` : 'on each due date'} from ${m.label} ending in ${m.last4}.${was ? '' : ' Your first automatic payment will be for your next bill; pay any current balance separately.'}` });
+    this.mail(ep, billerId, { subject: was ? 'Your AutoPay settings were updated' : 'You\'re enrolled in AutoPay', text: `AutoPay will pay your ${what} ${day ? `on day ${day} of each month` : autopayTimingText(b)} from ${m.label} ending in ${m.last4}.${was ? '' : ' Your first automatic payment will be for your next bill; pay any current balance separately.'}` });
     this.persist(ep); return ap;
   }
 
@@ -808,8 +813,11 @@ export class FleetWorld {
     const inv = this.currentInvoice(acct); if (inv.autopaid) return;
     const enrolledAt = ap.enrolledAt ?? ap.history.filter(h => h.action === 'enrolled').at(-1)?.at ?? 0;
     if (enrolledAt >= inv.issuedAt) return; // enrolled after this bill: starts with the next bill
-    const lead = dossier(this.biller(billerId))?.billing?.autopay?.leadDays || 0; // e.g. "drafted 3 days before the due date"
-    const runToday = ap.day ? ep.clock >= inv.issuedAt && Number(today.slice(8, 10)) === ap.day : today >= isoDate(inv.dueAt - lead * DAY);
+    const apRule = dossier(this.biller(billerId))?.billing?.autopay || {};
+    const lead = apRule.leadDays || 0; // e.g. "drafted 3 days before the due date"
+    // daysAfterBill: "drafted 18 days after the bill date" (never later than the due date)
+    const draftAt = apRule.daysAfterBill != null ? Math.min(inv.issuedAt + apRule.daysAfterBill * DAY, inv.dueAt) : inv.dueAt - lead * DAY;
+    const runToday = ap.day ? ep.clock >= inv.issuedAt && Number(today.slice(8, 10)) === ap.day : today >= isoDate(draftAt);
     if (!runToday) return;
     inv.autopaid = true;
     const bal = Math.max(0, this.balance(acct));

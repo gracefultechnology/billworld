@@ -1,6 +1,6 @@
 // Engine-level reference solvers: drive FleetWorld directly (no HTML) to prove that every generated task is
 // satisfiable for its biller, and to run the catalog-wide lifecycle in the sweep. Used by sweep.mjs and tests.
-import { PASSWORD, isoDate, fmtDate, money, methodTypesFor, primaryMethodId } from '../engine.mjs';
+import { PASSWORD, isoDate, fmtDate, money, methodTypesFor, primaryMethodId, paymentLimits } from '../engine.mjs';
 import { formatPhone } from '../catalog.mjs';
 // AutoPay amount the reference solutions choose: the full balance, or the statement balance where the dossier's
 // AutoPay options leave out 'full' (card issuers).
@@ -189,7 +189,7 @@ export function lifecycle(world, ep, b) {
   const acct = world.account(ep, id);
   step('amount_options', () => {
     const opts = world.amountOptions(acct); const due = opts.find(o => o.key === 'due');
-    return due && due.cents === world.balance(acct) && due.cents >= 100 && opts.some(o => o.key === 'other') && (b.kind !== 'card' || opts.some(o => o.key === 'minimum'));
+    return due && due.cents === world.balance(acct) && due.cents >= 100 && (opts.some(o => o.key === 'other') || paymentLimits(b).fullBalanceOnly) && (b.kind !== 'card' || opts.some(o => o.key === 'minimum'));
   });
   const balance = world.balance(acct);
   step('pay_full_bank', () => {
@@ -200,7 +200,8 @@ export function lifecycle(world, ep, b) {
     return p.id === again.id && p.status === 'pending' && world.balance(acct) === 0 && acct.payments.filter(x => !x.seeded).length === 1;
   });
   expect('pay_full_bank_eval', [{ type: 'payment', methodType: (primaryMethodId(world.biller(id)) === 'pm-chk' ? 'bank' : 'card'), amountKey: 'due', amountCents: balance, scheduled: false, count: 1 }, { type: 'logged_in' }]);
-  if (supported(b, 'scheduled_payment')) {
+  // A biller that caps payments at the balance (maxPaymentBalance) cannot take a $10 payment once the bill is paid.
+  if (supported(b, 'scheduled_payment') && !(paymentLimits(b).maxPaymentBalance && world.balance(acct) < 1000)) {
     step('schedule_and_cancel', () => {
       const payOn = isoDate(ep.clock + 5 * 86400000);
       const p = pay(world, ep, id, sid, { amountChoice: 'other', amount: '10.00', methodId: primaryMethodId(world.biller(id)), payOn });

@@ -5,7 +5,7 @@
   "name": "10 Federal Storage",
   "category": "storage-funeral",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from the public 10 Federal Storage FAQs and the 10Fed MyAccount sign-in and Quick Pay pages (no sign-in, no lookup). Sign-in is by mobile phone number with a texted code (no password); modelled as phone identifier, two-step, SMS verification (the passwordless part cannot be expressed). Quick Pay (no sign-in) finds the account by phone number; the dossier has no phone guest-lookup field, so the family lookup is kept (see report). Payments: Customer Portal (My Account / Pay Now) or phone (910) 991-0784, all major credit and debit cards; no bank method is published, so billing.methods keeps the family default. Auto Pay: Customer Portal > account settings > Auto Pay. Move-out is scheduled in the Customer Portal (no call needed); no refunds for unused days. Late fees may apply (amount not published), access is suspended and contents can be sold under state lien law.",
+  "notes": "Researched from the public 10 Federal Storage FAQs and the 10Fed MyAccount sign-in and Quick Pay pages (no sign-in, no lookup). Sign-in is by mobile phone number with a texted code (no password); modelled as phone identifier, two-step, SMS verification (the passwordless part cannot be expressed). Quick Pay (no sign-in) finds the account by phone number; modelled as a phone-only guest lookup. Payments: Customer Portal (My Account / Pay Now) or phone (910) 991-0784, all major credit and debit cards; no bank method is published, so billing is card-only. Auto Pay: Customer Portal > account settings > Auto Pay. Move-out is scheduled in the Customer Portal (no call needed); no refunds for unused days. Late fees may apply (amount not published), access is suspended and contents can be sold under state lien law. Reviewer 2026-10-09 (pass 2): schema now allows phone guest lookup and card-only billing; Quick Pay re-checked (single Phone Number field) and the FAQ re-checked (all major credit and debit cards only).",
   "officialDomains": [
     "10federalstorage.com"
   ],
@@ -92,7 +92,11 @@
     "loginSteps": 2,
     "mfa": "sms",
     "evidence": "observed_public",
-    "source": "https://myaccount.10federalstorage.com/dashboard"
+    "source": "https://myaccount.10federalstorage.com/dashboard",
+    "guestLookupFields": [
+      "phone"
+    ],
+    "guestLookupExact": true
   },
   "capabilities": {
     "pay_online": {
@@ -130,8 +134,14 @@
       "policies": [
         "full"
       ],
-      "days": "due_date"
-    }
+      "days": "due_date",
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "methods": [
+      "card"
+    ]
   },
   "help": [
     {

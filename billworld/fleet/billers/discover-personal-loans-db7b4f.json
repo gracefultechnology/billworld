@@ -5,7 +5,7 @@
   "name": "Discover Personal Loans",
   "category": "loans",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from the public discover.com personal loan FAQ only (no sign-in). Sign-in to the Account Center uses a User ID and password (Forgot User ID/Password; Register Account); Discover Card credentials may differ. The Automatic Payment program is free and draws the scheduled monthly payment from checking or savings, with larger amounts allowed. The FAQ states the loan has no fees of any kind (no origination or prepayment fees), so bank payments are free. Due date can be changed in the Account Center to any day from the 2nd to the 27th, twice over the loan with 12 months between changes. Repayment assistance is by phone (1-877-256-2660), so payment_arrangement is unsupported online. Statements are mailed about 20 days before the due date; paperless enrollment is in the Account Center. Card payments are not described (bank-only).",
+  "notes": "Researched from the public discover.com personal loan FAQ only (no sign-in). Sign-in to the Account Center uses a User ID and password (Forgot User ID/Password; Register Account); Discover Card credentials may differ. The Automatic Payment program is free and draws the scheduled monthly payment from checking or savings, with larger amounts allowed. The FAQ states the loan has no fees of any kind (no origination or prepayment fees), so bank payments are free. Due date can be changed in the Account Center to any day from the 2nd to the 27th, twice over the loan with 12 months between changes. Repayment assistance is by phone (1-877-256-2660), so payment_arrangement is unsupported online. Statements are mailed about 20 days before the due date; paperless enrollment is in the Account Center. Card payments are not described (bank-only). Contact page (reviewer, 2026-10-09): customer service 1-866-248-1255, automated payment line 1-877-256-2632, payments by mail to PO Box 6105, Carol Stream, IL; the catalog number 1-877-256-2660 is the repayment-assistance line.",
   "officialDomains": [
     "discover.com"
   ],
@@ -15,6 +15,12 @@
       "title": "Personal Loan FAQs",
       "fetchedAt": "2026-10-09",
       "kind": "help"
+    },
+    {
+      "url": "https://www.discover.com/personal-loans/contact-us/",
+      "title": "Contact Discover Personal Loans",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
     }
   ],
   "brand": {
@@ -108,7 +114,12 @@
     "pay_by_phone": {
       "support": "supported",
       "evidence": "documented_official",
-      "source": "https://www.discover.com/personal-loans/faqs/"
+      "source": "https://www.discover.com/personal-loans/contact-us/"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.discover.com/personal-loans/contact-us/"
     }
   },
   "billing": {
@@ -136,10 +147,10 @@
       "slug": "pay-your-bill",
       "title": "Ways to pay",
       "paragraphs": [
-        "Pay in the Discover app or the Account Center (payments take effect on the date you schedule), enroll in Automatic Payments, pay by phone through the automated system or a representative, use your bank's bill pay, send a wire, or mail a payment.",
-        "Discover personal loans have no origination fee and no prepayment penalty. Extra payments go first to accrued unpaid interest, then to principal."
+        "Pay in the Discover app or the Account Center (payments take effect on the date you schedule), enroll in Automatic Payments, use your bank's bill pay or send a wire. The automated payment line at 1-877-256-2632 is open 24/7 (choose option 1); customer service is at 1-866-248-1255.",
+        "By mail, send your payment to Discover Personal Loans, PO Box 6105, Carol Stream, IL 60197-6105. Discover personal loans have no origination fee and no prepayment penalty; extra payments go first to accrued unpaid interest, then to principal."
       ],
-      "source": "https://www.discover.com/personal-loans/faqs/",
+      "source": "https://www.discover.com/personal-loans/contact-us/",
       "mode": "append"
     },
     {
@@ -256,6 +267,44 @@
             "text": "Any day from the 2nd to the 27th, so the 27th is the latest."
           }
         ]
+      },
+      {
+        "slug": "mail-payment-address",
+        "intent": "Using the Discover Personal Loans website, find the PO Box for mailing a regular personal loan payment. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "6105"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "6105"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "mail"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mail payments to Discover Personal Loans, PO Box 6105, Carol Stream, IL 60197-6105."
+          }
+        ]
       }
     ]
   },
@@ -282,6 +331,17 @@
       "page": "helpArticle",
       "slug": "due-date-change",
       "contains": "27th"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "PO Box 6105"
     }
-  ]
+  ],
+  "contact": {
+    "phone": "866-248-1255",
+    "payPhone": "877-256-2632",
+    "source": "https://www.discover.com/personal-loans/contact-us/",
+    "evidence": "documented_official"
+  }
 }

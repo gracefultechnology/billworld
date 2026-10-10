@@ -5,7 +5,7 @@
   "name": "Casella Waste Systems",
   "category": "trash",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public casella.com pages (Pay Bill, Convenience Fees, Support, Residential Terms of Use) and the public My Account sign-in screen at mycasella.idoxs.net (Kubra; observed, never signed in). The Pay Bill page routes customers to a portal by state: Kubra My Account for DE/MD/ME/NJ/PA/VT (and some MA/NH/NY accounts by provider or account prefix), a separate Connecticut page and a Navusoft portal for West Virginia; this dossier models the Kubra My Account portal. Sign-in is Username + Password (reCAPTCHA protected) with Pay Now for a one-time payment. No Casella fee for paying online or by phone, but Kubra adds a 3.00% card convenience fee with a $1.50 minimum (not charged in CT and ME; the engine models the percentage only). Bank payments are free. Some markets charge a paper-bill fee (amount not published). Returned payments cost $25. Late fees/interest up to the legal limit (no amount). Start, stop or change service and payment plans/hardship go through Customer Care, not online. The autopay label is deliberately not set: the kubra template reuses that label as the text of its Turn off AutoPay link (see cross-owner request).",
+  "notes": "Researched from public casella.com pages (Pay Bill, Convenience Fees, Support, Residential Terms of Use) and the public My Account sign-in screen at mycasella.idoxs.net (Kubra; observed, never signed in). The Pay Bill page routes customers to a portal by state: Kubra My Account for DE/MD/ME/NJ/PA/VT (and some MA/NH/NY accounts by provider or account prefix), a separate Connecticut page and a Navusoft portal for West Virginia; this dossier models the Kubra My Account portal. Sign-in is Username + Password (reCAPTCHA protected) with Pay Now for a one-time payment. No Casella fee for paying online or by phone, but Kubra adds a 3.00% card convenience fee with a $1.50 minimum (not charged in CT and ME; modelled with billing.fees.cardMinCents). Bank payments are free. Some markets charge a paper-bill fee (amount not published). Returned payments cost $25. Late fees/interest up to the legal limit (no amount). Start, stop or change service and payment plans/hardship go through Customer Care, not online. The autopay label is not set because the kubra default (AutoPay) already matches Casella's wording. Integrated 2026-10-10: card fee minimum $1.50 modelled (billing.fees.cardMinCents).",
   "officialDomains": [
     "casella.com",
     "idoxs.net"
@@ -162,7 +162,8 @@
       "bankCents": 0,
       "cardPercent": 3,
       "evidence": "documented_official",
-      "source": "https://www.casella.com/convenience-fees/"
+      "source": "https://www.casella.com/convenience-fees/",
+      "cardMinCents": 150
     },
     "methods": [
       "bank",

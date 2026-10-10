@@ -10,7 +10,7 @@ export const isTax = vm => vm.biller.kind === 'tax';
 // Mirrors engine.fee(): documented fees from research notes first, else the synthetic default for the kind.
 export function cardFeeText(vm) {
   const f = vm.biller.fees, kind = vm.biller.kind;
-  if (f.cardPercent != null) return `${f.cardPercent}% service fee`;
+  if (f.cardPercent != null) return `${f.cardPercent}% service fee${f.cardMinCents ? ` (minimum ${money(f.cardMinCents)})` : ''}`;
   if (f.cardCents) return `${money(f.cardCents)} service fee`;
   if (f.cardCents === 0) return 'no service fee';
   if (['tax', 'government', 'medical'].includes(kind)) return '2.35% service fee (minimum $1.95)';

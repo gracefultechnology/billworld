@@ -4,7 +4,7 @@
   "status": "dedicated",
   "name": "Golden 1 Credit Union",
   "category": "credit-unions",
-  "reviewedAt": "2026-10-09",
+  "reviewedAt": "2026-10-10",
   "notes": "Researched from public golden1.com and help.golden1.com pages only (no sign-in; golden1.com times out for scripted fetches, pages were read in a normal browser). The bill is a Golden 1 loan or credit card payment. Online/Mobile Banking: one-time and recurring payments from Golden 1 checking or an external account, no fee. Make One-Time Payment from another institution works without a password or login (account type, account info, payment option, bank account) and carries a usage fee whose amount is not published, so no guest fee is set; guest methods bank only (documented: bank account information). The public Set Up Recurring Payment page also describes paper authorization forms (mail or fax with a voided check) for automatic transfers from Golden 1 checking. Enrollment: Enroll in Personal Digital Banking with full account number, book number or debit card number, possibly full SSN, then a one-time passcode by text, phone call or email (enrollment MFA; login MFA is not documented, so the family default stays), then create a User ID and password. Loan due dates on closed-end loans (not mortgages) can be moved within the month to the 1st, 5th, 10th, 15th, 20th or 25th by phone; lines of credit are fixed on the 5th. Skip-A-Payment (up to two payments, eligible loans) and principal-only/lump-sum payments ($5,000+) are by phone or branch only. Member Service Contact Center 1-877-GOLDEN 1 (1-877-465-3361); the help article's alternative number 1-877-465-3391 appears to be a typo and is not used. Paperless: opt in to Online Statements and Notices with the I Agree consent; categories adjustable in delivery preferences.",
   "officialDomains": [
     "golden1.com"
@@ -65,7 +65,6 @@
     "autopay": "Recurring Payments",
     "guestPay": "Make One-Time Payment",
     "paperless": "Online Statements and Notices",
-    "dashboard": "Account Overview",
     "signIn": "Log In",
     "register": "Enroll in Personal Digital Banking",
     "help": "Help Center",
@@ -96,7 +95,7 @@
     ],
     "account": [
       {
-        "label": "Account Overview",
+        "label": "Accounts",
         "page": "dashboard"
       },
       {
@@ -139,8 +138,8 @@
     "guest_pay": {
       "support": "supported",
       "evidence": "documented_official",
-      "source": "https://www.golden1.com/credit-cards-loans/make-a-payment/one-time",
-      "note": "Pay from another institution without a login; a usage fee applies."
+      "source": "https://help.golden1.com/article/pay-my-loan-or-credit-card-3912",
+      "note": "Pay from another institution on Golden 1's website without a login; a usage fee applies to this option."
     },
     "autopay": {
       "support": "supported",
@@ -168,6 +167,13 @@
       "support": "supported",
       "evidence": "documented_official",
       "source": "https://help.golden1.com/article/make-a-loan-payment-3563"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.golden1.com/credit-cards-loans/loan-servicing",
+      "phone": "1-877-465-3361",
+      "note": "Golden 1 has no online repayment plan. Skip-A-Payment, due-date changes and principal-only payments are handled by phone at 1-877-465-3361 or at a branch."
     }
   },
   "billing": {
@@ -189,17 +195,16 @@
       "slug": "pay-your-bill",
       "title": "Pay my loan or credit card",
       "paragraphs": [
-        "Set up one-time or recurring payments for a car loan, personal loan, credit card, mortgage or home equity loan in Golden 1 Online Banking or the Mobile Banking app, from your Golden 1 checking or an account at another institution. There is no fee to pay in Online or Mobile Banking.",
-        "You can also call the Member Service Contact Center at 1-877-GOLDEN 1 (1-877-465-3361), Monday to Friday 7:30 a.m. to 6 p.m. and Saturday 9 a.m. to 5 p.m. Pacific, visit a branch, or mail a payment with a coupon (coupon books are for closed-end loans)."
+        "Set up one-time or recurring payments for a car loan, personal loan, credit card, mortgage or home equity loan in Golden 1 Online Banking or the Mobile Banking app. There is no fee to pay in Online or Mobile Banking.",
+        "For a car loan, personal loan, credit card or home equity loan you can instead pay on Golden 1's website from another financial institution without logging in; that alternative carries a usage fee."
       ],
-      "source": "https://help.golden1.com/article/make-a-loan-payment-3563"
+      "source": "https://help.golden1.com/article/pay-my-loan-or-credit-card-3912"
     },
     {
       "slug": "guest-pay",
       "title": "Make a one-time payment without logging in",
       "paragraphs": [
-        "To pay from another financial institution without creating a password or logging in, use Make One-Time Payment on Golden 1's website: select the account type, enter the account information, choose your payment option and provide your bank account information. The service runs around the clock.",
-        "Paying this way from another institution carries a usage fee; paying in Online or Mobile Banking does not."
+        "To pay from another financial institution without creating a password or logging in, use Make One-Time Payment on Golden 1's website: select the account type, enter the account information, choose your payment option and provide your bank account information. The service runs around the clock."
       ],
       "steps": [
         "Open Make One-Time Payment.",
@@ -243,6 +248,15 @@
         "Opt in to online statements, disclosures and notices by checking I Agree on the consent. Opting in covers account, card and loan statements and other notices; to receive only some categories electronically, change your delivery preferences after logging in."
       ],
       "source": "https://www.golden1.com/digital-banking-disclosures/online-statements-and-notices-consent"
+    },
+    {
+      "slug": "other-ways-to-pay",
+      "title": "Other ways to pay a loan",
+      "topic": "billing",
+      "paragraphs": [
+        "In Online and Mobile Banking, payments can come from your Golden 1 checking or an external account at another institution. You can also call the Member Service Contact Center at 1-877-GOLDEN 1 (1-877-465-3361), Monday to Friday 7:30 a.m. to 6 p.m. and Saturday 9 a.m. to 5 p.m. Pacific, visit a branch, or mail a payment with a coupon (coupon books are for closed-end loans and can be requested by phone or at a branch)."
+      ],
+      "source": "https://help.golden1.com/article/make-a-loan-payment-3563"
     }
   ],
   "tasks": {
@@ -358,7 +372,7 @@
     },
     {
       "page": "helpArticle",
-      "slug": "guest-pay",
+      "slug": "pay-your-bill",
       "contains": "usage fee"
     }
   ]

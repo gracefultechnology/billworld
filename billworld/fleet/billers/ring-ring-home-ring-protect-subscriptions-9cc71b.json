@@ -5,7 +5,7 @@
   "name": "Ring (Ring Home / Ring Protect subscriptions)",
   "category": "home-services",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public ring.com support articles and the public Ring plans page only (never signed in). Ring plans are subscriptions that renew automatically and charge the single payment method on file (credit or debit card, Apple Pay or Google Pay; gift cards are not accepted). There is no bill to pay as a guest, no separate AutoPay enrollment, no paper bill and no payment plan, so those capabilities are not_applicable. US subscription payment options do not include bank accounts. Payment method and billing history can only be managed on ring.com, not in the Ring app. Cancelling ends the plan at the end of the current billing period; the engine applies cancellation immediately. Plans bought through Amazon or app stores are managed there (not modelled). Two-step verification sends a code by text message (or authenticator app); modelled as sms. Plan names and prices are the published US monthly prices on ring.com/plans; Virtual Security Guard ($99/mo) is billed separately and not modelled as a plan. setup-payment-plan is suppressed because Ring has no installment plans. Reviewer (2026-10-09): the sign-in page asks for the same email and password used in the Ring app (cited for auth.identifier). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public ring.com support articles and the public Ring plans page only (never signed in). Ring plans are subscriptions that renew automatically and charge the single payment method on file (credit or debit card, Apple Pay or Google Pay; gift cards are not accepted). There is no bill to pay as a guest, no separate AutoPay enrollment, no paper bill and no payment plan, so those capabilities are not_applicable. US subscription payment options do not include bank accounts. Payment method and billing history can only be managed on ring.com, not in the Ring app. Cancelling ends the plan at the end of the current billing period; the engine applies cancellation immediately. Plans bought through Amazon or app stores are managed there (not modelled). Two-step verification sends a code by text message (or authenticator app); modelled as sms. Plan names and prices are the published US monthly prices on ring.com/plans; Virtual Security Guard ($99/mo) is billed separately and not modelled as a plan. setup-payment-plan is suppressed because Ring has no installment plans. Reviewer (2026-10-09): the sign-in page asks for the same email and password used in the Ring app (cited for auth.identifier). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. Reviewer (2026-10-09): payment_arrangement is now not_applicable (the subscription is charged in full to the card on file and no installment option is published); the mock Split a payment page previously offered a 3/6/12-month installment form.",
   "officialDomains": [
     "ring.com"
   ],
@@ -160,6 +160,11 @@
       "evidence": "documented_official",
       "source": "https://ring.com/support/articles/468y0/cancel-ring-plan",
       "note": "The plan stays active until the end of the billing period; there are no refunds unless required by law."
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://ring.com/support/articles/391um/Payment-Method-FAQs"
     }
   },
   "billing": {

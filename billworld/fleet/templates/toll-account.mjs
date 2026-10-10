@@ -70,7 +70,7 @@ function trips(vm, inv) {
 const tagNo = vm => `${String(hnum(vm.account.accountNumber) % 900 + 100)}-${String(hnum('t' + vm.account.accountNumber) % 90000000 + 10000000)}`;
 const vehicleRow = vm => { const v = vm.account.vehicles?.[0] || {}; return { plate: vm.account.plate, state: (vm.account.serviceAddress.match(/, ([A-Z]{2}) \d{5}$/) || [])[1] || '—', desc: `${v.year || ''} ${v.make || ''}`.trim() }; };
 const balanceText = vm => vm.balanceCents > 0 ? `−${money(vm.balanceCents)}` : money(-vm.balanceCents);
-function cardFeeText(vm) { const f = vm.biller.fees; return f.cardPercent != null ? `${f.cardPercent}% convenience fee on card payments` : f.cardCents ? `${money(f.cardCents)} convenience fee on card payments` : 'No convenience fee'; }
+function cardFeeText(vm) { const f = vm.biller.fees; return f.cardPercent != null ? `${f.cardPercent}% convenience fee on card payments${f.cardMinCents ? ` (minimum ${money(f.cardMinCents)})` : ''}` : f.cardCents ? `${money(f.cardCents)} convenience fee on card payments` : 'No convenience fee'; }
 
 function topbar(vm) {
   return html`<header class="tb"><a class="tb-brand" href="${vm.url('home')}">${logo(vm)}<span>${vm.biller.brand.shortName}</span></a>${offline(vm) ? '' : html`<div class="tb-actions">${guestOk(vm) ? html`<a class="pill pill-hot" href="${vm.url('guest')}">${L(vm, 'guest', 'Pay a Toll Bill')}</a>` : ''}${vm.authenticated ? html`<span class="tb-who">Account ${vm.accountMasked}</span><a class="pill" href="${vm.url('logout')}">${L(vm, 'logout', 'Log Out')}</a>` : html`<a class="pill" href="${vm.url('login')}">${L(vm, 'login', 'Log In')}</a>`}</div>`}</header>

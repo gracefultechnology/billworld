@@ -5,7 +5,7 @@
   "name": "Acima (lease-to-own)",
   "category": "other",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from Acima's public Support / FAQ pages (About Leasing, Lease Agreements, Payment Information, Service & Support) and the public customer-portal sign-in page only; never signed in. The customer portal (Log into Customer Portal) asks first for a Mobile Phone number with Continue, with a Sign in with Username Instead option; modelled as the Sign in with Username Instead path (username identifier, two steps) plus a texted code (mfa sms, inferred: the code step is not shown before entering a number). The mobile-phone path is a gap: the invoice-portal template renders the identifier field as type=email, so phone numbers cannot be entered (cross-owner request on kit.field). Most renewal payments are drafted automatically by ACH from the customer's bank account; credit, debit and most prepaid cards (Mastercard, Visa, Discover) can also be used and set to process automatically. Payments can be made in the app, online or by phone at (801) 297-1982. Due dates follow the pay dates from the application; frequency can change after the first renewal payment; date changes for any payment need contact at least three business days before it processes. The initial payment is generally 1 to 70 dollars and counts toward the lease. Early purchase options are described in each lease (not auto-enrolled; a 90-day purchase option is mentioned) and are arranged by calling or chatting; specific buyout percentages and fees are not published on the FAQ pages, so none are modelled. The lease can be cancelled any time without penalty by first calling (801) 297-1982 (the About Leasing footnote also lists (801) 297-1980 for early purchase or cancellation). Failed or late payments may accrue fees per the lease (amounts not published). Statement delivery and paperless are not described publicly, so they keep the family defaults. Reviewer 2026-10-09: removed claims not found on the current official pages (retail cash payments with a 1.50 dollar fee, no billing statements, a 25 dollar purchase fee and a 65 percent buyout).",
+  "notes": "Researched from Acima's public Support / FAQ pages (About Leasing, Lease Agreements, Payment Information, Service & Support) and the public customer-portal sign-in page only; never signed in. The customer portal (Log into Customer Portal) asks first for a Mobile Phone number with Continue, with a Sign in with Username Instead option; modelled as the mobile-phone path (phone identifier, two steps) plus a texted code (mfa sms, inferred: the code step is not shown before entering a number); the Sign in with Username Instead option is not modelled. Most renewal payments are drafted automatically by ACH from the customer's bank account; credit, debit and most prepaid cards (Mastercard, Visa, Discover) can also be used and set to process automatically. Payments can be made in the app, online or by phone at (801) 297-1982. Due dates follow the pay dates from the application; frequency can change after the first renewal payment; date changes for any payment need contact at least three business days before it processes. The initial payment is generally 1 to 70 dollars and counts toward the lease. Early purchase options are described in each lease (not auto-enrolled; a 90-day purchase option is mentioned) and are arranged by calling or chatting; specific buyout percentages and fees are not published on the FAQ pages, so none are modelled. The lease can be cancelled any time without penalty by first calling (801) 297-1982 (the About Leasing footnote also lists (801) 297-1980 for early purchase or cancellation). Failed or late payments may accrue fees per the lease (amounts not published). Statement delivery and paperless are not described publicly, so they keep the family defaults. Reviewer 2026-10-09: removed claims not found on the current official pages (retail cash payments with a 1.50 dollar fee, no billing statements, a 25 dollar purchase fee and a 65 percent buyout).",
   "officialDomains": [
     "acima.com"
   ],
@@ -50,7 +50,7 @@
   },
   "labels": {
     "signIn": "Log into Customer Portal",
-    "username": "Username",
+    "username": "Mobile Phone",
     "dashboard": "My Lease",
     "payBill": "Make a Payment",
     "autopay": "Automatic Payments",
@@ -100,7 +100,7 @@
     ]
   },
   "auth": {
-    "identifier": "username",
+    "identifier": "phone",
     "loginSteps": 2,
     "mfa": "sms",
     "socialProviders": [],
@@ -332,7 +332,7 @@
     {
       "page": "login",
       "contains": [
-        "Username"
+        "Mobile Phone"
       ]
     },
     {

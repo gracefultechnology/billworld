@@ -5,7 +5,7 @@
   "name": "Farmers Insurance",
   "category": "insurance",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from the public farmers.com billing FAQ only (no sign-in). Pay online with or without a farmers.com account (guest: policy or billing account number + ZIP), by phone 1-888-327-6335 during business hours, or by mail. Checking, savings or business checking and Visa, Mastercard, American Express, Discover. No fee for one-time online payments; installment plans may have a fee and late/returned payments have fees (amounts not published). Scheduled payments (not for every policy) can be cancelled from Payment History while Scheduled, usually at least one business day ahead. Set up Autopay drafts on each statement due date; Manage Autopay > Stop next payment skips one draft. Paperless via Go Paperless in Quick Links, effective next billing cycle. Only a named insured can view statements online. Flood and pet policies cannot be paid online. Policy cancellation is not covered on the FAQ, so the family default is kept. Review 2026-10-09: the public log-in page asks for Username/email and then Continue (two-step; modelled as email_or_username sign-in); guest pay fields come from the billing FAQ. One-time bank payments can also be cancelled by phone before 6:30 p.m. Central. MFA is not documented publicly. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template).",
+  "notes": "Researched from the public farmers.com billing FAQ only (no sign-in). Pay online with or without a farmers.com account (guest: policy or billing account number + ZIP), by phone 1-888-327-6335 during business hours, or by mail. Checking, savings or business checking and Visa, Mastercard, American Express, Discover. No fee for one-time online payments; installment plans may have a fee and late/returned payments have fees (amounts not published). Scheduled payments (not for every policy) can be cancelled from Payment History while Scheduled, usually at least one business day ahead. Set up Autopay drafts on each statement due date; Manage Autopay > Stop next payment skips one draft. Paperless via Go Paperless in Quick Links, effective next billing cycle. Only a named insured can view statements online. Flood and pet policies cannot be paid online. Policy cancellation is not covered on the FAQ, so the family default is kept. Review 2026-10-09: the public log-in page asks for Username/email and then Continue (two-step; modelled as email_or_username sign-in); guest pay fields come from the billing FAQ. One-time bank payments can also be cancelled by phone before 6:30 p.m. Central. MFA is not documented publicly. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template). Review 2026-10-10: guest form set to exactly policy or billing account number + ZIP (guestLookupExact), dropping the family's last-name field.",
   "officialDomains": [
     "farmers.com"
   ],
@@ -85,7 +85,8 @@
     "evidence": "observed_public",
     "source": "https://www.farmers.com/css/login",
     "identifier": "email_or_username",
-    "loginSteps": 2
+    "loginSteps": 2,
+    "guestLookupExact": true
   },
   "capabilities": {
     "pay_online": {

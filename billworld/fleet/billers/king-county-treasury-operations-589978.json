@@ -5,7 +5,7 @@
   "name": "King County Treasury Operations",
   "category": "property-tax",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public kingcounty.gov pages only. Online payment (payment.kingcounty.gov) by card, debit or eCheck: eCheck $0.55 flat, cards/PayPal 2.35% ($2.00 minimum), international cards 3.95% (minimums and international rate not expressible). Payments by mail (201 S. Jackson St., Suite 710, Seattle), in person (cash, check, card) and drop box; phone numbers are for customer service only, so pay_by_phone is unsupported (inferred). Deadlines April 30 and October 31 (second half 2026 due November 2). Payment plans are only for delinquent prior-year taxes, set up by email/phone with signed paper agreements and serviced by Evergreen Notes Servicing ($100 setup, $17/month); the property-tax template always offers an online plan form, so payment_arrangement stays at family default with the real rules in help. No automatic or monthly prepayment program is described. Interest/penalty rates were not stated on the pages read. Sign-in is synthetic.",
+  "notes": "Researched from public kingcounty.gov pages only. Online payment (payment.kingcounty.gov) by card, debit or eCheck: eCheck $0.55 flat, cards/PayPal 2.35% ($2.00 minimum), international cards 3.95% (minimums and international rate not expressible). Payments by mail (201 S. Jackson St., Suite 710, Seattle), in person (cash, check, card) and drop box; phone numbers are for customer service only, so pay_by_phone is unsupported (inferred). Deadlines April 30 and October 31 (second half 2026 due November 2). Payment plans are only for delinquent prior-year taxes, set up by email/phone with signed paper agreements and serviced by Evergreen Notes Servicing ($100 setup, $17/month); payment_arrangement is unsupported online with that note (the server drops the plan form). No automatic or monthly prepayment program is described. Interest/penalty rates were not stated on the pages read. Sign-in is synthetic. Review 2 (2026-10-09): the payment page (fees $0.55 eCheck, 2.35%/$2.00 minimum, 3.95% international, phone 206-263-2890) was re-checked; kingcounty.gov served an outage page during the review, so the payment-plan and property-tax pages could not be re-read and the builder's 2026-10-09 reading is kept. Contact set to 206-263-2890.",
   "officialDomains": [
     "kingcounty.gov"
   ],
@@ -120,6 +120,14 @@
       "evidence": "documented_official",
       "source": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax",
       "note": "Mail a check or money order to King County Treasury, 201 S. Jackson St., Suite 710, Seattle, WA 98104."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax/payment-plans",
+      "note": "Payment plans cover delinquent prior-year taxes only and are set up by email or phone with signed paper agreements; Evergreen Notes Servicing collects the payments ($100 setup plus $17 a month). Call Property Tax Customer Service at 206-263-2890.",
+      "channel": "phone",
+      "phone": "206-263-2890"
     }
   },
   "billing": {
@@ -297,5 +305,9 @@
       "slug": "due-dates",
       "contains": "April 30"
     }
-  ]
+  ],
+  "contact": {
+    "phone": "206-263-2890",
+    "source": "https://payment.kingcounty.gov/Home/Index?app=PropertyTaxes"
+  }
 }

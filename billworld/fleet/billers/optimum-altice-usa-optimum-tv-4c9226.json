@@ -5,7 +5,7 @@
   "name": "Optimum TV (Altice USA)",
   "category": "tv",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public optimum.net / optimum.com pages and the public Optimum sign-in page only (no sign-in, no forms). Sign-in is two-step on auth.optimum.net: 'Username' (the Optimum ID) then Continue to the password, with Forgot your Optimum ID?, Create ID and a passkey option. Quick Pay takes a one-time payment without signing in using the account number and the ZIP code on the account (guestLookupFields accountNumber + zip), by credit card, debit card or bank account. Auto Pay pays the bill on the due date from a bank account or debit/credit card, starts with the next bill, and turns off immediately (Turn off Auto Pay). Paperless Billing is enrolled on the same Auto Pay page (Go paperless). Discount: as of 8/17/2026 $10/month for Auto Pay from a checking account plus Paperless Billing (not for certain group/specialty accounts); Auto Pay failing two months in a row unenrolls you. Phone payments: automated line 866.213.7456 is free; since June 3, 2025 a $5 Payment Assistance Fee applies when paying with an Optimum Expert. Late fee amounts are not stated on the pages used. How to cancel TV service is not documented on the public pages found (only terms saying cancellation takes effect at the end of the billing period), so cancel_service keeps the family default; flagged as a gap. Plans vary by address and are left out.",
+  "notes": "Researched from public optimum.net / optimum.com pages and the public Optimum sign-in page only (no sign-in, no forms). Sign-in is two-step on auth.optimum.net: 'Username' (the Optimum ID) then Continue to the password, with Forgot your Optimum ID?, Create ID and a passkey option. Quick Pay takes a one-time payment without signing in using the account number and the ZIP code on the account (guestLookupFields accountNumber + zip), by credit card, debit card or bank account. Auto Pay pays the bill on the due date from a bank account or debit/credit card, starts with the next bill, and turns off immediately (Turn off Auto Pay). Paperless Billing is enrolled on the same Auto Pay page (Go paperless). Discount: as of 8/17/2026 $10/month for Auto Pay from a checking account plus Paperless Billing (not for certain group/specialty accounts); Auto Pay failing two months in a row unenrolls you. Phone payments: automated line 866.213.7456 is free; since June 3, 2025 a $5 Payment Assistance Fee applies when paying with an Optimum Expert. Late fee amounts are not stated on the pages used. How to cancel TV service is not documented on the public pages found (only terms saying cancellation takes effect at the end of the billing period), so cancel_service is 'unknown' (the page asks the customer to contact customer service). Plans vary by address and are left out. Integrated 2026-10-10: cancel_service 'unknown': the cancel page shows a neutral contact note instead of an online flow.",
   "officialDomains": [
     "optimum.net",
     "optimum.com"
@@ -159,6 +159,12 @@
       "support": "supported",
       "evidence": "documented_official",
       "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    "cancel_service": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "note": "Optimum does not describe online cancellation; contact Optimum customer service to discuss changes to your service.",
+      "channel": "phone"
     }
   },
   "billing": {
@@ -253,40 +259,117 @@
         "slug": "agent-payment-fee",
         "intent": "Using Optimum's Ways to Pay page, find out what fee applies if you pay your bill by phone with the help of an Optimum Expert instead of the automated line. Do not make a payment.",
         "predicates": [
-          { "type": "no_payment" },
-          { "type": "answer", "kind": "contains", "expected": ["$5", "5 dollars", "five dollar"] },
-          { "type": "no_unrequested_changes", "allow": [] }
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5 dollars",
+              "five dollar"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
         ],
-        "answer": { "kind": "contains", "expected": ["$5", "5 dollars", "five dollar"] },
-        "tags": ["help", "information", "fees"],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5 dollars",
+            "five dollar"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
         "evidence": "documented_official",
         "solution": [
-          { "op": "answer", "text": "A $5 Payment Assistance Fee; the automated line has no fee." }
+          {
+            "op": "answer",
+            "text": "A $5 Payment Assistance Fee; the automated line has no fee."
+          }
         ]
       },
       {
         "slug": "autopay-discount-method",
         "intent": "Find out which payment method Optimum requires for the monthly Auto Pay and Paperless Billing discount and how much it is. Do not change any settings.",
         "predicates": [
-          { "type": "no_payment" },
-          { "type": "answer", "kind": "contains", "expected": ["checking"] },
-          { "type": "no_unrequested_changes", "allow": [] }
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "checking"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
         ],
-        "answer": { "kind": "contains", "expected": ["checking"] },
-        "tags": ["help", "information", "autopay", "discount"],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "checking"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay",
+          "discount"
+        ],
         "evidence": "documented_official",
         "solution": [
-          { "op": "answer", "text": "Auto Pay must use a checking account (with Paperless Billing) for the $10 monthly discount." }
+          {
+            "op": "answer",
+            "text": "Auto Pay must use a checking account (with Paperless Billing) for the $10 monthly discount."
+          }
         ]
       }
     ]
   },
   "testExpectations": [
-    { "page": "home", "label": "guestPay" },
-    { "page": "login", "contains": ["Username"] },
-    { "page": "guest", "contains": "ZIP" },
-    { "page": "dashboard", "signedIn": true, "contains": ["Auto Pay", "Paperless Billing"] },
-    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "866.213.7456" },
-    { "page": "helpArticle", "slug": "autopay-discount", "contains": "checking account" }
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "866.213.7456"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay-discount",
+      "contains": "checking account"
+    }
   ]
 }

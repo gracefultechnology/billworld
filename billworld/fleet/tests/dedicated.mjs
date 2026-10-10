@@ -123,7 +123,7 @@ const DOSSIER_FLOWS = {
     if (f && (!methods || methods.includes('card')) && b.capabilities.pay_online?.support === 'supported') {
       await pay(ctx, { amountChoice: 'other', amount: '25.00', methodId: 'pm-card' });
       const p = (await ctx.payments()).at(-1);
-      const want = f.cardPercent != null ? Math.round(2500 * f.cardPercent / 100) : f.cardCents;
+      const want = f.cardPercent != null ? Math.max(f.cardMinCents || 0, Math.round(2500 * f.cardPercent / 100)) : f.cardCents;
       if (want != null) assert.equal(p.feeCents, want, `card fee: charged ${p.feeCents} cents, dossier says ${want}`);
     }
     void kitL;
@@ -139,13 +139,33 @@ for (const id of ids) {
 }
 console.log(`${jobs.length} jobs for ${new Set(jobs.map(j => j.b.id)).size} dedicated billers (tag ${tag}, concurrency ${concurrency}, ${quick ? 'standard' : 'standard + extended'} flows, ${viewportName})`);
 
-let browser;
-for (let i = 0; ; i++) { try { browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'], protocolTimeout: 240000, timeout: 180000 }); break; } catch (e) { if (i >= 3) throw e; await sleep(3000 * (i + 1)); } }
+// The shared Chrome can die mid-run (memory pressure, another agent's load). A flow that fails because the browser or
+// its target went away ('Connection closed', 'Target closed', 'detached', ...) is retried once on a relaunched browser
+// before it counts as a failure, so a crash costs a relaunch instead of every remaining flow.
+const launchBrowser = async () => { for (let i = 0; ; i++) { try { return await puppeteer.launch({ headless: true, args: ['--no-sandbox'], protocolTimeout: 240000, timeout: 180000 }); } catch (e) { if (i >= 3) throw e; await sleep(3000 * (i + 1)); } } };
+const BROWSER_GONE = /Connection closed|Target closed|detached|Session closed|browser has disconnected|Browser closed|WebSocket is not open|Protocol error.*(?:closed|Target)/i;
+let browser = await launchBrowser(), browserGen = 0, relaunching = null, relaunches = 0;
+async function relaunchBrowser(gen) {
+  if (gen !== browserGen) return; // another worker already relaunched since this flow started
+  relaunching ||= (async () => { const old = browser; try { await old.close(); } catch {} try { old.process()?.kill('SIGKILL'); } catch {} browser = await launchBrowser(); browserGen++; relaunches++; console.log(`browser relaunched (#${relaunches})`); })().finally(() => { relaunching = null; });
+  await relaunching;
+}
 const extraOrigins = [server.googleUrl].filter(Boolean).map(u => new URL(u).origin);
 const results = [];
-async function runJob({ b, t, flow, scenario }) {
-  const began = Date.now(); let context, page, error = null, skipped = null, ctx = { directNav: [] }; const errors = [], outbound = [];
+async function runJob(job) {
+  const began = Date.now(); let attempt = await runOnce(job), retried = false;
+  // Retry once when the failure is the browser's, not the site's: a browser-loss message, or the browser died or was
+  // relaunched (by the other worker) while this flow ran (a flow can then fail with an unrelated-looking assertion).
+  if (attempt.error && (BROWSER_GONE.test(attempt.error) || !browser.connected || attempt.gen !== browserGen || relaunching)) { retried = true; await relaunchBrowser(attempt.gen); attempt = await runOnce(job); }
+  const { b, flow } = job; const { error, skipped, ctx } = attempt;
+  const r = { billerId: b.id, name: b.entry.name, category: b.category, template: job.t.id, flow, status: skipped ? 'skip' : error ? 'fail' : 'pass', error, skipped, warnings: ctx.warnings || [], directNav: ctx.directNav, retried, ms: Date.now() - began };
+  results.push(r); console.log(`${r.status.toUpperCase()} ${b.id} ${flow}${retried ? ' (retried after browser loss)' : ''}${error ? ` — ${error}` : ''}${skipped ? ` — ${skipped}` : ''}${r.warnings.length ? ` (warnings: ${r.warnings.join('; ')})` : ''}`);
+}
+async function runOnce({ b, t, flow, scenario }) {
+  const gen = browserGen; if (relaunching) await relaunching;
+  let context, page, error = null, skipped = null, ctx = { directNav: [] }; const errors = [], outbound = [];
   try {
+    if (!browser.connected) { await relaunchBrowser(gen); }
     context = await browser.createBrowserContext(); page = await context.newPage();
     await page.setViewport(VIEWPORTS[viewportName]); await page.setRequestInterception(true);
     page.on('request', r => { const u = r.url(); if (u.startsWith(server.baseUrl) || extraOrigins.some(o => u.startsWith(o)) || /^(data|about|blob|chrome|chrome-extension|devtools):/.test(u)) r.continue(); else { outbound.push(u); r.abort(); } });
@@ -168,12 +188,11 @@ async function runJob({ b, t, flow, scenario }) {
     else { error = e.message.split('\n')[0]; try { await page.screenshot({ path: new URL(`fail-${b.id}-${flow}.png`, artifacts).pathname, fullPage: true }); } catch {} }
   }
   try { await context?.close(); } catch {}
-  const r = { billerId: b.id, name: b.entry.name, category: b.category, template: t.id, flow, status: skipped ? 'skip' : error ? 'fail' : 'pass', error, skipped, warnings: ctx.warnings || [], directNav: ctx.directNav, ms: Date.now() - began };
-  results.push(r); console.log(`${r.status.toUpperCase()} ${b.id} ${flow}${error ? ` — ${error}` : ''}${skipped ? ` — ${skipped}` : ''}${r.warnings.length ? ` (warnings: ${r.warnings.join('; ')})` : ''}`);
+  return { error, skipped, ctx, gen };
 }
 const queue = [...jobs];
 await Promise.all(Array.from({ length: concurrency }, async () => { while (queue.length) await runJob(queue.shift()); }));
-await browser.close(); await server.close();
+try { await browser.close(); } catch {} await server.close();
 try { rmSync(dataDir, { recursive: true, force: true }); } catch {}
 
 const at = new Date().toISOString();
@@ -186,8 +205,8 @@ for (const id of new Set([...ids])) {
   // Only full (non --flows) runs count toward the tier's test status.
   if (!onlyFlows.length) writeFileSync(new URL(`${id}.json`, latestDir), JSON.stringify(perBiller[id], null, 1));
 }
-writeFileSync(new URL('results.json', artifacts), JSON.stringify({ at, tag, quick, viewport: viewportName, billers: perBiller, results }, null, 1));
+writeFileSync(new URL('results.json', artifacts), JSON.stringify({ at, tag, quick, viewport: viewportName, browserRelaunches: relaunches, retriedFlows: results.filter(r => r.retried).length, billers: perBiller, results }, null, 1));
 const failed = results.filter(r => r.status === 'fail').length + invalid.length + notDedicated.length;
 console.table(Object.values(perBiller).map(p => ({ biller: p.billerId, status: p.status, passed: `${p.passed}/${p.flows}`, failed: p.failed.length, warnings: p.warnings.length })));
-console.log(`${results.filter(r => r.status === 'pass').length}/${results.length - results.filter(r => r.status === 'skip').length} flows passed; ${failed ? `${failed} failure(s)` : 'all green'}. Results: ${artifacts.pathname}results.json`);
+console.log(`${results.filter(r => r.status === 'pass').length}/${results.length - results.filter(r => r.status === 'skip').length} flows passed (${relaunches} browser relaunch(es), ${results.filter(r => r.retried).length} flow(s) retried); ${failed ? `${failed} failure(s)` : 'all green'}. Results: ${artifacts.pathname}results.json`);
 process.exit(failed ? 1 : 0);

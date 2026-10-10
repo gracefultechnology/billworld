@@ -9,7 +9,7 @@ export const can = (vm, cap) => vm.biller.capabilities[cap]?.support === 'suppor
 // Fee estimates mirror engine.fee() so the disclosure shown before review matches what is charged.
 export function cardFee(vm, cents) {
   const f = vm.biller.fees, kind = vm.biller.kind;
-  if (f.cardPercent != null) return Math.round(cents * f.cardPercent / 100);
+  if (f.cardPercent != null) return Math.max(f.cardMinCents || 0, Math.round(cents * f.cardPercent / 100));
   if (f.cardCents != null) return f.cardCents;
   return ['tax', 'government', 'medical'].includes(kind) ? Math.max(195, Math.round(cents * 0.0235)) : kind === 'utility' ? 295 : 0;
 }
@@ -17,7 +17,7 @@ export const bankFee = vm => vm.biller.fees.bankCents ?? 0;
 export function feeText(vm, type, cents = vm.balanceCents || 0) {
   const f = vm.biller.fees;
   if (type === 'bank') { const b = bankFee(vm); return b ? money(b) : 'No fee'; }
-  if (f.cardPercent != null) return `${f.cardPercent}% of the payment amount${cents ? ` (${money(cardFee(vm, cents))} on ${money(cents)})` : ''}`;
+  if (f.cardPercent != null) return `${f.cardPercent}% of the payment amount${f.cardMinCents ? ` (minimum ${money(f.cardMinCents)})` : ''}${cents ? ` (${money(cardFee(vm, cents))} on ${money(cents)})` : ''}`;
   const c = cardFee(vm, cents); return c ? money(c) : 'No fee';
 }
 

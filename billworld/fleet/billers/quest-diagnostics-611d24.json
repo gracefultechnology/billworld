@@ -5,7 +5,7 @@
   "name": "Quest Diagnostics",
   "category": "medical",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public questdiagnostics.com pages and the public bill-lookup page of patientbill.questdiagnostics.com (no lookup submitted). Bills are found by bill number (upper right of the paper bill) plus the patient's date of birth and ZIP code; too many attempts lock the lookup for 30 minutes; without a bill number a one-time passcode can find the bill. Online methods: bank account/eCheck, credit/debit/HSA/FSA, PayPal. No payment fee is stated (third-party sites like Doxo may add their own). There is no AutoPay for lab bills; payment plans (monthly installments) are arranged by calling customer service, so payment_arrangement is modelled as phone-only. Email bill notices and paperless are set in MyQuest > Account Settings > Communications Preferences (can take up to 10 days). Easy Pay card-on-file at a Patient Service Center is per appointment only. Payments can take up to 7 days to show.",
+  "notes": "Researched from public questdiagnostics.com pages and the public bill-lookup page of patientbill.questdiagnostics.com (no lookup submitted). Bills are found by bill number (upper right of the paper bill) plus the patient's date of birth and ZIP code; too many attempts lock the lookup for 30 minutes (attempt count not published, family default kept); without a bill number a one-time passcode can find the bill. Online methods: bank account/eCheck, credit/debit/HSA/FSA, PayPal. No payment fee is stated (third-party sites like Doxo may add their own). There is no AutoPay for lab bills; payment plans (monthly installments) are arranged by calling customer service, so payment_arrangement is modelled as phone-only. Email bill notices and paperless are set in MyQuest > Account Settings > Communications Preferences (can take up to 10 days). Easy Pay card-on-file at a Patient Service Center is per appointment only. Payments can take up to 7 days to show.",
   "officialDomains": ["questdiagnostics.com"],
   "sources": [
     { "url": "https://www.questdiagnostics.com/patients/billing-insurance/faqs", "title": "Billing FAQs", "fetchedAt": "2026-10-09", "kind": "help" },
@@ -35,7 +35,6 @@
   "auth": {
     "identifier": "email",
     "guestLookupFields": ["accountNumber", "dob", "zip"],
-    "lockoutAttempts": 5,
     "evidence": "observed_public",
     "source": "https://patientbill.questdiagnostics.com/home"
   },

@@ -5,7 +5,7 @@
   "name": "EZDriveMA (E-ZPass MA and Pay By Plate MA)",
   "category": "vehicle-tolls",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public ezdrivema.com pages (E-ZPass MA, login page, fee schedule, Pay By Plate MA, customer service). The login page lets you pick the Type of Login (Username, Account Number, Transponder Number or Email Address on file) and enter a password; the fleet models this as email_or_username. Automatic replenishment uses a credit/debit card or checking account; the opening prepaid amount is $20 per transponder (private) with automatic replenishment, $30 with manual replenishment. The $1.99 per-transaction fee shown on the E-ZPass MA page sits next to the MoneyGram cash option, and the Pay By Plate MA page states it is the MoneyGram fee, so no convenience fee is applied to online card or bank payments (reviewer fix, 2026-10-09). Statements are free online, $0.60 per mailed statement. Pay By Plate MA invoices add $0.60 per invoice plus monthly late fees if unpaid. No payment plan or close-account procedure is described on the public pages read, so those keep the catalog defaults. MFA not described. The pay_by_phone override (unknown, with a research-process note that leaked onto the home page) was removed; the catalog default applies.",
+  "notes": "Researched from public ezdrivema.com pages (E-ZPass MA, login page, fee schedule, Pay By Plate MA, customer service). The login page lets you pick the Type of Login (Username, Account Number, Transponder Number or Email Address on file) and enter a password; the fleet models this as email_or_username. Automatic replenishment uses a credit/debit card or checking account; the opening prepaid amount is $20 per transponder (private) with automatic replenishment, $30 with manual replenishment. The $1.99 per-transaction fee shown on the E-ZPass MA page sits next to the MoneyGram cash option, and the Pay By Plate MA page states it is the MoneyGram fee, so no convenience fee is applied to online card or bank payments (reviewer fix, 2026-10-09). Statements are free online, $0.60 per mailed statement. Pay By Plate MA invoices add $0.60 per invoice plus monthly late fees if unpaid. No payment plan or close-account procedure is described on the public pages read, so those keep the catalog defaults. MFA not described. The pay_by_phone override (unknown, with a research-process note that leaked onto the home page) was removed; the catalog default applies. Reviewer (2026-10-09, run 2): the catalog's synthetic 3/6/12-month online payment plan was removed (payment_arrangement unsupported, evidence inferred): no official page read, nor a web search, describes an installment plan for this agency, so the mock now points to customer service instead.",
   "officialDomains": [
     "ezdrivema.com"
   ],
@@ -131,6 +131,14 @@
       "evidence": "documented_official",
       "source": "https://www.ezdrivema.com/paybyplatema",
       "note": "Pay By Plate MA invoices can be paid online without an account."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.ezdrivema.com/paybyplatema",
+      "note": "No online payment plan is described. Pay Pay By Plate MA invoices in full by the due date, or call EZDriveMA customer service at (877) 627-7745 about a balance you cannot pay.",
+      "channel": "phone",
+      "phone": "8776277745"
     }
   },
   "billing": {

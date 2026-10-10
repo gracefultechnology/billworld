@@ -4,7 +4,7 @@
   "name": "Cricket Wireless",
   "category": "phone-wireless",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public cricketwireless.com support and plan pages only (no sign-in). Cricket is prepaid: service is paid by the due date (11:59 pm CT) or all lines are suspended. Sign-in accepts a username, email or 10-digit Cricket number with a password (password 8-24 characters with a letter and a number); no second factor is documented at sign-in (mfa none, inferred), resets use a texted code. Pay Bill and Quick Pay (no sign-in, keyed by the Cricket phone number) accept credit/debit cards, PayPal (signed in), refill and service payment cards; bank account drafts, checks and money orders are NOT accepted. Quick Pay looks up by phone number, which guestLookupFields cannot express (family default kept). Auto Pay charges the card two days before the due date; $5 monthly Auto Pay credit on eligible plans. BridgePay splits the amount due into two payments for a $5 (single line) / $15 (multi-line) fee, set up 7 days before to 59 days after the due date; modelled by the arrangement form. Agent/store payments carry a $5 Customer Assistance Fee. Cricket does not mail paper bills (paperless not_applicable, inferred). Closing an account is handled by Customer Support (no online cancel), so cancel_service is unsupported online. Plans are the published monthly prices without Auto Pay. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public cricketwireless.com support and plan pages only (no sign-in). Cricket is prepaid: service is paid by the due date (11:59 pm CT) or all lines are suspended. Sign-in accepts a username, email or 10-digit Cricket number with a password (password 8-24 characters with a letter and a number); no second factor is documented at sign-in (mfa none, inferred), resets use a texted code. Pay Bill and Quick Pay (no sign-in, keyed by the Cricket phone number) accept credit/debit cards, PayPal (signed in), refill and service payment cards; bank account drafts, checks and money orders are NOT accepted. Quick Pay looks up the account by the Cricket phone number alone (guestLookupFields [phone], guestLookupExact). Auto Pay charges the card two days before the due date; $5 monthly Auto Pay credit on eligible plans. BridgePay splits the amount due into two payments for a $5 (single line) / $15 (multi-line) fee, set up 7 days before to 59 days after the due date; modelled by the arrangement form. Agent/store payments carry a $5 Customer Assistance Fee. Cricket does not mail paper bills (paperless not_applicable, inferred). Closing an account is handled by Customer Support (no online cancel), so cancel_service is unsupported online. Plans are the published monthly prices without Auto Pay. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
   "officialDomains": [
     "cricketwireless.com"
   ],
@@ -134,7 +134,11 @@
       "message": "Password must be 8-24 characters and include at least one letter and one number."
     },
     "evidence": "documented_official",
-    "source": "https://www.cricketwireless.com/support/account-management/forgot-username-password"
+    "source": "https://www.cricketwireless.com/support/account-management/forgot-username-password",
+    "guestLookupFields": [
+      "phone"
+    ],
+    "guestLookupExact": true
   },
   "capabilities": {
     "guest_pay": {

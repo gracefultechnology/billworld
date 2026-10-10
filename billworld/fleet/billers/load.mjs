@@ -64,7 +64,7 @@ export function applyDossier(biller, d, { recompute } = {}) {
   }
   const f = d.billing?.fees;
   if (f) biller.fees = { bankCents: f.bankCents ?? null, cardCents: f.cardCents ?? null, cardPercent: f.cardPercent ?? null, evidence: EVIDENCE_LABEL[f.evidence] || f.evidence, ...(f.source ? { source: f.source } : {}),
-    ...Object.fromEntries(['autopayCardCents', 'autopayCardPercent', 'guestBankCents', 'guestCardCents'].filter(k => f[k] != null).map(k => [k, f[k]])), ...(f.notes ? { notes: f.notes } : {}) };
+    ...Object.fromEntries(['cardMinCents', 'autopayCardCents', 'autopayCardPercent', 'guestBankCents', 'guestCardCents'].filter(k => f[k] != null).map(k => [k, f[k]])), ...(f.notes ? { notes: f.notes } : {}) };
   // Phone numbers: dossier contact first, then the pay-by-phone capability's number, else the catalog's.
   const digits10 = v => String(v).replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '');
   const show = v => { const x = digits10(v); return `${x.slice(0, 3)}-${x.slice(3, 6)}-${x.slice(6)}`; };

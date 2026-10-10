@@ -5,7 +5,7 @@
   "name": "EyeMed Vision Care (Individual & Family plans)",
   "category": "dental-vision-hearing",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public pages only (no sign-in). The individual-plan FAQ at individual.eyemed.com is rendered by JavaScript; its text was read from the site's public content feed (content.eyemedvisioncare.com, individual/eyemed/page/faq). EyeMed Individual billing and enrollment are run by its administration partner InsuranceTPA.com (charges show as InsuranceTPA); the FAQ sends members to the customer login link emailed after enrollment, and InsuranceTPA's current-members page lists Pay Your Bill in that customer login plus the Individual EyeMed billing line 1-844-225-3107 (M-F 7am-5pm CT). Payments are set up at enrollment: 12 monthly payments or one annual payment with a 5% discount in most states, on a credit card or bank account; every enrollment is a 12-month commitment and renews automatically. Cancellation is not self-service: after the coverage period, the primary policyholder calls the ID-card number and sends a valid written request (signed form or email), then must receive a confirmation email. There is no public self-registration (the login link arrives by email at enrollment), so register is kept out of the public nav; sign-in identifier, MFA, paperless, fees and grace-period length are not published and keep family defaults. Signed-in nav labels other than Pay Your Bill are not published and are generic (synthetic). Plan prices are only 'starting at' figures that vary by state, so no plan list is modelled. Public nav is left to the family template: the insurance template's public tab bar uppercases link text and paints dossier links in the brand color on the brand background, so a dossier public nav fails dossier_contract (reported as a cross-owner request).",
+  "notes": "Researched from public pages only (no sign-in). The individual-plan FAQ at individual.eyemed.com is rendered by JavaScript; its text was read from the site's public content feed (content.eyemedvisioncare.com, individual/eyemed/page/faq). EyeMed Individual billing and enrollment are run by its administration partner InsuranceTPA.com (charges show as InsuranceTPA); the FAQ sends members to the customer login link emailed after enrollment, and InsuranceTPA's current-members page lists Pay Your Bill in that customer login plus the Individual EyeMed billing line 1-844-225-3107 (M-F 7am-5pm CT). Payments are set up at enrollment: 12 monthly payments or one annual payment with a 5% discount in most states, on a credit card or bank account; every enrollment is a 12-month commitment and renews automatically. Cancellation is not self-service: after the coverage period, the primary policyholder calls the ID-card number and sends a valid written request (signed form or email), then must receive a confirmation email. There is no public self-registration (the login link arrives by email at enrollment), so register is kept out of the public nav; sign-in identifier, MFA, paperless, fees and grace-period length are not published and keep family defaults. Signed-in nav labels other than Pay Your Bill are not published and are generic (synthetic). Plan prices are only 'starting at' figures that vary by state, so no plan list is modelled. Review 2026-10-09: sign-in label changed to Member Login (the individual site's login menu, under Already a member?). Public nav added (Pay Your Bill points to the help article; no register link because the login link is emailed at enrollment). Contact phone set to the published member/billing line so the footer no longer mixes in unrelated catalog numbers.",
   "officialDomains": [
     "eyemed.com",
     "insurancetpa.com"
@@ -50,11 +50,25 @@
     "monogram": "E"
   },
   "labels": {
-    "signIn": "Login",
+    "signIn": "Member Login",
     "payBill": "Pay Your Bill",
     "help": "Get Answers"
   },
   "nav": {
+    "public": [
+      {
+        "label": "Member Login",
+        "page": "login"
+      },
+      {
+        "label": "Pay Your Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Get Answers",
+        "page": "help"
+      }
+    ],
     "account": [
       {
         "label": "My Account",
@@ -304,5 +318,11 @@
       "signedIn": true,
       "contains": "primary policyholder"
     }
-  ]
+  ],
+  "contact": {
+    "evidence": "documented_official",
+    "phone": "844-225-3107",
+    "payPhone": "844-225-3107",
+    "source": "https://www.insurancetpa.com/current-members/"
+  }
 }

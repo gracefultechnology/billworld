@@ -5,7 +5,7 @@
   "name": "Delta Dental Insurance Company / Delta Dental of California (individual plans)",
   "category": "dental-vision-hearing",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public deltadentalins.com pages only (no sign-in; the CIAM sign-in page renders by JavaScript, so its field labels were not observed). Member FAQ: individual-plan premiums are paid directly to Delta Dental online or by check; online, sign in and choose 'Pay my bill' for a one-time payment by bank account, debit or credit card; 'Set up autopay' and 'Manage autopay' (update or cancel); autopay frequency depends on the plan (monthly, quarterly, semiannual or annual). Paperless delivers claim statements, estimates and plan documents online with an email alert, and paperless bill holders get an email when a bill is ready. Accounts are created after the enrollment confirmation with the enrollee/member ID ('Create an account', then 'Enrollee/Adult Dependent'), modelled as a registration field accountNumber. Cancellation is not described as self-service: members contact Delta Dental and the policy documents hold the terms, so cancel_service is unsupported online with Customer Care's phone. Fees, grace periods, MFA and the sign-in identifier are not published and keep family defaults. Dashboard and payment-history labels in the account nav are generic (synthetic). Public nav is left to the family template: the insurance template's public tab bar uppercases link text and paints dossier links in the brand color on the brand background, so a dossier public nav fails dossier_contract (reported as a cross-owner request).",
+  "notes": "Researched from public deltadentalins.com pages only (no sign-in; the CIAM sign-in page renders by JavaScript, so its field labels were not observed). Member FAQ: individual-plan premiums are paid directly to Delta Dental online or by check; online, sign in and choose 'Pay my bill' for a one-time payment by bank account, debit or credit card; 'Set up autopay' and 'Manage autopay' (update or cancel); autopay frequency depends on the plan (monthly, quarterly, semiannual or annual). Paperless delivers claim statements, estimates and plan documents online with an email alert, and paperless bill holders get an email when a bill is ready. Accounts are created after the enrollment confirmation with the enrollee/member ID ('Create an account', then 'Enrollee/Adult Dependent'), modelled as a registration field accountNumber. Cancellation is not described as self-service: members contact Delta Dental and the policy documents hold the terms, so cancel_service is unsupported online with Customer Care's phone. Fees, grace periods, MFA and the sign-in identifier are not published and keep family defaults. Dashboard and payment-history labels in the account nav are generic (synthetic). Review 2026-10-09: the rendered sign-in page (Log In) asks for a Username alone first, with Create an account and Forgot username? links, so auth is identifier username in two steps (observed_public); the member-ID registration field comes from the member FAQ. Public nav added. Contact phone set to the published member/billing line so the footer no longer mixes in unrelated catalog numbers.",
   "officialDomains": [
     "deltadentalins.com"
   ],
@@ -37,14 +37,37 @@
     "monogram": "D"
   },
   "labels": {
-    "signIn": "Log in",
+    "signIn": "Log In",
     "register": "Create an account",
     "payBill": "Pay my bill",
     "autopay": "Manage autopay",
     "help": "FAQs",
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "username": "Username"
   },
   "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Create an account",
+        "page": "register"
+      },
+      {
+        "label": "Pay my bill",
+        "helpSlug": "pay-my-bill"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Contact us",
+        "helpSlug": "contact-us"
+      }
+    ],
     "account": [
       {
         "label": "Pay my bill",
@@ -69,11 +92,13 @@
     ]
   },
   "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
     "registrationFields": [
       "accountNumber"
     ],
-    "evidence": "documented_official",
-    "source": "https://www1.deltadentalins.com/faqs/members.html"
+    "evidence": "observed_public",
+    "source": "https://www.deltadentalins.com/ciam/login"
   },
   "capabilities": {
     "registration": {
@@ -280,5 +305,10 @@
       "signedIn": true,
       "contains": "Evidence of Coverage"
     }
-  ]
+  ],
+  "contact": {
+    "evidence": "documented_official",
+    "phone": "888-282-9501",
+    "source": "https://www1.deltadentalins.com/about/contact.html"
+  }
 }

@@ -5,7 +5,7 @@
   "name": "Tarrant County Tax Assessor-Collector",
   "category": "property-tax",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public tarrantcountytx.gov pages only. Online and phone (817-884-1110, 24/7) card fees: credit 2.15%, debit $2.95 flat; in person credit 2.15% ($2.50 minimum) and debit $2.50 (flat/minimum fees not expressible). eCheck fee not stated (bank fee left at default 0). Taxes delinquent February 1; last day without penalty January 31 (online/phone by 11:59 p.m. CST, mail postmarked). Half Payment option (first half by Nov 30, second by June 30) and quarterly installments for over-65/disabled homesteads (Jan 31, Mar 31, May 31, Jul 31). Paperless billing: search account, choose PAPERLESS, agree, enter email; mailed bills and delinquent notices stop; UNSUBSCRIBE to stop. No automatic payment program is described. No public sign-in; email sign-in is synthetic. Penalty/interest schedule not on pages read. Review 2026-10-09: statements label is the real 'Print Statement'; 'Installment Options' was not a label on the site, so the nav link is a plain description.",
+  "notes": "Researched from public tarrantcountytx.gov pages only. Online and phone (817-884-1110, 24/7) card fees: credit 2.15%, debit $2.95 flat; in person credit 2.15% ($2.50 minimum) and debit $2.50 (flat/minimum fees not expressible). eCheck fee not stated (bank fee left at default 0). Taxes delinquent February 1; last day without penalty January 31 (online/phone by 11:59 p.m. CST, mail postmarked). Half Payment option (first half by Nov 30, second by June 30) and quarterly installments for over-65/disabled homesteads (Jan 31, Mar 31, May 31, Jul 31). Paperless billing: search account, choose PAPERLESS, agree, enter email; mailed bills and delinquent notices stop; UNSUBSCRIBE to stop. No automatic payment program is described. Penalty/interest schedule not on pages read. Review 2026-10-09: statements label is the real 'Print Statement'; 'Installment Options' was not a label on the site, so the nav link is a plain description. Review 2 (2026-10-09): the new tax portal (tax.tarrantcountytx.gov) has an optional TaxPayer Portal login (Email address + Password, Reset password, Sign up, Google/Facebook/Microsoft), so auth is observed_public and labels follow it; paying needs no profile (guest search by account, owner or address). Contact set to the tax office line (817) 884-1100. The eCheck fee is still not published.",
   "officialDomains": [
     "tarrantcountytx.gov"
   ],
@@ -27,6 +27,18 @@
       "title": "Statements and Receipts / Paperless Billing",
       "fetchedAt": "2026-10-09",
       "kind": "other"
+    },
+    {
+      "url": "https://www.tax.tarrantcountytx.gov/search",
+      "title": "Tarrant County Tax Office - Online Taxes search",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.tax.tarrantcountytx.gov/Login",
+      "title": "Log in to TaxPayer Portal",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
     }
   ],
   "brand": {
@@ -42,7 +54,11 @@
     "paperless": "Paperless Billing",
     "statements": "Print Statement",
     "help": "FAQs",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "signIn": "Log in",
+    "register": "Sign up",
+    "forgot": "Reset password",
+    "username": "Email address"
   },
   "nav": {
     "public": [
@@ -67,7 +83,7 @@
         "page": "help"
       },
       {
-        "label": "Log In",
+        "label": "Log in",
         "page": "login"
       }
     ],
@@ -102,17 +118,23 @@
     "identifier": "email",
     "loginSteps": 1,
     "mfa": "none",
+    "socialProviders": [
+      "google",
+      "facebook",
+      "microsoft"
+    ],
     "guestLookupFields": [
       "parcelId"
     ],
-    "evidence": "synthetic"
+    "source": "https://www.tax.tarrantcountytx.gov/Login",
+    "evidence": "observed_public"
   },
   "capabilities": {
     "guest_pay": {
       "support": "supported",
       "evidence": "documented_official",
-      "source": "https://www.tarrantcountytx.gov/en/tax/property-tax/FAQs-Property-Tax.html",
-      "note": "Search your account on the county tax site and pay online 24/7."
+      "source": "https://www.tax.tarrantcountytx.gov/search",
+      "note": "No profile or login is needed: search by account number, owner name or address, add the account to the cart and pay online 24/7."
     },
     "paperless": {
       "support": "supported",
@@ -187,6 +209,16 @@
       "paragraphs": [
         "Search for your account, pick PAPERLESS from the account options, agree to the terms and enter your email address. Under Texas law you then stop receiving tax bills and delinquent notices by mail.",
         "Sign up by September 15 to get the year's first statement electronically; enrollment carries over to later years. To stop, open PAPERLESS on the account again and click UNSUBSCRIBE."
+      ]
+    },
+    {
+      "slug": "taxpayer-portal-profile",
+      "title": "Do I need a profile?",
+      "topic": "account",
+      "source": "https://www.tax.tarrantcountytx.gov/search",
+      "paragraphs": [
+        "No. The new payment portal lets anyone search by account number, owner name, mailing or property address, view account details and pay without logging in.",
+        "A TaxPayer Portal profile is optional. Log in with your email address and password, or continue with Google, Facebook or a Microsoft account; use Sign up to create one and Reset password if you forget it. Profiles moved over from the old system are asked to set a new password."
       ]
     }
   ],
@@ -308,6 +340,20 @@
       "page": "helpArticle",
       "slug": "paperless-billing",
       "contains": "UNSUBSCRIBE"
+    },
+    {
+      "page": "login",
+      "contains": "Email address"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "taxpayer-portal-profile",
+      "contains": "without logging in"
     }
-  ]
+  ],
+  "contact": {
+    "phone": "817-884-1100",
+    "payPhone": "817-884-1110",
+    "source": "https://www.tax.tarrantcountytx.gov/search"
+  }
 }

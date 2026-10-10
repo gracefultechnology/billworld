@@ -5,7 +5,7 @@
   "name": "State Farm",
   "category": "insurance",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public statefarm.com Help Center pages only (no sign-in). Online: Log in to the Payment Center to pay, schedule payments, see billing history and update payment methods; pay as a guest or enroll in AutoPay as a guest with phone number and date of birth (modelled as account number + date of birth because the schema has no phone guest-lookup field). Cards accepted: Visa, MasterCard, American Express, Discover; EFT from checking, money market or savings. Unenrolling from AutoPay requires contacting the agent (autopay_cancel unsupported online); eligible State Farm Billing customers may postpone one AutoPay draft at least one business day before the due date (postponed draft runs 5 calendar days after the due date). Policies are cancelled through the agent by phone or in person (cancel_service unsupported online). Partial payments ('Pay Other Amount' / 'Pay Half') only for eligible accounts. Due date can be changed online for future bills. Life and health premiums are not eligible for standard AutoPay. Review 2026-10-09: the public log-in page asks for a User ID first and then Continue (two-step; username sign-in); the public guest-pay form asks for a 10-digit phone number and date of birth. 800-782-8332 is State Farm's general 800-STATE-FARM line (the cancel page lists it for agent changes, not as a cancellation line), so notes no longer claim auto policies can be cancelled there. MFA and fee amounts are not published; no convenience fee is documented. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template).",
+  "notes": "Researched from public statefarm.com Help Center pages only (no sign-in). Online: Log in to the Payment Center to pay, schedule payments, see billing history and update payment methods; pay as a guest or enroll in AutoPay as a guest with phone number and date of birth (guest lookup modelled exactly as phone + date of birth). Cards accepted: Visa, MasterCard, American Express, Discover; EFT from checking, money market or savings. Unenrolling from AutoPay requires contacting the agent (autopay_cancel unsupported online); eligible State Farm Billing customers may postpone one AutoPay draft at least one business day before the due date (postponed draft runs 5 calendar days after the due date). Policies are cancelled through the agent by phone or in person (cancel_service unsupported online). Partial payments ('Pay Other Amount' / 'Pay Half') only for eligible accounts. Due date can be changed online for future bills. Life and health premiums are not eligible for standard AutoPay. Review 2026-10-09: the public log-in page asks for a User ID first and then Continue (two-step; username sign-in); the public guest-pay form asks for a 10-digit phone number and date of birth. 800-782-8332 is State Farm's general 800-STATE-FARM line (the cancel page lists it for agent changes, not as a cancellation line), so notes no longer claim auto policies can be cancelled there. MFA and fee amounts are not published; no convenience fee is documented. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template). Review 2026-10-10: guest lookup switched to phone + date of birth (guestLookupExact) now that the format supports phone lookups; the guest AutoPay enrollment itself is still not modelled (guest flow only pays).",
   "officialDomains": [
     "statefarm.com"
   ],
@@ -131,13 +131,14 @@
   },
   "auth": {
     "guestLookupFields": [
-      "accountNumber",
+      "phone",
       "dob"
     ],
     "evidence": "observed_public",
     "source": "https://auth.proofing.statefarm.com/login-ui/login",
     "identifier": "username",
-    "loginSteps": 2
+    "loginSteps": 2,
+    "guestLookupExact": true
   },
   "capabilities": {
     "pay_online": {
@@ -403,6 +404,10 @@
     {
       "page": "login",
       "contains": "User ID"
+    },
+    {
+      "page": "guest",
+      "contains": "Phone number"
     }
   ]
 }
