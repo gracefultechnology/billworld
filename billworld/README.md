@@ -224,3 +224,13 @@ The checked-in PDFs and hash manifest are runtime assets. Rebuild with a Python 
 Accounts now shows the guide's Date Due, Amount Due, Pay Bill and More/history controls. Amount Due subtracts posted bill credit, while pending reservations are shown separately and reduce the amount available to pay. Processor fees are not bill credit. The summary uses the earliest outstanding due date, falling back to the latest bill's date after settlement; this local aggregation/timing is synthetic. View Bill continues to target the latest statement after payment. Pay Bill and both history links carry an account filter that the server validates against the signed-in profile's linked accounts. The global menu continues to show all linked accounts.
 
 `node billworld/tests/paymentus-account-summary-browser.mjs` validates posted and pending outcomes, guide navigation, account filters, logout and the existing payment grader. See `research/batavia-account-summary-validation.json`. No new task or released-site coverage is claimed for this change.
+
+### Swepsonville synthetic review identity
+
+The local guest utility payment review displays the account number and invoice
+number from the authorized public lookup, matched to the quote's invoice ID. A
+quote without a matching lookup invoice returns to account lookup. This makes
+the synthetic confirmation reviewable by a person and by a checked payment
+reader. It does not add private evaluator data, change grading, or claim these
+private screens match the live biller's UI. Existing benchmark runs retain their
+original source/build fingerprints; results from this version are distinct.
