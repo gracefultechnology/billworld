@@ -1,0 +1,350 @@
+{
+  "id": "ntta-tolltag-and-zipcash-north-texas-tollway-aut-66b85a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "NTTA TollTag and ZipCash (North Texas Tollway Authority)",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public ntta.org pages (Pay Your Bill, Get A TollTag). TollTag accounts ($10, $20 or $40 prepaid options) replenish automatically from a linked credit or debit card: $10/$20 accounts recharge their opening amount at a $5 balance, $40 accounts recharge $40 below $10 (another $40 per three extra vehicles). Cash and check also fund accounts. The site describes cards only for automatic replenishment. Online access is set up after the TollTag and account number arrive; three failed sign-ins lock you out until customer service emails a temporary password and User ID. ZipCash (pay-by-mail) bills: 25 days to pay; first notice adds $10, second notice another $25; ZipCash autopay (card only, needs electronic billing) saves 25%. Payment plans exist only by opening or fixing a TollTag account (or a Settlement Agreement for registration blocks/impoundment), so payment_arrangement is modelled as not available online. TollTags can be cancelled online or by phone; closing a whole account is not described. Reviewer (2026-10-09): home page nav confirmed 'Login/Open Account', 'Pay ZipCash Bill', 'Get A TollTag', 'Pay Your Bill', 'Contact Us'; the account-side tab names (Automatic Replenishment, Account Summary) are not public and are descriptive, except 'Payments'/'Make a Payment' and 'Preference' which the FAQs name. Contact Us lists an Ombudsman (469-801-3662) for unresolved concerns. The catalog's customer-service phone (469-801-3662) is NTTA's Ombudsman line, not the Customer Service Center (972-818-NTTA / 817-731-NTTA); contact.phone replaces it. Integrated 2026-10-09: billing.autopay.methodTypes ['card']: AutoPay tasks use the saved Visa.",
+  "officialDomains": [
+    "ntta.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ntta.org/pay-your-bill",
+      "title": "Pay Your Bill - NTTA",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ntta.org/get-a-tolltag",
+      "title": "Get A TollTag - NTTA",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.ntta.org/",
+      "title": "NTTA home",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.ntta.org/contact-us",
+      "title": "Contact Us - NTTA",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "NTTA",
+    "primary": "#00467f",
+    "accent": "#7a3e00",
+    "monogram": "NT"
+  },
+  "labels": {
+    "signIn": "Login/Open Account",
+    "register": "Get A TollTag",
+    "guestPay": "Pay ZipCash Bill",
+    "payBill": "Make a Payment",
+    "username": "User ID",
+    "help": "Contact Us",
+    "autopay": "Automatic Replenishment",
+    "paperless": "Preference"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Get A TollTag",
+        "page": "register"
+      },
+      {
+        "label": "Pay Your Bill",
+        "page": "guest"
+      },
+      {
+        "label": "ZipCash Fees",
+        "helpSlug": "zipcash-fees"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      },
+      {
+        "label": "Login/Open Account",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Payments",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Automatic Replenishment",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Vehicles & TollTags",
+        "page": "profile"
+      },
+      {
+        "label": "Preference",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "lockoutAttempts": 3,
+    "evidence": "documented_official",
+    "source": "https://www.ntta.org/get-a-tolltag"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ntta.org/get-a-tolltag",
+      "note": "Accounts linked to a credit or debit card replenish automatically below the required balance ($5 or $10)."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ntta.org/pay-your-bill",
+      "note": "Choose email under Preference for electronic bills; choose USPS to go back to mailed bills."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.ntta.org/pay-your-bill",
+      "note": "Payment plans for past-due tolls come only by opening or fixing a TollTag account, or a Settlement Agreement by phone.",
+      "channel": "phone",
+      "phone": "9728186882"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ntta.org/pay-your-bill",
+      "phone": "9728186882"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ntta.org/pay-your-bill"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ntta.org/pay-your-bill",
+      "note": "Pay a ZipCash bill online with the Account ID and PIN, or the plate number and state, and a card."
+    }
+  },
+  "billing": {
+    "source": "https://www.ntta.org/get-a-tolltag",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "TollTag replenishment",
+      "topic": "autopay",
+      "paragraphs": [
+        "TollTag accounts are prepaid and linked to a credit or debit card. A $10 or $20 TollTag account (one vehicle) is recharged with $10 or $20 when its balance reaches $5.",
+        "A $40 TollTag account is recharged with $40 when the balance drops below $10. Up to three vehicles are included; each additional three vehicles raise the recharge by $40.",
+        "Accounts can also be opened and topped up with cash or checks. From the Payments tab choose Make a Payment for a one-time card payment; the minimum is $10 for a $40 account and $5 for a $10 or $20 account. A negative balance means tolls are billed at the higher ZipCash rate."
+      ],
+      "source": "https://www.ntta.org/get-a-tolltag"
+    },
+    {
+      "slug": "zipcash-fees",
+      "title": "ZipCash bills and late fees",
+      "topic": "fees",
+      "paragraphs": [
+        "A ZipCash bill shows tolls only and gives you 25 days to pay. If it is not paid, the First Notice of Nonpayment adds a $10 late fee and the Second Notice adds another $25.",
+        "Unpaid second notices go to collections, and then legal action with court costs. Mailed payments are still subject to late fees. ZipCash tolls are twice the TollTag rate."
+      ],
+      "source": "https://www.ntta.org/pay-your-bill"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay a ZipCash bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Pay online at the Online Customer Service Center with your ZipCash Account ID and PIN from the top of the bill, or your plate number and state, plus a credit or debit card.",
+        "Pay by phone at 972-818-NTTA (6882) or 817-731-NTTA (6882), in person at a customer service center or payment location, or by mail to P.O. Box 260928, Plano, Texas 75026-0928.",
+        "ZipCash autopay saves 25% on NTTA roads; it needs a card on file and electronic billing."
+      ],
+      "source": "https://www.ntta.org/pay-your-bill",
+      "mode": "append"
+    },
+    {
+      "slug": "electronic-billing",
+      "title": "Electronic billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Set up online access first, then choose email under Preference to get your monthly bill electronically; there is no fee. Paper bills stop once you enroll.",
+        "To cancel, sign in, open Preference and choose USPS. Leaving electronic billing also ends ZipCash autopay and its 25% discount. Electronic bills follow the same 25-day schedule and late fees as mailed bills."
+      ],
+      "source": "https://www.ntta.org/pay-your-bill"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Past-due tolls and payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "NTTA offers payment plans for past-due tolls when you open a TollTag account or resolve payment problems on an existing one.",
+        "Vehicles with a registration block or impoundment can be released once tolls and fees are paid or a payment plan is set up; call NTTA about a Settlement Agreement. County tax offices cannot help with NTTA balances."
+      ],
+      "source": "https://www.ntta.org/pay-your-bill"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Locked out of your TollTag account",
+      "topic": "account",
+      "paragraphs": [
+        "After three unsuccessful sign-in attempts the system directs you to customer service, which emails a temporary password and your User ID to the address on the account. Sign in with them and you will be asked to create a new password."
+      ],
+      "source": "https://www.ntta.org/get-a-tolltag"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "first-notice-fee",
+        "intent": "Using the NTTA website's help pages, find the late fee added on a ZipCash First Notice of Nonpayment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10",
+              "10 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10",
+            "10 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The First Notice of Nonpayment adds a $10 late fee."
+          }
+        ]
+      },
+      {
+        "slug": "zipcash-autopay-discount",
+        "intent": "Using the NTTA website's help pages, find how much ZipCash autopay saves on NTTA roads. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "25%",
+              "25 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "25%",
+            "25 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "ZipCash autopay saves 25% on NTTA roads."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "User ID"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "Settlement Agreement"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "zipcash-fees",
+      "contains": "$25"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "$40"
+    }
+  ],
+  "contact": {
+    "phone": "972-818-6882",
+    "source": "https://www.ntta.org/pay-your-bill",
+    "evidence": "documented_official"
+  }
+}

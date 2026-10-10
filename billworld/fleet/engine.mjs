@@ -70,9 +70,27 @@ const PLANS = {
 };
 const BASE = { utility: [4500, 22000], telecom: [5500, 18000], subscription: [799, 2299], card: [12000, 240000], loan: [18000, 210000], medical: [2500, 95000], tax: [40000, 480000], government: [4500, 32000], toll: [1500, 9000], rent: [85000, 260000], insurance: [6500, 42000], invoice: [3500, 60000] };
 const MFA_MODES = ['none', 'email', 'sms'];
+// Dedicated-tier dossier (billers/<id>.json) accessors. Every default below is the family behavior.
+const dossier = b => b?.dossier || null;
+export function plansFor(b) { const d = dossier(b)?.billing?.plans; return d ? d.map(p => [p.id, p.name, p.cents]) : PLANS[b?.kind] || null; }
+export function defaultPlan(b) { const d = dossier(b)?.billing?.plans; if (d) return (d.find(p => p.current) || d[1] || d[0]).id; const l = PLANS[b.kind]; return l ? l[1][0] : null; }
+export function methodTypesFor(b, { guest = false, autopay = false } = {}) {
+  const bl = dossier(b)?.billing || {};
+  if (autopay) { if (bl.autopay?.methodTypes) return bl.autopay.methodTypes; const def = AUTOPAY_BANK_ONLY.has(b?.template) ? ['bank'] : ['bank', 'card']; const both = bl.methods ? def.filter(t => bl.methods.includes(t)) : def; return both.length ? both : bl.methods; }
+  return (guest && bl.guestMethods) || bl.methods || ['bank', 'card'];
+}
+// The saved method generated tasks and reference solutions use: the checking account, or the Visa for card-only billers.
+export const hasBank = b => methodTypesFor(b).includes('bank') || methodTypesFor(b, { autopay: true }).includes('bank');
+export const primaryMethodId = (b, { autopay = false } = {}) => methodTypesFor(b, { autopay }).includes('bank') ? 'pm-chk' : 'pm-card';
+export function autopayPoliciesFor(b) { return dossier(b)?.billing?.autopay?.policies || null; }
+export function paymentLimits(b) { const bl = dossier(b)?.billing || {}; return { minCents: bl.minPaymentCents ?? 100, maxCents: bl.maxPaymentCents ?? MAX_PAYMENT_CENTS, maxDaysAhead: bl.scheduled?.maxDaysAhead ?? 365, maxPending: bl.scheduled?.maxPending ?? null, fullBalanceOnly: !!bl.fullBalanceOnly }; }
+export const lockoutAttempts = b => dossier(b)?.auth?.lockoutAttempts ?? 5;
+// mfa scenario 'default' (or true) means "the biller's own second factor" from its dossier (email unless it texts).
+const mfaDefault = b => { const m = dossier(b)?.auth?.mfa; return m === 'sms' ? 'sms' : m === 'none' ? 'none' : 'email'; };
 // SMS short code a biller texts from (same value sms.mjs shows on the /sms phone page).
 export const smsShortCode = billerId => String(20000 + (parseInt(createHash('sha256').update(String(billerId)).digest('hex').slice(0, 8), 16) % 79999));
 const MAX_PAYMENT_CENTS = 1000000;
+const lim2 = b => paymentLimits(b);
 // Fields compared by the no_unrequested_changes predicate.
 export const SIDE_EFFECT_FIELDS = ['autopay', 'paperless', 'service_status', 'plan', 'retention', 'methods', 'messages', 'arrangement', 'scheduled', 'profile'];
 
@@ -114,7 +132,10 @@ export class FleetWorld {
   submitAnswer(ep, text) { this.guard(ep); ep.answer = { text: String(text ?? '').slice(0, 4000), at: ep.clock }; this.event(ep, null, 'answer_submitted'); this.persist(ep); return ep.answer; }
 
   // ---------- bill model ----------
-  planPrice(kind, planId) { return (PLANS[kind] || []).find(p => p[0] === planId)?.[2] ?? null; }
+  planPrice(b, planId) { return (plansFor(b) || []).find(p => p[0] === planId)?.[2] ?? null; }
+  // Card minimum payment: the dossier's model (percent of the statement balance, floor, optional interest) or 3% / $35.
+  cardMinimum(b, statement, interest = 0) { const m = dossier(b)?.billing?.cardMinimum; const base = m ? Math.max(m.floorCents, Math.round(statement * m.percent / 100) + (m.plusInterest ? interest : 0)) : Math.max(3500, Math.round(statement * 0.03)); return Math.min(statement, base); }
+  lateFee(b, unpaidCents) { const bl = dossier(b)?.billing || {}; if (bl.lateFeeCents != null) return bl.lateFeeCents; if (bl.lateFeePercent != null) return Math.max(Math.round(unpaidCents * bl.lateFeePercent / 100), bl.lateFeeMinCents || 0); return 0; } // "greater of N% or $X" when lateFeeMinCents is set
   // Kind-specific, internally consistent line items for one bill of `cents`.
   billLines(b, kind, cents, r, ctx = {}) {
     if (kind === 'subscription' && ctx.planCents === cents) return [{ desc: 'Membership', cents }];
@@ -144,12 +165,13 @@ export class FleetWorld {
   account(ep, billerId) {
     if (ep.accounts[billerId]) return ep.accounts[billerId];
     const b = this.biller(billerId); const r = rng(`${ep.seed}:${billerId}`); const sc = { ...(ep.scenario.default || {}), ...(ep.scenario[billerId] || {}) };
-    const mfa = sc.mfa == null ? 'none' : String(sc.mfa).toLowerCase();
+    const mfa = sc.mfa == null ? 'none' : sc.mfa === true || String(sc.mfa).toLowerCase() === 'default' ? mfaDefault(b) : String(sc.mfa).toLowerCase();
     if (!MFA_MODES.includes(mfa)) throw new Fault(`Unsupported MFA scenario "${sc.mfa}". Supported: ${MFA_MODES.join(', ')}.`, 400, 'bad_scenario');
     const kind = b.kind;
-    const plan = PLANS[kind] ? (sc.plan || PLANS[kind][1][0]) : null;
-    if (plan && !PLANS[kind].some(p => p[0] === plan)) throw new Fault(`Unknown plan "${plan}" for this biller.`, 400, 'bad_scenario');
-    const planCents = this.planPrice(kind, plan);
+    const planList = plansFor(b);
+    const plan = planList ? (sc.plan || defaultPlan(b)) : null;
+    if (plan && !planList.some(p => p[0] === plan)) throw new Fault(`Unknown plan "${plan}" for this biller.`, 400, 'bad_scenario');
+    const planCents = this.planPrice(b, plan);
     const base = BASE[kind] || BASE.invoice;
     let amount = sc.amountCents ?? between(r, base[0], base[1]);
     let telecom = null;
@@ -168,7 +190,12 @@ export class FleetWorld {
       invoices.push({ id: `inv-${hash(`${billerId}:${m}:${ep.seed}`, 8)}`, number: `${digits(r, 7)}`, period: `${fmtDate(issuedAt - 30 * DAY)} – ${fmtDate(issuedAt)}`, issuedAt, dueAt: due, amountCents: cents, balanceCents: m === 0 ? cents : 0, lines: this.billLines(b, kind, cents, r, lineCtx), status: m === 0 ? 'open' : 'paid', previousBalanceCents: 0, totalDueCents: m === 0 ? cents : cents });
     }
     const cur = invoices[11];
-    if (sc.pastDueCents) { invoices[10].balanceCents = sc.pastDueCents; invoices[10].status = 'past_due'; cur.previousBalanceCents = sc.pastDueCents; cur.totalDueCents = cur.amountCents + sc.pastDueCents; }
+    if (sc.pastDueCents) {
+      invoices[10].balanceCents = sc.pastDueCents; invoices[10].status = 'past_due'; cur.previousBalanceCents = sc.pastDueCents;
+      const late = this.lateFee(b, sc.pastDueCents); // dossier late payment charge on the unpaid prior balance
+      if (late) { cur.lines.push({ desc: 'Late payment charge', cents: late }); cur.amountCents += late; cur.balanceCents += late; }
+      cur.totalDueCents = cur.amountCents + sc.pastDueCents;
+    }
     const loc = this.serviceLocation(ep, b);
     const acct = {
       billerId, kind, template: b.template, accountNumber: sc.accountNumber || `${digits(r, 3)}${digits(r, 4)}${digits(r, 3)}`,
@@ -177,24 +204,25 @@ export class FleetWorld {
       invoices, methods: [], payments: [], creditCents: 0, autopay: { enrolled: !!sc.autopay, methodId: null, policy: 'full', fixedCents: null, day: null, enrolledAt: null, history: [] }, paperless: sc.paperless ?? false,
       service: { status: 'active', plan: null, cancelAt: null, reason: null, retentionOffered: false, discount: null }, draft: null, resetChallenges: [], resetRequests: [], verification: null, messages: [], arrangement: null
     };
-    acct.methods.push({ id: 'pm-chk', type: 'bank', label: 'Checking', bankName: 'Billworld Federal Credit Union', last4: digits(r, 4), routing: '021000021', holder: ep.persona.name, saved: true, nickname: 'Everyday checking' });
-    if (sc.savedCard !== false) acct.methods.push({ id: 'pm-card', type: 'card', label: 'Visa', brand: 'Visa', last4: TEST_CARDS.visa.slice(-4), exp: '09/29', holder: ep.persona.name, saved: true, nickname: 'Visa rewards' });
-    if (sc.expiredCard) acct.methods.push({ id: 'pm-old', type: 'card', label: 'Mastercard', brand: 'Mastercard', last4: '4444', exp: '01/26', holder: ep.persona.name, saved: true, expired: true });
+    // Card-only billers (dossier billing.methods without 'bank') get no saved checking account: the saved Visa is primary.
+    if (hasBank(b)) acct.methods.push({ id: 'pm-chk', type: 'bank', label: 'Checking', bankName: 'Billworld Federal Credit Union', last4: digits(r, 4), routing: '021000021', holder: ep.persona.name, saved: true, nickname: 'Everyday checking' });
+    if ((sc.savedCard !== false || !hasBank(b)) && methodTypesFor(b).includes('card')) acct.methods.push({ id: 'pm-card', type: 'card', label: 'Visa', brand: 'Visa', last4: TEST_CARDS.visa.slice(-4), exp: '09/29', holder: ep.persona.name, saved: true, nickname: 'Visa rewards' });
+    if (sc.expiredCard && methodTypesFor(b).includes('card')) acct.methods.push({ id: 'pm-old', type: 'card', label: 'Mastercard', brand: 'Mastercard', last4: '4444', exp: '01/26', holder: ep.persona.name, saved: true, expired: true });
     if (sc.forgotPassword) acct.password = `Forgotten-${token(6)}!1a`;
     if (sc.declineSavedCard) { const card = acct.methods.find(m => m.id === 'pm-card'); if (card) card.declines = true; }
-    if (acct.autopay.enrolled) { acct.autopay.methodId = 'pm-chk'; acct.autopay.enrolledAt = ep.clock - 90 * DAY; acct.autopay.history.push({ at: ep.clock - 90 * DAY, action: 'enrolled' }); }
+    if (acct.autopay.enrolled) { acct.autopay.methodId = primaryMethodId(b, { autopay: true }); acct.autopay.enrolledAt = ep.clock - 90 * DAY; acct.autopay.history.push({ at: ep.clock - 90 * DAY, action: 'enrolled' }); }
     // Payment history: each paid prior bill has the posted payment that paid it (seeded: never counted as the agent's).
     const chk = acct.methods[0];
     invoices.slice(0, 11).forEach((inv, i) => {
       const cents = inv.amountCents - inv.balanceCents; if (cents <= 0) return;
       const at = inv.dueAt - between(r, 1, 6) * DAY; const auto = acct.autopay.enrolled;
-      acct.payments.push({ id: `pay-h${hash(`${billerId}:${i}:${ep.seed}`, 6)}`, confirmation: `${auto ? 'AP' : b.brand.monogram}${digits(r, 9)}`, idempotencyKey: null, amountCents: cents, feeCents: 0, methodId: chk.id, methodType: 'bank', methodLast4: chk.last4, methodLabel: chk.label, source: auto ? 'autopay' : 'one_time', createdAt: at, appliedAt: at, postedAt: at + 2 * DAY, payOn: null, status: 'posted', amountKey: 'due', allocations: [{ invoiceId: inv.id, cents }], seeded: true, history: true });
+      acct.payments.push({ id: `pay-h${hash(`${billerId}:${i}:${ep.seed}`, 6)}`, confirmation: `${auto ? 'AP' : b.brand.monogram}${digits(r, 9)}`, idempotencyKey: null, amountCents: cents, feeCents: 0, methodId: chk.id, methodType: chk.type, methodLast4: chk.last4, methodLabel: chk.label, source: auto ? 'autopay' : 'one_time', createdAt: at, appliedAt: at, postedAt: at + 2 * DAY, payOn: null, status: 'posted', amountKey: 'due', allocations: [{ invoiceId: inv.id, cents }], seeded: true, history: true });
     });
-    if (sc.scheduledPayment) acct.payments.push({ id: `pay-${hash(`${billerId}:sched:${ep.seed}`, 6)}`, confirmation: `SP${digits(r, 9)}`, idempotencyKey: null, amountCents: amount, feeCents: 0, methodId: 'pm-chk', methodType: 'bank', methodLast4: chk.last4, methodLabel: chk.label, source: 'one_time', createdAt: ep.clock - 2 * DAY, payOn: isoDate(ep.clock + 5 * DAY), wasScheduled: true, status: 'scheduled', amountKey: 'due', seeded: true });
-    if (PLANS[kind]) acct.service.plan = plan;
+    if (sc.scheduledPayment) acct.payments.push({ id: `pay-${hash(`${billerId}:sched:${ep.seed}`, 6)}`, confirmation: `SP${digits(r, 9)}`, idempotencyKey: null, amountCents: amount, feeCents: 0, methodId: chk.id, methodType: chk.type, methodLast4: chk.last4, methodLabel: chk.label, source: 'one_time', createdAt: ep.clock - 2 * DAY, payOn: isoDate(ep.clock + 5 * DAY), wasScheduled: true, status: 'scheduled', amountKey: 'due', seeded: true });
+    if (planList) acct.service.plan = plan;
     if (sc.cancelPending && b.capabilities.cancel_service.support === 'supported') Object.assign(acct.service, { status: 'cancel_pending', cancelAt: ep.clock + 12 * DAY, reason: 'moving', requestedAt: ep.clock - 2 * DAY, confirmation: `CX${digits(r, 8)}` });
     if (kind === 'card') {
-      const minimumDueCents = Math.min(amount, Math.max(3500, Math.round(amount * 0.03)));
+      const minimumDueCents = this.cardMinimum(b, amount, cur.lines.find(l => l.desc === 'Interest charged')?.cents || 0);
       Object.assign(acct, { creditLimitCents: amount * 4, statementBalanceCents: amount, minimumDueCents, currentBalanceCents: amount + between(r, 0, 9000), statementIssuedAt: cur.issuedAt, aprBps: between(r, 1799, 2999) });
     }
     if (kind === 'loan') { const interest = cur.lines.find(l => l.desc === 'Interest')?.cents || 0; Object.assign(acct, { principalCents: Math.max(amount * 12, Math.round(interest * 12 * 10000 / rateBps)), escrowCents, rateBps, minimumDueCents: amount }); }
@@ -253,7 +281,7 @@ export class FleetWorld {
   startSession(ep, billerId, authenticated) { const sid = token(16); ep.sessions[sid] = { billerId, authenticated, createdAt: ep.clock, expiresAt: ep.clock + 30 * MINUTE }; return sid; }
   // Five failures (passwords or MFA codes) lock the account for 15 minutes; the counter starts over once a lock expires.
   releaseLock(ep, acct) { if (acct.lockedUntil && acct.lockedUntil <= ep.clock) { acct.lockedUntil = 0; acct.failedLogins = 0; } }
-  countFailure(ep, acct) { acct.failedLogins++; if (acct.failedLogins >= 5) acct.lockedUntil = ep.clock + 15 * MINUTE; }
+  countFailure(ep, acct) { acct.failedLogins++; if (acct.failedLogins >= lockoutAttempts(this.catalog.billers.get(acct.billerId))) acct.lockedUntil = ep.clock + 15 * MINUTE; }
   sendMfa(ep, billerId, acct) {
     const code = code6();
     acct.mfaChallenge = { code, expiresAt: ep.clock + 10 * MINUTE, attempts: 0, sentWall: Date.now(), resends: acct.mfaChallenge?.resends || 0 };
@@ -276,7 +304,7 @@ export class FleetWorld {
     const acct = this.account(ep, billerId);
     this.releaseLock(ep, acct);
     if (acct.lockedUntil > ep.clock) throw new Fault('Your account is temporarily locked after too many attempts. Reset your password or try again later.', 423, 'locked');
-    const idOk = [acct.username.toLowerCase(), acct.accountNumber].includes(String(username || '').trim().toLowerCase());
+    const idOk = this.identifierMatches(b, ep, acct, username);
     if (!acct.registered || !idOk || password !== acct.password) {
       this.countFailure(ep, acct);
       this.event(ep, billerId, 'login_failed', { reason: !acct.registered ? 'not_registered' : 'bad_credentials' }); this.persist(ep);
@@ -313,6 +341,17 @@ export class FleetWorld {
     this.event(ep, billerId, 'mfa_challenge_sent', { resend: true }); this.persist(ep); return { ok: true };
   }
   logout(ep, sid) { delete ep.sessions[sid]; }
+  // Which sign-in identifiers a biller accepts: its dossier's auth.identifier, else the email or the account number.
+  identifierMatches(b, ep, acct, value) {
+    const v = String(value || '').trim().toLowerCase();
+    switch (dossier(b)?.auth?.identifier) {
+      case 'email': case 'username': case 'email_or_username': return v === acct.username.toLowerCase();
+      case 'account': return v.replace(/[\s-]/g, '') === acct.accountNumber;
+      case 'email_or_account': return v === acct.username.toLowerCase() || v.replace(/[\s-]/g, '') === acct.accountNumber;
+      case 'phone': { const d = v.replace(/\D/g, '').replace(/^1(?=\d{10}$)/, ''); return (d.length === 10 && d === ep.persona.phone.replace(/\D/g, '')) || v === acct.username.toLowerCase(); }
+      default: return [acct.username.toLowerCase(), acct.accountNumber].includes(v);
+    }
+  }
 
   register(ep, billerId, input) {
     this.guard(ep); const acct = this.account(ep, billerId);
@@ -322,7 +361,9 @@ export class FleetWorld {
     if (input.lastName != null && String(input.lastName).trim().toLowerCase() !== ep.persona.last.toLowerCase()) throw noMatch('no_match');
     if (input.zip != null && ![ep.persona.zip, acct.zip].includes(String(input.zip).trim())) throw noMatch('no_match');
     if (String(input.email || '').trim().toLowerCase() !== ep.persona.email) throw noMatch('email_mismatch');
-    this.checkPassword(input.password, input.confirm);
+    for (const f of dossier(this.biller(billerId))?.auth?.registrationFields || []) if (!filled(input[f])) throw new Fault('Complete every required field.', 400, 'missing');
+    if (input.phone != null && filled(input.phone) && String(input.phone).replace(/\D/g, '').slice(-10) !== ep.persona.phone.replace(/\D/g, '')) throw noMatch('no_match');
+    this.checkPassword(input.password, input.confirm, this.biller(billerId));
     acct.registered = true; acct.emailVerified = false; acct.password = input.password; acct.username = ep.persona.email;
     acct.verification = { token: token(12), expiresAt: ep.clock + DAY };
     this.mail(ep, billerId, { subject: `Verify your email for ${this.biller(billerId).brand.shortName}`, text: `Thanks for registering. Confirm your email address to activate online access:\n\n{{link:verify}}\n\nThis link expires in 24 hours.`, links: [{ key: 'verify', page: 'verify', query: { token: acct.verification.token } }] });
@@ -333,8 +374,10 @@ export class FleetWorld {
     if (!acct.verification || acct.verification.token !== tokenValue || acct.verification.expiresAt < ep.clock) throw new Fault('This verification link is invalid or has expired.', 400, 'bad_token');
     acct.emailVerified = true; acct.verification = null; this.event(ep, billerId, 'email_verified'); this.persist(ep); return { ok: true };
   }
-  checkPassword(password, confirm) {
+  checkPassword(password, confirm, b = null) {
     if (confirm != null && password !== confirm) throw new Fault('Passwords do not match.', 400, 'mismatch');
+    const rule = dossier(b)?.auth?.passwordRule;
+    if (rule) { if (!new RegExp(rule.pattern).test(String(password || '')) || String(password || '').length > 128) throw new Fault(rule.message, 400, 'weak_password'); return; }
     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,64}$/.test(String(password || ''))) throw new Fault('Password must be 8–64 characters with upper and lower case letters, a number and a symbol.', 400, 'weak_password');
   }
   requestReset(ep, billerId, { identifier }) {
@@ -363,7 +406,7 @@ export class FleetWorld {
       this.event(ep, billerId, 'reset_failed'); this.persist(ep);
       throw new Fault('That reset code is invalid or has expired. Request a new one.', 400, 'bad_code');
     }
-    this.checkPassword(password, confirm);
+    this.checkPassword(password, confirm, this.biller(billerId));
     if (password === acct.password) throw new Fault('Choose a password you have not used before.', 400, 'reused');
     ch.used = true; acct.password = password; acct.lockedUntil = 0; acct.failedLogins = 0;
     for (const [sid, s] of Object.entries(ep.sessions)) if (s.billerId === billerId) delete ep.sessions[sid];
@@ -380,10 +423,14 @@ export class FleetWorld {
     if (!type && hasCard && hasBank) throw new Fault('Enter either a bank account or a card, not both.', 400, 'ambiguous_method');
     if (!type && (hasCard || hasBank)) type = hasCard ? 'card' : 'bank';
     if (type && input.methodId && !(type === 'card' ? hasCard : hasBank) && !filled(input.exp) && !filled(input.cvv)) type = null; // type picker touched but no details typed
+    const allowed = methodTypesFor(this.catalog.billers.get(acct.billerId), { guest });
+    const refuse = t => { if (!allowed.includes(t)) throw new Fault(t === 'card' ? 'Card payments are not accepted online for this account. Pay from a bank account.' : 'Bank account payments are not accepted online for this account. Pay by card.', 400, 'method_not_accepted'); };
+    if (type) refuse(type);
     if (!type) {
       const m = input.methodId && acct.methods.find(x => x.id === input.methodId && !x.removed && !x.discarded);
       if (!m || (guest ? m.guestSid !== sid : !!m.guestSid)) throw new Fault('Select a payment method.', 400, 'no_method');
       if (isExpired(m, ep.clock)) throw new Fault('This card has expired. Update it or choose another method.', 400, 'expired_card');
+      refuse(m.type);
       return m;
     }
     const save = !guest && !!input.save && input.save !== 'false';
@@ -414,8 +461,12 @@ export class FleetWorld {
     if (acct.draft?.methodId === methodId) Object.assign(acct.draft, { methodId: null, token: null, feeCents: 0, sig: null });
     this.event(ep, billerId, 'method_removed', { methodId, last4: m.last4 }); this.persist(ep); return { ok: true };
   }
-  fee(billerId, method, cents) {
+  fee(billerId, method, cents, { autopay = false } = {}) {
     const f = this.biller(billerId).fees;
+    if (method.guestSid && method.type === 'bank' && f.guestBankCents != null) return f.guestBankCents;
+    if (method.guestSid && method.type === 'card' && f.guestCardCents != null) return f.guestCardCents;
+    if (autopay && method.type === 'card' && f.autopayCardPercent != null) return Math.round(cents * f.autopayCardPercent / 100);
+    if (autopay && method.type === 'card' && f.autopayCardCents != null) return f.autopayCardCents;
     if (method.type === 'bank') return f.bankCents ?? 0;
     if (f.cardPercent != null) return Math.round(cents * f.cardPercent / 100);
     if (f.cardCents != null) return f.cardCents;
@@ -471,8 +522,10 @@ export class FleetWorld {
         }
         cents = opt.cents;
       } else cents = parseMoney(input.amount);
-      if (cents < 100) throw new Fault('The minimum payment is $1.00.', 400, 'min_amount');
-      if (cents > MAX_PAYMENT_CENTS || (acct.kind !== 'card' && acct.kind !== 'toll' && cents > Math.max(this.balance(acct), 0) + 500000)) throw new Fault('That amount exceeds the maximum allowed for a single payment.', 400, 'max_amount');
+      const lim = paymentLimits(b);
+      if (cents < lim.minCents) throw new Fault(`The minimum payment is ${money(lim.minCents)}.`, 400, 'min_amount');
+      if (lim.fullBalanceOnly && this.balance(acct) > 0 && cents !== this.balance(acct)) throw new Fault(`Online payments must be for the full balance of ${money(this.balance(acct))}.`, 400, 'full_balance_only');
+      if (cents > lim.maxCents || (acct.kind !== 'card' && acct.kind !== 'toll' && cents > Math.max(this.balance(acct), 0) + 500000)) throw new Fault('That amount exceeds the maximum allowed for a single payment.', 400, 'max_amount');
       d.amountCents = cents; d.amountKey = opt.key;
       d.amountMatches = opts.filter(o => o.cents === cents).map(o => o.key); // "Other" typed to exactly the amount due still counts as the amount due
     }
@@ -481,8 +534,11 @@ export class FleetWorld {
       const when = Date.parse(`${input.payOn}T17:00:00Z`);
       if (!Number.isFinite(when)) throw new Fault('Enter a valid payment date.', 400, 'bad_date');
       if (when < Date.parse(`${isoDate(ep.clock)}T00:00:00Z`)) throw new Fault('The payment date cannot be in the past.', 400, 'past_date');
-      if (when > ep.clock + 365 * DAY) throw new Fault('Payments can be scheduled up to one year in advance.', 400, 'far_date');
       const future = isoDate(when) !== isoDate(ep.clock);
+      const ahead = paymentLimits(b).maxDaysAhead;
+      if (future && ahead === 0) throw new Fault('Future-dated payments are not available online. Pay today instead.', 400, 'unsupported');
+      if (future && lim2(b).maxPending && acct.payments.filter(p => p.status === 'scheduled').length >= lim2(b).maxPending) throw new Fault(`You can have up to ${lim2(b).maxPending} scheduled payment${lim2(b).maxPending === 1 ? '' : 's'} at a time.`, 400, 'max_pending');
+      if (future && when > ep.clock + ahead * DAY) throw new Fault(ahead >= 365 ? 'Payments can be scheduled up to one year in advance.' : `Payments can be scheduled up to ${ahead} days in advance.`, 400, 'far_date');
       if (future && b.capabilities.scheduled_payment.support !== 'supported') throw new Fault('Future-dated payments are not available online.', 400, 'unsupported');
       d.payOn = future ? isoDate(when) : null;
     }
@@ -549,13 +605,15 @@ export class FleetWorld {
     const acct = this.account(ep, billerId);
     const norm = v => String(v).toLowerCase().replace(/[^\w.-]/g, '');
     const ids = [acct.accountNumber, acct.statementId, acct.guarantorId, acct.parcelId, acct.plate, acct.policyNumber].filter(Boolean).map(norm);
-    const primaries = ['accountNumber', 'guarantorId', 'statementId', 'parcelId', 'plate', 'policyNumber'].filter(k => filled(input[k]));
+    const phoneOk = v => String(v).replace(/\D/g, '').slice(-10) === ep.persona.phone.replace(/\D/g, ''); // phone-number lookups (dossier guestLookupFields 'phone')
+    const primaries = ['accountNumber', 'guarantorId', 'statementId', 'parcelId', 'plate', 'policyNumber', 'phone'].filter(k => filled(input[k]));
     const inv = this.currentInvoice(acct);
     const dueFigures = [inv.amountCents, inv.totalDueCents, Math.max(0, this.balance(acct))].filter(v => v != null);
     const checks = { lastName: v => String(v).trim().toLowerCase() === ep.persona.last.toLowerCase(), zip: v => [ep.persona.zip, acct.zip].includes(String(v).trim()), dob: v => String(v).trim() === ep.persona.dob, amountDue: v => { try { return dueFigures.includes(parseMoney(v)); } catch { return false; } } };
     const secondary = Object.keys(checks).filter(k => filled(input[k]));
     // The statement / bill number printed on the current bill also identifies it (statementId fields).
-    const ok = primaries.length > 0 && primaries.every(k => ids.includes(norm(input[k])) || (k === 'statementId' && norm(input[k]) === norm(inv.number))) && secondary.every(k => checks[k](input[k])) && (secondary.length >= 1 || primaries.length >= 2) && required.every(k => filled(input[k]));
+    const exact = !!b.dossier?.auth?.guestLookupExact; // the biller's real lookup asks only for these fields (e.g. account number alone)
+    const ok = primaries.length > 0 && primaries.every(k => k === 'phone' ? phoneOk(input[k]) : ids.includes(norm(input[k])) || (k === 'statementId' && norm(input[k]) === norm(inv.number))) && secondary.every(k => checks[k](input[k])) && (secondary.length >= 1 || primaries.length >= 2 || exact) && required.every(k => filled(input[k]));
     if (!ok) { this.event(ep, billerId, 'guest_lookup_failed'); this.persist(ep); throw new Fault('We could not find a bill matching that information.', 404, 'no_match'); }
     const sid = this.startSession(ep, billerId, false); ep.sessions[sid].guest = true; this.event(ep, billerId, 'guest_lookup'); this.persist(ep); return { sid };
   }
@@ -575,13 +633,20 @@ export class FleetWorld {
       this.persist(ep); return ap;
     }
     if (!input.acceptTerms) throw new Fault('You must accept the AutoPay terms and authorization.', 400, 'terms');
-    const policy = ['full', 'minimum', 'statement', 'fixed'].includes(input.policy) ? input.policy : 'full';
+    const allowedPolicies = autopayPoliciesFor(b);
+    const policy = ['full', 'minimum', 'statement', 'fixed'].includes(input.policy) ? input.policy : allowedPolicies && !allowedPolicies.includes('full') ? allowedPolicies[0] : 'full';
+    if (allowedPolicies && !allowedPolicies.includes(policy)) throw new Fault('That AutoPay amount option is not offered for this account.', 400, 'bad_policy');
     if (policy === 'minimum' && acct.kind !== 'card' && acct.kind !== 'loan') throw new Fault('Minimum-payment AutoPay is only available for credit accounts.', 400, 'bad_policy');
     const fixed = policy === 'fixed' ? parseMoney(input.fixedAmount) : null;
     if (fixed !== null && fixed < 100) throw new Fault('The fixed amount must be at least $1.00.', 400, 'min_amount');
     if (fixed !== null && fixed > MAX_PAYMENT_CENTS) throw new Fault('That amount exceeds the maximum allowed for a single payment.', 400, 'max_amount');
     const day = filled(input.day) ? Number(input.day) : null; if (day !== null && !(Number.isInteger(day) && day >= 1 && day <= 28)) throw new Fault('Choose a day between 1 and 28.', 400, 'bad_day');
-    if (AUTOPAY_BANK_ONLY.has(b.template) && (input.methodId ? acct.methods.find(x => x.id === input.methodId)?.type : input.methodType) === 'card') throw new Fault('AutoPay drafts from a bank account only. Choose a checking or savings account.', 400, 'bank_only');
+    const days = dossier(b)?.billing?.autopay?.days;
+    if (day !== null && days === 'due_date') throw new Fault('AutoPay pays on your bill due date; a different day cannot be chosen.', 400, 'bad_day');
+    if (day !== null && Array.isArray(days) && !days.includes(day)) throw new Fault(`Choose one of the offered AutoPay days: ${days.join(', ')}.`, 400, 'bad_day');
+    const apTypes = methodTypesFor(b, { autopay: true });
+    const apType = input.methodId && !filled(input.cardNumber) && !filled(input.routing) && !filled(input.bankAccount) ? acct.methods.find(x => x.id === input.methodId)?.type : input.methodType || (filled(input.cardNumber) ? 'card' : filled(input.routing) || filled(input.bankAccount) ? 'bank' : null);
+    if (apType && !apTypes.includes(apType)) throw new Fault(apTypes.includes('bank') ? 'AutoPay drafts from a bank account only. Choose a checking or savings account.' : 'AutoPay can only be paid by card.', 400, 'bank_only');
     const m = this.methodFromInput(ep, acct, { ...input, save: true }); m.saved = true; delete m.discarded;
     const was = ap.enrolled;
     Object.assign(ap, { enrolled: true, methodId: m.id, policy, fixedCents: fixed, day, updatedAt: ep.clock, enrolledAt: was ? ap.enrolledAt ?? ep.clock : ep.clock }); ap.history.push({ at: ep.clock, action: was ? 'updated' : 'enrolled' });
@@ -603,8 +668,8 @@ export class FleetWorld {
     this.persist(ep); return { paperless: on };
   }
   changePlan(ep, billerId, sid, { planId }) {
-    this.guard(ep); const acct = this.requireSession(ep, billerId, sid); const plans = PLANS[acct.kind];
-    if (!plans) throw new Fault('Plan changes are not available online.', 400, 'unsupported');
+    this.guard(ep); const acct = this.requireSession(ep, billerId, sid); const plans = plansFor(this.biller(billerId));
+    if (!plans || ['unsupported', 'not_applicable'].includes(this.biller(billerId).capabilities.change_plan?.support)) throw new Fault('Plan changes are not available online.', 400, 'unsupported');
     const plan = plans.find(p => p[0] === planId); if (!plan) throw new Fault('Choose a plan.', 400, 'bad_plan');
     if (acct.service.status !== 'active') throw new Fault('Reactivate your service before changing plans.', 409, 'inactive');
     if (acct.service.plan === planId) throw new Fault('That is already your current plan.', 409, 'same_plan');
@@ -612,7 +677,7 @@ export class FleetWorld {
     this.mail(ep, billerId, { subject: 'Your plan change is confirmed', text: `Your plan changed from ${plans.find(p => p[0] === from)?.[1] || from} to ${plan[1]}. The new price applies from your next billing date.` });
     this.persist(ep); return acct.service;
   }
-  plans(acct) { return (PLANS[acct.kind] || []).map(([id, name, cents]) => ({ id, name, cents, current: acct.service.plan === id })); }
+  plans(acct) { return (plansFor(this.catalog.billers.get(acct.billerId)) || []).map(([id, name, cents]) => ({ id, name, cents, current: acct.service.plan === id })); }
   // Cancellation is a multi-step decision: reason → retention offer (subscription/telecom) → confirm. Steps cannot be skipped.
   cancelService(ep, billerId, sid, input) {
     this.guard(ep); const acct = this.requireSession(ep, billerId, sid); const b = this.biller(billerId); const svc = acct.service;
@@ -649,7 +714,7 @@ export class FleetWorld {
   }
   setupArrangement(ep, billerId, sid, { months }) {
     this.guard(ep); const acct = this.requireSession(ep, billerId, sid); const n = Number(months);
-    if (this.biller(billerId).capabilities.payment_arrangement?.support !== 'supported') throw new Fault('Payment plans are not offered online for this account.', 400, 'unsupported');
+    if (this.biller(billerId).capabilities.payment_arrangement?.support !== 'supported' || paymentLimits(this.biller(billerId)).fullBalanceOnly) throw new Fault('Payment plans are not offered online for this account.', 400, 'unsupported');
     if (![3, 6, 12].includes(n)) throw new Fault('Choose 3, 6 or 12 monthly payments.', 400, 'bad_plan');
     if (this.balance(acct) < 5000) throw new Fault('Payment plans are available for balances of $50.00 or more.', 400, 'too_small');
     acct.arrangement = { months: n, monthlyCents: Math.ceil(this.balance(acct) / n), createdAt: ep.clock }; this.event(ep, billerId, 'payment_plan_created', { months: n });
@@ -680,7 +745,11 @@ export class FleetWorld {
             this.event(ep, billerId, 'payment_posted', { paymentId: p.id });
           }
         }
-        for (const inv of acct.invoices) if (inv.balanceCents > 0 && isoDate(inv.dueAt) < today && inv.status !== 'past_due') { inv.status = 'past_due'; this.event(ep, billerId, 'bill_past_due', { invoiceId: inv.id }); }
+        for (const inv of acct.invoices) if (inv.balanceCents > 0 && isoDate(inv.dueAt) < today && inv.status !== 'past_due') {
+          inv.status = 'past_due'; this.event(ep, billerId, 'bill_past_due', { invoiceId: inv.id });
+          const late = this.lateFee(this.biller(billerId), inv.balanceCents);
+          if (late) { inv.lines.push({ desc: 'Late payment charge', cents: late }); inv.amountCents += late; inv.balanceCents += late; inv.lateFeeCents = late; this.event(ep, billerId, 'late_fee_assessed', { invoiceId: inv.id, cents: late }); }
+        }
         this.runAutopay(ep, billerId, acct, today);
         if (acct.service.status === 'cancel_pending' && acct.service.cancelAt <= ep.clock) { acct.service.status = 'cancelled'; this.event(ep, billerId, 'service_ended'); }
       }
@@ -709,7 +778,7 @@ export class FleetWorld {
       const n = acct.invoices.length; const r = rng(`${ep.seed}:${billerId}:cycle:${n}`);
       const prevBalance = Math.max(0, this.balance(acct));
       let amount, ctx = {};
-      const planCents = this.planPrice(acct.kind, acct.service.plan);
+      const planCents = this.planPrice(b, acct.service.plan);
       if (acct.kind === 'subscription' && planCents) { amount = planCents; ctx.planCents = planCents; }
       else if (acct.kind === 'telecom' && planCents) { ctx.telecom = this.telecomBill(planCents, r); amount = ctx.telecom.total; }
       else if (acct.kind === 'loan') { amount = cur.amountCents; ctx.escrowCents = acct.escrowCents || 0; ctx.interestShare = (cur.lines.find(l => l.desc === 'Interest')?.cents || 0) / Math.max(1, cur.amountCents - (acct.escrowCents || 0)); }
@@ -724,7 +793,7 @@ export class FleetWorld {
       inv.totalDueCents = Math.max(0, this.balance(acct));
       if (acct.kind === 'card') {
         const statement = Math.max(0, this.balance(acct));
-        Object.assign(acct, { statementBalanceCents: statement, minimumDueCents: Math.min(statement, Math.max(3500, Math.round(statement * 0.03))), currentBalanceCents: statement + between(r, 0, 9000), statementIssuedAt: issuedAt });
+        Object.assign(acct, { statementBalanceCents: statement, minimumDueCents: this.cardMinimum(b, statement, ctx.interestCents || 0), currentBalanceCents: statement + between(r, 0, 9000), statementIssuedAt: issuedAt });
       }
       if (acct.kind === 'loan') acct.minimumDueCents = amount;
       this.syncInstallments(acct);
@@ -739,7 +808,8 @@ export class FleetWorld {
     const inv = this.currentInvoice(acct); if (inv.autopaid) return;
     const enrolledAt = ap.enrolledAt ?? ap.history.filter(h => h.action === 'enrolled').at(-1)?.at ?? 0;
     if (enrolledAt >= inv.issuedAt) return; // enrolled after this bill: starts with the next bill
-    const runToday = ap.day ? ep.clock >= inv.issuedAt && Number(today.slice(8, 10)) === ap.day : today >= isoDate(inv.dueAt);
+    const lead = dossier(this.biller(billerId))?.billing?.autopay?.leadDays || 0; // e.g. "drafted 3 days before the due date"
+    const runToday = ap.day ? ep.clock >= inv.issuedAt && Number(today.slice(8, 10)) === ap.day : today >= isoDate(inv.dueAt - lead * DAY);
     if (!runToday) return;
     inv.autopaid = true;
     const bal = Math.max(0, this.balance(acct));
@@ -753,7 +823,7 @@ export class FleetWorld {
       return;
     }
     const m = acct.methods.find(x => x.id === ap.methodId); const problem = this.methodProblem(m, ep.clock);
-    const p = { id: `pay-${token(6)}`, confirmation: `AP${digits(rng(inv.id), 9)}`, amountCents: cents, feeCents: m ? this.fee(billerId, m, cents) : 0, methodId: ap.methodId, methodType: m?.type, methodLast4: m?.last4, methodLabel: m?.label, source: 'autopay', createdAt: ep.clock, payOn: null, status: 'processing', amountKey: ap.policy };
+    const p = { id: `pay-${token(6)}`, confirmation: `AP${digits(rng(inv.id), 9)}`, amountCents: cents, feeCents: m ? this.fee(billerId, m, cents, { autopay: true }) : 0, methodId: ap.methodId, methodType: m?.type, methodLast4: m?.last4, methodLabel: m?.label, source: 'autopay', createdAt: ep.clock, payOn: null, status: 'processing', amountKey: ap.policy };
     acct.payments.push(p);
     if (problem) {
       Object.assign(p, { status: 'failed', failure: problem, failedAt: ep.clock });
@@ -791,7 +861,9 @@ export class FleetWorld {
         case 'autopay': pass = !!acct && acct.autopay.enrolled === pr.enrolled && (!pr.methodType || acct.methods.find(m => m.id === acct.autopay.methodId)?.type === pr.methodType) && (!pr.methodId || acct.autopay.methodId === pr.methodId) && (!pr.policy || [].concat(pr.policy).includes(acct.autopay.policy)) && (pr.day == null || acct.autopay.day === pr.day) && (pr.fixedCents === undefined || acct.autopay.fixedCents === pr.fixedCents); detail = JSON.stringify(acct?.autopay && { enrolled: acct.autopay.enrolled, policy: acct.autopay.policy, day: acct.autopay.day, methodId: acct.autopay.methodId }); break;
         case 'autopay_unchanged': pass = !ev.some(e => e.type.startsWith('autopay_') && !['autopay_payment', 'autopay_skipped', 'autopay_failed'].includes(e.type)); break;
         case 'paperless': pass = !!acct && acct.paperless === pr.value; break;
-        case 'service': pass = !!acct && [].concat(pr.status).includes(acct.service.status) && (!pr.plan || acct.service.plan === pr.plan); detail = acct?.service.status; break;
+        case 'service': { // an account the agent never opened still has its starting service: active, on the default plan
+          const svc = acct ? acct.service : { status: 'active', plan: this.catalog.billers.get(pr.billerId) ? defaultPlan(this.catalog.billers.get(pr.billerId)) : null };
+          pass = [].concat(pr.status).includes(svc.status) && (!pr.plan || svc.plan === pr.plan); detail = acct ? svc.status : 'untouched (active)'; break; }
         case 'retention_accepted': pass = !!acct?.service.retentionAccepted === pr.value; break;
         case 'scheduled_cancelled': pass = !!acct && acct.payments.some(p => p.status === 'cancelled') && !acct.payments.some(p => p.status === 'scheduled'); break;
         case 'password_changed': pass = ev.some(e => e.type === 'password_reset') && (!pr.password || acct.password === pr.password); break;
@@ -859,6 +931,9 @@ export function gradeAnswer(pr, actual, acct, agentPayments = []) {
       const confs = [...agentPayments.map(p => p.confirmation), ...[].concat(pr.expected || [])].filter(Boolean).map(alnum);
       const pass = confs.some(c => alnum(text).includes(c)); return { pass, detail: pass ? 'confirmation found' : `expected one of ${confs.join(', ') || '(no payment)'}` };
     }
+    // Dossier tasks: the answer must contain one of the expected strings (e.g. a fee or rate stated on the site).
+    case 'contains': { const norm = v => String(v).toLowerCase().replace(/\s+/g, ' '); const exp = [].concat(pr.expected || []); const hit = exp.find(x => norm(text).includes(norm(x))); return { pass: !!hit, detail: hit ? `found "${hit}"` : `expected one of ${exp.map(x => `"${x}"`).join(', ')}` }; }
+    case 'abstain': { const pass = ABSTAIN.test(text) && !agentPayments.length; return { pass, detail: pass ? 'abstained' : 'expected an explicit statement that it is not possible' }; }
     case 'phone': case 'contact': {
       const exp = pr.expected && typeof pr.expected === 'object' && !Array.isArray(pr.expected) ? pr.expected : { phones: [].concat(pr.expected || []) };
       const phones = (exp.phones || []).flatMap(p => /^\d{10}$/.test(p) ? [p] : phoneDigits(p));

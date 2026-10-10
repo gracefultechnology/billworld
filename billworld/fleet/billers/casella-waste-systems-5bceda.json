@@ -1,0 +1,362 @@
+{
+  "id": "casella-waste-systems-5bceda",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Casella Waste Systems",
+  "category": "trash",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public casella.com pages (Pay Bill, Convenience Fees, Support, Residential Terms of Use) and the public My Account sign-in screen at mycasella.idoxs.net (Kubra; observed, never signed in). The Pay Bill page routes customers to a portal by state: Kubra My Account for DE/MD/ME/NJ/PA/VT (and some MA/NH/NY accounts by provider or account prefix), a separate Connecticut page and a Navusoft portal for West Virginia; this dossier models the Kubra My Account portal. Sign-in is Username + Password (reCAPTCHA protected) with Pay Now for a one-time payment. No Casella fee for paying online or by phone, but Kubra adds a 3.00% card convenience fee with a $1.50 minimum (not charged in CT and ME; the engine models the percentage only). Bank payments are free. Some markets charge a paper-bill fee (amount not published). Returned payments cost $25. Late fees/interest up to the legal limit (no amount). Start, stop or change service and payment plans/hardship go through Customer Care, not online. The autopay label is deliberately not set: the kubra template reuses that label as the text of its Turn off AutoPay link (see cross-owner request).",
+  "officialDomains": [
+    "casella.com",
+    "idoxs.net"
+  ],
+  "sources": [
+    {
+      "url": "https://www.casella.com/pay-bill/",
+      "title": "Pay Bill | Casella",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.casella.com/convenience-fees/",
+      "title": "Convenience Fees | Casella",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.casella.com/support/",
+      "title": "Support | Casella",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.casella.com/residential/terms-of-use/",
+      "title": "Residential Terms of Use | Casella",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://mycasella.idoxs.net/",
+      "title": "Sign into My Account | Casella",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Casella",
+    "shortName": "Casella",
+    "primary": "#00594f",
+    "accent": "#3d4f2a",
+    "monogram": "C"
+  },
+  "labels": {
+    "payBill": "Pay Bill",
+    "guestPay": "Pay Now",
+    "signIn": "Sign in",
+    "register": "Sign up for My Account",
+    "forgot": "Forgot your Password?",
+    "dashboard": "My Account",
+    "help": "Support",
+    "contact": "Contact Us",
+    "cancel": "Start, Stop, or Change Service",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Bill",
+        "page": "guest"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Sign up for My Account",
+        "page": "register"
+      },
+      {
+        "label": "Convenience Fees",
+        "helpSlug": "fees"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Start, Stop, or Change Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://mycasella.idoxs.net/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://mycasella.idoxs.net/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.casella.com/pay-bill/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.casella.com/pay-bill/",
+      "phone": "800-227-3552"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.casella.com/pay-bill/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.casella.com/support/",
+      "channel": "phone",
+      "phone": "802-683-3984",
+      "note": "Service cannot be stopped online. Contact Casella Customer Care at 802-683-3984 (Mon-Fri 7am-5pm) to start, stop or change service."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.casella.com/pay-bill/",
+      "channel": "phone",
+      "phone": "802-683-3984",
+      "note": "Payment plans are not offered online. Contact Casella Customer Care before you miss a payment to discuss payment plans or hardship programs."
+    }
+  },
+  "billing": {
+    "source": "https://www.casella.com/pay-bill/",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 3,
+      "evidence": "documented_official",
+      "source": "https://www.casella.com/convenience-fees/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How do I pay my Casella bill?",
+      "topic": "payments",
+      "paragraphs": [
+        "Choose your state on the Pay Bill page to reach the right payment portal. Delaware, Maryland, Maine, New Jersey, Pennsylvania and Vermont customers use My Account; Massachusetts, New Hampshire and New York customers choose by provider or by the first two characters of the account number.",
+        "You can pay by credit or debit card or bank account (ACH) online, by phone, or by mailing a check. Casella charges nothing extra to pay online or by phone, and the portal is open around the clock. Bills are due on the date printed on them; late payments may bring a late fee or interest."
+      ],
+      "steps": [
+        "Open Pay Bill and select your state.",
+        "Sign in to My Account, or choose Pay Now for a one-time payment.",
+        "Enter the amount and payment method.",
+        "Review and submit."
+      ],
+      "source": "https://www.casella.com/pay-bill/"
+    },
+    {
+      "slug": "fees",
+      "title": "Card convenience fee",
+      "topic": "billing",
+      "paragraphs": [
+        "Card payments through KUBRA, Casella's payment processor, carry a convenience fee of 3.00% per transaction with a $1.50 minimum. It applies to one-time and AutoPay card payments, is shown only on the KUBRA receipt and is generally not refundable.",
+        "Customers in Connecticut and Maine are not charged this fee. Paying from a bank account is free: existing users can add a bank account to their wallet and switch AutoPay to it. Some markets also charge a separate fee for paper bills."
+      ],
+      "source": "https://www.casella.com/convenience-fees/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign up for AutoPay in the secure payment portal so your bill is paid on time automatically. A bank account avoids the card convenience fee, which also applies to AutoPay card payments."
+      ],
+      "source": "https://www.casella.com/pay-bill/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment plans and hardship",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you expect to miss a payment, contact Casella Customer Care beforehand to talk about payment plans or hardship programs. Call 802-683-3984 (Monday to Friday, 7 a.m. to 5 p.m.) or email; email replies can take 3 to 5 business days."
+      ],
+      "source": "https://www.casella.com/pay-bill/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, stop or change service",
+      "topic": "account",
+      "paragraphs": [
+        "To stop service, contact Casella Customer Care at 802-683-3984. Service is billed in advance; you pay the full monthly fee for the month you cancel and there are no refunds.",
+        "Casella collects its containers and may charge a reasonable removal fee; containers that are not returned may incur a replacement fee. A returned or rejected payment costs $25."
+      ],
+      "source": "https://www.casella.com/residential/terms-of-use/"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "setup-payment-plan"
+    ],
+    "extra": [
+      {
+        "slug": "card-fee-minimum",
+        "intent": "Using Casella's help pages, find the percentage and the minimum dollar amount of the convenience fee for paying by card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3",
+              "1.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3",
+            "1.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments carry a 3.00% convenience fee with a $1.50 minimum; bank payments are free."
+          }
+        ]
+      },
+      {
+        "slug": "card-fee-exempt-states",
+        "intent": "Using Casella's help pages, find which two states' customers are not charged the card convenience fee. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Connecticut",
+              "Maine"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Connecticut",
+            "Maine"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Customers in Connecticut and Maine are exempt from the card convenience fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Pay Bill",
+        "Sign in"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Forgot your Password?"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fees",
+      "contains": [
+        "3.00%",
+        "$1.50"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "802-683-3984"
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "not offered online"
+    }
+  ]
+}

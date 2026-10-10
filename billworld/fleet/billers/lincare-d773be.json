@@ -1,0 +1,123 @@
+{
+  "id": "lincare-d773be",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Lincare",
+  "category": "medical",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public lincare.com FAQ pages (no sign-in). The Patient Portal Billing tab lets patients make a one-time payment, set up a recurring payment and manage payment methods, view current and past statements, and choose paperless, paper or both. Guest Pay is a header link to a third-party payment page (not cited). Statements keep coming while auto pay is on. To verify an auto pay amount call 1-800-284-2006 and press 4 (changing it is not described); cancelling online is not described (family default kept). Payment plans, accepted card types and fees are not published. Portal Support 855-767-8250 (weekdays 8-5 ET). Itemized bills by phone; deceased patients: call the local center for equipment pickup. Returned equipment after the bill date owes the full month. Refund checks in 7-10 business days.",
+  "officialDomains": ["lincare.com"],
+  "sources": [
+    { "url": "https://www.lincare.com/resources/patient-support/Billing-FAQ", "title": "Billing FAQ", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.lincare.com/en/resources/patient-support/faq", "title": "Patient Support FAQ", "fetchedAt": "2026-10-09", "kind": "autopay" }
+  ],
+  "brand": { "shortName": "Lincare", "primary": "#00567f", "accent": "#003b57", "monogram": "L" },
+  "labels": {
+    "guestPay": "Guest Pay",
+    "viewBill": "Billing",
+    "autopay": "Recurring payment",
+    "wallet": "Manage payment methods",
+    "paperless": "Statement delivery",
+    "profile": "Profile",
+    "signIn": "Patient Portal",
+    "help": "Billing FAQ"
+  },
+  "nav": {
+    "public": [
+      { "label": "Patient Portal", "page": "login" },
+      { "label": "Guest Pay", "page": "guest" },
+      { "label": "How to Read your Lincare Bill", "helpSlug": "read-your-bill" },
+      { "label": "Billing FAQ", "page": "help" }
+    ]
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://www.lincare.com/en/resources/patient-support/faq" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.lincare.com/en/resources/patient-support/faq" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.lincare.com/resources/patient-support/Billing-FAQ" },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.lincare.com/resources/patient-support/Billing-FAQ" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.lincare.com/en/resources/patient-support/faq", "phone": "800-284-2006" }
+  },
+  "billing": {
+    "source": "https://www.lincare.com/en/resources/patient-support/faq",
+    "methods": ["bank", "card"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying in the Patient Portal",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to the Patient Portal and open the Billing tab to make a one-time payment, set up a recurring payment or manage your payment methods. You can also view current and past statements there.",
+        "To pay without logging in, use the Guest Pay link at the top of the site. Your direct billing office number is in the middle of your statement, and your local billing office is shown at the top left of your bill."
+      ],
+      "steps": ["Log in to the Patient Portal.", "Open the Billing tab.", "Choose a one-time payment.", "Pick a payment method and amount.", "Submit."],
+      "source": "https://www.lincare.com/en/resources/patient-support/faq"
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring payments (auto pay)",
+      "topic": "autopay",
+      "paragraphs": [
+        "Set up a recurring payment from the Billing tab of the Patient Portal. You still get statements while auto pay is on so you can review charges and payments.",
+        "To verify your auto pay or recurring payment amount, call the corporate billing team at 1-800-284-2006 and press 4, or check it in online bill pay in the Patient Portal."
+      ],
+      "source": "https://www.lincare.com/en/resources/patient-support/faq"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "topic": "account",
+      "paragraphs": [
+        "To stop paper statements or turn on paperless billing, log in to the Patient Portal, click Profile and then Settings (statement delivery can also be chosen in the Billing tab: paperless, paper or both). You can also call the number on your statement."
+      ],
+      "source": "https://www.lincare.com/resources/patient-support/Billing-FAQ"
+    },
+    {
+      "slug": "read-your-bill",
+      "title": "Understanding your Lincare bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Bills cover the prior month's services. Total Insurance Pending in the upper right of the invoice shows what was billed to insurance. Coinsurance is billed to you, and if insurance assigns a deductible you may see a second invoice for the same item and date.",
+        "Equipment returned after the bill date is charged for the full month. Call the number on your statement for an itemized bill."
+      ],
+      "source": "https://www.lincare.com/resources/patient-support/Billing-FAQ"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Billing and portal support",
+      "topic": "contact",
+      "paragraphs": [
+        "Corporate billing: 1-800-284-2006, press 4. Patient Portal Support: 855-767-8250, weekdays 8 a.m. to 5 p.m. Eastern. For a deceased patient, contact the local center with the date of death to arrange equipment pickup. Refund checks usually arrive in 7 to 10 business days."
+      ],
+      "source": "https://www.lincare.com/en/resources/patient-support/faq"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "portal-support-phone",
+        "intent": "Find the Lincare Patient Portal Support phone number. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8557678250"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8557678250"] },
+        "tags": ["help", "information", "contact"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "855-767-8250" }]
+      },
+      {
+        "slug": "returned-equipment-charge",
+        "intent": "Using Lincare's billing help, find out what you are charged if equipment is returned after the bill date. Do not make a payment or change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["full month"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["full month"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "You owe the full month." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "1-800-284-2006" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "855-767-8250" }
+  ]
+}

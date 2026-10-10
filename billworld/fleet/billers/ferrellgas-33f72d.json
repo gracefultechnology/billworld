@@ -1,0 +1,346 @@
+{
+  "id": "ferrellgas-33f72d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Ferrellgas",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public ferrellgas.com pages only (no sign-in). MyFerrellgas registration uses the account number and billing ZIP code, a username (no spaces or special characters) and a password of at least 8 characters with upper case, lower case, a number and a special character; an emailed verification code activates the profile. The myferrellgas.com sign-in page renders client-side and could not be read, so the sign-in is modelled as username + password on one page (inferred from registration) and guest pay is left at the family default. Online payments through MyFerrellgas carry no fee. AutoPay (bank account or credit card) requires credit approval; enrollment is on the Pay Bill page. Paperless Billing is a slider on Account Summary. Closing an account is done by calling 888-337-7355 or with the general Contact Us form; Tank Pump Out and Tank Pick-Up charges may apply (hourly, amounts not published). Late charges are not published on the pages used. Independent review 2026-10-09: payment options and MyFerrellgas pages re-checked; the sign-in identifier is not stated publicly (the page implies username via the reset flow), so auth evidence is now inferred rather than documented_official.",
+  "officialDomains": [
+    "ferrellgas.com",
+    "myferrellgas.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ferrellgas.com/payment-options/",
+      "title": "Flexible Payment Options for Propane Services | Ferrellgas",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ferrellgas.com/customer-support/myferrellgas/",
+      "title": "Manage Your Ferrellgas Account Online with MyFerrellgas",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.ferrellgas.com/budget-billing/",
+      "title": "Budget Billing with Ferrellgas",
+      "fetchedAt": "2026-10-05",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.ferrellgas.com/faqs/",
+      "title": "Frequently Asked Propane Questions & Answers | Ferrellgas",
+      "fetchedAt": "2026-10-05",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.ferrellgas.com/move-in-and-out/",
+      "title": "Moving in and Out of Propane Homes",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "Ferrellgas",
+    "primary": "#003a70",
+    "accent": "#c8102e",
+    "monogram": "FG"
+  },
+  "labels": {
+    "dashboard": "Account Summary",
+    "payBill": "Pay Bill",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "statements": "Invoices",
+    "username": "Username",
+    "help": "FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Your Bill Online",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Budget Billing",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Moving In & Out",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$",
+      "message": "Use at least 8 characters with an uppercase letter, a lowercase letter, a number and a special character."
+    },
+    "evidence": "inferred",
+    "source": "https://www.ferrellgas.com/customer-support/myferrellgas/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ferrellgas.com/payment-options/",
+      "note": "AutoPay is available to credit-approved customers."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ferrellgas.com/faqs/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ferrellgas.com/payment-options/",
+      "phone": "866-606-3266"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ferrellgas.com/payment-options/"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ferrellgas.com/budget-billing/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.ferrellgas.com/move-in-and-out/",
+      "channel": "phone",
+      "phone": "888-337-7355",
+      "note": "To close your Ferrellgas account when you move, call 888-337-7355 (or use the Contact Us form) and tell us your move-out date and tank level."
+    }
+  },
+  "billing": {
+    "source": "https://www.ferrellgas.com/payment-options/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.ferrellgas.com/payment-options/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online in MyFerrellgas from a bank account or with a credit or debit card. Online payments carry no fee and post within 24 hours.",
+        "You can also pay any time through the automated phone line at 866-606-3266, talk to a representative at 888-337-7355, or mail a check with the remit coupon from your statement (allow 3 to 7 days)."
+      ],
+      "steps": [
+        "Sign in to MyFerrellgas.",
+        "Open Pay Bill.",
+        "Choose your bank account or card and the amount.",
+        "Submit the payment."
+      ],
+      "source": "https://www.ferrellgas.com/payment-options/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "With AutoPay your bill amount is taken automatically from your bank account or credit card. AutoPay is open to customers with credit approval.",
+        "To enroll, sign in to MyFerrellgas and choose the AutoPay option on the Pay Bill page."
+      ],
+      "steps": [
+        "Sign in to MyFerrellgas.",
+        "Open Pay Bill.",
+        "Select the AutoPay option.",
+        "Choose a bank account or card and confirm."
+      ],
+      "source": "https://www.ferrellgas.com/payment-options/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless Billing is free. You view statements and pay online, get an email when a statement is ready, and stop receiving statements in the mail."
+      ],
+      "steps": [
+        "Sign in to MyFerrellgas.",
+        "Go to Account Summary.",
+        "Turn the Paperless Billing slider on."
+      ],
+      "source": "https://www.ferrellgas.com/faqs/"
+    },
+    {
+      "slug": "register",
+      "title": "Register for MyFerrellgas",
+      "topic": "account",
+      "paragraphs": [
+        "You need your account number and billing ZIP code. Your account number is in the upper-right corner of your most recent statement.",
+        "Choose a username without spaces or special characters (numbers are fine) and a password of at least 8 characters that includes an uppercase letter, a lowercase letter, a number and a special character. Enter the verification code Ferrellgas emails you to activate your profile; it usually arrives within 15 minutes."
+      ],
+      "source": "https://www.ferrellgas.com/customer-support/myferrellgas/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Budget Billing",
+      "topic": "assistance",
+      "paragraphs": [
+        "Budget Billing divides your yearly propane cost into twelve equal monthly payments. It is for residential customers with credit approval whose account is current, and it covers propane, taxes, hazmat fees and tank rent.",
+        "Payments are reviewed twice a year. A balance 60 or more days past due removes you from the plan, and you must wait six months to reapply. Call 888-337-7355 to ask about enrolling."
+      ],
+      "source": "https://www.ferrellgas.com/budget-billing/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving in and out",
+      "topic": "account",
+      "paragraphs": [
+        "Moving out? Contact Ferrellgas at 888-337-7355 or through the Contact Us form, tell us when you will leave the home, and check your tank level before you call so the account can be closed. Accounts are not closed online."
+      ],
+      "source": "https://www.ferrellgas.com/move-in-and-out/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "automated-pay-line",
+        "intent": "Find the phone number for Ferrellgas's automated 24/7 payment line. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8666063266"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8666063266"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "866-606-3266"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Budget Billing",
+        "Moving In & Out"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Account Summary",
+        "AutoPay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "866-606-3266",
+        "no fee"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "888-337-7355"
+    }
+  ]
+}

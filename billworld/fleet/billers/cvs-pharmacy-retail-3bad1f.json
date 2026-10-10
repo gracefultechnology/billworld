@@ -1,0 +1,153 @@
+{
+  "id": "cvs-pharmacy-retail-3bad1f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "CVS Pharmacy (retail)",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public cvs.com pages only (no sign-in). Retail CVS Pharmacy has no monthly bill: in-store pickup orders are paid at the pharmacy counter, and the out-of-pocket cost is known only after the insurance claim is processed (it then shows in the online prescription account after a few hours). Online payment happens only when prescription delivery is requested: delivery orders must be prepaid at checkout with a credit, debit, FSA or HSA card (FSA/HSA generally not for delivery fees). The mock models that prepay as the account balance. CVS publishes no AutoPay, payment plan, guest payment or paperless-statement feature for retail prescriptions, so those are marked unsupported with notes (inferred where not stated). ExtraCare Plus is the one recurring CVS charge ($5/month or $48/year, auto-renews) and is modelled as the plan list (free ExtraCare vs ExtraCare Plus). Bank-account payment is a simulation contract (the dossier format requires bank); CVS lists only cards for delivery prepayment. CVS.com sign-in details are not documented on public pages; the family's email sign-in is kept (inferred).",
+  "officialDomains": ["cvs.com"],
+  "sources": [
+    { "url": "https://www.cvs.com/retail/help/help-subtopic-prices-insurance-and-payments", "title": "Prices, Insurance and Payments help", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.cvs.com/content/delivery", "title": "Prescription delivery", "fetchedAt": "2026-10-09", "kind": "fees" },
+    { "url": "https://www.cvs.com/help/help_contact_us.jsp", "title": "Contact Us", "fetchedAt": "2026-10-09", "kind": "help" }
+  ],
+  "brand": { "displayName": "CVS Pharmacy", "shortName": "CVS Pharmacy", "primary": "#cc0000", "accent": "#b30000", "monogram": "CV" },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Create account",
+    "dashboard": "Prescription Center",
+    "payBill": "Checkout",
+    "viewBill": "Order details",
+    "wallet": "Payment methods",
+    "plan": "ExtraCare Plus",
+    "help": "Prices, Insurance and Payments",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign in", "page": "login" },
+      { "label": "Create account", "page": "register" },
+      { "label": "Prescription delivery", "helpSlug": "prescription-delivery" },
+      { "label": "Prices, Insurance and Payments", "page": "help" },
+      { "label": "Contact Us", "helpSlug": "contact-us" }
+    ],
+    "account": [
+      { "label": "Prescription Center", "page": "dashboard" },
+      { "label": "Order details", "page": "bill" },
+      { "label": "Checkout", "page": "pay" },
+      { "label": "Order history", "page": "history" },
+      { "label": "Payment methods", "page": "wallet" },
+      { "label": "ExtraCare Plus", "page": "plan" },
+      { "label": "Contact Us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "evidence": "inferred",
+    "source": "https://www.cvs.com/help/help_contact_us.jsp"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.cvs.com/content/delivery" },
+    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.cvs.com/retail/help/help-subtopic-prices-insurance-and-payments", "note": "There is no guest payment. Pay for pickup orders at the pharmacy counter, or sign in to prepay a delivery order at checkout.", "channel": "in_person" },
+    "autopay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.cvs.com/retail/help/help-subtopic-prices-insurance-and-payments", "note": "CVS Pharmacy has no AutoPay for prescriptions: pay at pickup, or prepay each delivery order at checkout with a card. Questions: 1-800-746-7287.", "channel": "in_person", "phone": "800-746-7287" },
+    "autopay_cancel": { "support": "not_applicable", "evidence": "inferred", "source": "https://www.cvs.com/retail/help/help-subtopic-prices-insurance-and-payments" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "source": "https://www.cvs.com/retail/help/help-subtopic-prices-insurance-and-payments", "note": "CVS does not offer payment plans for prescriptions. Ask your pharmacist about lower-cost options, or call 1-800-746-7287.", "channel": "phone", "phone": "800-746-7287" },
+    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://www.cvs.com/retail/help/help-subtopic-prices-insurance-and-payments", "note": "CVS does not mail pharmacy bills, so there is no paperless enrollment; order totals appear in your online prescription account.", "channel": "none" },
+    "scheduled_payment": { "support": "unsupported", "evidence": "inferred", "source": "https://www.cvs.com/content/delivery", "note": "Delivery orders are paid at checkout when you request delivery; payments cannot be scheduled for a later date.", "channel": "none" },
+    "pay_by_phone": { "support": "supported", "evidence": "inferred", "source": "https://www.cvs.com/content/delivery", "phone": "800-746-7287" }
+  },
+  "billing": {
+    "source": "https://www.cvs.com/content/delivery",
+    "methods": ["bank", "card"],
+    "plans": [
+      { "id": "extracare", "name": "ExtraCare (free)", "cents": 0 },
+      { "id": "extracare-plus-monthly", "name": "ExtraCare Plus monthly", "cents": 500, "current": true },
+      { "id": "extracare-plus-annual", "name": "ExtraCare Plus annual", "cents": 4800 }
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying for your prescriptions",
+      "topic": "payments",
+      "paragraphs": [
+        "Prescriptions you pick up in the store are paid at the pharmacy counter when you collect them. Your out-of-pocket cost is known only after your insurance claim is processed; the order total then appears in your online prescription account, which can take a few hours.",
+        "CVS does not publish cash prices for medications online. FSA cards can be used for prescription copays.",
+        "If you have a prescription delivered, you pay in advance at checkout with a credit, debit, FSA or HSA card. In most cases FSA and HSA cards cannot be used for the delivery fee itself."
+      ],
+      "source": "https://www.cvs.com/retail/help/help-subtopic-prices-insurance-and-payments"
+    },
+    {
+      "slug": "prescription-delivery",
+      "title": "Prescription delivery and fees",
+      "topic": "fees",
+      "paragraphs": [
+        "Most CVS Pharmacy locations offer 1- to 2-day delivery and same-day delivery (within about four hours). Delivery can be requested only after the prescription is filled and ready for pickup, by calling the store, in the CVS Health app or website, or from the link in your order-ready text.",
+        "The 1- to 2-day delivery fee is $5.49 in most locations and same-day delivery is $9.49. Both are free with ExtraCare Plus. Insurance generally does not cover delivery fees, and coupons or ExtraBucks Rewards cannot be applied to prescription items in a delivery order.",
+        "Same-day delivery needs a physical address and someone at home. 1- to 2-day delivery must go to an address in the same state as the pharmacy. Some medications and some insurance plans, such as Medicare Part B, are not eligible."
+      ],
+      "steps": ["Wait for the order-ready text or check the Prescription Center.", "Choose delivery and a delivery speed.", "Pay at checkout with a credit, debit, FSA or HSA card."],
+      "source": "https://www.cvs.com/content/delivery"
+    },
+    {
+      "slug": "extracare-plus",
+      "title": "ExtraCare Plus membership",
+      "topic": "plans",
+      "paragraphs": [
+        "ExtraCare Plus is CVS's paid membership: $5 per month or $48 per year, plus applicable tax. It needs a valid ExtraCare card and a CVS account with a completed digital profile, and includes free prescription delivery on qualifying orders.",
+        "The membership renews automatically. To cancel, cancel online or call 1-800-746-7287 at least three days before the renewal date. The basic ExtraCare program stays free."
+      ],
+      "source": "https://www.cvs.com/content/delivery"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact CVS",
+      "topic": "contact",
+      "paragraphs": [
+        "Pharmacy and store questions: CVS/pharmacy Customer Services at 1-800-746-7287 (1-800-SHOP-CVS), Monday to Friday 8:30 a.m. to 7 p.m. ET, weekends 10 a.m. to 6:30 p.m. ET. The same number handles ExtraCare questions.",
+        "CVS.com and app account problems, passwords, orders and prescription management: Customer Care at 1-888-607-4287, Monday to Friday 8:30 a.m. to 7 p.m. ET, weekends 10 a.m. to 6:30 p.m. ET. Lines are closed on major holidays.",
+        "Written comments go to CVS Customer Relations, One CVS Drive, Woonsocket, RI 02895."
+      ],
+      "source": "https://www.cvs.com/help/help_contact_us.jsp"
+    },
+    {
+      "slug": "insurance",
+      "title": "Insurance and Medicaid",
+      "topic": "billing",
+      "paragraphs": [
+        "CVS Pharmacy accepts most prescription insurance plans; check with your insurer to confirm coverage. Fee-for-service Medicaid is accepted at all retail CVS Pharmacy locations; for managed Medicaid and other programs, ask your local pharmacist."
+      ],
+      "source": "https://www.cvs.com/retail/help/help-subtopic-prices-insurance-and-payments"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "same-day-delivery-fee",
+        "intent": "Using the CVS Pharmacy help pages, find the fee for same-day prescription delivery for someone without ExtraCare Plus. Answer with the dollar amount; do not pay anything or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["9.49"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["9.49"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Same-day delivery is $9.49." }]
+      },
+      {
+        "slug": "account-help-phone",
+        "intent": "My mom can't get into her CVS Pharmacy online account (password trouble). Find the CVS.com Customer Care phone number for account and password problems. Don't change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8886074287"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8886074287"] },
+        "tags": ["help", "information", "contact"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "1-888-607-4287" }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "no AutoPay" },
+    { "page": "dashboard", "signedIn": true, "label": "dashboard" },
+    { "page": "plan", "signedIn": true, "contains": ["ExtraCare Plus monthly", "ExtraCare (free)"] },
+    { "page": "helpArticle", "slug": "prescription-delivery", "contains": ["$5.49", "$9.49"] },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "1-888-607-4287" }
+  ]
+}

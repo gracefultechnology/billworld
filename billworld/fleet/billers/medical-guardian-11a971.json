@@ -1,0 +1,361 @@
+{
+  "id": "medical-guardian-11a971",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Medical Guardian",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public Medical Guardian support FAQ, the Terms and Conditions (v2.1) and the public MyGuardian sign-in page only (never signed in). MyGuardian (mymedicalguardian.com) sign-in is one page with a single 'Email, mobile phone or username' field plus Password, 'Sign In', 'Forgot Password?' and 'Register Today!'; no MFA is described. Only the Account Owner sees billing: the Billing tab shows and downloads invoices, takes payments and updates the payment method and billing address. Autopay enrollment and single-invoice payments in the portal are described with bank account details, so autopay methodTypes is bank only; cards on file are also mentioned. Memberships bill monthly, quarterly or annually and auto-renew; a credit card surcharge may apply (amount not published, so no fee is modelled). Cancellation is by phone (800-313-1191, cancellation option) or in writing, with a 90-day minimum, leased-device return to Sharon Hill PA, up to $50 restocking and a $350 non-return charge. No online autopay-cancel, paperless, payment-plan or future-dated payment doc exists: autopay_cancel keeps the family default, scheduled_payment is marked unknown and payment_arrangement is modelled as phone-only (inferred: no plan option is documented). Plan names/prices are not on the billing pages, so the family's synthetic plans remain. Review 2026-10-09: re-verified every fact; the shipping, Elite 911 and 12-month discount facts come from the support FAQ, the surcharge, billing-cycle and suspension facts from the Terms.",
+  "officialDomains": [
+    "medicalguardian.com",
+    "mymedicalguardian.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.medicalguardian.com/support/faqs/",
+      "title": "Medical Guardian Support FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.mymedicalguardian.com/",
+      "title": "MyGuardian | Login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.medicalguardian.com/legal/terms",
+      "title": "Medical Guardian Terms and Conditions",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Medical Guardian",
+    "shortName": "Medical Guardian",
+    "primary": "#00447c",
+    "accent": "#b3122e",
+    "monogram": "MG"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Register Today!",
+    "forgot": "Forgot Password?",
+    "username": "Email, mobile phone or username",
+    "viewBill": "Billing",
+    "statements": "Invoices",
+    "cancel": "Cancel Membership",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Register Today!",
+        "page": "register"
+      },
+      {
+        "label": "FAQs",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Account",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel Membership",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.mymedicalguardian.com/"
+  },
+  "capabilities": {
+    "view_bill": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalguardian.com/support/faqs/",
+      "note": "Membership cannot be cancelled online. Call Member Support at 1-800-313-1191 and choose the cancellation option (90-day minimum; leased devices must be returned).",
+      "channel": "phone",
+      "phone": "8003131191"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "note": "Payment plans are not offered online. Call Member Support at 1-800-313-1191 to discuss your balance.",
+      "channel": "phone",
+      "phone": "8003131191"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalguardian.com/support/faqs/",
+      "phone": "8003131191"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    }
+  },
+  "billing": {
+    "source": "https://www.medicalguardian.com/support/faqs/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your Medical Guardian invoice",
+      "topic": "payments",
+      "paragraphs": [
+        "Account Owners can pay in the MyGuardian Member Portal: sign in, open the Billing tab, review the invoice and pay it.",
+        "You can also pay by calling Member Support at 1-800-313-1191, or mail a check to Medical Guardian, PO Box 713269, Chicago, IL 60677-1269 with your account number in the memo line.",
+        "Paying with a debit card or bank account (ACH) avoids the credit card surcharge that may apply to credit card payments."
+      ],
+      "steps": [
+        "Sign in to MyGuardian.",
+        "Open the Billing tab.",
+        "Select the invoice you want to pay.",
+        "Choose your payment method and submit the payment."
+      ],
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "In the MyGuardian portal you can enroll in Autopay or pay single invoices using your bank account information.",
+        "Enrollment is found under the Billing menu, and only the Account Owner can see billing and set up Autopay.",
+        "Your membership renews automatically on the billing cycle you chose (monthly, quarterly or annually) and is charged to the payment method on file."
+      ],
+      "steps": [
+        "Sign in to MyGuardian as the Account Owner.",
+        "Open the Billing menu.",
+        "Choose Autopay and enter your bank account details.",
+        "Confirm the enrollment."
+      ],
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "View and download invoices",
+      "topic": "billing",
+      "paragraphs": [
+        "Open the Billing tab in MyGuardian to see your invoices, download a copy, update your payment method or change your billing address.",
+        "Billing details are shown only to the Account Owner. Other users on the account will not see the Billing tab."
+      ],
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your membership",
+      "topic": "account",
+      "paragraphs": [
+        "Cancellation is done by phone: call 1-800-313-1191 and choose the cancellation option. Written requests can also be sent to the Cancellations department in Philadelphia.",
+        "Every membership has a three-month (90-day) minimum, for both leased and purchased devices.",
+        "Leased equipment must be sent back to Medical Guardian at 106 Henderson Drive, Sharon Hill, PA 19079. The cancellation takes effect once the device is received, which can take up to 30 days to process. If it is not returned within 30 days, a one-time $350 charge is made to your payment method on file.",
+        "Purchased devices are cancelled after you return a signed cancellation letter. Unused prepaid time beyond the minimum is refunded, less a restocking fee of up to $50 for leased devices."
+      ],
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    },
+    {
+      "slug": "faq",
+      "title": "Billing and fees FAQ",
+      "topic": "faq",
+      "paragraphs": [
+        "Memberships bill monthly, quarterly or annually and renew automatically at the end of each period until you cancel.",
+        "If a payment is declined, service may be suspended until a valid payment is received (Terms and Conditions).",
+        "Possible charges: restocking fee up to $50 on leased-device cancellations; $350 for a leased system not returned; up to $150 for a lost or damaged Elite 911; shipping of $12.50 ground, $25 second day or $35 overnight.",
+        "Changing your billing cycle within 12 months of purchase can forfeit promotional discounts.",
+        "A credit card surcharge may apply under the Terms and Conditions; paying by debit card or ACH avoids it."
+      ],
+      "source": "https://www.medicalguardian.com/support/faqs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "unreturned-device-charge",
+        "intent": "You are thinking of cancelling Medical Guardian but may not be able to send back the leased base station. Using the Medical Guardian website, find out how much you would be charged if the leased system is not returned. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$350",
+              "350"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$350",
+            "350"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An unreturned leased system is charged a one-time $350."
+          }
+        ]
+      },
+      {
+        "slug": "mail-payment-address",
+        "intent": "You want to mail a check for your Medical Guardian bill. Using the website, find the PO Box to mail payments to. Do not make a payment online or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "713269"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "713269"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Medical Guardian, PO Box 713269, Chicago, IL 60677-1269, with the account number in the memo line."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email, mobile phone or username"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "register"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-313-1191"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "Sharon Hill",
+        "$350"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "PO Box 713269"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": "Elite 911"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "id": "cigna-healthcare-medicare-healthspring-medicare--2dde42",
+  "version": 1,
+  "status": "dedicated",
+  "name": "HealthSpring Medicare (formerly Cigna Healthcare Medicare)",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public pages only (no sign-in, no account lookup). HealthSpring's 'Medicare Premium Payment Options' page has three sections. Part D: online bill payment service (Convey Health Solutions site) 24/7 by credit/debit card or checking/savings; automatic payments from a bank account or debit card or charged to a credit card, set up or changed online, by phone at 1-800-222-6700 (TTY 711) or by mailing the Recurring Direct Debit or Credit Card Authorization form; Social Security / RRB withdrawal; pay by phone (automated or agent) at 1-800-222-6700; check or money order to P.O. Box 747102, Pittsburgh, PA 15274-7102. Medicare Advantage: 'Pay Your Medicare Premium' in myHealthSpring, autopay from a bank account in myHealthSpring, SSA/RRB via 1-800-668-3813, mail to the invoice address (monthly, quarterly or yearly; payment due by the last day of the month). Medicare Supplement: autopay with monthly/quarterly/semiannual/annual frequency and any draft day 1-28 via myHealthSpring or an EFT form, or quarterly-or-longer direct billing paid by personal check only to P.O. Box 650843, Dallas, TX 75265-0843. The public Convey payment page has no sign-in: it locates the account by 8- or 11-digit Member ID, five-digit ZIP and date of birth, modelled as the guest lookup. Sign-in: reviewer (2026-10-09) opened myhealthspring.com, which shows a Welcome to myHealthSpring page asking for Username and Password, with Forgot username?/Forgot password? and a Sign up link, so username is confirmed. No fees published; how to stop autopay is not described.",
+  "officialDomains": ["healthspring.com", "conveyhs.com", "myhealthspring.com"],
+  "sources": [
+    { "url": "https://www.healthspring.com/medicare/member-resources/premium-payment-options", "title": "Medicare Premium Payment Options | HealthSpring", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://healthspring.conveyhs.com/Account/Login/1", "title": "HealthSpring online premium payment (account lookup)", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://myhealthspring.com/", "title": "Welcome to HealthSpring Customer Login", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "HealthSpring Medicare", "shortName": "HealthSpring", "primary": "#003a70", "accent": "#0a6b5a", "monogram": "HS" },
+  "labels": {
+    "signIn": "Log in",
+    "forgot": "Forgot password?",
+    "register": "Register",
+    "dashboard": "myHealthSpring",
+    "payBill": "Pay Your Medicare Premium",
+    "guestPay": "Online bill payment service",
+    "autopay": "Automatic payments",
+    "help": "Member resources"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in to myHealthSpring", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Online bill payment service", "page": "guest" },
+      { "label": "Premium Payment Options", "helpSlug": "pay-your-bill" },
+      { "label": "Member resources", "page": "help" }
+    ],
+    "account": [
+      { "label": "myHealthSpring", "page": "dashboard" },
+      { "label": "Pay Your Medicare Premium", "page": "pay" },
+      { "label": "Automatic payments", "page": "autopay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": ["accountNumber", "zip", "dob"],
+    "evidence": "observed_public",
+    "source": "https://healthspring.conveyhs.com/Account/Login/1"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.healthspring.com/medicare/member-resources/premium-payment-options" },
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://healthspring.conveyhs.com/Account/Login/1", "note": "The online bill payment service finds your account by Member ID, ZIP code and date of birth." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.healthspring.com/medicare/member-resources/premium-payment-options", "note": "Set up or change automatic payments online, by phone at 1-800-222-6700, or by mailing an authorization form." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.healthspring.com/medicare/member-resources/premium-payment-options", "phone": "8002226700", "note": "Part D members pay through the automated system or an agent at 1-800-222-6700 (TTY 711)." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.healthspring.com/medicare/member-resources/premium-payment-options", "note": "Part D: HealthSpring, P.O. Box 747102, Pittsburgh, PA 15274-7102. Medicare Advantage: the address on your invoice." }
+  },
+  "billing": {
+    "source": "https://www.healthspring.com/medicare/member-resources/premium-payment-options",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Medicare premium payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Prescription drug plan (Part D) members can use the online bill payment service any time, paying by credit or debit card or from a checking or savings account. If you are not the account holder you must be an authorized user. You can also pay by phone through Customer Service or the automated system at 1-800-222-6700 (TTY 711), or mail a check or money order with the bottom part of your invoice to HealthSpring, P.O. Box 747102, Pittsburgh, PA 15274-7102.",
+        "Medicare Advantage members log in or register at myHealthSpring and choose Pay Your Medicare Premium on the home page. You can also mail a check or money order to the address on your invoice; billing can be monthly, quarterly or yearly and the payment must arrive by the last day of the month it is due. If you are unsure of the address, use P.O. Box 742642, Atlanta, GA 30374-2642 or P.O. Box 847990, Dallas, TX 75284-7990."
+      ],
+      "source": "https://www.healthspring.com/medicare/member-resources/premium-payment-options"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Part D premiums can be withdrawn from a bank account or debit card or charged to a credit card each month. Sign up or make changes online, by phone at 1-800-222-6700 (TTY 711), or by mailing the Recurring Direct Debit form or the Credit Card Authorization form.",
+        "Medicare Advantage members set up monthly bank withdrawals in their myHealthSpring account."
+      ],
+      "steps": ["Log in to myHealthSpring.", "Open Automatic payments.", "Choose your bank account or card.", "Confirm the monthly withdrawal."],
+      "source": "https://www.healthspring.com/medicare/member-resources/premium-payment-options"
+    },
+    {
+      "slug": "medicare-supplement-billing",
+      "title": "Medicare Supplement billing choices",
+      "topic": "payments",
+      "paragraphs": [
+        "Medicare Supplement premiums can be paid automatically monthly, quarterly, semiannually or annually, and you choose any draft date from the 1st to the 28th of the month. Set this up in myHealthSpring or call Customer Service, Monday to Friday 8 a.m. to 8 p.m. ET, to get an electronic funds transfer form.",
+        "If you prefer a paper bill, direct billing is available for quarterly, semiannual or annual payments. Pay by personal check only; cash, money orders and traveler's checks are not accepted. Mail to HealthSpring, P.O. Box 650843, Dallas, TX 75265-0843."
+      ],
+      "source": "https://www.healthspring.com/medicare/member-resources/premium-payment-options"
+    },
+    {
+      "slug": "social-security-deduction",
+      "title": "Paying from your Social Security or RRB check",
+      "topic": "payments",
+      "paragraphs": [
+        "Part D members can have the premium withdrawn from their Social Security or Railroad Retirement Board benefit by signing up for monthly withdrawals.",
+        "Medicare Advantage members call Customer Service at 1-800-668-3813 (TTY 711) to pay using their Social Security or RRB benefit check."
+      ],
+      "source": "https://www.healthspring.com/medicare/member-resources/premium-payment-options"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "medigap-direct-bill-check-types",
+        "intent": "You have a HealthSpring Medicare Supplement policy on direct billing. Using HealthSpring's help pages, find which form of payment you must mail (and which forms are not accepted). Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["personal check"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["personal check"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Only a personal check; cash, money orders and traveler's checks are not accepted." }]
+      },
+      {
+        "slug": "ma-ssa-deduction-phone",
+        "intent": "You are a HealthSpring Medicare Advantage member and want your premium paid from your Social Security check. Using HealthSpring's help pages, find the phone number to call. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8006683813"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8006683813"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Call Customer Service at 1-800-668-3813 (TTY 711)." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": ["ZIP", "Date of birth"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Pay Your Medicare Premium", "Automatic payments"] },
+    { "page": "helpArticle", "slug": "medicare-supplement-billing", "contains": "1st to the 28th" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "P.O. Box 747102" }
+  ]
+}

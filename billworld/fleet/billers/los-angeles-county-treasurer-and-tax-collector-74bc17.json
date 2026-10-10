@@ -1,0 +1,345 @@
+{
+  "id": "los-angeles-county-treasurer-and-tax-collector-74bc17",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Los Angeles County Treasurer and Tax Collector",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public ttc.lacounty.gov pages only (no sign-in, no bill lookup). The real county site has no taxpayer login for paying a single secured bill: payments are made by Assessor's Identification Number (AIN), with the bill PIN optional, so the signed-in 'My Properties' account in the mock is a simulation choice (synthetic); the email sign-in is likewise synthetic. eCheck is free; cards cost 2.22% with a $1.49 minimum (the minimum cannot be expressed in the dossier, only the percentage is charged). Two installments: due Nov 1 / Feb 1, delinquent after Dec 10 / Apr 10, 10% penalty (plus $10 cost on the second). The county itself has no automatic-payment program; monthly automated prepayment is offered only through the third-party Easy Smart Pay platform, so AutoPay is marked unsupported online. Current-year annual taxes are not eligible for a payment plan; plans (Four-Pay for escaped assessments, Five-Pay for defaulted taxes) are applied for by mailed application. eCheck limit $2,500,000 per transaction, card limit $99,999.99 (not expressible as a range the engine enforces, max kept at default). Payment plans are NOT available for current-year taxes. Review 2026-10-09: payment_arrangement and paperless are now unsupported with notes (no current-year plans; no paperless bill on any page read); the server now drops the plan form when a plan is unsupported. Integrated 2026-10-09: payment_arrangement marked unsupported now that the payment-plan page explains instead of showing a form.",
+  "officialDomains": [
+    "ttc.lacounty.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://ttc.lacounty.gov/pay-your-property-taxes/",
+      "title": "PAYMENT OPTIONS – Treasurer and Tax Collector",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://ttc.lacounty.gov/property-tax-installment-plans/",
+      "title": "Property Tax Installment Plans – Treasurer and Tax Collector",
+      "fetchedAt": "2026-10-05",
+      "kind": "plans"
+    },
+    {
+      "url": "https://ttc.lacounty.gov/secured-property-taxes-frequently-asked-questions/",
+      "title": "Secured Property Taxes Frequently Asked Questions",
+      "fetchedAt": "2026-10-05",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Los Angeles County Treasurer and Tax Collector",
+    "shortName": "LA County Treasurer and Tax Collector",
+    "primary": "#1d3b6f",
+    "accent": "#5b4a00",
+    "monogram": "LA"
+  },
+  "labels": {
+    "payBill": "Pay Your Property Taxes",
+    "guestPay": "Pay Online by AIN",
+    "history": "Payment History Summary",
+    "statements": "Request Duplicate Bill",
+    "help": "Secured Property Taxes FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Online by AIN",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Installment Plans",
+        "helpSlug": "installment-plans"
+      },
+      {
+        "label": "Secured Property Taxes FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Your Property Taxes",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History Summary",
+        "page": "history"
+      },
+      {
+        "label": "Request Duplicate Bill",
+        "page": "statements"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ttc.lacounty.gov/pay-your-property-taxes/",
+      "note": "Pay online with the Assessor's Identification Number (AIN); the PIN on the original bill is optional."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://ttc.lacounty.gov/pay-your-property-taxes/",
+      "channel": "none",
+      "note": "The Tax Collector has no automatic payment program. Monthly automated prepayments are offered only through the third-party Easy Smart Pay platform, outside this site."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ttc.lacounty.gov/pay-your-property-taxes/",
+      "phone": "8884730835",
+      "note": "Credit/debit card only, 2.22% fee (minimum $1.49)."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ttc.lacounty.gov/pay-your-property-taxes/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ttc.lacounty.gov/secured-property-taxes-frequently-asked-questions/"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://ttc.lacounty.gov/secured-property-taxes-frequently-asked-questions/",
+      "note": "Annual secured tax bills are mailed each fall. The Tax Collector lists no paperless bill option; view a copy online through Request Duplicate Bill.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://ttc.lacounty.gov/property-tax-installment-plans/",
+      "note": "Current-year taxes cannot go on a payment plan; plans for escaped or defaulted taxes are requested by mailed application.",
+      "channel": "mail"
+    }
+  },
+  "billing": {
+    "source": "https://ttc.lacounty.gov/pay-your-property-taxes/",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.22,
+      "evidence": "documented_official",
+      "source": "https://ttc.lacounty.gov/pay-your-property-taxes/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "lateFeePercent": 10
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online by eCheck at no cost, or by credit or debit card for a fee of 2.22% of the payment (at least $1.49). You need the Assessor's Identification Number (AIN) from your bill; the PIN printed on the original bill is optional. eChecks are limited to $2,500,000 per transaction and card payments to $99,999.99.",
+        "Card payments are also taken by phone at 1-888-473-0835 for the same 2.22% fee. To pay by mail, make the check payable to the Los Angeles County Tax Collector, write the AIN in the lower left corner, and mail it to P.O. Box 54018, Los Angeles, CA 90054-0018.",
+        "In person, the downtown office at 225 North Hill Street (first-floor lobby) is open weekdays 8 a.m. to 5 p.m.; it is the only location that accepts cash."
+      ],
+      "source": "https://ttc.lacounty.gov/pay-your-property-taxes/"
+    },
+    {
+      "slug": "due-dates-penalties",
+      "title": "Due dates and penalties",
+      "topic": "billing",
+      "paragraphs": [
+        "The annual secured bill is paid in two installments. The first is due November 1 and becomes delinquent after December 10; the second is due February 1 and becomes delinquent after April 10.",
+        "A late first installment is charged a 10% penalty. A late second installment is charged a 10% penalty plus a $10 cost. A payment counts as on time if it is received, or postmarked by the U.S. Postal Service, by the delinquency date. Online card payments are accepted until 11:59 p.m. Pacific time on the delinquency date.",
+        "Partial payments are accepted and reduce the delinquent penalty in proportion."
+      ],
+      "source": "https://ttc.lacounty.gov/secured-property-taxes-frequently-asked-questions/"
+    },
+    {
+      "slug": "installment-plans",
+      "title": "Installment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "Current-year annual property taxes cannot be put on a payment plan.",
+        "The Four-Pay Plan spreads an escaped assessment of more than $500 (a prior-year value correction that was not billed before) over four years without penalties or interest, if you start it before the delinquency date.",
+        "The Five-Pay Plan lets you redeem defaulted taxes over five years, paying 20% each year, and keeps the property from being sold at public auction. Both plans are requested by mailing the completed application with a payment to the Exceptions Processing unit. For questions call 213-974-2111."
+      ],
+      "source": "https://ttc.lacounty.gov/property-tax-installment-plans/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Monthly automated payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "The Tax Collector does not draft property tax payments automatically. If you want to set money aside monthly, the county lists Easy Smart Pay, a third-party platform outside this site; its eCheck fees start at 0% and its card fees start at 1.99%."
+      ],
+      "source": "https://ttc.lacounty.gov/pay-your-property-taxes/"
+    },
+    {
+      "slug": "bill-copy-history",
+      "title": "Copy of your bill and payment history",
+      "topic": "billing",
+      "paragraphs": [
+        "If your annual secured bill did not arrive, you can view a copy online once it is available through the Request Duplicate Bill page.",
+        "To confirm a payment, check the Payment History Summary and current balance online, or call 1-888-807-2111. Mailing address changes are handled by the Office of the Assessor, not the Tax Collector."
+      ],
+      "source": "https://ttc.lacounty.gov/secured-property-taxes-frequently-asked-questions/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-rate",
+        "intent": "Using the LA County Treasurer and Tax Collector website's help pages, find the fee charged for paying property taxes by credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.22%",
+              "2.22 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.22%",
+            "2.22 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments cost 2.22% of the payment, with a $1.49 minimum; eCheck is free."
+          }
+        ]
+      },
+      {
+        "slug": "second-installment-delinquency",
+        "intent": "Using the LA County Treasurer and Tax Collector website's help pages, find the date after which the second property tax installment becomes delinquent. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "April 10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "April 10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "due_date"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The second installment becomes delinquent after April 10."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Installment Plans",
+        "Secured Property Taxes FAQs"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": "Parcel number"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment History Summary",
+        "Request Duplicate Bill"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.22%",
+        "1-888-473-0835"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-dates-penalties",
+      "contains": "April 10"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "installment-plans",
+      "contains": "Five-Pay Plan"
+    }
+  ]
+}

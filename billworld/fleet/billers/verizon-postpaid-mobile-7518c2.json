@@ -1,0 +1,455 @@
+{
+  "id": "verizon-postpaid-mobile-7518c2",
+  "status": "dedicated",
+  "name": "Verizon (postpaid mobile)",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public verizon.com support FAQ pages only (no sign-in). My Verizon sign-in takes a User ID or the 10-digit Verizon mobile number, then a password (or approving a push on the phone); the dossier models this as a two-step phone-number sign-in. The sign-in help page documents a password or a push approval on the phone; the text-code second factor (mfa sms) is inferred. Online payments (My Verizon or Pay my bill without signing in using account number + ZIP) accept checking, credit/debit cards and Verizon Gift Cards with no fee; agent-assisted payments carry a $10 Agent Assistance fee; #PMT is free. Auto Pay accepts bank, debit or credit card, but only bank account or Verizon Visa earn the discount (up to $10/line on current myPlan tiers, up to $5 on older plans) and only together with paper-free billing; the discount-by-method rule cannot be expressed. Payment arrangements (scheduled payment or promise to pay, 1-2 payments, usually up to about 2 weeks past due) are self-service in My Verizon. Late fee is the greater of $10 or 5% on past-due balances over $10; only the 5% part is modelled. Disconnecting a line or closing the account is done through Chat with us in My Verizon or by phone (agent), not a self-service form, so cancel_service is marked unsupported online. Plan prices are not modelled: myPlan prices on the public pages were inconsistent (family default plans kept).",
+  "officialDomains": [
+    "verizon.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.verizon.com/support/pay-bill-faqs/",
+      "title": "Pay your mobile bill FAQs | Verizon",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.verizon.com/support/auto-pay-faqs/",
+      "title": "Set up Auto Pay for monthly mobile bill discounts FAQs | Verizon",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.verizon.com/support/promise-to-pay-faqs/",
+      "title": "Payment arrangements (promise to pay) FAQs | Verizon",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.verizon.com/support/view-bill-online-faqs/",
+      "title": "View your bill online FAQs | Verizon",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.verizon.com/support/disconnect-cancel-mobile/",
+      "title": "How to disconnect a mobile line or close your mobile phone account FAQs | Verizon",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.verizon.com/support/knowledge-base-41025/",
+      "title": "My Verizon Website - Sign In | Verizon",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Verizon",
+    "shortName": "Verizon",
+    "primary": "#cd040b",
+    "accent": "#000000",
+    "monogram": "V"
+  },
+  "labels": {
+    "dashboard": "My Verizon",
+    "viewBill": "Bill overview",
+    "statements": "Billing history",
+    "payBill": "Pay bill",
+    "autopay": "Auto Pay",
+    "paperless": "Paper-free billing",
+    "arrangement": "Payment arrangement",
+    "history": "Payment history",
+    "wallet": "Payment methods",
+    "guestPay": "Pay without signing in",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "username": "User ID or Verizon mobile number",
+    "help": "Support",
+    "profile": "Profile",
+    "cancel": "Disconnect service",
+    "forgot": "Forgot user ID or password?"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay without signing in",
+        "page": "guest"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Pay bill FAQs",
+        "helpSlug": "ways-to-pay"
+      },
+      {
+        "label": "Auto Pay",
+        "helpSlug": "auto-pay"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Verizon",
+        "page": "dashboard"
+      },
+      {
+        "label": "Bill overview",
+        "page": "bill"
+      },
+      {
+        "label": "Pay bill",
+        "page": "pay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paper-free billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Billing history",
+        "page": "statements"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.verizon.com/support/knowledge-base-41025/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/pay-bill-faqs/",
+      "note": "Pay without signing in needs the account number and billing ZIP code."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/auto-pay-faqs/",
+      "note": "Only the Account Owner or an Account Manager can enroll; the discount needs a bank account or Verizon Visa Card plus paper-free billing."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/auto-pay-faqs/",
+      "note": "Use Manage your payment settings, then Pause or turn off. Pausing skips only the next payment."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/view-bill-online-faqs/",
+      "note": "Only the Account Owner can change bill delivery, on the Payment settings page."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/pay-bill-faqs/"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/promise-to-pay-faqs/",
+      "note": "Eligibility depends on account history; usually up to about 2 weeks past the due date, in 1 or 2 payments."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/disconnect-cancel-mobile/",
+      "note": "Lines are disconnected through Chat with us in My Verizon (type Cancel) or by calling Customer Service at 800-922-0204 with the Account PIN. Disconnects take effect at the end of the bill period.",
+      "channel": "phone",
+      "phone": "8009220204"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/pay-bill-faqs/",
+      "note": "Dial #PMT from your Verizon phone or call 800-922-0204; agent-assisted payments cost $10."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/pay-bill-faqs/"
+    }
+  },
+  "billing": {
+    "source": "https://www.verizon.com/support/pay-bill-faqs/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.verizon.com/support/pay-bill-faqs/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeePercent": 5
+  },
+  "help": [
+    {
+      "slug": "ways-to-pay",
+      "title": "Ways to pay your Verizon mobile bill",
+      "paragraphs": [
+        "You can pay in the My Verizon app or website at no charge, or without signing in on the Pay my bill page using your account number and billing ZIP code. Online you can use a checking account, a credit or debit card, or a Verizon Gift Card. My Verizon holds up to 2 checking accounts and up to 6 cards.",
+        "By phone, dial #PMT from your Verizon mobile or call 800-922-0204; you need your Account PIN. Paying through a Customer Service representative adds a $10 Agent Assistance fee, which the other methods do not charge.",
+        "You can also pay at a Verizon store kiosk, in cash at CheckFreePay or Western Union locations (those may charge up to $3), or by mailing a check or money order to the ZIP-specific address listed under Contact us. Returned checks cost $20 to $30 depending on your state."
+      ],
+      "source": "https://www.verizon.com/support/pay-bill-faqs/",
+      "topic": "payments"
+    },
+    {
+      "slug": "auto-pay",
+      "title": "Auto Pay",
+      "paragraphs": [
+        "Account Owners and Account Managers can turn on Auto Pay in My Verizon or by phone. You can pay from a bank account, debit card or credit card, but only a bank account or a Verizon Visa Card qualifies for the Auto Pay discount, and you must also use paper-free billing.",
+        "Current myPlan tiers get up to $10 off per line each month; many older plans get up to $5. The discount starts with the bill cycle after you enroll. Paying by credit card online or in the app removes the discount for that bill.",
+        "To skip one payment, open Manage your payment settings, choose Pause or turn off, then Pause (any day before the payment posts). To stop Auto Pay, choose Pause or turn off, then Turn off. A one-time payment of the full balance skips the next Auto Pay."
+      ],
+      "source": "https://www.verizon.com/support/auto-pay-faqs/",
+      "steps": [
+        "Sign in to My Verizon.",
+        "Open Manage your payment settings.",
+        "Select Pause or turn off.",
+        "Choose Pause (one payment) or Turn off."
+      ],
+      "topic": "autopay"
+    },
+    {
+      "slug": "payment-arrangements",
+      "title": "Payment arrangements and promise to pay",
+      "paragraphs": [
+        "If you cannot pay on time, the Account Owner or an Account Manager can set up an arrangement when an amount is due. A scheduled payment picks a future date, amount and method (sometimes split over 2 dates); a promise to pay is a commitment to pay a set amount on a chosen day.",
+        "Arrangements usually reach about 2 weeks past the original due date and depend on your account history. They are free in My Verizon, at a store kiosk or by dialing #PMT; setting one up with an agent or Live Chat costs $10.",
+        "Late fees still apply: when a past-due balance exceeds $10 Verizon charges the greater of $10 or 5% of the unpaid balance. If service was suspended for non-payment, a $20 per line reconnection fee is added to the next bill."
+      ],
+      "source": "https://www.verizon.com/support/promise-to-pay-faqs/",
+      "topic": "payments"
+    },
+    {
+      "slug": "paper-free-billing",
+      "title": "Paper-free billing and billing history",
+      "paragraphs": [
+        "Paper-free billing is on automatically for new customers. Only the Account Owner can change bill delivery, on the Payment settings page in My Verizon. Switching back to paper can cost you the Auto Pay discount.",
+        "Your latest bill appears on Bill overview 3 to 5 days after the billing period ends. Open the Billing history tile and choose Review History to view, download or print up to 24 months of past bills; for older bills, use Chat with us."
+      ],
+      "source": "https://www.verizon.com/support/view-bill-online-faqs/",
+      "topic": "billing"
+    },
+    {
+      "slug": "disconnect-service",
+      "title": "Disconnect a line or close your account",
+      "paragraphs": [
+        "There is no self-service disconnect form. Sign in to My Verizon, choose Chat with us and type Cancel to disconnect a line or close the account, or call Customer Service with the Account Owner's name, phone number and Account PIN.",
+        "A disconnect takes effect on the last day of the bill period in which you ask, so schedule it near the end of your cycle. Any Device Payment balance must be paid off before the line it belongs to can be disconnected. You can withdraw a pending disconnect up to the day before it happens.",
+        "If you move all your numbers to another carrier, keep the Verizon account open until the last line has moved and the final bill is issued; ported numbers close the account automatically, but if you took new numbers you must close it yourself."
+      ],
+      "source": "https://www.verizon.com/support/disconnect-cancel-mobile/",
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "agent-assist-fee",
+        "intent": "Using Verizon's support pages, find the fee Verizon charges when you pay your mobile bill through a Customer Service representative. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10",
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10",
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Verizon charges a $10 Agent Assistance fee."
+          }
+        ]
+      },
+      {
+        "slug": "reconnection-fee",
+        "intent": "Find out how much Verizon charges per line to reconnect mobile service that was suspended for non-payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$20",
+              "20"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$20",
+            "20"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The reconnection fee is $20 per line."
+          }
+        ]
+      },
+      {
+        "slug": "billing-history-months",
+        "intent": "Using Verizon's help pages, find how many months of past bills you can view in Billing history in My Verizon. Do not change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 24 months of past bills."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "User ID or Verizon mobile number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Bill overview",
+        "Paper-free billing"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "800-922-0204"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "ways-to-pay",
+      "contains": "$10 Agent Assistance fee"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    }
+  ],
+  "version": 1
+}

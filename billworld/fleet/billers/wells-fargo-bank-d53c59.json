@@ -1,0 +1,371 @@
+{
+  "id": "wells-fargo-bank-d53c59",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Wells Fargo Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public wellsfargo.com pages only (no sign-in). The mock bill is a Wells Fargo Auto loan. Online: pay now or schedule up to 30 days ahead (scheduled.maxDaysAhead 30); past-due loans may be limited to same-day payments, and customers with more than two NSF payments in 12 months cannot pay online (not modelled). Autopay debits checking or savings monthly, set up from Account Summary > Set up Autopay; changes mean cancelling and re-enrolling; allow 3 business days before a draft. Due date may be changed once per loan by phone only (within 15 days of the current date; account current or <=10 days past due). Pay-ahead capped at 3 months. Up to 12 months of auto loan statements online; paperless via Statements and Documents > Manage Delivery Preferences. Phone 1-800-289-8004 (24/7 automated). MoneyGram/Western Union third-party fees exist but amounts are not published (not modelled). Sign-on: username + password; two-step verification passcode by text or phone call (voice call not modelled; sms used). Reviewed 2026-10-09: sign-on labels checked on the public sign-on page; the delivery-option name is not published, so help no longer names one.",
+  "officialDomains": [
+    "wellsfargo.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/",
+      "title": "Auto loans FAQs | Wells Fargo",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.wellsfargo.com/auto-loans/make-payments/",
+      "title": "How to make car payments and pay your Wells Fargo auto loan",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.wellsfargo.com/mobile-online-banking/statements/",
+      "title": "Go Paperless with Bank Statements Online | Wells Fargo",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.wellsfargo.com/help/online-banking/sign-on-faqs/",
+      "title": "Forgot Password/Username? | Wells Fargo",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.wellsfargo.com/privacy-security/fraud/articles/two-factor-authentication/",
+      "title": "How to Set Up Two-Step Verification | Wells Fargo",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://connect.secure.wellsfargo.com/auth/login/present",
+      "title": "Sign On to View Your Personal Accounts | Wells Fargo",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Wells Fargo",
+    "shortName": "Wells Fargo",
+    "primary": "#b31b1b",
+    "accent": "#7a5a00",
+    "monogram": "WF"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Autopay",
+    "paperless": "Manage Delivery Preferences",
+    "statements": "Statements and Documents",
+    "dashboard": "Account Summary",
+    "signIn": "Sign On",
+    "signOut": "Sign Off",
+    "username": "Username",
+    "forgot": "Forgot username or password?",
+    "register": "Enroll"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign On",
+        "page": "login"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Make payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Auto loans FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements and Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Manage Delivery Preferences",
+        "page": "paperless"
+      },
+      {
+        "label": "Help with payments",
+        "page": "arrangement"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "sms",
+    "evidence": "documented_official",
+    "source": "https://www.wellsfargo.com/privacy-security/fraud/articles/two-factor-authentication/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/",
+      "note": "Allow at least 3 business days before the scheduled withdrawal when you enroll or change Autopay."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/",
+      "phone": "1-800-289-8004"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/",
+      "note": "There is no pay-without-signing-on option. Sign on to pay online, call 1-800-289-8004, or pay at any Wells Fargo branch.",
+      "channel": "phone",
+      "phone": "1-800-289-8004"
+    }
+  },
+  "billing": {
+    "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "scheduled": {
+      "maxDaysAhead": 30
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your auto loan",
+      "paragraphs": [
+        "Sign on to Wells Fargo Online or the Wells Fargo Mobile app to make a one-time payment now or schedule one up to 30 days ahead. If your loan is past due you may only be able to make a same-day payment.",
+        "You can also use the automated phone system at 1-800-289-8004 (24 hours a day), mail a check or money order payable to Wells Fargo Auto to the address on your statement, or pay at any Wells Fargo branch, even without a Wells Fargo account. MoneyGram and Western Union payments may carry third-party fees."
+      ],
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up, change or cancel Autopay",
+      "paragraphs": [
+        "With Autopay your monthly payment comes out of your checking or savings account. Sign on, choose your auto loan in Account Summary and select Set up Autopay. You can also enroll by phone at 1-800-289-8004 or with the mailed authorization form.",
+        "To change Autopay, cancel the current schedule and set it up again. To stop it, sign on and use Manage Autopay. Allow at least 3 business days before the scheduled withdrawal."
+      ],
+      "steps": [
+        "Sign on to Wells Fargo Online.",
+        "Select your auto loan from Account Summary.",
+        "Choose Set up Autopay.",
+        "Pick the account and confirm."
+      ],
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    {
+      "slug": "due-date-change",
+      "title": "Changing your payment due date",
+      "topic": "billing",
+      "paragraphs": [
+        "You can change your due date once for the whole loan by calling 1-800-289-8004. Your first payment must have been made, the new date must be within 15 days of your current date, and the account must be current or no more than 10 days past due.",
+        "Your monthly payment stays the same; the maturity date adjusts."
+      ],
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Statements and paperless delivery",
+      "paragraphs": [
+        "View, download and print up to 12 months of auto loan statements under Statements and Documents online or in the app.",
+        "To change how statements arrive, sign on, open Statements and Documents and choose Manage Delivery Preferences. There is no charge for online statements."
+      ],
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    {
+      "slug": "extra-payments",
+      "title": "Paying ahead and paying extra",
+      "topic": "billing",
+      "paragraphs": [
+        "Extra money reduces principal and counts toward your next payment due. Once the account is paid ahead 3 months, additional payments no longer move the due date forward.",
+        "Interest accrues daily, so the time between payments affects how much interest you pay."
+      ],
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    {
+      "slug": "payment-help",
+      "title": "Help with auto loan payments",
+      "topic": "billing",
+      "paragraphs": [
+        "If you are having trouble paying, options can include a due date change or a payment deferral; a deferral extends the term and interest keeps accruing. Eligible servicemembers may qualify for SCRA benefits at 1-877-254-9687. Otherwise call 1-800-289-8004."
+      ],
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "schedule-window",
+        "intent": "Using Wells Fargo's auto loan help, find how many days in advance an online auto loan payment can be scheduled. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 30 days in advance."
+          }
+        ]
+      },
+      {
+        "slug": "due-date-change-rule",
+        "intent": "Using Wells Fargo's auto loan FAQs, find how many times the payment due date can be changed over the life of an auto loan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "once",
+              "one time",
+              "1 time",
+              "one change"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "once",
+            "one time",
+            "1 time",
+            "one change"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Only once for the life of the loan."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": "Sign On"
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Autopay"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date-change",
+      "contains": "within 15 days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "30 days"
+    }
+  ]
+}

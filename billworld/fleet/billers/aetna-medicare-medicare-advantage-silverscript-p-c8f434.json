@@ -1,0 +1,142 @@
+{
+  "id": "aetna-medicare-medicare-advantage-silverscript-p-c8f434",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Aetna Medicare (Medicare Advantage, SilverScript Part D)",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public pages only (no sign-in, no Pay Now lookup). Aetna's 'Pay your Medicare premium' page splits PDP and MA/MAPD: PDP premiums are paid online through InstaMed ('Pay PDP premium'), MA/MAPD premiums through Payer Express ('Pay MA/MAPD premium'); both allow a one-time payment or automatic monthly payments, and the payment sites have their own login separate from the Aetna member site. Payer said to need the member ID, date of birth and card or bank details. Social Security / RRB deduction is set up by calling Aetna (the page lists no other route) (PDP 1-866-824-4055; MA the number on the ID card). Cash, credit or debit at CVS stores with the invoice (not CVS inside Target or Schnucks). Mail a check with the invoice coupon. PDP pay by phone 1-855-651-4856, 24/7. The mock models the MA/MAPD Payer Express site, whose public sign-in page shows 'Login ID' / 'Password', an 'Enroll' link and a 'Pay Now' tab asking for Member ID and Date of Birth. Stopping automatic payments is not described on public pages (left at the family default). No fees published.",
+  "officialDomains": ["aetna.com", "payerexpress.com"],
+  "sources": [
+    { "url": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html", "title": "Pay your Medicare premium | Aetna Medicare", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://ww3.payerexpress.com/ebp/AetnaMP/", "title": "Aetna Medicare premium payments (Payer Express)", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "Aetna Medicare", "shortName": "Aetna", "primary": "#7d3f98", "accent": "#4b286d", "monogram": "A" },
+  "labels": {
+    "signIn": "Login",
+    "username": "Login ID",
+    "register": "Enroll",
+    "forgot": "Password Help?",
+    "guestPay": "Pay Now",
+    "payBill": "Pay MA/MAPD premium",
+    "autopay": "Automatic monthly payments",
+    "history": "Payment history"
+  },
+  "nav": {
+    "public": [
+      { "label": "Login", "page": "login" },
+      { "label": "Pay Now", "page": "guest" },
+      { "label": "Enroll", "page": "register" },
+      { "label": "Pay your Medicare premium", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Account status", "page": "dashboard" },
+      { "label": "View and pay bills", "page": "pay" },
+      { "label": "Automatic monthly payments", "page": "autopay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Contact", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": ["accountNumber", "dob"],
+    "evidence": "observed_public",
+    "source": "https://ww3.payerexpress.com/ebp/AetnaMP/"
+  },
+  "capabilities": {
+    "registration": { "support": "supported", "evidence": "observed_public", "source": "https://ww3.payerexpress.com/ebp/AetnaMP/", "note": "Enroll to create a Login ID for the premium payment site; it may differ from your Aetna member site login." },
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html" },
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://ww3.payerexpress.com/ebp/AetnaMP/", "note": "Pay Now: a one-time payment as a guest with your Member ID and date of birth." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html", "phone": "8556514856", "note": "PDP members call 1-855-651-4856, 24/7; MA members call the number on the member ID card." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html", "note": "Mail a check with the invoice coupon to the address on your invoice." }
+  },
+  "billing": {
+    "source": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your Medicare premium",
+      "topic": "payments",
+      "paragraphs": [
+        "Aetna Medicare Advantage (MA/MAPD) members pay online through Payer Express, and prescription drug plan (PDP) members pay through InstaMed. On either site you can make a one-time payment or set up automatic monthly payments. The payment site login may be different from your Aetna member website login.",
+        "To pay you need your Aetna member ID number, your date of birth, and your card or bank account details.",
+        "You can also mail a check with your invoice coupon, in a stamped envelope, to the address on your invoice. Employer and group plan members follow the payment options in their employer materials."
+      ],
+      "source": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html"
+    },
+    {
+      "slug": "pay-at-cvs",
+      "title": "Paying at a CVS store",
+      "topic": "payments",
+      "paragraphs": [
+        "Bring your invoice to a CVS retail store and pay with cash, credit or debit. CVS Pharmacy locations inside Target or Schnucks stores cannot take premium payments."
+      ],
+      "source": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html"
+    },
+    {
+      "slug": "social-security-deduction",
+      "title": "Paying from Social Security or RRB benefits",
+      "topic": "payments",
+      "paragraphs": [
+        "You can have your premium taken out of your monthly Social Security or Railroad Retirement Board benefit. Aetna sets this up when you call; the payment sites do not offer it.",
+        "Prescription drug plan members call 1-866-824-4055. Medicare Advantage members call the number on their Aetna member ID card."
+      ],
+      "source": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html"
+    },
+    {
+      "slug": "pay-by-phone",
+      "title": "Pay by phone",
+      "topic": "payments",
+      "paragraphs": [
+        "Prescription drug plan members can pay by phone at 1-855-651-4856, 24 hours a day, 7 days a week. Medicare Advantage members call the number on their member ID card, or look up their plan's contact page if they cannot find it."
+      ],
+      "source": "https://www.aetna.com/medicare/for-members/pay-medicare-premium.html"
+    },
+    {
+      "slug": "register",
+      "title": "Enroll in the premium payment site",
+      "topic": "account",
+      "paragraphs": [
+        "Enroll to create a Login ID and password. Once enrolled you can view and pay bills, set up automatic monthly payments, and see your account status and payment history. You can also continue as a guest with Pay Now to make a single payment without enrolling."
+      ],
+      "source": "https://ww3.payerexpress.com/ebp/AetnaMP/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "cvs-excluded-stores",
+        "intent": "You want to pay your Aetna Medicare premium in cash at a CVS. Using Aetna's help pages, find which CVS Pharmacy locations cannot take the payment. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["Target"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["Target"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "CVS Pharmacy locations inside Target or Schnucks stores." }]
+      },
+      {
+        "slug": "pdp-ssa-deduction-phone",
+        "intent": "You have an Aetna prescription drug plan and want the premium taken from your Social Security check. Using Aetna's help pages, find the phone number to call to set this up. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8668244055"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8668244055"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Call 1-866-824-4055." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["Login ID", "Password Help?"] },
+    { "page": "guest", "contains": "Date of birth" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Automatic monthly payments", "Payment history"] },
+    { "page": "helpArticle", "slug": "pay-at-cvs", "contains": "Schnucks" },
+    { "page": "helpArticle", "slug": "social-security-deduction", "contains": "1-866-824-4055" }
+  ]
+}

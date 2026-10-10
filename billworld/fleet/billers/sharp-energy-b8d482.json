@@ -1,0 +1,358 @@
+{
+  "id": "sharp-energy-b8d482",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Sharp Energy",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public sharpenergy.com pages (Payment Options, Payment Assistance Program) and the public myaccount.sharpenergy.com Customer Login page only; no sign-in, no sign-up, no payment started. The login form labels the field Username but its placeholder asks for an Email, so the identifier is email with the Username label; links are Sign Up, Forgot Password? and Make a Payment (one-time payment without signing in). No MFA is described. AutoPay (Automatic Direct Debit) drafts checking/savings or a Visa/MasterCard/Discover card on the 5th, 10th or 15th of the month (customer picks). Stopping AutoPay is not documented (inferred). Credit cards carry a surcharge (amount not published, so not modelled); debit cards do not. Florida Public Utilities propane customers were renamed to Sharp Energy and keep their logins. No budget billing, late fee or online close-account path is published, so those are not claimed. Chesapeake SHARING grants up to $200 per calendar year for eligible customers. Independent review 2026-10-09: payment options, assistance and login pages re-checked (Username label with Email placeholder, Sign Up, Forgot Password?, Make a Payment, FPU notice, 5th/10th/15th drafts, 3 p.m./2 p.m. cutoffs, P.O. Box 829981, Western Union, SHARING up to $200). Sharp's contact page lists 888-742-7740 only for leaks, odors and emergencies; it is kept as the pay-by-phone number (the catalog also lists it for customer service and the IVR) with that caveat in the note.",
+  "officialDomains": [
+    "sharpenergy.com"
+  ],
+  "sources": [
+    {
+      "url": "https://myaccount.sharpenergy.com/",
+      "title": "Sharp Energy Online Customer Portal - Customer Login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.sharpenergy.com/residential/payment-options/",
+      "title": "Payment Options | Sharp Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.sharpenergy.com/residential/payment-assistance-program/",
+      "title": "Payment Assistance Program | Sharp Energy",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "Sharp Energy",
+    "primary": "#00468b",
+    "accent": "#c8102e",
+    "monogram": "SE"
+  },
+  "labels": {
+    "signIn": "Login",
+    "username": "Username",
+    "forgot": "Forgot Password?",
+    "register": "Sign Up",
+    "guestPay": "Make a Payment",
+    "dashboard": "Online Customer Portal",
+    "autopay": "Automatic Direct Debit",
+    "paperless": "Paperless Billing",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Sign Up",
+        "page": "register"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Online Customer Portal",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Automatic Direct Debit",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://myaccount.sharpenergy.com/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://myaccount.sharpenergy.com/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharpenergy.com/residential/payment-options/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.sharpenergy.com/residential/payment-options/",
+      "note": "AutoPay is enrolled in the portal; turning it off there is assumed."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharpenergy.com/residential/payment-options/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharpenergy.com/residential/payment-options/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharpenergy.com/residential/payment-options/",
+      "phone": "888-742-7740",
+      "note": "One-time payments through the automated phone system (IVR) or a representative. The payment page does not print the IVR number; 888-742-7740 is the one number Sharp's public pages list."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharpenergy.com/residential/payment-options/"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharpenergy.com/residential/payment-assistance-program/"
+    }
+  },
+  "billing": {
+    "source": "https://www.sharpenergy.com/residential/payment-options/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": [
+        5,
+        10,
+        15
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "The Online Customer Portal is free and open around the clock for paying bills, enrolling in AutoPay and going paperless. First-time users register their propane account with Sign Up. Make a Payment on the login page takes a one-time payment without signing in.",
+        "You can also pay through the automated phone system with a credit card, debit card or checking account, mail a check payable to Sharp Energy to P.O. Box 829981, Philadelphia, PA 19182-9981, or pay cash at a participating Western Union agent (Western Union charges its own fee).",
+        "Credit card payments carry a surcharge; debit cards do not. Portal payments made after 3 p.m. and one-time card payments made after 2 p.m. post the next business day."
+      ],
+      "source": "https://www.sharpenergy.com/residential/payment-options/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Direct Debit",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay drafts your checking or savings account, or charges a Visa, MasterCard or Discover card, on the draft date you choose: the 5th, 10th or 15th of each month. Enroll in the Online Customer Portal."
+      ],
+      "steps": [
+        "Log in to the Online Customer Portal.",
+        "Open Automatic Direct Debit.",
+        "Choose a bank account or card.",
+        "Pick the 5th, 10th or 15th as your draft date and confirm."
+      ],
+      "source": "https://www.sharpenergy.com/residential/payment-options/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Turn on paperless billing in the Online Customer Portal to view your statements and invoices electronically instead of by mail."
+      ],
+      "source": "https://www.sharpenergy.com/residential/payment-options/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "The Chesapeake SHARING Program gives elderly, disabled or fixed-income customers a grant of up to $200 per calendar year toward their gas heating bill.",
+        "Income-eligible households can also apply for public energy assistance such as LIHEAP through local agencies in Delaware, Maryland, Pennsylvania, Virginia, North Carolina and Florida; in Florida you can dial 211 for local help."
+      ],
+      "source": "https://www.sharpenergy.com/residential/payment-assistance-program/"
+    },
+    {
+      "slug": "fpu-customers",
+      "title": "Former Florida Public Utilities propane customers",
+      "topic": "account",
+      "paragraphs": [
+        "Florida Public Utilities propane operations now carry the Sharp Energy name. Your account, login details and local team stay the same, so sign in with your existing username and password."
+      ],
+      "source": "https://myaccount.sharpenergy.com/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-draft-dates",
+        "intent": "Using the Sharp Energy website's help pages, find which days of the month AutoPay can draft your payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5",
+              "10",
+              "15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5",
+            "10",
+            "15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AutoPay drafts on the 5th, 10th or 15th of the month."
+          }
+        ]
+      },
+      {
+        "slug": "sharing-grant-max",
+        "intent": "Using the Sharp Energy website's help pages, find the maximum yearly grant from the Chesapeake SHARING Program. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "200"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "200"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Chesapeake SHARING grants up to $200 per calendar year."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Forgot Password?"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Online Customer Portal",
+        "Automatic Direct Debit"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "P.O. Box 829981",
+        "surcharge"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "$200"
+    }
+  ]
+}

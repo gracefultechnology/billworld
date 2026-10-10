@@ -38,7 +38,10 @@ export const TEMPLATE_LABELS = {
   'toll-account': { pay: 'Make a Payment', history: 'Payment History', autopay: 'Auto-Replenishment', paperless: 'Statements', wallet: 'Payment Methods', statements: 'Statements', bill: 'Current Statement', cancel: 'Close Account' }
 };
 const DEFAULT_LABELS = { pay: 'Pay Bill', history: 'Payment History', autopay: 'AutoPay', paperless: 'Paperless Billing', wallet: 'Payment Methods', statements: 'Statements', bill: 'View Bill', cancel: 'Account settings' };
-export const labelsFor = (biller, overrides = {}) => ({ ...DEFAULT_LABELS, ...(TEMPLATE_LABELS[biller.template] || {}), ...overrides });
+// Dossier label keys (billers/schema.mjs LABEL_KEYS) for the help/task label names used here.
+const DOSSIER_KEY = { pay: 'payBill', history: 'history', autopay: 'autopay', paperless: 'paperless', wallet: 'wallet', statements: 'statements', bill: 'viewBill', cancel: 'cancel' };
+const dossierLabels = biller => { const l = biller.dossier?.labels; if (!l) return {}; const out = {}; for (const [k, dk] of Object.entries(DOSSIER_KEY)) if (l[dk]) out[k] = l[dk]; return out; };
+export const labelsFor = (biller, overrides = {}) => ({ ...DEFAULT_LABELS, ...(TEMPLATE_LABELS[biller.template] || {}), ...overrides, ...dossierLabels(biller) });
 
 // labels: optional per-template nav labels (e.g. from a template's meta.helpLabels) that override the built-in table.
 export function helpArticles(biller, labels = {}) {
@@ -53,7 +56,7 @@ export function helpArticles(biller, labels = {}) {
   const add = (slug, title, topic, paragraphs, source, steps = null) => a.push({ slug, title, topic, paragraphs: paragraphs.filter(Boolean), steps, source: source || null, evidence: source ? 'documented_link' : 'synthetic_from_catalog' });
   const inPerson = about(notes, /in[- ]person|walk-?in|drop ?box|night drop|at (?:the|our|any) (?:office|branch|front desk|counter)|cash/i)[0];
   const ways = [
-    !offline && `Online: sign in to your account and choose ${L.pay}. You can pay with a checking or savings account or with a debit or credit card.`,
+    !offline && `Online: sign in to your account and choose ${L.pay}. ${methodSentence(biller)}`,
     !offline && cap.guest_pay.support === 'supported' && 'Without signing in: use Quick Pay / Guest Pay with your account number to make a one-time payment.',
     payPhone && `By phone: call ${payPhone} to make a payment.`,
     mailAddr && `By mail: send a check or money order payable to ${name} to ${mailAddr}. Include your account number on the check.`,
@@ -83,7 +86,50 @@ export function helpArticles(biller, labels = {}) {
   const misc = sentences(notes).filter(clean).filter(s => !a.some(x => x.paragraphs.includes(s)) && s !== inPerson);
   if (misc.length) add('faq', 'Frequently asked questions', 'faq', misc.slice(0, 8), e.help_center_url);
   if (!offline) mergeObserved(a, biller, name, c);
+  if (biller.dossier) mergeDossier(a, biller, L);
   return a;
+}
+const methodSentence = biller => {
+  const m = biller.dossier?.billing?.methods || ['bank', 'card'];
+  return m.includes('bank') && m.includes('card') ? 'You can pay with a checking or savings account or with a debit or credit card.' : m.includes('bank') ? 'Online payments are made from a checking or savings account; cards are not accepted online.' : 'Online payments are made by debit or credit card.';
+};
+
+// ---------- dedicated tier: dossier help (billers/<id>.json) ----------
+// Dossier articles replace (default) or extend the generated article with the same slug; new slugs are added.
+// Capabilities the dossier marks unsupported online get their note in the matching article, so the help center
+// tells customers how to do it instead (and limitation tasks can be answered from help).
+const NOTE_ARTICLE = { cancel_service: ['cancel-service', 'Stop or cancel service', 'account'], autopay: ['autopay', 'Automatic payments', 'autopay'], autopay_cancel: ['cancel-autopay', 'Change or cancel automatic payments', 'autopay'], paperless: ['paperless', 'Paperless billing', 'billing'], guest_pay: ['pay-your-bill', 'Ways to pay your bill', 'payments'], scheduled_payment: ['scheduled-payments', 'Future-dated payments', 'payments'], payment_arrangement: ['payment-assistance', 'Payment assistance', 'assistance'], registration: ['register', 'Create an online account', 'account'], pay_online: ['pay-your-bill', 'Ways to pay your bill', 'payments'] };
+function mergeDossier(articles, biller, L) {
+  const d = biller.dossier;
+  for (const h of d.help || []) {
+    const i = articles.findIndex(x => x.slug === h.slug);
+    const art = { slug: h.slug, title: h.title, topic: h.topic || articles[i]?.topic || 'faq', paragraphs: [...h.paragraphs], steps: h.steps || null, source: h.source, evidence: 'documented_official', dossier: true };
+    if (i < 0) articles.push(art);
+    else if (h.mode === 'append') Object.assign(articles[i], { paragraphs: [...articles[i].paragraphs, ...h.paragraphs], steps: h.steps || articles[i].steps, evidence: 'documented_official', dossier: true });
+    else articles[i] = art;
+  }
+  for (const [k, c] of Object.entries(biller.capabilities)) {
+    if (!c.dossier || !c.note || c.support === 'supported' || !NOTE_ARTICLE[k]) continue;
+    const [slug, title, topic] = NOTE_ARTICLE[k];
+    let art = articles.find(x => x.slug === slug);
+    if (!art) { art = { slug, title, topic, paragraphs: [], steps: null, source: c.source || null, evidence: 'documented_official', dossier: true }; articles.push(art); }
+    else if (k !== 'guest_pay' && k !== 'pay_online') { art.paragraphs = art.paragraphs.filter(p => !/^(Sign in|You can cancel online|To stop service, sign in|You can change your)/.test(p)); art.steps = null; } // generated "do it online" steps contradict the note
+    if (!art.paragraphs.includes(c.note)) art.paragraphs.unshift(c.note);
+  }
+  const bl = d.billing || {};
+  const late = bl.lateFeePercent != null ? `A late payment charge of ${bl.lateFeePercent}%${bl.lateFeeMinCents ? ` or ${money(bl.lateFeeMinCents)}, whichever is greater,` : ''} applies to balances not paid by the due date.` : bl.lateFeeCents ? `A late payment charge of ${money(bl.lateFeeCents)} applies to balances not paid by the due date.` : null;
+  const pay = articles.find(x => x.slug === 'pay-your-bill');
+  if (late && pay && !pay.paragraphs.some(p => p.includes('late payment charge'))) pay.paragraphs.push(late);
+  // Fee rules beyond the one-time convenience fee, and fees whose amount is not published (billing.fees.notes).
+  const f = bl.fees || {};
+  const extra = [
+    f.autopayCardPercent != null ? `Automatic payments charged to a card carry a ${f.autopayCardPercent}% fee.` : f.autopayCardCents != null ? (f.autopayCardCents ? `Automatic payments charged to a card carry a ${money(f.autopayCardCents)} fee.` : 'Automatic payments charged to a card have no fee.') : null,
+    f.guestCardCents != null ? `Paying by card without signing in costs ${f.guestCardCents ? money(f.guestCardCents) : 'nothing extra'}.` : null,
+    f.guestBankCents != null ? `Paying from a bank account without signing in costs ${f.guestBankCents ? money(f.guestBankCents) : 'nothing extra'}.` : null,
+    bl.fullBalanceOnly ? 'Online payments must cover the full balance; partial payments and payment plans are not available online.' : null,
+    ...(f.notes || [])
+  ].filter(Boolean);
+  if (pay) for (const x of extra) if (!pay.paragraphs.includes(x)) pay.paragraphs.push(x);
 }
 
 // ---------- observed public help (biller.profile.help, built from research-data captures) ----------
@@ -105,14 +151,25 @@ export function observedExcerpt(text, contact = {}) {
     return digits.every(d => known.has(d)) && !/\b\d{3}[\s.-]\d{4}\b/.test(s.replace(/(?:\+?1[\s.-]?)?\(?[2-9]\d{2}\)?[\s.-]?[2-9]\d{2}[\s.-]?\d{4}/g, ''));
   }).join(' ').slice(0, 600).trim();
 }
+// Captured public text is quoted briefly (whole sentences up to QUOTE_MAX characters), never at length.
+const QUOTE_MAX = 200;
+function shortQuote(text) {
+  if (text.length <= QUOTE_MAX) return text;
+  let out = '';
+  for (const s of sentences(text)) { if ((out + ' ' + s).trim().length > QUOTE_MAX) break; out = (out + ' ' + s).trim(); }
+  return out || text.slice(0, QUOTE_MAX).replace(/\s+\S*$/, '') + '…';
+}
 function mergeObserved(articles, biller, name, contact) {
   const help = biller.profile?.help;
   if (!Array.isArray(help) || !help.length) return;
+  const dossierSlugs = new Set((biller.dossier?.help || []).map(a => a.slug));
   for (const h of help) {
     if (!h || typeof h !== 'object' || typeof h.excerpt !== 'string') continue; // malformed profile entries are skipped, never a 500
     const map = OBSERVED_ARTICLE[h.kind]; if (!map) continue;
     if (NEEDS_CAP[h.kind] && biller.capabilities[NEEDS_CAP[h.kind]]?.support !== 'supported') continue;
-    const excerpt = observedExcerpt(h.excerpt, contact);
+    // Dedicated billers: the dossier's own (paraphrased) article on the topic replaces the captured text.
+    if (dossierSlugs.has(map[0])) continue;
+    const excerpt = shortQuote(observedExcerpt(h.excerpt, contact));
     if (excerpt.length < 40) continue;
     const quote = `From the ${name} website: “${excerpt}”`;
     let art = articles.find(x => x.slug === map[0]);

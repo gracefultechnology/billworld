@@ -435,3 +435,211 @@ All 283 domain tests, 130 research checks and four SDK tests pass. All 31 releas
 Bound the captured Angular security-code/service-ZIP form to episode-scoped synthetic lookup. Separate HttpOnly guest capability exposes only the verified account name, customer number and aggregate remaining balance; it cannot log in or reset credentials. Failed replacement lookup clears browser access. Synthetic grant expiry is 25 minutes. Captured client source supplies the next checkout sequence; original backend behavior and private visuals remain unobserved.
 
 Validation: 286 domain tests, two guest browser scenarios without page errors or outbound requests, and all three affected GMG reference journeys passed. Lookup and balance screenshots reviewed. Other 46 reference tasks not rerun on this build. Evidence: `billworld/research/starnik-guest-construction-validation.json`. No new benchmark task: checkout/review/fee/commit/receipt and private payment grading remain unfinished.
+
+### GMG guest checkout construction — 0.27.0
+
+Added bank/card entry, server-calculated review, authorization, idempotent payment and receipt. Uses documented free bank payment and card 2.75%/$1.50 minimum; nearest-cent rounding, oldest-due allocation, immediate posting and processor validation are explicitly synthetic. No raw card/CVV/routing/account number retained in domain state. Review is bound to the verified guest; commit rechecks balance and card expiry. Optional mock receipt email, decline fixture and replay handling implemented. Private original layout unobserved.
+
+292 domain tests passed before final CSS-only control fix. Both payment browser journeys and three affected GMG reference journeys passed on final build; zero browser errors/outbound requests. Other 46 references not rerun. Evidence: `billworld/research/starnik-payment-construction-validation.json`. Next: guest-payment benchmark tasks and exact-state graders, then authenticated checkout/wallet/AutoPay. Full catalog and autonomous benchmarking remain unfinished.
+
+### GMG guest payment benchmark — 0.28.0
+
+Added `task_c19` bank and `task_c20` card payment to the WebArena-Infinity construction overlay. Private graders require exact account/invoice, amount, fee, instrument, billing details, one commit, receipt viewing, subsequent zero-balance read and unchanged unrelated state. Review, commit and receipt events bind to the same private quote. Negative tests reject altered credentials, AutoPay, other accounts, historical payments, extra payments, wrong instruments, missing receipt mail, broken ordering and extra login.
+
+Validation: 295 domain tests, 130 research tests (one optional SDK skip), four native SDK tests and all 51 scripted reference tasks passed on matching build IDs (31 released + 20 construction). These are not autonomous scores or fidelity certification. Evidence: `billworld/research/starnik-payment-grader-validation.json`. Catalog collector checkpoints preserved and all four collectors resumed after terminal disk-space stops; analyzer had failed writing its final checkpoint with ENOSPC. Reserves unchanged.
+
+### GMG authenticated feature source evidence
+
+Captured and hash-verified 21 literal public React chunks (syntax parsed without execution). Fourteen source findings cover wallet review/authorization and unavailable states; AutoPay method eligibility, account-specific terms, TextPay conflicts and separate ACH warning/setup; connected-account confirmation; eBill customer-service branches; posted/pending history and show-all behavior; invoice PDF downloads; and the backend-supplied Pay Bill destination. Evidence: `billworld/research/starnik-authenticated-client-evidence.json`.
+
+Do not infer that modern authenticated checkout is the guest flow: the billing tile consumes `payBillPath` from backend data, and current public login remains legacy. Original authenticated destination/feature flags remain unobserved. Implement the observed wallet and account-management sequences with clearly synthetic private data while retaining this uncertainty. No runtime/task/fidelity increment. Initial follow-up stopped at the disk reserve; five follow-up chunks captured after capacity recovery. All four catalog collectors resumed only after old processes were verified absent, retaining checkpoints and reserves.
+
+### GMG transaction history — 0.29.0
+
+Added account-scoped authenticated transaction history with posted invoice/payment rows, running balances, separate pending payments, and Show All. Synthetic bill dates (20 days before due), initial 20-row pagination and private layout are explicit. Guest, foreign and expired sessions cannot access history; selecting another account is rejected. History is read-only and permitted by existing auth-task graders.
+
+Validation: 299 domain tests, dedicated browser checks without page errors/outbound requests, five existing GMG reference journeys on matching build IDs, and visual review of history. Other 46 references not rerun. Evidence: `billworld/research/starnik-history-validation.json`. No new benchmark task; invoice PDF, multiple-account linking, wallet, AutoPay and original private fidelity remain unfinished.
+
+### GMG history interpretation benchmark — 0.30.0
+
+Added `task_c21` / `gmg-read-history-balances-v1`. A synthetic pending $10 payment distinguishes posted balance ($84.32), pending total ($10), and remaining balance ($74.32). Agent must sign in and visit history, report exact integer cents and preserve all business state. Adapter forwards only safe integer summary fields; rejects boolean/string/fractional values and ignores agent-supplied state/events.
+
+Validation: 302 domain tests, 131 research tests passed (one optional skip), four native SDK checks and all 52 reference journeys passed on matching build IDs (31 released + 21 construction). Full research initially exposed a capacity-recovery test depending on actual host free space; recovery and unexpected-error fixtures now explicitly simulate ample capacity, with all four focused checks passing. Production reserves unchanged. Evidence: `billworld/research/starnik-history-grader-validation.json`. Scripted references remain unmetered and do not constitute autonomous scores. Wallet, AutoPay, private fidelity and full catalog remain unfinished.
+
+### GMG wallet add/remove — 0.31.0
+
+Implemented authenticated wallet listing, bank/card entry, masked review, explicit save authorization, idempotent persistence and confirmed deletion. Ten-minute review capability is session/account/episode bound in an HttpOnly cookie. Duplicate instruments rejected at prepare and commit; raw PAN/CVV/routing/account numbers never retained. Removal is guarded against AutoPay/scheduled references and replay cannot restore removed methods. Shared instrument/billing validation extracted without changing guest payment rules.
+
+306 domain tests, two dedicated bank/card browser journeys and six existing GMG reference tasks passed on matching build IDs; zero browser errors/outbound requests. Wallet screenshots visually reviewed. Other 46 references not rerun. Evidence: `billworld/research/starnik-wallet-validation.json`. Edit, unavailable states, saved-method checkout, AutoPay integration and wallet task/grader remain unfinished, as do full catalog and original private fidelity.
+
+### GMG wallet edit — 0.32.0
+
+Added own-method detail/read, editing, review and explicit authorization. Method ID stays stable, version increments once, prepare and commit both check version, and concurrent edit/deletion invalidates stale reviews. Payment kind and card brand stay fixed as in the observed edit UI. Local branch requires full instrument re-entry; backend masked-update flags remain unobserved. Review Back returns to the edited method instead of Add; unsaved form preservation remains unfinished.
+
+309 domain tests, two bank/card browser add-edit-delete journeys and six existing GMG reference tasks passed on final matching build IDs, with zero browser errors/outbound requests. Edit review screenshot inspected. Evidence: `billworld/research/starnik-wallet-edit-validation.json`; source flags: `billworld/research/starnik-wallet-edit-client-evidence.json`. Other 46 references not rerun. Wallet grader, saved checkout, AutoPay, private fidelity and full catalog remain unfinished.
+
+### GMG wallet benchmark — 0.33.0
+
+Added `task_c22` / `gmg-manage-wallet-v1`: update existing Visa expiry, add Savings, remove obsolete Checking, and reload. Private grader checks exact instrument digests, expiry/version, billing details, requested method set, quote-linked reviewed save events, removal and final read, while protecting all credentials, billing and other accounts. Fixture seeds only this task with the two existing synthetic methods.
+
+311 domain tests, 131 research tests (one optional skip), four native SDK checks and all 53 reference journeys passed on matching build IDs (31 released + 22 construction). Final wallet screenshot reviewed. Evidence: `billworld/research/starnik-wallet-grader-validation.json`. Catalog checkpoints preserved and collectors resumed after capacity recovered with reserves unchanged. Scripted references are not autonomous scores; saved checkout, AutoPay, private fidelity and full catalog remain unfinished.
+
+### GMG AutoPay enrollment and execution — 0.34.0
+
+Added saved-method selection, eligibility, terms, explicit confirmation, persistent enrollment and confirmed disable. Ten-minute HttpOnly review capability is session/account/episode-bound; commit rechecks method version, eligibility and prior account/conflict state. TextPay acknowledgment disables TextPay; a separately acknowledged ACH warning preserves ACH because original backend cancellation behavior is unobserved. No payment occurs during enrollment.
+
+GMG now uses its own scheduler instead of the generic monthly invoice generator. It attempts each existing invoice once three days before its due date, subtracts posted/pending reservations, applies documented bank/card fees, records failures and sends mock confirmation mail. Midnight UTC, settlement, no catch-up/retry and no generated future bills are explicit construction rules.
+
+317 domain tests, two dedicated browser journeys and all seven existing GMG reference tasks passed on matching build IDs. No browser errors or outbound requests; enrollment screenshot visually reviewed. Other 46 references, research and SDK suites were not rerun for this scoped change. Evidence: `billworld/research/starnik-autopay-validation.json`. No AutoPay benchmark task/grader or autonomous score yet; signed-in saved-method checkout, original private fidelity and full catalog remain unfinished.
+
+Catalog child collector stopped with a source hash mismatch; saved its failure checkpoint. Rechecking the next candidate found no mismatch, and its full signature revalidated. Resumed only after confirming the old PID absent, retaining the 4 GiB reserve. Cause remains unconfirmed; audit: `billworld/artifacts/catalog-hash-mismatch-audit.json`. Main source/analyzer/resource collectors were already live and not duplicated.
+
+### GMG AutoPay benchmarks — 0.35.0
+
+Added task_c23/gmg-autopay-enable-v1 and task_c24/gmg-autopay-cancel-v1. Enable fixture includes saved Checking/Visa, active TextPay and separate ACH. Agent must select Checking, review terms and conflicts, activate and verify final status. Cancel fixture begins enrolled; cancellation must preserve saved methods, ACH and all other billing/identity state. Private graders check exact enrollment, ordered login/view/review/change/final read, quote linkage, conflict state and baseline-protected accounts/invoices/payments. Wrong methods, missing review, state-only shortcuts, repeated toggles and unrelated changes fail.
+
+320 domain tests, 131 research tests (one optional skip), four native SDK checks and all 55 reference journeys passed on matching build IDs (31 released + 24 construction). Enable screenshot visually reviewed. Evidence: `billworld/research/starnik-autopay-grader-validation.json`. These are scripted, unmetered references, not autonomous scores. Execution timing remains separately validated by 0.34.0 scheduler/browser tests; signed-in saved-method checkout, private fidelity and full catalog remain unfinished. All four catalog collector PIDs were confirmed live during this turn; no duplicates started.
+
+### GMG signed-in saved-method checkout — 0.36.0
+
+Added own saved-method selection, partial/full amount entry, masked amount/fee review, explicit authorization, idempotent posting, mock email receipt and history visibility. Review cookie is HttpOnly; quote is session/account/episode bound with ten-minute expiry. Charge rechecks the method snapshot and available invoice balances. Local allocation is oldest-due first, pending reservations are excluded, and the documented card fee is charged once across allocations. Declines do not mutate payments or balances. Original BillingTile's backend-supplied payBillPath remains unobserved, so this signed checkout and its routes/layout are explicitly synthetic.
+
+325 domain tests, 134 research tests (one optional skip), two bank/card browser journeys and nine existing GMG reference tasks passed; the references match the final build IDs. Other 46 references and SDK checks were not rerun. Receipt screenshot reviewed. Evidence: `billworld/research/starnik-signed-payment-validation.json`. Saved-method payment benchmark grading, original private fidelity and full catalog remain unfinished.
+
+Also replaced shared capture-body truncation writes with temporary-file publication plus atomic replace. Concurrent writers could previously expose incomplete bytes to hash readers. Three tests cover publication visibility, failed replacement preserving old bytes, and concurrent same-hash writers/readers. This establishes and fixes the race but does not prove every historical mismatch had that cause. Next 500 active unparsed source bodies revalidated with zero mismatches; this is not a full-store audit. All collector checkpoints were saved, live PIDs received graceful stop, exit was confirmed before restart, and 3/2/4/6 GiB reserves were preserved. Audit/checkpoint files: `atomic-body-parser-input-audit.json`, `atomic-body-collector-checkpoint.json` in artifacts.
+
+### GMG saved-payment benchmarks — 0.37.0
+
+Added task_c25/gmg-saved-bank-payment-v1 (full $84.32, $0 fee, zero remaining) and task_c26/gmg-saved-card-payment-v1 (partial $20, $1.50 minimum fee, $64.32 remaining). Both seed existing Checking/Visa methods. Private graders require exact posted authenticated payment and saved instrument, quote-linked login/open/prepare/review/commit/receipt/final-balance sequence, mock receipt email, one charge, and preservation of credentials, wallet, AutoPay, other accounts and original billing records. Mutation tests reject wrong methods/fees, extra payments, missing receipt/review, altered state and unexpected side effects.
+
+328 domain tests, 134 research tests (one optional skip), four native SDK checks and all 57 reference journeys passed on matching build IDs: 31 released + 26 construction. Partial-card final screenshot reviewed. Evidence: `billworld/research/starnik-signed-payment-grader-validation.json`. Four catalog collector PIDs confirmed live after atomic-publication restart. Stored frontend inventory snapshot: 241,455 captured and 469,645 pending sources at 2026-10-05T18:56:17Z; these include inactive associations and are not replicated-site/flow coverage. Original private checkout, multi-account linking, paperless, profile management, statements, autonomous scores and full catalog remain unfinished.
+
+### GMG eBill preferences and benchmarks — 0.38.0
+
+Implemented captured eBill option codes (1 electronic only, 2 electronic plus paper, 3 paper only), alternative-option picker with UPDATE/CANCEL, binary direct toggle, disabled customer-service state and separate read-only PDF eBill information. Profile paperless is true only for electronic-only delivery. Save is own-account/session scoped with synthetic optimistic version checking and observed no-change warning semantics. Actual GMG flags and private layout remain unobserved; default fixture offers all three options. PDF delivery/email changes remain customer-service-only, independent of ordinary eBill settings.
+
+Added task_c27/gmg-paperless-v1 and task_c28/gmg-ebill-paper-v1 with exact preference/version/paperless grading, ordered login/view/change/final read, and protection for PDF flags, payments, AutoPay, credentials, other accounts and original invoices. Mutation tests reject extra changes and incorrect combined-delivery semantics.
+
+335 domain tests, 134 research tests (one optional skip), four native SDK checks, three dedicated browser scenarios and all 59 final-build reference journeys passed (31 released + 28 construction). Screenshot inspection found text-input styling affecting radios; corrected the radio layout, reran browser scenarios and all references, then inspected the corrected screenshot. Evidence: `billworld/research/starnik-ebill-validation.json`; source evidence: `billworld/research/starnik-ebill-client-evidence.json`. Four collector PIDs remain live after atomic-publication fix. Statement downloads, multi-account linking, profile management, original private fidelity, autonomous scores and full catalog remain unfinished.
+
+### GMG authenticated statements and benchmark — 0.39.0
+
+Added View Bill PDF links from account summary and authenticated `/invoice/download/ID`, matching the observed client endpoint pattern. Three immutable synthetic statements cover primary current/historical invoices and the secondary account. Exact account/invoice fields and PDF hashes are manifest-bound; changed/new records fail closed rather than serve stale statements. Cross-account/guest/expired access and direct static-file access denied. PDF amount remains the original bill total, independent of current payments. Source client uses blob/open-in-new-tab; local implementation uses direct attachment download, an explicit remaining fidelity difference.
+
+Added task_c29/gmg-download-current-bill-v1. Grader requires login/account view/exact authorized issuance, correct filename and unchanged business/credential state; issuance cannot attest a remote agent filesystem write. Puppeteer separately waits for Chrome download completion and verifies saved bytes/hash. PDF skill used; all three PDFs rendered and visually reviewed, with extracted fields verified.
+
+340 domain tests, 134 research tests (one optional skip), four native SDK checks, three dedicated browser scenarios/four verified downloads, and all 60 matching-build reference journeys passed (31 released + 29 construction). Evidence: `billworld/research/starnik-statements-validation.json`. Four collector PIDs confirmed live. Original private statement layout/service line items, multi-account linking, profile management, autonomous scores and full catalog remain unfinished.
+
+### Starnik provider reuse audit — runtime unchanged at 0.39.0
+
+Added structural Starnik host recognition and a reproducible provider cohort audit with current category-source hash checks, strict host boundaries, separate claim/static-only evidence, and no transferred runtime credit. Rebuilt all 59,477 catalog records: 225 Starnik candidates, including 212 associated with Inframark. Vendor homepage references and shared hosts still require biller identity and capability verification.
+
+Captured 12 public pages for ONSWC/Inframark without submitting production forms. Three tenants share the same visible legacy login controls, auth navigation and 16 byte-identical assets. Six additional signup/recovery pages load GMG's exact React entry bundle. This supports frontend reuse, not backend equivalence. Expanded Inframark's public FAQ establishes operator-level online card fees of 3% and eCheck fees of $1, versus GMG's 2.75%/$1.50 minimum card and zero bank fee; per-district exceptions and AutoPay timing remain unverified. Auth continuation screenshots still require visual review.
+
+138 research tests passed with one optional skip; final process exited zero. Runtime/evaluator fingerprints match the previously validated 0.39.0 build, so no new runtime coverage or autonomous score is claimed. Four catalog collectors were confirmed live with their existing reserves. Evidence: `billworld/research/starnik-provider-reuse-validation.json`, plus tenant login/auth/policy comparison records. Next: separate GMG-specific fixtures, fees, branding and snapshot routes from shared Starnik services before constructing a second tenant. Full catalog and private fidelity remain unfinished.
+
+### Starnik tenant fee policy — 0.40.0
+
+Removed hardcoded GMG fee disclosures from signed checkout and AutoPay review. Both use validated tenant policy shared with charge calculation. Missing, negative, fractional or nonnumeric fee configuration is rejected; exact integer arithmetic preserves nearest-cent half-up rounding and rejects unsafe fees. No new tenant coverage introduced.
+
+343 domain tests, four native SDK checks, two browser policy variants and all 60 matching-build scripted references passed (29 construction, 31 released). Browser scenarios exercise GMG and a synthetic alternate-fee policy on the GMG fixture; checkout and AutoPay disclosures match configuration. Two screenshots visually reviewed, zero browser errors or outbound requests. Initial browser test opened review without preparing enrollment; failure retained, test corrected to follow selection and passed. Evidence: `billworld/research/starnik-fee-policy-validation.json`. Research suite unchanged and not rerun. Four collectors confirmed live. Branding, credentials, source routes and AutoPay timing still need tenant separation. Full catalog, private fidelity and autonomous scores remain unfinished.
+
+### Starnik tenant AutoPay timing — 0.41.0
+
+Removed GMG three-day assumptions from AutoPay terms and confirmation/execution email text. Explicit tenant timing (integer 0–365 days, a local bound) now drives account disclosure, review, enrollment and scheduler. Missing timing shows enrollment unavailable; no default is inferred. Review binds the chosen timing and rejects configuration changes before commit. Active scheduler rejects a timing/enrollment mismatch instead of silently moving a payment date; cancellation remains available even if configuration disappears. No active enrollment means time can still advance without known timing.
+
+347 domain tests, four native SDK checks, four timing browser scenarios and all 60 matching-build scripted references passed (29 construction, 31 released). Tests cover due-date/one-day/five-day execution, missing policy, stale reviews, no silent retiming, rollback and cancellation. Two runtime screenshots visually reviewed; zero browser errors/outbound requests. Evidence: `billworld/research/starnik-timing-policy-validation.json`. Research suite unchanged and not rerun.
+
+Also visually reviewed and hash-verified all six previously captured ONSWC/Inframark signup/password/username recovery screens, recorded in `billworld/research/starnik-tenant-auth-visual-review.json`. They share the two-panel auth layout; signup carries tenant title, recovery screens omit it. This source review does not certify local reconstruction or private behavior. Four catalog collectors confirmed live. Branding, credentials and source routes still need tenant separation; full catalog, private fidelity and autonomous scoring remain unfinished.
+
+### Starnik tenant branding — 0.42.0
+
+Added explicit tenant brand configuration for account name, mock-mail display name and payment/AutoPay confirmation prefixes. Shared auth, recovery, payment and AutoPay subjects and account heading now use configuration; private receipt grading uses the same tenant name. GMG retains existing labels. Missing/malformed config is rejected instead of inheriting GMG. Browser account titles use textContent, including markup-like names.
+
+350 domain tests, four native SDK checks, two branding browser scenarios and all 60 matching-build scripted references passed (29 construction, 31 released). Alternate synthetic branding is covered through recovery mail, account API, payment receipt/private grading and scheduled AutoPay confirmation. One alternate account screenshot visually reviewed, zero browser errors/outbound requests. Evidence: `billworld/research/starnik-brand-validation.json`. Research suite unchanged and not rerun.
+
+Captured the guest link published in Inframark FAQ: `/starnikERP/#/rp_guestpay` navigates to `/starnikERP/#/rp_guestpay/rp_guestpay`, HTTP 200, with Account Security Code/Service Zip Code/VERIFY controls. Screenshot reviewed and 30 captured asset bodies hash-verified; all 30 hashes match GMG capture metadata. No verification or payment submitted. Evidence: `billworld/research/starnik-inframark-guest-evidence.json`. Four catalog collectors confirmed live. Credentials and source route configuration still need separation; no new tenant is counted. Full catalog, private fidelity and autonomous scores remain unfinished.
+
+### Starnik tenant credential fixtures — 0.43.0
+
+Moved primary/secondary usernames, passwords, security codes and service ZIPs to explicit synthetic tenant configuration. Seeding validates required fields and uniqueness, hashes passwords/security codes, and uses configured identity in the welcome email. Fixture metadata now returns the configured primary credentials. Missing or duplicate identities never inherit GMG values. Shared synthetic personas, mailbox emails and invoice fixtures remain unchanged.
+
+353 domain tests, four native SDK checks, two credential browser scenarios and all 60 matching-build scripted references passed (29 construction, 31 released). Alternate credentials cover login, recovery, verified registration and guest lookup; tests reject old GMG credentials/codes and wrong ZIP, and verify raw passwords/security codes are absent from stored state. One guest account screenshot visually reviewed, zero browser errors/outbound requests. Evidence: `billworld/research/starnik-fixture-validation.json`. Research suite unchanged and not rerun. Four collectors confirmed live. Source routing and snapshots still need tenant separation before the second runtime; no new tenant coverage or autonomous score is claimed. Full catalog remains unfinished.
+
+### Starnik tenant source routing — 0.44.0
+
+Replaced GMG-specific snapshot IDs and route tables in the server with explicit tenant snapshot_routes. Public routes select their own captured page; private continuations use that tenant's interactive login shell. Missing/malformed configuration rejects instead of falling back to GMG. Source-link rewriting uses configured IDs. Added observed short guest-fragment normalization to the canonical nested route.
+
+356 domain tests, four native SDK checks, two route browser scenarios and all 60 matching-build scripted references passed (29 construction, 31 released). Tests cover alternate tenant IDs, continuation selection, malformed paths, configured help alias, unknown-route 404 and guest-fragment normalization. Guest screenshot visually reviewed, zero browser errors/outbound requests. Evidence: `billworld/research/starnik-routes-validation.json`. Research suite unchanged and not rerun.
+
+Captured Inframark operator homepage from its observed FAQ link (59 assets), reviewed its screenshot, and prepared seven source pages (home, login, signup, both recovery entries, guest lookup, expanded payment FAQ) with HTML and all captured asset-body hashes revalidated. Files: `billworld/research/inframark-public.json` and `inframark-source-preparation.json`. Original scripts remain inert source, no production forms submitted. Homepage lazy assets/completeness and district-specific policies remain unverified. Next: build the seven inert snapshots and register/test the second Starnik construction tenant. Four catalog collectors confirmed live; no new tenant is counted yet. Full catalog, private fidelity and autonomous scoring remain unfinished.
+
+### Inframark second Starnik tenant — 0.45.0
+
+Built seven inert snapshots (operator home, expanded payment FAQ, login, signup, both recovery entries, guest lookup) and registered Inframark with its own source routes, mock branding, usernames/passwords/security codes, and published operator fees ($1 eCheck, 3% card). No published card minimum is modeled as zero, an explicit local assumption; district exceptions unverified. AutoPay timing is absent and enrollment unavailable. Statement links now depend on an exact tenant/account/invoice document match, so Inframark cannot expose GMG PDFs. Shared private account, wallet, preferences and settlement remain synthetic.
+
+Added task_c30 homepage-to-login, task_c31 full guest bank payment and task_c32 full guest card payment with shared private graders. Initial adapter mapping omission and hidden-link selection failures retained; fixed mapping and visible-link reference navigation. A later released AVEC reference selected a saved method before its option existed; added an explicit availability/value wait and reran the released suite.
+
+Visual review exposed missing responsive homepage logos/icons: builder now uses a captured srcset candidate when fallback src was not fetched. Two tests cover captured fallback selection and rejecting uncaptured URLs. Rebuilt Inframark pages, reviewed restored homepage, and verified all 158 snapshot files. Other source/resource/menu/initial-control fidelity gaps remain.
+
+360 domain tests, 140 research tests with one optional skip, four native SDK checks, seven public browser pages plus authenticated account/unavailable-AutoPay checks, and all 63 final matching-build references passed (32 construction, 31 released). Eight screens visually reviewed, zero browser errors/outbound requests. Evidence: `billworld/research/inframark-construction-validation.json`. Catalog rebuilt across 59,477 entries: only `biller_79d57f82caebe2d84035` in category `other` maps to Inframark construction. Released count stays 9, fidelity-certified count stays 0. Four construction environments now total 32 tasks. Full catalog, district policy verification, original private fidelity, complete auth benchmarks and autonomous scores remain unfinished.
+
+
+### Inframark auth benchmarks — 0.46.0
+
+Added construction tasks task_c33 (registration through mock Gmail verification, username check, account creation and login) and task_c34 (username recovery, email password reset and login). Reused Starnik runtime and private graders; recovery instructions exclude existing credentials. Shared auth contracts now run against GMG and Inframark. Counts: 34 construction + 31 released tasks; catalog coverage unchanged.
+
+Validation: 371 domain tests, 140 research passes plus one optional skip, four SDK checks, and all 65 scripted references on matching environment/evaluator builds. Two released attempts exposed SmartHub selection races; retained failures and added route-settling/readiness checks to the reference. Concurrent SPA rerender timing remains a runtime follow-up. Original private auth and mail remain simulated; scripted results are not autonomous scores. Evidence: billworld/research/inframark-auth-validation.json. Full catalog goal remains active.
+
+
+### SmartHub navigation race fixed — 0.47.0
+
+Fragment navigation emitted both popstate and hashchange, causing duplicate dashboard renders that reset payment inputs. Runtime now deduplicates navigation events and rejects stale session responses; SmartHub also discards stale dashboard/guest responses and logout redirects. A Puppeteer regression fails on the prior runtime (two dashboard requests) and passes for AVEC and GVP with preserved bank/amount, deliberately delayed old responses, and Back/Forward navigation. Removed the temporary network-idle reference workaround after it timed out; failure artifacts retained.
+
+Validation: 371 domain tests, 140 research passes plus one optional skip, four SDK checks, and all 65 matching-build scripted journeys. Catalog/task counts unchanged. Other frontend modules do not yet have equivalent downstream stale-response guards. Evidence: billworld/research/smarthub-navigation-validation.json. Full catalog goal remains active.
+
+
+### Old North State Water source preparation
+
+Expanded ONSWC evidence to nine public captures: homepage/customer service, login, signup, username/password recovery, FAQ, rates, and legacy signup redirect. Built inert snapshots; Puppeteer loaded all nine with no page errors or outbound requests and verified 140 compiled files. Source asset bodies also hash-verified. Local homepage, FAQ and water rates visually reviewed; rates inspection waits for finite CSS animation completion.
+
+FAQ documents a processing fee without its amount and directs ACH Auto Draft enrollment through customer service. Do not inherit GMG/Inframark fee or timing rules. Water rates describe due date, past-due interval and monthly late charges; wastewater tab and private calculations remain unverified. Legacy signup redirects to /RP/signup. Public FAQ/tab/menu behavior, policy documents, unknown-fee handling and runtime/tasks remain next work. No catalog runtime/released coverage added. Evidence: billworld/research/onswc-source-preparation.json.
+
+
+### ONSWC FAQ and rates controls — 0.48.0
+
+Observed original public FAQ and rate-tab interactions through the browser. Added dedicated local document behavior: one FAQ answer remains open, water/wastewater panels switch, and keyboard/ARIA support is explicit. Original scripts remain excluded. Original tabs report both selections true; the local correction is an accessibility improvement, not exact behavioral parity.
+
+The visible wastewater policy publishes late charges after 15 days; water publishes 25 days. Preserve separate policy evidence. Actual Billworld server loads nine rebuilt snapshots, verifies 140 compiled files and behavior hash, and passes mouse/keyboard interaction checks without page errors or outbound requests. 371 domain tests and 140 research tests passed, with one optional skip. Full reference suite and SDK not rerun for these document controls. Menus, missing glyph/assets, policy documents, unknown fees, tenant runtime/tasks and full catalog remain unfinished. Evidence: billworld/research/onswc-controls-validation.json.
+
+
+### Explicit unknown Starnik fees — 0.49.0
+
+Added documented_policy.payment_fee_status = unverified (without numeric fee fields) as an explicit construction gap. Signed and guest balances remain readable, but forms/quotes and AutoPay enrollment are unavailable. Pending signed/guest charges recheck the fee at submission; an unknown or changed fee cannot use an old quote. Completed receipts retain idempotent replay. This is a construction limitation, not observed original payment unavailability.
+
+Validation: 374 domain tests, 140 research passes/one skip, four SDK checks, unknown-fee Puppeteer scenario, and all 65 matching-build references. ONSWC runtime remains next work; no new catalog/task credit. Evidence: billworld/research/starnik-unknown-fees-validation.json.
+
+
+### ONSWC construction runtime — 0.50.0
+
+Activated ONSWC for its single explicit water-sewer record with tenant credentials/branding, nine source references and three Infinity auth tasks (task_c35 login, task_c36 registration, task_c37 recovery). Reuses Starnik, private grading and mock Gmail; recovery prompts omit old credentials. Fees remain unverified and checkout unavailable locally; Auto Draft timing/statements are unavailable. Private account/auth continuation and invoices remain synthetic.
+
+Validation: 386 domain tests, 140 research passes/one skip, four SDK checks, dedicated ONSWC browser checks without page errors/outbound requests, and all 68 matching-build reference journeys (37 construction, 31 released). Five construction tenants; nine released sites unchanged. Catalog-index refresh PID 68036/session 81392 was still live at the last observation; verify it and refresh provider-reuse metadata in the next continuation. Evidence: billworld/research/onswc-construction-validation.json. Full catalog goal remains active.
+
+### ONSWC catalog follow-up and index diagnostics
+
+The previous ONSWC catalog refresh completed and its single construction mapping was verified in both the catalog and Starnik provider report. All 59,477 records were scanned; 225 Starnik candidates remain research associations with zero transferred runtime credit. See billworld/research/onswc-catalog-validation.json.
+
+Added optional catalog build phase events (CLI stderr, flushed) and set-based per-biller signal deduplication preserving complete evidence equality and first-seen order. Validation: 16 targeted tests and 141 research passes plus one optional skip. The timed production build PID 78300/session 43149 remains active at last observation; capture metadata loaded 72,395 records in about 128 seconds before frontend association processing. Poll that exact job before considering a restart, then refresh provider metadata after publication. Log: billworld/artifacts/catalog-index-progress.log. No speedup, new runtime coverage or autonomous benchmark success is claimed. Evidence: billworld/research/catalog-index-diagnostics-validation.json. Full catalog goal remains active.
+
+### Completed index diagnostics and source collection resume
+
+The timed catalog build completed successfully in 1,078 seconds and published all 59,477 records. Capture metadata took about 128 seconds, frontend association processing about 435 seconds, and record construction about 497 seconds on this run. Starnik provider metadata was refreshed against the new index digest. These observations include machine contention and are not a before/after performance comparison. Updated evidence: billworld/research/catalog-index-diagnostics-validation.json.
+
+On October 6, all four previous collector processes were confirmed absent before resuming checkpoints with unchanged bounds/reserves. Successors: frontend PID 2944/session 46179; analyzer PID 2969/session 18979; child collector PID 2996/session 62856; resource collector PID 3016/session 9541. Logs use atomic-resume-011; all four were verified live and advancing. Do not restart based on stale status files or slow observations. Evidence: billworld/research/catalog-collectors-resume-011.json.
+
+### ONSWC privacy and terms documents
+
+Captured the two official PDFs with explicit length/hash verification and visually reviewed all 15 pages. Reused the existing catalog document compiler and SnapshotStore; the nine rebuilt snapshots now bind 158 files. ONSWC homepage, billing, FAQ and rates footers expose working local document links. Original PDF bytes are preserved; embedded PDF hyperlinks still retain source destinations, and a source privacy-table overlap remains unchanged.
+
+Validation: 13 builder tests, nine snapshot-store tests, eight Puppeteer policy-link byte/hash checks, two visible homepage PDF clicks, ONSWC runtime browser, and all nine public reference pages/controls. No outbound requests or page errors in passing browser runs. Preserved and resolved an incomplete initial privacy download, an isolated screenshot timeout, and a PDF-viewer network-idle test timeout. Full reference/domain suites were not rerun for this document-only addition. No new catalog/task coverage or autonomous success credit. Evidence: billworld/research/onswc-documents-validation.json. Full catalog goal remains active.

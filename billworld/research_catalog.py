@@ -13,6 +13,8 @@ import html.parser
 import ipaddress
 import json
 import pathlib
+import os
+import tempfile
 import socket
 import sqlite3
 import sys
@@ -133,6 +135,22 @@ def initialize(db, root=ROOT):
 _host_lock = threading.Lock()
 _host_next = {}
 
+def publish_body(target, content):
+    """Publish complete evidence atomically, including concurrent identical captures."""
+    target.parent.mkdir(exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=target.parent, prefix='.capture-', delete=False) as output:
+            temporary = pathlib.Path(output.name)
+            output.write(content)
+            output.flush()
+            os.fsync(output.fileno())
+        os.replace(temporary, target)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
 def capture(row, directory, max_bytes=MAX_BYTES, accept='text/html,application/xhtml+xml,*/*;q=0.5'):
     url_id, url = row['id'], row['url']; attempted_at = datetime.now(timezone.utc).isoformat()
     evidence = {'requested_url': url, 'attempted_at': attempted_at, 'mode': 'public_get', 'authenticated': False, 'review_status': 'unreviewed'}
@@ -154,7 +172,7 @@ def capture(row, directory, max_bytes=MAX_BYTES, accept='text/html,application/x
                 evidence['status'] = 'too_large'; evidence['error'] = 'Body exceeds capture limit; browser capture required'
             else:
                 body_hash = hashlib.sha256(content).hexdigest()
-                target = directory / 'bodies' / body_hash; target.parent.mkdir(exist_ok=True); target.write_bytes(content)
+                target = directory / 'bodies' / body_hash; publish_body(target, content)
                 evidence.update(body_sha256=body_hash, body_file=str(target.relative_to(directory)), status='http_captured')
                 if 'html' in evidence['content_type'].lower():
                     parser = PageData(); parser.feed(content.decode(response.headers.get_content_charset() or 'utf-8', errors='replace'))

@@ -1,0 +1,436 @@
+{
+  "id": "florida-power-light-fpl-d4d43e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Florida Power & Light (FPL)",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public fpl.com pages only (no sign-in). Log in starts with 'Email Address or User ID' and continues on a second step; the secure-login page documents multi-factor sign-in: after the password (or a passkey) FPL emails a six-digit one-time passcode at every log in; customers who cannot reach any profile email can log in with account number + last four of SSN/TIN (not modelled). MFA is modelled as email. Registration also asks for the last four digits of the SSN/Tax ID, which the dossier format cannot add (only accountNumber/email). Guest Pay is card-only through Speedpay with a convenience fee whose amount is not published, so no card fee is modelled. FPL Automatic Bill Pay drafts a bank account a customer-chosen 11-20 days after the bill date (default 11); the format only supports due-date or day-of-month drafting, so the family default (due date) is kept. Late payment charge is the greater of $5.00 or 1.5% of the past-due balance. FPL Budget Billing exists but is a billing program, not a plan price, so no plans are set. Integrated 2026-10-09: labels.autopay set to \"FPL Automatic Bill Pay\" now that the template uses the label as a noun (\"Turn off FPL Automatic Bill Pay\"). Integrated 2026-10-09: late charge modelled as the greater of 1.5% or $5.00 (billing.lateFeeMinCents).",
+  "officialDomains": [
+    "fpl.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.fpl.com/account/bill/ways-to-pay.html",
+      "title": "Ways to Pay Your Bill | FPL",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.fpl.com/account/bill/automatic-bill-pay.html",
+      "title": "FPL Automatic Bill Pay",
+      "fetchedAt": "2026-10-05",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.fpl.com/account/bill/email-bill.html",
+      "title": "FPL eBill",
+      "fetchedAt": "2026-10-05",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.fpl.com/account/bill/guest-pay.html",
+      "title": "Guest Pay | FPL",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.fpl.com/account/bill/payment-extension.html",
+      "title": "Payment Extension | FPL",
+      "fetchedAt": "2026-10-05",
+      "kind": "fees"
+    },
+    {
+      "url": "https://fpl.com/SecureLogin",
+      "title": "FPL Log In",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.fpl.com/support/contact/start-stop-move.html",
+      "title": "Start Stop Move | FPL",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.fpl.com/account/secure-login.html",
+      "title": "FPL Log In (secure login and one-time passcode FAQ)",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "FPL",
+    "primary": "#0060a9",
+    "accent": "#00427a",
+    "monogram": "FP"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "paperless": "FPL eBill",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Register",
+    "guestPay": "Guest Pay",
+    "arrangement": "Payment Extension",
+    "cancel": "Stop Service",
+    "username": "Email Address or User ID",
+    "autopay": "FPL Automatic Bill Pay"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Guest Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Start, Stop, Move",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Bill",
+        "page": "bill"
+      },
+      {
+        "label": "FPL Automatic Bill Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "FPL eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Extension",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 2,
+    "mfa": "email",
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.fpl.com/account/secure-login.html"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.fpl.com/account/bill/guest-pay.html",
+      "note": "Guest Pay takes debit or credit cards only, through Speedpay, with a convenience fee that FPL does not keep."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.fpl.com/account/bill/automatic-bill-pay.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.fpl.com/account/bill/email-bill.html"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.fpl.com/account/bill/payment-extension.html"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.fpl.com/support/contact/start-stop-move.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.fpl.com/account/bill/ways-to-pay.html"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.fpl.com/account/bill/ways-to-pay.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.fpl.com/account/bill/ways-to-pay.html",
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.fpl.com/account/bill/ways-to-pay.html"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "lateFeePercent": 1.5,
+    "lateFeeMinCents": 500
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "FPL Automatic Bill Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "FPL Automatic Bill Pay is free and withdraws your payment from a U.S. bank account; you enter the bank routing and account numbers when you enroll.",
+        "You pick how many days after your bill date the payment comes out, anywhere from 11 to 20 days. If you do not choose, FPL uses 11 days.",
+        "Automatic payments begin once you get a bill marked Do Not Pay. Until then, pay the bill you have as usual. Enrolled customers can view or change the setup from their account."
+      ],
+      "steps": [
+        "Log in to FPL.com.",
+        "Open FPL Automatic Bill Pay.",
+        "Enter your bank routing and account number.",
+        "Choose the number of days after your bill date for the withdrawal.",
+        "Review and confirm."
+      ],
+      "source": "https://www.fpl.com/account/bill/automatic-bill-pay.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "FPL eBill",
+      "topic": "billing",
+      "paragraphs": [
+        "With FPL eBill your paper bill stops and you are told by email, text or the FPL app when a new bill is ready and again before it is due.",
+        "You can look at and print up to 24 months of statements online. FPL eBill works alongside FPL Automatic Bill Pay and Budget Billing."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "Open FPL eBill.",
+        "Confirm or update your email address.",
+        "Enroll; paperless billing starts with your next bill."
+      ],
+      "source": "https://www.fpl.com/account/bill/email-bill.html"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay your bill",
+      "paragraphs": [
+        "Paying online from a bank account and paying by phone from a bank account are free. Card payments go through FPL's partner Speedpay, which charges a convenience fee; FPL gets none of that fee.",
+        "Guest Pay lets you pay with a debit or credit card without logging in. You need the FPL account number and the ZIP code of the service address. Visa, Mastercard, Discover, American Express and most debit cards are accepted.",
+        "You can also pay through your own bank's bill pay, at walk-in payment locations, or by mailing a check or money order."
+      ],
+      "source": "https://www.fpl.com/account/bill/ways-to-pay.html"
+    },
+    {
+      "slug": "late-payment-charge",
+      "title": "Payment extensions and late payment charges",
+      "topic": "billing",
+      "paragraphs": [
+        "If a bill is not paid on time, FPL adds a late payment charge of the greater of $5.00 or 1.5% of the past-due balance. It shows up on your next bill.",
+        "If you need more time, you can request a payment extension online. FPL looks at your payment history, how long you have been a customer and how much is past due to decide. An extension gives you a later date to pay, but the payment can still count as late and late charges may apply.",
+        "Paying late twice within six months triggers a review of whether your deposit is high enough."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "Choose Payment Extension.",
+        "Review the date offered and confirm."
+      ],
+      "source": "https://www.fpl.com/account/bill/payment-extension.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, stop or move service",
+      "topic": "account",
+      "paragraphs": [
+        "Use Start, Stop, Move to stop your FPL service or move it to a new address. You log in to your FPL.com account to place the order and can check its progress with View Order Status."
+      ],
+      "steps": [
+        "Log in to FPL.com.",
+        "Choose Stop Service (or Move or Transfer Service).",
+        "Enter the stop date and where to send the final bill.",
+        "Review and submit the order."
+      ],
+      "source": "https://www.fpl.com/support/contact/start-stop-move.html"
+    },
+    {
+      "slug": "sign-in-help",
+      "title": "Logging in to FPL.com",
+      "topic": "account",
+      "paragraphs": [
+        "Start by entering your email address or User ID, then continue to the next step, where you enter your password or use a passkey.",
+        "Each time you log in, FPL emails you a six-digit one-time passcode to confirm it is you; each code works only once. A passkey (fingerprint, face recognition or device screen lock) skips the passcode.",
+        "If you cannot reach the email on your profile, choose Can't access this email? to pick another address on file; if none works, you can log in with your FPL account number and the last four digits of your Social Security number or tax ID."
+      ],
+      "source": "https://www.fpl.com/account/secure-login.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-charge-rule",
+        "intent": "Using FPL's help pages, find out how FPL calculates the late payment charge on a past-due bill. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.5%",
+              "1.5 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.5%",
+            "1.5 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "FPL charges the greater of $5.00 or 1.5% of the past-due balance."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-default-days",
+        "intent": "Find out how many days after the bill date FPL Automatic Bill Pay withdraws the payment if you don't pick a number of days. Do not enroll or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "11"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "11"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "By default the payment is withdrawn 11 days after the bill date (you can choose 11 to 20 days)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Ways to Pay",
+        "Log In"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Email Address or User ID"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "FPL Automatic Bill Pay",
+        "Payment Extension"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-payment-charge",
+      "contains": [
+        "$5.00",
+        "1.5%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "11 to 20 days"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    }
+  ]
+}

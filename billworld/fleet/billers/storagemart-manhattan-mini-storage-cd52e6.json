@@ -1,0 +1,307 @@
+{
+  "id": "storagemart-manhattan-mini-storage-cd52e6",
+  "version": 1,
+  "status": "dedicated",
+  "name": "StorageMart",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public StorageMart Billing and Your Account FAQs and the My Account sign-in page (no sign-in). Sign-in is passwordless: enter the account email and verify with a code. The dossier cannot express a passwordless flow, so it is modelled as email (two-step) plus email verification. Rent is due on the 1st with no grace period; partial payments are never accepted; late fees are set by the lease (not modelled). U.S. cards: Visa/Mastercard/Discover/Amex; no bank option is published, so billing.methods keeps the family default. Pay online: My Account > Payment > choose method > Payment Amount (Balance Due or Upcoming) > Pay Now. Autopay is turned on or off under My Units, with the onsite manager, or 24/7 by phone. Invoices: View Invoice, past invoices and receipts under My Units. Move-out needs 15 calendar days' notice; no online move-out is described (cancel_service unsupported, inferred). Account help 877-786-7243; general 800-264-9485. Reviewer 2026-10-09: removed the unconfirmed \"My Payment Methods\" label/nav item (public FAQ only says to add or select a payment method under Payment). Login page confirmed: only an Email Address field with Submit, \"enter the email associated to your account in order to be verified\".",
+  "officialDomains": [
+    "storage-mart.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.storage-mart.com/self-storage/faqs/billing",
+      "title": "Billing FAQs | StorageMart",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.storage-mart.com/self-storage/faqs/your-account",
+      "title": "Your Account FAQs | StorageMart",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://my-account.storage-mart.com/login",
+      "title": "StorageMart My Account - Sign in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "StorageMart",
+    "primary": "#b91c1c",
+    "accent": "#1f2937",
+    "monogram": "SM"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Payment",
+    "viewBill": "View Invoice",
+    "autopay": "Autopay",
+    "signIn": "Sign in",
+    "username": "Email Address",
+    "help": "FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Payment",
+        "page": "pay"
+      },
+      {
+        "label": "View Invoice",
+        "page": "bill"
+      },
+      {
+        "label": "My Units",
+        "page": "autopay"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "email",
+    "evidence": "observed_public",
+    "source": "https://my-account.storage-mart.com/login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storage-mart.com/self-storage/faqs/billing"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storage-mart.com/self-storage/faqs/billing"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storage-mart.com/self-storage/faqs/your-account"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storage-mart.com/self-storage/faqs/your-account"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.storage-mart.com/self-storage/faqs/billing",
+      "channel": "phone",
+      "phone": "800-264-9485",
+      "note": "StorageMart never accepts partial payments. If you cannot pay, contact your facility manager as early as possible to work out a plan."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.storage-mart.com/self-storage/faqs/billing",
+      "channel": "phone",
+      "phone": "877-786-7243",
+      "note": "Give StorageMart at least 15 calendar days' notice before moving out; contact your facility manager or call 877-786-7243."
+    }
+  },
+  "billing": {
+    "source": "https://www.storage-mart.com/self-storage/faqs/billing",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your rent",
+      "topic": "payments",
+      "source": "https://www.storage-mart.com/self-storage/faqs/billing",
+      "paragraphs": [
+        "Rent is due on the 1st of every month, even on weekends and holidays, and there is no grace period. You can pay online, by phone or at your facility. In the U.S., StorageMart takes Visa, Mastercard, Discover and American Express.",
+        "Partial payments are not accepted. To pay early, choose Upcoming as the payment amount."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Scroll to Payment.",
+        "Add or select a payment method.",
+        "Under Payment Amount choose Balance Due or Upcoming.",
+        "Select Pay Now."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Turn autopay on or off",
+      "topic": "autopay",
+      "source": "https://www.storage-mart.com/self-storage/faqs/your-account",
+      "paragraphs": [
+        "Log in to My Account and open My Units to turn autopay on or off. Your onsite manager can also set it up during office hours, and customer service can help by phone 24/7.",
+        "StorageMart recommends autopay so rent is never late."
+      ]
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late rent and partial payments",
+      "topic": "billing",
+      "source": "https://www.storage-mart.com/self-storage/faqs/billing",
+      "paragraphs": [
+        "There is no grace period: rent paid after the 1st is late, and late fees are charged as set out in your lease. Partial payments are not accepted.",
+        "If you fall behind, stay in touch with your facility manager. Auctions are a last resort and only follow several notices required by lien law."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://www.storage-mart.com/self-storage/faqs/billing",
+      "paragraphs": [
+        "StorageMart needs at least 15 calendar days' notice before you move out. For example, to move out on the 31st, give notice by the 16th."
+      ]
+    },
+    {
+      "slug": "invoices",
+      "title": "Invoices and receipts",
+      "topic": "billing",
+      "source": "https://www.storage-mart.com/self-storage/faqs/your-account",
+      "paragraphs": [
+        "In My Account, select View Invoice to see your current invoice. Past invoices and receipts are under My Units, where you can print them."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "move-out-notice",
+        "intent": "Using StorageMart's help pages, find how many days of notice StorageMart needs before you move out. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "15",
+              "fifteen"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "15",
+            "fifteen"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "StorageMart needs at least 15 calendar days' notice."
+          }
+        ]
+      },
+      {
+        "slug": "account-help-phone",
+        "intent": "Find the phone number StorageMart lists for help managing your online account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8777867243"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8777867243"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "877-786-7243"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email Address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-fees",
+      "contains": [
+        "no grace period",
+        "Partial payments are not accepted"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "15 calendar days"
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "partial payments"
+    }
+  ]
+}

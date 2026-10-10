@@ -1,0 +1,181 @@
+{
+  "id": "dominion-energy-virginia-8ffb2e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Dominion Energy Virginia",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public dominionenergy.com pages only (no sign-in). The online account's user ID is the email address used at registration (registration needs an email and the account number); after too many failed sign-ins the account locks for one hour (the engine's lock is 15 minutes, not modelled). MFA is not described publicly, so it stays at the family default. Signed-in one-time payments come from a checking/savings account (free) or a digital wallet (Apple Pay, Google Pay, PayPal); plain card entry is not listed for signed-in payments, so signed-in methods are bank only. One-Time Guest Pay goes through Paymentus, cards and digital wallets only, $1.65 per residential transaction (up to $1,000 per transaction; the per-transaction cap is not modelled; non-residential $14.95). The engine applies one card fee to all card payments, which here only happen as a guest. AutoPay is free from a bank account. Extend Your Due Date is sign-in only (length not stated publicly). Long-term payment plan: down payment, then up to 6 equal monthly payments, with a 1.5% late payment charge on the remaining past-due balance each bill; lateFeePercent 1.5 is modelled from that statement. Stop service orders are worked Monday-Friday 8-5 with as much notice as possible.",
+  "officialDomains": ["dominionenergy.com"],
+  "sources": [
+    { "url": "https://www.dominionenergy.com/virginia/paying-my-bill/pay-my-bill", "title": "Pay My Bill | Virginia | Dominion Energy", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.dominionenergy.com/virginia/paying-my-bill/energy-assistance", "title": "Energy Assistance | Virginia | Dominion Energy", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://www.dominionenergy.com/virginia/paying-my-bill/billing-options/ebill", "title": "eBill | Virginia | Dominion Energy", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://www.dominionenergy.com/virginia/start-stop-service/stop-service", "title": "Stop Service | Virginia | Dominion Energy", "fetchedAt": "2026-10-09", "kind": "cancel" },
+    { "url": "https://www.dominionenergy.com/virginia/customer-support/manage-account-support", "title": "Manage Account Support | Virginia | Dominion Energy", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://login.dominionenergy.com/CommonLogin?SelectedAppName=electric", "title": "Dominion Energy - Login", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "shortName": "Dominion Energy", "primary": "#0060a0", "accent": "#004677", "monogram": "DE" },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "paperless": "eBill",
+    "signIn": "Sign In",
+    "register": "Register",
+    "forgot": "Forgot your password?",
+    "guestPay": "Pay as Guest",
+    "arrangement": "Payment Plan",
+    "cancel": "Stop Service",
+    "help": "Customer Support",
+    "username": "Email Address"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign In", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Pay as Guest", "page": "guest" },
+      { "label": "Pay My Bill", "helpSlug": "pay-your-bill" },
+      { "label": "Start, Stop or Move", "helpSlug": "cancel-service" },
+      { "label": "Energy Assistance", "helpSlug": "payment-assistance" },
+      { "label": "Customer Support", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Account Overview", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "AutoPay", "page": "autopay" },
+      { "label": "eBill", "page": "paperless" },
+      { "label": "Payment Plan", "page": "arrangement" },
+      { "label": "Stop Service", "page": "cancel" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "registrationFields": ["accountNumber", "email"],
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "documented_official",
+    "source": "https://www.dominionenergy.com/virginia/customer-support/manage-account-support"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.dominionenergy.com/virginia/paying-my-bill/pay-my-bill", "note": "One-Time Guest Pay runs through Paymentus: cards or digital wallets only, $1.65 per residential payment, up to $1,000 each." },
+    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.dominionenergy.com/virginia/paying-my-bill/pay-my-bill" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.dominionenergy.com/virginia/paying-my-bill/pay-my-bill", "note": "AutoPay pays each bill from your bank account with no fee." },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.dominionenergy.com/virginia/paying-my-bill/billing-options/ebill" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.dominionenergy.com/virginia/paying-my-bill/energy-assistance" },
+    "cancel_service": { "support": "supported", "evidence": "documented_official", "source": "https://www.dominionenergy.com/virginia/start-stop-service/stop-service" }
+  },
+  "billing": {
+    "source": "https://www.dominionenergy.com/virginia/paying-my-bill/pay-my-bill",
+    "fees": { "bankCents": 0, "cardCents": 165, "evidence": "documented_official", "source": "https://www.dominionenergy.com/virginia/paying-my-bill/pay-my-bill" },
+    "methods": ["bank"],
+    "guestMethods": ["card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank"] },
+    "lateFeePercent": 1.5
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Make a Payment",
+      "paragraphs": [
+        "With an online account you can pay once from a checking or savings account for free, or with Apple Pay, Google Pay or PayPal. Payments post right away, and you can pay now or schedule a payment for a later date.",
+        "No online account? One-Time Guest Pay goes through Paymentus, Dominion Energy's only authorized third-party vendor. It costs $1.65 per residential payment, up to $1,000 per payment ($14.95 and up to $15,000 for non-residential customers). Visa, Mastercard, Discover, American Express, Apple Pay, Google Pay and PayPal are accepted, and payments post immediately.",
+        "You can also pay in person at a payment location, by mail, by phone or through your bank."
+      ],
+      "source": "https://www.dominionenergy.com/virginia/paying-my-bill/pay-my-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "With AutoPay your bill is paid automatically each month from your bank account, with no fees. Sign in to enroll. You can stay on AutoPay while using eBill and Budget Billing."
+      ],
+      "steps": [ "Sign in to your account.", "Choose AutoPay and enroll.", "Enter your bank account and confirm." ],
+      "source": "https://www.dominionenergy.com/virginia/paying-my-bill/pay-my-bill"
+    },
+    {
+      "slug": "paperless",
+      "title": "eBill",
+      "topic": "billing",
+      "paragraphs": [
+        "With eBill you get an email when your bill is ready and can view, print or pay it online, with up to 24 months of bill, payment and usage history. You can also enroll through more than 3,000 participating banks.",
+        "Turn-off and delinquency notices still come by U.S. Mail. You can cancel eBill at any time and your next bill will be mailed.",
+        "eBill Text Alerts send a text when your bill is ready and another three days before it is due, to up to three mobile numbers. Reply YES to the confirmation text to activate them."
+      ],
+      "steps": [ "Sign in or create an online account.", "Enroll in eBill and follow the prompts.", "Optionally choose Enroll Now next to eBill Text Alerts on the My Account Overview page." ],
+      "source": "https://www.dominionenergy.com/virginia/paying-my-bill/billing-options/ebill"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Extend your due date or set up a payment plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "Signed-in customers can ask for more time to pay a bill with Extend Your Due Date.",
+        "A long-term payment plan splits your past-due balance into equal monthly payments over up to 6 months; each month you pay one installment plus your current bill. A down payment is required to start. A 1.5% late payment charge applies to the remaining past-due balance on each bill until the plan is finished. Paying extra goes toward the next installment, and missing one may cancel the plan.",
+        "Plans are open to residential and small business customers. Sign in to check whether you qualify, or call 866-366-4357."
+      ],
+      "steps": [ "Sign in to your account.", "Choose Set Up a Long-Term Payment Plan.", "Review the down payment and monthly installments and accept." ],
+      "source": "https://www.dominionenergy.com/virginia/paying-my-bill/energy-assistance"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop service",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in to request a stop and give as much notice as you can; orders are worked Monday through Friday (not holidays) from 8 a.m. to 5 p.m. You do not need to be home if the meter is easy to reach.",
+        "If a disconnection notice expires before your stop date you must pay that amount first; otherwise the current and final bills can be paid together. The final bill is issued the business day after the final meter reading. Large commercial customers call 866-366-4357."
+      ],
+      "source": "https://www.dominionenergy.com/virginia/start-stop-service/stop-service"
+    },
+    {
+      "slug": "sign-in-help",
+      "title": "Online account help",
+      "topic": "account",
+      "paragraphs": [
+        "Your sign-in is the email address you registered with; the system only accepts a valid email. Customers who never registered with a valid email need to register a new account.",
+        "If you forgot your password choose Forgot your password? and enter your email to get reset instructions. Too many unsuccessful attempts lock the account for one hour. Still stuck? Call 866-366-4357."
+      ],
+      "source": "https://www.dominionenergy.com/virginia/customer-support/manage-account-support"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "guest-fee-lookup",
+        "intent": "Using Dominion Energy's help pages, find the fee a residential customer pays for a One-Time Guest Pay card payment and the most that can be paid per transaction. Do not make a payment.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["1.65"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["1.65"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "$1.65 per transaction, up to $1,000 per transaction." } ]
+      },
+      {
+        "slug": "plan-max-months",
+        "intent": "Find out over how many months at most Dominion Energy's long-term payment plan spreads a past-due balance. Do not set up a plan.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["6", "six"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["6", "six"] },
+        "tags": ["help", "information", "arrangement"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Up to 6 months, after a down payment." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "home", "contains": ["Energy Assistance", "Sign In"] },
+    { "page": "login", "contains": "Email Address" },
+    { "page": "dashboard", "signedIn": true, "contains": ["AutoPay", "eBill"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["$1.65", "Paymentus"] },
+    { "page": "helpArticle", "slug": "payment-assistance", "contains": "1.5%" }
+  ]
+}

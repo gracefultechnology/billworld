@@ -1,0 +1,181 @@
+{
+  "id": "adt-779740",
+  "version": 1,
+  "status": "dedicated",
+  "name": "ADT",
+  "category": "home-services",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public help.adt.com articles and the public MyADT landing and sign-in pages only (never signed in, never started Express Pay). MyADT sign-in is email-first (Email address, Continue, then password) on auth.prod.myadt.com. Express Pay (guest) asks for the ADT account number and billing ZIP and then sends a verification code before payment; the guest verification-code step is not expressible in a dossier and is not modelled. EasyPay (autopay) takes a bank account or credit/debit card and is free; it can only be turned off by calling 800-ADT-ASAP and asking for a live agent. All customers are paperless by default (paper bills by phone request). Monitoring can be cancelled online (Account > Manage Subscriptions form) only when the system was bought online; installed/dealer customers must call, so cancel_service is modelled as phone-only. Late fees apply when the bill is not paid in full by the due date, but no amount is published, so no late fee is modelled. Gift, prepaid and fintech cards are declined (not modelled). ADT+ (self-setup) customers use a separate portal (plus.adt.com) with card AutoPay; this dossier models MyADT only. Plan names on the plan page are the family's synthetic plans: ADT does not publish monitoring-plan prices on these pages.",
+  "officialDomains": ["adt.com", "myadt.com"],
+  "sources": [
+    { "url": "https://help.adt.com/article/Billing-FAQs", "title": "ADT Billing FAQs", "fetchedAt": "2026-10-05", "kind": "help" },
+    { "url": "https://help.adt.com/article/One-Time-Express-Payments", "title": "One-Time & Express Payments", "fetchedAt": "2026-10-05", "kind": "pay" },
+    { "url": "https://help.adt.com/article/How-Do-I-Set-Up-EasyPay", "title": "How Do I Set Up EasyPay?", "fetchedAt": "2026-10-05", "kind": "autopay" },
+    { "url": "https://help.adt.com/article/How-do-I-unenroll-from-EasyPay", "title": "How do I unenroll from EasyPay?", "fetchedAt": "2026-10-05", "kind": "autopay" },
+    { "url": "https://help.adt.com/article/How-Do-I-Cancel-My-ADT-Monitoring", "title": "How Do I Cancel My ADT Monitoring?", "fetchedAt": "2026-10-05", "kind": "cancel" },
+    { "url": "https://myadt.com/", "title": "MyADT | Sign in to manage your account", "fetchedAt": "2026-10-05", "kind": "login" }
+  ],
+  "brand": { "shortName": "ADT", "primary": "#0061aa", "accent": "#00305e", "monogram": "A" },
+  "labels": {
+    "payBill": "Make a Payment",
+    "viewBill": "Billing",
+    "statements": "Billing Statements",
+    "autopay": "EasyPay",
+    "wallet": "Update Payment Methods",
+    "signIn": "Login",
+    "register": "Register",
+    "guestPay": "Pay a Bill as a Guest",
+    "dashboard": "Overview",
+    "cancel": "Manage Subscriptions",
+    "profile": "Profile",
+    "help": "Support Center",
+    "username": "Email address",
+    "amountDue": "Total Amount Due",
+    "dueDate": "Payment Due Date"
+  },
+  "nav": {
+    "public": [
+      { "label": "Login", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Pay a Bill as a Guest", "page": "guest" },
+      { "label": "Billing FAQs", "helpSlug": "faq" },
+      { "label": "Support Center", "page": "help" }
+    ],
+    "account": [
+      { "label": "Overview", "page": "dashboard" },
+      { "label": "Billing", "page": "bill" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Billing Statements", "page": "statements" },
+      { "label": "EasyPay", "page": "autopay" },
+      { "label": "Update Payment Methods", "page": "wallet" },
+      { "label": "Profile", "page": "profile" },
+      { "label": "Manage Subscriptions", "page": "cancel" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "observed_public",
+    "source": "https://myadt.com/"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://help.adt.com/article/One-Time-Express-Payments" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://help.adt.com/article/How-Do-I-Set-Up-EasyPay" },
+    "autopay_cancel": { "support": "unsupported", "evidence": "documented_official", "source": "https://help.adt.com/article/How-do-I-unenroll-from-EasyPay", "note": "EasyPay cannot be turned off online. Call 800-ADT-ASAP (800-238-2727) and ask for a live agent to unenroll.", "channel": "phone", "phone": "8002382727" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://help.adt.com/article/Billing-FAQs" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://help.adt.com/article/How-Do-I-Cancel-My-ADT-Monitoring", "note": "Monitoring can be cancelled online only if you bought your system online. Otherwise call 1-800-ADT-ASAP (800-238-2727); email requests are not accepted.", "channel": "phone", "phone": "8002382727" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://help.adt.com/article/Billing-FAQs", "phone": "8002382727" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://help.adt.com/article/Billing-FAQs" }
+  },
+  "billing": {
+    "source": "https://help.adt.com/article/One-Time-Express-Payments",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Sign up for EasyPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "EasyPay is ADT's automatic payment service. It is free and charges your bill to a checking account or a credit or debit card.",
+        "ADT suggests using a bank account so an expiring card never causes a missed payment.",
+        "Keep paying any open balance yourself after you enroll: it can take up to two billing cycles before EasyPay starts. Once enrolled, you can change the account it uses from Manage EasyPay on the Overview screen, and you can still make one-time Express Pay payments."
+      ],
+      "steps": ["Log in to MyADT.", "Select Sign Up for EasyPay, then Enroll in EasyPay.", "Enter your bank account or card details and select Next.", "Select Confirm, accept the Terms and Conditions and select Finish."],
+      "source": "https://help.adt.com/article/How-Do-I-Set-Up-EasyPay"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Unenroll from EasyPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "At this time EasyPay can only be stopped by phone. Call 800-ADT-ASAP (800-238-2727) and ask to speak with a live agent."
+      ],
+      "source": "https://help.adt.com/article/How-do-I-unenroll-from-EasyPay"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "One-time and Express payments",
+      "topic": "payments",
+      "paragraphs": [
+        "You can pay online with or without logging in. ADT takes Visa, Mastercard, American Express, Discover and ACH bank payments. Online payments can take up to three business days to post.",
+        "Express Pay: choose Pay a Bill as a Guest on MyADT, enter your ADT account number and the first five digits of your billing ZIP code (both are in the yellow area at the top right of your bill), confirm with a verification code, then enter your payment details.",
+        "Logged in: choose Make a Payment from the Billing tile or the Billing section, pick the payment type and amount, and submit. A reference number is emailed to you.",
+        "You can also pay by phone at 800-ADT-ASAP (800-238-2727) or mail a check to the address on the Mail Payment To label of your payment stub, with your account number written on the check.",
+        "Late fees are added if the bill is not paid in full by the due date. EasyPay customers still need a one-time payment for extra charges such as batteries or service calls."
+      ],
+      "steps": ["Log in to MyADT.", "Open Billing and select Make a Payment.", "Choose the payment type and amount.", "Select Make a Payment to submit."],
+      "source": "https://help.adt.com/article/One-Time-Express-Payments"
+    },
+    {
+      "slug": "faq",
+      "title": "Billing FAQs",
+      "topic": "faq",
+      "paragraphs": [
+        "Your bill arrives 15 to 20 days before the payment due date. ADT bills monitoring in advance, and the due date depends on when your service was activated and how often you are billed (monthly, quarterly or yearly).",
+        "The due date itself cannot be changed, but EasyPay customers can change the date the payment is drafted.",
+        "All customers are on paperless billing automatically. To get paper bills, call 1-800-238-ASAP.",
+        "ADT does not accept gift cards, prepaid cards or fintech cards and accounts; use a credit or debit card or a checking account at a traditional bank.",
+        "Mailed payments take about 7 to 10 business days to arrive and post. Payment history may be short or blank for accounts less than 30 days old."
+      ],
+      "source": "https://help.adt.com/article/Billing-FAQs"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "View your statement",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in to MyADT, select Billing in the left menu, scroll down and open Billing Statements to view or download a monthly statement.",
+        "The statement shows your account number, payment due date, total amount due, a summary of charges, and on the back an itemized list of charges by service period."
+      ],
+      "steps": ["Log in to MyADT.", "Select Billing.", "Open Billing Statements.", "Choose the statement to view."],
+      "source": "https://help.adt.com/article/Billing-FAQs"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel ADT monitoring",
+      "topic": "account",
+      "paragraphs": [
+        "ADT does not take cancellation requests by email.",
+        "If you bought your system online, log in to MyADT, open Account and then Manage Subscriptions, and fill out the cancellation form. If no form appears, your system was not bought online and you need to call 1-800-ADT-ASAP.",
+        "Have your contract handy when you cancel; MyADT customers can find a copy after logging in."
+      ],
+      "source": "https://help.adt.com/article/How-Do-I-Cancel-My-ADT-Monitoring"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "paper-bill-phone",
+        "intent": "You want paper bills mailed to you again instead of paperless billing. Using the ADT website, find the phone number to call to request paper bills. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8002382727"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8002382727"] },
+        "tags": ["help", "information", "paperless"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Call 1-800-238-ASAP (800-238-2727)." }]
+      },
+      {
+        "slug": "mail-payment-post-time",
+        "intent": "Using ADT's help pages, find out roughly how many business days a mailed payment takes to be delivered and posted to an ADT account. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["7 to 10", "7-10", "seven to ten"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["7 to 10", "7-10", "seven to ten"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Mailed payments take about 7 to 10 business days to be delivered and processed." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["Email address"] },
+    { "page": "guest", "contains": "ZIP" },
+    { "page": "dashboard", "signedIn": true, "contains": ["EasyPay", "Billing Statements"] },
+    { "page": "autopay", "signedIn": true, "contains": "800-238-2727" },
+    { "page": "cancel", "signedIn": true, "contains": "1-800-ADT-ASAP" },
+    { "page": "helpArticle", "slug": "faq", "contains": "7 to 10 business days" },
+    { "page": "helpArticle", "slug": "cancel-autopay", "contains": "live agent" }
+  ]
+}

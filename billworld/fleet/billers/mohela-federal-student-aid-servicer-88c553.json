@@ -1,0 +1,320 @@
+{
+  "id": "mohela-federal-student-aid-servicer-88c553",
+  "version": 1,
+  "status": "dedicated",
+  "name": "MOHELA (Federal Student Aid servicer)",
+  "category": "loans",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public mohela.studentaid.gov pages only (no sign-in). Federal loans carry no payment fees. Auto Pay debits a bank account; the interest rate reduction rose from 0.25% to 1% on July 1, 2026 through June 30, 2028 for borrowers enrolled by 11:59 p.m. ET on December 31, 2026. Debit cards are mentioned only for phone payments (cardholder only), so online methods are bank-only. Repayment plan changes (RAP, Tiered Standard, IDR) are made on StudentAid.gov, and deferment/forbearance needs forms, so the template's repayment-plan form is unsupported online (payment_arrangement unsupported, payment_assistance supported). Sign-in identifier is a username (account tools mention editing username, password and security questions; inferred). Federal loans cannot be cancelled, so cancel service stays not applicable.",
+  "officialDomains": [
+    "studentaid.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://mohela.studentaid.gov/DL/resourceCenter/PaymentMethods.aspx",
+      "title": "Payment Methods",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://mohela.studentaid.gov/DL/resourceCenter/OnlineAccountManagementTools.aspx",
+      "title": "Online Account Management Tools",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://mohela.studentaid.gov/DL/resourceCenter/RepaymentOptions.aspx",
+      "title": "Repayment Options",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "MOHELA",
+    "primary": "#003d6b",
+    "accent": "#00294a",
+    "monogram": "M"
+  },
+  "labels": {
+    "payBill": "Make A Payment",
+    "autopay": "Auto Pay",
+    "history": "Payment History",
+    "paperless": "Paperless eDelivery",
+    "contact": "Contact Us",
+    "arrangement": "Repayment Options",
+    "dashboard": "Account Summary",
+    "username": "Username",
+    "register": "Create Account",
+    "signIn": "Log In"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Create Account",
+        "page": "register"
+      },
+      {
+        "label": "Make A Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make A Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Repayment Options",
+        "page": "arrangement"
+      },
+      {
+        "label": "Paperless eDelivery",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://mohela.studentaid.gov/DL/resourceCenter/OnlineAccountManagementTools.aspx"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/PaymentMethods.aspx",
+      "note": "Auto Pay gives a 1% interest rate reduction through June 30, 2028 if you enroll by December 31, 2026."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/OnlineAccountManagementTools.aspx"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/RepaymentOptions.aspx",
+      "note": "Repayment plans are changed on StudentAid.gov, and deferment or forbearance needs a request form. Call MOHELA at 1-888-866-4352 for help choosing an option.",
+      "channel": "phone",
+      "phone": "8888664352"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/RepaymentOptions.aspx"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/PaymentMethods.aspx"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/PaymentMethods.aspx"
+    }
+  },
+  "billing": {
+    "source": "https://mohela.studentaid.gov/DL/resourceCenter/PaymentMethods.aspx",
+    "methods": [
+      "bank"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "evidence": "inferred",
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/PaymentMethods.aspx"
+    },
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "paragraphs": [
+        "Auto Pay debits your monthly payment from your bank account automatically. Borrowers enrolled in Auto Pay get an interest rate reduction that rose from 0.25% to 1% on July 1, 2026; it is temporary, runs through June 30, 2028, and requires enrolling by 11:59 p.m. ET on December 31, 2026.",
+        "To have more than your monthly payment drafted, log in, open Payments and Billing, then Auto Pay, enter the amount for each loan, choose Preview and then Submit. The extra amount continues until you change it."
+      ],
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/PaymentMethods.aspx",
+      "topic": "autopay"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Log in to make a one-time payment any time, or call 1-888-866-4352 (24/7 automated, or a Student Loan Counselor during business hours); debit cards by phone must be in your name. You can also use your bank's bill pay.",
+        "By mail, send a check or money order payable to MOHELA with your account number to Department of Education - MOHELA, PO Box 790453, St. Louis, MO 63179-0453. Do not send cash. Allow two to four business days for processing; mail is the slowest method."
+      ],
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/PaymentMethods.aspx",
+      "mode": "append"
+    },
+    {
+      "slug": "repayment-options",
+      "title": "Repayment plans, deferment and forbearance",
+      "paragraphs": [
+        "New repayment plans and income-driven applications are handled on StudentAid.gov through its Repayment Calculator; the SAVE plan ended in March 2026, and affected borrowers choose a new plan after a notice from MOHELA.",
+        "Deferment temporarily stops payments (for example in school, unemployment, military service or economic hardship) and interest generally does not accrue on subsidized loans. Forbearance postpones payments for up to 12 months at a time, but interest accrues on all loans."
+      ],
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/RepaymentOptions.aspx",
+      "topic": "assistance"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless eDelivery",
+      "paragraphs": [
+        "Manage your Paperless eDelivery email permissions under Account Information after you log in. The same area lets you edit your username, password and security questions."
+      ],
+      "source": "https://mohela.studentaid.gov/DL/resourceCenter/OnlineAccountManagementTools.aspx",
+      "topic": "paperless"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-rate-reduction",
+        "intent": "Using MOHELA's help pages, find the current Auto Pay interest rate reduction for federal student loans. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1%",
+              "1 percent",
+              "one percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1%",
+            "1 percent",
+            "one percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Auto Pay currently gives a 1% interest rate reduction (through June 30, 2028)."
+          }
+        ]
+      },
+      {
+        "slug": "mail-payment-address",
+        "intent": "Using MOHELA's help pages, find the PO Box for mailing a federal student loan payment. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "790453"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "790453"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Department of Education - MOHELA, PO Box 790453, St. Louis, MO 63179-0453."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make A Payment",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Debit card"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "StudentAid.gov"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "1%"
+    }
+  ]
+}

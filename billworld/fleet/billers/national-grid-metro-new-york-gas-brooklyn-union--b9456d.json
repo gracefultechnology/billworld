@@ -1,0 +1,341 @@
+{
+  "id": "national-grid-metro-new-york-gas-brooklyn-union--b9456d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "National Grid - Metro New York Gas",
+  "category": "gas",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public nationalgridus.com NY pages only. Paying by bank account online needs an online profile and is free; card and digital-wallet payments go through Speedpay with a $1.85 residential fee (business 2.95% / $5.95, not modelled). Phone payments at 1-718-643-4050 are bank-account only. Automated (recurring) Payments draft a bank account: full bill amount or maximum amount on the due date, or a fixed amount weekly, biweekly or monthly from a chosen date ('fixed' policy). Paperless bills are opened from email with the email plus phone number or last four of SSN/TIN; five failures lock for 60 minutes (not modelled). Stopping or transferring service is phone-only with 5-7 days notice (1-718-643-4050), so cancel_service is unsupported online. Payment plans exist for residential customers but the online channel is not described (family default kept). Sign-in identifier and MFA not documented. Integrated 2026-10-09: labels.autopay set to \"Automated Payments\" now that the template uses the label as a noun (\"Turn off Automated Payments\").",
+  "officialDomains": [
+    "nationalgridus.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.nationalgridus.com/NY-Home/Billing-Payments/Ways-to-Pay",
+      "title": "Ways to Pay",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.nationalgridus.com/NY-Home/Billing-Payments/Automated-Payments",
+      "title": "Automated Payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.nationalgridus.com/NY-Home/Bill-Delivery-Options/paperless-billing",
+      "title": "Paperless Billing",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.nationalgridus.com/NY-Home/Bill-Help/Help-Making-Payments",
+      "title": "Help Making Payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.nationalgridus.com/NY-Home/Check-Start-Stop-or-Transfer-Service",
+      "title": "Check, Start, Stop, or Transfer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "National Grid",
+    "primary": "#00148c",
+    "accent": "#00346e",
+    "monogram": "NG"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Make a Payment",
+    "paperless": "Paperless Billing",
+    "statements": "Bill & Payment History",
+    "profile": "Profiles & Account Settings",
+    "cancel": "Stop Service",
+    "contact": "Contact Us",
+    "autopay": "Automated Payments"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Making Payments",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Bill & Payment History",
+        "page": "statements"
+      },
+      {
+        "label": "Automated Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Profiles & Account Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalgridus.com/NY-Home/Billing-Payments/Automated-Payments"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalgridus.com/NY-Home/Bill-Delivery-Options/paperless-billing"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalgridus.com/NY-Home/Bill-Delivery-Options/paperless-billing"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalgridus.com/NY-Home/Bill-Help/Help-Making-Payments"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalgridus.com/NY-Home/Check-Start-Stop-or-Transfer-Service",
+      "channel": "phone",
+      "phone": "718-643-4050",
+      "note": "To stop or transfer gas service, call 1-718-643-4050 at least a week ahead (5-7 days notice) so a crew can turn the gas off. It cannot be done online."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalgridus.com/NY-Home/Billing-Payments/Ways-to-Pay",
+      "phone": "718-643-4050"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalgridus.com/NY-Home/Billing-Payments/Ways-to-Pay"
+    }
+  },
+  "billing": {
+    "source": "https://www.nationalgridus.com/NY-Home/Billing-Payments/Ways-to-Pay",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 185,
+      "evidence": "documented_official",
+      "source": "https://www.nationalgridus.com/NY-Home/Billing-Payments/Ways-to-Pay"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "mode": "append",
+      "topic": "payments",
+      "paragraphs": [
+        "Paying by bank account online is free but needs an online profile. Credit/debit card and digital-wallet payments (Venmo, PayPal, Google Pay, Apple Pay) are handled by Speedpay; residential customers pay a $1.85 fee.",
+        "To pay from a bank account by phone, call 1-718-643-4050 with your 10-digit account number. Mail checks payable to National Grid to P.O. Box 371416, Pittsburgh, PA 15250-7416, or pay at an authorized location."
+      ],
+      "source": "https://www.nationalgridus.com/NY-Home/Billing-Payments/Ways-to-Pay"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automated Payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Recurring payments come from your bank account. Choose the full bill amount or a maximum amount, drafted on each bill's due date, or a fixed amount drafted weekly, every two weeks or monthly from a start date you pick.",
+        "Full-amount plans run until you cancel; maximum and fixed plans can have an end date. The first payment can be drafted as soon as the day after setup."
+      ],
+      "source": "https://www.nationalgridus.com/NY-Home/Billing-Payments/Automated-Payments"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Enroll from My Account; you need your account number from a recent bill if you are not registered. Your emailed bill matches the paper one. To open it from the email, confirm your email address plus your phone number or the last four digits of your SSN or Taxpayer ID; five wrong tries lock you out for 60 minutes.",
+        "The last 24 months of statements stay available online."
+      ],
+      "source": "https://www.nationalgridus.com/NY-Home/Bill-Delivery-Options/paperless-billing"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help making payments",
+      "topic": "assistance",
+      "paragraphs": [
+        "Payment plans are available to residential customers who need more time. The Budget Plan splits yearly energy costs into 12 even monthly charges.",
+        "The Energy Affordability Program and the Enhanced Energy Affordability Program give bill discounts to eligible households; HEAP and other grants and special shut-off protections may also help."
+      ],
+      "source": "https://www.nationalgridus.com/NY-Home/Bill-Help/Help-Making-Payments"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop or transfer service",
+      "topic": "account",
+      "paragraphs": [
+        "Stopping or transferring gas service is done by phone: call 1-718-643-4050 at least a week in advance. National Grid asks for 5 to 7 days notice so a crew can turn the gas off in person. Hours are Monday to Friday 8 a.m. to 8 p.m. and Saturday 9 a.m. to 5 p.m."
+      ],
+      "source": "https://www.nationalgridus.com/NY-Home/Check-Start-Stop-or-Transfer-Service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "speedpay-fee",
+        "intent": "Using the National Grid New York website's help pages, find the fee a residential customer pays to pay by credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.85"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.85"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Residential card payments cost $1.85."
+          }
+        ]
+      },
+      {
+        "slug": "stop-notice",
+        "intent": "Using the National Grid New York help pages, find how many days of notice National Grid asks for when stopping gas service. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5-7",
+              "5 to 7",
+              "a week"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5-7",
+            "5 to 7",
+            "a week"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "National Grid asks for 5 to 7 days notice."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Ways to Pay",
+        "Help Making Payments"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Automated Payments",
+        "Bill & Payment History"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "718-643-4050"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$1.85"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "5 to 7 days"
+    }
+  ]
+}

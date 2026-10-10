@@ -1,0 +1,292 @@
+{
+  "id": "liberty-mutual-personal-insurance-f07a25",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Liberty Mutual (personal insurance)",
+  "category": "insurance",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public libertymutual.com customer-support pages only (no sign-in). Pay after logging in with a major credit card or checking/savings account; pay without logging in using name and birthday (the schema needs a primary identifier, so the guest form is modelled as policy number + last name + date of birth); online banking with the policy number; payroll deduction (800-290-8102, employer affinity relationship required); automated phone 800-824-7317; mail to Personal Market - RPC, PO Box 1604, New York, NY 10116-1604. Credit card fees apply and vary by state, but no amount is published, so no fee is modelled. Autopay and paperless billing are set up online; past transactions under Billing > Transaction History; documents under the Documents tab. Gift and prepaid cards cannot be used to buy a policy. Policies are 12 months and renew automatically. Review 2026-10-09: the public pay-without-login form asks for policyholder first name, last name and date of birth (button Find a policy); the schema cannot express a name-only lookup, so it stays account number + last name + date of birth. The public log-in form shows User name and Password on one screen. Cancellation and MFA are not documented publicly.",
+  "officialDomains": [
+    "libertymutual.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.libertymutual.com/customer-support/billing-and-payment-options",
+      "title": "Billing & Payment Options",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.libertymutual.com/customer-support/frequently-asked-questions",
+      "title": "Customer Support Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://login.libertymutual.com/login",
+      "title": "Liberty Mutual log in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://eservice.libertymutual.com/account/billing/pwol/",
+      "title": "Pay without logging in (find a policy)",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Liberty Mutual",
+    "shortName": "Liberty Mutual",
+    "primary": "#1a1446",
+    "accent": "#06748c",
+    "monogram": "LM"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "guestPay": "Pay without logging in",
+    "payBill": "Pay your bill",
+    "autopay": "Autopay",
+    "history": "Transaction History",
+    "viewBill": "Billing",
+    "statements": "Documents",
+    "paperless": "Paperless billing",
+    "username": "User name"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "Policies",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Pay your bill",
+        "page": "pay"
+      },
+      {
+        "label": "Transaction History",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless billing",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName",
+      "dob"
+    ],
+    "evidence": "observed_public",
+    "source": "https://eservice.libertymutual.com/account/billing/pwol/",
+    "identifier": "username",
+    "loginSteps": 1
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.libertymutual.com/customer-support/billing-and-payment-options"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.libertymutual.com/customer-support/billing-and-payment-options"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.libertymutual.com/customer-support/billing-and-payment-options"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.libertymutual.com/customer-support/frequently-asked-questions"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.libertymutual.com/customer-support/billing-and-payment-options",
+      "phone": "800-824-7317"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.libertymutual.com/customer-support/billing-and-payment-options"
+    }
+  },
+  "billing": {
+    "source": "https://www.libertymutual.com/customer-support/billing-and-payment-options",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to pay online with a major credit card or a checking or savings account. For a one-time payment you do not need to log in: choose Pay without logging in and find your policy with the policyholder's first name, last name and date of birth.",
+        "You can also pay through your bank's online bill pay using your policy number, by payroll deduction if your employer has an affinity relationship with Liberty Mutual (call 800-290-8102 to enroll), with the automated phone service at 800-824-7317, or by mail to Liberty Mutual Insurance Group, Personal Market - RPC, PO Box 1604, New York, NY 10116-1604.",
+        "Credit card fees apply and vary by state. Gift cards and prepaid cards cannot be used to purchase a policy."
+      ],
+      "source": "https://www.libertymutual.com/customer-support/billing-and-payment-options"
+    },
+    {
+      "slug": "autopay",
+      "title": "Autopay and paperless billing",
+      "topic": "autopay",
+      "paragraphs": [
+        "Autopay is Liberty Mutual's preferred way to pay and only takes a few minutes to set up after you log in.",
+        "Once logged in you can also enroll in paperless billing and view your bill online instead of receiving paper. The mobile app lets you pay, change your payment schedule, view transaction history and enroll in paperless billing."
+      ],
+      "source": "https://www.libertymutual.com/customer-support/frequently-asked-questions"
+    },
+    {
+      "slug": "billing-history",
+      "title": "Past billing information and documents",
+      "topic": "billing",
+      "paragraphs": [
+        "Past transactions are under Billing, then Transaction History, after you log in.",
+        "All insurance documents and ID cards are in the Documents tab of the top menu of your online account."
+      ],
+      "source": "https://www.libertymutual.com/customer-support/frequently-asked-questions"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Liberty Mutual",
+      "topic": "contact",
+      "paragraphs": [
+        "For policy, billing or other service questions call 800-290-8711. If you bought through an agency, your agent can also help.",
+        "Policies run 12 months and renew automatically without any action from you."
+      ],
+      "source": "https://www.libertymutual.com/customer-support/frequently-asked-questions"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "payroll-deduction-phone",
+        "intent": "Find the phone number Liberty Mutual gives for enrolling in payroll deduction. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8002908102"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8002908102"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "800-290-8102"
+          }
+        ]
+      },
+      {
+        "slug": "guest-pay-needs",
+        "intent": "Find out what Liberty Mutual asks for when you make a one-time payment without logging in. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "birthday",
+              "date of birth"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "birthday",
+            "date of birth"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "guest"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your name and birthday."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Transaction History",
+        "Documents"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "800-824-7317"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "billing-history",
+      "contains": "Transaction History"
+    }
+  ]
+}

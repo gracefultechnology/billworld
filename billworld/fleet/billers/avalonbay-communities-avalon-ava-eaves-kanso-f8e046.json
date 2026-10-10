@@ -1,0 +1,337 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-09",
+  "id": "avalonbay-communities-avalon-ava-eaves-kanso-f8e046",
+  "name": "AvalonBay Communities (Avalon Access)",
+  "category": "housing",
+  "notes": "Researched from the public AvalonAccess landing page (avaloncommunities.com) and the public AvalonAccess sign-in page (observed: 'Welcome - Sign In', Email address, Password, Sign In, Forgot password?, Need to create an account?, a Confirmation code field, Verification of Rent link). AvalonAccess serves Avalon, AVA, Eaves by Avalon and Kanso residents: pay rent, package notifications, amenity reservations. The site footer now reads 'by Vivmark Residential' (corporate rebrand; Equity Residential's site shows the same parent) but the AvalonAccess portal is separate from Equity's. Payment methods, fees, autopay and notice rules are not published publicly (family defaults kept, inferred). The 'Confirmation code' field belongs to the 'Confirm Your Account' step after registration (code emailed), not a sign-in MFA, so auth.mfa is not set. The deferred payment plan request site in the catalog no longer resolves. REVIEW 2026-10-09 (independent reviewer): added the public AvalonAccess Help page: registration needs email on record + community + account number (lease/statements), security questions at first sign-in, emailed reset link, Customer Care Center 877-282-6246. Added registrationFields [email, accountNumber], registration/password_reset capabilities, a contact article and two tasks. Verified the sign-in inputs (placeholders Email address / Password, Sign In) in the page HTML.",
+  "officialDomains": [
+    "avaloncommunities.com",
+    "avalonaccess.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.avaloncommunities.com/avalon-access/",
+      "title": "AvalonAccess",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.avalonaccess.com/UserProfile/LogOn",
+      "title": "Welcome - Sign In (AvalonAccess)",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.avalonaccess.com/Home/Help",
+      "title": "AvalonAccess Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "AvalonAccess",
+    "shortName": "AvalonAccess",
+    "primary": "#003b5c",
+    "accent": "#7f3f00",
+    "monogram": "AA"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "Email address",
+    "forgot": "Forgot password?",
+    "register": "Create Account"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create Account",
+        "page": "register"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Rent",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Service Requests",
+        "page": "contact"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.avalonaccess.com/UserProfile/LogOn",
+    "registrationFields": [
+      "email",
+      "accountNumber"
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.avaloncommunities.com/avalon-access/",
+      "note": "Residents pay rent in AvalonAccess."
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.avalonaccess.com/Home/Help",
+      "note": "Create an AvalonAccess account with the email address on record, your community and the account number from your lease or monthly statement."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.avalonaccess.com/Home/Help",
+      "note": "Use the forgot-password link and enter your email; a reset link is emailed."
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "AvalonAccess",
+      "paragraphs": [
+        "AvalonAccess is the resident site for Avalon, AVA, Eaves by Avalon and Kanso communities. Use it to pay your rent, get notified when a package arrives and reserve community amenities."
+      ],
+      "source": "https://www.avaloncommunities.com/avalon-access/",
+      "topic": "payments"
+    },
+    {
+      "slug": "register",
+      "title": "Creating and using your AvalonAccess account",
+      "paragraphs": [
+        "Sign in with your email address and password. The email must match the one your community has on record; your community office can confirm it.",
+        "To create an account, enter the email address on record, choose your community (for example an Avalon, AVA or Eaves community) and enter your account number, which is on your lease and monthly statements, then select Create Account. A confirmation code is emailed to confirm the account. The first time you sign in you set up security questions, which make later password resets easier.",
+        "Forgot your password? Enter your account email and a reset link is emailed to you. For sign-in problems contact the AvalonBay Customer Care Center at 877-282-6246."
+      ],
+      "source": "https://www.avalonaccess.com/Home/Help",
+      "topic": "account",
+      "steps": [
+        "Select Need to create an account?",
+        "Enter the email address on record.",
+        "Choose your community.",
+        "Enter your account number from your lease or statement.",
+        "Select Create Account and enter the emailed confirmation code."
+      ]
+    },
+    {
+      "slug": "contact-us",
+      "title": "Customer Care Center",
+      "paragraphs": [
+        "If you have trouble signing in to AvalonAccess, contact the AvalonBay Customer Care Center at 877-282-6246 or by email. For your account number or the email on record, ask your community's leasing office."
+      ],
+      "source": "https://www.avalonaccess.com/Home/Help",
+      "topic": "contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "brands-served",
+        "intent": "Using the AvalonAccess help pages, find which community brands besides Avalon and AVA use AvalonAccess. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Kanso"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Kanso"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Eaves by Avalon and Kanso communities also use AvalonAccess."
+          }
+        ]
+      },
+      {
+        "slug": "signin-identifier",
+        "intent": "Using the AvalonAccess help pages, find what you enter (besides your password) to sign in. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "email"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "email"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "login"
+        ],
+        "evidence": "observed_public",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your email address and password."
+          }
+        ]
+      },
+      {
+        "slug": "registration-account-number",
+        "intent": "You want to create an AvalonAccess account. Using the AvalonAccess help pages, find where to look up the account number you need to register. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "statement"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "statement"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "registration"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The account number is on your lease agreement and your monthly statements."
+          }
+        ]
+      },
+      {
+        "slug": "customer-care-phone",
+        "intent": "You cannot sign in to AvalonAccess. Find the AvalonBay Customer Care Center phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8772826246"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8772826246"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call the Customer Care Center at 877-282-6246."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email address",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Kanso"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": [
+        "account number",
+        "877-282-6246"
+      ]
+    }
+  ]
+}

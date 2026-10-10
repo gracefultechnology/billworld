@@ -1,0 +1,311 @@
+{
+  "id": "spectrum-mobile-1591ac",
+  "status": "dedicated",
+  "name": "Spectrum Mobile",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public spectrum.net Mobile support articles only (no sign-in; rendered with a headless browser). Spectrum Mobile bills are separate from TV/Internet/Voice bills. Auto Pay is required: every statement is charged automatically to the credit or debit card on file 18-20 days after the cycle ends (an Auto Pay date replaces the due date; timing not expressible); only the primary account holder can change it, and it cannot be turned off online (autopay_cancel unsupported). A $5 fee applies to failed Auto Pay payments since May 14, 2025. Up to five cards can be stored; cash is not accepted; cards only. Payments cannot be scheduled (scheduled_payment unsupported); one-time manual payments from the Billing tab must cover the full balance. Paper bills are not available (paperless not_applicable). Suspending or cancelling Mobile service is by phone at (833) 224-6603. Sign-in identifier is the Spectrum username (inferred from the general Spectrum sign-in). Plans (By the Gig $19/line + $5/GB) are not modelled. Integrated 2026-10-09: billing.fullBalanceOnly set (partial payments refused by the engine). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "spectrum.net"
+  ],
+  "sources": [
+    {
+      "url": "https://www.spectrum.net/support/mobile/auto-pay-information",
+      "title": "Auto Pay information | Spectrum Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.spectrum.net/support/mobile/spectrum-mobile-billing-faqs",
+      "title": "Spectrum Mobile Billing FAQs | Spectrum Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.spectrum.net/support/mobile/manage-your-lines",
+      "title": "How to manage your lines | Spectrum Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Spectrum Mobile",
+    "shortName": "Spectrum Mobile",
+    "primary": "#0063b2",
+    "accent": "#003057",
+    "monogram": "S"
+  },
+  "labels": {
+    "dashboard": "Account Summary",
+    "viewBill": "Billing",
+    "statements": "View Statement",
+    "payBill": "Make a Payment",
+    "autopay": "Manage Auto Pay",
+    "wallet": "Payment Methods",
+    "history": "Payment History",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "Username",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Billing FAQs",
+        "helpSlug": "mobile-billing-faqs"
+      },
+      {
+        "label": "Auto Pay",
+        "helpSlug": "auto-pay-information"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "View Statement",
+        "page": "statements"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "evidence": "inferred"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/mobile/auto-pay-information",
+      "note": "Auto Pay is required for Spectrum Mobile and charges your credit or debit card on file."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/mobile/auto-pay-information",
+      "note": "Auto Pay is required for Spectrum Mobile and cannot be turned off; the primary account holder can change the card on file. Call (833) 224-6603 with questions.",
+      "channel": "phone",
+      "phone": "8332246603"
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/mobile/spectrum-mobile-billing-faqs",
+      "note": "Spectrum Mobile payments cannot be scheduled; statements are charged automatically through Auto Pay, and one-time payments are made right away.",
+      "channel": "phone",
+      "phone": "8332246603"
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/mobile/spectrum-mobile-billing-faqs",
+      "note": "Paper bills are not available for Spectrum Mobile; statements are online and in the My Spectrum App."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/mobile/manage-your-lines",
+      "note": "To suspend or cancel Spectrum Mobile service, call (833) 224-6603.",
+      "channel": "phone",
+      "phone": "8332246603"
+    }
+  },
+  "billing": {
+    "source": "https://www.spectrum.net/support/mobile/spectrum-mobile-billing-faqs",
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "fullBalanceOnly": true
+  },
+  "help": [
+    {
+      "slug": "auto-pay-information",
+      "title": "Auto Pay information",
+      "paragraphs": [
+        "Auto Pay is required for Spectrum Mobile: every payment is charged automatically to the credit or debit card on file, cash is not accepted, and non-reloadable prepaid cards cannot be used. A second line uses the same payment method as the primary line.",
+        "Your statement shows an Auto Pay date instead of a due date; the payment is processed 18 days after your billing cycle ends. Only the primary account holder can change Auto Pay details, such as the card or its expiration date.",
+        "Since May 14, 2025, a $5 fee applies when an Auto Pay payment fails. Spectrum notifies you right away and gives you three days to add a valid payment method before the fee is charged."
+      ],
+      "source": "https://www.spectrum.net/support/mobile/auto-pay-information",
+      "topic": "autopay"
+    },
+    {
+      "slug": "mobile-billing-faqs",
+      "title": "Spectrum Mobile billing FAQs",
+      "paragraphs": [
+        "Your Spectrum Mobile bill is separate from TV, Internet and Voice bills and cannot be combined with them. Sign in, open the Billing tab, choose your service and select View Statement.",
+        "You can store up to five cards and choose which one Auto Pay uses. Payments cannot be scheduled. You can make a one-time manual payment from the Billing tab with any debit or credit card, but it must cover the full balance; select Complete Payment to finish.",
+        "Paper bills are not available for Spectrum Mobile. Missed payments can disrupt service, and Spectrum will tell you if your card cannot be charged."
+      ],
+      "source": "https://www.spectrum.net/support/mobile/spectrum-mobile-billing-faqs",
+      "steps": [
+        "Sign in and open the Billing tab.",
+        "Select Spectrum Mobile.",
+        "Follow the prompts for a one-time payment.",
+        "Select Complete Payment."
+      ],
+      "topic": "payments"
+    },
+    {
+      "slug": "change-or-cancel-mobile",
+      "title": "Change or cancel Spectrum Mobile service",
+      "paragraphs": [
+        "To temporarily suspend or cancel Spectrum Mobile service, call (833) 224-6603. Voluntary suspension can pause service for up to 90 days."
+      ],
+      "source": "https://www.spectrum.net/support/mobile/manage-your-lines",
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-failure-fee",
+        "intent": "Using Spectrum's support pages, find the fee Spectrum Mobile charges when an Auto Pay payment fails. Do not make a payment or change settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $5 fee applies to failed Auto Pay payments."
+          }
+        ]
+      },
+      {
+        "slug": "cancel-mobile-phone",
+        "intent": "Find the phone number to call to cancel Spectrum Mobile service. Do not cancel anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8332246603"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8332246603"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "(833) 224-6603"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Manage Auto Pay",
+        "View Statement"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "(833) 224-6603"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "(833) 224-6603"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "auto-pay-information",
+      "contains": "18 days"
+    }
+  ],
+  "version": 1
+}

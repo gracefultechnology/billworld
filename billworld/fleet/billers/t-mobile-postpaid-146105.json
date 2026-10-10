@@ -1,0 +1,420 @@
+{
+  "id": "t-mobile-postpaid-146105",
+  "status": "dedicated",
+  "name": "T-Mobile (postpaid)",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public t-mobile.com support pages only (no sign-in). Sign-in uses a T-Mobile ID: the email address or phone number linked to it, then the password; two-step verification sends a 6-digit text code to the mobile number (or network/biometric checks), so mfa is sms. Digital payments (T-Life app, My T-Mobile, Pay as a guest) are free and accept cards, bank account/ACH, T-Mobile MONEY and PayPal; in-store payments cost $5 and Customer Care payments $10. AutoPay draws about two days before the due date (withdrawal day can be changed, not 29-31); the discount needs Pay by Bank, a debit card or the T-Mobile Visa and an on-time prior bill (rule not expressible). Payment Arrangements are self-service only (T-Life / My T-Mobile) for postpaid accounts under 30 days past due; AutoPay pauses during one; this is modelled with the family arrangement form. Cancellation is future-dated to the end of the bill cycle and the support page asks customers to call first; no self-service cancel form is documented, so cancel_service is unsupported online. Canceling does not cancel AutoPay. Late fee and plan prices are not modelled (not on the pages used). Care numbers (1-800-937-8997, 611) come from the public Contact Us page.",
+  "officialDomains": [
+    "t-mobile.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.t-mobile.com/support/account/pay-your-bill",
+      "title": "Ways to pay your T-Mobile bill | T-Mobile Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.t-mobile.com/support/account/autopay",
+      "title": "AutoPay | T-Mobile Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.t-mobile.com/support/account/payment-arrangement",
+      "title": "Payment Arrangement | T-Mobile Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.t-mobile.com/support/account/cancel-service",
+      "title": "Cancel service support | T-Mobile Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.t-mobile.com/support/account/set-up-and-manage-your-t-mobile-id",
+      "title": "Set up & manage your T-Mobile ID | T-Mobile Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.t-mobile.com/contact-us",
+      "title": "Contact Us | T-Mobile",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "T-Mobile",
+    "shortName": "T-Mobile",
+    "primary": "#c2005f",
+    "accent": "#7a003c",
+    "monogram": "T"
+  },
+  "labels": {
+    "dashboard": "Account",
+    "payBill": "Make a one-time payment",
+    "viewBill": "Bill",
+    "autopay": "AutoPay",
+    "paperless": "Paperless billing",
+    "arrangement": "Payment Arrangement",
+    "history": "Payment history",
+    "wallet": "Payment methods",
+    "guestPay": "Pay as a guest",
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "username": "Email or phone number",
+    "forgot": "Forgot password?",
+    "register": "Get a T-Mobile ID",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay as a guest",
+        "page": "guest"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "ways-to-pay"
+      },
+      {
+        "label": "AutoPay",
+        "helpSlug": "autopay-details"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Make a one-time payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Paperless billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "evidence": "documented_official",
+    "source": "https://www.t-mobile.com/support/account/set-up-and-manage-your-t-mobile-id"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/pay-your-bill",
+      "note": "Pay as a guest needs no login and is meant for paying someone else's bill."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/autopay",
+      "note": "The AutoPay discount needs Pay by Bank, a debit card or the T-Mobile Visa; other credit cards and digital wallets do not qualify. Not available on No Credit Check plans."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/autopay",
+      "note": "Canceling your account does not cancel AutoPay; turn it off separately."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/payment-arrangement",
+      "note": "Self-service only, for postpaid accounts less than 30 days past due. AutoPay pauses while an arrangement is active."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/cancel-service",
+      "note": "There is no online cancel form: call T-Mobile Care at 1-800-937-8997 (or 611 from your T-Mobile phone). Cancellation takes effect at the end of the current bill cycle.",
+      "channel": "phone",
+      "phone": "8009378997"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/pay-your-bill",
+      "note": "Payments made through Customer Care carry a $10 payment support fee."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/pay-your-bill"
+    }
+  },
+  "billing": {
+    "source": "https://www.t-mobile.com/support/account/pay-your-bill",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/pay-your-bill"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ],
+      "leadDays": 2
+    }
+  },
+  "help": [
+    {
+      "slug": "ways-to-pay",
+      "title": "Ways to pay your T-Mobile bill",
+      "paragraphs": [
+        "Paying digitally in the T-Life app or your online account is free. To pay someone else's bill, use Pay as a guest; no login is needed. T-Mobile accepts Visa, Mastercard, American Express and Discover (credit and debit), bank account/ACH (checking or savings), the T-Mobile MONEY debit card and PayPal; cash is taken in stores only.",
+        "Paying in a T-Mobile store adds a $5 payment support fee, and paying over the phone through Customer Care adds a $10 payment support fee.",
+        "To pay by mail or through your bank's bill pay, send the payment to T-Mobile, P.O. Box 742596, Cincinnati, OH 45274-2596, with your T-Mobile account number. Allow at least five days for mailed payments to arrive."
+      ],
+      "source": "https://www.t-mobile.com/support/account/pay-your-bill",
+      "topic": "payments"
+    },
+    {
+      "slug": "autopay-details",
+      "title": "AutoPay",
+      "paragraphs": [
+        "AutoPay is free and pays your bill automatically from a linked bank account, debit card or credit card. On eligible plans you may get a monthly discount per line while AutoPay is active for the whole bill cycle.",
+        "To get the discount you must be on an eligible plan, be enrolled when the bill is processed, have paid last month's bill on time, and pay with Pay by Bank, the T-Mobile Visa or a debit card. Other credit cards and Apple Pay/Google Pay do not qualify, and paying early with an ineligible method removes the discount from your next bill.",
+        "Payments are withdrawn about two days before the due date. You can pick another withdrawal date in T-Life or My T-Mobile, except the 29th, 30th and 31st. Unprocessed payments are retried after five banking days. Canceling your account does not cancel AutoPay; you must turn it off separately."
+      ],
+      "source": "https://www.t-mobile.com/support/account/autopay",
+      "topic": "autopay"
+    },
+    {
+      "slug": "payment-arrangement-rules",
+      "title": "Payment Arrangements",
+      "paragraphs": [
+        "Payment Arrangements are self-service only, in T-Life or My T-Mobile; Care and store staff will walk you through the app so you avoid the $10 payment support fee. They are for postpaid accounts that are less than 30 days past due; anything 31 or more days past due must be paid first.",
+        "Pay each installment and any new bill by its due date or the arrangement can fail and service may be suspended. AutoPay pauses during the arrangement and resumes when it finishes; if the arrangement fails you are removed from AutoPay.",
+        "Late fees may apply after the original due date, and if your account was suspended a $20 restore fee per line (up to three lines) is added to the installments."
+      ],
+      "source": "https://www.t-mobile.com/support/account/payment-arrangement",
+      "steps": [
+        "Open T-Life and select the Account tab.",
+        "Choose Set up a payment arrangement.",
+        "Edit the amount, payment method and date as needed.",
+        "Select Agree and Submit, then Done."
+      ],
+      "topic": "payments"
+    },
+    {
+      "slug": "cancel-service-info",
+      "title": "Before you cancel T-Mobile service",
+      "paragraphs": [
+        "Cancellations are future-dated and usually take effect at the end of your current bill cycle; if you move your number to another carrier you are billed through the end of the cycle. T-Mobile asks you to call first so it can review your account.",
+        "If you are on AutoPay, the final bill may still be charged to the saved method unless you remove AutoPay before it processes. Canceling one line keeps its device payments billing monthly; canceling the whole account makes remaining device balances due on the final bill.",
+        "Voicemail and DIGITS call history are deleted when you cancel. You can reactivate within 90 days without a new credit check or activation fee, though your old number may not be available."
+      ],
+      "source": "https://www.t-mobile.com/support/account/cancel-service",
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "care-payment-fee",
+        "intent": "Using T-Mobile's support pages, find the fee for paying your bill over the phone through Customer Care. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10",
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10",
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $10 payment support fee applies to payments through Customer Care."
+          }
+        ]
+      },
+      {
+        "slug": "store-payment-fee",
+        "intent": "Find out what fee T-Mobile charges when you pay your bill in a T-Mobile store. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "In-store payments carry a $5 payment support fee."
+          }
+        ]
+      },
+      {
+        "slug": "mail-payment-address",
+        "intent": "Find the P.O. Box address where T-Mobile accepts mailed check payments. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "742596"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "742596"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "mail"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "T-Mobile, P.O. Box 742596, Cincinnati, OH 45274-2596"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email or phone number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment Arrangement",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-937-8997"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "ways-to-pay",
+      "contains": "742596"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay-details",
+      "contains": "two days before the due date"
+    }
+  ],
+  "version": 1
+}

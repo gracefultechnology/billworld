@@ -1,0 +1,340 @@
+{
+  "id": "gm-financial-chevrolet-buick-gmc-cadillac-050f93",
+  "version": 1,
+  "status": "dedicated",
+  "name": "GM Financial (Chevrolet, Buick, GMC, Cadillac)",
+  "category": "loans",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public gmfinancial.com pages only (no sign-in). MyAccount sign-in uses an email address (the login page says the login process changed to email). Online payments and Auto Pay draw a bank account; card payments are only possible through Western Union or MoneyGram (their fees), so online methods are bank-only. Agent-assisted phone payments go through ACI Payments for $2.50 or $3.50 and must be under $3,000. Auto Debit is a separate mailed/emailed form program; cancelling it needs a call at least 5 days before the due date, while MyAccount Auto Pay can be turned off online. There is no grace period. Payment arrangements / moving a payment to the end of a retail contract are handled by messaging or calling the Customer Experience team, not a self-service form, so payment_arrangement is unsupported online.",
+  "officialDomains": [
+    "gmfinancial.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.gmfinancial.com/en-us/resources/payment-options.html",
+      "title": "Payment Options",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.gmfinancial.com/en-us/resources/faq.html",
+      "title": "Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.gmfinancial.com/en-us/myaccount/login.html",
+      "title": "MyAccount Login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "GM Financial",
+    "primary": "#0a3d7c",
+    "accent": "#06264d",
+    "monogram": "GM"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "username": "Email Address",
+    "forgot": "Forgot Password?",
+    "register": "Register",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Statements",
+    "dashboard": "MyAccount",
+    "payBill": "Make a Payment",
+    "contact": "Customer Experience"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAccount",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless Statements",
+        "page": "paperless"
+      },
+      {
+        "label": "Customer Experience",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.gmfinancial.com/en-us/myaccount/login.html"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gmfinancial.com/en-us/resources/payment-options.html",
+      "note": "Enroll in Auto Pay in MyAccount; the separate Auto Debit program uses a form and takes at least 10 days to start."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gmfinancial.com/en-us/resources/faq.html",
+      "note": "Turn off Auto Pay in MyAccount; Auto Debit must be cancelled by phone at least 5 days before the due date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gmfinancial.com/en-us/resources/faq.html"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.gmfinancial.com/en-us/resources/faq.html",
+      "note": "Moving a payment or setting up an arrangement is not self-service. Message the Customer Experience team in MyAccount or call 1-800-284-2271 to see if your account qualifies.",
+      "channel": "phone",
+      "phone": "8002842271"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gmfinancial.com/en-us/resources/faq.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gmfinancial.com/en-us/resources/payment-options.html",
+      "note": "ACI Payments phone payments cost $2.50 or $3.50 and must be under $3,000."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gmfinancial.com/en-us/resources/payment-options.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.gmfinancial.com/en-us/resources/payment-options.html",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "paragraphs": [
+        "Make one-time payments or set up Auto Pay in MyAccount or the GM Financial Mobile app from a bank account. Agent-assisted phone payments through ACI Payments at 1-800-284-2271 cost $2.50 or $3.50, must be under $3,000 and can take up to 2 business days to post.",
+        "By mail, send a check or money order payable to GM Financial with your payment coupon to P.O. Box 650595, Dallas, TX 75265-0595. Cash and card payments are possible only through Western Union or MoneyGram, which charge their own fees."
+      ],
+      "source": "https://www.gmfinancial.com/en-us/resources/payment-options.html",
+      "mode": "append"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay and Auto Debit",
+      "paragraphs": [
+        "Auto Pay is set up in MyAccount and schedules your payments automatically; you can turn it off there too.",
+        "Auto Debit is a separate program: send the Automatic Payment Plan form with a voided check by mail, email or fax. It takes at least 10 days to start, and to cancel it you call 1-800-284-2271 at least 5 days before your due date."
+      ],
+      "source": "https://www.gmfinancial.com/en-us/resources/payment-options.html",
+      "topic": "autopay"
+    },
+    {
+      "slug": "cash-payments",
+      "title": "Paying with cash or a credit card",
+      "paragraphs": [
+        "Pay cash at Western Union Quick Collect or MoneyGram locations, or pay by credit card through Western Union or MoneyGram; they charge a fee, GM Financial does not. For MoneyGram use receive code 2583 for a purchase account or 12424 for a lease. Western Union online payments made before 5 p.m. CT post the same business day."
+      ],
+      "source": "https://www.gmfinancial.com/en-us/resources/payment-options.html",
+      "topic": "payments"
+    },
+    {
+      "slug": "grace-period",
+      "title": "Is there a grace period?",
+      "paragraphs": [
+        "No. Interest and any late fees accrue daily after the due date as set by your contract."
+      ],
+      "source": "https://www.gmfinancial.com/en-us/resources/faq.html",
+      "topic": "billing"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment assistance",
+      "paragraphs": [
+        "Some accounts qualify for moving a payment to the end of a retail contract or another arrangement. Customers facing hardship or a natural disaster can message, text or call the Customer Experience team to talk about options."
+      ],
+      "source": "https://www.gmfinancial.com/en-us/resources/faq.html",
+      "topic": "assistance"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "paragraphs": [
+        "Turn on paperless statements in your MyAccount or mobile app profile settings to get a notice when each statement is online. Digital statements are often ready before paper ones arrive."
+      ],
+      "source": "https://www.gmfinancial.com/en-us/resources/faq.html",
+      "topic": "paperless"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "phone-payment-limit",
+        "intent": "Using the GM Financial website's help pages, find the maximum amount allowed for a phone payment through ACI Payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3,000",
+              "3000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3,000",
+            "3000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Phone payments through ACI Payments must be under $3,000."
+          }
+        ]
+      },
+      {
+        "slug": "moneygram-receive-code",
+        "intent": "Using GM Financial's help pages, find the MoneyGram receive code for paying a GM Financial purchase (retail) account in cash. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2583"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2583"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The MoneyGram receive code for a purchase account is 2583."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email Address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Debit card"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "Customer Experience"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cash-payments",
+      "contains": "2583"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$3,000"
+    }
+  ]
+}

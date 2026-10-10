@@ -4,6 +4,8 @@
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
+import { loadDossiers, applyDossier } from './billers/load.mjs';
+import { validateDossier } from './billers/schema.mjs';
 
 const categoriesDir = new URL('../../categories/', import.meta.url);
 
@@ -362,7 +364,7 @@ export function loadCatalog() {
         id, category: data.category, source: { file: `categories/${file}`, index, record_hash: hash(JSON.stringify(entry), 16) },
         entry, ...resolved, fees: parseFees(entry), brand: brand(entry, id), contact: contactInfo(entry)
       };
-      biller.capabilities = caps;
+      biller.capabilities = caps; biller.tier = 'family';
       // biller.profile: the observed public profile (null without a capture). Lazy and non-enumerable, so serializing a
       // biller does not load or embed it.
       Object.defineProperty(biller, 'profile', { get: () => indexEntry?.p ? loadProfile(id) : null, enumerable: false, configurable: true });
@@ -371,7 +373,20 @@ export function loadCatalog() {
       byTemplate.get(resolved.template).push(id);
     });
   }
-  cache = { billers, byTemplate, collisions };
+  // Dedicated tier: researched per-biller dossiers (billers/<id>.json) override the family rendering of that biller.
+  const { dossiers, errors: dossierErrors } = loadDossiers();
+  const dedicated = [];
+  for (const [id, d] of dossiers) {
+    const b = billers.get(id);
+    if (!b) { dossierErrors[id] = [...(dossierErrors[id] || []), `id: no catalog biller with id ${id}`]; continue; }
+    const cross = validateDossier(d, { biller: b, fileId: id }); // catalog cross-checks (sources' domains, plans, offline)
+    if (cross.length) { dossierErrors[id] = cross; continue; }
+    const before = b.template;
+    applyDossier(b, d, { recompute: (entry, resolved) => observedCapabilities(capabilities(entry, resolved), resolved, profileIndex()?.billers?.[id] || null) });
+    if (b.template !== before) { byTemplate.get(before).splice(byTemplate.get(before).indexOf(id), 1); if (!byTemplate.has(b.template)) byTemplate.set(b.template, []); byTemplate.get(b.template).push(id); }
+    dedicated.push(id);
+  }
+  cache = { billers, byTemplate, collisions, dedicated, dossierErrors };
   return cache;
 }
 

@@ -22,13 +22,17 @@ function showError(err) { const node = document.querySelector('#error'); if (nod
 function invoicesTable(items) {
   return `<table><thead><tr><th>Select</th><th>Invoice</th><th>Period</th><th>Due</th><th>Unpaid</th><th></th></tr></thead><tbody>${items.map(i => `<tr><td><input type="radio" name="invoice" aria-label="Select invoice ${escape(i.number)}" value="${i.id}" ${i.remainingCents > 0 ? '' : 'disabled'}></td><td>${escape(i.number)}${i.current ? ' (current)' : ''}</td><td>${escape(i.period)}</td><td>${escape(i.dueDate)}</td><td>${money(i.remainingCents)}</td><td><a href="/portal/invoice?id=${i.id}">View Invoice</a></td></tr>`).join('')}</tbody></table>`;
 }
+let renderRevision = 0, renderedUrl;
 async function render() {
+  const revision = ++renderRevision, url = location.href;
+  renderedUrl = url;
+  const isCurrent = () => revision === renderRevision && location.href === url;
   const path = location.pathname;
-  try { const session = await api('session'); auth = session.account; siteInfo = session.site; document.title = `${siteInfo.name} · Billworld`; }
-  catch { shell('<h1>Start a Billworld episode</h1><p>Use the episode URL supplied by the runner. Each episode has isolated billing and email state.</p>'); return; }
+  try { const session = await api('session'); if (!isCurrent()) return; auth = session.account; siteInfo = session.site; document.title = `${siteInfo.name} · Billworld`; }
+  catch { if (!isCurrent()) return; shell('<h1>Start a Billworld episode</h1><p>Use the episode URL supplied by the runner. Each episode has isolated billing and email state.</p>'); return; }
   if(siteInfo.runtime?.frontend==='authoritypay'){await renderAuthorityPay({site:siteInfo,auth,api,app,escape,money,navigate,refresh:render});return;}
   if (siteInfo.id === 'duluth-comfortsystems' && path!=='/mail') { await renderDuluth({auth,api,app,escape,money,navigate,refresh:render}); return; }
-  if (siteInfo.id === 'avec-electric'||siteInfo.runtime?.frontend==='smarthub') { await renderSmartHub({ site:siteInfo, auth, api, app, escape, money, refresh: render }); return; }
+  if (siteInfo.id === 'avec-electric'||siteInfo.runtime?.frontend==='smarthub') { await renderSmartHub({ site:siteInfo, auth, api, app, escape, money, refresh: render, isCurrent }); return; }
   if (siteInfo.id === 'homer-utilities') { await renderXpress({ auth, api, app, escape, money, navigate, refresh: render }); return; }
   if (siteInfo.id === 'spotify' && !['/mail', '/portal/forgot', '/portal/reset', '/portal/logout', '/portal/verify'].includes(path)) {
     await renderSpotify({ path, auth, api, app, escape, money, panel, input, navigate }); return;
@@ -141,6 +145,8 @@ app.addEventListener('submit', async e => {
   } catch (err) { showError(err); }
   finally { if (button.isConnected) button.disabled = false; }
 });
-window.addEventListener('hashchange', () => render().catch(showError));
-window.addEventListener('popstate', () => render().catch(showError));
+// A fragment traversal can emit both events for one URL. Render it once.
+const renderNavigation = () => { if (location.href !== renderedUrl) render().catch(showError); };
+window.addEventListener('hashchange', renderNavigation);
+window.addEventListener('popstate', renderNavigation);
 render().catch(showError);

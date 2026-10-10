@@ -1,0 +1,383 @@
+{
+  "id": "veolia-water-formerly-suez-new-jersey-new-york-p-b5ab6a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Veolia Water (formerly SUEZ) – New Jersey, New York, Pennsylvania, Delaware, Rhode Island",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public mywater.veolia.us pages only (no sign-in). The sign-in page sits behind a bot check and was not viewed, so the sign-in identifier and MFA are left at the family defaults; the FAQ says password resets ask identity questions and then email instructions, and SMS one-time passcodes are an opt-in notification. Payment options: One-Time Web Payment (bank, debit, credit or ATM card), Pay By Phone (select Pay My Bill, 24/7), mail to the Veolia Payment Center, in person at payment locations. Automatic payments come in two forms: Direct Debit from checking or savings each billing period, and Recurring Cards (scheduled card payments, sign-in required). The FAQ tells customers to call (800) 422-5987 to cancel Direct Debit, but it also describes an online 'cannot be cancelled at this time' message and says the enrollment can be managed once a locked payment processes, and Recurring Cards are set up online; reviewer changed autopay_cancel to supported (inferred) rather than not offered online. Payment arrangements: eligibility is checked by calling (800) 422-5987 (marked not offered online). Stop Service can be scheduled online. Card convenience fees are not published on the pages reviewed, so fees are left at family defaults. Adding or removing accounts on a web profile also requires a call.",
+  "officialDomains": [
+    "veolia.us"
+  ],
+  "sources": [
+    {
+      "url": "https://mywater.veolia.us/support-center/payments-faq",
+      "title": "Payments FAQ - Veolia Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://mywater.veolia.us/automatic-payments",
+      "title": "Automatic Payments - Veolia Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://mywater.veolia.us/standard/my-account/visitor-payment-options",
+      "title": "Payment Options - Veolia Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://mywater.veolia.us/paperless-billing",
+      "title": "Paperless Billing - Veolia Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://mywater.veolia.us/support-center/online-account-faq",
+      "title": "Online & Account FAQ - Veolia Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Veolia Water",
+    "shortName": "Veolia",
+    "primary": "#c8102e",
+    "accent": "#00384d",
+    "monogram": "VE"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Register now!",
+    "guestPay": "One-Time Web Payment",
+    "payBill": "Pay My Bill",
+    "paperless": "Paperless Billing",
+    "arrangement": "Payment Arrangement",
+    "cancel": "Stop Service",
+    "dashboard": "My Account",
+    "help": "Support Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "One-Time Web Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Register now!",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Automatic Payments",
+        "helpSlug": "autopay"
+      },
+      {
+        "label": "Support Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://mywater.veolia.us/standard/my-account/visitor-payment-options"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mywater.veolia.us/standard/my-account/visitor-payment-options"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mywater.veolia.us/automatic-payments"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://mywater.veolia.us/support-center/payments-faq",
+      "note": "The FAQ says to call (800) 422-5987 to cancel Direct Debit, and also that you can manage the enrollment online once a payment the bank has locked has processed."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mywater.veolia.us/paperless-billing"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://mywater.veolia.us/support-center/payments-faq",
+      "channel": "phone",
+      "phone": "800-422-5987",
+      "note": "Payment arrangements are not offered online. Call Customer Service at (800) 422-5987 to check eligibility."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mywater.veolia.us/support-center/online-account-faq",
+      "note": "Schedule the stop at your old address online before starting service at the new one."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mywater.veolia.us/standard/my-account/visitor-payment-options",
+      "phone": "800-422-5987"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mywater.veolia.us/support-center/payments-faq"
+    }
+  },
+  "billing": {
+    "source": "https://mywater.veolia.us/standard/my-account/visitor-payment-options",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "One-Time Web Payment: pay one or all of your bills online from a bank account or with a debit, credit or ATM card. Visa, Mastercard and American Express are accepted.",
+        "Pay By Phone at any hour: call (800) 422-5987 and select Pay My Bill.",
+        "Pay By Mail: write your account number on a check or money order and send it to Veolia Payment Center, PO Box 371804, Pittsburgh, PA 15250-7804. Do not send cash.",
+        "Pay In Person: use Find a Payment Location to search for a nearby payment agent."
+      ],
+      "source": "https://mywater.veolia.us/standard/my-account/visitor-payment-options"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Direct Debit is the fastest and most convenient way to pay: your bill is taken from your checking or savings account each billing period. Choose Set Up Direct Debit to enroll.",
+        "Recurring Cards let you schedule payments with a credit, debit or ATM card on your own schedule. Sign in and choose Set Up Payments."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Open Automatic Payments.",
+        "Choose Direct Debit (bank) or Recurring Cards.",
+        "Confirm the enrollment."
+      ],
+      "source": "https://mywater.veolia.us/automatic-payments"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Cancel Direct Debit",
+      "topic": "autopay",
+      "paragraphs": [
+        "Veolia's FAQ says to call Customer Service at (800) 422-5987 to cancel Direct Debit. You can also manage the enrollment in your account.",
+        "If you see a message that the enrollment cannot be cancelled right now, a payment is already locked by your bank. It will process on its scheduled date, and you can change the enrollment afterward."
+      ],
+      "source": "https://mywater.veolia.us/support-center/payments-faq"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Set up an account on the secure customer website first. When a bill is ready you get an email with a link; sign in to review it and pay by card or bank withdrawal."
+      ],
+      "source": "https://mywater.veolia.us/paperless-billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving: stop and start service",
+      "topic": "account",
+      "paragraphs": [
+        "If you are moving, first schedule a stop of service at your old address on the Stop Service page, then schedule service at your new address with Add New Service. Make sure service is set up at the new home before you stop the old one.",
+        "To add or remove accounts on your web profile, call the Customer Service Center at (800) 422-5987."
+      ],
+      "steps": [
+        "Sign in.",
+        "Open Stop Service.",
+        "Pick the stop date for your old address.",
+        "Review and submit."
+      ],
+      "source": "https://mywater.veolia.us/support-center/online-account-faq"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "Payment arrangements are available to eligible customers. Call Customer Service at (800) 422-5987 to find out whether you qualify."
+      ],
+      "source": "https://mywater.veolia.us/support-center/payments-faq"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "direct-debit-cancel-route",
+        "intent": "You want to stop Veolia Direct Debit from your bank account. Find out how Veolia says to cancel it and report the phone number; do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "autopay_unchanged"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8004225987"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8004225987"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay",
+          "limitation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Customer Service at (800) 422-5987."
+          }
+        ]
+      },
+      {
+        "slug": "mail-payment-address",
+        "intent": "Find the mailing address Veolia gives for sending a check payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "371804"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "371804"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Veolia Payment Center, PO Box 371804, Pittsburgh, PA 15250-7804"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Automatic Payments",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Stop Service"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-autopay",
+      "contains": "(800) 422-5987"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "PO Box 371804"
+    }
+  ]
+}

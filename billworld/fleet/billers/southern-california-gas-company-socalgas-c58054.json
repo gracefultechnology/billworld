@@ -1,0 +1,399 @@
+{
+  "id": "southern-california-gas-company-socalgas-c58054",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Southern California Gas Company (SoCalGas)",
+  "category": "gas",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public socalgas.com pages only (no sign-in; the My Account sign-in page is script-only). Sign-in takes the username or the email address (field labelled Username/Email Address; the Help Center offers Retrieve your username / Reset your password, both by emailed verification code); passwords need 10+ characters with upper, lower and a digit. Registration needs the account number, ZIP code and the total of the most recent bill (the bill total has no registration field in the engine, so only accountNumber and zip are set). Online payments in My Account from a bank account are free; card and e-check payments go through BillMatrix with a $1.50 convenience fee (modelled as cardCents). AutoPay drafts a checking account; the draft day is not published (family default kept). The FAQ gives no online AutoPay-cancel steps and tells customers to call 1-877-238-0092, so AutoPay cancel is marked supported but inferred. Stop Service links into My Account (observed). Payment Extension is requested in My Account under My Bill. Returning to paper bills is by phone. No residential late fee is documented on the pages used, so none is set.",
+  "officialDomains": [
+    "socalgas.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.socalgas.com/billing-payment/ways-to-pay",
+      "title": "Ways to Pay",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.socalgas.com/help-center",
+      "title": "Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.socalgas.com/moving",
+      "title": "Moving",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.socalgas.com/billing-payment/assistance-programs",
+      "title": "Assistance Programs",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.socalgas.com/ampinfo",
+      "title": "Past Due Bill Forgiveness (Arrearage Management Plan)",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "SoCalGas",
+    "primary": "#00539b",
+    "accent": "#00365f",
+    "monogram": "SG"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "viewBill": "View My Bill",
+    "statements": "View My Bill",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "signIn": "Log In",
+    "register": "Register",
+    "forgot": "I forgot my username or password",
+    "arrangement": "Payment Extension",
+    "cancel": "Stop Service",
+    "help": "Help Center",
+    "username": "Username/Email Address",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Assistance Programs",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View My Bill",
+        "page": "bill"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Extension",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "zip"
+    ],
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{10,}$",
+      "message": "Use at least 10 characters with an uppercase letter, a lowercase letter and a number."
+    },
+    "evidence": "documented_official",
+    "source": "https://www.socalgas.com/help-center"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.socalgas.com/billing-payment/ways-to-pay"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.socalgas.com/help-center"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.socalgas.com/help-center",
+      "note": "The Help Center gives no online cancel steps; customers can also call 1-877-238-0092 to stop AutoPay."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.socalgas.com/billing-payment/ways-to-pay"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.socalgas.com/help-center"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.socalgas.com/billing-payment/assistance-programs",
+      "note": "SoCalGas offers a Payment Extension requested in My Account under My Bill."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.socalgas.com/billing-payment/assistance-programs"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.socalgas.com/moving",
+      "note": "Stop Service is a link into My Account."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.socalgas.com/billing-payment/ways-to-pay",
+      "phone": "877-238-0092"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.socalgas.com/billing-payment/ways-to-pay"
+    }
+  },
+  "billing": {
+    "source": "https://www.socalgas.com/billing-payment/ways-to-pay",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 150,
+      "evidence": "documented_official",
+      "source": "https://www.socalgas.com/billing-payment/ways-to-pay"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your SoCalGas bill",
+      "mode": "append",
+      "topic": "payments",
+      "paragraphs": [
+        "Paying in My Account is free. Card and electronic-check payments made through BillMatrix, an independent payment provider, carry a $1.50 convenience fee.",
+        "You can also authorize a free checking-account payment by phone at 1-877-238-0092, pay through your bank's bill pay, mail a check or money order with your bill stub to SoCalGas, P.O. Box C, Monterey Park, CA 91756, or pay at a partner location."
+      ],
+      "source": "https://www.socalgas.com/billing-payment/ways-to-pay"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay (Direct Debit)",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay takes your monthly payment from your checking account at no charge.",
+        "To set it up online, sign in, open My Bill and choose AutoPay in the Automatic Monthly Payments section, enter your bank details, accept the terms and select Set Up. A paper AutoPay application can also be downloaded from Ways to Pay."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Open My Bill.",
+        "Choose AutoPay under Automatic Monthly Payments.",
+        "Enter your payment details and accept the terms.",
+        "Select Set Up."
+      ],
+      "source": "https://www.socalgas.com/help-center"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Forgot your username or password",
+      "topic": "account",
+      "paragraphs": [
+        "Choose I forgot my username or password on the sign-in page, then Retrieve your username or Reset your password. SoCalGas emails a verification code to confirm it is you.",
+        "Passwords must be at least 10 characters and include an uppercase letter, a lowercase letter and a number. If you cannot reach your email or your account is locked, call 1-877-238-0092."
+      ],
+      "source": "https://www.socalgas.com/help-center"
+    },
+    {
+      "slug": "register",
+      "title": "Register for My Account",
+      "topic": "account",
+      "paragraphs": [
+        "To register you need your SoCalGas account number, your ZIP code and the total amount of your most recent bill. Closed accounts cannot be registered.",
+        "If you do not know your account number, use Help me find my account number on the registration page."
+      ],
+      "source": "https://www.socalgas.com/help-center"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Assistance programs",
+      "topic": "assistance",
+      "paragraphs": [
+        "Payment Extension: ask for more time to pay from My Account (My Bill, then Payment Extension).",
+        "CARE gives qualifying households a 20% monthly discount. The Level Pay Plan averages your yearly gas cost over 12 months.",
+        "The Arrearage Management Plan forgives eligible past-due balances for CARE customers: each on-time, in-full payment forgives one twelfth of the eligible debt, up to $8,000."
+      ],
+      "source": "https://www.socalgas.com/billing-payment/assistance-programs"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop or transfer service",
+      "topic": "account",
+      "paragraphs": [
+        "Use Stop Service or Transfer Service in My Account to end gas service at your address or move it to a new address in the SoCalGas service area."
+      ],
+      "source": "https://www.socalgas.com/moving"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-convenience-fee",
+        "intent": "Using the SoCalGas website's help pages, find the convenience fee charged for paying by card through BillMatrix. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments through BillMatrix cost a $1.50 convenience fee."
+          }
+        ]
+      },
+      {
+        "slug": "care-discount",
+        "intent": "Using the SoCalGas website's help pages, find the monthly bill discount percentage that the CARE program gives qualifying households. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "20%",
+              "20 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "20%",
+            "20 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "CARE gives a 20% monthly discount."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Ways to Pay",
+        "Help Center"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "View My Bill",
+        "Payment Extension"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$1.50",
+        "BillMatrix"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "20%"
+    }
+  ]
+}

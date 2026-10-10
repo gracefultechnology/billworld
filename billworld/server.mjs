@@ -1,3 +1,4 @@
+import {starnikRoutes,starnikSourceRoute,starnikSourceLinks} from './starnik-routes.mjs';
 import http from 'node:http';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { readFileSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
@@ -11,9 +12,10 @@ const root = fileURLToPath(new URL('.', import.meta.url));
 const assets = new Map(['index.html', 'app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','personapay.css','paymentus.js','paymentus.css','paymentus.html','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css', 'google.html', 'google.js'].map(name => [name, readFileSync(`${root}/public/${name}`)]));
 assets.set('starnik.css',readFileSync(`${root}/public/starnik.css`));
 assets.set('starnik.js',readFileSync(`${root}/public/starnik.js`));
+assets.set('onswc-public.js',readFileSync(`${root}/public/onswc-public.js`));
 assets.set('catalog-public.js',readFileSync(`${root}/public/catalog-public.js`));
 const publicSnapshots = new SnapshotStore(`${root}/public/reference-pages`, {verifyBehavior(manifest){
-  if (manifest.local_behavior && (!['public/municipal.js','public/mychart.js','public/wvu-public.js','public/mychart-activation.js','public/mychart-recovery.js','public/catalog-public.js'].includes(manifest.local_behavior.file) || createHash('sha256').update(assets.get(manifest.local_behavior.file.split('/').at(-1))).digest('hex') !== manifest.local_behavior.sha256)) throw Error('Public snapshot behavior hash mismatch');
+  if (manifest.local_behavior && (!['public/municipal.js','public/mychart.js','public/wvu-public.js','public/mychart-activation.js','public/mychart-recovery.js','public/catalog-public.js','public/onswc-public.js'].includes(manifest.local_behavior.file) || createHash('sha256').update(assets.get(manifest.local_behavior.file.split('/').at(-1))).digest('hex') !== manifest.local_behavior.sha256)) throw Error('Public snapshot behavior hash mismatch');
 }});
 if (existsSync(`${root}/public/reference-assets/juneau-logo.png`)) assets.set('juneau-logo.png', readFileSync(`${root}/public/reference-assets/juneau-logo.png`));
 for (const name of ['index.html', 'bridge.js', 'css/styles.css', 'js/data.js', 'js/state.js', 'js/components.js', 'js/views.js', 'js/app.js']) {
@@ -64,7 +66,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
       const entry = url.pathname.match(/^\/enter\/([^/]+)\/([^/]+)$/);
       if (entry && req.method === 'GET') {
         world.enter(entry[1], entry[2]);
-        res.writeHead(302, { Location: '/', 'Set-Cookie': [cookie('bw_episode', entry[1]), cookie('bw_access', entry[2]), cookie('bw_session', '', 0), cookie('bw_mail', '', 0), cookie('bw_lookup', '', 0),cookie('bw_paymentus_link','',0),cookie('bw_paymentus_reset','',0),cookie('bw_paymentus_quote','',0),cookie('bw_starnik_quote','',0),cookie('bw_starnik_guest','',0),cookie('bw_starnik_pending','',0),cookie('bw_starnik_signup','',0),cookie('bw_starnik_reset','',0),cookie('bw_paymentus_autopay','',0),cookie('bw_cusi_registration','',0),cookie('bw_cusi_reset','',0),cookie('bw_cusi_quote','',0)] }); return res.end();
+        res.writeHead(302, { Location: '/', 'Set-Cookie': [cookie('bw_episode', entry[1]), cookie('bw_access', entry[2]), cookie('bw_session', '', 0), cookie('bw_mail', '', 0), cookie('bw_lookup', '', 0),cookie('bw_paymentus_link','',0),cookie('bw_paymentus_reset','',0),cookie('bw_paymentus_quote','',0),cookie('bw_starnik_payment','',0),cookie('bw_starnik_autopay','',0),cookie('bw_starnik_wallet','',0),cookie('bw_starnik_quote','',0),cookie('bw_starnik_guest','',0),cookie('bw_starnik_pending','',0),cookie('bw_starnik_signup','',0),cookie('bw_starnik_reset','',0),cookie('bw_paymentus_autopay','',0),cookie('bw_cusi_registration','',0),cookie('bw_cusi_reset','',0),cookie('bw_cusi_quote','',0)] }); return res.end();
       }
       if (url.pathname.startsWith('/connector/')) {
         const id = req.headers['x-billworld-episode'];
@@ -95,7 +97,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
         const id = c.bw_episode, session = c.bw_session;
         const starnikSite=world.session(id,null).site.runtime.kind==='starnik';
         if(url.pathname.startsWith('/api/starnik/')&&!starnikSite)throw new Fault('Starnik operation unavailable',404);
-        if(starnikSite&&!url.pathname.startsWith('/api/mail')&&!['/api/session','/api/starnik/guest/quote','/api/starnik/guest/review','/api/starnik/guest/pay','/api/starnik/guest/receipt','/api/starnik/guest/lookup','/api/starnik/guest/account','/api/starnik/login','/api/starnik/logout','/api/starnik/account','/api/starnik/recovery/request','/api/starnik/recovery/grant','/api/starnik/recovery/complete','/api/starnik/signup/request','/api/starnik/signup/resend','/api/starnik/signup/grant','/api/starnik/signup/username','/api/starnik/signup/complete'].includes(url.pathname))throw new Fault('This operation is not implemented for the Starnik construction slice',404);
+        if(starnikSite&&!url.pathname.startsWith('/api/mail')&&!['/api/session','/api/starnik/ebill','/api/starnik/ebill/preference','/api/starnik/payment','/api/starnik/payment/prepare','/api/starnik/payment/review','/api/starnik/payment/receipt','/api/starnik/payment/pay','/api/starnik/autopay','/api/starnik/autopay/prepare','/api/starnik/autopay/review','/api/starnik/autopay/enable','/api/starnik/autopay/disable','/api/starnik/wallet','/api/starnik/wallet/method','/api/starnik/wallet/prepare','/api/starnik/wallet/review','/api/starnik/wallet/save','/api/starnik/wallet/remove','/api/starnik/guest/quote','/api/starnik/guest/review','/api/starnik/guest/pay','/api/starnik/guest/receipt','/api/starnik/guest/lookup','/api/starnik/guest/account','/api/starnik/login','/api/starnik/logout','/api/starnik/history','/api/starnik/account','/api/starnik/recovery/request','/api/starnik/recovery/grant','/api/starnik/recovery/complete','/api/starnik/signup/request','/api/starnik/signup/resend','/api/starnik/signup/grant','/api/starnik/signup/username','/api/starnik/signup/complete'].includes(url.pathname))throw new Fault('This operation is not implemented for the Starnik construction slice',404);
         const cusiSite=world.session(id,null).site.runtime.kind==='cusi';
         const paymentusSite=world.session(id,null).site.runtime.kind==='paymentus';
         if(url.pathname.startsWith('/api/paymentus/')&&!paymentusSite)throw new Fault('Paymentus operation unavailable',404);
@@ -110,6 +112,15 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           if(url.pathname==='/api/starnik/guest/account')return json(res,world.starnikGuestAccount(id,c.bw_starnik_guest));
           if(url.pathname==='/api/starnik/signup/grant')return json(res,world.starnikRegistrationGrant(id,c.bw_starnik_signup));
           if(url.pathname==='/api/starnik/recovery/grant')return json(res,world.starnikRecoveryGrant(id,c.bw_starnik_reset));
+          if(url.pathname==='/api/starnik/ebill')return json(res,world.starnikEBill(id,session));
+          if(url.pathname==='/api/starnik/payment')return json(res,world.starnikPaymentOptions(id,session));
+          if(['/api/starnik/payment/review','/api/starnik/payment/receipt'].includes(url.pathname))return json(res,world.starnikPaymentReview(id,session,c.bw_starnik_payment,url.pathname.endsWith('/receipt')));
+          if(url.pathname==='/api/starnik/autopay')return json(res,world.starnikAutoPay(id,session));
+          if(url.pathname==='/api/starnik/autopay/review')return json(res,world.starnikAutoPayReview(id,session,c.bw_starnik_autopay));
+          if(url.pathname==='/api/starnik/wallet/method')return json(res,world.starnikWalletMethod(id,session,url.searchParams.get('methodId')));
+          if(url.pathname==='/api/starnik/wallet')return json(res,world.starnikWallet(id,session));
+          if(url.pathname==='/api/starnik/wallet/review')return json(res,world.starnikWalletReview(id,session,c.bw_starnik_wallet));
+          if(url.pathname==='/api/starnik/history'){const filter=url.searchParams.get('showAll');if(filter!==null&&!['true','false'].includes(filter))throw new Fault('Invalid history filter');return json(res,world.starnikHistory(id,session,{accountId:url.searchParams.get('accountId')??undefined,showAll:filter==='true'}));}
           if(url.pathname==='/api/starnik/account')return json(res,world.starnikAccount(id,session));
           if(url.pathname==='/api/paymentus/link/review')return json(res,world.paymentusLinkReview(id,session,c.bw_paymentus_link));
           if(url.pathname==='/api/paymentus/link/receipt')return json(res,world.paymentusLinkReview(id,session,c.bw_paymentus_link,true));
@@ -164,6 +175,15 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
         if (req.method === 'POST') {
           const input = await body(req); let result;
           if(url.pathname==='/api/starnik/login')result=world.starnikLogin(id,input);
+          else if(url.pathname==='/api/starnik/ebill/preference')result=world.starnikEBillSave(id,session,input);
+          else if(url.pathname==='/api/starnik/payment/prepare'){const r=world.starnikPaymentPrepare(id,session,input);res.setHeader('Set-Cookie',cookie('bw_starnik_payment',r.token,1800));result={ok:true};}
+          else if(url.pathname==='/api/starnik/payment/pay')result=world.starnikPaymentPay(id,session,c.bw_starnik_payment,{authorize:input.authorize});
+          else if(url.pathname==='/api/starnik/autopay/prepare'){const r=world.starnikAutoPayPrepare(id,session,input);res.setHeader('Set-Cookie',cookie('bw_starnik_autopay',r.token,600));result={ok:true};}
+          else if(url.pathname==='/api/starnik/autopay/enable')result=world.starnikAutoPayEnable(id,session,c.bw_starnik_autopay,input);
+          else if(url.pathname==='/api/starnik/autopay/disable')result=world.starnikAutoPayDisable(id,session,input);
+          else if(url.pathname==='/api/starnik/wallet/prepare'){const r=world.starnikWalletPrepare(id,session,input);res.setHeader('Set-Cookie',cookie('bw_starnik_wallet',r.token,600));result={ok:true};}
+          else if(url.pathname==='/api/starnik/wallet/save')result=world.starnikWalletSave(id,session,c.bw_starnik_wallet,{authorize:input.authorize});
+          else if(url.pathname==='/api/starnik/wallet/remove')result=world.starnikWalletRemove(id,session,input);
           else if(url.pathname==='/api/starnik/guest/quote'){const r=world.starnikGuestQuote(id,c.bw_starnik_guest,input);res.setHeader('Set-Cookie',cookie('bw_starnik_quote',r.token,1500));const{token,...safe}=r;result=safe;}
           else if(url.pathname==='/api/starnik/guest/pay')result=world.starnikGuestPay(id,c.bw_starnik_guest,c.bw_starnik_quote,{authorize:input.authorize});
           else if(url.pathname==='/api/starnik/guest/lookup'){res.setHeader('Set-Cookie',cookie('bw_starnik_guest','',0));const r=world.starnikGuestLookup(id,input);res.setHeader('Set-Cookie',cookie('bw_starnik_guest',r.token,1500));result={verified:true,synthetic:true};}
@@ -251,15 +271,17 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
         let snapshotPath = url.pathname, dentalBehavior=false;
         let cusiBehavior=false,cusiPage=false;
         let paymentusPage=false,starnikPage=false,starnikBehavior=false;
-        const starnikRoutes={'portal-guest-current':'/starnikERP/',website:'/',login_url:'/billing', 'links-autopay_setup':'/autopay-help','links-view_bill':'/understanding-your-bill','links-payment_assistance':'/assistance',faq:'/faq','portal-register':'/RP/signup','portal-login':'/RP_Default.aspx','portal-forgot-password':'/RP/forgot-password','portal-username-current':'/RP/forgot-username'};
+        let starnikSourceRoutes=null;
         const cusiRoutes={'website':'/','services':'/services','contact':'/contact','links-pay_bill':'/Account/Login','registration':'/Account/Registration','recovery':'/Account/ForgotPassword','terms':'/terms','privacy':'/privacy'};
         if(c.bw_episode){
           world.enter(c.bw_episode,c.bw_access);
           if(world.session(c.bw_episode,null).site.runtime.kind==='starnik'){
+            if(req.method==='GET'&&url.pathname.startsWith('/invoice/download/')){const document=world.starnikStatement(c.bw_episode,c.bw_session,decodeURIComponent(url.pathname.slice('/invoice/download/'.length)));res.writeHead(200,{'Content-Type':'application/pdf','Content-Disposition':`attachment; filename="${document.filename}"`,'Content-Length':document.bytes.length,'Cache-Control':'no-store'});return res.end(document.bytes);}
             if(url.pathname==='/starnik/signup/verify'&&url.searchParams.has('token')){world.starnikRegistrationGrant(c.bw_episode,url.searchParams.get('token'),true);res.writeHead(302,{Location:'/starnik/signup/setup','Set-Cookie':cookie('bw_starnik_signup',url.searchParams.get('token'),1800)});return res.end();}
             if(url.pathname==='/starnik/reset'&&url.searchParams.has('token')){world.starnikRecoveryGrant(c.bw_episode,url.searchParams.get('token'),true);res.writeHead(302,{Location:'/starnik/reset','Set-Cookie':cookie('bw_starnik_reset',url.searchParams.get('token'),900)});return res.end();}
-            starnikPage=true;const kind=Object.keys(starnikRoutes).find(k=>starnikRoutes[k]===url.pathname)||(['/starnik/guest/review','/starnik/guest/receipt','/starnik/guest/account','/starnik/account','/starnik/reset','/starnik/signup/pending','/starnik/signup/setup','/starnik/signup/complete'].includes(url.pathname)?'portal-login':null);
-            if(kind){snapshotPath='/reference-pages/biller_97db8399eb95ee4cb710-'+kind+'/index.html';starnikBehavior=['portal-guest-current','portal-login','portal-register','portal-forgot-password','portal-username-current'].includes(kind);}
+            starnikPage=true;starnikSourceRoutes=starnikRoutes(world.session(c.bw_episode,null).site);
+            const route=starnikSourceRoute(starnikSourceRoutes,url.pathname);
+            if(route){snapshotPath=route.snapshotPath;starnikBehavior=route.interactive;}
           }
           if(world.session(c.bw_episode,null).site.runtime.kind==='paymentus'){
             paymentusPage=true;
@@ -290,7 +312,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
         if (publicSnapshots.has(snapshotPath)) {
           const snapshot = publicSnapshots.get(snapshotPath);
           res.writeHead(200, { 'Content-Type': snapshot.contentType==='text/html'?'text/html; charset=utf-8':snapshot.contentType, 'Cache-Control': 'no-store' });
-          if(starnikPage&&snapshot.contentType==='text/html'){let markup=snapshot.content.toString('utf8');for(const[k,path]of Object.entries(starnikRoutes))markup=markup.replaceAll('href="/reference-pages/biller_97db8399eb95ee4cb710-'+k+'/index.html"','href="'+path+'"');markup=markup.replaceAll('href="/starnikERP/"','href="/starnikERP/#/rp_guestpay/rp_guestpay"');if(starnikBehavior)markup=markup.replace('</head>','<link rel="stylesheet" href="/starnik.css"></head>').replace('</body>','<script src="/starnik.js" defer></script></body>');return res.end(markup);}
+          if(starnikPage&&snapshot.contentType==='text/html'){let markup=starnikSourceLinks(snapshot.content.toString('utf8'),starnikSourceRoutes);if(starnikBehavior)markup=markup.replace('</head>','<link rel="stylesheet" href="/starnik.css"></head>').replace('</body>','<script src="/starnik.js" defer></script></body>');return res.end(markup);}
           if(cusiPage&&snapshot.contentType==='text/html'){let markup=snapshot.content.toString('utf8');for(const [kind,path]of Object.entries(cusiRoutes))markup=markup.replaceAll('href="/reference-pages/biller_182c5bcdeb2841397831-'+kind+'/index.html"','href="'+path+'"');if(cusiBehavior)markup=markup.replace('</head>','<link rel="stylesheet" href="/cusi.css"></head>').replace('</body>','<script src="/cusi.js" defer></script></body>');return res.end(markup);}
           if(paymentusPage&&snapshot.contentType==='text/html')return res.end(snapshot.content.toString('utf8').replace('<a rel="noopener" aria-disabled="true" title="This destination is not yet available in Billworld">Visit the Paymentus Customer Portal link</a>','<a href="/paymentus/login">Visit the Paymentus Customer Portal link</a>'));
           return res.end(dentalBehavior?snapshot.content.toString('utf8').replace('</head>','<link rel="stylesheet" href="/personapay.css"></head>').replace('</body>','<script src="/personapay.js" defer></script></body>'):snapshot.content);
@@ -309,10 +331,10 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           res.writeHead(200, { 'Content-Type': 'image/png' }); return res.end(assets.get('juneau-logo.png'));
         }
         const requestedAsset = url.pathname.slice(1);
-        if(starnikPage&&!['starnik.js','starnik.css','catalog-public.js'].includes(requestedAsset))throw new Fault('Starnik route not implemented',404);
-        if(paymentusPage&&!['paymentus.js','paymentus.css','catalog-public.js'].includes(requestedAsset))throw new Fault('Paymentus route not implemented',404);
+        if(starnikPage&&!['starnik.js','starnik.css','catalog-public.js','onswc-public.js'].includes(requestedAsset))throw new Fault('Starnik route not implemented',404);
+        if(paymentusPage&&!['paymentus.js','paymentus.css','catalog-public.js','onswc-public.js'].includes(requestedAsset))throw new Fault('Paymentus route not implemented',404);
         if(cusiPage&&!assets.has(requestedAsset))throw new Fault('CUSI route not implemented',404);
-        const name = ['starnik.css','starnik.js','paymentus.js','paymentus.css','catalog-public.js','app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','personapay.css','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css'].includes(requestedAsset) ? requestedAsset : 'index.html';
+        const name = ['starnik.css','starnik.js','paymentus.js','paymentus.css','catalog-public.js','onswc-public.js','app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','personapay.css','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css'].includes(requestedAsset) ? requestedAsset : 'index.html';
         res.writeHead(200, { 'Content-Type': name.endsWith('.js') ? 'text/javascript' : name.endsWith('.css') ? 'text/css' : 'text/html', 'Cache-Control': 'no-store' });
         return res.end(assets.get(name));
       }
@@ -329,7 +351,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
         const fixture = world.create(input); const actualPort = publicServer.address().port;
         return json(res, { ...fixture, startUrl: `http://127.0.0.1:${actualPort}/enter/${fixture.episodeId}/${fixture.entryToken}`, connectorUrl: `http://127.0.0.1:${actualPort}/connector/messages` });
       }
-      if (url.pathname === '/evaluate') return json(res, world.evaluate(input.episodeId, { confirmation: input.confirmation, billingDate: input.billingDate, scheduledDate: input.scheduledDate,statementFilename:input.statementFilename }));
+      if (url.pathname === '/evaluate') return json(res, world.evaluate(input.episodeId, { confirmation: input.confirmation, billingDate: input.billingDate, scheduledDate: input.scheduledDate,statementFilename:input.statementFilename,postedBalanceCents:input.postedBalanceCents,pendingPaymentCents:input.pendingPaymentCents,remainingBalanceCents:input.remainingBalanceCents }));
       if (url.pathname === '/actions/start') return json(res,world.startActionBudget(input.episodeId,input));
       if (url.pathname === '/actions/consume') return json(res,world.consumeAction(input.episodeId,input));
       if (url.pathname === '/finish') return json(res, world.finish(input.episodeId, input.outcome, input.metadata));

@@ -1,0 +1,343 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "amazon-prime-membership-incl-prime-video-71a21f",
+  "name": "Amazon Prime (incl. Prime Video)",
+  "notes": "Researched from public Amazon Customer Service help pages only (no sign-in). Prime is charged automatically to an eligible payment method at the end of each membership period; there is no separate AutoPay, paper bill, guest pay or payment plan. Canceling refunds the full fee if no benefits were used in the paid period, otherwise a pro-rated refund of remaining full months (the engine does not model refunds). Monthly members who cancel can rejoin only after the paid month. Sign-in uses email or mobile number then password (two steps); Amazon 2-Step Verification is optional, so mfa stays none. Prime Access ($6.99/month for qualifying government-assistance recipients) is described in help but not modeled. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "amazon.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+      "title": "The Amazon Prime Membership Fee - Amazon Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GTJQ7QZY7QL2HK4Y",
+      "title": "How to Cancel Amazon Prime - Amazon Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G3VN2A3K3WBAE2US",
+      "title": "Switch Amazon Prime Membership - Amazon Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "Amazon Prime",
+    "primary": "#007185",
+    "accent": "#232f3e",
+    "monogram": "A"
+  },
+  "labels": {
+    "dashboard": "Your Prime Membership",
+    "plan": "Update, cancel, and more",
+    "wallet": "Your Payments",
+    "history": "Payment history",
+    "statements": "Payment history",
+    "cancel": "Cancel Membership",
+    "signIn": "Sign in",
+    "signOut": "Sign Out",
+    "help": "Customer Service",
+    "username": "Email or mobile phone number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Prime membership fee",
+        "helpSlug": "prime-membership-fee"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Your Prime Membership",
+        "page": "dashboard"
+      },
+      {
+        "label": "Update, cancel, and more",
+        "page": "plan"
+      },
+      {
+        "label": "Your Payments",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Cancel Membership",
+        "page": "cancel"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "none",
+    "evidence": "inferred",
+    "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GTJQ7QZY7QL2HK4Y"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+      "note": "The membership is charged to the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+      "note": "Amazon automatically charges your payment method for the next membership period when the current one ends; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GTJQ7QZY7QL2HK4Y",
+      "note": "Recurring charges stop only when you cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+      "note": "No paper bills are mailed; charges are shown on the account page and receipts are emailed."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+      "note": "Prime Access: qualifying EBT, Medicaid, SNAP and other government-assistance recipients can pay $6.99 a month after verifying eligibility."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GTJQ7QZY7QL2HK4Y",
+      "note": "Cancel from Your Prime Membership. Unused paid periods are refunded in full; otherwise pro-rated by remaining full months. Prime billed through another company is canceled there."
+    }
+  },
+  "billing": {
+    "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "prime-video",
+        "name": "Prime Video membership",
+        "cents": 899
+      },
+      {
+        "id": "young-adult",
+        "name": "Prime for Young Adults (monthly)",
+        "cents": 749
+      },
+      {
+        "id": "prime-monthly",
+        "name": "Amazon Prime (monthly)",
+        "cents": 1499,
+        "current": true
+      },
+      {
+        "id": "prime-annual",
+        "name": "Amazon Prime (annual)",
+        "cents": 13900
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "prime-membership-fee",
+      "title": "The Amazon Prime membership fee",
+      "topic": "plans",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+      "paragraphs": [
+        "Amazon Prime costs $14.99 a month or $139 a year. A Prime Video-only membership is $8.99 a month. Prime for Young Adults is $7.49 a month or $69 a year.",
+        "Recipients of EBT, Medicaid, SNAP and some other government assistance can qualify for discounted Prime Access at $6.99 a month after verifying eligibility. Sales tax may apply in some states. When a trial or membership period ends, Amazon automatically charges for the next one."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your Prime membership",
+      "topic": "account",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G3VN2A3K3WBAE2US",
+      "steps": [
+        "Go to Your Prime Membership.",
+        "Select Update, cancel, and more.",
+        "Select Cancel Membership (or End trial and benefits during a free trial).",
+        "Follow the prompts to confirm."
+      ],
+      "paragraphs": [
+        "If you and your household have not used Prime benefits in the paid period, the full fee is refunded; otherwise the refund is pro-rated by the remaining full months. Refunds take three to five business days.",
+        "After canceling a monthly membership you can rejoin only after the month you already paid for. Channel subscriptions inside Prime Video, such as Paramount+, keep running after Prime ends. If another company bills your Prime, cancel with that company."
+      ]
+    },
+    {
+      "slug": "prime-refunds",
+      "title": "Prime refunds and support",
+      "topic": "billing",
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=GTJQ7QZY7QL2HK4Y",
+      "paragraphs": [
+        "To get extra help canceling, open the Customer Service page, choose Something else, then I need help with something else. Prime memberships started through Google Play on Android are canceled in Google subscription settings."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "annual-fee",
+        "intent": "Find the annual price of an Amazon Prime membership. Do not change or cancel your membership.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "139"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "139"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Amazon Prime costs $139 a year."
+          }
+        ]
+      },
+      {
+        "slug": "prime-access-price",
+        "intent": "Find the monthly price of discounted Amazon Prime (Prime Access) for qualifying government-assistance recipients. Do not change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "6.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "6.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Prime Access costs $6.99 a month."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign in",
+        "Prime membership fee"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email or mobile phone number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Update, cancel, and more",
+        "Your Payments"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Amazon Prime (annual)",
+        "Prime Video membership"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "prime-membership-fee",
+      "contains": "$139"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Update, cancel, and more"
+    }
+  ]
+}

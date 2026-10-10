@@ -1,0 +1,375 @@
+{
+  "id": "public-storage-incl-former-national-storage-affi-5cd91a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Public Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public publicstorage.com pages and its help center only (no sign-in, no account lookup). Sign-in is by the email address tied to the rental plus a password; extra verification by email or phone may be asked. Payments: checking account (ACH) or Visa/Mastercard/Discover/American Express credit or debit; no online fee stated, phone payments carry an unstated small fee. AutoPay is turned on under Payments and drafts on the rent due date (rent is generally due on the 1st). Moving out needs at least seven days' notice and can be started from the online account, chat or by phone (800-742-8048); no proration after the due date. Late fees vary by state/agreement and are not published, so none is modelled. The real no-login 'Pay Your Bill' page finds the account by phone number + ZIP code; the dossier schema has no phone guest field, so the family guest lookup is kept (see report). Storage rentals have no plan tiers, retention offers or payment plans documented, so those built-in tasks are suppressed. Reviewer 2026-10-09: dropped the unseen \"Rent Due Date\" label (no rent-due-date wording is shown by the template; it only produced a warning).",
+  "officialDomains": [
+    "publicstorage.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.publicstorage.com/manage-your-account/payments/make-a-payment",
+      "title": "Make a Payment - Public Storage",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.publicstorage.com/blog/public-storage/how-to-pay-your-public-storage-bill-easy-and-quick.html",
+      "title": "How to Pay Your Public Storage Bill Online, in the App, or by Phone",
+      "fetchedAt": "2026-10-05",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.publicstorage.com/blog/public-storage/paying-your-public-storage-made-simple.html",
+      "title": "Pay Your Public Storage Rent Online, in the App, by Phone, or In Person",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.publicstorage.com/blog/public-storage/public-storage-move-out-policy-what-you-should-know.html",
+      "title": "How to Move Out of a Public Storage Unit: Notice, Billing, and Final Steps",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.publicstorage.com/blog/public-storage/your-guide-to-the-public-storage-login.html",
+      "title": "How Do You Log In to Your Public Storage Account?",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.publicstorage.com/simplified/bill-pay/login",
+      "title": "Pay Your Bill",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "shortName": "Public Storage",
+    "primary": "#c2410c",
+    "accent": "#1f2937",
+    "monogram": "PS"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "viewBill": "View Balance",
+    "history": "Payment History",
+    "autopay": "AutoPay",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Create an Account",
+    "forgot": "Forgot Password?",
+    "guestPay": "Pay Your Bill",
+    "dashboard": "Your Account",
+    "cancel": "Move Out",
+    "help": "Help Center",
+    "username": "Email Address"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Your Bill",
+        "page": "guest"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Create an Account",
+        "page": "register"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Your Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Payments",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Move Out",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "registrationFields": [
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.publicstorage.com/blog/public-storage/your-guide-to-the-public-storage-login.html"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.publicstorage.com/manage-your-account/payments/make-a-payment"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.publicstorage.com/simplified/bill-pay/login",
+      "note": "The no-login Pay Your Bill page finds your account by phone number and ZIP code."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.publicstorage.com/blog/public-storage/how-to-pay-your-public-storage-bill-easy-and-quick.html"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.publicstorage.com/blog/public-storage/public-storage-move-out-policy-what-you-should-know.html",
+      "note": "Give at least seven days' notice before moving out; you can start it in your account, by chat or by calling 800-742-8048."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.publicstorage.com/manage-your-account/payments/make-a-payment",
+      "phone": "866-444-4747"
+    }
+  },
+  "billing": {
+    "source": "https://help.publicstorage.com/manage-your-account/payments/make-a-payment",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your rent",
+      "topic": "payments",
+      "paragraphs": [
+        "You can pay your Public Storage rent in the Public Storage app, in your online account, by phone at 866-444-4747, or in person at your facility's office or kiosk during business hours. Phone payments carry a small fee.",
+        "Online and in the app you can pay from a checking account (ACH) or with a Visa, Mastercard, Discover or American Express credit or debit card.",
+        "Rent is generally due on the first day of each month."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "Select Payments.",
+        "Check your balance and payment method.",
+        "Submit the payment and keep the confirmation."
+      ],
+      "source": "https://help.publicstorage.com/manage-your-account/payments/make-a-payment"
+    },
+    {
+      "slug": "autopay",
+      "title": "Turn on AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay charges your rent automatically every month on your rent due date. You can turn it on in the app, in your online account, or at your local facility.",
+        "To change the card or bank account AutoPay uses, open Payments, choose Manage AutoPay and select Change under the payment method."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "Select Payments.",
+        "Choose Turn On AutoPay.",
+        "Review the enrolled payment method and confirm."
+      ],
+      "source": "https://www.publicstorage.com/blog/public-storage/how-to-pay-your-public-storage-bill-easy-and-quick.html"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late payments",
+      "topic": "billing",
+      "paragraphs": [
+        "A late fee may be added when rent is paid late. The amount and timing depend on your state, your rental agreement and your facility, so check your rental agreement for the exact terms."
+      ],
+      "source": "https://www.publicstorage.com/blog/public-storage/paying-your-public-storage-made-simple.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out of your unit",
+      "topic": "account",
+      "paragraphs": [
+        "Let Public Storage know at least seven days before the day you plan to move out. You can do this by logging in to your account, through online chat, or by calling 800-742-8048.",
+        "If you move out on or after your rent due date you are charged for that whole month; unused days after the due date are not refunded.",
+        "Before you leave, take out all of your belongings, sweep the unit if needed and remove your lock."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "Choose Move Out.",
+        "Pick a move-out date at least seven days away.",
+        "Empty the unit and remove your lock."
+      ],
+      "source": "https://www.publicstorage.com/blog/public-storage/public-storage-move-out-policy-what-you-should-know.html"
+    },
+    {
+      "slug": "account-login",
+      "title": "Logging in to your account",
+      "topic": "account",
+      "paragraphs": [
+        "Log in with the email address linked to your storage rental and your password. You may be asked to confirm a code sent to your email or phone.",
+        "To create an account, enter the email address connected to your rental, choose a password and follow the prompts to verify it. Use the password reset option on the login screen if you forget your password."
+      ],
+      "source": "https://www.publicstorage.com/blog/public-storage/your-guide-to-the-public-storage-login.html"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention",
+      "setup-payment-plan"
+    ],
+    "extra": [
+      {
+        "slug": "move-out-notice",
+        "intent": "Using the Public Storage website's help pages, find how many days of notice Public Storage asks for before you move out of a storage unit. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "seven",
+              "7"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "seven",
+            "7"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Public Storage asks for at least seven days' notice before your move-out date."
+          }
+        ]
+      },
+      {
+        "slug": "move-out-phone",
+        "intent": "Find the phone number Public Storage lists for help with moving out of a unit. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8007428048"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8007428048"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "800-742-8048"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address",
+        "Log In"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payments",
+        "Move Out"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "seven days",
+        "800-742-8048"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "866-444-4747"
+    }
+  ]
+}

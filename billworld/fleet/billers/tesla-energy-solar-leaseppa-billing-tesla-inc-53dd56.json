@@ -1,0 +1,426 @@
+{
+  "id": "tesla-energy-solar-leaseppa-billing-tesla-inc-53dd56",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Tesla Energy (solar lease/PPA billing)",
+  "category": "other",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Tesla's public Solar Panels > Billing support page and the public Tesla Account sign-in page only (never signed in). Solar lease and PPA bills live in a billing portal reached from the Tesla Account or app (Manage next to the energy product, then Manage Billing); the portal has Home and Account tabs. Sign-in is email-first (Email, Next, then password) with Create Account and Trouble Signing In? links. One-time payments use Pay Now with a bank account or card saved under Manage Payment Method (adding one does not enroll in Autopay). Autopay is a toggle under Account > Autopay and works only from a checking or savings account (ACH); cards cannot be used for Autopay. Contracts are priced assuming ACH autopay: without it a Non-ACH line item removes the discount (amount set by each contract, not published, so not modelled as a fee). A card payment must be made at least two business days before the draft date to stop that month's draft. Paperless is the Go Paperless toggle under Statement Options. Checks (job number in memo) take two to four weeks. PPA bills vary with last month's production (kWh times contract rate); leases are fixed monthly with possible annual escalators. A lease/PPA cannot simply be cancelled online: buyout (PPA purchase after the 6-year PTO anniversary at fair market value) or transfer at home sale is arranged with Tesla. Some contracts allow changing the due date in the billing portal. Systems financed by Mosaic or Sunlight are billed by those lenders. Tesla's phone number for billing is not on the billing page; the catalog support number is used.",
+  "officialDomains": [
+    "tesla.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing",
+      "title": "Billing | Tesla Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.tesla.com/teslaaccount",
+      "title": "Tesla Auth - Sign In",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Tesla Energy",
+    "shortName": "Tesla",
+    "primary": "#171a20",
+    "accent": "#3e6ae1",
+    "monogram": "T"
+  },
+  "labels": {
+    "payBill": "Pay Now",
+    "viewBill": "Manage Billing",
+    "statements": "View Statements",
+    "history": "View Payment History",
+    "autopay": "Autopay",
+    "paperless": "Go Paperless",
+    "wallet": "Manage Payment Method",
+    "dashboard": "Home",
+    "profile": "Account",
+    "signIn": "Sign In",
+    "register": "Create Account",
+    "forgot": "Trouble Signing In?",
+    "username": "Email",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create Account",
+        "page": "register"
+      },
+      {
+        "label": "Billing",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Manage Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "View Statements",
+        "page": "statements"
+      },
+      {
+        "label": "View Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statement Options",
+        "page": "paperless"
+      },
+      {
+        "label": "Manage Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "Account",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "socialProviders": [],
+    "evidence": "observed_public",
+    "source": "https://www.tesla.com/teslaaccount"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing",
+      "note": "There is no guest payment. Sign in to your Tesla Account and open the billing portal to pay, mail a check with your job number in the memo, or call Tesla support after saving a payment method.",
+      "channel": "mail"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing",
+      "note": "A solar lease or PPA cannot be cancelled online. Contact Tesla to purchase the system (buyout) or to transfer the agreement when you sell your home.",
+      "channel": "phone"
+    }
+  },
+  "billing": {
+    "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a one-time payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Solar lease and PPA bills are paid in the billing portal of your Tesla Account. Open it by choosing Manage next to your energy product and then Manage Billing.",
+        "First save a bank account or credit card under Account > Manage Payment Method. Saving a payment method does not turn on Autopay.",
+        "Then go to the Home tab, select Pay Now, choose the payment method, and confirm with Initiate Payment.",
+        "To pay by phone, save a payment method in the portal first and then call Tesla Customer Support. To pay by check, write your job number from the invoice in the memo line and mail it to the address on your monthly invoice; checks take the longest, about two to four weeks to process."
+      ],
+      "steps": [
+        "Sign in to your Tesla Account.",
+        "Select Manage next to your energy product, then Manage Billing.",
+        "Under Account, use Manage Payment Method to add a bank account or card.",
+        "On the Home tab select Pay Now, choose the payment method and select Initiate Payment."
+      ],
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    {
+      "slug": "autopay",
+      "title": "Turn on Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Autopay drafts your monthly solar payment from a checking or savings account through ACH. Credit and debit cards cannot be used for Autopay.",
+        "Your contract price already assumes Autopay. Without it, a Non-ACH line item appears on the invoice to remove the ACH discount; you can turn Autopay on or off at any time and the invoice adjusts under your contract.",
+        "Paying through your own bank's bill-pay service does not count: those payments reach Tesla as paper checks and do not earn the ACH discount.",
+        "You can still make an extra card payment; anything extra rolls over to the next month. To stop a month's draft with a card payment, pay at least two business days before the draft date, or both payments will go through."
+      ],
+      "steps": [
+        "Open the billing portal and go to the Account tab.",
+        "Select Autopay.",
+        "Switch Autopay on and choose the Payment Source.",
+        "Select Update Autopay Settings, then Save Changes."
+      ],
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless",
+      "topic": "billing",
+      "paragraphs": [
+        "With paperless billing you get an email each month listing your billed charges instead of a mailed invoice."
+      ],
+      "steps": [
+        "Open the billing portal and go to the Account tab.",
+        "Open the section under Statement Options.",
+        "Switch Go Paperless on."
+      ],
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "Billing history, statements and invoices",
+      "topic": "billing",
+      "paragraphs": [
+        "In the billing portal choose View Payment History and the arrow next to a payment to see its details, or View Statements for your past invoices. Both are also under Useful Links.",
+        "On the statement screen, select View to open an invoice as a PDF you can download.",
+        "Some contracts allow a flexible due date; check the billing portal to see whether you can change yours."
+      ],
+      "steps": [
+        "Sign in and open the billing portal.",
+        "Select View Payment History or View Statements.",
+        "Select View next to a statement to open the PDF."
+      ],
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    {
+      "slug": "faq",
+      "title": "How lease and PPA billing works",
+      "topic": "faq",
+      "paragraphs": [
+        "Power Purchase Agreement (PPA): each invoice is the energy your system produced in the previous calendar month multiplied by your contract's rate per kWh, so bills are usually higher in summer.",
+        "Lease: a fixed monthly payment for the term of the lease. Some agreements include a fixed yearly increase or decrease; see the Monthly Payments schedule in your Energy Products Order Agreement.",
+        "If you bought a home that already has Tesla solar, your first invoice arrives within two billing cycles after escrow closes.",
+        "Tesla may report your payment history to credit reporting agencies as described in your agreement. Systems financed by Mosaic or Sunlight are billed by those lenders, not Tesla."
+      ],
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Buying out or transferring your system",
+      "topic": "account",
+      "paragraphs": [
+        "PPA customers may buy the system from the sixth anniversary of permission to operate onward, or when selling the home. Tesla first gives an estimate within about 200 dollars of fair market value, then an independent appraiser sets the fair market value, and Tesla issues a Purchase Option Agreement with taxes added.",
+        "Lease customers should check the purchase terms in their Energy Products Order Agreement.",
+        "If you sell your home, contact Tesla early so the agreement can be transferred to the buyer or the system paid off."
+      ],
+      "source": "https://www.tesla.com/support/energy/solar-panels/after-installation/billing"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-card-allowed",
+        "intent": "You want to put your Tesla solar lease on Autopay using your credit card. Using Tesla's billing help, find out whether a credit card can be used for Autopay and what kind of account is required instead. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "checking",
+              "savings",
+              "bank",
+              "ACH"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "checking",
+            "savings",
+            "bank",
+            "ACH"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. Autopay cannot use a credit or debit card; it must be set up through ACH from a checking or savings account."
+          }
+        ]
+      },
+      {
+        "slug": "check-processing-time",
+        "intent": "You plan to mail a check for your Tesla solar bill. Using Tesla's billing help, find out roughly how long a check payment takes to process. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "two to four weeks",
+              "2 to 4 weeks",
+              "2-4 weeks"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "two to four weeks",
+            "2 to 4 weeks",
+            "2-4 weeks"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A mailed check takes about two to four weeks to process."
+          }
+        ]
+      },
+      {
+        "slug": "non-ach-fee-explain",
+        "intent": "Your Tesla solar invoice shows a 'Non-ACH' line item. Using Tesla's billing help, find out why it appears and what you would need to do to remove it. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "autopay"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "autopay"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "It removes the ACH discount because you are not enrolled in Autopay; enrolling in Autopay from a checking or savings account removes it."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "home",
+      "label": "signIn"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Now",
+        "Autopay",
+        "View Statements"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Credit and debit cards cannot be used for Autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "two to four weeks"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": "previous calendar month"
+    }
+  ]
+}

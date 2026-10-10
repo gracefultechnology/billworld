@@ -1,0 +1,318 @@
+{
+  "id": "farmers-insurance-7ad159",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Farmers Insurance",
+  "category": "insurance",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public farmers.com billing FAQ only (no sign-in). Pay online with or without a farmers.com account (guest: policy or billing account number + ZIP), by phone 1-888-327-6335 during business hours, or by mail. Checking, savings or business checking and Visa, Mastercard, American Express, Discover. No fee for one-time online payments; installment plans may have a fee and late/returned payments have fees (amounts not published). Scheduled payments (not for every policy) can be cancelled from Payment History while Scheduled, usually at least one business day ahead. Set up Autopay drafts on each statement due date; Manage Autopay > Stop next payment skips one draft. Paperless via Go Paperless in Quick Links, effective next billing cycle. Only a named insured can view statements online. Flood and pet policies cannot be paid online. Policy cancellation is not covered on the FAQ, so the family default is kept. Review 2026-10-09: the public log-in page asks for Username/email and then Continue (two-step; modelled as email_or_username sign-in); guest pay fields come from the billing FAQ. One-time bank payments can also be cancelled by phone before 6:30 p.m. Central. MFA is not documented publicly. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template).",
+  "officialDomains": [
+    "farmers.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.farmers.com/faq/billing/",
+      "title": "Billing FAQ",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.farmers.com/css/login",
+      "title": "Log into your Farmers Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.farmers.com/pay-bill/",
+      "title": "Pay your bill | Farmers Insurance",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Farmers Insurance",
+    "shortName": "Farmers",
+    "primary": "#003a70",
+    "accent": "#00264a",
+    "monogram": "F"
+  },
+  "labels": {
+    "payBill": "Pay bill",
+    "viewBill": "View bill",
+    "autopay": "Autopay",
+    "history": "Payment History",
+    "wallet": "Payment Methods",
+    "paperless": "Go Paperless",
+    "username": "Username/email"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "Policies",
+        "page": "dashboard"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Pay bill",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Manage Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.farmers.com/css/login",
+    "identifier": "email_or_username",
+    "loginSteps": 2
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.farmers.com/faq/billing/",
+      "phone": "888-327-6335"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.farmers.com/faq/billing/"
+    }
+  },
+  "billing": {
+    "source": "https://www.farmers.com/faq/billing/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How can I pay?",
+      "topic": "payments",
+      "paragraphs": [
+        "Personal auto, home, umbrella, specialty and California Earthquake Authority policies can be paid online with or without a farmers.com account. Without an account, have your policy or billing account number and ZIP code ready.",
+        "With an account you can make one-time, automatic or scheduled payments (scheduling is not offered for every policy).",
+        "Farmers accepts checking, savings and business checking accounts plus Visa, Mastercard, American Express and Discover. There is no fee for a one-time online payment; installment plans and late or returned payments can carry fees.",
+        "By phone call 1-888-327-6335 (7 a.m. to 11 p.m. Central on weekdays, 8 a.m. to 8 p.m. on weekends). Flood and pet policies cannot be paid online."
+      ],
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Select Set up Autopay for the account, choose or add a payment method, review the terms and select Set up Autopay again to confirm. Each statement amount is drafted on its due date.",
+        "To skip one draft, select Manage Autopay and then Stop next payment, generally at least one business day before the payment date. You may need to make another payment to keep the account current."
+      ],
+      "steps": [
+        "Log in.",
+        "Select Set up Autopay for the billing account.",
+        "Choose or add a payment method.",
+        "Review the terms and confirm."
+      ],
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    {
+      "slug": "scheduled-payments",
+      "title": "Schedule or cancel a future payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Choose Pay bill for the account and pick the processing date to schedule a payment.",
+        "To cancel it, open Payments, then Payment History, select the billing account and choose Cancel Payment. This works only while the payment still shows as Scheduled, usually at least one business day before its date."
+      ],
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless billing emails you links to your bills and reminders. Choose Go Paperless in Quick Links, pick your options, review the terms and save. Changes start with your next billing cycle."
+      ],
+      "source": "https://www.farmers.com/faq/billing/"
+    },
+    {
+      "slug": "billing-history",
+      "title": "Payment history and statements",
+      "topic": "billing",
+      "paragraphs": [
+        "Open Payments and select Payment History to see past payments. Select View bill on an account to open your latest statement in a new window.",
+        "Only a named insured can view statements online, although anyone with the policy or billing account number and ZIP code can pay without an account."
+      ],
+      "source": "https://www.farmers.com/faq/billing/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "online-payment-fee",
+        "intent": "Using Farmers' billing FAQ, find out whether there is a fee for making a one-time payment online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "no fee",
+              "free",
+              "$0"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "no fee",
+            "free",
+            "$0"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "There is no fee for a one-time online payment."
+          }
+        ]
+      },
+      {
+        "slug": "skip-one-autopay",
+        "intent": "Find out which option in Farmers' Manage Autopay lets you skip a single automatic payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Stop next payment"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Stop next payment"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Manage Autopay, then Stop next payment."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment History",
+        "Go Paperless"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Stop next payment"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "1-888-327-6335"
+    }
+  ]
+}

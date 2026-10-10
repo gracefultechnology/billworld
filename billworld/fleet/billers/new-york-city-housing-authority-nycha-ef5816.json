@@ -1,0 +1,400 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-09",
+  "id": "new-york-city-housing-authority-nycha-ef5816",
+  "name": "New York City Housing Authority (NYCHA)",
+  "category": "housing",
+  "notes": "Researched from NYCHA's public Pay Rent page on nyc.gov. Online one-time payments need the 9-digit Tenant ID and 9-digit Account Number (no login) by E-Check (free), Visa/MasterCard debit (0.8%) or credit incl. Amex/Discover (2.25%; fees go to a third-party vendor) - engine models the 2.25% credit rate. E-Bill is the free recurring electronic bill paid by E-Check with multiple payment sources. Phone Payment System 833-894-0899 (before 5 PM EST same-day credit). Mail: NYCHA, P.O. Box 5543, Binghamton, NY 13902-5543. Payroll deduction for City employees via the Self-Service Portal. Payment plans only in person at the property management office (photo ID, no down payment, max 40% of household income). Customer Contact Center 718-707-7771. The Self-Service Portal (Siebel) sign-in labels were not observed; identifier left as family default. No move-out notice process on this page (template notice kept, inferred).",
+  "officialDomains": [
+    "nyc.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "title": "Pay Rent - NYCHA",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "New York City Housing Authority",
+    "shortName": "NYCHA",
+    "primary": "#003a70",
+    "accent": "#7a4a00",
+    "monogram": "NY"
+  },
+  "labels": {
+    "guestPay": "Online Payment",
+    "autopay": "E-Bill recurring payments",
+    "paperless": "E-Bill",
+    "accountNumber": "Account Number",
+    "arrangement": "Payment plan"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Rent",
+        "page": "guest"
+      },
+      {
+        "label": "Self-Service Portal",
+        "page": "login"
+      },
+      {
+        "label": "Rent hardship help",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Rent",
+        "page": "pay"
+      },
+      {
+        "label": "E-Bill",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Payment plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "note": "One-time online payments need only your 9-digit Tenant ID and 9-digit Account Number."
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "note": "E-Check is free; debit cards cost 0.8% and credit cards 2.25%, charged by a third-party vendor."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "note": "Sign up for free E-Bill to get your bill electronically and pay by E-Check from stored payment sources."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "note": "E-Bill delivers your rent bill electronically at no cost."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "note": "Phone Payment System: payments before 5 PM EST are credited the same day.",
+      "phone": "8338940899"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "note": "Mail a check or money order with your remittance slip to NYCHA, P.O. Box 5543, Binghamton, NY 13902-5543."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "note": "Payment plans are set up in person: visit your property management office with photo ID. No down payment; monthly payments never exceed 40% of household income.",
+      "channel": "in_person",
+      "phone": "7187077771"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "note": "HRA One-Shot Deal, Homebase (call 311) and REES financial counseling are available."
+    }
+  },
+  "billing": {
+    "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.25,
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay NYCHA rent",
+      "paragraphs": [
+        "Rent is due on the first of each month. Pay online or at the Self-Service Kiosk in your management office with your 9-digit Tenant ID and 9-digit Account Number, an email, a phone number and either bank details (E-Check) or a card.",
+        "E-Check is free. Visa or MasterCard debit cards cost 0.8% of the payment and Visa, MasterCard, American Express or Discover credit cards cost 2.25%; these fees go to a third-party vendor, not NYCHA.",
+        "You can also add NYCHA as a payee in your bank's bill pay, pay by phone at 833-894-0899, mail a check or money order, use payroll deduction if you are a City employee, or pay in person for a fee at an authorized credit union. Questions: Customer Contact Center 718-707-7771."
+      ],
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "topic": "payments"
+    },
+    {
+      "slug": "pay-by-mail",
+      "title": "Paying by mail",
+      "paragraphs": [
+        "Make the check or money order payable to New York City Housing Authority, write your account number on it and include the remittance slip. Mail it to NYCHA, P.O. Box 5543, Binghamton, NY 13902-5543. Mail early: delivery and processing take three to five business days. Never send cash."
+      ],
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "topic": "payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "E-Bill",
+      "paragraphs": [
+        "E-Bill is free: you receive your rent bill electronically and pay by E-Check. You can store several payment sources and split a payment among them."
+      ],
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "topic": "autopay"
+    },
+    {
+      "slug": "pay-by-phone",
+      "title": "Paying by phone",
+      "paragraphs": [
+        "Call the Phone Payment System at 833-894-0899. Payments made before 5 PM EST are credited the same day; later payments, and those on weekends or federal holidays, are credited the next business day. Allow three to five business days for your bank to show the payment."
+      ],
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "topic": "payments"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Rent hardship and payment plans",
+      "paragraphs": [
+        "To set up a payment plan, visit your property management office with photo ID. No down payment is required, monthly payments will not exceed 40% of household income, and the plan can be adjusted if your income changes. If your income dropped, submit an interim recertification through the Self-Service Portal.",
+        "The City's HRA One-Shot Deal can help with arrears (apply through ACCESS NYC or call 311 and ask for the Tenant Helpline), and Homebase offers emergency rental help through 311. Financial counseling is available through REES at 718-289-8100."
+      ],
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "topic": "assistance"
+    },
+    {
+      "slug": "payroll-deduction",
+      "title": "Payroll deduction",
+      "paragraphs": [
+        "NYCHA and other City employees can sign up for payroll deduction in the Self-Service Portal. Half the monthly rent comes out of each of the first two paychecks of the month. To stop it, submit a termination form to your property management office."
+      ],
+      "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
+      "topic": "payments"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "phone-payment-number",
+        "intent": "Using the NYCHA help pages, find the phone number for the Phone Payment System. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8338940899"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8338940899"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call the Phone Payment System at 833-894-0899."
+          }
+        ]
+      },
+      {
+        "slug": "payment-plan-cap",
+        "intent": "You are behind on NYCHA rent. Using the help pages, find how a payment plan is set up and the most the monthly payments can be as a share of household income. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "40%"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "40%"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "limitation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Visit your property management office with photo ID; payments never exceed 40% of household income."
+          }
+        ]
+      },
+      {
+        "slug": "debit-card-fee",
+        "intent": "Using the NYCHA help pages, find the fee for paying rent online with a debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "0.8"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "0.8"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Debit card payments cost 0.8% of the payment."
+          }
+        ]
+      },
+      {
+        "slug": "mail-address",
+        "intent": "Using the NYCHA help pages, find the P.O. Box to mail a rent check to. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5543"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5543"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "mail"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "NYCHA, P.O. Box 5543, Binghamton, NY 13902-5543."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.25%",
+        "0.8%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "40%"
+    },
+    {
+      "page": "guest",
+      "label": "guestPay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    }
+  ]
+}

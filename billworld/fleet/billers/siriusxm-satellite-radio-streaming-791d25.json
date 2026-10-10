@@ -1,0 +1,393 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "siriusxm-satellite-radio-streaming-791d25",
+  "name": "SiriusXM",
+  "notes": "Researched from public siriusxm.com help pages, the plans page and the public Account Center sign-in page only (no sign-in). Unlike the streaming apps, SiriusXM bills direct customers either to a card on file or by invoice (paper bill or eBill), shows a balance due on the Dashboard and Billing tabs and lets you pay without signing in (Pay my bill on the sign-in page), and accepts mailed checks. Sign-in is Email or Username first, then password. Cards accepted: Visa, Mastercard, Amex, Discover, Diners Club, China UnionPay, JCB, debit cards and pre-paid service cards; no bank accounts are documented. Card-on-file renewal is modeled as AutoPay (inferred). Direct-billed subscriptions cancel on the Subscriptions tab, by chat or by phone; the 24-hours-before-renewal rule is stated only for Apple, Google Play and Apple Podcasts billing. Plan prices are the regular monthly prices after the introductory offer. No payment plans are documented. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "siriusxm.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.siriusxm.com/help/manage-or-cancel-service",
+      "title": "Manage or Cancel Service | SiriusXM Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.siriusxm.com/help/pay-bill",
+      "title": "Pay Bill | SiriusXM Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.siriusxm.com/help/payment-and-billing-options",
+      "title": "Payment and Billing Options | SiriusXM Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.siriusxm.com/help/subscription-renewal",
+      "title": "Subscription Automatic Renewal | SiriusXM Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.siriusxm.com/plans",
+      "title": "Packages, Plans & Price | SiriusXM",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://care.siriusxm.com/accountcenter/login",
+      "title": "SXM Account Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "SiriusXM",
+    "primary": "#2e64f0",
+    "accent": "#111111",
+    "monogram": "SX"
+  },
+  "labels": {
+    "dashboard": "Dashboard",
+    "viewBill": "Billing",
+    "payBill": "Pay Now",
+    "guestPay": "Pay my bill",
+    "plan": "Subscriptions",
+    "wallet": "Payment Method",
+    "paperless": "eBill",
+    "history": "Billing",
+    "statements": "Billing",
+    "cancel": "Cancel Subscription",
+    "profile": "Account Info",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "register": "Register",
+    "forgot": "Forgot your login?",
+    "help": "Help & Support",
+    "username": "Email or Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Pay my bill",
+        "page": "guest"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Help & Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "Subscriptions",
+        "page": "plan"
+      },
+      {
+        "label": "Account Info",
+        "page": "profile"
+      },
+      {
+        "label": "eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Cancel Subscription",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 2,
+    "mfa": "none",
+    "evidence": "observed_public",
+    "source": "https://care.siriusxm.com/accountcenter/login"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://care.siriusxm.com/accountcenter/login",
+      "note": "Use Pay my bill on the Account Center sign-in page to pay as a guest."
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.siriusxm.com/help/pay-bill"
+    },
+    "view_bill": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.siriusxm.com/help/pay-bill"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.siriusxm.com/help/payment-and-billing-options",
+      "note": "Enroll in eBill from the Account Info tab."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.siriusxm.com/help/payment-and-billing-options",
+      "note": "Mail a check or money order payable to Sirius XM Radio Inc. with your account number or Radio ID."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.siriusxm.com/help/subscription-renewal",
+      "note": "Subscriptions renew automatically at your billing frequency; with a card on file, renewals are charged to it."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.siriusxm.com/help/manage-or-cancel-service",
+      "note": "Cancel on the Subscriptions tab of the Online Account Center, by chat, or by calling 866-635-8641. App-store and carrier-billed plans are canceled with that provider.",
+      "phone": "866-635-8641"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.siriusxm.com/help/payment-and-billing-options"
+    }
+  },
+  "billing": {
+    "source": "https://www.siriusxm.com/plans",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.siriusxm.com/help/payment-and-billing-options"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "all-access-app",
+        "name": "All Access (App Only)",
+        "cents": 1199
+      },
+      {
+        "id": "all-music",
+        "name": "All Music",
+        "cents": 1199
+      },
+      {
+        "id": "all-access",
+        "name": "All Access",
+        "cents": 2599,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How do I pay my bill?",
+      "topic": "billing",
+      "source": "https://www.siriusxm.com/help/pay-bill",
+      "paragraphs": [
+        "If you bought your subscription directly from SiriusXM (by phone, chat or siriusxm.com), sign in to the Online Account Center. Any balance due appears on both the Dashboard and Billing tabs, and the Billing tab has more details.",
+        "You can also pay without signing in using Pay my bill on the sign-in page. Subscriptions bought through the SiriusXM app or another retailer are paid through that company."
+      ]
+    },
+    {
+      "slug": "payment-options",
+      "title": "Payment and billing options",
+      "topic": "billing",
+      "source": "https://www.siriusxm.com/help/payment-and-billing-options",
+      "paragraphs": [
+        "SiriusXM accepts Mastercard, Visa, American Express, Discover, Diners Club, China UnionPay and JCB credit cards, all debit cards, and SiriusXM pre-paid service cards. To change your card, open Account Info and choose Update Your Payment Method.",
+        "Invoice customers can mail a check or money order payable to Sirius XM Radio Inc. with the account number or Radio ID to PO Box 71170, Philadelphia, PA 19176-1170. To change how often you are billed, use Manage > Modify on the Subscriptions tab; to switch to eBill, open Account Info and select Sign Up in the eBill section."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How do I manage or cancel my service?",
+      "topic": "account",
+      "source": "https://www.siriusxm.com/help/manage-or-cancel-service",
+      "steps": [
+        "Sign in to the Online Account Center.",
+        "Open the Subscriptions tab.",
+        "Choose the subscription and cancel it, or chat with an agent, or call 866-635-8641."
+      ],
+      "paragraphs": [
+        "Direct-billed subscriptions and trials (bought from SiriusXM by phone, chat, mail or on its website) are managed in the Online Account Center; check the Contact Us page for call center hours.",
+        "If Apple, Google Play, Roku, T-Mobile or another provider bills you, cancel with them. For Apple and Google Play billing, cancel more than 24 hours before the renewal date or the subscription may renew. Uninstalling the app does not cancel your subscription."
+      ]
+    },
+    {
+      "slug": "plans-and-prices",
+      "title": "SiriusXM plans",
+      "topic": "plans",
+      "source": "https://www.siriusxm.com/plans",
+      "paragraphs": [
+        "All Music (car and app) is $11.99 a month after the introductory offer, with Sports, News or Talk add-ons for a few dollars more. All Access (car and app) with music, live sports, news and talk is $25.99 a month after the offer. All Access (App Only) for home and mobile listening is $11.99 a month after the offer."
+      ]
+    },
+    {
+      "slug": "automatic-renewal",
+      "title": "Does my subscription renew automatically?",
+      "topic": "billing",
+      "source": "https://www.siriusxm.com/help/subscription-renewal",
+      "paragraphs": [
+        "Yes. SiriusXM is a continuing service billed at the frequency you chose, such as monthly, quarterly or semi-annually, and it continues until you cancel. Your renewal date is shown with your active subscriptions in the Online Account Center."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "mail-payment-address",
+        "intent": "Find the PO Box where SiriusXM invoice customers mail check payments. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "71170"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "71170"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mail payments to Sirius XM Radio Inc., PO Box 71170, Philadelphia, PA 19176-1170."
+          }
+        ]
+      },
+      {
+        "slug": "cancel-deadline",
+        "intent": "Your SiriusXM streaming plan was bought in the SiriusXM app on an iPhone. Find how long before the renewal date you must cancel to avoid it renewing. Do not cancel.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24 hours"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24 hours"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Cancel more than 24 hours before the renewal date."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Pay my bill",
+        "Register"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email or Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Subscriptions",
+        "Account Info"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "All Access",
+        "All Music"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-options",
+      "contains": "PO Box 71170"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "24 hours"
+    }
+  ]
+}

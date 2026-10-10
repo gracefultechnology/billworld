@@ -1,0 +1,346 @@
+{
+  "id": "pnc-bank-f8cb20",
+  "version": 1,
+  "status": "dedicated",
+  "name": "PNC Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public pnc.com pages only (no sign-in). The mock bill is a PNC auto loan. Online Banking/app: select the loan and choose Make a Payment for one-time, same-day or recurring payments from a PNC or external account. The Automated Payment Program (autopay) is enrolled by form or by phone (1-888-762-2265), takes up to 10 business days, can be suspended for one month or cancelled by calling at least 3 business days before the due date; cancelling removes any autopay rate discount. Online recurring payments exist, so autopay stays supported online (the form-only program is described in help). Phone payments by 6 p.m. ET credit same day and cannot be cancelled. Mail: PNC Bank, PO Box 747066, Pittsburgh, PA 15274-7066 (allow 7-10 days). Payoff quote under Account Actions > View Loan Payoff Quote. Sign-on: User ID + password; optional texted one-time passcode valid 10 minutes. No guest pay (inferred). Reviewed 2026-10-09: 10-business-day processing and confirmation letter verified in the Automated Payment Authorization Form PDF (added as source); hardship label matches the page.",
+  "officialDomains": [
+    "pnc.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.pnc.com/en/customer-service/make-a-payment/make-an-auto-loan-payment.html",
+      "title": "Make An Auto Loan Payment: Discover Options & Support | PNC",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.pnc.com/en/customer-service/auto-customer-service.html",
+      "title": "Auto Lending Customer Service & Support | PNC",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.pnc.com/en/security-privacy/added-layer-security.html",
+      "title": "An Added Layer of Security | PNC",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.pnc.com/en/customer-service/forgot-username-or-password.html",
+      "title": "How To Reset & Recover Your PNC User ID Or Password",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.pnc.com/en/customer-service/client-resource.html",
+      "title": "PNC Client Resource | Lending Hardship Service & Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.pnc.com/content/dam/pnc-com/pdf/personal/Auto/ACLSAutomatedPaymentAuthorizationForm.pdf",
+      "title": "Automated Payment Authorization Form | PNC",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    }
+  ],
+  "brand": {
+    "displayName": "PNC Bank",
+    "shortName": "PNC",
+    "primary": "#a64608",
+    "accent": "#0b4f8a",
+    "monogram": "PN"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Recurring Payments",
+    "signIn": "Sign On",
+    "signOut": "Sign Off",
+    "username": "User ID",
+    "forgot": "Forgot ID or Password?",
+    "register": "Enroll in Online Banking",
+    "paperless": "Paperless Statements",
+    "arrangement": "Lending Hardship Service & Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign On",
+        "page": "login"
+      },
+      {
+        "label": "Enroll in Online Banking",
+        "page": "register"
+      },
+      {
+        "label": "Make an auto loan payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless Statements",
+        "page": "paperless"
+      },
+      {
+        "label": "Lending Hardship Service & Support",
+        "page": "arrangement"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "sms",
+    "evidence": "documented_official",
+    "source": "https://www.pnc.com/en/security-privacy/added-layer-security.html"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/make-an-auto-loan-payment.html"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/content/dam/pnc-com/pdf/personal/Auto/ACLSAutomatedPaymentAuthorizationForm.pdf",
+      "note": "The Automated Payment Program is set up with an authorization form or by calling 1-888-762-2265 and takes up to 10 business days."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/make-an-auto-loan-payment.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/auto-customer-service.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/make-an-auto-loan-payment.html",
+      "phone": "1-888-762-2265"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/make-an-auto-loan-payment.html"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/client-resource.html"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/make-an-auto-loan-payment.html",
+      "note": "PNC auto loans are paid in Online Banking or the app after signing on, by phone at 1-888-PNC-BANK (1-888-762-2265), by mail or at a branch.",
+      "channel": "phone",
+      "phone": "1-888-762-2265"
+    }
+  },
+  "billing": {
+    "source": "https://www.pnc.com/en/customer-service/make-a-payment/make-an-auto-loan-payment.html",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make an auto loan payment",
+      "paragraphs": [
+        "In the PNC Mobile app or Online Banking, select your loan account and choose Make a Payment. You can schedule a one-time, same-day or recurring payment from a PNC account or an external account (have its routing and account numbers ready).",
+        "By phone, call 1-888-PNC-BANK (1-888-762-2265). Payments made by 6:00 p.m. ET are credited the same day and cannot be cancelled once submitted.",
+        "By mail, send your payment slip and check to PNC Bank, PO Box 747066, Pittsburgh, PA 15274-7066 and allow 7-10 days. Branch payments are effective the same day but can take up to 2 business days to appear."
+      ],
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/make-an-auto-loan-payment.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automated Payment Program",
+      "paragraphs": [
+        "The Automated Payment Program deducts your monthly payment from your bank account. Return the Automated Payment Authorization form by mail, fax or at a branch, or call 1-888-762-2265 to have it emailed. Processing can take up to 10 business days after PNC receives the form; keep paying until the confirmation letter with your start date arrives. Once confirmed, monthly paper statements stop and the statement is in Online Banking.",
+        "You can suspend automatic payment for one month (you must then pay manually) or cancel it by calling at least 3 business days before your next due date. Cancelling removes any autopay interest rate discount, which can raise your payment.",
+        "You can also schedule recurring payments yourself in Online Banking with Make a Payment."
+      ],
+      "source": "https://www.pnc.com/content/dam/pnc-com/pdf/personal/Auto/ACLSAutomatedPaymentAuthorizationForm.pdf"
+    },
+    {
+      "slug": "payoff",
+      "title": "Get a payoff quote",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign on to Online Banking, select your loan and choose View Loan Payoff Quote under Account Actions. If it is not shown, call 1-888-762-2265."
+      ],
+      "source": "https://www.pnc.com/en/customer-service/auto-customer-service.html"
+    },
+    {
+      "slug": "two-step-verification",
+      "title": "Added sign-on security",
+      "topic": "account",
+      "paragraphs": [
+        "After your User ID and password, PNC can text a one-time passcode to your phone. Turn it on under Customer Service, Security Settings, Two-Step Verification. A new code is sent every sign-on and expires once used or after 10 minutes; choose Request New Code if it does not arrive."
+      ],
+      "source": "https://www.pnc.com/en/security-privacy/added-layer-security.html"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact PNC auto lending",
+      "paragraphs": [
+        "Call 1-888-PNC-BANK (1-888-762-2265): automated service 24/7; consultants Monday to Friday 8 a.m. to 9 p.m. ET and weekends 8 a.m. to 5 p.m. ET. For hardship help, use PNC Lending Hardship Service & Support."
+      ],
+      "source": "https://www.pnc.com/en/customer-service/auto-customer-service.html",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-cancel-notice",
+        "intent": "Using PNC's auto loan help, find how many business days before the due date you must contact PNC to cancel or suspend automated payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3",
+              "three"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3",
+            "three"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least three business days before the next due date."
+          }
+        ]
+      },
+      {
+        "slug": "phone-same-day-cutoff",
+        "intent": "Using PNC's auto loan payment page, find the cut-off time for a phone payment to be credited the same day. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "6:00 p.m.",
+              "6 p.m.",
+              "6:00 pm",
+              "6 pm",
+              "6pm"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "6:00 p.m.",
+            "6 p.m.",
+            "6:00 pm",
+            "6 pm",
+            "6pm"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "6:00 p.m. ET."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "User ID"
+    },
+    {
+      "page": "home",
+      "contains": "Sign On"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Recurring Payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "10 business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "6:00 p.m. ET"
+    }
+  ]
+}

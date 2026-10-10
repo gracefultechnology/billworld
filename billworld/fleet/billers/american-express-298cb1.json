@@ -1,0 +1,418 @@
+{
+  "id": "american-express-298cb1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "American Express",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public americanexpress.com customer-service FAQ pages only (no sign-in). Site navigation shows Account Home, Statements & Activity, Make a Payment, Account Services, and account-support links 'Create Your Online Account' and 'Forgot User ID or Password?' (so the sign-in identifier is a User ID). Payments come only from a bank account: the pay FAQ states credit and debit cards are not accepted, so card methods are removed. Scheduled payments are edited from the 'View Payment Activity' tab; banks are added with 'Manage My Banks'. AutoPay pays all or part of the bill from a bank account and does not move the due date; only Basic Card Members enroll; the first AutoPay may not cover the current cycle. AutoPay can be updated, paused for up to 3 months (engine cannot model a pause) or stopped ('Stop Monthly AutoPay'). The FAQ does not name the AutoPay amount choices, so billing.autopay keeps policies 'full' and 'statement' only (inferred: 'all or part of your bill'). Cancelling a card is by phone only (number on the back of the card; collect 1-336-393-1111 from abroad). Financial hardship payment plans are by phone (1-866-703-4169, Mon-Fri 8am-10pm ET). Review 2026-10-09: all FAQ claims re-verified; nav labels Account Home, Statements & Activity, Account Services, Manage My Banks, View Payment Activity and Create Your Online Account appear in the public page navigation and FAQ text. Integrated 2026-10-09: payment_arrangement marked unsupported now that the payment-plan page explains instead of showing a form.",
+  "officialDomains": [
+    "americanexpress.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.americanexpress.com/us/customer-service/faq.make-payment.html",
+      "title": "How to Pay My Amex Bill | Amex US Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.americanexpress.com/us/customer-service/faq.autopay.html",
+      "title": "How do I enroll in AutoPay? | Amex US Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.americanexpress.com/us/customer-service/faq.manage-autopay-settings.html",
+      "title": "How do I manage my AutoPay settings? | Amex US Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.americanexpress.com/us/customer-service/faq.paperless-statements-account-communications.html",
+      "title": "Paperless statements and account communications | Amex US Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.americanexpress.com/us/customer-service/faq.financial-struggles-payment-accommodation.html",
+      "title": "Financial hardship payment plans | Amex US Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.americanexpress.com/us/customer-service/faq.cancel-card-account.html",
+      "title": "How do I cancel my Card account? | Amex US Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "American Express",
+    "primary": "#006fcf",
+    "accent": "#00175a",
+    "monogram": "AX"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "paperless": "Paperless",
+    "statements": "Statements & Activity",
+    "history": "Payment Activity",
+    "wallet": "Manage My Banks",
+    "dashboard": "Account Home",
+    "profile": "Account Services",
+    "signIn": "Log In",
+    "forgot": "Forgot User ID or Password?",
+    "register": "Create Your Online Account",
+    "username": "User ID",
+    "help": "Customer Service",
+    "dueDate": "Please Pay By Date"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Create Your Online Account",
+        "page": "register"
+      },
+      {
+        "label": "How can I pay my bill?",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Statements & Activity",
+        "page": "statements"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment Activity",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Manage My Banks",
+        "page": "wallet"
+      },
+      {
+        "label": "Account Services",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.americanexpress.com/us/customer-service/faq.make-payment.html"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.americanexpress.com/us/customer-service/faq.make-payment.html",
+      "note": "American Express has no pay-without-logging-in option; payments are made in your online account, in the app, by phone or by mail.",
+      "channel": "phone",
+      "phone": "1-800-528-4800"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/us/customer-service/faq.autopay.html"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/us/customer-service/faq.manage-autopay-settings.html"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/us/customer-service/faq.make-payment.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/us/customer-service/faq.paperless-statements-account-communications.html"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/us/customer-service/faq.cancel-card-account.html",
+      "note": "A Card account cannot be cancelled online. Call the number on the back of your Card (from outside the U.S., call collect at 1-336-393-1111); Corporate Cards are cancelled through your company's Program Administrator.",
+      "channel": "phone",
+      "phone": "1-800-528-4800"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/us/customer-service/faq.paperless-statements-account-communications.html",
+      "note": "Financial hardship payment plans are set up by phone at 1-866-703-4169.",
+      "channel": "phone",
+      "phone": "8667034169"
+    }
+  },
+  "billing": {
+    "source": "https://www.americanexpress.com/us/customer-service/faq.make-payment.html",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "full",
+        "statement"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How can I pay my bill?",
+      "topic": "payments",
+      "paragraphs": [
+        "You can pay at any time in your online account: pick the payment amount, then the bank account and the payment date.",
+        "Payments come from a bank account. Credit cards and debit cards are not accepted as a way to pay your American Express bill.",
+        "To change a payment you already scheduled, open the View Payment Activity tab and choose Edit. You can switch to another bank there or use Manage My Banks to add a new one. A bank account cannot be edited while another payment is processing."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "Choose Make a Payment.",
+        "Select the amount, the bank account and the date.",
+        "Review and submit."
+      ],
+      "source": "https://www.americanexpress.com/us/customer-service/faq.make-payment.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "How do I enroll in AutoPay?",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay pays all or part of your bill automatically each month from your bank account. Your Please Pay By Date does not change when you enroll.",
+        "Enroll in your online account; with several Cards, pick the Card to enroll. Only Basic Card Members can enroll.",
+        "The first AutoPay payment may not apply to the current billing cycle, so keep paying as usual until AutoPay starts."
+      ],
+      "source": "https://www.americanexpress.com/us/customer-service/faq.autopay.html"
+    },
+    {
+      "slug": "manage-autopay",
+      "title": "Manage AutoPay settings",
+      "topic": "autopay",
+      "paragraphs": [
+        "In your online account you can choose Update AutoPay to change the bank account, Pause/Resume AutoPay to suspend it for up to 3 months, or Stop Monthly AutoPay to end it completely."
+      ],
+      "source": "https://www.americanexpress.com/us/customer-service/faq.manage-autopay-settings.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements and account communications",
+      "topic": "account",
+      "paragraphs": [
+        "Enroll in Paperless through your online account to receive billing statements, certain legal disclosures and account communications electronically.",
+        "Each month you get an email when your statement is ready to view online, and certain account communications go to the email address on file."
+      ],
+      "source": "https://www.americanexpress.com/us/customer-service/faq.paperless-statements-account-communications.html"
+    },
+    {
+      "slug": "financial-hardship",
+      "title": "Help during financial hardship",
+      "topic": "billing",
+      "paragraphs": [
+        "If you are struggling to pay, American Express may have payment plans that temporarily lower your interest rate, give relief from late fees, lower your monthly payment and keep the account from falling further behind.",
+        "Enrolling in a payment program affects your ability to use your Card. Call 1-866-703-4169, Monday to Friday, 8 a.m. to 10 p.m. ET."
+      ],
+      "source": "https://www.americanexpress.com/us/customer-service/faq.financial-struggles-payment-accommodation.html"
+    },
+    {
+      "slug": "cancel-card",
+      "title": "How do I cancel my Card account?",
+      "topic": "account",
+      "paragraphs": [
+        "Cancel by calling the number on the back of your Card so a representative can help. From outside the U.S., call collect at 1-336-393-1111.",
+        "Corporate Cards are usually cancelled through your company's Program Administrator."
+      ],
+      "source": "https://www.americanexpress.com/us/customer-service/faq.cancel-card-account.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-pause-limit",
+        "intent": "Using the American Express help pages, find the longest time you can pause AutoPay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3 months",
+              "three months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3 months",
+            "three months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AutoPay can be paused for up to 3 months."
+          }
+        ]
+      },
+      {
+        "slug": "pay-with-debit-card-abstain",
+        "intent": "Pay your American Express bill with your saved Visa debit card. If American Express does not accept card payments, do not pay at all and say so.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "abstain"
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "abstain"
+        },
+        "tags": [
+          "limitation",
+          "abstention",
+          "payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "American Express does not accept credit or debit cards as payment; only a bank account can be used."
+          }
+        ]
+      },
+      {
+        "slug": "hardship-phone",
+        "intent": "Using the American Express help pages, find the phone number to ask about a financial hardship payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8667034169"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8667034169"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-866-703-4169"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "User ID"
+      ]
+    },
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "manage-autopay",
+      "contains": [
+        "3 months",
+        "Stop Monthly AutoPay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "debit cards are not accepted"
+      ]
+    }
+  ]
+}

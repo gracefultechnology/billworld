@@ -1,0 +1,397 @@
+{
+  "id": "nyc-department-of-environmental-protection-nyc-w-0b3b06",
+  "version": 1,
+  "status": "dedicated",
+  "name": "NYC Department of Environmental Protection (NYC Water Board)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public nyc.gov/dep pages only (no sign-in). My DEP Account sign-up needs the account number and the activation token printed on the bill; since the 2024 system change customers sign in with their registered email, and password resets send a verification code to the email on file; no sign-in MFA is described, so none is modelled. QuickPay makes a one-time payment without an account. Card payments carry a 2.25% convenience fee; bank (eCheck) payments are free. Autopay can use a bank account or a card and pays on the due date or a chosen day each month (a $50 one-time credit applies with monthly billing + e-billing; not modelled). Payment agreements need at least a 25% down payment and are set up with the Collections Unit (718-595-7890) by phone, email or at a Borough Office, so they are marked not offered online. Water and sewer charges belong to the property owner; there is no online stop-service request (ownership changes go through Customer Service), so cancel_service is marked not offered online. Most customers are billed quarterly.",
+  "officialDomains": [
+    "nyc.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.nyc.gov/site/dep/pay-my-bills/how-to-pay.page",
+      "title": "How to Pay - DEP",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.nyc.gov/site/dep/pay-my-bills/billing-faqs.page",
+      "title": "Billing FAQs - DEP",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.nyc.gov/site/dep/whats-new/autopay.page",
+      "title": "Autopay+ - DEP",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.nyc.gov/site/dep/pay-my-bills/overdue-water-sewer-charges.page",
+      "title": "Overdue Water & Sewer Charges - DEP",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.nyc.gov/site/dep/news/030524/new-changes-your-dep-account",
+      "title": "New Changes to Your My DEP Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "NYC Water Board / DEP",
+    "shortName": "NYC DEP",
+    "primary": "#1e4a8c",
+    "accent": "#0f2f5e",
+    "monogram": "DE"
+  },
+  "labels": {
+    "dashboard": "My DEP Account",
+    "signIn": "Login",
+    "register": "Sign-up",
+    "guestPay": "QuickPay",
+    "payBill": "Pay Bill",
+    "autopay": "Autopay",
+    "paperless": "eBilling",
+    "arrangement": "Payment Agreement",
+    "accountNumber": "Account Number",
+    "username": "Email Address",
+    "help": "Billing FAQs",
+    "contact": "Customer Service"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "QuickPay",
+        "page": "guest"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Sign-up",
+        "page": "register"
+      },
+      {
+        "label": "How to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Overdue Water & Sewer Charges",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Billing FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My DEP Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Billing History",
+        "page": "statements"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "eBilling",
+        "page": "paperless"
+      },
+      {
+        "label": "Customer Service",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.nyc.gov/site/dep/news/030524/new-changes-your-dep-account"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/how-to-pay.page"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/dep/whats-new/autopay.page"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/billing-faqs.page"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/billing-faqs.page",
+      "channel": "phone",
+      "phone": "718-595-7890",
+      "note": "Payment agreements are not offered online. Call the DEP Collections Unit at 718-595-7890 or visit a Borough Office; at least a 25% down payment is required."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/billing-faqs.page",
+      "channel": "phone",
+      "phone": "718-595-7000",
+      "note": "Stopping service is not offered online: water and sewer charges stay with the property owner. For a sale or ownership change call Customer Service at 718-595-7000."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/how-to-pay.page",
+      "phone": "866-622-8292"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/how-to-pay.page"
+    }
+  },
+  "billing": {
+    "source": "https://www.nyc.gov/site/dep/pay-my-bills/how-to-pay.page",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.25,
+      "evidence": "documented_official",
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/how-to-pay.page"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your water and sewer bill",
+      "topic": "payments",
+      "paragraphs": [
+        "My DEP Account is free: pay, see bills and billing history, and get bills electronically. QuickPay makes a one-time online payment without an account; it posts the next business day.",
+        "Credit and debit card payments (Visa, MasterCard, Discover, American Express) carry a 2.25% convenience fee. Paying from a checking or savings account is free.",
+        "By phone, call 866-622-8292 at any hour for the automated payment line.",
+        "By mail, send a check or money order with your bill stub to NYC Water Board, P.O. Box 11863, Newark, NJ 07101-8163. Allow at least three business days for payments to post.",
+        "In person, pay by check or money order at a DEP Borough Office, or with cash at a Department of Finance Business Center."
+      ],
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/how-to-pay.page"
+    },
+    {
+      "slug": "autopay",
+      "title": "Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Autopay pays your bill from a bank account or credit card on the due date or on a day you choose each month. Only property owners can enroll, and you need a My DEP Account first.",
+        "Customers who sign up for Autopay and are enrolled in monthly billing and e-billing can receive a one-time $50 credit after their first automatic payment brings the balance to zero, as long as they stay enrolled and current for six months."
+      ],
+      "steps": [
+        "Log in to My DEP Account.",
+        "Select Enroll in AutoPay.",
+        "Choose your payment method and monthly payment date.",
+        "Click Submit."
+      ],
+      "source": "https://www.nyc.gov/site/dep/whats-new/autopay.page"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Overdue charges and payment agreements",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you cannot pay in full, you can enter a payment agreement with at least a 25% down payment. Only the owner, or someone with power of attorney or a notarized letter of authorization, can sign one.",
+        "Payment agreements are set up with the Collections Unit at 718-595-7890 (weekdays 9 a.m. to 5 p.m.), by email, or at a Borough Office. Owners with a young child, a person 62 or older, a disabled person or a serious medical condition in the home may qualify for a lower down payment.",
+        "Seriously overdue charges can lead to a water shut-off, legal referral or inclusion in the property tax lien sale."
+      ],
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/overdue-water-sewer-charges.page"
+    },
+    {
+      "slug": "register",
+      "title": "Sign up for My DEP Account",
+      "topic": "account",
+      "paragraphs": [
+        "Choose Sign-up on the My DEP login page. You need your account number and the activation token printed on your bill; keep the token private because it unlocks your account.",
+        "Since the account system changed, you sign in with your registered email address. If you forget your password, request a verification code; it is sent only to the email on file and can take a few minutes to arrive."
+      ],
+      "steps": [
+        "Choose Sign-up.",
+        "Enter your account number and activation token.",
+        "Enter your email address and create a password.",
+        "Verify your email with the code you receive."
+      ],
+      "source": "https://www.nyc.gov/site/dep/news/030524/new-changes-your-dep-account"
+    },
+    {
+      "slug": "billing-frequency",
+      "title": "How often you are billed",
+      "topic": "billing",
+      "paragraphs": [
+        "Most customers receive a bill about every three months based on metered water use. Some larger residential buildings pay a flat annual charge per unit, and a monthly billing option is available through My DEP Account.",
+        "Switching from paper bills to eBilling in My DEP Account is free."
+      ],
+      "source": "https://www.nyc.gov/site/dep/pay-my-bills/billing-faqs.page"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-rate",
+        "intent": "Before paying, find the convenience fee NYC DEP charges for paying the water bill with a credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.25%",
+              "2.25 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.25%",
+            "2.25 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments carry a 2.25% convenience fee."
+          }
+        ]
+      },
+      {
+        "slug": "agreement-down-payment",
+        "intent": "Find out from the NYC DEP website what down payment is required to enter a payment agreement for overdue water and sewer charges. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "25%",
+              "25 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "25%",
+            "25 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least a 25% down payment is required."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My DEP Account",
+        "eBilling"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.25%",
+        "866-622-8292"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "718-595-7890"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "activation token"
+    }
+  ]
+}

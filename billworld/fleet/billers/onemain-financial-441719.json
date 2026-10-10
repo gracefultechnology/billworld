@@ -1,0 +1,311 @@
+{
+  "id": "onemain-financial-441719",
+  "version": 1,
+  "status": "dedicated",
+  "name": "OneMain Financial",
+  "category": "loans",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public onemainfinancial.com pages only (no sign-in); help-center answers were read from the page's published FAQ data. Online and app payments use a bank account or debit card; AutoPay uses a bank account and can run weekly, bi-weekly, twice a month or monthly (frequency not modelled). One-time payments can be cancelled online under Manage Payments, but cancelling or changing a recurring (AutoPay) payment requires a call to 833-390-2034, so autopay_cancel is unsupported online. Hardship options are only discussed by phone or at a branch (payment_arrangement unsupported online). No prepayment fee. Principal-only payments need a loan specialist by phone or a branch. Cash can be paid at CVS, 7-Eleven, Casey's or Family Dollar with a code. Late fees depend on the state and loan agreement (not modelled). Sign-in identifier not documented publicly (family default kept).",
+  "officialDomains": [
+    "onemainfinancial.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments",
+      "title": "Making loan payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.onemainfinancial.com/payment-difficulty",
+      "title": "Payment difficulty",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "OneMain",
+    "primary": "#0e45e3",
+    "accent": "#17398b",
+    "monogram": "OM"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "history": "Manage Payments",
+    "arrangement": "Payment Difficulty",
+    "help": "Help Center",
+    "signIn": "Log In"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Making loan payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Manage Payments",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Payment Difficulty",
+        "page": "arrangement"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments",
+      "note": "Choose Enroll Now online or in the app; AutoPay can run weekly, bi-weekly, twice a month or monthly."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments",
+      "note": "Recurring AutoPay payments cannot be cancelled or changed online. Call 833-390-2034; only one-time payments can be cancelled under Manage Payments.",
+      "channel": "phone",
+      "phone": "8333902034"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.onemainfinancial.com/payment-difficulty",
+      "note": "Hardship options are not set up online. Call 833-390-2034 or visit your local branch to go over payment options.",
+      "channel": "phone",
+      "phone": "8333902034"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.onemainfinancial.com/payment-difficulty"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments"
+    }
+  },
+  "billing": {
+    "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make a loan payment",
+      "paragraphs": [
+        "Make or schedule a payment online or in the OneMain app with a bank account or debit card, or call 833-390-2034 and follow the automated prompts. At a branch you can pay by debit card, bank account, money order or check.",
+        "You can also pay cash at participating CVS, 7-Eleven, Casey's or Family Dollar stores after getting a payment code online or from your branch, or mail a check or money order to the address on your billing statement."
+      ],
+      "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments",
+      "mode": "append"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "paragraphs": [
+        "AutoPay sets up automatic, recurring payments from your bank account. Log in online or in the app and choose Enroll Now to pick a schedule: weekly, bi-weekly, twice a month or monthly."
+      ],
+      "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments",
+      "topic": "autopay"
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Cancel or change a payment",
+      "paragraphs": [
+        "To cancel an upcoming one-time payment, log in and open Manage Payments. Recurring AutoPay payments cannot be cancelled or changed online; call 833-390-2034."
+      ],
+      "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments",
+      "topic": "autopay"
+    },
+    {
+      "slug": "prepayment",
+      "title": "Paying early and principal-only payments",
+      "paragraphs": [
+        "There is no prepayment fee. Pay extra with each monthly payment, or request a payoff quote online or from your branch and pay it in one payment.",
+        "Principal-only payments on interest-bearing loans need a loan specialist: call 833-390-2034, or bring a check or money order marked Principal payment to a branch."
+      ],
+      "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments",
+      "topic": "payments"
+    },
+    {
+      "slug": "payment-difficulty",
+      "title": "If you can't make your payment",
+      "paragraphs": [
+        "Call 833-390-2034 or contact your branch to go over your options. Late or missed payments are reported to the credit bureaus and can stay on your report for up to seven years; depending on your state, late fees may apply, and late payments on daily simple interest loans add interest."
+      ],
+      "source": "https://www.onemainfinancial.com/help-center/products/personal-and-auto-loans/topics/making-loan-payments",
+      "topic": "assistance"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-frequencies",
+        "intent": "Using OneMain's help center, find which AutoPay schedules you can choose besides monthly. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "bi-weekly",
+              "biweekly",
+              "twice a month",
+              "weekly"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "bi-weekly",
+            "biweekly",
+            "twice a month",
+            "weekly"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AutoPay can run weekly, bi-weekly, twice a month or monthly."
+          }
+        ]
+      },
+      {
+        "slug": "cash-payment-stores",
+        "intent": "Using OneMain's help center, name a retail store where you can pay your OneMain loan in cash. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "CVS",
+              "7-Eleven",
+              "Casey",
+              "Family Dollar"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "CVS",
+            "7-Eleven",
+            "Casey",
+            "Family Dollar"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You can pay cash at participating CVS, 7-Eleven, Casey's or Family Dollar stores."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "833-390-2034"
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "branch"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-payment",
+      "contains": "Manage Payments"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "bi-weekly"
+    }
+  ]
+}

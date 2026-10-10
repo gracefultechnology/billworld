@@ -1,0 +1,400 @@
+{
+  "id": "bay-area-fastrak-bridges-and-express-lanes-and-t-06b06c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Bay Area FasTrak (bridges and express lanes) and toll invoices",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public bayareafastrak.org pages only (no sign-in, no invoice lookup). FasTrak is a prepaid toll account: automatic replenishment charges a linked CREDIT CARD when the balance falls below $15 (or the account's minimum threshold) for one month's average tolls or $25, whichever is greater. The FAQ only describes credit cards for replenishment and online payments (cash, check and money order are paid in person, at retailers or by mail). Sign-in uses a username and password; username recovery needs the account or toll tag number and the mailing ZIP code; phone access uses the account number plus a 4-digit PIN. Accounts are closed online under Account Settings and Payment Methods > Close Account; toll tags must be returned within 10 business days for the deposit refund. Statements are monthly or quarterly by email (free) or by mail for a fee. The low-income Bay Area Toll Payment Plan is applied for on a separate website (income at or below 200% of the federal poverty level, at least $100 owed), so it is modelled as not available inside the FasTrak account. Violation penalties are per crossing and depend on the facility (bridges vs Golden Gate vs express lanes) and are described in help, not in the engine's late fee. MFA is not described publicly, so the family default is kept. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "bayareafastrak.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.bayareafastrak.org/en/home/index.shtml",
+      "title": "FasTrak (home)",
+      "fetchedAt": "2026-10-05",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.bayareafastrak.org/en/home/ways-to-pay.shtml",
+      "title": "Ways To Pay - FasTrak",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.bayareafastrak.org/en/help/payment-and-account-replenishment-faqs.shtml",
+      "title": "Payment & Account Replenishment FAQs - FasTrak",
+      "fetchedAt": "2026-10-05",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.bayareafastrak.org/en/help/manage-your-fastrak-account-faqs.shtml",
+      "title": "Managing Your FasTrak Account FAQs - FasTrak",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.bayareafastrak.org/en/help/invoices-and-penalties-faqs.shtml",
+      "title": "Invoices and Penalties FAQs - FasTrak",
+      "fetchedAt": "2026-10-05",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.bayareafastrak.org/en/help/payment-assistance.shtml",
+      "title": "Payment Assistance - FasTrak",
+      "fetchedAt": "2026-10-05",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "FasTrak",
+    "primary": "#00558c",
+    "accent": "#00694a",
+    "monogram": "FT"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Open an Account",
+    "guestPay": "Pay an Invoice or Violation",
+    "payBill": "Increase My Balance",
+    "autopay": "Automatic Replenishment",
+    "profile": "Account Settings",
+    "wallet": "Manage Payment Methods",
+    "cancel": "Close Account",
+    "forgot": "Forgot Password or Username",
+    "help": "Help",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Open an Account",
+        "page": "register"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Increase My Balance",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Automatic Replenishment",
+        "page": "autopay"
+      },
+      {
+        "label": "Account Settings",
+        "page": "profile"
+      },
+      {
+        "label": "Manage Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Close Account",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.bayareafastrak.org/en/help/payment-and-account-replenishment-faqs.shtml"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayareafastrak.org/en/home/ways-to-pay.shtml",
+      "note": "Invoices and violation notices mailed to the registered owner can be paid online without an account."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayareafastrak.org/en/help/payment-and-account-replenishment-faqs.shtml",
+      "note": "Automatic replenishment charges the credit card on file when the balance falls below $15 or the account's minimum threshold."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayareafastrak.org/en/help/manage-your-fastrak-account-faqs.shtml",
+      "note": "Monthly or quarterly statements are free by email; mailed statements carry a fee."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayareafastrak.org/en/help/manage-your-fastrak-account-faqs.shtml",
+      "note": "Close the account online under Account Settings and Payment Methods, then return toll tags within 10 business days to get the deposit back."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.bayareafastrak.org/en/help/payment-assistance.shtml",
+      "note": "Payment plans are only through the Bay Area Toll Payment Plan, applied for on its own website by income-eligible drivers owing $100 or more; penalty waivers are requested by calling 877-BAY-TOLL.",
+      "channel": "phone",
+      "phone": "8772298655"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayareafastrak.org/en/help/payment-assistance.shtml"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayareafastrak.org/en/help/payment-and-account-replenishment-faqs.shtml",
+      "phone": "8772298655"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayareafastrak.org/en/help/payment-and-account-replenishment-faqs.shtml"
+    }
+  },
+  "billing": {
+    "source": "https://www.bayareafastrak.org/en/help/payment-and-account-replenishment-faqs.shtml",
+    "autopay": {
+      "policies": [
+        "full"
+      ]
+    },
+    "methods": [
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Automatic replenishment",
+      "topic": "autopay",
+      "paragraphs": [
+        "Link a credit card to your FasTrak account and it is charged automatically whenever your prepaid balance drops below $15 or your account's minimum threshold, so tolls keep posting and you do not get invoices or violation notices.",
+        "Each replenishment equals your average monthly tolls over the last 90 days, or $25 if that is more. The minimum threshold is about half of that, roughly two weeks of tolls, and is reviewed 35 days after the account opens and every 90 days after that.",
+        "Without a linked card you must add at least $25 yourself with cash, check or money order whenever the toll display shows Low Bal or Account Low."
+      ],
+      "steps": [
+        "Sign in to your FasTrak account.",
+        "Open Account Settings and Payment Methods.",
+        "Choose Manage Payment Methods and add or update your credit card.",
+        "Save; replenishment uses the card on file."
+      ],
+      "source": "https://www.bayareafastrak.org/en/help/payment-and-account-replenishment-faqs.shtml"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "If your balance is negative, sign in and choose Increase My Balance to add funds right away with a credit card; you can save the card or use it once. Negative accounts are invalid, and FasTrak closes accounts that stay negative for 90 days and keeps the tag deposit.",
+        "You can also add funds by calling 877-BAY-TOLL (877-229-8655), in person at the Walk-In Customer Service Center, with cash at participating stores, or by mailing a check or money order with your account number to FasTrak Accounts, P.O. Box 26926, San Francisco, CA 94126.",
+        "Drivers without a toll tag can use a License Plate Account for bridge tolls; it does not work in express lanes."
+      ],
+      "source": "https://www.bayareafastrak.org/en/home/ways-to-pay.shtml"
+    },
+    {
+      "slug": "invoices-and-penalties",
+      "title": "Invoices and violation penalties",
+      "topic": "billing",
+      "paragraphs": [
+        "Crossing a toll bridge without a valid toll tag or License Plate Account brings a toll invoice in the mail, sent to the registered owner within 21 days. The invoice is the toll only if it is paid within 21 days.",
+        "On the state-owned bridges an unpaid invoice becomes a first violation notice with a $5 penalty per crossing, then a second notice with a $15 penalty (cut back to $5 if paid within 15 days of the second notice). On the Golden Gate Bridge the penalties are $25 and then $50 (cut back to $25 if paid within 15 days).",
+        "Using an express lane without a valid account brings a violation notice right away: the toll plus $10, then plus $30 on the second notice.",
+        "Pay invoices and violations online or by phone with a credit card, by mailed check or money order payable to Bay Area Toll Authority, with cash at a payment location, or at the walk-in center."
+      ],
+      "source": "https://www.bayareafastrak.org/en/help/invoices-and-penalties-faqs.shtml"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "Drivers with overdue tolls and penalties can ask for a one-time waiver of violation penalties by calling 877-BAY-TOLL (877-229-8655). Bridge waivers require paying all outstanding tolls and DMV fees, or joining the payment plan.",
+        "The Bay Area Toll Payment Plan is for households at or below 200% of the federal poverty level that owe at least $100 after waivers. The first payment is $100 or half of the tolls owed, whichever is less, and plans last up to 24 months. You apply on the payment plan website, not in your FasTrak account."
+      ],
+      "source": "https://www.bayareafastrak.org/en/help/payment-assistance.shtml"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Close your FasTrak account",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in, open Account Settings and Payment Methods, scroll to the bottom and choose Close Account. You can also send an Account Closure Form to the Customer Service Center.",
+        "Return your toll tags within 10 business days of the closure request to get your tag deposit refunded; FasTrak suggests certified or registered mail to Toll Tag Return, P.O. Box 26927, San Francisco, CA 94126."
+      ],
+      "steps": [
+        "Sign in to your FasTrak account.",
+        "Open Account Settings and Payment Methods.",
+        "Scroll down and choose Close Account.",
+        "Return your toll tags within 10 business days."
+      ],
+      "source": "https://www.bayareafastrak.org/en/help/manage-your-fastrak-account-faqs.shtml"
+    },
+    {
+      "slug": "statements",
+      "title": "Statements and account activity",
+      "topic": "billing",
+      "paragraphs": [
+        "Create a username and password to see your toll activity and balance online. You can choose monthly or quarterly statements by email at no cost, or by mail for a fee.",
+        "By phone, the automated system at 877-BAY-TOLL asks for your account number and 4-digit PIN or your mailing ZIP code."
+      ],
+      "source": "https://www.bayareafastrak.org/en/help/manage-your-fastrak-account-faqs.shtml"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "replenishment-minimum",
+        "intent": "Using the FasTrak website's help pages, find the smallest amount FasTrak charges your credit card each time it automatically replenishes your account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$25",
+              "25 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$25",
+            "25 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "FasTrak replenishes one month's average tolls or $25, whichever is greater."
+          }
+        ]
+      },
+      {
+        "slug": "golden-gate-first-penalty",
+        "intent": "Using the FasTrak website's help pages, find the penalty per crossing on the first toll violation notice for the Golden Gate Bridge. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$25",
+              "25 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$25",
+            "25 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The first Golden Gate Bridge violation notice adds a $25 penalty per crossing."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Ways to Pay",
+        "Open an Account"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Increase My Balance",
+        "Automatic Replenishment"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "$25"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "invoices-and-penalties",
+      "contains": "Golden Gate"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "10 business days"
+    }
+  ]
+}

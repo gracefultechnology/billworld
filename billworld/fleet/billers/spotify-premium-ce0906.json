@@ -1,0 +1,386 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "spotify-premium-ce0906",
+  "name": "Spotify Premium",
+  "notes": "Researched from public spotify.com and support.spotify.com pages and the public login page only (no sign-in). Premium is charged automatically each billing date to the saved payment method; canceling moves the account to the free, ad-supported tier at the next billing date (immediately during a $0 trial). No paper bill, guest pay or payment plans. The login form asks for an email first, then credentials, with Google, Facebook and Apple buttons; the engine only models Google. Prices are the published US prices. Plan members of Duo/Family cannot cancel the plan; only the plan manager can. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "spotify.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.spotify.com/us/premium/",
+      "title": "Spotify Premium - Spotify (USA)",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://support.spotify.com/us/article/cancel-premium/",
+      "title": "How to cancel Premium plans - Spotify",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://support.spotify.com/us/article/payment-methods/",
+      "title": "Accepted payment methods - Spotify",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.spotify.com/us/article/change-payment-details/",
+      "title": "How to change your payment details - Spotify",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.spotify.com/us/article/reset-password/",
+      "title": "How to reset or change your Spotify password - Spotify",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://accounts.spotify.com/en/login",
+      "title": "Login - Spotify",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Spotify",
+    "primary": "#117a37",
+    "accent": "#121212",
+    "monogram": "S"
+  },
+  "labels": {
+    "dashboard": "Account overview",
+    "plan": "Manage your plan",
+    "wallet": "Payment methods",
+    "history": "Order history",
+    "statements": "Order history",
+    "cancel": "Cancel subscription",
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "help": "Support",
+    "username": "Email",
+    "register": "Sign up"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Premium",
+        "helpSlug": "premium-plans"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      },
+      {
+        "label": "Sign up",
+        "page": "register"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Manage your plan",
+        "page": "plan"
+      },
+      {
+        "label": "Payment methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Order history",
+        "page": "history"
+      },
+      {
+        "label": "Cancel subscription",
+        "page": "cancel"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "none",
+    "socialProviders": [
+      "google"
+    ],
+    "evidence": "observed_public",
+    "source": "https://accounts.spotify.com/en/login"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.spotify.com/us/article/payment-methods/",
+      "note": "The membership is charged to the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://support.spotify.com/us/article/change-payment-details/",
+      "note": "Premium is charged automatically to your saved payment method each billing date; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://support.spotify.com/us/article/cancel-premium/",
+      "note": "Recurring charges stop only when you cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.spotify.com/us/article/change-payment-details/",
+      "note": "No paper bills are mailed; charges are shown on the account page and receipts are emailed."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.spotify.com/us/article/change-payment-details/"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.spotify.com/us/article/change-payment-details/"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.spotify.com/us/article/cancel-premium/",
+      "note": "Premium stays until the next billing date, then the account switches to free. Plans through a partner (mobile or internet provider) are canceled with the partner."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.spotify.com/us/article/reset-password/"
+    }
+  },
+  "billing": {
+    "source": "https://www.spotify.com/us/premium/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://support.spotify.com/us/article/payment-methods/"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "student",
+        "name": "Premium Student",
+        "cents": 699
+      },
+      {
+        "id": "individual",
+        "name": "Premium Individual",
+        "cents": 1299
+      },
+      {
+        "id": "duo",
+        "name": "Premium Duo",
+        "cents": 1899
+      },
+      {
+        "id": "family",
+        "name": "Premium Family",
+        "cents": 2199,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "premium-plans",
+      "title": "Premium plans and prices",
+      "topic": "plans",
+      "source": "https://www.spotify.com/us/premium/",
+      "paragraphs": [
+        "Premium Individual is $12.99 a month for one account. Premium Duo is $18.99 a month for two accounts at the same address, and Premium Family is $21.99 a month for up to six accounts at the same address, with parental controls.",
+        "Premium Student is $6.99 a month for eligible students at accredited colleges and includes Hulu with ads, subject to eligibility. Individual and Student plans can start with a one-month $0 trial if you have not tried Premium before. You can cancel any time."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How to cancel Premium",
+      "topic": "account",
+      "source": "https://support.spotify.com/us/article/cancel-premium/",
+      "steps": [
+        "Log in and open your account page.",
+        "Go to Manage your plan.",
+        "Select Cancel subscription."
+      ],
+      "paragraphs": [
+        "Your Premium stays active until your next billing date, then the account switches to free with ads. Playlists and saved music are kept. If you cancel during a $0 trial, the account switches to free right away and the trial cannot be restarted.",
+        "On Duo or Family, only the plan manager can cancel the plan; a member who follows these steps just leaves the plan. If you see no option to change your plan, a partner such as a phone or internet company bills you; check Payment on the Manage your plan page for their contact."
+      ]
+    },
+    {
+      "slug": "update-payment",
+      "title": "Change your payment details",
+      "topic": "billing",
+      "source": "https://support.spotify.com/us/article/change-payment-details/",
+      "steps": [
+        "Go to Payment methods.",
+        "Select Add for a new method, or Change for an existing one.",
+        "Confirm with Add/Change payment method."
+      ],
+      "paragraphs": [
+        "Adding a payment method can place a small temporary authorization to check it; the hold clears shortly. If a partner bills you, payments are managed by that partner."
+      ]
+    },
+    {
+      "slug": "reset-password",
+      "title": "Reset or change your password",
+      "topic": "account",
+      "source": "https://support.spotify.com/us/article/reset-password/",
+      "paragraphs": [
+        "If you know your password, use the Change password page and enter the current password and the new one twice. If you forgot it, use the password reset page with the email on your account and follow the emailed instructions. Accounts can also be created with a phone number, Apple or Google, so try those if your email is not found."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "duo-price",
+        "intent": "Using Spotify's Premium page, find the monthly price of Premium Duo in the US. Do not change your plan.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "18.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "18.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Premium Duo costs $18.99 a month."
+          }
+        ]
+      },
+      {
+        "slug": "family-accounts",
+        "intent": "Find out how many accounts Spotify Premium Family includes. Do not change your plan.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "6"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "6"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Premium Family includes up to 6 accounts."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log in",
+        "Premium"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Manage your plan",
+        "Payment methods"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Premium Duo",
+        "Premium Family"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "premium-plans",
+      "contains": "$18.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Manage your plan"
+    }
+  ]
+}

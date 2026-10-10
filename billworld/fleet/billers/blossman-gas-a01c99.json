@@ -1,0 +1,277 @@
+{
+  "id": "blossman-gas-a01c99",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Blossman Gas",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public blossmangas.com pages (Payment Plans, Propane FAQ) and the public portal.blossmangas.com sign-in page (a MyFuelPortal site) only; no sign-in, no registration. The sign-in form asks for Email Address + Password with Remember me?, a Log In button and an 'I forgot my password' link; existing customers who never used MyFuelPortal Register with their Customer Number (account number) and Email Address. No guest or quick-pay link appears on the portal, so guest_pay is unsupported. Blossman's public pages do not describe AutoPay, paperless billing, fees, late charges or closing an account, so those stay at family defaults and are not claimed. Payment plans: Custom Payment Plan (12 equal interest-free monthly payments, reviewed quarterly) and CPP Plus Rewards Membership ($49.95/yr); enrollment by calling 1-888-BLOSSMAN (888-256-7762) or visiting a store. Independent review 2026-10-09: the plans page says to call or visit a store for more information rather than describing an enrollment process, so payment_arrangement is now inferred and the help wording softened; the per-gallon discount amount is printed ambiguously on the page ('0.10 cents'), so the figure was dropped. Sign-in placeholder Email Address and the registration placeholders (Account Number, Email Address) re-checked.",
+  "officialDomains": [
+    "blossmangas.com"
+  ],
+  "sources": [
+    {
+      "url": "https://portal.blossmangas.com/Account/Login",
+      "title": "Log in - Blossman Gas",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.blossmangas.com/residential/payment-plans/",
+      "title": "Payment Plans | Blossman Gas",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.blossmangas.com/propane-faq/",
+      "title": "Propane FAQ | Blossman Gas",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Blossman",
+    "primary": "#003f7d",
+    "accent": "#b22222",
+    "monogram": "BG"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "username": "Email Address",
+    "forgot": "I forgot my password",
+    "register": "Register",
+    "accountNumber": "Customer Number",
+    "payBill": "Online Bill Pay",
+    "dashboard": "Customer Portal",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Customer Portal",
+        "page": "dashboard"
+      },
+      {
+        "label": "Online Bill Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://portal.blossmangas.com/Account/Login"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "observed_public",
+      "source": "https://portal.blossmangas.com/Account/Login",
+      "note": "Blossman Gas has no guest payment on its customer portal. Log in (or Register with your Customer Number and email) to pay online, use the Blossman Gas app, or call 1-888-BLOSSMAN (888-256-7762).",
+      "phone": "888-256-7762"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.blossmangas.com/residential/payment-plans/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.blossmangas.com/residential/payment-plans/",
+      "channel": "phone",
+      "phone": "888-256-7762",
+      "note": "Blossman does not describe setting up payment plans online. Call 1-888-BLOSSMAN (888-256-7762) or visit a Blossman store to ask about the Custom Payment Plan."
+    }
+  },
+  "billing": {
+    "source": "https://www.blossmangas.com/residential/payment-plans/",
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "sign-in",
+      "title": "Using the Blossman Gas Customer Portal",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in to the Customer Portal with your email address and password. If you forget your password, use I forgot my password on the Log In page.",
+        "Already a Blossman customer but new to the portal? Choose Register and enter your Customer Number and email address to get started. The portal works best in a current version of Chrome, Safari or Edge."
+      ],
+      "source": "https://portal.blossmangas.com/Account/Login"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Blossman Gas bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Current customers pay online through the Customer Portal, or in the Blossman Gas mobile app, which also lets you request propane and see recent transactions.",
+        "There is no guest payment on the portal; sign in or register first. For other questions contact your local Blossman office or call 1-888-BLOSSMAN."
+      ],
+      "source": "https://www.blossmangas.com/residential/payment-plans/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Custom Payment Plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "The Custom Payment Plan (CPP) estimates your propane use for the year and splits the cost into 12 equal monthly payments with no interest. Every quarter Blossman compares what you used with the estimate and adjusts the payment if needed. CPP customers also get a per-gallon discount below the lowest residential rate and earn interest on credit balances.",
+        "CPP Plus Rewards Membership costs $49.95 a year and adds a yearly price cap, 15% off appliances (generators excluded) and periodic offers.",
+        "For details or to sign up, call 1-888-BLOSSMAN (888-256-7762) or visit your nearest Blossman store."
+      ],
+      "source": "https://www.blossmangas.com/residential/payment-plans/"
+    },
+    {
+      "slug": "automatic-delivery",
+      "title": "Automatic delivery or will-call",
+      "topic": "account",
+      "paragraphs": [
+        "You can choose automatic deliveries, where Blossman keeps track of your tank and fills it, or be a will-call customer who requests each delivery. Automatic delivery is about fuel, not payment."
+      ],
+      "source": "https://www.blossmangas.com/propane-faq/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "cpp-plus-fee",
+        "intent": "Using the Blossman Gas website's help pages, find the annual fee for the CPP Plus Rewards Membership. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "49.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "49.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "CPP Plus Rewards Membership costs $49.95 per year."
+          }
+        ]
+      },
+      {
+        "slug": "cpp-payment-count",
+        "intent": "Using the Blossman Gas website's help pages, find how many monthly payments the Custom Payment Plan spreads the yearly propane cost over. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Custom Payment Plan uses 12 equal monthly payments."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email Address",
+        "I forgot my password"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Customer Portal",
+        "Online Bill Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": [
+        "$49.95",
+        "12 equal monthly payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "sign-in",
+      "contains": "Customer Number"
+    }
+  ]
+}

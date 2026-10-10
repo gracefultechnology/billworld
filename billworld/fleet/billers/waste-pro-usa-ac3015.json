@@ -1,0 +1,339 @@
+{
+  "id": "waste-pro-usa-ac3015",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Waste Pro USA",
+  "category": "trash",
+  "template": "waste-hauler",
+  "reviewedAt": "2026-10-09",
+  "notes": "Moved from the catalog default utility-account family (energy-utility portal with an energy-usage panel and Budget Billing) to the trash-specific waste-hauler family. Researched from the public wasteprousa.com Online Bill Pay page and Waste Pro's published online-account help guide (eTower help PDF on etower.wasteprousa.com); never signed in. Customers first pick their division (number at the top left of the invoice) from the Bill Pay page, then log in to that division's portal with a username and password. First sign-in/registration needs the last invoice number or the phone number on file; enrollment is confirmed by an emailed link. Online payments by credit card or checking account carry no fee and post immediately. Features: Go Paperless (email invoice notifications), one-time payments, automatic payments, view/download invoices and service days. Help is from the local division office (phone at the top of the invoice). No guest payment, payment plan, cancellation or late-fee policy is published, so those keep family defaults. In many FL/SC communities residents pay Waste Pro through a city or county bill instead. Most divisions link to an eTower portal (modelled here); a few divisions on the Bill Pay list link to a separate Navusoft portal. The help guide shows invoices under Billing History (View downloads a PDF, Pay pays one invoice) and Log Out under the User ID menu. The online account guide lists only paying, automatic payments, paperless, invoices and service days, so stopping service online is marked unsupported (inferred; call the local office).",
+  "officialDomains": [
+    "wasteprousa.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.wasteprousa.com/bill-pay/",
+      "title": "Online Bill Pay - Waste Pro",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf",
+      "title": "Waste Pro Online Account Access help guide",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Waste Pro",
+    "shortName": "Waste Pro",
+    "primary": "#00539b",
+    "accent": "#1c6b2f",
+    "monogram": "WP"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "signIn": "Login",
+    "register": "Register",
+    "paperless": "Go Paperless",
+    "autopay": "Automatic Payments",
+    "statements": "Billing History",
+    "dashboard": "Home",
+    "help": "Support",
+    "contact": "Request Service",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Bill Pay",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Online Account Help",
+        "helpSlug": "register"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Billing History",
+        "page": "statements"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Request Service",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "phone",
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf",
+      "note": "Pick your division on the Bill Pay page, then follow the Enrollment Screen; first sign-in needs your last invoice number or the phone number on file."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wasteprousa.com/bill-pay/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wasteprousa.com/bill-pay/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wasteprousa.com/bill-pay/"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wasteprousa.com/bill-pay/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf",
+      "channel": "phone",
+      "note": "Service cannot be stopped in the online account. Call your local Waste Pro office (its phone number is at the top of your invoice) to stop or change service."
+    }
+  },
+  "billing": {
+    "source": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Waste Pro bill online",
+      "topic": "payments",
+      "paragraphs": [
+        "Open Bill Pay on wasteprousa.com and choose your location from the drop-down list. Your division number is printed at the top left of every Waste Pro invoice. Then log in with your username and password.",
+        "You can pay one or several invoices with a credit card or checking account. Online payments are free and post to your account immediately.",
+        "For questions about the online system, call your local Waste Pro office; its number is at the top of your invoice."
+      ],
+      "steps": [
+        "Open Bill Pay and select your division.",
+        "Log in with your username and password.",
+        "Choose Make a Payment.",
+        "Pay by credit card or checking account."
+      ],
+      "source": "https://www.wasteprousa.com/bill-pay/"
+    },
+    {
+      "slug": "register",
+      "title": "Registering for online account access",
+      "topic": "account",
+      "paragraphs": [
+        "Online access is free. On the Bill Pay page pick your location, then follow the Enrollment Screen to create a username and password. The first sign-in takes about a minute longer because you confirm your account with your last invoice number or the phone number on file.",
+        "Waste Pro emails you right away to confirm enrollment; select the link in that email to finish, then sign in with your username and password."
+      ],
+      "source": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless with invoice email notifications",
+      "topic": "billing",
+      "paragraphs": [
+        "Select Go Paperless on your home screen, choose Email Invoice Notification, enter your email address and select Save Paperless Options. Mailed invoices stop and you get an email whenever a new invoice is ready to view online. The paperless option is free."
+      ],
+      "source": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "On your home screen, below the account address, choose the link to have your invoices paid automatically. Pick a payment method (credit card or checking account), fill in the required details and select Add Account.",
+        "Automatic payments then pay each new invoice from that method. Contact your local office if you need help changing them."
+      ],
+      "source": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf"
+    },
+    {
+      "slug": "billing-history",
+      "mode": "append",
+      "title": "Viewing and paying invoices",
+      "paragraphs": [
+        "Open Billing History to see your invoices. In the Actions area, View downloads a PDF copy of an invoice (useful if you no longer get paper bills) and Pay pays that specific invoice."
+      ],
+      "source": "https://etower.wasteprousa.com/T7Asheville/images/eTowerHelp.pdf"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "division-number-location",
+        "intent": "Using Waste Pro's help pages, find where on a Waste Pro invoice you can find the division number needed to pick your location for online bill pay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "top left"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "top left"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The division number is printed at the top left of any Waste Pro invoice."
+          }
+        ]
+      },
+      {
+        "slug": "online-payment-fee",
+        "intent": "Using Waste Pro's help pages, find out whether Waste Pro charges a fee for paying online by credit card or checking account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "free"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "free"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Online payments by credit card or checking account are free; there is no fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Bill Pay"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Go Paperless",
+        "Automatic Payments"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "top left"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "last invoice number"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "cannot be stopped in the online account"
+    }
+  ]
+}

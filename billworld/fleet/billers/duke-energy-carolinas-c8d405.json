@@ -1,0 +1,195 @@
+{
+  "id": "duke-energy-carolinas-c8d405",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Duke Energy Carolinas",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public duke-energy.com pages only, read in a browser with the North Carolina location selected (no sign-in). Sign-in uses the profile email (older usernames that match the email also work); password reset sends a 6-digit code to the profile email; passkeys are optional. Whether every sign-in asks for a one-time code is not stated, so MFA stays at the family default. Pay as Guest looks the account up by account number or phone number, then a verify step (fields not shown before submitting); the format models account number + ZIP. Phone payments are same-day via Speedpay at 800-777-9898; Speedpay card fees are described only as a small convenience fee, so no card fee is modelled. Auto Pay is free and drafts the full amount from a bank account on the due date (customers cannot pick the draft day; Pick Your Due Date is a separate program). Installment Plans (no down payment) and Due Date Extensions (1-10 business days, twice a year) are both offered under Payment Assistance; the engine models one arrangement flow. No late-fee rate is stated on the pages read, so none is modelled. labels.autopay is intentionally not set (kubra template renders it as the AutoPay turn-off link text; see FPL dossier notes); nav and help still say 'Auto Pay'.",
+  "officialDomains": ["duke-energy.com"],
+  "sources": [
+    { "url": "https://www.duke-energy.com/home/billing", "title": "Pay Bill - Duke Energy", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.duke-energy.com/pay-as-guest", "title": "Pay As a Guest - Duke Energy", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan", "title": "Auto Pay - Duke Energy", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.duke-energy.com/home/billing/options/paperless", "title": "Paperless Billing - For Your Home - Duke Energy", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://www.duke-energy.com/home/billing/assistance/installment-plans", "title": "Installment Plans - Duke Energy", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://www.duke-energy.com/home/billing/assistance/due-date-extensions", "title": "Due Date Extensions - Duke Energy", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://www.duke-energy.com/start-stop-move/landing", "title": "Start, Stop or Move Service - Duke Energy", "fetchedAt": "2026-10-09", "kind": "cancel" },
+    { "url": "https://www.duke-energy.com/need-help-sign-in", "title": "Help Signing In - Duke Energy", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "shortName": "Duke Energy", "primary": "#00597c", "accent": "#00425c", "monogram": "DE" },
+  "labels": {
+    "payBill": "Pay Bill",
+    "paperless": "Paperless Billing",
+    "signIn": "Sign In",
+    "register": "Register",
+    "forgot": "Forgot email or password",
+    "guestPay": "Pay as Guest",
+    "arrangement": "Payment Assistance Options",
+    "cancel": "Stop My Service",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign In / Register", "page": "login" },
+      { "label": "Pay as Guest", "page": "guest" },
+      { "label": "Billing & Payment Options", "helpSlug": "pay-your-bill" },
+      { "label": "Start/Stop Service", "helpSlug": "cancel-service" },
+      { "label": "Financial Help", "helpSlug": "payment-assistance" },
+      { "label": "Customer Service", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Account", "page": "dashboard" },
+      { "label": "Pay Bill", "page": "pay" },
+      { "label": "Auto Pay", "page": "autopay" },
+      { "label": "Paperless Billing", "page": "paperless" },
+      { "label": "Payment Assistance Options", "page": "arrangement" },
+      { "label": "Stop My Service", "page": "cancel" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "documented_official",
+    "source": "https://www.duke-energy.com/need-help-sign-in"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://www.duke-energy.com/pay-as-guest", "note": "Pay as Guest finds your account by account number or phone number, then asks you to verify it." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan", "note": "Auto Pay is free and drafts the full bill from a bank account on the due date; you cannot choose a different draft day." },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing/options/paperless" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing/assistance/installment-plans" },
+    "cancel_service": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/start-stop-move/landing" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing", "phone": "8007779898", "note": "Phone payments are one-time, same-day payments through the third-party vendor Speedpay." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing" }
+  },
+  "billing": {
+    "source": "https://www.duke-energy.com/home/billing",
+    "fees": { "bankCents": 0, "evidence": "documented_official", "source": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan" },
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "days": "due_date", "methodTypes": ["bank"] }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay is free. Duke Energy drafts the full bill amount from the bank account you choose on your bill due date, so there are no dates to remember and the payment shows on your bank statement.",
+        "You cannot pick a different draft day; if you want a different due date, look at the Pick Your Due Date program. Pay your full balance before you enroll to avoid overdraft or returned-item fees.",
+        "Enrollment is complete when your bill says your payment is scheduled by monthly automatic draft. Until then, keep paying as usual."
+      ],
+      "steps": [
+        "Sign in to your online account.",
+        "Next to Billing & Payment Activity, choose Manage Programs.",
+        "Find Auto Pay and enroll, using the routing and account numbers from a check or deposit slip."
+      ],
+      "source": "https://www.duke-energy.com/home/billing/options/automatic-payment-plan"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless Billing gives you the same bill online, with an email when a new bill is ready. You can add payment reminders and bill-ready alerts by email, text or both, and see up to 24 months of past bills.",
+        "You need an online account. With more than one account, enroll each one separately from the Account Selector."
+      ],
+      "steps": [
+        "Sign in (or register for an online account).",
+        "Under Billing and Payment, choose Paperless Billing.",
+        "Turn the toggle on and set your notifications."
+      ],
+      "source": "https://www.duke-energy.com/home/billing/options/paperless"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Sign in to pay with your stored payment information, or use Pay as Guest: find your account by account number or phone number and verify it.",
+        "Other options: pay in the Duke Energy app, at a preferred in-person location, by phone with a one-time same-day Speedpay payment at 800-777-9898 (Speedpay is a third-party vendor), or by mailing a check or money order to Duke Energy, P.O. Box 1094, Charlotte, NC 28201-1094."
+      ],
+      "source": "https://www.duke-energy.com/home/billing"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Installment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "Residential customers can spread a past-due balance or deposit over equal monthly installments billed with the current bill. No down payment is needed; the first installment is due with your next statement.",
+        "If you pay the bill plus the installment by the due date, no late fees are charged. Missing a payment takes the account off the plan and back to the normal collection timeline, which can include disconnection. You can pay the plan off early and it drops off the next bill.",
+        "To check eligibility, sign in and choose Payment Assistance on the dashboard. If the option is missing, the account is not eligible right now."
+      ],
+      "source": "https://www.duke-energy.com/home/billing/assistance/installment-plans"
+    },
+    {
+      "slug": "due-date-extension",
+      "title": "Due Date Extensions",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you know you will miss a due date, eligible customers can extend it by 1 to 10 business days, up to twice a year. Customers already on an installment plan cannot use it.",
+        "Sign in, open Billing & Payments, choose Payment Assistance Options, then Due Date Extension. If you do not see the option, the account is not eligible."
+      ],
+      "source": "https://www.duke-energy.com/home/billing/assistance/due-date-extensions"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, stop or move service",
+      "topic": "account",
+      "paragraphs": [
+        "Use Stop My Service if you are leaving the Duke Energy service area or no longer need service, or Move Service to New Address if you are moving to another address Duke Energy serves."
+      ],
+      "source": "https://www.duke-energy.com/start-stop-move/landing"
+    },
+    {
+      "slug": "sign-in-help",
+      "title": "Help signing in",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in with the email on your profile. If you forget your password, choose Forgot email or password, enter your profile email and send the verification code; a 6-digit code arrives by email. If it has not arrived after 5 minutes, check spam and try again.",
+        "You can also set up a passkey during sign-in to log in without a password; your password keeps working too."
+      ],
+      "source": "https://www.duke-energy.com/need-help-sign-in"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "extension-business-days",
+        "intent": "Using Duke Energy's help pages, find out the most business days a due date extension can add. Do not request an extension or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["10"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["10"] },
+        "tags": ["help", "information", "arrangement"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Up to 10 business days, twice per year." } ]
+      },
+      {
+        "slug": "autopay-draft-day",
+        "intent": "Find out on what day Duke Energy Auto Pay drafts the bill from your bank account and whether you can choose a different day. Do not enroll or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["due date"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["due date"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "It drafts the full bill on the bill due date; you cannot pick another day (Pick Your Due Date can change the due date)." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "home", "contains": ["Billing & Payment Options", "Financial Help"] },
+    { "page": "login", "contains": "Email" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Auto Pay", "Payment Assistance Options"] },
+    { "page": "autopay", "signedIn": true, "notContains": ["Debit or credit card"] },
+    { "page": "helpArticle", "slug": "due-date-extension", "contains": "1 to 10 business days" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "due date" }
+  ]
+}

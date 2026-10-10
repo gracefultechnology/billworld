@@ -1,0 +1,299 @@
+{
+  "id": "lifefone-b5a4c7",
+  "version": 1,
+  "status": "dedicated",
+  "name": "LifeFone",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from LifeFone's public Account Portal hub page, FAQ, and the public sign-in page of the LifeFone Account Portal at payments.lifefone.com (SedonaCloud) only; never signed in or registered. The Account Portal sign-in asks for UserName and Password with 'Remember me?', 'Forgot your password?' and 'Register as a new Customer?'; no MFA is described. The hub page describes Billing & Payments as paying your account online through a secure automated service; the Emergency Care Profile, caregiver and location portals are separate and not modelled. FAQ: no time commitment (a service agreement is signed), annual billing ships free, lifetime price guarantee, no activation/equipment/restocking fees, Protection Plan $5/month, extra pendant $39.95, fall detection about $5-$10/month more. Cancel by calling 1-800-940-0262 (the FAQ also accepts email or mail notice but gives no address); billing stops when the equipment is received and only full unused prepaid months are refunded, so cancel_service is phone-only. AutoPay is not documented either way and keeps the family default (inferred). No payment-plan or future-dated payment doc: payment_arrangement phone-only (inferred), scheduled_payment unknown. Monitoring plan prices are not published on these pages, so the family plans remain. Review 2026-10-09: replaced an unsourced payment-plan phone (1-877-245-7998) with Customer Care 1-800-940-0262, and dropped the promotional free-month claim and the unsourced monthly/quarterly cycle list.",
+  "officialDomains": [
+    "lifefone.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.lifefone.com/customer-portal",
+      "title": "LifeFone Account Portal",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://payments.lifefone.com/payment/",
+      "title": "Log in - LifeFone Account Portal",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.lifefone.com/faq",
+      "title": "LifeFone FAQ",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "LifeFone",
+    "shortName": "LifeFone",
+    "primary": "#a61b1b",
+    "accent": "#263238",
+    "monogram": "LF"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "register": "Register",
+    "forgot": "Forgot your password?",
+    "username": "UserName",
+    "dashboard": "Account Portal",
+    "payBill": "Billing & Payments",
+    "cancel": "Cancel Service",
+    "help": "FAQ"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Home",
+        "page": "home"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Portal",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing & Payments",
+        "page": "pay"
+      },
+      {
+        "label": "Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://payments.lifefone.com/payment/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lifefone.com/customer-portal"
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://payments.lifefone.com/payment/"
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://payments.lifefone.com/payment/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.lifefone.com/faq",
+      "note": "Service cannot be cancelled online. Call a Customer Care Agent at 1-800-940-0262; billing stops when LifeFone receives the equipment.",
+      "channel": "phone",
+      "phone": "8009400262"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "note": "Payment plans are not offered online. Call a LifeFone Customer Care Agent at 1-800-940-0262 about your balance.",
+      "channel": "phone",
+      "phone": "8009400262"
+    }
+  },
+  "billing": {
+    "source": "https://www.lifefone.com/faq",
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your LifeFone account online",
+      "topic": "payments",
+      "paragraphs": [
+        "Billing & Payments in the LifeFone Account Portal lets you pay your account online through a secure automated service.",
+        "New users register first with Register as a new Customer; returning users log in with their user name and password.",
+        "Your Emergency Care Profile and the caregiver and location services have their own separate logins."
+      ],
+      "steps": [
+        "Open the LifeFone Account Portal.",
+        "Log in with your UserName and Password.",
+        "Open Billing & Payments.",
+        "Enter the amount and payment details and submit."
+      ],
+      "source": "https://www.lifefone.com/customer-portal"
+    },
+    {
+      "slug": "faq",
+      "title": "Billing and pricing FAQ",
+      "topic": "faq",
+      "paragraphs": [
+        "You pay only for your monitoring service, and LifeFone guarantees your price for as long as you keep the same service. Shipping is free when you choose an annual billing plan.",
+        "There are no activation, equipment, switching or restocking fees, and button presses or false alarms are not charged (your local ambulance provider may bill you).",
+        "Optional extras: automatic fall detection adds about $5 to $10 a month, the Protection Plan is $5 a month, and an additional pendant or wristband is $39.95 plus shipping."
+      ],
+      "source": "https://www.lifefone.com/faq"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel LifeFone service",
+      "topic": "account",
+      "paragraphs": [
+        "There is no time commitment, but you do sign a service agreement. You can tell LifeFone you want to cancel by phone, email or mail; the fastest way is to call a Customer Care Agent at 1-800-940-0262.",
+        "Send the equipment back at your own expense. Service ends and billing stops on the day LifeFone receives it.",
+        "Within 30 days you can return the system for a full refund minus shipping you paid. After that, full months of unused prepaid service are refunded once the equipment is back; partial months and purchased accessories are not."
+      ],
+      "source": "https://www.lifefone.com/faq"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "cancellation-phone",
+        "intent": "Using the LifeFone website, find the phone number to call to cancel LifeFone service. Do not cancel anything, make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8009400262"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8009400262"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 1-800-940-0262."
+          }
+        ]
+      },
+      {
+        "slug": "extra-pendant-price",
+        "intent": "Your spouse needs a second pendant for your LifeFone system. Using the website, find the price of an additional pendant or wristband. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "39.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "39.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "pricing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An additional pendant or wristband costs $39.95 plus shipping."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "UserName"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "register"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-940-0262"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": [
+        "$39.95",
+        "Protection Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Customer Care Agent"
+    }
+  ]
+}

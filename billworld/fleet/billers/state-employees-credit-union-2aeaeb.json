@@ -1,0 +1,325 @@
+{
+  "id": "state-employees-credit-union-2aeaeb",
+  "version": 1,
+  "status": "dedicated",
+  "name": "State Employees' Credit Union",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public ncsecu.org pages only (no sign-in). The bill is an SECU loan payment. Online, loans are paid by one-time or recurring transfers between SECU accounts in Member Access (the mock's saved checking account stands in for the funding account). Loan payoffs and payments can also be made at a branch, by mail to Loan Account Servicing or by wire; payoff quotes for non-mortgage loans come from Member Services Support or a secure message. Sign-in is Member Access username + password; every member must set up multi-factor authentication with one-time passcodes tied to a phone number (modelled as text). A forgotten username cannot be recovered online: members call Member Services Support. Enrollment needs a deposit account or debit card number. No public card-payment option for loans was found, so online payments are bank transfers only (inferred). SECU charges no fee for paper statements. No public no-login (guest) loan payment page was found.",
+  "officialDomains": [
+    "ncsecu.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ncsecu.org/loans/loan-payoffs",
+      "title": "Loan Payments & Payoffs | State Employees' Credit Union",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ncsecu.org/services/member-access",
+      "title": "Member Access | State Employees' Credit Union",
+      "fetchedAt": "2026-10-05",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.ncsecu.org/new-member-access",
+      "title": "New Member Access | State Employees' Credit Union",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.ncsecu.org/services/member-access/statements",
+      "title": "Statements | State Employees' Credit Union",
+      "fetchedAt": "2026-10-05",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "shortName": "SECU",
+    "displayName": "State Employees' Credit Union",
+    "primary": "#004b87",
+    "accent": "#00664f",
+    "monogram": "SE"
+  },
+  "labels": {
+    "dashboard": "Member Access",
+    "payBill": "Transfers",
+    "autopay": "Recurring Transfers",
+    "statements": "Statements",
+    "paperless": "E-Statements",
+    "forgot": "Forgotten Password",
+    "contact": "Secure Message",
+    "help": "Contact Us",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Member Access",
+        "page": "login"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Loan Payments & Payoffs",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Transfers",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Transfers",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "E-Statements",
+        "page": "paperless"
+      },
+      {
+        "label": "Secure Message",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "mfa": "sms",
+    "registrationFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.ncsecu.org/new-member-access"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncsecu.org/services/member-access"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncsecu.org/services/member-access",
+      "note": "Automatic loan payments are recurring transfers between your SECU accounts in Member Access."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncsecu.org/services/member-access"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncsecu.org/services/member-access/statements"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncsecu.org/services/member-access/statements"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncsecu.org/loans/loan-payoffs"
+    }
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "source": "https://www.ncsecu.org/services/member-access"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Loan payments and payoffs",
+      "paragraphs": [
+        "In Member Access or the SECU App you can move money to your loan with a quick transfer, or schedule one-time or recurring transfers between your eligible SECU accounts.",
+        "You can also bring a loan payment or payoff to your local branch, or mail it to your branch or to Loan Account Servicing. Wire transfers are accepted too; certified funds or a wire are the fastest way to process a payoff.",
+        "For a payoff amount on a loan other than a mortgage, call Member Services Support at (888) 732-8562 or send a secure message in Member Access. Titles can take up to 15 business days to be processed and mailed after payoff."
+      ],
+      "source": "https://www.ncsecu.org/loans/loan-payoffs"
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring transfers",
+      "paragraphs": [
+        "Set up a recurring transfer from an SECU account to your loan in Member Access so the payment moves automatically on the schedule you pick. You can also schedule one-time transfers ahead of time."
+      ],
+      "steps": [
+        "Sign in to Member Access.",
+        "Open Transfers.",
+        "Choose the from account and your loan as the to account.",
+        "Pick a recurring frequency and start date, then confirm."
+      ],
+      "source": "https://www.ncsecu.org/services/member-access"
+    },
+    {
+      "slug": "paperless",
+      "title": "E-statements",
+      "paragraphs": [
+        "To get e-statements you must be enrolled in Member Access and agree to the E-Sign Agreement. E-statements can be viewed online and in the SECU App, printed or downloaded.",
+        "With e-statements you can choose your statement cycle date and combine some accounts on one statement. SECU does not charge a fee for paper statements."
+      ],
+      "source": "https://www.ncsecu.org/services/member-access/statements"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Forgotten password or username",
+      "paragraphs": [
+        "Choose Forgotten Password on the Member Access sign-in screen and follow the prompts to set a new password.",
+        "A forgotten username cannot be reset online. Call Member Services Support, available around the clock at (888) 732-8562."
+      ],
+      "source": "https://www.ncsecu.org/new-member-access"
+    },
+    {
+      "slug": "register",
+      "title": "Enroll in Member Access",
+      "paragraphs": [
+        "Have your SECU deposit account number or debit card number ready to enroll. At your first sign-in you must set up multi-factor authentication: SECU sends one-time passcodes to your phone number instead of asking security questions."
+      ],
+      "source": "https://www.ncsecu.org/new-member-access"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "username-recovery-route",
+        "intent": "You forgot your SECU Member Access username (not your password). Using SECU's help pages, find out how to get it reset and report the phone number to call. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8887328562"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8887328562"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Member Services Support at (888) 732-8562."
+          }
+        ]
+      },
+      {
+        "slug": "title-release-time",
+        "intent": "Using SECU's help pages, find how long it can take for a vehicle title to be processed and mailed after a loan is paid off. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "15 business days",
+              "15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "15 business days",
+            "15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payoff"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 15 business days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Member Access",
+        "Loan Payments & Payoffs"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Transfers",
+        "Recurring Transfers"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "reset-password",
+      "contains": "(888) 732-8562"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "15 business days"
+    }
+  ]
+}

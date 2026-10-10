@@ -1,0 +1,181 @@
+{
+  "id": "centurylink-lumen-technologies-home-phone-c84d83",
+  "version": 1,
+  "status": "dedicated",
+  "name": "CenturyLink (Lumen Technologies) Home Phone",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public centurylink.com help pages only (no sign-in). My CenturyLink signs in with a username; forgotten usernames are emailed and password resets need the username plus email. New passwords need at least 8 characters with letters and numbers or mixed case. Registering an account with landline service needs a security code printed on the Welcome Letter or first three bills (or sent by email/automated call) - the dossier cannot add a security-code field, so it is described in help only. Fees: $3.50 Speedpay convenience fee for one-time self-service card payments (My CenturyLink, automated phone, Quick Bill Pay), $3.50 per AutoPay card payment (not modelled by the engine), $9.95 for any agent-assisted payment; bank payments free. AutoPay drafts 18 days after the bill date and cannot be changed (not expressible: draft is tied to bill date, not due date). Quick Bill Pay lookup fields are inferred (account number plus billing ZIP, as the payment-plan tool asks). Cancellation is by call or chat only. Paper Bill Fee $2.00/month applies to High-Speed Internet paper bills, with exemptions for voice customers in several states.",
+  "officialDomains": ["centurylink.com"],
+  "sources": [
+    { "url": "https://www.centurylink.com/home/help/account/pay-bill/different-ways-to-pay-your-bill.html", "title": "Different Ways to Pay Your Bill", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.centurylink.com/home/help/account/pay-bill/convenience-fee.html", "title": "Payment Fees", "fetchedAt": "2026-10-09", "kind": "fees" },
+    { "url": "https://www.centurylink.com/home/help/account/autopay/how-to-enroll-in-autopay.html", "title": "How to Enroll in AutoPay", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.centurylink.com/home/help/account/autopay/how-to-remove-autopay-from-your-account.html", "title": "How to Remove AutoPay From Your Account", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.centurylink.com/home/help/account/billing/simplify-your-life-with-paperless-billing.html", "title": "Paperless Billing", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://www.centurylink.com/home/help/account/pay-bill/how-to-make-payment-arrangements.html", "title": "How to Make a Payment Plan", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://www.centurylink.com/home/help/account/how-to-cancel-your-centurylink-service.html", "title": "How to Cancel Your CenturyLink Service", "fetchedAt": "2026-10-09", "kind": "cancel" },
+    { "url": "https://www.centurylink.com/home/help/account/my-centurylink/cant-sign-in-to-mycenturylink.html", "title": "Password Reset and Username Retrieval", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "CenturyLink", "shortName": "CenturyLink", "primary": "#00694a", "accent": "#0d3b2e", "monogram": "CL" },
+  "labels": {
+    "dashboard": "My CenturyLink",
+    "payBill": "Make a Payment",
+    "viewBill": "Billing",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "arrangement": "Make a Payment Plan",
+    "guestPay": "Quick Bill Pay",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "Username",
+    "forgot": "Forgot Password",
+    "register": "Create Account",
+    "wallet": "Saved Payment Methods",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      { "label": "Quick Bill Pay", "page": "guest" },
+      { "label": "Sign In", "page": "login" },
+      { "label": "Payment Fees", "helpSlug": "payment-fees" },
+      { "label": "Support", "page": "help" }
+    ],
+    "account": [
+      { "label": "My CenturyLink", "page": "dashboard" },
+      { "label": "Billing", "page": "bill" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "AutoPay", "page": "autopay" },
+      { "label": "Paperless Billing", "page": "paperless" },
+      { "label": "Make a Payment Plan", "page": "arrangement" },
+      { "label": "Saved Payment Methods", "page": "wallet" },
+      { "label": "Settings", "page": "profile" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "passwordRule": { "pattern": "^(?=.{8,})(?:(?=.*[A-Za-z])(?=.*\\d)|(?=.*[a-z])(?=.*[A-Z])).*$", "message": "Use at least 8 characters with letters and numbers, or upper and lower case letters." },
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "documented_official",
+    "source": "https://www.centurylink.com/home/help/account/my-centurylink/cant-sign-in-to-mycenturylink.html"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.centurylink.com/home/help/account/pay-bill/convenience-fee.html" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.centurylink.com/home/help/account/autopay/how-to-enroll-in-autopay.html" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.centurylink.com/home/help/account/autopay/how-to-remove-autopay-from-your-account.html", "note": "Removing AutoPay can take one to two billing cycles to take effect." },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.centurylink.com/home/help/account/billing/simplify-your-life-with-paperless-billing.html" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.centurylink.com/home/help/account/pay-bill/how-to-make-payment-arrangements.html" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.centurylink.com/home/help/account/how-to-cancel-your-centurylink-service.html", "note": "Service cannot be cancelled online. Call 800-244-1111 or chat with CenturyLink; ask about a vacation hold if you are only away for a while.", "channel": "phone", "phone": "8002441111" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.centurylink.com/home/help/account/pay-bill/different-ways-to-pay-your-bill.html" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.centurylink.com/home/help/account/pay-bill/different-ways-to-pay-your-bill.html" }
+  },
+  "billing": {
+    "source": "https://www.centurylink.com/home/help/account/pay-bill/different-ways-to-pay-your-bill.html",
+    "fees": { "bankCents": 0, "cardCents": 350, "evidence": "documented_official", "source": "https://www.centurylink.com/home/help/account/pay-bill/convenience-fee.html" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "payment-fees",
+      "title": "Payment fees",
+      "topic": "payments",
+      "paragraphs": [
+        "Paying from a bank account is always free. A one-time credit or debit card payment made yourself in My CenturyLink, through the automated phone line or with Quick Bill Pay carries a $3.50 convenience fee that goes to the payment processor, Speedpay.",
+        "Each monthly AutoPay payment made with a credit or debit card also carries a $3.50 processing fee. Any one-time payment made with an agent by phone or chat costs $9.95, whatever the payment method."
+      ],
+      "source": "https://www.centurylink.com/home/help/account/pay-bill/convenience-fee.html"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Pay online in My CenturyLink or the app, with Quick Bill Pay without signing in, through the automated phone line, with an agent, by mailed check or money order (no fee), or in person with cash, check, money order or card."
+      ],
+      "source": "https://www.centurylink.com/home/help/account/pay-bill/different-ways-to-pay-your-bill.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in to My CenturyLink, select Billing, scroll to Billing Settings and choose the AutoPay link. Enter your payment details on AutoPay Details, agree to the terms and select Next. You can use checking, savings, a Visa, Mastercard or Discover credit card, or a debit card; a bank account is the default and is free.",
+        "AutoPay takes the payment 18 days after your bill date (the date the bill is issued, not the due date), and that date cannot be changed. It starts with the next billing cycle, so keep paying until you see that you are signed up.",
+        "To stop it, choose Edit AutoPay on the home screen and use the Remove AutoPay link at the bottom of Manage AutoPay. Removal can take one to two billing cycles."
+      ],
+      "steps": ["Sign in to My CenturyLink.", "Select Billing, then Billing Settings.", "Choose the AutoPay link and enter payment details.", "Agree to the terms and select Next."],
+      "source": "https://www.centurylink.com/home/help/account/autopay/how-to-enroll-in-autopay.html"
+    },
+    {
+      "slug": "paperless-billing",
+      "title": "Paperless billing and the paper bill fee",
+      "topic": "billing",
+      "paragraphs": [
+        "In My CenturyLink select Billing, scroll to Billing Settings and choose Turn on Paperless Billing.",
+        "High-Speed Internet customers who get a paper bill pay a $2.00 monthly Paper Bill Fee. Voice customers in Arizona, California, Idaho, Minnesota, Oregon and Washington, Lifeline customers, and customers who receive braille or large-print bills are exempt."
+      ],
+      "source": "https://www.centurylink.com/home/help/account/billing/simplify-your-life-with-paperless-billing.html"
+    },
+    {
+      "slug": "payment-arrangement",
+      "title": "Make a payment plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "Use Make a Payment Plan with your account number, phone number or email and billing ZIP code, or the prompt in the app. You can split your total balance into two payments due within 30 days, or pay the past-due part before the current due date and the rest by the regular due date.",
+        "Setting up a plan is free, but late fees still apply to payments dated after the due date and card payments carry the convenience fee. Not every account qualifies."
+      ],
+      "source": "https://www.centurylink.com/home/help/account/pay-bill/how-to-make-payment-arrangements.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your service",
+      "topic": "account",
+      "paragraphs": [
+        "To cancel, call or chat with CenturyLink; there is no online cancellation. If you are only away for a while, a vacation hold keeps your phone number at a reduced rate.",
+        "Return any leased modem, router or Connected Voice equipment within 30 days of cancelling to avoid an equipment charge of up to $200. Your deposit and any interest are applied to the final bill, and cancelling one service in a bundle can change bundle discounts."
+      ],
+      "source": "https://www.centurylink.com/home/help/account/how-to-cancel-your-centurylink-service.html"
+    },
+    {
+      "slug": "sign-in-help",
+      "title": "Username, password and security code",
+      "topic": "account",
+      "paragraphs": [
+        "Forgot your username? CenturyLink emails it to the address on your account. To reset a password you need your username and email address. New passwords need at least 8 characters with letters and numbers or upper and lower case letters, and cannot match the username.",
+        "When you register an account that has landline phone service, you need the security code printed on your Welcome Letter or on page one of your first three bills. If you do not have it, you can get it by email, by an automated call or through chat."
+      ],
+      "source": "https://www.centurylink.com/home/help/account/my-centurylink/cant-sign-in-to-mycenturylink.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "agent-payment-fee",
+        "intent": "Using CenturyLink's help pages, find how much CenturyLink charges for a one-time payment made with an agent by phone or chat. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["9.95"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["9.95"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "An agent-assisted payment costs $9.95." }]
+      },
+      {
+        "slug": "autopay-draft-day",
+        "intent": "Using CenturyLink's help pages, find out how many days after the bill date an AutoPay payment is taken. Do not change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["18"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["18"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "AutoPay is taken 18 days after the bill date." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["Username"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment Plan", "Paperless Billing"] },
+    { "page": "cancel", "signedIn": true, "contains": "800-244-1111" },
+    { "page": "helpArticle", "slug": "payment-fees", "contains": ["$3.50", "$9.95"] }
+  ]
+}

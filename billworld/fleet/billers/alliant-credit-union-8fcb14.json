@@ -1,0 +1,355 @@
+{
+  "id": "alliant-credit-union-8fcb14",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Alliant Credit Union",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public alliantcreditunion.org help pages only (no sign-in; the site blocks scripted fetches, pages were read in a normal browser). Branchless, nationwide credit union; the bill is an Alliant loan payment. In Online Banking select the loan, click Make a Payment, choose the From account (an Alliant savings/checking account or Add External Account, instant linking through Plaid), enter amount, date and frequency. Easy Pay (shown on the first payment) or Frequency + Start Date set up recurring payments. Online methods bank only (no debit-card option documented; inferred). Pay without an account: Express Pay (modelled by the family guest flow) identifies the payer by name, email, Express Pay ID and year of birth (the mock keeps the family account-number lookup; the Express Pay ID is not modelled) and accepts a debit card or bank account; no fee is published. Other ways: other bank's bill pay (payee Alliant Credit Union, address by loan type), phone with an agent 800-328-1935 or self-service 800-482-5328, mailed check with the 14-digit loan number (auto/RV/personal/HELOC PO Box 2387, credit cards PO Box 1666, Des Plaines IL; mortgage boxes vary by state). Enrollment uses the new-user credential setup and may need the 10-digit membership number. eStatements are free, up to 18 months online, enrolled under My Profile & Settings > Statements. MFA and autopay cancellation steps are not documented publicly (family defaults).",
+  "officialDomains": [
+    "alliantcreditunion.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.alliantcreditunion.org/help/how-do-i-pay-my-alliant-loan",
+      "title": "How do I pay my Alliant loan? | Alliant Credit Union",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.alliantcreditunion.org/help/how-do-i-use-alliant-online-banking-to-pay-my-loan",
+      "title": "How do I use Alliant Online Banking to pay my loan? | Alliant Credit Union",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.alliantcreditunion.org/help/estatements",
+      "title": "Alliant eStatements | Alliant Credit Union",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.alliantcreditunion.org/help/how-do-i-pay-my-loan-online-without-setting-up-an-account",
+      "title": "How do I pay my loan online without setting up an account? | Alliant Credit Union",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "shortName": "Alliant",
+    "displayName": "Alliant Credit Union",
+    "primary": "#00558c",
+    "accent": "#2d6a1f",
+    "monogram": "AC"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Easy Pay",
+    "guestPay": "Express Pay",
+    "wallet": "Add External Account",
+    "paperless": "Statements",
+    "profile": "My Profile & Settings",
+    "signIn": "Log In",
+    "register": "Enroll",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Express Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Make a Loan Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Easy Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "External Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "eStatements",
+        "page": "statements"
+      },
+      {
+        "label": "My Profile & Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "registrationFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.alliantcreditunion.org/help/how-do-i-use-alliant-online-banking-to-pay-my-loan"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-use-alliant-online-banking-to-pay-my-loan"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-pay-my-loan-online-without-setting-up-an-account",
+      "note": "Express Pay takes a loan payment without an online account, from a debit card or a bank account."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-use-alliant-online-banking-to-pay-my-loan",
+      "note": "Easy Pay or a recurring Frequency on Make a Payment."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-use-alliant-online-banking-to-pay-my-loan"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.alliantcreditunion.org/help/estatements"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.alliantcreditunion.org/help/estatements"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-pay-my-alliant-loan",
+      "phone": "800-328-1935"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-pay-my-alliant-loan"
+    }
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "source": "https://www.alliantcreditunion.org/help/how-do-i-use-alliant-online-banking-to-pay-my-loan",
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How do I pay my Alliant loan?",
+      "paragraphs": [
+        "Use Alliant Online Banking or the Alliant mobile app to make one-time or recurring payments from an external account, or transfer from an Alliant savings or checking account.",
+        "Without online banking you can pay through Express Pay, through your other bank's bill pay (add Alliant Credit Union as a payee with the address for your loan type), by phone with an agent at 800-328-1935 or self-service at 800-482-5328, or by mailing a check with your 14-digit loan account number on the memo line.",
+        "Mail auto, RV, personal and HELOC payments to PO Box 2387 and credit card payments to PO Box 1666, both in Des Plaines, Illinois. Mortgage payment boxes depend on the property's state; payments sent to the wrong box may be returned and become late."
+      ],
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-pay-my-alliant-loan"
+    },
+    {
+      "slug": "guest-pay",
+      "title": "Pay without an online banking account (Express Pay)",
+      "paragraphs": [
+        "Express Pay lets you pay an Alliant loan online without setting up online banking. Open Express Pay and press the Express Pay button, or register if you want your payment details saved.",
+        "Enter your name, email, Express Pay ID and year of birth. If you do not know your Express Pay ID, use the option for help finding it, which asks for your phone number and year of birth. Then pick the loan and pay with a debit card or a bank account."
+      ],
+      "steps": [
+        "Open Express Pay and press the Express Pay button.",
+        "Enter your name, email, Express Pay ID and year of birth.",
+        "Select the loan.",
+        "Choose debit card or bank account and submit the payment."
+      ],
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-pay-my-loan-online-without-setting-up-an-account"
+    },
+    {
+      "slug": "autopay",
+      "title": "Pay your loan in Online Banking and set up Easy Pay",
+      "paragraphs": [
+        "Sign in and select your loan on the left; its details appear on the right. Click Make a Payment.",
+        "Next to From, open Select an Account. Choose an Alliant savings or checking account, or choose Add External Account (the instant option links your other bank through Plaid). Enter the amount, date and frequency.",
+        "On your first payment an Easy Pay button appears on Make a Payment: press it to set up automatic recurring payments. You can also make a payment recurring by choosing a Frequency and Start Date."
+      ],
+      "steps": [
+        "Sign in to Online Banking.",
+        "Select the loan and click Make a Payment.",
+        "Pick the From account or Add External Account.",
+        "Press Easy Pay, or pick a Frequency and Start Date, then submit."
+      ],
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-use-alliant-online-banking-to-pay-my-loan"
+    },
+    {
+      "slug": "register",
+      "title": "Set up online banking",
+      "paragraphs": [
+        "Use the new user setup in Alliant Online Banking to create your credentials; you may need the 10-digit membership number from your welcome packet. In the mobile app, tap Enroll at the bottom left of the home screen."
+      ],
+      "source": "https://www.alliantcreditunion.org/help/how-do-i-use-alliant-online-banking-to-pay-my-loan"
+    },
+    {
+      "slug": "paperless",
+      "title": "eStatements",
+      "paragraphs": [
+        "eStatements are free PDF copies of your statements delivered in online banking instead of the mail. Up to 18 months of statements are available, and you can turn on email alerts for when a statement is ready.",
+        "To enroll, log in to online banking, click My Profile & Settings at the top of the screen, then click Statements and follow the prompts."
+      ],
+      "steps": [
+        "Log in to online banking.",
+        "Click My Profile & Settings.",
+        "Click Statements and follow the prompts."
+      ],
+      "source": "https://www.alliantcreditunion.org/help/estatements"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "self-service-phone-line",
+        "intent": "You want to pay your Alliant loan by phone without talking to an agent. Using Alliant's help pages, find the self-service phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8004825328"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8004825328"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call the self-service line at 800-482-5328."
+          }
+        ]
+      },
+      {
+        "slug": "card-payment-po-box",
+        "intent": "Using Alliant's help pages, find the PO Box number for mailing an Alliant credit card payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1666"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1666"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "PO Box 1666, Des Plaines, IL."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Express Pay"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Easy Pay"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "18 months"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "800-482-5328"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "guest-pay",
+      "contains": "Express Pay ID"
+    }
+  ]
+}

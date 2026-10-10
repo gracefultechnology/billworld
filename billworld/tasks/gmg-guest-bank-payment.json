@@ -1,0 +1,37 @@
+{
+  "id": "gmg-guest-bank-payment-v1",
+  "version": 1,
+  "site_id": "greater-minnesota-gas",
+  "evidence_cohort": "observed_guest_entry_client_sequence_synthetic_checkout",
+  "prompt": "From Greater Minnesota Gas billing help, choose one-time payment without signing in. Verify security code GMG1048 and service ZIP 56001. Pay the full $84.32 balance using bank. Bank: Test Bank; Checking; routing and confirmation 021000021; account and confirmation 1234561048. Holder Alex Morgan. Billing: Alex Morgan, 1 Test Street, Mankato, MN 56001, United States. Receipt email alex@billworld.test. Review the $0 fee, authorize once, view the receipt, then return to the account to verify a zero balance. Do not sign in, save a method, enroll in AutoPay or change any other account. Checkout is simulated from the public client sequence.",
+  "budget": {
+    "seconds": 300,
+    "actions": 150
+  },
+  "goal": {
+    "type": "starnik_guest_payment",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "amount_cents": 8432,
+    "fee_cents": 0,
+    "method_kind": "bank",
+    "instrument_number": "1234561048",
+    "routing": "021000021",
+    "receipt_email": "alex@billworld.test",
+    "billing": {
+      "firstName": "Alex",
+      "lastName": "Morgan",
+      "address": "1 Test Street",
+      "city": "Mankato",
+      "state": "MN",
+      "zip": "56001",
+      "country": "United States",
+      "email": "alex@billworld.test"
+    },
+    "holder_name": "Alex Morgan",
+    "instrument_details": {
+      "accountType": "Checking",
+      "bankName": "Test Bank"
+    }
+  }
+}

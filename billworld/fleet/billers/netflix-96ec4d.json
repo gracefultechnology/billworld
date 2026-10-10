@@ -1,0 +1,425 @@
+{
+  "id": "netflix-96ec4d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Netflix",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public help.netflix.com articles only (no sign-in). Netflix is a monthly membership charged automatically to the payment method on file (cards, PayPal, gift card balance or a partner bill); there is no separate AutoPay enrollment, no paper bill, no payment plan and no guest payment, so those capabilities are not_applicable. US payment options do not include bank accounts. Sign-in uses the account email or mobile number with a password or a one-time sign-in code; Netflix has no separate second factor, so mfa is none. Plans and prices are the published US prices. Downgrades take effect at the next billing date; upgrades apply right away (the engine applies plan changes immediately). Pause (one month at a time, up to 3 months in total, where offered) cannot be modeled and is described in help. Members billed through a partner (cable/telecom) must cancel with that partner. Netflix has no installment plans. Integrated 2026-10-09: payment_arrangement not_applicable (the installments page now explains). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "netflix.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.netflix.com/en/node/24926",
+      "title": "Plans and Pricing | Netflix Help Center",
+      "fetchedAt": "2026-10-05",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.netflix.com/en/node/407",
+      "title": "How to cancel Netflix | Netflix Help Center",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.netflix.com/en/node/41049",
+      "title": "Billing and payments | Netflix Help Center",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.netflix.com/en/node/116380",
+      "title": "Payment methods accepted by Netflix | Netflix Help Center",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.netflix.com/en/node/22",
+      "title": "How to change your Netflix plan | Netflix Help Center",
+      "fetchedAt": "2026-10-05",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.netflix.com/en/node/311830241325668",
+      "title": "How to sign in to Netflix | Netflix Help Center",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.netflix.com/en/node/365",
+      "title": "How to change or reset your password | Netflix Help Center",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.netflix.com/en/node/32950",
+      "title": "Netflix gift cards | Netflix Help Center",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "shortName": "Netflix",
+    "primary": "#b20710",
+    "accent": "#e50914",
+    "monogram": "N"
+  },
+  "labels": {
+    "dashboard": "Account",
+    "plan": "Change Plan",
+    "wallet": "Manage payment info",
+    "history": "Payment History",
+    "statements": "Payment History",
+    "cancel": "Cancel Membership",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "help": "Help Center",
+    "username": "Email or mobile number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Plans and Pricing",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Change Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Manage payment info",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Cancel Membership",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "evidence": "documented_official",
+    "source": "https://help.netflix.com/en/node/311830241325668"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.netflix.com/en/node/116380",
+      "note": "Netflix charges the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.netflix.com/en/node/41049",
+      "note": "Your membership is charged automatically each billing date to the payment method on file; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.netflix.com/en/node/407",
+      "note": "To stop being charged, cancel the membership."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.netflix.com/en/node/41049",
+      "note": "Netflix does not mail paper bills; Payment History is online."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.netflix.com/en/node/41049"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.netflix.com/en/node/407",
+      "note": "Members billed by a partner such as a cable or phone company cancel with that partner."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.netflix.com/en/node/365"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.netflix.com/en/node/41049"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "note": "Netflix bills monthly and does not offer installment plans."
+    }
+  },
+  "billing": {
+    "source": "https://help.netflix.com/en/node/24926",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://help.netflix.com/en/node/116380"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "standard-with-ads",
+        "name": "Standard with ads",
+        "cents": 899
+      },
+      {
+        "id": "standard",
+        "name": "Standard",
+        "cents": 1999,
+        "current": true
+      },
+      {
+        "id": "premium",
+        "name": "Premium",
+        "cents": 2699
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Plans and Pricing",
+      "topic": "plans",
+      "paragraphs": [
+        "Netflix offers three plans in the United States: Standard with ads at $8.99 a month, Standard at $19.99 a month without ads, and Premium at $26.99 a month without ads.",
+        "Standard members can add one extra member who lives elsewhere, and Premium members can add up to two. Each extra member costs $7.99 a month with ads or $9.99 a month without ads and is paid for by the account owner who invited them."
+      ],
+      "source": "https://help.netflix.com/en/node/24926"
+    },
+    {
+      "slug": "change-plan",
+      "title": "How to change your plan",
+      "topic": "plans",
+      "paragraphs": [
+        "Open Change Plan from your Account, pick the plan you want, then confirm the change.",
+        "Moving to a more expensive plan applies right away, and your billing date or a prorated charge may adjust. Moving to a cheaper plan applies from your next billing date, and you keep your current features until then.",
+        "You cannot change plans while your account is on hold or paused, from a Kids profile, or when Netflix comes as part of a partner package."
+      ],
+      "steps": [
+        "Sign in and open Account.",
+        "Choose Change Plan.",
+        "Select the new plan and continue.",
+        "Confirm the change."
+      ],
+      "source": "https://help.netflix.com/en/node/22"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How to cancel Netflix",
+      "topic": "account",
+      "paragraphs": [
+        "Go to your membership page, choose Cancel, then Finish Cancellation. Netflix emails you a confirmation.",
+        "If time is left in your billing period you can keep watching until it ends; Payment History shows the date your access stops. Signing out or deleting the app does not cancel your membership.",
+        "If you pay for Netflix through a partner, such as your cable or phone company, cancel with that partner instead. If you come back within 24 months, your viewing activity, recommendations, ratings and account details are still there."
+      ],
+      "steps": [
+        "Sign in and open Account.",
+        "Choose Cancel Membership.",
+        "Select Finish Cancellation."
+      ],
+      "source": "https://help.netflix.com/en/node/407"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay for Netflix",
+      "topic": "billing",
+      "paragraphs": [
+        "In the United States, Netflix accepts Visa, Mastercard, American Express and Discover credit and debit cards, prepaid cards from those networks, PayPal, and Netflix gift cards. Some members are billed through a partner such as their cable, satellite or phone provider.",
+        "Your membership is charged automatically on your billing date. To change the card or account Netflix charges, open Manage payment info from your Account."
+      ],
+      "source": "https://help.netflix.com/en/node/116380"
+    },
+    {
+      "slug": "gift-cards",
+      "title": "Paying with a gift card",
+      "topic": "billing",
+      "paragraphs": [
+        "A redeemed gift card balance is added to your account and your next charges come out of that balance. Netflix emails a reminder about a week before the balance runs out so you can add another gift card or a payment method.",
+        "Because taxes or a plan change can alter the monthly amount, the end date shown for your balance is an estimate."
+      ],
+      "source": "https://help.netflix.com/en/node/32950"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Change or reset your password",
+      "topic": "account",
+      "paragraphs": [
+        "If you forget your password, ask for a reset link by email, or by text message if a mobile number is on the account. You can also sign in with a one-time code sent to your email or phone instead of a password."
+      ],
+      "source": "https://help.netflix.com/en/node/365"
+    },
+    {
+      "slug": "pause-membership",
+      "title": "Pausing your membership",
+      "topic": "account",
+      "source": "https://help.netflix.com/en/node/407",
+      "steps": [
+        "Open the Cancel Membership page.",
+        "Select Pause for 1 Month."
+      ],
+      "paragraphs": [
+        "Where offered, you can pause instead of canceling. You keep watching until your next billing date, are not charged on that date, and the membership is paused for one month before your plan price is charged again. About a week before it resumes you can choose Extend Pause, up to 3 months in total.",
+        "While paused you can browse and add to My List but cannot stream or download. Pause is not offered on every plan or for some payment methods, such as gift cards and some partner billing."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "premium-price",
+        "intent": "Using the Netflix website's help pages, find the monthly price of the Premium plan in the United States. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "26.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "26.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Netflix Premium costs $26.99 a month."
+          }
+        ]
+      },
+      {
+        "slug": "extra-member-price",
+        "intent": "Find out what Netflix charges per month to add an extra member without ads. Do not change anything on the account.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "9.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "9.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An extra member without ads costs $9.99 a month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign In",
+        "Plans and Pricing"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email or mobile number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Change Plan",
+        "Payment History"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Standard with ads",
+        "Premium"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$26.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Finish Cancellation"
+    }
+  ]
+}

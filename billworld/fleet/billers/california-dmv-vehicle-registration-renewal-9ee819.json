@@ -1,0 +1,275 @@
+{
+  "id": "california-dmv-vehicle-registration-renewal-9ee819",
+  "version": 1,
+  "status": "dedicated",
+  "name": "California DMV vehicle registration renewal",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public dmv.ca.gov pages (Vehicle Registration Online Renewal, Paperless Notices, Registration Fees). Renew Now needs the plate number and the last 5 digits of the VIN/HIN plus a credit card, debit card or checking account; online renewal also needs electronic insurance reporting and electronic smog certification on file. Renewal is also possible by phone (1-800-777-0133), by mail to DMV Renewal, PO Box 942897, Sacramento, or with cash at DMV kiosks. Paperless renewal notices are turned on in MyDMV under Communication Preferences. Late renewal penalties (reviewer fix, 2026-10-09): registration late fee $10/$15/$30/$50/$100 by lateness, plus a CHP late fee of the same amount and 10%-160% of the VLF and weight fee; the earlier $34/$56 figures came from a different fee table on the page.  No automatic renewal payments and no installment plans are described (evidence: inferred). Planned Non-Operation is the documented alternative to paying fees for an unused vehicle. The fleet's guest lookup uses its own plate field; the real VIN-digits field is described in help only. Reviewer (2026-10-09): the Accepted Payment Methods and Fees table on the registration fees page gives a 1.95% service fee for credit/debit cards online (2.1% in offices) and no fee for checking/eCheck; applied as billing.fees.",
+  "sources": [
+    {
+      "url": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/",
+      "title": "Vehicle Registration Online Renewal - California DMV",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.dmv.ca.gov/portal/paperless-notices/",
+      "title": "Paperless Notices - California DMV",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.dmv.ca.gov/portal/vehicle-registration/registration-fees/",
+      "title": "Vehicle Registration Fees - California DMV",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "shortName": "California DMV",
+    "primary": "#004a7c",
+    "accent": "#7a4b00",
+    "monogram": "CA"
+  },
+  "labels": {
+    "guestPay": "Renew Now",
+    "paperless": "Communication Preferences",
+    "dashboard": "MyDMV",
+    "help": "Help"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/",
+      "note": "California DMV has no automatic renewal payments; renew each year online with Renew Now, by phone at 1-800-777-0133, by mail or at a kiosk.",
+      "channel": "phone",
+      "phone": "8007770133"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.dmv.ca.gov/portal/paperless-notices/",
+      "note": "Opt in to email renewal notices in MyDMV under Communication Preferences."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/registration-fees/",
+      "note": "Registration fees and any late penalties must be paid in full; there are no installment plans. Planned Non-Operation avoids fees for a vehicle you will not drive.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/",
+      "phone": "8007770133"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/",
+      "note": "Renew Now with the plate number and the last 5 digits of the VIN, no account needed."
+    }
+  },
+  "auth": {
+    "guestLookupFields": [
+      "plate"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/"
+  },
+  "billing": {
+    "source": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "cardPercent": 1.95,
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/registration-fees/"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Renew your registration online",
+      "topic": "billing",
+      "paragraphs": [
+        "You can renew online as soon as your renewal notice arrives. Have your license plate number, the last 5 digits of the vehicle identification number (or hull number) and a credit card, debit card or checking account ready.",
+        "Online renewal works only when your insurer reports to DMV electronically and DMV has your smog certification on file. If a smog check is still needed, your renewal is finished only after the vehicle passes.",
+        "Change your address online at least 3 business days before you renew so the new registration card and sticker go to the right place."
+      ],
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/",
+      "mode": "append"
+    },
+    {
+      "slug": "other-ways-to-renew",
+      "title": "Other ways to renew",
+      "topic": "billing",
+      "paragraphs": [
+        "Renew by phone at 1-800-777-0133, by mail to DMV Renewal, PO Box 942897, Sacramento, CA 94269-0001, or pay cash at a DMV kiosk in select offices and retail locations.",
+        "Parking citations you want to contest must be cleared in court first; then send the clearance with your renewal notice by mail or bring it to a DMV office."
+      ],
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/"
+    },
+    {
+      "slug": "late-penalties",
+      "title": "Late renewal penalties",
+      "topic": "fees",
+      "paragraphs": [
+        "DMV gives no grace period. Renewing late adds a registration late fee of $10 (1 to 10 days), $15 (11 to 30 days), $30 (31 days to one year), $50 (more than one year up to two) or $100 (more than two years), a CHP late fee of the same amount, and a penalty of 10% to 160% of the vehicle license fee (and any weight fee) depending on how late you are.",
+        "If the vehicle was not driven or parked on public roads, you can file Planned Non-Operation up to 90 days after expiration and pay the PNO fee instead of full registration fees, but late penalties still apply."
+      ],
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/registration-fees/"
+    },
+    {
+      "slug": "paperless-notices",
+      "title": "Paperless renewal notices",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in to or create a MyDMV account and open Communication Preferences to get vehicle registration and driver's license renewal notices by email.",
+        "Registration renewal notices are sent about three months before the renewal date, one per opted-in vehicle. Keep your email and mailing address current in MyDMV."
+      ],
+      "source": "https://www.dmv.ca.gov/portal/paperless-notices/"
+    },
+    {
+      "slug": "payment-fees",
+      "title": "Payment methods and service fees",
+      "topic": "fees",
+      "paragraphs": [
+        "Online you can pay with a checking account (eCheck) at no extra cost, or with a credit card (Visa, Mastercard, American Express, Discover) or debit card for a 1.95% service fee. Apple Pay and Google Pay work for some online transactions with a 2.0% fee.",
+        "Cash is accepted only at DMV offices and kiosks. Card payments at a DMV office carry a 2.1% service fee; by phone and at kiosks the card fee is 1.95%. Money orders are accepted by mail or in person."
+      ],
+      "source": "https://www.dmv.ca.gov/portal/vehicle-registration/registration-fees/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-penalty-11-30",
+        "intent": "Using the California DMV website's help pages, find the late penalty for renewing a registration 11 to 30 days after it expires. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$15",
+              "15 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$15",
+            "15 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Renewing 11 to 30 days late adds a $15 penalty."
+          }
+        ]
+      },
+      {
+        "slug": "renew-by-phone",
+        "intent": "Find the phone number the California DMV lists for renewing a registration by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8007770133"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8007770133"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-777-0133"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "no automatic renewal payments"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-penalties",
+      "contains": "$30"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless-notices",
+      "contains": "Communication Preferences"
+    },
+    {
+      "page": "home",
+      "contains": "1.95%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-fees",
+      "contains": "eCheck"
+    }
+  ]
+}

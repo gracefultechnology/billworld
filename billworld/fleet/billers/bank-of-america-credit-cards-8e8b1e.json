@@ -1,0 +1,382 @@
+{
+  "id": "bank-of-america-credit-cards-8e8b1e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Bank of America (credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public bankofamerica.com pages only (no sign-in). The public sign-in widget shows 'User ID' and 'Password', 'Save user ID' and 'Forgot user ID/password'. Card payments are made in Online Banking under the 'Pay and Transfer' tab > 'Pay Bills' from a Bank of America checking/savings account or one at another bank (no card payments, so card methods are removed). Online payments submitted by 11:59 p.m. ET (weekends and holidays included) are credited that day. Recurring payments: toggle 'Make payment recurring', set Amount and Frequency (Monthly), start date, acknowledge and Schedule; the page names no amount presets, so AutoPay policies stay at the family default. Phone payments at 800.236.6497 have no fee; ATM/financial center and mail (PO Box 15019, Wilmington, DE) also work. Statements & Documents tab holds up to 3 years of statements (12 months of transactions) and Paperless Settings. Closing: 'Close your account online', at a financial center, by phone 800-732-9194 or in writing (P.O. Box 982234, El Paso, TX). Credit card assistance line 855.891.3401 (Mon-Fri 9-5 ET); no formal online hardship plan is described,. Pay without sign-in is not offered (inferred: the pay page only offers 'Log In To Pay Bills'). Re-verified 2026-10-09: 'Profile and Settings' wording from the public sign-in help; nav label 'Activity' is generic (inferred). Statement retention (3 years) and closing options come from the account-information FAQ. Registration wording 'Enroll in Online Banking' is from the payments FAQ. Integrated 2026-10-09: payment_arrangement marked unsupported now that the payment-plan page explains instead of showing a form.",
+  "officialDomains": [
+    "bankofamerica.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.bankofamerica.com/credit-cards/credit-card-payments-statements-faq/",
+      "title": "Credit Card Payments & Statements FAQ | Bank of America",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.bankofamerica.com/credit-cards/manage-your-credit-card-account/pay-a-bill/",
+      "title": "Pay a Credit Card Bill | Bank of America",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.bankofamerica.com/credit-cards/credit-card-account-information-faq/",
+      "title": "Credit Card Account Information FAQ from Bank of America",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.bankofamerica.com/customer-service/contact-us/credit-card/",
+      "title": "Bank of America Credit Card Customer Service & Contact Numbers",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.bankofamerica.com/banking-information/assistance/credit-cards/credit-cards-assistance-overview.go",
+      "title": "Credit Card Debt Assistance | Bank of America",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.bankofamerica.com/",
+      "title": "Bank of America - Banking, Credit Cards, Loans and Merrill Investing",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Bank of America",
+    "primary": "#012169",
+    "accent": "#b5121b",
+    "monogram": "BA"
+  },
+  "labels": {
+    "payBill": "Pay Bills",
+    "statements": "Statements & Documents",
+    "paperless": "Paperless Settings",
+    "dashboard": "Account details",
+    "username": "User ID",
+    "password": "Password",
+    "forgot": "Forgot user ID/password",
+    "signIn": "Log In",
+    "cancel": "Close your account online",
+    "help": "Help & Support",
+    "amountDue": "Minimum payment due",
+    "dueDate": "Payment due date",
+    "register": "Enroll in Online Banking"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Enroll in Online Banking",
+        "page": "register"
+      },
+      {
+        "label": "Credit card payments & statements",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help & Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account details",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay and Transfer",
+        "page": "pay"
+      },
+      {
+        "label": "Activity",
+        "page": "history"
+      },
+      {
+        "label": "Recurring payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements & Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless Settings",
+        "page": "paperless"
+      },
+      {
+        "label": "Close account",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile and Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.bankofamerica.com/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.bankofamerica.com/credit-cards/manage-your-credit-card-account/pay-a-bill/",
+      "note": "Bank of America has no pay-without-logging-in option for credit cards. Log in to Online Banking, or pay by phone at 800.236.6497 (no fee).",
+      "channel": "phone",
+      "phone": "1-800-236-6497"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-payments-statements-faq/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-payments-statements-faq/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-account-information-faq/"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-account-information-faq/",
+      "note": "Close the card online, at a financial center, by calling 800-732-9194, or in writing to P.O. Box 982234, El Paso, TX 79998-2234."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-payments-statements-faq/",
+      "phone": "1-800-236-6497"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/customer-service/contact-us/credit-card/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/customer-service/contact-us/credit-card/",
+      "note": "Help with payments is arranged by phone at 855.891.3401; no online payment plan is offered.",
+      "channel": "phone",
+      "phone": "8558913401"
+    }
+  },
+  "billing": {
+    "source": "https://www.bankofamerica.com/credit-cards/credit-card-payments-statements-faq/",
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-payments-statements-faq/"
+    },
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your credit card",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to Online Banking, open the Pay and Transfer tab and choose Pay Bills. You can pay from a Bank of America checking or savings account or from an account at another bank. In the app, use Pay and Transfer, then Pay Bills, or ask Erica to pay your credit card.",
+        "Online payments submitted before 11:59 p.m. ET, including weekends and holidays, are credited as of that day. Balances and available credit can take up to 2 business days to update.",
+        "Other ways: call 800.236.6497 (no fee to pay by phone), drop off a payment or use an ATM at a financial center, or mail a check to PO Box 15019, Wilmington, DE 19850-5019."
+      ],
+      "steps": [
+        "Log in to Online Banking.",
+        "Open Pay and Transfer, then Pay Bills.",
+        "Select the card, the amount, the pay-from account and the date.",
+        "Review and submit."
+      ],
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-payments-statements-faq/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up recurring credit card payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Go to Pay and Transfer, then Pay Bills, select the card and turn on Make payment recurring.",
+        "Set the Amount and the Frequency (Monthly), choose a start date, check the acknowledgment box and select Schedule.",
+        "If the first recurring payment starts with your next bill, pay the current bill separately so it is not missed."
+      ],
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-payments-statements-faq/"
+    },
+    {
+      "slug": "statements-paperless",
+      "title": "Statements and paperless settings",
+      "topic": "account",
+      "paragraphs": [
+        "Open the card's Account details page and select the Statements & Documents tab to view, download or print statements; up to 3 years of statements and 12 months of detailed transactions are online.",
+        "Turn paper off under Statements & Documents, then Paperless Settings. You can also ask Erica to go paperless."
+      ],
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-account-information-faq/"
+    },
+    {
+      "slug": "close-account",
+      "title": "Closing your credit card account",
+      "topic": "account",
+      "paragraphs": [
+        "You can close your account online, at a financial center with a personal banker, by calling 800-732-9194, or by writing to Bank of America, P.O. Box 982234, El Paso, TX 79998-2234."
+      ],
+      "source": "https://www.bankofamerica.com/credit-cards/credit-card-account-information-faq/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help paying your credit card",
+      "topic": "billing",
+      "paragraphs": [
+        "For help managing credit card debt, call 855.891.3401, Monday to Friday, 9 a.m. to 5 p.m. ET (from abroad, call collect at 1.302.738.5719).",
+        "Paying early and consistently can reduce interest and help avoid fees."
+      ],
+      "source": "https://www.bankofamerica.com/banking-information/assistance/credit-cards/credit-cards-assistance-overview.go"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Credit card customer service",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer service, including lost or stolen cards: 800.732.9194, 24/7. From abroad: 1.302.738.5719. Card activation: 800.276.9939. Billing inquiries: 866.266.0212.",
+        "Payments by mail: Bank of America, PO Box 15019, Wilmington, DE. Overnight payments: Payment Services, 900 Samoset Drive, DE5-023-03-02, Newark, DE 19713-6000."
+      ],
+      "source": "https://www.bankofamerica.com/customer-service/contact-us/credit-card/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "phone-payment-fee",
+        "intent": "Using Bank of America's help pages, find out whether there is a fee to pay your credit card by phone, and the number to call. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8002366497"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8002366497"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "There is no fee to pay by phone; call 800.236.6497."
+          }
+        ]
+      },
+      {
+        "slug": "statement-history-length",
+        "intent": "Using Bank of America's help pages, find how many years of credit card statements are available in Online Banking. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3 years",
+              "three years"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3 years",
+            "three years"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 3 years of statements are available online."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "User ID"
+      ]
+    },
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "11:59 p.m. ET",
+        "800.236.6497"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "close-account",
+      "contains": "800-732-9194"
+    }
+  ]
+}

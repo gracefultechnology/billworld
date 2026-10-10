@@ -1,0 +1,195 @@
+{
+  "id": "apria-0ffa47",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Apria",
+  "category": "medical",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public apria.com Billing and Contact Us pages (no sign-in; epay.apria.com shows no public text). Pay online via E-pay (header Bill Pay, footer Pay My Bill), or call Billing Support 866-505-6365. Payments take up to 10 days to show in the online portal. Rental equipment needs a credit card kept on file for the whole rental; estimated coinsurance/deductible/copay is due at the time of service; accounts must be in good standing before new supply orders ship. Apria publishes nothing about AutoPay, payment plans or paperless, so autopay and payment plans are modelled as phone-only (inferred) and paperless as not offered online (inferred). There is an Email Apria Billing Directly web form.",
+  "officialDomains": [
+    "apria.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.apria.com/billing",
+      "title": "Billing FAQ",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.apria.com/contact-us",
+      "title": "Contact Us",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Apria",
+    "primary": "#0b5e8e",
+    "accent": "#073f61",
+    "monogram": "A"
+  },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "guestPay": "Visit E-pay",
+    "help": "Billing FAQ",
+    "contact": "Email Apria Billing Directly"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Bill Pay",
+        "page": "login"
+      },
+      {
+        "label": "Visit E-pay",
+        "page": "guest"
+      },
+      {
+        "label": "Billing FAQ",
+        "page": "help"
+      },
+      {
+        "label": "Contact Us",
+        "helpSlug": "contact-us"
+      }
+    ]
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.apria.com/contact-us"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.apria.com/billing",
+      "note": "Apria does not describe online AutoPay. Ask Billing Support at 866-505-6365 about recurring payment options.",
+      "channel": "phone",
+      "phone": "866-505-6365"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.apria.com/billing"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.apria.com/contact-us",
+      "note": "For a payment arrangement or hardship options, call Apria Billing Support at 866-505-6365.",
+      "channel": "phone",
+      "phone": "866-505-6365"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.apria.com/billing",
+      "note": "Apria mails billing statements; no paperless enrollment is described. Ask Billing Support at 866-505-6365.",
+      "channel": "phone",
+      "phone": "866-505-6365"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.apria.com/contact-us",
+      "phone": "866-505-6365"
+    }
+  },
+  "billing": {
+    "source": "https://www.apria.com/billing",
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Apria bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online through Apria E-pay, linked as Bill Pay at the top of the site and Pay My Bill at the bottom, or call Billing Support at 866-505-6365.",
+        "Allow up to 10 days for a payment to be processed and show in the online portal. Your account must be in good standing before Apria processes new supply orders."
+      ],
+      "source": "https://www.apria.com/billing"
+    },
+    {
+      "slug": "rentals",
+      "title": "Why am I billed every month?",
+      "topic": "billing",
+      "paragraphs": [
+        "Most insurers require home equipment to be treated as a monthly rental, so your statement may show a monthly rental charge. Your insurance has already been billed; the statement shows what remains after insurance.",
+        "For rentals, Apria keeps a credit card on file for the length of the rental, and estimated coinsurance, deductible or copay is due when service is provided. If insurance does not pay, you are responsible for the full cost."
+      ],
+      "source": "https://www.apria.com/billing"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Apria billing",
+      "topic": "contact",
+      "paragraphs": [
+        "Billing Department: 866-505-6365. You can also use the Email Apria Billing Directly form on the Contact Us page. General customer service is 888-492-7742; Medicare coverage questions go to 800-633-4227."
+      ],
+      "source": "https://www.apria.com/contact-us"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "payment-posting-days",
+        "intent": "Using Apria's billing FAQ, find how many days to allow for a payment to show in the online portal. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Allow 10 days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": "866-505-6365"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "rentals",
+      "contains": "monthly rental"
+    }
+  ]
+}

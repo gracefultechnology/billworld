@@ -1,0 +1,363 @@
+{
+  "id": "navy-federal-credit-union-c445bb",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Navy Federal Credit Union",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public navyfederal.org pages only (no sign-in). The bill is a Navy Federal loan payment. Members pay loans by transfer in digital banking (Move Money / Transfers), from a Navy Federal account or an external account at another institution; recurring transfers are chosen with a frequency dropdown when scheduling. No public page documents paying a loan with a debit card from another bank, so online methods are bank transfers only (inferred). Sign-in is username + password on one screen (the Access Number is no longer used to sign in), followed by 2-Step Verification by text, email or push to a remembered device (push is not modelled). Up to 36 months of statements are kept online. Credit-card due dates can be moved to any day 1-28 once every 6 months. No guest/no-login loan payment page was found, so guest pay is left to the family default. Account closure is by branch, secure message, mail or phone (not modelled: the loan has no 'stop service').",
+  "officialDomains": [
+    "navyfederal.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.navyfederal.org/services/transfers/making-loan-payments.html",
+      "title": "Making Loan Payments and Other Recurring Transfers | Navy Federal Credit Union",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.navyfederal.org/services/mobile-online-banking/paperless-statements.html",
+      "title": "Switch to Paperless Statements | Navy Federal Credit Union",
+      "fetchedAt": "2026-10-05",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.navyfederal.org/services/security/two-step-verification.html",
+      "title": "2-Step Verification | Navy Federal Credit Union",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.navyfederal.org/services/mobile-online-banking/change-username-password.html",
+      "title": "Manage Your Username and Password",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.navyfederal.org/services/mobile-online-banking/faqs.html",
+      "title": "Mobile and Online Banking FAQs",
+      "fetchedAt": "2026-10-05",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html",
+      "title": "Making Credit Card Payments | Navy Federal Credit Union",
+      "fetchedAt": "2026-10-05",
+      "kind": "autopay"
+    }
+  ],
+  "brand": {
+    "shortName": "Navy Federal",
+    "displayName": "Navy Federal Credit Union",
+    "primary": "#0b2d5b",
+    "accent": "#5b3b8c",
+    "monogram": "NF"
+  },
+  "labels": {
+    "payBill": "Transfers",
+    "autopay": "Recurring Transfers",
+    "statements": "Statements",
+    "paperless": "Paperless Delivery Preferences",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "register": "Enroll",
+    "forgot": "Forgot Username",
+    "dashboard": "Accounts",
+    "contact": "Secure Messages",
+    "profile": "Profile",
+    "help": "Help Center",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Making Loan Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Transfers",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Transfers",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless Delivery Preferences",
+        "page": "paperless"
+      },
+      {
+        "label": "Secure Messages",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "evidence": "documented_official",
+    "source": "https://www.navyfederal.org/services/security/two-step-verification.html"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/services/transfers/making-loan-payments.html"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/services/transfers/making-loan-payments.html",
+      "note": "Automatic loan payments are recurring transfers: pick a frequency when you schedule the transfer."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/services/transfers/making-loan-payments.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/services/mobile-online-banking/paperless-statements.html"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/services/mobile-online-banking/paperless-statements.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/services/transfers/making-loan-payments.html",
+      "phone": "1-888-842-6328"
+    }
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "source": "https://www.navyfederal.org/services/transfers/making-loan-payments.html"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Making loan payments",
+      "paragraphs": [
+        "Pay a Navy Federal loan with a transfer. In the mobile app open Move Money and start a transfer; in online banking use Transfers. Choose the loan as the account receiving the money, pick the account it comes from, enter the amount and the transfer date.",
+        "The money can come from a Navy Federal account or from an account you hold at another financial institution. Payments from Navy Federal accounts post the same day; transfers from outside accounts can take 2 to 5 days to post.",
+        "Member Services can help with payments around the clock at 1-888-842-6328."
+      ],
+      "steps": [
+        "Sign in to digital banking.",
+        "Open Move Money (app) or Transfers (online banking).",
+        "Choose the loan as the To account and pick the From account.",
+        "Enter the amount and date, then submit."
+      ],
+      "source": "https://www.navyfederal.org/services/transfers/making-loan-payments.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring transfers for loan payments",
+      "paragraphs": [
+        "To pay a loan automatically, schedule a transfer to the loan and choose how often it repeats from the frequency menu. You can line recurring transfers up with your paydays.",
+        "Credit card automatic payments are also set up from the Move Money tab."
+      ],
+      "steps": [
+        "Sign in.",
+        "Open Move Money and start a transfer to your loan.",
+        "Choose the frequency and first transfer date.",
+        "Review and confirm."
+      ],
+      "source": "https://www.navyfederal.org/services/transfers/making-loan-payments.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Switch to paperless statements",
+      "paragraphs": [
+        "In digital banking open Statements (online banking) or Account and Tax Statements (app), then choose Paperless Delivery Preferences and save your choices. You can pick which accounts go paperless.",
+        "Up to 36 months of statements are saved online for you to view or print at any time."
+      ],
+      "source": "https://www.navyfederal.org/services/mobile-online-banking/paperless-statements.html"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Recover your username or password",
+      "paragraphs": [
+        "On the online banking sign-in screen choose Forgot Username under the username field, or use Recover Username or Password, and follow the prompts to confirm who you are.",
+        "You now sign in with your username. Your Access Number is still how you identify yourself on the phone or in a branch, and once you switch to a username you cannot go back to signing in with the Access Number.",
+        "A username has 6 to 32 characters with at least one letter and one number, and it cannot include your name, birth date, Social Security number, email address, account numbers or spaces."
+      ],
+      "source": "https://www.navyfederal.org/services/mobile-online-banking/change-username-password.html"
+    },
+    {
+      "slug": "two-step-verification",
+      "title": "2-Step Verification",
+      "topic": "account",
+      "paragraphs": [
+        "After your username and password, Navy Federal asks for a second step: a security code by text message or email, or a push notification to a device you have remembered.",
+        "A texted or emailed code must be entered within 6 minutes. Navy Federal will never call you to ask for a security code."
+      ],
+      "source": "https://www.navyfederal.org/services/security/two-step-verification.html"
+    },
+    {
+      "slug": "card-due-date",
+      "title": "Changing your credit card due date",
+      "topic": "billing",
+      "paragraphs": [
+        "If your card is not past due, you can move its payment due date to any day from the 1st to the 28th of the month. You can do this once every 6 months, and it can take up to 2 billing cycles to take effect."
+      ],
+      "source": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "statement-months-online",
+        "intent": "Using Navy Federal's help pages, find how many months of statements are kept online for members to view or print. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "36"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "36"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 36 months of statements are available online."
+          }
+        ]
+      },
+      {
+        "slug": "card-due-date-rule",
+        "intent": "Using Navy Federal's help pages, find how often a member may change a credit card payment due date. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "6 months",
+              "six months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "6 months",
+            "six months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Once every 6 months."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign In",
+        "Enroll"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Transfers",
+        "Recurring Transfers"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "36 months"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "card-due-date",
+      "contains": "once every 6 months"
+    }
+  ]
+}

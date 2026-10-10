@@ -1,0 +1,100 @@
+{
+  "id": "unitedhealthcare-dental-individual-plans-via-uni-8826e6",
+  "version": 1,
+  "status": "dedicated",
+  "name": "UnitedHealthcare Dental (individual plans via UnitedHealthOne / Golden Rule)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public uhone.com and uhcmemberhub.com pages only (no sign-in). UnitedHealthOne's member page splits individual dental and vision members across sites: benefits are at myuhc.com (dental) or myuhcvision.com (vision), while premium and billing for both are handled at UHC Member Hub (uhcmemberhub.com). Its FAQ says registered members can view the current bill and billing history and make a payment by choosing 'Payments' from the main menu after signing in; recurring payments, payment history and 'Cancel your plan or remove dependents' are listed as member-site features without saying which portal hosts them for dental plans, so autopay is documented but cancellation keeps the family default. Member services 1-800-657-8205 (M-F 8am-6pm ET). Dental and vision plans carry separate ID numbers. The uhcmemberhub.com landing page renders no sign-in form without JavaScript, so the identifier and MFA keep family defaults; fees, grace periods and paperless are not published. Dashboard and contact nav labels are generic (synthetic). No public nav: see the insurance-template cross-owner request.",
+  "officialDomains": ["uhone.com", "uhcmemberhub.com"],
+  "sources": [
+    { "url": "https://www.uhone.com/member", "title": "Member Resources | UnitedHealthOne", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.uhcmemberhub.com/tpa-ap-web/", "title": "UHC Member Hub", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "UnitedHealthcare Dental (UHC Member Hub)", "shortName": "UnitedHealthcare", "primary": "#002677", "accent": "#00508f", "monogram": "UH" },
+  "labels": {
+    "signIn": "Sign In",
+    "payBill": "Payments",
+    "dashboard": "UHC Member Hub",
+    "help": "Member resources"
+  },
+  "nav": {
+    "account": [
+      { "label": "UHC Member Hub", "page": "dashboard" },
+      { "label": "Payments", "page": "pay" },
+      { "label": "Current bill", "page": "bill" },
+      { "label": "Billing history", "page": "history" },
+      { "label": "Recurring payments", "page": "autopay" },
+      { "label": "Contact Us", "page": "contact" }
+    ]
+  },
+  "capabilities": {
+    "view_bill": { "support": "supported", "evidence": "documented_official", "source": "https://www.uhone.com/member" },
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.uhone.com/member" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.uhone.com/member" }
+  },
+  "billing": {
+    "source": "https://www.uhone.com/member",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "premium-and-billing",
+      "title": "Where to pay your dental or vision premium",
+      "topic": "billing",
+      "paragraphs": [
+        "Individual dental and vision plans use two websites. Your benefits are on myuhc.com for dental plans or myuhcvision.com for vision plans, but premiums and billing for both are handled on UHC Member Hub.",
+        "On UHC Member Hub, registered members can see the current bill and billing history and make a payment: sign in and choose Payments from the main menu."
+      ],
+      "steps": ["Sign in to UHC Member Hub.", "Choose Payments from the main menu.", "Review your current bill and make a payment."],
+      "source": "https://www.uhone.com/member"
+    },
+    {
+      "slug": "member-website",
+      "title": "What you can do on the member website",
+      "topic": "account",
+      "paragraphs": [
+        "The member website lets you make one-time payments, set up recurring payments, view payment history, and cancel your plan or remove dependents."
+      ],
+      "source": "https://www.uhone.com/member"
+    },
+    {
+      "slug": "id-numbers",
+      "title": "Dental and vision ID numbers",
+      "topic": "account",
+      "paragraphs": [
+        "Dental and vision plans have separate ID numbers. You can find your dental ID number, and request a copy of your ID card, on myuhc.com."
+      ],
+      "source": "https://www.uhone.com/member"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact member services",
+      "topic": "contact",
+      "paragraphs": [
+        "Call member customer service at 1-800-657-8205, Monday to Friday 8am to 6pm Eastern. The other number shown on the member page is for licensed insurance agents."
+      ],
+      "source": "https://www.uhone.com/member"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "billing-site-name",
+        "intent": "You have an individual UnitedHealthcare dental plan. Using the help pages, find the name of the website that handles premiums and billing (not benefits). Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["Member Hub", "uhcmemberhub"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["Member Hub", "uhcmemberhub"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Premiums and billing are handled on UHC Member Hub (uhcmemberhub.com)." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "dashboard", "signedIn": true, "contains": ["Payments", "Recurring payments", "Billing history"] },
+    { "page": "helpArticle", "slug": "premium-and-billing", "contains": ["UHC Member Hub", "myuhcvision.com"] },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "1-800-657-8205" },
+    { "page": "pay", "signedIn": true, "label": "payBill" }
+  ]
+}

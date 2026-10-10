@@ -1,0 +1,332 @@
+{
+  "id": "extra-space-storage-incl-former-life-storage-sto-070454",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Extra Space Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public extraspace.com FAQ pages and the My Account sign-in page only (no sign-in). The payment-options FAQ and the sign-in page were read live on 2026-10-09; the Easy Pay, failed-AutoPay, late-payment and My Account FAQ pages now sit behind a bot challenge (not bypassed), so their content comes from the catalog research read of 2026-09-30. Payments: My Account online, phone 888-STORAGE (888-786-7243), mailed check, or in store (cash, check, card); automatic payments (Easy Pay) draw from a credit card or checking account and are set up in My Account > Pay Online > Easy Pay or with a facility form. Late fees start 5 days after a missed due date and cannot be waived; the amount is set by the lease and state, so none is modelled. A failed automatic payment is retried for 3 days. No published convenience fee. The move-out notice FAQ could not be read (bot challenge), so cancel_service keeps the family default. The rendered My Account sign-in form shows Email and Password fields with Log In, Sign Up and Forgot Password? (observed by reviewer). Life Storage and Storage Express accounts moved to Extra Space. Reviewer 2026-10-09: all extraspace.com FAQ pages still return HTTP 403 (bot check, not bypassed), so the FAQ-based help could not be re-read; it matches the catalog research note (5-day late fee, Easy Pay tab).",
+  "officialDomains": [
+    "extraspace.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.extraspace.com/self-storage/faq/what-payment-options-are-available/",
+      "title": "What Payment Options Are Available? | Extra Space Storage",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.extraspace.com/self-storage/faq/how-do-i-set-up-automatic-payment/",
+      "title": "How Do I Set Up Automatic Payment? | Extra Space Storage",
+      "fetchedAt": "2026-09-30",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.extraspace.com/self-storage/faq/what-happens-if-my-auto-pay-fails/",
+      "title": "What Happens If My Auto Pay Fails? | Extra Space Storage",
+      "fetchedAt": "2026-09-30",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.extraspace.com/self-storage/faq/what-happens-if-im-late-making-a-payment/",
+      "title": "What Happens If I'm Late Making a Payment? | Extra Space Storage",
+      "fetchedAt": "2026-09-30",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.extraspace.com/self-storage/faq/what-can-i-do-with-the-my-account-portal/",
+      "title": "What Can I Do With the My Account Portal? | Extra Space Storage",
+      "fetchedAt": "2026-09-30",
+      "kind": "help"
+    },
+    {
+      "url": "https://myaccount.extraspace.com/",
+      "title": "EXR - My Account (Sign In)",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Extra Space",
+    "primary": "#006a35",
+    "accent": "#1f2937",
+    "monogram": "ES"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Pay Online",
+    "autopay": "Easy Pay",
+    "signIn": "Log In",
+    "register": "Sign Up",
+    "forgot": "Forgot Password?",
+    "help": "FAQ",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Sign Up",
+        "page": "register"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Online",
+        "page": "pay"
+      },
+      {
+        "label": "Easy Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://myaccount.extraspace.com/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.extraspace.com/self-storage/faq/what-payment-options-are-available/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.extraspace.com/self-storage/faq/how-do-i-set-up-automatic-payment/",
+      "note": "Easy Pay can be set up in My Account (Pay Online, then the Easy Pay tab) or with an Easy Pay form at your facility."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.extraspace.com/self-storage/faq/what-payment-options-are-available/",
+      "phone": "888-786-7243"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.extraspace.com/self-storage/faq/what-payment-options-are-available/"
+    }
+  },
+  "billing": {
+    "source": "https://www.extraspace.com/self-storage/faq/what-payment-options-are-available/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your storage bill",
+      "topic": "payments",
+      "source": "https://www.extraspace.com/self-storage/faq/what-payment-options-are-available/",
+      "paragraphs": [
+        "You can pay your monthly Extra Space Storage bill online in My Account, by phone at 888-STORAGE (888-786-7243), by mailing a check, or at your store. At the store you can pay with cash, a check or a credit card.",
+        "Extra Space can also set up automatic monthly payments from your credit card or checking account."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Choose Pay Online.",
+        "Pick your unit and payment method.",
+        "Submit the payment and keep the confirmation."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Easy Pay automatic payments",
+      "topic": "autopay",
+      "source": "https://www.extraspace.com/self-storage/faq/how-do-i-set-up-automatic-payment/",
+      "paragraphs": [
+        "Easy Pay charges your rent automatically each month. To enroll online, log in to My Account, choose Pay Online and open the Easy Pay tab. You can also fill out an Easy Pay form at your facility.",
+        "Easy Pay can use a credit card or a checking account."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Choose Pay Online.",
+        "Open the Easy Pay tab.",
+        "Choose the card or bank account and confirm."
+      ]
+    },
+    {
+      "slug": "autopay-failed",
+      "title": "If an automatic payment fails",
+      "topic": "autopay",
+      "source": "https://www.extraspace.com/self-storage/faq/what-happens-if-my-auto-pay-fails/",
+      "paragraphs": [
+        "If an Easy Pay charge is declined, Extra Space tries it again for up to three days and lets you know. Update your payment details or pay another way within five days of your due date to avoid a late fee."
+      ]
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late payments",
+      "topic": "billing",
+      "source": "https://www.extraspace.com/self-storage/faq/what-happens-if-im-late-making-a-payment/",
+      "paragraphs": [
+        "A late fee is charged five days after a missed due date and cannot be waived. The amount is set by your rental agreement and state.",
+        "While your balance is past due, gate access is turned off and the unit may be over-locked until the balance is paid in full. Long-unpaid balances can lead to a lien sale under state law after written notice."
+      ]
+    },
+    {
+      "slug": "my-account",
+      "title": "What you can do in My Account",
+      "topic": "account",
+      "source": "https://www.extraspace.com/self-storage/faq/what-can-i-do-with-the-my-account-portal/",
+      "paragraphs": [
+        "My Account lets you make one-time payments, enroll in Easy Pay automatic payments and review your rental. The Extra Space app also shows your facility access code and payment history."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "late-fee-timing",
+        "intent": "Using the Extra Space Storage help pages, find how many days after a missed due date the late fee is charged. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "five",
+              "5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "five",
+            "5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The late fee is charged five days after the missed due date."
+          }
+        ]
+      },
+      {
+        "slug": "pay-by-phone-number",
+        "intent": "Find the phone number Extra Space Storage gives for paying your storage bill by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8887867243"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8887867243"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "888-786-7243 (888-STORAGE)"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Log In"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Easy Pay"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-fees",
+      "contains": [
+        "five days",
+        "cannot be waived"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "888-786-7243"
+    }
+  ]
+}

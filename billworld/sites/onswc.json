@@ -1,0 +1,104 @@
+{
+  "id": "onswc",
+  "name": "Old North State Water Company",
+  "portal_family": "Starnik",
+  "implementation_status": "construction_slice",
+  "catalog_records": [
+    {
+      "category": "water-sewer",
+      "name": "Old North State Water Company (ONSWC)"
+    }
+  ],
+  "capture_manifest": "research/onswc-public.json",
+  "runtime": {
+    "kind": "starnik",
+    "frontend": "starnik",
+    "mail_sender_slug": "onswc",
+    "mail_display_name": "ONSWC",
+    "payment_confirmation_prefix": "BW-ONSWC",
+    "autopay_confirmation_prefix": "BWONSWCAP",
+    "snapshot_routes": {
+      "/": {
+        "page_id": "biller_f8c0443c690b342b429a-website",
+        "interactive": false
+      },
+      "/billing": {
+        "page_id": "biller_f8c0443c690b342b429a-help_center_url",
+        "interactive": false
+      },
+      "/faqs": {
+        "page_id": "biller_f8c0443c690b342b429a-faq",
+        "interactive": false
+      },
+      "/rates": {
+        "page_id": "biller_f8c0443c690b342b429a-rates",
+        "interactive": false
+      },
+      "/RP_Default.aspx": {
+        "page_id": "biller_f8c0443c690b342b429a-login_url",
+        "interactive": true
+      },
+      "/RP/signup": {
+        "page_id": "biller_f8c0443c690b342b429a-signup-legacy",
+        "interactive": true
+      },
+      "/RP/forgot-password": {
+        "page_id": "biller_f8c0443c690b342b429a-portal-forgot-password",
+        "interactive": true
+      },
+      "/RP/forgot-username": {
+        "page_id": "biller_f8c0443c690b342b429a-portal-forgot-username",
+        "interactive": true
+      }
+    }
+  },
+  "default_task_id": "onswc-username-login-v1",
+  "construction_account_credentials": {
+    "acct-primary": {
+      "username": "alex.onswc",
+      "password": "ONSWC-2026!",
+      "security_code": "ONS1048",
+      "service_zip": "27516"
+    },
+    "acct-secondary": {
+      "username": "jordan.onswc",
+      "password": "OtherONS-2026!",
+      "security_code": "ONS2099",
+      "service_zip": "27517"
+    }
+  },
+  "documented_policy": {
+    "source_urls": [
+      "https://onswc.com/faqs/",
+      "https://onswc.com/our-rates/"
+    ],
+    "payment_fee_status": "unverified"
+  },
+  "public_reference_pages": [
+    "biller_f8c0443c690b342b429a-website",
+    "biller_f8c0443c690b342b429a-login_url",
+    "biller_f8c0443c690b342b429a-help_center_url",
+    "biller_f8c0443c690b342b429a-portal-signup",
+    "biller_f8c0443c690b342b429a-portal-forgot-password",
+    "biller_f8c0443c690b342b429a-portal-forgot-username",
+    "biller_f8c0443c690b342b429a-faq",
+    "biller_f8c0443c690b342b429a-rates",
+    "biller_f8c0443c690b342b429a-signup-legacy"
+  ],
+  "construction_stage": "observed_public_entries_synthetic_private_flows",
+  "source_conflicts_and_limits": [
+    "Online processing fee is published without amount; checkout unavailable in this construction environment until fee configuration is supported by evidence.",
+    "ACH Auto Draft enrollment is documented through customer service; execution timing unknown.",
+    "Published water/wastewater late-charge thresholds differ; existing invoice amounts/dates remain synthetic, not tariff calculations.",
+    "Shared Starnik client establishes public UI reuse, not original private backend behavior.",
+    "No guest payment entry observed for this operator; guest route is not exposed.",
+    "Missing assets/glyphs, responsive menus, unsupported navigation, source document coverage and private continuation fidelity remain unfinished."
+  ],
+  "unfinished": [
+    "Verified checkout fees and tenant payment flows",
+    "Auto Draft policy and service-specific invoice calculation",
+    "Tenant statements and remaining service documents",
+    "Menus and complete public navigation",
+    "Autonomous evaluation and full catalog"
+  ]
+}

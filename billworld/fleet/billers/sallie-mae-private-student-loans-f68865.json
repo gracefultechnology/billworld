@@ -1,0 +1,135 @@
+{
+  "id": "sallie-mae-private-student-loans-f68865",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Sallie Mae (private student loans)",
+  "category": "loans",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public salliemae.com pages only (no sign-in). Sign-in is by username (the FAQ's forgot-username flow retrieves it with SSN or Customer ID and birthdate). Auto Debit drafts a bank account and earns a 0.25% interest rate reduction; card payments are not described on the public ways-to-pay page, so payments are modelled as bank-only. Late fee applies when the Current Amount Due is unpaid 15 days after the due date; the fee amount is not published, so it is not modelled. No guest (unauthenticated) payment is documented. Hardship options: Loan Modification, Payment Extension, Reduced Payment Plan. Closing a loan is not a customer action (paid off loans close), so cancel service stays not applicable.",
+  "officialDomains": ["salliemae.com"],
+  "sources": [
+    { "url": "https://www.salliemae.com/student-loans/manage-your-private-student-loan/prepare-to-pay-your-student-loans/ways-to-make-student-loan-payments/", "title": "Ways to Make Student Loan Payments", "fetchedAt": "2026-10-05", "kind": "pay" },
+    { "url": "https://www.salliemae.com/faqs/", "title": "Sallie Mae FAQs", "fetchedAt": "2026-10-05", "kind": "help" },
+    { "url": "https://www.salliemae.com/login/", "title": "Log In", "fetchedAt": "2026-10-05", "kind": "login" }
+  ],
+  "brand": { "shortName": "Sallie Mae", "primary": "#005b96", "accent": "#00427a", "monogram": "SM" },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Auto Debit",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "username": "Username",
+    "forgot": "Forgot your password?",
+    "arrangement": "Payment Difficulties",
+    "help": "FAQs",
+    "contact": "Contact Us",
+    "amountDue": "Current Amount Due"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Ways to Pay", "helpSlug": "pay-your-bill" },
+      { "label": "FAQs", "page": "help" }
+    ],
+    "account": [
+      { "label": "Overview", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Auto Debit", "page": "autopay" },
+      { "label": "Payment History", "page": "history" },
+      { "label": "Documents", "page": "statements" },
+      { "label": "Payment Difficulties", "page": "arrangement" },
+      { "label": "Contact Us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.salliemae.com/faqs/"
+  },
+  "capabilities": {
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.salliemae.com/student-loans/manage-your-private-student-loan/prepare-to-pay-your-student-loans/ways-to-make-student-loan-payments/", "note": "Auto Debit qualifies for a 0.25% interest rate reduction." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.salliemae.com/student-loans/manage-your-private-student-loan/prepare-to-pay-your-student-loans/ways-to-make-student-loan-payments/" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.salliemae.com/student-loans/manage-your-private-student-loan/prepare-to-pay-your-student-loans/ways-to-make-student-loan-payments/" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.salliemae.com/faqs/" }
+  },
+  "billing": {
+    "source": "https://www.salliemae.com/student-loans/manage-your-private-student-loan/prepare-to-pay-your-student-loans/ways-to-make-student-loan-payments/",
+    "methods": ["bank"],
+    "autopay": { "policies": ["full", "fixed"], "methodTypes": ["bank"] }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Auto Debit",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Debit takes your monthly student loan payment automatically from the bank account you authorize, so you never miss a due date.",
+        "Signing up for Auto Debit qualifies you for a 0.25% interest rate reduction. You can have the Current Amount Due drafted or choose to pay more each month; there is no penalty for paying extra or early."
+      ],
+      "steps": ["Log in to your account.", "Open Auto Debit.", "Choose the bank account and the amount to draft.", "Review and confirm."],
+      "source": "https://www.salliemae.com/student-loans/manage-your-private-student-loan/prepare-to-pay-your-student-loans/ways-to-make-student-loan-payments/"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Payments made online or in the app by 11:59 p.m. Pacific Time count for that day; they show in your payment history within a few business days.",
+        "You can also pay through the automated phone line at 800-472-5543, through your bank's bill pay, or by mailing a check or money order with your 16-digit Loan Group Number at least 10 days before the due date. Borrowers mail payments to P.O. Box 8459, Philadelphia PA 19101-8459; cosigners use P.O. Box 8377."
+      ],
+      "source": "https://www.salliemae.com/student-loans/manage-your-private-student-loan/prepare-to-pay-your-student-loans/ways-to-make-student-loan-payments/"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late fees",
+      "topic": "billing",
+      "paragraphs": [
+        "A late fee is charged if your Current Amount Due is not paid within 15 days after the due date. A returned payment fee applies when a check or bank payment does not clear.",
+        "Late payments can also cost you borrower benefits and be reported to the credit bureaus."
+      ],
+      "source": "https://www.salliemae.com/student-loans/manage-your-private-student-loan/prepare-to-pay-your-student-loans/ways-to-make-student-loan-payments/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Difficulties",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you are behind or struggling to pay, Sallie Mae may review you for one of three programs: a Loan Modification that lowers your monthly payment, a Payment Extension that brings you current through three consecutive payments, or a Reduced Payment Plan with six months of interest-only payments. Eligibility is reviewed case by case.",
+        "Call 800-472-5543 or chat with Sallie Mae to talk about your options."
+      ],
+      "source": "https://www.salliemae.com/faqs/"
+    },
+    {
+      "slug": "forgot-username",
+      "title": "Forgot your username or password",
+      "topic": "account",
+      "paragraphs": [
+        "On the log in page, choose the forgot username link and enter your Social Security number or Customer ID with your date of birth to get your username back.",
+        "To reset a password, choose Forgot your password? on the log in page and follow the prompts. If you never set up security questions, chat with Sallie Mae or call for help."
+      ],
+      "source": "https://www.salliemae.com/faqs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "auto-debit-discount",
+        "intent": "Using the Sallie Mae website's help pages, find the interest rate reduction you get for enrolling in Auto Debit. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["0.25%", "0.25 percent", "one quarter"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["0.25%", "0.25 percent", "one quarter"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Enrolling in Auto Debit gives a 0.25% interest rate reduction." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": ["Username", "Log In"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "Auto Debit"] },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "pay", "signedIn": true, "notContains": ["Debit card"] },
+    { "page": "helpArticle", "slug": "autopay", "contains": "0.25%" },
+    { "page": "helpArticle", "slug": "late-fees", "contains": "15 days" }
+  ]
+}

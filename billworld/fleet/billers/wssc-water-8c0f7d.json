@@ -1,0 +1,393 @@
+{
+  "id": "wssc-water-8c0f7d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "WSSC Water",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public wsscwater.com pages and the public My WSSC Water login page (no sign-in). The login form asks for User ID (an email address; there is a Change User ID (Email Address) link) and Password; Bill Pay (Guest Mode) makes a one-time payment without an account. Residential card payments carry a $1.69 convenience fee and are limited to $750 per transaction and four per month (the per-transaction card cap cannot be modelled because the engine requires maxPaymentCents >= $5,000); ACH/e-check through e-Bill is free. E-Z Pay direct debit drafts checking or savings on the payment date printed on each bill ; e-Bill Auto Pay pays future bills with the payment option chosen at enrollment, which may be a card through Quick Payment Options, so AutoPay is modelled with bank and card methods on the due date (the municipal-portal template cannot hide card entry on its AutoPay page anyway; reported as a cross-owner request). Bills are quarterly; a 5% late fee applies if payment is not scheduled before the due date. Flexible Pay Plans (interest-free, through Promise) can be started online or by phone by eligible residential customers. Start/Stop Service is an online form to submit within 10 business days of moving.",
+  "officialDomains": [
+    "wsscwater.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.wsscwater.com/paymybill",
+      "title": "Pay My Bill - Online Bill Pay | WSSC Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.wsscwater.com/customer-service-faqs",
+      "title": "Customer Service FAQs | WSSC Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://my.wsscwater.com/selfcare/views/public/login/login.faces",
+      "title": "My WSSC Water Login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.wsscwater.com/service",
+      "title": "Start Service - Stop Service | WSSC Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "WSSC Water",
+    "shortName": "WSSC Water",
+    "primary": "#005a8b",
+    "accent": "#003d5e",
+    "monogram": "WS"
+  },
+  "labels": {
+    "dashboard": "My WSSC Water",
+    "signIn": "Log In",
+    "register": "Register",
+    "forgot": "Forgot Password?",
+    "username": "User ID",
+    "guestPay": "Bill Pay (Guest Mode)",
+    "payBill": "Pay Now",
+    "autopay": "E-Z Pay",
+    "paperless": "e-Bill",
+    "arrangement": "Flexible Pay Plans",
+    "cancel": "Start/Stop Service",
+    "help": "Customer Service FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Bill Pay (Guest Mode)",
+        "page": "guest"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Pay My Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Flexible Pay Plans",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Customer Service FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My WSSC Water",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Bills",
+        "page": "statements"
+      },
+      {
+        "label": "E-Z Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "e-Bill",
+        "page": "paperless"
+      },
+      {
+        "label": "Flexible Pay Plans",
+        "page": "arrangement"
+      },
+      {
+        "label": "Start/Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://my.wsscwater.com/selfcare/views/public/login/login.faces"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://my.wsscwater.com/selfcare/views/public/login/login.faces"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wsscwater.com/paymybill"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wsscwater.com/customer-service-faqs"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wsscwater.com/customer-service-faqs"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wsscwater.com/paymybill",
+      "note": "Flexible Pay Plans are interest-free plans through Promise for eligible residential customers."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wsscwater.com/service",
+      "note": "Submit the online Start/Stop Service form within 10 business days of moving out."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wsscwater.com/paymybill",
+      "phone": "301-206-4001"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wsscwater.com/paymybill"
+    }
+  },
+  "billing": {
+    "source": "https://www.wsscwater.com/paymybill",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 169,
+      "evidence": "documented_official",
+      "source": "https://www.wsscwater.com/paymybill"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeePercent": 5
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay My Bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online in My WSSC Water, as a guest with Bill Pay (Guest Mode), in the WSSC Water mobile app with your 10-digit account number and ZIP code, or through your own bank's online bill pay.",
+        "Residential card payments (app, phone or in person) carry a $1.69 convenience fee, are limited to $750 per payment and four payments per account each month. Paying by ACH e-check through e-Bill is free.",
+        "Pay by phone 24/7 through the automated system at 301-206-4001.",
+        "By mail, send a check for one account to WSSC Water, PO Box 62135, Baltimore, MD 21264-2135. Do not mail cash.",
+        "A 5% late fee applies if your payment is not scheduled before the bill's due date."
+      ],
+      "source": "https://www.wsscwater.com/paymybill"
+    },
+    {
+      "slug": "autopay",
+      "title": "E-Z Pay direct debit",
+      "topic": "autopay",
+      "paragraphs": [
+        "E-Z Pay takes your bill amount from your checking or savings account on the payment date printed on each bill. Registration asks for an image of a check.",
+        "If you choose Auto Pay when enrolling in e-Bill, future bills are paid automatically, but a bill that is already unpaid is not; use Pay Now for it. You can set, change or cancel a payment limit at any time."
+      ],
+      "steps": [
+        "Log in to My WSSC Water.",
+        "Open E-Z Pay.",
+        "Choose your checking or savings account.",
+        "Authorize the payment date and amount."
+      ],
+      "source": "https://www.wsscwater.com/paymybill"
+    },
+    {
+      "slug": "paperless",
+      "title": "e-Bill",
+      "topic": "billing",
+      "paragraphs": [
+        "With e-Bill you get an email each quarter when a new bill is ready. Enrolling is required for free electronic check payments; card payments carry a fee.",
+        "Activation can take up to one billing cycle, and only one user per billing account may register. You can cancel e-Bill at any time from Account Management."
+      ],
+      "source": "https://www.wsscwater.com/customer-service-faqs"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Flexible Pay Plans and assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "Flexible Pay Plans are interest-free payment plans offered through Promise to eligible residential customers. Sign up online or by phone.",
+        "WSSC Water also offers a Customer Assistance Program for income-eligible customers and the Water Fund. For help call 301-206-4001 on weekdays from 8 a.m. to 6 p.m."
+      ],
+      "source": "https://www.wsscwater.com/paymybill"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start or stop service",
+      "topic": "account",
+      "paragraphs": [
+        "Use the online Start/Stop Service form and choose a date close to your settlement or move date. Submit it within 10 business days of moving so a meter reading can be arranged if needed.",
+        "If you have an inside meter, include the reading on the form. To move between properties, complete both the stop form and the start form."
+      ],
+      "steps": [
+        "Open Start/Stop Service.",
+        "Choose Stop Service.",
+        "Enter the stop date and any inside meter reading.",
+        "Review and submit."
+      ],
+      "source": "https://www.wsscwater.com/service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-amount",
+        "intent": "Before paying by card, find the convenience fee WSSC Water charges residential customers for a card payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.69",
+              "1.69"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.69",
+            "1.69"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Residential card payments carry a $1.69 convenience fee."
+          }
+        ]
+      },
+      {
+        "slug": "card-payment-limit",
+        "intent": "Find the largest single card payment WSSC Water accepts from a residential customer. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$750",
+              "750"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$750",
+            "750"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments are limited to $750 per transaction."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "User ID"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My WSSC Water",
+        "Flexible Pay Plans"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$1.69",
+        "$750",
+        "5%"
+      ]
+    }
+  ]
+}

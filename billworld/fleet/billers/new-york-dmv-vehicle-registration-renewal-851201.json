@@ -1,0 +1,234 @@
+{
+  "id": "new-york-dmv-vehicle-registration-renewal-851201",
+  "version": 1,
+  "status": "dedicated",
+  "name": "New York DMV vehicle registration renewal",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public dmv.ny.gov Renew a Registration page. Online renewal works from before expiration up to one year after it and needs the plate number, registration class, the last name or business name on the registration, and a credit card or PINless debit card; the fee is shown on the renewal notice. A temporary registration can be printed after renewing online. Not renewable online: suspended/revoked registrations, registrations expired more than a year, vehicles not inspected in the last 12 months, fee-exempt, for-hire, apportioned, very heavy and several other classes. Renew by mail with the renewal notice stub and a check or money order to the Commissioner of Motor Vehicles, or at a DMV office. The real site accepts cards only (no bank account). No automatic renewal or payment plan is described. Reviewer (2026-10-09): the online vehicle transactions page offers text and/or email reminders for registration and inspection, added as a help article. Reviewer: billing.guestMethods set to card only (the renewal page names credit card or PINless debit card). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "dmv.ny.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://dmv.ny.gov/registration/renew-a-registration",
+      "title": "Renew a Registration | NY DMV",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://dmv.ny.gov/transactions/online-vehicle-transactions",
+      "title": "Online vehicle transactions - NY DMV",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "shortName": "NY DMV",
+    "primary": "#154973",
+    "accent": "#7a3b00",
+    "monogram": "NY"
+  },
+  "labels": {
+    "guestPay": "Renew registration online"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://dmv.ny.gov/registration/renew-a-registration",
+      "note": "NY DMV has no automatic renewal; renew before each expiration online, by mail with your renewal notice, or at a DMV office.",
+      "channel": "mail"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://dmv.ny.gov/registration/renew-a-registration"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://dmv.ny.gov/registration/renew-a-registration",
+      "note": "Registration fees are paid in full when you renew; no installment plan is offered.",
+      "channel": "none"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dmv.ny.gov/registration/renew-a-registration"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dmv.ny.gov/registration/renew-a-registration",
+      "note": "Renew online with the plate number, registration class and last name, no account needed."
+    }
+  },
+  "auth": {
+    "guestLookupFields": [
+      "plate",
+      "lastName"
+    ],
+    "evidence": "documented_official",
+    "source": "https://dmv.ny.gov/registration/renew-a-registration"
+  },
+  "billing": {
+    "source": "https://dmv.ny.gov/registration/renew-a-registration",
+    "guestMethods": [
+      "card"
+    ],
+    "methods": [
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Renew your registration online",
+      "topic": "billing",
+      "paragraphs": [
+        "You can renew online before your registration expires or up to one year after. You need your plate number, your registration class, the last name or business name on the registration, and a credit card or PINless debit card. The fee is on your renewal notice and on the renewal screen.",
+        "Renewing early does not change your expiration date. After renewing online you can print a temporary registration to use until the new documents arrive by mail."
+      ],
+      "source": "https://dmv.ny.gov/registration/renew-a-registration",
+      "mode": "append"
+    },
+    {
+      "slug": "cannot-renew-online",
+      "title": "When you cannot renew online",
+      "topic": "account",
+      "paragraphs": [
+        "You cannot renew a registration that is suspended or revoked, expired for more than one year, or for a vehicle that has not been inspected in the past 12 months.",
+        "Some registrations must be renewed by mail or at an office, including fee-exempt vehicles, vehicles that need proof of insurance or a tax certificate each time, vehicles of 55,000 lbs. or more, for-hire vehicles, apportioned (IRP) registrations, and rental vehicles."
+      ],
+      "source": "https://dmv.ny.gov/registration/renew-a-registration"
+    },
+    {
+      "slug": "renew-by-mail",
+      "title": "Renew by mail or at an office",
+      "topic": "billing",
+      "paragraphs": [
+        "Mail the bottom part of your renewal notice (MV-3 or OP-3) with a personal check or money order payable to Commissioner of Motor Vehicles to the address on the notice.",
+        "Without a notice, send form MV-82 and a check (leave the amount blank if you do not know it) to NYS DMV, Utica Processing Center, 207 Genesee Street, Utica, NY 13501, or bring the notice and payment to a DMV office."
+      ],
+      "source": "https://dmv.ny.gov/registration/renew-a-registration"
+    },
+    {
+      "slug": "renewal-reminders",
+      "title": "Registration and inspection reminders",
+      "topic": "billing",
+      "paragraphs": [
+        "NY DMV can send you a text message, an email or both before your registration renewal and inspection are due. Sign up for electronic reminders from the DMV's online vehicle transactions page.",
+        "Reminders do not renew the registration for you: you still renew online, by mail or at an office each time, and the fee is shown on your renewal notice."
+      ],
+      "source": "https://dmv.ny.gov/transactions/online-vehicle-transactions"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "renew-late-window",
+        "intent": "Using the NY DMV website's help pages, find how long after the expiration date a registration can still be renewed online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "one year",
+              "1 year",
+              "12 months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "one year",
+            "1 year",
+            "12 months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You can renew online up to one year after the expiration date."
+          }
+        ]
+      },
+      {
+        "slug": "mail-payee",
+        "intent": "Using the NY DMV website's help pages, find who a mailed renewal check must be made payable to. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Commissioner of Motor Vehicles"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Commissioner of Motor Vehicles"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Make the check payable to Commissioner of Motor Vehicles."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "contains": "Last name"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cannot-renew-online",
+      "contains": "12 months"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "renew-by-mail",
+      "contains": "Utica"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "renewal-reminders",
+      "contains": "text message"
+    }
+  ]
+}

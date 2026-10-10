@@ -1,0 +1,411 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "disney-0e901d",
+  "name": "Disney+",
+  "notes": "Researched from public help.disneyplus.com articles only (no sign-in). Disney+ renews monthly or annually and charges the card, PayPal, Apple Pay or Cash App method on file; there is no separate AutoPay, paper bill, guest payment or payment plan. Sign-in uses a MyDisney account (email first, then password); MyDisney uses emailed 6-digit one-time passcodes for password changes and resets, so mfa is email (inferred for sign-in). The documented MyDisney password rule (at least 6 characters with a number or special character) is applied. Prices are published US prices for new subscribers as of Sept 23, 2026. Monthly Disney+-billed plans can be paused (described in help; the template cannot model pause). Partner-billed subscribers cancel with the partner. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "disneyplus.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.disneyplus.com/article/disneyplus-price",
+      "title": "Disney+ plans and prices | Disney+ Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.disneyplus.com/article/disneyplus-cancel",
+      "title": "How to cancel Disney+ | Disney+ Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.disneyplus.com/article/disneyplus-payment-methods",
+      "title": "Payment methods for Disney+ | Disney+ Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.disneyplus.com/article/disneyplus-automatic-payments",
+      "title": "Automatic payments for Disney+ | Disney+ Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://help.disneyplus.com/article/disneyplus-change-password",
+      "title": "Change or reset your Disney+ password | Disney+ Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.disneyplus.com/article/disneyplus-view-charges",
+      "title": "How do I view my Disney+ billing history and charges? | Disney+ Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Disney+",
+    "primary": "#0063e5",
+    "accent": "#0e0b3d",
+    "monogram": "D"
+  },
+  "labels": {
+    "dashboard": "Account",
+    "plan": "Change Plan",
+    "wallet": "MyDisney Wallet",
+    "history": "Billing History",
+    "statements": "Billing History",
+    "cancel": "Cancel Subscription",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "help": "Help Center",
+    "username": "Email",
+    "forgot": "Having trouble logging in?"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Plans and prices",
+        "helpSlug": "plans-and-prices"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Subscription",
+        "page": "plan"
+      },
+      {
+        "label": "MyDisney Wallet",
+        "page": "wallet"
+      },
+      {
+        "label": "Billing History",
+        "page": "history"
+      },
+      {
+        "label": "Cancel Subscription",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "email",
+    "passwordRule": {
+      "pattern": "^(?=.*[0-9!@#$%^&*()_+\\-=\\[\\]{};:'\",.<>/?\\\\|`~]).{6,}$",
+      "message": "Use at least 6 characters (case sensitive) with at least one number or special character."
+    },
+    "evidence": "documented_official",
+    "source": "https://help.disneyplus.com/article/disneyplus-change-password"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.disneyplus.com/article/disneyplus-payment-methods",
+      "note": "The membership is charged to the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.disneyplus.com/article/disneyplus-automatic-payments",
+      "note": "Disney+ renews monthly or annually and charges the payment method on file automatically; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.disneyplus.com/article/disneyplus-cancel",
+      "note": "Recurring charges stop only when you cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.disneyplus.com/article/disneyplus-automatic-payments",
+      "note": "No paper bills are mailed; charges are shown on the account page and receipts are emailed."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.disneyplus.com/article/disneyplus-automatic-payments"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.disneyplus.com/article/disneyplus-automatic-payments"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.disneyplus.com/article/disneyplus-cancel",
+      "note": "Cancel in a web browser from Account > Subscription. Subscribers billed by a partner cancel with that partner. Access continues to the end of the paid term."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.disneyplus.com/article/disneyplus-change-password"
+    }
+  },
+  "billing": {
+    "source": "https://help.disneyplus.com/article/disneyplus-price",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://help.disneyplus.com/article/disneyplus-payment-methods"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "disney-ads",
+        "name": "Disney+ (With Ads)",
+        "cents": 1249
+      },
+      {
+        "id": "disney-premium",
+        "name": "Disney+ Premium (No Ads)",
+        "cents": 2149,
+        "current": true
+      },
+      {
+        "id": "duo-basic",
+        "name": "Disney+, Hulu Bundle",
+        "cents": 1299
+      },
+      {
+        "id": "trio-unlimited",
+        "name": "Disney+, Hulu, ESPN Unlimited Bundle",
+        "cents": 3599
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-prices",
+      "title": "Disney+ plans and prices",
+      "topic": "plans",
+      "source": "https://help.disneyplus.com/article/disneyplus-price",
+      "paragraphs": [
+        "Disney+ with ads is $12.49 a month. Disney+ Premium without ads is $21.49 a month or $214.99 a year. These are prices for new subscribers from September 23, 2026; existing subscribers see the change on or after October 21, 2026.",
+        "Bundles include the Disney+, Hulu Bundle at $12.99 a month with ads or $21.99 without ads, and the Disney+, Hulu, ESPN Unlimited Bundle at $35.99 a month. Prices through third-party billing partners can differ."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How to cancel Disney+",
+      "topic": "account",
+      "source": "https://help.disneyplus.com/article/disneyplus-cancel",
+      "steps": [
+        "Log in on a computer or mobile browser.",
+        "Select your Profile, then Account.",
+        "Select your Disney+ subscription under Subscription.",
+        "Select Cancel Subscription."
+      ],
+      "paragraphs": [
+        "You can cancel at any time; the cancellation takes effect at the end of your current subscription term, and you keep watching until then. Canceling does not delete your Disney+ or MyDisney account.",
+        "If a third-party partner bills you, follow that partner's steps instead. Canceling a bundle can leave an original standalone Hulu or ESPN subscription running at its current price unless you cancel it separately."
+      ]
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment methods for Disney+",
+      "topic": "billing",
+      "source": "https://help.disneyplus.com/article/disneyplus-payment-methods",
+      "paragraphs": [
+        "Disney+ accepts Visa (including the Disney Visa), Mastercard, American Express and Discover credit or debit cards, plus Apple Pay, Cash App and PayPal. International cards are not accepted, and the card billing address must match your country.",
+        "You can save cards in MyDisney Wallet from your Account page and reuse them across Disney services."
+      ]
+    },
+    {
+      "slug": "automatic-payments",
+      "title": "Automatic payments for Disney+",
+      "topic": "billing",
+      "source": "https://help.disneyplus.com/article/disneyplus-automatic-payments",
+      "paragraphs": [
+        "Disney+ bills monthly or annually and renews automatically unless you cancel before the renewal date. Your plan type and renewal date appear on the Account page.",
+        "To move your renewal date, you have to cancel and then subscribe again on the date you want to be billed."
+      ]
+    },
+    {
+      "slug": "reset-password",
+      "title": "Change or reset your password",
+      "topic": "account",
+      "source": "https://help.disneyplus.com/article/disneyplus-change-password",
+      "steps": [
+        "Enter your email and select Continue.",
+        "Choose the option to send a one-time code.",
+        "Enter the 6-digit code from the email.",
+        "Choose a new password and select Save & Continue."
+      ],
+      "paragraphs": [
+        "Disney+ sends a 6-digit one-time passcode to the email on your MyDisney account. It can take up to 15 minutes to arrive. Passwords need at least 6 characters with at least one number or special character, and changing it also changes your MyDisney login."
+      ]
+    },
+    {
+      "slug": "pause-subscription",
+      "title": "Pausing your Disney+ subscription",
+      "topic": "account",
+      "source": "https://help.disneyplus.com/article/disneyplus-cancel",
+      "steps": [
+        "Log in on a computer or mobile browser and select your Profile, then Account.",
+        "Select your Disney+ subscription under Subscription.",
+        "Select Pause Subscription and choose how long.",
+        "Select Pause Subscription to confirm."
+      ],
+      "paragraphs": [
+        "Monthly subscriptions billed by Disney+ can usually be paused (some plans cannot). The pause starts on the first day of your next billing period; until then you keep streaming, and during the pause you are not charged and cannot watch. Add-ons and Extra Members pause too.",
+        "Select Resume Subscription at any time to restart early; you are billed right away and a new billing period begins. Your account must be active and paid up to pause."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "premium-annual-price",
+        "intent": "Using Disney+ help, find the annual price of Disney+ Premium. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "214.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "214.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Disney+ Premium costs $214.99 a year."
+          }
+        ]
+      },
+      {
+        "slug": "password-rule",
+        "intent": "Find out the minimum number of characters a Disney+ password must have. Do not change your password.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "6"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "6"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A Disney+ password needs at least 6 characters with a number or special character."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Plans and prices"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "MyDisney Wallet",
+        "Billing History"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Disney+ Premium (No Ads)",
+        "Disney+ (With Ads)"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-prices",
+      "contains": "$214.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Cancel Subscription"
+    }
+  ]
+}

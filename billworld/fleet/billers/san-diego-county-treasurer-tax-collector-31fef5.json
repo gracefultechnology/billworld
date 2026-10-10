@@ -1,0 +1,349 @@
+{
+  "id": "san-diego-county-treasurer-tax-collector-31fef5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "San Diego County Treasurer-Tax Collector",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public sdttc.com pages only (no parcel search). Online payments by parcel number or mailing address; e-Check is free (returned e-check $25); credit cards 2.19% any brand; debit, dual-use, gift and prepaid cards are NOT accepted (the engine cannot refuse debit separately). Phone payments by credit card at 1-855-829-3773. Installments due Nov 1 / Feb 1, delinquent after Dec 10 / Apr 10; 10% penalty, plus $10 cost on the second; defaulted taxes accrue 1.5% per month and need a $33 redemption fee. Current-year taxes cannot be put on a plan (Five-Year plan for defaulted taxes, Four-Year plan for escape bills over $500), applied for by signed contract; the property-tax template always offers an online plan form, so payment_arrangement stays at the family default and the real rule is in help. No automatic payment program is described. The county has no taxpayer login for single-bill payments; the email sign-in account is synthetic. Review 2026-10-09: e-Bill registration is email notification only and the paper bill is still mailed, so paperless is unsupported; payment plans are paper contracts for defaulted taxes only, so payment_arrangement is unsupported (the server now drops the plan form when it is).",
+  "officialDomains": [
+    "sdttc.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes.html",
+      "title": "Secured Property Taxes",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes/payment-plans.html",
+      "title": "Payment Plans",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes/secured-tax-faq.html",
+      "title": "Secured Property Tax FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.sdttc.com/content/ttc/en/e-billing.html",
+      "title": "e-Bill Registration System",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "San Diego County Treasurer-Tax Collector",
+    "shortName": "San Diego County TTC",
+    "primary": "#0b4a6e",
+    "accent": "#6b3d00",
+    "monogram": "SD"
+  },
+  "labels": {
+    "payBill": "Pay Your Taxes",
+    "guestPay": "Pay Online",
+    "statements": "Prior Year Tax Records",
+    "help": "Secured Property Tax FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Online",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Secured Property Tax FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Your Taxes",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Prior Year Tax Records",
+        "page": "statements"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes.html",
+      "note": "Pay online by parcel number or current mailing address; e-Check is free."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes/payment-plans.html",
+      "note": "The Tax Collector has no automatic payment program. Pay each installment online, by phone, by mail or in person.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes.html",
+      "note": "Credit card only, 2.19% fee.",
+      "phone": "8558293773"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes.html",
+      "note": "Mail to 1600 Pacific Hwy, Room 162, San Diego, CA 92101, postmarked by the delinquent date."
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.sdttc.com/content/ttc/en/e-billing.html",
+      "note": "e-Bill registration only emails a link to your online bill for each parcel; the paper tax bill is still mailed. There is no paperless option.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes/payment-plans.html",
+      "note": "Current-year taxes cannot go on a plan. Defaulted taxes use the Five-Year Payment Plan, started by returning a signed contract with 20% down and an $89 fee.",
+      "channel": "mail"
+    }
+  },
+  "billing": {
+    "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes.html",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.19,
+      "evidence": "documented_official",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes/secured-tax-faq.html"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "lateFeePercent": 10
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes.html",
+      "paragraphs": [
+        "The best way to pay is online by e-Check, which is free: look up the bill by parcel number or current mailing address and enter the routing and account numbers from your check. The payment is final only after you submit and see a receipt marked Successful.",
+        "Credit cards can be used online or by phone at 1-855-829-3773 for a 2.19% fee. Mail payments to San Diego County Treasurer-Tax Collector, 1600 Pacific Hwy, Room 162, San Diego, CA 92101, postmarked by the delinquent date. Branch offices accept checks, cashier's checks and money orders."
+      ]
+    },
+    {
+      "slug": "cards-accepted",
+      "title": "Cards accepted and fees",
+      "topic": "payments",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes/secured-tax-faq.html",
+      "paragraphs": [
+        "Visa, MasterCard, Discover and American Express credit cards are accepted online and by phone, with a 2.19% convenience fee whatever the brand. Debit cards, dual-use cards, gift cards and prepaid cards are not accepted.",
+        "e-Check payments have no fee and are credited the day you submit them, but a returned e-check costs $25. Payments sent through your own bank's online bill pay are credited only when the mailed check arrives, which can take 5 to 10 or more business days. A duplicate bill costs $1 at any Tax Collector office."
+      ]
+    },
+    {
+      "slug": "due-dates-penalties",
+      "title": "Due dates and penalties",
+      "topic": "billing",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes.html",
+      "paragraphs": [
+        "The first installment is due November 1 and delinquent after December 10; the second is due February 1 and delinquent after April 10. If a delinquent date falls on a weekend or holiday, payment is due by close of the next business day.",
+        "A missed delinquent date adds a 10% penalty, plus a $10 cost on the second installment. Taxes unpaid by June 30 go into default, accrue 1.5% interest per month (18% a year), and require a $33 redemption fee."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "source": "https://www.sdttc.com/content/ttc/en/tax-collection/secured-property-taxes/payment-plans.html",
+      "paragraphs": [
+        "Current-year taxes cannot go on a plan; they must always be paid separately.",
+        "The Five-Year Payment Plan spreads defaulted prior-year taxes over five years. To start, return the signed contract and pay at least 20% of the total, all current-year taxes, and an $89 fee ($71 setup plus $18 redemption cost). Each year by April 10 you pay at least 20% more, the interest, current taxes and an $85 maintenance fee; interest is 1.5% per month.",
+        "The Four-Year Escape Tax Bill Payment Plan covers prior-year escape bills over $500: return the agreement by April 10 with at least 20% and a $76 setup fee, then 20% plus an $81 maintenance fee each year."
+      ]
+    },
+    {
+      "slug": "e-bill-notifications",
+      "title": "e-Bill email notifications",
+      "topic": "paperless",
+      "source": "https://www.sdttc.com/content/ttc/en/e-billing.html",
+      "paragraphs": [
+        "Register each secured parcel separately with its 10-digit parcel number, your name, email, phone and the mailing ZIP code on record, then confirm from the verification email. Each notice shows the bill status and amount due with a link to pay online.",
+        "e-Bill registration does not replace the paper bill: the tax bill is still mailed to the address on file. Defaulted and unsecured bills are not covered."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "debit-cards-accepted",
+        "intent": "Using the San Diego County TTC's website help pages, find out whether debit cards can be used to pay secured property taxes, and answer yes or no with what is accepted. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "not accepted",
+              "No,",
+              "No.",
+              "cannot",
+              "can't"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "not accepted",
+            "No,",
+            "No.",
+            "cannot",
+            "can't"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. Debit, dual-use, gift and prepaid cards are not accepted; only Visa, MasterCard, Discover and American Express credit cards (2.19% fee) or a free e-Check."
+          }
+        ]
+      },
+      {
+        "slug": "five-year-plan-fee",
+        "intent": "Using the San Diego County TTC's website help pages, find the total fee to start a Five-Year Payment Plan for defaulted taxes. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$89"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$89"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Starting a Five-Year Payment Plan costs $89 ($71 setup plus an $18 redemption cost)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Ways to Pay",
+        "Payment Plans"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "Prior Year Tax Records"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.19%",
+        "1-855-829-3773"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cards-accepted",
+      "contains": "Debit cards"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": "$89"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "e-bill-notifications",
+      "contains": "paper bill"
+    }
+  ]
+}

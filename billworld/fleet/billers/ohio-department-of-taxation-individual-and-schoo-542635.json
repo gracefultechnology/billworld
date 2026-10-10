@@ -1,0 +1,330 @@
+{
+  "id": "ohio-department-of-taxation-individual-and-schoo-542635",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Ohio Department of Taxation (individual and school district income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public tax.ohio.gov pages only. Payments online via the Guest Payment Service (no login) or OH|TAX eServices: electronic check is free and can be future-dated up to the due date; cards via ACI Payments at 2.65% or $1, whichever is greater (the $1 floor cannot be expressed), and cards cannot be future-dated. Future-dated payments can be cancelled under Scheduled Payments while Pending. ODT is NOT authorized to set up payment plans (Ohio Attorney General handles plans for certified debts, 888-301-8885), and payments are NOT accepted by phone: both marked unsupported. Electronic notices: Settings > Mail Delivery, switch from paper to Electronic after accepting terms (paperless supported). Registration needs SSN/ITIN, last name, date of birth and prior-year return, W-2/1099 or ODT letter data. Sign-in uses an OH|ID username; MFA not documented (left default). No recurring AutoPay (unsupported, inferred).",
+  "officialDomains": [
+    "tax.ohio.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://tax.ohio.gov/individual/payments/pay-online-page",
+      "title": "Pay Online",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://tax.ohio.gov/help-center/faqs/income-online-services-i-fileepaymentestatement",
+      "title": "Income - Online Services (OH|TAX eServices\\Electronic Payments\\Transcripts\\1099s)",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Ohio Department of Taxation",
+    "shortName": "Ohio Department of Taxation",
+    "primary": "#6a1b1b",
+    "accent": "#005a32",
+    "monogram": "OH"
+  },
+  "labels": {
+    "payBill": "Make a payment",
+    "guestPay": "Guest Payment Service",
+    "dashboard": "OH|TAX eServices",
+    "paperless": "Mail Delivery",
+    "history": "Manage Payments and Returns",
+    "contact": "Send a Message",
+    "arrangement": "Payment Plans",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Guest Payment Service",
+        "page": "guest"
+      },
+      {
+        "label": "Pay Online",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      },
+      {
+        "label": "OH|TAX eServices",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "OH|TAX eServices",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Payments and Returns",
+        "page": "history"
+      },
+      {
+        "label": "Mail Delivery",
+        "page": "paperless"
+      },
+      {
+        "label": "Send a Message",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "registrationFields": [
+      "lastName"
+    ],
+    "evidence": "documented_official",
+    "source": "https://tax.ohio.gov/help-center/faqs/income-online-services-i-fileepaymentestatement"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.ohio.gov/individual/payments/pay-online-page",
+      "note": "Guest Payment Service: pay by electronic check or card without logging in."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://tax.ohio.gov/help-center/faqs/income-online-services-i-fileepaymentestatement",
+      "note": "OH|TAX eServices has no recurring automatic payments. You can future-date an electronic check payment up to its due date and cancel it under Scheduled Payments while it is Pending.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.ohio.gov/help-center/faqs/income-online-services-i-fileepaymentestatement"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.ohio.gov/help-center/faqs/income-online-services-i-fileepaymentestatement"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://tax.ohio.gov/individual/payments/pay-online-page",
+      "note": "The Department of Taxation cannot set up payment plans. Partial payments are accepted; for a debt certified to the Ohio Attorney General, call 888-301-8885 to arrange a plan.",
+      "channel": "phone",
+      "phone": "8883018885"
+    },
+    "pay_by_phone": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://tax.ohio.gov/individual/payments/pay-online-page",
+      "note": "Payments are not accepted over the phone. Pay online or by mail; for payment questions call 1-800-282-1780.",
+      "channel": "none"
+    }
+  },
+  "billing": {
+    "source": "https://tax.ohio.gov/individual/payments/pay-online-page",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.65,
+      "evidence": "documented_official",
+      "source": "https://tax.ohio.gov/individual/payments/pay-online-page"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay online",
+      "topic": "payments",
+      "paragraphs": [
+        "Use the Guest Payment Service or OH|TAX eServices to pay current-year return balances, estimated payments, and bills or assessments for Ohio individual and school district income tax. Pay each tax separately, and use the Return Payment option for a current-year balance.",
+        "Electronic check is free and you choose the withdrawal date: today, or a future date up to the due date. Card payments (Discover, Visa, Mastercard, American Express) cannot be future-dated and carry a fee of 2.65% or $1, whichever is greater, charged by ACI Payments; Ohio keeps none of it.",
+        "A confirmation code is emailed after a successful payment. Payments can take 2 to 3 business days to show in your eServices dashboard. Payments are not accepted over the phone."
+      ],
+      "source": "https://tax.ohio.gov/individual/payments/pay-online-page"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "The Ohio Department of Taxation is not authorized to set up payment plans. You may send partial payments toward any balance, including interest and penalties, but they do not stop the billing process or collection by the Ohio Attorney General.",
+        "If you received a letter from the Ohio Attorney General's Office and want a payment plan, call that office at 888-301-8885. For general payment questions call 1-800-282-1780."
+      ],
+      "source": "https://tax.ohio.gov/individual/payments/pay-online-page"
+    },
+    {
+      "slug": "cancel-scheduled-payment",
+      "title": "Cancel a future-dated payment",
+      "topic": "payments",
+      "paragraphs": [
+        "A future-dated payment can be cancelled any time while its status is Pending: log in to OH|TAX eServices, open More under Account, then Scheduled Payments, and cancel it. You get a confirmation number and a letter confirming the cancellation. Once a payment is Processing it cannot be cancelled.",
+        "Current-dated payments cannot be changed after you select Authorize Payment; to move a payment to another tax year or school district, send a written transfer request."
+      ],
+      "source": "https://tax.ohio.gov/help-center/faqs/income-online-services-i-fileepaymentestatement"
+    },
+    {
+      "slug": "electronic-notices",
+      "title": "Receive notices electronically",
+      "topic": "paperless",
+      "paragraphs": [
+        "You can choose to receive certain notices, such as forms 1099-G and 1099-INT, in OH|TAX eServices; an email tells you when one is available. In Settings, select the link next to Mail Delivery and switch from paper mail to Electronic, then accept the terms of service.",
+        "Registering an email address alone does not turn this on. Once you choose electronic delivery, those notices are no longer mailed unless you turn it off."
+      ],
+      "source": "https://tax.ohio.gov/help-center/faqs/income-online-services-i-fileepaymentestatement"
+    },
+    {
+      "slug": "eservices-registration",
+      "title": "Register for OH|TAX eServices",
+      "topic": "account",
+      "paragraphs": [
+        "To register once, you need your Social Security number or ITIN, last name, date of birth, and one of: last year's return information, a prior-year W-2, W-2G or 1099, or a letter from the Department. If the details do not match the Department's records, registration fails.",
+        "Forgot your password? Enter your OH|ID username, answer the validation question and get a one-time code by text or email. Forgot your username? Enter the email address on your account to have it sent to you."
+      ],
+      "source": "https://tax.ohio.gov/help-center/faqs/income-online-services-i-fileepaymentestatement"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "payment-plan-contact",
+        "intent": "Using the Ohio Department of Taxation website's help pages, find whom to call to arrange a payment plan for an income tax debt that was certified for collection, and the number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "888-301-8885",
+              "(888) 301-8885",
+              "8883018885"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "888-301-8885",
+            "(888) 301-8885",
+            "8883018885"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Department cannot set up plans; call the Ohio Attorney General at 888-301-8885."
+          }
+        ]
+      },
+      {
+        "slug": "card-fee",
+        "intent": "Using the Ohio Department of Taxation website's help pages, find the convenience fee for paying income tax by credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.65%",
+              "2.65 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.65%",
+            "2.65 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "ACI Payments charges 2.65% of the payment or $1, whichever is greater."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Plans",
+        "Pay Online"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Mail Delivery",
+        "Send a Message"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": "888-301-8885"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "2.65%"
+    }
+  ]
+}

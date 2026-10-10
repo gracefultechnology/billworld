@@ -52,8 +52,8 @@
   ],
   "unfinished": [
     "Alternate registration mailbox ownership, multiple-account linking and original private auth fidelity",
-    "Authenticated-account billing, production fee rounding/limits and settlement verification; guest payment benchmark tasks/private grader",
-    "Wallet, three-days-before-due AutoPay, multiple accounts, paperless and profile management",
+    "Authenticated-account billing, production fee rounding/limits and settlement verification",
+    "Multiple accounts and profile management",
     "Source-resource completeness, local responsive menus, independent visual and behavioral fidelity",
     "Private graders, Puppeteer reference tasks, isolated deployment and autonomous scoring"
   ],
@@ -73,7 +73,56 @@
   "runtime": {
     "kind": "starnik",
     "frontend": "starnik",
-    "mail_sender_slug": "gmg"
+    "mail_sender_slug": "gmg",
+    "mail_display_name": "GMG",
+    "payment_confirmation_prefix": "BW-GMG",
+    "autopay_confirmation_prefix": "BWGMGAP",
+    "snapshot_routes": {
+      "/starnikERP/": {
+        "page_id": "biller_97db8399eb95ee4cb710-portal-guest-current",
+        "interactive": true
+      },
+      "/": {
+        "page_id": "biller_97db8399eb95ee4cb710-website",
+        "interactive": false
+      },
+      "/billing": {
+        "page_id": "biller_97db8399eb95ee4cb710-login_url",
+        "interactive": false
+      },
+      "/autopay-help": {
+        "page_id": "biller_97db8399eb95ee4cb710-links-autopay_setup",
+        "interactive": false
+      },
+      "/understanding-your-bill": {
+        "page_id": "biller_97db8399eb95ee4cb710-links-view_bill",
+        "interactive": false
+      },
+      "/assistance": {
+        "page_id": "biller_97db8399eb95ee4cb710-links-payment_assistance",
+        "interactive": false
+      },
+      "/faq": {
+        "page_id": "biller_97db8399eb95ee4cb710-faq",
+        "interactive": false
+      },
+      "/RP/signup": {
+        "page_id": "biller_97db8399eb95ee4cb710-portal-register",
+        "interactive": true
+      },
+      "/RP_Default.aspx": {
+        "page_id": "biller_97db8399eb95ee4cb710-portal-login",
+        "interactive": true
+      },
+      "/RP/forgot-password": {
+        "page_id": "biller_97db8399eb95ee4cb710-portal-forgot-password",
+        "interactive": true
+      },
+      "/RP/forgot-username": {
+        "page_id": "biller_97db8399eb95ee4cb710-portal-username-current",
+        "interactive": true
+      }
+    }
   },
   "default_task_id": "gmg-username-login-v1",
   "construction_stage": "observed_auth_recovery_signup_synthetic_private_continuations_not_released",
@@ -118,6 +167,96 @@
       "review": "Synthetic 10-minute quote bound to guest capability, explicit review read and authorization, commit-time balance check",
       "instruments": "Only masked instrument details and deterministic digest retained; never PAN/CVV/routing/account number",
       "receipt": "Optional mock email; receipt remains available while guest grant is valid"
+    }
+  },
+  "construction_history_policy": {
+    "source": "research/starnik-authenticated-client-evidence.json",
+    "scope": "Only authenticated profile account; multi-account linking unfinished",
+    "rows": "Posted invoices/payments with running balance; pending payments separate, failed payments excluded",
+    "dates": "Synthetic bill date 20 days before due date; fixture payment timestamps",
+    "pagination": "Synthetic 20 most recent rows then Show All",
+    "fees": "Processor fee shown in payment data but does not change utility ledger balance",
+    "layout": "Synthetic private layout"
+  },
+  "construction_wallet_policy": {
+    "source": "research/starnik-authenticated-client-evidence.json",
+    "implemented": "List, add/edit bank/card, masked review, explicit save authorization, delete confirmation",
+    "scope": "Authenticated profile only; session-bound 10-minute review, idempotent save, duplicate instrument prevention",
+    "retention": "Masked instrument data and digest, never PAN/CVV/routing/account numbers",
+    "deletion": "Local protection for methods referenced by AutoPay or scheduled payments",
+    "unfinished": "Tenant-unavailable and processor-dependent masked edit states, private original fidelity",
+    "editing": "Synthetic full instrument re-entry branch; payment kind and card brand fixed, method ID retained, version checked at prepare and commit, incremented once",
+    "benchmark": "gmg-manage-wallet-v1: update Visa expiry, add Savings, remove obsolete Checking, reload and preserve other state"
+  },
+  "construction_autopay_policy": {
+    "source": "research/starnik-authenticated-client-evidence.json",
+    "sequence": "Saved method, method eligibility, terms, confirmation, enrollment, disable",
+    "capability": "Synthetic ten-minute HttpOnly session/account/episode-bound quote; method version and prior account settings rechecked at commit",
+    "conflicts": "Explicit TextPay acknowledgment disables TextPay. Separate ACH acknowledgment preserves ACH; original backend behavior unobserved",
+    "execution": "Documented three days before due. Synthetic midnight UTC, existing invoices only, one attempt per invoice, no catch-up, no retry, no future bill generation",
+    "fees": "Documented bank zero, card 2.75% minimum $1.50; local nearest-cent rounding",
+    "settlement": "Synthetic posted or pending fixture; declines/expired/unavailable methods recorded as failed, with mock mail",
+    "limits": [
+      "Private original UI and tenant-specific eligibility unobserved",
+      "Terms and conflict warnings are locally reconstructed"
+    ],
+    "benchmark": "Enable/cancel tasks require exact enrollment, conflict state, ordered review/change/final read and preservation of billing, wallet and other accounts"
+  },
+  "construction_signed_payment_policy": {
+    "source": "Captured BillingTile uses backend-supplied payBillPath; original signed-in checkout unobserved",
+    "flow": "Synthetic own saved-method selection, positive amount, review, explicit authorization, idempotent charge, receipt and history",
+    "binding": "Ten-minute quote scoped to login session, account and episode, HttpOnly cookie; method snapshot and invoice available balances rechecked at charge",
+    "allocation": "Oldest-due first; pending reservations excluded; one fee per payment; no overpayment",
+    "fees": "Documented bank zero, card 2.75% minimum $1.50; synthetic nearest-cent rounding",
+    "settlement": "Synthetic immediate posted payment; decline leaves balance unchanged",
+    "delivery": "Mock receipt to authenticated profile email",
+    "limits": [
+      "Private checkout layout and processor behavior remain unverified",
+      "Full catalog remains unfinished"
+    ],
+    "benchmark": "Full bank and partial card payment; exact private charge, saved method, fee, ordered reviewed authorization, receipt and remaining balance read, preserved other state"
+  },
+  "construction_ebill_policy": {
+    "source": "research/starnik-ebill-client-evidence.json",
+    "options": "Observed codes 1=eBill only, 2=eBill and paper, 3=paper only; available alternatives omit current option",
+    "controls": "Multi-option popup with UPDATE/CANCEL; binary option toggles directly; backend-disabled flag prevents changes",
+    "pdf_delivery": "Separate read-only PDF eBill status; changes require customer service and are not performed locally",
+    "scope": "Only own authenticated profile account; multi-account eBill unfinished",
+    "fixtures": "Synthetic three-option self-service default. Disabled/PDF and binary branches tested; actual GMG tenant flags unobserved",
+    "concurrency": "Synthetic version check; no-change yields observed warning return value -3",
+    "benchmark": "eBill-only and eBill-plus-paper tasks protect PDF, credentials, billing and other accounts",
+    "limits": [
+      "Original authenticated layout and tenant-enabled options remain unverified",
+      "No invoice generation or delivery simulation triggered by preference changes"
+    ]
+  },
+  "construction_statement_policy": {
+    "source": "research/starnik-authenticated-client-evidence.json: invoice_pdf",
+    "route": "Observed authenticated /invoice/download/ID pattern; local attachment response with Content-Disposition filename",
+    "documents": "Three immutable synthetic PDFs for seeded current, historical and secondary account invoices; generated with reportlab and visually checked",
+    "scope": "Only own live login; no guest or cross-account access; files not publicly served",
+    "integrity": "Manifest binds exact account/invoice fields and PDF hash; changed/new fields return unavailable, never stale template",
+    "content": "Original seeded invoice amount; live payments and remaining balances are separate portal history",
+    "benchmark": "task_c29 verifies ordered authenticated issuance and filename answer. Reference also verifies Chrome completed download and saved hash",
+    "limits": [
+      "Original statement layout, service line items and private backend response remain unobserved",
+      "Local direct download rather than original blob/open-in-new-tab implementation",
+      "Private grader cannot attest a remote agent filesystem write",
+      "Full catalog remains unfinished"
+    ]
+  },
+  "construction_account_credentials": {
+    "acct-primary": {
+      "username": "alex.morgan",
+      "password": "Billworld-2026!",
+      "security_code": "GMG1048",
+      "service_zip": "56001"
+    },
+    "acct-secondary": {
+      "username": "jordan.lee",
+      "password": "Other-2026!",
+      "security_code": "GMG2099",
+      "service_zip": "55001"
     }
   }
 }

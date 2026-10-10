@@ -1,0 +1,182 @@
+{
+  "id": "dte-energy-dte-electric-335ab9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "DTE Energy (DTE Electric)",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public dteenergy.com pages only (no sign-in). Sign-in is the email address and password of the online account (one account per email; separate email needed for residential vs business); the login page has Sign In, Forgot Password and Remember Me plus 'Pay Without Signing In' (Guest Pay). MFA is not described publicly, so it stays at the family default. Since March 2, 2026 every credit/debit card payment carries a $2.99 residential Paymentus processing fee ($9.99 commercial) and is capped at $2,000 per residential card transaction (not modelled; cap does not apply to AutoPay); Guest Pay accepts cards only. Guest Pay finds the account by account number, or by last name plus service address (modelled as account number). Online payments can be scheduled up to 60 days ahead. AutoPay withdraws the balance on the due date from a bank account or a Visa/Mastercard/Discover card (card fee applies); accounts 90+ days overdue or with two returned bank payments cannot enroll with a bank account. Balances not paid by the due date get a 2 percent late fee (lateFeePercent 2). Payment Agreement (down payment, then monthly installments, no late fees) is set up online when the account shows an eligibility message. BudgetWise Billing is a billing program, not a priced plan, so no plans are set. Stop service is handled on DTE's Start/Stop/Move site (script-only page; only its title could be read).",
+  "officialDomains": ["dteenergy.com"],
+  "sources": [
+    { "url": "https://www.dteenergy.com/us/en/residential/billing-and-payments/billing/ways-to-pay.html", "title": "Ways to Pay | DTE Energy", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.dteenergy.com/us/en/quicklinks/card-processing-fee.html", "title": "Card Processing Fee | DTE Energy", "fetchedAt": "2026-10-09", "kind": "fees" },
+    { "url": "https://www.dteenergy.com/us/en/residential/billing-and-payments/payment-programs/autopay.html", "title": "AutoPay | DTE Energy", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.dteenergy.com/us/en/residential/billing-and-payments/billing/ebill-paperless-billing.html", "title": "eBill Paperless Billing | DTE Energy", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://www.dteenergy.com/us/en/residential/billing-and-payments/faq/payments.html", "title": "Payments | DTE Energy", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.dteenergy.com/us/en/business/billing-and-payments/energy-assistance/payment-agreement.html", "title": "Payment Agreement | DTE Energy", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://newlook.dteenergy.com/wps/wcm/connect/dte-web/login", "title": "Billing log in: Manage & Pay Your Bill | Login | DTE Energy", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://startstop.dteenergy.com/", "title": "How to Start, Stop, Move Electric & Gas Service | DTE Energy", "fetchedAt": "2026-10-09", "kind": "cancel" }
+  ],
+  "brand": { "shortName": "DTE", "primary": "#005695", "accent": "#003f6e", "monogram": "DT" },
+  "labels": {
+    "autopay": "AutoPay",
+    "paperless": "eBill Paperless Billing",
+    "history": "My Billing & History",
+    "signIn": "Sign In",
+    "register": "Create Online Account",
+    "forgot": "Forgot Password",
+    "guestPay": "Guest Pay",
+    "arrangement": "Payment Agreement",
+    "cancel": "Stop Service",
+    "help": "Help Center",
+    "username": "Email Address"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign In", "page": "login" },
+      { "label": "Create Online Account", "page": "register" },
+      { "label": "Guest Pay", "page": "guest" },
+      { "label": "Ways to Pay", "helpSlug": "pay-your-bill" },
+      { "label": "Payment Programs", "helpSlug": "autopay" },
+      { "label": "Help Center", "page": "help" }
+    ],
+    "account": [
+      { "label": "Account Overview", "page": "dashboard" },
+      { "label": "Pay Bill", "page": "pay" },
+      { "label": "My Billing & History", "page": "history" },
+      { "label": "AutoPay", "page": "autopay" },
+      { "label": "eBill Paperless Billing", "page": "paperless" },
+      { "label": "Payment Agreement", "page": "arrangement" },
+      { "label": "Stop Service", "page": "cancel" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": ["accountNumber"],
+    "evidence": "observed_public",
+    "source": "https://newlook.dteenergy.com/wps/wcm/connect/dte-web/login"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/quicklinks/card-processing-fee.html", "note": "Guest Pay accepts credit or debit cards only, each with a $2.99 residential processing fee; sign in to pay free from a bank account." },
+    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/faq/payments.html" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/payment-programs/autopay.html" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/payment-programs/autopay.html" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/billing/ebill-paperless-billing.html" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/business/billing-and-payments/energy-assistance/payment-agreement.html" },
+    "cancel_service": { "support": "supported", "evidence": "observed_public", "source": "https://startstop.dteenergy.com/" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/billing/ways-to-pay.html", "phone": "8004774747" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/billing/ways-to-pay.html" }
+  },
+  "billing": {
+    "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/billing/ways-to-pay.html",
+    "fees": { "bankCents": 0, "cardCents": 299, "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/quicklinks/card-processing-fee.html" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["card"],
+    "autopay": { "policies": ["full"], "days": "due_date", "methodTypes": ["bank", "card"] },
+    "scheduled": { "maxDaysAhead": 60 },
+    "lateFeePercent": 2
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to Pay",
+      "paragraphs": [
+        "Sign in to pay from a checking or savings account at no charge, today or scheduled up to 60 days ahead (payments after 1 p.m. post the next business day). Visa, Mastercard and Discover debit or credit cards are accepted for eligible customers with a card processing fee.",
+        "Without signing in, Guest Pay finds the account by account number or by last name and service address. Guest Pay takes credit or debit cards only.",
+        "Fee-free options: AutoPay or online, app and phone payments from a bank account (call 800-477-4747), cash or check at a DTE Bill Payment Kiosk, or a check or money order mailed to DTE Energy, P.O. Box 740786, Cincinnati, OH 45274; allow five business days for mail."
+      ],
+      "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/billing/ways-to-pay.html"
+    },
+    {
+      "slug": "card-processing-fee",
+      "title": "Card processing fee",
+      "topic": "payments",
+      "paragraphs": [
+        "Since March 2, 2026, each credit or debit card payment carries a third-party processing fee charged by Paymentus: $2.99 per transaction for residential accounts and $9.99 for commercial accounts. DTE receives none of it.",
+        "A single card payment can be at most $2,000 for a residential account ($5,000 commercial), not counting the fee; the limit does not apply to AutoPay. Each card, each payment and each account paid counts as a separate transaction with its own fee."
+      ],
+      "source": "https://www.dteenergy.com/us/en/quicklinks/card-processing-fee.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay takes your balance on the due date each month, starting the next business day after you enroll. Use a bank account, or a Visa, Mastercard or Discover card (card payments include the processing fee). You can still make one-time payments.",
+        "Accounts with bills 90 or more days overdue, or with two or more payments returned by a bank, cannot enroll with a bank account; if that happens after enrolling, AutoPay is canceled, and accounts in good standing can re-enroll after 12 months.",
+        "To change the payment method or unenroll, sign in to My Payment Programs and choose Manage AutoPay."
+      ],
+      "steps": [ "Sign in to your DTE account.", "Open My Payment Programs and choose AutoPay.", "Pick a bank account or card and confirm." ],
+      "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/payment-programs/autopay.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "eBill Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in to enroll in eBill Paperless Billing. Each month you get an email when your statement is online, showing the amount due, due date and average daily use. It works alongside AutoPay and BudgetWise Billing, and you can unenroll at any time."
+      ],
+      "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/billing/ebill-paperless-billing.html"
+    },
+    {
+      "slug": "late-payment",
+      "title": "Bill due dates and late fees",
+      "topic": "billing",
+      "paragraphs": [
+        "DTE bills monthly and bills are due 17 days after mailing. A balance not paid in full by the due date is charged a 2 percent late fee and the account may become eligible for shutoff. If you mail your payment, allow up to 15 days for delivery."
+      ],
+      "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/faq/payments.html"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Agreement",
+      "topic": "assistance",
+      "paragraphs": [
+        "A Payment Agreement lets you pay off a past-due balance over time without late fees: an initial down payment, then monthly installments on top of your current charges.",
+        "If you are eligible, a message appears in your online account, where you can set up, change or cancel the agreement."
+      ],
+      "source": "https://www.dteenergy.com/us/en/business/billing-and-payments/energy-assistance/payment-agreement.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-lookup",
+        "intent": "Using DTE Energy's help pages, find the processing fee added to a residential credit or debit card payment. Do not make a payment.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["2.99"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["2.99"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "$2.99 per residential card transaction." } ]
+      },
+      {
+        "slug": "late-fee-rate",
+        "intent": "Find out what late fee DTE Energy charges on a balance not paid in full by the due date. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["2%", "2 percent"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["2%", "2 percent"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "A 2 percent late fee on the unpaid balance." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "home", "contains": ["Ways to Pay", "Create Online Account"] },
+    { "page": "login", "contains": "Email Address" },
+    { "page": "dashboard", "signedIn": true, "contains": ["AutoPay", "Payment Agreement"] },
+    { "page": "helpArticle", "slug": "card-processing-fee", "contains": ["$2.99", "$2,000"] },
+    { "page": "helpArticle", "slug": "late-payment", "contains": "2 percent" }
+  ]
+}

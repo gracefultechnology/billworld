@@ -1,0 +1,436 @@
+{
+  "id": "philadelphia-water-revenue-bureau-philadelphia-w-fb8188",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Philadelphia Water Revenue Bureau (Philadelphia Water Department)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public phila.gov pages only (no sign-in; the MyPhillyWaterBill sign-in page was viewed publicly and shows Username and Password fields). Registration needs the nine-digit Water Access Code from the bill and the ZIP code. AutoPay is a monthly bank draft from checking or savings only (no cards); the exact draft day is not published, so the family default is kept. Online and phone card payments cost $2.95 for residential customers ($15.95 commercial, not modelled); eCheck and automatic bank payments are free. Standard payment agreements are requested by calling (215) 685-6300 (income-based agreements go through the separate Customer Assistance application), so payment_arrangement is marked not offered online. Stopping service needs a Discontinuance Permit requested by email with a current bill and photo ID, then paid in person at the PWD Permit Desk; sold properties update automatically after the deed is recorded. cancel_service is therefore marked not offered online. The city warns about a fraudulent look-alike payment site; only phila.gov/waterbill is official.  Late charge: 5% if not paid on time plus 0.5% per month unpaid (modelled as lateFeePercent 5). Integrated 2026-10-09: labels.autopay set to \"AutoPay\".",
+  "officialDomains": [
+    "phila.gov",
+    "i-doxs.net"
+  ],
+  "sources": [
+    {
+      "url": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/pay-a-water-bill/",
+      "title": "Pay a water bill | City of Philadelphia",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.phila.gov/2024-05-21-streamline-your-water-bill-payment-with-autopay/",
+      "title": "Streamline your water bill payment with AutoPay",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.phila.gov/2023-04-17-water-bill-services-you-can-get-online-or-in-person/",
+      "title": "Water bill services you can get online or in person",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/",
+      "title": "Pay or dispute a water bill",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://secure8.i-doxs.net/CityOfPhiladelphiaWRB/SignIn.aspx",
+      "title": "MyPhillyWaterBill Sign In",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.phila.gov/services/water-gas-utilities/water-shutoffs/stop-water-service/",
+      "title": "Stop water service | Services | City of Philadelphia",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/income-based-water-bill-payment-agreements/",
+      "title": "Water bill payment agreements | Services | City of Philadelphia",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Philadelphia Water Revenue Bureau",
+    "shortName": "Philadelphia Water Revenue Bureau",
+    "primary": "#0f4d90",
+    "accent": "#0a3366",
+    "monogram": "PW"
+  },
+  "labels": {
+    "dashboard": "MyPhillyWaterBill",
+    "signIn": "Sign In",
+    "register": "Register",
+    "username": "Username",
+    "payBill": "Pay Now",
+    "accountNumber": "Water Access Code",
+    "arrangement": "Payment Agreement",
+    "guestPay": "Pay without signing in",
+    "help": "Water bill help",
+    "autopay": "AutoPay"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Pay a water bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Water bill services",
+        "helpSlug": "water-bill-services"
+      },
+      {
+        "label": "Water bill help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyPhillyWaterBill",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Bill history",
+        "page": "statements"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment activity",
+        "page": "history"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://secure8.i-doxs.net/CityOfPhiladelphiaWRB/SignIn.aspx"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/2024-05-21-streamline-your-water-bill-payment-with-autopay/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/2023-04-17-water-bill-services-you-can-get-online-or-in-person/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/2023-04-17-water-bill-services-you-can-get-online-or-in-person/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/income-based-water-bill-payment-agreements/",
+      "channel": "phone",
+      "phone": "215-685-6300",
+      "note": "Standard payment agreements are not offered online. Call the Water Revenue Bureau at (215) 685-6300; low-income agreements go through the Customer Assistance application."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/water-gas-utilities/water-shutoffs/stop-water-service/",
+      "channel": "phone",
+      "phone": "215-685-6300",
+      "note": "Stopping service is not offered online. It needs a Discontinuance Permit requested by email and paid in person; call (215) 685-6300 with questions. Sold properties update automatically after the deed is recorded."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/pay-a-water-bill/",
+      "phone": "877-309-3709"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/pay-a-water-bill/"
+    }
+  },
+  "billing": {
+    "source": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/pay-a-water-bill/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 295,
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/pay-a-water-bill/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "lateFeePercent": 5
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay a water bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online through MyPhillyWaterBill with your nine-digit Water Access Code and ZIP code. Online payments post in two to three days.",
+        "Online and phone fees: automatic bank payments and eCheck are free; a debit or credit card payment costs $2.95 for residential accounts and $15.95 for commercial accounts.",
+        "By phone, call (215) 685-6300 to pay by eCheck, or (877) 309-3709 for the automated line, which takes cards only.",
+        "By mail, send the bill's return portion with a check or money order payable to Water Revenue Bureau, P.O. Box 41496, Philadelphia, PA 19101-1496.",
+        "In person, pay at the Municipal Services Building concourse (the only office that accepts cash), 7522 Castor Ave. or 2761 N 22nd St., weekdays 8:30 a.m. to 5 p.m. In-person debit cards cost $3.45 and credit cards 2.10% (minimum $1.50).",
+        "If you do not pay on time, 5% of the total is added, plus another 0.5% for each month the charges stay unpaid. Returned checks cost $20."
+      ],
+      "source": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/pay-a-water-bill/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay takes your water bill from your checking or savings account every month with no further action. Credit and debit cards cannot be used for AutoPay.",
+        "You can pay all or part of the bill, turn recurring payments on or off at any time, and get email or text alerts for due dates and completed payments. Enrolling in AutoPay ends any ZipCheck enrollment."
+      ],
+      "steps": [
+        "Sign in to MyPhillyWaterBill.",
+        "Open the AutoPay tab on the home page.",
+        "Add your checking or savings account.",
+        "Follow the prompts to confirm."
+      ],
+      "source": "https://www.phila.gov/2024-05-21-streamline-your-water-bill-payment-with-autopay/"
+    },
+    {
+      "slug": "register",
+      "title": "Register for MyPhillyWaterBill",
+      "topic": "account",
+      "paragraphs": [
+        "Select Register and create a username and password. You need the nine-digit Water Access Code from the top right of your bill and your ZIP code. If you lost your bill, call (215) 685-6300 to get your access code.",
+        "Registering unlocks paperless billing, automatic payments, up to 13 months of past bills, usage history and alerts."
+      ],
+      "steps": [
+        "Select Register.",
+        "Enter your Water Access Code and ZIP code.",
+        "Create a username and password.",
+        "Confirm your email address."
+      ],
+      "source": "https://www.phila.gov/2023-04-17-water-bill-services-you-can-get-online-or-in-person/"
+    },
+    {
+      "slug": "water-bill-services",
+      "title": "Water bill services online and in person",
+      "topic": "account",
+      "paragraphs": [
+        "Payment agreements are made in person at the Municipal Services Building or the Northeast office, or by calling (215) 685-6300. Ask about customer assistance programs at the same number.",
+        "New customers apply for service by emailing the fillable application form with the required documents. Title companies request payoff figures by email.",
+        "For general help call (215) 685-6300; press 0 for a representative."
+      ],
+      "source": "https://www.phila.gov/2023-04-17-water-bill-services-you-can-get-online-or-in-person/"
+    },
+    {
+      "slug": "fraud-warning",
+      "title": "Use only the official payment site",
+      "topic": "faq",
+      "paragraphs": [
+        "The Department of Revenue knows of a fraudulent website that copies MyPhillyWaterBill. The official site does not end in .org or .com; reach it only through the City's water bill page."
+      ],
+      "source": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop water service",
+      "topic": "account",
+      "paragraphs": [
+        "Permanently stopping service needs a Discontinuance Permit, which disconnects the property's line from the City main. Email the request with a current water bill and a copy of your photo ID; non-owners also need written authorization from the owner.",
+        "The Water Department emails a permit invoice that you pay in person at the PWD Permit Desk in the Municipal Services Building. This is not a temporary way to avoid charges, and restoring service later is costly.",
+        "If you are selling the property, the water account updates automatically once the deed is recorded. Questions: (215) 685-6300."
+      ],
+      "source": "https://www.phila.gov/services/water-gas-utilities/water-shutoffs/stop-water-service/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Water bill payment agreements",
+      "topic": "assistance",
+      "paragraphs": [
+        "A standard payment agreement splits what you owe into smaller installments over a longer period. Call (215) 685-6300 to set one up; you can have at most two standard agreements after a late payment.",
+        "Low-income customers can apply online through the Customer Assistance application for an income-based agreement, which needs proof of residency and a working water meter."
+      ],
+      "source": "https://www.phila.gov/services/water-gas-utilities/pay-or-dispute-a-water-bill/income-based-water-bill-payment-agreements/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-residential",
+        "intent": "Before paying, find the fee the Philadelphia Water Revenue Bureau charges a residential customer to pay a water bill online with a credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2.95",
+              "2.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2.95",
+            "2.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Residential card payments cost $2.95."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-card-allowed",
+        "intent": "Find out whether the Philadelphia Water Revenue Bureau lets you use a credit card for AutoPay. Answer with what payment types AutoPay accepts; do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "checking",
+              "savings",
+              "bank"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "checking",
+            "savings",
+            "bank"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No - AutoPay only uses a checking or savings account."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Pay a water bill",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "MyPhillyWaterBill"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$2.95",
+        "(877) 309-3709"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "0.5%"
+    }
+  ]
+}

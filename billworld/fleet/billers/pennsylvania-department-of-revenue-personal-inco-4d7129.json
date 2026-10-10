@@ -1,0 +1,342 @@
+{
+  "id": "pennsylvania-department-of-revenue-personal-inco-4d7129",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Pennsylvania Department of Revenue (personal income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public pa.gov pages only. myPATH takes estimated, extension and return payments from its homepage without an account, by card or ACH (guest pay). Card payments by phone go through ACI Payments at 1-800-272-9829 (jurisdiction code 4800): credit 2.85% ($1 minimum), debit 1.85% ($3.95 minimum); the engine charges the 2.85% credit rate on card payments (minimums and the lower debit rate cannot be expressed). Standard payment plans (under 12 months, under $50,000) can be set up online in myPATH, by email/fax or by phone; extended plans need a financial statement (REV-488). No recurring AutoPay is documented (marked unsupported, inferred). myPATH accounts use a username and password (myPATH page); many features work from the homepage without an account. Local earned income tax is collected by local collectors, not the state.",
+  "officialDomains": [
+    "pa.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.pa.gov/services/revenue/make-a-personal-income-tax-payment",
+      "title": "Make a Personal Income Tax Payment | Commonwealth of Pennsylvania",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.pa.gov/agencies/revenue/make-a-payment/payment-plans/personal-income-tax-payment-plans",
+      "title": "Personal Income Tax Payment Plans | Department of Revenue | Commonwealth of Pennsylvania",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.pa.gov/agencies/revenue/resources/mypath.html",
+      "title": "myPATH | Department of Revenue | Commonwealth of Pennsylvania",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Pennsylvania Department of Revenue",
+    "shortName": "PA Department of Revenue",
+    "primary": "#244a7a",
+    "accent": "#8a5300",
+    "monogram": "PA"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "guestPay": "Pay without an account",
+    "dashboard": "myPATH",
+    "arrangement": "Payment Plan",
+    "signIn": "Log in",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay without an account",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Personal Income Tax Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "myPATH",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "documented_official",
+    "source": "https://www.pa.gov/agencies/revenue/resources/mypath.html"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pa.gov/services/revenue/make-a-personal-income-tax-payment",
+      "note": "myPATH takes estimated, extension and return payments from its homepage without an account, by card or bank account."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.pa.gov/services/revenue/make-a-personal-income-tax-payment",
+      "note": "Recurring automatic payments are not offered for personal income tax. Make each estimated, extension or return payment yourself in myPATH, by phone or by mail.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pa.gov/agencies/revenue/make-a-payment/payment-plans/personal-income-tax-payment-plans"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pa.gov/agencies/revenue/make-a-payment/payment-plans/personal-income-tax-payment-plans"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pa.gov/services/revenue/make-a-personal-income-tax-payment",
+      "note": "Card payments by phone through ACI Payments (jurisdiction code 4800); credit 2.85%, debit 1.85%.",
+      "phone": "8002729829"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pa.gov/services/revenue/make-a-personal-income-tax-payment"
+    }
+  },
+  "billing": {
+    "source": "https://www.pa.gov/services/revenue/make-a-personal-income-tax-payment",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.85,
+      "evidence": "documented_official",
+      "source": "https://www.pa.gov/services/revenue/make-a-personal-income-tax-payment"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "You can pay personal income tax online, by phone or by mail. myPATH lets PA-40, PA-41 and PA-20S/PA-65 filers make estimated, extension or return payments from its homepage without creating an account, by credit or debit card or by ACH withdrawal with your routing and account numbers.",
+        "By mail, send a check or money order with the payment coupon from your notice; for return or estimated payments, use the coupons and mailing instructions with the personal income tax forms. Questions: 717-425-2495, extension 72972 (PAYPA)."
+      ],
+      "source": "https://www.pa.gov/services/revenue/make-a-personal-income-tax-payment"
+    },
+    {
+      "slug": "pay-by-phone",
+      "title": "Pay by phone",
+      "topic": "payments",
+      "paragraphs": [
+        "Card payments can be made by calling ACI Payments, Inc. at 1-800-2PAYTAX (1-800-272-9829). When asked for the jurisdiction code, enter 4800 for Pennsylvania.",
+        "ACI charges a convenience fee of 2.85% per credit card payment ($1 minimum) or 1.85% per debit card payment ($3.95 minimum)."
+      ],
+      "source": "https://www.pa.gov/services/revenue/make-a-personal-income-tax-payment"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Personal income tax payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you owe less than $50,000 and want a plan shorter than 12 months, you can set it up online in myPATH (see the myPATH user guide), by email or fax with your name, SSN or Revenue ID, address, phone and the number of months you want, or by phone at 717-425-2495, extension 72972, with your checking account and routing numbers ready.",
+        "File all earlier returns first. A plan longer than 12 months, a balance over $50,000 or an existing plan needs an extended plan: send a Statement of Financial Condition (REV-488) by email or fax, or call. A payment plan does not stop collection through the Treasury Offset Program."
+      ],
+      "source": "https://www.pa.gov/agencies/revenue/make-a-payment/payment-plans/personal-income-tax-payment-plans"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "phone-jurisdiction-code",
+        "intent": "Using the PA Department of Revenue website's help pages, find the jurisdiction code you enter when paying Pennsylvania tax by phone with ACI Payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "4800"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "4800"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "pay_by_phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Enter jurisdiction code 4800 for Pennsylvania."
+          }
+        ]
+      },
+      {
+        "slug": "standard-plan-limit",
+        "intent": "Using the PA Department of Revenue website's help pages, find the balance limit for setting up a standard personal income tax payment plan yourself. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$50,000",
+              "50,000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$50,000",
+            "50,000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Standard plans are for balances under $50,000 paid in less than 12 months."
+          }
+        ]
+      },
+      {
+        "slug": "credit-card-fee",
+        "intent": "Using the PA Department of Revenue website's help pages, find the convenience fee for paying by credit card through ACI Payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.85%",
+              "2.85 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.85%",
+            "2.85 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "ACI charges 2.85% per credit card payment, with a $1 minimum."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": "Personal Income Tax Payment Plans"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "myPATH",
+        "Payment Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-by-phone",
+      "contains": [
+        "4800",
+        "2.85%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "$50,000",
+        "REV-488"
+      ]
+    }
+  ]
+}

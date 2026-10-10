@@ -1,0 +1,485 @@
+{
+  "id": "miami-dade-water-and-sewer-department-wasd-cd69b1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Miami-Dade Water and Sewer Department (WASD)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public miamidade.gov water pages only (no sign-in). The self-service account is a miamidade.gov profile whose username is the customer's email address; it links one or more WASD accounts and offers paperless billing, payments, payment extensions, stop/transfer/reconnect service, high-bill investigations and leak adjustments. Auto Pay is set up in the separate Miami-Dade Payment Service Center (ACI), where the customer must first add a bank account and then chooses the frequency, date and amount (modelled as bank-only AutoPay with full-balance policy). One-time online card payments carry a $3.95 card-processor fee (high-cost rewards and commercial cards pay 2.95% instead, not modelled); bank payments are free. Phone card payments (1-800-510-0880) cost $4.49; bank payments by phone use 1-800-565-1800. Reviewer: despite its name, the Online Quick Pay page says to create or log in to a Water and Sewer account to make a one-time payment, so guest_pay is marked not offered online (the builder had it as supported). Bills are usually quarterly and are past due 21 days after the bill date; a 10 percent late fee is then applied (modelled as lateFeePercent 10). Payment extensions are modelled on the arrangement page. Integrated 2026-10-09: labels.autopay set to \"Auto Pay\".",
+  "officialDomains": [
+    "miamidade.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.miamidade.gov/global/water/my-account.page",
+      "title": "My Water and Sewer Account - Miami-Dade County",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.miamidade.gov/global/water/paperless-billing.page",
+      "title": "Paperless Billing and Automatic Payments - Miami-Dade County",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1496941831493107",
+      "title": "Online Quick Pay - Miami-Dade County",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1534347350059806",
+      "title": "Pay By Phone, Mail or In Person - Miami-Dade County",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Miami-Dade Water and Sewer",
+    "shortName": "Miami-Dade WASD",
+    "primary": "#005e8a",
+    "accent": "#003f5c",
+    "monogram": "MD"
+  },
+  "labels": {
+    "dashboard": "Account Home",
+    "signIn": "Log in to Your Account",
+    "register": "Create a New Account",
+    "payBill": "Pay Bill",
+    "viewBill": "View Current Bill (PDF)",
+    "paperless": "Paperless Billing",
+    "arrangement": "Payment Extension",
+    "cancel": "Stop or Transfer Service",
+    "username": "Email Address",
+    "help": "Account Registration FAQ's",
+    "autopay": "Auto Pay"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Online Quick Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Log in to Your Account",
+        "page": "login"
+      },
+      {
+        "label": "Create a New Account",
+        "page": "register"
+      },
+      {
+        "label": "Pay By Phone, Mail or In Person",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Account Registration FAQ's",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View Current Bill (PDF)",
+        "page": "bill"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Extension",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop or Transfer Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "lastName",
+      "phone",
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.miamidade.gov/global/water/paperless-billing.page"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1496941831493107",
+      "channel": "phone",
+      "phone": "800-565-1800",
+      "note": "Paying online without an account is not offered: create or log in to your Water and Sewer account to make a one-time payment. Without an account, pay by phone at 1-800-565-1800 (bank account) or 1-800-510-0880 (card, $4.49 fee)."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.miamidade.gov/global/water/paperless-billing.page",
+      "note": "Auto Pay is set up in the Miami-Dade Payment Service Center after adding a bank account."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.miamidade.gov/global/water/paperless-billing.page"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.miamidade.gov/global/water/my-account.page",
+      "note": "Request a payment extension from your self-service account."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.miamidade.gov/global/water/my-account.page",
+      "note": "Stop, transfer or reconnect water service from your self-service account."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1534347350059806",
+      "phone": "800-565-1800"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1534347350059806"
+    }
+  },
+  "billing": {
+    "source": "https://www.miamidade.gov/global/water/paperless-billing.page",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 395,
+      "evidence": "documented_official",
+      "source": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1496941831493107"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "lateFeePercent": 10
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your water bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Online Quick Pay: create or log in to your Water and Sewer account to make a one-time payment from a bank account or by card.",
+        "Bank account payments are free; have your account and routing numbers ready. Mastercard, Visa, American Express and Discover payments carry a $3.95 fee from the card processing company, or 2.95% of the payment for high-cost rewards cards and commercial cards. You see the fee before you finish and can choose another method.",
+        "By phone, any time: 1-800-565-1800 for checking or savings, or 1-800-510-0880 for credit cards, which carry a $4.49 convenience fee.",
+        "By mail, send a check or money order to Miami-Dade Water & Sewer Dept, PO Box 26055, Miami, FL 33102-6055. You can also pay at a WASD customer service center, a payment kiosk or a private pay station."
+      ],
+      "source": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1496941831493107"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in or create a self-service account, then from Account Home select Sign Up for Paperless Billing and turn on the toggle on the Pay Bill page. You get an email when each new bill is ready.",
+        "To read your bill online, log in and choose View Current Bill (PDF) in the left navigation."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "From Account Home, select Sign Up for Paperless Billing.",
+        "Turn on the paperless toggle.",
+        "Confirm your email address."
+      ],
+      "source": "https://www.miamidade.gov/global/water/paperless-billing.page"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments (Auto Pay)",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay is set up through the Miami-Dade Payment Service Center. Create an account there with a valid personal email; usernames are 8 to 32 letters or numbers, and passwords need at least 8 characters with upper and lower case letters, a number and a special character. Do not choose Paper Bill when you sign up.",
+        "Add a bank account first, then choose Set Up Auto Pay and pick the payment frequency, date and amount."
+      ],
+      "steps": [
+        "Open the Payment Service Center.",
+        "Add a bank account.",
+        "Click Set Up Auto Pay.",
+        "Choose the frequency, date and amount, then confirm."
+      ],
+      "source": "https://www.miamidade.gov/global/water/paperless-billing.page"
+    },
+    {
+      "slug": "register",
+      "title": "Create a self-service account",
+      "topic": "account",
+      "paragraphs": [
+        "A new account asks for your name, address, phone number, an email address that becomes your username, and a password. Keep your email current so you receive notices.",
+        "One login can hold several active water and sewer accounts."
+      ],
+      "source": "https://www.miamidade.gov/global/water/paperless-billing.page"
+    },
+    {
+      "slug": "account-services",
+      "title": "What you can do in your account",
+      "topic": "account",
+      "paragraphs": [
+        "From your self-service account you can pay your bill, enroll in paperless billing, request a payment extension, ask for a high water bill investigation, request a pool credit or an underground leak adjustment, and stop, transfer or reconnect water service.",
+        "You can also see account details, messages from the utility, water and sewer consumption, paperless statements and payment history. For other help call 305-665-7477."
+      ],
+      "source": "https://www.miamidade.gov/global/water/my-account.page"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Past-due bills and payment extensions",
+      "topic": "billing",
+      "paragraphs": [
+        "Bills usually come every three months and are past due if payment has not arrived within 21 days of the bill date. After that, a 10 percent late fee is added to the account.",
+        "If you cannot pay by the due date, request a payment extension from your self-service account. Without a payment or an extension, a final notice is mailed, and service can become eligible for disconnection 14 days after that notice."
+      ],
+      "source": "https://www.miamidade.gov/global/water/my-account.page"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-amount",
+        "intent": "Before paying by credit card, find the fee Miami-Dade WASD's card processor charges a residential customer per card payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3.95",
+              "3.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3.95",
+            "3.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Residential card payments carry a $3.95 fee."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-prerequisite",
+        "intent": "Using Miami-Dade WASD's help pages, find what you must add before you can set up Auto Pay in the Payment Service Center. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "bank account"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "bank account"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You must add a bank account first."
+          }
+        ]
+      },
+      {
+        "slug": "late-fee-rate",
+        "intent": "Using Miami-Dade WASD's help pages, find the late fee charged when a water bill is not paid within 21 days of the bill date. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10%",
+              "10 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10%",
+            "10 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A 10 percent late fee is added after the 21st day."
+          }
+        ]
+      },
+      {
+        "slug": "phone-card-fee",
+        "intent": "Before calling to pay by credit card, find the convenience fee Miami-Dade WASD charges for a credit card payment made by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$4.49",
+              "4.49"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$4.49",
+            "4.49"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments by phone carry a $4.49 convenience fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Online Quick Pay"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Account Home",
+        "Payment Extension"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$3.95"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "account-services",
+      "contains": "leak adjustment"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-fees",
+      "contains": "10 percent"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$4.49",
+        "PO Box 26055"
+      ]
+    }
+  ]
+}

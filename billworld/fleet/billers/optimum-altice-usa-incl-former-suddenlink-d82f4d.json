@@ -1,0 +1,401 @@
+{
+  "id": "optimum-altice-usa-incl-former-suddenlink-d82f4d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Optimum (Altice USA; incl. former Suddenlink)",
+  "category": "internet",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public optimum.net pages, the Optimum residential terms and the public sign-in page only (no sign-in attempted). Sign-in page observed (auth.optimum.net): 'Let's get you signed in' with a Username field (the Optimum ID) and Continue, password on the next step, plus Forgot your Optimum ID? and Create ID links, so identifier=username and loginSteps=2. Quick Pay: one-time payment without login by credit card, debit card or bank account, with the account number and service ZIP code. Auto Pay pays the bill on the due date from a bank account or debit/credit card, starting with the next billing cycle; turning it off takes effect immediately. As of 8/17/26 the Auto Pay and Paperless Billing discount is $10/month and needs a checking account plus paperless billing (not for Optimum Advantage Internet, FASTPASS or Big Apple Connect; two consecutive failed Auto Pay months unenroll you). Phone payments through the automated line 866-213-7456 are free; since June 3, 2025 a $5 Payment Assistance Fee applies with an Optimum Expert (not modelled: no agent channel). Mail to the P.O. Boxes on the pay page; bills for the last 12 months are online. Cancellation: the residential terms make cancellations effective at the end of the current billing period; no public page describes an online cancel flow, and the Contact Us page routes billing and account requests to chat or area phone lines, so cancel_service is unsupported (inferred, review 2026-10-09) with the all-other-areas Billing & Account line 888-710-8046. Payment arrangements and late fee amounts are not published on these pages (late fees listed in a Schedule of Fees), so they are left out. Plan prices are not modelled. Customer-service numbers are area-specific; the contact article lists the Contact Us page numbers (Billing & Account, Sun-Sat 8 AM-8 PM; chat 24/7).",
+  "officialDomains": [
+    "optimum.net",
+    "optimum.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.optimum.net/pages/how-to-pay-my-bill.html",
+      "title": "Ways to Pay Your Optimum Bill | Optimum",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.optimum.net/FAQ/#/answers/a_id/2593",
+      "title": "Auto Pay and Paperless Billing | Optimum FAQ",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.optimum.com/terms-of-service/residential",
+      "title": "Residential General Terms and Conditions of Service | Optimum",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.optimum.net/login/",
+      "title": "Sign In to Manage Your Services | Optimum",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.optimum.net/contact-us/",
+      "title": "Contact Optimum, Find a Store Location | Optimum",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Optimum",
+    "shortName": "Optimum",
+    "primary": "#0a3b8c",
+    "accent": "#c4410a",
+    "monogram": "O"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "viewBill": "My Bill",
+    "payBill": "Make a payment",
+    "guestPay": "Quick Pay",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "register": "Create ID",
+    "forgot": "Forgot your Optimum ID?",
+    "username": "Username",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Create ID",
+        "page": "register"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "My Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.optimum.net/login/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593",
+      "note": "Turning off Auto Pay takes effect immediately; make a one-time payment if your bill is due soon."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html",
+      "phone": "8662137456"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.optimum.net/contact-us/",
+      "note": "Optimum's public pages offer no online way to cancel. Chat with Optimum or call the Billing & Account line for your area (888-710-8046 for most areas), 8 AM to 8 PM. Cancellation takes effect at the end of the current billing period.",
+      "channel": "phone",
+      "phone": "8887108046"
+    }
+  },
+  "billing": {
+    "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay your Optimum bill",
+      "paragraphs": [
+        "Quick Pay needs no login: make a one-time payment by credit card, debit card or bank account with the account number at the top of your bill and the ZIP code on the account. Signed-in customers can schedule or make a payment.",
+        "Call 866-213-7456 to pay through the automated system with no added fee. Since June 3, 2025, paying with the help of an Optimum Expert by phone adds a $5 Payment Assistance Fee.",
+        "By mail, send a check or money order payable to Optimum with your remit stub or 14-digit account number to Optimum, P.O. Box 70340, Philadelphia, PA 19176-0340 (or P.O. Box 4019, Carol Stream, IL 60197-4019), at least a week before the due date. Optimum Stores take cash, check, money order and cards; CheckFreePay and Western Union take cash."
+      ],
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay pays your bill on the due date each month from your bank account or debit/credit card and starts with the next billing cycle, so make a one-time payment if needed. You get an email each time a payment is processed.",
+        "Go to Auto Pay, sign in with your primary Optimum ID, choose or enter a payment method, keep Go paperless on, enter your billing email, and select Enroll. Tick the box to skip the first automatic payment if you already paid the latest bill."
+      ],
+      "steps": [
+        "Sign in with your primary Optimum ID.",
+        "Open Auto Pay.",
+        "Choose a payment method.",
+        "Leave Go paperless on and enter your email.",
+        "Select Enroll."
+      ],
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    {
+      "slug": "autopay-paperless-discount",
+      "title": "Auto Pay and Paperless Billing discount",
+      "topic": "autopay",
+      "paragraphs": [
+        "As of 8/17/26, eligible residential customers get $10 off each month for using Auto Pay with a checking account and Paperless Billing. Only checking accounts qualify because of their lower processing costs. Leaving either program removes the discount.",
+        "If Auto Pay fails two months in a row you are unenrolled and lose the discount, and two one-time payments in a row may also unenroll you. Optimum Advantage Internet, FASTPASS and Big Apple Connect accounts aren't eligible."
+      ],
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Change or turn off Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "To change the payment method, sign in on the manage payments page and choose Change automatic payment settings; the change applies to your next bill.",
+        "To stop, sign in on Pay Bill and select Turn off Auto Pay. It takes effect immediately, so you're responsible for paying on time from then on."
+      ],
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "With Paperless Billing you get an email when your bill is ready and can see bills from the last 12 months online or in the My Optimum app. To sign up, sign in on Auto Pay, check Go paperless, enter your billing email and select Go paperless. To go back to paper, choose Manage paperless billing and Opt-out of Paperless Billing."
+      ],
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancelling service",
+      "topic": "account",
+      "paragraphs": [
+        "Optimum's public pages don't describe an online cancellation. To cancel, chat with Optimum or call the Billing & Account number for your area (888-710-8046 for most areas), 8 AM to 8 PM.",
+        "Optimum bills monthly in advance. Under the residential terms, a cancellation takes effect at the end of the current billing period, with no refund for a partly used month, and leaving during a promotional term can bring an early cancellation fee. Equipment must be returned after service ends."
+      ],
+      "source": "https://www.optimum.com/terms-of-service/residential"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact us",
+      "topic": "contact",
+      "paragraphs": [
+        "Chat with Optimum any time, 24/7, from the Contact Us page or the My Optimum app. Billing and account calls are answered Sunday to Saturday, 8 AM to 8 PM, at the number for your area: 631-393-0637 for Nassau and Suffolk counties, 718-860-3514 for the Bronx, Brooklyn and Westchester, 203-870-2583 for Connecticut, 877-491-0050 for Hendersonville and West Jefferson NC, 973-230-6048 for New Jersey and Pennsylvania, and 888-710-8046 for all other areas.",
+        "To pay by phone with no added fee, use the automated system at 866-213-7456. Optimum warns against using search engines to find its phone number because of fake support lines; use the number on your bill or on the Contact Us page."
+      ],
+      "source": "https://www.optimum.net/contact-us/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "discount-qualifying-method",
+        "intent": "Using Optimum's help pages, find the monthly Auto Pay and Paperless Billing discount and which Auto Pay payment method is required to get it. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "checking"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "checking"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay",
+          "discount"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The discount is $10 a month and requires Auto Pay from a checking account plus Paperless Billing."
+          }
+        ]
+      },
+      {
+        "slug": "agent-phone-fee",
+        "intent": "An Optimum customer wants to pay by phone with a live agent. Using Optimum's help, find the fee for that and the automated number that avoids it. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $5 Payment Assistance Fee applies with an Optimum Expert; the automated line 866-213-7456 is free."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Forgot your Optimum ID?"
+      ]
+    },
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My Bill",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay-paperless-discount",
+      "contains": [
+        "$10",
+        "checking"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "866-213-7456"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "888-710-8046"
+    }
+  ]
+}

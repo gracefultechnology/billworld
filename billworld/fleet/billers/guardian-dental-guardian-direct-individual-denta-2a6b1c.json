@@ -1,0 +1,290 @@
+{
+  "id": "guardian-dental-guardian-direct-individual-denta-2a6b1c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Guardian Dental (Guardian Direct individual dental)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-09",
+  "notes": "Modelled as Guardian's direct individual dental plans (Member Dashboard on guardianlife.com). Researched from public guardianlife.com FAQ pages only (no sign-in); both FAQ pages render by JavaScript, so their answers were read from the page's embedded content data. Billing FAQ: recurring premiums are monthly, quarterly or annual on a credit card, debit card or ACH (eCheck) draft; invoiced check/money-order billing is for South Carolina only; cards and ACH are processed on or around the 26th for the next month's coverage (next business day on weekends/holidays), modelled as AutoPay day 26; the initial payment is due at enrollment and the details are stored for later payments; 31-day grace period with no interest, but two missed consecutive payments may end membership; premium changes come with at least 60 days' notice. To change the payment method sign in to the Member Dashboard, open the Billing & Payments tab and choose 'Update Payment Settings'; frequency changes go through the Digital to Consumer Service Team, 1-866-569-9900 (M-F 9am-9pm ET). Dental FAQ: a plan can be terminated at any time by the main subscriber, effective the last day of the month of the request (or of the last paid month), with a 12-month wait to re-enroll; the channel for the request is not stated, so cancel_service is recorded as supported with evidence 'inferred'. Plans renew automatically (PPO every 12 months, DHMO each January 1) with a 60-day reminder. Guardian's separate dental-exchange product (Softheon billing) is not modelled. Fees, sign-in identifier and MFA are not published. Signed-in labels other than Member Dashboard, Billing & Payments and Update Payment Settings are generic (synthetic). No public nav: see the insurance-template cross-owner request.",
+  "officialDomains": [
+    "guardianlife.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.guardianlife.com/faq/billing",
+      "title": "Billing FAQs | Guardian",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.guardianlife.com/faq/dental",
+      "title": "Dental Insurance FAQs | Guardian",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Guardian Dental",
+    "shortName": "Guardian",
+    "primary": "#0d3f5e",
+    "accent": "#00609c",
+    "monogram": "G"
+  },
+  "labels": {
+    "dashboard": "Member Dashboard",
+    "viewBill": "Billing & Payments",
+    "wallet": "Update Payment Settings"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "Member Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing & Payments",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Update Payment Settings",
+        "page": "wallet"
+      },
+      {
+        "label": "Automatic payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "capabilities": {
+    "view_bill": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.guardianlife.com/faq/billing"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.guardianlife.com/faq/billing",
+      "note": "Recurring monthly, quarterly or annual charges on a card or ACH (eCheck) draft, processed around the 26th."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.guardianlife.com/faq/billing",
+      "note": "Invoiced check or money-order billing is offered in South Carolina only."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.guardianlife.com/faq/dental",
+      "note": "Only the main subscriber can end the plan; it ends on the last day of the month, with a 12-month wait to re-enroll."
+    }
+  },
+  "billing": {
+    "source": "https://www.guardianlife.com/faq/billing",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": [
+        26
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "payment-options",
+      "title": "Ways to pay your premium",
+      "topic": "billing",
+      "paragraphs": [
+        "Set up recurring premium payments monthly, quarterly or annually on a credit card, debit card or ACH (eCheck) bank draft. Being invoiced by mail and paying by personal check, cashier's check or money order is available in South Carolina only.",
+        "Your first payment is due when you enroll. Card and ACH payments are processed within 1 to 2 days of enrollment, and the details are saved securely for future payments."
+      ],
+      "source": "https://www.guardianlife.com/faq/billing"
+    },
+    {
+      "slug": "due-dates",
+      "title": "When recurring payments are taken",
+      "topic": "billing",
+      "paragraphs": [
+        "Your next due date is always shown in your Member Dashboard.",
+        "Credit card, debit card and ACH (eCheck) payments are processed on or around the 26th of each month for the following month's coverage. If that day is a weekend or holiday, the draft happens the next business day.",
+        "If you pay by check or money order you get a mailed invoice, and Guardian must receive your payment stub and payment by the 1st of the month for that month's coverage."
+      ],
+      "source": "https://www.guardianlife.com/faq/billing"
+    },
+    {
+      "slug": "update-payment-settings",
+      "title": "Change your payment method or frequency",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign in to your Member Dashboard, open the Billing & Payments tab and choose Update Payment Settings to change your card or bank account.",
+        "To change how often you pay, call the Digital to Consumer Service Team at 1-866-569-9900 (toll-free), Monday to Friday 9am to 9pm Eastern."
+      ],
+      "steps": [
+        "Sign in to your Member Dashboard.",
+        "Open Billing & Payments.",
+        "Choose Update Payment Settings.",
+        "Enter the new card or bank account and save."
+      ],
+      "source": "https://www.guardianlife.com/faq/billing"
+    },
+    {
+      "slug": "grace-period",
+      "title": "Is there a grace period?",
+      "topic": "billing",
+      "paragraphs": [
+        "If a payment is not received by its due date you have a 31-day grace period, with no interest charged. If you miss two premium payments in a row, your membership may be ended.",
+        "Dental premiums can change; if they do, you get at least 60 days' notice."
+      ],
+      "source": "https://www.guardianlife.com/faq/billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your dental plan",
+      "topic": "account",
+      "paragraphs": [
+        "You can end your plan at any time. Termination takes effect on the last day of the month in which you ask, or the last day of the month your premium covers. The request must come from the plan's main subscriber.",
+        "After you cancel a Dental PPO plan you must wait 12 months in a row before you can enroll in a Guardian dental plan again."
+      ],
+      "source": "https://www.guardianlife.com/faq/dental"
+    },
+    {
+      "slug": "renewal",
+      "title": "Renewing your plan",
+      "topic": "plans",
+      "paragraphs": [
+        "Dental PPO plans renew automatically for another 12 months each year; DHMO plans renew every January 1 for the calendar year. Guardian reminds you 60 days before renewal.",
+        "To change your coverage, call 866-569-9900, Monday to Friday 9am to 9pm Eastern."
+      ],
+      "source": "https://www.guardianlife.com/faq/dental"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "grace-period-length",
+        "intent": "Your Guardian dental premium payment is late. Using the Guardian help pages, find how many days of grace period you have after the due date. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "31"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "31"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "There is a 31-day grace period from the due date."
+          }
+        ]
+      },
+      {
+        "slug": "recurring-draft-day",
+        "intent": "Using the Guardian help pages, find around which day of the month recurring card and ACH premium payments are processed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "26"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "26"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "On or around the 26th of the month, for the following month's coverage."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Member Dashboard",
+        "Billing & Payments",
+        "Update Payment Settings"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "grace-period",
+      "contains": "31-day grace period"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-dates",
+      "contains": "26th"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "main subscriber"
+    },
+    {
+      "page": "wallet",
+      "signedIn": true,
+      "label": "wallet"
+    }
+  ]
+}

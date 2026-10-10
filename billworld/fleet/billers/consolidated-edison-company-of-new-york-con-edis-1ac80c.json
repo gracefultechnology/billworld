@@ -1,0 +1,434 @@
+{
+  "id": "consolidated-edison-company-of-new-york-con-edis-1ac80c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Consolidated Edison Company of New York (Con Edison)",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Pilot dossier. Researched from public coned.com pages only (no sign-in). Sign-in is by email address (registration says the email becomes the login ID) and My Account asks for a verification code to confirm identity; the code channel is not stated publicly, so both email and text are allowed. The pay-bill page lists a 2.99% card service fee for commercial customers only (not modelled); no residential card fee is listed, so the residential card fee is modelled as $0 (evidence inferred). Auto Pay drafts a checking or savings account; the exact draft day is not published, so the family default (due date) is kept. Late payment charge 1.5% on unpaid balances.",
+  "officialDomains": [
+    "coned.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.coned.com/en/accounts-billing/payment-options",
+      "title": "Ways to Pay Your Con Edison Bill (Payment Options)",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.coned.com/en/accounts-billing/my-account/pay-bill",
+      "title": "Pay Your Con Edison Bill Online",
+      "fetchedAt": "2026-10-05",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.coned.com/en/accounts-billing/my-account/pay-my-bill-guest",
+      "title": "Pay My Bill as a Guest",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.coned.com/en/accounts-billing/my-account",
+      "title": "My Account",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.coned.com/en/register/pre-register",
+      "title": "Register for My Account",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.coned.com/en/accounts-billing/payment-plans-assistance",
+      "title": "Payment Plans & Assistance",
+      "fetchedAt": "2026-10-05",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.coned.com/en/faqs/frequently-asked-questions",
+      "title": "Frequently Asked Questions",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "Con Edison",
+    "primary": "#006eb7",
+    "accent": "#00427a",
+    "monogram": "CE"
+  },
+  "labels": {
+    "payBill": "Pay Bill",
+    "viewBill": "Billing & Usage",
+    "statements": "Bill History",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless eBill",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Register",
+    "forgot": "Forgot Password?",
+    "guestPay": "Pay as Guest",
+    "dashboard": "My Account",
+    "cancel": "Stop or Transfer Service",
+    "arrangement": "Payment Agreement",
+    "profile": "Manage Profile",
+    "contact": "Contact Us",
+    "help": "FAQs",
+    "username": "Email Address"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay as Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plans & Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Billing & Usage",
+        "page": "bill"
+      },
+      {
+        "label": "Bill History",
+        "page": "statements"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Agreement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop or Transfer Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Manage Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "registrationFields": [
+      "lastName",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.coned.com/en/accounts-billing/my-account"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.coned.com/en/accounts-billing/my-account/pay-my-bill-guest"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.coned.com/en/accounts-billing/payment-options"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.coned.com/en/accounts-billing/payment-options"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.coned.com/en/accounts-billing/my-account/pay-bill"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.coned.com/en/accounts-billing/payment-plans-assistance"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.coned.com/en/faqs/frequently-asked-questions",
+      "note": "Closing or transferring service is done after logging in to My Account."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.coned.com/en/accounts-billing/payment-options"
+    }
+  },
+  "billing": {
+    "source": "https://www.coned.com/en/accounts-billing/payment-options",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.coned.com/en/accounts-billing/my-account/pay-bill"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "lateFeePercent": 1.5
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "With Auto Pay, Con Edison takes your bill payment automatically from your checking or savings account once you have had time to look over your bill.",
+        "Log in to My Account to see whether your account qualifies and to sign up, or call 1-888-925-5016.",
+        "If you pay by mail, you can also enroll by marking the Auto Pay box on your payment slip; Con Edison then uses the bank details from your check."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Open Auto Pay.",
+        "Choose your checking or savings account.",
+        "Accept the Auto Pay terms and save."
+      ],
+      "source": "https://www.coned.com/en/accounts-billing/payment-options"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay your bill",
+      "paragraphs": [
+        "Con Edison lists a card service fee only for commercial customers (2.99% of the payment, kept by the payment agent); no fee is listed for residential customers paying by credit or debit card. Guest card payments are processed by BillMatrix.",
+        "You can also pay as a guest with your account number and ZIP code, by phone at 1-888-925-5016 at any hour, by mailed check or money order, or in cash at an authorized payment agent or a walk-in center."
+      ],
+      "source": "https://www.coned.com/en/accounts-billing/my-account/pay-bill"
+    },
+    {
+      "slug": "late-payment-charge",
+      "title": "Due dates and late payment charges",
+      "topic": "billing",
+      "paragraphs": [
+        "Pay by the due date shown on your bill. Balances left unpaid after the due date are charged a late payment charge of 1.5%.",
+        "If you need more time, you can ask for a payment extension of up to 10 days from My Account. The late payment charge still applies, but no collection action is taken during the extension."
+      ],
+      "source": "https://www.coned.com/en/accounts-billing/my-account/pay-my-bill-guest"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Plans & Assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "Payment Agreement: pay an overdue balance over time. Set it up in My Account or call 1-800-752-6633.",
+        "Budget Billing: spread your payments evenly across the year so seasonal changes do not swing your bill. Enroll in My Account or by phone.",
+        "Energy Affordability Program: a bill discount for customers who receive certain government benefits or whose household income is below the local median.",
+        "Customers 62 or older with small annual bills may qualify for quarterly billing, and residential service is protected from shut-off during extreme heat or cold."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Open Payment Agreement.",
+        "Choose the number of monthly payments.",
+        "Confirm the agreement."
+      ],
+      "source": "https://www.coned.com/en/accounts-billing/payment-plans-assistance"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop or transfer service",
+      "topic": "account",
+      "paragraphs": [
+        "To stop or transfer service, log in to My Account and choose Stop or Transfer Service with the date you want service to end. You can start new service with or without an online account."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Choose Stop or Transfer Service.",
+        "Pick the date service should stop.",
+        "Review and confirm."
+      ],
+      "source": "https://www.coned.com/en/faqs/frequently-asked-questions"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-charge-rate",
+        "intent": "Using the Con Edison website's help pages, find the late payment charge applied to balances not paid by the due date. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.5%",
+              "1.5 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.5%",
+            "1.5 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Con Edison charges a late payment charge of 1.5% on unpaid balances."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-phone",
+        "intent": "Find the phone number Con Edison lists for signing up for Auto Pay by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8889255016"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8889255016"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-888-925-5016"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Plans & Assistance",
+        "Log In"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address",
+        "Log In"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing & Usage",
+        "Payment Agreement"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-payment-charge",
+      "contains": "1.5%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "1-888-925-5016"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    }
+  ]
+}

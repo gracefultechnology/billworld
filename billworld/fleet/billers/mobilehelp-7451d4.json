@@ -1,0 +1,307 @@
+{
+  "id": "mobilehelp-7451d4",
+  "version": 1,
+  "status": "dedicated",
+  "name": "MobileHelp",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from MobileHelp's public FAQ and Terms and Conditions pages and the public MobileHelp member portal sign-in page (mobilehelp.carehub365.com) only; never signed in. The portal sign-in is one page: 'Email, mobile phone or username', Password, 'Sign In', 'Forgot Password?' and 'Register Today!'; no MFA is described. The FAQ says personal information can be updated in the MobileHelp app or web portal or by phone, and service is month-to-month; no public MobileHelp page describes paying online, so pay_online is inferred from the member portal (the same CareHub365 sign-in as Medical Guardian's MyGuardian, whose Billing tab is documented) and pay_by_phone is inferred. The Terms (sections 4-6) say billing starts at purchase and renewals (monthly, quarterly or annual) are withdrawn automatically from the default payment method, so AutoPay is modelled as supported (default billing); credit cards may carry a surcharge that debit or ACH avoids (no amount published, so no fee is modelled). Cancellation is by phone (1-800-992-0616) or by mail, with a 90-day minimum, leased-device return to Sharon Hill PA, up to $50 restocking and a $350 non-return fee: cancel_service is phone-only. No payment-plan or future-dated payment doc: payment_arrangement is phone-only (inferred), scheduled_payment unknown. Plan prices are not published on these pages (only a promotional Elite price), so the family plans remain. Review 2026-10-09: removed an invented semi-annual billing cycle and the claim that the FAQ documents online billing updates; pay_online and pay_by_phone downgraded to inferred.",
+  "officialDomains": [
+    "mobilehelp.com",
+    "carehub365.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.mobilehelp.com/pages/faqs",
+      "title": "MobileHelp FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.mobilehelp.com/pages/terms-and-conditions",
+      "title": "MobileHelp Terms and Conditions",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://mobilehelp.carehub365.com/",
+      "title": "MobileHelp | Login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "MobileHelp",
+    "shortName": "MobileHelp",
+    "primary": "#0a5c8a",
+    "accent": "#2e6b30",
+    "monogram": "MH"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Register Today!",
+    "forgot": "Forgot Password?",
+    "username": "Email, mobile phone or username",
+    "dashboard": "Member Portal",
+    "viewBill": "Billing",
+    "autopay": "Automatic Renewal",
+    "cancel": "Cancel Membership",
+    "help": "FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Register Today!",
+        "page": "register"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Member Portal",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Renewal",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel Membership",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://mobilehelp.carehub365.com/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://mobilehelp.carehub365.com/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mobilehelp.com/pages/terms-and-conditions"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.mobilehelp.com/pages/terms-and-conditions",
+      "note": "Membership cannot be cancelled online. Call 1-800-992-0616 or write to MobileHelp Cancellations (90-day minimum; leased devices must be returned).",
+      "channel": "phone",
+      "phone": "8009920616"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "note": "Payment plans are not offered online. Call Member Support at 1-877-827-6207 about your balance.",
+      "channel": "phone",
+      "phone": "8778276207"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "inferred",
+      "phone": "8778276207"
+    }
+  },
+  "billing": {
+    "source": "https://www.mobilehelp.com/pages/terms-and-conditions",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "faq",
+      "title": "Billing and membership FAQ",
+      "topic": "faq",
+      "paragraphs": [
+        "MobileHelp service is month-to-month with no long-term contract, and the monitoring plan includes cellular service on the AT&T network.",
+        "You can update your personal information in the MobileHelp app or web portal, or call Member Support at 1-877-827-6207 (weekdays 8 a.m. to 8 p.m. ET, weekends 9 a.m. to 5 p.m. ET).",
+        "Standard Medicare does not pay for medical alert devices, but some Medicare Advantage, Medicaid and private plans may cover or reimburse them."
+      ],
+      "source": "https://www.mobilehelp.com/pages/faqs"
+    },
+    {
+      "slug": "autopay",
+      "title": "How automatic renewal billing works",
+      "topic": "autopay",
+      "paragraphs": [
+        "Billing starts when you buy. Your membership renews automatically each period you chose (monthly, quarterly or annually) and the fee is taken from the default payment method on file until you cancel.",
+        "Major credit and debit cards are accepted. A surcharge may apply to credit cards; paying by debit card or ACH bank transfer avoids it.",
+        "If a payment fails or is declined, service may be suspended until a valid payment is received."
+      ],
+      "source": "https://www.mobilehelp.com/pages/terms-and-conditions"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your membership",
+      "topic": "account",
+      "paragraphs": [
+        "Call 1-800-992-0616 or write to Mobile Help, Attn: Cancellations, in Philadelphia. MobileHelp confirms the cancellation in writing, and service continues through the end of the paid period.",
+        "Every membership has a 90-day minimum commitment; cancelling sooner does not reduce what is owed for that period.",
+        "Leased devices must be returned at your expense to 106 Henderson Drive, Sharon Hill, PA 19079 within 30 days of your cancellation notice, or a $350 non-return fee applies. A restocking fee of up to $50 can be deducted from any refund.",
+        "Prepaid plans get a prorated refund for unused time beyond the 90-day minimum; monthly plans are not refunded for partial periods."
+      ],
+      "source": "https://www.mobilehelp.com/pages/terms-and-conditions"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "minimum-commitment",
+        "intent": "Before signing up for an annual MobileHelp plan, find out from the website how long the minimum commitment period is for every membership. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "90",
+              "three month",
+              "3 month"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "90",
+            "three month",
+            "3 month"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Every membership has a 90-day (three-month) minimum commitment."
+          }
+        ]
+      },
+      {
+        "slug": "avoid-card-surcharge",
+        "intent": "You want to avoid any extra charge when paying MobileHelp. Using the website, find out which payment types avoid the credit card surcharge. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "debit",
+              "ACH"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "debit",
+            "ACH"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fee"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Pay with a debit card or an ACH bank transfer to avoid the credit card surcharge."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email, mobile phone or username"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "register"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-992-0616"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "$350",
+        "Sharon Hill"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "ACH"
+    }
+  ]
+}

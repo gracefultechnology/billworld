@@ -1,0 +1,135 @@
+{
+  "id": "davita-kidney-care-93d51a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "DaVita Kidney Care",
+  "category": "medical",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public davita.com Patient Payment Portal FAQ (no sign-in). Online payments go through InstaMed (Pay now leaves davita.com). InstaMed asks for the patient's first and last name, the 7-digit patient account number and the 5-digit center number from the statement (center number is not expressible as a lookup field; modelled with account number + last name). Sign in with an InstaMed username/password, create an account, or Continue as guest; an account shows payment history and saves payment methods. Visa, MasterCard, American Express, Discover and e-check (Add Bank Account). There is explicitly no recurring payment option. Paperless is not described (statements are mailed monthly), so it is modelled as not offered online (inferred). Payment plans are not described; patients who cannot pay talk to the center social worker or insurance counselor (modelled as offline, inferred). Cancelling an incorrect payment: call Patient Resources 1-866-580-6470 (M-Th 6-3, F 6-noon PT) or email. Bank statements show DaVita Dialysis.",
+  "officialDomains": ["davita.com"],
+  "sources": [
+    { "url": "https://davita.com/care-support/tools/patient-payment-portal/", "title": "Patient Payment Portal", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://davita.com/care-support/insurance-financial-management/", "title": "Insurance & Financial Management", "fetchedAt": "2026-10-09", "kind": "plans" }
+  ],
+  "brand": { "shortName": "DaVita", "primary": "#005b96", "accent": "#003f69", "monogram": "DV" },
+  "labels": {
+    "payBill": "Pay now",
+    "guestPay": "Continue as guest",
+    "accountNumber": "Patient account number",
+    "amountDue": "Balance Due",
+    "history": "Payment history",
+    "wallet": "Payment methods",
+    "username": "Username",
+    "help": "Patient Payment Portal FAQ",
+    "contact": "Contact Patient Resources"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay now", "page": "login" },
+      { "label": "Continue as guest", "page": "guest" },
+      { "label": "Patient Payment Portal FAQ", "page": "help" },
+      { "label": "Contact Patient Resources", "helpSlug": "contact-us" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "guestLookupFields": ["accountNumber", "lastName"],
+    "evidence": "documented_official",
+    "source": "https://davita.com/care-support/tools/patient-payment-portal/"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://davita.com/care-support/tools/patient-payment-portal/" },
+    "autopay": { "support": "unsupported", "evidence": "documented_official", "source": "https://davita.com/care-support/tools/patient-payment-portal/", "note": "The DaVita payment portal has no recurring payment option. Make each payment online, by phone at 1-866-580-6470 or by mailed check.", "channel": "none" },
+    "autopay_cancel": { "support": "not_applicable", "evidence": "documented_official", "source": "https://davita.com/care-support/tools/patient-payment-portal/" },
+    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://davita.com/care-support/tools/patient-payment-portal/", "note": "DaVita mails statements monthly after insurance processes claims; no paperless option is described.", "channel": "mail" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "source": "https://davita.com/care-support/tools/patient-payment-portal/", "note": "If you cannot pay your bill, talk with the social worker or insurance counselor at your dialysis center, or call Patient Resources at 1-866-580-6470.", "channel": "phone", "phone": "866-580-6470" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://davita.com/care-support/insurance-financial-management/" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://davita.com/care-support/tools/patient-payment-portal/", "phone": "866-580-6470" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://davita.com/care-support/tools/patient-payment-portal/" }
+  },
+  "billing": {
+    "source": "https://davita.com/care-support/tools/patient-payment-portal/",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying online with InstaMed",
+      "topic": "payments",
+      "paragraphs": [
+        "Choose Pay now to go to InstaMed, DaVita's payment partner. Enter the patient's first and last name, the 7-digit patient account number and the 5-digit center number, both printed on your statement.",
+        "Sign in with your InstaMed username and password, create an account to see payment history and save payment methods, or choose Continue as guest. After the payment is approved you can print or email a receipt.",
+        "InstaMed accepts Visa, MasterCard, American Express and Discover, plus e-checks through Add Bank Account. You may make several payments on one balance; each is a separate transaction. Card declines show at once; a returned e-check can take several days."
+      ],
+      "steps": ["Choose Pay now.", "Enter the patient name, account number and center number.", "Sign in or choose Continue as guest.", "Pick a card or bank account and the amount.", "Submit and save the receipt."],
+      "source": "https://davita.com/care-support/tools/patient-payment-portal/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Is there a recurring payment option?",
+      "topic": "autopay",
+      "paragraphs": [
+        "No. The payment portal does not offer recurring or automatic payments at this time. Pay each statement online, by phone or by mail."
+      ],
+      "source": "https://davita.com/care-support/tools/patient-payment-portal/"
+    },
+    {
+      "slug": "read-your-bill",
+      "title": "Reading your statement",
+      "topic": "billing",
+      "paragraphs": [
+        "Statements are mailed monthly after insurers process claims. Your total patient responsibility is under Balance Due. The account number at the top right starts with a letter followed by 6 or 7 digits; claim numbers and service dates are in the middle.",
+        "An explanation of benefits from your insurer is not a bill. If you disagree with the balance but the insurance listed is right, contact your insurer, which decides the patient responsibility. Payments appear on bank statements as DaVita Dialysis."
+      ],
+      "source": "https://davita.com/care-support/tools/patient-payment-portal/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Patient Resources",
+      "topic": "contact",
+      "paragraphs": [
+        "Call Patient Resources at 1-866-580-6470, Monday to Thursday 6 a.m. to 3 p.m. and Friday 6 a.m. to noon Pacific, or email PatientResources at DaVita. Call or email right away to cancel a payment made in error, or to add or change insurance."
+      ],
+      "source": "https://davita.com/care-support/tools/patient-payment-portal/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help with your bill",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you cannot afford your bill, speak with the social worker or insurance counselor at your center. DaVita insurance counselors can also help with Medicare, Medigap and Medicaid questions."
+      ],
+      "source": "https://davita.com/care-support/insurance-financial-management/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "center-number-digits",
+        "intent": "Using DaVita's payment portal help, find how many digits the center number has that InstaMed asks for. Do not make a payment or change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["5", "five"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["5", "five"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "The center number has 5 digits." }]
+      },
+      {
+        "slug": "cancel-wrong-payment-phone",
+        "intent": "You paid DaVita Kidney Care the wrong amount by mistake. Find the phone number to call to cancel an incorrect payment. Do not make another payment.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8665806470"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8665806470"] },
+        "tags": ["help", "information", "contact"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "1-866-580-6470" }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "home", "contains": "no recurring payment option" },
+    { "page": "guest", "contains": ["Patient account number"] },
+    { "page": "login", "contains": ["Username"] },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "1-866-580-6470" }
+  ]
+}

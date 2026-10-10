@@ -1,0 +1,417 @@
+{
+  "id": "frontier-frontier-fiber-frontier-internet-d96566",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Frontier (Frontier Fiber / Frontier Internet)",
+  "category": "internet",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public frontier.com help center pages only (no sign-in). Frontier is now owned by Verizon but keeps its own frontier.com billing. Sign-in at frontier.com/login (ssoparent.frontier.com) shows username and password on one form; Frontier IDs are the email you sign in with (forgot-ID recovery shows the sign-in email), so identifier=email and loginSteps=1 (observed 2026-10-09: Email and Password on one form, SIGN IN, Create an account). Express Pay needs the account number plus email or ZIP. Online: My Bills > Go to My Billing, Make a Payment under My Payments; one-time payments can be scheduled up to 45 days ahead (maxDaysAhead=45). Auto Pay pays the balance on the due date from a card or bank account (set up from the 'Auto Pay is off' tile > Set up Auto Pay > Enroll; turn off from 'Auto Pay is on' > Turn off Auto Pay). Paperless: 'Paperless Billing is off' tile > Enroll in Paperless. A Printed Bill fee applies to internet customers on paper bills (amount not published on the FAQ; exemptions for voice-only, Lifeline/affordable programs and disability waivers). Automated phone payments at 800-917-7489 and mail are free; CheckFreePay in-person payments cost $1.50. Cancelling (review 2026-10-09): the help center article on online-account changes says cancelling needs a call to 800-921-8101 (documented), and the public cancel page offers 1-855-956-4702 for retention; the cancel topic page now returns Access Denied and was dropped from sources. The cancel page fine print lists a $4.50/mo printed bill and a $50 equipment restocking fee per household on disconnect. Subscriptions are billed a month in advance and cancellations take effect at the end of the billing cycle with no partial-month credits; equipment goes back via The UPS Store with a QR code within 30 days or up to $500 per device. No payment arrangement policy is published, so the family default is kept. Plan prices are not modelled.",
+  "officialDomains": [
+    "frontier.com"
+  ],
+  "sources": [
+    {
+      "url": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill",
+      "title": "Pay My Frontier Bill | Frontier Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://frontier.com/helpcenter/billing/how-to-manage-auto-pay",
+      "title": "Manage Auto Pay | Frontier Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://frontier.com/helpcenter/billing/enrolling-in-paperless-or-printed-billing",
+      "title": "Enroll in Paperless or Printed Billing | Frontier Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://frontier.com/helpcenter/billing/billing-faqs",
+      "title": "Frontier Billing Frequently Asked Questions | Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://frontier.com/helpcenter/billing/how-to-view-your-bill",
+      "title": "How to View Your Bill | Frontier Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://frontier.com/contact-us",
+      "title": "Frontier Customer Service - Phone Numbers",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://frontier.com/login",
+      "title": "Frontier Login - Sign In to your Frontier Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://frontier.com/helpcenter/account/make-changes-to-online-account",
+      "title": "How to make changes in your online account | Frontier Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://frontier.com/resources/cancel-service",
+      "title": "Cancel, Pause, Move or Upgrade Your Frontier Internet",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Frontier",
+    "shortName": "Frontier",
+    "primary": "#c4001f",
+    "accent": "#1a1a1a",
+    "monogram": "F"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "viewBill": "My Billing",
+    "payBill": "Make a Payment",
+    "statements": "Manage statements",
+    "history": "Activity",
+    "guestPay": "Express Pay",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "Email",
+    "help": "Help Center",
+    "register": "Create an account"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Express Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Billing FAQs",
+        "helpSlug": "billing-faqs"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "My Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage statements",
+        "page": "statements"
+      },
+      {
+        "label": "Activity",
+        "page": "history"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://frontier.com/login"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://frontier.com/helpcenter/billing/how-to-manage-auto-pay"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://frontier.com/helpcenter/billing/how-to-manage-auto-pay"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://frontier.com/helpcenter/billing/enrolling-in-paperless-or-printed-billing"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://frontier.com/helpcenter/account/make-changes-to-online-account",
+      "note": "Frontier service can't be cancelled in your online account. Call 1-800-921-8101 to cancel; service ends on the last day of your billing cycle.",
+      "channel": "phone",
+      "phone": "8009218101"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill",
+      "phone": "8009177489"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill"
+    }
+  },
+  "billing": {
+    "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "scheduled": {
+      "maxDaysAhead": 45
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Pay my Frontier bill",
+      "paragraphs": [
+        "Sign in, then choose Make a Payment under My Payments (or in the MyFrontier app) and pick the amount, date and payment method. You can schedule a one-time payment up to 45 days ahead and edit or cancel it later.",
+        "Express Pay needs no sign-in: enter your account number and either your email or ZIP code, then your payment details.",
+        "The automated line at 800-917-7489 takes bank accounts, debit and major credit cards with no fee; have your 17-digit account number ready. Mailed checks or money orders (no fee) go to Frontier, PO Box 740407, Cincinnati, OH 45274-0407. Paying in person at a CheckFreePay location costs $1.50."
+      ],
+      "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Manage Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay pays your balance on the due date each month from a credit or debit card or bank account. It starts right away unless your current bill is due within 24 hours; in that case make a payment now.",
+        "To set it up, open My Billing, find the tile that says Auto Pay is off, select Set up Auto Pay, choose a payment method, accept the terms and select Enroll. To turn it off, open Auto Pay from Quick links and select Turn off Auto Pay on the Auto Pay is on tile."
+      ],
+      "steps": [
+        "Sign in and select Go to My Billing.",
+        "On the Auto Pay is off tile, select Set up Auto Pay.",
+        "Choose or add a payment method and accept the terms.",
+        "Select Enroll."
+      ],
+      "source": "https://frontier.com/helpcenter/billing/how-to-manage-auto-pay"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign in, select Go to My Billing in the My Bills tile, find the tile that says Paperless Billing is off, select Enroll in Paperless and then OK. If Paperless Billing stays off you keep getting a printed bill."
+      ],
+      "steps": [
+        "Sign in.",
+        "Select Go to My Billing.",
+        "On the Paperless Billing is off tile, select Enroll in Paperless.",
+        "Select OK."
+      ],
+      "source": "https://frontier.com/helpcenter/billing/enrolling-in-paperless-or-printed-billing"
+    },
+    {
+      "slug": "billing-faqs",
+      "title": "Billing FAQs: printed bill fee and late charges",
+      "topic": "billing",
+      "paragraphs": [
+        "Internet customers who get printed bills pay a Printed Bill fee ($4.50 a month in Frontier's current offer terms); Paperless Billing is free. Customers with only traditional voice service, customers in programs such as Lifeline or California affordable broadband programs, and customers with disabilities who asked for a waiver are exempt.",
+        "If a payment isn't received by the due date, a late fee may be charged; it appears under One-Time Charges. If service is suspended for non-payment, pay right away through your account, the app, Express Pay or 800-917-7489; restoring service can take up to 24 hours."
+      ],
+      "source": "https://frontier.com/helpcenter/billing/billing-faqs"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel or disconnect service",
+      "topic": "account",
+      "paragraphs": [
+        "Cancelling is one of the changes Frontier doesn't allow in the online account; call 1-800-921-8101 to cancel. Frontier's cancel page also offers a line (1-855-956-4702) to talk about alternatives first, such as moving service or pausing it for one to nine months.",
+        "Service is billed a full month ahead, so cancellation and any early termination fee take effect on the last day of your billing cycle, with no partial-month refunds for internet or TV. You may get up to three bills over 90 days, and a $50 equipment restocking fee per household applies when internet is disconnected.",
+        "Equipment to return is listed in your disconnect confirmation email; take it to The UPS Store with the QR code you receive within 30 days, or you may be charged up to $500 per device."
+      ],
+      "source": "https://frontier.com/helpcenter/account/make-changes-to-online-account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "in-person-fee",
+        "intent": "Using Frontier's help center, find the fee for paying a Frontier bill in person at an authorized CheckFreePay location. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "In-person payments at CheckFreePay locations cost $1.50."
+          }
+        ]
+      },
+      {
+        "slug": "schedule-window",
+        "intent": "A Frontier customer wants to schedule a one-time payment far in advance. Find in Frontier's help how many days ahead a payment can be scheduled. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "45"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "45"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "One-time payments can be scheduled up to 45 days in advance."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": "Billing FAQs"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My Billing",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "45 days",
+        "$1.50"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "billing-faqs",
+      "contains": "Printed Bill fee"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "1-800-921-8101"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Create an account"
+      ]
+    }
+  ]
+}

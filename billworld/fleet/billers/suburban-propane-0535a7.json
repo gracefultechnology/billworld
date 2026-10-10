@@ -1,0 +1,344 @@
+{
+  "id": "suburban-propane-0535a7",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Suburban Propane",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public suburbanpropane.com pages and the account.suburbanpropane.com sign-in page only (no sign-in, no registration). The real sign-in field is 'Email Address or Account Number' + Password on one page; modelled as identifier email_or_account. Registration asks for Account Number, Billing Zipcode and Email Address and then emails a temporary password. No guest/quick pay appears on the sign-in page or support pages, so guest pay is marked unsupported (observed). Online payment also accepts PayPal, Venmo, Apple Pay and Google Pay (not modelled; bank and card only). The Fees & Charges page lists a late charge, returned check fee and others but publishes no amounts, so no fees are modelled. Stopping service when moving is done with the public Are You Moving? form or by phone 24/7.",
+  "officialDomains": [
+    "suburbanpropane.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.suburbanpropane.com/support/online-bill-payments/",
+      "title": "Pay Your Bill Online | Suburban Propane",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.suburbanpropane.com/current-customers/budget-payment-plan/",
+      "title": "Budget Payment Plan - Predictable Monthly Billing",
+      "fetchedAt": "2026-10-05",
+      "kind": "plans"
+    },
+    {
+      "url": "https://account.suburbanpropane.com/",
+      "title": "Suburban Propane - Login or Register",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.suburbanpropane.com/support/residential/manage-account/",
+      "title": "Manage Account - Suburban Propane",
+      "fetchedAt": "2026-10-05",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.suburbanpropane.com/movingout/",
+      "title": "Moving? Transfer Your Propane Service | Suburban Propane",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.suburbanpropane.com/support/fees-charges/",
+      "title": "Propane Fees & Charges Explained | Suburban Propane",
+      "fetchedAt": "2026-10-05",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "shortName": "Suburban Propane",
+    "primary": "#00467f",
+    "accent": "#a6192e",
+    "monogram": "SP"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Make a Payment",
+    "autopay": "Automatic Bill Payment",
+    "paperless": "Paperless Billing",
+    "signIn": "Login",
+    "register": "Register",
+    "username": "Email Address or Account Number",
+    "cancel": "Are You Moving?",
+    "help": "Customer Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Online Bill Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Budget Payment Plan",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Are You Moving?",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "Customer Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Bill Payment",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Are You Moving?",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_account",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://account.suburbanpropane.com/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "observed_public",
+      "source": "https://account.suburbanpropane.com/",
+      "channel": "phone",
+      "phone": "800-776-7263",
+      "note": "Suburban Propane does not offer guest payments online. Log in to My Account to pay, or call 1-800-PROPANE (1-800-776-7263) any time."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suburbanpropane.com/support/online-bill-payments/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suburbanpropane.com/support/residential/manage-account/"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suburbanpropane.com/movingout/",
+      "note": "When you move, Suburban Propane transfers or discontinues your propane account. Use the moving form or call 1-800-PROPANE."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suburbanpropane.com/support/residential/manage-account/",
+      "phone": "800-776-7263"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.suburbanpropane.com/current-customers/budget-payment-plan/"
+    }
+  },
+  "billing": {
+    "source": "https://www.suburbanpropane.com/support/online-bill-payments/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Online Bill Payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay any time, day or night, from the My Account portal or the Suburban Propane app. Besides bank and card payments, the portal accepts PayPal, Venmo, Apple Pay and Google Pay.",
+        "There is no guest payment option; you need a My Account login. You can also pay by calling 1-800-PROPANE (1-800-776-7263), which is answered 24/7/365."
+      ],
+      "source": "https://www.suburbanpropane.com/support/online-bill-payments/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Bill Payment",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic Bill Payment pays your bill for you each time a bill comes due, so you never miss a payment. Set it up in the My Account portal."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Open Automatic Bill Payment.",
+        "Choose the account to draft.",
+        "Confirm enrollment."
+      ],
+      "source": "https://www.suburbanpropane.com/support/online-bill-payments/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing and email alerts",
+      "topic": "billing",
+      "paragraphs": [
+        "Request paperless billing in My Account to view your invoices and statements online instead of receiving paper bills, and turn on email alerts to stay informed about your account."
+      ],
+      "source": "https://www.suburbanpropane.com/support/residential/manage-account/"
+    },
+    {
+      "slug": "register",
+      "title": "Register for My Account",
+      "topic": "account",
+      "paragraphs": [
+        "To register, enter your Account Number, your billing ZIP code (first five digits only) and your email address, then select Continue. Your account number is written as the first four digits, a dash, and the last six digits.",
+        "Suburban Propane emails you a temporary password for your first login. After that you log in with your email address or account number and your password."
+      ],
+      "steps": [
+        "Open the My Account login page.",
+        "Enter Account Number, Billing Zipcode and Email Address.",
+        "Select Continue.",
+        "Log in with the temporary password from your email and choose a new one."
+      ],
+      "source": "https://account.suburbanpropane.com/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Budget Payment Plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "The Budget Payment Plan spreads your yearly fuel cost over 12 equal monthly bills, so weather and market changes do not swing your bill. Joining is free.",
+        "Payments are reviewed twice a year and adjusted to your actual use. The plan comes with automatic delivery, which may need credit approval. Enroll with the online form, in My Account, or by calling 1-800-PROPANE."
+      ],
+      "source": "https://www.suburbanpropane.com/current-customers/budget-payment-plan/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Are You Moving?",
+      "topic": "account",
+      "paragraphs": [
+        "If you are moving, Suburban Propane can move your propane account to your new home or discontinue it so it is ready for the next occupant. Fill out the moving form or call 1-800-PROPANE (1-800-776-7263), available 24/7/365."
+      ],
+      "source": "https://www.suburbanpropane.com/movingout/"
+    },
+    {
+      "slug": "fees-charges",
+      "title": "Fees and charges",
+      "topic": "billing",
+      "paragraphs": [
+        "Your bill can include charges such as a late charge on overdue balances, a returned check fee, tank rent, a transportation fuel surcharge, a will call fee for deliveries you schedule yourself, and a closeout (tank pickup) fee when an account is closed. Amounts depend on your location and agreement."
+      ],
+      "source": "https://www.suburbanpropane.com/support/fees-charges/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "wallet-payment-options",
+        "intent": "Using Suburban Propane's help pages, find which digital wallets or payment services (besides bank account and card) can be used to pay the bill online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Venmo"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Venmo"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "PayPal, Venmo, Apple Pay and Google Pay."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Budget Payment Plan",
+        "Are You Moving?"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address or Account Number"
+      ]
+    },
+    {
+      "page": "register",
+      "contains": "ZIP"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Automatic Bill Payment",
+        "Make a Payment"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "Venmo",
+        "1-800-776-7263"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "12"
+    }
+  ]
+}

@@ -1,0 +1,438 @@
+{
+  "id": "pacific-gas-and-electric-company-pge-000222",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Pacific Gas and Electric Company (PG&E)",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public pge.com pages only (no sign-in). Since the account-platform upgrade the username is the customer's email address and sign-in asks for a one-time security code sent by text, email or phone call (modelled as email_or_sms). Registration asks for account number, phone number and email address (entered twice) plus a security code; ZIP code is only needed for Guest Bill Pay. Three wrong codes lock the account for at least an hour (the engine models password lockout, not code lockout). Since June 9, 2025, card payments cost $1.50 for residential customers ($6.95 business personal card, 1.95% commercial card, not modelled); bank payments in My Account are free. Guest Bill Pay and pay-by-phone charge a fee on every method including bank; the format has one bank fee for all channels, so the free signed-in bank rate is kept and the guest/phone bank fee (amount not published) is noted only. Autopay ('Recurring Payments' in My Account) can use a bank account (free) or card ($1.50), pays on receipt or by the due date, and can be capped at a maximum amount; the cap is not modelled. A failed autopay payment cancels enrollment (re-enroll after 30 days; 365 days after two failures). Payment Arrangements offers Pay in Installments or Extend my Due Date (up to 30 days); the engine models one arrangement flow. PG&E publishes no residential late payment charge, so none is set. Budget Billing exists but is a billing program, not a plan price, so no plans are set.",
+  "officialDomains": [
+    "pge.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill.html",
+      "title": "Ways to Pay My PG&E Bill | PG&E",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/auto-pay.html",
+      "title": "Autopay | PG&E",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/paperless-billing.html",
+      "title": "Paperless Billing | PG&E",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.pge.com/en/account/manage-my-account/guest-bill-pay.html",
+      "title": "Guest Bill Pay | PG&E",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/payment-plan-and-due-date-extension.html",
+      "title": "Payment Plan and Due Date Extension | PG&E",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.pge.com/en/account/service-requests/start-stop-transfer-service.html",
+      "title": "Start/Stop/Transfer Service | PG&E",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.pge.com/en/account/manage-my-account/troubleshooting-pge-com-login.html",
+      "title": "PG&E Login Help | PG&E",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://pge.com/en/featured/mfa-faq.html",
+      "title": "New Account Guide | PG&E",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "PG&E",
+    "primary": "#07568b",
+    "accent": "#004070",
+    "monogram": "PG"
+  },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "autopay": "Recurring Payments",
+    "paperless": "Paperless Billing",
+    "signIn": "Sign In",
+    "signOut": "Log Out",
+    "forgot": "Forgot your Username or Password?",
+    "guestPay": "Pay as Guest",
+    "dashboard": "Account Dashboard",
+    "arrangement": "Payment Arrangements",
+    "cancel": "Start, Stop or Transfer Service",
+    "help": "Help Center",
+    "username": "Username (email address)"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Pay as Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plans & Extensions",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Start, Stop or Transfer Service",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Arrangements",
+        "page": "arrangement"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Start, Stop or Transfer Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "registrationFields": [
+      "accountNumber",
+      "phone",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.pge.com/en/account/manage-my-account/troubleshooting-pge-com-login.html",
+    "socialProviders": []
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pge.com/en/account/manage-my-account/guest-bill-pay.html",
+      "note": "Guest Bill Pay needs only the account number and ZIP code; a fee applies to every guest payment."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/auto-pay.html"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/auto-pay.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/paperless-billing.html"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/payment-plan-and-due-date-extension.html"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pge.com/en/account/service-requests/start-stop-transfer-service.html",
+      "note": "Stop service from the Account Dashboard; customers removing gas appliances need an in-person technician appointment."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill.html",
+      "phone": "8777048470"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill.html",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 150,
+      "evidence": "documented_official",
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/auto-pay.html"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Autopay (Recurring Payments)",
+      "topic": "autopay",
+      "paragraphs": [
+        "Autopay pays your PG&E bill automatically from a checking or savings account, or from a Visa, Mastercard, Discover or American Express card. Bank payments have no fee; a residential card payment costs $1.50.",
+        "You decide when it pays (as soon as the bill arrives, or by the due date) and how much (the full balance, or anything up to a maximum you set). Anything over your maximum has to be paid separately.",
+        "Autopay starts with your next statement, so pay the bill you already have yourself. You can cancel at any time.",
+        "If an autopay payment fails, for example because of insufficient funds or a closed account, recurring payments are cancelled. After a first cancellation you can enroll again after 30 days; after two or more failed payments you must wait 365 days."
+      ],
+      "steps": [
+        "Sign in and open the All payments tasks menu.",
+        "Choose Payment Methods and add a bank account or card if needed.",
+        "Choose Recurring Payments, then pick the payment method, schedule and amount.",
+        "Select Save, then Submit Recurring Payment."
+      ],
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/auto-pay.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "With paperless billing PG&E emails you when your statement is ready instead of mailing a paper bill. You can also choose alerts such as payment reminders by email or text.",
+        "Your online account shows up to 24 months of account history."
+      ],
+      "steps": [
+        "Sign in to your PG&E account (or create one).",
+        "Under Billing, choose Paperless Billing.",
+        "Set your alert preferences and save."
+      ],
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/paperless-billing.html"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay your bill",
+      "paragraphs": [
+        "Signed in to your account, a payment from a bank account is free and a card payment costs $1.50 for residential customers. These fees took effect June 9, 2025; they are set by card networks and payment processors, not PG&E.",
+        "Guest Bill Pay needs only your account number and ZIP code, but a fee applies to any payment made as a guest or by phone. Google Pay and Apple Pay can be used for payments made today; they cannot be future-dated.",
+        "You can also pay by phone at 1-877-704-8470 with your 11-digit account number, by mailing a check with your bill stub, or in person at an authorized neighborhood payment center. Cash is not accepted by mail."
+      ],
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill.html"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment plans and due date extensions",
+      "topic": "assistance",
+      "paragraphs": [
+        "Residential gas and electric customers can split a past-due balance into smaller monthly payments (Pay in Installments) or move the due date up to 30 days later (Extend my Due Date).",
+        "You cannot get one if you already have an active payment plan, no longer have PG&E service, or are on Budget Billing or the Arrearage Management Plan. Once set up, a plan or extension cannot be changed, though you may pay a plan off early without penalty.",
+        "Missing a plan or extension payment can mean you will not be offered another one and could lead to a shutoff for nonpayment."
+      ],
+      "steps": [
+        "Sign in and open the All payments tasks menu.",
+        "Choose Payment Arrangements.",
+        "Pick Pay in Installments or Extend my Due Date and follow the prompts."
+      ],
+      "source": "https://www.pge.com/en/account/billing-and-assistance/pay-my-bill/payment-plan-and-due-date-extension.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop or transfer service",
+      "topic": "account",
+      "paragraphs": [
+        "Residential customers stop service online: sign in, go to the Account Dashboard and choose Start, Stop or Transfer Service. If you are moving within PG&E territory, Transfer Service stops the old address and starts the new one in a single request.",
+        "If you are removing gas appliances, PG&E needs an in-person appointment with a technician. Customers without an online account can call 1-877-660-6789. If you do not see a stop option, a request may already be in progress."
+      ],
+      "steps": [
+        "Sign in and open the Account Dashboard.",
+        "Choose Start, Stop or Transfer Service.",
+        "Pick the address and the stop date.",
+        "Give a mailing address for the final bill, review and submit."
+      ],
+      "source": "https://www.pge.com/en/account/service-requests/start-stop-transfer-service.html"
+    },
+    {
+      "slug": "sign-in-help",
+      "title": "Signing in to your PG&E account",
+      "topic": "account",
+      "paragraphs": [
+        "Your username is the email address you registered with. Sign-in also asks for a one-time security code, sent by text, email or phone call; it can take up to 30 minutes to arrive and stays valid for an hour.",
+        "Three wrong security codes lock the account temporarily; wait at least an hour before trying again. To register you need your PG&E account number, your phone number and an email address, which can be used for only one account.",
+        "Use Forgot your Username or Password? on the sign-in page to recover your username or reset your password."
+      ],
+      "source": "https://www.pge.com/en/account/manage-my-account/troubleshooting-pge-com-login.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-lookup",
+        "intent": "Using PG&E's help pages, find out how much PG&E's payment provider charges a residential customer to pay the bill with a credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.50",
+              "1.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.50",
+            "1.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A residential card payment costs $1.50; bank account payments are free."
+          }
+        ]
+      },
+      {
+        "slug": "extension-max-days",
+        "intent": "Find out how many days PG&E's due date extension can push your bill's due date out. Do not set up an arrangement or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "arrangement"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 30 days into the future."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Ways to Pay",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Recurring Payments",
+        "Payment Arrangements"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "$1.50",
+        "365 days"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "30 days"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    }
+  ]
+}

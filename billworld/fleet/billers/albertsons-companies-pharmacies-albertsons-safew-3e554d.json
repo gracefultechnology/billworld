@@ -1,0 +1,126 @@
+{
+  "id": "albertsons-companies-pharmacies-albertsons-safew-3e554d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Albertsons Companies pharmacies",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public safeway.com / albertsons.com pharmacy pages and an Albertsons Companies press release (no sign-in; the Rx Payment Manager page was only opened, nothing entered). In-store pickups are paid and signed for at the pharmacy; in-app prepay for in-store pickup is described as a future release. Eligible prescriptions can be delivered or shipped, and since April 2026 prescriptions can be prepaid when ordered for free DriveUp & Go curbside pickup (exclusions: refrigerated/frozen, first fills of controlled drugs, REMS, pseudoephedrine, compounds, Medicare Part B glucose supplies). The pharmacy site's More menu links an Rx Payment Manager whose public page is titled Guest payment / Locate your pharmacy record, so guest payment is supported (observed); its lookup fields are not visible without scripts, so the family Quick Pay fields are kept. The Health & Pharmacy profile needs a unique email and phone number and is separate from older app credentials; it is deleted from Profile & Settings > Privacy Center > Delete Profile. No AutoPay, payment plan or paperless bill is described (unsupported, inferred). Bank-account payment is a simulation contract.",
+  "officialDomains": ["albertsons.com", "safeway.com", "albertsonscompanies.com"],
+  "sources": [
+    { "url": "https://www.safeway.com/pharmacy/health-faqs.html", "title": "Health and Pharmacy FAQs", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.safeway.com/pharmacy/prescriptions.html", "title": "Pharmacy prescriptions (Rx Payment Manager link)", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.albertsons.com/health/pharmacy/managepayment?op=ch", "title": "Rx: Guest payment | Locate your pharmacy record", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.albertsonscompanies.com/newsroom/press-releases/news-details/2026/Albertsons-Companies-Expands-Free-Curbside-Prescription-Pickup-Nationwide-Giving-Customers-More-Flexibility-and-Convenience/default.aspx", "title": "Albertsons Companies expands free curbside prescription pickup nationwide", "fetchedAt": "2026-10-09", "kind": "other" }
+  ],
+  "brand": { "displayName": "Albertsons Companies Pharmacy", "shortName": "Albertsons Pharmacy", "primary": "#00529f", "accent": "#1a4a7a", "monogram": "AP" },
+  "labels": {
+    "signIn": "Log In",
+    "register": "Set up an online account",
+    "guestPay": "Rx Payment Manager",
+    "dashboard": "Dashboard",
+    "profile": "Profile & Settings",
+    "help": "Health FAQs",
+    "payBill": "Prepay",
+    "wallet": "Payment methods"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Set up an online account", "page": "register" },
+      { "label": "Rx Payment Manager", "page": "guest" },
+      { "label": "Health FAQs", "page": "help" }
+    ],
+    "account": [
+      { "label": "Dashboard", "page": "dashboard" },
+      { "label": "Prepay", "page": "pay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Payment methods", "page": "wallet" },
+      { "label": "Profile & Settings", "page": "profile" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://www.albertsons.com/health/pharmacy/managepayment?op=ch" },
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.albertsonscompanies.com/newsroom/press-releases/news-details/2026/Albertsons-Companies-Expands-Free-Curbside-Prescription-Pickup-Nationwide-Giving-Customers-More-Flexibility-and-Convenience/default.aspx" },
+    "autopay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.safeway.com/pharmacy/health-faqs.html", "note": "There is no AutoPay for prescriptions. Pay at the pharmacy when you pick up, prepay a DriveUp & Go or delivery order, or use Rx Payment Manager.", "channel": "in_person" },
+    "autopay_cancel": { "support": "not_applicable", "evidence": "inferred", "source": "https://www.safeway.com/pharmacy/health-faqs.html" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "source": "https://www.safeway.com/pharmacy/health-faqs.html", "note": "Payment plans are not offered for prescriptions. Talk to your store pharmacy.", "channel": "in_person" },
+    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://www.safeway.com/pharmacy/health-faqs.html", "note": "The pharmacy does not mail bills, so there is no paperless enrollment.", "channel": "none" },
+    "scheduled_payment": { "support": "unsupported", "evidence": "inferred", "source": "https://www.safeway.com/pharmacy/health-faqs.html", "note": "Payments are made at pickup or when you place an order; they cannot be scheduled ahead.", "channel": "none" }
+  },
+  "billing": {
+    "source": "https://www.safeway.com/pharmacy/health-faqs.html",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying for prescriptions",
+      "topic": "payments",
+      "paragraphs": [
+        "For in-store pickup you pay and sign at the pharmacy when your prescriptions are ready; prepaying in the app for in-store pickup is planned for a later release. Eligible prescriptions can instead be delivered or shipped.",
+        "With free DriveUp & Go curbside pickup you order online or in the app, choose a pickup time and prepay; staff bring the prescriptions to your car. No grocery order is required. Not eligible: refrigerated or frozen medicines, first fills of controlled medicines, REMS medicines, pseudoephedrine, compounds, and glucose testing supplies billed to Medicare Part B.",
+        "Rx Payment Manager, under More on the pharmacy site, opens a guest payment page where you locate your pharmacy record."
+      ],
+      "source": "https://www.safeway.com/pharmacy/health-faqs.html"
+    },
+    {
+      "slug": "driveup-and-go",
+      "title": "DriveUp & Go prescription pickup",
+      "topic": "payments",
+      "paragraphs": [
+        "Since April 2026 every Albertsons Companies pharmacy offers free curbside prescription pickup through DriveUp & Go. Order online or in the app, pick a time during the pharmacy's DriveUp & Go hours, and prepay when you place the order."
+      ],
+      "source": "https://www.albertsonscompanies.com/newsroom/press-releases/news-details/2026/Albertsons-Companies-Expands-Free-Curbside-Prescription-Pickup-Nationwide-Giving-Customers-More-Flexibility-and-Convenience/default.aspx"
+    },
+    {
+      "slug": "guest-pay",
+      "title": "Rx Payment Manager (guest payment)",
+      "topic": "payments",
+      "paragraphs": [
+        "Rx Payment Manager lets you pay without logging in: first locate your pharmacy record, then pay. Have your prescription or pharmacy details ready."
+      ],
+      "source": "https://www.albertsons.com/health/pharmacy/managepayment?op=ch"
+    },
+    {
+      "slug": "register",
+      "title": "Health & Pharmacy account",
+      "topic": "account",
+      "paragraphs": [
+        "The digital pharmacy is free in the grocery app. Each Health & Wellness account needs its own email address and phone number; if you already registered, log in and use the forgot PIN prompt. Credentials from the older pharmacy app do not carry over, so create a new Health and Pharmacy profile.",
+        "Refills and vaccine scheduling work without an account, but Manage Prescriptions stays greyed out until you link your pharmacy records and create an account."
+      ],
+      "source": "https://www.safeway.com/pharmacy/health-faqs.html"
+    },
+    {
+      "slug": "delete-profile",
+      "title": "Updating or deleting your profile",
+      "topic": "account",
+      "paragraphs": [
+        "Open Profile & Settings from the initials circle at the top right of the Dashboard to update your details. To delete your Health & Pharmacy account, open Profile & Settings, choose Privacy Center, then Delete Profile."
+      ],
+      "source": "https://www.safeway.com/pharmacy/health-faqs.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "curbside-exclusion",
+        "intent": "Can my grandfather prepay a refrigerated insulin prescription for DriveUp & Go curbside pickup at Albertsons Pharmacy? Check the pharmacy help and answer yes or no with the reason; do not pay anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["not eligible", "excluded", "cannot", "can't", "no:", "no,", "no."] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["not eligible", "excluded", "cannot", "can't", "no:", "no,", "no."] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "No: refrigerated medicines are not eligible for DriveUp & Go pickup." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "label": "signIn" },
+    { "page": "helpArticle", "slug": "delete-profile", "contains": "Privacy Center" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "DriveUp & Go" }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "id": "comed-commonwealth-edison-4c6870",
+  "version": 1,
+  "status": "dedicated",
+  "name": "ComEd (Commonwealth Edison)",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public comed.com and secure.comed.com pages only (no sign-in; pages are script-rendered, read in a browser without entering anything). The sign-in page is a single form titled 'Sign in to Your Account' with Email and Password and a Continue button (one step); any verification-code step after it is not described publicly, so MFA is left at the family default. Guest payment ('Continue as a Guest') is same-day only and accepts a bank account or card, verified either by phone number + last 4 of SSN/TIN or by account number + ZIP (or last 4 of SSN/TIN); the format models account number + ZIP. Signed-in customers can schedule future payments. AutoPay is bank-only and free. Card convenience fees are not stated on the current payment pages, so none is modelled. Two arrangement products exist: the Deferred Payment Arrangement (down payment, then 4-12 monthly installments) and a Due Date Extension (21 calendar days, twice a year for residential); the engine models one arrangement flow. A 1.5% monthly late charge appears in ComEd handbooks that were not read here, so no late fee is modelled (the extension page only says a standard late fee still applies). Stop service is a Start, Move, or Stop request; cancelling a request or changing its date needs a call to 1-800-334-7661.",
+  "officialDomains": ["comed.com"],
+  "sources": [
+    { "url": "https://www.comed.com/my-account/my-dashboard/payment-options", "title": "Payment Options | ComEd", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.comed.com/my-account/my-dashboard/payment-options/automatic-payment", "title": "Automatic Payment | ComEd", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.comed.com/my-account/my-dashboard/payment-options/pay-by-mail-phone", "title": "Pay by Mail or Phone | ComEd", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.comed.com/my-account/my-dashboard/payment-options/payment-arrangements", "title": "Payment Arrangements | ComEd", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://www.comed.com/my-account/my-dashboard/payment-options/due-date-extension", "title": "Due Date Extension | ComEd", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://www.comed.com/my-account/my-dashboard/billing-options/paperless-ebill", "title": "Paperless eBill | ComEd", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://secure.comed.com/payments/payonline/guest", "title": "Payment | ComEd", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://secure.comed.com/MyAccount/MyBillUsage/Pages/Secure/MyBillUsage.aspx", "title": "Sign in to Your Account | ComEd", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://secure.comed.com/CustomerServices/service/landing", "title": "Customer Services | ComEd", "fetchedAt": "2026-10-09", "kind": "cancel" }
+  ],
+  "brand": { "shortName": "ComEd", "primary": "#005ea5", "accent": "#00427a", "monogram": "CE" },
+  "labels": {
+    "autopay": "AutoPay",
+    "paperless": "Paperless eBill",
+    "signIn": "Sign In",
+    "register": "Register Now",
+    "forgot": "Forgot password?",
+    "guestPay": "Pay as a Guest",
+    "arrangement": "Payment Arrangements",
+    "cancel": "Stop My Service",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign In", "page": "login" },
+      { "label": "Register Now", "page": "register" },
+      { "label": "Pay as a Guest", "page": "guest" },
+      { "label": "Payment Options", "helpSlug": "pay-your-bill" },
+      { "label": "Start, Move, or Stop Service", "helpSlug": "cancel-service" },
+      { "label": "Customer Support", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Account", "page": "dashboard" },
+      { "label": "Pay Bill", "page": "pay" },
+      { "label": "AutoPay", "page": "autopay" },
+      { "label": "Paperless eBill", "page": "paperless" },
+      { "label": "Payment Arrangements", "page": "arrangement" },
+      { "label": "Stop My Service", "page": "cancel" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "observed_public",
+    "source": "https://secure.comed.com/MyAccount/MyBillUsage/Pages/Secure/MyBillUsage.aspx"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://secure.comed.com/payments/payonline/guest", "note": "Guest payments are same-day only; future-dated payments need a My Account sign-in." },
+    "scheduled_payment": { "support": "supported", "evidence": "observed_public", "source": "https://secure.comed.com/payments/payonline/guest" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.comed.com/my-account/my-dashboard/payment-options/automatic-payment", "note": "AutoPay draws from a bank account only, with no fee." },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.comed.com/my-account/my-dashboard/billing-options/paperless-ebill" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.comed.com/my-account/my-dashboard/payment-options/payment-arrangements" },
+    "cancel_service": { "support": "supported", "evidence": "observed_public", "source": "https://secure.comed.com/CustomerServices/service/landing", "note": "Stop requests are made online; to cancel a request or change its date, call 1-800-334-7661." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.comed.com/my-account/my-dashboard/payment-options/pay-by-mail-phone", "phone": "8005889477" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.comed.com/my-account/my-dashboard/payment-options/pay-by-mail-phone" }
+  },
+  "billing": {
+    "source": "https://www.comed.com/my-account/my-dashboard/payment-options",
+    "fees": { "bankCents": 0, "evidence": "documented_official", "source": "https://www.comed.com/my-account/my-dashboard/payment-options/automatic-payment" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank"] }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "With ComEd AutoPay your monthly bill is taken straight from your bank account, so you do not have to sign in each month to pay. Paying from a bank account through AutoPay is free.",
+        "For questions about eligibility or enrollment, call the Customer Care Center at 1-800-334-7661."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Under Payment Options choose Automatic Payment, then Enroll in AutoPay.",
+        "Enter or pick your bank account and confirm."
+      ],
+      "source": "https://www.comed.com/my-account/my-dashboard/payment-options/automatic-payment"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Payment options",
+      "paragraphs": [
+        "Signed in, you can pay today or schedule a future payment from a bank account or a credit or debit card. As a guest you can make a same-day payment with a bank account or card; you verify with your phone number and the last 4 digits of your SSN/TIN, or with your account number and ZIP code (or last 4 of SSN/TIN).",
+        "To pay by phone call 1-800-588-9477 (business customers 1-877-426-6331) with a credit card, debit card or bank account. To pay by mail, make the check payable to ComEd, write your account number on it, and allow a week for delivery to P.O. Box 6111, Carol Stream, IL 60197-6111. You can also pay in person at an authorized agent."
+      ],
+      "source": "https://secure.comed.com/payments/payonline/guest"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Deferred Payment Arrangement",
+      "topic": "assistance",
+      "paragraphs": [
+        "A Deferred Payment Arrangement helps you pay off a large or past-due balance. After a down payment, the rest is spread over 4 to 12 monthly installments depending on eligibility, paid on top of each regular bill.",
+        "You qualify if your residential account is active (not shut off for nonpayment), you are not already on an arrangement, you have not defaulted on one in the last 12 months, and you have no open bankruptcy. Every bill must be paid in full each month or the arrangement defaults. To pay the arrangement off early, contact a ComEd representative.",
+        "You can check eligibility online after signing in, or enroll by calling 1-800-334-7661."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Open Payment Arrangements and choose Sign in to Check Eligibility.",
+        "Review the down payment and installment terms and accept."
+      ],
+      "source": "https://www.comed.com/my-account/my-dashboard/payment-options/payment-arrangements"
+    },
+    {
+      "slug": "due-date-extension",
+      "title": "Due Date Extension",
+      "topic": "assistance",
+      "paragraphs": [
+        "Eligible residential customers can push a bill's due date out by 21 calendar days, up to twice a year (commercial customers: 14 days, once a year). You check eligibility with one click and accept the terms; no forms are needed.",
+        "You are not eligible if you already have an extension or a payment arrangement, defaulted on an extension in the last 12 months, are disconnected or pending disconnection, have an automatic payment scheduled within five days, have a Summary Bill account or are on Budget Billing.",
+        "A standard late payment fee is still charged after the original due date, but the balance will not go to collections. Not paying by the new date can make you ineligible for future extensions, and the extension does not move later bills' due dates."
+      ],
+      "source": "https://www.comed.com/my-account/my-dashboard/payment-options/due-date-extension"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless eBill",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless eBill replaces your paper bill with an online bill. Enroll from My Account under Billing Options."
+      ],
+      "steps": [ "Sign in to My Account.", "Under Billing Options, choose Paperless eBill.", "Select Enroll in eBill and confirm." ],
+      "source": "https://www.comed.com/my-account/my-dashboard/billing-options/paperless-ebill"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, move or stop your service",
+      "topic": "account",
+      "paragraphs": [
+        "ComEd takes start, move and stop requests online, for dates up to about four weeks ahead. Choose Stop My Service and pick your stop date and where the final bill should go.",
+        "You can review an in-progress request and update details such as your mailing address with View My Request. To cancel a request or change its scheduled date, call 1-800-334-7661."
+      ],
+      "source": "https://secure.comed.com/CustomerServices/service/landing"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "extension-length",
+        "intent": "Using ComEd's help pages, find out by how many calendar days a residential customer can extend a bill's due date. Do not request an extension or change anything.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["21"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["21"] },
+        "tags": ["help", "information", "arrangement"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Residential customers can extend the due date by 21 calendar days, up to twice a year." } ]
+      },
+      {
+        "slug": "dpa-max-months",
+        "intent": "Find the longest number of months ComEd lets you spread a past-due balance over with a Deferred Payment Arrangement. Do not enroll in anything.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["12"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["12"] },
+        "tags": ["help", "information", "arrangement"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Between 4 and 12 months, after a down payment." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "home", "contains": ["Payment Options", "Sign In"] },
+    { "page": "login", "contains": "Email" },
+    { "page": "dashboard", "signedIn": true, "contains": ["AutoPay", "Payment Arrangements"] },
+    { "page": "autopay", "signedIn": true, "notContains": ["Debit or credit card"] },
+    { "page": "helpArticle", "slug": "due-date-extension", "contains": "21 calendar days" },
+    { "page": "helpArticle", "slug": "payment-assistance", "contains": "4 to 12" },
+    { "page": "guest", "contains": "ZIP" }
+  ]
+}

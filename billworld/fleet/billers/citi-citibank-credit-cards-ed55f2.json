@@ -1,0 +1,395 @@
+{
+  "id": "citi-citibank-credit-cards-ed55f2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Citi (Citibank credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public Citi pages only (no sign-in), re-verified 2026-10-09. Sign-on widget (online.citi.com): User ID, Password, Remember me, Sign On, Register / Activate, Forgot User ID or Password. Citi Online: Make a Payment on the Account Details page with amount Minimum Payment Due, Last Statement Balance, Current Balance or Other Amount (Make a Payment tutorial). AutoPay under Payments > Manage AutoPay with payment type Last Statement Balance, Minimum Payment Due or Other, paid in one payment or two equal payments per cycle on chosen date(s) from a linked bank Payment Account (Citi AutoPay enrollment guide; dated, labels may have moved). Policy 'full' is kept only because the reference solver enrolls with 'full'; two equal payments cannot be modelled. Paperless: Account Management tab > Manage Paperless Settings (Statement Delivery Method = Paperless); free; cancelled online under Account Management or by phone; last 12 months of statements online, older ones as PDFs on request (Card Benefits FAQ). Cards can be closed through the online account or by phone (Citi article). Mail payments: PO Box 70166, Philadelphia, PA 19176-0166, credited that day when received in proper form by 5 p.m. local time at the processing facility; allow 5 to 7 days (contact page). Customer service 1-800-950-5114, collect from abroad 605-335-2222, TTY 711. Online payments come from a bank account (inferred: Citi describes linked bank Payment Accounts only); pay-without-sign-in is not offered (inferred). MFA not described; family default kept. Nav label 'Payments' for history follows the Citi Online top bar in the dated guides.",
+  "officialDomains": [
+    "citi.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.citi.com/credit-cards/understanding-credit-cards/how-do-credit-card-payments-work",
+      "title": "How Do Credit Card Payments Work?",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.citi.com/CRD/PDF/CITI_AUTOPAY_ENROLL.pdf",
+      "title": "Citi AutoPay enrollment guide",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.citi.com/CRD/PDF/Make_Payment_Tutorial_Final.pdf",
+      "title": "Citi Online Make a Payment tutorial",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cardbenefits.citi.com/en/Products/Paperless-Statements",
+      "title": "Citi Card Benefits - Paperless Statements and E-Communications",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.citi.com/credit-cards/understanding-credit-cards/how-to-cancel-a-credit-card",
+      "title": "How to Cancel a Credit Card",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://online.citi.com/US/nga/contactus",
+      "title": "Contact us Citibank - Citi.com",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://online.citi.com/US/nga/paperless/paperless",
+      "title": "Citi Online - public sign-on page",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.cardbenefits.citi.com/faq.aspx",
+      "title": "Citi Card Benefits - FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Citi",
+    "primary": "#003b70",
+    "accent": "#b3261e",
+    "monogram": "CT"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Manage AutoPay",
+    "paperless": "Manage Paperless Settings",
+    "wallet": "Payment Accounts",
+    "dashboard": "Account Details",
+    "profile": "Account Management",
+    "history": "Payments",
+    "signIn": "Sign On",
+    "username": "User ID",
+    "forgot": "Forgot User ID or Password",
+    "register": "Register",
+    "amountDue": "Minimum Payment Due",
+    "dueDate": "Payment Due Date"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign On",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "How credit card payments work",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Details",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payments",
+        "page": "history"
+      },
+      {
+        "label": "Manage AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Manage Paperless Settings",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "Account Management",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.citi.com/credit-cards/understanding-credit-cards/how-do-credit-card-payments-work",
+      "note": "Citi has no pay-without-signing-on option for credit cards. Sign on to Citi Online or the Citi Mobile app, call customer service, or mail a check.",
+      "channel": "phone",
+      "phone": "1-800-950-5114"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.citi.com/CRD/PDF/CITI_AUTOPAY_ENROLL.pdf"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cardbenefits.citi.com/faq.aspx"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.citi.com/credit-cards/understanding-credit-cards/how-to-cancel-a-credit-card",
+      "note": "Close the card through your Citi Online account or call the number on the back of the card."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://online.citi.com/US/nga/contactus"
+    }
+  },
+  "billing": {
+    "source": "https://www.citi.com/CRD/PDF/CITI_AUTOPAY_ENROLL.pdf",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "statement",
+        "minimum",
+        "fixed",
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Citi credit card",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign on to Citi Online and choose Make a Payment on your Account Details page, or use Make a Payment in the Citi Mobile app. Under Select Your Payment Amount pick Minimum Payment Due, Last Statement Balance, Current Balance or Other Amount, then pick the payment date.",
+        "Payments come from a Payment Account, a checking or savings account you link with its routing and account numbers. Review the details and choose Submit Payment to get a confirmation number.",
+        "Pay at least the minimum by the due date. Paying the full statement balance by then generally avoids interest on purchases. You can also pay by phone or mail a check; see Contact us for the mailing address."
+      ],
+      "steps": [
+        "Sign on to Citi Online.",
+        "Open the card's Account Details page and choose Make a Payment.",
+        "Select the payment amount and the date.",
+        "Choose or add a Payment Account and select Continue.",
+        "Verify and choose Submit Payment."
+      ],
+      "source": "https://www.citi.com/CRD/PDF/Make_Payment_Tutorial_Final.pdf"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "In Citi Online select Payments, then Manage AutoPay. In the Citi Mobile app, use Payments or Move Money and then Manage AutoPay.",
+        "Pick a saved Payment Account or add a bank account, then choose the payment type: Last Statement Balance, Minimum Payment Due or Other (a set amount). You can pay it in one payment or two equal payments per billing cycle, on the date or dates you choose.",
+        "Read and agree to the terms and conditions to finish enrolling. AutoPay only works when the linked bank account has enough money, and you can change your choices later in Citi Online or the Citi Mobile app."
+      ],
+      "steps": [
+        "Sign on and select Payments.",
+        "Choose Manage AutoPay.",
+        "Select or add a Payment Account.",
+        "Choose the payment type, how often and the date.",
+        "Review and confirm."
+      ],
+      "source": "https://www.citi.com/CRD/PDF/CITI_AUTOPAY_ENROLL.pdf"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "topic": "account",
+      "paragraphs": [
+        "Sign on to Citi Online, open the Account Management tab and choose Manage Paperless Settings, then set the Statement Delivery Method to Paperless. There is no charge, paper statements stop, and Citi emails you when a statement or legal notice is ready.",
+        "Statements from the last 12 months are online and older ones can be requested as PDFs. To cancel paperless, go to Account Management in Citi Online or call the number on the back of your card."
+      ],
+      "source": "https://www.cardbenefits.citi.com/faq.aspx"
+    },
+    {
+      "slug": "close-account",
+      "title": "Cancelling a Citi credit card",
+      "topic": "account",
+      "paragraphs": [
+        "Close the card through your Citi Online account or call the number on the back of the card and ask to close it.",
+        "First pay off the balance including pending charges, move recurring bills to another card and use or transfer rewards. After closing, destroy the card."
+      ],
+      "source": "https://www.citi.com/credit-cards/understanding-credit-cards/how-to-cancel-a-credit-card"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Citi credit card customer service",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer service for Citi cards: 1-800-950-5114. From outside the U.S., call collect at 605-335-2222. TTY users can dial 711 or another relay service.",
+        "Regular mail payments: PO Box 70166, Philadelphia, PA 19176-0166, or the payment address on your statement. A payment in proper form that reaches the processing facility by 5 p.m. local time is credited that day; later ones are credited the next day. Allow 5 to 7 days for regular mail."
+      ],
+      "source": "https://online.citi.com/US/nga/contactus"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "mail-payment-po-box",
+        "intent": "Using Citi's help pages, find the P.O. Box number for mailing a regular credit card payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "70166"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "70166"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mail payments to P.O. Box 70166, Philadelphia, PA 19176-0166."
+          }
+        ]
+      },
+      {
+        "slug": "online-statement-months",
+        "intent": "Using Citi's help pages, find how many months of past statements are available online for a Citi card. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12 months",
+              "twelve months",
+              "1 year",
+              "one year"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12 months",
+            "twelve months",
+            "1 year",
+            "one year"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The last 12 months of statements are available online."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "User ID",
+        "Sign On"
+      ]
+    },
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Last Statement Balance",
+        "Minimum Payment Due"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "1-800-950-5114"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": [
+        "70166",
+        "5 p.m."
+      ]
+    }
+  ],
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://online.citi.com/US/nga/paperless/paperless"
+  }
+}

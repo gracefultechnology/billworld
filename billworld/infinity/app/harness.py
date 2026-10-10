@@ -90,6 +90,25 @@ CONSTRUCTION_TASKS = {
     'task_c11': ('batavia-utilities', 'batavia-notifications-v1'),
     'task_c12': ('batavia-utilities', 'batavia-download-current-bill-v1'),
     'task_c14': ('batavia-utilities', 'batavia-enable-autopay-v1'),
+    'task_c19': ('greater-minnesota-gas', 'gmg-guest-bank-payment-v1'),
+    'task_c23': ('greater-minnesota-gas', 'gmg-autopay-enable-v1'),
+    'task_c25': ('greater-minnesota-gas', 'gmg-saved-bank-payment-v1'),
+    'task_c27': ('greater-minnesota-gas', 'gmg-paperless-v1'),
+    'task_c30': ('inframark', 'inframark-username-login-v1'),
+    'task_c31': ('inframark', 'inframark-guest-bank-payment-v1'),
+    'task_c32': ('inframark', 'inframark-guest-card-payment-v1'),
+    'task_c33': ('inframark', 'inframark-register-account-v1'),
+    'task_c34': ('inframark', 'inframark-recover-username-password-v1'),
+    'task_c35': ('onswc', 'onswc-username-login-v1'),
+    'task_c36': ('onswc', 'onswc-register-account-v1'),
+    'task_c37': ('onswc', 'onswc-recover-username-password-v1'),
+    'task_c29': ('greater-minnesota-gas', 'gmg-download-current-bill-v1'),
+    'task_c28': ('greater-minnesota-gas', 'gmg-ebill-paper-v1'),
+    'task_c26': ('greater-minnesota-gas', 'gmg-saved-card-payment-v1'),
+    'task_c24': ('greater-minnesota-gas', 'gmg-autopay-cancel-v1'),
+    'task_c22': ('greater-minnesota-gas', 'gmg-manage-wallet-v1'),
+    'task_c21': ('greater-minnesota-gas', 'gmg-read-history-balances-v1'),
+    'task_c20': ('greater-minnesota-gas', 'gmg-guest-card-payment-v1'),
     'task_c18': ('greater-minnesota-gas', 'gmg-register-account-v1'),
     'task_c17': ('greater-minnesota-gas', 'gmg-recover-username-password-v1'),
     'task_c16': ('greater-minnesota-gas', 'gmg-username-login-v1'),
@@ -162,8 +181,11 @@ def verify_run(server_url, task, result, *, prepared=None, termination='complete
     except (ValueError, TypeError):
         outcome = {}
     # Only expected answer fields are passed to grading, never state supplied by an agent.
+    numeric = {key: outcome[key] for key in ('postedBalanceCents', 'pendingPaymentCents', 'remainingBalanceCents')
+               if type(outcome.get(key)) is int and abs(outcome[key]) <= 9007199254740991}
     outcome = {key: outcome[key] for key in ('confirmation', 'billingDate', 'scheduledDate', 'statementFilename')
                if isinstance(outcome.get(key), str)}
+    outcome.update(numeric)
     score = admin(server_url, 'finish', {'episodeId': state['episodeId'], 'outcome': outcome,
         'metadata': {'termination': termination,
                      'agentSteps': result.steps if isinstance(result.steps, int) and result.steps >= 0 else None,

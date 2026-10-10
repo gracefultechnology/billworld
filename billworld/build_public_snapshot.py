@@ -57,7 +57,15 @@ class Snapshot(HTMLParser):
         values=dict(attrs)
         if tag=='img' and values.get('data-src'):
             values['src']=values['data-src']
-        if tag=='img':values['loading']='eager'
+        if tag=='img':
+            values['loading']='eager'
+            # Browsers may fetch only a responsive candidate, not the src fallback.
+            source=quote(urljoin(self.base,values.get('src','')),safe=":/?#[]@!$&'()*+,;=%")
+            if source not in self.asset_urls and not values.get('src','').startswith('data:'):
+                for candidate in (values.get('srcset') or '').split(','):
+                    parts=candidate.strip().split()
+                    if parts and quote(urljoin(self.base,parts[0]),safe=":/?#[]@!$&'()*+,;=%") in self.asset_urls:
+                        values['src']=parts[0];break
         if tag=='meta' and any(k in values for k in ('http-equiv','content')):return
         if tag=='link' and values.get('rel') not in ('stylesheet','icon'):return
         if tag=='form':tag='div';values={'class':values.get('class','')+' captured-form'}
@@ -112,6 +120,7 @@ def build(capture='gvp-home', manifest_path=None):
     wvu=capture.startswith('biller_e8f5dad7794eeb4e8b7f-')
     dental=capture.startswith('biller_3af3809e3e5a5bc0b943-')
     lockwood=capture.startswith('biller_182c5bcdeb2841397831-')
+    onswc=capture.startswith('biller_f8c0443c690b342b429a-')
     catalog=capture.startswith('biller_') and not any((municipal,wvu,dental,lockwood))
     manifest_path=pathlib.Path(manifest_path) if manifest_path else ROOT/'captures'/(capture[:27]+'-manifest.json') if catalog else ROOT/'research'/('lockwood-public.json' if lockwood else 'western-dental-public.json' if dental else 'wvu-public.json' if wvu else 'swepsonville-public.json' if municipal else 'gvp-public.json')
     research_manifest=json.loads(manifest_path.read_text())
@@ -187,7 +196,7 @@ def build(capture='gvp-home', manifest_path=None):
     recovery=wvu and capture.endswith(('-recovery-choice','-recovery-options'))
     activation=wvu and capture.endswith('-activation')
     mychart=wvu and capture.endswith(('-guest','-login'))
-    parser=Snapshot(record['finalUrl'],mapping,capture,heading,routes,behavior_script='catalog-public.js' if catalog else None if dental or lockwood else 'mychart-recovery.js' if recovery else 'mychart-activation.js' if activation else 'mychart.js' if mychart else 'wvu-public.js' if wvu else 'municipal.js',public_controls=catalog);files={}
+    parser=Snapshot(record['finalUrl'],mapping,capture,heading,routes,behavior_script='onswc-public.js' if onswc else 'catalog-public.js' if catalog else None if dental or lockwood else 'mychart-recovery.js' if recovery else 'mychart-activation.js' if activation else 'mychart.js' if mychart else 'wvu-public.js' if wvu else 'municipal.js',public_controls=catalog);files={}
     for doc,raw in documents:
         (output/doc['sha256']).write_bytes(raw);files[doc['sha256']]={'sha256':doc['sha256'],'contentType':'application/pdf','source_url':doc['url'],'evidence_type':'documented_public'}
     base_match=re.search(r'<base\s+href=[\"\']([^\"\']+)',content.decode('utf-8'),re.I)
@@ -239,6 +248,7 @@ def build(capture='gvp-home', manifest_path=None):
     if mychart:manifest['local_behavior']={'file':'public/mychart.js','sha256':hashlib.sha256((ROOT/'public/mychart.js').read_bytes()).hexdigest(),'controls':['guest lookup','visit selection','payment review and receipt','username/password login'],'original_scripts_executed':False}
     if catalog:
         manifest['local_behavior']={'file':'public/catalog-public.js','sha256':hashlib.sha256((ROOT/'public/catalog-public.js').read_bytes()).hexdigest(),'controls':['captured public collapse accordions'],'original_scripts_executed':False}
+    if onswc:manifest['local_behavior']={'file':'public/onswc-public.js','sha256':hashlib.sha256((ROOT/'public/onswc-public.js').read_bytes()).hexdigest(),'controls':['one-open FAQ accordion','water and wastewater rate tabs'],'original_scripts_executed':False}
     if dental or lockwood or catalog:manifest['construction_stage']='inert_public_reconstruction_not_activated_runtime'
     (output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     return {'page':capture,'files':len(files),'missing_asset_urls':len(parser.missing),'unsupported_navigation':len(parser.unsupported),'manifest':str(output/'manifest.json')}

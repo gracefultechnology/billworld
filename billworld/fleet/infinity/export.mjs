@@ -137,6 +137,7 @@ export function selectTasks(catalog, opts = {}) {
       if (slugs && !slugs.includes(slug)) continue;
       if (evidence && !evidence.includes(cohort)) continue;
       if (!includeInfeasible && infeasible(slug, b.template)) continue;
+      if (task.exportable === false) continue; // dedicated-tier tasks the Infinity reference cannot drive yet (custom slugs, non-email sign-in)
       const key = `${split}|${b.template}|${cohort}`;
       if (!strata.has(key)) strata.set(key, new Map());
       const bySlug = strata.get(key); if (!bySlug.has(slug)) bySlug.set(slug, []);

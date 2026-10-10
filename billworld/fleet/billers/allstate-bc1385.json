@@ -1,0 +1,340 @@
+{
+  "id": "allstate-bc1385",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Allstate",
+  "category": "insurance",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public allstate.com help pages only (no sign-in). Pay in My Account / the app via the Payment Center, by scanning the QR code on the bill, through bank bill pay, through the agent, by phone 800-901-1732, or cash at Western Union Quick Collect. Express Access lets anyone view and pay a bill without logging in using policy number, last name and ZIP code. Automatic payments: Easy Pay Plan (bank account; lower installment fees and up to 5% premium discount on some policies) or Recurring Credit Card Pay Plan. Edit Auto Pay updates billing info, suspends one cycle, changes the date or cancels automatic payments. Paying with a credit or debit card drops Easy Pay and its discount for the rest of the term (not in California). Minimum amount due must be paid; payments cannot exceed the balance. Late or missed payments: agent or 1-866-998-8388. Paperless is eBill and ePolicy. Policy cancellation is not documented on the help pages, so the family default is kept. Review 2026-10-09: the public My Account login offers User ID or Email address with Password on one screen (modelled as email_or_username, one step). MFA is not documented publicly. Express Access lookup fields come from the Express Access help page.",
+  "officialDomains": [
+    "allstate.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.allstate.com/help-support/billing-payments/faqs",
+      "title": "Billing & Payments Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.allstate.com/help-support/paperless-nonpoe",
+      "title": "Easy paperless enrollment",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.allstate.com/help-support/account/express-access",
+      "title": "Express Access",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://myaccountrwd.allstate.com/anon/account/login",
+      "title": "My Account | Login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Allstate",
+    "shortName": "Allstate",
+    "primary": "#0033a0",
+    "accent": "#00205b",
+    "monogram": "A"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "viewBill": "Payment Center",
+    "payBill": "Make a payment",
+    "autopay": "Auto Pay",
+    "guestPay": "Express Access",
+    "history": "View Payment History",
+    "wallet": "Payment Methods",
+    "paperless": "Paperless",
+    "register": "Create an account",
+    "username": "User ID"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Payment Center",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Edit Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "View Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://myaccountrwd.allstate.com/anon/account/login",
+    "identifier": "email_or_username",
+    "loginSteps": 1
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.allstate.com/help-support/billing-payments/faqs"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.allstate.com/help-support/account/express-access"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.allstate.com/help-support/billing-payments/faqs"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.allstate.com/help-support/billing-payments/faqs"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.allstate.com/help-support/paperless-nonpoe"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.allstate.com/help-support/billing-payments/faqs",
+      "phone": "800-901-1732"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.allstate.com/help-support/billing-payments/faqs",
+      "note": "If you missed or expect to miss a payment, contact your agent or call 1-866-998-8388.",
+      "channel": "phone",
+      "phone": "866-998-8388"
+    }
+  },
+  "billing": {
+    "source": "https://www.allstate.com/help-support/billing-payments/faqs",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How can I pay my bill?",
+      "topic": "payments",
+      "paragraphs": [
+        "Depending on your policy, you can pay in My Account or the Allstate mobile app, scan the QR code on your paper bill with a phone camera for a quick one-time electronic payment, pay through your bank's bill pay service, or ask your agent to process a one-time payment.",
+        "You can also call 800-901-1732, or pay cash at Western Union locations that offer Quick Collect.",
+        "You must pay at least the minimum amount due, and a payment cannot be more than your balance. You may make more than one payment in a billing period."
+      ],
+      "source": "https://www.allstate.com/help-support/billing-payments/faqs"
+    },
+    {
+      "slug": "autopay",
+      "title": "Easy Pay Plan and Recurring Credit Card Pay Plan",
+      "topic": "autopay",
+      "paragraphs": [
+        "The Easy Pay Plan draws automatic payments from your bank account on the date you choose. It comes with lower installment fees and, on some policy types, a premium discount of up to 5%.",
+        "The Recurring Credit Card Pay Plan pre-authorizes payments on a credit or debit card on the date and frequency you pick.",
+        "Keep paying through the Payment Center until you receive your enrollment confirmation and withdrawal schedule.",
+        "Making a one-time card payment removes you from the Easy Pay Plan and its discount for the rest of the policy period (California customers are not affected)."
+      ],
+      "source": "https://www.allstate.com/help-support/billing-payments/faqs"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Edit Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "In My Account or the app, open the Payment Center and choose Edit Auto Pay. From there you can update billing information, suspend one automatic payment for a single cycle, change the payment date, or cancel automatic payments completely.",
+        "You can also ask your Allstate agency to stop automatic payments. Restrictions or loss of savings may apply depending on your billing cycle."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Open the Payment Center.",
+        "Select Edit Auto Pay.",
+        "Choose to update, suspend, change the date or cancel."
+      ],
+      "source": "https://www.allstate.com/help-support/billing-payments/faqs"
+    },
+    {
+      "slug": "express-access",
+      "title": "Pay without logging in (Express Access)",
+      "topic": "payments",
+      "paragraphs": [
+        "Express Access lets you download ID cards and view and pay your bill without signing in. You need your policy number, last name and ZIP code."
+      ],
+      "source": "https://www.allstate.com/help-support/account/express-access"
+    },
+    {
+      "slug": "late-payment",
+      "title": "Late or missed payments",
+      "topic": "assistance",
+      "paragraphs": [
+        "A missed or late payment can lead to a lapse in coverage or cancellation of your policy.",
+        "If you have missed a payment or expect to be late, contact your agent or call Allstate customer service at 1-866-998-8388."
+      ],
+      "source": "https://www.allstate.com/help-support/billing-payments/faqs"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless with eBill and ePolicy",
+      "topic": "billing",
+      "paragraphs": [
+        "With eBill and ePolicy you get an email each time a new bill or policy document is ready to view online instead of receiving paper."
+      ],
+      "source": "https://www.allstate.com/help-support/paperless-nonpoe"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "easy-pay-discount",
+        "intent": "Using Allstate's billing help, find the maximum premium discount the Easy Pay Plan can give on certain policy types. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5%",
+              "5 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5%",
+            "5 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 5%."
+          }
+        ]
+      },
+      {
+        "slug": "late-payment-phone",
+        "intent": "Find the phone number Allstate gives for customers who missed or will be late with a payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8669988388"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8669988388"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-866-998-8388"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment Center",
+        "Edit Auto Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "up to 5%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-autopay",
+      "contains": "suspend"
+    }
+  ]
+}

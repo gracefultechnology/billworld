@@ -1,0 +1,312 @@
+{
+  "id": "terminix-f5de38",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Terminix",
+  "category": "home-services",
+  "template": "invoice-portal",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public Terminix MyAccount FAQ, Contact Us page and MyAccount landing page only (never registered or signed in; the landing page asks for a ZIP code first, which was not submitted). MyAccount sign-in uses the email address chosen at registration, which cannot be changed later. Residential registration finds the account by phone number and customer number (commercial: customer number and sales agreement number). Payments & Billing holds My Payments Due (pay all invoices or edit amounts to pay one), My Invoice History, My Payment History, and Set Up AutoPay / View AutoPay. AutoPay and prepaid (Year-In-Advance) customers do not see invoices online, only payment history (not modelled). Invoice questions: 1-855-348-3152 (MyAccount FAQ). Terminix pages use call-tracking phone numbers that can differ per visit; the numbers used here are the ones in the pages' static HTML on 2026-10-09 (general line 1-855-485-6300, which also matches the catalog record). No online cancellation is described on the public pages; cancel_service is modelled as unsupported online with the customer-service number on the Contact Us page (inferred). Stopping AutoPay is assumed to be on the same View AutoPay screen (inferred). Fees, plans and guest payment are not documented, so they stay at family defaults. Reviewer (2026-10-09): moved from utility-account to invoice-portal, because Terminix bills per service visit and the utility template showed an energy-usage chart, Budget Billing and Start, Stop or Move. Corrected the invoice phone (the FAQ now lists 1-855-348-3152) and the general line, and trimmed the account nav so it fits on one line.",
+  "officialDomains": [
+    "terminix.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.terminix.com/myaccount-faq/",
+      "title": "MyAccount FAQ | Terminix",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.terminix.com/contact-us/",
+      "title": "Contact Us | Terminix",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.terminix.com/my-account/",
+      "title": "Login or Register for your Terminix account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Terminix",
+    "primary": "#00703c",
+    "accent": "#004d29",
+    "monogram": "T"
+  },
+  "labels": {
+    "dashboard": "MyAccount",
+    "viewBill": "Payments & Billing",
+    "payBill": "My Payments Due",
+    "statements": "My Invoice History",
+    "history": "My Payment History",
+    "autopay": "Set Up AutoPay",
+    "forgot": "Forgot My Password",
+    "help": "MyAccount FAQ",
+    "contact": "Contact Us",
+    "username": "Email address",
+    "accountNumber": "Customer number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "MyAccount",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "MyAccount FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAccount",
+        "page": "dashboard"
+      },
+      {
+        "label": "My Payments Due",
+        "page": "pay"
+      },
+      {
+        "label": "My Invoice History",
+        "page": "statements"
+      },
+      {
+        "label": "My Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Set Up AutoPay",
+        "page": "autopay"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "registrationFields": [
+      "accountNumber",
+      "phone"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.terminix.com/myaccount-faq/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.terminix.com/myaccount-faq/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.terminix.com/myaccount-faq/",
+      "note": "The FAQ says AutoPay is enrolled in or edited from View AutoPay; a stop option there is assumed."
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.terminix.com/myaccount-faq/",
+      "note": "AutoPay and Year-In-Advance customers see payment history instead of invoices."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.terminix.com/myaccount-faq/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.terminix.com/contact-us/",
+      "note": "No online cancellation is offered in MyAccount. Call Terminix at 1-855-485-6300 (7 days, 6am-10pm CT), or use chat or text.",
+      "channel": "phone",
+      "phone": "8554856300"
+    }
+  },
+  "billing": {
+    "source": "https://www.terminix.com/myaccount-faq/",
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay one or all of your invoices",
+      "topic": "payments",
+      "paragraphs": [
+        "In MyAccount, open the Payments & Billing tab and go to My Payments Due. Each open invoice is listed on its own line with its full balance in the Amount column.",
+        "To pay only one invoice, click the amounts and set every other invoice to zero. The Custom Payment Amount section shows the new total.",
+        "If you already mailed a check before the statement arrived, you can ignore the statement; allow up to 2 weeks from mailing for the check to process."
+      ],
+      "steps": [
+        "Sign in to MyAccount.",
+        "Open Payments & Billing.",
+        "Go to My Payments Due.",
+        "Adjust the amounts if needed and pay."
+      ],
+      "source": "https://www.terminix.com/myaccount-faq/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "To enroll in or change AutoPay, sign in to MyAccount, open the Payments & Billing tab in the left sidebar, go to My Payments Due and choose Set Up AutoPay or View AutoPay.",
+        "Once you are on AutoPay, invoices no longer appear online; your payments are listed under My Payment History."
+      ],
+      "steps": [
+        "Sign in to MyAccount.",
+        "Open Payments & Billing.",
+        "Go to My Payments Due.",
+        "Select Set Up AutoPay or View AutoPay."
+      ],
+      "source": "https://www.terminix.com/myaccount-faq/"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "Find your invoices",
+      "topic": "billing",
+      "paragraphs": [
+        "Invoices are under the Payments & Billing tab in My Invoice History.",
+        "If you are enrolled in AutoPay or prepaid a year in advance, no invoices are shown online; check My Payment History instead. For invoice questions call 1-855-348-3152.",
+        "To confirm a technician visit on your statement, open Appointments & Services, then My Service History, and download the service documents."
+      ],
+      "source": "https://www.terminix.com/myaccount-faq/"
+    },
+    {
+      "slug": "register",
+      "title": "Register for MyAccount",
+      "topic": "account",
+      "paragraphs": [
+        "Residential customers find their account with the phone number and customer number on the sales agreement; commercial customers use the customer number and sales agreement number. Enter the numbers exactly as shown.",
+        "If you use the service address instead, type it exactly as on the sales agreement, without abbreviations.",
+        "The login email is set when you register and cannot be changed; to use a different email you must register again. If you see that the account already exists, use Forgot My Password."
+      ],
+      "source": "https://www.terminix.com/myaccount-faq/"
+    },
+    {
+      "slug": "contact",
+      "title": "Contact Terminix",
+      "topic": "contact",
+      "paragraphs": [
+        "Call 1-855-485-6300, seven days a week from 6am to 10pm Central.",
+        "Text 1-866-980-8669 or use online chat Monday to Friday 7am to 7pm and Saturday 7am to 3pm Central. Residential customers can also send a short form and hear back within one business day."
+      ],
+      "source": "https://www.terminix.com/contact-us/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "invoice-question-phone",
+        "intent": "You have a question about a Terminix invoice. Using the MyAccount FAQ, find the phone number to call about invoices. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8553483152"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8553483152"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 1-855-348-3152."
+          }
+        ]
+      },
+      {
+        "slug": "check-processing-time",
+        "intent": "You mailed a check to Terminix before your statement arrived. Using the MyAccount FAQ, find out how long to allow for the check to be processed. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2 weeks",
+              "two weeks"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2 weeks",
+            "two weeks"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Allow up to 2 weeks from the date the check was sent."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My Payments Due",
+        "My Invoice History"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-855-485-6300"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "view-your-bill",
+      "contains": "1-855-348-3152"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Custom Payment Amount"
+    }
+  ]
+}

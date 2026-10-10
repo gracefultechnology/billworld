@@ -1,0 +1,414 @@
+{
+  "id": "california-water-service-cal-water-2cb2a7",
+  "version": 1,
+  "status": "dedicated",
+  "name": "California Water Service (Cal Water)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public calwater.com pages only (no sign-in). The customer portal uses a single email address as the login, which can be linked to any number of accounts. Online payments (portal and Pay bill as a guest) have no fees; Visa, MasterCard and Discover debit/credit cards are accepted. AutoPay in the portal can draw from a bank account or card; a separate paper APS (Automatic Payment Service) bank draft is enrolled through the local Customer Center (not modelled). New online accounts are enrolled in paperless billing by default unless they opt out (the engine starts paperless off). Single-family residential service can be started or stopped online; transfers within the service area and business/multi-unit accounts go through the local Customer Center. Past-due help: PromisePay interest-free plans for residential balances of $50+, split payments over several months, extensions of up to two weeks. Late fees were not found on the reviewed pages.",
+  "officialDomains": [
+    "calwater.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.calwater.com/customercare/payment-options/",
+      "title": "Payment Options - Cal Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.calwater.com/help/customer-care-faqs/how-do-i-discontinue-or-transfer-my-water-service/",
+      "title": "How do I discontinue or transfer my water service? - Cal Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.calwater.com/assistance/",
+      "title": "Customer Assistance: We're Here to Help - Cal Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.calwater.com/help/online-account-maintenance-faqs/",
+      "title": "Online Account Maintenance FAQs - Cal Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.calwater.com/help/online-account-maintenance-faqs/why-cant-i-start-stop-service-for-my-business/",
+      "title": "Why can't I start or stop service for my business or multiple-residential dwelling? - Cal Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Cal Water",
+    "shortName": "Cal Water",
+    "primary": "#00539b",
+    "accent": "#003a6e",
+    "monogram": "CW"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "register": "Sign Up",
+    "guestPay": "Pay bill as a guest",
+    "username": "Email Address",
+    "viewBill": "Billing & Payments",
+    "paperless": "Paperless Billing",
+    "autopay": "AutoPay",
+    "cancel": "Start or Stop Service",
+    "arrangement": "Payment Arrangement",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay bill as a guest",
+        "page": "guest"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Sign Up",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Billing & Payments",
+        "page": "bill"
+      },
+      {
+        "label": "Bill History",
+        "page": "statements"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Start or Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.calwater.com/help/online-account-maintenance-faqs/",
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$",
+      "message": "Use at least 8 characters with upper- and lower-case letters, a number and a special character."
+    }
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/customercare/payment-options/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/customercare/payment-options/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/customercare/payment-options/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/customercare/payment-options/",
+      "note": "Bill history in the portal requires paperless billing."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/help/customer-care-faqs/how-do-i-discontinue-or-transfer-my-water-service/",
+      "note": "Single-family residential service can be stopped online; transfers and business or multi-unit accounts go through your local Customer Center."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/assistance/",
+      "note": "PromisePay interest-free plans for past-due residential balances of $50 or more; extensions of up to two weeks."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/assistance/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/customercare/payment-options/",
+      "phone": "888-598-9824"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/customercare/payment-options/"
+    }
+  },
+  "billing": {
+    "source": "https://www.calwater.com/customercare/payment-options/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.calwater.com/customercare/payment-options/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to the customer portal to pay, see bill history and set up AutoPay, or choose Pay bill as a guest for a one-time payment with no account. Neither online option has a fee. Visa, MasterCard and Discover debit or credit cards are accepted.",
+        "By phone, call (888) 598-9824 toll-free and pay from a bank account or by Visa, MasterCard or Discover.",
+        "By mail, send a check or money order with your account number to California Water Service, P.O. Box 7229, San Francisco, CA 94120-7229. Do not send cash.",
+        "In person, use the secure drop box at your Cal Water office, Walmart Bill Pay (cash, debit or Ucard), or Western Union."
+      ],
+      "source": "https://www.calwater.com/customercare/payment-options/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay and Automatic Payment Service",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay in the online portal makes recurring payments from your bank account or card. Enroll from your online account.",
+        "Automatic Payment Service (APS) is a separate monthly draft of the amount owed from your checking or savings account; enroll by contacting your local Customer Center or by mailing the APS application form."
+      ],
+      "steps": [
+        "Log in to the customer portal.",
+        "Open AutoPay.",
+        "Choose a bank account or card.",
+        "Accept the terms and enroll."
+      ],
+      "source": "https://www.calwater.com/customercare/payment-options/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless billing (Electronic Bill Presentment and Payment) emails you when your bill is ready. Log in, go to Billing & Payments, and select Set up Paperless Billing.",
+        "New online accounts are enrolled automatically unless you opt out, and bill history in the portal requires paperless billing."
+      ],
+      "steps": [
+        "Log in.",
+        "Go to Billing & Payments.",
+        "Select Set up Paperless Billing.",
+        "Confirm your email address."
+      ],
+      "source": "https://www.calwater.com/customercare/payment-options/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start or stop service",
+      "topic": "account",
+      "paragraphs": [
+        "You can start or stop single-family residential water service online at any time from the Start or Stop Service page.",
+        "To transfer service within the Cal Water service area, or to start or stop service for a business or multi-unit building, contact your local Cal Water Customer Center."
+      ],
+      "steps": [
+        "Log in.",
+        "Choose Start or Stop Service.",
+        "Pick the stop date.",
+        "Review and confirm."
+      ],
+      "source": "https://www.calwater.com/help/customer-care-faqs/how-do-i-discontinue-or-transfer-my-water-service/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help with your bill",
+      "topic": "assistance",
+      "paragraphs": [
+        "PromisePay offers interest-free payment plans for past-due water bills. Residential owners and tenants with a past-due balance of $50 or more qualify.",
+        "If you do not qualify for PromisePay, you may be able to split the past-due balance across several months, or defer payment by up to two weeks.",
+        "The Customer Assistance Program (CAP) gives eligible low-income households, or households in qualifying public assistance programs, a monthly discount."
+      ],
+      "source": "https://www.calwater.com/assistance/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "promisepay-minimum",
+        "intent": "Using Cal Water's help pages, find the minimum past-due balance needed to qualify for a PromisePay payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$50",
+              "50 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$50",
+            "50 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A past-due balance of $50 or more."
+          }
+        ]
+      },
+      {
+        "slug": "phone-pay-number",
+        "intent": "Find the toll-free number Cal Water lists for paying your water bill by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8885989824"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8885989824"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "(888) 598-9824"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Customer Assistance",
+        "Log In"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Start or Stop Service",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": [
+        "PromisePay",
+        "$50"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "(888) 598-9824"
+    }
+  ]
+}

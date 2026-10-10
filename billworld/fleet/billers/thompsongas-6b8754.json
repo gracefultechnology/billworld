@@ -1,0 +1,348 @@
+{
+  "id": "thompsongas-6b8754",
+  "version": 1,
+  "status": "dedicated",
+  "name": "ThompsonGas",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public thompsongas.com pages, the public My Energy Hub sign-in page (myaccount.myenergyhub.com/portal, linked from thompsongas.com as the account portal) and the Residential General Terms and Conditions PDF effective 2023-02-01 (no sign-in, no one-time payment lookup). Sign-in uses a Username + Password on one page with Remember Me, Forgot Username and Forgot Password links; Make a One Time Payment and Register Your Account sit beside it. No MFA is described. AutoPay can draw from a bank account or a credit card; setup/cancel steps are not published (cancel marked inferred). Text to Pay (reply to a bill text) and pay-by-phone (866-427-2729, card) are offered. Terms: late charge is the greater of 1.5%/month of the average daily balance or $35.00; paper invoice fee up to $2.99; card processing fee varies by state law (not modelled); service ends only by written notice at least 15 days ahead, with a cancellation fee up to $150 per tank (+$300 underground). Fees vary by location and are maximums. Budget programs exist but terms are not published. Independent review 2026-10-09: the rendered My Energy Hub form labels the field Username (not UserName); label corrected. Late charge, $2.99 paper invoice fee, 15-day written termination notice and $150/$300 cancellation fees re-checked in the 2/1/23 terms PDF; metered billing on the 20th re-checked on the metered-propane page. Integrated 2026-10-09: late charge modelled as the greater of 1.5% or $35.00 (billing.lateFeeMinCents).",
+  "officialDomains": [
+    "thompsongas.com",
+    "myenergyhub.com"
+  ],
+  "sources": [
+    {
+      "url": "https://thompsongas.com/payment-options",
+      "title": "Propane Payment Options | ThompsonGas",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://myaccount.myenergyhub.com/portal/",
+      "title": "My Energy Hub - Log In",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://thompsongas.com/wp-content/uploads/2023/02/Residential-General-Terms-and-Conditions-Final-Effective-2.1.23.pdf",
+      "title": "ThompsonGas Residential General Terms and Conditions (effective 2/1/23)",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://thompsongas.com/message-center",
+      "title": "Contact ThompsonGas",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://thompsongas.com/metered-propane",
+      "title": "Metered Propane | ThompsonGas",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "shortName": "ThompsonGas",
+    "primary": "#0b4f8a",
+    "accent": "#c8102e",
+    "monogram": "TG"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "username": "Username",
+    "forgot": "Forgot Password",
+    "register": "Register Your Account",
+    "guestPay": "Make a One Time Payment",
+    "autopay": "AutoPay",
+    "dashboard": "My Energy Hub",
+    "payBill": "Pay Online",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Make a One Time Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Register Your Account",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Fees and Charges",
+        "helpSlug": "fees-rates"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Energy Hub",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Online",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Billing History",
+        "page": "history"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://myaccount.myenergyhub.com/portal/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://myaccount.myenergyhub.com/portal/",
+      "note": "Make a One Time Payment is offered next to the sign-in form; the payment options page also says you can pay without logging in."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://thompsongas.com/payment-options"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://thompsongas.com/payment-options",
+      "note": "AutoPay is managed in My Energy Hub; stopping it there is assumed."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://thompsongas.com/payment-options",
+      "phone": "866-427-2729"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://thompsongas.com/wp-content/uploads/2023/02/Residential-General-Terms-and-Conditions-Final-Effective-2.1.23.pdf"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://thompsongas.com/wp-content/uploads/2023/02/Residential-General-Terms-and-Conditions-Final-Effective-2.1.23.pdf",
+      "channel": "mail",
+      "phone": "855-965-5577",
+      "note": "ThompsonGas service can only be ended by written notice at least 15 days before the end date; it cannot be cancelled online. Questions go to customer service at 855-965-5577. A cancellation fee may apply."
+    }
+  },
+  "billing": {
+    "source": "https://thompsongas.com/payment-options",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeePercent": 1.5,
+    "lateFeeMinCents": 3500
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay ThompsonGas",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online in the My Energy Hub portal or app. You can also use Make a One Time Payment without logging in.",
+        "Text to Pay sends you a text when a bill is ready, showing the invoice total; reply once to pay it. To pay by phone with a credit card, call 866-427-2729 (866-427-2PAY).",
+        "AutoPay pays each bill automatically from a bank account or the credit card you choose."
+      ],
+      "source": "https://thompsongas.com/payment-options"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "With AutoPay your ThompsonGas bill is paid automatically from your bank account or a credit card, so there is nothing to remember. AutoPay is managed in My Energy Hub. Metered customers are billed on the 20th of each month, and AutoPay covers that bill too."
+      ],
+      "source": "https://thompsongas.com/payment-options"
+    },
+    {
+      "slug": "sign-in",
+      "title": "Signing in to My Energy Hub",
+      "topic": "account",
+      "paragraphs": [
+        "My Energy Hub signs you in with a username and password. If you forget either one, use Forgot Username or Forgot Password on the Log In page. New users choose Register Your Account."
+      ],
+      "source": "https://myaccount.myenergyhub.com/portal/"
+    },
+    {
+      "slug": "fees-rates",
+      "title": "Fees and charges",
+      "topic": "billing",
+      "paragraphs": [
+        "Bills not paid within 30 days of delivery or service get a late charge of 1.5% a month on the average daily balance or $35.00, whichever is greater, where law allows.",
+        "Customers who keep paper invoices instead of going paperless may pay up to $2.99 per invoice. Credit card processing fees may apply where state law permits. Other charges, such as delivery and hazmat fees, vary by location; these are the published maximums."
+      ],
+      "source": "https://thompsongas.com/wp-content/uploads/2023/02/Residential-General-Terms-and-Conditions-Final-Effective-2.1.23.pdf"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Ending your service",
+      "topic": "account",
+      "paragraphs": [
+        "Either you or ThompsonGas can end service with written notice given at least 15 days before the end date. There is no online cancellation. A cancellation fee of up to $150 per tank may apply (plus $300 more for underground tanks), along with labor to remove or pump out a company tank. You may get a credit for fuel left in the tank.",
+        "For questions about ending service call 855-965-5577."
+      ],
+      "source": "https://thompsongas.com/wp-content/uploads/2023/02/Residential-General-Terms-and-Conditions-Final-Effective-2.1.23.pdf"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "cancellation-notice-days",
+        "intent": "Using the ThompsonGas website's help pages, find how many days of written notice are required to end propane service. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Service ends with written notice at least 15 days before the end date."
+          }
+        ]
+      },
+      {
+        "slug": "text-pay-phone",
+        "intent": "Using the ThompsonGas website's help pages, find the phone number to call to pay a ThompsonGas bill by credit card over the phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "427-2"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "427-2"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 866-427-2729 (866-427-2PAY) to pay by phone."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Forgot Password"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My Energy Hub",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fees-rates",
+      "contains": [
+        "$35.00",
+        "$2.99"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "15 days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "866-427-2729"
+    }
+  ]
+}

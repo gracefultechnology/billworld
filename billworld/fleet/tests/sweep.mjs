@@ -28,7 +28,7 @@ import { start, templateFor } from '../server.mjs';
 import { helpArticles } from '../help.mjs';
 import { generateTasks } from '../tasks.mjs';
 import { esc } from '../kit.mjs';
-import { lifecycle, SOLVERS, slugOf, taskShapeErrors, NOOP_PASS_OK } from './solve.mjs';
+import { lifecycle, SOLVERS, slugOf, taskShapeErrors, NOOP_PASS_OK, solverFor } from './solve.mjs';
 import { authedChecks, Client, leakCheck } from './httpflows.mjs';
 
 const argv = process.argv.slice(2);
@@ -203,14 +203,15 @@ function tasksPhase() {
       const errs = [];
       if (seen.has(task.id)) errs.push('duplicate_task_id'); seen.add(task.id);
       errs.push(...taskShapeErrors(task, b));
-      if (SOLVERS[slug]) {
+      const solve = solverFor(task);
+      if (solve) {
         // A no-op must not satisfy action tasks.
         const idle = world.createEpisode({ seed: `idle:${task.id}`, scenario: task.scenario, kind: 'sweep' });
         try { world.account(idle, b.id); if (!NOOP_PASS_OK.has(slug) && world.evaluate(idle, task.predicates).success) errs.push('passes_without_action'); } catch (e) { errs.push(`seed_crash: ${e.message}`); }
         world.episodes.delete(idle.id);
         // The reference solution must satisfy every predicate.
         const ep = world.createEpisode({ seed: `solve:${task.id}`, scenario: task.scenario, kind: 'sweep' });
-        try { SOLVERS[slug](world, ep, b.id, { server }); const r = world.evaluate(ep, task.predicates); if (!r.success) errs.push(`unsatisfied: ${JSON.stringify(r.results.filter(x => !x.pass).map(x => ({ type: x.type, detail: x.detail })))}`); } catch (e) { errs.push(`solver_error: ${e.code || ''} ${e.message}`); }
+        try { solve(world, ep, b.id, { server }); const r = world.evaluate(ep, task.predicates); if (!r.success) errs.push(`unsatisfied: ${JSON.stringify(r.results.filter(x => !x.pass).map(x => ({ type: x.type, detail: x.detail })))}`); } catch (e) { errs.push(`solver_error: ${e.code || ''} ${e.message}`); }
         world.episodes.delete(ep.id);
       }
       if (errs.length) { s.fail++; bs.fail++; for (const e of errs) fail('tasks', b, `${slug}:${e.split(':')[0]}`, `${task.id} ${e}`); } else s.ok++;

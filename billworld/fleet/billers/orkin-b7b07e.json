@@ -1,0 +1,282 @@
+{
+  "id": "orkin-b7b07e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Orkin",
+  "category": "home-services",
+  "template": "invoice-portal",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Orkin's public AutoPay page, How To Cancel Orkin Service page and My Account landing page only (never signed in; the sign-in form itself was not reached because of a cookie banner, so the sign-in identifier stays at the family default). The footer Pay Bill link goes to the AutoPay page. AutoPay pays for each service automatically from a credit card or bank check card and can be set up three ways: in the customer portal, by calling 877-819-5061, or through the local branch. AutoPay on the real site is card-based (a bank check card is a debit card, not an ACH draft). My Account lets customers schedule service and pay bills; account support is 877-676-7542. Cancellation: customers can cancel at any time for any reason; there is no cancellation fee as such, but ending before the initial term may require paying the remaining balance. The public pages direct customers to call 877-424-9943 and do not describe an online cancellation, so cancel_service is modelled as unsupported online (inferred). Orkin also mentions EasyPay as an automatic monthly payment plan on the cancellation FAQ; prices, fees, statements and paperless are not published and stay at family defaults. Reviewer (2026-10-09): moved from utility-account to invoice-portal, because Orkin bills per service visit and the utility template showed an energy-usage chart, Budget Billing and Start, Stop or Move. The EasyPay and 24/7-line help now cite the pages that actually say them. The sign-in button on the My Account page opens the portal by script, and the reviewer could not reach the form either, so the identifier stays at the family default. Integrated 2026-10-09: billing.autopay.methodTypes ['card']: AutoPay tasks use the saved Visa.",
+  "officialDomains": [
+    "orkin.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.orkin.com/autopay",
+      "title": "Orkin AutoPay: Pest Control Payment Service | Orkin",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.orkin.com/about/how-to-cancel-orkin-service",
+      "title": "How To Cancel Orkin Service | Orkin",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.orkin.com/my-account",
+      "title": "Manage Your Pest Control Services & More With My Account | Orkin",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Orkin",
+    "primary": "#c8102e",
+    "accent": "#7a0a1c",
+    "monogram": "O"
+  },
+  "labels": {
+    "signIn": "Login",
+    "register": "Create an Orkin Account",
+    "dashboard": "My Account",
+    "payBill": "Pay Bill",
+    "autopay": "AutoPay",
+    "help": "FAQ",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Pay Bill",
+        "helpSlug": "autopay"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.orkin.com/autopay",
+      "note": "AutoPay pays for each service automatically from a credit card or bank check card. You can also sign up by calling 877-819-5061 or through your local branch."
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.orkin.com/my-account"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.orkin.com/autopay",
+      "phone": "8778195061"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.orkin.com/about/how-to-cancel-orkin-service",
+      "note": "Orkin service is cancelled by phone, not online. Call 877-424-9943; leaving before the initial term ends may require paying the remaining balance.",
+      "channel": "phone",
+      "phone": "8774249943"
+    }
+  },
+  "billing": {
+    "source": "https://www.orkin.com/autopay",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Orkin AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay pays for each Orkin service automatically with your credit card or bank check card.",
+        "There are three ways to sign up: sign in to the customer portal (or create an Orkin account first), call 877-819-5061 to speak with a representative, or call your local branch and give them your card details.",
+        "Orkin's main line, 877-819-5061, is answered 24 hours a day, 7 days a week."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Open AutoPay.",
+        "Add your credit card or bank check card.",
+        "Confirm enrollment."
+      ],
+      "source": "https://www.orkin.com/autopay"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancelling your Orkin service",
+      "topic": "account",
+      "paragraphs": [
+        "You can cancel Orkin service at any time and for any reason. Orkin does not charge a separate cancellation fee, but ending service before the initial term is over may mean paying the remaining balance; check your agreement.",
+        "Call 877-424-9943 to cancel or to talk through your agreement; Orkin may be able to adjust your service instead.",
+        "If you are moving, you can transfer service to the new address if it is in Orkin's service area, or cancel if it is not.",
+        "If your current payment schedule does not suit you, Orkin suggests EasyPay, its automatic monthly payment plan, with smaller predictable charges and no need to pay each invoice yourself."
+      ],
+      "source": "https://www.orkin.com/about/how-to-cancel-orkin-service"
+    },
+    {
+      "slug": "faq",
+      "title": "My Account and payments",
+      "topic": "faq",
+      "paragraphs": [
+        "Create an Orkin account to schedule service online, pay your bill and more. For help with your account, call 877-676-7542."
+      ],
+      "source": "https://www.orkin.com/my-account"
+    },
+    {
+      "slug": "orkin-guarantee",
+      "title": "The Orkin Guarantee",
+      "topic": "faq",
+      "paragraphs": [
+        "If pests come back between scheduled visits, Orkin returns at no extra cost. If you are still not satisfied, Orkin refunds your last service payment."
+      ],
+      "source": "https://www.orkin.com/about/how-to-cancel-orkin-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "cancel-term-phone",
+        "intent": "You want to stop your Orkin pest service before your agreement ends. Using Orkin's website, find the phone number to call about cancelling and your agreement terms. Do not change anything or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8774249943"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8774249943"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 877-424-9943."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-card-types",
+        "intent": "Using Orkin's AutoPay page, find out what kinds of payment AutoPay can charge. Do not enroll in AutoPay or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "check card"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "check card"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AutoPay charges a credit card or a bank check card."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay",
+        "Pay Bill"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "877-424-9943"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "bank check card"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "remaining balance"
+    }
+  ]
+}

@@ -1,0 +1,421 @@
+{
+  "id": "los-angeles-department-of-water-and-power-ladwp-290b02",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Los Angeles Department of Water and Power (LADWP)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public ladwp.com pages only (no sign-in). The online account signs in with a Username and Password (Forgot Username or Password link); MFA is not described publicly. One-time online payments from checking/savings are free, and residential customers may also use Visa or MasterCard free of charge. Automatic Payment (AP) is enrolled from Account Summary > Billing Options and debits ten business days after the bill is issued (modelled with the family default draft timing); residential AP may use a bank account or Visa/MasterCard. One-time credits: $10 for paperless and $15 more with AutoPay (not modelled). Payment Extensions can be requested online from Account Summary; payment agreement programs are by phone. Stop Service is available online (Request Turn Off Service) or by calling 1-800-DIAL-DWP. LADWP reserves the right to charge a 1.5% monthly late fee on past-due balances. Water and power are billed together for City of Los Angeles customers. Online payment needs a registered profile (no guest pay; per LADWP's water shutoff policy). Reviewer: the 24-hour rule for changing pending stop requests was not found on official pages and was removed; the 1.5% late fee is from the Payments FAQ.",
+  "officialDomains": [
+    "ladwp.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ladwp.com/payments",
+      "title": "Payments FAQs - LADWP",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.ladwp.com/account/customer-service/bill-payment",
+      "title": "Bill & Payment - LADWP",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ladwp.com/login-and-online-account-access-faqs",
+      "title": "Login and Online Account Access FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.ladwp.com/account/stop-service",
+      "title": "Stop Service - LADWP",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.ladwp.com/sites/default/files/documents/LADWP_Disconnection_Notice_Letterhead_July_2022.pdf",
+      "title": "LADWP Policy and Practices (disconnection notice)",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "LADWP",
+    "shortName": "LADWP",
+    "primary": "#005a9c",
+    "accent": "#003c69",
+    "monogram": "LA"
+  },
+  "labels": {
+    "dashboard": "Account Summary",
+    "signIn": "Log In",
+    "register": "Register",
+    "forgot": "Forgot Username or Password",
+    "username": "Username",
+    "payBill": "Pay Bill",
+    "autopay": "Automatic Payment Service",
+    "paperless": "Paperless Billing",
+    "wallet": "Manage Payment Sources",
+    "arrangement": "Payment Extension",
+    "cancel": "Stop Service",
+    "profile": "My Profile",
+    "help": "FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Bill & Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Stop Service",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Automatic Payment Service",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Extension",
+        "page": "arrangement"
+      },
+      {
+        "label": "Manage Payment Sources",
+        "page": "wallet"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.ladwp.com/login-and-online-account-access-faqs"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.ladwp.com/sites/default/files/documents/LADWP_Disconnection_Notice_Letterhead_July_2022.pdf",
+      "channel": "phone",
+      "phone": "877-697-2939",
+      "note": "Paying online without an account is not offered: LADWP requires an online profile for online payments. Without one, call the free 24/7 pay-by-phone line at 1-877-697-2939."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ladwp.com/payments"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ladwp.com/payments",
+      "note": "Use Edit Automatic Payment Service on Account Summary. Cancelling on the Auto Payment Date does not stop that day's withdrawal."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ladwp.com/payments"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ladwp.com/payments",
+      "note": "Request a Payment Extension from Account Summary; payment agreement programs are arranged by calling 1-800-342-5397."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ladwp.com/account/stop-service",
+      "note": "Request Turn Off Service online after logging in, or call Customer Care at 1-800-342-5397."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ladwp.com/account/customer-service/bill-payment",
+      "phone": "877-697-2939"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ladwp.com/account/customer-service/bill-payment"
+    }
+  },
+  "billing": {
+    "source": "https://www.ladwp.com/account/customer-service/bill-payment",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.ladwp.com/account/customer-service/bill-payment"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeePercent": 1.5
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Bill & Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay Online - One-Time Payment: log in to your account and pay from checking or savings. Residential customers can also use Visa or MasterCard. There is no charge.",
+        "Pay by Phone: call 1-877-697-2939 (1-877-MYPAYDWP) at any hour, free of charge.",
+        "Pay by Mail: send your check to LADWP, PO Box 30808, Los Angeles, CA 90030-0808 and write your account number on it.",
+        "Pay in Person at an LADWP Customer Service Center on weekdays; Visa and MasterCard are accepted. Level Pay is a monthly billing option that helps you budget."
+      ],
+      "source": "https://www.ladwp.com/account/customer-service/bill-payment"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payment Service",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic Payment (AP) is a free pre-authorized debit from your checking or savings account, or a Visa or MasterCard for residential customers. The debit happens ten business days after your bill is issued.",
+        "AP starts with your next billing cycle, so pay any bill that is already due yourself. First-time paperless sign-ups get a one-time $10 credit, plus a one-time $15 credit when combined with AutoPay."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "On Account Summary, under Billing Options, select Enroll in Automatic Payment Service.",
+        "Choose your payment source.",
+        "Follow the instructions to finish."
+      ],
+      "source": "https://www.ladwp.com/payments"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Change or cancel Automatic Payment Service",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in, and on Account Summary select Edit Automatic Payment Service under Billing Options to change or cancel AP.",
+        "If you cancel on the Auto Payment Date shown at the top right of your bill, that withdrawal still happens. To skip AP for only the current bill, call LADWP or visit a Customer Service Center."
+      ],
+      "steps": [
+        "Log in.",
+        "Open Account Summary.",
+        "Select Edit Automatic Payment Service.",
+        "Cancel and confirm."
+      ],
+      "source": "https://www.ladwp.com/payments"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment extensions and agreements",
+      "topic": "assistance",
+      "paragraphs": [
+        "A Payment Extension moves your balance due date but does not waive late fees. Request it online from Account Summary, by phone at 1-800-342-5397, or in person.",
+        "Payment agreement programs are set up by calling LADWP. Customers in good standing on these programs are protected from disconnection.",
+        "LADWP reserves the right to charge a 1.5% monthly late fee on past-due balances."
+      ],
+      "source": "https://www.ladwp.com/payments"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop Service",
+      "topic": "account",
+      "paragraphs": [
+        "Turn off existing water and/or electric service online with Request Turn Off Service after logging in, by phone at 1-800-DIAL-DWP (1-800-342-5397), or at any Customer Service Center.",
+        "Owens Valley customers have a separate customer service line."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "Choose Stop Service.",
+        "Pick the turn-off date.",
+        "Review and submit."
+      ],
+      "source": "https://www.ladwp.com/account/stop-service"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Forgot your username or password",
+      "topic": "account",
+      "paragraphs": [
+        "Use the Forgot Username or Password link on the login page. An email address already linked to a profile cannot be used to register again, so recover the existing username instead.",
+        "Your 10-digit account number is on the front of your bill, below the Bill Date. To add more service accounts to your username, choose Add an account on Account Summary."
+      ],
+      "source": "https://www.ladwp.com/login-and-online-account-access-faqs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-draft-timing",
+        "intent": "Using LADWP's help pages, find out when the Automatic Payment Service debit happens relative to the bill date. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "ten business days",
+              "10 business days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "ten business days",
+            "10 business days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The debit happens ten business days after the bill is issued."
+          }
+        ]
+      },
+      {
+        "slug": "phone-pay-line",
+        "intent": "Find LADWP's free 24/7 pay-by-phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8776972939"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8776972939"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-877-697-2939"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Bill & Payment",
+        "Log In"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Account Summary",
+        "Payment Extension"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "ten business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "1-877-697-2939"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "1.5%"
+    }
+  ]
+}

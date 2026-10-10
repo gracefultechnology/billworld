@@ -1,0 +1,279 @@
+{
+  "id": "dallas-county-tax-office-0bb143",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Dallas County Tax Office",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-09",
+  "template": "property-tax",
+  "notes": "Researched from public dallascounty.org pages only (the taxoffice.dallascounty.org help center returned 403 and was not used). Moved from the paymentus family to property-tax: the Property Tax Lookup/Payment Application is a parcel/account search with Paymentus as processor. Fees: ACH $0.00; credit card and digital wallets 2.05% with a $2.85 minimum; debit card flat $2.85 (minimum and debit flat fee not expressible, 2.05% used). Pay by phone 1-877-253-0150. eStatement enrollment is per account (search, open account, eStatement button), open November 1 through September 15. Partial payments apply pro-rata to tax, penalty, interest and collection penalty. No automatic payment program is listed. Payment arrangements exist (help-center article) but their terms could not be read; payment_arrangement stays at family default. No public sign-in for the lookup; email sign-in is synthetic.",
+  "officialDomains": [
+    "dallascounty.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.dallascounty.org/departments/tax/pay-property-tax.php",
+      "title": "Pay Property Tax - Dallas County Tax Office",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.dallascounty.org/departments/tax/estatement-landing.php",
+      "title": "eStatement Enrollment",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Dallas County Tax Office",
+    "shortName": "Dallas County Tax Office",
+    "primary": "#2b2d6e",
+    "accent": "#7a3300",
+    "monogram": "DC"
+  },
+  "labels": {
+    "guestPay": "Property Tax Lookup/Payment",
+    "payBill": "Pay Property Tax",
+    "paperless": "eStatement Enrollment",
+    "arrangement": "Payment Arrangements",
+    "contact": "Customer Care Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Property Tax Lookup/Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Methods",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "eStatement Enrollment",
+        "helpSlug": "estatements"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Property Tax",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "eStatement Enrollment",
+        "page": "paperless"
+      },
+      {
+        "label": "Customer Care Center",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.dallascounty.org/departments/tax/pay-property-tax.php",
+      "note": "Look up the account in the Property Tax Lookup/Payment Application and pay; ACH is free."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.dallascounty.org/departments/tax/estatement-landing.php",
+      "note": "Enroll each account in eStatements from its property page, November 1 through September 15."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.dallascounty.org/departments/tax/pay-property-tax.php",
+      "note": "No automatic payment program is offered. Pay online, by phone, by mail or in person each year.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.dallascounty.org/departments/tax/pay-property-tax.php",
+      "note": "Card payments; debit and credit processing fees apply.",
+      "phone": "8772530150"
+    }
+  },
+  "billing": {
+    "source": "https://www.dallascounty.org/departments/tax/pay-property-tax.php",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.05,
+      "evidence": "documented_official",
+      "source": "https://www.dallascounty.org/departments/tax/pay-property-tax.php"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment methods and fees",
+      "topic": "payments",
+      "source": "https://www.dallascounty.org/departments/tax/pay-property-tax.php",
+      "paragraphs": [
+        "Pay online through the Property Tax Lookup/Payment Application. ACH (eCheck) payments are free. Credit cards and digital wallets (PayPal, Apple Pay, Google Pay, Venmo) cost 2.05% of the amount, at least $2.85; debit cards cost a flat $2.85. The card processor collects these fees and they are not refundable.",
+        "To pay by phone, call 1 (877) 253-0150; card fees apply. For questions, the Customer Care Center is at 214-653-7811, and the downtown office is in the Records Building, 500 Elm Street, Suite 3300, Dallas.",
+        "Unpaid balances are charged penalties and interest. A partial payment is spread pro-rata across tax, penalty, interest and any collection penalty."
+      ]
+    },
+    {
+      "slug": "estatements",
+      "title": "Electronic property tax statements",
+      "topic": "paperless",
+      "source": "https://www.dallascounty.org/departments/tax/estatement-landing.php",
+      "paragraphs": [
+        "To get statements electronically, search for your property, click the blue account number to open it, then click the eStatement enrollment button.",
+        "Enrollment is open from November 1 through September 15 each year."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "debit-card-fee",
+        "intent": "Using the Dallas County Tax Office's website help pages, find the fee for paying property taxes online with a debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2.85"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2.85"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Debit card payments cost a flat $2.85; ACH is free and credit cards cost 2.05% (minimum $2.85)."
+          }
+        ]
+      },
+      {
+        "slug": "estatement-window",
+        "intent": "Using the Dallas County Tax Office's website help pages, find the last date of the yearly eStatement enrollment window. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "September 15",
+              "Sept 15",
+              "Sep 15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "September 15",
+            "Sept 15",
+            "Sep 15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "paperless"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "eStatement enrollment runs November 1 through September 15."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Methods",
+        "eStatement Enrollment"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "eStatement Enrollment"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.05%",
+        "1 (877) 253-0150"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "estatements",
+      "contains": "September 15"
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "id": "american-family-insurance-amfam-5b0f8c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "American Family Insurance (AmFam)",
+  "category": "insurance",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public amfam.com payments pages and FAQ only (no sign-in). My Account > Billing & Payments: Make Payment (at least the minimum due, custom amount allowed, at most $10 over the account balance), Manage Scheduled Payments (cancel/reschedule; pending card transactions cannot change), Manage Payment Methods, Payment History (24 months), Statement History (24 months). Automatic payments draw from a debit/credit card or checking/savings on the date and amount chosen, with an email reminder; each billing account is set up separately. Separately, agent-managed Automated Funds Transfer (AFT) drafts checking/savings on the due date (next business day on weekends) and is stopped through the agent or 1-800-MYAMFAM 10 days before the next deduction. Pay Electronically accepts bank accounts and MasterCard, Visa, American Express, Discover. Due dates cannot be changed. Returned bank items incur a fee (amount not published). Pay by phone 1-866-424-8002. Life policies cannot be paid in My Account. Review 2026-10-09: the payments page offers Sign in to pay your bill and Pay as a guest; the public Pay Now form asks for billing number and ZIP code. Cancellation, login identifier and MFA are not documented publicly.",
+  "officialDomains": [
+    "amfam.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.amfam.com/payments",
+      "title": "Payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.amfam.com/payments/automated-fund-transfer",
+      "title": "Automated Funds Transfer",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.amfam.com/resources/faqs/payments",
+      "title": "Payments FAQ",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.amfam.com/payments/online-billing",
+      "title": "Pay Electronically",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://billing.amfam.com/pmcwb/processPayment.do?method=setUpPage&tid=paynow",
+      "title": "Pay Now (pay as a guest)",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "American Family Insurance",
+    "shortName": "American Family",
+    "primary": "#003da5",
+    "accent": "#002868",
+    "monogram": "AF"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "dashboard": "My Account",
+    "viewBill": "Billing & Payments",
+    "payBill": "Make Payment",
+    "history": "Payment History",
+    "statements": "Statement History",
+    "wallet": "Manage Payment Methods",
+    "autopay": "Automatic payments",
+    "amountDue": "Minimum amount due",
+    "guestPay": "Pay as a guest"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing & Payments",
+        "page": "bill"
+      },
+      {
+        "label": "Make Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statement History",
+        "page": "statements"
+      },
+      {
+        "label": "Manage Scheduled Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Manage Payment Methods",
+        "page": "wallet"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amfam.com/resources/faqs/payments"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amfam.com/payments"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amfam.com/resources/faqs/payments"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amfam.com/resources/faqs/payments"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amfam.com/resources/faqs/payments"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amfam.com/payments/online-billing"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amfam.com/resources/faqs/payments",
+      "phone": "866-424-8002"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amfam.com/payments"
+    }
+  },
+  "billing": {
+    "source": "https://www.amfam.com/resources/faqs/payments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "In My Account, open Billing & Payments, pick the account from your Billing Accounts and choose Make Payment, then enter the payment method, date and amount.",
+        "Each payment must be at least the minimum amount due; you may enter a custom amount, but no more than $10 over the account balance. Payments usually apply within one business day (allow up to five).",
+        "You can also choose Pay as a guest on the website without My Account (have your billing account number and ZIP code ready), pay through a bank bill payer service, mail a payment, or call the automated Pay by Phone line at 1-866-424-8002.",
+        "Pay Electronically accepts personal and business checking or savings accounts and MasterCard, Visa, American Express and Discover cards."
+      ],
+      "source": "https://www.amfam.com/resources/faqs/payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic payments draw from a debit or credit card or a checking or savings account on a recurring basis. You choose the date, amount and method, and get an email reminder before each payment.",
+        "Each billing account needs its own automatic payment. To cancel or reschedule, go to Billing & Payments, select the account and open Manage Scheduled Payments; a pending card transaction cannot be changed."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Open Billing & Payments and select the account.",
+        "Set up automatic payments or open Manage Scheduled Payments.",
+        "Confirm your choices."
+      ],
+      "source": "https://www.amfam.com/resources/faqs/payments"
+    },
+    {
+      "slug": "aft",
+      "title": "Automated Funds Transfer (AFT) through your agent",
+      "topic": "autopay",
+      "paragraphs": [
+        "AFT, arranged through your agent or 1-800-MYAMFAM, deducts payments from checking or savings on the due date; if that falls on a weekend or holiday it runs the next business day, never earlier. It needs a signed authorization form.",
+        "When the amount changes you get a mailed statement marked as an automatic deduction that should not be paid.",
+        "To stop AFT, contact your agent or call 1-800-692-6326 at least 10 days before the next scheduled deduction."
+      ],
+      "source": "https://www.amfam.com/payments/automated-fund-transfer"
+    },
+    {
+      "slug": "billing-history",
+      "title": "Payment and statement history",
+      "topic": "billing",
+      "paragraphs": [
+        "Payment History in Billing & Payments shows successful, deleted and returned electronic payments from the past 24 months. Scheduled one-time and automatic payments are listed under Manage Scheduled Payments in Billing Overview.",
+        "Statements from the past 24 months are under Statement History; select the PDF icon to download or print one. Statements are also available in Spanish."
+      ],
+      "source": "https://www.amfam.com/resources/faqs/payments"
+    },
+    {
+      "slug": "due-date",
+      "title": "Due dates and returned payments",
+      "topic": "billing",
+      "paragraphs": [
+        "Your due date appears under the minimum amount due when you open an account in Billing & Payments. There is currently no option to change it.",
+        "If your bank does not honor a payment, a returned bank item fee is charged and you still must pay the minimum amount due by the due date to avoid a lapse."
+      ],
+      "source": "https://www.amfam.com/resources/faqs/payments"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "stop-aft-notice",
+        "intent": "Using American Family's Automated Funds Transfer (AFT) page, find how far in advance of the next deduction you must contact AmFam to stop AFT. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10 days",
+              "ten days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10 days",
+            "ten days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 10 days before the next scheduled deduction."
+          }
+        ]
+      },
+      {
+        "slug": "pay-by-phone-number",
+        "intent": "Find American Family's automated Pay by Phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8664248002"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8664248002"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-866-424-8002"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "Sign in"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing & Payments",
+        "Statement History"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "aft",
+      "contains": "10 days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date",
+      "contains": "no option to change"
+    },
+    {
+      "page": "home",
+      "label": "guestPay"
+    }
+  ],
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://billing.amfam.com/pmcwb/processPayment.do?method=setUpPage&tid=paynow"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "id": "humana-dental-vision-individual-plans-5589ed",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Humana Dental & Vision (individual plans)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Humana's public 'Pay your premium' page only (no sign-in, no Express pay lookup). The page covers plan premiums for Medicare and individual/family members (it does not name dental or vision separately; individual dental and vision premiums are billed the same way). Options: 'Sign in to MyHumana' for one-time payments, automatic payments, managing and changing payment methods and recent billing activity; 'Express pay' for a one-time payment without a MyHumana account; phone (number on the back of the member ID card) to pay or sign up for auto pay; mail a check or money order with the coupon to the billing address on the invoice, writing the billing ID on it; and, for some individual/family members whose invoice has a barcode, cash, credit or debit at CVS or Dollar General with no extra charge. Stopping automatic payments, paperless billing, fees and grace periods are not described and keep family defaults. Express pay lookup fields, sign-in identifier and MFA are not published and keep family defaults. Signed-in nav labels other than MyHumana and Recent billing activity are generic (synthetic). No public nav: see the insurance-template cross-owner request.",
+  "officialDomains": ["humana.com"],
+  "sources": [
+    { "url": "https://www.humana.com/member/pay-your-premium", "title": "Pay your premium | Humana", "fetchedAt": "2026-10-09", "kind": "pay" }
+  ],
+  "brand": { "displayName": "Humana Dental & Vision", "shortName": "Humana", "primary": "#2e6b10", "accent": "#1d4f6e", "monogram": "H" },
+  "labels": {
+    "signIn": "Sign in to MyHumana",
+    "guestPay": "Express pay",
+    "dashboard": "MyHumana",
+    "history": "Recent billing activity",
+    "autopay": "Automatic payments"
+  },
+  "nav": {
+    "account": [
+      { "label": "MyHumana", "page": "dashboard" },
+      { "label": "Make a payment", "page": "pay" },
+      { "label": "Automatic payments", "page": "autopay" },
+      { "label": "Recent billing activity", "page": "history" },
+      { "label": "Payment methods", "page": "wallet" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium" },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium", "note": "Express pay takes a one-time payment without a MyHumana account." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium" },
+    "view_bill": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium", "note": "Call Customer Care at the number on the back of your member ID card." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium", "note": "Mail a check or money order with your payment coupon; write your billing ID on it." }
+  },
+  "billing": {
+    "source": "https://www.humana.com/member/pay-your-premium",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-premium",
+      "title": "Ways to pay your premium",
+      "topic": "billing",
+      "paragraphs": [
+        "Online: sign in to MyHumana to make a one-time payment, set up automatic payments, manage or change your payment methods and see your recent billing activity. Without an account, use Express pay for a one-time payment.",
+        "By phone: call Customer Care at the number on the back of your member ID card to pay or to sign up for automatic payments.",
+        "By mail: send a check or money order with your payment coupon to the billing address on the coupon or invoice, and write your billing ID on the payment."
+      ],
+      "source": "https://www.humana.com/member/pay-your-premium"
+    },
+    {
+      "slug": "express-pay",
+      "title": "Pay without signing in (Express pay)",
+      "topic": "billing",
+      "paragraphs": [
+        "Express pay lets you make a one-time premium payment without a MyHumana account. To pay automatically or see your billing history, sign in to MyHumana instead."
+      ],
+      "source": "https://www.humana.com/member/pay-your-premium"
+    },
+    {
+      "slug": "automatic-payments",
+      "title": "Set up automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in to MyHumana to have your premium paid automatically, or call Customer Care at the number on the back of your member ID card to sign up by phone."
+      ],
+      "steps": ["Sign in to MyHumana.", "Open Automatic payments.", "Choose a bank account or card.", "Review and confirm."],
+      "source": "https://www.humana.com/member/pay-your-premium"
+    },
+    {
+      "slug": "pay-in-store",
+      "title": "Pay in person at a store",
+      "topic": "billing",
+      "paragraphs": [
+        "Some individual and family plan members can pay in person. If your paper invoice has a barcode with in-person payment instructions, take it to a CVS or Dollar General and pay at the register with cash, a credit card or a debit card, at no extra charge.",
+        "This option is not listed for Medicare plan members."
+      ],
+      "source": "https://www.humana.com/member/pay-your-premium"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "in-store-payment-locations",
+        "intent": "You want to pay your Humana individual plan premium in cash at a store. Using the Humana help pages, find which store chains accept the payment. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["Dollar General"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["Dollar General"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "CVS or Dollar General, if your invoice has a barcode." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "dashboard", "signedIn": true, "contains": ["MyHumana", "Recent billing activity"] },
+    { "page": "helpArticle", "slug": "pay-in-store", "contains": "Dollar General" },
+    { "page": "helpArticle", "slug": "pay-your-premium", "contains": "billing ID" },
+    { "page": "autopay", "signedIn": true, "label": "autopay" }
+  ]
+}

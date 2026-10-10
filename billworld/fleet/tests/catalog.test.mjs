@@ -22,6 +22,9 @@ const categoriesDir = new URL('../../../categories/', import.meta.url);
 
 const catalog = loadCatalog();
 const billers = [...catalog.billers.values()];
+// Family-tier billers: rendered purely from template + record + profile. Dedicated billers (billers/<id>.json dossiers)
+// override template/capabilities/fees/brand by design and are covered by tests/dedicated.test.mjs.
+const familyBillers = billers.filter(b => b.tier !== 'dedicated');
 const records = readdirSync(categoriesDir).filter(f => f.endsWith('.json')).sort().flatMap(f => JSON.parse(readFileSync(new URL(f, categoriesDir))).entries.map((e, i) => ({ file: `categories/${f}`, index: i, entry: e })));
 
 test('template id list: generic + 26 portal experiences, no duplicates', () => {
@@ -65,7 +68,7 @@ test('ids and resolution do not depend on process state', async () => {
 });
 
 test('every biller resolves to one of the expected templates', () => {
-  for (const b of billers) {
+  for (const b of familyBillers) {
     assert.ok(TEMPLATE_IDS.includes(b.template) && b.template !== 'generic', `${b.id}: template ${b.template}`);
     assert.ok(KINDS.has(b.kind), `${b.id} kind ${b.kind}`);
     assert.equal(b.kind, kindFor(b.entry.bill_type, b.entry));
@@ -73,7 +76,7 @@ test('every biller resolves to one of the expected templates', () => {
     assert.ok(['processor_or_route', 'category', 'observed_public_domain', ...OFFLINE_SIGNALS].includes(b.signal));
     assert.equal(b.template === 'offline', OFFLINE_SIGNALS.includes(b.signal));
   }
-  for (const b of billers.filter((_, i) => i % 7 === 0)) {
+  for (const b of familyBillers.filter((_, i) => i % 7 === 0)) {
     assert.deepEqual(resolveBiller(b.entry, b.id).resolved, { template: b.template, family: b.family, kind: b.kind, signal: b.signal });
     // Without an observed family the research-only resolution stands.
     if (b.signal !== 'observed_public_domain') assert.deepEqual(resolveTemplate(b.entry), { template: b.template, family: b.family, kind: b.kind, signal: b.signal });
@@ -114,7 +117,7 @@ test('template modules honor the contract', async t => {
 });
 
 test('capability profiles use valid labels and respect offline', () => {
-  for (const b of billers) {
+  for (const b of familyBillers) {
     assert.deepEqual(Object.keys(b.capabilities), CAP_KEYS, b.id);
     for (const [k, c] of Object.entries(b.capabilities)) {
       assert.ok(SUPPORT.has(c.support), `${b.id} ${k} support ${c.support}`);
@@ -140,7 +143,7 @@ test('capability profiles use valid labels and respect offline', () => {
 });
 
 test('fees and brands are well formed', () => {
-  for (const b of billers) {
+  for (const b of familyBillers) {
     const f = b.fees;
     assert.ok(['synthetic', 'documented_notes'].includes(f.evidence));
     if (f.cardPercent != null) assert.ok(f.cardPercent > 0 && f.cardPercent < 10);
@@ -229,7 +232,7 @@ test('profiles: biller.profile honors the shared contract, lazily and non-enumer
       assert.ok(p.login.fields.every(f => FIELD_KINDS.has(f)), `${b.id} fields ${p.login.fields}`);
       assert.ok(strList(p.login.buttons, 6)); assert.ok(p.login.socialProviders.every(s => ['google', 'apple', 'facebook', 'microsoft', 'amazon', 'paypal', 'twitter'].includes(s)));
       for (const k of ['hasRegisterLink', 'hasForgotLink', 'hasGuestPay']) assert.equal(typeof p.login[k], 'boolean');
-      assert.equal(p.login.socialProviders.includes('google'), b.template !== 'offline' && b.capabilities.google_login.support === 'supported' || b.template === 'offline' && p.login.socialProviders.includes('google'));
+      if (b.tier !== 'dedicated') assert.equal(p.login.socialProviders.includes('google'), b.template !== 'offline' && b.capabilities.google_login.support === 'supported' || b.template === 'offline' && p.login.socialProviders.includes('google'));
     }
     for (const h of p.help) { assert.ok(PROFILE_KINDS.has(h.kind)); assert.ok(h.excerpt.length > 0 && h.excerpt.length <= 600, `${b.id} excerpt length`); assert.ok(!/<[a-z/]|https?:\/\//i.test(h.excerpt), `${b.id} excerpt markup`); }
     assert.ok(p.familySignals.every(f => TEMPLATE_IDS.includes(f)), `${b.id} families ${p.familySignals}`);

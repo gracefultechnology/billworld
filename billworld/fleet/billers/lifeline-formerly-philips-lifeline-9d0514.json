@@ -1,0 +1,343 @@
+{
+  "id": "lifeline-formerly-philips-lifeline-9d0514",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Lifeline (formerly Philips Lifeline)",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Lifeline's public Support page (Billing Support FAQ) and the public Bill Pay Portal (billpay.lifeline.com) only; never looked up an account. The real Lifeline has no documented customer sign-in for billing: one-time payments go through the Bill Pay Portal, which asks for Account Number, Last Name and Billing Zip Code, then 'Continue to Payment' (steps Account Information, Payment, Confirmation; read from the portal's public page bundle). The fleet requires an online account, so the signed-in area here is a synthetic stand-in keyed on the account number (auth.identifier=account, inferred); the guest Bill Pay flow is the real path. Auto Pay (bank or card) is enrolled by mailing the direct debit form or calling 800-635-6156, takes up to one billing cycle, draws on the existing bill date and stops paper invoices (which otherwise carry an unpublished 'nominal' paper invoice fee, not modelled); Auto Pay continues until cancelled equipment is received. Transaction history is not viewable online for Auto Pay customers (request invoices/history via the Contact Us form, Billing). Payment is due on receipt and the bill date cannot be changed. Cancellations: no cancel line is published; 855-345-0130 is the general support/orders number (cancel_service evidence inferred); returns and Auto Pay 800-635-6156. Auto Pay, Auto Pay cancel, paperless and cancel are therefore modelled as not available online; payment plans phone-only (inferred); scheduled payments unknown. Review 2026-10-09: the support page does not name a service-cancellation number, so cancel_service is now inferred and help text no longer calls 855-345-0130 the cancellation line.",
+  "officialDomains": [
+    "lifeline.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.lifeline.com/support/",
+      "title": "Lifeline Support - Billing Support FAQ",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://billpay.lifeline.com/",
+      "title": "Lifeline - Bill Pay Portal",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Lifeline",
+    "shortName": "Lifeline",
+    "primary": "#00558c",
+    "accent": "#5b2a86",
+    "monogram": "LL"
+  },
+  "labels": {
+    "guestPay": "Bill Payment",
+    "accountNumber": "Account Number",
+    "autopay": "Auto Pay",
+    "cancel": "Cancel Service",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Bill Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Billing Support",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Invoice",
+        "page": "bill"
+      },
+      {
+        "label": "Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paper invoices",
+        "page": "paperless"
+      },
+      {
+        "label": "Cancel Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName",
+      "zip"
+    ],
+    "evidence": "inferred",
+    "source": "https://billpay.lifeline.com/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://billpay.lifeline.com/"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lifeline.com/support/"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.lifeline.com/support/",
+      "note": "Auto Pay is set up by mailing the direct debit form or by calling 800-635-6156. It can take up to one billing cycle to start.",
+      "channel": "phone",
+      "phone": "8006356156"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.lifeline.com/support/",
+      "note": "Auto Pay cannot be changed online. Call 800-635-6156; after a cancellation it stops once Lifeline receives the returned equipment.",
+      "channel": "phone",
+      "phone": "8006356156"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.lifeline.com/support/",
+      "note": "There is no online paperless setting. Paper invoices stop when you enroll in Auto Pay by mail or by calling 800-635-6156.",
+      "channel": "phone",
+      "phone": "8006356156"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.lifeline.com/support/",
+      "note": "Service cannot be cancelled online. Call Lifeline at 855-345-0130; Auto Pay keeps running until the equipment is returned.",
+      "channel": "phone",
+      "phone": "8553450130"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "note": "Payment plans are not offered online. Call Lifeline billing at 800-635-6156.",
+      "channel": "phone",
+      "phone": "8006356156"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lifeline.com/support/",
+      "phone": "8006356156"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lifeline.com/support/"
+    }
+  },
+  "billing": {
+    "source": "https://www.lifeline.com/support/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your Lifeline bill online",
+      "topic": "payments",
+      "paragraphs": [
+        "Use Bill Payment to pay once without an account: enter your Account Number, Last Name and Billing Zip Code, select Continue to Payment, then enter your credit or debit card.",
+        "Payment is due when you receive your invoice. Lifeline cannot tell you why a card was declined; ask your card issuer.",
+        "Paying through your own bank's online bill pay still needs a mailed invoice and adds the paper invoice fee. Mailed payments can take up to seven days to post."
+      ],
+      "steps": [
+        "Open Bill Payment.",
+        "Enter your Account Number, Last Name and Billing Zip Code.",
+        "Select Continue to Payment.",
+        "Enter your card and confirm."
+      ],
+      "source": "https://billpay.lifeline.com/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay charges your bank account or credit card automatically on your existing bill date. Enroll by mailing the direct debit form or by calling 800-635-6156.",
+        "Setup can take up to one billing cycle, and Lifeline does not send a verification statement. Once Auto Pay is active, paper invoices stop, so you also avoid the paper invoice fee.",
+        "Auto Pay customers cannot see transaction history on the website; check your bank or card statement, or ask for an invoice or account history through the Contact Us form by choosing Billing (reply in one to two business days)."
+      ],
+      "source": "https://www.lifeline.com/support/"
+    },
+    {
+      "slug": "faq",
+      "title": "Billing Support",
+      "topic": "faq",
+      "paragraphs": [
+        "Your invoice covers the monthly monitoring service, the equipment rental and any state taxes. Some states tax rentals or services, so the charges are shown separately.",
+        "A small fee covers printing and mailing paper invoices and processing paper checks; Auto Pay avoids it.",
+        "Your billing date cannot be changed because it sets your coverage period.",
+        "Phone numbers: 800-635-6156 for HomeSafe and On the Go billing, Auto Pay and returns; 888-632-3261 for medication dispenser billing; 855-345-0130 for orders and general support."
+      ],
+      "source": "https://www.lifeline.com/support/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel Lifeline service",
+      "topic": "account",
+      "paragraphs": [
+        "The support page has no online cancellation. Call Lifeline at 855-345-0130 (or 800-635-6156 for HomeSafe and On the Go billing). Automatic payments keep running until Lifeline receives your returned equipment, and stop after that.",
+        "If your equipment sends a signal to Lifeline after you asked to cancel, service is reactivated and Auto Pay resumes on the same billing cycle.",
+        "Returns that do not meet Lifeline's return conditions may be refused credit or charged a restocking fee of up to $50."
+      ],
+      "source": "https://www.lifeline.com/support/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "medication-dispenser-billing-phone",
+        "intent": "You have a Lifeline medication dispenser and a question about its bill. Using the Lifeline website, find the phone number for medication dispenser billing. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8886323261"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8886323261"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 888-632-3261 for medication dispenser billing."
+          }
+        ]
+      },
+      {
+        "slug": "change-bill-date",
+        "intent": "You'd like Lifeline to move your monthly billing date to the 15th. Using the website, find out whether the billing date can be changed and explain. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "cannot",
+              "can't",
+              "not be changed",
+              "no"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "cannot",
+            "can't",
+            "not be changed",
+            "no"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No, the billing date cannot be changed because it defines the coverage period."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "contains": [
+        "Account Number"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "800-635-6156"
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "contains": "Auto Pay"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "855-345-0130"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": "888-632-3261"
+    }
+  ]
+}

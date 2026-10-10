@@ -1,0 +1,335 @@
+{
+  "id": "xfinity-comcast-xfinity-tv-3cf706",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Xfinity TV (Comcast)",
+  "category": "tv",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public xfinity.com support articles and the public sign-in page only (no sign-in, no forms). Sign-in is two-step: the page asks for the Xfinity ID (field placeholder 'Email, mobile, or username') with a Let's go button, then the password. The sign-in page also links 'Pay any balance without signing in', so guest pay is supported (lookup fields are not documented publicly and keep the family default). The Billing & Pay menu lists Make a Payment, View Bill & Transaction History, Manage Auto Pay, Manage Paperless Billing and Manage Payment Methods. One-time payments: Current balance or Pay another amount, a payment date, then Continue and Submit Payment; adding a new method sends a six-digit code and bank accounts are verified through Plaid. Auto Pay charges the current balance on the bill due date, by bank account or card, and cannot be turned off on the day a payment is processing. The $10/month APPD discount needs Xfinity Internet plus Auto Pay and paperless billing from a stored bank account (cards no longer qualify), so a TV-only account does not get it. Cancelling service is not offered online: xfinity.com/cancel says to call 1-800-934-6489, schedule a call or visit an Xfinity Store, so cancel_service is unsupported online. Payment arrangements and bill assistance plans are offered through Xfinity Assistant chat when the account qualifies. Plans/prices vary by area and are not on the support pages, so plans are left out; the late fee amount is not published on the pages used and is left out.",
+  "officialDomains": [
+    "xfinity.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.xfinity.com/support/articles/pay-comcast-bill-online",
+      "title": "How to pay your Xfinity bill online",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.xfinity.com/support/articles/setting-up-auto-payments",
+      "title": "Set up or turn off automatic payments on your Xfinity account",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.xfinity.com/support/articles/signing-up-for-paperless-billing",
+      "title": "Sign up for paperless billing",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.xfinity.com/support/articles/automatic-payment-paperless-billing",
+      "title": "Automatic payments and paperless billing discount (APPD)",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.xfinity.com/cancel",
+      "title": "How to Cancel, Pause, or Move your Xfinity Services",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.xfinity.com/support/articles/set-up-payment-arrangement",
+      "title": "Set up a payment arrangement for your past-due balance",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.xfinity.com/support/articles/set-up-bill-assistance-plan",
+      "title": "Set up a bill assistance plan for your Xfinity account",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://login.xfinity.com/login",
+      "title": "Sign in to Xfinity",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Xfinity",
+    "shortName": "Xfinity",
+    "primary": "#1f69ff",
+    "accent": "#5a23b9",
+    "monogram": "X"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "Email, mobile, or username",
+    "register": "Create a new Xfinity ID",
+    "forgot": "Find your Xfinity ID",
+    "guestPay": "Pay any balance without signing in",
+    "viewBill": "View Bill & Transaction History",
+    "payBill": "Make a Payment",
+    "autopay": "Manage Auto Pay",
+    "paperless": "Manage Paperless Billing",
+    "wallet": "Manage Payment Methods",
+    "arrangement": "Payment arrangement",
+    "dashboard": "Account",
+    "help": "Contact & Support",
+    "signOut": "Sign out"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Pay any balance without signing in",
+        "page": "guest"
+      },
+      {
+        "label": "Contact & Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "View Bill & Transaction History",
+        "page": "bill"
+      },
+      {
+        "label": "Manage Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Manage Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Manage Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Contact & Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 2,
+    "evidence": "observed_public",
+    "source": "https://login.xfinity.com/login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.xfinity.com/support/articles/pay-comcast-bill-online"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://login.xfinity.com/login"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.xfinity.com/support/articles/pay-comcast-bill-online"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.xfinity.com/support/articles/setting-up-auto-payments"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.xfinity.com/support/articles/setting-up-auto-payments",
+      "note": "Automatic payments cannot be turned off on the day a payment is processing."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.xfinity.com/support/articles/signing-up-for-paperless-billing"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.xfinity.com/cancel",
+      "note": "Xfinity does not cancel service online. Call 1-800-934-6489, schedule a call or visit an Xfinity Store to cancel.",
+      "channel": "phone",
+      "phone": "8009346489"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.xfinity.com/support/articles/set-up-payment-arrangement"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.xfinity.com/support/articles/set-up-bill-assistance-plan"
+    }
+  },
+  "billing": {
+    "source": "https://www.xfinity.com/support/articles/pay-comcast-bill-online",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.xfinity.com/support/articles/pay-comcast-bill-online"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your Xfinity bill online",
+      "topic": "payments",
+      "paragraphs": [
+        "You can pay online with a checking or savings account from a U.S. bank, or with an American Express, Discover, Mastercard or Visa credit or debit card. Payments can take up to one business day to show on your account. If you make two payments of the same amount on one day, use different payment methods so the second one is not flagged as a duplicate.",
+        "Sign in with the Primary or Manager Xfinity ID, open Billing & Pay and choose Make a Payment. Pick Current balance or Pay another amount, choose a payment date and a saved or new method, then select Continue and Submit Payment. A new method needs a six-digit code sent to your phone or email, and bank accounts are verified through Plaid. Save the confirmation and authorization numbers shown afterwards.",
+        "To change or cancel a payment you scheduled, open View Bill & Transaction History, pick the payment under Upcoming Payments and choose Edit payment, then Manage or Cancel Payment."
+      ],
+      "steps": [
+        "Sign in with your Primary or Manager Xfinity ID.",
+        "Select Billing & Pay, then Make a Payment.",
+        "Choose Current balance or Pay another amount.",
+        "Select a payment date and a payment method, then Continue.",
+        "Select Submit Payment."
+      ],
+      "source": "https://www.xfinity.com/support/articles/pay-comcast-bill-online"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up or turn off automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic payments can use a checking account, savings account, or credit or debit card. When you enroll, your current balance (the bill minus credits and recent payments) is charged, and payments are processed on your bill due date. Xfinity emails you a month before a saved card expires.",
+        "Sign in as a Primary or Manager user, select Billing & Pay, then Manage Auto Pay. Pick a saved method or add one, agree to the Automatic Payments Terms & Conditions and select Set Up. Processing can take up to three business days.",
+        "To stop automatic payments, open Manage Auto Pay, select Turn Off and confirm. You cannot turn them off on the day a payment is processing."
+      ],
+      "steps": [
+        "Sign in as a Primary or Manager user.",
+        "Select Billing & Pay, then Manage Auto Pay.",
+        "Choose a payment method and agree to the terms.",
+        "Select Set Up."
+      ],
+      "source": "https://www.xfinity.com/support/articles/setting-up-auto-payments"
+    },
+    {
+      "slug": "appd-discount",
+      "title": "Automatic payments and paperless billing discount (APPD)",
+      "topic": "billing",
+      "paragraphs": [
+        "Xfinity takes $10 off your monthly bill when you have Xfinity Internet and enroll in both automatic payments and paperless billing using a stored bank account. Debit and credit cards no longer qualify. The discount starts within 45 days and may take up to two bills to appear.",
+        "Removing automatic payments or paperless billing, cancelling Xfinity Internet, switching Auto Pay to a card, or a failed automatic payment (which unenrolls you) ends the discount. It also pauses while you are on a Seasonal Convenience Plan."
+      ],
+      "source": "https://www.xfinity.com/support/articles/automatic-payment-paperless-billing"
+    },
+    {
+      "slug": "paperless",
+      "title": "Sign up for paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "With paperless billing you get an email showing your amount due, due date and a link to your bill instead of a paper bill; other mail from Xfinity may still arrive. Only Primary users and managers can sign up, and an email address must already be on the account.",
+        "Sign in, choose Billing & Pay, then Manage Paperless Billing, and select Turn On. You can also do it in the Xfinity app under Bill settings or in the My Account app on X1. If your bank sends Xfinity bill notices through online banking, unenroll there first."
+      ],
+      "steps": [
+        "Sign in with your Xfinity ID and password.",
+        "Select Billing & Pay, then Manage Paperless Billing.",
+        "Select Turn On."
+      ],
+      "source": "https://www.xfinity.com/support/articles/signing-up-for-paperless-billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How to cancel, pause or move Xfinity service",
+      "topic": "account",
+      "paragraphs": [
+        "Xfinity does not cancel service online. To cancel, call 1-800-934-6489, schedule a call or visit an Xfinity Store.",
+        "Before cancelling you can move your service to a new address, pause it with a temporary hold or military suspension, or change services to lower your bill. Residential customers with a past-due balance may be able to pay it off in monthly installments while keeping service active."
+      ],
+      "source": "https://www.xfinity.com/cancel"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment arrangements and bill assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "A payment arrangement lets you pick a date to pay a past-due balance so your services stay on. If you qualify, the option appears on the Payments page after you sign in, or select Chat for options to open Xfinity Assistant and choose a payment arrangement. Until the payment goes through you cannot watch On Demand or buy pay-per-view, and if the arrangement is cancelled or the payment fails, service is interrupted until the full past-due balance is paid. An arrangement does not stop automatic or other scheduled payments.",
+        "Customers with Xfinity Internet, a past-due balance and at least one year of service may qualify for a bill assistance plan that gives a temporary credit for six months, after paying the past-due balance or setting up an installment plan."
+      ],
+      "source": "https://www.xfinity.com/support/articles/set-up-payment-arrangement"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "appd-discount-amount",
+        "intent": "Using the Xfinity website's support pages, find how much the monthly discount is for enrolling in automatic payments and paperless billing, and what payment method it requires. Do not change any settings or make a payment.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["$10", "10 dollars", "ten dollars"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["$10", "10 dollars", "ten dollars"] },
+        "tags": ["help", "information", "autopay", "discount"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "The discount is $10 a month and requires a stored bank account (cards do not qualify)." }
+        ]
+      },
+      {
+        "slug": "cancel-xfinity-phone",
+        "intent": "You want to cancel your Xfinity TV service. Find out how Xfinity handles cancellations and report the phone number to call. Do not change anything on the account.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "phone", "expected": ["8009346489"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "phone", "expected": ["8009346489"] },
+        "tags": ["help", "cancel", "limitation"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "Xfinity cancels by phone: call 1-800-934-6489 (or schedule a call or visit a store)." }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["Email, mobile, or username"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Manage Auto Pay", "Manage Paperless Billing"] },
+    { "page": "cancel", "signedIn": true, "contains": "1-800-934-6489" },
+    { "page": "helpArticle", "slug": "appd-discount", "contains": "$10" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "Turn Off" }
+  ]
+}

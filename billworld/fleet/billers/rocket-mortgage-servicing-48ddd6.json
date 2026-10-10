@@ -1,0 +1,321 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "mortgage",
+  "reviewedAt": "2026-10-09",
+  "id": "rocket-mortgage-servicing-48ddd6",
+  "name": "Rocket Mortgage (servicing)",
+  "notes": "Researched from public rocketmortgage.com pages only (FAQs, billing-cycle guide, Mortgage Assistance). Servicing is managed in a Rocket Account (the public sign-in form at auth.rocketaccount.com asks for Email + Password with \"Sign in\", \"Forgot password?\" and \"Sign up\"; the FAQ still refers to a username and former Mr. Cooper clients use their Mr. Cooper username, so the dossier models email sign-in; forgot-username and forgot-password pages; password reset is emailed after entering the username). Payments: Payment Center in the Rocket Account (one-time or autopay); accounts not eligible for online payment call an Account Advisor at (800) 508-0944 option 4; mail to P.O. Box 6577 Carol Stream IL (former Mr. Cooper clients: PO Box 650783 Dallas TX). Grace period ends on the 16th; late fee amount is on the statement, so it is not modelled. Card payments are not described publicly, so payments are modelled bank-only (inferred). Assistance: loan modifications and repayment plans (usually up to 6 months) via (866) 316-2432. Form 1098 in the Documents tab. Mr. Cooper merged into Rocket (2025); Mr. Cooper username/password works in Rocket Account. No guest payment documented.",
+  "officialDomains": [
+    "rocketmortgage.com",
+    "rocketaccount.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.rocketmortgage.com/faqs",
+      "title": "Rocket Mortgage FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.rocketmortgage.com/learn/mortgage-billing-cycle",
+      "title": "How to understand your mortgage statement",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.rocketmortgage.com/legal/mortgage-assistance",
+      "title": "Mortgage Assistance",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://auth.rocketaccount.com/u/login",
+      "title": "Rocket Account sign in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Rocket Mortgage",
+    "primary": "#b0122b",
+    "accent": "#6b0a19",
+    "monogram": "RM"
+  },
+  "labels": {
+    "payBill": "Payment Center",
+    "autopay": "Autopay",
+    "signIn": "Sign in",
+    "username": "Email",
+    "forgot": "Forgot password?",
+    "statements": "Documents",
+    "arrangement": "Mortgage Assistance",
+    "help": "FAQs",
+    "register": "Sign up"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Mortgage Assistance",
+        "helpSlug": "payment-assistance"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Payment Center",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Mortgage Assistance",
+        "page": "arrangement"
+      },
+      {
+        "label": "Messages",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://auth.rocketaccount.com/u/login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rocketmortgage.com/faqs"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rocketmortgage.com/faqs"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rocketmortgage.com/faqs",
+      "phone": "8005080944",
+      "note": "If your account is not eligible for online payments, call an Account Advisor at (800) 508-0944, option 4."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rocketmortgage.com/faqs"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rocketmortgage.com/legal/mortgage-assistance",
+      "phone": "8663162432"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rocketmortgage.com/legal/mortgage-assistance",
+      "phone": "8663162432"
+    }
+  },
+  "billing": {
+    "source": "https://www.rocketmortgage.com/faqs",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "How do I make a payment?",
+      "paragraphs": [
+        "Sign in to your Rocket Account and open the Payment Center to make a one-time payment or set up autopay. If your account is not eligible for online payments, call an Account Advisor at (800) 508-0944 and choose option 4 (Monday to Friday 8:30 a.m. to 9 p.m. ET, Saturday 9 a.m. to 4 p.m. ET).",
+        "To pay by mail, send your check payable to Rocket Mortgage with your loan number to P.O. Box 6577, Carol Stream, IL 60197-6577."
+      ],
+      "source": "https://www.rocketmortgage.com/faqs"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Due date and grace period",
+      "topic": "billing",
+      "paragraphs": [
+        "Your monthly payment is due on the 1st. Rocket Mortgage gives a grace period through the 16th of the month; a payment made after the 16th can trigger a late fee.",
+        "Your statement shows the date the grace period ends and the amount of the late fee. Paying late normally does not change the interest charged for that billing period."
+      ],
+      "source": "https://www.rocketmortgage.com/learn/mortgage-billing-cycle"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Mortgage Assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you are having trouble making your mortgage payment, Rocket Mortgage offers loan modifications and, for temporary hardships, repayment plans where you pay more than your regular monthly payment for a period (usually no longer than 6 months) until the loan is current.",
+        "Call (866) 316-2432 to talk with a team member. Have your billing statements for all debts, recent pay stubs and income tax returns ready. HUD-approved counseling agencies can also help at (800) 333-4636."
+      ],
+      "source": "https://www.rocketmortgage.com/legal/mortgage-assistance"
+    },
+    {
+      "slug": "forgot-username",
+      "title": "Signing in to your Rocket Account",
+      "topic": "account",
+      "paragraphs": [
+        "The Rocket Account sign-in page asks for your email and password. Former Mr. Cooper clients can sign in with their Mr. Cooper username and password.",
+        "If you forgot your username, use the forgot username page and follow the steps. To reset a password, open Forgot Password and enter your username; Rocket Mortgage emails you a reset link. If you do not have an account yet, you create one by starting an application."
+      ],
+      "source": "https://www.rocketmortgage.com/faqs"
+    },
+    {
+      "slug": "mr-cooper-clients",
+      "title": "Welcome Mr. Cooper clients",
+      "topic": "account",
+      "paragraphs": [
+        "Mr. Cooper has joined Rocket Mortgage. Your loan number, loan terms and payment address stay the same, and you sign in to your Rocket Account or the Rocket Mortgage app with your Mr. Cooper username and password.",
+        "If you use bank bill pay, update the payee to Rocket Mortgage. If you pay by check, make it payable to Rocket Mortgage and mail it to PO Box 650783, Dallas, TX 75265. Your Form 1098 can be downloaded from the Documents tab."
+      ],
+      "source": "https://www.rocketmortgage.com/faqs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "grace-period-end",
+        "intent": "Using the Rocket Mortgage website help pages, find the day of the month on which the mortgage payment grace period ends. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "16"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "16"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "late-fee"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The grace period runs through the 16th of the month."
+          }
+        ]
+      },
+      {
+        "slug": "assistance-phone",
+        "intent": "You are struggling to make your mortgage payment. Using the Rocket Mortgage website, find the phone number to call about loan modifications or repayment plans. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8663162432"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8663162432"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call (866) 316-2432."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Sign in"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "label": "payBill"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "debit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-fees",
+      "contains": "16th"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "(866) 316-2432"
+    }
+  ]
+}

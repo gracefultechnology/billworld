@@ -1,0 +1,358 @@
+{
+  "id": "medicalert-foundation-f96f27",
+  "version": 1,
+  "status": "dedicated",
+  "name": "MedicAlert Foundation",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from MedicAlert's public Protection Plans page, Terms & Conditions and Contact page and the public member sign-in page (login.medicalert.org, reached from the Renew Plan link) only; never signed in or created an account. MedicAlert is an annual membership (medical ID plus health-record and 24/7 response service), not a billed alarm. Sign-in: 'Email/Username' and Password with 'Log In & Checkout', 'Forgot Password?' and 'Log In With a One-time Email Code' (an alternative to the password, not a second factor); 'Create Account' asks for email, password, an optional Member ID Number, ZIP code and date of birth (DOB is not a supported dossier registration field). Plans: Safe $35/year, Safe & Connected $55/year, Safe & Found $75/year; the plan page template shows prices per month, so the listed amounts are the real annual prices (see CROSS-OWNER request for a plan period). Memberships auto-renew each term and charge the payment method on file on the Renewal Date. Auto-renewal or membership can be cancelled online in the Member Dashboard (online enrollees), by phone 1-800-432-5378 or by email; cancellation takes effect at the end of the paid term, and fees are refunded only if you cancel at least 7 days before a new term. No paperless, payment plan, guest pay or future-dated payment is documented: payment_arrangement phone-only (inferred), scheduled_payment unknown. Integrated 2026-10-09: billing.autopay.methodTypes ['card']: AutoPay tasks use the saved Visa.",
+  "officialDomains": [
+    "medicalert.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.medicalert.org/protection/",
+      "title": "MedicAlert Protection Plans",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.medicalert.org/legal/terms-conditions/",
+      "title": "MedicAlert Terms & Conditions",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.medicalert.org/contact/",
+      "title": "Contact MedicAlert",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://my.medicalert.org/account?renewal=1",
+      "title": "MedicAlert Foundation member login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "MedicAlert Foundation",
+    "shortName": "MedicAlert",
+    "primary": "#b5121b",
+    "accent": "#1f2a44",
+    "monogram": "MA"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "register": "Create Account",
+    "forgot": "Forgot Password?",
+    "username": "Email/Username",
+    "dashboard": "Member Dashboard",
+    "payBill": "Renew Plan",
+    "autopay": "Auto-Renewal",
+    "plan": "Membership Plan",
+    "cancel": "Cancel Membership",
+    "help": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Create Account",
+        "page": "register"
+      },
+      {
+        "label": "Protection Plans",
+        "helpSlug": "plans"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Member Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Renew Plan",
+        "page": "pay"
+      },
+      {
+        "label": "Membership Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Auto-Renewal",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Order History",
+        "page": "history"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel Membership",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "email",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://my.medicalert.org/account?renewal=1"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalert.org/protection/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalert.org/legal/terms-conditions/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalert.org/legal/terms-conditions/"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalert.org/legal/terms-conditions/"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "note": "Payment plans are not offered online. Call Member Services at 1-800-432-5378 (Mon-Fri 6:00 a.m.-4:30 p.m. PT).",
+      "channel": "phone",
+      "phone": "8004325378"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalert.org/contact/",
+      "phone": "8004325378"
+    }
+  },
+  "billing": {
+    "source": "https://www.medicalert.org/protection/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "plans": [
+      {
+        "id": "safe",
+        "name": "Safe Plan",
+        "cents": 3500
+      },
+      {
+        "id": "safe-connected",
+        "name": "Safe & Connected Plan",
+        "cents": 5500,
+        "current": true
+      },
+      {
+        "id": "safe-found",
+        "name": "Safe & Found Plan",
+        "cents": 7500
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans",
+      "title": "Protection plans and prices",
+      "topic": "plans",
+      "paragraphs": [
+        "MedicAlert offers three annual membership plans: Safe at $35 a year, Safe & Connected at $55 a year and Safe & Found at $75 a year.",
+        "Every plan includes the 24/7 Live Response Team, a secure personal health record, a print-ready health profile and 911 Connected where available. Safe & Connected adds family notification and storage for vital documents, treatment plans, implanted device details and advance directives. Safe & Found adds a program that works with local law enforcement to help find members at risk of wandering, such as people with dementia or autism.",
+        "You can upgrade or downgrade your plan from your account."
+      ],
+      "source": "https://www.medicalert.org/protection/"
+    },
+    {
+      "slug": "autopay",
+      "title": "How auto-renewal works",
+      "topic": "autopay",
+      "paragraphs": [
+        "Memberships renew automatically at the end of each term for another term of the same length. The renewal fee is charged to the payment method on file on your Renewal Date unless you cancel first.",
+        "For terms of a year or longer, MedicAlert sends a renewal reminder 15 to 45 days before the Renewal Date. Fee changes take effect only at your next renewal, with notice in advance.",
+        "If a renewal payment is declined, MedicAlert may try another valid payment method on file unless you update your billing information before the Renewal Date."
+      ],
+      "source": "https://www.medicalert.org/legal/terms-conditions/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel auto-renewal or your membership",
+      "topic": "account",
+      "paragraphs": [
+        "If you enrolled online you can cancel auto-renewal or your membership in the Member Dashboard. You can also call Member Services at 1-800-432-5378 (Monday to Friday, 6:00 a.m. to 4:30 p.m. Pacific) or email member services.",
+        "Cancellation takes effect at the end of your current paid term. A request that arrives after a renewal charge has been submitted may not stop that payment.",
+        "Fees are not refunded once a term has started, except where the law requires or in cases such as the member's death or disability. Cancel at least 7 days before a new term begins to get that term's fee back."
+      ],
+      "steps": [
+        "Log in to the Member Dashboard.",
+        "Open Auto-Renewal or Cancel Membership.",
+        "Confirm the cancellation."
+      ],
+      "source": "https://www.medicalert.org/legal/terms-conditions/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Member Services",
+      "topic": "contact",
+      "paragraphs": [
+        "Member Services: 1-800-432-5378 (1-800-ID-ALERT), Monday to Friday, 6:00 a.m. to 4:30 p.m. Pacific.",
+        "The online contact form covers topics such as online account help, renewing your membership, membership status and order status; replies usually take 24 to 48 business hours. For changes to an order already placed, call instead of using the form."
+      ],
+      "source": "https://www.medicalert.org/contact/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "renewal-refund-window",
+        "intent": "You want to stop your MedicAlert membership from renewing and get the next term's fee back if it was already charged. Using the website, find how many days before a new term starts you must cancel to get that term's fee refunded. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "7",
+              "seven"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "7",
+            "seven"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Cancel at least 7 days before the new term begins."
+          }
+        ]
+      },
+      {
+        "slug": "wandering-plan-price",
+        "intent": "Your father has dementia and may wander. Using the MedicAlert website, find the annual price of the plan that includes the program for people at risk of wandering. Do not make a payment or change your plan.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "75"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "75"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plan"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Safe & Found Plan costs $75 a year."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email/Username"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "register"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Safe Plan",
+        "Safe & Found Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans",
+      "contains": [
+        "$35 a year",
+        "$75 a year"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "7 days"
+    }
+  ]
+}

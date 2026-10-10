@@ -1,0 +1,184 @@
+{
+  "id": "medicare-premium-bill-cms-500-part-a-part-b-part-ead206",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Medicare Premium Bill (CMS-500) - Part A / Part B / Part D IRMAA",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public medicare.gov pages only (no sign-in, no Pay.gov payment). People who do not get Social Security or Railroad Retirement benefits get a 'Medicare Premium Bill' from Medicare: Part B only (incl. Part B IRMAA) every 3 months; premium Part A and Part D IRMAA every month. All bills are due on the 25th, usually in the month the bill arrives; pay at least 5 business days early. Four ways to pay: (1) 'Pay my premium' in the secure Medicare account, which hands off to the U.S. Treasury's Pay.gov (credit/debit card, HSA card, checking or savings; free; bank payments take about 5 business days; Medicare says not to create or use a Pay.gov account directly, so guest pay is marked unsupported); (2) Medicare Easy Pay, a free automatic deduction from checking or savings on the 20th (or next business day), set up under 'My Premiums' > 'Sign Up' or with form SF-5510, taking 6-8 weeks to start; change or stop under 'See or change my Medicare Easy Pay' or SF-5510, stopping takes up to 4 weeks; (3) the member's own bank bill pay to payee 'CMS Medicare Insurance' with the 11-character Medicare Number; (4) mail to Medicare Premium Collection Center, PO Box 790355, St. Louis, MO 63179-0355 by check, money order or card/HSA card on the signed coupon. Late or missed payments roll into the next bill; a 'Delinquent Bill' must be paid in full or coverage ends (no online payment plan is described, so payment_arrangement is unsupported). No pay-by-phone option is listed; 1-800-MEDICARE is for billing questions. Medicare's premium pages describe only mailed premium bills, so paperless is marked unsupported (inferred). The Medicare account login page offers ID.me, CLEAR and Login.gov, or a Medicare.gov username and password; the mock models the username/password route and hides Sign in with Google. The duplicate catalog record original-medicare-part-a-part-b-premiums-cms-med-b69d6d is the same bill and site.",
+  "officialDomains": ["medicare.gov", "cms.gov"],
+  "sources": [
+    { "url": "https://www.medicare.gov/basics/costs/pay-premiums", "title": "How to Pay Part A & Part B premiums | Medicare", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.medicare.gov/basics/costs/pay-premiums/medicare-easy-pay", "title": "Medicare Easy Pay | Medicare", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.medicare.gov/basics/costs/pay-premiums/online-bill-pay", "title": "Online bill payment | Medicare", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.medicare.gov/basics/costs/help/medicare-savings-programs", "title": "Medicare Savings Programs | Medicare", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.medicare.gov/account/login", "title": "Medicare.gov - Log in to your account", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "Medicare", "shortName": "Medicare", "primary": "#0b4778", "accent": "#1a6a3c", "monogram": "M" },
+  "labels": {
+    "signIn": "Log in",
+    "register": "Create account",
+    "dashboard": "My premiums",
+    "payBill": "Pay my premium",
+    "autopay": "Medicare Easy Pay",
+    "history": "Payment history",
+    "accountNumber": "Medicare Number",
+    "help": "Help",
+    "contact": "Talk to someone"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in", "page": "login" },
+      { "label": "Create account", "page": "register" },
+      { "label": "How to pay premiums", "helpSlug": "pay-your-bill" },
+      { "label": "Medicare Easy Pay", "helpSlug": "autopay" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "My premiums", "page": "dashboard" },
+      { "label": "Pay my premium", "page": "pay" },
+      { "label": "Medicare Easy Pay", "page": "autopay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Talk to someone", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "documented_official",
+    "source": "https://www.medicare.gov/account/login"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.medicare.gov/basics/costs/pay-premiums", "note": "Log in, choose Pay my premium, and finish on the Treasury's secure Pay.gov page." },
+    "guest_pay": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.medicare.gov/basics/costs/pay-premiums", "note": "Medicare premiums are paid online only through your Medicare account; do not create or use a separate Pay.gov account. You can also pay through your bank's bill pay or by mail with your payment coupon." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.medicare.gov/basics/costs/pay-premiums/medicare-easy-pay", "note": "Medicare Easy Pay deducts the premium from checking or savings on the 20th; it can take 6 to 8 weeks to start." },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.medicare.gov/basics/costs/pay-premiums/medicare-easy-pay", "note": "Stop or change Easy Pay in your account or with form SF-5510; stopping can take up to 4 weeks." },
+    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://www.medicare.gov/basics/costs/pay-premiums", "note": "Medicare mails your premium bill with a payment coupon. You can see your premiums and payment history in your Medicare account, but there is no paperless premium bill option to turn on.", "channel": "phone", "phone": "8006334227" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "source": "https://www.medicare.gov/basics/costs/pay-premiums", "note": "Medicare does not offer a payment plan online. A missed payment is added to your next bill, and a Delinquent Bill must be paid in full to keep coverage. Call 1-800-MEDICARE with questions.", "channel": "phone", "phone": "8006334227" },
+    "pay_by_phone": { "support": "unsupported", "evidence": "inferred", "source": "https://www.medicare.gov/basics/costs/pay-premiums", "note": "Medicare lists four ways to pay (Medicare account, Easy Pay, your bank, mail); none is by phone. Call 1-800-MEDICARE for billing questions.", "channel": "phone", "phone": "8006334227" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.medicare.gov/basics/costs/pay-premiums", "note": "Mail the payment coupon and a check, money order or card details to Medicare Premium Collection Center, PO Box 790355, St. Louis, MO 63179-0355." },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.medicare.gov/basics/costs/help/medicare-savings-programs", "note": "Medicare Savings Programs, run by your state, can pay Part A and Part B premiums." }
+  },
+  "billing": {
+    "source": "https://www.medicare.gov/basics/costs/pay-premiums",
+    "methods": ["bank", "card"],
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "documented_official", "source": "https://www.medicare.gov/basics/costs/pay-premiums/online-bill-pay" },
+    "autopay": { "policies": ["full"], "days": [20], "methodTypes": ["bank"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "4 ways to pay your Medicare premium bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Most people have their Part B premium taken out of their Social Security or Railroad Retirement Board benefit. If you do not get those benefits, Medicare sends you a premium bill instead.",
+        "Online: log in to your Medicare account and choose Pay my premium. Pick a credit or debit card, a Health Savings Account card, or a checking or savings account, enter the amount, and finish on the U.S. Treasury's secure Pay.gov site. Use only your Medicare account for this; do not set up a separate Pay.gov account. You get a confirmation number. Bank payments take about 5 business days; card payments are faster. The service is free.",
+        "Automatic: sign up for Medicare Easy Pay. Through your bank: set up bill pay to the payee CMS Medicare Insurance. By mail: send a check, money order, or your card details on the signed payment coupon to Medicare Premium Collection Center, PO Box 790355, St. Louis, MO 63179-0355. If the coupon is missing, write your Medicare Number on the check."
+      ],
+      "steps": ["Log in to your Medicare account.", "Select Pay my premium.", "Choose your payment method and enter the amount.", "Complete the payment on Pay.gov and save the confirmation number."],
+      "source": "https://www.medicare.gov/basics/costs/pay-premiums"
+    },
+    {
+      "slug": "billing-schedule",
+      "title": "When you get a bill and when it is due",
+      "topic": "billing",
+      "paragraphs": [
+        "If you pay only for Part B (including any Part B income-related adjustment), you get a bill every 3 months. If you pay for Part A, or owe the Part D income-related monthly adjustment amount, you get a bill every month.",
+        "Every Medicare premium bill is due on the 25th of the month, and usually in the same month the bill arrives. Send your payment at least 5 business days before the due date so it arrives on time.",
+        "If you miss a payment or it arrives late, the past-due amount is added to your next bill. If a bill says Delinquent Bill at the top, pay the full amount due or you will lose your Medicare coverage."
+      ],
+      "source": "https://www.medicare.gov/basics/costs/pay-premiums"
+    },
+    {
+      "slug": "autopay",
+      "title": "Medicare Easy Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Medicare Easy Pay is a free service that deducts your premium from your checking or savings account every month. The amount updates on its own when your premium changes. Cards cannot be used for Easy Pay.",
+        "Sign up in your Medicare account under My Premiums, then Sign Up, or print, complete and mail form SF-5510 (Authorization Agreement for Pre-authorized Payments). It can take 6 to 8 weeks to start, so keep paying another way until then.",
+        "Once it starts you get a monthly statement showing the amount, and the money is taken on the 20th of the month or the next business day. Your bank statement shows a payment to CMS Medicare Premiums. If your bank returns a payment, Medicare sends a letter and a bill, and Easy Pay resumes after you pay the full amount due."
+      ],
+      "steps": ["Log in to your Medicare account.", "Open My Premiums and choose Sign Up.", "Enter your checking or savings account.", "Submit the short form."],
+      "source": "https://www.medicare.gov/basics/costs/pay-premiums/medicare-easy-pay"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Change bank accounts or stop Medicare Easy Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in to your Medicare account, open My Premiums and choose See or change my Medicare Easy Pay, or mail a new SF-5510 form.",
+        "Stopping Easy Pay can take up to 4 weeks. A new bank account can take 6 to 8 weeks; until then you may get a bill, or the payment may still come from your old account."
+      ],
+      "source": "https://www.medicare.gov/basics/costs/pay-premiums/medicare-easy-pay"
+    },
+    {
+      "slug": "bank-bill-pay",
+      "title": "Paying through your bank's online bill pay",
+      "topic": "payments",
+      "paragraphs": [
+        "Ask your bank to send a one-time or recurring payment from checking or savings. Not every bank offers this and some charge a fee. Give the bank your 11-character Medicare Number with no dashes or spaces, the payee name CMS Medicare Insurance, the payee address Medicare Premium Collection Center, PO Box 790355, St. Louis, MO 63179-0355, and the amount.",
+        "Bank payments usually take 5 business days, longer if the bank mails a paper check. The amount does not update by itself when your premium changes, so check it each time. Medicare Numbers never use the letters B, I, L, O, S or Z."
+      ],
+      "source": "https://www.medicare.gov/basics/costs/pay-premiums/online-bill-pay"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help paying your premiums",
+      "topic": "assistance",
+      "paragraphs": [
+        "If your income and resources are limited, your state may pay your Part A and Part B premiums through a Medicare Savings Program, and sometimes your deductibles, coinsurance and copays too. You apply through your state, which decides which of the 4 programs you qualify for. Apply even if you think you might not qualify, because some states use higher limits.",
+        "For 2026 the federal limits for the Qualified Medicare Beneficiary program are a monthly income of $1,350 and resources of $9,950 for an individual."
+      ],
+      "source": "https://www.medicare.gov/basics/costs/help/medicare-savings-programs"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Billing questions",
+      "topic": "contact",
+      "paragraphs": [
+        "To check whether a payment was processed, log in to your Medicare account and open My premiums, then Payment history. For other questions about your Medicare bill, call 1-800-MEDICARE (1-800-633-4227), TTY 1-877-486-2048. For bill-pay payments you set up at your bank, contact your bank."
+      ],
+      "source": "https://www.medicare.gov/basics/costs/pay-premiums/online-bill-pay"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "easy-pay-deduction-day",
+        "intent": "Using Medicare's help pages, find on which day of the month Medicare Easy Pay takes the premium from your bank account. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["20th", "20"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["20th", "20"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "On the 20th of the month (or the next business day)." }]
+      },
+      {
+        "slug": "bank-bill-pay-payee",
+        "intent": "You want to pay your Medicare premium through your own bank's online bill pay. Using Medicare's help pages, find the payee name to give your bank. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["CMS Medicare Insurance"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["CMS Medicare Insurance"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "The payee name is CMS Medicare Insurance." }]
+      },
+      {
+        "slug": "part-b-bill-frequency",
+        "intent": "You pay only the Part B premium and do not get Social Security benefits. Using Medicare's help pages, find how often Medicare sends you a premium bill. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["3 months", "three months", "quarter"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["3 months", "three months", "quarter"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Every 3 months." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "Log in" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Pay my premium", "Medicare Easy Pay"] },
+    { "page": "helpArticle", "slug": "autopay", "contains": "SF-5510" },
+    { "page": "helpArticle", "slug": "bank-bill-pay", "contains": "CMS Medicare Insurance" },
+    { "page": "helpArticle", "slug": "billing-schedule", "contains": "25th" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "PO Box 790355" }
+  ]
+}

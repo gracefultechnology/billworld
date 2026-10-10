@@ -1,0 +1,387 @@
+{
+  "id": "att-internet-att-fiber-att-internet-att-internet-a39911",
+  "version": 1,
+  "status": "dedicated",
+  "name": "AT&T Internet (AT&T Fiber, AT&T Internet, AT&T Internet Air, DSL)",
+  "category": "internet",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public att.com support articles, the AT&T Internet fee schedule and the public sign-in page only (no sign-in attempted). The sign-in page was observed: a User ID field with Continue (password on the next step), links Forgot user ID?, Create one now and Pay without signing in, so identifier=username and loginSteps=2. AutoPay is toggled On/Off on the AutoPay page and can use a bank account, debit card or credit card; credit card drafts happen earlier than bank/debit drafts (exact days not published, family default kept). AutoPay can be paused for one month, cannot be stopped or paused when service or credit status requires automatic payment, and removing it removes AutoPay discounts. Pay without signing in (fastpay) takes a phone/account number plus billing ZIP and debit/credit cards, Apple Pay or PayWithMyBank; bank accounts on file need sign-in, so guest methods are modelled as card. Payment arrangements are scheduled online by picking an available date after the due date; arrangements made by call or chat carry a convenience fee and cannot be changed once set. Fee schedule: late payment fee up to $9.99 (Fiber/Internet/Internet Air; DSL up to $9.75), returned check up to $30, payment convenience fee up to $5 per payment with an agent, restoral fee up to $35. Because these are maximums, they are given in help, not charged by the engine. Cancelling AT&T Internet is by phone (800.288.2020, account owner only); only some Internet Air accounts in IL/MA ordered online can cancel online. Plan prices are not modelled.",
+  "officialDomains": [
+    "att.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.att.com/support/article/my-account/KM1009352/",
+      "title": "Sign up For and Manage AutoPay - AT&T Bill & account Customer Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.att.com/support/article/my-account/KM1025834/",
+      "title": "Learn About AT&T Payment Arrangements - AT&T Bill & account Customer Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.att.com/how-to/pay-your-bill",
+      "title": "How to Pay Your AT&T Bill",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.att.com/legal/terms.ATTInternetConsumerFeeSchedule.html",
+      "title": "AT&T Internet Consumer Fee Schedule",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.att.com/support/article/my-account/KM1009500/",
+      "title": "Cancel Your Internet or U-verse TV Service - AT&T Bill & account Customer Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.att.com/acctmgmt/billing/mybillingcenter",
+      "title": "AT&T Sign in (Billing center)",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "AT&T",
+    "shortName": "AT&T",
+    "primary": "#00629b",
+    "accent": "#0057b8",
+    "monogram": "AT"
+  },
+  "labels": {
+    "dashboard": "myAT&T",
+    "payBill": "Make a payment",
+    "viewBill": "Bill & account",
+    "autopay": "AutoPay",
+    "paperless": "Paperless billing",
+    "arrangement": "Payment arrangement",
+    "guestPay": "Pay without signing in",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "register": "Create a user ID",
+    "forgot": "Forgot user ID?",
+    "username": "User ID",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Pay without signing in",
+        "page": "guest"
+      },
+      {
+        "label": "Create a user ID",
+        "page": "register"
+      },
+      {
+        "label": "Fees",
+        "helpSlug": "internet-fees"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "myAT&T",
+        "page": "dashboard"
+      },
+      {
+        "label": "Bill & account",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.att.com/acctmgmt/billing/mybillingcenter"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.att.com/acctmgmt/billing/mybillingcenter"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.att.com/support/article/my-account/KM1009352/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.att.com/support/article/my-account/KM1009352/",
+      "note": "AutoPay can't be turned off when your service or credit status requires automatic payments, and turning it off removes AutoPay discounts."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.att.com/support/article/my-account/KM1025834/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.att.com/support/article/my-account/KM1009500/",
+      "note": "AT&T Internet can't be cancelled online. The account owner calls 800.288.2020 with the account number and PIN.",
+      "channel": "phone",
+      "phone": "8002882020"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.att.com/how-to/pay-your-bill"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.att.com/how-to/pay-your-bill"
+    }
+  },
+  "billing": {
+    "source": "https://www.att.com/how-to/pay-your-bill",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Sign up for and manage AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Go to AutoPay, sign in if asked, pick the account and switch AutoPay On, then follow the prompts. Repeat for each account you want paid automatically. You can use a bank account, a debit card or a credit card.",
+        "Credit card AutoPay drafts earlier than the due date; bank accounts and debit cards draft closer to it.",
+        "You can pause AutoPay for one month (you still owe the bill by its due date). Pausing isn't possible with no balance, with a payment scheduled within two days, or when your account requires automatic payment, and pausing longer may remove AutoPay and its discounts."
+      ],
+      "steps": [
+        "Go to AutoPay and sign in.",
+        "Select the account.",
+        "Toggle AutoPay On.",
+        "Follow the prompts to finish."
+      ],
+      "source": "https://www.att.com/support/article/my-account/KM1009352/"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Stop AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in, choose the account and toggle AutoPay Off. To go back to paper bills you also need to turn off paperless billing. You can't stop AutoPay if your service or credit status requires it, stopping it removes AutoPay discounts, and a late fee applies if the full bill isn't paid by the due date."
+      ],
+      "source": "https://www.att.com/support/article/my-account/KM1009352/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you can't pay by the due date, open the payment calendar and pick an available date after it. If no later dates are offered, your account isn't eligible for an arrangement. Your payment history may limit which payment methods you can use.",
+        "You commit to pay with the chosen method on that date; payments start processing at 12 a.m. ET. Arrangements can't be changed or cancelled. Pause AutoPay for the month if you use it.",
+        "Late fees still apply after the due date, a convenience fee applies if an agent sets up the arrangement by phone or chat, and a reconnection (restoral) fee applies if service is suspended because the arrangement wasn't kept."
+      ],
+      "source": "https://www.att.com/support/article/my-account/KM1025834/"
+    },
+    {
+      "slug": "internet-fees",
+      "title": "AT&T Internet billing fees",
+      "topic": "fees",
+      "paragraphs": [
+        "Late payment fee: up to $9.99 for AT&T Fiber, AT&T Internet and AT&T Internet Air (up to $9.75 for DSL).",
+        "Returned (NSF) check fee: up to $30 per check. Payment convenience fee: up to $5 per payment when an agent, customer service or collections representative helps you pay. Restoral fee: up to $35 when service is restored after suspension for non-payment."
+      ],
+      "source": "https://www.att.com/legal/terms.ATTInternetConsumerFeeSchedule.html"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Pay without signing in using fastpay: enter your account number and billing ZIP code and pay by debit or credit card, Apple Pay or PayWithMyBank. Signed-in customers can also pay from checking or savings and split a payment across methods or dates.",
+        "Online payments usually post within minutes and can take up to 24 hours. Mailed payments can take up to ten days to post."
+      ],
+      "source": "https://www.att.com/how-to/pay-your-bill"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel AT&T Internet",
+      "topic": "account",
+      "paragraphs": [
+        "Only the account owner can cancel AT&T Internet, by calling 800.288.2020. Requests made on holidays are handled the next business day. Cancelling before a promotional commitment ends can bring penalties and extra fees. Online cancellation is only offered for some AT&T Internet Air accounts in Illinois or Massachusetts that were ordered online."
+      ],
+      "source": "https://www.att.com/support/article/my-account/KM1009500/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "fiber-late-fee-max",
+        "intent": "Using AT&T's published internet fee information, find the most AT&T can charge as a late payment fee for AT&T Fiber. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$9.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$9.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The late payment fee for AT&T Fiber is up to $9.99."
+          }
+        ]
+      },
+      {
+        "slug": "restoral-fee",
+        "intent": "An AT&T Internet customer's service was suspended for non-payment. Find in AT&T's fee information the maximum fee to restore service. Do not pay anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$35"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$35"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The restoral fee is up to $35."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "User ID",
+        "Forgot user ID?"
+      ]
+    },
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Bill & account",
+        "Payment arrangement"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "internet-fees",
+      "contains": [
+        "$9.99",
+        "$35"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "800.288.2020"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    }
+  ]
+}

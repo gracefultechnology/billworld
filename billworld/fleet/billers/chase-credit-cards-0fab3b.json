@@ -1,0 +1,420 @@
+{
+  "id": "chase-credit-cards-0fab3b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Chase (credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public chase.com pages only (no sign-in). Sign-in form shows Username + Password with 'Remember username', 'Use token' and 'Forgot username/password?'; new users 'Sign up'. Payments: online/app ('Pay card'), automated phone line 1-800-436-7958 (24/7), Chase ATM/branch, mail (Cardmember Services P.O. Box 6294, Carol Stream IL), Western Union. Posting cutoffs: before 8 PM ET credited and posted the same day; 8-11:59 PM ET credited same day, posted next day; a due-date payment of at least the minimum in that window is on time. AutoPay ('Automatic payments') amounts observed in Chase's app video transcript: Minimum due, Statement balance, Fixed amount. AutoPay drafts on the due date, so days='due_date'. Policy 'full' is kept only because the reference solver enrolls with 'full'. Online payments come from a bank account (the pages only describe choosing a pay-from account; card payment methods are removed as inferred). There is no pay-without-sign-in option (inferred). Closing a card is done by calling the number on the back of the card (Chase education article); no online close flow is documented. MFA (identification code) is not described on the pages used, so the family default is kept. Statements are kept up to 7 years. Card customer service 1-800-432-3117 (Chase customer service page). Re-verified 2026-10-09; nav labels 'Accounts' and 'Activity' are generic (inferred), 'Profile & Settings' and 'Statements & documents' appear on the paperless page.",
+  "officialDomains": [
+    "chase.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.chase.com/personal/credit-cards/login-epay",
+      "title": "Online Payments | Credit Card | Chase.com",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.chase.com/digital/customer-service/helpful-tips/credit-cards/mobile/schedule-payment",
+      "title": "Schedule a Payment | Helpful Tips | Chase.com",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.chase.com/digital/customer-service/helpful-tips/credit-cards/mobile/set-up-autopay",
+      "title": "How To Set Up Automatic Payments | Helpful Tips | Chase.com",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.chase.com/digital/customer-service/helpful-tips/credit-cards/mobile/change-autopay",
+      "title": "How to Change or Cancel Automatic Payments | Helpful Tips | Chase.com",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.chase.com/content/chase-ux/en/digital/customer-service/helpful-tips/credit-cards.transcript.html/6149689476001",
+      "title": "Video transcript: Set up automatic payments from the Chase Mobile App",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.chase.com/personal/mobile-online-banking/login-paperless",
+      "title": "Paperless Statements | Chase Online & Mobile Banking | Chase.com",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.chase.com/personal/credit-cards/card-resource-center",
+      "title": "Credit Card Resources, Login & Customer Service | Chase",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.chase.com/personal/credit-cards/education/basics/how-to-cancel-a-credit-card",
+      "title": "How to Cancel a Credit Card in 5 Steps",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.chase.com/digital/customer-service",
+      "title": "Customer Service | Chase.com",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Chase",
+    "primary": "#005eb8",
+    "accent": "#1a3a5c",
+    "monogram": "CH"
+  },
+  "labels": {
+    "payBill": "Pay card",
+    "autopay": "Automatic payments",
+    "paperless": "Paperless",
+    "statements": "Statements & documents",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "forgot": "Forgot username/password?",
+    "register": "Sign up",
+    "username": "Username",
+    "profile": "Profile & Settings",
+    "help": "Customer service",
+    "amountDue": "Minimum payment due",
+    "dueDate": "Payment due date"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Sign up",
+        "page": "register"
+      },
+      {
+        "label": "Make a payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay card",
+        "page": "pay"
+      },
+      {
+        "label": "Activity",
+        "page": "history"
+      },
+      {
+        "label": "Automatic payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements & documents",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Profile & Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.chase.com/personal/credit-cards/card-resource-center"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.chase.com/personal/credit-cards/login-epay",
+      "note": "Chase has no pay-without-signing-in option for credit cards. Sign in to pay online, or use the automated phone payment line at 1-800-436-7958.",
+      "channel": "phone",
+      "phone": "1-800-436-7958"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/digital/customer-service/helpful-tips/credit-cards/mobile/set-up-autopay"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/digital/customer-service/helpful-tips/credit-cards/mobile/change-autopay"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/digital/customer-service/helpful-tips/credit-cards/mobile/schedule-payment"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/mobile-online-banking/login-paperless"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/credit-cards/education/basics/how-to-cancel-a-credit-card",
+      "note": "A Chase credit card cannot be closed online. Call card customer service at 1-800-432-3117 (or the number on the back of your card) to close the account; pay off the balance and move recurring charges first.",
+      "channel": "phone",
+      "phone": "1-800-432-3117"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/credit-cards/login-epay"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/credit-cards/login-epay"
+    }
+  },
+  "billing": {
+    "source": "https://www.chase.com/personal/credit-cards/login-epay",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "minimum",
+        "statement",
+        "fixed",
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Chase credit card",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to chase.com or the Chase Mobile app and choose Pay card to pay now or schedule a payment from the account you pick.",
+        "Payments made before 8 PM Eastern are credited and posted the same day. Payments made between 8 PM and 11:59 PM Eastern are credited that day and post the next day. If today is your due date and you pay at least the minimum in that late window, the payment still counts as on time and any late fee that shows up is reversed automatically.",
+        "You can also pay through the automated phone line at 1-800-436-7958 (available any time), at a Chase ATM or branch, or by Western Union.",
+        "By mail, send a check or money order to Cardmember Services, P.O. Box 6294, Carol Stream, IL 60197-6294. Write your 16-digit card number in the memo, send one check per statement, and allow up to 7 days for it to show on your account."
+      ],
+      "steps": [
+        "Sign in and select your card.",
+        "Choose Pay card.",
+        "Enter or choose the amount and select Next.",
+        "Pick the pay-from account and the payment date, then Schedule.",
+        "Review the details and confirm."
+      ],
+      "source": "https://www.chase.com/personal/credit-cards/login-epay"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic payments pay your card each month on the due date from the account you choose.",
+        "Choose the amount: Minimum due, Statement balance, or a Fixed amount you enter.",
+        "Keep paying as usual until the first automatic payment is set to run."
+      ],
+      "steps": [
+        "Sign in and select the card.",
+        "Choose Pay card.",
+        "Select Set up next to Automatic payments.",
+        "Choose the amount and the pay-from account.",
+        "Review and confirm Set up automatic payments."
+      ],
+      "source": "https://www.chase.com/content/chase-ux/en/digital/customer-service/helpful-tips/credit-cards.transcript.html/6149689476001"
+    },
+    {
+      "slug": "change-automatic-payments",
+      "title": "Change or turn off automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Open the card's details, choose Manage next to Automatic payments, then Edit. You can change the amount or the pay-from account, or switch automatic payments off.",
+        "Confirm the change and save it with Update automatic payments."
+      ],
+      "source": "https://www.chase.com/digital/customer-service/helpful-tips/credit-cards/mobile/change-autopay"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "topic": "account",
+      "paragraphs": [
+        "On chase.com open Profile & Settings, choose Account Settings and then Paperless, pick the eligible accounts and Save. In the app the same setting is under Settings, Account settings, Paperless.",
+        "Paper mail can keep arriving for about a month after you switch. Statements are under Statements & documents and go back up to 7 years depending on the account."
+      ],
+      "source": "https://www.chase.com/personal/mobile-online-banking/login-paperless"
+    },
+    {
+      "slug": "close-account",
+      "title": "Closing a Chase credit card",
+      "topic": "account",
+      "paragraphs": [
+        "To close a card, call the customer service number on the back of the card; a representative completes the closure and may offer to keep the card open or switch products.",
+        "Before calling, pay the balance down to zero, move automatic charges and subscriptions to another card, and redeem or move any rewards to another open Chase card, because points on a closed card are lost.",
+        "Check your credit report 30 to 45 days later to confirm the account shows as closed."
+      ],
+      "source": "https://www.chase.com/personal/credit-cards/education/basics/how-to-cancel-a-credit-card"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Chase card services",
+      "topic": "contact",
+      "paragraphs": [
+        "Automated card payments: 1-800-436-7958, any time; relay calls accepted. Card customer service: 1-800-432-3117, or the number on the back of your card.",
+        "Overnight payments: Chase Card Services, 201 N. Walnut Street, De1-0153, Wilmington, DE 19801."
+      ],
+      "source": "https://www.chase.com/personal/credit-cards/login-epay"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-evening-cutoff",
+        "intent": "Using the Chase website's help pages, find the Eastern-time cutoff before which an online card payment is both credited and posted the same day. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "8 pm",
+              "8 p.m.",
+              "8:00 pm",
+              "8:00 p.m."
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "8 pm",
+            "8 p.m.",
+            "8:00 pm",
+            "8:00 p.m."
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payments made before 8 PM Eastern are credited and posted the same day."
+          }
+        ]
+      },
+      {
+        "slug": "phone-payment-line",
+        "intent": "Using the Chase website's help pages, find the phone number for Chase's automated credit card payment line. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8004367958"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8004367958"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-436-7958"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay card"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "8 PM",
+        "P.O. Box 6294"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Statement balance",
+        "Fixed amount"
+      ]
+    }
+  ]
+}

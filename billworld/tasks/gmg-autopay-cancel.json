@@ -1,0 +1,17 @@
+{
+  "id": "gmg-autopay-cancel-v1",
+  "version": 1,
+  "site_id": "greater-minnesota-gas",
+  "evidence_cohort": "observed_autopay_sequence_synthetic_private_layout",
+  "prompt": "Sign in to Greater Minnesota Gas as alex.morgan / Billworld-2026! and open AutoPay. Disable the existing AutoPay enrollment. Confirm cancellation. Keep the saved payment methods and separate ACH enrollment unchanged; do not enable TextPay. Reload AutoPay to verify the final status. Do not make a payment or change any other accounts, credentials or billing settings. Private layout, terms and conflict fixtures are simulated; GMG documents automatic payment three days before the due date.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_autopay",
+    "account_id": "acct-primary",
+    "enabled": false,
+    "method_id": "gmg-bank-1048"
+  }
+}

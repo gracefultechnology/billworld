@@ -1,0 +1,290 @@
+{
+  "id": "citibank-citi-na-e649ea",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Citibank (Citi), N.A.",
+  "category": "banks",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public citi.com pages only (no sign-in). The mock bill is a Citi Personal Loan. Citi publishes: no late fees, no prepayment penalty, no origination fees; a 0.25% APR discount only for enrolling in automatic payments at origination; automatic payments are monthly withdrawals from a qualifying checking, savings or money market account; one-time payments in any amount must satisfy the monthly statement balance; principal-only payments are not allowed (not enforceable in the engine). Loan servicing phone 1-800-685-0935. Online statements and Online Bill Payment pages render only client-side (text not retrievable), so statement retention and bill-pay details come from the catalog record (24 months) and are kept out of help text. Sign-in field is User ID (citi.com login page); MFA channel not documented on fetched U.S. pages, kept at sms (inferred). Guest pay not found (inferred). Late fee set to $0 per the published no-late-fee policy.",
+  "officialDomains": [
+    "citi.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.citi.com/personal-loans",
+      "title": "Personal Loans | Citi",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "Citi",
+    "shortName": "Citi",
+    "primary": "#003b70",
+    "accent": "#056dae",
+    "monogram": "CI"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "paperless": "Manage Paperless Settings",
+    "statements": "Statements",
+    "signIn": "Sign On",
+    "signOut": "Sign Off",
+    "username": "User ID",
+    "register": "Register for Online Access",
+    "help": "Help & Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign On",
+        "page": "login"
+      },
+      {
+        "label": "Register for Online Access",
+        "page": "register"
+      },
+      {
+        "label": "Personal Loan payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help & Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Manage Paperless Settings",
+        "page": "paperless"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "sms",
+    "evidence": "inferred",
+    "source": "https://www.citi.com/personal-loans"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.citi.com/personal-loans"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.citi.com/personal-loans",
+      "note": "The 0.25% APR autopay discount applies only when you enroll at loan origination."
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.citi.com/personal-loans",
+      "note": "Personal loan payments are made after signing on to Citi Online, or by calling Personal Loans Services at 1-800-685-0935.",
+      "channel": "phone",
+      "phone": "1-800-685-0935"
+    }
+  },
+  "billing": {
+    "source": "https://www.citi.com/personal-loans",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "lateFeeCents": 0,
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.citi.com/personal-loans"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Citi Personal Loan",
+      "paragraphs": [
+        "Sign on to Citi Online to make a one-time payment from a checking, savings or money market account. A one-time payment can be any amount, as long as it covers your monthly statement balance.",
+        "Citi does not currently accept principal-only payments, but you can pay off the loan early at any time with no prepayment penalty.",
+        "Questions about your loan? Call Personal Loans Services and Support at 1-800-685-0935 (TTY 711)."
+      ],
+      "source": "https://www.citi.com/personal-loans"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic personal loan payments",
+      "paragraphs": [
+        "Automatic payments are monthly withdrawals of your loan payment from a qualifying checking, savings or money market account.",
+        "Borrowers who enroll in automatic payments when the loan is originated get a 0.25% APR discount."
+      ],
+      "source": "https://www.citi.com/personal-loans"
+    },
+    {
+      "slug": "loan-fees",
+      "title": "Personal loan fees",
+      "topic": "billing",
+      "paragraphs": [
+        "Citi charges no late fees, no prepayment penalty and no origination fees on its personal loans.",
+        "If the loan goes into default, the APR may increase by 2.00%."
+      ],
+      "source": "https://www.citi.com/personal-loans"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Citi Personal Loans",
+      "paragraphs": [
+        "Call Personal Loans Services and Support at 1-800-685-0935 (TTY 711 or another relay service) for help with payments, refinancing or changes to your loan."
+      ],
+      "source": "https://www.citi.com/personal-loans",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-fee-policy",
+        "intent": "Using Citi's personal loan pages, find out whether Citi charges a late fee on its personal loans. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "no late fee",
+              "no late fees",
+              "does not charge",
+              "doesn't charge",
+              "none"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "no late fee",
+            "no late fees",
+            "does not charge",
+            "doesn't charge",
+            "none"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Citi charges no late fees on personal loans."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-discount",
+        "intent": "Using Citi's personal loan pages, find the APR discount for enrolling in automatic payments at loan origination. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "0.25"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "0.25"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A 0.25% APR discount."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "User ID"
+    },
+    {
+      "page": "home",
+      "contains": "Sign On"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "loan-fees",
+      "contains": "no late fees"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "0.25%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "1-800-685-0935"
+    }
+  ]
+}

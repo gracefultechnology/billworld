@@ -1,0 +1,146 @@
+{
+  "id": "waste-connections-3aea72",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Waste Connections",
+  "category": "trash",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public wasteconnections.com pages only (Pay My Bill hub, FAQ landing page, Information About Charges & Fees) and the public MyAccount Portal sign-in screen (observed, never signed in). Sign-in uses a User ID and password on one page, with Forgot User ID / Forgot Password links, Register Now and Pay As Guest. MyAccount offers automatic payments, statement history, payment history and billing notification preferences. Waste Connections is run as local affiliates/districts: phone, mail and in-office payments, late fees, autopay timing and fees vary by district and are not published nationally, so no fee, late-fee or autopay-timing fields are set (a district page, e.g. Arizona, shows a $35 late fee after 60 days, which is not applied company-wide). Customer Support line 844-708-7274; MyAccount lists 1-800-457-1379 for pay by phone and 844-924-2455 for website support. Pay As Guest takes cards only (bank/check payments need a login), so guestMethods is card-only; accepted cards are Visa, Mastercard and American Express. Cancellation and payment-plan policies are not published, so those capabilities keep the family defaults.",
+  "officialDomains": ["wasteconnections.com"],
+  "sources": [
+    { "url": "https://www.wasteconnections.com/bill-pay", "title": "Pay Your Waste Connections Bill Online | Secure Payment", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://myaccount.wasteconnections.com/", "title": "MyAccount Portal", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://www.wasteconnections.com/faq", "title": "Frequently Asked Questions | Waste Connections", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.wasteconnections.com/charges-and-fees", "title": "Waste Connections Charges & Fees for Waste Services", "fetchedAt": "2026-10-09", "kind": "fees" }
+  ],
+  "brand": { "displayName": "Waste Connections", "shortName": "Waste Connections", "primary": "#00573f", "accent": "#1f3d6b", "monogram": "WC" },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "guestPay": "Pay As Guest",
+    "signIn": "Log In",
+    "register": "Register Now",
+    "forgot": "Forgot Password",
+    "dashboard": "MyAccount",
+    "statements": "Statement History",
+    "history": "Payment History",
+    "autopay": "Automatic Payments",
+    "help": "Customer Service",
+    "contact": "Contact",
+    "username": "User ID"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay My Bill", "page": "guest" },
+      { "label": "Log In", "page": "login" },
+      { "label": "Register Now", "page": "register" },
+      { "label": "Charges & Fees", "helpSlug": "fees" },
+      { "label": "Customer Service", "page": "help" }
+    ],
+    "account": [
+      { "label": "MyAccount", "page": "dashboard" },
+      { "label": "Pay My Bill", "page": "pay" },
+      { "label": "Statement History", "page": "statements" },
+      { "label": "Payment History", "page": "history" },
+      { "label": "Automatic Payments", "page": "autopay" },
+      { "label": "Paperless", "page": "paperless" },
+      { "label": "Contact", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://myaccount.wasteconnections.com/"
+  },
+  "capabilities": {
+    "registration": { "support": "supported", "evidence": "observed_public", "source": "https://myaccount.wasteconnections.com/" },
+    "password_reset": { "support": "supported", "evidence": "observed_public", "source": "https://myaccount.wasteconnections.com/" },
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://myaccount.wasteconnections.com/" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.wasteconnections.com/bill-pay" },
+    "autopay_cancel": { "support": "supported", "evidence": "inferred", "source": "https://www.wasteconnections.com/bill-pay", "note": "MyAccount lets you set up and manage automatic payments, which includes turning them off." },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.wasteconnections.com/bill-pay" },
+    "paperless": { "support": "supported", "evidence": "inferred", "source": "https://www.wasteconnections.com/bill-pay", "note": "MyAccount manages billing notifications and preferences, including emailed invoices." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://myaccount.wasteconnections.com/", "phone": "800-457-1379", "note": "Pay by phone at 1-800-457-1379 (listed on the MyAccount Portal) or through your local office; your account number is required." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.wasteconnections.com/bill-pay" }
+  },
+  "billing": {
+    "source": "https://www.wasteconnections.com/bill-pay",
+    "methods": ["bank", "card"],
+    "guestMethods": ["card"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your Waste Connections bill",
+      "topic": "payments",
+      "paragraphs": [
+        "The MyAccount Portal is the main way to pay online. Log in with your User ID and password to pay, set up and manage automatic payments, see statement and payment history, and manage billing notifications and preferences.",
+        "To pay once without an online account, choose Pay As Guest on the MyAccount sign-in page. Guest payments take credit and debit cards only; paying from a bank account (check payment) requires logging in. The portal accepts Visa, Mastercard and American Express for one-time and recurring payments.",
+        "You can also pay by mail, by phone or at your local office. The MyAccount Portal lists 1-800-457-1379 for phone payments (have your account number ready); look up your local Waste Connections location for its mailing address and office. For website technical support call 844-924-2455."
+      ],
+      "steps": ["Open Pay My Bill and choose Log in to MyAccount.", "Enter your User ID and password.", "Select the account and the amount to pay.", "Choose a payment method and submit."],
+      "source": "https://www.wasteconnections.com/bill-pay"
+    },
+    {
+      "slug": "register",
+      "title": "Register for MyAccount",
+      "topic": "account",
+      "paragraphs": [
+        "New users choose Register Now under Not Registered? Sign Up Now! on the MyAccount Portal and connect their Waste Connections account using the details printed on the invoice.",
+        "If you forget your sign-in details, use Forgot User ID or Forgot Password on the sign-in page. Remember my User ID keeps your User ID filled in on that device."
+      ],
+      "source": "https://myaccount.wasteconnections.com/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Set up automatic payments in the MyAccount Portal so each invoice is paid from your saved payment method. The same screen is used to change the payment method or stop automatic payments.",
+        "Waste Connections does not publish a company-wide draft date: billing is handled by the local affiliate, so the timing follows your local invoice schedule. Recurring payments can use a card (Visa, Mastercard, American Express) or a bank account."
+      ],
+      "source": "https://www.wasteconnections.com/bill-pay"
+    },
+    {
+      "slug": "fees",
+      "title": "Information about charges and fees",
+      "topic": "billing",
+      "paragraphs": [
+        "Each Waste Connections affiliate bills its own customers, so the names and amounts of charges vary by location, service type and contract.",
+        "Invoices may include Fuel and Material Surcharges (which can change monthly with fuel and material costs), Environmental and Regulatory Charges, Administrative or Invoice Fees for account administration and payment processing, and Container Fees. None of these are government taxes. Questions about a specific charge go to the affiliate that provides your service."
+      ],
+      "source": "https://www.wasteconnections.com/charges-and-fees"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Customer Support",
+      "topic": "account",
+      "paragraphs": [
+        "For questions not answered in the FAQs, call Waste Connections Customer Support at 844-708-7274, or enter your ZIP code on the FAQ page to see answers for your service area."
+      ],
+      "source": "https://www.wasteconnections.com/faq"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "phone-pay-requirement",
+        "intent": "Using Waste Connections' help pages, find what you must have ready to pay your bill by phone. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["account number"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["account number"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "You need your account number to pay by phone through your local office." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": ["Pay My Bill", "Log In"] },
+    { "page": "login", "contains": ["User ID", "Forgot Password"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Statement History", "Payment History"] },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "helpArticle", "slug": "fees", "contains": "Fuel and Material Surcharges" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "844-708-7274" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["800-457-1379", "cards only"] }
+  ]
+}

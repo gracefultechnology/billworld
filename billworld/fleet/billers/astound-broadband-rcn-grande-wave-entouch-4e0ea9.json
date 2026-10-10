@@ -1,0 +1,276 @@
+{
+  "id": "astound-broadband-rcn-grande-wave-entouch-4e0ea9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Astound Broadband (RCN, Grande, Wave, enTouch)",
+  "category": "tv",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public astound.com support pages, the help.astound.com MyAstound article and the public MyAstound sign-in page only (no sign-in). MyAstound sign-in is a single page with USERNAME and PASSWORD, LOG IN, Forgot your username or password? and Create one now; registration needs the Astound account number from the bill. MyAstound lets customers view current and past bills, set up paperless billing, pay, and set up automatic payments; statements stay available 24 months after disconnect. Online one-time payments by card or checking carry a convenience/processing fee (amount not published on the current pages; an undated Washington rate card lists $1.00, not used), while AutoPay from a checking account on the due date has no fee; the payment pages describe automatic payments only from a checking account, but Astound's offer terms (shown on its support pages) give $10/month off for bank-account autopay plus e-bill or $5/month for credit/debit card autopay, so cards are accepted for autopay and methodTypes is bank + card (reviewer 2026-10-09 corrected a bank-only setting). Automated phone payments (card) at 1-800-427-8686. Current offers include a $10/month autopay plus e-bill discount. No online cancel flow is documented: the equipment return article says to call 1-800-427-8686 to schedule the disconnect work order, so cancel_service is unsupported online. Because the one-time fee amount is unknown, billing.fees is left out; plans and late fees left out.",
+  "officialDomains": [
+    "astound.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.astound.com/support/billing/payment-options/",
+      "title": "5 ways to pay your bill - Astound",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.astound.com/support/billing/set-up-autopay/",
+      "title": "How to set up AutoPay - Astound",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://help.astound.com/support/billing-and-account-help/myastound-account-management",
+      "title": "MyAstound Account Management - Astound Broadband",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.astound.com/support/internet/equipment-return/",
+      "title": "How to Return Your Equipment - Astound",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.astound.com/support/",
+      "title": "Customer Service and Support | Astound",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://my.astound.com/login",
+      "title": "MyAstound | Login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Astound",
+    "shortName": "Astound",
+    "primary": "#5b2c83",
+    "accent": "#00658f",
+    "monogram": "A"
+  },
+  "labels": {
+    "signIn": "LOG IN",
+    "username": "USERNAME",
+    "password": "PASSWORD",
+    "forgot": "Forgot your username or password?",
+    "register": "Create one now",
+    "dashboard": "MyAstound",
+    "payBill": "Pay my bill",
+    "autopay": "AutoPay",
+    "paperless": "Paperless billing",
+    "help": "Support Center",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "MyAstound",
+        "page": "login"
+      },
+      {
+        "label": "Pay my bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAstound",
+        "page": "dashboard"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Pay my bill",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://my.astound.com/login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/payment-options/",
+      "note": "A convenience fee applies to one-time online payments; AutoPay has no fee."
+    },
+    "view_bill": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.astound.com/support/billing-and-account-help/myastound-account-management"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.astound.com/support/billing-and-account-help/myastound-account-management"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/set-up-autopay/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.astound.com/support/billing-and-account-help/myastound-account-management"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/internet/equipment-return/",
+      "note": "Astound service is disconnected by calling 1-800-427-8686 to schedule the disconnect work order; return equipment on or before that date.",
+      "channel": "phone",
+      "phone": "8004278686"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/payment-options/",
+      "phone": "8004278686"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/payment-options/"
+    }
+  },
+  "billing": {
+    "source": "https://www.astound.com/support/billing/payment-options/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "5 ways to pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Online: register for MyAstound to view and pay your bill. You can make one-time payments or set up automatic monthly payments from the checking account you choose; a payment processing fee applies to one-time payments. The free mobile app also lets you pay, see statements and update your account.",
+        "By phone: call 1-800-427-8686 to pay by Visa, Mastercard, Discover or American Express through the automated system or with a representative.",
+        "By mail: return the bill stub with a check or money order to the PO Box for your region. In person: Astound payment locations accept cash, checks, money orders and major credit cards."
+      ],
+      "source": "https://www.astound.com/support/billing/payment-options/"
+    },
+    {
+      "slug": "autopay",
+      "title": "How to set up AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "In your MyAstound account or the free mobile app you can make a one-time payment by credit or debit card or from your checking account, which carries a convenience fee, or set up automatic payments so the monthly amount is taken from your account on the payment due date with no convenience fee.",
+        "Register for MyAstound with the account number from your bill if you do not have an account yet."
+      ],
+      "source": "https://www.astound.com/support/billing/set-up-autopay/"
+    },
+    {
+      "slug": "myastound",
+      "title": "What you can do in MyAstound",
+      "topic": "account",
+      "paragraphs": [
+        "MyAstound lets you view current and past bills, set up and manage paperless billing, make a payment, set up and manage automatic payments, track a technician on appointment day, and update your billing address and contact email. On the website you can also see your services and pricing and, in some regions, order premium channels, cable tiers and faster internet.",
+        "After you disconnect, your MyAstound statements stay available for 24 months, after which the account is removed."
+      ],
+      "source": "https://help.astound.com/support/billing-and-account-help/myastound-account-management"
+    },
+    {
+      "slug": "autopay-discount",
+      "title": "Autopay and e-bill discount",
+      "topic": "billing",
+      "paragraphs": [
+        "Astound's current offer terms take $10 off each month when you pay by autopay from a bank account and also enroll in e-bill, or $5 off each month when autopay uses a credit or debit card. You need a valid email and must enroll within 30 days of ordering; the discount shows up within three bill cycles.",
+        "The discount ends if you cancel autopay or e-bill, change services, or the account falls out of good standing. Offer terms vary by plan and region and can change."
+      ],
+      "source": "https://www.astound.com/support/internet/equipment-return/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Disconnecting service and returning equipment",
+      "topic": "account",
+      "paragraphs": [
+        "Astound does not offer an online cancel option. Call 1-800-427-8686 to schedule the disconnect work order.",
+        "Return converter boxes, TiVo boxes, cable cards and modems on or before the scheduled disconnect date, either at a local office (call first) or with a free prepaid FedEx label. Unreturned equipment can be charged."
+      ],
+      "source": "https://www.astound.com/support/internet/equipment-return/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-fee-rule",
+        "intent": "Using Astound's support pages, find out whether a convenience fee applies to one-time online payments and whether it applies to AutoPay. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["autopay", "automatic"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["autopay", "automatic"] },
+        "tags": ["help", "information", "fees", "autopay"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "One-time payments carry a convenience fee; automatic payments (AutoPay) do not." }
+        ]
+      },
+      {
+        "slug": "cancel-astound-phone",
+        "intent": "You want to disconnect your Astound TV service. Find out how to do it and report the phone number to call. Do not change anything on the account.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "phone", "expected": ["8004278686"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "phone", "expected": ["8004278686"] },
+        "tags": ["help", "cancel", "limitation"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "Call Astound at 1-800-427-8686 to schedule the disconnect." }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": ["USERNAME"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["AutoPay", "Paperless billing"] },
+    { "page": "cancel", "signedIn": true, "contains": "1-800-427-8686" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "no convenience fee" },
+    { "page": "helpArticle", "slug": "myastound", "contains": "24 months" }
+  ]
+}

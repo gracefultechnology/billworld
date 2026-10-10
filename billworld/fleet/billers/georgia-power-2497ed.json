@@ -1,0 +1,346 @@
+{
+  "id": "georgia-power-2497ed",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Georgia Power",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public georgiapower.com pages and the Southern Company customer-service login page only (no sign-in; the login link redirects to Southern Company's shared 'Secure Log In' form with Username, Password, Log In, Forgot Username | Forgot Password and Register Now). MFA is not described publicly, so it stays at the family default. Online payment requires logging in: the payment page offers no guest checkout link (bank accounts are stored in the account, cards go through the third-party BillMatrix, digital wallets are linked after login), so guest_pay is marked unsupported online with the phone/in-person alternatives. Card fees through BillMatrix are not stated on the current page, so none is modelled. Auto-Pay drafts a bank account on the due date. A current residential payment-arrangement/extension program is not described on the public pages (only past storm and pandemic installment plans and a general hardship statement), so payment_arrangement is left at the family default. Budget Billing enrollment is shown as temporarily paused. Late fee amount is not published on the pages read. Stop service is a Start/Stop Service request in the customer portal; the stop request asks for the effective date, the account number and access code from the bill, and a final-bill address (from the business Move or Stop Service page).",
+  "officialDomains": [
+    "georgiapower.com",
+    "southerncompany.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.georgiapower.com/residential/billing-payment-options.html",
+      "title": "Georgia Power Billing & Payment Options",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://customerservice2.southerncompany.com/Login?mnuOpco=GPC",
+      "title": "Secure Log In (Southern Company customer service)",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.georgiapower.com/business/industry-services/start-stop-move/move-stop-service.html",
+      "title": "Move or Stop Service | Georgia Power",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.georgiapower.com/residential/billing-payment-options/budget-billing.html",
+      "title": "Budget Billing | Georgia Power",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "Georgia Power",
+    "primary": "#005a8b",
+    "accent": "#00446a",
+    "monogram": "GP"
+  },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "viewBill": "View My Bill",
+    "autopay": "Auto-Pay",
+    "paperless": "Paperless Billing",
+    "signIn": "Log In",
+    "register": "Register Now",
+    "forgot": "Forgot Password",
+    "dashboard": "My Account",
+    "cancel": "Start/Stop Service",
+    "help": "FAQs",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login / Register",
+        "page": "login"
+      },
+      {
+        "label": "Billing & Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Start/Stop Service",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View My Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Auto-Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Start/Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "observed_public",
+    "source": "https://customerservice2.southerncompany.com/Login?mnuOpco=GPC"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "observed_public",
+      "source": "https://www.georgiapower.com/residential/billing-payment-options.html",
+      "channel": "phone",
+      "phone": "8886605890",
+      "note": "Online payments require logging in. Without an account, pay by phone (bank 1-888-660-5890, card via BillMatrix 1-800-672-2402), by mail or at an Authorized Payment Location."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.georgiapower.com/residential/billing-payment-options.html",
+      "note": "Auto-Pay drafts your bill from a bank account on the due date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.georgiapower.com/residential/billing-payment-options.html"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.georgiapower.com/business/industry-services/start-stop-move/move-stop-service.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.georgiapower.com/residential/billing-payment-options.html",
+      "phone": "8886605890"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.georgiapower.com/residential/billing-payment-options.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.georgiapower.com/residential/billing-payment-options.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Billing & Payment Options",
+      "paragraphs": [
+        "Online: log in to pay from a stored checking or savings account, pay by credit or debit card (card payments are processed by BillMatrix, a third-party company not affiliated with Georgia Power), or link Apple Pay, Amazon Pay, Google Pay, PayPal or Venmo in your account.",
+        "By phone at any time: 1-888-660-5890 to pay from a checking or savings account, or 1-800-672-2402 to pay by card through BillMatrix; have your account number ready.",
+        "In person at more than 4,000 Authorized Payment Locations such as Kroger, Walmart, Walgreens, Dollar General and Family Dollar (text GPPAY to 99123 to find one). By mail to Georgia Power Payments, 96 Annex, Atlanta, Georgia 30396 with your account number; mailed payments take 3 to 5 business days to post.",
+        "Georgia Power will never threaten immediate disconnection or demand payment information over the phone, so pay only through these official channels."
+      ],
+      "source": "https://www.georgiapower.com/residential/billing-payment-options.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto-Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "With Auto-Pay your bill is drafted automatically from your bank account on the due date, so you never miss a payment. Set it up from your account under Auto-Pay."
+      ],
+      "steps": [
+        "Log in to your account.",
+        "Choose Set up Auto Pay.",
+        "Enter your checking or savings account and confirm."
+      ],
+      "source": "https://www.georgiapower.com/residential/billing-payment-options.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless Billing lets you see and review your bill online as soon as it is ready and look back at past bills at any time. Turn it on from Billing & Payment Options in your account (Go Paperless)."
+      ],
+      "source": "https://www.georgiapower.com/residential/billing-payment-options.html"
+    },
+    {
+      "slug": "budget-billing",
+      "title": "Budget Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Budget Billing evens out your monthly payment based on your average yearly usage so seasonal highs do not surprise you. If your usage changes a lot, the next bill is adjusted and Georgia Power lets you know.",
+        "New Budget Billing enrollment is temporarily paused; you can sign up to be notified when enrollment reopens."
+      ],
+      "source": "https://www.georgiapower.com/residential/billing-payment-options/budget-billing.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Move or stop service",
+      "topic": "account",
+      "paragraphs": [
+        "Start, stop or transfer service online at any time through Start/Stop Service. A stop request asks for the date you want service turned off, your account number and the access code printed on your bill, and where to mail the final bill.",
+        "Disconnections are scheduled Monday through Friday, not on weekends or business holidays; requests made before midnight can be scheduled for the next business day. When you transfer to a new address in the service area, your deposit moves with you."
+      ],
+      "source": "https://www.georgiapower.com/business/industry-services/start-stop-move/move-stop-service.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-phone-number",
+        "intent": "Find the phone number Georgia Power lists for paying the bill by credit or debit card over the phone. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8006722402"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8006722402"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-672-2402 (BillMatrix)"
+          }
+        ]
+      },
+      {
+        "slug": "mail-posting-time",
+        "intent": "Using Georgia Power's help pages, find out how many business days a mailed payment can take to post to the account. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3-5",
+              "3 to 5",
+              "3–5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3-5",
+            "3 to 5",
+            "3–5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mailed payments take 3 to 5 business days to process and post."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Billing & Payment Options",
+        "Login / Register"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto-Pay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "BillMatrix",
+        "1-800-672-2402"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "access code"
+    }
+  ]
+}

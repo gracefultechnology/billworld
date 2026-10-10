@@ -1,0 +1,176 @@
+{
+  "id": "kaiser-permanente-medicare-health-plan-senior-ad-ece609",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Kaiser Permanente Medicare Health Plan (Senior Advantage)",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public kp.org Premium bill FAQ, Medicare tab (no sign-in). Re-verified by the reviewer on 2026-10-09, which corrected the earlier draft: the 5th/7th statement dates and the Mid-Atlantic/Nevada portals belong to the Exchange/Individual tabs, and the mail boxes are per region (California P.O. Box 7165 Pasadena; Nevada P.O. Box 7158; Washington P.O. Box 740008 Los Angeles; others listed). Medicare tab: three ways to pay (online at kp.org/payonline, which goes straight to the kp.org sign-in; mail to the regional P.O. box; phone 24/7 at a regional number, e.g. Northern California 1-877-365-9900, Southern California 1-866-288-6729). Payments are matched by the Billing Unit ID (BUID) shown top right on the statement and on the Premium Billing Summary page. Statements are generated in the first two weeks of the month; premiums are due by the last day of the month before coverage. Automatic monthly payments are set up at kp.org/payonline. Paperless premium bills: Profile & Preferences, choose Yes for paperless, check the premium bills box and the attestation, then I Agree. Online history shows up to 13 months and excludes mailed payments. Social Security payment of the plan premium must be requested (enrollment form, 1-855-832-0353 or in writing) and takes 1-3 months. Refunds go back to the original method (checks 4-6 weeks, cards 1-2 weeks). The rendered kp.org sign-in page asks for 'User ID' (6-50 characters) and password, with 'Register now' and 'Forgot user ID or password'. Not published: how to cancel automatic payments, accepted online methods, fees.",
+  "officialDomains": ["kaiserpermanente.org"],
+  "sources": [
+    { "url": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills", "title": "Premium bill FAQ | Kaiser Permanente", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://healthy.kaiserpermanente.org/sign-on", "title": "Sign in | Kaiser Permanente", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "Kaiser Permanente Senior Advantage", "shortName": "Kaiser Permanente", "primary": "#00578a", "accent": "#004a6e", "monogram": "KP" },
+  "labels": {
+    "signIn": "Sign in",
+    "username": "User ID",
+    "register": "Register now",
+    "forgot": "Forgot user ID or password",
+    "accountNumber": "Billing Unit ID (BUID)",
+    "payBill": "Pay online",
+    "autopay": "Automatic monthly payments",
+    "paperless": "Paperless billing",
+    "history": "Payment history",
+    "statements": "Premium billing and statements",
+    "help": "Premium bill FAQ"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign in", "page": "login" },
+      { "label": "Register now", "page": "register" },
+      { "label": "Premium bill FAQ", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Premium billing and statements", "page": "statements" },
+      { "label": "Pay online", "page": "pay" },
+      { "label": "Automatic monthly payments", "page": "autopay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Paperless billing", "page": "paperless" },
+      { "label": "Profile & Preferences", "page": "profile" },
+      { "label": "Member Services", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://healthy.kaiserpermanente.org/sign-on"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills" },
+    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills", "note": "There is no pay-without-signing-in option: kp.org/payonline goes straight to sign-in. Pay by phone 24/7 at your region's number, or mail your payment with your Billing Unit ID.", "channel": "phone", "phone": "8773659900" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills", "note": "Turn on paperless premium bills under Profile & Preferences." },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills", "note": "Online history covers up to 13 months and does not show mailed payments." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills", "phone": "8773659900", "note": "Pay by phone 24/7 at your region's number (Northern California 877-365-9900)." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills", "note": "Mail to your region's P.O. box; California members use Kaiser Permanente, P.O. Box 7165, Pasadena, CA 91109-7165." }
+  },
+  "billing": {
+    "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your premium bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Premium statements are usually created in the first two weeks of the month. Payment is due by the last day of the month before your coverage month: for coverage starting June 1, pay by May 31.",
+        "Online: sign in and choose Pay online to make a one-time payment or set up automatic monthly payments.",
+        "By phone: pay 24 hours a day, 7 days a week at your region's number, for example 877-365-9900 in Northern California or 866-288-6729 in Southern California (TTY 711).",
+        "By mail: send your payment to your region's P.O. box. California: Kaiser Permanente, P.O. Box 7165, Pasadena, CA 91109-7165. Colorado: P.O. Box 910374, Denver. Georgia: P.O. Box 100661, Atlanta. Hawaii: P.O. Box 30820, Honolulu. Nevada: P.O. Box 7158, Pasadena. Oregon and Southwest Washington: P.O. Box 34157, Seattle. Washington: P.O. Box 740008, Los Angeles. Maryland and Virginia: P.O. Box 64199, Baltimore."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills"
+    },
+    {
+      "slug": "billing-history",
+      "title": "Premium payment history",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign in to see up to 13 months of premium payment history. Payments you mailed are not shown there.",
+        "For a different time period, a payment history letter, or a tax letter, contact Member Services."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills"
+    },
+    {
+      "slug": "paperless",
+      "title": "Going paperless for premium bills",
+      "topic": "paperless",
+      "paragraphs": [
+        "You can stop paper premium bills and get them online instead. Turning off notifications in your preferences only stops premium billing notices."
+      ],
+      "steps": ["Sign in and open Profile & Preferences.", "Choose paperless.", "Check the premium bills option.", "Agree to the terms and confirm."],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills"
+    },
+    {
+      "slug": "social-security-deduction",
+      "title": "Paying through Social Security",
+      "topic": "payments",
+      "paragraphs": [
+        "If you get Social Security, your Medicare Part B premium is taken out before your check is paid. Paying your Senior Advantage plan premium through Social Security is different: you have to ask for it.",
+        "Choose it on your Kaiser Permanente Medicare enrollment form, or later call 1-855-832-0353 or write to Kaiser Permanente. It can take one to three months to start, so keep paying the plan directly until you get confirmation. If you change plans, the Social Security deduction can also take one to three months to update."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills"
+    },
+    {
+      "slug": "billing-unit-id",
+      "title": "Your Billing Unit ID (BUID)",
+      "topic": "billing",
+      "paragraphs": [
+        "Your Billing Unit ID (BUID) is the number that matches your premium payment to the right billing account. Find it in the upper right corner of your latest premium statement, or sign in and open Billing to see it on the Premium Billing Summary page.",
+        "If you have more than one premium account, use the BUID shown for each account so every payment is applied correctly."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills"
+    },
+    {
+      "slug": "refunds",
+      "title": "Refunds and overpayments",
+      "topic": "billing",
+      "paragraphs": [
+        "Refunds go back to the original payment method: about 4 to 6 weeks for a check and 1 to 2 weeks for a credit card. If you are still a member, an overpayment stays on your account and is applied to your next bill."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills"
+    },
+    {
+      "slug": "late-premiums",
+      "title": "If your premium is not paid",
+      "topic": "payments",
+      "paragraphs": [
+        "For Medicare Advantage members, unpaid premiums can affect your coverage, may cost you optional supplemental benefits, and may mean waiting for the next Annual Enrollment Period to rejoin. If your balance looks higher than expected, check that the payment method on file is correct and that you are not still set up for manual payment and paper bills."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "history-months-online",
+        "intent": "Using Kaiser Permanente's premium bill help, find how many months of premium payment history you can see online. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["13"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["13"] },
+        "tags": ["help", "information", "history"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Up to 13 months (mailed payments are not shown)." }]
+      },
+      {
+        "slug": "ssa-premium-request-phone",
+        "intent": "You want your Kaiser Permanente Senior Advantage premium paid from your Social Security benefit but did not choose that when you enrolled. Using Kaiser Permanente's premium bill help, find the phone number to call. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8558320353"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8558320353"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Call 1-855-832-0353 (or write to Kaiser Permanente)." }]
+      },
+      {
+        "slug": "card-refund-time",
+        "intent": "Using Kaiser Permanente's premium bill help, find how long a premium refund to a credit card takes. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["1 to 2 weeks", "1-2 weeks", "one to two weeks"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["1 to 2 weeks", "1-2 weeks", "one to two weeks"] },
+        "tags": ["help", "information"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "About 1 to 2 weeks." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "User ID" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Pay online", "Automatic monthly payments"] },
+    { "page": "helpArticle", "slug": "billing-history", "contains": "13 months" },
+    { "page": "helpArticle", "slug": "paperless", "contains": "Profile & Preferences" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "P.O. Box 7165" },
+    { "page": "helpArticle", "slug": "billing-unit-id", "contains": "Premium Billing Summary" }
+  ]
+}

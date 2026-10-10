@@ -4,11 +4,12 @@ import http from 'node:http';
 import { randomBytes, timingSafeEqual, createHmac } from 'node:crypto';
 import { readdirSync, writeFileSync, mkdirSync, chmodSync, rmSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { FleetWorld, Fault, isoDate, fmtDate, money, PASSWORD, FLEET_REVISION } from './engine.mjs';
+import { FleetWorld, Fault, isoDate, fmtDate, money, PASSWORD, FLEET_REVISION, methodTypesFor, autopayPoliciesFor, paymentLimits } from './engine.mjs';
 import { helpArticles, searchHelp } from './help.mjs';
 import { search as searchCatalog } from './catalog.mjs';
 import { textPdf } from './pdf.mjs';
-import { esc } from './kit.mjs';
+import { esc, field as kitField, capabilityNotes as kitCapabilityNotes, L as kitL, dossierNavInner as kitDossierNavInner, dossierNavBar as kitDossierNavBar } from './kit.mjs';
+import { loadDossiers } from './billers/load.mjs';
 import { renderMail, renderDirectory, renderNotice, mailCss } from './shell.mjs';
 import { generateTasks } from './tasks.mjs';
 import { createConnector, connectorToken, searchMessages } from './mail-connector.mjs';
@@ -41,7 +42,146 @@ export async function loadTemplates() {
   }
   return templates;
 }
-export const templateFor = biller => templates.get(biller.template) || templates.get('generic');
+const familyTemplate = biller => templates.get(biller.template) || templates.get('generic');
+// A dedicated biller whose dossier changes the sign-in step count or guest lookup fields gets a per-biller view of its
+// family template (same routes and renderers, its own flow). Family billers get the shared template object.
+const derived = new Map();
+export const templateFor = biller => {
+  const t = familyTemplate(biller); const a = biller.dossier?.auth;
+  if (!a || (a.loginSteps == null && !a.guestLookupFields)) return t;
+  const key = `${biller.id}|${t.id}`;
+  if (!derived.has(key)) derived.set(key, { ...t, flow: { ...t.flow, ...(a.loginSteps != null ? { loginSteps: a.loginSteps } : {}), ...(a.guestLookupFields ? { guestFields: [...new Set([...(t.flow.guestFields || []), ...a.guestLookupFields])] } : {}) } });
+  return derived.get(key);
+};
+// ---------- dedicated tier: view-model pieces from the dossier ----------
+const CAP_TITLE = { cancel_service: 'Stopping or cancelling service', autopay: 'Automatic payments', autopay_cancel: 'Turning off automatic payments', paperless: 'Paperless billing', guest_pay: 'Paying without signing in', scheduled_payment: 'Future-dated payments', payment_arrangement: 'Payment arrangements', registration: 'Online registration', pay_online: 'Online payments', view_bill: 'Viewing your bill', statements: 'Statements', password_reset: 'Password reset', payment_assistance: 'Payment assistance', pay_by_phone: 'Paying by phone', pay_by_mail: 'Paying by mail', google_login: 'Sign in with Google', online_account: 'Online account' };
+// Which pages show which capability notes (plus home, dashboard and help, which show all of them).
+const NOTE_PAGES = { cancel: ['cancel_service'], autopay: ['autopay', 'autopay_cancel'], paperless: ['paperless'], guest: ['guest_pay'], pay: ['scheduled_payment', 'pay_online'], arrangement: ['payment_arrangement'], register: ['registration'], plan: ['change_plan'] };
+export function capabilityNotesFor(biller) {
+  const out = [];
+  // Notes on supported capabilities (rules such as "no AutoPay while past due") show only on that feature's own page.
+  for (const [k, c] of Object.entries(biller.capabilities || {})) if (c.dossier && c.note) out.push({ capability: k, title: CAP_TITLE[k] || k, note: c.note, channel: c.channel || null, supported: c.support === 'supported' });
+  return out;
+}
+const REG_FIELD = { accountNumber: ['Account number', 'numeric'], lastName: ['Last name', null], zip: ['ZIP code', 'numeric'], email: ['Email address', null], phone: ['Phone number', 'tel'] };
+const GUEST_FIELD = { accountNumber: ['Account number', 'numeric'], statementId: ['Statement number', null], parcelId: ['Parcel number', null], plate: ['License plate', null], phone: ['Phone number', 'tel'], lastName: ['Last name', null], zip: ['ZIP code', 'numeric'], amountDue: ['Amount due', 'decimal'], dob: ['Date of birth (YYYY-MM-DD)', null] };
+// Insert fields a dossier requires (registration / guest lookup) that the family template's form does not render,
+// just before that form's first submit button. Standard field names, so engine and driver need nothing special.
+function withRequiredFields(out, vm) {
+  if (typeof out !== 'string' || !vm.auth) return out;
+  const want = vm.page === 'register' ? [vm.auth.registrationFields, REG_FIELD] : vm.page === 'guest' ? [vm.auth.guestLookupFields, GUEST_FIELD] : null;
+  if (!want || !want[0]?.length) return out;
+  const at = out.indexOf(`action="${esc(vm.url(vm.page))}`); if (at < 0) return out;
+  const end = out.indexOf('</form>', at); const btn = out.indexOf('<button', at);
+  const pos = btn > at && btn < end ? btn : end; if (pos < 0) return out;
+  const form = out.slice(at, end);
+  const extra = want[0].filter(f => !form.includes(`name="${f}"`)).map(f => String(kitField(vm, { name: f, label: kitL(vm, f, want[1][f][0]), inputmode: want[1][f][1] || undefined, type: f === 'email' ? 'email' : f === 'phone' ? 'tel' : 'text' }))).join('');
+  out = extra ? out.slice(0, pos) + extra + out.slice(pos) : out;
+  // guestLookupExact: the real lookup asks for exactly these fields, so the family's other lookup fields go.
+  if (vm.page === 'guest' && vm.auth.guestLookupExact) {
+    const keep = new Set(want[0]); const f0 = out.indexOf(`action="${esc(vm.url(vm.page))}`); const f1 = out.indexOf('</form>', f0);
+    const formHtml = out.slice(f0, f1).replace(/<div\b[^>]*>\s*<label\b[^>]*>(?:(?!<\/label>)[\s\S])*<\/label>\s*<input\b[^>]*\bname="(\w+)"[^>]*>(?:\s*<(?:small|p)\b[^>]*>[^<]*<\/(?:small|p)>)?\s*<\/div>/g, (m, n) => GUEST_FIELD[n] && !keep.has(n) ? '' : m);
+    out = out.slice(0, f0) + formHtml + out.slice(f1);
+  }
+  return out;
+}
+// Hide AutoPay amount options and days the dossier says the biller does not offer (radios, selects).
+function withAutopayOptions(out, vm) {
+  if (typeof out !== 'string' || vm.page !== 'autopay' || !vm.billing) return out;
+  const { autopayPolicies: pol, autopayDays: days } = vm.billing;
+  if (pol) for (const v of ['minimum', 'statement', 'fixed', 'full'].filter(v => !pol.includes(v))) {
+    out = out.replace(new RegExp(`<label[^>]*>(?:(?!</label>)[\\s\\S])*?name="policy" value="${v}"(?:(?!</label>)[\\s\\S])*?</label>`, 'g'), '').replace(new RegExp(`<option value="${v}"[^>]*>[^<]*</option>`, 'g'), '');
+  }
+  if (days === 'due_date' || Array.isArray(days)) out = out.replace(/(<select[^>]*name="day"[^>]*>)([\s\S]*?)(<\/select>)/g, (m, a, body, c) => a + body.replace(/<option value="(\d+)"[^>]*>[^<]*<\/option>/g, (o, n) => days === 'due_date' || !days.includes(Number(n)) ? '' : o) + c);
+  return out;
+}
+// Capability notes go after the first heading of home, dashboard, help and the page of the capability itself.
+function withCapabilityNotes(out, vm) {
+  if (typeof out !== 'string' || !vm.capabilityNotes?.length || out.includes('data-capnotes')) return out;
+  const overview = ['home', 'dashboard', 'help'].includes(vm.page);
+  const keys = overview ? null : NOTE_PAGES[vm.page];
+  const notes = vm.capabilityNotes.filter(n => overview ? !n.supported : keys?.includes(n.capability));
+  if (keys === undefined || !notes.length) return out;
+  const block = String(kitCapabilityNotes({ ...vm, capabilityNotes: notes }, keys));
+  const h = out.indexOf('</h1>');
+  if (h >= 0) return out.slice(0, h + 5) + block + out.slice(h + 5);
+  const m = out.match(/<main[^>]*>/); return m ? out.replace(m[0], m[0] + block) : out;
+}
+// A dossier that makes a two-step family sign in on one page: the family's first step has no password field, so add it.
+function withLoginPassword(out, vm) {
+  if (typeof out !== 'string' || vm.page !== 'login' || vm.flow?.loginSteps !== 1 || !vm.auth) return out;
+  const at = out.indexOf(`action="${esc(vm.url('login'))}`); if (at < 0) return out;
+  const end = out.indexOf('</form>', at); const form = out.slice(at, end);
+  if (form.includes('name="password"')) return out;
+  const btn = out.indexOf('<button', at); const pos = btn > at && btn < end ? btn : end;
+  return out.slice(0, pos) + String(kitField(vm, { name: 'password', label: kitL(vm, 'password', 'Password'), type: 'password', autocomplete: 'current-password' })) + out.slice(pos);
+}
+// Dossier navigation (vm.nav): the template declares its primary nav per area in meta.navSlots (class:<token> or
+// aria:<label>); the first matching <nav>/<aside> keeps its own container (and the template's styling) and gets the
+// dossier's items. On public pages the observed real-site navs (research captures) yield to the dossier. Without a slot
+// match the dossier bar goes right after the header.
+const OBSERVED_NAV = /<nav\b[^>]*class="[^"]*\b(?:pf-nav|obs-nav|pf-site|pf-real)\b[^"]*"[^>]*>[\s\S]*?<\/nav>/g;
+function withDossierNav(out, vm, t) {
+  const area = vm.authenticated ? 'account' : 'public';
+  if (typeof out !== 'string' || !vm.nav?.[area]?.length || !out.includes('<body')) return out;
+  const inner = String(kitDossierNavInner(vm, area));
+  const dropObserved = html => area === 'public' ? html.replace(OBSERVED_NAV, m => m.includes('data-dossier-nav') ? m : '') : html;
+  for (const sel of t.meta?.navSlots?.[area] || []) {
+    const [kind, value] = [sel.slice(0, sel.indexOf(':')), sel.slice(sel.indexOf(':') + 1)];
+    const attr = kind === 'class' ? `class="(?:[^"]*\\s)?${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:\\s[^"]*)?"` : `aria-label="${esc(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`;
+    const re = new RegExp(`<(nav|aside)\\b([^>]*\\b${attr}[^>]*)>[\\s\\S]*?</\\1>`);
+    const m = out.match(re);
+    if (m) {
+      // A family nav that carried the sign-out link keeps one: the dossier's items never include it.
+      const logoutPath = esc(vm.url('logout').split('?')[0]);
+      const keepLogout = area === 'account' && m[0].includes(`href="${logoutPath}`) && !out.replace(m[0], '').includes(`href="${logoutPath}`);
+      const signOut = keepLogout ? `<a class="bwf-signout" href="${esc(vm.url('logout'))}">${esc(String(kitL(vm, 'signOut', 'Sign Out')))}</a>` : '';
+      return dropObserved(out.replace(m[0], () => `<${m[1]}${m[2]} data-dossier-nav="${area}">${inner}${signOut}</${m[1]}>`));
+    }
+  }
+  out = dropObserved(out);
+  const bar = String(kitDossierNavBar(vm, area));
+  const h = out.indexOf('</header>');
+  if (h >= 0) return out.slice(0, h + 9) + bar + out.slice(h + 9);
+  return out.replace(/<body[^>]*>/, m => m + bar);
+}
+export const decorate = (out, vm, t = null) => withDossierNav(decorateBase(out, vm), vm, t || {});
+// When a dossier says a page's own action is not offered online, drop the forms that post to that page;
+// the capability note (added next) tells the user how to do it instead.
+// The wizard chrome around a removed form (progress steppers, "we hate to see you go" lines, emptied boxes) goes too.
+// AutoPay: enrollment forms go when AutoPay is not offered online, the turn-off form and link when cancelling is not.
+const PRIMARY_CAP = { arrangement: 'payment_arrangement', paperless: 'paperless', cancel: 'cancel_service', plan: 'change_plan' };
+const STEPPER = /<ol\b[^>]*class="(?:progress|kstep|stepper|steps-bar|wiz|wizard|dsteps|psteps|hp-steps|mc-steps|pp-track)"[^>]*>[\s\S]*?<\/ol>/g;
+const FORM = /<form\b[^>]*>(?:(?!<\/form>)[\s\S])*<\/form>/g;
+const offline = (vm, cap) => { const s = vm.biller?.capabilities?.[cap]; return !!s?.dossier && !!s.support && s.support !== 'supported'; };
+function emptied(out) {
+  for (let i = 0; i < 3; i++) out = out.replace(/<(section|div)\b[^>]*class="[^"]*\b(?:tile|card|kcard|pbox|panel|box|ssm)\b[^"]*"[^>]*>\s*(?:<h[23][^>]*>[^<]*<\/h[23]>\s*)?<\/\1>/g, '');
+  return out;
+}
+function withoutUnsupportedForms(out, vm) {
+  if (typeof out !== 'string' || !vm.biller?.capabilities) return out;
+  if (vm.page === 'autopay') {
+    const before = out;
+    if (offline(vm, 'autopay') && !vm.autopay?.enrolled) out = out.replace(FORM, f => /name="action" value="enroll"/.test(f) ? '' : f);
+    if (offline(vm, 'autopay_cancel')) out = out.replace(FORM, f => /name="action" value="cancel"/.test(f) ? '' : f).replace(/<a\b[^>]*href="[^"]*[?&]step=cancel[^"]*"[^>]*>[\s\S]*?<\/a>/g, '');
+    return out === before ? out : emptied(out);
+  }
+  const cap = PRIMARY_CAP[vm.page];
+  if (!cap || !offline(vm, cap) || !vm.capabilityNotes?.some(n => n.capability === cap)) return out;
+  if (cap === 'cancel_service' && vm.service && vm.service.status !== 'active') return out;
+  const action = esc(vm.url(vm.page));
+  out = out.replace(FORM, f => f.includes(`action="${action}`) ? '' : f).replace(STEPPER, '').replace(/<p\b[^>]*>\s*We hate to see you go\.?[^<]*<\/p>/g, '');
+  return emptied(out);
+}
+// Two-step sign-in on a template whose password page reuses its sign-in renderer: the step-2 form must post to the
+// password step (posting to step 1 would only restart the sign-in).
+function withLoginStep2Action(out, vm) {
+  if (typeof out !== 'string' || vm.page !== 'loginPassword' || !vm.has('loginPassword')) return out;
+  const step1 = esc(vm.url('login')), step2 = esc(vm.url('loginPassword'));
+  if (out.includes(`action="${step2}`)) return out;
+  return out.replace(new RegExp(`action="${step1.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=["?])`, 'g'), `action="${step2}`);
+}
+const decorateBase = (out, vm) => withCapabilityNotes(withoutUnsupportedForms(withAutopayOptions(withRequiredFields(withLoginPassword(withLoginStep2Action(out, vm), vm), vm), vm), vm), vm);
 
 // Malformed cookies (possibly set by another app on the same host) are skipped, never fatal.
 const safeDecode = v => { try { return decodeURIComponent(v); } catch { return null; } };
@@ -71,6 +211,8 @@ const isToken = (a, b) => typeof a === 'string' && a.length === b.length && timi
 export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1', dataDir = null, adminToken = randomBytes(24).toString('base64url'), quiet = false, openWorld = true, maxOpenEpisodes = 2000, openEpisodeTtlMs = 24 * 3600e3, google = true, googlePort = 0, googleHost = 'localhost', socialOverrides = null } = {}) {
   if (!templates.size) await loadTemplates();
   const world = new FleetWorld({ dataDir });
+  const badDossiers = Object.keys(world.catalog.dossierErrors || loadDossiers().errors || {});
+  if (badDossiers.length && !quiet) console.warn(`Fleet: ${badDossiers.length} dossier(s) failed validation and are not applied: ${badDossiers.join(', ')} (run node billworld/fleet/billers/validate.mjs)`);
   installSmsMfa(world); // mfa:'sms' scenarios: sign-in codes go to the persona's phone (see sms.mjs)
   // Mock Google IdP on its own origin (googleHost:port; default http://localhost:<port>, a different host than 127.0.0.1).
   const idp = google ? new MockGoogle({ world, host: '127.0.0.1', publicHost: googleHost, port: googlePort, quiet }) : null;
@@ -104,7 +246,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
     const help = helpFor(biller);
     const vm = {
       page, template: t.id, revision: FLEET_REVISION, nonce: randomBytes(9).toString('base64url'), csrf: csrfFor(ep, session ? sid : null), hasJs: !!t.js,
-      biller: { id: biller.id, name: biller.entry.name, brand: biller.brand, kind: biller.kind, billType: biller.entry.bill_type, category: biller.category, family: biller.family, capabilities: biller.capabilities, fees: biller.fees,
+      biller: { id: biller.id, name: biller.brand.displayName || biller.entry.name, brand: biller.brand, kind: biller.kind, billType: biller.entry.bill_type, category: biller.category, family: biller.family, capabilities: biller.capabilities, fees: biller.fees,
         phone: biller.contact ? biller.contact.phone : biller.entry.phone_customer_service, payPhone: biller.contact ? biller.contact.payPhone : biller.entry.phone_pay_by_phone, mailAddress: biller.contact ? biller.contact.mailAddress : biller.entry.mail_payment_address, serviceArea: biller.contact ? biller.contact.serviceArea : biller.entry.service_area_detail || (biller.entry.service_area || []).join(', '), signal: biller.signal, entityType: biller.entry.entity_type, parent: biller.entry.parent_company, notes: biller.entry.notes, seniorPrograms: biller.entry.senior_programs, app: biller.entry.app, processor: biller.entry.payment_processor, profile: profileOf(biller) },
       // The sign-out link carries the CSRF token so a cross-site GET cannot sign the user out.
       url: (pg, p = {}, q = null) => urlFor(t, biller.id, pg, p, pg === 'logout' && session ? { ...(q || {}), _csrf: csrfFor(ep, sid) } : q), has: pg => !!t.routes[pg], asset: name => `${base(biller.id)}/_assets/${name}`, mailUrl: '/mail', directoryUrl: '/',
@@ -113,7 +255,16 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
       // Social sign-in: only providers this server implements for this biller (research evidence or template meta).
       socialProviders: [], socialUrls: {}, googleLoginUrl: null, observedSocialProviders: observedSocial(biller),
       // Where the sign-in code went (mfa page copy): 'email' or 'sms', with a masked destination.
-      mfaChannel: null, mfaDestination: null, smsUrl: '/sms', ...extra
+      mfaChannel: null, mfaDestination: null, smsUrl: '/sms',
+      // Dedicated tier (billers/<id>.json). Family billers: empty labels, no nav/auth overrides, no notes.
+      tier: biller.tier || 'family', labels: biller.dossier?.labels || {}, nav: biller.dossier?.nav || null,
+      auth: biller.dossier?.auth ? { identifier: biller.dossier.auth.identifier || null, loginSteps: t.flow.loginSteps, mfa: biller.dossier.auth.mfa || null, registrationFields: biller.dossier.auth.registrationFields || [], guestLookupFields: biller.dossier.auth.guestLookupFields || [], guestLookupExact: !!biller.dossier.auth.guestLookupExact } : null,
+      capabilityNotes: biller.dossier ? capabilityNotesFor(biller) : [],
+      billing: biller.dossier ? { methods: methodTypesFor(biller), guestMethods: methodTypesFor(biller, { guest: true }), autopayMethodTypes: methodTypesFor(biller, { autopay: true }), autopayPolicies: autopayPoliciesFor(biller), autopayDays: biller.dossier.billing?.autopay?.days || null, autopayLeadDays: biller.dossier.billing?.autopay?.leadDays ?? null, limits: paymentLimits(biller), lateFeePercent: biller.dossier.billing?.lateFeePercent ?? null, lateFeeCents: biller.dossier.billing?.lateFeeCents ?? null } : null,
+      // Payment method types this page may offer (kit.methodChooser / newMethodFields honor it).
+      methodTypes: biller.dossier ? methodTypesFor(biller, { guest: ['guest', 'guestPay', 'guestReview'].includes(page), autopay: page === 'autopay' }) : null,
+      dossier: biller.dossier ? { id: biller.dossier.id, reviewedAt: biller.dossier.reviewedAt || null, sources: (biller.dossier.sources || []).map(x => ({ title: x.title, kind: x.kind })) } : null,
+      ...extra
     };
     const social = authenticated ? [] : socialFor(biller, t);
     if (social.includes('google')) { const next = typeof query?.next === 'string' && safeNext(query.next, biller.id); vm.socialProviders = ['google']; vm.googleLoginUrl = `${base(biller.id)}/auth/google${next ? `?next=${encodeURIComponent(next)}` : ''}`; vm.socialUrls = { google: vm.googleLoginUrl }; }
@@ -265,7 +416,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
         const shown = page === 'payReview' && !draftDone ? t.flow.paySteps[0] : page === 'guestReview' && !draftDone ? t.flow.guestSteps[1] : page;
         const q2 = input.next && typeof input.next === 'string' ? { ...query, next: input.next } : query; // keep the post-login target on error re-renders
         const vm = viewModel({ ep, biller, t, page: shown, sid, params, query: q2, values, error: e.message, extra: pageExtras(ep, biller, t, shown, params, q2, sid) });
-        return send(res, e.status >= 500 ? 500 : 400, withSocial(t.render(shown, vm), vm), 'text/html; charset=utf-8', { 'Set-Cookie': set, 'Content-Security-Policy': csp(vm) });
+        return send(res, e.status >= 500 ? 500 : 400, decorate(withSocial(t.render(shown, vm), vm), vm, t), 'text/html; charset=utf-8', { 'Set-Cookie': set, 'Content-Security-Policy': csp(vm) });
       }
     }
     if (page === 'logout') {
@@ -291,7 +442,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
     const vm = viewModel({ ep, biller, t, page, sid, params, query, values: { ...(page === 'loginPassword' && pendingUser ? { username: pendingUser } : {}) }, notice: flashText, extra: pageExtras(ep, biller, t, page, params, query, sid) });
     if (vm.missing) throw new Fault('Page not found', 404, 'not_found');
     world.event(ep, billerId, 'page_view', { page });
-    return send(res, 200, withSocial(t.render(page, vm), vm), 'text/html; charset=utf-8', { 'Set-Cookie': [...set, ...clearFlash], 'Content-Security-Policy': csp(vm) });
+    return send(res, 200, decorate(withSocial(t.render(page, vm), vm), vm, t), 'text/html; charset=utf-8', { 'Set-Cookie': [...set, ...clearFlash], 'Content-Security-Policy': csp(vm) });
   }
   const flowNeeds = t => t.flow.loginSteps === 2;
   function draftOkFor(ep, billerId, sid) { const d = world.account(ep, billerId).draft; return !!(sid && d?.token && d.sid === sid); }
@@ -474,7 +625,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
         return json(world.finish(e, { ...r, metadata: input.metadata || {}, taskId: e.task?.id || null, predicateSource: e.task ? 'task' : 'caller', revision: FLEET_REVISION, taskRevision: e.task?.revision || null }));
       }
       if (url.pathname === '/mailbox') return json(ep().mailbox);
-      if (url.pathname === '/biller') { const b = world.biller(url.searchParams.get('id')); return json({ ...b, profile: profileOf(b), tasks: tasksFor(b) }); }
+      if (url.pathname === '/biller') { const b = world.biller(url.searchParams.get('id')); return json({ ...b, profile: profileOf(b), dossier: b.dossier || null, tasks: tasksFor(b) }); }
       if (url.pathname === '/tasks') return json(tasksFor(world.biller(url.searchParams.get('billerId'))));
       if (url.pathname === '/templates') return json([...templates.values()].map(t => ({ id: t.id, meta: t.meta, routes: t.routes, flow: t.flow, billers: world.catalog.byTemplate.get(t.id)?.length || 0 })));
       return json({ error: 'not found' }, 404);
@@ -514,7 +665,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
   suffix = `_${publicServer.address().port}`;
   const adminUrl = `http://127.0.0.1:${adminServer.address().port}`;
   const admin = async (path, body) => { const r = await fetch(adminUrl + path, { method: body ? 'POST' : 'GET', headers: { Authorization: `Bearer ${adminToken}`, 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined }); const j = await r.json(); if (!r.ok) throw Object.assign(new Error(j.error), { status: r.status, code: j.code }); return j; };
-  return { world, baseUrl: publicServer.baseUrl, adminUrl, adminToken, admin, templates, urlFor, googleUrl: idp?.issuer || null, idp, rp, close: () => Promise.all([new Promise(r => publicServer.close(r)), new Promise(r => adminServer.close(r)), idp ? idp.close() : null]), publicServer, adminServer };
+  return { world, templateFor, baseUrl: publicServer.baseUrl, adminUrl, adminToken, admin, templates, urlFor, googleUrl: idp?.issuer || null, idp, rp, close: () => Promise.all([new Promise(r => publicServer.close(r)), new Promise(r => adminServer.close(r)), idp ? idp.close() : null]), publicServer, adminServer };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

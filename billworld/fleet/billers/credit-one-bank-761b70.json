@@ -1,0 +1,425 @@
+{
+  "id": "credit-one-bank-761b70",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Credit One Bank",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Credit One Bank's public FAQ pages only (no sign-in). Sign-in uses a Username ('Choose Your Username' at setup) and Password, with 'Forgot Username?' and 'Forgot Password?' links. 'Pay Bill' offers Standard Payment (bank account only, no fee, no agent, available credit restored within 7 days) and Express Payment (bank account or debit card with live agent assistance for a fee whose amount is not published, quicker available credit). Only Standard Payment is modelled online (bank only; no card methods, no fee). Minimum online payment $1.00; the maximum is the balance (engine cannot cap at balance). Standard Payments can be scheduled up to 30 days ahead from checking/savings; only one future-dated payment may be pending; cancel from 'Pay Bill' by 11:59 p.m. PT the day before. Posting: by 2 p.m. PT Sun-Fri posts same day. AutoPay: 'Pay Bill' > 'AutoPay' 'Set Up'; 'Pay From' selector; Minimum Payment Due, Last Statement Balance or Other Amount; drafted on the Payment Due Date; cancel via 'AutoPay: On' > 'Cancel AutoPay'. 'full' kept for the reference solver. Paperless Documents via 'Settings' or 'Documents & Statements'; 24 months of statements online. Up to four bank accounts on file ('Bank Account Information' in Settings). MoneyGram receive code 1430; Western Union code city CREDITONEBANK, state NV. Mail: Payment Services, P.O. Box 60500, City of Industry, CA 91716-0500. Customer Service 1-877-825-3242; outside U.S. 1-702-405-2042. No pay-without-sign-in (inferred from the 'Sign In to Pay Your Bill' home CTA). Account closure is not described on public FAQs; cancel_service left at family default. Review 2026-10-09: Standard/Express Payment, $1.00 minimum, balance maximum, 30-day scheduling with one pending payment, AutoPay steps and options, 2 p.m. PT posting, MoneyGram 1430, mail address, 24-month statements and the sign-in widget re-verified on the FAQ data and home page. 'Overview' (dashboard) is generic (inferred). Integrated 2026-10-09: billing.scheduled.maxPending 1.",
+  "officialDomains": [
+    "creditonebank.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.creditonebank.com/faqs/pay-bill",
+      "title": "Pay Bill FAQs | Credit One Bank",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.creditonebank.com/faqs/pay-bill/autopay-enrollment",
+      "title": "How do I enroll in AutoPay? | Credit One Bank",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.creditonebank.com/faqs/pay-bill/cancel-autopay",
+      "title": "How do I cancel my enrollment in AutoPay? | Credit One Bank",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.creditonebank.com/faqs/paperless-documents/enroll-in-paperless-documents",
+      "title": "How do I enroll in Paperless Documents? | Credit One Bank",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.creditonebank.com/",
+      "title": "Credit One Bank | Credit Cards",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Credit One Bank",
+    "primary": "#0a2240",
+    "accent": "#a3123a",
+    "monogram": "C1"
+  },
+  "labels": {
+    "payBill": "Pay Bill",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Documents",
+    "statements": "Documents & Statements",
+    "history": "Payment History",
+    "wallet": "Bank Account Information",
+    "dashboard": "Overview",
+    "profile": "Settings",
+    "signIn": "Sign In",
+    "username": "Username",
+    "password": "Password",
+    "forgot": "Forgot Password?",
+    "amountDue": "Minimum Payment Due",
+    "dueDate": "Payment Due Date",
+    "register": "Set up Online Account Access"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Set up Online Account Access",
+        "page": "register"
+      },
+      {
+        "label": "Pay Bill FAQs",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Documents & Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless Documents",
+        "page": "paperless"
+      },
+      {
+        "label": "Bank Account Information",
+        "page": "wallet"
+      },
+      {
+        "label": "Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.creditonebank.com/faqs/pay-bill"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.creditonebank.com/",
+      "note": "Credit One Bank has no pay-without-signing-in option. Sign in to pay online, call Customer Service at 1-877-825-3242 for an Express Payment, or mail a payment.",
+      "channel": "phone",
+      "phone": "1-877-825-3242"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditonebank.com/faqs/pay-bill/autopay-enrollment"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditonebank.com/faqs/pay-bill/cancel-autopay"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditonebank.com/faqs/pay-bill"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditonebank.com/faqs/paperless-documents/enroll-in-paperless-documents"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditonebank.com/faqs/pay-bill"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditonebank.com/faqs/pay-bill"
+    }
+  },
+  "billing": {
+    "source": "https://www.creditonebank.com/faqs/pay-bill",
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.creditonebank.com/faqs/pay-bill"
+    },
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "minimum",
+        "statement",
+        "fixed",
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "scheduled": {
+      "maxDaysAhead": 30,
+      "maxPending": 1
+    },
+    "minPaymentCents": 100
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Credit One Bank bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in and choose Pay Bill. A Standard Payment comes from your bank account with no fee and no agent; your available credit goes back up within 7 days. An Express Payment can come from a bank account or a debit card with live agent help for a fee, and usually restores available credit faster.",
+        "The smallest online payment is $1.00 and the largest is your balance; pay at least the Minimum Payment Due to avoid a Late Fee.",
+        "Payments made by 2 p.m. Pacific, Sunday through Friday, post the same day and show online the next business day."
+      ],
+      "steps": [
+        "Sign in to your account.",
+        "Select Pay Bill.",
+        "Choose Standard Payment, the bank account, the amount and the date.",
+        "Review and confirm."
+      ],
+      "source": "https://www.creditonebank.com/faqs/pay-bill"
+    },
+    {
+      "slug": "schedule-payment",
+      "title": "Schedule or cancel a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Schedule a Standard Payment up to 30 days ahead from a checking or savings account. Only one future-dated payment can be pending at a time. Future debit card payments are set up by calling Customer Service at 877-825-3242.",
+        "Cancel a scheduled Standard Payment from the Pay Bill page by 11:59 p.m. Pacific the day before the payment date. A payment that is Processing cannot be cancelled."
+      ],
+      "source": "https://www.creditonebank.com/faqs/pay-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in and select Pay Bill, then select Set Up next to AutoPay. Choose the Pay From bank account and the amount: Minimum Payment Due, Last Statement Balance or Other Amount. Select Continue and then Confirm.",
+        "AutoPay is drafted on your Payment Due Date. A statement-balance AutoPay never takes more than your current balance, and a minimum-payment AutoPay is reduced by what you already paid that cycle.",
+        "To stop AutoPay, open Pay Bill, select the arrow next to AutoPay: On and choose Cancel AutoPay. Pending payments cannot be cancelled."
+      ],
+      "steps": [
+        "Sign in and select Pay Bill.",
+        "Select Set Up next to AutoPay.",
+        "Choose Pay From and the amount.",
+        "Select Continue, then Confirm."
+      ],
+      "source": "https://www.creditonebank.com/faqs/pay-bill/autopay-enrollment"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Documents",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in and open Documents & Statements, or find the Paperless Documents section under Settings, to enroll.",
+        "If you turn Paperless Documents off, you keep access to your archive and to the most recent 24 months of billing statements."
+      ],
+      "source": "https://www.creditonebank.com/faqs/paperless-documents/enroll-in-paperless-documents"
+    },
+    {
+      "slug": "other-ways-to-pay",
+      "title": "Mail, MoneyGram and Western Union payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Mail payments with your statement coupon to Credit One Bank, Payment Services, P.O. Box 60500, City of Industry, CA 91716-0500. Mailed payments count on the day they arrive.",
+        "MoneyGram ExpressPayment: give your card account number and receive code 1430. Western Union: give your account number, code city CREDITONEBANK and code state NV. Both services charge their own fees."
+      ],
+      "source": "https://www.creditonebank.com/faqs/pay-bill"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Credit One Bank",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer Service: 1-877-825-3242. From outside the U.S.: 1-702-405-2042. Credit One Bank does not take account questions by regular email; sign in to send a secure message."
+      ],
+      "source": "https://www.creditonebank.com/faqs/pay-bill"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "moneygram-receive-code",
+        "intent": "Using Credit One Bank's help pages, find the MoneyGram receive code needed to send a payment to Credit One Bank. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1430"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1430"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The MoneyGram receive code is 1430."
+          }
+        ]
+      },
+      {
+        "slug": "schedule-limit-days",
+        "intent": "Using Credit One Bank's help pages, find how many days in advance you can schedule an online Standard Payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30 days",
+              "thirty days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30 days",
+            "thirty days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 30 days in advance."
+          }
+        ]
+      },
+      {
+        "slug": "pay-with-debit-online-abstain",
+        "intent": "Make an online Standard Payment on your Credit One Bank card using your saved Visa card. If Standard Payments cannot be made with a card, do not pay at all and say so.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "abstain"
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "abstain"
+        },
+        "tags": [
+          "limitation",
+          "abstention",
+          "payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You cannot make a Standard Payment with a card; it must come from a bank account (debit cards are only accepted for a fee-based Express Payment with an agent)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Bill"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "Standard Payment",
+        "Express Payment"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "other-ways-to-pay",
+      "contains": "1430"
+    }
+  ]
+}

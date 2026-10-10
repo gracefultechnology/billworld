@@ -1,0 +1,405 @@
+{
+  "id": "cox-communications-cox-internet-now-joining-spec-1e6394",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Cox Communications (Cox Internet; now joining Spectrum)",
+  "category": "internet",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public cox.com residential support pages only (no sign-in). Cox is now Spectrum (review 2026-10-09: the cox.com home banner and the \"Cox is now Spectrum\" page say the acquisition happened; login, account details, billing, payment options and automatic payments stay as they are for now), so billing still runs in Cox My Account on cox.com. Sign-in uses a Cox User ID and Password entered together (articles: 'Enter your User ID and Password'), so loginSteps=1 (documented wording, sign-in form not observed). One-time payments require signing in (Under My Bill > Pay home services bill, choose statement and amount, date, then a bank account (linked through Trustly) or card); the only no-login routes are Oliver chat on the Contact Us page and the automated phone line, so guest_pay is unsupported. EasyPay is Cox's automatic payment program (bank account or credit card); it is required for Cox Mobile; cancel via My Bill > EasyPay auto-payments Edit > Manage > toggle off. Paperless billing is chosen on Bill Delivery Options (Save billing preferences). Third-party cash locations may charge $1.50-$3.49 (Western Union posts in 3-5 days). Disconnecting cannot be done online: call 800-234-3993 (at least 24 hours notice); charges other than Cox Mobile are pro-rated; equipment goes back to a Spectrum store or a UPS Store. No payment arrangement or late fee information is published on these pages, so those keep family defaults/are left out. Plan prices are not modelled.",
+  "officialDomains": [
+    "cox.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cox.com/residential/support/ways-to-pay-your-bill.html",
+      "title": "Ways to Pay Your Bill | Cox",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cox.com/residential/support/making-a-one-time-payment-online.html",
+      "title": "Making a One-Time Payment Online | Cox",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cox.com/residential/support/paying-your-bill-online-with-easypay.html",
+      "title": "Paying Your Bill Online With EasyPay | Cox",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.cox.com/residential/support/canceling-easypay-on-coxcom.html",
+      "title": "Canceling EasyPay on Cox.com",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.cox.com/residential/support/managing-paperless-billing.html",
+      "title": "Managing Paperless Billing | Cox",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.cox.com/residential/support/billing-and-account/cancel-cox-service.html",
+      "title": "Manage Your Spectrum Services | Cancel Service | Cox is now Spectrum",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.cox.com/residential/cox-is-now-spectrum.html",
+      "title": "Spectrum & Cox: Your service stays the same, only stronger",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Cox",
+    "shortName": "Cox",
+    "primary": "#00629b",
+    "accent": "#003057",
+    "monogram": "C"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "viewBill": "My Bill",
+    "payBill": "Pay home services bill",
+    "autopay": "EasyPay",
+    "paperless": "Paperless Billing",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "User ID",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Ways to Pay Your Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Cox is now Spectrum",
+        "helpSlug": "cox-joining-spectrum"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "My Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Pay home services bill",
+        "page": "pay"
+      },
+      {
+        "label": "EasyPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.cox.com/residential/support/canceling-easypay-on-coxcom.html"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cox.com/residential/support/making-a-one-time-payment-online.html"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.cox.com/residential/support/making-a-one-time-payment-online.html",
+      "note": "You must sign in to pay on cox.com. Without signing in, pay through Oliver, Cox's virtual agent (Contact Us > Let's chat > pay bill), or the automated phone line for your area.",
+      "channel": "phone",
+      "phone": "8002343993"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cox.com/residential/support/making-a-one-time-payment-online.html"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cox.com/residential/support/paying-your-bill-online-with-easypay.html"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cox.com/residential/support/canceling-easypay-on-coxcom.html",
+      "note": "EasyPay is required for Cox Mobile and can't be cancelled on mobile accounts."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cox.com/residential/support/managing-paperless-billing.html"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.cox.com/residential/support/billing-and-account/cancel-cox-service.html",
+      "note": "Cox service can't be cancelled online. Call 800-234-3993 at least 24 hours before you want service disconnected.",
+      "channel": "phone",
+      "phone": "8002343993"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cox.com/residential/support/ways-to-pay-your-bill.html"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cox.com/residential/support/ways-to-pay-your-bill.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.cox.com/residential/support/ways-to-pay-your-bill.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay your bill",
+      "paragraphs": [
+        "Online you must sign in with your primary User ID and Password. Under My Bill choose Pay home services bill, select the statement and amount, pick a payment date, then use a saved method or add a bank account (linked securely through Trustly) or a card, and agree to the terms.",
+        "Without logging in, start a chat with Oliver, Cox's virtual agent, from Contact Us and type pay bill, or call the automated line listed for your location; it reads your balance and takes a bank account or card.",
+        "Cash can be paid at a Cox Retail store or at CheckFreePay (Walmart), Western Union, MoneyGram or Fidelity Express. Those merchants may charge $1.50 to $3.49, and Western Union payments take 3-5 days to post. Money orders aren't accepted in Cox stores."
+      ],
+      "steps": [
+        "Sign in with your primary User ID and Password.",
+        "Under My Bill, select Pay home services bill.",
+        "Choose the statement and amount, then Continue.",
+        "Pick a date and payment method.",
+        "Agree to the terms and submit."
+      ],
+      "source": "https://www.cox.com/residential/support/making-a-one-time-payment-online.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "EasyPay automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "EasyPay pays your Cox bill automatically each month from a bank account or credit card you choose. You can add it from My Bill, while making a payment, or in the Cox app, and change the payment method online at any time. EasyPay is required for Cox Mobile."
+      ],
+      "source": "https://www.cox.com/residential/support/paying-your-bill-online-with-easypay.html"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Cancel EasyPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in to My Account. In the My Bill section, select Edit next to EasyPay auto-payments, choose Manage, and switch the toggle from on to off. Cox Mobile customers can't cancel EasyPay."
+      ],
+      "steps": [
+        "Sign in with your User ID and Password.",
+        "Under My Bill, select Edit next to EasyPay auto-payments.",
+        "Select Manage.",
+        "Toggle EasyPay off."
+      ],
+      "source": "https://www.cox.com/residential/support/canceling-easypay-on-coxcom.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Only the account holder can change bill delivery. Sign in, go to Bill Delivery Options, choose Paperless bill (or Paper bill), pick English or Spanish, check your primary email address and select Save billing preferences."
+      ],
+      "steps": [
+        "Sign in.",
+        "Open Bill Delivery Options.",
+        "Choose Paperless bill.",
+        "Confirm your email and select Save billing preferences."
+      ],
+      "source": "https://www.cox.com/residential/support/managing-paperless-billing.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Disconnect or cancel service",
+      "topic": "account",
+      "paragraphs": [
+        "Call 800-234-3993 to disconnect; give at least 24 hours notice. Charges for services other than Cox Mobile are pro-rated, so you pay only for the part of the month before disconnection. Cox Mobile is billed for the full cycle.",
+        "Return cable boxes, modems, gateways, remotes and cables at any Spectrum store or drop them off at a UPS Store."
+      ],
+      "source": "https://www.cox.com/residential/support/billing-and-account/cancel-cox-service.html"
+    },
+    {
+      "slug": "cox-joining-spectrum",
+      "title": "Cox is now Spectrum",
+      "topic": "account",
+      "paragraphs": [
+        "Cox is now part of Spectrum. Cox says nothing changes for current customers right now: your plan, price, equipment and account details stay the same, and you keep using your Cox login, the Cox website and app.",
+        "Billing also stays the same: you get your bill the same way, with the same payment options, and automatic payments (EasyPay) continue as they are. Cox says it will tell you in advance if anything changes. Questions go to 800-234-3993."
+      ],
+      "source": "https://www.cox.com/residential/cox-is-now-spectrum.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "third-party-fee-range",
+        "intent": "Using Cox's help pages, find the range of fees that third-party payment locations (such as Western Union or MoneyGram) may charge to accept a Cox payment. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3.49"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3.49"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Third-party locations may charge from $1.50 to $3.49."
+          }
+        ]
+      },
+      {
+        "slug": "disconnect-notice",
+        "intent": "A Cox customer is moving and wants internet disconnected. Using Cox's help, find how much notice Cox needs before disconnecting service. Do not change anything on the account.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24 hours",
+              "24"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24 hours",
+            "24"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Cox needs at least 24 hours notice; call 800-234-3993."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "User ID",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Cox is now Spectrum",
+        "Ways to Pay Your Bill"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "EasyPay",
+        "My Bill"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "800-234-3993"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Oliver"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cox-joining-spectrum",
+      "contains": "EasyPay"
+    }
+  ]
+}

@@ -1,0 +1,391 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "hulu-0556b7",
+  "name": "Hulu",
+  "notes": "Researched from public help.hulu.com articles and the public sign-in page only (no sign-in). Hulu bills monthly or annually to a card, PayPal or gift card balance; renewal is automatic and only stops when the subscription is canceled, so autopay/paperless/guest pay/scheduled payments are not_applicable. Sign-in is email-first with a MyDisney account (two steps). Prices are the published US prices for new subscribers as of Sept 23, 2026. Hulu also offers Pause (up to 12 weeks, monthly Hulu-billed plans only) which the template cannot model; it is described in help. Subscribers billed by a partner (Apple, Amazon, Roku, Spotify, Verizon, etc.) cancel with that partner. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "hulu.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.hulu.com/article/hulu-how-much-does-hulu-cost",
+      "title": "Hulu plans and prices | Hulu Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.hulu.com/article/hulu-cancel-hulu-subscription",
+      "title": "How to cancel Hulu | Hulu Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.hulu.com/article/hulu-payment-options",
+      "title": "Your payment options | Hulu Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.hulu.com/article/hulu-automatic-payments",
+      "title": "Automatic payments for Hulu | Hulu Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://help.hulu.com/article/hulu-subscription-hold",
+      "title": "Can I put my Hulu subscription on pause? | Hulu Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.hulu.com/article/hulu-view-hulu-charges",
+      "title": "View your Hulu charges | Hulu Help Center | US",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://auth.hulu.com/web/login",
+      "title": "Hulu Login | Hulu",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Hulu",
+    "primary": "#0b6e3a",
+    "accent": "#121212",
+    "monogram": "H"
+  },
+  "labels": {
+    "dashboard": "Account",
+    "plan": "Manage Plan",
+    "wallet": "Payment Information",
+    "history": "Billing History",
+    "statements": "Billing History",
+    "cancel": "Cancel Subscription",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "help": "Help Center",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Plans and prices",
+        "helpSlug": "plans-and-prices"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Manage Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Payment Information",
+        "page": "wallet"
+      },
+      {
+        "label": "Billing History",
+        "page": "history"
+      },
+      {
+        "label": "Cancel Subscription",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "none",
+    "evidence": "observed_public",
+    "source": "https://auth.hulu.com/web/login"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.hulu.com/article/hulu-payment-options",
+      "note": "The membership is charged to the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.hulu.com/article/hulu-automatic-payments",
+      "note": "Hulu renews monthly or annually and charges the payment method on file automatically; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.hulu.com/article/hulu-cancel-hulu-subscription",
+      "note": "Recurring charges stop only when you cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.hulu.com/article/hulu-automatic-payments",
+      "note": "No paper bills are mailed; charges are shown on the account page and receipts are emailed."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.hulu.com/article/hulu-automatic-payments"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.hulu.com/article/hulu-automatic-payments"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.hulu.com/article/hulu-cancel-hulu-subscription",
+      "note": "Subscribers billed by a partner such as Apple, Amazon, Roku or Verizon cancel with that partner. Pause (up to 12 weeks) is offered as an alternative."
+    }
+  },
+  "billing": {
+    "source": "https://help.hulu.com/article/hulu-how-much-does-hulu-cost",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://help.hulu.com/article/hulu-payment-options"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "hulu-ads",
+        "name": "Hulu (With Ads)",
+        "cents": 1249
+      },
+      {
+        "id": "hulu-premium",
+        "name": "Hulu Premium (No Ads)",
+        "cents": 2149,
+        "current": true
+      },
+      {
+        "id": "disney-hulu-bundle",
+        "name": "Disney+, Hulu Bundle",
+        "cents": 1299
+      },
+      {
+        "id": "live-tv",
+        "name": "Hulu + Live TV, Disney+, and ESPN Select",
+        "cents": 9999
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-prices",
+      "title": "Hulu plans and prices",
+      "topic": "plans",
+      "source": "https://help.hulu.com/article/hulu-how-much-does-hulu-cost",
+      "paragraphs": [
+        "Standalone Hulu with ads is $12.49 a month (or $124.99 a year), and Hulu Premium without ads is $21.49 a month. These are the prices for new subscribers from September 23, 2026; existing subscribers see the new price on a billing date on or after October 21, 2026.",
+        "Bundles with Disney+ start at $12.99 a month for the Disney+, Hulu Bundle with ads. Hulu + Live TV plans, which include Disney+ and ESPN Select, start at $99.99 a month. There are no cancellation fees or long-term commitments."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How to cancel Hulu",
+      "topic": "account",
+      "source": "https://help.hulu.com/article/hulu-cancel-hulu-subscription",
+      "steps": [
+        "Open your Account page in a web browser.",
+        "Under Your Subscription, select Cancel.",
+        "If offered a pause, choose Continue to Cancel.",
+        "Select Cancel Subscription."
+      ],
+      "paragraphs": [
+        "After canceling, your Account page shows that the subscription will be canceled and Hulu emails a confirmation. You keep access until the end of the current billing period and are not charged again. Hulu + Live TV free trials end immediately when canceled.",
+        "If a partner such as Apple, Amazon, Roku, Spotify or Verizon bills you, cancel with that partner; the Payment Information section of your Account page shows who bills you. Canceling does not delete your Hulu or MyDisney account."
+      ]
+    },
+    {
+      "slug": "pause-subscription",
+      "title": "Pausing your Hulu subscription",
+      "topic": "account",
+      "source": "https://help.hulu.com/article/hulu-subscription-hold",
+      "steps": [
+        "Open your Account page.",
+        "In Your Subscription, select Pause.",
+        "Choose how long to pause (up to 12 weeks).",
+        "Select Submit."
+      ],
+      "paragraphs": [
+        "A pause starts on the first day of your next billing cycle and can last up to 12 weeks, after which Hulu resumes the subscription and charges the payment method on file. You can restart early from the Account page.",
+        "Pause is not available for annual plans, most partner-billed subscriptions, gift card payers, accounts on hold or subscribers on a promotion."
+      ]
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay for Hulu",
+      "topic": "billing",
+      "source": "https://help.hulu.com/article/hulu-payment-options",
+      "paragraphs": [
+        "Hulu accepts U.S. Visa, Mastercard, American Express and Discover credit or debit cards, PayPal, and Hulu gift cards. A card needs at least $1 available because Hulu places a temporary authorization hold to confirm it.",
+        "Charges renew automatically each month or year until you cancel. To stop automatic payments you must cancel the subscription; Hulu does not refund partial billing periods."
+      ]
+    },
+    {
+      "slug": "view-charges",
+      "title": "View your Hulu charges",
+      "topic": "billing",
+      "source": "https://help.hulu.com/article/hulu-view-hulu-charges",
+      "paragraphs": [
+        "On your Account page, the Upcoming Charges section has View History next to Billing History for past charges, and View Charges for up to 12 upcoming charges. Changing plans or adding an add-on mid-cycle creates a prorated charge up to your next billing date."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "premium-price",
+        "intent": "Using Hulu's help pages, find the monthly price of Hulu Premium (No Ads) for new subscribers. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "21.49"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "21.49"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Hulu Premium costs $21.49 a month."
+          }
+        ]
+      },
+      {
+        "slug": "pause-length",
+        "intent": "Find the longest time Hulu lets you pause a subscription. Do not pause or cancel anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12 weeks"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12 weeks"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Hulu lets you pause for up to 12 weeks."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Plans and prices"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Manage Plan",
+        "Billing History"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Hulu Premium (No Ads)",
+        "Hulu (With Ads)"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-prices",
+      "contains": "$21.49"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pause-subscription",
+      "contains": "12 weeks"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "recorded_at": "2026-10-05T20:18:18.507045+00:00",
+  "runtime_revision": "0.48.0",
+  "kind": "onswc_public_controls",
+  "source_observations": {
+    "method": "Read-only browser interactions with original public FAQ and rates pages; no forms submitted.",
+    "urls": [
+      "https://onswc.com/faqs/",
+      "https://onswc.com/our-rates/"
+    ],
+    "faq": "Click heading opens its answer and closes prior answer; clicking open answer retains it.",
+    "rates": "Clicking water/wastewater tabs switches one active panel and tab colors.",
+    "late_charge_thresholds": {
+      "water_days_after_billing": 25,
+      "wastewater_days_after_billing": 15
+    },
+    "source_accessibility_gap": "Original rate tabs both retain aria-selected=true; local controls correct the selected state."
+  },
+  "implementation": {
+    "behavior": "Dedicated local ONSWC script; original scripts remain excluded.",
+    "faq": "One open answer, aria-expanded/controls and Enter/Space support.",
+    "rates": "One visible panel, aria-selected, repaired whitespace IDs, role=tabpanel, Enter/Space support.",
+    "scope": "Nine reference pages. No tenant runtime or billing task activated."
+  },
+  "validation": {
+    "browser": "Actual Billworld server serves all nine snapshots and verifies local behavior hash.",
+    "hash_verified_compiled_files": 140,
+    "browser_page_errors": 0,
+    "browser_outbound_requests": 0,
+    "domain_passed": 371,
+    "research_passed": 140,
+    "research_skipped": 1,
+    "visual_review": [
+      "Local wastewater rates after finite CSS transitions settled."
+    ],
+    "reference_suite_rerun": false,
+    "sdk_rerun": false
+  },
+  "remaining": [
+    "Original keyboard behavior not verified; local keyboard support is an accessibility improvement, not parity evidence.",
+    "No responsive-menu reconstruction; missing glyph/assets and unsupported navigation remain visible fidelity gaps.",
+    "Source annual/unit wording preserved including Cedar Point $3,100 per parcel; do not infer tariff calculation.",
+    "Online fee amounts, ACH draft timing, private auth/billing behavior, policy documents and tenant tasks remain incomplete.",
+    "Catalog and autonomous evaluation unfinished."
+  ],
+  "artifacts": {
+    "billworld/public/onswc-public.js": "440b46cfa52ea91619ee8a4c7597880c5526eac0b1bb273cab70cb4cb03e6fc5",
+    "billworld/build_public_snapshot.py": "4bb69f49d530174985b898f1126ff7f0ea7584cfe893c8b210680bb231d4b67b",
+    "billworld/server.mjs": "1823264df875c4743bba938dc6531e26c010903dde122c53bf2d762d5d4da2d3",
+    "billworld/tests/onswc-public-browser.mjs": "5879072a2adfc88bd41e9ca4ca5df5c29a9be01b512cf54bfb3df2119de53f25",
+    "billworld/research/onswc-public.json": "48677f94174c6300407d07ee95cddc2be637f19a3a58b56c71e2e4cddcf6b731",
+    "billworld/research/onswc-snapshot-build.json": "116af009b24c0d5898de77640f06ea82e93bb7b80ea3bcd9d2553efeb6fe4428",
+    "billworld/artifacts/onswc-public/results.json": "ea2c258696937112c4e8a75687a2cde82183d6598d3a2ae02243cd8997529fe7",
+    "billworld/artifacts/onswc-controls-browser.log": "001c4be03f29c882252be9e37a9f677a526ada8f4f79464b9e42846559b7cad8",
+    "billworld/artifacts/onswc-controls-domain.log": "53458a1af2dc896f35ba9e3830351057cc8ea105a66005da2e472fe8ca340911",
+    "billworld/artifacts/onswc-controls-research.log": "1db9ced0719becdfc22b64f682b8d76fc80afb57ecc87d37bb586d0c7a0c7e70",
+    "billworld/artifacts/onswc-controls-build.json": "ee2e430f64519b4a19f8d0663b8795614076b0b1403f0556c0bfe64fb02052f9"
+  }
+}

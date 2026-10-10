@@ -1,0 +1,425 @@
+{
+  "id": "irs-federal-individual-income-tax-balance-due-di-57240a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "IRS - Federal individual income tax balance due (Direct Pay / Online Account)",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public irs.gov pages only (no sign-in, no Direct Pay lookup). IRS's own payment channels (Individual Online Account and Direct Pay) take bank-account payments only; debit/credit cards and digital wallets go through the two IRS-authorized processors (Pay1040, ACI Payments) on their own sites, so the mock accepts bank payments only and explains card options in help. Direct Pay ('Pay as guest') needs no sign-in; it verifies identity with data from a prior-year return (mapped to the template's account ID / last name / ZIP lookup, synthetic). The Online Account sign-in goes through the IRS identity partner with photo-ID verification; the mock's email + password + SMS code is a simplification (inferred). There is no recurring AutoPay for a balance due: Direct Pay schedules one payment at a time (up to 365 days ahead, change/cancel until 2 business days before); recurring monthly debits exist only under a Direct Debit Installment Agreement, so AutoPay is marked unsupported. Payment plans are applied for online in the Individual Account (long-term up to $50,000, short-term under $100,000). Business (EFTPS) payments are out of scope.",
+  "officialDomains": [
+    "irs.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.irs.gov/payments",
+      "title": "Payments | Internal Revenue Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.irs.gov/payments/direct-pay-with-bank-account",
+      "title": "Direct Pay with bank account | Internal Revenue Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.irs.gov/payments/direct-pay-help",
+      "title": "Direct Pay help | Internal Revenue Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.irs.gov/payments/pay-your-taxes-by-debit-or-credit-card",
+      "title": "Pay your taxes by debit or credit card or digital wallet | Internal Revenue Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.irs.gov/payments/payment-plans-installment-agreements",
+      "title": "Payment plans installment agreements | Internal Revenue Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.irs.gov/payments/your-online-account",
+      "title": "Your online account | Internal Revenue Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.irs.gov/payments/pay-by-check-or-money-order",
+      "title": "Pay by check or money order | Internal Revenue Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Internal Revenue Service (IRS)",
+    "shortName": "IRS",
+    "primary": "#00599c",
+    "accent": "#8a5300",
+    "monogram": "IR"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "guestPay": "Pay as guest",
+    "dashboard": "Account Home",
+    "viewBill": "Balance",
+    "history": "Payment Activity",
+    "statements": "Notices and Letters",
+    "arrangement": "Payment Plan",
+    "paperless": "Paperless Notices",
+    "signIn": "Sign in",
+    "register": "Create account",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay as guest",
+        "page": "guest"
+      },
+      {
+        "label": "Bank Account (Direct Pay)",
+        "helpSlug": "direct-pay"
+      },
+      {
+        "label": "Payment Plan (Installment Agreement)",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Debit or credit card",
+        "helpSlug": "pay-by-card"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Balance",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment Activity",
+        "page": "history"
+      },
+      {
+        "label": "Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Notices and Letters",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless Notices",
+        "page": "paperless"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "sms",
+    "socialProviders": [],
+    "registrationFields": [
+      "lastName",
+      "zip"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName",
+      "zip"
+    ],
+    "evidence": "inferred",
+    "source": "https://www.irs.gov/payments/your-online-account"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.irs.gov/payments/direct-pay-with-bank-account",
+      "note": "Direct Pay: pay from a checking or savings account without signing in; up to 5 payments in 24 hours."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.irs.gov/payments/direct-pay-help",
+      "note": "There is no recurring automatic payment for a tax balance: each payment is scheduled one at a time. Automatic monthly withdrawals exist only with a Direct Debit Installment Agreement (payment plan).",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.irs.gov/payments/your-online-account"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.irs.gov/payments/your-online-account"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.irs.gov/payments/payment-plans-installment-agreements"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.irs.gov/payments/payment-plans-installment-agreements"
+    }
+  },
+  "billing": {
+    "source": "https://www.irs.gov/payments",
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank"
+    ],
+    "scheduled": {
+      "maxDaysAhead": 365
+    },
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.irs.gov/payments"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "paragraphs": [
+        "Paying from a bank account is free and works for every kind of individual tax payment. Sign in to your IRS Individual Online Account (the preferred route, up to 20 payments a day) or use Direct Pay as a guest without signing in (up to 5 payments a day).",
+        "Debit cards, credit cards and digital wallets are accepted for most payments, but only through IRS-authorized payment processors, which charge their own fees. Same-day wire, check or money order (payable to U.S. Treasury) and cash at retail partners are also accepted.",
+        "If you cannot pay in full, you can apply for a payment plan in your Individual Account."
+      ],
+      "source": "https://www.irs.gov/payments"
+    },
+    {
+      "slug": "direct-pay",
+      "title": "Direct Pay (pay as guest)",
+      "topic": "payments",
+      "paragraphs": [
+        "Direct Pay takes payments for a balance due, estimated tax and other individual income tax directly from your checking or savings account at no cost, without signing in. You verify your identity each visit with details from a prior-year return you choose (name, address, Social Security number and filing status).",
+        "You can schedule a payment up to 365 days ahead. To change or cancel it, select Look Up a Payment and enter your confirmation number; changes are allowed until two business days before the payment date. A lost confirmation number cannot be retrieved. If you ask for email confirmation, you also get a reminder two days before the payment date.",
+        "Each payment must be under $10 million and you can make up to five payments in 24 hours. Direct Pay does not do recurring payments: you schedule one payment at a time. The system is unavailable from 11:45 p.m. to midnight Eastern time."
+      ],
+      "source": "https://www.irs.gov/payments/direct-pay-help"
+    },
+    {
+      "slug": "pay-by-card",
+      "title": "Debit or credit card and digital wallets",
+      "topic": "payments",
+      "paragraphs": [
+        "The IRS does not process card payments itself. Two authorized processors take them on their own sites and charge a fee: Pay1040 charges $2.15 for a debit card and 1.75% (at least $2.50) for a credit card; ACI Payments charges $2.10 for a debit card and 1.85% (at least $2.50) for a credit card. Commercial cards cost more.",
+        "Both processors also accept digital wallets such as PayPal and Click to Pay. Frequency limits apply to card payments. To cancel a card payment, contact the processor you used."
+      ],
+      "source": "https://www.irs.gov/payments/pay-your-taxes-by-debit-or-credit-card"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans (installment agreements)",
+      "topic": "assistance",
+      "paragraphs": [
+        "Individuals can apply online for a short-term plan (pay within 180 days, no setup fee) if they owe less than $100,000 in combined tax, penalties and interest, or a long-term plan with monthly payments if they owe $50,000 or less and have filed all required returns.",
+        "Long-term setup fees: $29 online with Direct Debit (automatic monthly withdrawals from checking) or $69 online with another payment method; by phone, mail or in person the fees are $107 and $178. Low-income taxpayers have the Direct Debit fee waived and may be reimbursed other fees.",
+        "In your online account you can change the monthly amount or due date, switch to Direct Debit, update bank details or reinstate a defaulted plan; online changes cost $6 ($89 by other channels). Interest and some penalties keep accruing until the balance is paid."
+      ],
+      "source": "https://www.irs.gov/payments/payment-plans-installment-agreements"
+    },
+    {
+      "slug": "online-account",
+      "title": "Your Individual Online Account",
+      "topic": "account",
+      "paragraphs": [
+        "Your online account shows your balance by tax year, lets you pay, schedule payments (same day or up to 365 days ahead) and review payment history, and lets you view, revise or apply for a payment plan.",
+        "You can also view key return details, transcripts and digital notices, set up paperless delivery for certain notices and email alerts, get an Identity Protection PIN and approve authorizations. A scheduled payment can be cancelled before its scheduled date. New users need a photo ID to verify their identity."
+      ],
+      "source": "https://www.irs.gov/payments/your-online-account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "plan-fee-direct-debit-online",
+        "intent": "Using the IRS website's help pages, find the setup fee for a long-term payment plan applied for online with Direct Debit. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$29"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$29"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Applying online with Direct Debit costs $29."
+          }
+        ]
+      },
+      {
+        "slug": "direct-pay-cancel-deadline",
+        "intent": "Using the IRS website's help pages, find how late you can still change or cancel a scheduled Direct Pay payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "two business days",
+              "2 business days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "two business days",
+            "2 business days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled_payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You can change or cancel it until two business days before the payment date."
+          }
+        ]
+      },
+      {
+        "slug": "card-processor-debit-fee",
+        "intent": "Using the IRS website's help pages, find the flat fee Pay1040 charges to pay federal tax with a debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2.15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2.15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Pay1040 charges $2.15 for a debit card payment."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Plan (Installment Agreement)",
+        "Bank Account (Direct Pay)"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment Activity",
+        "Notices and Letters"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "$29",
+        "$50,000"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-by-card",
+      "contains": [
+        "Pay1040",
+        "1.75%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "direct-pay",
+      "contains": "365 days"
+    }
+  ]
+}

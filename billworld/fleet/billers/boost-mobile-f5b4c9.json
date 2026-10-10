@@ -1,0 +1,371 @@
+{
+  "id": "boost-mobile-f5b4c9",
+  "status": "dedicated",
+  "name": "Boost Mobile",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public help.boostmobile.com articles only (no sign-in). Payments are made in the online account, the Boost Mobile app, a store or through Customer Care; agent-assisted payments carry a $4 convenience fee. Paying for someone else is done through the free automated phone system (phone number + exact amount), not a web guest form, so guest_pay is unsupported online. Accepted: Visa, Mastercard, American Express, Discover, Apple Pay and Google Pay; prepaid cards are not accepted online and bank accounts are not listed. AutoPay is enabled in Settings > Payment Method and charges on the due date (leadDays 0); some plans require AutoPay. The Payment Extension ($10/line up front, $5/line credited back when paid in full within 5 days, one per cycle, No Contract accounts) is modelled by the arrangement form. Early payments become account credit. Sign-in (account-security, manage-your-account pages) is email or phone number, a texted one-time passcode, then the password (modelled as two-step phone sign-in with mfa sms). Cancelling a line is by Customer Care at (833) 502-6678 (cancel_service unsupported online). Plan prices were not modelled; paperless not_applicable is inferred (no paper bills mentioned). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "boostmobile.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments",
+      "title": "Billing and Payments | Boost Mobile Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.boostmobile.com/docs/payment-extension-rules",
+      "title": "Payment Extension | Boost Mobile Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.boostmobile.com/docs/manage-your-account",
+      "title": "Manage your account | Boost Mobile Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.boostmobile.com/docs/account-security",
+      "title": "Account security | Boost Mobile Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.boostmobile.com/docs/transferring-your-boost-mobile-number-to-another-carrier",
+      "title": "Transferring your Boost Mobile number to another carrier | Boost Mobile Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Boost Mobile",
+    "shortName": "Boost Mobile",
+    "primary": "#c2410c",
+    "accent": "#1f1f1f",
+    "monogram": "B"
+  },
+  "labels": {
+    "dashboard": "Home",
+    "autopay": "AutoPay",
+    "wallet": "Payment Method",
+    "arrangement": "Request Payment Extension",
+    "profile": "Settings",
+    "help": "Help Center",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "Email or phone number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Billing and Payments",
+        "helpSlug": "billing-and-payments"
+      },
+      {
+        "label": "Payment Extension",
+        "helpSlug": "payment-extension"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Request Payment Extension",
+        "page": "arrangement"
+      },
+      {
+        "label": "Settings",
+        "page": "profile"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments",
+      "note": "To pay for someone else, call Boost Customer Care at 1-833-502-6678 and use the free automated system with their phone number and the exact amount; an agent charges a $4 fee.",
+      "channel": "phone",
+      "phone": "8335026678"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments",
+      "note": "Go to Settings, Payment Method, Enable AutoPay and add a credit or debit card."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments",
+      "note": "Toggle AutoPay off under Settings, Payment Method. Some account types and plan offers require AutoPay to stay on."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments",
+      "note": "Billing and payment information is shown in your online account and the Boost Mobile app."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.boostmobile.com/docs/payment-extension-rules",
+      "note": "A Payment Extension adds 5 days for $10 per line ($5 per line credited back if you pay in full in time); one per billing cycle, No Contract accounts only."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments",
+      "note": "Agent-assisted payments carry a $4 convenience fee."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.boostmobile.com/docs/manage-your-account",
+      "note": "To cancel a line, contact Boost Customer Care at (833) 502-6678. If you are moving your number, do not cancel: the line closes automatically once the transfer completes.",
+      "channel": "phone",
+      "phone": "8335026678"
+    }
+  },
+  "billing": {
+    "source": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments"
+    },
+    "methods": [
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ],
+      "leadDays": 0
+    }
+  },
+  "help": [
+    {
+      "slug": "billing-and-payments",
+      "title": "Billing and Payments",
+      "paragraphs": [
+        "With AutoPay, your payment is processed on the due date shown on the home dashboard of your online account or the Boost Mobile app. Without AutoPay, pay in your online account, in the app, at a Boost Mobile store or through Boost Customer Care; assisted payments add a $4 convenience fee.",
+        "You can pay early; the payment shows as a credit and applies on your next due date, but it does not refill your monthly data. Payments are not refundable or transferable once applied.",
+        "Boost accepts Visa, Mastercard, American Express and Discover, plus Apple Pay and Google Pay; prepaid debit or credit cards are not accepted on the website. To pay for a friend, call Customer Care and use the free automated system with their phone number and the exact amount. Phones financed through Affirm are paid to Affirm."
+      ],
+      "source": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments",
+      "topic": "payments"
+    },
+    {
+      "slug": "autopay-boost",
+      "title": "Turn AutoPay on or off",
+      "paragraphs": [
+        "On the web, go to Settings, then Payment Method, then Enable AutoPay, and add a credit or debit card. In the app, go to Settings, Account, Payment Methods, Enable AutoPay.",
+        "To turn it off, go to the same Payment Method screen and toggle AutoPay off. Some account types and plan offers require AutoPay to remain on."
+      ],
+      "source": "https://help.boostmobile.com/docs/boost-mobile-plan-billing-and-payments",
+      "steps": [
+        "Open Settings.",
+        "Select Payment Method.",
+        "Toggle AutoPay on or off."
+      ],
+      "topic": "autopay"
+    },
+    {
+      "slug": "payment-extension",
+      "title": "Payment Extension",
+      "paragraphs": [
+        "On a No Contract account you can push your due date back 5 days for $10 per line, and service stays on. Pay the full monthly amount within those 5 days and $5 per line is credited back.",
+        "Request it from the dashboard (Request Payment Extension) any time before the due date, or within 15 days after service is suspended. You get one extension per billing cycle, and AutoPay moves to the last day of the extension.",
+        "During the extension you can use up to 5GB of your high-speed data. If you do not pay by the end of the 5 days, service is suspended until you pay in full and the $5 credit is lost."
+      ],
+      "source": "https://help.boostmobile.com/docs/payment-extension-rules",
+      "topic": "payments"
+    },
+    {
+      "slug": "sign-in-security",
+      "title": "Signing in and account security",
+      "topic": "account",
+      "source": "https://help.boostmobile.com/docs/account-security",
+      "paragraphs": [
+        "Sign in to the Boost Mobile app or website with the email address or phone number linked to your account. Boost texts a one-time passcode to your phone (you choose the number if you have several lines), then you finish with your password. Before your line is activated, the code goes to your email instead. The app can also use face or fingerprint sign-in.",
+        "Forgot your password? On the sign-in page choose Forgot Password, enter your email or phone number and enter the code you receive by email or text. A separate 4-digit Security PIN, set under Settings and Security, verifies you when you call Customer Care."
+      ]
+    },
+    {
+      "slug": "cancel-a-line",
+      "title": "Cancel a line or move your number",
+      "topic": "account",
+      "source": "https://help.boostmobile.com/docs/manage-your-account",
+      "paragraphs": [
+        "Boost has no online cancel option: to cancel a line, contact Boost Customer Care at (833) 502-6678. Call the same number to reactivate a line later.",
+        "If you are switching carriers, do not cancel first. Get a port-out PIN from Customer Care for each number; each line cancels automatically once its transfer completes, and the account stays open until the last line moves."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "extension-cost",
+        "intent": "Using Boost Mobile's help pages, find how much a Payment Extension costs per line. Do not make a payment or request an extension.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10",
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10",
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A Payment Extension costs $10 per line."
+          }
+        ]
+      },
+      {
+        "slug": "assisted-payment-fee",
+        "intent": "Find the convenience fee Boost Mobile charges when an agent processes your payment. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$4",
+              "4"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$4",
+            "4"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Assisted payments carry a $4 convenience fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Billing and Payments",
+        "Payment Extension"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Request Payment Extension",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": "1-833-502-6678"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-extension",
+      "contains": "$10 per line"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "(833) 502-6678"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email or phone number"
+      ]
+    }
+  ],
+  "version": 1,
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "evidence": "documented_official",
+    "source": "https://help.boostmobile.com/docs/account-security"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "id": "kaiser-permanente-34ec95",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Kaiser Permanente",
+  "category": "medical",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public kp.org pages only (no sign-in). Medical bills are paid on kp.org under Billing / Billing & Claims > View and Pay; guest pay makes one-time payments, including for another member. Only the primary plan member (guarantor) can pay online when signed in. There is no standing AutoPay for medical bills: automatic monthly payments happen only inside a payment plan (Set up a payment plan / Manage payment plan); cancelling a plan requires calling Member Services. Premium-bill autopay (kp.org/payonline) is a separate premium product and is not modelled here. kp.org signs in with a user ID and password (identifier modelled as username). No payment fees are mentioned. Accepted: checking/savings, Visa/Mastercard/Discover/Amex, HSA/HRA/FSA cards. Pharmacy bills are paid separately (not modelled). Review 2026-10-09: the MFA phone number was removed because the cited public pages do not list one (MFA contact details are per region).",
+  "officialDomains": ["kaiserpermanente.org", "kp.org"],
+  "sources": [
+    { "url": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills", "title": "Medical bills FAQ", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://healthy.kaiserpermanente.org/support/pay-bills", "title": "Pay Bills support", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://healthy.kaiserpermanente.org/help-paying-your-bill", "title": "Help Paying Your Bills", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills", "title": "Premium bill FAQ", "fetchedAt": "2026-10-09", "kind": "other" }
+  ],
+  "brand": { "displayName": "Kaiser Permanente", "shortName": "Kaiser Permanente", "primary": "#0d5a8c", "accent": "#00466b", "monogram": "KP" },
+  "labels": {
+    "payBill": "Pay Bills",
+    "viewBill": "Billing & Claims",
+    "statements": "Letters and Statements",
+    "history": "Payment History",
+    "wallet": "Manage saved payment methods",
+    "arrangement": "Set up a payment plan",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "register": "Register",
+    "guestPay": "Guest pay",
+    "dashboard": "My Health Manager",
+    "paperless": "Profile & Preferences",
+    "help": "Medical bills FAQ",
+    "username": "User ID"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign in", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Guest pay", "page": "guest" },
+      { "label": "Help paying your bill", "helpSlug": "payment-assistance" },
+      { "label": "Medical bills FAQ", "page": "help" }
+    ],
+    "account": [
+      { "label": "Billing & Claims", "page": "bill" },
+      { "label": "Pay Bills", "page": "pay" },
+      { "label": "Set up a payment plan", "page": "arrangement" },
+      { "label": "Payment History", "page": "history" },
+      { "label": "Letters and Statements", "page": "statements" },
+      { "label": "Manage saved payment methods", "page": "wallet" },
+      { "label": "Profile & Preferences", "page": "paperless" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills" },
+    "autopay": { "support": "unsupported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills", "note": "Medical bills have no standing AutoPay. Automatic monthly payments come only with a payment plan: Billing & Claims, View and Pay, Set up a payment plan.", "channel": "none" },
+    "autopay_cancel": { "support": "unsupported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills", "note": "To cancel a payment plan and its automatic payments, call Member Services (number on your bill or the back of your ID card)." },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/help-paying-your-bill" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/help-paying-your-bill" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills" }
+  },
+  "billing": {
+    "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills",
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "inferred", "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your medical bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to kp.org (or the Kaiser Permanente app) and open Billing, then View and Pay. On the medical bills page choose Pay near the bottom.",
+        "Only the primary plan member can pay bills online for themselves and family members. If you are not the guarantor, the person financially responsible for the coverage, you may not see the bill; use Guest pay instead.",
+        "Kaiser Permanente accepts checking or savings accounts, Visa, Mastercard, Discover and American Express, and HSA, HRA or FSA cards. Pay only the balance on your current statement; later services appear on a later statement. Pharmacy bills are paid separately in the Pharmacy section.",
+        "You can also pay by phone at the number on your statement or the Member Services number on your ID card, or mail a check in the return envelope."
+      ],
+      "steps": ["Sign in to kp.org.", "Open Billing, then View and Pay.", "Choose Pay.", "Pick an amount and a payment method.", "Review and submit."],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills"
+    },
+    {
+      "slug": "guest-pay",
+      "title": "Guest pay",
+      "topic": "payments",
+      "paragraphs": [
+        "Guest pay lets you make a one-time medical bill payment without signing in, including a payment on behalf of another member. Have the statement in hand.",
+        "Guest pay does not save payment methods or set up a payment plan; sign in for those."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments for medical bills",
+      "topic": "autopay",
+      "paragraphs": [
+        "Kaiser Permanente does not offer a separate AutoPay enrollment for medical bills. Automatic monthly payments are part of a payment plan.",
+        "When you set up a payment plan you can choose the day of the month for the automatic payment; otherwise a default day is used. To change the date, amount or payment method, choose Manage payment plan. To cancel a plan, call Member Services."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills"
+    },
+    {
+      "slug": "payment-plan",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "Sign in, open Billing & Claims, choose View and Pay, then Set up a payment plan. The site works out how many monthly payments are needed for your balance; you may raise the suggested monthly amount but not go below the minimum.",
+        "New medical bills are added to your existing plan balance. A plan balance of $0.00 means the plan is paid off. If your saved card is about to expire, update it in Manage payment plan."
+      ],
+      "steps": ["Sign in to kp.org.", "Open Billing & Claims and choose View and Pay.", "Choose Set up a payment plan.", "Pick the monthly amount, day and payment method.", "Confirm the plan."],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/medical-bills"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help paying your bill",
+      "topic": "assistance",
+      "paragraphs": [
+        "Medical Financial Assistance (MFA) helps qualified patients pay Kaiser Permanente medical or pharmacy bills for care at Kaiser Permanente facilities. You may qualify if household income is at or below 300% or 400% of the Federal Poverty Guidelines (depending on region), or if your medical costs are high compared with your income.",
+        "Apply online or with a paper application by mail, fax or in person. A decision comes within 30 days of a complete application. To start an application or get program materials, choose the region where you received care; you will usually hear back within 30 days, and a denial comes with the reason and how to appeal."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/help-paying-your-bill"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "account",
+      "paragraphs": [
+        "If you sign up for paperless billing you get an email alert when a new bill is ready instead of a paper bill. Paperless and notification choices are set in Profile & Preferences on kp.org."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/support/pay-bills/premium-bills"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "mfa-income-limit",
+        "intent": "Using the Kaiser Permanente billing help pages, find the lower of the two Federal Poverty Guidelines percentages used as the household-income limit for Medical Financial Assistance. Answer with the percentage; do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["300"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["300"] },
+        "tags": ["help", "information", "assistance"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "300% of the Federal Poverty Guidelines (400% in some regions)." }]
+      },
+      {
+        "slug": "mfa-decision-time",
+        "intent": "Find out how many days Kaiser Permanente says it takes to decide a complete Medical Financial Assistance application. Answer with the number of days; do not change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["30"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["30"] },
+        "tags": ["help", "information", "assistance"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Within 30 days of a complete application." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["User ID"] },
+    { "page": "home", "contains": "no standing AutoPay" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Billing & Claims", "Set up a payment plan"] },
+    { "page": "helpArticle", "slug": "payment-assistance", "contains": ["300%", "400%"] },
+    { "page": "helpArticle", "slug": "autopay", "contains": "Manage payment plan" }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "id": "schoolsfirst-federal-credit-union-737e6d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "SchoolsFirst Federal Credit Union",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public schoolsfirstfcu.org pages only (no sign-in). The bill is a SchoolsFirst loan or credit card payment made in Online or Mobile Banking as a transfer between SchoolsFirst accounts (the mock's saved checking account stands in for the funding account). Automatic credit card payments are transfers authorized in Online Banking; they are cancelled by deleting the transfer on the PAY & TRANSFER - SCHEDULED page, or by phone/mail before it processes (a phone request may need written confirmation within 14 days). Setting up recurring payments discontinues an existing credit card AutoPay. Paid transfers cannot be reversed. eStatements need consent in Online Banking and an email address; consent is withdrawn under Settings & Profile. Online retention: eStatements and tax forms up to 7 years, credit card eStatements up to 6 months, eNotices 60 days. Skip-a-Payment is requested from the loan's three-dot menu. Sign-in identifier, MFA and debit-card loan payments are not documented publicly: identifier stays username (family default), online methods bank only (inferred). Bill Pay pays third parties from checking and is not the loan payment route. Member Contact Center (800) 462-8328, Mon-Fri 7-7, Sat 9-3. No public no-login loan payment page was found.",
+  "officialDomains": ["schoolsfirstfcu.org"],
+  "sources": [
+    { "url": "https://www.schoolsfirstfcu.org/disclosures/automatic-credit-card-payments-authorization/", "title": "Automatic Credit Card Payments Authorization | SchoolsFirst FCU", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.schoolsfirstfcu.org/products/digital-services/mobile-online-banking/", "title": "Mobile and Online Banking | SchoolsFirst FCU", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.schoolsfirstfcu.org/disclosures/estatement-enotice-agreement/", "title": "eStatement and eNotice Agreement | SchoolsFirst FCU", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://www.schoolsfirstfcu.org/skip-a-payment/", "title": "Skip-a-Payment | SchoolsFirst FCU", "fetchedAt": "2026-10-09", "kind": "plans" }
+  ],
+  "brand": { "shortName": "SchoolsFirst FCU", "displayName": "SchoolsFirst Federal Credit Union", "primary": "#00305e", "accent": "#7a4a00", "monogram": "SF" },
+  "labels": {
+    "payBill": "Pay & Transfer",
+    "autopay": "Scheduled Transfers",
+    "paperless": "eStatements",
+    "profile": "Settings & Profile",
+    "signIn": "Log In",
+    "register": "Register",
+    "dashboard": "Accounts",
+    "help": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Loans & Credit Cards", "helpSlug": "pay-your-bill" },
+      { "label": "Contact Us", "page": "help" }
+    ],
+    "account": [
+      { "label": "Accounts", "page": "dashboard" },
+      { "label": "Pay & Transfer", "page": "pay" },
+      { "label": "Scheduled Transfers", "page": "autopay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "eStatements", "page": "paperless" },
+      { "label": "Settings & Profile", "page": "profile" }
+    ]
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.schoolsfirstfcu.org/products/digital-services/mobile-online-banking/" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.schoolsfirstfcu.org/disclosures/automatic-credit-card-payments-authorization/", "note": "Automatic payments are scheduled transfers from a SchoolsFirst account set up in Online Banking." },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.schoolsfirstfcu.org/disclosures/automatic-credit-card-payments-authorization/", "note": "Delete the transfer on the PAY & TRANSFER - SCHEDULED page before it is processed." },
+    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.schoolsfirstfcu.org/disclosures/automatic-credit-card-payments-authorization/" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.schoolsfirstfcu.org/disclosures/estatement-enotice-agreement/" },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.schoolsfirstfcu.org/disclosures/estatement-enotice-agreement/" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.schoolsfirstfcu.org/disclosures/automatic-credit-card-payments-authorization/" }
+  },
+  "billing": {
+    "methods": ["bank"],
+    "autopay": { "methodTypes": ["bank"] },
+    "source": "https://www.schoolsfirstfcu.org/products/digital-services/mobile-online-banking/"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make loan and credit card payments",
+      "paragraphs": [
+        "Both Online Banking and Mobile Banking let you make your loan and credit card payments and move money between your SchoolsFirst accounts. You can also set up text or email alerts for payment due dates and payment confirmations.",
+        "Once a payment is made it cannot be reversed. If your card balance is lower than a scheduled payment when it runs, only the current balance is transferred so you are not overpaid.",
+        "Questions? Call the Member Contact Center at (800) 462-8328, Monday to Friday 7 a.m. to 7 p.m. and Saturday 9 a.m. to 3 p.m."
+      ],
+      "source": "https://www.schoolsfirstfcu.org/products/digital-services/mobile-online-banking/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic credit card payments",
+      "paragraphs": [
+        "Automatic payments are transfers you authorize in Online Banking from a SchoolsFirst account to your credit card. The amount due can change each month, so check your statement. Setting up recurring payments ends any credit card payments set up through AutoPay.",
+        "To stop automatic payments, delete the transfer from your Account Transfers list on the PAY & TRANSFER - SCHEDULED page. You can also call (800) 462-8328 or (714) 258-4000, or write to the Santa Ana post office box, before the transfer is processed; after a phone request you may be asked to confirm it in writing within 14 days."
+      ],
+      "steps": ["Log in to Online Banking.", "Open Pay & Transfer and choose Scheduled.", "Find the automatic transfer to your card.", "Delete it before it is processed."],
+      "source": "https://www.schoolsfirstfcu.org/disclosures/automatic-credit-card-payments-authorization/"
+    },
+    {
+      "slug": "paperless",
+      "title": "eStatements and eNotices",
+      "paragraphs": [
+        "Consent to eStatements, eNotices and paperless tax forms is given after you log in to Online Banking, and you need an email address so SchoolsFirst can tell you when a document is ready. You can withdraw consent at any time under Settings & Profile.",
+        "eStatements and tax statements stay available for up to seven years, credit card eStatements for up to six months, and eNotices for 60 days unless you delete them. If you cancel after 6 p.m. on the last day of the month, the change applies the following month."
+      ],
+      "source": "https://www.schoolsfirstfcu.org/disclosures/estatement-enotice-agreement/"
+    },
+    {
+      "slug": "skip-a-payment",
+      "title": "Skip-a-Payment",
+      "topic": "billing",
+      "paragraphs": [
+        "Members in good standing can ask to skip a payment on an eligible auto or select personal loan held at least 12 months, with no delinquencies or deferments in the past 12 months. Interest keeps accruing during the skip, and requests must be made before the payment due date.",
+        "In Online Banking, select the loan, open the three-dot menu and choose Skip a Payment, then review the disclosure. You can also call (800) 462-8328 or visit a branch."
+      ],
+      "source": "https://www.schoolsfirstfcu.org/skip-a-payment/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-estatement-retention",
+        "intent": "Using SchoolsFirst FCU's help pages, find how long credit card eStatements stay available online. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["six months", "6 months"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["six months", "6 months"] },
+        "tags": ["help", "information", "statements"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Up to six months." }]
+      },
+      {
+        "slug": "autopay-stop-written-confirmation",
+        "intent": "You plan to stop your SchoolsFirst FCU automatic credit card payment by phone. Using SchoolsFirst FCU's help pages, find how many days you may have to send written confirmation of the request. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["14"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["14"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Within 14 days." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": ["Log In", "Loans & Credit Cards"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Pay & Transfer", "Scheduled Transfers"] },
+    { "page": "paperless", "signedIn": true, "label": "paperless" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "PAY & TRANSFER - SCHEDULED" },
+    { "page": "helpArticle", "slug": "paperless", "contains": "six months" }
+  ]
+}

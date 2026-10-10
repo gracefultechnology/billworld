@@ -31,7 +31,7 @@ class InfinityOverlayTests(unittest.TestCase):
             for name in ['agents.py','tasks.py','vision_agents.py']:
                 compile((checkout/'evaluation'/name).read_text(),name,'exec')
             inventories = {}
-            for app_name, cohort, count in [('billworld','released',31),('billworld-construction','construction',18)]:
+            for app_name, cohort, count in [('billworld','released',31),('billworld-construction','construction',37)]:
                 app = checkout/'apps'/app_name
                 definitions = json.loads((app/'real-tasks.json').read_text())
                 config = json.loads((app/'billworld-root.json').read_text())
@@ -52,3 +52,14 @@ class InfinityOverlayTests(unittest.TestCase):
                 inventories[cohort] = definitions
             self.assertFalse({t['id'] for t in inventories['released']} & {t['id'] for t in inventories['construction']})
             self.assertTrue(all('Construction-only' in t['instruction'] for t in inventories['construction']))
+
+            recovery = next(t['instruction'] for t in inventories['construction'] if t['id'] == 'task_c34')
+            self.assertNotIn('alex.inframark', recovery)
+            self.assertNotIn('Inframark-2026!', recovery)
+            self.assertIn('Forgot Username', recovery)
+            self.assertIn('Mailbox-2026!', recovery)
+
+            onswc_recovery = next(t['instruction'] for t in inventories['construction'] if t['id'] == 'task_c37')
+            self.assertNotIn('alex.onswc', onswc_recovery)
+            self.assertNotIn('ONSWC-2026!', onswc_recovery)
+            self.assertIn('Forgot Username', onswc_recovery)

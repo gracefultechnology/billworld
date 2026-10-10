@@ -1,0 +1,109 @@
+{
+  "id": "cvs-caremark-5bf62c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "CVS Caremark",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public caremark.com pages (home page, Contact us) and a caremark.com Part D payer sheet; no sign-in. Caremark's Help Center answers (topics include Payments and billing, Order status and history, Account Management, Web and account support) expand only after sign-in, so payment details are thin. Public facts: Register / Sign in on caremark.com; mail service refills can be ordered without signing in using date of birth and mobile number (no payment); mail service pharmacy delivers 90-day supplies with no delivery fee when part of the plan; Customer Care is the number on the member ID card (catalog: 1-800-552-8159); an email form and a chat (not yet for everyone) exist. The Medicare Prescription Payment Plan (since Jan 1, 2025) lets Part D members who opt in pay $0 at the pharmacy and get a monthly bill instead. Online order-balance payment, saved payment methods and automatic payment are kept from the family (inferred: the Help Center lists a Payments and billing topic). Guest payment and paperless billing are not described, so they are marked unsupported (inferred).",
+  "officialDomains": ["caremark.com"],
+  "sources": [
+    { "url": "https://www.caremark.com/", "title": "CVS Caremark home", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://www.caremark.com/about-us/contact-us.html", "title": "Contact us", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.caremark.com/content/dam/enterprise/caremark/pdfs/payer-sheets/caremark_payer_sheet_d.0_meddoppr.pdf", "title": "Payer Sheet Supplemental to Medicare Part D (Medicare Prescription Payment Plan)", "fetchedAt": "2026-10-09", "kind": "plans" }
+  ],
+  "brand": { "displayName": "CVS Caremark", "shortName": "Caremark", "primary": "#b30000", "accent": "#7a1f1f", "monogram": "CM" },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Register",
+    "help": "Help Center",
+    "contact": "Contact us",
+    "history": "Order status and history",
+    "payBill": "Pay balance",
+    "wallet": "Payment methods",
+    "arrangement": "Medicare Prescription Payment Plan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign in", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Refill without signing in", "helpSlug": "secure-refills" },
+      { "label": "Help Center", "page": "help" },
+      { "label": "Contact us", "helpSlug": "contact-us" }
+    ],
+    "account": [
+      { "label": "Account home", "page": "dashboard" },
+      { "label": "Pay balance", "page": "pay" },
+      { "label": "Order status and history", "page": "history" },
+      { "label": "Payment methods", "page": "wallet" },
+      { "label": "Automatic payments", "page": "autopay" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "capabilities": {
+    "registration": { "support": "supported", "evidence": "observed_public", "source": "https://www.caremark.com/" },
+    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.caremark.com/", "note": "Refills can be ordered without signing in, but balances are paid after signing in or through Customer Care at the number on your member ID card (1-800-552-8159).", "channel": "phone", "phone": "800-552-8159" },
+    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://www.caremark.com/", "note": "Caremark does not describe a paperless billing enrollment on its public pages; order charges are in Order status and history after signing in.", "channel": "none" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.caremark.com/content/dam/enterprise/caremark/pdfs/payer-sheets/caremark_payer_sheet_d.0_meddoppr.pdf", "note": "Monthly payments for drug costs come only through the Medicare Prescription Payment Plan, which Part D members opt into with their Part D plan. Call the number on your ID card.", "channel": "phone", "phone": "800-552-8159" }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying for mail service orders",
+      "topic": "payments",
+      "paragraphs": [
+        "If prescription delivery is part of your plan, the CVS Caremark mail service pharmacy sends 90-day supplies of medicines you take regularly with no delivery fee. Your share of the cost is charged to the payment method on your caremark.com account.",
+        "Sign in to see order status and history, any balance, and saved payment methods. For billing questions call Customer Care at the number on your member ID card."
+      ],
+      "source": "https://www.caremark.com/"
+    },
+    {
+      "slug": "secure-refills",
+      "title": "Refill without signing in",
+      "topic": "account",
+      "paragraphs": [
+        "You can refill mail service prescriptions without signing in: enter your date of birth and mobile number for a secure refill. Paying a balance or changing payment details still requires signing in to your caremark.com account."
+      ],
+      "source": "https://www.caremark.com/"
+    },
+    {
+      "slug": "medicare-payment-plan",
+      "title": "Medicare Prescription Payment Plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "Since January 1, 2025, Medicare Part D members can opt in to the Medicare Prescription Payment Plan. Instead of paying at the pharmacy, members who opt in pay $0 at the counter and receive a monthly bill that spreads their out-of-pocket drug costs over the year.",
+        "The plan is run through your Part D plan; contact the number on your member ID card to opt in or ask questions."
+      ],
+      "source": "https://www.caremark.com/content/dam/enterprise/caremark/pdfs/payer-sheets/caremark_payer_sheet_d.0_meddoppr.pdf"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact CVS Caremark",
+      "topic": "contact",
+      "paragraphs": [
+        "Call the Customer Care number printed on your member ID card; you can view your ID card after signing in. You can also send a message with the Email us form, or chat with the support team where chat is available.",
+        "The Help Center covers prescription management, order status and history, ordering prescriptions, account management, cost and coverage, payments and billing, and web and account support."
+      ],
+      "source": "https://www.caremark.com/about-us/contact-us.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "refill-without-signin-fields",
+        "intent": "My mother wants to refill her CVS Caremark mail-order prescription without signing in. What two pieces of information does Caremark ask for? Answer only; do not pay or change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["mobile"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["mobile"] },
+        "tags": ["help", "information", "account"],
+        "evidence": "observed_public",
+        "solution": [{ "op": "answer", "text": "Her date of birth and mobile number." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "member ID card" },
+    { "page": "helpArticle", "slug": "medicare-payment-plan", "contains": "$0" },
+    { "page": "helpArticle", "slug": "secure-refills", "contains": "date of birth" },
+    { "page": "dashboard", "signedIn": true, "contains": "Order status and history" }
+  ]
+}

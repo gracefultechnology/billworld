@@ -1,0 +1,155 @@
+{
+  "id": "walgreens-pharmacy-bb983a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Walgreens Pharmacy",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public Walgreens Pharmacy Help FAQ (no sign-in; the login page renders no public text). An outstanding pharmacy balance is paid online at Prescriptions > Settings > Make a Payment by card or check; the Pharmacy Account Balance page shows recent transactions. ExpressPay stores a Visa/Mastercard credit or debit card that is charged automatically at pickup (only for prescriptions filled after enrollment); it is modelled as the AutoPay page labelled ExpressPay. The real ExpressPay takes cards only; the bank option on that page is a simulation contract (the dossier format requires bank for AutoPay). Prescription Records shows/prints up to 18 months; older records need a mailed or faxed request to the Custodian of Records (up to 15 business days). Pharmacy registration requires identity verification (online questions, a phone activation code at 1-800-573-3586 from the home phone on file, or a recent prescription). No payment plan, guest payment or paperless-bill feature is described.",
+  "officialDomains": ["walgreens.com"],
+  "sources": [
+    { "url": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp", "title": "Pharmacy Help FAQ", "fetchedAt": "2026-10-09", "kind": "help" }
+  ],
+  "brand": { "displayName": "Walgreens", "shortName": "Walgreens", "primary": "#c8102e", "accent": "#7a1f1f", "monogram": "W" },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Create an account",
+    "dashboard": "Your Account",
+    "payBill": "Make a Payment",
+    "viewBill": "Pharmacy Account Balance",
+    "autopay": "ExpressPay",
+    "wallet": "Payment Methods",
+    "statements": "Prescription Records",
+    "history": "Recent transactions",
+    "help": "Pharmacy Help",
+    "amountDue": "Account balance"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign in", "page": "login" },
+      { "label": "Create an account", "page": "register" },
+      { "label": "Pharmacy Help", "page": "help" },
+      { "label": "ExpressPay", "helpSlug": "expresspay" }
+    ],
+    "account": [
+      { "label": "Your Account", "page": "dashboard" },
+      { "label": "Pharmacy Account Balance", "page": "bill" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "ExpressPay", "page": "autopay" },
+      { "label": "Prescription Records", "page": "statements" },
+      { "label": "Recent transactions", "page": "history" },
+      { "label": "Payment Methods", "page": "wallet" }
+    ]
+  },
+  "auth": {
+    "evidence": "inferred",
+    "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp" },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp" },
+    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp", "note": "Express Refills work without signing in, but a pharmacy balance is paid after signing in (Make a Payment) or at the store. Help: 1-877-250-5823.", "channel": "in_person", "phone": "877-250-5823" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp", "note": "Walgreens does not describe payment plans for pharmacy balances. Call Customer Service at 1-877-250-5823 or ask your pharmacy.", "channel": "phone", "phone": "877-250-5823" },
+    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp", "note": "Walgreens does not mail pharmacy bills; balances and transactions are shown on the Pharmacy Account Balance page and records can be printed online.", "channel": "none" },
+    "scheduled_payment": { "support": "unsupported", "evidence": "inferred", "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp", "note": "Make a Payment charges your card or check right away; future-dated payments are not offered.", "channel": "none" }
+  },
+  "billing": {
+    "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your pharmacy account balance",
+      "topic": "payments",
+      "paragraphs": [
+        "To pay an outstanding pharmacy balance online, go to Prescriptions, then Settings, then Make a Payment. Choose to pay by card or check; the Account Balance box uses your registered card.",
+        "A confirmation appears on screen when the payment goes through, and the Pharmacy Account Balance page lists recent transactions so you can check that it posted. If a payment is rejected, the message at the top of the page explains why, for example an expired card or a card over its limit."
+      ],
+      "steps": ["Sign in to your Walgreens account.", "Open Prescriptions, then Settings.", "Choose Make a Payment.", "Pick card or check and confirm the amount."],
+      "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp"
+    },
+    {
+      "slug": "expresspay",
+      "title": "ExpressPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "ExpressPay speeds up pickup: your card is stored securely, you skip signing receipts, and the card is charged automatically when you pick up. You are not charged before pickup, and you can see the price in the order status while the order is in progress.",
+        "You must be registered. Go to Your Account, then Settings, then ExpressPay Prescriptions, choose Edit, enter your card and save; you can also sign up in a store. Debit cards work if they carry the Visa or Mastercard logo, and you must enter the card during sign-up even if it is already on file.",
+        "ExpressPay covers prescriptions filled after you enroll; orders already in progress are paid at pickup. To stop it, open ExpressPay under Settings, choose Delete and confirm."
+      ],
+      "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp"
+    },
+    {
+      "slug": "prescription-records",
+      "title": "Prescription history and records",
+      "topic": "statements",
+      "paragraphs": [
+        "Your Refills page shows active and inactive prescriptions from the last 18 months. To print a year of transactions, go to Prescriptions, then Records, pick a date range and choose Print. Only the family account administrator can view or print a family member's records.",
+        "Records older than 18 months are not online: complete, sign and mail or fax the records access request to the Custodian of Records and allow up to 15 business days. To have the form mailed to you, call 1-217-554-8949. Prescriptions cannot be deleted from history, only hidden."
+      ],
+      "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp"
+    },
+    {
+      "slug": "registration",
+      "title": "Pharmacy registration and verification",
+      "topic": "account",
+      "paragraphs": [
+        "A pharmacy registration lets you refill and transfer prescriptions, change your pickup store, arrange delivery and print 18 months of history. Register from the page header, complete the form, choose Join now for prescription management, then verify your identity online, by phone, or with a prescription filled in the last 12 months.",
+        "Phone verification uses an 8-digit activation code: call 1-800-573-3586 from the primary phone on your account (usually your home phone) and enter the code. If records do not appear within 24 hours, or verification stays in progress for more than 3 hours, call Customer Service at 1-877-250-5823."
+      ],
+      "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp"
+    },
+    {
+      "slug": "fsa",
+      "title": "Using an FSA",
+      "topic": "payments",
+      "paragraphs": [
+        "Prescriptions are FSA-eligible, and many store items are too; eligible items show an F on your receipt. Sign in to print a record of your prescriptions, or print the order confirmation page, which marks FSA-eligible items. Check your plan's rules."
+      ],
+      "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp"
+    },
+    {
+      "slug": "delivery-fees",
+      "title": "Prescription delivery fees",
+      "topic": "fees",
+      "paragraphs": [
+        "Standard prescription shipping is free; next-day delivery costs $4.99. For mailed orders your card is not charged until the order ships. Delivery goes only to the address on file, and controlled or temperature-controlled prescriptions may be excluded."
+      ],
+      "source": "https://www.walgreens.com/topic/help/pharmacyhelp/pharmacy_help_main.jsp"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "old-records-phone",
+        "intent": "I need Walgreens Pharmacy records from three years ago for a tax audit. Find the phone number Walgreens gives for getting the records request form mailed to you. Don't change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["2175548949"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["2175548949"] },
+        "tags": ["help", "information", "statements"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "1-217-554-8949" }]
+      },
+      {
+        "slug": "expresspay-charge-time",
+        "intent": "With Walgreens ExpressPay, when exactly is my stored card charged for a prescription? Look it up in the Walgreens help and answer; do not enroll or pay anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["pick"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["pick"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "At pickup, not before." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "dashboard", "signedIn": true, "contains": ["Pharmacy Account Balance", "ExpressPay"] },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "pay", "signedIn": true, "label": "payBill" },
+    { "page": "helpArticle", "slug": "prescription-records", "contains": "1-217-554-8949" },
+    { "page": "helpArticle", "slug": "expresspay", "contains": "Delete" },
+    { "page": "home", "contains": "Express Refills" }
+  ]
+}

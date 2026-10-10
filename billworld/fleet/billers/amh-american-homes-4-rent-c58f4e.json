@@ -1,0 +1,298 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-09",
+  "id": "amh-american-homes-4-rent-c58f4e",
+  "name": "AMH (American Homes 4 Rent)",
+  "category": "housing",
+  "notes": "Researched from public amh.com pages (Residents, Fees) and the RentCafe payment-confirmation help article (AMH's portal is amh.securecafe.com). Make online payment / Make Payment go to the RentCafe resident login. Fees page: credit card surcharge 2.2% (2.0% in OK, none in CO) - modelled as 2.2%; late fee $100 in most states (CO $50; NV/NM/NC and Dayton OH 5%; TN 10% of past-due) - modelled $100; NSF fees by state ($20-$50). Phone 833-736-8264 (Residents page) and 855-774-4663 (Fees page). Autopay/notice rules are not on public AMH pages (family RentCafe-style Auto-pay kept, inferred). The RentCafe sign-in page is behind a bot wall, so sign-in labels are not set.",
+  "officialDomains": [
+    "amh.com",
+    "rentcafe.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.amh.com/4residents",
+      "title": "Residents | AMH",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.amh.com/fees",
+      "title": "Fees | AMH",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.rentcafe.com/help/how-to-confirm-payment/",
+      "title": "How do I know if my payment is confirmed? (RentCafe)",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "AMH",
+    "shortName": "AMH",
+    "primary": "#b3261e",
+    "accent": "#1f3a5f",
+    "monogram": "AH"
+  },
+  "labels": {
+    "payBill": "Make Payment",
+    "viewBill": "Monthly Charges",
+    "contact": "Maintenance Requests",
+    "autopay": "Auto-pay Setup"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make online payment",
+        "page": "login"
+      },
+      {
+        "label": "Fees",
+        "helpSlug": "fees"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Monthly Charges",
+        "page": "bill"
+      },
+      {
+        "label": "Auto-pay Setup",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Maintenance Requests",
+        "page": "contact"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amh.com/4residents",
+      "note": "Make Payment opens the AMH resident portal; credit cards carry a 2.2% surcharge."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "note": "AMH's portal is RentCafe, which offers Auto-pay Setup; AMH does not publish its own autopay rules."
+    }
+  },
+  "billing": {
+    "source": "https://www.amh.com/fees",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.2,
+      "evidence": "documented_official",
+      "source": "https://www.amh.com/fees"
+    },
+    "lateFeeCents": 10000
+  },
+  "help": [
+    {
+      "slug": "fees",
+      "title": "Rent payment fees",
+      "paragraphs": [
+        "Paying by credit card adds a surcharge of 2.2% of the payment (2.0% in Oklahoma; no surcharge in Colorado).",
+        "Late rent fees depend on the state: most states charge a flat $100; Colorado charges $50; Nevada, New Mexico, North Carolina and the City of Dayton, Ohio charge 5% of monthly rent; Tennessee charges 10% of the past-due rent for the current month only.",
+        "Returned (NSF) payments also carry a state-specific fee between $20 and $50, for example $40 in Florida, $30 in Georgia and Texas, and $25 in Arizona. Your lease lists every fee. Questions: 855-774-4663."
+      ],
+      "source": "https://www.amh.com/fees",
+      "topic": "billing"
+    },
+    {
+      "slug": "payment-confirmation",
+      "title": "Confirming your payment",
+      "paragraphs": [
+        "Right after you pay, a confirmation screen shows the payment is processing and lets you download a receipt. You can also open Monthly Charges in the resident portal: a processed payment shows in your balance.",
+        "If you saw no confirmation and your balance did not change, the payment probably did not go through. A failed payment is not retried; you get an email and need to submit a new one-time payment."
+      ],
+      "source": "https://www.rentcafe.com/help/how-to-confirm-payment/",
+      "topic": "payments"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying rent",
+      "paragraphs": [
+        "Use Make online payment on the Residents page (or Make Payment in the account menu) to open the AMH resident portal and pay. Credit card payments carry a 2.2% surcharge. For help call 833-736-8264."
+      ],
+      "source": "https://www.amh.com/4residents",
+      "topic": "payments"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact AMH",
+      "paragraphs": [
+        "Residents can call 833-736-8264, submit a maintenance request online from the Residents page, or find local offices under Our offices. For fee questions call 855-774-4663."
+      ],
+      "source": "https://www.amh.com/4residents",
+      "topic": "contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-surcharge",
+        "intent": "Using the AMH help pages, find the surcharge for paying rent with a credit card in most states. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.2"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.2"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments carry a 2.2% surcharge (2.0% in Oklahoma, none in Colorado)."
+          }
+        ]
+      },
+      {
+        "slug": "nsf-fee-florida",
+        "intent": "You live in an AMH home in Florida and a rent payment bounced. Using the help pages, find the returned-payment (NSF) fee for Florida. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "40"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "40"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Florida NSF fee is $40."
+          }
+        ]
+      },
+      {
+        "slug": "late-fee-colorado",
+        "intent": "You rent an AMH home in Colorado. Using the help pages, find the late rent fee there. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Colorado's late rent fee is $50."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "helpArticle",
+      "slug": "fees",
+      "contains": [
+        "2.2%",
+        "$100"
+      ]
+    },
+    {
+      "page": "bill",
+      "signedIn": true,
+      "label": "viewBill"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-confirmation",
+      "contains": "Monthly Charges"
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "id": "wm-waste-management-9cbfeb",
+  "version": 1,
+  "status": "dedicated",
+  "name": "WM (Waste Management)",
+  "category": "trash",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public wm.com support articles, the My WM login page and the residential subscription terms only (never signed in). Sign-in is by email + password on one page. Payments go through Paymentus: bank (ACH) payments are free, card and digital-wallet payments carry a flat $1.99 convenience fee for US residential customers. AutoPay accepts a bank account or a credit/debit card and drafts 20 days after the invoice date (fixed, cannot be changed) - the engine has no 'days after invoice' rule, so the family default draft timing is kept. An Administrative Charge ($8.50 per invoice per the paperless article) is waived when both AutoPay and Paperless Billing are on; not modelled as a fee. Late fee: the maximum allowed by law with a $5 monthly minimum (rate varies, so no lateFee field is set). Service can be cancelled online only if it was started online; otherwise by phone at 866-964-2729. No public payment-plan offer was found, so payment arrangements are marked unsupported online (inferred). Guest pay ('Continue As Guest') exists but its lookup fields are not documented publicly, so the family fields are kept.",
+  "officialDomains": ["wm.com"],
+  "sources": [
+    { "url": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-make-a-payment-to-my-account", "title": "How do I make a payment to my account?", "fetchedAt": "2026-10-05", "kind": "pay" },
+    { "url": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-enroll-in-autopay", "title": "How do I enroll in AutoPay?", "fetchedAt": "2026-10-05", "kind": "autopay" },
+    { "url": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-enroll-in-paperless-billing", "title": "How do I enroll in paperless billing?", "fetchedAt": "2026-10-05", "kind": "help" },
+    { "url": "https://www.wm.com/us/en/user/login", "title": "My WM Login | WM", "fetchedAt": "2026-10-05", "kind": "login" },
+    { "url": "https://www.wm.com/us/en/terms/terms-and-conditions-for-residential-subscription-services", "title": "Terms and Conditions for Residential Subscription Services", "fetchedAt": "2026-10-05", "kind": "fees" },
+    { "url": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-get-help-with-billing-issues", "title": "How do I get help with billing issues?", "fetchedAt": "2026-10-05", "kind": "help" },
+    { "url": "https://www.wm.com/us/en/support", "title": "Customer Support | WM", "fetchedAt": "2026-10-05", "kind": "help" }
+  ],
+  "brand": { "displayName": "WM", "shortName": "WM", "primary": "#1a7a00", "accent": "#024731", "monogram": "WM" },
+  "labels": {
+    "payBill": "Make a Payment",
+    "viewBill": "Billing Overview",
+    "statements": "Invoice History",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "signIn": "Log In",
+    "register": "Sign up",
+    "forgot": "Forgot password?",
+    "guestPay": "Continue As Guest",
+    "dashboard": "My WM",
+    "cancel": "Change, Add, Pause or Cancel Services",
+    "contact": "Request Help",
+    "help": "Support",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      { "label": "Make a Payment", "page": "guest" },
+      { "label": "Log In", "page": "login" },
+      { "label": "Sign up", "page": "register" },
+      { "label": "AutoPay & Paperless Billing", "helpSlug": "autopay" },
+      { "label": "Support", "page": "help" }
+    ],
+    "account": [
+      { "label": "My WM", "page": "dashboard" },
+      { "label": "Billing Overview", "page": "bill" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Invoice History", "page": "statements" },
+      { "label": "AutoPay", "page": "autopay" },
+      { "label": "Paperless Billing", "page": "paperless" },
+      { "label": "Change, Add, Pause or Cancel Services", "page": "cancel" },
+      { "label": "Request Help", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.wm.com/us/en/user/login"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-make-a-payment-to-my-account" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-enroll-in-autopay" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-enroll-in-autopay" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-enroll-in-paperless-billing" },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-get-help-with-billing-issues" },
+    "cancel_service": { "support": "supported", "evidence": "documented_official", "source": "https://www.wm.com/us/en/terms/terms-and-conditions-for-residential-subscription-services", "note": "Service started online can be cancelled in My WM; otherwise call 866-964-2729. A cart removal charge applies." },
+    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "note": "Payment plans are not offered online in My WM. Use Request Help on the Support page to talk to Customer Service about your balance.", "channel": "phone", "phone": "866-964-2729" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-make-a-payment-to-my-account", "phone": "866-964-2729" }
+  },
+  "billing": {
+    "source": "https://www.wm.com/us/en/terms/terms-and-conditions-for-residential-subscription-services",
+    "fees": { "bankCents": 0, "cardCents": 199, "evidence": "documented_official", "source": "https://www.wm.com/us/en/terms/terms-and-conditions-for-residential-subscription-services" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How do I make a payment?",
+      "topic": "billing",
+      "paragraphs": [
+        "Signed in to My WM, open the Billing tab and choose Make a Payment. You can pay the full balance or part of it. If several services are linked, pick the right customer ID first; paying several accounts at once pays each of them in full.",
+        "Not signed in? Choose Make a Payment at the top of wm.com, fill in the Continue As Guest section and verify, then pick a payment method on the My Payment screen.",
+        "To pay by phone, call 866-964-2729 and follow the prompts. The phone system pays one customer ID or service address per call, so have it ready.",
+        "Payments from a bank account (ACH) are free. Card and digital-wallet payments are processed by Paymentus, which charges US residential customers a flat $1.99 convenience fee per payment; the fee is shown before you confirm."
+      ],
+      "steps": ["Log in to My WM.", "Open the Billing tab.", "Select Make a Payment.", "Choose the amount and payment method, then review and submit."],
+      "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-make-a-payment-to-my-account"
+    },
+    {
+      "slug": "autopay",
+      "title": "How do I enroll in AutoPay?",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay pays each invoice automatically from a bank account or a credit or debit card saved in My WM. Bank drafts have no fee; each card or digital-wallet AutoPay payment carries the Paymentus convenience fee.",
+        "AutoPay payments are drafted 20 days after the invoice date. The draft day is fixed and cannot be changed, and it may differ from the due date in your service agreement.",
+        "If you have more than one account, each one has to be enrolled separately. AutoPay may not be available if a homeowners association, city or other third party pays for your service.",
+        "Turn on both AutoPay and Paperless Billing to qualify for a waiver of the Administrative Charge on each invoice."
+      ],
+      "steps": ["Log in to My WM and choose the account.", "On the dashboard, find the Billing tile and select Enroll next to AutoPay.", "Enter a bank account or credit/debit card.", "Read the Terms & Conditions and select Add."],
+      "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-enroll-in-autopay"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "How do I unenroll from AutoPay?",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in to My WM, choose the account, go to the Billing tile on the dashboard, select Manage under AutoPay and then Stop AutoPay. Each linked account is unenrolled separately.",
+        "AutoPay cannot be paused: an account is either enrolled or not, and changes start with the next payment cycle. Leaving AutoPay means the Administrative Charge waiver no longer applies to your invoices."
+      ],
+      "steps": ["Log in to My WM and choose the account.", "Open the Billing tile on the dashboard.", "Select Manage under AutoPay.", "Select Stop AutoPay."],
+      "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-enroll-in-autopay"
+    },
+    {
+      "slug": "paperless",
+      "title": "How do I enroll in paperless billing?",
+      "topic": "billing",
+      "paragraphs": [
+        "With Paperless Billing you get an email as soon as your invoice is ready instead of a mailed bill.",
+        "Enrolling in both AutoPay and Paperless Billing makes you eligible for a waiver of the $8.50 Administrative Charge on each invoice.",
+        "Each linked account is enrolled separately. Paperless Billing may not be offered to landfill customers or when an HOA, city or other third party pays for your service. To stop it, open Billing Overview, choose Stop Paperless Billing and confirm."
+      ],
+      "steps": ["Log in to My WM.", "From the dashboard, open Billing Overview.", "In the Paperless Billing column, select Enroll.", "Read the Terms and Conditions and select Finish."],
+      "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-enroll-in-paperless-billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Change, add, pause or cancel services",
+      "topic": "account",
+      "paragraphs": [
+        "Residential subscribers may end service after any billing period without a penalty. If you started service online on wm.com, you can cancel through your My WM account; otherwise call 866-964-2729 and the automated agent will help you end service and schedule cart pickup.",
+        "A cart removal charge applies when service is cancelled. Monthly or quarterly prepaid amounts are not refunded, while annual prepaid service cancelled early is refunded for the unused days."
+      ],
+      "source": "https://www.wm.com/us/en/terms/terms-and-conditions-for-residential-subscription-services"
+    },
+    {
+      "slug": "late-fees",
+      "title": "When is my invoice due and are there late fees?",
+      "topic": "billing",
+      "paragraphs": [
+        "Invoices are billed in advance and are due within 30 days of the invoice date.",
+        "If WM has not received full payment within 30 days, a late fee shown on the invoice may be added to past-due amounts: the highest monthly late charge the law allows, with a minimum of $5 per month. WM may also suspend service until the balance is paid."
+      ],
+      "source": "https://www.wm.com/us/en/terms/terms-and-conditions-for-residential-subscription-services"
+    },
+    {
+      "slug": "billing-history",
+      "mode": "append",
+      "title": "Billing history and invoices",
+      "paragraphs": [
+        "My WM lets you download and review past invoices, see your billing history and current balance, and update payment methods. Fuel and environmental charges, extra pickups and local fees can change from one invoice to the next.",
+        "If something still looks wrong, use Request Help on the Support page; refunds for duplicate payments or billing errors usually take 7 to 10 business days once approved."
+      ],
+      "source": "https://www.wm.com/us/en/support/faqs/billing/how-do-i-get-help-with-billing-issues"
+    }
+  ],
+  "tasks": {
+    "suppress": ["setup-payment-plan"],
+    "extra": [
+      {
+        "slug": "admin-charge-waiver",
+        "intent": "Using WM's help pages, find out what you need to enroll in to get the Administrative Charge on each invoice waived, and how much that charge is. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["8.50"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["8.50"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Enroll in both AutoPay and Paperless Billing to have the $8.50 Administrative Charge waived on each invoice." }]
+      },
+      {
+        "slug": "card-convenience-fee",
+        "intent": "Using WM's help pages, find the convenience fee charged for paying a residential WM invoice by credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["1.99"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["1.99"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Card and digital wallet payments carry a $1.99 convenience fee; bank payments are free." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": ["Make a Payment", "Log In"] },
+    { "page": "login", "contains": ["Email", "Forgot password?"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Billing Overview", "Invoice History"] },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "20 days after the invoice date" },
+    { "page": "helpArticle", "slug": "paperless", "contains": "$8.50" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "$1.99" },
+    { "page": "arrangement", "signedIn": true, "contains": "not offered online" }
+  ]
+}

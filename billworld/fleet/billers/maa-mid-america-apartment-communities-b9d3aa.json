@@ -1,0 +1,234 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-09",
+  "id": "maa-mid-america-apartment-communities-b9d3aa",
+  "name": "MAA (Mid-America Apartment Communities)",
+  "category": "housing",
+  "notes": "Researched from public maac.com pages (Resident Services incl. its FAQ answers, FAQs hub) and the RentCafe confirmation help article; MAA's Resident Login is the RentCafe portal maac.securecafe.com (bot wall, sign-in labels not observed). Residents pay rent, submit and track service requests, see online deals and community news in the Resident Login portal; features vary by community. Assistance 866-620-1130; HQ 6815 Poplar Ave Suite 500, Germantown TN 38138. Fees, autopay specifics and notice periods are not published on public MAA pages (family RentCafe-style defaults kept, inferred).",
+  "officialDomains": [
+    "maac.com",
+    "rentcafe.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.maac.com/about-us/resident-services/",
+      "title": "Resident Services | MAA",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.maac.com/about-us/faqs/",
+      "title": "Frequently Asked Questions | MAA",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.rentcafe.com/help/how-to-confirm-payment/",
+      "title": "How do I know if my payment is confirmed? (RentCafe)",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "MAA",
+    "shortName": "MAA",
+    "primary": "#051032",
+    "accent": "#8c3a00",
+    "monogram": "MA"
+  },
+  "labels": {
+    "signIn": "Resident Login",
+    "viewBill": "Monthly Charges",
+    "contact": "Service Requests",
+    "autopay": "Auto-pay Setup"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident Login",
+        "page": "login"
+      },
+      {
+        "label": "Resident Services",
+        "page": "help"
+      },
+      {
+        "label": "Assistance",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Monthly Charges",
+        "page": "bill"
+      },
+      {
+        "label": "Auto-pay Setup",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Service Requests",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.maac.com/about-us/resident-services/",
+      "note": "Pay rent online through the Resident Login portal."
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying rent online",
+      "paragraphs": [
+        "Yes, MAA residents can pay rent online: choose Resident Login in the main navigation and sign in. The same portal lets you submit and track service requests, see online deals and follow community news. Features can vary by community."
+      ],
+      "source": "https://www.maac.com/about-us/resident-services/",
+      "topic": "payments"
+    },
+    {
+      "slug": "service-requests",
+      "title": "Service requests",
+      "paragraphs": [
+        "After signing in through Resident Login you can submit service requests and send other messages to your community managers. MAA Resident Services also offers 24/7 on-call support."
+      ],
+      "source": "https://www.maac.com/about-us/resident-services/",
+      "topic": "account"
+    },
+    {
+      "slug": "payment-confirmation",
+      "title": "Confirming your payment",
+      "paragraphs": [
+        "Right after you pay, a confirmation screen shows the payment is processing and lets you download a receipt. You can also open Monthly Charges in the portal: a processed payment shows in your balance. If neither shows the payment, it probably failed; failed payments are not retried, so submit a new one-time payment."
+      ],
+      "source": "https://www.rentcafe.com/help/how-to-confirm-payment/",
+      "topic": "payments"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact MAA",
+      "paragraphs": [
+        "For assistance call 866-620-1130 or use the Contact Us page. Corporate headquarters: 6815 Poplar Avenue, Suite 500, Germantown, TN 38138."
+      ],
+      "source": "https://www.maac.com/about-us/faqs/",
+      "topic": "contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "assistance-phone",
+        "intent": "Using the MAA help pages, find MAA's assistance phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8666201130"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8666201130"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 866-620-1130."
+          }
+        ]
+      },
+      {
+        "slug": "confirm-failed-payment",
+        "intent": "You paid MAA rent but never saw a confirmation screen and your balance did not change. Using the help pages, find out whether the payment will be retried and what to do. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "new"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "new"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Failed payments are not retried; submit a new one-time payment."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "label": "signIn"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "866-620-1130"
+    },
+    {
+      "page": "bill",
+      "signedIn": true,
+      "label": "viewBill"
+    }
+  ]
+}

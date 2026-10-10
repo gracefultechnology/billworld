@@ -1,0 +1,181 @@
+{
+  "id": "pennsylvania-american-water-95846e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Pennsylvania American Water",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public amwater.com pages only (no sign-in). The online account is MyWater (shared by all American Water state companies); sign-in is by User ID with a separate Forgot User ID flow that emails the ID, and password resets are emailed (Okta). No MFA is described publicly, so none is modelled. American Water removed the $1.95 third-party card fee, so online card and bank payments are free. Auto Pay can charge a card or a checking/savings account on the due date. Payment plans can be reviewed in MyWater or arranged by phone (1-800-565-7292) before the due date. MyWater lets customers turn service on or off. The late payment charge (tariff) was not found on amwater.com pages, so it is not modelled. Guest payments go through amwater.com/billpay (Paymentus) with the account number.",
+  "officialDomains": ["amwater.com"],
+  "sources": [
+    { "url": "https://www.amwater.com/paaw/customer-service-billing/Billing-Payment-Info/", "title": "Pay Your Bill: Pennsylvania American Water", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.amwater.com/paaw/customer-service-billing/faqs", "title": "FAQs - Pennsylvania American Water", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.amwater.com/paaw/customer-service-billing/Customer-Assistance-Programs/", "title": "Customer Assistance Programs - Pennsylvania American Water", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://www.amwater.com/paaw/customer-service-billing/paperless-billing", "title": "Paperless Billing - Pennsylvania American Water", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://amwater.com/corp/customers-and-communities/mywater-help-center/retrieve-user-id-or-change-password", "title": "MyWater Help Center: Retrieve User ID or Change Password", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://newsroom.amwater.com/2025-10-31-Pennsylvania-American-Water-Offers-Customer-Assistance-Options", "title": "Pennsylvania American Water Offers Customer Assistance Options", "fetchedAt": "2026-10-09", "kind": "plans" }
+  ],
+  "brand": { "displayName": "Pennsylvania American Water", "shortName": "Pennsylvania American Water", "primary": "#005596", "accent": "#00386b", "monogram": "AW" },
+  "labels": {
+    "payBill": "Pay Bill",
+    "dashboard": "MyWater",
+    "signIn": "Login",
+    "register": "Sign Up",
+    "forgot": "Forgot Password?",
+    "username": "User ID",
+    "autopay": "Auto Pay",
+    "paperless": "Go Paperless",
+    "cancel": "Turn Service On/Off",
+    "help": "FAQs",
+    "contact": "Contact Us",
+    "arrangement": "Payment Plan",
+    "guestPay": "Pay without registering"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay Bill", "page": "guest" },
+      { "label": "Login", "page": "login" },
+      { "label": "Sign Up", "page": "register" },
+      { "label": "Billing & Payment Info", "helpSlug": "pay-your-bill" },
+      { "label": "Customer Assistance Programs", "helpSlug": "payment-assistance" },
+      { "label": "FAQs", "page": "help" }
+    ],
+    "account": [
+      { "label": "MyWater", "page": "dashboard" },
+      { "label": "Pay Bill", "page": "pay" },
+      { "label": "View Bill", "page": "bill" },
+      { "label": "Auto Pay", "page": "autopay" },
+      { "label": "Go Paperless", "page": "paperless" },
+      { "label": "Payment Plan", "page": "arrangement" },
+      { "label": "Turn Service On/Off", "page": "cancel" },
+      { "label": "Contact Us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "none",
+    "registrationFields": ["accountNumber", "email"],
+    "guestLookupFields": ["accountNumber"],
+    "evidence": "documented_official",
+    "source": "https://amwater.com/corp/customers-and-communities/mywater-help-center/retrieve-user-id-or-change-password"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.amwater.com/paaw/customer-service-billing/Billing-Payment-Info/", "note": "Pay without registering at the American Water bill-pay page with your account number." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.amwater.com/paaw/customer-service-billing/Billing-Payment-Info/" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.amwater.com/paaw/customer-service-billing/paperless-billing" },
+    "cancel_service": { "support": "supported", "evidence": "documented_official", "source": "https://www.amwater.com/paaw/customer-service-billing/faqs", "note": "MyWater lets you turn service on or off online." },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://newsroom.amwater.com/2025-10-31-Pennsylvania-American-Water-Offers-Customer-Assistance-Options", "note": "Review payment plan options in MyWater or call 1-800-565-7292 before the due date." },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.amwater.com/paaw/customer-service-billing/Customer-Assistance-Programs/" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.amwater.com/paaw/customer-service-billing/Billing-Payment-Info/", "phone": "855-748-6066" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.amwater.com/paaw/customer-service-billing/Billing-Payment-Info/" }
+  },
+  "billing": {
+    "source": "https://www.amwater.com/paaw/customer-service-billing/Billing-Payment-Info/",
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "documented_official", "source": "https://www.amwater.com/paaw/customer-service-billing/Billing-Payment-Info/" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "days": "due_date", "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "MyWater is the preferred way to pay: make a one-time payment from a bank account or by credit card, or set up Auto Pay. You can also pay without registering on the American Water bill-pay page if you have your account number.",
+        "The $1.95 third-party transaction fee that used to apply to credit card payments has been eliminated.",
+        "By phone, call 1-855-748-6066 any time and pay by Visa, MasterCard, Discover, American Express or electronic check. Have your 16-digit account number ready.",
+        "By mail, send your payment stub with a check to Pennsylvania American Water, P.O. Box 371412, Pittsburgh, PA 15250-7412. Do not mail cash or use staples or paper clips.",
+        "In person, pay at an authorized payment location that scans the barcode on your bill; you can also have the barcode texted to you."
+      ],
+      "source": "https://www.amwater.com/paaw/customer-service-billing/Billing-Payment-Info/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay charges your credit card or your checking or savings account automatically on the due date, which helps you avoid late fees.",
+        "You still receive your bill before the due date so you can review the charges."
+      ],
+      "steps": ["Log in to MyWater.", "Choose Auto Pay.", "Pick a bank account or credit card.", "Accept the terms and save."],
+      "source": "https://www.amwater.com/paaw/customer-service-billing/faqs"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in to MyWater and click Go Paperless on the left side of the home page. If you do not have a MyWater account yet, choose Sign Up on the login window and have your account number ready.",
+        "In some promotions, American Water has donated to a tree-planting partnership for each customer who switches to paperless billing."
+      ],
+      "steps": ["Log in to MyWater.", "Click Go Paperless.", "Confirm your email address."],
+      "source": "https://www.amwater.com/paaw/customer-service-billing/paperless-billing"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Customer Assistance Programs",
+      "topic": "assistance",
+      "paragraphs": [
+        "H2O Help to Others: grants, monthly bill discounts and water-saving devices for income-eligible customers, with eligibility checked through the Dollar Energy Fund.",
+        "Budget Billing spreads your costs into predictable monthly payments. Installment plans give more time to pay a past-due balance, and eligible customers can choose a preferred due date.",
+        "If you cannot pay by the due date, review payment plan options in MyWater or call Customer Service at 1-800-565-7292 before the due date.",
+        "A medical certificate can postpone a shutoff for 30 days when someone in the household is seriously ill; current bills must still be paid."
+      ],
+      "source": "https://www.amwater.com/paaw/customer-service-billing/Customer-Assistance-Programs/"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Retrieve your User ID or reset your password",
+      "topic": "account",
+      "paragraphs": [
+        "Your User ID is the name you use to log in to MyWater. If you forget it, choose Forgot User ID? under the User ID box, pass the security check and enter your email address; the ID is emailed to you. If several accounts use the same email, you will also need your account number.",
+        "To reset your password, choose Forgot Password?, pass the security check, enter your User ID and follow the reset link in the email you receive."
+      ],
+      "steps": ["Choose Forgot Password? on the login page.", "Complete the security check.", "Enter your User ID.", "Open the reset email and choose a new password."],
+      "source": "https://amwater.com/corp/customers-and-communities/mywater-help-center/retrieve-user-id-or-change-password"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Turn service on or off",
+      "topic": "account",
+      "paragraphs": [
+        "MyWater lets you turn water service on or off online. Log in and choose Turn Service On/Off with the date you need.",
+        "For other questions call Customer Service at 1-800-565-7292, Monday to Friday 7 a.m. to 7 p.m."
+      ],
+      "steps": ["Log in to MyWater.", "Choose Turn Service On/Off.", "Pick the stop date.", "Review and confirm."],
+      "source": "https://www.amwater.com/paaw/customer-service-billing/faqs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "phone-pay-number",
+        "intent": "Find the phone number Pennsylvania American Water lists for paying your bill by phone. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8557486066"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8557486066"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "1-855-748-6066" }]
+      },
+      {
+        "slug": "card-fee-check",
+        "intent": "Before paying, find out from Pennsylvania American Water's help pages whether there is a fee for paying by credit card online. Answer yes or no with the detail; do not make a payment.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["eliminated", "no fee", "free"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["eliminated", "no fee", "free"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "No - the $1.95 card fee was eliminated, so there is no fee." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": ["Customer Assistance Programs", "Login"] },
+    { "page": "login", "contains": ["User ID"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Go Paperless", "Turn Service On/Off"] },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["1-855-748-6066", "eliminated"] },
+    { "page": "helpArticle", "slug": "reset-password", "contains": "Forgot User ID?" }
+  ]
+}

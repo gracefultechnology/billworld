@@ -1,0 +1,408 @@
+{
+  "id": "ring-ring-home-ring-protect-subscriptions-9cc71b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Ring (Ring Home / Ring Protect subscriptions)",
+  "category": "home-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public ring.com support articles and the public Ring plans page only (never signed in). Ring plans are subscriptions that renew automatically and charge the single payment method on file (credit or debit card, Apple Pay or Google Pay; gift cards are not accepted). There is no bill to pay as a guest, no separate AutoPay enrollment, no paper bill and no payment plan, so those capabilities are not_applicable. US subscription payment options do not include bank accounts. Payment method and billing history can only be managed on ring.com, not in the Ring app. Cancelling ends the plan at the end of the current billing period; the engine applies cancellation immediately. Plans bought through Amazon or app stores are managed there (not modelled). Two-step verification sends a code by text message (or authenticator app); modelled as sms. Plan names and prices are the published US monthly prices on ring.com/plans; Virtual Security Guard ($99/mo) is billed separately and not modelled as a plan. setup-payment-plan is suppressed because Ring has no installment plans. Reviewer (2026-10-09): the sign-in page asks for the same email and password used in the Ring app (cited for auth.identifier). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "ring.com"
+  ],
+  "sources": [
+    {
+      "url": "https://ring.com/plans",
+      "title": "Ring Home Plans",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://ring.com/support/articles/468y0/cancel-ring-plan",
+      "title": "Cancel your Ring plan",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://ring.com/support/articles/m763k/update-payment-method-for-ring-subscription",
+      "title": "Update payment method for Ring subscription",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://ring.com/support/articles/hru26/View-Billing-History-for-Your-Ring-Subscriptions",
+      "title": "View billing history for your Ring subscriptions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://ring.com/support/articles/391um/Payment-Method-FAQs",
+      "title": "Payment Method FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://ring.com/support/articles/q2eak/Getting-Your-Verification-Code",
+      "title": "Troubleshooting account verification when signing in to Ring",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://ring.com/users/sign_in",
+      "title": "Ring sign in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Ring",
+    "primary": "#0d5d8c",
+    "accent": "#1a3a52",
+    "monogram": "R"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "dashboard": "Control Center",
+    "plan": "Plan",
+    "wallet": "Payment Method",
+    "history": "Billing History",
+    "statements": "Billing History",
+    "cancel": "Cancel Plan",
+    "profile": "Account Management",
+    "help": "Help",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Plans",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Control Center",
+        "page": "dashboard"
+      },
+      {
+        "label": "Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "Billing History",
+        "page": "history"
+      },
+      {
+        "label": "Account Management",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel Plan",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "sms",
+    "evidence": "observed_public",
+    "source": "https://ring.com/users/sign_in"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://ring.com/support/articles/m763k/update-payment-method-for-ring-subscription",
+      "note": "Ring plans charge the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://ring.com/support/articles/m763k/update-payment-method-for-ring-subscription",
+      "note": "Ring plans renew automatically and charge the payment method on file until you cancel; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://ring.com/support/articles/468y0/cancel-ring-plan",
+      "note": "To stop the recurring charge, cancel the plan."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://ring.com/support/articles/hru26/View-Billing-History-for-Your-Ring-Subscriptions",
+      "note": "Ring does not mail bills; invoices are in Billing History on ring.com."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://ring.com/support/articles/m763k/update-payment-method-for-ring-subscription"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://ring.com/support/articles/391um/Payment-Method-FAQs"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ring.com/support/articles/468y0/cancel-ring-plan",
+      "note": "The plan stays active until the end of the billing period; there are no refunds unless required by law."
+    }
+  },
+  "billing": {
+    "source": "https://ring.com/plans",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://ring.com/support/articles/391um/Payment-Method-FAQs"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "ring-solo",
+        "name": "Ring Solo",
+        "cents": 499
+      },
+      {
+        "id": "ring-multi",
+        "name": "Ring Multi",
+        "cents": 999,
+        "current": true
+      },
+      {
+        "id": "ring-pro",
+        "name": "Ring Pro",
+        "cents": 1999
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Ring Home plans and prices",
+      "topic": "plans",
+      "paragraphs": [
+        "Ring offers three Ring Home plans in the US, each billed monthly or yearly plus applicable tax: Ring Solo at $4.99 a month ($49.99 a year), Ring Multi at $9.99 a month ($99.99 a year) and Ring Pro at $19.99 a month ($199.99 a year).",
+        "Virtual Security Guard is a separate service at $99.00 a month and is billed on its own.",
+        "If you subscribe during a free trial, billing starts when the trial ends."
+      ],
+      "source": "https://ring.com/plans"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your Ring plan",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in on ring.com, choose Plan in the top menu, pick the plan you want to end and confirm the cancellation.",
+        "Your plan and any add-ons stay active until the end of the current billing period and then stop renewing. Ring does not refund subscription cancellations unless the law requires it.",
+        "When the plan ends you lose access to recorded videos, so download anything you want to keep first. You can resubscribe at any time, but old recordings cannot be restored."
+      ],
+      "steps": [
+        "Sign in on ring.com.",
+        "Select Plan in the top menu.",
+        "Select the plan to cancel.",
+        "Confirm the cancellation."
+      ],
+      "source": "https://ring.com/support/articles/468y0/cancel-ring-plan"
+    },
+    {
+      "slug": "update-payment-method",
+      "title": "Update the payment method for your plan",
+      "topic": "payments",
+      "paragraphs": [
+        "Payment methods for Ring plans can only be changed on ring.com, not in the Ring app, and only the account owner (not shared users) can manage them.",
+        "Ring keeps one payment method on file for subscriptions. Major credit and debit cards are accepted; gift cards are not. Plans renew automatically and charge the card on file until you cancel.",
+        "If there is no valid payment method, the subscription lapses and recorded videos are deleted."
+      ],
+      "steps": [
+        "Sign in on ring.com and open Account (or the menu on a phone).",
+        "Select Control Center, then Account Management.",
+        "In Payment Method, select Add or Update.",
+        "Enter the new details and select Save."
+      ],
+      "source": "https://ring.com/support/articles/m763k/update-payment-method-for-ring-subscription"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "View billing history and invoices",
+      "topic": "billing",
+      "paragraphs": [
+        "Billing History lists your Ring subscription charges. Select View Invoice to download a PDF copy. If you bought the plan through Amazon, the invoice link sends you to Amazon instead.",
+        "Billing history is only on ring.com; the Ring app does not show it."
+      ],
+      "steps": [
+        "Sign in on ring.com.",
+        "Open Account (or the menu on a phone).",
+        "Select Billing History.",
+        "Select View Invoice to download a PDF."
+      ],
+      "source": "https://ring.com/support/articles/hru26/View-Billing-History-for-Your-Ring-Subscriptions"
+    },
+    {
+      "slug": "faq",
+      "title": "Payment method FAQs",
+      "topic": "faq",
+      "paragraphs": [
+        "Ring subscriptions can be paid with a credit card, debit card, Apple Pay or Google Pay.",
+        "Device orders are charged as soon as the order is placed, and a printable invoice is kept in your order history."
+      ],
+      "source": "https://ring.com/support/articles/391um/Payment-Method-FAQs"
+    },
+    {
+      "slug": "sign-in-verification",
+      "title": "Two-step verification when you sign in",
+      "topic": "account",
+      "paragraphs": [
+        "When you sign in, Ring sends a verification code by text message to the phone on your account. A device already signed in to the Ring app may also get a prompt to approve the sign-in.",
+        "If the text does not arrive, you can generate a code in Control Center from another device that is still signed in."
+      ],
+      "source": "https://ring.com/support/articles/q2eak/Getting-Your-Verification-Code"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "setup-payment-plan"
+    ],
+    "extra": [
+      {
+        "slug": "ring-pro-yearly-price",
+        "intent": "Using the Ring website, find the yearly price of the Ring Pro plan in the US. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "199.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "199.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Ring Pro costs $199.99 a year (or $19.99 a month)."
+          }
+        ]
+      },
+      {
+        "slug": "cancel-refund-policy",
+        "intent": "You are thinking about cancelling your Ring plan halfway through the month. Using Ring's help pages, find out whether you get a refund and when the plan actually stops. Do not cancel anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "end of the",
+              "billing period"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "end of the",
+            "billing period"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No refund unless required by law; the plan stays active until the end of the current billing period."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign in"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing History",
+        "Payment Method"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Ring Solo",
+        "Ring Pro"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$199.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "update-payment-method",
+      "contains": "gift cards are not"
+    }
+  ]
+}

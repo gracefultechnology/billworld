@@ -1,0 +1,161 @@
+{
+  "id": "frontier-communications-9146b2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Frontier Communications",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public frontier.com help center pages only (no sign-in). Frontier ID sign-in uses the email address (registration verifies the email or mobile number with a six-digit code by email or text); passwords need at least 8 characters, a capital letter and a number. Online card/bank payments carry no stated fee (inferred free: the pay page lists fees only for in-person $1.50, and automated phone and mail are free). One-time payments can be scheduled up to 45 days ahead and edited or cancelled from Billing History > Payments. Express Pay (no sign-in) asks for the account number plus email or ZIP code. Auto Pay starts right away unless the bill is due within 24 hours; no discount stated. Cancelling service is by phone at 800-921-8101 (or chat). Payment arrangements are not described on the public pages used, so the family default is kept. Frontier is now owned by Verizon but billing remains on frontier.com.",
+  "officialDomains": ["frontier.com"],
+  "sources": [
+    { "url": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill", "title": "How to Pay Your Bill", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://frontier.com/helpcenter/billing/how-to-manage-auto-pay", "title": "How to Manage Auto Pay", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.frontier.com/helpcenter/billing/enrolling-in-paperless-or-printed-billing", "title": "Enrolling in Paperless or Printed Billing", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://frontier.com/helpcenter/account/make-changes-to-online-account", "title": "How to Make Changes in your Online Account", "fetchedAt": "2026-10-09", "kind": "cancel" },
+    { "url": "https://frontier.com/helpcenter/account/how-to-create-a-frontier-id", "title": "How to Create Your Frontier ID", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "Frontier", "shortName": "Frontier", "primary": "#c8102e", "accent": "#141928", "monogram": "F" },
+  "labels": {
+    "dashboard": "My Account",
+    "viewBill": "My Billing",
+    "payBill": "Make a Payment",
+    "statements": "Billing History",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "guestPay": "Express Pay",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "register": "Register",
+    "username": "Email address",
+    "profile": "My Profile",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      { "label": "Express Pay", "page": "guest" },
+      { "label": "Sign In", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Ways to Pay", "helpSlug": "pay-your-bill" },
+      { "label": "Help Center", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Account", "page": "dashboard" },
+      { "label": "My Billing", "page": "bill" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Billing History", "page": "statements" },
+      { "label": "Auto Pay", "page": "autopay" },
+      { "label": "Paperless Billing", "page": "paperless" },
+      { "label": "My Profile", "page": "profile" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "mfa": "email_or_sms",
+    "passwordRule": { "pattern": "^(?=.*[A-Z])(?=.*\\d).{8,}$", "message": "Use at least 8 characters, including a capital letter and a number." },
+    "registrationFields": ["email", "lastName"],
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "documented_official",
+    "source": "https://frontier.com/helpcenter/account/how-to-create-a-frontier-id"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://frontier.com/helpcenter/billing/how-to-manage-auto-pay" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://frontier.com/helpcenter/billing/how-to-manage-auto-pay" },
+    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.frontier.com/helpcenter/billing/enrolling-in-paperless-or-printed-billing" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://frontier.com/helpcenter/account/make-changes-to-online-account", "note": "Frontier service cannot be cancelled in the online account. Call 800-921-8101 to cancel.", "channel": "phone", "phone": "8009218101" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill", "phone": "8009177489" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill" }
+  },
+  "billing": {
+    "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill",
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "inferred", "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] },
+    "scheduled": { "maxDaysAhead": 45 }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your Frontier bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in and choose Make a Payment from the My Bills tile, or use the MyFrontier app. You can pick the amount, the date and the payment method, and schedule a one-time payment up to 45 days ahead. Edit or cancel a scheduled payment from Billing History, Payments tab.",
+        "Express Pay lets you pay once without signing in: enter your account number plus your email or ZIP code, then your payment details.",
+        "The automated line at 800-917-7489 takes bank, debit or credit card payments with no fee; have your 17-digit account number ready. Mailed checks or money orders go to Frontier with the account number on the For line. Paying in person at an authorized retail location costs $1.50 and posts the next business day."
+      ],
+      "source": "https://frontier.com/helpcenter/billing/how-to-pay-your-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Manage Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in, select Go to My Billing in the My Bills tile, choose Set up Auto Pay, pick a saved or new bank account, debit or credit card, accept the terms and select Enroll.",
+        "Automatic payments begin right away unless your current bill is due within 24 hours; in that case pay that bill with Make a Payment.",
+        "To change the method, open Auto Pay from Quick links and select the pencil icon. To stop, open Auto Pay from Quick links, choose Turn off Auto Pay and confirm."
+      ],
+      "steps": ["Sign in and select Go to My Billing.", "Choose Set up Auto Pay.", "Pick a payment method and accept the terms.", "Select Enroll."],
+      "source": "https://frontier.com/helpcenter/billing/how-to-manage-auto-pay"
+    },
+    {
+      "slug": "paperless-billing",
+      "title": "Paperless or printed billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign in, select Go to My Billing, and choose Enroll in Paperless on the tile that shows paperless billing is off, then confirm.",
+        "To go back to printed bills, choose Turn off Paperless on the same tile and confirm. In the app, use Billing, then Settings."
+      ],
+      "source": "https://www.frontier.com/helpcenter/billing/enrolling-in-paperless-or-printed-billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your Frontier service",
+      "topic": "account",
+      "paragraphs": [
+        "Service changes such as Auto Pay, paperless billing and card updates can be made in the online account, but cancelling service is done by calling Frontier at 800-921-8101."
+      ],
+      "source": "https://frontier.com/helpcenter/account/make-changes-to-online-account"
+    },
+    {
+      "slug": "frontier-id",
+      "title": "Create your Frontier ID",
+      "topic": "account",
+      "paragraphs": [
+        "Register with the email address or mobile number on your account. Frontier sends a six-digit code by email or text; you then confirm your service address and verify a second contact method. If neither works, choose Try another way and use your last name and service address.",
+        "Your password needs at least eight characters, including a capital letter and a number. After that you sign in with your email address and password."
+      ],
+      "source": "https://frontier.com/helpcenter/account/how-to-create-a-frontier-id"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "in-person-fee",
+        "intent": "Using Frontier's help center, find the fee Frontier charges for paying the bill in person at an authorized retail location. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["1.50"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["1.50"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "In-person payments cost $1.50." }]
+      },
+      {
+        "slug": "automated-pay-line",
+        "intent": "Find the phone number for Frontier's free automated pay-by-phone system. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8009177489"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8009177489"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "800-917-7489" }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["Email address"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["My Billing", "Billing History"] },
+    { "page": "cancel", "signedIn": true, "contains": "800-921-8101" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["45 days", "$1.50"] }
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "id": "ford-credit-ford-motor-credit-company-bdaf06",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Ford Credit (Ford Motor Credit Company)",
+  "category": "loans",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public ford.com/finance pages only (no sign-in). Account Manager and the Ford Credit app sign in with a Ford account (email-based; marked inferred). Guest Pay lets anyone make a one-time payment without signing in; payments before 9 p.m. ET post the same business day. Automatic payments debit the invoiced amount on the due date (no other amount can be chosen) from a bank account; changes must be made by 9 p.m. ET at least two business days before the due date. Card payments are not described, so methods are bank-only (inferred). The hardship page only offers a phone call (800-727-7000), so payment_arrangement is unsupported online. Paperless is a toggle under Notification Settings. Combined billing and payroll deduction exist but are not modelled.",
+  "officialDomains": [
+    "ford.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ford.com/finance/pay-my-bill/",
+      "title": "Pay My Bill",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ford.com/finance/customer-support/payments/how-do-i-set-up-or-cancel-automatic-payments-for-my-ford-credit-account/",
+      "title": "How do I set up or cancel automatic payments?",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.ford.com/finance/customer-support/payments/what-can-i-do-if-i-am-unable-to-pay-my-bill/",
+      "title": "What can I do if I am unable to pay my bill?",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.ford.com/finance/customer-support/account-management/how-do-i-change-my-ford-credit-statement-delivery/",
+      "title": "How do I change my statement delivery?",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Ford Credit",
+    "primary": "#00095b",
+    "accent": "#1c396b",
+    "monogram": "FC"
+  },
+  "labels": {
+    "autopay": "Automatic Payments",
+    "paperless": "Paperless Statements",
+    "guestPay": "Guest Pay",
+    "dashboard": "Account Manager",
+    "payBill": "Make a Payment",
+    "signIn": "Sign In",
+    "profile": "Notification Settings"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Guest Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Pay My Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Manager",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Notification Settings",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://www.ford.com/finance/customer-support/payments/how-do-i-set-up-or-cancel-automatic-payments-for-my-ford-credit-account/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ford.com/finance/pay-my-bill/",
+      "note": "Guest Pay takes one-time payments without signing in; payments before 9 p.m. ET post the same business day."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ford.com/finance/customer-support/payments/how-do-i-set-up-or-cancel-automatic-payments-for-my-ford-credit-account/",
+      "note": "Automatic payments debit the invoiced amount on your due date."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ford.com/finance/customer-support/payments/how-do-i-set-up-or-cancel-automatic-payments-for-my-ford-credit-account/",
+      "note": "Changes must be made by 9 p.m. ET at least two business days before the due date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ford.com/finance/customer-support/account-management/how-do-i-change-my-ford-credit-statement-delivery/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.ford.com/finance/customer-support/payments/what-can-i-do-if-i-am-unable-to-pay-my-bill/",
+      "note": "Payment arrangements are not set up online. Call Ford Credit at 800-727-7000 to discuss account-specific options.",
+      "channel": "phone",
+      "phone": "8007277000"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ford.com/finance/customer-support/payments/what-can-i-do-if-i-am-unable-to-pay-my-bill/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ford.com/finance/pay-my-bill/"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ford.com/finance/pay-my-bill/"
+    }
+  },
+  "billing": {
+    "source": "https://www.ford.com/finance/pay-my-bill/",
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "leadDays": 0,
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Sign in to Account Manager or the Ford Credit app to make a single payment or turn on Automatic Payments. Without an account, use Guest Pay any time for a one-time payment; payments made before 9 p.m. ET post the same business day.",
+        "You can also schedule a payment or make a next-day payment by phone, mail a check with your invoice to the address printed on it, or send a wire through MoneyGram or Western Union."
+      ],
+      "source": "https://www.ford.com/finance/pay-my-bill/",
+      "mode": "append"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payments",
+      "paragraphs": [
+        "Automatic payments debit your invoiced amount from your bank account on your due date (the next business day if it falls on a weekend or holiday). You cannot choose a different amount; use a principal-only or custom payment for extra.",
+        "In Account Manager, choose Turn On next to Automatic payments off, pick the bank account and select Agree and Turn On. To stop, choose Manage, then Turn Off Automatic Payments. Make changes by 9 p.m. ET at least two business days before your due date."
+      ],
+      "source": "https://www.ford.com/finance/customer-support/payments/how-do-i-set-up-or-cancel-automatic-payments-for-my-ford-credit-account/",
+      "topic": "autopay",
+      "steps": [
+        "Sign in to Account Manager.",
+        "Choose Turn On next to Automatic payments off.",
+        "Choose or add a bank account.",
+        "Select Agree and Turn On."
+      ]
+    },
+    {
+      "slug": "unable-to-pay",
+      "title": "If you cannot pay your bill",
+      "paragraphs": [
+        "Call Ford Credit at 800-727-7000 to talk about account-specific options. A late charge may apply if payment arrives after the period in your contract, interest keeps accruing, and past-due accounts may be reported to the credit bureaus at 30, 60 and 90 days."
+      ],
+      "source": "https://www.ford.com/finance/customer-support/payments/what-can-i-do-if-i-am-unable-to-pay-my-bill/",
+      "topic": "assistance"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "paragraphs": [
+        "In Account Manager, open Notification Settings, switch Paperless Statements on or off and select Save Changes. In the app it is under Settings. Statements are issued about 17 to 20 days before your next due date."
+      ],
+      "source": "https://www.ford.com/finance/customer-support/account-management/how-do-i-change-my-ford-credit-statement-delivery/",
+      "topic": "paperless"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-change-deadline",
+        "intent": "Using the Ford Credit help pages, find how far ahead of your due date you must make changes to Automatic Payments. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "two business days",
+              "2 business days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "two business days",
+            "2 business days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Changes must be made by 9 p.m. ET at least two business days before the due date."
+          }
+        ]
+      },
+      {
+        "slug": "guest-pay-cutoff",
+        "intent": "Using the Ford Credit website, find the time by which a Guest Pay payment must be made to post the same business day. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "9 p.m",
+              "9 pm",
+              "9:00",
+              "9pm"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "9 p.m",
+            "9 pm",
+            "9:00",
+            "9pm"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Guest Pay payments made before 9 p.m. ET post the same business day."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Automatic Payments"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "800-727-7000"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "two business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "9 p.m. ET"
+    }
+  ]
+}

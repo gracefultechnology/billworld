@@ -1,0 +1,342 @@
+{
+  "id": "usaa-federal-savings-bank-fa3610",
+  "version": 1,
+  "status": "dedicated",
+  "name": "USAA Federal Savings Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public usaa.com pages only (no sign-in; pages re-read in a headless browser on review). The mock bill is a USAA auto loan. Due dates cannot be changed after closing; current borrowers can request a payment extension online (interest accrues), past-due borrowers call 800-531-0533. Optional automatic payments from another bank; the 0.25% rate discount requires enrolling before signing the loan. Changing the autopay account needs 2 business days. Payments after 9 p.m. CT, weekends and holidays appear next business day but are applied as of receipt. A full payment made 2+ business days before the draft skips that draft (not modelled). Mail: USAA Federal Savings Bank, 10750 McDermott Freeway, San Antonio, TX 78288-9876. USAA bills can be paid from a non-USAA account via Use Another Account. Logon: Online ID, password and PIN, with CyberCode Text / temporary passcodes by email or text on unregistered devices; modelled as username, two-step, email_or_sms (PIN not modelled). Paperless: My Documents > Document Preferences > Document Delivery Settings > Edit > Online (USAA video transcript). Public logon page asks for the Online ID first, then Next (two-step). Reviewed 2026-10-09: paperless path/label corrected; two-step logon observed on the public logon page.",
+  "officialDomains": [
+    "usaa.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.usaa.com/banking/loans/auto/faq/",
+      "title": "Auto loan FAQs | USAA",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.usaa.com/support/security/logon-options/",
+      "title": "Logon Options | USAA",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.usaa.com/support/banking/mobile-how-to-videos/go-paperless/",
+      "title": "How to go Paperless | USAA",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.usaa.com/support/banking/bills/",
+      "title": "Learn all about paying bills online with USAA Pay Bills",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.usaa.com/support/security/registration-passwords/",
+      "title": "Change Password, PIN, and Online ID | USAA",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.usaa.com/my/logon",
+      "title": "Log On | USAA",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "USAA",
+    "shortName": "USAA",
+    "primary": "#12395b",
+    "accent": "#6b5a00",
+    "monogram": "UA"
+  },
+  "labels": {
+    "username": "Online ID",
+    "signIn": "Log On",
+    "signOut": "Log Off",
+    "forgot": "I need help logging on",
+    "statements": "My Documents",
+    "paperless": "Document Preferences",
+    "autopay": "Automatic Payments",
+    "payBill": "Pay Bills",
+    "wallet": "Use Another Account",
+    "register": "Register for access"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log On",
+        "page": "login"
+      },
+      {
+        "label": "Auto loan FAQs",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bills",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "My Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Document Preferences",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment extension",
+        "page": "arrangement"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
+    "mfa": "email_or_sms",
+    "evidence": "observed_public",
+    "source": "https://www.usaa.com/my/logon"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/banking/loans/auto/faq/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/banking/loans/auto/faq/",
+      "note": "Changes to the account used for automatic payments must be made at least 2 business days before the payment is due."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/banking/mobile-how-to-videos/go-paperless/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/banking/mobile-how-to-videos/go-paperless/"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/banking/loans/auto/faq/"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/banking/loans/auto/faq/",
+      "note": "Current borrowers can request a payment extension online; if the loan is past due, call 800-531-0533."
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.usaa.com/banking/loans/auto/faq/",
+      "note": "USAA auto loans are paid after logging on to usaa.com or the USAA Mobile App. Call 800-531-USAA (8722) for help.",
+      "channel": "phone",
+      "phone": "800-531-8722"
+    }
+  },
+  "billing": {
+    "source": "https://www.usaa.com/banking/loans/auto/faq/",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your USAA auto loan",
+      "paragraphs": [
+        "Log on to usaa.com or the USAA Mobile App to pay. USAA bills can be paid from a USAA account or from another bank by choosing Use Another Account on the payment page.",
+        "Payments received during business hours usually credit the same day. Payments made after 9 p.m. CT, on weekends or on holidays may not show until the next business day but are applied as of the date received.",
+        "Extra payments have no penalty, and a principal-only payment does not change your scheduled amount or due date. By mail, send your payment with your loan number to USAA Federal Savings Bank, 10750 McDermott Freeway, San Antonio, TX 78288-9876."
+      ],
+      "source": "https://www.usaa.com/banking/loans/auto/faq/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "paragraphs": [
+        "You can choose optional automatic payments from an account at another bank. You must own the account, give its routing and account numbers and verify ownership. The 0.25% rate discount applies only if you set up automatic payments before signing your loan agreement.",
+        "To switch the account automatic payments come from, make the change at least 2 business days before the payment is due. Paying the full amount by 9 p.m. CT at least 2 business days before the draft date means that month's draft will not run."
+      ],
+      "source": "https://www.usaa.com/banking/loans/auto/faq/"
+    },
+    {
+      "slug": "due-date",
+      "title": "Due dates and payment extensions",
+      "topic": "billing",
+      "paragraphs": [
+        "Loan due dates cannot be changed; you pick your preferred date when you close your loan.",
+        "If your loan is current you can ask for a payment extension on usaa.com or in the app, subject to availability and eligibility; interest still accrues. If your loan is past due, call 800-531-0533."
+      ],
+      "source": "https://www.usaa.com/banking/loans/auto/faq/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless",
+      "paragraphs": [
+        "In the menu choose My Documents, then Document Preferences. Pick the account, go to Document Delivery Settings, choose Edit, set both options to Online and save."
+      ],
+      "source": "https://www.usaa.com/support/banking/mobile-how-to-videos/go-paperless/",
+      "steps": [
+        "Open My Documents.",
+        "Choose Document Preferences and pick the account.",
+        "Under Document Delivery Settings choose Edit.",
+        "Set both selections to Online and save."
+      ]
+    },
+    {
+      "slug": "logon-options",
+      "title": "Logon options and codes",
+      "topic": "account",
+      "paragraphs": [
+        "Logging on starts with your Online ID; select Next, then enter your password and PIN. With CyberCode Text a six-digit number sent to your phone replaces the PIN. On a browser USAA does not recognize you get an extra check, and if your phone is not handy a code can go to your email instead.",
+        "Forgot your Online ID? Choose I need help logging on, then recover it by text. USAA never calls or texts to ask for your password, PIN or one-time code."
+      ],
+      "source": "https://www.usaa.com/support/security/logon-options/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "due-date-change-allowed",
+        "intent": "Using USAA's auto loan FAQs, find out whether a USAA auto loan payment due date can be changed after the loan closes. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "cannot",
+              "can't",
+              "not be changed",
+              "no"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "cannot",
+            "can't",
+            "not be changed",
+            "no"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. Loan due dates cannot be changed; you choose it at closing."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-account-change-lead",
+        "intent": "Using USAA's auto loan FAQs, find how many business days before the due date a change to the automatic payment account must be made. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2",
+              "two"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2",
+            "two"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 2 business days before the payment is due."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "Online ID"
+    },
+    {
+      "page": "home",
+      "contains": "Log On"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Bills",
+        "Document Preferences"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date",
+      "contains": "cannot be changed"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "9 p.m. CT"
+    }
+  ]
+}

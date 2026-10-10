@@ -1,0 +1,337 @@
+{
+  "id": "lifestation-b3b71d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "LifeStation",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from LifeStation's public Customer Invoice Payment page (/pay/), the medical alert FAQ and the Terms & Conditions only; never looked up an invoice. LifeStation publishes no customer sign-in: an outstanding invoice is found by 'Customer Number' and 'Customer Last Name' with 'Search for Invoice', so the real online path is the guest flow (guestLookupFields accountNumber + lastName). The fleet requires an online account, so the signed-in area is a synthetic stand-in keyed on the customer number (auth.identifier=account, inferred). Billing is monthly, quarterly or annual; cards accepted are American Express, Visa, Mastercard, Discover and Visa/Mastercard debit, and bank EFT is offered. The Terms say paying by EFT or card authorizes recurring debits until you revoke the authorization in writing; no online AutoPay setting is documented, so autopay and autopay_cancel are modelled as not available online (phone/written). Month-to-month agreement; cancel any time with no fee by calling customer service, and it ends when the system is returned (replacement value charged if not returned within ten days; amount not published). 30-day money-back guarantee. No paperless, payment-plan or future-dated payment docs: paperless and scheduled_payment unknown, payment_arrangement phone-only (inferred). Plan prices are not published (only 'less than $1.00 a day'). Review 2026-10-09: (800) 554-4600 is the new-order line on the Contact page; existing-account help is (800) 998-2400, so every phone route now uses it. Installation is not stated to be free (only equipment), so that claim was removed.",
+  "officialDomains": [
+    "lifestation.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.lifestation.com/pay/",
+      "title": "LifeStation Customer Invoice Payment",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.lifestation.com/questions-about-medical-alerts/",
+      "title": "Questions About Medical Alerts | LifeStation",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.lifestation.com/terms-and-conditions/",
+      "title": "Terms & Conditions | LifeStation",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.lifestation.com/contact-lifestation/",
+      "title": "Contact Us | LifeStation Customer Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "LifeStation",
+    "shortName": "LifeStation",
+    "primary": "#005a9c",
+    "accent": "#a33d00",
+    "monogram": "LS"
+  },
+  "labels": {
+    "guestPay": "Customer Invoice Payment",
+    "accountNumber": "Customer Number",
+    "cancel": "Cancel Service",
+    "help": "Customer Service"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Customer Invoice Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Billing FAQ",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Invoice",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Invoice",
+        "page": "pay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Cancel Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName"
+    ],
+    "evidence": "inferred",
+    "source": "https://www.lifestation.com/pay/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.lifestation.com/pay/"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.lifestation.com/pay/"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.lifestation.com/terms-and-conditions/",
+      "note": "Automatic EFT or card billing is authorized when you sign up, not online. Call LifeStation at 1-800-998-2400 to set it up.",
+      "channel": "phone",
+      "phone": "8009982400"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.lifestation.com/terms-and-conditions/",
+      "note": "Automatic debits continue until you revoke the authorization in writing. Call LifeStation at 1-800-998-2400 for help.",
+      "channel": "phone",
+      "phone": "8009982400"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.lifestation.com/questions-about-medical-alerts/",
+      "note": "Service cannot be cancelled online. Call LifeStation Customer Service at 1-800-998-2400; service ends when the system is returned.",
+      "channel": "phone",
+      "phone": "8009982400"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "note": "Payment plans are not offered online. Call LifeStation Customer Service at 1-800-998-2400.",
+      "channel": "phone",
+      "phone": "8009982400"
+    }
+  },
+  "billing": {
+    "source": "https://www.lifestation.com/questions-about-medical-alerts/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay a LifeStation invoice online",
+      "topic": "payments",
+      "paragraphs": [
+        "If you have an outstanding LifeStation invoice, open Customer Invoice Payment, enter your Customer Number and Customer Last Name and select Search for Invoice. Then pay the invoice that is found.",
+        "LifeStation accepts American Express, Visa, Mastercard and Discover credit cards, Visa and Mastercard debit cards, and payment straight from your bank by EFT."
+      ],
+      "steps": [
+        "Open Customer Invoice Payment.",
+        "Enter your Customer Number and Customer Last Name.",
+        "Select Search for Invoice.",
+        "Pay the invoice by card or bank account."
+      ],
+      "source": "https://www.lifestation.com/pay/"
+    },
+    {
+      "slug": "faq",
+      "title": "Billing and contract FAQ",
+      "topic": "faq",
+      "paragraphs": [
+        "You can be billed monthly, quarterly or annually; monthly is the most flexible.",
+        "There is no long-term contract and no cancellation fee. The equipment is free, and every system has a 30-day money-back guarantee.",
+        "Existing customers reach Customer Service at (800) 998-2400. New orders go to (800) 554-4600, and the FAQ line (844) 634-1699 answers Monday to Friday 8 a.m. to 9 p.m. ET and Saturday 9 a.m. to 9 p.m. ET."
+      ],
+      "source": "https://www.lifestation.com/contact-lifestation/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "When you pay by EFT or credit card, you authorize LifeStation to debit that account automatically for your service. The authorization stays in place until you cancel it with written notice.",
+        "The agreement starts as one month and renews month to month automatically."
+      ],
+      "source": "https://www.lifestation.com/terms-and-conditions/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel LifeStation service",
+      "topic": "account",
+      "paragraphs": [
+        "Call Customer Service at (800) 998-2400. They cancel the service and send you return instructions; there is no cancellation fee.",
+        "The agreement ends when the system is returned. If it is not returned within ten days after the service ends, you are charged its replacement value from LifeStation's current price list, and damaged equipment is charged for repair."
+      ],
+      "source": "https://www.lifestation.com/terms-and-conditions/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "invoice-lookup-fields",
+        "intent": "You want to pay an outstanding LifeStation invoice online without an account. Using the website, find out which two pieces of information you need to look up the invoice. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "last name"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "last name"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "guest"
+        ],
+        "evidence": "observed_public",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your Customer Number and your last name."
+          }
+        ]
+      },
+      {
+        "slug": "equipment-return-deadline",
+        "intent": "Using LifeStation's terms, find out how many days after service ends you have to return the system before being charged its replacement value. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10",
+              "ten"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10",
+            "ten"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Within ten days after the service ends."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "contains": [
+        "Customer Number"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "1-800-998-2400"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-998-2400"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": "30-day money-back guarantee"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Search for Invoice"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": "(800) 998-2400"
+    }
+  ]
+}

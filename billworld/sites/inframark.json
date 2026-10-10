@@ -1,0 +1,98 @@
+{
+  "id": "inframark",
+  "name": "Inframark",
+  "portal_family": "Starnik",
+  "implementation_status": "construction_slice",
+  "catalog_records": [
+    {
+      "category": "other",
+      "name": "Starnik Resident Portal (Inframark rp_guestpay)"
+    }
+  ],
+  "capture_manifest": "research/inframark-public.json",
+  "runtime": {
+    "kind": "starnik",
+    "frontend": "starnik",
+    "mail_sender_slug": "inframark",
+    "mail_display_name": "Inframark",
+    "payment_confirmation_prefix": "BW-INFRAMARK",
+    "autopay_confirmation_prefix": "BWINFRAMARKAP",
+    "snapshot_routes": {
+      "/": {
+        "page_id": "biller_79d57f82caebe2d84035-operator-home",
+        "interactive": false
+      },
+      "/billing": {
+        "page_id": "biller_79d57f82caebe2d84035-faq-payment-options",
+        "interactive": false
+      },
+      "/RP_Default.aspx": {
+        "page_id": "biller_79d57f82caebe2d84035-login_url",
+        "interactive": true
+      },
+      "/RP/signup": {
+        "page_id": "biller_79d57f82caebe2d84035-portal-signup",
+        "interactive": true
+      },
+      "/RP/forgot-password": {
+        "page_id": "biller_79d57f82caebe2d84035-portal-forgot-password",
+        "interactive": true
+      },
+      "/RP/forgot-username": {
+        "page_id": "biller_79d57f82caebe2d84035-portal-forgot-username",
+        "interactive": true
+      },
+      "/starnikERP/": {
+        "page_id": "biller_79d57f82caebe2d84035-portal-guest-observed",
+        "interactive": true
+      }
+    }
+  },
+  "default_task_id": "inframark-username-login-v1",
+  "construction_account_credentials": {
+    "acct-primary": {
+      "username": "alex.inframark",
+      "password": "Inframark-2026!",
+      "security_code": "INF1048",
+      "service_zip": "77001"
+    },
+    "acct-secondary": {
+      "username": "jordan.inframark",
+      "password": "OtherInfra-2026!",
+      "security_code": "INF2099",
+      "service_zip": "77002"
+    }
+  },
+  "documented_policy": {
+    "source_urls": [
+      "https://www.inframark.com/customer-portal/cities-districts-hoas-we-serve/faqs/"
+    ],
+    "bank_fee_cents": 100,
+    "card_fee_basis_points": 300,
+    "card_fee_minimum_cents": 0
+  },
+  "public_reference_pages": [
+    "biller_79d57f82caebe2d84035-operator-home",
+    "biller_79d57f82caebe2d84035-faq-payment-options",
+    "biller_79d57f82caebe2d84035-login_url",
+    "biller_79d57f82caebe2d84035-portal-signup",
+    "biller_79d57f82caebe2d84035-portal-forgot-password",
+    "biller_79d57f82caebe2d84035-portal-forgot-username",
+    "biller_79d57f82caebe2d84035-portal-guest-observed"
+  ],
+  "construction_stage": "observed_public_entries_synthetic_private_flows",
+  "source_conflicts_and_limits": [
+    "Operator FAQ publishes $1 eCheck and 3% card fee; zero card minimum is a local assumption because no minimum is published",
+    "Per-district policy exceptions unverified; this runtime represents the operator portal catalog record, not all 212 associated billers",
+    "AutoPay timing unverified; enrollment unavailable",
+    "Shared Starnik client supports reconstruction, not independent private behavioral fidelity",
+    "Account personas, invoices, delivery preferences, payment settlement, rounding and wallet continuation are synthetic",
+    "Original scripts excluded; source asset completeness, responsive menus and unsupported navigation remain unfinished"
+  ],
+  "unfinished": [
+    "Tenant-specific statements and service details",
+    "Original private billing/auth fidelity and district-specific settings",
+    "Complete homepage/menu/help navigation",
+    "Autonomous evaluation and full catalog"
+  ]
+}

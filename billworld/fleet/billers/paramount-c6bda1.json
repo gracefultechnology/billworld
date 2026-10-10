@@ -1,0 +1,380 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "paramount-c6bda1",
+  "name": "Paramount+",
+  "notes": "Researched from public help.paramountplus.com articles and the public pick-plan page only (no sign-in). Paramount+ bills monthly or annually and renews automatically to the card or PayPal on file; there is no separate AutoPay, paper bill, guest pay or payment plan. Upgrades start right away with a prorated charge; downgrades start at the end of the billing period (the engine applies changes immediately). Plan changes use Edit Plan > Switch Plan on the Account page (US help article). Prices are the published US prices plus tax. The public sign-in page shows Email and Password on one form with Forgot password?. Subscribers billed via Apple, Google Play, Amazon or Roku cancel there. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "paramountplus.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.paramountplus.com/s/article/PD-What-plans-are-available-for-Paramount-and-how-much-do-they-cost",
+      "title": "What plans are available for Paramount+, and how much do they cost?",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.paramountplus.com/s/article/PD-How-can-I-cancel-my-Paramount-subscription",
+      "title": "How can I cancel my Paramount+ subscription?",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.paramountplus.com/s/article/PD-How-do-I-change-or-update-my-Paramount-billing-information",
+      "title": "How do I change or update my Paramount+ billing information?",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.paramountplus.com/account/signup/pickplan/",
+      "title": "Pick Paramount Plus Plan",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.paramountplus.com/s/article/PD-How-do-I-upgrade-to-Commercial-Free",
+      "title": "How do I change my plan or upgrade to Premium? | Paramount+ Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.paramountplus.com/s/article/PD-How-and-when-will-I-be-billed-for-paramount",
+      "title": "How and when will I be billed for Paramount+? | Paramount+ Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.paramountplus.com/account/signin/",
+      "title": "Sign In | Paramount+",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Paramount+",
+    "primary": "#0057d9",
+    "accent": "#0a1f44",
+    "monogram": "P"
+  },
+  "labels": {
+    "dashboard": "Account",
+    "plan": "Edit Plan",
+    "wallet": "Edit Payment",
+    "history": "Subscription & Billing",
+    "statements": "Subscription & Billing",
+    "cancel": "Cancel subscription",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "help": "Help Center",
+    "username": "Email",
+    "forgot": "Forgot password?"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Plans & pricing",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Edit Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Edit Payment",
+        "page": "wallet"
+      },
+      {
+        "label": "Subscription & Billing",
+        "page": "history"
+      },
+      {
+        "label": "Cancel subscription",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "evidence": "observed_public",
+    "source": "https://www.paramountplus.com/account/signin/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.paramountplus.com/s/article/PD-How-do-I-change-or-update-my-Paramount-billing-information",
+      "note": "The membership is charged to the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.paramountplus.com/s/article/PD-How-and-when-will-I-be-billed-for-paramount",
+      "note": "Paramount+ bills every month or year on a fixed billing date and charges the payment method on file; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.paramountplus.com/s/article/PD-How-can-I-cancel-my-Paramount-subscription",
+      "note": "Recurring charges stop only when you cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.paramountplus.com/s/article/PD-How-and-when-will-I-be-billed-for-paramount",
+      "note": "No paper bills are mailed; charges are shown on the account page and receipts are emailed."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.paramountplus.com/s/article/PD-How-and-when-will-I-be-billed-for-paramount"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.paramountplus.com/s/article/PD-How-and-when-will-I-be-billed-for-paramount"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.paramountplus.com/s/article/PD-How-can-I-cancel-my-Paramount-subscription",
+      "note": "Cancel from Account on paramountplus.com. App store or Roku subscribers cancel there. Access continues to the end of the billing period with no refund."
+    }
+  },
+  "billing": {
+    "source": "https://help.paramountplus.com/s/article/PD-What-plans-are-available-for-Paramount-and-how-much-do-they-cost",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://help.paramountplus.com/s/article/PD-How-do-I-change-or-update-my-Paramount-billing-information"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "essential",
+        "name": "Paramount+ Essential",
+        "cents": 899
+      },
+      {
+        "id": "premium",
+        "name": "Paramount+ Premium",
+        "cents": 1399,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Paramount+ plans and prices",
+      "topic": "plans",
+      "source": "https://help.paramountplus.com/s/article/PD-What-plans-are-available-for-Paramount-and-how-much-do-they-cost",
+      "paragraphs": [
+        "Paramount+ Essential, with ads, is $8.99 a month or $89.99 a year plus tax. It streams on up to 3 devices at once and does not include your local live CBS station.",
+        "Paramount+ Premium is $13.99 a month or $139.99 a year plus tax. It adds no ads except on live TV, your local live CBS station, select titles in 4K, downloads and all of SHOWTIME."
+      ]
+    },
+    {
+      "slug": "change-plan",
+      "title": "Changing your plan",
+      "topic": "plans",
+      "source": "https://help.paramountplus.com/s/article/PD-How-do-I-upgrade-to-Commercial-Free",
+      "paragraphs": [
+        "An upgrade to Premium takes effect and is charged right away; if it is mid-cycle, unused time on Essential is credited against the charge. A switch to Essential takes effect at the end of the billing cycle: you keep Premium until then, pay the lower price from the next cycle, and get no partial refund. You can also change between monthly and yearly billing here."
+      ],
+      "steps": [
+        "Click your name at the top right and select Account.",
+        "In Subscription & Billing, next to Paramount+ Plan, click Edit Plan.",
+        "Select the new plan.",
+        "Click Switch Plan."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How to cancel Paramount+",
+      "topic": "account",
+      "source": "https://help.paramountplus.com/s/article/PD-How-can-I-cancel-my-Paramount-subscription",
+      "steps": [
+        "Go to paramountplus.com and click your username at the top right.",
+        "Click Account.",
+        "Scroll down and click Cancel subscription."
+      ],
+      "paragraphs": [
+        "These steps apply if you signed up on the web, a smart TV or a game console. If you subscribed through Apple, Google Play, Amazon or Roku, cancel with that platform. If you cannot sign in, ask the Help Center chat for an agent."
+      ]
+    },
+    {
+      "slug": "update-payment",
+      "title": "Update your billing information",
+      "topic": "billing",
+      "source": "https://help.paramountplus.com/s/article/PD-How-do-I-change-or-update-my-Paramount-billing-information",
+      "paragraphs": [
+        "If you subscribed on the web, go to your account page on a computer; under Subscription & Billing find Payment Method and click Edit Payment. App store and partner subscribers update payment details with that platform."
+      ]
+    },
+    {
+      "slug": "billing-date",
+      "title": "When you are billed",
+      "topic": "billing",
+      "source": "https://help.paramountplus.com/s/article/PD-How-and-when-will-I-be-billed-for-paramount",
+      "paragraphs": [
+        "Paramount+ is a recurring subscription billed every month, or every year on an annual plan. On the web, open Account and look under Subscription & Billing for Next Billing Date. Billing dates cannot be changed. Subscribers billed by Amazon, Apple, Google Play or Roku check with that company."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "premium-annual-price",
+        "intent": "Find the annual price of Paramount+ Premium. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "139.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "139.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Paramount+ Premium costs $139.99 a year plus tax."
+          }
+        ]
+      },
+      {
+        "slug": "downgrade-timing",
+        "intent": "Find out when a Paramount+ downgrade takes effect. Do not change your plan.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "end of"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "end of"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A downgrade starts at the end of the current billing period."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign In",
+        "Plans & pricing"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Edit Plan",
+        "Edit Payment"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Paramount+ Essential",
+        "Paramount+ Premium"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$139.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Cancel subscription"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Forgot password?"
+      ]
+    }
+  ]
+}

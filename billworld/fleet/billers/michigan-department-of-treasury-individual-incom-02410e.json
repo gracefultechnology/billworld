@@ -1,0 +1,491 @@
+{
+  "id": "michigan-department-of-treasury-individual-incom-02410e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Michigan Department of Treasury (individual income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public michigan.gov pages only (FAQ answers read from their individual question pages). Moved from the paymentus family to income-tax: Paymentus only processes cards; the agency's own portal is MiTreasury eServices (Citizen portal), signed in with a MiLogin user ID and password. EFT is free; debit card $3.95 flat and credit card 2.3% per the payments page (the ePayments FAQ lists 2.3% for cards; the engine charges 2.3% and cannot express the flat debit fee). No recurring monthly payments (AutoPay unsupported, documented); only bank payments can be future-dated. eCheck payments cannot be cancelled once submitted; card payments can be deleted the same day while Pending under Manage Payments and Returns. Minimum $1.00, system maximum $129,000. Payments need SSN/tax ID, payment type and tax period, so the guest path is marked supported (inferred). Installment agreements go through the Collections eService, a mailed form or the Collection Services Bureau (517-636-5265). Paperless left at the family default (not documented).",
+  "template": "income-tax",
+  "officialDomains": [
+    "michigan.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.michigan.gov/taxes/iit/iitpayments",
+      "title": "Make a Payment",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/mitreasuryeservices",
+      "title": "Michigan Treasury eServices",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/questions/iit/epay/payments/can-i-set-up-recurring-monthly-payments",
+      "title": "Can I set up recurring monthly payments? | Michigan Treasury",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/questions/iit/epay/payments/can-i-select-a-future-date-for-my-e-payment",
+      "title": "Can I select a future date for my ePayment? | Michigan Treasury",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/questions/iit/epay/payments/can-i-cancel-an-echeck-payment-using-the-epayments-system",
+      "title": "Can I cancel an eCheck payment using the ePayments system? | Michigan Treasury",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/questions/iit/epay/payments/can-i-cancel-my-credit-or-debit-card-e-payment-using-the-e-payments-system",
+      "title": "Can I cancel my credit or debit card ePayment? | Michigan Treasury",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/questions/iit/epay/payments/is-there-a-minimum-payment-amount",
+      "title": "Is there a minimum payment amount? | Michigan Treasury",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/questions/iit/epay/payments/is-there-a-maximum-payment-amount",
+      "title": "Is there a maximum payment amount? | Michigan Treasury",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/questions/iit/epay/payments/what-will-i-need-to-make-a-payment",
+      "title": "What will I need to make a payment? | Michigan Treasury",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/questions/iit/epay/secure/who-do-i-contact-if-im-having-difficulty-using-the-e-payments-system",
+      "title": "Who do I contact if I am having difficulty using the e-Payments system? | Michigan Treasury",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.michigan.gov/taxes/collections/what-if-i-cant-pay-in-full/installment",
+      "title": "Installment Agreement | Michigan Treasury",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Michigan Department of Treasury",
+    "shortName": "Michigan Treasury",
+    "primary": "#00466e",
+    "accent": "#7a4a00",
+    "monogram": "MI"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "dashboard": "MiTreasury eServices",
+    "contact": "Send a Web Message",
+    "help": "Help Center",
+    "signIn": "MiLogin",
+    "history": "Manage Payments and Returns",
+    "guestPay": "Pay without logging in",
+    "arrangement": "Installment Agreement"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Pay without logging in",
+        "page": "guest"
+      },
+      {
+        "label": "Estimated Payments",
+        "helpSlug": "estimated-payments"
+      },
+      {
+        "label": "Installment Agreement",
+        "helpSlug": "installment-agreement"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      },
+      {
+        "label": "MiTreasury eServices - Citizen",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "MiTreasury eServices",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Payments and Returns",
+        "page": "history"
+      },
+      {
+        "label": "Send a Web Message",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "documented_official",
+    "source": "https://www.michigan.gov/taxes/questions/iit/epay/payments/can-i-cancel-my-credit-or-debit-card-e-payment-using-the-e-payments-system"
+  },
+  "capabilities": {
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.michigan.gov/taxes/questions/iit/epay/payments/can-i-select-a-future-date-for-my-e-payment",
+      "note": "Future-dated payments are available for bank (ACH) payments only."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.michigan.gov/taxes/iit/iitpayments"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.michigan.gov/taxes/questions/iit/epay/payments/can-i-set-up-recurring-monthly-payments",
+      "note": "Treasury does not offer recurring monthly payments. You can future-date a single bank (ACH) payment instead.",
+      "channel": "none"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.michigan.gov/taxes/questions/iit/epay/payments/what-will-i-need-to-make-a-payment",
+      "note": "Pay with your SSN or other tax ID, payment type, bank or card details and tax period; anyone with that information can pay."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.michigan.gov/taxes/collections/what-if-i-cant-pay-in-full/installment",
+      "note": "Request an installment agreement in the Collections eService, by mailing the Installment Agreement form, or by calling the Collection Services Bureau at 517-636-5265."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.michigan.gov/taxes/collections/what-if-i-cant-pay-in-full/installment"
+    }
+  },
+  "billing": {
+    "source": "https://www.michigan.gov/taxes/iit/iitpayments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.3,
+      "evidence": "documented_official",
+      "source": "https://www.michigan.gov/taxes/iit/iitpayments"
+    },
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "minPaymentCents": 100,
+    "maxPaymentCents": 12900000
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay Michigan individual income tax online through Michigan Treasury eServices, when you e-file with tax software, or by mail with the MI-1040-V payment voucher.",
+        "eServices offers three electronic options: Electronic Funds Transfer from a checking or savings account (free), debit card (flat $3.95 fee) and credit card (2.3% convenience fee). Card fees show as a separate charge and go to the payment processor. You can schedule a payment and get real-time confirmation by email.",
+        "Payments from bank accounts funded through a foreign bank (international ACH) cannot be processed."
+      ],
+      "source": "https://www.michigan.gov/taxes/iit/iitpayments"
+    },
+    {
+      "slug": "ach-debit-block",
+      "title": "ACH debit blocks",
+      "topic": "payments",
+      "paragraphs": [
+        "An ACH debit block stops electronic withdrawals that you have not specifically authorized. If you are not sure whether your account has one, ask your financial institution before paying by EFT."
+      ],
+      "source": "https://www.michigan.gov/taxes/iit/iitpayments"
+    },
+    {
+      "slug": "estimated-payments",
+      "title": "Estimated payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Estimated payments apply to the quarter in which they are received. A payment received after a due date applies to the following quarter."
+      ],
+      "source": "https://www.michigan.gov/taxes/iit/iitpayments"
+    },
+    {
+      "slug": "eservices",
+      "title": "MiTreasury eServices - Citizen portal",
+      "topic": "account",
+      "paragraphs": [
+        "The Citizen portal is where individuals manage Michigan income tax: file a state return for free, make regular, estimated and extension payments, view refund status and tax records, read and respond to Treasury letters, send messages to Treasury and update the tax account.",
+        "New security measures require you to complete identity authentication steps, or get the taxpayer's approval, before protected account information is shown. Tax professionals use the Business portal instead."
+      ],
+      "source": "https://www.michigan.gov/taxes/mitreasuryeservices"
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Change or cancel an ePayment",
+      "topic": "payments",
+      "paragraphs": [
+        "A submitted ePayment cannot be changed. A bank (eCheck) payment cannot be cancelled once it is submitted.",
+        "A credit or debit card payment can be cancelled only on the day it was made: sign in to Michigan Treasury eServices with your MiLogin user ID and password, choose More, then Manage Payments and Returns, show Payments and All, select a payment whose status is Pending and delete it.",
+        "Only bank payments can be future-dated, and there are no recurring monthly payments. The minimum payment is $1.00 and the system limit is $129,000. For help with ePayments call Treasury Customer Service at 517-636-4486, Monday to Friday, 8:00 a.m. to 4:45 p.m."
+      ],
+      "source": "https://www.michigan.gov/taxes/questions/iit/epay/payments/can-i-cancel-my-credit-or-debit-card-e-payment-using-the-e-payments-system"
+    },
+    {
+      "slug": "installment-agreement",
+      "title": "Installment agreements",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you owe a state debt you cannot pay in full, you may qualify for monthly payments under an installment agreement. Treasury asks for a proposed monthly amount and may ask for proof of income, expenses, assets and other debts; keep paying while it reviews your request.",
+        "Request one in the Collections eService (you need details from a Treasury collections letter to connect to your account), by mailing the Installment Agreement form, or by calling the Collection Services Bureau at 517-636-5265.",
+        "Penalties and interest keep accruing, a tax lien may be filed, refunds are applied to the debt, and new debts or missed payments can cancel the plan."
+      ],
+      "source": "https://www.michigan.gov/taxes/collections/what-if-i-cant-pay-in-full/installment"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "debit-card-fee",
+        "intent": "Using the Michigan Treasury website's help pages, find the fee for paying individual income tax with a debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Debit card payments cost a flat $3.95."
+          }
+        ]
+      },
+      {
+        "slug": "payment-voucher",
+        "intent": "Using the Michigan Treasury website's help pages, find the form number of the voucher to include when mailing an individual income tax payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "MI-1040-V"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "MI-1040-V"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "pay_by_mail"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mail the payment with the MI-1040-V voucher."
+          }
+        ]
+      },
+      {
+        "slug": "installment-agreement-phone",
+        "intent": "Using the Michigan Treasury website's help pages, find the phone number to call the Collection Services Bureau to request an installment agreement. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "517-636-5265",
+              "(517) 636-5265",
+              "5176365265"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "517-636-5265",
+            "(517) 636-5265",
+            "5176365265"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call the Collection Services Bureau at 517-636-5265."
+          }
+        ]
+      },
+      {
+        "slug": "echeck-cancel-rule",
+        "intent": "Using the Michigan Treasury website's help pages, find out whether a bank (eCheck) ePayment can still be cancelled after it has been submitted, and say so. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "cannot",
+              "can not",
+              "can't",
+              "not be cancel"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "cannot",
+            "can not",
+            "can't",
+            "not be cancel"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled_payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. An eCheck payment cannot be cancelled once it is submitted."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Estimated Payments",
+        "MiTreasury eServices - Citizen"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "MiTreasury eServices",
+        "Send a Web Message"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$3.95",
+        "2.3%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "eservices",
+      "contains": "Citizen portal"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "installment-agreement",
+      "contains": [
+        "517-636-5265",
+        "Collections eService"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-payment",
+      "contains": [
+        "$129,000",
+        "Manage Payments and Returns"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "recurring monthly payments"
+    }
+  ]
+}

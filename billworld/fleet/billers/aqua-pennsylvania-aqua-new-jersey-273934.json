@@ -1,0 +1,148 @@
+{
+  "id": "aqua-pennsylvania-aqua-new-jersey-273934",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Aqua Pennsylvania / Aqua New Jersey",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public aquawater.com pages only (no sign-in; the ePortal sign-in page was not reachable without a browser check). Aqua ePortal signs in with a username and password; registration links the account with the account number and billing ZIP code. ePortal offers one-time payments, autopay, payment history, saved payment methods, daily usage and 24 months of billing history, paperless e-billing (can be turned off any time), and online move-in/move-out (start/stop) requests. Make a One-Time Payment (Pay Now and Enroll Later) needs no login. Card payments through Speedpay (Click to Pay / Call to Pay) carry a $1.95 processing fee per transaction; ePortal fees are not stated, so the engine charges $1.95 on cards and nothing on bank payments. After a same-day payment on a shutoff notice, customers must also call 877.987.2782 with the confirmation number. Payment arrangements are not described online, so they are marked not offered online (inferred) with the customer service number. Autopay methods/timing are not published; family defaults kept except bank+card method types.",
+  "officialDomains": ["aquawater.com"],
+  "sources": [
+    { "url": "https://www.aquawater.com/ways-pay-your-bill", "title": "Ways to Pay Your Bill | Aqua", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.aquawater.com/customers/aqua-eportal", "title": "Aqua ePortal | Aqua", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://www.aquawater.com/customers/customer-assistance-programs", "title": "Customer Assistance Programs | Aqua", "fetchedAt": "2026-10-09", "kind": "plans" }
+  ],
+  "brand": { "displayName": "Aqua", "shortName": "Aqua", "primary": "#00609c", "accent": "#00416a", "monogram": "AQ" },
+  "labels": {
+    "dashboard": "Aqua ePortal",
+    "signIn": "Sign In",
+    "register": "Enroll",
+    "username": "Username",
+    "guestPay": "Make a One-Time Payment",
+    "payBill": "Pay Bill",
+    "paperless": "Paperless Billing",
+    "cancel": "Start/Stop Service",
+    "arrangement": "Payment Arrangement",
+    "help": "Customer Service"
+  },
+  "nav": {
+    "public": [
+      { "label": "Make a One-Time Payment", "page": "guest" },
+      { "label": "Sign In", "page": "login" },
+      { "label": "Enroll", "page": "register" },
+      { "label": "Ways to Pay Your Bill", "helpSlug": "pay-your-bill" },
+      { "label": "Get Help", "helpSlug": "payment-assistance" },
+      { "label": "Customer Service", "page": "help" }
+    ],
+    "account": [
+      { "label": "Aqua ePortal", "page": "dashboard" },
+      { "label": "Pay Bill", "page": "pay" },
+      { "label": "View bill", "page": "bill" },
+      { "label": "Billing History", "page": "statements" },
+      { "label": "Autopay", "page": "autopay" },
+      { "label": "Paperless Billing", "page": "paperless" },
+      { "label": "Payment Methods", "page": "wallet" },
+      { "label": "Start/Stop Service", "page": "cancel" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": ["accountNumber", "zip", "email"],
+    "guestLookupFields": ["accountNumber"],
+    "evidence": "documented_official",
+    "source": "https://www.aquawater.com/customers/aqua-eportal"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.aquawater.com/ways-pay-your-bill" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.aquawater.com/customers/aqua-eportal" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.aquawater.com/customers/aqua-eportal" },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.aquawater.com/customers/aqua-eportal" },
+    "cancel_service": { "support": "supported", "evidence": "documented_official", "source": "https://www.aquawater.com/customers/aqua-eportal", "note": "Submit move-in and move-out (start/stop) requests in Aqua ePortal." },
+    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "source": "https://www.aquawater.com/customers/customer-assistance-programs", "channel": "phone", "phone": "877-987-2782", "note": "Payment arrangements are not offered online. Call Aqua Customer Service at 877.987.2782 to ask about help with your balance." },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.aquawater.com/customers/customer-assistance-programs" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.aquawater.com/ways-pay-your-bill", "phone": "866-269-2906" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.aquawater.com/ways-pay-your-bill" }
+  },
+  "billing": {
+    "source": "https://www.aquawater.com/ways-pay-your-bill",
+    "fees": { "bankCents": 0, "cardCents": 195, "evidence": "documented_official", "source": "https://www.aquawater.com/ways-pay-your-bill" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Aqua ePortal: sign in or enroll to see your account, pay your current bill, check your daily balance and sign up for paperless billing. Pay Now and Enroll Later lets you make a one-time payment without logging in.",
+        "Speedpay: Click to Pay online or Call to Pay at 866.269.2906 by American Express, Visa, Mastercard, Discover or check. Speedpay charges a $1.95 processing fee per transaction.",
+        "If you received a shutoff notice and pay the same day online, also call Customer Service at 877.987.2782 with your confirmation number.",
+        "By mail, send a check payable to Aqua plus your state name to Aqua, P.O. Box 70279, Philadelphia, PA 19176-0279. You can also pay at Western Union locations for a fee."
+      ],
+      "source": "https://www.aquawater.com/ways-pay-your-bill"
+    },
+    {
+      "slug": "eportal",
+      "title": "About Aqua ePortal",
+      "topic": "account",
+      "paragraphs": [
+        "Aqua ePortal is a free website and mobile app. Create a username and password, then link your water account with the account number on your bill and your billing ZIP code. Several Aqua accounts can share one login.",
+        "In ePortal you can make one-time payments, set up autopay, see payment history and saved payment methods, view daily water use and up to 24 months of bills, report service problems, send move-in and move-out requests, and turn paperless billing on or off at any time."
+      ],
+      "source": "https://www.aquawater.com/customers/aqua-eportal"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start or stop service",
+      "topic": "account",
+      "paragraphs": [
+        "Moving? Send move-in and move-out (start and stop service) requests online from Aqua ePortal."
+      ],
+      "steps": ["Sign in to Aqua ePortal.", "Choose Start/Stop Service.", "Pick the move-out date.", "Review and submit."],
+      "source": "https://www.aquawater.com/customers/aqua-eportal"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Customer Assistance Programs",
+      "topic": "assistance",
+      "paragraphs": [
+        "Customer Assistance Program (CAP): a monthly discount on residential water or wastewater bills for eligible customers in Pennsylvania and Illinois.",
+        "Aqua Aid gives donation-funded grants to customers in need in Pennsylvania, New Jersey, Illinois and Ohio. Pennsylvania customers may also qualify for leak repair help and a free water conservation kit with CAP.",
+        "For other help with your bill, call Aqua Customer Service at 877.987.2782."
+      ],
+      "source": "https://www.aquawater.com/customers/customer-assistance-programs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "speedpay-fee",
+        "intent": "Before paying by card through Speedpay, find the processing fee Aqua says Speedpay charges per transaction. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["$1.95", "1.95"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["$1.95", "1.95"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Speedpay charges a $1.95 processing fee per transaction." }]
+      },
+      {
+        "slug": "billing-history-months",
+        "intent": "Using Aqua's help pages, find how many months of billing history Aqua ePortal shows. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["24"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["24"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Up to 24 months of billing history." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["Username"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Aqua ePortal", "Start/Stop Service"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["$1.95", "866.269.2906"] },
+    { "page": "helpArticle", "slug": "eportal", "contains": "24 months" }
+  ]
+}

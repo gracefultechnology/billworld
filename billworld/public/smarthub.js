@@ -35,7 +35,7 @@ function gvpPublicPage(path) {
   return ['WAYS TO PAY', navigation + `<nav class="hub-tabs" aria-label="Payment options">${Object.entries(tabs).map(([id,[label]])=>`<a href="/ways-pay?tab=${id}" ${key===id?'aria-current="page"':''}>${label}</a>`).join('')}</nav><section aria-labelledby="payment-option"><h2 id="payment-option">${tabs[key][0]}</h2>${tabs[key][1]}</section><p>To prevent disconnection, use an immediate payment option rather than a drop box.</p>`];
 }
 export async function renderSmartHub(settings) {
-  context = settings; const r = context.site?.id==='gvp-electric'&&['/ways-pay','/SmartHub','/paperless'].includes(location.pathname)?'help':route(), { auth, api, escape: e } = settings;
+  context = settings; const r = context.site?.id==='gvp-electric'&&['/ways-pay','/SmartHub','/paperless'].includes(location.pathname)?'help':route(), { auth, api, escape: e, isCurrent = () => true } = settings;
   if(context.site?.id==='gvp-electric'&&location.pathname==='/'){shell('Grand Valley Power',`<nav><a href="${href('login')}">SmartHub Login</a> · <a href="${href('paynow')}">One-time Payment</a> · <a href="/ways-pay">Ways to Pay</a> · <a href="/SmartHub">SmartHub guide</a> · <a href="/paperless">Paperless billing</a></nav><h2>Manage My Account</h2><p>View and pay bills, manage automatic payments and enroll in E-Bill.</p><a class="button" href="${href('login')}">SmartHub</a><h2>Payment Options</h2><p>Pay online with checking or a credit/debit card.</p><a href="${href('help')}">Billing and payment information</a>`);return;}
   if(r==='changePassword'){shell('CHANGE PASSWORD',form('first-password',field('password','New Password','password','','minlength="10" maxlength="128"')+field('confirmPassword','Confirm Password','password'),'Save Password'));return;}
   if(r==='registrationSent'){shell('REGISTRATION COMPLETE','<p>Check your email for a temporary password. Sign in with it and choose a new password.</p><a href="/mail">Open email</a> · <a href="'+href('login')+'">Sign In</a>');return;}
@@ -66,7 +66,7 @@ export async function renderSmartHub(settings) {
   if (r === 'help') {
     shell('BILLING AND PAYMENT OPTIONS', '<h2>Pay online</h2><p>AVEC offers Visa, Mastercard, American Express, Discover, PayPal, Apple Pay, e-check and ACH payments.</p><h2>Registration</h2><p>Have your account number, the last four digits of your Social Security number, phone number and email ready. The identity details must match the cooperative’s records. Contact Member Services at (800) 478-1818 for help updating your information.</p><h2>Auto Pay and scheduling</h2><p>Enroll using a preferred payment method on the due date or choose a recurring day. You can also schedule a one-time payment for a chosen date.</p><p><a href="' + href('login') + '">Sign in</a> · <a href="' + href('paynow') + '">Pay Now</a></p><h2>Available in this local environment</h2><p>Checking and card payments are supported. PayPal and Apple Pay integrations are pending. Fees, balances, settlement and private account screens use synthetic fixtures; consult the environment evidence manifest for fidelity details.</p>'); return;
   }
-  if (r === 'logout') { await api('logout', {}); lookup = quote = receipt = null; return nav('login'); }
+  if (r === 'logout') { await api('logout', {}); if (!isCurrent()) return; lookup = quote = receipt = null; return nav('login'); }
   if (r === 'confirmation') {
     if (!receipt) return nav(auth ? 'paymentHistory' : 'paynow');
     shell('PAYMENT CONFIRMATION', `<p>Your payment was ${e(receipt.status)}.</p><p>Confirmation: <strong id="confirmation">${e(receipt.confirmation)}</strong></p><p>Amount ${money(receipt.amountCents)} · Fee ${money(receipt.feeCents)}</p><p>${e(receipt.method.label)}</p><a href="${href(auth ? 'paymentHistory' : 'paynow')}">Continue</a>`); return;
@@ -75,8 +75,9 @@ export async function renderSmartHub(settings) {
     if (!quote) return nav('makeAPayment');
     shell('REVIEW PAYMENT', `<p>Account ${e(invoice.accountNumber)}</p><p>Payment ${money(quote.amountCents)} · Fee ${money(quote.feeCents)} · Total ${money(quote.totalCents)}</p><p>${e(quote.method.label)}</p>${form('pay', '', 'Submit Payment')}${auth ? form('schedule', field('date', 'Payment Date', 'date'), 'Schedule Payment') : ''}<a href="${href('makeAPayment')}">Change payment details</a>`); return;
   }
-  if (!auth && !lookup) { try { lookup = await api('smarthub/guest'); } catch { return nav(r === 'makeAPayment' ? 'paynow' : 'login'); } }
+  if (!auth && !lookup) { try { const guest = await api('smarthub/guest'); if (!isCurrent()) return; lookup = guest; } catch { if (!isCurrent()) return; return nav(r === 'makeAPayment' ? 'paynow' : 'login'); } }
   const dashboard = auth ? await api('dashboard') : await api('smarthub/guest');
+  if (!isCurrent()) return;
   const account = dashboard.account;
   if (r === 'home') {
     const due = dashboard.invoices.filter(i => i.remainingCents > 0).reduce((n, i) => n + i.remainingCents, 0);

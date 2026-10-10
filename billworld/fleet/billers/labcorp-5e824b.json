@@ -1,0 +1,137 @@
+{
+  "id": "labcorp-5e824b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Labcorp",
+  "category": "medical",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public labcorp.com pages and public Labcorp Patient help-center answers (no sign-in). Pay in the Labcorp Patient portal or MyLabcorp app, as a guest (8-digit invoice number plus the ZIP code and date of birth on the invoice), by phone at 800-845-6167 any time, by mail to P.O. Box 2240, Burlington, NC 27216-2240, by QR code or at patient service center kiosks. Labcorp lists major credit cards, HSA cards, PayPal, Google Pay and Apple Pay; bank/eCheck is not stated (the engine contract requires bank, so it is kept as a family default). No payment service fee when paying Labcorp directly. Payment plans can be set up online in the portal/app. AutoPay and paperless are not described publicly, so both are left to the family defaults. The user ID is the email address used to register; codes go by text or email (registration/password reset). Payments post in 24-48 hours.",
+  "officialDomains": ["labcorp.com"],
+  "sources": [
+    { "url": "https://www.labcorp.com/patients/billing", "title": "Billing & Insurance", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.labcorp.com/patients/bill-pay", "title": "Billing & Insurance (bill pay)", "fetchedAt": "2026-10-09", "kind": "fees" },
+    { "url": "https://patient.labcorp.com/help-center/q-and-a/5000/1", "title": "Create an Account", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://patient.labcorp.com/help-center/q-and-a/5000/15", "title": "I have changed my email address. Will my user ID change?", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "shortName": "Labcorp", "primary": "#0a5c8a", "accent": "#003d5c", "monogram": "LC" },
+  "labels": {
+    "guestPay": "Pay a Bill",
+    "accountNumber": "Invoice number",
+    "signIn": "Sign In",
+    "register": "Create an Account",
+    "forgot": "Forgot password",
+    "arrangement": "Payment plan",
+    "help": "Billing FAQs",
+    "contact": "Contact customer support",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay a Bill", "page": "guest" },
+      { "label": "Sign In", "page": "login" },
+      { "label": "Create an Account", "page": "register" },
+      { "label": "How to read your bill", "helpSlug": "read-your-bill" },
+      { "label": "Billing FAQs", "page": "help" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "guestLookupFields": ["accountNumber", "zip", "dob"],
+    "evidence": "documented_official",
+    "source": "https://patient.labcorp.com/help-center/q-and-a/5000/15"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.labcorp.com/patients/billing" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.labcorp.com/patients/billing" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.labcorp.com/patients/billing", "phone": "800-845-6167" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.labcorp.com/patients/billing" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.labcorp.com/patients/billing" },
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://patient.labcorp.com/help-center/q-and-a/5000/1" }
+  },
+  "billing": {
+    "source": "https://www.labcorp.com/patients/billing",
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "documented_official", "source": "https://www.labcorp.com/patients/bill-pay" }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Labcorp bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay in the Labcorp Patient portal or the MyLabcorp app, or use guest bill pay without signing in. Guest pay needs the 8-digit invoice number plus the ZIP code and date of birth that match the invoice.",
+        "Online, Labcorp takes major credit cards and HSA cards, plus PayPal, Google Pay and Apple Pay. Paying Labcorp directly carries no payment service fee; Labcorp is not tied to invoice-payment services such as Doxo and is not responsible for their fees.",
+        "You can also pay by phone at 800-845-6167 at any hour, scan the QR code on your bill, use a kiosk at a patient service center, or mail a check or money order with the bill stub to Labcorp, P.O. Box 2240, Burlington, NC 27216-2240. Write the invoice number on the check and do not send cash.",
+        "Payments take 24 to 48 hours to update your balance. If it has not changed after 48 hours, call Patient Billing."
+      ],
+      "steps": ["Choose Pay a Bill.", "Enter the 8-digit invoice number, ZIP code and date of birth.", "Choose a payment method and amount.", "Submit the payment."],
+      "source": "https://www.labcorp.com/patients/billing"
+    },
+    {
+      "slug": "payment-plan",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "Set up a payment plan in the MyLabcorp app, in the Labcorp Patient portal, at a patient service center, or by calling Patient Billing at 800-845-6167, weekdays 8 a.m. to 5 p.m. Eastern."
+      ],
+      "source": "https://www.labcorp.com/patients/billing"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Financial help and estimates",
+      "topic": "assistance",
+      "paragraphs": [
+        "The LabAccess Partnership program serves uninsured patients and those whose plans do not cover lab testing: bring the test request to a patient service center and pay the discounted rate in full at the visit. Outstanding Labcorp charges must be settled to stay eligible.",
+        "Uninsured and self-pay patients can request a Good Faith Estimate before the visit, in the portal, while scheduling, or from the Clinical Contact Center at 800-762-4344."
+      ],
+      "source": "https://www.labcorp.com/patients/billing"
+    },
+    {
+      "slug": "read-your-bill",
+      "title": "Insurance questions and disputes",
+      "topic": "billing",
+      "paragraphs": [
+        "Insurance claims can take 4 to 6 weeks to process. If you think a bill is wrong, send a copy of your Explanation of Benefits with your Labcorp invoice number by fax to 866-227-2939 or by mail to the Burlington P.O. Box."
+      ],
+      "source": "https://www.labcorp.com/patients/billing"
+    },
+    {
+      "slug": "sign-in",
+      "title": "Your Labcorp Patient account",
+      "topic": "account",
+      "paragraphs": [
+        "Register from the portal or the MyLabcorp app with Create an Account. The email address you enter becomes your user ID, and Labcorp verifies you with a code sent by text or email that is valid for 20 minutes.",
+        "Changing your email under contact preferences changes where notices go, not your user ID; keep signing in with the original email."
+      ],
+      "source": "https://patient.labcorp.com/help-center/q-and-a/5000/15"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "dispute-fax-number",
+        "intent": "Using Labcorp's billing help, find the fax number for sending an Explanation of Benefits to dispute a bill. Do not make a payment or change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8662272939"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8662272939"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "866-227-2939" }]
+      },
+      {
+        "slug": "mail-payment-po-box",
+        "intent": "Find the P.O. Box number Labcorp lists for mailing a bill payment. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["2240"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["2240"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "P.O. Box 2240, Burlington, NC 27216-2240" }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": ["Invoice number"] },
+    { "page": "login", "contains": ["Email"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["800-845-6167", "24 to 48 hours"] },
+    { "page": "helpArticle", "slug": "read-your-bill", "contains": "866-227-2939" }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "id": "wells-fargo-credit-cards-baed09",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Wells Fargo (credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public wellsfargo.com pages only (no sign-in). Home page sign-on form: 'Username', 'Password', 'Save username', 'Sign On', 'Forgot username or password?', 'Enroll' / 'Enroll in Wells Fargo Online', 'Sign on with a passkey'. Payments: Wells Fargo Online / app (same-day payments, future-dated payments), Autopay deducted from the account you choose (no need to add the card), 24/7 automated phone line at the number on the back of the card, and Wells Fargo ATMs. Online payments come from a deposit account (card methods removed; inferred). Paperless: 'Manage Delivery Preferences'; online statements kept 2 years. Due date: Credit Card Service Center > Account Management > 'Change Your Payment Due Date' (29th-31st not allowed). Payment relief: short-term and long-term plans or a due-date change via the Relief Center in the app or 1-800-988-8019 (Mon-Fri 8-5 CT). Closing a consumer card is not described as an online action on the pages used; the card agreement says you close it by contacting Wells Fargo, so cancel_service is unsupported online (inferred) with the 24/7 card line 1-800-642-4720. Autopay amount presets are not published for consumer cards on the pages used, so AutoPay policies stay at the family default. No pay-without-sign-on option (inferred). Review 2026-10-09: sign-on wording, Autopay, Manage Delivery Preferences, 2-year statements, the 29th-31st due-date rule, Relief Center and 1-800-988-8019 re-verified on the cited pages. Account nav labels 'Account Summary', 'Make a Payment', 'Payment Activity' and 'Statements' are generic (inferred); 'Account Management' is from the FAQ.",
+  "officialDomains": [
+    "wellsfargo.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.wellsfargo.com/",
+      "title": "Wells Fargo Bank | Financial Services & Online Banking",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.wellsfargo.com/credit-cards/features/",
+      "title": "Credit Card Features & Services",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.wellsfargo.com/help/credit-cards/credit-card-faqs/",
+      "title": "Credit Card Questions | Wells Fargo",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.wellsfargo.com/credit-cards/assist/",
+      "title": "Credit card payment assistance | Wells Fargo",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "Wells Fargo",
+    "primary": "#b31e30",
+    "accent": "#5a3e00",
+    "monogram": "WF"
+  },
+  "labels": {
+    "signIn": "Sign On",
+    "username": "Username",
+    "password": "Password",
+    "forgot": "Forgot username or password?",
+    "register": "Enroll",
+    "autopay": "Autopay",
+    "paperless": "Manage Delivery Preferences",
+    "profile": "Account Management",
+    "help": "Customer Service"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign On",
+        "page": "login"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Credit card features & services",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment Activity",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Manage Delivery Preferences",
+        "page": "paperless"
+      },
+      {
+        "label": "Account Management",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.wellsfargo.com/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.wellsfargo.com/credit-cards/features/",
+      "note": "Wells Fargo has no pay-without-signing-on option for credit cards. Sign on to Wells Fargo Online, use an ATM, or call the 24/7 automated line at the number on the back of your card.",
+      "channel": "phone",
+      "phone": "1-800-642-4720"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/credit-cards/features/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/credit-cards/features/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/credit-cards/credit-card-faqs/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.wellsfargo.com/help/credit-cards/credit-card-faqs/",
+      "note": "A Wells Fargo credit card account is closed by contacting Wells Fargo, not online. Call 1-800-642-4720 (24 hours); you still owe any remaining balance. To stop using the card without closing it, you can turn the card off online.",
+      "channel": "phone",
+      "phone": "1-800-642-4720"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/credit-cards/assist/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/credit-cards/features/"
+    }
+  },
+  "billing": {
+    "source": "https://www.wellsfargo.com/credit-cards/features/",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Wells Fargo credit card",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign on to Wells Fargo Online or the Wells Fargo Mobile app to make a same-day payment, schedule a future payment or manage payments.",
+        "Set up Autopay in Wells Fargo Online and the payment is deducted automatically from the account you choose.",
+        "You can also make a same-day payment by phone through the 24/7 automated system at the number on the back of your card, or at more than 11,000 Wells Fargo ATMs."
+      ],
+      "source": "https://www.wellsfargo.com/credit-cards/features/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Online statements",
+      "topic": "account",
+      "paragraphs": [
+        "To switch to online statements, sign on to Wells Fargo Online and go to Manage Delivery Preferences.",
+        "Online statements can be viewed and downloaded for up to 2 years."
+      ],
+      "source": "https://www.wellsfargo.com/help/credit-cards/credit-card-faqs/"
+    },
+    {
+      "slug": "change-due-date",
+      "title": "Change your payment due date",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign on to the Credit Card Service Center and choose Change Your Payment Due Date under Account Management. Dates from the 29th through the 31st cannot be picked."
+      ],
+      "source": "https://www.wellsfargo.com/help/credit-cards/credit-card-faqs/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Credit card payment assistance",
+      "topic": "billing",
+      "paragraphs": [
+        "If you are having trouble paying, Wells Fargo may offer short-term payment options, longer-term payment plans or a different due date that fits your paycheck.",
+        "Request relief yourself in the Relief Center in the Wells Fargo Mobile app, or call a payment specialist at 1-800-988-8019, Monday to Friday, 8 a.m. to 5 p.m. Central. Not everyone qualifies."
+      ],
+      "source": "https://www.wellsfargo.com/credit-cards/assist/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Credit card phone numbers",
+      "topic": "contact",
+      "paragraphs": [
+        "24-hour credit card customer service, lost or stolen cards, disputes and balance transfers: 1-800-642-4720. General customer service: 1-800-869-3557 (24/7). Rewards: 1-877-517-1358."
+      ],
+      "source": "https://www.wellsfargo.com/help/credit-cards/credit-card-faqs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "relief-phone",
+        "intent": "Using Wells Fargo's help pages, find the phone number for credit card payment assistance specialists. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8009888019"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8009888019"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-988-8019"
+          }
+        ]
+      },
+      {
+        "slug": "online-statement-retention",
+        "intent": "Using Wells Fargo's help pages, find how long online credit card statements stay available to view and download. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2 years",
+              "two years"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2 years",
+            "two years"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Online statements are available for up to 2 years."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": [
+        "Relief Center",
+        "1-800-988-8019"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "Manage Delivery Preferences"
+    }
+  ]
+}

@@ -1,0 +1,341 @@
+{
+  "id": "directv-satellite-1cd767",
+  "version": 1,
+  "status": "dedicated",
+  "name": "DIRECTV (satellite)",
+  "category": "tv",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public directv.com support articles and the public login help page only (no sign-in). Satellite customers sign in with a User ID that must be in email format; Forgot email or user ID? sends the ID by email, and Forgot Password asks for User ID and last name and emails a temporary password used only to set a new one. DIRECTV support says accounts lock after 6 failed sign-in attempts (stated in its STREAM sign-in article). No sign-in verification code is documented on the pages used (only the User ID change flow sends a one-time code), so auth.mfa is left unset (reviewer 2026-10-09 removed an undocumented email_or_sms claim). Payments: Billing & Payments, pick the amount, a date up to 60 days ahead (depending on account standing), a saved or one-time method, then Pay Bill. 'Pay without signing in' exists. Agent-assisted phone payments may carry a $5 fee; automated phone (800.531.5000) and text Pay to 21880 are other channels. Autopay (satellite): Account Overview > Payment Settings > Sign up under Autopay Settings, checking account or credit/debit card; past-due accounts cannot enroll; first draft may take a bill period; Cancel Autopay under Autopay Settings. Paperless: Billing & Payments > Payment Settings > Enroll Now. Payment arrangements: schedule a payment after the due date, or Can't pay now? Pay later for Promise to Pay or a one-time Service Interruption Extension of up to five days; a convenience fee applies if arranged by phone or chat. Cancelling satellite service is not documented as an online flow; DIRECTV community specialists direct customers to call 800.531.5000, so cancel_service is unsupported online (inferred). Streaming (internet) customers are on mandatory card/PayPal autopay; this record is the satellite service. Package prices are not stated on the billing pages, so plans are left out; late fee amount not published there.",
+  "officialDomains": [
+    "directv.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.directv.com/support/article/000080018",
+      "title": "How to pay your DIRECTV bill | DIRECTV Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.directv.com/support/article/000082686",
+      "title": "Enroll and manage autopay | DIRECTV Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.directv.com/support/article/000088290",
+      "title": "Enroll in paperless billing | DIRECTV Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.directv.com/support/article/000080560",
+      "title": "Make a payment arrangement | DIRECTV Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.directv.com/support/article/000093360",
+      "title": "Manage your DIRECTV user ID or password | DIRECTV Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.directv.com/support/article/000082803",
+      "title": "Find info on DIRECTV STREAM sign-in errors | DIRECTV Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.directv.com/directv-login/",
+      "title": "DIRECTV Login - Account Sign In - Watch TV, Pay Bills & More",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "DIRECTV",
+    "shortName": "DIRECTV",
+    "primary": "#00539f",
+    "accent": "#1d2a5c",
+    "monogram": "D"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "User ID (email)",
+    "forgot": "Forgot Password",
+    "guestPay": "Pay without signing in",
+    "dashboard": "Account Overview",
+    "viewBill": "Billing & Payments",
+    "payBill": "Pay Bill",
+    "autopay": "Autopay Settings",
+    "paperless": "Paperless Billing",
+    "arrangement": "Can't pay now? Pay later",
+    "help": "Customer Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Pay without signing in",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing & Payments",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay Settings",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Can't pay now? Pay later",
+        "page": "arrangement"
+      },
+      {
+        "label": "Customer Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "lockoutAttempts": 6,
+    "evidence": "documented_official",
+    "source": "https://www.directv.com/support/article/000093360"
+  },
+  "capabilities": {
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000093360"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000080018"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000080018"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000080018",
+      "note": "Payments can be dated up to 60 days ahead, depending on account standing."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000082686",
+      "note": "Past-due accounts cannot enroll in autopay until the balance is paid in full."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000082686"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000088290"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000080560"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.directv.com/support/article/000080018",
+      "note": "DIRECTV satellite service is cancelled by phone: call 800.531.5000 and say cancel. Receivers must be returned afterwards.",
+      "channel": "phone",
+      "phone": "8005315000"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000080018",
+      "phone": "8005315000"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.directv.com/support/article/000080018"
+    }
+  },
+  "billing": {
+    "source": "https://www.directv.com/support/article/000080018",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.directv.com/support/article/000080018"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "scheduled": {
+      "maxDaysAhead": 60
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your DIRECTV bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Online, go to Billing & Payments, choose the amount, then use the calendar icon to pick the payment date; depending on your account standing you may be able to choose a date up to 60 days ahead. Pick a saved checking or savings account or credit or debit card, or use a one-time unsaved method, review and select Pay Bill. You can also pay without signing in. Split payments are no longer offered, but accounts in good standing can make partial payments with more than one method.",
+        "By phone, call 800.531.5000 and say make a payment to use the automated system; paying with an agent may add a one-time $5 processing fee. Customers with a stored payment method can text Pay to 21880.",
+        "You can also pay from your bank's bill pay using the PO Box on your bill, mail a check or money order with the remittance slip, or pay cash in person through authorized partners such as CheckFreePay, Western Union and MoneyGram."
+      ],
+      "steps": [
+        "Sign in and go to Billing & Payments.",
+        "Select the payment amount.",
+        "Pick the payment date from the calendar.",
+        "Choose a saved or one-time payment method.",
+        "Review and select Pay Bill."
+      ],
+      "source": "https://www.directv.com/support/article/000080018"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll and manage autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Satellite customers can pay automatically each month from a checking account or a credit or debit card. On Account Overview, select Enroll next to the autopay status or open Payment Settings, select Sign up under Autopay Settings, choose the payment method, fill in the details and select Enroll.",
+        "Automatic payments can take up to one bill period to begin, so keep paying as usual until your bill or Payment Settings shows autopay as scheduled or Active. A past-due account cannot enroll until the full balance is paid.",
+        "To update the method or (on some accounts) the autopay date, select Change under Autopay Settings and then Update. To stop automatic payments, select Cancel Autopay."
+      ],
+      "steps": [
+        "Open Account Overview and select Payment Settings.",
+        "Select Sign up under Autopay Settings.",
+        "Choose checking account or credit/debit card.",
+        "Complete the details and select Enroll."
+      ],
+      "source": "https://www.directv.com/support/article/000082686"
+    },
+    {
+      "slug": "paperless",
+      "title": "Enroll in paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Make sure your email address is current under My Info on Account Overview. Then go to Billing & Payments, select Payment Settings (or Manage Account), choose Enroll Now under Paperless Billing, review the terms and select Enroll in Paperless Billing. A confirmation email follows.",
+        "You can view, print or download up to 24 bill periods online. If you stop paperless billing, paper bills resume within one to two bill periods."
+      ],
+      "steps": [
+        "Go to Billing & Payments.",
+        "Select Payment Settings.",
+        "Choose Enroll Now under Paperless Billing.",
+        "Accept the terms and select Enroll in Paperless Billing."
+      ],
+      "source": "https://www.directv.com/support/article/000088290"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Make a payment arrangement",
+      "topic": "assistance",
+      "paragraphs": [
+        "Most satellite customers can schedule a payment after the due date in Billing & Payments: enter the amount, pick one of the eligible dates the calendar offers, choose a payment method and select Pay Bill. This can delay service interruption and pause collection activity.",
+        "If your account is past due you may also see Can't pay now? Pay later next to the amount. It lets you make a Promise to Pay (date, amount and method) or request a one-time Service Interruption Extension of up to five days. If you do not see the link, you are not eligible.",
+        "Late fees still apply after the due date, a convenience fee applies if you arrange the payment by phone or chat, and a reconnection fee applies if service is suspended because you missed the agreed date. Scheduled payments and arrangements can be cancelled from Account Overview before they process but cannot be edited online."
+      ],
+      "source": "https://www.directv.com/support/article/000080560"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Manage your user ID or password",
+      "topic": "account",
+      "paragraphs": [
+        "Forgot your User ID? On the sign-in page choose Forgot email or user ID?, enter your email address or account number and select Continue; the User ID is emailed to you. Your account number is at the top left of a paper bill.",
+        "To reset a password, choose Forgot Password, enter your User ID and last name, then paste the emailed temporary password and set a new one. Temporary passwords cannot be used to sign in. User IDs must be in email format, and changing one sends a one-time code to the new address.",
+        "For your protection, the account is temporarily locked after 6 unsuccessful sign-in attempts; reset your password to sign in again."
+      ],
+      "source": "https://www.directv.com/support/article/000093360"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "max-schedule-days",
+        "intent": "Using DIRECTV's help pages, find how far in advance a satellite customer can schedule a bill payment online. Do not make or schedule a payment.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["60"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["60"] },
+        "tags": ["help", "information", "scheduled"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "Up to 60 days ahead, depending on account standing." }
+        ]
+      },
+      {
+        "slug": "service-extension-days",
+        "intent": "Using DIRECTV's help pages, find how many days a one-time Service Interruption Extension can delay a disconnection. Do not change anything on the account.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["five", "5 days", "5"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["five", "5 days", "5"] },
+        "tags": ["help", "information", "arrangement"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "A Service Interruption Extension can delay interruption by up to five days." }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["User ID"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Billing & Payments", "Autopay Settings"] },
+    { "page": "cancel", "signedIn": true, "contains": "800.531.5000" },
+    { "page": "helpArticle", "slug": "payment-assistance", "contains": "Promise to Pay" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "60 days" }
+  ]
+}

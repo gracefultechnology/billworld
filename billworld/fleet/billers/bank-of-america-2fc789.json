@@ -1,0 +1,344 @@
+{
+  "id": "bank-of-america-2fc789",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Bank of America",
+  "category": "banks",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public bankofamerica.com pages only (no sign-in). The mock bill is a Bank of America auto loan. Online payments go through Online Banking (Bill Pay one-time or recurring, from checking or money market; customers without a deposit account may set up electronic payments from another bank), so methods are bank only. Automatic payments are set up in Bill Pay, on the paper form in the welcome package, or by phone; a confirmation letter with the start date arrives within 3-4 weeks and customers must keep paying until then (not modelled). Enrolling twice can cause double drafts. Phone payments: automated 800-215-6195, 24/7; agent-assisted phone payments carry a fee whose amount is not published (not modelled). Mail: PO Box 17237, Wilmington, DE 19886-7237. Up to 18 months of auto loan statements online; paperless path Profile & Settings > Paperless settings. Sign-in field is labelled Online ID; a 6-digit one-time code by text or email is requested on unrecognized devices. No pay-without-sign-in option found for auto loans (inferred).",
+  "officialDomains": [
+    "bankofamerica.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/",
+      "title": "Auto Loan FAQs from Bank of America",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.bankofamerica.com/customer-service/contact-us/auto-loans/",
+      "title": "Bank of America Auto Loan Customer Service & Contact Numbers",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://info.bankofamerica.com/en/digital-banking",
+      "title": "Online and Mobile Banking Features and Digital Services",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Bank of America",
+    "shortName": "Bank of America",
+    "primary": "#012169",
+    "accent": "#c41230",
+    "monogram": "BA"
+  },
+  "labels": {
+    "payBill": "Pay bills",
+    "autopay": "Automatic/Recurring payments",
+    "paperless": "Paperless settings",
+    "profile": "Profile & Settings",
+    "username": "Online ID",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Enroll",
+    "statements": "Statements & Documents"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Auto Loan FAQs",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help & Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay bills",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic/Recurring payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements & Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless settings",
+        "page": "paperless"
+      },
+      {
+        "label": "Profile & Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "evidence": "inferred",
+    "source": "https://info.bankofamerica.com/en/digital-banking"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/",
+      "note": "After you enroll, a letter confirming the first draft date arrives in 3-4 weeks; keep paying until then."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://info.bankofamerica.com/en/digital-banking"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://info.bankofamerica.com/en/digital-banking"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/customer-service/contact-us/auto-loans/",
+      "phone": "800-215-6195"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/",
+      "note": "There is no pay-without-logging-in option for auto loans. Log in to Online Banking, or call 800-215-6195 to pay by phone.",
+      "channel": "phone",
+      "phone": "800-215-6195"
+    }
+  },
+  "billing": {
+    "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your auto loan",
+      "paragraphs": [
+        "In Online Banking, use Bill Pay to schedule a one-time or recurring payment from your Bank of America checking or money market account. No Bank of America deposit account? You may still be able to set up electronic payments from an account at another bank.",
+        "You can also pay through the automated phone system at 800-215-6195, available 24/7 (a same-day phone payment cannot be cancelled), by mail to Bank of America, N.A., PO Box 17237, Wilmington, DE 19886-7237 with your loan account number, or at any financial center.",
+        "Agent-assisted phone payments are available at the same number for a fee."
+      ],
+      "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Setting up automatic payments",
+      "paragraphs": [
+        "Log in to Online Banking and choose the Automatic/Recurring payments link in the Bill Pay menu, then follow the steps. You can also return the form from your welcome package with a voided check by mail or fax, or call 800-215-6195.",
+        "Within 3 to 4 weeks you will get a letter confirming when drafts begin. Keep making your payments until it arrives so you are not charged late fees.",
+        "Use only one enrollment method. Signing up both on paper and online can cause more than one payment to be taken each month."
+      ],
+      "steps": [
+        "Log in to Online Banking.",
+        "Open Bill Pay and choose Automatic/Recurring payments.",
+        "Pick your auto loan and the pay-from account.",
+        "Confirm the schedule."
+      ],
+      "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/"
+    },
+    {
+      "slug": "statements-auto-loan",
+      "title": "Auto loan statements",
+      "topic": "billing",
+      "paragraphs": [
+        "Paper statements are mailed about 20 days before your due date; customers on automatic payments do not receive mailed statements.",
+        "You can sign up for eBills in Bill Pay and view and save up to 18 months of statements online while the loan is open."
+      ],
+      "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless",
+      "paragraphs": [
+        "In Online Banking go to Profile & Settings and then Paperless settings; in the mobile app open the Menu and choose Go Paperless. Changes usually apply from your next statement cycle.",
+        "Bank of America keeps copies of statements for up to 7 years."
+      ],
+      "source": "https://info.bankofamerica.com/en/digital-banking"
+    },
+    {
+      "slug": "payoff",
+      "title": "Paying off your auto loan",
+      "topic": "billing",
+      "paragraphs": [
+        "Get a 10-day payoff quote in Online Banking under Manage your loan, by calling 800-215-6195 or at a financial center. You can pay it off through Bill Pay, by phone, by mail or in person.",
+        "After payoff, cancel any future Bill Pay payments. The lien release can take 10 to 12 business days, and the lien release, paid-in-full letter and paper title (if any) usually arrive 7 to 10 business days after that."
+      ],
+      "source": "https://www.bankofamerica.com/auto-loans/auto-loan-faq/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact auto loan customer service",
+      "paragraphs": [
+        "Existing auto loan customers can call 800-215-6195, Monday to Friday 8 a.m. to 8 p.m. ET. New customers can call 844-892-6002. Relay calls (711) are accepted and interpreters are free."
+      ],
+      "source": "https://www.bankofamerica.com/customer-service/contact-us/auto-loans/",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-confirmation-wait",
+        "intent": "Using Bank of America's auto loan FAQs, find how long it takes for the letter confirming the automatic payment start date to arrive after enrolling. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3-4 weeks",
+              "3 to 4 weeks",
+              "three to four weeks"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3-4 weeks",
+            "3 to 4 weeks",
+            "three to four weeks"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The confirmation letter arrives within 3-4 weeks."
+          }
+        ]
+      },
+      {
+        "slug": "statement-months-online",
+        "intent": "Using Bank of America's auto loan FAQs, find how many months of auto loan statements can be viewed online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "18"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "18"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 18 months of statements can be viewed online."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "Online ID"
+    },
+    {
+      "page": "home",
+      "contains": "Enroll"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay bills",
+        "Paperless settings"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "3 to 4 weeks"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "statements-auto-loan",
+      "contains": "18 months"
+    }
+  ]
+}

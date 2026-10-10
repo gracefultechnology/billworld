@@ -1,0 +1,386 @@
+{
+  "id": "adt-health-adt-medical-alert-30187e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "ADT Health / ADT Medical Alert",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from ADT's public Medical Alert help articles (Service Billing FAQs, What You Can Do in MyADT, How to Set Up EasyPay in MyADT, How to Create a MyADT Account) and the public MyADT landing page only; never signed in or started Express Pay. ADT Medical Alert customers use MyADT (Login, Register, Pay a Bill as a Guest); sign-in is email first, then password (the same MyADT sign-in as the ADT dossier). In MyADT a Medical Alert customer can pay (Billing > Make A Payment, pay in full or another amount; reference number emailed; up to three business days to post), manage cards and bank accounts (Billing > Update Payment Method), enroll in EasyPay (free; bank or credit/debit card; starts next billing cycle; Manage EasyPay to change the account), view Billing History (24 months) and Billing Statements (12 months), update emergency contacts and download the agreement (Account > Account Documents). Express Pay (guest) asks for the ADT account number and first five digits of the billing ZIP and then a one-time verification code (the code step is not modelled). Phone number and monitoring address changes, and account creation on request, go through (800) 568-1216. Service is month-to-month with a Premium Protection Plan included; the Price-Lock Guarantee is no longer offered. No Medical Alert article documents cancelling or turning off EasyPay online, and ADT's general billing help says EasyPay unenrollment is by phone, so autopay_cancel and cancel_service are modelled as phone-only (inferred). Paperless: EasyPay removes the need for paper statements. No payment plans are documented (phone-only, inferred); plan prices are not published on these pages.",
+  "officialDomains": [
+    "adt.com",
+    "myadt.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.adt.com/article/Medical-Alert-Service-Billing-FAQs",
+      "title": "ADT Medical Alert- Service Billing FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://help.adt.com/article/adt-medical-alert-what-you-can-do-in-myadt",
+      "title": "ADT Medical Alert- What You Can Do in MyADT",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.adt.com/article/adt-medical-alert-how-to-set-up-easypay",
+      "title": "ADT Medical Alert- How to Set Up EasyPay in MyADT",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://help.adt.com/article/adt-medical-alert-how-to-create-a-myadt-account",
+      "title": "ADT Medical Alert- How to Create a MyADT Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://myadt.com/",
+      "title": "MyADT | Sign in to manage your account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "ADT Medical Alert",
+    "shortName": "ADT Health",
+    "primary": "#0061aa",
+    "accent": "#00305e",
+    "monogram": "A"
+  },
+  "labels": {
+    "signIn": "Login",
+    "register": "Register",
+    "guestPay": "Pay a Bill as a Guest",
+    "username": "Email address",
+    "viewBill": "Billing",
+    "payBill": "Make A Payment",
+    "autopay": "EasyPay",
+    "wallet": "Update Payment Method",
+    "history": "Billing History",
+    "statements": "Billing Statements",
+    "profile": "Account",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Pay a Bill as a Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Medical Alert Billing FAQs",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make A Payment",
+        "page": "pay"
+      },
+      {
+        "label": "EasyPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Update Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "Billing History",
+        "page": "history"
+      },
+      {
+        "label": "Billing Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Account",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://myadt.com/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.adt.com/article/adt-medical-alert-what-you-can-do-in-myadt"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.adt.com/article/adt-medical-alert-what-you-can-do-in-myadt"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.adt.com/article/adt-medical-alert-what-you-can-do-in-myadt"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.adt.com/article/adt-medical-alert-how-to-set-up-easypay"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://help.adt.com/article/adt-medical-alert-how-to-set-up-easypay",
+      "note": "EasyPay can be changed in MyADT but not turned off online. Call ADT Medical Alert at (800) 568-1216 to unenroll.",
+      "channel": "phone",
+      "phone": "8005681216"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://help.adt.com/article/Medical-Alert-Service-Billing-FAQs",
+      "note": "Medical alert service cannot be cancelled in MyADT. Call ADT Medical Alert at (800) 568-1216 (month-to-month agreement, no long-term contract).",
+      "channel": "phone",
+      "phone": "8005681216"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "note": "Payment plans are not offered online. Call (800) 568-1216 for payment assistance.",
+      "channel": "phone",
+      "phone": "8005681216"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.adt.com/article/adt-medical-alert-what-you-can-do-in-myadt",
+      "phone": "8005681216"
+    }
+  },
+  "billing": {
+    "source": "https://help.adt.com/article/adt-medical-alert-what-you-can-do-in-myadt",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your ADT Medical Alert bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Signed in: log in to MyADT, pick the account from the account list if you have more than one, open Billing on the left and select Make A Payment. Choose the payment type and amount (in full or another amount) and select Next. A reference number is emailed to your primary address, and online payments can take up to three business days to post.",
+        "Without signing in: use Pay a Bill as a Guest (Express Pay). Enter your ADT account number and the first five digits of your billing ZIP code from your bill, verify with a one-time code, then enter your payment details and confirm.",
+        "If recent payments look wrong or payment buttons are missing, call (800) 568-1216 for payment help."
+      ],
+      "steps": [
+        "Log in to MyADT.",
+        "Open Billing.",
+        "Select Make A Payment.",
+        "Choose the payment type and amount, then select Next and confirm."
+      ],
+      "source": "https://help.adt.com/article/adt-medical-alert-what-you-can-do-in-myadt"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up EasyPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "EasyPay is ADT's automatic payment service and is free for ADT Medical Alert customers. It can use a bank account or a credit or debit card, and automatic payments begin with your next billing cycle.",
+        "After you enroll you can change the account it uses at any time from Manage EasyPay on the Billing screen, and you can still make one-time Express Pay payments."
+      ],
+      "steps": [
+        "Log in to MyADT.",
+        "From the dashboard select Sign up for EasyPay, or open the Billing tab and select Sign Up Now on the EasyPay tile.",
+        "Select Enroll in EasyPay.",
+        "Add your bank account or card and select Next.",
+        "Agree to the Terms and Conditions and select Confirm."
+      ],
+      "source": "https://help.adt.com/article/adt-medical-alert-how-to-set-up-easypay"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "Billing history and statements",
+      "topic": "billing",
+      "paragraphs": [
+        "In MyADT open the Billing tab and scroll down to Billing History and Billing Statements.",
+        "Billing History lists charges and the date and method of each payment for the last 24 months. Billing Statements lets you view and download statements from the last 12 months.",
+        "Your agreement can be downloaded from Account, then Account Documents."
+      ],
+      "source": "https://help.adt.com/article/adt-medical-alert-what-you-can-do-in-myadt"
+    },
+    {
+      "slug": "faq",
+      "title": "Medical Alert service billing FAQs",
+      "topic": "faq",
+      "paragraphs": [
+        "ADT medical alert service is a month-to-month agreement with no long-term contract.",
+        "ADT no longer offers a Price-Lock Guarantee. Rate changes are described as rare and are announced in advance.",
+        "A Premium Protection Plan comes with the monthly monitoring at no extra cost and may replace the system or accessories free or for a small deductible; shipping may be charged.",
+        "MyADT cannot change your phone number or monitoring address. For those, for a MyADT account set up on request, or for billing questions, call ADT Medical Alert at (800) 568-1216."
+      ],
+      "source": "https://help.adt.com/article/Medical-Alert-Service-Billing-FAQs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "statement-history-months",
+        "intent": "Using the ADT Health (ADT Medical Alert) help pages, find out how many months of past billing statements you can view and download in MyADT. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12",
+              "twelve"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12",
+            "twelve"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Billing Statements covers the last 12 months (Billing History covers 24 months)."
+          }
+        ]
+      },
+      {
+        "slug": "change-monitoring-address",
+        "intent": "You moved and need to update the monitoring address on your ADT Health medical alert account. Using the help pages, find out how to do this and report the phone number if it can't be done online. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8005681216"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8005681216"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "limitation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The monitoring address cannot be changed in MyADT; call (800) 568-1216."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email address"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "(800) 568-1216"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "(800) 568-1216"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "view-your-bill",
+      "contains": "24 months"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": "Price-Lock Guarantee"
+    }
+  ]
+}

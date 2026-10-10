@@ -49,6 +49,7 @@ export function loginTitle(vm) {
   return /log ?in|log ?on|sign ?in|sign ?on|account|portal|pay|member|patient|customer|authentication/i.test(t) ? t : '';
 }
 export function heroText(vm) {
+  if (vm.tier === 'dedicated') return '';
   const h = okTitle(profileOf(vm)?.website?.heroHeading, 110);
   if (!h || h.length < 12 || h.split(' ').length < 2 || /cookie|javascript|browser/i.test(h)) return '';
   const lower = h.toLowerCase();

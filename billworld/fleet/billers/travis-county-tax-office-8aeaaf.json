@@ -1,0 +1,356 @@
+{
+  "id": "travis-county-tax-office-8aeaaf",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Travis County Tax Office",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public tax-office.traviscountytx.gov pages only. Six payment methods: mail, online, EFT, drop box, phone, in person. Online checkout through Government Payments (EZNETPAY): eCheck $1; cards $3 under $100 or 3% over $100 (the flat $3 is not expressible; 3% used). Phone: (888) 286-9242, cards only. Mail: PO Box 149328, Austin, TX 78714-9328, USPS postmark by Jan 31. Prepayments for next year's taxes can be made online anytime (escrow), and monthly automatic ACH withdrawals on the 5th require a signed contract requested by email, so online AutoPay is unsupported (documented). Four equal installments for 65+/disabled/disabled-veteran homesteads and disaster-damaged homesteads (enroll online, email or mail by Jan 31; late installments 6% penalty + 1%/month). eBill via go-paperless, stays until ownership ends or you cancel. Sign-in is synthetic. Review 2026-10-09: labels now match the home page ('Search for Your Account', 'Go paperless', 'Contact us').",
+  "officialDomains": [
+    "traviscountytx.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods",
+      "title": "Payment Methods - Travis County Tax Office",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/online",
+      "title": "Pay Online",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/phone",
+      "title": "Pay by Phone",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/mail",
+      "title": "Pay by Mail",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://tax-office.traviscountytx.gov/properties/taxes/current/prepayments",
+      "title": "Prepayments",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://tax-office.traviscountytx.gov/properties/taxes/current/installments",
+      "title": "Installments",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://tax-office.traviscountytx.gov/go-paperless",
+      "title": "Go Paperless",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Travis County Tax Office",
+    "shortName": "Travis County Tax Office",
+    "primary": "#174a3c",
+    "accent": "#6e2f6b",
+    "monogram": "TX"
+  },
+  "labels": {
+    "guestPay": "Search for Your Account",
+    "payBill": "Pay Property Taxes",
+    "paperless": "Go paperless",
+    "arrangement": "Payment Plans",
+    "help": "Frequently Asked Questions",
+    "contact": "Contact us",
+    "plan": "Prepayments"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Search for Your Account",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Methods",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Prepayments",
+        "helpSlug": "prepayments"
+      },
+      {
+        "label": "Installments",
+        "helpSlug": "installments"
+      },
+      {
+        "label": "Frequently Asked Questions",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Property Taxes",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Go paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/online",
+      "note": "Search for the account, add it to the cart and check out by eCheck ($1) or card."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://tax-office.traviscountytx.gov/properties/taxes/current/prepayments",
+      "note": "Monthly automatic withdrawals toward next year's taxes (on the 5th) need a signed contract requested from a tax specialist by email; they cannot be set up online.",
+      "channel": "mail"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax-office.traviscountytx.gov/go-paperless",
+      "note": "Sign up for eBill; it stays on until you no longer own the property or ask to cancel."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/phone",
+      "note": "Cards only through Government Payments; $3 under $100 or 3% over $100.",
+      "phone": "8882869242"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/mail",
+      "note": "Mail to PO Box 149328, Austin, TX 78714-9328, USPS postmark by Jan. 31."
+    }
+  },
+  "billing": {
+    "source": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/online",
+    "fees": {
+      "bankCents": 100,
+      "cardPercent": 3,
+      "evidence": "documented_official",
+      "source": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/online"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment methods",
+      "topic": "payments",
+      "source": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/online",
+      "paragraphs": [
+        "You can pay by mail, online, electronic funds transfer, drop box, phone or in person.",
+        "Online, search for your property, add it to the cart and check out through Government Payments (EZNETPAY). An eCheck from a U.S. bank account costs $1. Visa, MasterCard, American Express and Discover cards cost $3 for balances under $100 or 3% for balances over $100. Online payments finished by 11:59 p.m. Central on January 31 are on time; your bank may limit or decline large internet payments."
+      ]
+    },
+    {
+      "slug": "pay-by-phone-mail",
+      "title": "Paying by phone or mail",
+      "topic": "payments",
+      "source": "https://tax-office.traviscountytx.gov/properties/taxes/payment-methods/mail",
+      "paragraphs": [
+        "By phone, call Government Payments at (888) 286-9242 and pay by credit or debit card; the same $3 or 3% fee applies, and calls completed before midnight on January 31 are on time.",
+        "By mail, send payment to Travis County Tax Office, PO Box 149328, Austin, TX 78714-9328. It is on time if the U.S. Postal Service postmarks it by 11:59 p.m. on January 31; a postage-meter imprint does not count, so ask for a postmark at a post office counter."
+      ]
+    },
+    {
+      "slug": "prepayments",
+      "title": "Prepaying next year's taxes",
+      "topic": "autopay",
+      "source": "https://tax-office.traviscountytx.gov/properties/taxes/current/prepayments",
+      "paragraphs": [
+        "You can prepay next year's taxes. Prepayments are held in escrow and applied to your bill before statements are mailed; prior-year taxes must be paid first.",
+        "Online prepayments need no enrollment: search for the property, add it to the cart, enter an escrow amount and check out. Monthly automatic withdrawals from a checking or savings account happen on the 5th of each month, but they require a signed contract with your bank details; email a tax specialist for the contract and a monthly estimate."
+      ]
+    },
+    {
+      "slug": "installments",
+      "title": "Installment payments",
+      "topic": "assistance",
+      "source": "https://tax-office.traviscountytx.gov/properties/taxes/current/installments",
+      "paragraphs": [
+        "Homeowners who are 65 or older, disabled, disabled veterans or unmarried surviving spouses of disabled veterans can pay homestead taxes in four equal installments with no penalty or interest. Owners whose homestead was damaged in a declared disaster can do the same.",
+        "Enroll by January 31 online (open your account and choose the Four Payment Installment Agreement under Payment Plans), or by email or mail with a signed Letter of Intent and the first quarter payment. A late installment adds a 6% penalty plus 1% interest per month."
+      ]
+    },
+    {
+      "slug": "ebill",
+      "title": "Go paperless with eBill",
+      "topic": "paperless",
+      "source": "https://tax-office.traviscountytx.gov/go-paperless",
+      "paragraphs": [
+        "Sign up for eBill from the Go Paperless page. Enrollment stays on until you no longer own the property or you contact the office to cancel. Receipts are not mailed automatically; contact the office for a paper receipt or a receipt for a partial payment."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "echeck-fee",
+        "intent": "Using the Travis County Tax Office's website help pages, find the fee for paying property taxes online by eCheck. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An online eCheck costs $1; cards cost $3 under $100 or 3% over $100."
+          }
+        ]
+      },
+      {
+        "slug": "prepayment-draft-day",
+        "intent": "Using the Travis County Tax Office's website help pages, find the day of the month when automatic prepayment withdrawals are taken from a bank account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5th",
+              "fifth"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5th",
+            "fifth"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Automatic prepayment withdrawals are taken on the 5th of each month, after signing a contract."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Prepayments",
+        "Installments"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "Go paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "EZNETPAY",
+        "3%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "prepayments",
+      "contains": "5th"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "installments",
+      "contains": "Four Payment Installment Agreement"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "Prepayments"
+    }
+  ]
+}

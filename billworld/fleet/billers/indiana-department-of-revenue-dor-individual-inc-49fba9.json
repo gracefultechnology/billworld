@@ -1,0 +1,320 @@
+{
+  "id": "indiana-department-of-revenue-dor-individual-inc-49fba9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Indiana Department of Revenue (DOR) - individual income tax",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public in.gov/dor pages only. INTIME is DOR's e-services portal: payments with or without logging in (bill payments by Letter ID, non-bill payments for returns, extensions and estimates), bank payment free, card payment with a fee (amount not published on the pages read, so no card fee is set). Submissions (payments) can be checked without login using email + confirmation number and a pending payment can be deleted. Payment plans require an INTIME logon and a balance over $100: $101-$1,000 up to 12 months, $1,001-$5,000 up to 24, $5,001+ up to 36. No recurring AutoPay is documented; marked unsupported (inferred) like the other state agencies. Returned payments carry a $35 penalty (individual FAQ). Sign-in by username inferred; 'New to INTIME? Sign up' link.",
+  "officialDomains": [
+    "in.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.in.gov/dor/i-need-to/make-a-payment/",
+      "title": "DOR: Payments & Billing",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.in.gov/dor/i-need-to/make-a-payment/payment-plans/",
+      "title": "DOR: Payment Plans",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.in.gov/dor/resources/online-services/intime/",
+      "title": "DOR: INTIME",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.in.gov/dor/i-am-a/individual/individual-faq",
+      "title": "Individual Income Tax FAQ | Indiana Department of Revenue",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Indiana Department of Revenue",
+    "shortName": "Indiana DOR",
+    "primary": "#244a7a",
+    "accent": "#7a4a00",
+    "monogram": "IN"
+  },
+  "labels": {
+    "payBill": "Make a payment",
+    "guestPay": "Make a payment without logging in",
+    "dashboard": "INTIME",
+    "register": "New to INTIME? Sign up",
+    "history": "Submissions",
+    "contact": "Messages",
+    "arrangement": "Payment Plans",
+    "signIn": "Log in",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a payment without logging in",
+        "page": "guest"
+      },
+      {
+        "label": "Payments & Billing",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "INTIME",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Submissions",
+        "page": "history"
+      },
+      {
+        "label": "Payment Plans",
+        "page": "arrangement"
+      },
+      {
+        "label": "Messages",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://www.in.gov/dor/resources/online-services/intime/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/",
+      "note": "Pay in INTIME without logging in: bill payments with your Letter ID, or return, extension and estimated payments."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/payment-plans/"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/payment-plans/"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/",
+      "note": "INTIME has no recurring automatic payments for an income tax balance. Make each payment yourself, or set up a payment plan in INTIME if you qualify.",
+      "channel": "none"
+    }
+  },
+  "billing": {
+    "source": "https://www.in.gov/dor/i-need-to/make-a-payment/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payments and billing",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay in INTIME by bank payment (ACH/e-check, no fee) or by Discover, MasterCard or Visa debit or credit card (fee). Without logging in, open Make a payment in the Payments panel and choose Bill payments (with the Letter ID from your bill) or Non-bill payments (returns, extensions, estimates). When logged in, select Make a payment next to your account details.",
+        "Have your bill or voucher with its Letter ID and your SSN or taxpayer ID ready; a payment without the Letter ID may not apply correctly. You get a confirmation number right away.",
+        "By mail, make checks payable to the Indiana Department of Revenue and send them to P.O. Box 595, Indianapolis, IN 46206-0595 with your SSN and Letter ID. District offices also accept cash (exact change), checks, money orders and cards.",
+        "If a check or electronic payment is returned unpaid, DOR adds a $35 penalty for each returned payment on top of the amount due."
+      ],
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "Individuals can set up a payment plan in INTIME once the return is processed if they owe more than $100; an INTIME logon is required. Maximum length by amount owed: $100 or less, full payment required; $101 to $1,000, up to 12 months; $1,001 to $5,000, up to 24 months; $5,001 and above, up to 36 months.",
+        "To add a new bill to an existing plan, contact customer service or visit a district office. Not following the plan's conditions can cancel it."
+      ],
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/payment-plans/"
+    },
+    {
+      "slug": "check-payment-status",
+      "title": "Check or cancel a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Without logging in, check a submission with your email address and INTIME confirmation number. To cancel a pending payment, select Delete and confirm; its status changes from submitted to deleted.",
+        "When logged in, open the All Actions tab and then Submissions: unprocessed items are under Pending, and past payments under Processed."
+      ],
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/"
+    },
+    {
+      "slug": "estimated-tax",
+      "title": "Estimated tax payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Estimated tax installments are due April 15, June 15, September 15 and January 15 of the following year; if a date falls on a weekend or holiday, pay by the next business day. Pay in INTIME with or without logging in, using the Letter ID from your estimated payment voucher if you have one."
+      ],
+      "source": "https://www.in.gov/dor/i-need-to/make-a-payment/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "plan-length-3000",
+        "intent": "Using the Indiana DOR website's help pages, find the longest payment plan allowed for an individual who owes $3,000. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24 months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24 months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "For $1,001 to $5,000 owed, the plan can run up to 24 months."
+          }
+        ]
+      },
+      {
+        "slug": "mail-address-po-box",
+        "intent": "Using the Indiana DOR website's help pages, find the P.O. Box to mail a check payment to. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "P.O. Box 595",
+              "PO Box 595",
+              "Box 595"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "P.O. Box 595",
+            "PO Box 595",
+            "Box 595"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "pay_by_mail"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mail checks to Indiana Department of Revenue, P.O. Box 595, Indianapolis, IN 46206-0595."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payments & Billing",
+        "Payment Plans"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Submissions",
+        "Messages"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "24 months",
+        "$5,001"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "check-payment-status",
+      "contains": "confirmation number"
+    }
+  ]
+}

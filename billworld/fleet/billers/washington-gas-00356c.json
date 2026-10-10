@@ -1,0 +1,372 @@
+{
+  "id": "washington-gas-00356c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Washington Gas",
+  "category": "gas",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public washingtongas.com pages and the public one-time payment page of the customer portal (not submitted). Card payments cost $2.75 for Maryland and DC residential customers and nothing in Virginia ($9.95 non-residential; $1,000 per residential card payment) - modelled as cardCents 275. Electronic checks are free. The one-time payment verifies the account number plus the primary phone number (phone is not an engine guest field, so only accountNumber is set) and accepts bank or card. The eBill Automated Payment Plan (EBAP) drafts a checking account on a selected payment date; the Payment Plans page says the draft is on the due date, so days is due_date; suspending a draft needs a call at least three business days before the due date (autopay_cancel online is inferred). Installment Plans (up to 12 months, 24 with energy assistance) can be set up online. Start/stop needs advance notice (2-3 business days) and can be requested in the customer portal. Sign-in identifier and MFA not documented. Integrated 2026-10-09: labels.autopay set to \"eBill Automated Payment Plan\" now that the template uses the label as a noun (\"Turn off eBill Automated Payment Plan\").",
+  "officialDomains": [
+    "washingtongas.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.washingtongas.com/billing-and-payment/payments/payment-options",
+      "title": "Payment Options",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.washingtongas.com/billing-and-payment/billing/ebill",
+      "title": "eBill",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.washingtongas.com/get-assistance/faqs",
+      "title": "Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.washingtongas.com/billing-and-payment/payments/payment-plans",
+      "title": "Payment Plans",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://my.washingtongas.com/portal/One-TimePayment.aspx",
+      "title": "One-Time Payment",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.washingtongas.com/services/current-customers/available-services/start-and-stop-service",
+      "title": "Start And Stop Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "Washington Gas",
+    "primary": "#005596",
+    "accent": "#00385f",
+    "monogram": "WG"
+  },
+  "labels": {
+    "dashboard": "Customer Portal",
+    "payBill": "Pay My Bill",
+    "guestPay": "One-Time Payment",
+    "paperless": "eBill",
+    "arrangement": "Installment Plan",
+    "cancel": "Start and Stop Service",
+    "contact": "Contact Us",
+    "autopay": "eBill Automated Payment Plan"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "One-Time Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Customer Portal",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Billing History",
+        "page": "statements"
+      },
+      {
+        "label": "eBill Automated Payment Plan",
+        "page": "autopay"
+      },
+      {
+        "label": "eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Installment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Start and Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "observed_public",
+    "source": "https://my.washingtongas.com/portal/One-TimePayment.aspx"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://my.washingtongas.com/portal/One-TimePayment.aspx"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.washingtongas.com/billing-and-payment/billing/ebill"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.washingtongas.com/billing-and-payment/billing/ebill"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.washingtongas.com/billing-and-payment/payments/payment-plans",
+      "note": "Installment Plans of up to 12 months (24 with energy assistance) can be set up online; longer ones through a Customer Advocate."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.washingtongas.com/billing-and-payment/payments/payment-plans"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.washingtongas.com/services/current-customers/available-services/start-and-stop-service"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.washingtongas.com/billing-and-payment/payments/payment-options",
+      "phone": "844-927-4427"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.washingtongas.com/billing-and-payment/payments/payment-options"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "note": "To suspend an automated payment, call 844-WASHGAS at least three business days before the bill is due; online un-enrollment in the Customer Portal is assumed.",
+      "phone": "844-927-4427"
+    }
+  },
+  "billing": {
+    "source": "https://www.washingtongas.com/billing-and-payment/payments/payment-options",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 275,
+      "evidence": "documented_official",
+      "source": "https://www.washingtongas.com/billing-and-payment/payments/payment-options"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "mode": "append",
+      "topic": "payments",
+      "paragraphs": [
+        "Electronic check payments are free. Debit and credit card payments cost $2.75 for residential customers in Maryland and DC ($9.95 for non-residential) and carry no fee in Virginia; residential card payments are limited to $1,000 each.",
+        "You can pay in the Customer Portal or the My Washington Gas app, by phone at 844-WASHGAS (844-927-4427), in cash at participating stores with the barcode on your bill, by mail to P.O. Box 37747, Philadelphia, PA 19101-5047, or at a walk-in payment center.",
+        "The One-Time Payment page asks for your account number and primary phone number before you choose bank account or card."
+      ],
+      "source": "https://www.washingtongas.com/billing-and-payment/payments/payment-options"
+    },
+    {
+      "slug": "autopay",
+      "title": "eBill Automated Payment Plan (EBAP)",
+      "topic": "autopay",
+      "paragraphs": [
+        "EBAP takes your bill from your checking account automatically (the Payment Plans page says on the due date). Enroll through the Customer Portal or by calling 844-WASHGAS (844-927-4427).",
+        "To suspend an automated payment, call at least three business days before the bill is due, and then make another payment arrangement for that bill."
+      ],
+      "source": "https://www.washingtongas.com/billing-and-payment/payments/payment-plans"
+    },
+    {
+      "slug": "paperless",
+      "title": "eBill",
+      "mode": "append",
+      "topic": "billing",
+      "paragraphs": [
+        "Enroll in eBill through the Customer Portal to view and pay your bill online. Paper bills can continue for up to two months after you enroll, and eBill ends automatically when the gas account becomes inactive."
+      ],
+      "source": "https://www.washingtongas.com/billing-and-payment/billing/ebill"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "An Installment Plan spreads a bill you cannot pay over up to 12 months, or 24 months if you receive energy assistance. Enroll online, in the app, or by phone at 844-WASHGAS (option 2); for longer plans talk to a Customer Advocate. Late or missed payments can end the plan and make the full balance due.",
+        "The Budget Plan spreads winter heating costs over 12 months using your usage history. LIHEAP and the Washington Area Fuel Fund help customers who have fallen behind."
+      ],
+      "source": "https://www.washingtongas.com/billing-and-payment/payments/payment-plans"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start and stop service",
+      "topic": "account",
+      "paragraphs": [
+        "Request a stop through the Customer Portal, the app or 844-WASHGAS, giving at least two to three business days notice (weekends and holidays excluded). Access to the meter may be needed for a final reading, and until a stop is requested you remain responsible for charges."
+      ],
+      "source": "https://www.washingtongas.com/services/current-customers/available-services/start-and-stop-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "dc-md-card-fee",
+        "intent": "Using the Washington Gas website's help pages, find the card convenience fee for a residential customer in Maryland or DC. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.75"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.75"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Residential customers in Maryland and DC pay $2.75 per card payment."
+          }
+        ]
+      },
+      {
+        "slug": "installment-max-months",
+        "intent": "Using the Washington Gas help pages, find the longest Installment Plan available to a customer who receives energy assistance. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 24 months."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Installment Plan",
+        "eBill"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "eBill Automated Payment Plan"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$2.75",
+        "Virginia"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "24 months"
+    }
+  ]
+}

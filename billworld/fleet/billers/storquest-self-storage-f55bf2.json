@@ -1,0 +1,269 @@
+{
+  "id": "storquest-self-storage-f55bf2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "StorQuest Self Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public StorQuest FAQ and My Account page (no sign-in). My Account sends you to a per-location Pay Online link (state list); the sign-in form itself is not on storquest.com, so auth keeps the family default. Payments: online any time, in person or by mail. Automatic monthly payments use a credit card and are set up only through the local StorQuest manager (autopay unsupported online). Rent is due on the move-in anniversary; late fees vary by state per the lease (not modelled). Move-out: at least seven days' written notice to the local facility; rent is not prorated or refunded. Fees: a nominal admin fee at rental, plus a lock and storage insurance. Guest support: (800) 506-0167, also chat/email.",
+  "officialDomains": [
+    "storquest.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.storquest.com/faqs",
+      "title": "FAQs | Answers to Your Self-Storage Questions | StorQuest",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.storquest.com/my-account",
+      "title": "My account | StorQuest",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "shortName": "StorQuest",
+    "primary": "#00558c",
+    "accent": "#1f2937",
+    "monogram": "SQ"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Pay Online",
+    "help": "FAQs",
+    "cancel": "Move Out"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Online",
+        "page": "login"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Online",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storquest.com/faqs"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storquest.com/faqs"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.storquest.com/faqs",
+      "channel": "in_person",
+      "phone": "800-506-0167",
+      "note": "Automatic monthly payments are charged to a credit card and are set up through your local StorQuest manager."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.storquest.com/faqs",
+      "channel": "in_person",
+      "phone": "800-506-0167",
+      "note": "Automatic payments are managed by your local StorQuest manager; contact the facility or guest support at (800) 506-0167."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.storquest.com/faqs",
+      "channel": "in_person",
+      "phone": "800-506-0167",
+      "note": "Give your local StorQuest facility written notice at least seven days before you move out. Rent is not prorated or refunded."
+    }
+  },
+  "billing": {
+    "source": "https://www.storquest.com/faqs"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your storage bill",
+      "topic": "payments",
+      "source": "https://www.storquest.com/faqs",
+      "paragraphs": [
+        "You can pay your StorQuest bill online at any time, in person at your facility, or by mail. From My Account, pick your state and location and choose Pay Online.",
+        "Rent is due on the same day each month, based on your move-in date."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic monthly payments",
+      "topic": "autopay",
+      "source": "https://www.storquest.com/faqs",
+      "paragraphs": [
+        "StorQuest can charge your rent to a credit card automatically each month. Autopay is set up through your local StorQuest manager rather than online, so ask the manager at your facility to enroll you."
+      ]
+    },
+    {
+      "slug": "late-fees",
+      "title": "Missed payments",
+      "topic": "billing",
+      "source": "https://www.storquest.com/faqs",
+      "paragraphs": [
+        "Missing a payment may add a late fee. Late fees vary by state, and your lease has the exact amounts."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://www.storquest.com/faqs",
+      "paragraphs": [
+        "Give your local StorQuest facility written notice at least seven days before you move out. On move-out day, make sure the unit is empty and remove your lock.",
+        "StorQuest does not prorate or refund rent, so empty the unit by your move-in anniversary to avoid being charged for another month."
+      ]
+    },
+    {
+      "slug": "fees",
+      "title": "Fees when you rent",
+      "topic": "billing",
+      "source": "https://www.storquest.com/faqs",
+      "paragraphs": [
+        "When you rent you pay a small administration fee, and you need your own lock and storage insurance. Leases are month-to-month with no minimum stay."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "move-out-notice",
+        "intent": "Using StorQuest's FAQ, find how many days of written notice StorQuest asks for before you move out. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "seven",
+              "7"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "seven",
+            "7"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least seven days' written notice."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-who",
+        "intent": "Using StorQuest's FAQ, find who sets up automatic monthly payments for a StorQuest unit. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "manager"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "manager"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your local StorQuest manager sets up autopay with a credit card."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Online"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "manager"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "seven days",
+        "prorate"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "800-506-0167"
+    }
+  ]
+}

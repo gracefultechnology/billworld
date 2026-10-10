@@ -1,0 +1,159 @@
+{
+  "id": "wellcare-centene-medicare-advantage-and-wellcare-4e8205",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Wellcare (Centene) Medicare Advantage and Wellcare PDP",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public Wellcare pages only (no sign-in, no guest payment lookup). The 'Payment Options' link on wellcare.com redirects to the Wellcare make-a-payment page (wellcareca.com), which is the source for payments. Premiums (and any Late Enrollment Penalty) are billed in advance and due on the 20th. Options: Social Security / RRB withholding (up to 90 days to start), one-time payments in the member portal, the guest payment site (Fiserv BillMatrix; payer needs the Member ID and premium amount) or Member Services, Auto Pay (checking, savings, credit or debit card, drafted on or around the 20th, covers the current premium plus up to one month past due, Fiserv confirmation emails), EFT (checking or savings, drafted 15th-20th, current month only), check or money order by mail (10-14 business days), phone, and cash at CheckFreePay walk-in locations (merchant fee set by the location). Wellcare charges no fees for website, portal or Member Services payments. Grace period: the make-a-payment page says 60 days while the Failure to Pay page walks through a three-month example (Jan 1 - Mar 31); help text follows the more detailed Failure to Pay page. No public steps for stopping Auto Pay; bank bill-pay must be cancelled at the bank. Sign-in identifier (username) is inferred; the member portal could not be read.",
+  "officialDomains": ["wellcare.com", "wellcareca.com", "billmatrix.com"],
+  "sources": [
+    { "url": "https://www.wellcareca.com/make-a-payment.html", "title": "Make a Payment | Wellcare", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.wellcare.com/en/pdp-member/failure-to-pay", "title": "Failure to Pay | Wellcare", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.wellcare.com/en/Medicare", "title": "Wellcare Medicare", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "Wellcare", "shortName": "Wellcare", "primary": "#0b4a8b", "accent": "#5b2a86", "monogram": "W" },
+  "labels": {
+    "signIn": "Member Portal",
+    "register": "Register",
+    "guestPay": "Guest Payment",
+    "autopay": "Auto Pay",
+    "payBill": "Make a Payment",
+    "dashboard": "Member Portal",
+    "help": "Help",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      { "label": "Member Portal", "page": "login" },
+      { "label": "Guest Payment", "page": "guest" },
+      { "label": "Payment Options", "helpSlug": "pay-your-bill" },
+      { "label": "Failure to Pay", "helpSlug": "failure-to-pay" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Member Portal", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Auto Pay", "page": "autopay" },
+      { "label": "Payment History", "page": "history" },
+      { "label": "Contact Us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": ["accountNumber", "amountDue"],
+    "evidence": "documented_official",
+    "source": "https://www.wellcareca.com/make-a-payment.html"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.wellcareca.com/make-a-payment.html" },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.wellcareca.com/make-a-payment.html", "note": "Anyone can pay for you on the guest payment site with your Member ID and premium amount." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.wellcareca.com/make-a-payment.html", "note": "Auto Pay drafts on or around the 20th from checking, savings or a card." },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.wellcare.com/en/pdp-member/failure-to-pay", "note": "Review your payment history in the secure member portal." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.wellcareca.com/make-a-payment.html", "phone": "8885505252", "note": "PDP members call 1-888-550-5252 (TTY 711), automated or live agent." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.wellcareca.com/make-a-payment.html", "note": "Mail to Wellcare, P.O. Box 75510, Chicago, IL 60675-5510 with your Member ID; allow 10-14 business days." }
+  },
+  "billing": {
+    "source": "https://www.wellcareca.com/make-a-payment.html",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "documented_official", "source": "https://www.wellcareca.com/make-a-payment.html" },
+    "autopay": { "policies": ["full"], "days": [20], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Premium payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Wellcare prescription drug plan (PDP) premiums, plus any Late Enrollment Penalty, are billed in advance and due on the 20th of each coverage month. Medicare Advantage members should check their own plan materials for billing dates.",
+        "One-time payments can be made in the Member Portal, on the guest payment site, or through Member Services using the automated phone system or a live agent. On the guest payment site, a family member or friend can pay for you with your Member ID and the premium amount.",
+        "You can also mail a check or money order to Wellcare, P.O. Box 75510, Chicago, IL 60675-5510. Write your Member ID on it and, unless you use Social Security deduction or automatic payments, include the stub from your billing statement. Regular mail takes 10 to 14 business days.",
+        "To pay in cash, find a walk-in location through CheckFreePay. The location may charge its own merchant fee; Wellcare charges no fee for payments made on its website, in the Member Portal or through Member Services."
+      ],
+      "source": "https://www.wellcareca.com/make-a-payment.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay and EFT",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay drafts your premium from a checking or savings account, or a credit or debit card, on or around the 20th of the month. It covers the current premium plus up to one month of past-due premium, adjusts automatically when your premium or penalty changes, and skips the draft when nothing is owed. Fiserv emails you when a payment processes or fails; if it fails, update your payment information online or contact the plan.",
+        "EFT drafts only the current month's premium from a checking or savings account between the 15th and the 20th. It does not pay past-due amounts, so make a separate one-time payment to catch up.",
+        "If you sign up after the 15th and are at risk of losing coverage for non-payment, also make a one-time payment."
+      ],
+      "steps": ["Sign in to the Member Portal.", "Open Auto Pay.", "Choose a bank account or card.", "Confirm the monthly draft."],
+      "source": "https://www.wellcareca.com/make-a-payment.html"
+    },
+    {
+      "slug": "social-security-deduction",
+      "title": "Premium withhold from Social Security or RRB",
+      "topic": "payments",
+      "paragraphs": [
+        "Your premium can be withheld from your Social Security or Railroad Retirement benefit. It can take up to 90 days for withholding to begin, and any balance owed before it starts must be paid another way.",
+        "If you recently changed plans or had a $0 premium last benefit year, you must sign up again. Enroll through the Member Portal or Member Services."
+      ],
+      "source": "https://www.wellcareca.com/make-a-payment.html"
+    },
+    {
+      "slug": "failure-to-pay",
+      "title": "Failure to pay and your grace period",
+      "topic": "payments",
+      "paragraphs": [
+        "If you miss a premium payment you have a grace period to catch up. In Wellcare's example, January's premium is due January 20 and must be received by March 31. You will get reminders by letter, email, text, automated calls and in the member portal.",
+        "If the full amount is not paid by the end of the grace period, you are disenrolled from your Wellcare drug plan. You then need to join another Medicare drug plan within 62 days or Medicare may add a lifetime late enrollment penalty. Not receiving a notice because your contact details are out of date does not stop disenrollment.",
+        "Do not rely on regular mail when less than two weeks of the grace period remain. If a payment is missing from your history, call Member Services at 1-888-550-5252 (TTY 711) with the payment method, date, amount and check images."
+      ],
+      "source": "https://www.wellcare.com/en/pdp-member/failure-to-pay"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Changing automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "You set up or update Auto Pay and EFT in the Member Portal or by calling Member Services; Wellcare does not publish separate steps for stopping them. If you pay through your own bank's online bill pay, Wellcare cannot change or cancel those payments: cancel them with your bank, especially if you leave the plan or no longer owe a premium."
+      ],
+      "source": "https://www.wellcareca.com/make-a-payment.html"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Member Services",
+      "topic": "contact",
+      "paragraphs": [
+        "Drug plan members can call Member Services at 1-888-550-5252 (TTY 711). From October 1 to March 31 lines are open 8 a.m. to 8 p.m. seven days a week; from April 1 to September 30, 8 a.m. to 8 p.m. Monday to Friday. Medicare Advantage members use the Contact Us page for their plan's number."
+      ],
+      "source": "https://www.wellcareca.com/make-a-payment.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "mailed-payment-time",
+        "intent": "Using Wellcare's help pages, find how many business days a premium payment sent by regular mail takes. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["10", "14"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["10", "14"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Regular mail takes 10 to 14 business days." }]
+      },
+      {
+        "slug": "disenrollment-new-plan-window",
+        "intent": "Using Wellcare's Failure to Pay help, find how many days a member disenrolled for unpaid premiums has to join another Medicare drug plan to avoid a late enrollment penalty. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["62"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["62"] },
+        "tags": ["help", "information"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Within 62 days." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": "Guest Payment" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Auto Pay", "Make a Payment"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "P.O. Box 75510" },
+    { "page": "helpArticle", "slug": "failure-to-pay", "contains": "62 days" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "Fiserv" }
+  ]
+}

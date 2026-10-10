@@ -1,0 +1,351 @@
+{
+  "id": "paraco-gas-4560d2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Paraco Gas",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public paracogas.com pages (Account Benefits, FAQ, Monthly Budget, Support) and the public myaccount.paracogas.com sign-in page only; no sign-in, no sign-up, no forms submitted. Sign-in is Email Address + Password with a Sign in button, 'Need a new user profile? Sign up here.' and 'Forgot your password? Reset password here.' No MFA is described. Automatic payment has two forms: Direct Pay (checking, drafted within 10 business days of the service) and Easy Pay (credit card, charged on the statement date); enrollment in My Account or with a paper authorization form, credit-approved customers only. Cancel steps are not published (autopay_cancel inferred). Text to Pay/Order via 1-855-589-4427 is announced on the sign-in page. Smart Pay budget: 10 months, $29.99 + tax admin fee, 250+ gallons/yr and 2+ deliveries, COD/will-call excluded, sign-up by calling 800-447-3835 or a lead form. No late, card or returned-payment fees are published, so none are modelled; closing an account is not documented publicly, so cancel_service is left at the family default. Independent review 2026-10-09: FAQ, Monthly Budget and Account Benefits pages re-checked (Direct Pay 10 business days, Easy Pay on statement date, credit approval, no charge, P.O. Box 845736, $75/$150 delivery, Smart Pay 10 months/$29.99/250 gal/2 deliveries, 800-447-3835). Removed the claim that customer service sets up third-party notification (the page does not say how) and the senior/Hometown Hero sentence from the budget article (those discounts are on Account Benefits, not the budget page).",
+  "officialDomains": [
+    "paracogas.com"
+  ],
+  "sources": [
+    {
+      "url": "https://myaccount.paracogas.com/",
+      "title": "Paraco Gas | My Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://paracogas.com/account-benefits/",
+      "title": "Account Benefits | Paraco Gas",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://paracogas.com/faq",
+      "title": "FAQ | Paraco Gas",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://paracogas.com/monthly-budget/",
+      "title": "Budget Billing Plan | Paraco Gas",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://paracogas.com/support/",
+      "title": "Support | Paraco Gas",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Paraco",
+    "primary": "#0049ad",
+    "accent": "#b3261e",
+    "monogram": "PG"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "username": "Email Address",
+    "forgot": "Reset password here",
+    "register": "Sign up here",
+    "dashboard": "My Account",
+    "autopay": "Automatic Payment",
+    "payBill": "Online Payments",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Sign up here",
+        "page": "register"
+      },
+      {
+        "label": "Easy Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Budget Billing Plan",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Online Payments",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payment",
+        "page": "autopay"
+      },
+      {
+        "label": "Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://myaccount.paracogas.com/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://paracogas.com/faq",
+      "note": "Direct Pay drafts checking; Easy Pay charges a credit card. Credit-approved customers only."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://paracogas.com/faq",
+      "note": "Paraco does not publish how to stop automatic payment; managing it in My Account is assumed."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://paracogas.com/faq",
+      "note": "Invoices can be received by email or viewed in My Account."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://paracogas.com/account-benefits/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://myaccount.paracogas.com/",
+      "phone": "855-589-4427",
+      "note": "Text to Pay: text 1-855-589-4427 to pay."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://paracogas.com/monthly-budget/"
+    }
+  },
+  "billing": {
+    "source": "https://paracogas.com/faq",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay Paraco Gas",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to My Account to pay online. Paraco takes checks, cash and Visa, MasterCard, Discover and American Express.",
+        "You can also text 1-855-589-4427 to pay (Text to Pay) or to order a delivery, or mail a check to Paraco Gas Corporation, P.O. Box 845736, Boston, MA 02284-5736. Your account number is on the delivery ticket, in the top-right remittance area of a statement or invoice, or at the top left of a service work order."
+      ],
+      "source": "https://paracogas.com/faq"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payment: Direct Pay and Easy Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Direct Pay takes your balance from your checking account within 10 business days of the service. Easy Pay charges your balance to your credit card on the statement date.",
+        "Enroll through My Account or ask customer service for an authorization form. There is no charge, but you must be a credit-approved customer."
+      ],
+      "source": "https://paracogas.com/faq"
+    },
+    {
+      "slug": "paperless",
+      "title": "Invoices and statements",
+      "topic": "billing",
+      "paragraphs": [
+        "Paraco invoices are available by email or in My Account. If you have an outstanding balance you also get a monthly statement."
+      ],
+      "source": "https://paracogas.com/faq"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Smart Pay budget billing",
+      "topic": "assistance",
+      "paragraphs": [
+        "Smart Pay spreads your yearly propane cost over 10 monthly payments based on your average use. To qualify you must use more than 250 gallons a year with at least two deliveries; COD and will-call customers are not eligible. There is a $29.99 administration fee plus tax.",
+        "Call 800-447-3835 to sign up. For general account questions call customer service at 800-647-4427."
+      ],
+      "source": "https://paracogas.com/monthly-budget/"
+    },
+    {
+      "slug": "third-party-notice",
+      "title": "Third Party Notification Service",
+      "topic": "account",
+      "paragraphs": [
+        "You can name a relative, friend or agency to be told if your heating service is about to be shut off for an unpaid bill. Contact customer service at 800-647-4427 for details."
+      ],
+      "source": "https://paracogas.com/account-benefits/"
+    },
+    {
+      "slug": "fees-rates",
+      "title": "Delivery and equipment charges",
+      "topic": "billing",
+      "paragraphs": [
+        "Next-day delivery costs $75 plus tax and same-day delivery $150 plus tax. A separate Safety and Maintenance (ECC) charge covers compliance costs such as insurance and permits, and a restocking fee covers disconnecting and restocking equipment."
+      ],
+      "source": "https://paracogas.com/faq"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "smartpay-admin-fee",
+        "intent": "Using the Paraco Gas website's help pages, find the administration fee for the Smart Pay budget billing plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "29.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "29.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Smart Pay has a $29.99 administration fee plus tax."
+          }
+        ]
+      },
+      {
+        "slug": "text-to-pay-number",
+        "intent": "Using the Paraco Gas website, find the number you text to pay your bill by text message. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "589-4427"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "589-4427"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "observed_public",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Text 1-855-589-4427 to pay."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email Address",
+        "Reset password here"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My Account",
+        "Automatic Payment"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Direct Pay",
+        "Easy Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": [
+        "$29.99",
+        "250 gallons"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "P.O. Box 845736"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "id": "sunrun-inc-incl-former-vivint-solar-customers-d47372",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Sunrun (incl. former Vivint Solar customers)",
+  "category": "other",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Sunrun's public Autopay page, Solar FAQ (Sunrun billing, agreement and moving sections), Contact Us page and the public mySunrun sign-in page only (never signed in). mySunrun sign-in is passwordless: the customer chooses Sign In with Mobile Number or Sign In with Email Address and Sunrun sends a verification code. The fleet engine always asks for a password, so this is modelled as email sign-in followed by an email or text verification code (mfa email_or_sms); the passwordless part is a gap. Bills are fixed monthly subscription payments (estimated annual production times the solar rate, divided by 12) with a yearly escalator set in the agreement, shown in the Sunrun app, in mySunrun (Billing) or by email; paper bills cost extra if you opt in (fee not published, not modelled). Bills are due monthly on the system activation (PTO) date; the due date can be changed once a year in the app. Autopay (checking, savings or credit card) is processed on the last business day before the due date and gives a discount set by the agreement (amount not published, not modelled). Missed bills incur a late fee (amount not published). The agreement cannot be cancelled online or changed after installation; moving customers transfer it to the home buyer through the Service Transfer portal (soft credit check for the buyer, completes at closing), and lease customers choose buyout, annual renewal or removal at term end. How to stop Autopay is not described on the public pages, so autopay_cancel keeps the family default (inferred). Former Vivint Solar customers are Sunrun customers. Customer support (855) 478-6786.",
+  "officialDomains": ["sunrun.com"],
+  "sources": [
+    { "url": "https://www.sunrun.com/autopay", "title": "Sunrun Autopay", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.sunrun.com/go-solar-center/solar-faq", "title": "Battery Backup & Solar FAQs | Sunrun", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.sunrun.com/contact-us", "title": "Contact Sunrun", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://my.sunrun.com/login", "title": "mySunrun", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "Sunrun", "shortName": "Sunrun", "primary": "#1b2440", "accent": "#0b5ca8", "monogram": "S" },
+  "labels": {
+    "viewBill": "Billing",
+    "payBill": "Make a Payment",
+    "autopay": "Enroll in Autopay",
+    "statements": "Contracts & Docs",
+    "dashboard": "My Home",
+    "profile": "Account",
+    "signIn": "Sign In with Email Address",
+    "forgot": "Trouble logging in?",
+    "username": "Email Address",
+    "cancel": "Service Transfer",
+    "help": "FAQs",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "public": [
+      { "label": "Account Login", "page": "login" },
+      { "label": "Sunrun billing FAQs", "helpSlug": "faq" },
+      { "label": "FAQs", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Home", "page": "dashboard" },
+      { "label": "Billing", "page": "bill" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Set up autopay", "page": "autopay" },
+      { "label": "Contracts & Docs", "page": "statements" },
+      { "label": "Account", "page": "profile" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "email_or_sms",
+    "socialProviders": [],
+    "evidence": "observed_public",
+    "source": "https://my.sunrun.com/login"
+  },
+  "capabilities": {
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.sunrun.com/autopay" },
+    "autopay_cancel": { "support": "supported", "evidence": "inferred", "source": "https://www.sunrun.com/autopay" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.sunrun.com/go-solar-center/solar-faq" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.sunrun.com/go-solar-center/solar-faq", "note": "A Sunrun agreement cannot be cancelled online. If you move, transfer it to the home buyer through Sunrun's Service Transfer portal, or call Customer Support at (855) 478-6786.", "channel": "phone", "phone": "8554786786" }
+  },
+  "billing": {
+    "source": "https://www.sunrun.com/autopay",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "days": "due_date", "leadDays": 1, "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Enroll in Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Autopay pays your Sunrun bill from a checking account, savings account or credit card. Sunrun processes it on the last business day before your due date.",
+        "Enrolling helps you avoid late fees and makes you eligible for a discount on your monthly bill; the exact discount is in your customer agreement.",
+        "In the Sunrun app: tap Account, then Billing, then Enroll in Autopay, choose Checking account, Savings account or Credit card, tap Continue, enter the details and tap Done."
+      ],
+      "steps": ["Log in to mySunrun.", "Select Billing in the left navigation.", "Select Set up autopay.", "Choose Checking account, Savings account or Credit card and enter your payment details.", "Select Enroll in Autopay."],
+      "source": "https://www.sunrun.com/autopay"
+    },
+    {
+      "slug": "faq",
+      "title": "How Sunrun billing works",
+      "topic": "faq",
+      "paragraphs": [
+        "On a Sunrun subscription plan you get a fixed monthly bill, viewable in the Sunrun app, in your account at Sunrun.com, or by email. Paper bills are available for an extra fee if you opt in.",
+        "The monthly amount is your estimated yearly production in kWh times your solar rate, divided by 12, so it stays the same even though production changes with the seasons. Your rate rises each year by the escalator in your agreement.",
+        "The bill shows your fixed solar charge, any battery charge, this year's rate per kWh and the month's production. Power your home uses beyond what the system makes is still billed by your utility."
+      ],
+      "source": "https://www.sunrun.com/go-solar-center/solar-faq"
+    },
+    {
+      "slug": "due-date",
+      "title": "When your bill is due",
+      "topic": "billing",
+      "paragraphs": [
+        "Your bill is due every month on your system activation date. For example, if the system was activated on the 14th, the bill is due on the 14th of each month. The billing cycle and due date are printed on your invoice.",
+        "If that date does not suit you, you can change it once a year in the Sunrun app.",
+        "Your first bill comes about 30 days after activation (Permission to Operate) and is due about two months after activation. Flex customers are billed on the first of each month, and prepaid agreements are due on installation day.",
+        "Missing a bill means a late fee, which Autopay helps you avoid."
+      ],
+      "source": "https://www.sunrun.com/go-solar-center/solar-faq"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving: transfer your Sunrun agreement",
+      "topic": "account",
+      "paragraphs": [
+        "Your agreement type is fixed once the panels are installed, and the agreement is not cancelled when you move. Most sellers transfer it to the buyer of the home.",
+        "For a monthly lease or PPA: submit a transfer request in Sunrun's Transfer Portal, sign the Transfer of Sunrun Solar Service Agreement with the new homeowner, and the buyer completes a soft credit application that does not affect their credit score. The transfer completes after escrow closes and both parties get a confirmation email.",
+        "Start the request as soon as the home is under contract. Questions: Customer Support at (855) 478-6786."
+      ],
+      "steps": ["Submit a transfer request in the Sunrun Transfer Portal.", "Sign the transfer form with the new homeowner.", "The buyer completes a soft credit application.", "The transfer completes when escrow closes."],
+      "source": "https://www.sunrun.com/go-solar-center/solar-faq"
+    },
+    {
+      "slug": "end-of-lease",
+      "title": "End of your lease and buying the system",
+      "topic": "account",
+      "paragraphs": [
+        "When a Sunrun lease ends you can buy the system at its fair market value at that time, renew the lease year by year, or have Sunrun remove the system. None is chosen automatically and none carries a penalty; Sunrun contacts you as the end date approaches.",
+        "After installation, buying the equipment is only possible at the specific times set in your agreement. Your agreement and system design are in the app or online under Account > Contracts & Docs."
+      ],
+      "source": "https://www.sunrun.com/go-solar-center/solar-faq"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Sunrun customer support",
+      "topic": "contact",
+      "paragraphs": [
+        "Existing customers can answer most questions about agreements, billing, payments and monitoring in the Sunrun app, or call Customer Support at (855) 478-6786.",
+        "Customer Support hours (Pacific): Monday to Friday 5am to 7pm, Saturday 6am to 4pm, closed Sunday. The (833) 324-5886 number is for new solar quotes."
+      ],
+      "source": "https://www.sunrun.com/contact-us"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-draft-day",
+        "intent": "You just enrolled your Sunrun account in Autopay. Using Sunrun's help pages, find out on which day Sunrun processes the automatic payment relative to your due date. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["last business day"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["last business day"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Sunrun processes Autopay on the last business day before your due date." }]
+      },
+      {
+        "slug": "lease-end-options",
+        "intent": "Your Sunrun solar lease is ending soon. Using Sunrun's help pages, list the options you have when the lease ends. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["fair market value"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["fair market value"] },
+        "tags": ["help", "information", "account"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Buy the system at its fair market value, renew the lease annually, or have Sunrun remove the system." }]
+      },
+      {
+        "slug": "moving-transfer-phone",
+        "intent": "You are selling your house and want to end your Sunrun agreement. Using the Sunrun site, find out whether you can cancel it online and which phone number to call about moving. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8554786786"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8554786786"] },
+        "tags": ["help", "information", "cancel"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "It cannot be cancelled online; the agreement is transferred to the buyer through the Service Transfer portal. Call (855) 478-6786." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": ["Email Address"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Billing", "Contracts & Docs"] },
+    { "page": "cancel", "signedIn": true, "contains": "(855) 478-6786" },
+    { "page": "helpArticle", "slug": "due-date", "contains": "activation date" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "last business day before your due date" },
+    { "page": "helpArticle", "slug": "faq", "contains": "divided by 12" }
+  ]
+}

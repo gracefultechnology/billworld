@@ -1,0 +1,124 @@
+{
+  "id": "metlife-dental-takealong-dental-individual-group-9554d4",
+  "version": 1,
+  "status": "dedicated",
+  "name": "MetLife Dental (TakeAlong Dental / individual & group dental)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-09",
+  "notes": "Modelled as MetLife TakeAlong Dental, MetLife's direct-billed individual dental product (most MetLife dental is employer coverage billed through the employer). Researched from public metlife.com and metlifetakealongdental.com pages only (no sign-in). Monthly premiums are paid by credit card or bank draft chosen at enrollment, other frequencies are available, and premiums can be paid online by credit card; the 'Account Log In' link goes to MetLife's identity site. Monthly rates are set by residential ZIP code. Policies can end for non-payment or if MetLife stops renewing individual dental policies in a state (60 days' written notice). How to cancel an insurance policy is not published (the FAQ only covers the separate discount program, cancelled by phone or fax), so cancel_service is unsupported online with evidence 'inferred' and the TakeAlong Dental phone. Fees, grace period, sign-in identifier and MFA are not published and keep family defaults; one-time online payments by bank account are not documented (online payment is documented for credit cards) but bank stays enabled because generated tasks need it. Signed-in nav labels are generic (synthetic). No public nav: see the insurance-template cross-owner request.",
+  "officialDomains": ["metlife.com", "metlifetakealongdental.com"],
+  "sources": [
+    { "url": "https://www.metlife.com/insurance/dental-insurance/takealongdental/", "title": "TakeAlong Dental Insurance | MetLife", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.metlifetakealongdental.com/Home/Faq", "title": "MetLife TakeAlong Dental FAQ", "fetchedAt": "2026-10-09", "kind": "help" }
+  ],
+  "brand": { "displayName": "MetLife TakeAlong Dental", "shortName": "MetLife", "primary": "#0061a0", "accent": "#00507f", "monogram": "M" },
+  "labels": {
+    "signIn": "Account Log In",
+    "help": "FAQ"
+  },
+  "nav": {
+    "account": [
+      { "label": "My Account", "page": "dashboard" },
+      { "label": "Pay premium", "page": "pay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Automatic payments", "page": "autopay" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.metlife.com/insurance/dental-insurance/takealongdental/", "note": "Premiums can be paid online by credit card." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.metlifetakealongdental.com/Home/Faq", "note": "Monthly premiums are charged to the credit card or bank account chosen at enrollment." },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.metlifetakealongdental.com/Home/Faq",
+      "note": "Coverage changes are handled by TakeAlong Dental Customer Service: call 1-844-263-8336 (1-844-2METDEN), Monday to Friday 8am to 8pm ET.",
+      "channel": "phone",
+      "phone": "8442638336"
+    }
+  },
+  "billing": {
+    "source": "https://www.metlifetakealongdental.com/Home/Faq",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "paying-premiums",
+      "title": "How you pay for TakeAlong Dental",
+      "topic": "billing",
+      "paragraphs": [
+        "TakeAlong Dental premiums are monthly and are paid by credit card or by bank draft. You pick the method when you enroll, and other payment frequencies are available.",
+        "You can also pay your premium online with a credit card."
+      ],
+      "source": "https://www.metlife.com/insurance/dental-insurance/takealongdental/"
+    },
+    {
+      "slug": "monthly-rate",
+      "title": "How your monthly rate is set",
+      "topic": "billing",
+      "paragraphs": [
+        "Your monthly rate is based on the ZIP code where you live."
+      ],
+      "source": "https://www.metlifetakealongdental.com/Home/Faq"
+    },
+    {
+      "slug": "add-dependents",
+      "title": "Adding dependents after you enroll",
+      "topic": "account",
+      "paragraphs": [
+        "You can add dependents later. Send MetLife written notice in advance along with any premium that is due. Your rate changes from the date the new dependent's coverage starts, which depends on when MetLife receives the notice and the payment."
+      ],
+      "source": "https://www.metlifetakealongdental.com/Home/Faq"
+    },
+    {
+      "slug": "when-coverage-ends",
+      "title": "When a TakeAlong Dental policy ends",
+      "topic": "account",
+      "paragraphs": [
+        "An individual dental policy can end if premiums are not paid, or if MetLife stops renewing individual dental policies where you live. MetLife gives 60 days' written notice before discontinuing a policy.",
+        "For questions about ending or changing coverage, call Customer Service at 1-844-263-8336."
+      ],
+      "source": "https://www.metlifetakealongdental.com/Home/Faq"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact TakeAlong Dental",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer Service: 1-844-2METDEN (1-844-263-8336), Monday to Friday 8am to 8pm Eastern. Claims questions are answered Monday to Friday 8am to 11pm Eastern.",
+        "You can track claims and change dentists on MetLife's online claims site or by calling Customer Service."
+      ],
+      "source": "https://www.metlifetakealongdental.com/Home/Faq"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "premium-rate-basis",
+        "intent": "Using the MetLife TakeAlong Dental help pages, find what your monthly dental premium rate is based on. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["ZIP"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["ZIP"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "The monthly rate is based on your residential ZIP code." }]
+      },
+      {
+        "slug": "nonrenewal-notice",
+        "intent": "Using the MetLife TakeAlong Dental help pages, find how many days of written notice MetLife gives before it discontinues an individual dental policy. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["60"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["60"] },
+        "tags": ["help", "information", "account"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "MetLife gives 60 days' advance written notice." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": ["1-844-263-8336", "Account Log In"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Pay premium", "Automatic payments"] },
+    { "page": "helpArticle", "slug": "paying-premiums", "contains": "bank draft" },
+    { "page": "helpArticle", "slug": "monthly-rate", "contains": "ZIP code" },
+    { "page": "cancel", "signedIn": true, "contains": "1-844-2METDEN" }
+  ]
+}

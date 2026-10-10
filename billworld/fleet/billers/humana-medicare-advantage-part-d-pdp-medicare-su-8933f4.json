@@ -1,0 +1,149 @@
+{
+  "id": "humana-medicare-advantage-part-d-pdp-medicare-su-8933f4",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Humana (Medicare Advantage, Part D PDP, Medicare Supplement)",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public humana.com pages only (no sign-in, no Express pay lookup). Humana's 'Pay your premium' page offers: sign in to MyHumana for a one-time payment, automatic payments, managing payment methods and recent billing activity; 'Express pay' for a one-time payment with no MyHumana account; phone (Customer Care number on the back of the member ID card, also for autopay setup); mail (check or money order with the coupon, write the billing ID on it); and in person with cash, credit or debit at CVS or Dollar General, but only for individual and family members whose invoice carries a barcode, at no extra charge. The page does not say how to stop automatic payments or which methods Express pay accepts, so those stay at the family defaults. Reviewer (2026-10-09) read the public Express pay page (billing.humana.com/Paynow): members look up the account by Humana member ID and mailing ZIP code (billing ID / coupon book number, invoice number and employer group ID are alternatives), modelled as guest lookup accountNumber + zip. The rendered MyHumana sign-in page asks for 'Username' and password, with 'Create account' for new users and a 'Pay your premium' skip-sign-in link. No fees, late fees or grace periods are published on the pay page.",
+  "officialDomains": ["humana.com"],
+  "sources": [
+    { "url": "https://www.humana.com/member/pay-your-premium", "title": "Pay your premium | Humana", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.humana.com/medicare/medicare-resources/what-is-medicare-extra-help", "title": "What is Medicare Extra Help? | Humana", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://account.humana.com/", "title": "MyHumana sign in", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://billing.humana.com/Paynow", "title": "Express Pay Tool - Humana", "fetchedAt": "2026-10-09", "kind": "pay" }
+  ],
+  "brand": { "displayName": "Humana Medicare", "shortName": "Humana", "primary": "#2e6b1f", "accent": "#1f4f5c", "monogram": "H" },
+  "labels": {
+    "signIn": "Sign in to MyHumana",
+    "register": "Create account",
+    "username": "Username",
+    "dashboard": "MyHumana",
+    "guestPay": "Express pay",
+    "payBill": "Pay your premium",
+    "autopay": "Automatic payments",
+    "history": "Recent billing activity",
+    "wallet": "Payment information"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign in to MyHumana", "page": "login" },
+      { "label": "Express pay", "page": "guest" },
+      { "label": "Pay your premium", "helpSlug": "pay-your-bill" },
+      { "label": "Medicare Extra Help", "helpSlug": "extra-help" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "MyHumana", "page": "dashboard" },
+      { "label": "Pay your premium", "page": "pay" },
+      { "label": "Automatic payments", "page": "autopay" },
+      { "label": "Payment information", "page": "wallet" },
+      { "label": "Recent billing activity", "page": "history" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "observed_public",
+    "source": "https://account.humana.com/"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium" },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium", "note": "Express pay takes a one-time premium payment without a MyHumana account, using your member ID and mailing ZIP code." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium", "note": "Set up automatic payments in MyHumana or by calling Customer Care." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium", "note": "Call Customer Care at the number on the back of your Humana member ID card." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/member/pay-your-premium", "note": "Mail a check or money order with your payment coupon; write your billing ID on it." },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.humana.com/medicare/medicare-resources/what-is-medicare-extra-help", "note": "Medicare Extra Help lowers Part D costs; apply through Social Security." }
+  },
+  "billing": {
+    "source": "https://www.humana.com/member/pay-your-premium",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Humana premium",
+      "topic": "payments",
+      "paragraphs": [
+        "Online: sign in to MyHumana to make a one-time premium payment, set up automatic payments, manage or change your payment methods, and see your recent billing activity. If you do not have a MyHumana account, use Express pay to make a one-time payment.",
+        "By phone: call Customer Care at the number on the back of your Humana member ID card to make a payment or set up automatic payments.",
+        "By mail: send a check or money order together with your payment coupon. Medicare members use the return envelope provided and the billing address shown on the coupon. Write your billing ID on the payment; Medicare members find it on the coupon or billing letter."
+      ],
+      "source": "https://www.humana.com/member/pay-your-premium"
+    },
+    {
+      "slug": "pay-in-person",
+      "title": "Paying in person at CVS or Dollar General",
+      "topic": "payments",
+      "paragraphs": [
+        "Some individual and family plan members can pay in person. If your invoice has a barcode with in-store instructions, bring it to any CVS or Dollar General store and pay at the register with cash, credit or debit. There is no extra charge for paying this way.",
+        "Medicare members pay online, by phone or by mail instead; the in-store option applies only to invoices that carry the barcode."
+      ],
+      "source": "https://www.humana.com/member/pay-your-premium"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "You can set up automatic premium payments after signing in to MyHumana, or by calling Customer Care at the number on the back of your member ID card.",
+        "In MyHumana you can also update the payment information used for your premium."
+      ],
+      "steps": ["Sign in to MyHumana.", "Open Automatic payments.", "Choose the bank account or card to use.", "Review and confirm."],
+      "source": "https://www.humana.com/member/pay-your-premium"
+    },
+    {
+      "slug": "extra-help",
+      "title": "Medicare Extra Help",
+      "topic": "assistance",
+      "paragraphs": [
+        "Extra Help (the Part D Low-Income Subsidy) helps people with limited income and resources pay Part D premiums, deductibles and copays. You must live in the United States, be enrolled in or eligible for a Part D plan, and meet the income and resource limits.",
+        "For 2026 the limits are income up to $23,940 and resources up to $18,090 for a single person, or income up to $32,460 and resources up to $36,100 for a married couple living together. Limits are higher in Alaska and Hawaii.",
+        "You qualify automatically if you have full Medicaid, receive SSI, or your state pays your Part B premium. Otherwise apply through Social Security online, by phone or at a local office, and reapply whenever your income or resources change."
+      ],
+      "source": "https://www.humana.com/medicare/medicare-resources/what-is-medicare-extra-help"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Billing questions",
+      "topic": "contact",
+      "paragraphs": [
+        "For questions about your premium bill, call Customer Care at the number on the back of your Humana member ID card. Employer group premiums are paid through the separate employer e-billing page."
+      ],
+      "source": "https://www.humana.com/member/pay-your-premium"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "mail-payment-billing-id",
+        "intent": "You want to mail your Humana Medicare premium by check. Using Humana's help pages, find what number you should write on the check. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["billing ID"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["billing ID"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Write your billing ID (shown on the coupon or billing letter) on the check." }]
+      },
+      {
+        "slug": "extra-help-income-limit",
+        "intent": "Using Humana's Medicare help pages, find the 2026 yearly income limit for a single person to qualify for Medicare Extra Help. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["23,940", "23940"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["23,940", "23940"] },
+        "tags": ["help", "information", "assistance"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "For a single person the 2026 income limit is $23,940." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": "ZIP" },
+    { "page": "login", "contains": "Sign in to MyHumana" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Automatic payments", "Recent billing activity"] },
+    { "page": "helpArticle", "slug": "pay-in-person", "contains": "Dollar General" },
+    { "page": "helpArticle", "slug": "extra-help", "contains": "$23,940" }
+  ]
+}

@@ -1,0 +1,356 @@
+{
+  "id": "synchrony-bank-store-card-servicer-hub-find-any--2259e9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Synchrony Bank - store card servicer hub (find any Synchrony store card)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public synchrony.com pages only (no sign-in, no guest payment started). Synchrony serves many store brands; each card has its own sign-in page found through 'Find account'. Signed-in cardholders use a username and password and can make up to 12 payments and schedule future ones. 'Pay as guest' (from the card's sign-in page) allows one same-day payment per account and no future-dated payments; the guest lookup fields are not listed publicly, so the family defaults stay. Payments before 11:59 p.m. ET are credited that day; same-day payments can be changed until 5 p.m. ET (or 11:59 p.m. for ones made after 5). Autopay: 'Autopay-Off' link under 'Make Payment' > 'Enroll in autopay'; amount = statement balance, total minimum payment due, or other amount; deducted from a bank account on the due date; skipped when the balance is zero; changed via 'Manage autopay'. 'full' policy kept for the reference solver. Paperless: register, add a payment method, then enroll; email alert, PDF statements (account number hidden) under the Statements Quick Link. Online payment sources are bank accounts (card methods removed; inferred from the autopay page). Closing an account is not described on the public pages; cancel_service is left at the family default. General help line 1-866-419-4096. Re-verified 2026-10-09 against the autopay, pay-as-guest, paperless and contact pages.",
+  "officialDomains": [
+    "synchrony.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.synchrony.com/consumer-resources/autopay",
+      "title": "Synchrony Autopay: How to Set Up & FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.synchrony.com/consumer-resources/pay-as-guest",
+      "title": "Pay As Guest | Synchrony",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.synchrony.com/consumer-resources/paperless-statements",
+      "title": "Register for Paperless Statements | Synchrony",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.synchrony.com/help/faqs",
+      "title": "Synchrony FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.synchrony.com/help/contact-us",
+      "title": "Synchrony Customer Service: Contact Us",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Synchrony",
+    "primary": "#34383c",
+    "accent": "#6b4f00",
+    "monogram": "SY",
+    "displayName": "Synchrony"
+  },
+  "labels": {
+    "payBill": "Make Payment",
+    "autopay": "Autopay",
+    "guestPay": "Pay as guest",
+    "paperless": "Paperless Statements",
+    "statements": "Statements",
+    "signIn": "Sign In",
+    "register": "Register now",
+    "username": "Username",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Pay as guest",
+        "page": "guest"
+      },
+      {
+        "label": "Register now",
+        "page": "register"
+      },
+      {
+        "label": "Find account",
+        "helpSlug": "find-account"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payments",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless Statements",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Account Services",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.synchrony.com/consumer-resources/pay-as-guest"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.synchrony.com/consumer-resources/pay-as-guest",
+      "note": "Pay as guest makes one same-day payment per account; future-dated payments need a sign-in."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.synchrony.com/consumer-resources/autopay"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.synchrony.com/consumer-resources/autopay"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.synchrony.com/consumer-resources/pay-as-guest"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.synchrony.com/consumer-resources/paperless-statements"
+    }
+  },
+  "billing": {
+    "source": "https://www.synchrony.com/consumer-resources/autopay",
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "statement",
+        "minimum",
+        "fixed",
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Making a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to your card's account with your username and password to make up to 12 payments and schedule future payments.",
+        "Payments received before 11:59 p.m. ET are credited that day; later ones are credited the next day. A same-day payment scheduled online can be changed or cancelled until 5 p.m. ET that day (or until 11:59 p.m. ET if you made it after 5 p.m.). Pending or processed payments cannot be changed."
+      ],
+      "source": "https://www.synchrony.com/consumer-resources/pay-as-guest"
+    },
+    {
+      "slug": "guest-pay",
+      "title": "Pay as guest",
+      "topic": "payments",
+      "paragraphs": [
+        "From your card's sign-in page choose Pay as guest, select the payment amount and payment method, then review and authorize the payment.",
+        "As a guest you can make one same-day payment per Synchrony credit card account and cannot schedule future payments. To pay another account, go back to the sign-in page and start Pay as guest again."
+      ],
+      "steps": [
+        "Open your card's sign-in page.",
+        "Choose Pay as guest.",
+        "Select your payment amount.",
+        "Select your payment method.",
+        "Review and authorize your payment."
+      ],
+      "source": "https://www.synchrony.com/consumer-resources/pay-as-guest"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "On your account home page select the Autopay-Off link below the Make Payment button, then Enroll in autopay. Choose the statement balance, the total minimum payment due or another amount, choose the bank account, agree to the terms and Submit.",
+        "Autopay is taken from your bank account on the payment due date each month. It pauses while your balance is zero and starts again when a balance returns. You get a confirmation number on screen and by email.",
+        "To change the amount or the payment source later, sign in and choose Manage autopay."
+      ],
+      "source": "https://www.synchrony.com/consumer-resources/autopay"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "topic": "account",
+      "paragraphs": [
+        "Register your card online, add a payment method and enroll in paperless statements.",
+        "You get an email when a statement is ready; the statement itself is not emailed. Sign in and use the Statements Quick Link to view, print or download it as a PDF, which hides your account number."
+      ],
+      "source": "https://www.synchrony.com/consumer-resources/paperless-statements"
+    },
+    {
+      "slug": "find-account",
+      "title": "Find your account",
+      "topic": "account",
+      "paragraphs": [
+        "Synchrony services cards for many store brands, and each card has its own sign-in page. Use Find account to reach your card's sign-in page and its customer service number.",
+        "If you are not sure which department to call, use the general help line at 1-866-419-4096."
+      ],
+      "source": "https://www.synchrony.com/help/contact-us"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "guest-payment-limit",
+        "intent": "Using Synchrony's help pages, find how many same-day payments per account you can make with Pay as guest, and whether you can schedule a future payment that way. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "one same-day",
+              "1 same-day",
+              "one payment",
+              "1 payment",
+              "one same day",
+              "1 same day"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "one same-day",
+            "1 same-day",
+            "one payment",
+            "1 payment",
+            "one same day",
+            "1 same day"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "guest"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Only one same-day payment per account, and future payments cannot be scheduled as a guest."
+          }
+        ]
+      },
+      {
+        "slug": "general-help-line",
+        "intent": "Using Synchrony's help pages, find the general help phone number to call when you are not sure which department handles your card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8664194096"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8664194096"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-866-419-4096"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Autopay-Off",
+        "Manage autopay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "guest-pay",
+      "contains": "one same-day payment"
+    }
+  ]
+}

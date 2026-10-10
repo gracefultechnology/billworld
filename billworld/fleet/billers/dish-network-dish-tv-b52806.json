@@ -1,0 +1,343 @@
+{
+  "id": "dish-network-dish-tv-b52806",
+  "version": 1,
+  "status": "dedicated",
+  "name": "DISH Network (DISH TV)",
+  "category": "tv",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public support.dish.com articles and the public my.dish.com sign-in page only (no sign-in, no forms). MyDISH sign-in is a single page with Username and Password fields, Remember me, Having trouble signing in? and Create username. The sign-in page offers a quick pay without signing in using the account number and amount due (guestLookupFields accountNumber + amountDue). Online payment methods: credit/debit card, bank account (EFT), Apple Pay, Google Pay, PayPal and Bitcoin. AutoPay lives under My Preferences (Automatically pay my bill), pays on the bill due date, collects the current balance at enrollment, and changes or removals can take up to four days (a removal within four days of the due date may still be drafted). eBill under My Preferences (Sign Up / Receive Paper Bill). Payment Extension from the Bill section of Account Summary gives up to 7 more days once per billing period for a $15 fee. Published fees: late payment $15 ($10 in VA, ME and AZ), returned check/EFT $20, payment extension $15. Cancelling is by phone only: the Cancel My DISH Service page says to call 866-974-0769 (9am-11pm ET daily), with pause and lower-bill offers by phone, so cancel_service is unsupported online. Package prices are not on the support pages, so plans are left out.",
+  "officialDomains": [
+    "dish.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.dish.com/billing/ways-to-pay",
+      "title": "Ways to Pay Your Bill",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.dish.com/billing/ebill-autopay",
+      "title": "eBill & AutoPay",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://support.dish.com/billing/payment-extension",
+      "title": "Payment Extension",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://support.dish.com/billing/fees",
+      "title": "Fees",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://support.dish.com/cancel-my-service",
+      "title": "Cancel My DISH Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://my.dish.com/login",
+      "title": "Sign into your MyDISH Account | MyDISH",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "DISH",
+    "shortName": "DISH",
+    "primary": "#c8102e",
+    "accent": "#3d3d3d",
+    "monogram": "D"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "Username",
+    "register": "Create username",
+    "forgot": "Having trouble signing in?",
+    "guestPay": "Quickly pay your bill",
+    "dashboard": "Account Summary",
+    "payBill": "Pay My Bill",
+    "autopay": "AutoPay",
+    "paperless": "eBill",
+    "arrangement": "Payment Extension",
+    "profile": "My Preferences",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Quickly pay your bill",
+        "page": "guest"
+      },
+      {
+        "label": "Create username",
+        "page": "register"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Extension",
+        "page": "arrangement"
+      },
+      {
+        "label": "Upgrades",
+        "page": "plan"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "amountDue"
+    ],
+    "evidence": "observed_public",
+    "source": "https://my.dish.com/login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.dish.com/billing/ways-to-pay"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://my.dish.com/login"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.dish.com/billing/ebill-autopay",
+      "note": "Enrolling in AutoPay collects the current balance first; it then pays each bill on its due date."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.dish.com/billing/ebill-autopay",
+      "note": "Removing AutoPay can take up to four days; within four days of the due date the payment may still be drafted."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.dish.com/billing/ebill-autopay"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.dish.com/billing/payment-extension"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://support.dish.com/cancel-my-service",
+      "note": "DISH service is cancelled by phone: call 866-974-0769, 9am to 11pm ET, 7 days a week. Pausing service is also arranged by phone.",
+      "channel": "phone",
+      "phone": "8669740769"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.dish.com/billing/ways-to-pay",
+      "phone": "8665954587"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.dish.com/billing/ways-to-pay"
+    }
+  },
+  "billing": {
+    "source": "https://support.dish.com/billing/fees",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://support.dish.com/billing/fees"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeeCents": 1500
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to Pay Your Bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Through MyDISH on the web or in the app you can pay by credit or debit card, bank account (electronic funds transfer), Apple Pay, Google Pay, PayPal or Bitcoin. Go to Pay My Bill and sign in with your Username and Password, or use the quick pay option with just your account number and amount due.",
+        "You can also text PAY BILL to 46764, call 866-595-4587 for the automated system or a representative, or pay from the My Account app on a Hopper or Wally receiver.",
+        "Mailed payments can take up to 10 business days to post; the mailing address depends on your state and is printed on your bill. Cash payments are accepted at MoneyGram, Western Union and CheckFreePay locations, where processing fees may apply."
+      ],
+      "source": "https://support.dish.com/billing/ways-to-pay"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay pays your bill automatically from your chosen card or bank account on the bill due date. To add it, sign in, open My Preferences, select Automatically pay my bill under AutoPay, enter your card or bank details and click Submit. DISH collects the current balance when you enroll so the bill is paid on time.",
+        "In the MyDISH app, choose Billing, then Preferences, and use the AUTOPAY toggle.",
+        "Updates can take up to four days, so a change made within four days of the due date may still use the old payment information."
+      ],
+      "steps": [
+        "Sign in and open My Preferences.",
+        "Under AutoPay, select Automatically pay my bill.",
+        "Enter your card or bank account information.",
+        "Click Submit."
+      ],
+      "source": "https://support.dish.com/billing/ebill-autopay"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Remove AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in, open My Preferences, de-select Automatically pay my bill under AutoPay and click Submit. In the app, go to Billing, then Preferences, and switch the AUTOPAY toggle off.",
+        "Removal can take up to four days to take effect; if you remove AutoPay within four days of your due date, that payment may still be processed."
+      ],
+      "steps": [
+        "Sign in and open My Preferences.",
+        "Under AutoPay, de-select Automatically pay my bill.",
+        "Click Submit."
+      ],
+      "source": "https://support.dish.com/billing/ebill-autopay"
+    },
+    {
+      "slug": "paperless",
+      "title": "eBill",
+      "topic": "billing",
+      "paragraphs": [
+        "With eBill, DISH emails you each month instead of mailing a paper bill, and you can view and pay from the email. To sign up, sign in, open My Preferences, select Sign Up under eBill and click Submit & Enroll. To go back to paper, select Receive Paper Bill and submit. In the app, use the EBILL toggle under Billing, Preferences."
+      ],
+      "steps": [
+        "Sign in and open My Preferences.",
+        "Under eBill, select Sign Up.",
+        "Click Submit & Enroll."
+      ],
+      "source": "https://support.dish.com/billing/ebill-autopay"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Extension",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you cannot pay by the due date you may qualify for a payment extension of up to 7 more days without service interruption. Extensions can be used once per billing period and cost $15, and the full past-due balance must be paid by the end of the extension.",
+        "Once the bill is past due, sign in and select Payment Extension in the Bill section of the Account Summary page, choose a payment option and click Submit. If the message does not appear, you are not eligible or the bill is not yet past due."
+      ],
+      "source": "https://support.dish.com/billing/payment-extension"
+    },
+    {
+      "slug": "fees",
+      "title": "Billing fees",
+      "topic": "billing",
+      "paragraphs": [
+        "DISH charges a $15.00 late payment fee ($10.00 for accounts in Virginia, Maine and Arizona), $20.00 for a returned check or electronic funds transfer, and $15.00 for a payment extension. Amounts can differ depending on when your account or services started.",
+        "Ending service early during a commitment brings a prorated early termination fee, and unreturned equipment is billed at the published equipment prices."
+      ],
+      "source": "https://support.dish.com/billing/fees"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel my DISH service",
+      "topic": "account",
+      "paragraphs": [
+        "DISH does not cancel service online. Call 866-974-0769 between 9:00am and 11:00pm ET, seven days a week, or see your Residential Customer Agreement for cancellation terms.",
+        "Before cancelling you can pause your service and put the account on hold (866-974-1695), ask about lower-cost programming (866-974-3285) or move your service with the Move-in Deal (877-258-7599)."
+      ],
+      "source": "https://support.dish.com/cancel-my-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-fee-amount",
+        "intent": "Using DISH's support pages, find the standard late payment fee DISH charges. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["15"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["15"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "The standard late payment fee is $15.00 ($10.00 in VA, ME and AZ)." }
+        ]
+      },
+      {
+        "slug": "cancel-dish-phone",
+        "intent": "You want to cancel DISH TV. Find out how DISH handles cancellations and report the number to call. Do not change anything on the account.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "phone", "expected": ["8669740769"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "phone", "expected": ["8669740769"] },
+        "tags": ["help", "cancel", "limitation"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "Call DISH at 866-974-0769 to cancel." }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["Username", "Create username"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Pay My Bill", "eBill"] },
+    { "page": "cancel", "signedIn": true, "contains": "866-974-0769" },
+    { "page": "helpArticle", "slug": "fees", "contains": "$15.00" },
+    { "page": "helpArticle", "slug": "payment-assistance", "contains": "7 more days" }
+  ]
+}

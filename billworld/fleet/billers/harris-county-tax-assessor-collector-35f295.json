@@ -1,0 +1,346 @@
+{
+  "id": "harris-county-tax-assessor-collector-35f295",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Harris County Tax Assessor-Collector",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public hctax.net and myharriscountytax.com pages only. Online payments run through MyHarrisCountyTax (Sign In or Sign Up, or Continue as Guest); search by account number, address or owner, then Pay Bill. Fees: card 2.40% ($1.00 minimum, minimum not expressible), e-Check $0.50; $30 charge for dishonored payments. Phone payments by card only at 713-274-CARD. Taxes are due by the last business day of January. The installment agreement is for delinquent accounts (12 months standard, 24 or 36 on request, 1% monthly interest, no added penalty on homesteads) and is requested online by account number or by email, which matches the template arrangement form. eBill is enrolled with the E-Code from the bill and stops mailed bills. No automatic draft program is offered; the installment page is not an automatic bank draft. Sign-in identifier and MFA are not shown on public pages: email/none is synthetic.",
+  "officialDomains": [
+    "hctax.net",
+    "myharriscountytax.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.hctax.net/Property/PropertyTax",
+      "title": "Property Tax - Harris County Tax Office",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.hctax.net/Property/PropertyInstallment",
+      "title": "Payment Installment Plan",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.hctax.net/Account/eBill",
+      "title": "eBill Registration",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://myharriscountytax.com/",
+      "title": "MyHarrisCountyTax",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Harris County Tax Assessor-Collector",
+    "shortName": "Harris County Tax Office",
+    "primary": "#123f6b",
+    "accent": "#7b3a0a",
+    "monogram": "HC"
+  },
+  "labels": {
+    "payBill": "Pay Bill",
+    "guestPay": "Continue as Guest",
+    "signIn": "Sign In",
+    "register": "Sign Up",
+    "history": "Payment History",
+    "statements": "Statements and Receipts",
+    "paperless": "eBill",
+    "arrangement": "Payment Installment Plan",
+    "help": "Help Center",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Continue as Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Pay Online",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Installment Plan",
+        "helpSlug": "installment-plan"
+      },
+      {
+        "label": "eBill",
+        "helpSlug": "ebill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      },
+      {
+        "label": "Sign In or Sign Up",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements and Receipts",
+        "page": "statements"
+      },
+      {
+        "label": "Payment Installment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://myharriscountytax.com/",
+      "note": "Continue as Guest to search by account number, property address or owner and pay without a profile."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hctax.net/Property/PropertyInstallment",
+      "note": "Delinquent accounts can request an installment agreement online by tax account number or by email: 12 months standard, 24 or 36 months on request."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hctax.net/Account/eBill",
+      "note": "Register for eBill with the 10-digit E-Code from your bill and your account number; mailed bills stop."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.hctax.net/Property/PropertyInstallment",
+      "note": "There is no automatic bank draft. Pay each year online, by phone, by mail or in person, or ask about an installment agreement once the account is delinquent.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hctax.net/Property/PropertyTax",
+      "note": "Credit or debit card only, 2.40% fee ($1.00 minimum); e-Checks are not taken by phone.",
+      "phone": "7132742273"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hctax.net/Property/PropertyTax",
+      "note": "Mail the coupon with your account number to P.O. Box 4622, Houston, TX 77210-4622."
+    }
+  },
+  "billing": {
+    "source": "https://www.hctax.net/Property/PropertyTax",
+    "fees": {
+      "bankCents": 50,
+      "cardPercent": 2.4,
+      "evidence": "documented_official",
+      "source": "https://www.hctax.net/Property/PropertyTax"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying property taxes online",
+      "topic": "payments",
+      "source": "https://www.hctax.net/Property/PropertyTax",
+      "paragraphs": [
+        "Pay on MyHarrisCountyTax: sign in, create a profile, or continue as a guest, then search by account number, property address or owner, open the bill and choose Pay Bill. Several accounts can go in one transaction, and a payment can be split between current and prior-year taxes; prior-year payments apply to the oldest year first.",
+        "Cards (American Express, Discover, MasterCard, Visa, plus Visa and MasterCard debit) carry a 2.40% convenience fee with a $1.00 minimum. e-Checks cost $0.50. Both fees are non-refundable, and a dishonored or rejected payment adds a $30 administrative charge.",
+        "Online payments are on time if completed by 11:59 p.m. Central on the due date. An email confirmation is sent, and signed-in users find receipts under Payment History."
+      ]
+    },
+    {
+      "slug": "pay-by-phone-mail",
+      "title": "Paying by phone or mail",
+      "topic": "payments",
+      "source": "https://www.hctax.net/Property/PropertyTax",
+      "paragraphs": [
+        "Pay by card any day, any time, by calling 713-274-2273 (713-274-CARD) with your account number; the 2.40% fee applies and e-Checks are not accepted by phone.",
+        "By mail, send the coupon and your account number to the Harris County Tax Assessor-Collector, P.O. Box 4622, Houston, TX 77210-4622. U.S. Postal Service payments must be postmarked by the last business day of January. Courier deliveries go to 1001 Preston St., Houston, TX 77002, and must arrive by the due date."
+      ]
+    },
+    {
+      "slug": "installment-plan",
+      "title": "Payment Installment Plan",
+      "topic": "assistance",
+      "source": "https://www.hctax.net/Property/PropertyInstallment",
+      "paragraphs": [
+        "If you cannot pay in full, you can request an installment agreement once the account is delinquent. It covers all delinquent current and prior-year taxes. The standard term is 12 months; 24- or 36-month plans are available on request.",
+        "On homestead property no extra penalty is added while the agreement is in place, but interest of 1% per month accrues until paid, and the account is not sent to the collection law firm. Request a plan online with your tax account number and owner details, or by email; payment details arrive by email within a few business days. Accounts in a lawsuit, bankruptcy or pending sale may need to pre-qualify."
+      ]
+    },
+    {
+      "slug": "ebill",
+      "title": "eBill: electronic tax bills",
+      "topic": "paperless",
+      "source": "https://www.hctax.net/Account/eBill",
+      "paragraphs": [
+        "To get your tax bill by email, register for eBill with your account number and the 10-digit E-Statement Code printed in the upper right of your current bill. Once you choose electronic delivery you no longer receive annual bills by mail.",
+        "Registration for a tax year closes once bills are prepared; a new registration takes effect with the next tax year."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "echeck-fee",
+        "intent": "Using the Harris County Tax Office's website help pages, find the convenience fee for paying property taxes online by e-Check. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$0.50",
+              "50 cents"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$0.50",
+            "50 cents"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An e-Check payment costs a $0.50 convenience fee; cards cost 2.40% ($1.00 minimum)."
+          }
+        ]
+      },
+      {
+        "slug": "installment-standard-term",
+        "intent": "Using the Harris County Tax Office's website help pages, find how many months the standard installment agreement for delinquent property taxes lasts. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12 months",
+              "12-month",
+              "twelve months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12 months",
+            "12-month",
+            "twelve months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The standard installment agreement lasts 12 months; 24 or 36 months are available on request."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Installment Plan",
+        "eBill"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment History",
+        "Statements and Receipts"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.40%",
+        "$0.50"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-by-phone-mail",
+      "contains": "713-274-2273"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "installment-plan",
+      "contains": "36"
+    }
+  ]
+}

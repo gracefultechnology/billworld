@@ -1,0 +1,170 @@
+{
+  "id": "verizon-home-phone-copper-landline-and-fios-digi-132da3",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Verizon Home Phone (copper landline and Fios Digital Voice)",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public verizon.com residential support pages only (no sign-in). My Verizon sign-in asks for a User ID or Verizon mobile number, then Continue, then a password (or approving a notification sent to a verified text-capable phone, modelled as SMS verification). Online payments accept checking/savings, debit/credit card and online banking via Trustly; one-time payments can be made without full sign-in ('Make a one-time payment'). Auto Pay lets the customer pick a day of the month from a calendar (exact allowed days not published, family default kept) and accepts bank, debit, credit or Verizon Visa card; the Auto Pay discount ($10/month with eligible Fios Internet or TV, $20 with both) needs a bank account or Verizon Visa Card plus paper-free billing, and does not apply to home phone alone. Payment arrangements are free online or through the automated line, $7 Agent Assistance Fee with a representative; late payment charges still apply. Disconnecting Fios service online opens a chat with a representative from Settings & profile > Disconnect; other home services (DSL/copper) are disconnected through Customer Service at 1-800-837-4966. Same-day payments can be cancelled from payment history up to 2 times in 90 days.",
+  "officialDomains": ["verizon.com"],
+  "sources": [
+    { "url": "https://www.verizon.com/support/residential/account/pay-bill/how-to/", "title": "How to Pay Your Bill FAQs", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.verizon.com/support/residential/account/view-bill/online/", "title": "View and pay your Verizon Fios Bill Online FAQs", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.verizon.com/support/residential/account/pay-bill/setup-autopay/", "title": "Fios Auto Pay FAQs", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.verizon.com/support/residential/account/view-bill/paper-free/", "title": "Paper-free billing FAQs", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://www.verizon.com/support/residential/account/pay-bill/arrangements/", "title": "Verizon Fios and Home payment arrangements FAQs", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://www.verizon.com/support/residential/account/manage-service/cancel", "title": "How to disconnect your Verizon Fios service FAQs", "fetchedAt": "2026-10-09", "kind": "cancel" },
+    { "url": "https://www.verizon.com/support/residential/account/manage-account/faqs/", "title": "Managing your Verizon home account FAQs", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://www.verizon.com/support/knowledge-base-41025/", "title": "My Verizon Website - Sign In", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "Verizon Home Phone", "shortName": "Verizon", "primary": "#b30000", "accent": "#1f1f1f", "monogram": "VZ" },
+  "labels": {
+    "dashboard": "My Verizon",
+    "payBill": "Pay bill",
+    "viewBill": "Bill overview",
+    "statements": "Bill history",
+    "history": "Payment history",
+    "autopay": "Auto Pay",
+    "paperless": "Paper-free billing",
+    "arrangement": "Payment arrangements",
+    "guestPay": "Make a one-time payment",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "forgot": "Forgot your info?",
+    "register": "Register",
+    "username": "User ID or Verizon mobile number",
+    "profile": "Settings & profile",
+    "cancel": "Disconnect",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      { "label": "Make a one-time payment", "page": "guest" },
+      { "label": "Sign in", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "How to pay", "helpSlug": "pay-your-bill" },
+      { "label": "Support", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Verizon", "page": "dashboard" },
+      { "label": "Bill overview", "page": "bill" },
+      { "label": "Pay bill", "page": "pay" },
+      { "label": "Bill history", "page": "statements" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Auto Pay", "page": "autopay" },
+      { "label": "Paper-free billing", "page": "paperless" },
+      { "label": "Payment arrangements", "page": "arrangement" },
+      { "label": "Settings & profile", "page": "profile" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "evidence": "documented_official",
+    "source": "https://www.verizon.com/support/knowledge-base-41025/"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://www.verizon.com/support/residential/account/view-bill/online/" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.verizon.com/support/residential/account/pay-bill/setup-autopay/" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.verizon.com/support/residential/account/pay-bill/setup-autopay/" },
+    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.verizon.com/support/residential/account/pay-bill/how-to/" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.verizon.com/support/residential/account/view-bill/paper-free/" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.verizon.com/support/residential/account/pay-bill/arrangements/" },
+    "cancel_service": { "support": "supported", "evidence": "documented_official", "source": "https://www.verizon.com/support/residential/account/manage-service/cancel", "note": "Fios services are disconnected online through a chat with a representative from Settings & profile > Disconnect, or by calling 1-800-837-4966. Rented equipment must be returned within 30 days.", "phone": "8008374966" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.verizon.com/support/residential/account/view-bill/online/", "phone": "8008374966" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.verizon.com/support/residential/account/pay-bill/how-to/" }
+  },
+  "billing": {
+    "source": "https://www.verizon.com/support/residential/account/pay-bill/how-to/",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your Verizon home bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to My Verizon and go to Home, then Bills, then Pay bill. You can pay from a checking or savings account, a debit or credit card, or online banking through Trustly without typing account and routing numbers.",
+        "You can also schedule a one-time payment for a later date; it is taken on that date, so make sure funds are there. Same-day payments can be cancelled on the payment history page up to 2 times in any 90-day period.",
+        "Other ways to pay: call 800-837-4966, mail a check to the P.O. box for your state, pay in person at a payment location, or use Pay My Bill from the Fios TV menu. Verizon charges a fee for returned payments and a late fee when payment arrives late."
+      ],
+      "source": "https://www.verizon.com/support/residential/account/pay-bill/how-to/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Fios Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "In My Verizon, open Bill, then Auto Pay, and choose Set Up Auto Pay. Pick a bank account, debit card, credit card or Verizon Visa Card, choose the day of the month from the calendar, review on Manage Auto Pay, select Enroll and accept the terms. Keep paying until the first automatic payment is taken.",
+        "The Auto Pay discount needs a bank account or Verizon Visa Card plus paper-free billing: $10 a month with an eligible Fios Internet or Fios TV plan, $20 with both.",
+        "To turn Auto Pay off or change it, go to Bill, then Auto Pay, and follow the prompts. If you disconnect, Auto Pay stays on until outstanding charges are paid."
+      ],
+      "steps": ["Sign in to My Verizon.", "Go to Bill, then Auto Pay.", "Choose a payment method and a payment day.", "Select Enroll and accept the terms."],
+      "source": "https://www.verizon.com/support/residential/account/pay-bill/setup-autopay/"
+    },
+    {
+      "slug": "paper-free-billing",
+      "title": "Paper-free billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign in to My Verizon, open the Paper-free billing settings and select Enroll. Your first and last bills still come on paper.",
+        "To go back to paper, select De-enroll on the same page. If your plan requires paper-free billing, you have to change plans first."
+      ],
+      "source": "https://www.verizon.com/support/residential/account/view-bill/paper-free/"
+    },
+    {
+      "slug": "payment-arrangement",
+      "title": "Payment arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "A payment arrangement is a plan to pay your past-due balance by a future date, and you can split the past-due amount into 2 payments. Set it up in My Verizon from the payment arrangement page, where you can also schedule the withdrawals.",
+        "Arrangements made online or through the automated phone system are free. A $7 Agent Assistance Fee applies when a representative makes, changes or cancels the arrangement by phone. An arrangement does not stop late payment charges."
+      ],
+      "steps": ["Sign in to My Verizon.", "Open Payment arrangements.", "Choose the dates and amounts.", "Confirm the arrangement."],
+      "source": "https://www.verizon.com/support/residential/account/pay-bill/arrangements/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Disconnect your home service",
+      "topic": "account",
+      "paragraphs": [
+        "Fios services can be disconnected online: in My Verizon open Settings & profile, select Disconnect, start a chat, type disconnect and ask for a representative. You can also call 1-800-VERIZON (800-837-4966), Monday to Friday 8 AM to 7 PM ET and Saturday 8 AM to 5 PM ET.",
+        "If you are under contract an early termination fee of up to $350 may apply, dropping $15 each month. Return rented equipment within 30 days to avoid an unreturned equipment charge. A remaining credit can take up to 60 days to come back."
+      ],
+      "source": "https://www.verizon.com/support/residential/account/manage-service/cancel"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "agent-arrangement-fee",
+        "intent": "Using Verizon's help pages, find out what Verizon charges when a phone representative sets up a payment arrangement for a home account. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["$7", "7 dollars"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["$7", "7 dollars"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "A $7 Agent Assistance Fee applies; online or automated arrangements are free." }]
+      },
+      {
+        "slug": "equipment-return-window",
+        "intent": "You are thinking of disconnecting Verizon home service. Using Verizon's help pages, find how many days you have to return rented equipment after disconnecting. Do not cancel anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "service", "status": "active" }, { "type": "answer", "kind": "contains", "expected": ["30"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["30"] },
+        "tags": ["help", "information", "cancel"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Rented equipment must be returned within 30 days of disconnecting." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["User ID or Verizon mobile number"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Bill overview", "Payment arrangements"] },
+    { "page": "paperless", "signedIn": true, "label": "paperless" },
+    { "page": "helpArticle", "slug": "payment-arrangement", "contains": "$7 Agent Assistance Fee" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "$20" }
+  ]
+}

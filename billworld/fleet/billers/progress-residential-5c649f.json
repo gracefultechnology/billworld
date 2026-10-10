@@ -1,0 +1,416 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-09",
+  "id": "progress-residential-5c649f",
+  "name": "Progress Residential",
+  "category": "housing",
+  "notes": "Researched from public rentprogress.com pages (All About Payments, FAQ, Leasing Fees, Rental Assistance). Payments run in the RentCafe resident portal reached via Pay My Rent / Resident Services. Bank auto pay has no processing fee. Card fees: credit 2.95%; debit is tiered ($3.95 under $1,000, $4.95 $1,001-$1,999, $9.95 over $2,000) - the engine models only the 2.95% credit rate. Late fee $150 after a ~3-day grace (state caps: CO/NV/NC 5%, TN/UT 10%, TX 12%, capped at $150; $40 on rental-assistance homes) - modelled as $150 flat. Partial payments only until the 8th and with the account in good standing; email rdct@progressresidential.com if you cannot pay in full. Pay by phone 24/7 at 833-PRG-RESS (833-774-7377), not for move-in funds. Text-to-pay via Edit Profile > Allow Text (SMS) Notifications. Cash via WIPS (Payment Accounts > Request a WIPS Number), checks via RentCafe CHECKscan app. 60 days' notice to move out via the Move Out Notice form in the dashboard. Sign-in field labels of the RentCafe portal could not be observed (bot wall) - not set. REVIEW 2026-10-09 (independent reviewer): verified All About Payments, FAQ and Leasing Fees. Removed labels.signIn ('Resident Services' is the portal name, not the sign-in control). The early-termination (2x rent) and per-day insufficient-notice charges come from Leasing Fees, so the move-out article now cites that page; the form location is from the FAQ.",
+  "officialDomains": [
+    "rentprogress.com",
+    "rentcafe.com"
+  ],
+  "sources": [
+    {
+      "url": "https://rentprogress.com/residents/make-payment",
+      "title": "All About Payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://rentprogress.com/faq",
+      "title": "Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://rentprogress.com/residents/leasing-guide/fees",
+      "title": "Leasing Fees",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://rentprogress.com/residents/resources/rental-assistance",
+      "title": "Rental Assistance Resources",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Progress Residential",
+    "shortName": "Progress Residential",
+    "primary": "#00539b",
+    "accent": "#a14000",
+    "monogram": "PR"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Auto Pay",
+    "wallet": "Payment Accounts",
+    "history": "Payment History",
+    "profile": "Edit Profile",
+    "cancel": "Move Out Notice",
+    "contact": "Service Request"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay My Rent",
+        "page": "login"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      },
+      {
+        "label": "Rental Assistance",
+        "helpSlug": "payment-assistance"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Service Request",
+        "page": "contact"
+      },
+      {
+        "label": "Move Out Notice",
+        "page": "cancel"
+      },
+      {
+        "label": "Edit Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://rentprogress.com/residents/make-payment",
+      "note": "Pay by credit card, debit card or ACH in the RentCafe resident portal; card payments carry a processing fee."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://rentprogress.com/residents/make-payment",
+      "note": "Auto pay draws rent from your bank account each month with no processing fee."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://rentprogress.com/residents/make-payment",
+      "note": "Pay by phone 24/7 at 833-PRG-RESS (not for move-in funds).",
+      "phone": "8337747377"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://rentprogress.com/faq",
+      "note": "Give 60 days' notice with the Move Out Notice form in your account dashboard."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://rentprogress.com/residents/make-payment",
+      "note": "There is no online payment plan. Partial payments are accepted only until the 8th; if you cannot pay in full, email the resident collections team or call 833-774-7377.",
+      "channel": "phone",
+      "phone": "8337747377"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://rentprogress.com/residents/resources/rental-assistance",
+      "note": "The Rental Assistance page lists government, state and charitable rent-help programs by area."
+    }
+  },
+  "billing": {
+    "source": "https://rentprogress.com/residents/leasing-guide/fees",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.95,
+      "evidence": "documented_official",
+      "source": "https://rentprogress.com/residents/leasing-guide/fees"
+    },
+    "lateFeeCents": 15000,
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your rent",
+      "paragraphs": [
+        "Rent is due by the 1st of each month unless your lease says otherwise. Log in through Pay My Rent (Resident Services) to pay by card or ACH, check payment status and review payment history.",
+        "Other options: bank auto pay with no processing fee; checks, money orders or cashier's checks scanned with the RentCafe CHECKscan app; text-to-pay after turning on text notifications in Edit Profile; cash at WIPS locations; and pay by phone 24/7 at 833-PRG-RESS (833-774-7377), which cannot be used for move-in funds. Payment questions: 844-475-2326."
+      ],
+      "source": "https://rentprogress.com/residents/make-payment",
+      "topic": "payments"
+    },
+    {
+      "slug": "card-fees",
+      "title": "Card processing fees",
+      "paragraphs": [
+        "Credit card payments carry a 2.95% processing fee. Debit card payments cost $3.95 under $1,000, $4.95 from $1,001 to $1,999, and $9.95 for $2,000 and above. Bank account auto pay has no processing fee."
+      ],
+      "source": "https://rentprogress.com/residents/leasing-guide/fees",
+      "topic": "billing"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late fees",
+      "paragraphs": [
+        "Rent paid after the grace period (generally 3 days, varying by state) gets a $150 late fee. Some states use a percentage instead, always capped at $150: 5% of rent in Colorado, Nevada and North Carolina, 10% in Tennessee and Utah, 12% in Texas. Homes on rental assistance have a $40 maximum."
+      ],
+      "source": "https://rentprogress.com/residents/leasing-guide/fees",
+      "topic": "billing"
+    },
+    {
+      "slug": "partial-payments",
+      "title": "Partial payments",
+      "paragraphs": [
+        "To pay part of your rent, log in, open Payments, select Make Payments and then Make a One-time Payment, choose the account under Enter Payment Details, enter the amount and select Next. Leave Extra Payment Amount blank unless you are paying extra.",
+        "Your account must be in good standing and partial payments are accepted only until the 8th unless you have a formal agreement. A partial payment does not stop late fees if the rest is not paid within the grace period. If you cannot pay in full, email the resident collections team."
+      ],
+      "source": "https://rentprogress.com/residents/make-payment",
+      "topic": "payments"
+    },
+    {
+      "slug": "cash-wips",
+      "title": "Paying cash with WIPS",
+      "paragraphs": [
+        "Log in to RentCafe, open Payment Accounts, scroll down and select Request a WIPS Number. The number appears right away; bring it to a participating WIPS location to pay cash."
+      ],
+      "source": "https://rentprogress.com/residents/make-payment",
+      "steps": [
+        "Log in to RentCafe.",
+        "Open Payment Accounts.",
+        "Select Request a WIPS Number.",
+        "Take the number to a WIPS location."
+      ],
+      "topic": "payments"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "paragraphs": [
+        "Give 60 days' notice before your lease ends, as your lease requires: each day of insufficient notice is charged at the prorated daily rent. Ending a lease early costs a one-time charge of two months' rent unless your lease says otherwise.",
+        "Submit the Move Out Notice form from the My Account menu of your dashboard. Your deposit refund is mailed within about 30 days, depending on state law, so give a forwarding address."
+      ],
+      "source": "https://rentprogress.com/residents/leasing-guide/fees",
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "credit-card-fee",
+        "intent": "Using the Progress Residential help pages, find the processing fee for paying rent with a credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments have a 2.95% processing fee."
+          }
+        ]
+      },
+      {
+        "slug": "pay-by-phone-number",
+        "intent": "You want to pay your Progress Residential rent by phone tonight. Find the 24/7 pay-by-phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8337747377"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8337747377"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 833-PRG-RESS (833-774-7377)."
+          }
+        ]
+      },
+      {
+        "slug": "wips-number-path",
+        "intent": "You want to pay your Progress Residential rent in cash. Find where in the resident portal you get the number to bring to the store. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Request a WIPS Number"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Request a WIPS Number"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cash"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payment Accounts > Request a WIPS Number."
+          }
+        ]
+      },
+      {
+        "slug": "late-fee-amount",
+        "intent": "Using the Progress Residential help pages, find the standard late fee charged after the grace period. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "150"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "150"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The standard late fee is $150 after a grace period of about 3 days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "card-fees",
+      "contains": "2.95%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cash-wips",
+      "contains": "Request a WIPS Number"
+    },
+    {
+      "page": "wallet",
+      "signedIn": true,
+      "label": "wallet"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "833-774-7377"
+    }
+  ]
+}

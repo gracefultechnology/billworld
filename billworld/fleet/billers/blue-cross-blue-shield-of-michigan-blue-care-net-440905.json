@@ -1,0 +1,134 @@
+{
+  "id": "blue-cross-blue-shield-of-michigan-blue-care-net-440905",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Blue Cross Blue Shield of Michigan & Blue Care Network - Medicare",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public bcbsm.com pages only (no sign-in, no pay-without-account lookup). The Medicare 'How do I pay my monthly bill' page: pay online by setting up automatic monthly payments or making a one-time payment without logging in; mail a check (payee, P.O. box and due date by plan: BCN Advantage and BCN65/MyBlue Medigap pay Blue Care Network, P.O. Box 33608 Detroit, due the 1st; Medicare Plus Blue PPO and Prescription Blue PDP pay BCBSM, P.O. Box 88512 Chicago, due the 1st; Blue Cross Medicare Supplement and Legacy Medigap pay BCBSM, P.O. Box 88513 Chicago, due the 25th); Social Security deduction (up to three months to start; not for Blue Cross Medicare Supplement, BCN65 or MyBlue Medigap) via BCN Advantage 1-800-450-3680, Medicare Plus Blue PPO 1-877-241-2583, Prescription Blue PDP 1-800-565-1770 (TTY 711); and an automatic bank withdrawal authorization form for Blue Cross Medicare Supplement. The general payments FAQ (individual plans) adds that a one-time payment can duplicate an automatic payment, that card, debit and bank payments are accepted online, and that phone payments take credit and debit cards; it is used only for those general points. Sign-in identifier (username) is inferred. No fees published. Reviewer (2026-10-09): the old payments-FAQ URL now redirects to the individuals payments FAQ (updated); that FAQ says Pay without logging in asks for first and last name, date of birth and Social Security number, which a dossier cannot express exactly, so the guest lookup is modelled as account number + last name + date of birth. The common Pay Your Bill page says paperless billing does not apply to Medicare Advantage plans, so paperless is marked unsupported.",
+  "officialDomains": ["bcbsm.com"],
+  "sources": [
+    { "url": "https://bcbsm.com/medicare/help/manage-account/how-to-pay-bill", "title": "How Do I Pay My Monthly Bill for My Medicare Plan? | BCBSM", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.bcbsm.com/individuals/help/using-your-account/payments-faq/", "title": "How Can I Pay My Health Plan Bill? | BCBSM", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.bcbsm.com/common/pay-bill/", "title": "Pay Your Bill | Members | BCBSM", "fetchedAt": "2026-10-09", "kind": "pay" }
+  ],
+  "brand": { "displayName": "Blue Cross Blue Shield of Michigan Medicare", "shortName": "Blue Cross", "primary": "#00498f", "accent": "#005f7a", "monogram": "BC" },
+  "labels": {
+    "signIn": "Log in",
+    "guestPay": "Pay without logging in",
+    "payBill": "Pay your bill",
+    "autopay": "Automatic payments",
+    "history": "Billing and payment history",
+    "dashboard": "Member account"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Pay without logging in", "page": "guest" },
+      { "label": "How do I pay my monthly bill?", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Member account", "page": "dashboard" },
+      { "label": "Pay your bill", "page": "pay" },
+      { "label": "Automatic payments", "page": "autopay" },
+      { "label": "Billing and payment history", "page": "history" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": ["accountNumber", "lastName", "dob"],
+    "evidence": "inferred",
+    "source": "https://www.bcbsm.com/individuals/help/using-your-account/payments-faq/"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://bcbsm.com/medicare/help/manage-account/how-to-pay-bill" },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://bcbsm.com/medicare/help/manage-account/how-to-pay-bill", "note": "Make a one-time payment without logging in." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://bcbsm.com/medicare/help/manage-account/how-to-pay-bill", "note": "Set up automatic monthly payments online. Blue Cross Medicare Supplement members return the automatic payment authorization form instead." },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.bcbsm.com/individuals/help/using-your-account/payments-faq/", "note": "Your member account shows billing and payment history." },
+    "paperless": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.bcbsm.com/common/pay-bill/", "note": "Paperless billing does not apply to Blue Cross Medicare Advantage plans; you get a statement in the mail each month.", "channel": "phone", "phone": "8772412583" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.bcbsm.com/individuals/help/using-your-account/payments-faq/", "note": "Call the number on the back of your ID card; credit and debit cards accepted." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://bcbsm.com/medicare/help/manage-account/how-to-pay-bill", "note": "Mail a check to the payee and P.O. box for your plan; most Medicare plans are due the 1st, Medicare Supplement the 25th." }
+  },
+  "billing": {
+    "source": "https://www.bcbsm.com/individuals/help/using-your-account/payments-faq/",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How do I pay my monthly bill for my Medicare plan?",
+      "topic": "payments",
+      "paragraphs": [
+        "Online: set up automatic monthly payments, or make a one-time payment without logging in.",
+        "By check: make it payable to the company for your plan and mail it to that plan's P.O. box. BCN Advantage HMO and HMO-POS, BCN65 and MyBlue Medigap: Blue Care Network, P.O. Box 33608, Detroit, MI 48232-5608, due the 1st of the month. Medicare Plus Blue PPO and Prescription Blue PDP: Blue Cross Blue Shield of Michigan, P.O. Box 88512, Chicago, IL 60680-1512, due the 1st. Blue Cross Medicare Supplement and Legacy Medigap: Blue Cross Blue Shield of Michigan, P.O. Box 88513, Chicago, IL 60680-1513, due the 25th.",
+        "If you already have automatic payments, a separate one-time payment may cause a duplicate payment."
+      ],
+      "source": "https://bcbsm.com/medicare/help/manage-account/how-to-pay-bill"
+    },
+    {
+      "slug": "social-security-deduction",
+      "title": "Paying from your Social Security check",
+      "topic": "payments",
+      "paragraphs": [
+        "Your premium can be taken from your monthly Social Security check. It may take up to three months to start, so pay another way until then. This option is not available for Blue Cross Medicare Supplement, BCN65 or MyBlue Medigap.",
+        "To get started call Customer Service for your plan (TTY 711): BCN Advantage 1-800-450-3680, Medicare Plus Blue PPO 1-877-241-2583, Prescription Blue PDP 1-800-565-1770."
+      ],
+      "source": "https://bcbsm.com/medicare/help/manage-account/how-to-pay-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Medicare Advantage and drug plan members can set up automatic monthly payments online.",
+        "Blue Cross Medicare Supplement members set up automatic bank withdrawals by completing the Medicare Supplement Plans Authorization Agreement for Automatic Payments and returning it to Blue Cross."
+      ],
+      "steps": ["Log in to your member account.", "Open Automatic payments.", "Choose your bank account or card.", "Confirm the monthly payment."],
+      "source": "https://bcbsm.com/medicare/help/manage-account/how-to-pay-bill"
+    },
+    {
+      "slug": "other-ways-to-pay",
+      "title": "Phone, bank bill pay and cash",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay by phone with a credit or debit card using the number on the back of your Blues ID card. You can also pay through your own bank's online bill pay using your account number, or pay in cash at a MoneyGram location with your Blue Cross plan account number."
+      ],
+      "source": "https://www.bcbsm.com/individuals/help/using-your-account/payments-faq/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "medigap-due-date",
+        "intent": "You have a Blue Cross Medicare Supplement plan and pay by check. Using Blue Cross Blue Shield of Michigan's help pages, find which day of the month your payment is due. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["25"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["25"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "It is due on the 25th of the month." }]
+      },
+      {
+        "slug": "ppo-ssa-deduction-phone",
+        "intent": "You are a Medicare Plus Blue PPO member and want your premium taken from your Social Security check. Using the Blue Cross help pages, find the phone number to call to get started. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8772412583"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8772412583"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Call 1-877-241-2583 (TTY 711)." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Automatic payments", "Pay your bill"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "P.O. Box 88513" },
+    { "page": "helpArticle", "slug": "social-security-deduction", "contains": "1-877-241-2583" },
+    { "page": "helpArticle", "slug": "other-ways-to-pay", "contains": "MoneyGram" }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "id": "pseg-public-service-electric-and-gas-company-101d1c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "PSE&G (Public Service Electric and Gas Company)",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public nj.myaccount.pseg.com pages only (no sign-in; the hosted sign-in page did not render without scripts, so field labels come from the FAQ, which refers to a Forgot Username/Password link and a Log In Setting for the password; identifier modelled as username). Password reset works by email or security questions; MFA is not described publicly, so it stays at the family default. Bank payments (same-day or scheduled) are free in My Account; card, PayPal, Google Pay, Apple Pay and Venmo carry a third-party processing fee whose amount is not published, so no card fee is modelled. A guest one-time payment (Guest > Pay My Bill) needs the account number and ZIP code. Automatic Bill Pay is free, bank-only, deducted on the due date, with an optional maximum monthly withdrawal limit (not modelled); it is stopped from My Profile. Deferred Payment Arrangement: down payment, then the regular bill plus a portion of the past-due balance; DPA due date cannot be changed. Equal Payment Plan is a budget-billing program, not a priced plan, so no plans are set. Western Union cash payments cost $1.50 (in person, not modelled). No late-fee rate is stated on the pages read.",
+  "officialDomains": ["pseg.com"],
+  "sources": [
+    { "url": "https://nj.myaccount.pseg.com/viewmybill/waystopay", "title": "Ways to Pay - My Account - PSE&G", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://nj.myaccount.pseg.com/viewmybill/automaticbillpaymentpublic", "title": "Sign up for Automatic Bill Pay - My Account - PSE&G", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://nj.myaccount.pseg.com/viewmybill/paperlessbillingpublic", "title": "Paperless Billing - My Account - PSE&G", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://nj.myaccount.pseg.com/viewmybill/deferredpaymentarrangementapptpublic", "title": "Deferred Payment Arrangement - My Account - PSE&G", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://nj.myaccount.pseg.com/myservicepublic/startstopmoveservicepublic", "title": "Start, Stop, or Move Service - My Account - PSE&G", "fetchedAt": "2026-10-09", "kind": "cancel" },
+    { "url": "https://nj.myaccount.pseg.com/faq", "title": "Frequently Asked Questions - PSE&G", "fetchedAt": "2026-10-09", "kind": "help" }
+  ],
+  "brand": { "shortName": "PSE&G", "primary": "#005a8c", "accent": "#00406a", "monogram": "PS" },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "autopay": "Automatic Bill Pay",
+    "paperless": "Paperless Billing",
+    "history": "Billing & Payment History",
+    "signIn": "Login",
+    "register": "Register",
+    "forgot": "Forgot Username/Password",
+    "guestPay": "Guest",
+    "dashboard": "My Account Dashboard",
+    "arrangement": "Deferred Payment Arrangement",
+    "cancel": "Start, Stop, Transfer Service",
+    "profile": "My Profile",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      { "label": "Login", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Pay My Bill (Guest)", "page": "guest" },
+      { "label": "Ways to Pay", "helpSlug": "pay-your-bill" },
+      { "label": "Moving", "helpSlug": "cancel-service" },
+      { "label": "FAQ", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Account Dashboard", "page": "dashboard" },
+      { "label": "Pay Bill", "page": "pay" },
+      { "label": "Billing & Payment History", "page": "history" },
+      { "label": "Automatic Bill Pay", "page": "autopay" },
+      { "label": "Paperless Billing", "page": "paperless" },
+      { "label": "Deferred Payment Arrangement", "page": "arrangement" },
+      { "label": "Start, Stop, Transfer Service", "page": "cancel" },
+      { "label": "My Profile", "page": "profile" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "documented_official",
+    "source": "https://nj.myaccount.pseg.com/faq"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/viewmybill/waystopay", "note": "A one-time guest payment needs your account number and ZIP code." },
+    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/viewmybill/waystopay" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/viewmybill/automaticbillpaymentpublic", "note": "Automatic Bill Pay is free and draws on a checking or savings account on the due date." },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/viewmybill/automaticbillpaymentpublic" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/viewmybill/paperlessbillingpublic" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/viewmybill/deferredpaymentarrangementapptpublic" },
+    "cancel_service": { "support": "supported", "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/myservicepublic/startstopmoveservicepublic" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/viewmybill/waystopay", "phone": "8005537734" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/viewmybill/waystopay" }
+  },
+  "billing": {
+    "source": "https://nj.myaccount.pseg.com/viewmybill/waystopay",
+    "fees": { "bankCents": 0, "evidence": "documented_official", "source": "https://nj.myaccount.pseg.com/viewmybill/waystopay" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "days": "due_date", "methodTypes": ["bank"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to Pay",
+      "paragraphs": [
+        "In My Account or the PSE&G app you can pay today or schedule a payment from a checking or savings account at no charge. PayPal, Google Pay, Apple Pay, Venmo and credit cards are also accepted, but a third-party processing fee applies because PSE&G does not use customer rates to cover that cost.",
+        "To pay once without logging in, choose Guest and then Pay My Bill; you need your account number and ZIP code.",
+        "Other options: text PAY to 4PSEG (47734) to pay free from a saved bank account (register your phone with MyAlerts first); call 1-800-553-7734 to pay from a bank account or 1-833-277-8710 to pay by credit card (fee applies); mail a check or money order to PSE&G New Jersey, P.O. Box 14444, New Brunswick, NJ 08906; pay cash, check or money order at a PSE&G Customer Service Center, or at a Western Union agent for $1.50."
+      ],
+      "source": "https://nj.myaccount.pseg.com/viewmybill/waystopay"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Bill Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic Bill Pay is free. Your bill amount is taken from your checking or savings account on the bill due date. You need your bank routing and account numbers to sign up.",
+        "To avoid overdrafts you can set a maximum monthly withdrawal limit. You can change your settings or go back to paying manually at any time from your My Profile page."
+      ],
+      "steps": [ "Log in to My Account.", "Open Automatic Bill Pay and choose Sign up.", "Enter your bank routing and account numbers, set an optional limit, and confirm." ],
+      "source": "https://nj.myaccount.pseg.com/viewmybill/automaticbillpaymentpublic"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Stop Automatic Bill Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "To stop automatic payments, change your preferences on the My Profile page and resume paying manually. You receive a confirmation email when you are unenrolled."
+      ],
+      "source": "https://nj.myaccount.pseg.com/viewmybill/automaticbillpaymentpublic"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "With Paperless Billing you get a monthly email with your amount due, due date and a link to the full bill instead of a paper bill. Separate emails tell you when account documents are ready to view, download or print in My Account. Log in or register to sign up."
+      ],
+      "source": "https://nj.myaccount.pseg.com/viewmybill/paperlessbillingpublic"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Deferred Payment Arrangement (DPA)",
+      "topic": "assistance",
+      "paragraphs": [
+        "A DPA helps if you cannot pay a large or past-due balance at once. After a down payment, you pay your regular monthly bill plus a portion of the past-due balance until it is paid off. Sign up in My Account or the mobile app, or call 1-800-357-2262.",
+        "PSE&G will not shut off service while you keep up with the bill plus the DPA amount. The DPA due date cannot be changed. Missing a payment can cancel the DPA, make the remaining balance due right away and put service at risk; a new DPA after cancellation is decided case by case. You may pay extra or pay off the balance early at any time."
+      ],
+      "source": "https://nj.myaccount.pseg.com/viewmybill/deferredpaymentarrangementapptpublic"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, stop or transfer service",
+      "topic": "account",
+      "paragraphs": [
+        "You can start, stop or transfer service online. To stop, have your stop date and the address for your final bill ready; you can give a final meter reading by typing it in or sending a photo of the meter.",
+        "Moving within the PSE&G area? A transfer needs your current address, new address and both dates. For a letter of credit for a new utility, email PSE&G's letter-of-credit team with your account details."
+      ],
+      "source": "https://nj.myaccount.pseg.com/myservicepublic/startstopmoveservicepublic"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "text-to-pay-code",
+        "intent": "Using PSE&G's Ways to Pay information, find the word you text and the short code you text it to in order to pay your bill by text. Do not make a payment.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["47734", "4PSEG"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["47734", "4PSEG"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Text PAY to 4PSEG (47734)." } ]
+      },
+      {
+        "slug": "card-phone-number",
+        "intent": "Find the phone number PSE&G gives for paying the bill by credit card over the phone. Do not make a payment or change anything.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "phone", "expected": ["8332778710"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "phone", "expected": ["8332778710"] },
+        "tags": ["help", "information", "phone"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "1-833-277-8710" } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": ["Ways to Pay", "Login"] },
+    { "page": "login", "contains": "Username" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Automatic Bill Pay", "Deferred Payment Arrangement"] },
+    { "page": "autopay", "signedIn": true, "notContains": ["Debit or credit card"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["4PSEG", "1-833-277-8710"] },
+    { "page": "helpArticle", "slug": "payment-assistance", "contains": "1-800-357-2262" },
+    { "page": "guest", "contains": "ZIP" }
+  ]
+}

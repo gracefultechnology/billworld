@@ -1,0 +1,153 @@
+{
+  "id": "optum-rx-optum-home-delivery-fee818",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Optum Rx / Optum Home Delivery",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public optumrx.com and optum.com pages (no sign-in). Optum Rx accounts are HealthSafe ID accounts (one username and password for all benefits); registration verifies name, email and date of birth, then a 6-digit email code, a mobile number with a 6-digit text code, the member ID / SSN / Medicare number, and a password, so sign-in is modelled as username with email-or-text codes. Payment methods (bank account, credit, debit, FSA, HSA) are added under Manage your account; one method can be marked preferred, and Optum Home Delivery charges it for orders such as automatic refills (modelled as the AutoPay page, labelled Preferred payment method). Home delivery is paid when the order is placed. The Easy Pay Program splits medication costs into 3 monthly payments (modelled as the payment-arrangement page). Caregiver access lets someone outside the plan manage the account and payment methods. Paperless billing and guest payment are not described (unsupported, inferred).",
+  "officialDomains": ["optumrx.com", "optum.com"],
+  "sources": [
+    { "url": "https://www.optumrx.com/en/member-resources/manage-account.html", "title": "Manage your account", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.optumrx.com/en/contact-us.html", "title": "Contact us", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.optum.com/en/pharmacy-services/medication-delivery.html", "title": "Optum Home Delivery Pharmacy", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://business.optum.com/en/pharmacy-services/home-delivery/home-delivery-providers.html", "title": "Optum Home Delivery for providers (Easy Pay Program)", "fetchedAt": "2026-10-09", "kind": "plans" }
+  ],
+  "brand": { "displayName": "Optum Rx", "shortName": "Optum Rx", "primary": "#002677", "accent": "#1a4a7a", "monogram": "O" },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Register an account",
+    "forgot": "Forgot your password",
+    "username": "HealthSafe ID username",
+    "wallet": "Payment methods",
+    "autopay": "Preferred payment method",
+    "arrangement": "Easy Pay Program",
+    "dashboard": "Manage your account",
+    "contact": "Contact us",
+    "help": "Member resources"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign in", "page": "login" },
+      { "label": "Register an account", "page": "register" },
+      { "label": "Home delivery", "helpSlug": "pay-your-bill" },
+      { "label": "Contact us", "helpSlug": "contact-us" }
+    ],
+    "account": [
+      { "label": "Manage your account", "page": "dashboard" },
+      { "label": "Pay", "page": "pay" },
+      { "label": "Payment methods", "page": "wallet" },
+      { "label": "Preferred payment method", "page": "autopay" },
+      { "label": "Easy Pay Program", "page": "arrangement" },
+      { "label": "Order history", "page": "history" },
+      { "label": "Caregiver management", "helpSlug": "caregiver-access" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "mfa": "email_or_sms",
+    "evidence": "documented_official",
+    "source": "https://www.optumrx.com/en/member-resources/manage-account.html"
+  },
+  "capabilities": {
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.optumrx.com/en/member-resources/manage-account.html" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://business.optum.com/en/pharmacy-services/home-delivery/home-delivery-providers.html" },
+    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.optumrx.com/en/member-resources/manage-account.html", "note": "There is no guest payment. Sign in to pay or manage payment methods, or call member support 24/7 at 1-800-356-3477.", "channel": "phone", "phone": "800-356-3477" },
+    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://www.optumrx.com/en/member-resources/manage-account.html", "note": "Optum Rx does not describe a paperless billing enrollment; home delivery is charged when you order. Questions: 1-800-356-3477.", "channel": "phone", "phone": "800-356-3477" },
+    "pay_by_phone": { "support": "supported", "evidence": "inferred", "source": "https://business.optum.com/en/pharmacy-services/home-delivery/home-delivery-providers.html", "phone": "800-356-3477" }
+  },
+  "billing": {
+    "source": "https://www.optumrx.com/en/member-resources/manage-account.html",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying for home delivery",
+      "topic": "payments",
+      "paragraphs": [
+        "Optum Home Delivery is paid when you place the order: enter a credit or debit card at checkout, or use a saved payment method. Health savings account (HSA) and flexible spending account (FSA) cards are accepted.",
+        "Medication usually arrives 3 to 5 days after Optum processes the prescription. If shipping is delayed, Optum may arrange a bridge supply at a local pharmacy if your plan allows."
+      ],
+      "source": "https://www.optum.com/en/pharmacy-services/medication-delivery.html"
+    },
+    {
+      "slug": "payment-methods",
+      "title": "Payment methods and your preferred method",
+      "topic": "autopay",
+      "paragraphs": [
+        "Under Manage your account you can add bank accounts and credit, debit, FSA or HSA cards: choose Add a new payment method, pick the type and select Add.",
+        "If you have several, mark one as preferred. Optum Home Delivery charges the preferred method automatically for important orders such as automatic refills, so keep it current to avoid delays."
+      ],
+      "source": "https://www.optumrx.com/en/member-resources/manage-account.html"
+    },
+    {
+      "slug": "easy-pay",
+      "title": "Easy Pay Program",
+      "topic": "assistance",
+      "paragraphs": [
+        "The Easy Pay Program lets you pay for home delivery medication in 3 monthly payments. Choose it as your payment option when you place a home delivery order on optumrx.com, or call Optum Home Delivery or the number on your plan ID card."
+      ],
+      "source": "https://business.optum.com/en/pharmacy-services/home-delivery/home-delivery-providers.html"
+    },
+    {
+      "slug": "caregiver-access",
+      "title": "Caregiver access",
+      "topic": "account",
+      "paragraphs": [
+        "Caregiver access lets an adult (18 or older) who is not on your plan manage your settings, order prescriptions and act for you. In Caregiver management choose Add a caregiver under My caregivers and enter their name and email; they get an emailed access code that expires in 30 days.",
+        "A caregiver can see each payment method's name, card type, last 4 digits and billing address, update the billing address and expiration date, and add or remove payment methods. A caregiver cannot change your permanent address; only the number on your member ID card can. Family members on the same plan are handled with Manage plan members instead."
+      ],
+      "source": "https://www.optumrx.com/en/member-resources/manage-account.html"
+    },
+    {
+      "slug": "register",
+      "title": "Registering with a HealthSafe ID",
+      "topic": "account",
+      "paragraphs": [
+        "Your Optum Rx account is a HealthSafe ID: one username and password for your benefits. To register, enter your name, email and date of birth, confirm the 6-digit code sent to your email, add your mobile number and the 6-digit code texted to it, enter your member ID (or Social Security number, or Medicare number for Medicare members), then create a password."
+      ],
+      "source": "https://www.optumrx.com/en/member-resources/manage-account.html"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Optum Rx",
+      "topic": "contact",
+      "paragraphs": [
+        "Member support, including Optum Home Delivery: 1-800-356-3477, 24 hours a day, 7 days a week. Optum Rx Medicare prescription drug plan members: 1-877-889-5802. Medicare Advantage prescription drug plan members: 1-877-889-6358.",
+        "Optum Specialty Pharmacy customer service: 1-855-427-4682; specialty password and technical help: 1-800-788-4863."
+      ],
+      "source": "https://www.optumrx.com/en/contact-us.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "pdp-member-phone",
+        "intent": "My father has an Optum Rx Medicare prescription drug plan (PDP). Find the Optum Rx phone number for PDP members. Don't change anything in the account.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8778895802"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8778895802"] },
+        "tags": ["help", "information", "contact"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "1-877-889-5802" }]
+      },
+      {
+        "slug": "caregiver-code-expiry",
+        "intent": "I invited my daughter as a caregiver on Optum Rx. How long is the emailed access code good for? Answer from the Optum Rx help; change nothing.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["30"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["30"] },
+        "tags": ["help", "information", "account"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "30 days." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "HealthSafe ID" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Preferred payment method", "Easy Pay Program"] },
+    { "page": "helpArticle", "slug": "easy-pay", "contains": "3 monthly payments" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "1-800-356-3477" }
+  ]
+}

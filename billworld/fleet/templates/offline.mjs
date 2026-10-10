@@ -4,11 +4,14 @@
 // and (for consolidated billing) which bill the charges appear on. Online accounts are clearly unavailable;
 // the server redirects every account page to home, so only home and the help pages are reachable.
 import { observe, finish, obsNav, obsFooter, heroText, heroLine, idLabel, submitLabel, social, helpExcerpts, articleExcerpt, OBS_CSS } from './_observed.mjs';
-import { html, doc, logo, alert, helpList, helpBody, helpSearchForm } from '../kit.mjs';
+import { html, doc, logo, alert, helpList, helpBody, helpSearchForm, L } from '../kit.mjs';
 import { loadCatalog } from '../catalog.mjs';
 
 export const meta = {
   id: 'offline',
+  // Where the dedicated tier's dossier nav (vm.nav) goes: the first element matching a selector (class:<token> or
+  // aria:<label>) is re-filled with the dossier's items; observed real-site navs yield on public pages (server.mjs withDossierNav).
+  navSlots: { public: [], account: [] },
   name: 'Offline biller information page',
   description: 'Informational page for billers with no online account or with consolidated billing: ways to pay by mail, phone and in person, office hours, bill-stub guide and which bill consolidated charges appear on.',
   families: ['no public website', 'consolidated billing (utility-consolidated supplier, tax-bill or utility-bill line item)'],
@@ -82,14 +85,14 @@ const art = (vm, slug) => vm.help.some(a => a.slug === slug) ? vm.url('helpArtic
 function shell(vm, title, body) {
   const b = vm.biller;
   return doc(vm, { title: `${title} | ${b.brand.shortName}`, bodyClass: 'offline', body: html`<header class="mast"><div class="col mast-row"><a class="brand" href="${vm.url('home')}">${logo(vm)}<span><strong>${b.name}</strong><small>${b.serviceArea ? b.serviceArea : 'Customer information'}</small></span></a>${b.phone ? html`<p class="callout">Questions? <strong>${b.phone}</strong></p>` : ''}</div>
-    <nav class="col nav" aria-label="Site"><a href="${vm.url('home')}">Home</a><a href="${art(vm, 'pay-your-bill')}">Ways to Pay</a><a href="${vm.url('helpArticle', { slug: 'contact-us' })}">Contact</a><a href="${vm.url('help')}">Customer Information</a></nav>${obsNav(vm)}</header>
+    <nav class="col nav" aria-label="Site"><a href="${vm.url('home')}">${L(vm, 'home', 'Home')}</a><a href="${art(vm, 'pay-your-bill')}">Ways to Pay</a><a href="${vm.url('helpArticle', { slug: 'contact-us' })}">Contact</a><a href="${vm.url('help')}">${L(vm, 'help', 'Customer Information')}</a></nav>${obsNav(vm)}</header>
     <main class="col">${alert(vm)}${body}</main>
     <footer class="foot"><div class="col"><p>${b.name}${b.parent ? ` · ${b.parent}` : ''}</p><p>${b.phone ? `Customer service ${b.phone}` : 'Contact information is printed on your statement.'}${b.mailAddress ? html` · Payments: ${b.mailAddress}` : ''}</p>${obsFooter(vm)}<p class="fine">This page lists offline payment options. ${status(vm).foot === 'does not bill customers directly' ? `${b.brand.shortName} does not bill customers directly.` : status(vm).foot ? `Online options for ${b.brand.shortName} were not confirmed; see your statement.` : `There is no online account login for this ${b.entityType && /coop/i.test(b.entityType) ? 'cooperative' : 'biller'}.`}</p></div></footer>` });
 }
 
 function stub(vm) {
   const b = vm.biller;
-  return html`<figure class="stub" aria-label="Example payment stub"><div class="stub-cut">✂ Please detach and return this portion with your payment</div><div class="stub-grid"><div><span>Make checks payable to</span><strong>${b.brand.shortName}</strong></div><div><span>Account number</span><strong class="blank">from your statement</strong></div><div><span>Due date</span><strong class="blank">see statement</strong></div><div><span>Amount enclosed</span><strong class="blank">$</strong></div></div><div class="stub-addr"><span>Remit to</span><strong>${b.mailAddress || 'Address printed on your statement'}</strong></div><figcaption>Example only. Always use the stub and envelope that came with your bill.</figcaption></figure>`;
+  return html`<figure class="stub" aria-label="Example payment stub"><div class="stub-cut">✂ Please detach and return this portion with your payment</div><div class="stub-grid"><div><span>Make checks payable to</span><strong>${b.brand.shortName}</strong></div><div><span>Account number</span><strong class="blank">from your statement</strong></div><div><span>${L(vm, 'dueDate', 'Due date')}</span><strong class="blank">see statement</strong></div><div><span>Amount enclosed</span><strong class="blank">$</strong></div></div><div class="stub-addr"><span>Remit to</span><strong>${b.mailAddress || 'Address printed on your statement'}</strong></div><figcaption>Example only. Always use the stub and envelope that came with your bill.</figcaption></figure>`;
 }
 
 function home(vm) {
@@ -106,7 +109,7 @@ function home(vm) {
       <article class="way"><h3>Through your bank</h3><p>Your own bank’s online bill pay service can mail a check to ${b.brand.shortName} for you. Add the remittance address and your account number as the payee details.</p><p class="tag">Works with any biller that accepts checks</p></article>
     </div></section>
     <div class="two"><section class="box"><h2>Office hours</h2><table class="hours"><tbody><tr><th scope="row">Monday – Friday</th><td>8:00 a.m. – 4:30 p.m.</td></tr><tr><th scope="row">Saturday – Sunday</th><td>Closed</td></tr><tr><th scope="row">Holidays</th><td>Closed</td></tr></tbody></table><p class="small">Typical ${p.office} hours shown — hours vary by location. ${b.phone ? html`Call ${b.phone} to confirm.` : 'Check your statement or call before visiting.'}</p></section>
-    <section class="box"><h2>Need help paying?</h2><p>${p.extra || 'Contact the office before your due date if you cannot pay the full amount.'}</p>${b.seniorPrograms ? html`<p><strong>Programs:</strong> ${b.seniorPrograms}</p>` : ''}${vm.help.some(x => x.slug === 'payment-assistance') ? html`<p><a href="${vm.url('helpArticle', { slug: 'payment-assistance' })}">Payment assistance information</a></p>` : html`<p><a href="${vm.url('help')}">All customer information</a></p>`}</section></div>
+    <section class="box"><h2>Need help paying?</h2><p>${p.extra || 'Contact the office before your due date if you cannot pay the full amount.'}</p>${b.seniorPrograms ? html`<p><strong>Programs:</strong> ${b.seniorPrograms}</p>` : ''}${vm.help.some(x => x.slug === 'payment-assistance') ? html`<p><a href="${vm.url('helpArticle', { slug: 'payment-assistance' })}">Payment assistance information</a></p>` : html`<p><a href="${vm.url('help')}">${L(vm, 'help', 'All customer information')}</a></p>`}</section></div>
     <section class="box"><h2>Reading your bill</h2><p>Your paper statement is the official record of what you owe. The bottom portion is a payment stub — return it with your check so your payment is credited to the right account.</p>${stub(vm)}</section>
     ${payArt ? html`<section class="box"><h2>Payment details</h2>${helpBody(payArt)}</section>` : ''}
     <section class="box"><h2>Search customer information</h2>${helpSearchForm(vm, { placeholder: 'Search payment and contact information' })}</section>`);
@@ -119,7 +122,7 @@ function help(vm) {
 const pages = {
   home,
   help,
-  helpArticle: vm => shell(vm, vm.article.title, html`<p class="crumbs"><a href="${vm.url('help')}">Customer information</a> › ${vm.article.title}</p><h1>${vm.article.title}</h1><section class="box">${helpBody(vm.article)}</section>${articleExcerpt(vm)}<p class="small">Online account access is not available. <a href="${vm.url('home')}">Back to ways to pay</a></p>`),
+  helpArticle: vm => shell(vm, vm.article.title, html`<p class="crumbs"><a href="${vm.url('help')}">${L(vm, 'help', 'Customer information')}</a> › ${vm.article.title}</p><h1>${vm.article.title}</h1><section class="box">${helpBody(vm.article)}</section>${articleExcerpt(vm)}<p class="small">Online account access is not available. <a href="${vm.url('home')}">Back to ways to pay</a></p>`),
   helpSearch: vm => shell(vm, 'Search', html`<h1>Search results</h1>${helpSearchForm(vm, { placeholder: 'Search payment and contact information' })}${vm.results.length ? html`<section class="box">${helpList(vm, vm.results)}</section>` : html`<p>No information matches “${vm.query.q || ''}”. <a href="${vm.url('helpArticle', { slug: 'contact-us' })}">Contact us</a>.</p>`}`)
 };
 

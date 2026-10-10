@@ -1,0 +1,309 @@
+{
+  "id": "santander-consumer-usa-santander-auto-finance-eafa19",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Santander Consumer USA (Santander Auto Finance)",
+  "category": "loans",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public santanderconsumerusa.com pages only (no sign-in). MyAccount one-time ACH payments are free; debit card (and Apple Pay/Google Pay debit) payments carry a $3.28 third-party fee and PayPal/Venmo $6.75 (not modelled: the engine has one card fee). Auto Pay is free, draws personal checking or savings on the due date, needs the account not to be past due and takes 5-7 business days to start. Mail payments: money orders, cashier's or personal checks; no credit cards or cash. Due date changes are requested in MyAccount (contact page). Extension/hardship programs are not described publicly, so the family repayment-plan default is left as is. Late fees follow the contract and state law (no amount modelled).",
+  "officialDomains": [
+    "santanderconsumerusa.com"
+  ],
+  "sources": [
+    {
+      "url": "https://santanderconsumerusa.com/payments",
+      "title": "Payment options",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://santanderconsumerusa.com/payments/auto-pay",
+      "title": "Auto Pay",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://santanderconsumerusa.com/paperless",
+      "title": "Go Paperless",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://santanderconsumerusa.com/contact",
+      "title": "Contact Us",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "shortName": "Santander Consumer USA",
+    "primary": "#cc0000",
+    "accent": "#7a0000",
+    "monogram": "S"
+  },
+  "labels": {
+    "dashboard": "MyAccount",
+    "autopay": "Auto Pay",
+    "paperless": "Go Paperless",
+    "payBill": "Make a Payment",
+    "contact": "Contact Us",
+    "signIn": "Log In"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Payment options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help & Support",
+        "page": "help"
+      },
+      {
+        "label": "Contact Us",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAccount",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://santanderconsumerusa.com/payments/auto-pay",
+      "note": "Auto Pay is free, deducts your payment on the due date, and needs the account to be current; it can take 5-7 business days to start."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://santanderconsumerusa.com/paperless"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://santanderconsumerusa.com/payments",
+      "note": "Automated line 888-222-4227: free from checking or savings, $3.28 by debit card."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://santanderconsumerusa.com/payments"
+    }
+  },
+  "billing": {
+    "source": "https://santanderconsumerusa.com/payments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 328,
+      "evidence": "documented_official",
+      "source": "https://santanderconsumerusa.com/payments"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "paragraphs": [
+        "In MyAccount, a one-time payment from checking or savings is free. A debit card, Apple Pay or Google Pay debit payment costs $3.28 and PayPal or Venmo costs $6.75; these fees go to third-party processors, not Santander. The automated phone line at 888-222-4227 is free from a bank account and $3.28 by debit card.",
+        "By mail, send a money order, cashier's check or personal check with your 7-digit account number to Santander Consumer USA, P.O. Box 660633, Dallas, TX 75266-0633; allow seven to ten business days. Credit cards, third-party checks and cash are not accepted. Cash can be paid through MoneyGram (receive code 1544), Western Union, PayNearMe or CheckFreePay."
+      ],
+      "source": "https://santanderconsumerusa.com/payments",
+      "mode": "append"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "paragraphs": [
+        "Auto Pay is free and deducts your monthly vehicle payment from a personal checking or savings account on the due date. Your account must not be past due to enroll, and enrollment can take five to seven business days to take effect. Sign up in MyAccount."
+      ],
+      "source": "https://santanderconsumerusa.com/payments/auto-pay",
+      "topic": "autopay"
+    },
+    {
+      "slug": "debit-card-fee",
+      "title": "Debit card and wallet payment fees",
+      "paragraphs": [
+        "Debit card payments online or by phone, and Apple Pay or Google Pay debit payments, carry a $3.28 processor fee. PayPal and Venmo payments cost $6.75. Paying from a checking or savings account is free."
+      ],
+      "source": "https://santanderconsumerusa.com/payments",
+      "topic": "fees"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go Paperless",
+      "paragraphs": [
+        "Sign in to MyAccount, choose Go Paperless, pick Electronic under Statement Preferences and select Save."
+      ],
+      "source": "https://santanderconsumerusa.com/paperless",
+      "topic": "paperless",
+      "steps": [
+        "Sign in to MyAccount.",
+        "Choose Go Paperless.",
+        "Under Statement Preferences pick Electronic.",
+        "Select Save."
+      ]
+    },
+    {
+      "slug": "due-date-change",
+      "title": "Changing your due date",
+      "paragraphs": [
+        "You can request a due date change, set up Auto Pay and update your information from your online account."
+      ],
+      "source": "https://santanderconsumerusa.com/contact",
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "debit-card-fee",
+        "intent": "Using the Santander Consumer USA payment options page, find the fee for paying with a debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3.28",
+              "3.28"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3.28",
+            "3.28"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Debit card payments cost $3.28."
+          }
+        ]
+      },
+      {
+        "slug": "moneygram-receive-code",
+        "intent": "Using Santander Consumer USA's payment help, find the MoneyGram receive code for paying your auto loan in cash. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1544"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1544"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The MoneyGram receive code is 1544."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "debit-card-fee",
+      "contains": "$3.28"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "1544"
+    }
+  ]
+}

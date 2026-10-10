@@ -1,0 +1,309 @@
+{
+  "id": "unitedhealthcare-medicare-aarp-medicare-advantag-666c8e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "UnitedHealthcare Medicare (AARP Medicare Advantage, AARP Medicare Supplement, AARP Medicare Rx)",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public uhc.com pages only (no sign-in, no QuickPay lookup). UHC's 'How to pay your bills' page covers Medicare Advantage, Medicare Supplement and Part D premiums: auto-pay from checking (EFT) or a credit/debit card after signing in (MA members may also use savings), Social Security / Railroad Retirement deduction, one-time QuickPay payment without signing in, phone (number on the member ID card) and mail with the invoice form; MA members may date a one-time payment in the future. Sign-in: medicare.uhc.com sends members to the HealthSafe ID sign-in page, which asks for 'Email or username' first and then the password (observed 2026-10-09, reviewer); the MFA channel is not published, so MFA stays at the family default. The real sign-in is two-step, but auth. QuickPay asks for the member ID and date of birth per secondary sources only, so the guest lookup is recorded as inferred. No convenience fees, late fees or grace periods are published on the public page; they are left out. Claims payments (pay a provider through the member site) are not modelled. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template).",
+  "officialDomains": [
+    "uhc.com",
+    "healthsafe-id.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.uhc.com/member-resources/how-to-pay-bill",
+      "title": "How to pay your bills | UnitedHealthcare",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.uhc.com/sign-in",
+      "title": "Sign in and registration | UnitedHealthcare",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.uhc.com/member-resources/myuhc-member-website",
+      "title": "myuhc.com & other member websites | UnitedHealthcare",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.medicare.uhc.com/",
+      "title": "UnitedHealthcare Medicare member sign in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://identity.healthsafe-id.com/oneapp/index.html",
+      "title": "Sign in | HealthSafe ID",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "UnitedHealthcare Medicare",
+    "shortName": "UnitedHealthcare",
+    "primary": "#002677",
+    "accent": "#00508f",
+    "monogram": "UH"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "username": "Email or username",
+    "register": "Register",
+    "guestPay": "QuickPay",
+    "autopay": "Auto-pay",
+    "payBill": "Pay premium",
+    "dashboard": "Member account",
+    "help": "Member resources"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "QuickPay",
+        "page": "guest"
+      },
+      {
+        "label": "How to pay your bills",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Member resources",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Member account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay premium",
+        "page": "pay"
+      },
+      {
+        "label": "Auto-pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 2,
+    "guestLookupFields": [
+      "accountNumber",
+      "dob"
+    ],
+    "evidence": "observed_public",
+    "source": "https://identity.healthsafe-id.com/oneapp/index.html"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill",
+      "note": "QuickPay takes a one-time premium payment without signing in."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill",
+      "note": "Medicare Advantage members can date a one-time payment in the future."
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.uhc.com/sign-in"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill",
+      "note": "Call the number on your member ID card."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill",
+      "note": "Mail the payment with the form on your invoice."
+    }
+  },
+  "billing": {
+    "source": "https://www.uhc.com/member-resources/how-to-pay-bill",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your premium",
+      "topic": "payments",
+      "paragraphs": [
+        "UnitedHealthcare bills Medicare Advantage, Medicare Supplement and Medicare prescription drug plan members each month for their premium. There are four ways to pay: automatic payments, a one-time online payment, by phone, or by mail.",
+        "Online: make a one-time payment with QuickPay without signing in, or sign in to your member account or the UnitedHealthcare app. Medicare Advantage members can also schedule a one-time payment for a later date, and members may pay monthly or for the whole year.",
+        "By phone: call the number on your member ID card. By mail: send your payment with the form on the invoice you received."
+      ],
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto-pay for your premium",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in to your member account to sign up for automatic premium payments from a checking account (Electronic Funds Transfer) or a credit or debit card. Medicare Advantage members can also pay automatically from a savings account.",
+        "You can also have the premium taken out of your monthly Social Security or Railroad Retirement Board benefit instead."
+      ],
+      "steps": [
+        "Sign in to your member account.",
+        "Open Auto-pay.",
+        "Choose your checking account or card.",
+        "Review and turn on automatic payments."
+      ],
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill"
+    },
+    {
+      "slug": "social-security-deduction",
+      "title": "Paying your premium from Social Security or Railroad Retirement benefits",
+      "topic": "payments",
+      "paragraphs": [
+        "Members can have the monthly premium deducted automatically from their Social Security or Railroad Retirement Board benefit check, using UnitedHealthcare's premium deduction form.",
+        "If a plan sponsor (such as a former employer, union or trust) or a State Pharmaceutical Assistance Program pays part of your drug plan premium, Social Security will not know that, so the amount deducted may be too high. Your prescription drug plan then has to refund the difference, which can take time."
+      ],
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Questions about your bill",
+      "topic": "contact",
+      "paragraphs": [
+        "For billing questions, chat with customer service in the UnitedHealthcare app or after signing in to your member account, or call the number on your member ID card."
+      ],
+      "source": "https://www.uhc.com/member-resources/how-to-pay-bill"
+    },
+    {
+      "slug": "register",
+      "title": "Sign in or register",
+      "topic": "account",
+      "paragraphs": [
+        "Register for a member account to see your benefits, find network doctors, and view and pay bills at any time. You can sign in on the web, in a mobile browser, or in the UnitedHealthcare app."
+      ],
+      "source": "https://www.uhc.com/sign-in"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "benefit-deduction-options",
+        "intent": "Using the UnitedHealthcare Medicare help pages, find which two government benefit payments members can have their monthly premium deducted from. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Railroad Retirement"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Railroad Retirement"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Premiums can be deducted from a Social Security or Railroad Retirement Board benefit check."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email or username",
+        "Sign in"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto-pay",
+        "Pay premium"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "social-security-deduction",
+      "contains": "Railroad Retirement"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "savings account"
+    }
+  ]
+}

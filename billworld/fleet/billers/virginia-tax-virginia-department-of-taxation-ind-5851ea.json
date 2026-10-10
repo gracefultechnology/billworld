@@ -1,0 +1,385 @@
+{
+  "id": "virginia-tax-virginia-department-of-taxation-ind-5851ea",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Virginia Tax (Virginia Department of Taxation) - individual income tax",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public tax.virginia.gov pages only. Moved from the paymentus family to income-tax: Paymentus only processes cards, while Virginia Tax runs its own online services account, eForms and QuickPay. QuickPay (no login) pays a bill with the bill number and SSN (guest lookup: account ID = SSN + statementId = bill number, bank only). Cards via Paymentus online or 1-833-339-1307: debit $3.95, credit under $43 $1, over $43 2.3% (engine charges 2.3%; flat parts not expressible). Returned payments may cost $35. Self-service payment plans online or via Teleplan (804-440-5100) for balances under $25,000, up to 5 years for individual income tax, autopay optional inside the plan; otherwise call 804-367-8045. Estimated payments: all 4 quarterly payments can be scheduled in advance. No standing AutoPay for balances (unsupported, inferred). Sign-in by username inferred; enrollment needs a copy of the most recent Virginia return.",
+  "template": "income-tax",
+  "officialDomains": [
+    "tax.virginia.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.tax.virginia.gov/individual-income-tax-payment-options",
+      "title": "Individual Income Tax Payment Options | Virginia Tax",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.tax.virginia.gov/paymentplan",
+      "title": "Payment Plans | Virginia Tax",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.tax.virginia.gov/existing-payment-plans",
+      "title": "Existing Payment Plans | Virginia Tax",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.tax.virginia.gov/credit-card-payments",
+      "title": "Credit Card Payments | Virginia Tax",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.tax.virginia.gov/pay-bill-notice-assessment",
+      "title": "Pay a Bill (Notice of Assessment) | Virginia Tax",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Virginia Tax",
+    "shortName": "Virginia Tax",
+    "primary": "#0b3d6e",
+    "accent": "#8a5300",
+    "monogram": "VA"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "guestPay": "QuickPay",
+    "dashboard": "Online Services",
+    "arrangement": "Payment Plans",
+    "register": "Enroll now",
+    "signIn": "Individual Account Login",
+    "statements": "Bills",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "QuickPay",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Pay a Bill",
+        "helpSlug": "pay-a-bill"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      },
+      {
+        "label": "Individual Account Login",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Online Services",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Bills",
+        "page": "statements"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Plans",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber",
+      "statementId"
+    ],
+    "evidence": "inferred",
+    "source": "https://www.tax.virginia.gov/individual-income-tax-payment-options"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.virginia.gov/pay-bill-notice-assessment",
+      "note": "QuickPay: pay a bill from your bank account for free with your bill number and Social Security number, no login needed."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.tax.virginia.gov/individual-income-tax-payment-options",
+      "note": "There is no standing automatic payment for tax balances. You can schedule all four estimated payments in advance, and a payment plan can be set to pay automatically.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.virginia.gov/individual-income-tax-payment-options"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.virginia.gov/paymentplan"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.virginia.gov/paymentplan"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.virginia.gov/credit-card-payments",
+      "note": "Card payments by phone through Paymentus; debit $3.95, credit 2.3% (under $43: $1).",
+      "phone": "8333391307"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.virginia.gov/individual-income-tax-payment-options"
+    }
+  },
+  "billing": {
+    "source": "https://www.tax.virginia.gov/individual-income-tax-payment-options",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.3,
+      "evidence": "documented_official",
+      "source": "https://www.tax.virginia.gov/credit-card-payments"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Individual income tax payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay a balance due on your return for free from your bank account in your Virginia Tax online services account (choose Return Payment 760-PMT) or with eForms without logging in. Card payments go through Paymentus with a service fee. You can also mail the 760-PMT voucher with a check or money order payable to Virginia Department of Taxation, with your SSN and tax period on the check.",
+        "For estimated tax, pay from your bank account and schedule all 4 quarterly payments in advance. To enroll in an online account you need a copy of your most recently filed Virginia return.",
+        "If your bank does not honor a payment, a $35 returned-payment fee may be charged on top of penalties and interest."
+      ],
+      "source": "https://www.tax.virginia.gov/individual-income-tax-payment-options"
+    },
+    {
+      "slug": "pay-a-bill",
+      "title": "Pay a bill (notice of assessment)",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay a bill from your bank account for free by logging in to Virginia Tax Online Services with your bill number and account number, or use QuickPay with your bill number and Social Security number.",
+        "Card payments go through Paymentus online or at 1-833-339-1307; choose Individual Bill Payments. You have 30 days to pay or respond to a bill before more penalties and interest accrue; after that, collection may start. If you cannot pay in full, set up a payment plan or call 804-367-8045."
+      ],
+      "source": "https://www.tax.virginia.gov/pay-bill-notice-assessment"
+    },
+    {
+      "slug": "credit-card-payments",
+      "title": "Credit and debit card payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Paymentus charges a convenience fee on each card payment; Virginia Tax receives none of it. Debit card payments cost $3.95. Credit card payments under $43 cost $1; over $43 the fee is 2.3%. MasterCard, Visa, American Express and Discover are accepted. You get an email confirmation with the total and a confirmation number."
+      ],
+      "source": "https://www.tax.virginia.gov/credit-card-payments"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "You can set up a payment plan only after you receive a bill. If you owe less than $25,000 in tax, penalties and interest and have no serious collection actions, set it up yourself in your online services account or through the automated Teleplan line at 804-440-5100 (individuals only). Otherwise call 804-367-8045.",
+        "Individual income tax plans can run up to 5 years; the shortest plan you can afford costs the least interest. A down payment is optional but recommended. You can set up automatic payments and email reminders, and review or change an existing plan online, with limits on how many times terms can change."
+      ],
+      "source": "https://www.tax.virginia.gov/paymentplan"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "teleplan-number",
+        "intent": "Using the Virginia Tax website's help pages, find the phone number of the automated Teleplan service for setting up a payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "804-440-5100",
+              "804.440.5100",
+              "8044405100"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "804-440-5100",
+            "804.440.5100",
+            "8044405100"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Teleplan at 804-440-5100."
+          }
+        ]
+      },
+      {
+        "slug": "returned-payment-fee",
+        "intent": "Using the Virginia Tax website's help pages, find the fee that may be charged if your bank does not honor a payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$35"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$35"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $35 returned-payment fee may be charged."
+          }
+        ]
+      },
+      {
+        "slug": "self-service-plan-limit",
+        "intent": "Using the Virginia Tax website's help pages, find the balance limit for setting up a self-service payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$25,000",
+              "25,000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$25,000",
+            "25,000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Self-service plans are for balances under $25,000."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Pay a Bill",
+        "Individual Account Login"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Online Services",
+        "Payment Plans"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "804-440-5100",
+        "$25,000"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "credit-card-payments",
+      "contains": "$3.95"
+    }
+  ]
+}

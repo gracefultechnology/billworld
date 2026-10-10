@@ -1,0 +1,144 @@
+{
+  "id": "sunnova-accounts-now-serviced-by-sunstrong-manag-8f9007",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Sunnova (accounts now serviced by SunStrong Management)",
+  "category": "other",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from SunStrong Management's public Your Account page, its Help Center FAQ and the public sign-in page of the SunStrong lease/PPA billing portal (SunStrong: Consumer Central) only (never signed in, never used Guest Pay). Sunnova lease/PPA customers pay in Consumer Central; Sunnova loan customers use a separate SunStrong loan portal, which this dossier does not model. Consumer Central's sign-in has three tabs: Account Number (account number plus ZIP code and last 4 of SSN), Username (username and password) and Guest Pay (account number plus ZIP code); the fleet models the Username tab, and the account-number tab is a gap. The page advertises autopay or one-time payments and digital statements (including 1098 forms). SunStrong took over billing, collections and customer service; payment arrangements and contract terms stay the same apart from contract escalators and sales-tax changes (SunStrong now collects sales tax some earlier servicers did not). No phone number is published on the public pages (customers use the contact details in the SunStrong welcome email or the help center contact options), so limitation answers report no phone. Selling the home is handled through SunStrong's Sell My Home contact, not online cancellation. Fees, late fees and autopay timing are not published.",
+  "officialDomains": ["sunstrongmanagement.com", "myaccountinfo.com"],
+  "sources": [
+    { "url": "https://sunstrongmanagement.com/homeowners/account/", "title": "Your account – SunStrong Management", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://sunstrongmanagement.com/help-center/", "title": "Help Articles – SunStrong Management", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://esp.myaccountinfo.com/Sunstrong/Default.aspx", "title": "SunStrong: Consumer Central", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "SunStrong Management (Sunnova accounts)", "shortName": "SunStrong", "primary": "#0f3b57", "accent": "#a14b00", "monogram": "SS" },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Create Account",
+    "forgot": "Forgot password?",
+    "guestPay": "Guest Pay",
+    "username": "Username",
+    "statements": "Digital Statements",
+    "payBill": "Pay My Bill",
+    "help": "Help Center",
+    "cancel": "Sell My Home",
+    "dashboard": "My Account"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign In", "page": "login" },
+      { "label": "Guest Pay", "page": "guest" },
+      { "label": "Create Account", "page": "register" },
+      { "label": "Help Center", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Account", "page": "dashboard" },
+      { "label": "Pay My Bill", "page": "pay" },
+      { "label": "Autopay", "page": "autopay" },
+      { "label": "Digital Statements", "page": "statements" },
+      { "label": "Payment History", "page": "history" },
+      { "label": "Sell My Home", "page": "cancel" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "observed_public",
+    "source": "https://esp.myaccountinfo.com/Sunstrong/Default.aspx"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://esp.myaccountinfo.com/Sunstrong/Default.aspx" },
+    "autopay": { "support": "supported", "evidence": "observed_public", "source": "https://esp.myaccountinfo.com/Sunstrong/Default.aspx" },
+    "statements": { "support": "supported", "evidence": "observed_public", "source": "https://esp.myaccountinfo.com/Sunstrong/Default.aspx" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://sunstrongmanagement.com/help-center/", "note": "Your solar agreement cannot be cancelled online and its terms stay the same. If you are selling your home, contact SunStrong Customer Care through the Help Center (Sell My Home) as early as possible.", "channel": "none" }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Where to pay your solar bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Where you pay depends on the company that originally sold or installed your system. Former Sunnova lease and PPA customers pay in SunStrong's Consumer Central portal; former Sunnova loan customers use SunStrong's separate loan portal.",
+        "In Consumer Central you can make a one-time payment, set up autopay and view digital statements. Without signing in, choose Guest Pay and enter your account number and ZIP code.",
+        "Not sure who your originator is? Check your original contract or a bill from before SunStrong took over, or ask Customer Care to point you to the right portal.",
+        "Keep paying as usual: your payment arrangements did not change when SunStrong took over unless SunStrong tells you otherwise."
+      ],
+      "steps": ["Go to SunStrong's Your Account page.", "Under your originator (Sunnova), choose Lease & PPA.", "Sign in with your username and password, or use Guest Pay with your account number and ZIP code.", "Make a payment or set up autopay."],
+      "source": "https://sunstrongmanagement.com/homeowners/account/"
+    },
+    {
+      "slug": "faq",
+      "title": "Your account moved to SunStrong",
+      "topic": "faq",
+      "paragraphs": [
+        "SunStrong Management is an operations and asset-management company that now handles maintenance, billing and collections for systems whose original company no longer manages them.",
+        "Your financing agreement terms do not change, apart from escalators already in your contract and any changes in sales tax.",
+        "SunStrong must charge all sales tax required by state and local governments. Some earlier owners did not charge it, so you may now see sales tax on your solar bill.",
+        "To confirm SunStrong manages your account, look for its email to the primary account holder or for SunStrong branding on a recent bill."
+      ],
+      "source": "https://sunstrongmanagement.com/help-center/"
+    },
+    {
+      "slug": "two-bills",
+      "title": "Why you still get a utility bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Solar does not replace your utility bill. You get a solar bill from SunStrong for your lease, loan or PPA, and a separate bill from your utility for power you draw from the grid at night or when production is low, plus fixed service charges, taxes and any net-metering credits.",
+        "Customers with add-on battery storage may receive a third bill for the storage service."
+      ],
+      "source": "https://sunstrongmanagement.com/help-center/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Selling your home with solar",
+      "topic": "account",
+      "paragraphs": [
+        "Your solar agreement is not cancelled online. If you are selling your home, tell SunStrong as soon as possible through the Sell My Home option in the Help Center so the agreement can be handled with the sale."
+      ],
+      "source": "https://sunstrongmanagement.com/help-center/"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Forgot your password",
+      "topic": "account",
+      "paragraphs": [
+        "On the Consumer Central sign-in page choose the Username tab, select Forgot password? and enter your username; the portal sends a new password.",
+        "You can also sign in with the Account Number tab using your account number, ZIP code and the last 4 digits of your SSN."
+      ],
+      "source": "https://esp.myaccountinfo.com/Sunstrong/Default.aspx"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "sales-tax-question",
+        "intent": "Your solar bill from SunStrong (formerly Sunnova) now shows sales tax that was not there before. Using SunStrong's help pages, find out why. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["tax"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["tax"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "SunStrong must collect all sales tax required by state and local law; some earlier servicers did not charge it, so the tax now appears on the bill." }]
+      },
+      {
+        "slug": "guest-pay-fields",
+        "intent": "You want to pay your SunStrong (former Sunnova) solar bill without creating an online account. Using the SunStrong site, find out what information Guest Pay asks for. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["ZIP", "zip"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["ZIP", "zip"] },
+        "tags": ["help", "information", "guest"],
+        "evidence": "observed_public",
+        "solution": [{ "op": "answer", "text": "Guest Pay asks for your account number and ZIP code." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": ["Username"] },
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": "ZIP" },
+    { "page": "cancel", "signedIn": true, "contains": "Sell My Home" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "originator" },
+    { "page": "helpArticle", "slug": "faq", "contains": "sales tax" }
+  ]
+}

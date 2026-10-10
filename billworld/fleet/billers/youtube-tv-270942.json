@@ -1,0 +1,352 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "youtube-tv-270942",
+  "name": "YouTube TV",
+  "notes": "Researched from tv.youtube.com and YouTube TV Help articles only (no sign-in). Membership is charged monthly to the Google payment method on file; there is no separate AutoPay, paper bill, guest pay or payment plan. Sign-in is a Google Account (email or phone, then password); Google 2-Step Verification is optional and user-configured, so mfa stays none. Plan switching starts immediately with a credit for unused time (the engine applies changes immediately). Pause (4 weeks to 6 months) is offered but cannot be modeled; it is described in help. The welcome page lists the Sports + News plan at $71.99 while its FAQ mentions a Sports plan at $64.99; only the base and Sports + News prices are used. Carrier/ISP-billed members change or cancel with that provider. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "youtube.com",
+    "google.com"
+  ],
+  "sources": [
+    {
+      "url": "https://tv.youtube.com/welcome/",
+      "title": "YouTube TV - Watch & DVR Live Sports, Shows & News",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://support.google.com/youtubetv/answer/7129668?hl=en&co=GENIE.Platform%3DDesktop",
+      "title": "Cancel or pause your YouTube TV membership - Computer - YouTube TV Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://support.google.com/youtubetv/answer/7129667?hl=en&co=GENIE.Platform%3DDesktop",
+      "title": "Update billing & payments for YouTube TV - Computer - YouTube TV Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.google.com/youtubetv/answer/16865391?hl=en",
+      "title": "Learn about YouTube TV Plans - YouTube TV Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "YouTube TV",
+    "primary": "#cc0000",
+    "accent": "#282828",
+    "monogram": "YT"
+  },
+  "labels": {
+    "dashboard": "Settings",
+    "plan": "Membership",
+    "wallet": "Billing",
+    "history": "Billing",
+    "statements": "Billing",
+    "cancel": "Cancel membership",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "help": "Help",
+    "username": "Email or phone"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Plans",
+        "helpSlug": "youtube-tv-plans"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Membership",
+        "page": "plan"
+      },
+      {
+        "label": "Billing",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Cancel membership",
+        "page": "cancel"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "none",
+    "socialProviders": [
+      "google"
+    ],
+    "evidence": "inferred",
+    "source": "https://support.google.com/youtubetv/answer/7129667?hl=en&co=GENIE.Platform%3DDesktop"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/youtubetv/answer/7129667?hl=en&co=GENIE.Platform%3DDesktop",
+      "note": "The membership is charged to the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://support.google.com/youtubetv/answer/7129667?hl=en&co=GENIE.Platform%3DDesktop",
+      "note": "YouTube TV charges the payment method on file at the start of each monthly billing cycle until you cancel; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://support.google.com/youtubetv/answer/7129668?hl=en&co=GENIE.Platform%3DDesktop",
+      "note": "Recurring charges stop only when you cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/youtubetv/answer/7129667?hl=en&co=GENIE.Platform%3DDesktop",
+      "note": "No paper bills are mailed; charges are shown on the account page and receipts are emailed."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/youtubetv/answer/7129667?hl=en&co=GENIE.Platform%3DDesktop"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/youtubetv/answer/7129667?hl=en&co=GENIE.Platform%3DDesktop"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.google.com/youtubetv/answer/7129668?hl=en&co=GENIE.Platform%3DDesktop",
+      "note": "Access continues to the end of the paid period; recordings expire 21 days later. Members billed by a carrier or internet provider cancel with that provider."
+    }
+  },
+  "billing": {
+    "source": "https://tv.youtube.com/welcome/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://support.google.com/youtubetv/answer/7129667?hl=en&co=GENIE.Platform%3DDesktop"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "sports-news",
+        "name": "Sports + News Plan",
+        "cents": 7199
+      },
+      {
+        "id": "base",
+        "name": "YouTube TV",
+        "cents": 8299,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "youtube-tv-plans",
+      "title": "YouTube TV plans and prices",
+      "topic": "plans",
+      "source": "https://tv.youtube.com/welcome/",
+      "paragraphs": [
+        "The main YouTube TV plan with 100+ channels is $82.99 a month plus tax. The Sports + News Plan is $71.99 a month. Add-ons include 4K Plus at $9.99 a month, Sports Plus at $10.99 a month and Spanish Plus at $14.99 a month.",
+        "Introductory prices may apply for the first months; the regular price applies afterwards."
+      ]
+    },
+    {
+      "slug": "switch-plans",
+      "title": "Switching YouTube TV plans",
+      "topic": "plans",
+      "source": "https://support.google.com/youtubetv/answer/16865391?hl=en",
+      "paragraphs": [
+        "You can switch plans from Settings > Membership on the web; plan switching is not available in the iOS or Android apps. The new plan starts right away and your main plan's billing date moves to the day you switch, while add-ons keep their own cycle.",
+        "You pay the new price minus a credit for unused time on the old plan. Moving to a cheaper plan gives a credit on your next payment. Removing channels can delete recordings from them unless you return within 21 days. Only the family manager can change a shared membership."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel or pause your membership",
+      "topic": "account",
+      "source": "https://support.google.com/youtubetv/answer/7129668?hl=en&co=GENIE.Platform%3DDesktop",
+      "steps": [
+        "Open YouTube TV in a web browser and select your profile photo.",
+        "Go to Settings, then Membership.",
+        "Select Manage.",
+        "Select Cancel membership, then Cancel."
+      ],
+      "paragraphs": [
+        "You keep access until the end of your current payment or trial period. Recordings in your library expire 21 days after the paid period ends.",
+        "Instead of canceling you can pause for 4 weeks up to 6 months using the slider under Manage. The pause starts after the current billing cycle; while paused you cannot watch or record, and you are charged the normal price when it ends."
+      ]
+    },
+    {
+      "slug": "billing-and-payments",
+      "title": "Update billing and payments",
+      "topic": "billing",
+      "source": "https://support.google.com/youtubetv/answer/7129667?hl=en&co=GENIE.Platform%3DDesktop",
+      "steps": [
+        "Select your profile picture.",
+        "Select Settings, then Billing.",
+        "Select Update next to your payment details."
+      ],
+      "paragraphs": [
+        "You are charged at the start of each billing cycle on the same date each month; if that date does not exist in a month, the charge happens on the last day of the month. Add-on networks are prorated until your next charge date.",
+        "You can add a backup payment method under Manage > Change payment method > Add backup so an expired card does not interrupt your membership."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "base-price",
+        "intent": "Find the regular monthly price of the main YouTube TV plan. Do not change your membership.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "82.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "82.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The YouTube TV plan costs $82.99 a month plus tax."
+          }
+        ]
+      },
+      {
+        "slug": "max-pause",
+        "intent": "Find the longest period YouTube TV lets you pause your membership. Do not pause or cancel anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "6 months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "6 months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You can pause YouTube TV for up to 6 months."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign in",
+        "Plans"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email or phone"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Membership",
+        "Billing"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Sports + News Plan"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "youtube-tv-plans",
+      "contains": "$82.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "6 months"
+    }
+  ]
+}

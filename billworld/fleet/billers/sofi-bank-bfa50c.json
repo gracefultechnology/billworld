@@ -1,0 +1,347 @@
+{
+  "id": "sofi-bank-bfa50c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "SoFi Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public sofi.com / support.sofi.com pages only (no sign-in). The mock bill is a SoFi Personal Loan. Payments: one-time online payment in the SoFi account, autopay, check/bill pay by mail, wire. Autopay: loan card > Set up next to Autopay off; cancel via Manage Autopay > Cancel autopay by the calendar day before it runs; turning autopay off removes the 0.25% rate discount and re-amortizes; Posting: autopay 8:00 AM PT, one-time 6:00 PM PT; one-time ACH can be cancelled until 6:00 PM PT. Due-date change for eligible fixed-rate loans once per 12 months to day 1-25 (Loan Details > Edit). Statements are electronic by default (paper by contacting support), so paperless is effectively always on. Sign-in with email + password; 2FA by text/voice code or authenticator app, email only as backup (mfa sms). Phone 855-456-7634. No guest pay (inferred). Reviewed 2026-10-09: removed autopay-eligibility and bi-weekly claims not stated on the cited SoFi article.",
+  "officialDomains": [
+    "sofi.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.sofi.com/hc/en-us/articles/payments-and-your-sofi-personal-loan",
+      "title": "Payments and Your SoFi Personal Loan | SoFi Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.sofi.com/hc/en-us/articles/360047421031-How-do-I-set-up-update-or-cancel-autopay-for-my-Personal-Loan",
+      "title": "How do I set up, update, or cancel autopay for my Loan? | SoFi Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://support.sofi.com/hc/en-us/articles/how-can-i-change-my-monthly-due-date-for-my-personal-loan",
+      "title": "How can I change my monthly due date for my Personal Loan? | SoFi Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://support.sofi.com/hc/en-us/articles/360052826332-How-do-I-cancel-a-payment-for-my-Personal-Loan",
+      "title": "How do I cancel a payment for my Loan? | SoFi Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://support.sofi.com/hc/en-us/articles/360043651592-What-is-two-factor-authentication-2FA",
+      "title": "What is two-factor authentication (2FA)? | SoFi Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://support.sofi.com/hc/en-us/articles/4423615827725-Can-I-use-email-for-two-factor-authentication-2FA",
+      "title": "Can I use email for two-factor authentication (2FA)? | SoFi Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "SoFi",
+    "shortName": "SoFi",
+    "primary": "#00577a",
+    "accent": "#006b8f",
+    "monogram": "SF"
+  },
+  "labels": {
+    "payBill": "Make a payment",
+    "autopay": "Manage Autopay",
+    "viewBill": "Loan Details",
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "username": "Email",
+    "help": "Help Center",
+    "dashboard": "Member dashboard"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Sign up",
+        "page": "register"
+      },
+      {
+        "label": "Personal loan payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Member dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Loan Details",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "sms",
+    "evidence": "documented_official",
+    "source": "https://support.sofi.com/hc/en-us/articles/360043651592-What-is-two-factor-authentication-2FA"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sofi.com/hc/en-us/articles/payments-and-your-sofi-personal-loan"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sofi.com/hc/en-us/articles/360047421031-How-do-I-set-up-update-or-cancel-autopay-for-my-Personal-Loan",
+      "note": "Turning autopay off removes the 0.25% interest rate discount and re-amortizes the loan."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sofi.com/hc/en-us/articles/360047421031-How-do-I-set-up-update-or-cancel-autopay-for-my-Personal-Loan"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sofi.com/hc/en-us/articles/360052826332-How-do-I-cancel-a-payment-for-my-Personal-Loan"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sofi.com/hc/en-us/articles/payments-and-your-sofi-personal-loan"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sofi.com/hc/en-us/articles/payments-and-your-sofi-personal-loan"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://support.sofi.com/hc/en-us/articles/payments-and-your-sofi-personal-loan",
+      "note": "SoFi loan payments are made after logging in to your SoFi account, or by check or wire. Call 855-456-7634 for help.",
+      "channel": "phone",
+      "phone": "855-456-7634"
+    }
+  },
+  "billing": {
+    "source": "https://support.sofi.com/hc/en-us/articles/payments-and-your-sofi-personal-loan",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your SoFi Personal Loan",
+      "paragraphs": [
+        "Make a one-time payment through your SoFi account, set up autopay, mail a check or bill-pay check, or send a wire. Payments go first to any outstanding fees, then accrued interest, then principal.",
+        "One-time online payments post at 6:00 PM PT and autopay at 8:00 AM PT. Mailed checks take 7-10 business days, overnight checks generally 1 business day, and wires post the day they arrive. A due date on a weekend or holiday moves to the next business day without making you late."
+      ],
+      "source": "https://support.sofi.com/hc/en-us/articles/payments-and-your-sofi-personal-loan"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up, update or cancel autopay",
+      "paragraphs": [
+        "On your member dashboard click your loan card, then Set up next to Autopay off. Choose the monthly amount and a bank account. You can add an extra amount each month.",
+        "To cancel, log in, open the loan, click Manage Autopay and then Cancel autopay. You must cancel by the calendar day before the payment is scheduled, or it will process. Turning autopay off removes the 0.25% interest rate discount and re-amortizes the loan."
+      ],
+      "steps": [
+        "Log in and click your loan card.",
+        "Click Set up next to Autopay off.",
+        "Choose the amount and bank account.",
+        "Confirm."
+      ],
+      "source": "https://support.sofi.com/hc/en-us/articles/360047421031-How-do-I-set-up-update-or-cancel-autopay-for-my-Personal-Loan"
+    },
+    {
+      "slug": "due-date-change",
+      "title": "Changing your monthly due date",
+      "topic": "billing",
+      "paragraphs": [
+        "Eligible fixed-rate personal loans can change the due date after funding and the first processed payment, if the loan is in good standing, generally once every 12 months. Pick any day from the 1st to the 25th.",
+        "Open the loan, click Loan Details and then Edit next to the due date in the Payment section. The change can cause two payments in one month or small changes to the amount due. If you see a message that you cannot change it, chat in or call 855-456-7634."
+      ],
+      "source": "https://support.sofi.com/hc/en-us/articles/how-can-i-change-my-monthly-due-date-for-my-personal-loan"
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Cancelling a payment",
+      "topic": "billing",
+      "paragraphs": [
+        "A scheduled one-time ACH payment can be cancelled until 6:00 PM PT on the day it is set to process."
+      ],
+      "source": "https://support.sofi.com/hc/en-us/articles/360052826332-How-do-I-cancel-a-payment-for-my-Personal-Loan"
+    },
+    {
+      "slug": "paperless",
+      "title": "Loan statements",
+      "paragraphs": [
+        "Statements are electronic and available in your SoFi account by default; fixed-rate loan statements are usually ready around the 15th of each month. To get paper statements, contact SoFi Support."
+      ],
+      "source": "https://support.sofi.com/hc/en-us/articles/payments-and-your-sofi-personal-loan"
+    },
+    {
+      "slug": "two-factor-authentication",
+      "title": "Two-factor authentication",
+      "topic": "account",
+      "paragraphs": [
+        "Besides your email and password, SoFi may ask you to confirm it is you with a one-time code by text or phone call, or a code from an authenticator app, for example on a new device, after 30 days of inactivity, or when you reset your password.",
+        "Email can be added only as a backup method, not as the primary one."
+      ],
+      "source": "https://support.sofi.com/hc/en-us/articles/360043651592-What-is-two-factor-authentication-2FA"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "due-date-range",
+        "intent": "Using SoFi's help center, find the range of days of the month a personal loan due date can be moved to. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "25"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "25"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Any day from the 1st through the 25th."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-discount-loss",
+        "intent": "Using SoFi's help center, find what interest rate discount is lost when autopay is turned off on a SoFi Personal Loan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "0.25",
+              ".25"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "0.25",
+            ".25"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The 0.25% interest rate discount."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "Email"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a payment",
+        "Manage Autopay"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date-change",
+      "contains": "1st to the 25th"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "0.25%"
+    }
+  ]
+}

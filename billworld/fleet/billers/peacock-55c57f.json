@@ -1,0 +1,394 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "peacock-55c57f",
+  "name": "Peacock",
+  "notes": "Researched from public peacocktv.com/help articles only (no sign-in). Peacock renews monthly or annually to a credit or debit card, PayPal or an in-app purchase; there is no separate AutoPay, paper bill, guest pay or payment plan, and no refunds for prior payments. The public sign-in page shows Email and Password on one form, with I don't know my password and Sign in without password links; the documented password tip (at least 10 characters with letters and numbers) is applied. Account tabs include Plans & Payment, Subscriptions and Settings. Third-party billed subscribers cancel with that party. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "peacocktv.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.peacocktv.com/help/article/how-much-does-a-peacock-subscription-cost",
+      "title": "How much does a Peacock subscription cost?",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.peacocktv.com/help/article/cancellation",
+      "title": "How do I cancel my Peacock plan?",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.peacocktv.com/help/article/payment-methods",
+      "title": "What payment methods are accepted for Peacock?",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.peacocktv.com/help/article/how-do-i-change-my-peacock-plan",
+      "title": "How do I change my Peacock plan?",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.peacocktv.com/help/article/how-do-i-view-my-payment-history-or-upcoming-payments",
+      "title": "How do I view my payment history or upcoming payments on Peacock?",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.peacocktv.com/help/article/how-do-i-reset-my-password",
+      "title": "How do I reset my Peacock password?",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.peacocktv.com/signin",
+      "title": "Sign in | Peacock",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Peacock",
+    "primary": "#5a3fd8",
+    "accent": "#111111",
+    "monogram": "P"
+  },
+  "labels": {
+    "dashboard": "Account",
+    "plan": "Change Plan",
+    "wallet": "Payment Method",
+    "history": "View Payment History",
+    "statements": "Plans & Payment",
+    "cancel": "Cancel All Subscriptions",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "help": "Help Center",
+    "forgot": "I don't know my password",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Plans and Pricing",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Plans & Payment",
+        "page": "dashboard"
+      },
+      {
+        "label": "Change Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "View Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Settings",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel All Subscriptions",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "passwordRule": {
+      "pattern": "^(?=.*[A-Za-z])(?=.*[0-9]).{10,}$",
+      "message": "Passwords must be at least 10 characters long and contain both letters and numbers."
+    },
+    "evidence": "observed_public",
+    "source": "https://www.peacocktv.com/signin"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.peacocktv.com/help/article/payment-methods",
+      "note": "The membership is charged to the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.peacocktv.com/help/article/how-do-i-view-my-payment-history-or-upcoming-payments",
+      "note": "Peacock renews automatically each month or year and charges the payment method on file; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.peacocktv.com/help/article/cancellation",
+      "note": "Recurring charges stop only when you cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.peacocktv.com/help/article/how-do-i-view-my-payment-history-or-upcoming-payments",
+      "note": "No paper bills are mailed; charges are shown on the account page and receipts are emailed."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.peacocktv.com/help/article/how-do-i-view-my-payment-history-or-upcoming-payments"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.peacocktv.com/help/article/how-do-i-view-my-payment-history-or-upcoming-payments"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.peacocktv.com/help/article/cancellation",
+      "note": "Select Cancel All Subscriptions on your account; this ends the base plan and add-ons at the end of the term. Third-party billed subscribers cancel with that party."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.peacocktv.com/help/article/how-do-i-reset-my-password"
+    }
+  },
+  "billing": {
+    "source": "https://www.peacocktv.com/help/article/how-much-does-a-peacock-subscription-cost",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.peacocktv.com/help/article/payment-methods"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "select",
+        "name": "Peacock Select",
+        "cents": 899
+      },
+      {
+        "id": "premium",
+        "name": "Peacock Premium",
+        "cents": 1299
+      },
+      {
+        "id": "premium-plus",
+        "name": "Peacock Premium Plus",
+        "cents": 1999,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "How much does Peacock cost?",
+      "topic": "plans",
+      "source": "https://www.peacocktv.com/help/article/how-much-does-a-peacock-subscription-cost",
+      "paragraphs": [
+        "Peacock Premium is $12.99 a month or $129.99 a year plus tax. Peacock Premium Plus, with almost no ads, is $19.99 a month or $199.99 a year plus tax; ads still appear in channels, live sports and events and a few titles.",
+        "The Peacock Select tier is $8.99 a month or $89.99 a year."
+      ]
+    },
+    {
+      "slug": "change-plan",
+      "title": "Change your Peacock plan",
+      "topic": "plans",
+      "source": "https://www.peacocktv.com/help/article/how-do-i-change-my-peacock-plan",
+      "paragraphs": [
+        "If Peacock bills you directly, go to your Account on the web and click Change Plan to switch between Premium and Premium Plus; a toggle chooses monthly or annual billing. If a third party bills you, your Account screen says so and you change the plan through them."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How to cancel your Peacock plan",
+      "topic": "account",
+      "source": "https://www.peacocktv.com/help/article/cancellation",
+      "steps": [
+        "Sign in to your account.",
+        "Select Cancel All Subscriptions.",
+        "Follow the steps and confirm."
+      ],
+      "paragraphs": [
+        "Canceling ends your base plan (Select, Premium or Premium Plus) and any add-ons; the plan does not renew at the end of its term. You see a confirmation on screen and get an email, which can take a few hours. Peacock does not refund or credit earlier payments unless the law requires it.",
+        "To drop only an add-on, choose it on the Subscriptions tab and select Remove Add-On. If you subscribed through Apple, Google, Roku, Amazon or a TV provider, cancel with them; the Payment Method section shows who bills you."
+      ]
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment methods and history",
+      "topic": "billing",
+      "source": "https://www.peacocktv.com/help/article/payment-methods",
+      "paragraphs": [
+        "Peacock accepts Visa, Mastercard, Discover and American Express credit cards, debit cards, PayPal, and in-app purchases on supported devices.",
+        "Direct-billed subscribers can review upcoming charges and select View Payment History on the Plans & Payment tab of the Account page."
+      ]
+    },
+    {
+      "slug": "reset-password",
+      "title": "Reset your Peacock password",
+      "topic": "account",
+      "source": "https://www.peacocktv.com/help/article/how-do-i-reset-my-password",
+      "steps": [
+        "Click Sign in, then I don't know my password (the help article calls it Forgot Password?).",
+        "Enter the email you signed up with and click Continue.",
+        "Open the reset email and follow the link."
+      ],
+      "paragraphs": [
+        "The reset link works once and expires after 3 hours. Passwords must be at least 10 characters with both letters and numbers."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "premium-plus-annual",
+        "intent": "Find the annual price of Peacock Premium Plus. Do not change your plan.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "199.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "199.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Peacock Premium Plus costs $199.99 a year plus tax."
+          }
+        ]
+      },
+      {
+        "slug": "reset-link-expiry",
+        "intent": "Find out how long a Peacock password reset link stays valid. Do not reset your password.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3 hours"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3 hours"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The reset link is valid for 3 hours and can be used once."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign In",
+        "Plans and Pricing"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Change Plan",
+        "View Payment History"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Peacock Premium Plus",
+        "Peacock Select"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$19.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Cancel All Subscriptions"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "I don't know my password"
+      ]
+    }
+  ]
+}

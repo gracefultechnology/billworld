@@ -1,0 +1,426 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-09",
+  "id": "invitation-homes-single-family-rental-8aaecd",
+  "name": "Invitation Homes",
+  "category": "housing",
+  "notes": "Researched from public invitationhomes.com pages only (Making Payments guide, Leasing fees, Walk-in payments, Move-out guide, login page). The Resident Portal (also the mobile app) is the only online payment channel: card, debit or ACH; bank accounts take up to 48 hours to verify. Rent due on the 1st, paid in full: partial payments and split payments are not accepted (payment arrangements via the Contact Us form). Early payment opens on the 28th. Autopay can only be scheduled for the 1st; only one household member can hold autopay. Three-day grace period; late fee amounts are set by the lease (not modelled). Cash via PayNearMe walk-in barcode (Payment accounts tab), Walmart limit $3,000, posted same day if paid by 7 p.m. EST. No card convenience fee amount is published (not modelled). Wire transfers and P2P apps (Zelle, PayPal, Cash App) are not accepted. Phone (888) 865-1963 is listed for general leasing information (not a dedicated payments line). Move-out notice timing is not stated publicly (template notice-to-vacate kept, inferred).  REVIEW 2026-10-09 (independent reviewer): verified Making Payments, Walk-in payments, Leasing fees and the /payments + /profile/login pages (Pay my rent on the home page leads to the same Email/Password Login form). Reworded the phone as the general leasing line. Integrated 2026-10-09: billing.fullBalanceOnly set (partial payments refused by the engine).",
+  "officialDomains": [
+    "invitationhomes.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.invitationhomes.com/making-payments",
+      "title": "Making Payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.invitationhomes.com/fees",
+      "title": "Leasing fees",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.invitationhomes.com/walk-in-payments",
+      "title": "Walk-in payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.invitationhomes.com/moveoutguide",
+      "title": "Move-out guide",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.invitationhomes.com/profile/login",
+      "title": "My Profile - Invitation Homes (login)",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Invitation Homes",
+    "shortName": "Invitation Homes",
+    "primary": "#00555c",
+    "accent": "#7a3e00",
+    "monogram": "IH"
+  },
+  "labels": {
+    "signIn": "Login",
+    "username": "Email",
+    "forgot": "Forgot your password?",
+    "register": "Sign up",
+    "payBill": "Pay my rent",
+    "autopay": "Autopay",
+    "wallet": "Payment accounts",
+    "help": "Help Center",
+    "contact": "Request maintenance",
+    "profile": "Manage account"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay my rent",
+        "page": "login"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      },
+      {
+        "label": "Walk-in payments",
+        "helpSlug": "walk-in-payments"
+      },
+      {
+        "label": "Login / Sign up",
+        "page": "register"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay my rent",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Resident ledger",
+        "page": "bill"
+      },
+      {
+        "label": "Request maintenance",
+        "page": "contact"
+      },
+      {
+        "label": "Manage account",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.invitationhomes.com/profile/login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.invitationhomes.com/making-payments",
+      "note": "The Resident Portal is the only place to pay online: credit card, debit card or ACH. Rent must be paid in full."
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.invitationhomes.com/making-payments",
+      "note": "There is no pay-without-login option: log in to the Resident Portal to pay, or pay cash at a PayNearMe store with the barcode from your portal."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.invitationhomes.com/making-payments",
+      "note": "Autopay can only be scheduled for the 1st of the month, and only one person per household can set it up and manage it."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.invitationhomes.com/making-payments",
+      "note": "The guide says another leaseholder must disable the current autopay before taking it over; cancel steps are not published."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.invitationhomes.com/making-payments",
+      "note": "Partial payments are not accepted. To ask for a payment arrangement, use the Contact Us form or contact your local office; the general leasing line is (888) 865-1963.",
+      "channel": "phone",
+      "phone": "8888651963"
+    }
+  },
+  "billing": {
+    "source": "https://www.invitationhomes.com/making-payments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": [
+        1
+      ]
+    },
+    "fullBalanceOnly": true
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Making payments",
+      "paragraphs": [
+        "Rent is due on the 1st of each month and must be paid in full; payments open on the 28th of the previous month, and you cannot pay more than you owe. The Resident Portal (or the mobile app) is the only online payment channel and accepts credit cards, debit cards and ACH. New bank accounts can take up to 48 hours to verify.",
+        "Partial payments are not accepted and one payment cannot be split across several payment methods. If you need a payment arrangement, use the Contact Us page. Wire transfers and person-to-person apps such as Zelle, PayPal or Cash App are never accepted.",
+        "After you submit, a processing page appears followed by a success message, and a receipt is emailed. Payment history can take 12 to 24 hours to update. General leasing questions: (888) 865-1963."
+      ],
+      "source": "https://www.invitationhomes.com/making-payments",
+      "steps": [
+        "Select Make a payment.",
+        "Log in to the Resident Portal with your email and password.",
+        "Go to payments.",
+        "Pay and keep the confirmation."
+      ],
+      "topic": "payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "Setting up autopay",
+      "paragraphs": [
+        "Autopay can only be scheduled for the 1st of the month. Choose a start date and a payment method, confirm, and wait for the confirmation message.",
+        "Only one person in a household can set up autopay, and that person manages any later changes. If another leaseholder wants to take it over, the current holder must turn off their autopay settings first."
+      ],
+      "source": "https://www.invitationhomes.com/making-payments",
+      "topic": "autopay"
+    },
+    {
+      "slug": "walk-in-payments",
+      "title": "Walk-in cash payments",
+      "paragraphs": [
+        "You can pay cash at participating PayNearMe stores, including CVS Pharmacy and Walmart. In your payment portal open the payment accounts tab, scroll to walk-in payments and request a barcode; you can text it to yourself or download it. A cashier scans the barcode and takes your cash.",
+        "Pay the exact balance shown in the portal plus the store's small transaction fee, on or before the due date. Some stores cannot take a full rent payment; Walmart has the highest limit at $3,000. Payments made by 7 p.m. EST post the same day. If you move to another Invitation Homes home, request a new barcode."
+      ],
+      "source": "https://www.invitationhomes.com/walk-in-payments",
+      "topic": "payments"
+    },
+    {
+      "slug": "late-payments",
+      "title": "Late payments and fees",
+      "paragraphs": [
+        "Rent is due on the 1st. There is a three-day grace period before late fees are added; how many late fees apply depends on how many days late the payment is, and the amounts are set in your lease and state rules. Late payments can still be made online by credit card or in cash at participating stores."
+      ],
+      "source": "https://www.invitationhomes.com/fees",
+      "topic": "billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "paragraphs": [
+        "After you give written notice that you are moving out, a Renewal Coordinator helps you schedule a Move-out Consultation. About three weeks before your move-out date an associate visits to point out repairs or cleaning needed before the final inspection, which follows shortly after you move out and is used to decide your security deposit return.",
+        "If you rent appliances, schedule their pickup before you leave rather than moving them yourself."
+      ],
+      "source": "https://www.invitationhomes.com/moveoutguide",
+      "topic": "account"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Invitation Homes",
+      "paragraphs": [
+        "For general leasing information call (888) 865-1963. For payment arrangements or if you are locked out of the portal, use the Contact Us form or contact your local office. Employees will never ask for your username or password."
+      ],
+      "source": "https://www.invitationhomes.com/making-payments",
+      "topic": "contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-day-rule",
+        "intent": "Using the Invitation Homes help pages, find which day of the month autopay can be scheduled for. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1st"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1st"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Autopay can only be scheduled for the 1st of the month."
+          }
+        ]
+      },
+      {
+        "slug": "walk-in-cash-limit",
+        "intent": "You want to pay your Invitation Homes rent in cash. Using the help pages, find which store has the highest walk-in payment limit and what that limit is. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3,000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3,000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cash"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Walmart has the highest walk-in limit: $3,000."
+          }
+        ]
+      },
+      {
+        "slug": "partial-payment-rule",
+        "intent": "You can only afford half of this month's Invitation Homes rent. Using the help pages, find out whether a partial payment is accepted online and what to do instead. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Contact Us"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Contact Us"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "limitation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Partial payments are not accepted; request a payment arrangement through the Contact Us page."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-on-the-1st",
+        "intent": "Sign in to your Invitation Homes Resident Portal and turn on autopay from your saved checking account so rent is paid on the 1st of each month. Do not make a one-time payment.",
+        "scenario": {
+          "autopay": false
+        },
+        "predicates": [
+          {
+            "type": "autopay",
+            "enrolled": true,
+            "methodType": "bank",
+            "day": 1
+          },
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": [
+              "autopay"
+            ]
+          }
+        ],
+        "tags": [
+          "autopay",
+          "enroll"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "login"
+          },
+          {
+            "op": "autopay",
+            "input": {
+              "day": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Login"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "1st of the month"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "walk-in-payments",
+      "contains": "$3,000"
+    },
+    {
+      "page": "home",
+      "contains": "no pay-without-login option"
+    }
+  ]
+}

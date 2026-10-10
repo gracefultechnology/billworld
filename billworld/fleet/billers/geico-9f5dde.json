@@ -1,0 +1,340 @@
+{
+  "id": "geico-9f5dde",
+  "version": 1,
+  "status": "dedicated",
+  "name": "GEICO",
+  "category": "insurance",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public geico.com pages only (no sign-in). Auto and motorcycle bills are paid in the Policyholder Service Center after logging in with a user ID and password (no pay-without-login for auto; partner-carrier policies such as home or renters are billed by those carriers). Online check from checking (processed within five business days, shows as GEICO PYMT) or debit/credit card (charged within one business day). Automatic payments: Electronic Funds Transfer from checking or Recurring Card Payments; EFT cuts the per-installment service fee (up to $5.00) to $1.00 in most states. Registration needs policy number, date of birth and ZIP code. Paperless Billing and Paperless Policy are set under Paperless Options; bills for the last six months are online. Policies are cancelled by phone at (800) 841-1587 with no cancellation fee (except a possible North Carolina short-rate calculation). Installment plans (2 to 6 installments) are percent-of-premium schedules, not priced plans, so no plan list is modelled. Installment fees are billed on statements, not charged per online payment, so no convenience fee is modelled.",
+  "officialDomains": [
+    "geico.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.geico.com/information/make-a-payment/",
+      "title": "Make An Insurance Payment Online, By Phone & More",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.geico.com/information/automatic-payments/",
+      "title": "Automatic Payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.geico.com/information/paymentoptions/auto-methods-and-plans/",
+      "title": "Car Insurance Payments - How to Pay Your Bill",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.geico.com/auto-insurance/paperless-options/",
+      "title": "Paperless Billing And Paperless Policy",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.geico.com/information/faq/cancel-insurance/",
+      "title": "How to Cancel Your GEICO Car Insurance Policy",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "GEICO",
+    "shortName": "GEICO",
+    "primary": "#154284",
+    "accent": "#0b2a59",
+    "monogram": "G"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "username": "User ID",
+    "dashboard": "Policyholder Service Center",
+    "payBill": "Make a Payment",
+    "autopay": "Automatic Payments",
+    "wallet": "Payment Methods",
+    "paperless": "Paperless Options",
+    "help": "Contact Us"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "Policyholder Service Center",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Options",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "registrationFields": [
+      "zip"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.geico.com/information/make-a-payment/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.geico.com/information/paymentoptions/auto-methods-and-plans/"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.geico.com/information/make-a-payment/",
+      "note": "Auto and motorcycle payments require logging in to the Policyholder Service Center. Without logging in, pay by phone 24/7 at (800) 932-8872 or by mail.",
+      "channel": "phone",
+      "phone": "800-932-8872"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.geico.com/information/automatic-payments/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.geico.com/auto-insurance/paperless-options/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.geico.com/information/faq/cancel-insurance/",
+      "note": "To cancel a GEICO auto policy, call (800) 841-1587 and say 'cancel insurance policy'. There is no cancellation fee.",
+      "channel": "phone",
+      "phone": "800-841-1587"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.geico.com/information/paymentoptions/auto-methods-and-plans/",
+      "phone": "800-932-8872"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.geico.com/information/paymentoptions/auto-methods-and-plans/"
+    }
+  },
+  "billing": {
+    "source": "https://www.geico.com/information/paymentoptions/auto-methods-and-plans/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your auto bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to the Policyholder Service Center with your user ID and password to pay. You can write an online check from your checking account (your bank processes it within five business days and it appears as GEICO PYMT) or use a debit or credit card, which is charged within one business day.",
+        "The automated phone line at (800) 932-8872 takes payments any time and gives you a confirmation number.",
+        "By mail, send a check or money order with your bill stub to GEICO Insurance, Remittance Center, P.O. Box 70776, Philadelphia, PA 19176-0776, and write your policy number on it.",
+        "Home, renters and other policies placed with partner companies are paid to those companies, not in the GEICO account."
+      ],
+      "source": "https://www.geico.com/information/paymentoptions/auto-methods-and-plans/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments: EFT or Recurring Card Payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Choose Electronic Funds Transfer (EFT) to have payments taken from your checking account, or Recurring Card Payments (RCP) to use a debit or credit card.",
+        "With EFT, the per-installment service fee, which can be up to $5.00, drops to $1.00 in most states; GEICO says that can save up to $36 a year.",
+        "Enroll from the billing Payment Methods page of your online account. If you sign up for text alerts, GEICO reminds you before each payment is taken."
+      ],
+      "steps": [
+        "Log in to the Policyholder Service Center.",
+        "Open the billing Payment Methods page.",
+        "Choose EFT or Recurring Card Payments.",
+        "Pick a schedule and confirm."
+      ],
+      "source": "https://www.geico.com/information/automatic-payments/"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Auto payment plans",
+      "topic": "billing",
+      "paragraphs": [
+        "Paying the full premium by the policy effective date avoids installment charges.",
+        "Installment options include 2, 3 or 4 payments, a 5-payment plan for new policies, a 6-payment plan for renewals, and 5- or 6-payment versions that require automatic payments. Not every plan is offered in every state.",
+        "Each installment may carry a fee that is shown on your billing statement. Call (800) 932-8872 to change your payment plan."
+      ],
+      "source": "https://www.geico.com/information/paymentoptions/auto-methods-and-plans/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing and Paperless Policy",
+      "topic": "billing",
+      "paragraphs": [
+        "Activate your online account, then choose Paperless Options in the Policyholder Service Center to enroll in Paperless Billing, Paperless Policy, or both.",
+        "You get an email when a bill or new policy documents are ready, and the last six months of bills stay available online. You can switch back to paper at any time."
+      ],
+      "source": "https://www.geico.com/auto-insurance/paperless-options/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your auto policy",
+      "topic": "account",
+      "paragraphs": [
+        "GEICO auto policies are cancelled by phone, not online. Call (800) 841-1587 and, if the automated system answers, say cancel insurance policy and then auto.",
+        "There is no cancellation fee, although North Carolina policies may use a short-rate premium calculation."
+      ],
+      "source": "https://www.geico.com/information/faq/cancel-insurance/"
+    },
+    {
+      "slug": "register",
+      "title": "Create your online account",
+      "topic": "account",
+      "paragraphs": [
+        "To register for online access you need your policy number, your date of birth and your ZIP code."
+      ],
+      "source": "https://www.geico.com/information/automatic-payments/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "eft-installment-fee",
+        "intent": "Using GEICO's help pages, find what the per-installment service fee drops to in most states when you pay by Electronic Funds Transfer (EFT). Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "With EFT the installment service fee is reduced to $1.00 in most states."
+          }
+        ]
+      },
+      {
+        "slug": "pay-by-phone-number",
+        "intent": "Find GEICO's 24/7 automated phone number for making an auto insurance payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8009328872"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8009328872"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "(800) 932-8872"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "User ID"
+    },
+    {
+      "page": "home",
+      "contains": "(800) 932-8872"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Paperless Options",
+        "Payment Methods"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Recurring Card Payments"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "(800) 841-1587"
+    }
+  ]
+}

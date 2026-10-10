@@ -1,0 +1,140 @@
+{
+  "id": "quest-diagnostics-611d24",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Quest Diagnostics",
+  "category": "medical",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public questdiagnostics.com pages and the public bill-lookup page of patientbill.questdiagnostics.com (no lookup submitted). Bills are found by bill number (upper right of the paper bill) plus the patient's date of birth and ZIP code; too many attempts lock the lookup for 30 minutes; without a bill number a one-time passcode can find the bill. Online methods: bank account/eCheck, credit/debit/HSA/FSA, PayPal. No payment fee is stated (third-party sites like Doxo may add their own). There is no AutoPay for lab bills; payment plans (monthly installments) are arranged by calling customer service, so payment_arrangement is modelled as phone-only. Email bill notices and paperless are set in MyQuest > Account Settings > Communications Preferences (can take up to 10 days). Easy Pay card-on-file at a Patient Service Center is per appointment only. Payments can take up to 7 days to show.",
+  "officialDomains": ["questdiagnostics.com"],
+  "sources": [
+    { "url": "https://www.questdiagnostics.com/patients/billing-insurance/faqs", "title": "Billing FAQs", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://patientbill.questdiagnostics.com/home", "title": "Quest Diagnostics online billing", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://patientbill.questdiagnostics.com/contact-service", "title": "Contact Customer Service", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.questdiagnostics.com/patients/billing-insurance/financial-assistance", "title": "Patient financial assistance", "fetchedAt": "2026-10-09", "kind": "plans" }
+  ],
+  "brand": { "shortName": "Quest Diagnostics", "primary": "#1a5a96", "accent": "#0b3d6b", "monogram": "Q" },
+  "labels": {
+    "guestPay": "Pay a bill",
+    "accountNumber": "Bill number",
+    "paperless": "Communications Preferences",
+    "contact": "Contact Customer Service",
+    "help": "Billing FAQs",
+    "signIn": "Go to MyQuest",
+    "arrangement": "Payment plans",
+    "profile": "Account Settings"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay a bill", "page": "guest" },
+      { "label": "Go to MyQuest", "page": "login" },
+      { "label": "Patient financial assistance", "helpSlug": "payment-assistance" },
+      { "label": "Billing FAQs", "page": "help" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "guestLookupFields": ["accountNumber", "dob", "zip"],
+    "lockoutAttempts": 5,
+    "evidence": "observed_public",
+    "source": "https://patientbill.questdiagnostics.com/home"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://patientbill.questdiagnostics.com/home" },
+    "autopay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.questdiagnostics.com/patients/billing-insurance/faqs", "note": "Quest does not offer AutoPay for lab bills; pay each bill online, by mail or by phone. For monthly installments call 866-697-8378 about a payment plan.", "channel": "phone", "phone": "866-697-8378" },
+    "autopay_cancel": { "support": "not_applicable", "evidence": "inferred", "source": "https://www.questdiagnostics.com/patients/billing-insurance/faqs" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.questdiagnostics.com/patients/billing-insurance/financial-assistance", "note": "Monthly payment plans are set up by phone: call customer service at 866-697-8378 (also printed on your bill).", "channel": "phone", "phone": "866-697-8378" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.questdiagnostics.com/patients/billing-insurance/faqs" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.questdiagnostics.com/patients/billing-insurance/financial-assistance" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.questdiagnostics.com/patients/billing-insurance/faqs" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://patientbill.questdiagnostics.com/contact-service", "phone": "866-697-8378" }
+  },
+  "billing": {
+    "source": "https://patientbill.questdiagnostics.com/home",
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "inferred", "source": "https://www.questdiagnostics.com/patients/billing-insurance/faqs" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Quest bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online with your bill number, found in the upper right corner of your paper bill, plus the patient's date of birth and ZIP code. If you never got a paper bill, choose Don't have my bill number to get a one-time passcode.",
+        "Online you can pay from a bank account (eCheck), with a credit, debit, HSA or FSA card, or with PayPal. You get an emailed receipt, and it can take up to 7 days for a payment to show in your online balance.",
+        "To pay by mail, send the payment coupon to the Send Payments To address on your bill and write the bill number on your check or money order. You can also pay by card at a Patient Service Center.",
+        "Payments made through third-party sites such as Doxo are not handled by Quest, may carry their own fees and do not post the same day."
+      ],
+      "steps": ["Choose Pay a bill.", "Enter the bill number, the patient's date of birth and ZIP code.", "Choose Continue.", "Pick a payment method and amount.", "Submit and keep the emailed receipt."],
+      "source": "https://www.questdiagnostics.com/patients/billing-insurance/faqs"
+    },
+    {
+      "slug": "autopay",
+      "title": "Is there AutoPay?",
+      "topic": "autopay",
+      "paragraphs": [
+        "Quest does not describe any AutoPay for lab bills. Each bill is paid on its own. If you need to spread a balance out, call customer service about a monthly payment plan.",
+        "Easy Pay at a Patient Service Center is not AutoPay: the card you authorize is charged once for that visit, only after your insurer processes the claim (usually 1 to 6 weeks), and future visits need a new authorization."
+      ],
+      "source": "https://www.questdiagnostics.com/patients/billing-insurance/faqs"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment plans and financial assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you cannot pay the full balance by the due date, Quest offers monthly installment plans. To set one up, call the customer service number on your bill (866-697-8378).",
+        "The Financial Assistance Program can discount up to 100% for households at or below the federal poverty level, gives discounts at or below 200% of it, and may give supplemental help up to 600% in extenuating circumstances. Mail the application to the address on your bill or call customer service."
+      ],
+      "source": "https://www.questdiagnostics.com/patients/billing-insurance/financial-assistance"
+    },
+    {
+      "slug": "paperless",
+      "title": "Email bills and billing preferences",
+      "topic": "account",
+      "paragraphs": [
+        "Billing notices by email or mail are set in MyQuest. On a computer, sign in, select the person icon, open Account Settings and change Communications Preferences. Changes can take up to 10 days."
+      ],
+      "source": "https://www.questdiagnostics.com/patients/billing-insurance/faqs"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Customer Service",
+      "topic": "contact",
+      "paragraphs": [
+        "Call 866.MYQUEST (866-697-8378) to speak with a customer service representative during normal business hours, or use the online contact form on the billing site."
+      ],
+      "source": "https://patientbill.questdiagnostics.com/contact-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "payment-posting-time",
+        "intent": "Using the Quest Diagnostics billing FAQ, find how long it can take for an online payment to show in your balance. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["7 days", "seven days"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["7 days", "seven days"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "It can take up to 7 days." }]
+      },
+      {
+        "slug": "assistance-fpl-limit",
+        "intent": "Find the highest percentage of the federal poverty level at which Quest Diagnostics' financial assistance may still offer supplemental help. Do not change anything on the account.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["600"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["600"] },
+        "tags": ["help", "information", "assistance"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Up to 600% of the federal poverty level." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": ["Bill number"] },
+    { "page": "home", "contains": "does not offer AutoPay" },
+    { "page": "helpArticle", "slug": "payment-assistance", "contains": "600%" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "866-697-8378" }
+  ]
+}

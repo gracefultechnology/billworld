@@ -1,0 +1,393 @@
+{
+  "id": "new-york-state-department-of-taxation-and-financ-40166e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "New York State Department of Taxation and Finance (personal income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public tax.ny.gov pages only. Quick Pay pays a bill, notice or IPA from a bank account without an Online Services account; it needs the case number plus SSN, filing status, mailing ZIP and name from a recent return (mapped to account ID + last name + ZIP, bank only). Online Services takes bank payments free and card payments with a 2.20% convenience fee; payments can be scheduled up to the due date. IPA: online for balances of $20,000 or less and up to 36 monthly payments, bank withdrawals on the 5th or 15th; larger requests by phone 518-457-5434; an IPA needs a bill first. No standing AutoPay for tax balances (AutoPay unsupported, inferred); monthly automatic withdrawals exist only inside an IPA. Online Services sign-in uses a username (inferred; MFA not documented on the pages read).",
+  "officialDomains": [
+    "tax.ny.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.tax.ny.gov/pay/",
+      "title": "Make a payment",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.tax.ny.gov/pay/pay-bill.htm",
+      "title": "Pay a bill or notice",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.tax.ny.gov/pay/ind/pay-estimated-tax.htm",
+      "title": "Make an estimated income tax payment",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.tax.ny.gov/pay/ipa/",
+      "title": "Installment payment agreement (IPA)",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.tax.ny.gov/pay/ipa/req-ipa.htm",
+      "title": "Request an installment payment agreement (IPA)",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.tax.ny.gov/online/ind.htm",
+      "title": "Online Services for individuals",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "New York State Department of Taxation and Finance",
+    "shortName": "NYS Tax Department",
+    "primary": "#1d3b6f",
+    "accent": "#7a4a00",
+    "monogram": "NY"
+  },
+  "labels": {
+    "payBill": "Make a payment",
+    "guestPay": "Quick Pay",
+    "dashboard": "Account Summary",
+    "signIn": "Log in",
+    "register": "Create account",
+    "arrangement": "Installment payment agreement",
+    "history": "Payment history",
+    "statements": "Bills and notices",
+    "help": "Get help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Pay a bill or notice",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Estimated tax",
+        "helpSlug": "estimated-tax"
+      },
+      {
+        "label": "Request an IPA",
+        "helpSlug": "installment-payment-agreement"
+      },
+      {
+        "label": "Get help",
+        "page": "help"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Bills and notices",
+        "page": "statements"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Installment payment agreement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName",
+      "zip"
+    ],
+    "evidence": "inferred",
+    "source": "https://www.tax.ny.gov/online/ind.htm"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.ny.gov/pay/pay-bill.htm",
+      "note": "Quick Pay: pay a bill, notice or IPA from your bank account for free without an Online Services account."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.tax.ny.gov/pay/ipa/req-ipa.htm",
+      "note": "There is no standing automatic payment for tax bills. Schedule each payment in Online Services; automatic monthly withdrawals apply only to an installment payment agreement (IPA).",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.ny.gov/pay/"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.ny.gov/pay/ipa/req-ipa.htm"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.ny.gov/pay/ipa/"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tax.ny.gov/pay/pay-bill.htm"
+    }
+  },
+  "billing": {
+    "source": "https://www.tax.ny.gov/pay/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.2,
+      "evidence": "documented_official",
+      "source": "https://www.tax.ny.gov/pay/ind/pay-estimated-tax.htm"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay a bill or notice",
+      "topic": "payments",
+      "paragraphs": [
+        "Use Quick Pay to pay a bill, an audit or collection case, an income execution or an installment payment agreement directly from your bank account for free, with no Online Services account needed.",
+        "With an Online Services account you can pay from your bank account for free or by credit or debit card for a convenience fee: open the Services menu, choose Payments, bills and notices, then Make a payment.",
+        "To pay by mail, make the check or money order payable to Commissioner of Taxation and Finance, write the ten-digit assessment or case number and your taxpayer ID on it, and mail it to NYS Assessment Receivables, PO Box 4127, Binghamton NY 13902-4127."
+      ],
+      "source": "https://www.tax.ny.gov/pay/pay-bill.htm"
+    },
+    {
+      "slug": "quick-pay",
+      "title": "What you need for Quick Pay",
+      "topic": "payments",
+      "paragraphs": [
+        "You need the case number from your bill or notice. To verify your identity, individuals also need details from a return filed within the last four years: Social Security number (and your spouse's, if applicable), filing status, mailing ZIP code, and first and last name."
+      ],
+      "source": "https://www.tax.ny.gov/pay/pay-bill.htm"
+    },
+    {
+      "slug": "estimated-tax",
+      "title": "Estimated income tax payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Make estimated payments through your Individual Online Services account, either by direct debit from your bank account (free, with optional saved bank details, instant confirmation and payments scheduled in advance) or by credit card with a 2.20% convenience fee.",
+        "To schedule another payment, return to your Account Summary and select Make a payment again. Do not use the estimated-payment page to pay a bill or notice."
+      ],
+      "source": "https://www.tax.ny.gov/pay/ind/pay-estimated-tax.htm"
+    },
+    {
+      "slug": "installment-payment-agreement",
+      "title": "Installment payment agreement (IPA)",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you cannot pay a tax bill within 60 days, you can request an IPA; if you can pay within 60 days, request a one-time extension instead. You cannot request an IPA without a bill.",
+        "Online Services handles requests for balances of $20,000 or less with 36 or fewer monthly payments. Larger or longer requests are made by phone at 518-457-5434. Payments are withdrawn automatically from your bank account on the 5th or 15th of each month, and you can make extra payments to reduce penalty and interest.",
+        "You must file and pay new taxes on time; otherwise the agreement may be modified or ended and collection can resume. Refunds continue to be applied to your balance."
+      ],
+      "source": "https://www.tax.ny.gov/pay/ipa/req-ipa.htm"
+    },
+    {
+      "slug": "online-services",
+      "title": "Online Services for individuals",
+      "topic": "account",
+      "paragraphs": [
+        "An Individual Online Services account is free. Use it to view your filing and payment history, manage estimated payments, view bills, notices and refund notifications electronically, pay bills, respond to notices and request an installment payment agreement."
+      ],
+      "source": "https://www.tax.ny.gov/online/ind.htm"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "ipa-online-limit",
+        "intent": "Using the NYS Tax Department website's help pages, find the largest balance for which you can request an installment payment agreement online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$20,000",
+              "20,000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$20,000",
+            "20,000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Online requests are allowed for balances of $20,000 or less with up to 36 monthly payments."
+          }
+        ]
+      },
+      {
+        "slug": "check-payee",
+        "intent": "Using the NYS Tax Department website's help pages, find who a check paying a tax bill should be made payable to. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Commissioner of Taxation and Finance"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Commissioner of Taxation and Finance"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "pay_by_mail"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Make the check payable to Commissioner of Taxation and Finance."
+          }
+        ]
+      },
+      {
+        "slug": "card-convenience-fee",
+        "intent": "Using the NYS Tax Department website's help pages, find the convenience fee for paying estimated tax by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.20%",
+              "2.2%"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.20%",
+            "2.2%"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments carry a 2.20% convenience fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Request an IPA",
+        "Estimated tax"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Bills and notices",
+        "Installment payment agreement"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "installment-payment-agreement",
+      "contains": [
+        "$20,000",
+        "518-457-5434"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Commissioner of Taxation and Finance"
+    }
+  ]
+}

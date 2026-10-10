@@ -7,6 +7,9 @@
 // direct navigation unless the flow whitelisted that page in ctx.allowDirect. ctx.goto() is reserved for deliberate
 // entry points and probes (episode entry, protected-page redirects), which are not navigation by the user.
 import assert from 'node:assert/strict';
+import { primaryMethodId } from '../engine.mjs';
+// Type of the saved method flows pay with: checking, or the Visa for card-only billers.
+const primaryType = (ctx, o) => primaryMethodId(ctx.biller, o) === 'pm-chk' ? 'bank' : 'card';
 
 export const PASSWORD = 'Billworld-2026!';
 // Thrown by a flow whose feature is not implemented in this build (e.g. Google sign-in, SMS MFA). browser.mjs reports
@@ -146,8 +149,13 @@ export async function replayPost(page, { action, body }) {
 }
 
 // ---------------- flows ----------------
-export async function login(ctx, { username = ctx.episode.persona.email, password = PASSWORD, expectMfa = false } = {}) {
-  const { page } = ctx;
+// The identifier this biller's customers sign in with (dedicated dossier auth.identifier; default the email address).
+export async function loginIdOf(ctx) {
+  const ident = ctx.biller.dossier?.auth?.identifier;
+  return ident === 'account' ? (await ctx.account()).accountNumber : ident === 'phone' ? ctx.episode.persona.phone : ctx.episode.persona.email;
+}
+export async function login(ctx, { username, password = PASSWORD, expectMfa = false } = {}) {
+  const { page } = ctx; username ??= await loginIdOf(ctx);
   if (![ctx.route('login'), ctx.route('loginPassword')].includes(ctx.path())) await ctx.nav('login');
   const shownUser = await page.evaluate(() => { const e = [...document.getElementsByName('username')].find(x => x.type !== 'hidden'); return e ? e.value : null; });
   if (shownUser !== null && shownUser !== username) await fill(page, { username });
@@ -182,7 +190,7 @@ export async function followMailLink(ctx, subjectPart, opts = {}) {
 
 // Drives any pay wizard: fills whatever step fields are present until the review form appears, then submits.
 // stopAtReview leaves the browser on the review page and returns null. The review form is captured in ctx.lastReview.
-export async function pay(ctx, { amountChoice = 'due', amount, methodId = 'pm-chk', newMethod, payOn, guest = false, stopAtReview = false, fromHere = false } = {}) {
+export async function pay(ctx, { amountChoice = 'due', amount, methodId = primaryMethodId(ctx.biller), newMethod, payOn, guest = false, stopAtReview = false, fromHere = false } = {}) {
   const { page } = ctx;
   if (!guest && !fromHere) await ctx.nav(ctx.template.flow.paySteps[0]);
   for (let i = 0; i < 6; i++) {
@@ -301,7 +309,7 @@ export const FLOWS = {
     await ctx.nav('help'); assert.ok((await ctx.text()).length > 100, 'help center renders');
     await ctx.nav('helpArticle', { slug: 'contact-us' });
     // Compare digits: the help center shows the cleaned phone (biller.contact), formatted per template.
-    const phone = ctx.biller.contact?.phones?.[0] || String(ctx.biller.contact?.phone || ctx.biller.entry.phone_customer_service || '').replace(/\D/g, '').slice(0, 10);
+    const phone = ctx.biller.contact?.phones?.[0] || null; // only a cleaned number: digits in free text ("8am-8pm") are not a phone
     if (phone) assert.ok((await ctx.text()).replace(/\D/g, '').includes(phone), `contact article shows phone ${phone}`);
     if (await has(page, 'q')) { await fill(page, { q: 'pay' }); await Promise.all([page.waitForNavigation(), page.$eval('[name=q]', e => e.form.requestSubmit ? e.form.requestSubmit() : e.form.submit())]); assert.ok((await ctx.text()).toLowerCase().includes('pay'), 'help search returns results'); }
   },
@@ -337,7 +345,7 @@ export const FLOWS = {
   async pay_bank(ctx) {
     await ctx.goto(ctx.route('home')); await login(ctx);
     const acct = await ctx.account(); const receipt = await pay(ctx, {});
-    const r = await ctx.evaluate([{ type: 'payment', methodType: 'bank', amountCents: acct.invoices.at(-1).balanceCents, count: 1 }, { type: 'autopay_unchanged' }]);
+    const r = await ctx.evaluate([{ type: 'payment', methodType: primaryMethodId(ctx.biller) === 'pm-chk' ? 'bank' : 'card', amountCents: acct.invoices.at(-1).balanceCents, count: 1 }, { type: 'autopay_unchanged' }]);
     assert.ok(r.success, `payment graded: ${JSON.stringify(r.results)}`);
     const after = await ctx.account(); const paid = after.payments.at(-1); assert.ok(receipt.includes(paid.confirmation), 'receipt shows confirmation number');
     // Replaying the exact review POST (same token, same session) must not create a second payment and must show the original receipt.
@@ -381,7 +389,7 @@ export const FLOWS = {
     await ctx.goto(ctx.route('home')); await login(ctx); await ctx.nav('autopay');
     const enrollForm = await ctx.page.evaluate(() => [...document.querySelectorAll('input[name=action]')].map(e => e.value));
     await fillAutopay(ctx);
-    let r = await ctx.evaluate([{ type: 'autopay', enrolled: true, methodType: 'bank' }, { type: 'no_payment' }]); assert.ok(r.success, `enroll: ${JSON.stringify(r.results)} forms=${enrollForm}`);
+    let r = await ctx.evaluate([{ type: 'autopay', enrolled: true, methodType: primaryType(ctx, { autopay: true }) }, { type: 'no_payment' }]); assert.ok(r.success, `enroll: ${JSON.stringify(r.results)} forms=${enrollForm}`);
     await ctx.nav('autopay');
     await cancelAutopay(ctx);
     r = await ctx.evaluate([{ type: 'autopay', enrolled: false }]); assert.ok(r.success, 'autopay cancelled');
@@ -446,11 +454,12 @@ export const FLOWS = {
   // Five wrong passwords lock the account; the correct password is then refused until a reset.
   async lockout_then_reset(ctx) {
     await ctx.goto(ctx.route('home'));
-    for (let i = 0; i < 5; i++) {
+    const attempts = ctx.biller.dossier?.auth?.lockoutAttempts ?? 5;
+    for (let i = 0; i < attempts; i++) {
       const e = await login(ctx, { password: `Wrong-Pass-${i}!` }).then(() => null, x => x.message);
       assert.match(e || '', /^Login failed: .*(incorrect|invalid|locked)/i, `attempt ${i + 1} rejected with a message`);
     }
-    assert.ok((await ctx.events('login_failed')).length >= 5, 'failures recorded');
+    assert.ok((await ctx.events('login_failed')).length >= attempts, 'failures recorded');
     const locked = await login(ctx).then(() => null, x => x.message);
     assert.match(locked || '', /locked/i, 'correct password refused while locked');
     assert.equal((await ctx.events('login')).length, 0, 'no login while locked');
@@ -503,6 +512,7 @@ export const FLOWS = {
     const vals = { accountNumber: acct.accountNumber, email: ctx.episode.persona.email, password: 'Fresh-Start-2026!', confirm: 'Fresh-Start-2026!' };
     if (await has(ctx.page, 'lastName')) vals.lastName = ctx.episode.persona.last;
     if (await has(ctx.page, 'zip')) vals.zip = ctx.episode.persona.zip;
+    if (await has(ctx.page, 'phone')) vals.phone = ctx.episode.persona.phone;
     await fill(ctx.page, vals); await submit(ctx.page, { field: 'accountNumber' });
     assert.equal(await ctx.errorText(), '');
     await followMailLink(ctx, 'verify');
@@ -516,8 +526,10 @@ export const FLOWS = {
     const vals = await guestValues(ctx, acct);
     await fill(ctx.page, vals); await submit(ctx.page, { field: Object.keys(vals)[0] });
     const err = await ctx.errorText(); if (err) throw new Error(`Guest lookup: ${err}`);
-    await pay(ctx, { guest: true, newMethod: { methodType: 'card', cardNumber: '4111111111111111', exp: '12/28', cvv: '123', holder: ctx.episode.persona.name } });
-    const r = await ctx.evaluate([{ type: 'payment', methodType: 'card', source: 'guest', count: 1 }]); assert.ok(r.success, JSON.stringify(r.results));
+    const gm = ctx.biller.dossier?.billing?.guestMethods || ctx.biller.dossier?.billing?.methods || ['bank', 'card'];
+    const card = gm.includes('card');
+    await pay(ctx, { guest: true, newMethod: card ? { methodType: 'card', cardNumber: '4111111111111111', exp: '12/28', cvv: '123', holder: ctx.episode.persona.name } : { methodType: 'bank', routing: '021000021', bankAccount: '000123456789', bankAccountConfirm: '000123456789' } });
+    const r = await ctx.evaluate([{ type: 'payment', methodType: card ? 'card' : 'bank', source: 'guest', count: 1 }]); assert.ok(r.success, JSON.stringify(r.results));
   },
   // A guest lookup with a wrong secondary identifier is refused and opens no guest session.
   async guest_mismatch(ctx) {
@@ -585,8 +597,10 @@ export const FLOWS = {
   // Add a bank account in the wallet, remove it, then try to remove the AutoPay method (must be refused).
   async wallet_add_remove(ctx) {
     const { page } = ctx; await ctx.goto(ctx.route('home')); await login(ctx); await ctx.nav('wallet');
-    const vals = { methodType: 'bank', routing: '021000021', bankAccount: '000987654321', bankAccountConfirm: '000987654321' };
-    if (await has(page, 'accountType')) vals.accountType = 'checking';
+    // Card-only billers save a card instead of a bank account (last 4 digits 4321 either way).
+    const bankOk = primaryMethodId(ctx.biller) === 'pm-chk';
+    const vals = bankOk ? { methodType: 'bank', routing: '021000021', bankAccount: '000987654321', bankAccountConfirm: '000987654321' } : { methodType: 'card', cardNumber: '4000056655064321', exp: '12/29', cvv: '123', holder: ctx.episode.persona.name };
+    if (bankOk && await has(page, 'accountType')) vals.accountType = 'checking';
     if (await has(page, 'nickname')) vals.nickname = 'Test savings';
     const known = new Set((await ctx.account()).methods.map(m => m.id)); // a seeded method may also end in 4321
     await fill(page, vals); await submit(page, { field: 'methodType' });
@@ -606,7 +620,8 @@ export const FLOWS = {
     await ctx.goto(ctx.route('home')); await login(ctx); await ctx.nav('arrangement');
     if (!await has(ctx.page, 'months')) {
       // Templates whose biller type has no payment plans render an explanation instead (and need not link to it).
-      assert.match(await ctx.text(), /not (offered|available)/i, 'payment-plan page has neither a form nor a "not offered" explanation');
+      const explained = /not (offered|available)/i.test(await ctx.text()) || await ctx.page.$('[data-capnotes]') !== null;
+      assert.ok(explained, 'payment-plan page has neither a form nor a "not offered" explanation');
       ctx.allowDirect.add('arrangement'); return;
     }
     await fill(ctx.page, { months: '6' }); await submit(ctx.page, { field: 'months' });
@@ -662,7 +677,7 @@ export const FLOWS = {
     await login(ctx); await ctx.nav('history');
     assert.ok((await ctx.text()).includes(p.confirmation), 'payment is listed after signing in again');
     assert.equal((await ctx.payments()).length, 1, 'still exactly one payment');
-    const r = await ctx.evaluate([{ type: 'payment', methodType: 'bank', count: 1 }]); assert.ok(r.success, JSON.stringify(r.results));
+    const r = await ctx.evaluate([{ type: 'payment', methodType: primaryType(ctx), count: 1 }]); assert.ok(r.success, JSON.stringify(r.results));
   },
   // Pay, press Back to the review page and submit again: never a second payment.
   async back_resubmit_review(ctx) {
@@ -757,25 +772,26 @@ export const FLOWS = {
     await ctx.nav(ctx.template.flow.paySteps[0]); await assertNoOverflow(ctx, 'pay step 1');
     await pay(ctx, { stopAtReview: true, fromHere: true }); await assertNoOverflow(ctx, 'review');
     await submitReview(ctx); assert.equal(await ctx.errorText(), '', 'payment submitted'); await assertNoOverflow(ctx, 'receipt');
-    const r = await ctx.evaluate([{ type: 'payment', methodType: 'bank', count: 1 }]); assert.ok(r.success, JSON.stringify(r.results));
+    const r = await ctx.evaluate([{ type: 'payment', methodType: primaryType(ctx), count: 1 }]); assert.ok(r.success, JSON.stringify(r.results));
   },
   // Keyboard only: Tab/Enter/Space/arrows from the home page to a submitted payment. No mouse, no typed URLs.
   async keyboard_login_pay(ctx) {
     const { page } = ctx; await ctx.goto(ctx.route('home')); await resetFocus(page);
     await kbLinkTo(ctx, 'login'); await kbEnterNav(ctx);
-    if (ctx.template.flow.loginSteps === 2 && !await has(page, 'password')) { await kbType(ctx, 'username', ctx.episode.persona.email); await kbEnterNav(ctx); await resetFocus(page); await kbType(ctx, 'password', PASSWORD); }
-    else { await kbType(ctx, 'username', ctx.episode.persona.email); await kbType(ctx, 'password', PASSWORD); }
+    const loginAs = await loginIdOf(ctx);
+    if (ctx.template.flow.loginSteps === 2 && !await has(page, 'password')) { await kbType(ctx, 'username', loginAs); await kbEnterNav(ctx); await resetFocus(page); await kbType(ctx, 'password', PASSWORD); }
+    else { await kbType(ctx, 'username', loginAs); await kbType(ctx, 'password', PASSWORD); }
     await kbEnterNav(ctx); assert.equal(await ctx.errorText(), '', 'keyboard login'); ctx.episodeAuthed = true;
     await resetFocus(page); await kbLinkTo(ctx, ctx.template.flow.paySteps[0]); await kbEnterNav(ctx);
     for (let i = 0; i < 6 && !await isReview(page); i++) {
       await resetFocus(page); let key = null;
       if (await has(page, 'amountChoice')) { await kbRadio(ctx, 'amountChoice', 'due'); key = 'amountChoice'; }
-      if (await has(page, 'methodId')) { await kbRadio(ctx, 'methodId', 'pm-chk'); key = key || 'methodId'; }
+      if (await has(page, 'methodId')) { await kbRadio(ctx, 'methodId', primaryMethodId(ctx.biller)); key = key || 'methodId'; }
       if (!key) throw new Error(`Keyboard pay step has no known fields at ${page.url()}`);
       await kbSubmit(ctx, key); const e = await ctx.errorText(); if (e) throw new Error(`Keyboard pay step: ${e}`);
     }
     await resetFocus(page); await kbCheck(ctx, 'acceptTerms'); await kbSubmit(ctx, 'acceptTerms');
-    const r = await ctx.evaluate([{ type: 'payment', methodType: 'bank', count: 1 }]); assert.ok(r.success, JSON.stringify(r.results));
+    const r = await ctx.evaluate([{ type: 'payment', methodType: primaryType(ctx), count: 1 }]); assert.ok(r.success, JSON.stringify(r.results));
     assert.deepEqual(ctx.focusIssues, [], `focusable controls without a visible focus indicator: ${ctx.focusIssues.join(', ')}`);
   },
   // Small screens: no horizontal overflow on key pages, and the navigation reaches pay, AutoPay and help by
@@ -795,20 +811,21 @@ export const FLOWS = {
 
 async function guestValues(ctx, acct) {
   const vals = {};
-  for (const n of ['accountNumber', 'statementId', 'parcelId', 'plate', 'lastName', 'zip', 'amountDue']) if (await has(ctx.page, n)) vals[n] = { accountNumber: acct.accountNumber, statementId: acct.statementId || acct.accountNumber, parcelId: acct.parcelId || acct.accountNumber, plate: acct.plate || acct.accountNumber, lastName: ctx.episode.persona.last, zip: ctx.episode.persona.zip, amountDue: (acct.invoices.at(-1).amountCents / 100).toFixed(2) }[n];
+  for (const n of ['accountNumber', 'statementId', 'parcelId', 'plate', 'phone', 'lastName', 'zip', 'amountDue', 'dob']) if (await has(ctx.page, n)) vals[n] = { phone: ctx.episode.persona.phone, dob: ctx.episode.persona.dob, accountNumber: acct.accountNumber, statementId: acct.statementId || acct.accountNumber, parcelId: acct.parcelId || acct.accountNumber, plate: acct.plate || acct.accountNumber, lastName: ctx.episode.persona.last, zip: ctx.episode.persona.zip, amountDue: (acct.invoices.at(-1).amountCents / 100).toFixed(2) }[n];
   return vals;
 }
 
 export async function fillAutopay(ctx) {
-  const vals = { methodId: 'pm-chk', acceptTerms: true };
-  if (await has(ctx.page, 'policy')) vals.policy = 'full';
+  const vals = { methodId: primaryMethodId(ctx.biller, { autopay: true }), acceptTerms: true };
+  // The full balance where offered, else the statement balance (card issuers), else the first option shown.
+  if (await has(ctx.page, 'policy')) vals.policy = await ctx.page.evaluate(() => { const v = [...document.querySelectorAll('[name=policy]')].flatMap(e => e.tagName === 'SELECT' ? [...e.options].map(o => o.value) : [e.value]).filter(Boolean); return v.includes('full') ? 'full' : v.includes('statement') ? 'statement' : v[0]; });
   await fill(ctx.page, vals); await submit(ctx.page, { field: 'acceptTerms' });
   const err = await ctx.errorText(); if (err) throw new Error(`AutoPay error: ${err}`);
 }
 export async function cancelAutopay(ctx) {
   const { page } = ctx;
   for (let i = 0; i < 3; i++) {
-    const state = await page.evaluate(() => { const a = [...document.querySelectorAll('input[name=action][value=cancel]')][0]; return a ? { form: true, confirm: !!a.form.querySelector('[name=confirm]') } : { link: [...document.querySelectorAll('a,button')].find(x => /cancel autopay|turn off|stop autopay|unenroll|cancel auto/i.test(x.innerText))?.innerText || null }; });
+    const state = await page.evaluate(() => { const a = [...document.querySelectorAll('input[name=action][value=cancel]')][0]; return a ? { form: true, confirm: !!a.form.querySelector('[name=confirm]') } : { link: [...document.querySelectorAll('a,button')].find(x => /cancel autopay|turn off|stop autopay|unenroll|cancel auto|^\s*(?:cancel|stop|end|disenroll from)\b.*(?:pay|draft|debit|deduct)/i.test(x.innerText))?.innerText || null }; });
     if (state.form) { await page.evaluate(() => { const a = document.querySelector('input[name=action][value=cancel]'); a.form.querySelector('button').setAttribute('data-bw-cancel', '1'); const c = a.form.querySelector('[name=confirm]'); if (c && c.type === 'checkbox') c.setAttribute('data-bw-confirm', '1'); });
       if (state.confirm && await page.$('[data-bw-confirm]')) await page.click('[data-bw-confirm]');
       await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded' }), page.click('[data-bw-cancel]')]); const err = await ctx.errorText(); if (err) throw new Error(`AutoPay cancel: ${err}`); return; }
@@ -854,7 +871,15 @@ function allFlows(biller, template, options) {
   if (s('paperless')) flows.push(['paperless', {}]);
   if (s('cancel_service')) flows.push(['cancel_service', {}]);
   if (s('guest_pay')) flows.push(['guest_pay', { registered: false }], ['guest_mismatch', { registered: false }]);
-  if (['subscription', 'telecom'].includes(biller.kind)) flows.push(['plan_change', {}]);
+  if ((['subscription', 'telecom'].includes(biller.kind) || biller.dossier?.billing?.plans) && !['unsupported', 'not_applicable'].includes(c.change_plan?.support)) flows.push(['plan_change', {}]);
   if (options.mobile) flows.push(['mobile_layout', {}]);
-  return flows;
+  // Dedicated billers: flows that need a card are dropped where the dossier says cards are not accepted online.
+  const methods = biller.dossier?.billing?.methods;
+  // Full-balance-only billers: the flows that pay or edit to a partial amount do not apply.
+  const drop = new Set();
+  if (biller.dossier?.billing?.fullBalanceOnly) for (const f of ['pay_card_other', 'stale_review_two_tabs', 'back_edit_stale_token']) drop.add(f);
+  if (methods && !methods.includes('card')) for (const f of ['pay_card_other', 'declined_then_bank']) drop.add(f);
+  // Card-only billers: no bank account to pay from or fall back to.
+  if (methods && !methods.includes('bank')) for (const f of ['pay_new_bank', 'declined_then_bank']) drop.add(f);
+  return flows.filter(([f]) => !drop.has(f));
 }

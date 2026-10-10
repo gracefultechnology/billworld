@@ -1,0 +1,306 @@
+{
+  "id": "10-federal-storage-ead6a3",
+  "version": 1,
+  "status": "dedicated",
+  "name": "10 Federal Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public 10 Federal Storage FAQs and the 10Fed MyAccount sign-in and Quick Pay pages (no sign-in, no lookup). Sign-in is by mobile phone number with a texted code (no password); modelled as phone identifier, two-step, SMS verification (the passwordless part cannot be expressed). Quick Pay (no sign-in) finds the account by phone number; the dossier has no phone guest-lookup field, so the family lookup is kept (see report). Payments: Customer Portal (My Account / Pay Now) or phone (910) 991-0784, all major credit and debit cards; no bank method is published, so billing.methods keeps the family default. Auto Pay: Customer Portal > account settings > Auto Pay. Move-out is scheduled in the Customer Portal (no call needed); no refunds for unused days. Late fees may apply (amount not published), access is suspended and contents can be sold under state lien law.",
+  "officialDomains": [
+    "10federalstorage.com"
+  ],
+  "sources": [
+    {
+      "url": "https://10federalstorage.com/storage-faqs",
+      "title": "Storage FAQs | 10 Federal Storage",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://myaccount.10federalstorage.com/dashboard",
+      "title": "10Fed MyAccount - Sign in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://myaccount.10federalstorage.com/quick-pay",
+      "title": "Quick Pay - 10Fed MyAccount",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "shortName": "10 Federal",
+    "primary": "#1f4e79",
+    "accent": "#1f2937",
+    "monogram": "10"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Pay Now",
+    "guestPay": "Quick Pay",
+    "autopay": "Auto Pay",
+    "username": "Phone Number",
+    "help": "Storage FAQs",
+    "cancel": "Schedule Move-Out",
+    "signIn": "Sign in"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Storage FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Schedule Move-Out",
+        "page": "cancel"
+      },
+      {
+        "label": "Account Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "evidence": "observed_public",
+    "source": "https://myaccount.10federalstorage.com/dashboard"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://10federalstorage.com/storage-faqs"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://myaccount.10federalstorage.com/quick-pay",
+      "note": "Quick Pay finds your account by the phone number on file."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://10federalstorage.com/storage-faqs"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://10federalstorage.com/storage-faqs",
+      "note": "Schedule your move-out in the Customer Portal; no phone call is needed. Unused days are not refunded."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://10federalstorage.com/storage-faqs",
+      "phone": "910-991-0784"
+    }
+  },
+  "billing": {
+    "source": "https://10federalstorage.com/storage-faqs",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your bill",
+      "topic": "payments",
+      "source": "https://10federalstorage.com/storage-faqs",
+      "paragraphs": [
+        "Pay any time in the Customer Portal: choose My Account / Pay Now, sign in and follow the prompts. You can also pay by phone with customer support at (910) 991-0784. All major credit and debit cards are accepted.",
+        "Quick Pay lets you pay without signing in by looking up your account with the phone number on file."
+      ],
+      "steps": [
+        "Choose My Account / Pay Now.",
+        "Sign in with your phone number and the texted code.",
+        "Select the unit and amount.",
+        "Pay with a credit or debit card."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up Auto Pay",
+      "topic": "autopay",
+      "source": "https://10federalstorage.com/storage-faqs",
+      "paragraphs": [
+        "Sign in to the Customer Portal, open your account settings, select Auto Pay and follow the prompts. If you do not have a login yet, customer support at (910) 991-0784 can help."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://10federalstorage.com/storage-faqs",
+      "paragraphs": [
+        "Leases are month-to-month, so you can move out at any time without a penalty, but you must let 10 Federal know you have left. Schedule your move-out in the Customer Portal; you do not need to call.",
+        "Rent for unused days is not refunded."
+      ]
+    },
+    {
+      "slug": "late-fees",
+      "title": "Missed payments",
+      "topic": "billing",
+      "source": "https://10federalstorage.com/storage-faqs",
+      "paragraphs": [
+        "If a payment is missed, late fees may apply and access to your unit can be suspended until the balance is current. Continued non-payment can lead to the contents being sold under state lien law. If you are having trouble paying, call (910) 991-0784 as soon as possible."
+      ]
+    },
+    {
+      "slug": "customer-portal",
+      "title": "What the Customer Portal does",
+      "topic": "account",
+      "source": "https://10federalstorage.com/storage-faqs",
+      "paragraphs": [
+        "The Customer Portal lets you pay, set up Auto Pay, see your payment and transaction history, open rental documents, update contact and billing details, rent another unit, schedule a move-out and manage several units in one account. It also shows your gate access code and unit unlock code."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "support-phone",
+        "intent": "Find the customer support phone number 10 Federal Storage lists for payments and account help. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "9109910784"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "9109910784"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "(910) 991-0784"
+          }
+        ]
+      },
+      {
+        "slug": "unused-days-refund",
+        "intent": "Using 10 Federal Storage's FAQ, find whether unused days are refunded when you move out mid-month. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "no refund",
+              "not refunded",
+              "non-refundable"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "no refund",
+            "not refunded",
+            "non-refundable"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. Unused days are not refunded."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Phone Number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "Customer Portal",
+        "not refunded"
+      ]
+    }
+  ]
+}

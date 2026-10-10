@@ -1,0 +1,350 @@
+{
+  "id": "centerpoint-energy-texas-gas-houston-beaumonteas-b50488",
+  "version": 1,
+  "status": "dedicated",
+  "name": "CenterPoint Energy - Texas Gas",
+  "category": "gas",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public centerpointenergy.com pages only. The User ID is the email address used at registration (not case sensitive). Card payments are capped at three per five days and $1,000 each (no engine field for card-only caps; help only); third-party card fees are mentioned but no amount is published, so no fee is set. One-time payments are processed immediately and cannot be cancelled. AutoPay drafts a checking or savings account on or around the due date and can be paused or cancelled up to three days before the due date; it is found under billing options in My Account. Payment extensions and payment arrangements are offered on the Billing & Payment page (online availability inferred from the My Account context). Stop service is a signed-in request (the stop page is shared across states); demolition or remodel disconnects need a call. MFA not documented (family default).",
+  "officialDomains": [
+    "centerpointenergy.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.centerpointenergy.com/en-us/my-account/billing-payment",
+      "title": "Billing & Payment",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.centerpointenergy.com/en-us/my-account/billing-payment/autopay",
+      "title": "AutoPay",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.centerpointenergy.com/en-us/my-account/billing-payment/go-paperless",
+      "title": "Go Paperless",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.centerpointenergy.com/en-us/my-account/account-faqs",
+      "title": "Account FAQs and troubleshooting",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.centerpointenergy.com/en-us/my-account/start-stop-transfer-reconnect-service/stop",
+      "title": "Stop Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "CenterPoint Energy",
+    "primary": "#0c5aa6",
+    "accent": "#003a70",
+    "monogram": "CP"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Pay bill",
+    "autopay": "AutoPay",
+    "paperless": "Go Paperless",
+    "arrangement": "Payment arrangement",
+    "cancel": "Stop Service",
+    "username": "User ID (email address)",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Billing & Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Assistance Programs",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Account FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay bill",
+        "page": "pay"
+      },
+      {
+        "label": "Bill History",
+        "page": "statements"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.centerpointenergy.com/en-us/my-account/account-faqs"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.centerpointenergy.com/en-us/my-account/billing-payment/autopay"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.centerpointenergy.com/en-us/my-account/billing-payment/autopay",
+      "note": "Pause or cancel AutoPay at least three days before the due date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.centerpointenergy.com/en-us/my-account/billing-payment/go-paperless"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.centerpointenergy.com/en-us/my-account/billing-payment",
+      "note": "Payment arrangements and extensions are offered; arranging one in My Account is inferred."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.centerpointenergy.com/en-us/my-account/billing-payment"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.centerpointenergy.com/en-us/my-account/start-stop-transfer-reconnect-service/stop",
+      "note": "Submit a stop request after signing in; call for demolition or remodel disconnects."
+    }
+  },
+  "billing": {
+    "source": "https://www.centerpointenergy.com/en-us/my-account/billing-payment",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying by card and one-time payments",
+      "mode": "append",
+      "topic": "payments",
+      "paragraphs": [
+        "You can make up to three credit card payments in any five-day period, each up to $1,000. Card fees go to a third-party vendor, not to CenterPoint Energy.",
+        "One-time payments are processed right away, so they cannot be cancelled once submitted; contact customer service to fix a wrong amount or method."
+      ],
+      "source": "https://www.centerpointenergy.com/en-us/my-account/account-faqs"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay pays your bill from your checking or savings account on or around the due date each month, free of charge. Any past-due balance is usually drafted within about three days of enrolling.",
+        "Enroll in My Account under billing options, or sign the enrollment form on the back of your bill. Bills then show Do Not Pay - Account Will Be Drafted.",
+        "To stop one payment, change accounts, pause or cancel, update your settings at least three days before the due date."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Open billing options.",
+        "Select AutoPay.",
+        "Choose your checking or savings account and confirm."
+      ],
+      "source": "https://www.centerpointenergy.com/en-us/my-account/billing-payment/autopay"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go Paperless",
+      "mode": "append",
+      "topic": "billing",
+      "paragraphs": [
+        "Choose Go Paperless in My Account to get an email each month when your bill is ready. New enrollees also get payment alerts by email or text, and up to five emails or mobile numbers can receive them."
+      ],
+      "source": "https://www.centerpointenergy.com/en-us/my-account/billing-payment/go-paperless"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment extensions and arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "A payment extension lets you pay your current bill later while your next bill keeps its normal due date. A payment arrangement spreads a past-due balance over smaller payments added to future bills.",
+        "Average Monthly Billing evens out seasonal swings, and federal, state and community assistance programs may help if you qualify."
+      ],
+      "source": "https://www.centerpointenergy.com/en-us/my-account/billing-payment"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop service",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in and submit a stop service request for the date you choose, or transfer service if you are moving within the CenterPoint Energy service area. Call customer service to disconnect gas for a demolition or major remodel."
+      ],
+      "source": "https://www.centerpointenergy.com/en-us/my-account/start-stop-transfer-reconnect-service/stop"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-limit",
+        "intent": "Using the CenterPoint Energy help pages, find the maximum amount allowed for a single credit card payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1,000",
+              "1000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1,000",
+            "1000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments",
+          "limits"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each credit card payment can be up to $1,000."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-change-deadline",
+        "intent": "Using the CenterPoint Energy help pages, find how many days before the due date AutoPay changes or cancellations must be made. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3",
+              "three"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3",
+            "three"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least three days before the due date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Billing & Payment",
+        "Assistance Programs"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "User ID"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Go Paperless",
+        "Payment arrangement"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$1,000"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Do Not Pay"
+    }
+  ]
+}

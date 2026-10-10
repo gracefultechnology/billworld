@@ -1,0 +1,359 @@
+{
+  "id": "metro-by-t-mobile-f7d6ab",
+  "status": "dedicated",
+  "name": "Metro by T-Mobile",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public metrobyt-mobile.com support pages only (no sign-in). Metro is prepaid: payment must arrive by the due date or service is suspended until paid; two missed due dates disconnect the service. Payments are free online/in the myMetro app or via Express Pay / Pay as a guest (debit or credit card, no account needed); paying by phone or in a store costs $5. Accepted online methods are debit/credit cards only. AutoPay charges the preferred card three days before the due date and saves $5/month (enroll at least 5 days before the next cycle). Sign-in (manage-account support page) is the Metro phone number plus a 6-15 digit numeric Account PIN, followed by a six-digit texted authentication code (mfa sms). The fleet test passwords are not numeric, so the PIN rule is not set as a passwordRule; the field is only labelled Account PIN. No payment plans are documented (payment_arrangement unsupported, inferred). Metro does not mail paper bills (paperless not_applicable, inferred). Cancellation is handled by Care (no online cancel documented), so cancel_service is unsupported online (inferred). Plan prices not modelled. The suspend-a-line page says suspended lines not restored by the next cycle are canceled automatically; voluntary cancellation still goes through Care (Contact Us lists 888-8-METRO-8 and *611). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "metrobyt-mobile.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.metrobyt-mobile.com/support/account/payments",
+      "title": "How to Pay Your Bill Online or In-Store | Metro Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.metrobyt-mobile.com/resources/ways-to-pay",
+      "title": "How Can I Make a Payment? | Metro by T-Mobile",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.metrobyt-mobile.com/self-service/autopay",
+      "title": "How to Enroll in Autopay | Metro by T-Mobile",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.metrobyt-mobile.com/support/account/manage-account",
+      "title": "Manage Your Account | Metro by T-Mobile Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.metrobyt-mobile.com/contact-us",
+      "title": "Contact Us | Metro by T-Mobile",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.metrobyt-mobile.com/support/account/suspend",
+      "title": "How to Temporarily Suspend a Line | Metro Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Metro by T-Mobile",
+    "shortName": "Metro",
+    "primary": "#5c2d91",
+    "accent": "#3b1a63",
+    "monogram": "M"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Pay Now",
+    "autopay": "AutoPay",
+    "guestPay": "Pay as a guest",
+    "wallet": "Payment Wallet",
+    "history": "Account history",
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "username": "Metro phone number",
+    "help": "Support",
+    "password": "Account PIN",
+    "forgot": "Reset Account PIN"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay as a guest",
+        "page": "guest"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "ways-to-pay"
+      },
+      {
+        "label": "AutoPay",
+        "helpSlug": "autopay-metro"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Wallet",
+        "page": "wallet"
+      },
+      {
+        "label": "Account history",
+        "page": "history"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 1,
+    "mfa": "sms",
+    "evidence": "documented_official",
+    "source": "https://www.metrobyt-mobile.com/support/account/manage-account"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.metrobyt-mobile.com/resources/ways-to-pay",
+      "note": "Express Pay takes one-time debit or credit card payments with no account and no extra fee."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.metrobyt-mobile.com/support/account/payments",
+      "note": "AutoPay uses your preferred credit or debit card and saves $5 a month."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.metrobyt-mobile.com/support/account/payments",
+      "note": "Manage AutoPay under Payments, Manage Saved Cards & AutoPay."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.metrobyt-mobile.com/support/account/payments",
+      "note": "Metro is prepaid and sends payment reminder texts instead of paper bills."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.metrobyt-mobile.com/support/account/payments",
+      "note": "Metro has no payment plans: payment is due by the due date, service is suspended until you pay, and two missed due dates disconnect service. Call Care at 1-888-863-8768 with questions.",
+      "channel": "phone",
+      "phone": "8888638768"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.metrobyt-mobile.com/support/account/payments",
+      "note": "There is no online cancel option; call Metro Care at 1-888-8metro8 (888-863-8768) or dial *611 from your Metro phone.",
+      "channel": "phone",
+      "phone": "8888638768"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.metrobyt-mobile.com/resources/ways-to-pay",
+      "note": "Call 888-8metro8 or dial *611; phone payments cost $5."
+    }
+  },
+  "billing": {
+    "source": "https://www.metrobyt-mobile.com/support/account/payments",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.metrobyt-mobile.com/resources/ways-to-pay"
+    },
+    "methods": [
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ],
+      "leadDays": 3
+    }
+  },
+  "help": [
+    {
+      "slug": "ways-to-pay",
+      "title": "Ways to pay your Metro bill",
+      "paragraphs": [
+        "Pay for free in the myMetro app (tap Pay Now) or online. No account? Express Pay lets anyone make a one-time payment on the website with a debit or credit card at no extra fee.",
+        "You can also pay by phone at 888-8metro8 (888-863-8768) or *611 from your Metro phone, or in a Metro store; both cost $5. To pay cash without the store, buy a prepaid Visa, Mastercard or Amex gift card and pay online.",
+        "Payment must arrive by the due date or service is suspended until you pay; once a payment arrives it posts within 2 hours and service is restored. If two due dates in a row are missed, service is disconnected and your number may be lost."
+      ],
+      "source": "https://www.metrobyt-mobile.com/resources/ways-to-pay",
+      "topic": "payments"
+    },
+    {
+      "slug": "autopay-metro",
+      "title": "AutoPay",
+      "paragraphs": [
+        "AutoPay pays your bill from your preferred credit or debit card three days before each due date and saves $5 a month. Sign up at least 5 days before your next billing cycle to see the savings on the next bill.",
+        "In the myMetro app select Payments, enter your card, select it and choose Turn on AutoPay. Online, log in, select Pay Now, enter the card and choose Use this card for AutoPay, then Agree and submit payment. You can also manage it under Payments, Manage Saved Cards & AutoPay.",
+        "If you pay cash at a store instead, the $5 cash payment fee applies."
+      ],
+      "source": "https://www.metrobyt-mobile.com/self-service/autopay",
+      "steps": [
+        "Log in and select Payments.",
+        "Select Manage Saved Cards & AutoPay.",
+        "Choose the card and select Use AutoPay."
+      ],
+      "topic": "autopay"
+    },
+    {
+      "slug": "log-in-my-account",
+      "title": "Log in to My Account",
+      "topic": "account",
+      "source": "https://www.metrobyt-mobile.com/support/account/manage-account",
+      "paragraphs": [
+        "Enter your Metro phone number and the Account PIN you created at activation, then select Log In. Metro texts a six-digit authentication code to the phone; enter it and select Log In again to reach the My Account dashboard.",
+        "The Account PIN is a 6 to 15 digit number that must not be easy to guess (no repeats, sequences or details such as your birth date or phone number). Too many wrong attempts lock web and app access, and you then need to visit a Metro store with a valid ID. To reset it, select Reset Account PIN on the login screen, enter the one-time code sent to your phone and answer your security questions."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-savings",
+        "intent": "Using Metro by T-Mobile's pages, find how much AutoPay saves each month. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AutoPay saves $5 a month."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-timing",
+        "intent": "Find out how many days before the due date Metro AutoPay charges your card. Do not change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3",
+              "three"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3",
+            "three"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Three days before the due date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Metro phone number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Now",
+        "Payment Wallet"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "1-888-863-8768"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "ways-to-pay",
+      "contains": "Express Pay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Account PIN"
+      ]
+    }
+  ],
+  "version": 1
+}

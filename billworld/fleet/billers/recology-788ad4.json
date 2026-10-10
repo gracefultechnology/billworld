@@ -1,0 +1,163 @@
+{
+  "id": "recology-788ad4",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Recology",
+  "category": "trash",
+  "template": "waste-hauler",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public recology.com pages only (Bill Pay and the Customer Account Portal FAQs); never signed in. Recology is moving billing from the legacy Kubra E-BillPay site (older invoices) to a new Customer Account Portal (newer invoices, from mid/late 2026), so the biller is moved from the kubra family to the trash-specific waste-hauler family to model the new portal (utility-account showed an energy-usage panel). Register and Guest Payment both need the Invoice Number and Account Number from a paper bill; previous AutoPay and paperless settings must be re-enrolled in the new portal. AutoPay is a Primary + Is Auto Pay toggle on a saved card or ACH account under Payment Accounts. Paper bills continue until Stop paper statements is chosen under Manage My Account (takes 1-2 billing cycles). Online payments carry no fees (stated in the Bill Pay FAQ, which describes the older E-BillPay system; no fee is announced for the new portal). Turning autopay off in the new portal (Is Auto Pay toggle off) is inferred from the enrollment steps. Due dates cannot be extended (payment_arrangement unsupported); San Francisco offers a low-income multi-family discount and a disabled-customer charge waiver by application. Pay-by-phone numbers, mail addresses and portals differ by Recology company. The portal's sign-in identifier is not documented, so the family default is kept.",
+  "officialDomains": ["recology.com"],
+  "sources": [
+    { "url": "https://www.recology.com/bill-pay/", "title": "Bill Pay | Recology", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.recology.com/customer-account-portal-faqs/", "title": "Customer Account Portal FAQs | Recology", "fetchedAt": "2026-10-09", "kind": "help" }
+  ],
+  "brand": { "displayName": "Recology", "shortName": "Recology", "primary": "#2e6b30", "accent": "#005a87", "monogram": "R" },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "guestPay": "Guest Payment",
+    "register": "Register",
+    "signIn": "Login",
+    "forgot": "Forgot password?",
+    "wallet": "Payment Accounts",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "profile": "Manage My Account",
+    "history": "View Payment History",
+    "help": "FAQ"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay My Bill", "page": "login" },
+      { "label": "Guest Payment", "page": "guest" },
+      { "label": "Register", "page": "register" },
+      { "label": "Customer Account Portal FAQs", "helpSlug": "register" },
+      { "label": "FAQ", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Recology Service", "page": "dashboard" },
+      { "label": "Pay My Bill", "page": "pay" },
+      { "label": "Payment Accounts", "page": "wallet" },
+      { "label": "Auto Pay", "page": "autopay" },
+      { "label": "View Payment History", "page": "history" },
+      { "label": "Manage My Account", "page": "profile" },
+      { "label": "Paperless Billing", "page": "paperless" }
+    ]
+  },
+  "auth": {
+    "registrationFields": ["accountNumber", "email"],
+    "guestLookupFields": ["accountNumber", "statementId"],
+    "evidence": "documented_official",
+    "source": "https://www.recology.com/customer-account-portal-faqs/"
+  },
+  "capabilities": {
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://www.recology.com/customer-account-portal-faqs/", "note": "Register with the Invoice Number and Account Number printed on your paper bill." },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.recology.com/customer-account-portal-faqs/" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.recology.com/customer-account-portal-faqs/" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.recology.com/bill-pay/" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.recology.com/customer-account-portal-faqs/" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.recology.com/bill-pay/", "channel": "phone", "note": "Payment plans are not offered online and the payment due date cannot be extended. Contact your local Recology Customer Service team about a past-due balance." },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.recology.com/bill-pay/", "note": "San Francisco customers can apply for the Multi-Family Low Income Discount or the Disabled Customer Secondary Charges Waiver." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.recology.com/bill-pay/" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.recology.com/bill-pay/" }
+  },
+  "billing": {
+    "source": "https://www.recology.com/bill-pay/",
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "documented_official", "source": "https://www.recology.com/bill-pay/" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "register",
+      "title": "How do I sign up for the Customer Account Portal?",
+      "topic": "account",
+      "paragraphs": [
+        "Go to the Customer Account Portal and choose Register. You will need the Invoice Number and Account Number from your paper bill, so you can sign up once your next bill arrives after the switch.",
+        "The portal is Recology's new online billing system for paying bills, checking your service calendar, enrolling in autopay or paperless billing and managing account details. AutoPay and paperless settings from the old system do not carry over: enroll again after you register."
+      ],
+      "source": "https://www.recology.com/customer-account-portal-faqs/"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Recology bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay in the Customer Account Portal or, without an account, choose Guest Payment and enter the Invoice Number and Account Number from your bill. Major debit and credit cards and checking or savings accounts are accepted, and online payments carry no fee.",
+        "You can also pay in person, by mailed check, or by phone through your local Recology Customer Service team; each Recology company has its own automated pay-by-phone line, available 24/7 with your account number."
+      ],
+      "source": "https://www.recology.com/customer-account-portal-faqs/"
+    },
+    {
+      "slug": "autopay",
+      "title": "How do I enroll in autopay?",
+      "topic": "autopay",
+      "paragraphs": [
+        "Autopay pays each bill from a saved card or bank account. Only one recurring payment can be set per customer account."
+      ],
+      "steps": ["In the portal open Payment Accounts under My Recology Service.", "Choose Credit Card or ACH and select Save New Card or Save New Account.", "Enter the details and go back to Payment Accounts.", "Switch on Primary and Is Auto Pay for that payment account."],
+      "source": "https://www.recology.com/customer-account-portal-faqs/"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Changing or cancelling automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "In the Customer Account Portal, autopay is tied to a saved payment account: open Payment Accounts under My Recology Service and switch Is Auto Pay off for that card or bank account (or turn it on for a different one) to stop or change automatic payments.",
+        "On the older E-BillPay site (invoices dated before the switch), recurring payments are under Payments, Add/View Recurring Payments: Edit changes the payment details and Delete cancels all future automatic payments. Either way, you then pay each bill yourself."
+      ],
+      "source": "https://www.recology.com/bill-pay/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Can I sign up for paperless billing?",
+      "topic": "billing",
+      "paragraphs": [
+        "Paper bills keep coming until you stop them: in the portal open Manage My Account and choose Stop paper statements. The change can take one or two billing cycles.",
+        "Once paper statements stop you will not get bill notices in the mail, and without autopay you will not get payment reminders, so watch your email."
+      ],
+      "source": "https://www.recology.com/customer-account-portal-faqs/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment plans and discounts",
+      "topic": "assistance",
+      "paragraphs": [
+        "Recology does not extend payment due dates. In San Francisco, multi-family buildings with low-income residents can apply for a discount, and disabled customers can apply for a waiver of secondary charges; return the application to Recology San Francisco customer service by email or mail."
+      ],
+      "source": "https://www.recology.com/bill-pay/"
+    }
+  ],
+  "tasks": {
+    "suppress": ["setup-payment-plan"],
+    "extra": [
+      {
+        "slug": "paperless-delay",
+        "intent": "Using Recology's help pages, find how many billing cycles it can take for paper statements to stop after you choose paperless billing. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["2"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["2"] },
+        "tags": ["help", "information", "paperless"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "It can take 1 to 2 billing cycles for paper statements to stop." }]
+      },
+      {
+        "slug": "guest-pay-requirements",
+        "intent": "Using Recology's help pages, find which two numbers from your paper bill you need to make a Guest Payment. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["invoice number", "account number"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["invoice number", "account number"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "You need the Invoice Number and the Account Number from your paper bill." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": ["Pay My Bill", "Guest Payment"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Payment Accounts", "Manage My Account"] },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "helpArticle", "slug": "paperless", "contains": "Stop paper statements" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "Is Auto Pay" },
+    { "page": "arrangement", "signedIn": true, "contains": "not offered online" }
+  ]
+}

@@ -80,6 +80,16 @@ Each template has its own URL structure, navigation, terminology and step order,
 
 Each template's `meta.evidence` and `meta.sources` record what was observed and what was synthesized. Logos are monograms; no third-party brand assets are served.
 
+## Dedicated tier (researched per-biller dossiers)
+
+The most popular billers get a researched dossier, `billers/<billerId>.json`, which makes that biller `tier: 'dedicated'` (every other biller is `tier: 'family'`). The goal is 10 popular billers per catalog category, each validated and browser-tested green before the rest. A dossier can set the biller's own wording (`labels`, used through `kit.L()` in every template), ordered navigation (`nav`, placed in each template's `meta.navSlots`), sign-in rules (identifier, one- or two-step, MFA, password rule, lockout, required registration and guest-lookup fields), capability overrides with notes for things not available online (shown on the site and in help; the engine refuses them; `*-limitation` tasks expect the offline route), payment methods, AutoPay options, scheduling and amount limits, fees, real plans, card minimums, late fees, help articles, extra tasks with reference solutions, task suppressions and biller-specific browser expectations. It can also state rules the engine enforces: "greater of N% or $X" late charges, full-balance-only payments, a cap on pending scheduled payments, phone-number or exact-field guest lookups, separate card-AutoPay and pay-without-signing-in fees, plan changes that are offline only (`change_plan`), and customer-service or pay-by-phone numbers that replace the catalog's. Without a dossier, `vm.labels` is empty and every template renders its family wording; the generic fixes made while integrating the tier (for example the AutoPay label used as a noun in "Turn off …", forms hidden where a capability is offline, the energy-usage panel only on metered bills, captured public text quoted at most 200 characters) apply to every biller.
+
+- Format, builder checklist and evidence rules: [`billers/README.md`](billers/README.md) (schema: `billers/schema.mjs`).
+- `node billworld/fleet/billers/validate.mjs [id ...]` validates dossiers and proves every task of each biller.
+- `FLEET_TIMEOUT=120000 node billworld/fleet/tests/dedicated.mjs --billers <id,...> --tag <unique>` (or `--category <c>`, `--dossiers all`) runs every standard and extended flow plus `dossier_contract` and `testExpectations`.
+- `node billworld/fleet/billers/status.mjs [--next 10]` shows progress per category.
+- Pilot: Consolidated Edison (`consolidated-edison-company-of-new-york-con-edis-1ac80c`). `FLEET_DOSSIERS=0` disables the tier.
+
 ## Observed public profiles
 
 `profiles/` holds per-biller profiles extracted from the research captures (`billworld/research-data`, read-only): real page titles, nav and footer labels, hero heading, theme color, login-form facts (field kinds, button wording, social providers, register, forgot and guest links) and help excerpts.

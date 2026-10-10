@@ -1,0 +1,372 @@
+{
+  "id": "denver-water-15d948",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Denver Water",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public denverwater.org pages and the public Denver Water Online sign-in page (no sign-in). Denver Water Online signs in with an Email Address; creating an account needs the Denver Water account number and customer ID from the bill. Features: pay bills, autopay (card, or checking/savings/money market), paperless e-bill (takes effect next cycle), text reminders and pay-by-text. Customers keep paying manually until the bill shows Automatic Pay. One-time guest payments need no enrollment. Starting or stopping service is done by calling Customer Care at 303-893-2444 (only title companies use an online form), so cancel_service is marked not offered online. Payment arrangements are discussed with Customer Care by phone (inferred: no online plan tool is described). Keeping the past-due balance under $100 avoids a turn-off. Card/convenience fees and late fees are not stated on the pages reviewed, so fees stay at family defaults.",
+  "officialDomains": [
+    "denverwater.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.denverwater.org/manage-account",
+      "title": "Manage Your Account | Denver Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.denverwater.org/other-ways-pay-bill",
+      "title": "Other Ways to Pay Your Bill | Denver Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.denverwater.org/residential/services-and-information/start-or-stop-service",
+      "title": "Start or Stop Service | Denver Water",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://myaccount.denverwater.org",
+      "title": "Denver Water Online sign in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Denver Water",
+    "shortName": "Denver Water",
+    "primary": "#005daa",
+    "accent": "#003e72",
+    "monogram": "DW"
+  },
+  "labels": {
+    "dashboard": "Denver Water Online",
+    "signIn": "Sign up/Sign in",
+    "username": "Email Address",
+    "payBill": "Pay Bill",
+    "guestPay": "One-time guest payment",
+    "paperless": "e-bill",
+    "cancel": "Start or Stop Service",
+    "arrangement": "Payment arrangement",
+    "contact": "Customer Care",
+    "help": "Manage Your Account"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "One-time guest payment",
+        "page": "guest"
+      },
+      {
+        "label": "Sign up/Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Other Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Start or Stop Service",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "Manage Your Account",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Denver Water Online",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Auto pay",
+        "page": "autopay"
+      },
+      {
+        "label": "e-bill",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment activity",
+        "page": "history"
+      },
+      {
+        "label": "Customer Care",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "observed_public",
+    "source": "https://myaccount.denverwater.org"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.denverwater.org/other-ways-pay-bill"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.denverwater.org/manage-account"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.denverwater.org/manage-account"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.denverwater.org/residential/services-and-information/start-or-stop-service",
+      "channel": "phone",
+      "phone": "303-893-2444",
+      "note": "Stopping service is not offered online for customers. Call Customer Care at 303-893-2444, Monday to Friday 7:30 a.m. to 5:30 p.m."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.denverwater.org/other-ways-pay-bill",
+      "channel": "phone",
+      "phone": "303-893-2444",
+      "note": "Payment arrangements are not offered online. Call Customer Care at 303-893-2444 to discuss payment options; you can also make partial payments online."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.denverwater.org/other-ways-pay-bill",
+      "phone": "800-556-0292"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.denverwater.org/other-ways-pay-bill"
+    }
+  },
+  "billing": {
+    "source": "https://www.denverwater.org/manage-account",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to Denver Water Online to pay, or make a one-time guest payment online without enrolling.",
+        "Automated phone payments: 1-800-556-0292, 24 hours a day. To talk with a representative about a turn-off or lien notice, call Customer Care at 303-893-2444, Monday to Friday 7:30 a.m. to 5:30 p.m.",
+        "By mail: P.O. Box 173343, Denver, CO 80217-3343. In person: Western Union agent locations accept cash or a PIN debit card; bring your statement for the account number and customer ID.",
+        "Keeping your past-due balance below $100 keeps you from being at risk of a turn-off. A Western Union payment may not stop a turn-off for past-due charges."
+      ],
+      "source": "https://www.denverwater.org/other-ways-pay-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign up for auto pay in Denver Water Online. You can pay by credit or debit card, or from a checking, savings or money market account, and edit the plan online.",
+        "Keep paying your bill yourself until it shows Automatic Pay."
+      ],
+      "steps": [
+        "Sign in to Denver Water Online.",
+        "Choose Sign up for auto pay.",
+        "Pick a card or bank account.",
+        "Confirm the enrollment."
+      ],
+      "source": "https://www.denverwater.org/manage-account"
+    },
+    {
+      "slug": "paperless",
+      "title": "e-bill, text reminders and pay-by-text",
+      "topic": "billing",
+      "paragraphs": [
+        "e-bill replaces your paper bill starting with your next billing cycle; notices come from Denver Water's e-bill address.",
+        "Pay-by-text: in your account choose Pay Bill, find PAY-BY-TEXT and follow the prompts. Confirm the enrollment text by replying H2O. You get a reminder five days before your bill is due and can pay with a quick text reply."
+      ],
+      "source": "https://www.denverwater.org/manage-account"
+    },
+    {
+      "slug": "register",
+      "title": "Create a Denver Water Online account",
+      "topic": "account",
+      "paragraphs": [
+        "Choose Sign up/Sign in. To create an account you need your Denver Water account number and customer ID, both near the top of your bill, and an email address to sign in with."
+      ],
+      "source": "https://www.denverwater.org/manage-account"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start or stop service",
+      "topic": "account",
+      "paragraphs": [
+        "To start or stop service, call Customer Care at 303-893-2444, Monday to Friday 7:30 a.m. to 5:30 p.m. Have the service address, billing address, a phone number and the start or end date ready.",
+        "Title companies handling a property sale can submit the request online; allow up to two business days."
+      ],
+      "source": "https://www.denverwater.org/residential/services-and-information/start-or-stop-service"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help paying your bill",
+      "topic": "assistance",
+      "paragraphs": [
+        "You can make full or partial payments online, by mail, by phone or in person. For hardship assistance, dial 211 or contact Mile High United Way 2-1-1 to check eligibility.",
+        "Customer Care at 303-893-2444 can talk with you about payment options."
+      ],
+      "source": "https://www.denverwater.org/other-ways-pay-bill"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "turnoff-threshold",
+        "intent": "Using Denver Water's help pages, find the past-due balance you should stay below to avoid being at risk of a turn-off. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$100",
+              "100 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$100",
+            "100 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Keep the past-due balance below $100."
+          }
+        ]
+      },
+      {
+        "slug": "automated-pay-line",
+        "intent": "Find Denver Water's 24-hour automated phone number for paying a bill. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8005560292"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8005560292"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-556-0292"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Denver Water Online",
+        "e-bill"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "303-893-2444"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "1-800-556-0292",
+        "$100"
+      ]
+    }
+  ]
+}

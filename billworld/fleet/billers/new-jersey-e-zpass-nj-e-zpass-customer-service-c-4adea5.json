@@ -1,0 +1,360 @@
+{
+  "id": "new-jersey-e-zpass-nj-e-zpass-customer-service-c-4adea5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "New Jersey E-ZPass (NJ E-ZPass Customer Service Center)",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public ezpassnj.com pages only (home page and the FAQ page; no sign-in, no invoice lookup). Sign-in is a Username (not case sensitive) and password on one form; the home-page form also shows a security code image, which the fleet does not model. Forgot Username asks for the account or tag number plus ZIP code; Forgot Password asks for username or account number plus ZIP, and a temporary password is emailed (or mailed). Automatic replenishment accepts credit/debit cards or a checking/savings account and re-bills when the balance falls below 25% of the required replenishment amount, which NJ E-ZPass reviews and adjusts automatically. Accounts carry a $1.00 monthly account fee (not a payment convenience fee, so it is in help, not billing.fees). Statements: free monthly for six months, then every other month; monthly delivery after that costs $1.00 every other month. The Violation Resolution Plan lets account holders with at least $120 of eligible violations pay over time with recurring payments, enrolled online or by phone; it is modelled with the family payment-plan page (3/6/12 months are synthetic; the real plan terms are not published). How to close an account is not described on the public FAQ page, so cancel_service keeps the catalog default. MFA is not described publicly.",
+  "officialDomains": [
+    "ezpassnj.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ezpassnj.com/en/home/index.shtml",
+      "title": "Welcome to E-ZPass (NJ E-ZPass home)",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.ezpassnj.com/en/about/faqs.shtml",
+      "title": "NJ E-ZPass FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "NJ E-ZPass",
+    "primary": "#5b2c83",
+    "accent": "#00558c",
+    "monogram": "NJ"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "register": "Register",
+    "guestPay": "Pay Invoice / Violation / Toll Bill",
+    "payBill": "Make Payment",
+    "autopay": "Automatic Replenishment",
+    "wallet": "Update Payment Method",
+    "profile": "Account Profile",
+    "paperless": "Statement Delivery",
+    "statements": "Statements",
+    "history": "Transactions",
+    "forgot": "Forgot Username / Password?",
+    "username": "Username",
+    "arrangement": "Violation Resolution Plan",
+    "help": "FAQs",
+    "contact": "Contact Us",
+    "dashboard": "My Account"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "E-ZPass Info",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Pay Invoice / Violation / Toll Bill",
+        "page": "guest"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Transactions",
+        "page": "history"
+      },
+      {
+        "label": "Automatic Replenishment",
+        "page": "autopay"
+      },
+      {
+        "label": "Update Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "Account Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Statement Delivery",
+        "page": "paperless"
+      },
+      {
+        "label": "Violation Resolution Plan",
+        "page": "arrangement"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.ezpassnj.com/en/home/index.shtml"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml",
+      "note": "Automatic replenishment charges a credit/debit card or checking/savings account when the balance falls below 25% of the replenishment amount."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml",
+      "note": "Choose email statements, or stop statements, under Account Profile > Statement Delivery."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml",
+      "note": "The Violation Resolution Plan spreads eligible violations of at least $120 over recurring automatic payments."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml",
+      "phone": "8882886865"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.ezpassnj.com/en/home/index.shtml",
+      "note": "Invoices, violations and toll bills can be paid online without signing in."
+    }
+  },
+  "billing": {
+    "source": "https://www.ezpassnj.com/en/about/faqs.shtml",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Automatic replenishment",
+      "topic": "autopay",
+      "paragraphs": [
+        "Link a credit card (American Express, Visa, Mastercard or Discover), a debit card, or a checking or savings account and NJ E-ZPass re-bills it automatically whenever your balance falls below 25% of your required replenishment amount.",
+        "NJ E-ZPass reviews your toll usage from time to time and changes the replenishment amount to match your monthly activity. The change is automatic and shows on your next statement; no separate notice is sent.",
+        "Cash and check customers see GO LOW BAL or PAID LOW BAL in the lane when the balance drops below 50% of the replenishment amount and must add funds right away. Switching from cash or check to a card requires a balance at or above the threshold first."
+      ],
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml",
+      "steps": [
+        "Log in with your username and password.",
+        "Open the Payment menu and choose Update Payment Method.",
+        "Enter the card or bank account to use for replenishment and save."
+      ]
+    },
+    {
+      "slug": "statements",
+      "title": "Statements and statement delivery",
+      "topic": "billing",
+      "paragraphs": [
+        "Private accounts get an itemized monthly statement free for the first six months and an every-other-month statement after that.",
+        "To keep monthly statements after six months, open My Account > Account Profile and choose monthly delivery by email or mail under Statement Delivery; this costs $1.00 every other month ($6.00 a year).",
+        "You can also switch to email statements or stop statements entirely at any time, and print your transaction history online under Activity."
+      ],
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml"
+    },
+    {
+      "slug": "account-fees",
+      "title": "Account and tag fees",
+      "topic": "fees",
+      "paragraphs": [
+        "NJ E-ZPass charges a $1.00 monthly account fee; the Terms and Conditions list the other fees.",
+        "There is no extra cost for tags when the account replenishes automatically from a card or bank account. Accounts replenished by cash or check pay a refundable $10 deposit per tag. Private accounts can have up to six tags, and the initial prepaid toll amount covers every vehicle on the account."
+      ],
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml"
+    },
+    {
+      "slug": "violation-resolution-plan",
+      "title": "Violation Resolution Plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "A Violation Resolution Plan lets NJ E-ZPass account holders pay eligible violations over time through automatic recurring payments, using a payment method already on the account or a new one.",
+        "To qualify, the account must be active with automatic replenishment set up on a valid payment method, have a validated email address, and owe at least $120.00 in eligible violations (NJ Turnpike Authority, South Jersey Transportation Authority and the Cape May and Burlington County bridge commissions). Violations from the Delaware River Bay Authority, Delaware River Port Authority and Delaware River Joint Toll Bridge Commission must be paid separately.",
+        "Enroll online or by calling 888-AUTO-TOLL (888-288-6865)."
+      ],
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Forgot your username or password",
+      "topic": "account",
+      "paragraphs": [
+        "Choose Forgot Username / Password? on the log in form. For a forgotten username you will be asked for your account number or tag number and your ZIP code; for a forgotten password, your username or account number and ZIP code.",
+        "A temporary password is sent by email when the account has an email address, otherwise by mail. Usernames are not case sensitive."
+      ],
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Toll bills and ways to pay",
+      "topic": "billing",
+      "paragraphs": [
+        "Pay a toll bill in full by its due date; partial payment does not stop additional fees. An unpaid bill gets a late Toll Bill fee and can go on to per-transaction fees and collections.",
+        "Account holders can add funds online under Payment > Make Payment, by calling 888-AUTO-TOLL (888-288-6865), or at a customer service center. One-time payments can be made with cash, check, credit or debit card, Apple Pay or Google Pay, or a checking or savings account."
+      ],
+      "source": "https://www.ezpassnj.com/en/about/faqs.shtml",
+      "mode": "append"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "monthly-account-fee",
+        "intent": "Using the NJ E-ZPass website's help pages, find the monthly account fee New Jersey E-ZPass charges. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1",
+              "1 dollar",
+              "one dollar"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1",
+            "1 dollar",
+            "one dollar"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "NJ E-ZPass charges a $1.00 monthly account fee."
+          }
+        ]
+      },
+      {
+        "slug": "violation-plan-minimum",
+        "intent": "Using the NJ E-ZPass website's help pages, find the minimum total of outstanding violations needed to start a Violation Resolution Plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$120",
+              "120 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$120",
+            "120 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A Violation Resolution Plan needs at least $120.00 in eligible violations."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Log In"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make Payment",
+        "Account Profile"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "25%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "violation-resolution-plan",
+      "contains": "$120"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "account-fees",
+      "contains": "$1.00 monthly"
+    }
+  ]
+}

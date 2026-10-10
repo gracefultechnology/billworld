@@ -1,0 +1,362 @@
+{
+  "id": "bay-alarm-medical-944fdf",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Bay Alarm Medical",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Bay Alarm Medical's public Customer Service, FAQ, Cancellations and App pages and the public Account Manager sign-in page (portal.bayalarmmedical.com) only; never signed in. The Account Manager web portal asks for Email and Password with 'Login', 'Sign in with OTP' (a one-time-code alternative, not a second factor) and 'Forgot Password?'; no registration link is shown on the portal (accounts come with the order). The Account Manager app/portal is used to make payments, update credit cards and view account status and purchase history. Billing is automatic: the card is charged on the same date each month (or quarterly/annually), so recurring card billing is modelled as AutoPay. Only Visa, MasterCard and Discover credit/debit cards are accepted (no American Express, no bank accounts documented). Plans are the published monthly monitoring prices for the four SOS systems (the current plan is a simulation choice). Cancellation is by phone only (1-877-522-9633), except cancellations because of a death, which can be made in the app or portal; billing ends after the leased device is returned and inspected. No payment-plan, future-dated payment or paperless doc: payment_arrangement is phone-only (inferred), scheduled_payment unknown. Review 2026-10-09: the public Account Manager page bundle (no sign-in) labels its billing area Billing & Orders, Invoices & Bills and Add / Update Payment Method, and its payment form offers Credit / Debit Card and Bank Account (USA Only); the FAQ still lists cards only, so the bank method stays a stand-in and the card-only request stands. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "bayalarmmedical.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.bayalarmmedical.com/customer-service/",
+      "title": "Customer Service | Bay Alarm Medical",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.bayalarmmedical.com/frequently-asked-questions/",
+      "title": "Frequently Asked Questions | Bay Alarm Medical",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.bayalarmmedical.com/cancellations/",
+      "title": "Cancellations | Bay Alarm Medical",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.bayalarmmedical.com/app/",
+      "title": "Bay Alarm Medical App",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://portal.bayalarmmedical.com/",
+      "title": "Bay Alarm Medical - Account Manager",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Bay Alarm Medical",
+    "shortName": "Bay Alarm Medical",
+    "primary": "#00539b",
+    "accent": "#a8261b",
+    "monogram": "BA"
+  },
+  "labels": {
+    "signIn": "Login",
+    "forgot": "Forgot Password?",
+    "username": "Email",
+    "dashboard": "Account Manager",
+    "payBill": "Make Payments",
+    "wallet": "Add / Update Payment Method",
+    "history": "Purchase history",
+    "cancel": "Cancel Service",
+    "help": "Customer Service",
+    "viewBill": "Billing & Orders",
+    "statements": "Invoices & Bills"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Fees & Payments",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Cancel Service",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Manager",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing & Orders",
+        "page": "bill"
+      },
+      {
+        "label": "Make Payments",
+        "page": "pay"
+      },
+      {
+        "label": "Invoices & Bills",
+        "page": "statements"
+      },
+      {
+        "label": "Add / Update Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Account",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://portal.bayalarmmedical.com/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayalarmmedical.com/app/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayalarmmedical.com/frequently-asked-questions/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.bayalarmmedical.com/cancellations/",
+      "note": "Service can only be cancelled by phone at 1-877-522-9633 (cancellations because of a death can be made in the app or portal). Billing stops once the device is returned.",
+      "channel": "phone",
+      "phone": "8775229633"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "note": "Payment plans are not offered online. Call the Billing Department at 1-877-522-9633.",
+      "channel": "phone",
+      "phone": "8775229633"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bayalarmmedical.com/frequently-asked-questions/",
+      "phone": "8775229633"
+    }
+  },
+  "billing": {
+    "source": "https://www.bayalarmmedical.com/frequently-asked-questions/",
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "plans": [
+      {
+        "id": "sos-home",
+        "name": "SOS Home",
+        "cents": 2795
+      },
+      {
+        "id": "sos-all-in-one-2",
+        "name": "SOS All-In-One 2",
+        "cents": 3495,
+        "current": true
+      },
+      {
+        "id": "sos-micro",
+        "name": "SOS Micro",
+        "cents": 3495
+      },
+      {
+        "id": "sos-smartwatch",
+        "name": "SOS Smartwatch",
+        "cents": 3995
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "faq",
+      "title": "Fees & Payments",
+      "topic": "faq",
+      "paragraphs": [
+        "When you order, your card is charged for the first monitoring period, any accessories and shipping, and service starts right away.",
+        "After that, payment is taken automatically on the same date each month, or each quarter or year if you chose that billing cycle.",
+        "Bay Alarm Medical accepts Visa, MasterCard and Discover credit or debit cards. American Express is not accepted.",
+        "There are no charges for emergency calls, false alarms or test calls. Without the Premier Protection Plan, damage not caused by the manufacturer can cost up to $299."
+      ],
+      "source": "https://www.bayalarmmedical.com/frequently-asked-questions/"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a payment or update your card",
+      "topic": "payments",
+      "paragraphs": [
+        "Use the free Account Manager app or the Account Manager web portal to make a payment, update your credit card and check your account status and purchase history.",
+        "Some account changes can only be made by phone. The Billing Department is open Monday to Friday, 7 a.m. to 4 p.m. Pacific, at 1-877-522-9633."
+      ],
+      "steps": [
+        "Log in to Account Manager with your email and password (or a one-time code).",
+        "Open Make Payments.",
+        "Pay the balance or update your card."
+      ],
+      "source": "https://www.bayalarmmedical.com/app/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your service",
+      "topic": "account",
+      "paragraphs": [
+        "To cancel for any reason other than a death, call 1-877-522-9633 (8 a.m. to 5 p.m. Pacific). A Customer Care Advocate confirms the request comes from the user, explains how to power the device down and reviews your account. If the user has passed away, the cancellation can be made in the app or the online portal; proof may be requested.",
+        "Ship in-home equipment to Bay Alarm Medical, 1140 Galaxy Way Suite #150, Concord, CA 94520, in any safe box, and keep the tracking number. Power the unit down first to avoid false alarms.",
+        "The account closes only after the leased device arrives and is inspected, which can take two to three weeks; you get a final email. Service charges during the wait are refunded based on the postmark date. There is no cancellation fee or long-term contract."
+      ],
+      "source": "https://www.bayalarmmedical.com/cancellations/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Customer service hours",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer Support: 1-877-522-9633 (or 1-925-677-1400, press 1), Monday to Friday 6 a.m. to 5 p.m. and weekends 8 a.m. to 4:30 p.m. Pacific. You can also email the customer service team.",
+        "Billing questions are handled Monday to Friday, 7 a.m. to 4 p.m. Pacific. Save the monitoring center number 1-844-996-0208 so you recognize its calls."
+      ],
+      "source": "https://www.bayalarmmedical.com/customer-service/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "amex-accepted",
+        "intent": "You want to pay Bay Alarm Medical with an American Express card. Using the website's help pages, find out whether American Express is accepted and answer yes or no with the cards that are accepted. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Discover"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Discover"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. Only Visa, MasterCard and Discover credit or debit cards are accepted."
+          }
+        ]
+      },
+      {
+        "slug": "equipment-return-address",
+        "intent": "You've cancelled Bay Alarm Medical by phone and need to ship the in-home base station back. Using the website, find the city the equipment must be sent to. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Concord"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Concord"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Bay Alarm Medical, 1140 Galaxy Way Suite #150, Concord, CA 94520."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-877-522-9633"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "SOS Home",
+        "SOS Smartwatch"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": [
+        "American Express is not accepted",
+        "$299"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "1140 Galaxy Way"
+    }
+  ]
+}

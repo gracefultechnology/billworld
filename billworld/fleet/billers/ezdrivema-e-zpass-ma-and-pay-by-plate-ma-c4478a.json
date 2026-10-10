@@ -1,0 +1,309 @@
+{
+  "id": "ezdrivema-e-zpass-ma-and-pay-by-plate-ma-c4478a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "EZDriveMA (E-ZPass MA and Pay By Plate MA)",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public ezdrivema.com pages (E-ZPass MA, login page, fee schedule, Pay By Plate MA, customer service). The login page lets you pick the Type of Login (Username, Account Number, Transponder Number or Email Address on file) and enter a password; the fleet models this as email_or_username. Automatic replenishment uses a credit/debit card or checking account; the opening prepaid amount is $20 per transponder (private) with automatic replenishment, $30 with manual replenishment. The $1.99 per-transaction fee shown on the E-ZPass MA page sits next to the MoneyGram cash option, and the Pay By Plate MA page states it is the MoneyGram fee, so no convenience fee is applied to online card or bank payments (reviewer fix, 2026-10-09). Statements are free online, $0.60 per mailed statement. Pay By Plate MA invoices add $0.60 per invoice plus monthly late fees if unpaid. No payment plan or close-account procedure is described on the public pages read, so those keep the catalog defaults. MFA not described. The pay_by_phone override (unknown, with a research-process note that leaked onto the home page) was removed; the catalog default applies.",
+  "officialDomains": [
+    "ezdrivema.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ezdrivema.com/ezpassma",
+      "title": "E-ZPass MA - EZDriveMA",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.ezdrivema.com/ezpassmalogin",
+      "title": "Login to your E-ZPass MA Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.ezdrivema.com/E-ZPass-MA/Fee-Schedule",
+      "title": "E-ZPass MA Fee Schedule",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.ezdrivema.com/paybyplatema",
+      "title": "Pay By Plate MA - EZDriveMA",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ezdrivema.com/customerservice",
+      "title": "Customer Service - EZDriveMA",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "EZDriveMA",
+    "primary": "#004b87",
+    "accent": "#7a1f2b",
+    "monogram": "EZ"
+  },
+  "labels": {
+    "signIn": "Login",
+    "register": "Open an E-ZPass MA Account",
+    "guestPay": "Pay a Pay By Plate MA Invoice",
+    "autopay": "Automatic Account Replenishment",
+    "forgot": "Forgot Your Username or Password?",
+    "username": "User Name",
+    "help": "Customer Service",
+    "statements": "Statements"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login to your E-ZPass MA Account",
+        "page": "login"
+      },
+      {
+        "label": "Open an E-ZPass MA Account",
+        "page": "register"
+      },
+      {
+        "label": "Pay a Pay By Plate MA Invoice",
+        "page": "guest"
+      },
+      {
+        "label": "Fee Schedule",
+        "helpSlug": "fee-schedule"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Automatic Account Replenishment",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Information",
+        "page": "wallet"
+      },
+      {
+        "label": "Vehicles & Transponders",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.ezdrivema.com/ezpassmalogin"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezdrivema.com/ezpassma",
+      "note": "Automatic account replenishment charges a credit/debit card or checking account when the balance gets low."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezdrivema.com/E-ZPass-MA/Fee-Schedule",
+      "note": "Online statements are free; mailed statements cost $0.60 each."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezdrivema.com/paybyplatema",
+      "note": "Pay By Plate MA invoices can be paid online without an account."
+    }
+  },
+  "billing": {
+    "source": "https://www.ezdrivema.com/ezpassma",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Automatic account replenishment",
+      "topic": "autopay",
+      "paragraphs": [
+        "Assign a credit card, debit card or checking account to your E-ZPass MA account. Your initial prepaid payment is $20.00 per transponder for private accounts ($50.00 for commercial), and tolls are deducted from it as you travel.",
+        "When the balance gets low the account is replenished automatically from the same payment method. EZDriveMA reviews the replenishment amount periodically and may change it to match your average monthly tolls.",
+        "With manual replenishment instead, private accounts open with $30.00 per transponder and you must watch the balance and add funds yourself."
+      ],
+      "source": "https://www.ezdrivema.com/ezpassma"
+    },
+    {
+      "slug": "fee-schedule",
+      "title": "E-ZPass MA fee schedule",
+      "topic": "fees",
+      "paragraphs": [
+        "Transponders are free at sign-up and when you ask for more; lost, stolen, damaged or defaced transponders are charged the transponder fee.",
+        "Statements are free online and $0.60 each by mail. Duplicate statements cost $2.00 (private) or $5.00 (commercial). The annual tax deduction statement is free online or $2.00 mailed or faxed. A returned unpaid check costs $25.00.",
+        "Cash payments made through MoneyGram carry a $1.99 fee per transaction. Pay By Plate MA invoices add $0.60 per invoice; fees can change at any time."
+      ],
+      "source": "https://www.ezdrivema.com/E-ZPass-MA/Fee-Schedule"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "billing",
+      "paragraphs": [
+        "Make manual payments online in your E-ZPass MA account, mail a check with your account number to the EZDriveMA Customer Service Center, 27 Midstate Drive, Auburn, MA 01501, or pay with cash or a card at a customer service center. Cash payments through MoneyGram cost $1.99 each.",
+        "Check your balance online, sign up for text or email alerts, or call (877) 627-7745. Replenish before traveling out of state so your balance covers E-ZPass tolls elsewhere."
+      ],
+      "source": "https://www.ezdrivema.com/ezpassma",
+      "mode": "append"
+    },
+    {
+      "slug": "pay-by-plate-invoices",
+      "title": "Pay By Plate MA invoices",
+      "topic": "billing",
+      "paragraphs": [
+        "Vehicles without a valid toll account are billed by plate: an invoice goes to the registered owner, with a $0.60 fee per invoice, and later travel brings monthly invoices until an account is opened.",
+        "Pay online with Pay a Pay By Plate MA Invoice, by check to the EZDriveMA Payment Processing Center in Boston with your invoice number, with cash or a card at a customer service center, or in cash through MoneyGram ($1.99 per transaction). Invoices not paid by the due date get additional fees for each month they stay unpaid.",
+        "Registered Pay By Plate accounts (one passenger plate each, MassDOT roads only) can be prepaid with a $20.00 opening payment and automatic replenishment, or postpaid and charged at the end of each 30-day cycle."
+      ],
+      "source": "https://www.ezdrivema.com/paybyplatema"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "moneygram-fee",
+        "intent": "Using the EZDriveMA website's help pages, find the fee EZDriveMA lists for each cash payment made through MoneyGram. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.99",
+              "1.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.99",
+            "1.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each MoneyGram cash payment carries a $1.99 fee."
+          }
+        ]
+      },
+      {
+        "slug": "mailed-statement-fee",
+        "intent": "Using the EZDriveMA website's help pages, find what EZDriveMA charges for each mailed E-ZPass MA statement. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$0.60",
+              "60 cents",
+              ".60"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$0.60",
+            "60 cents",
+            ".60"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees",
+          "paperless"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mailed statements cost $0.60 each; online statements are free."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "User Name",
+        "Login"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fee-schedule",
+      "contains": "MoneyGram"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "$20.00 per transponder"
+    }
+  ]
+}

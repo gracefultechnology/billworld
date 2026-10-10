@@ -1,0 +1,304 @@
+{
+  "id": "american-home-shield-ahs-34311b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "American Home Shield (AHS)",
+  "category": "home-services",
+  "template": "streaming",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public AHS FAQs page and the public MyAccount sign-in page only (never signed in). MyAccount sign-in is a single form with Email and Password, Forgot Password?, Log in with Google and Log in with Apple, and Create Account. Plans are billed monthly or annually (no finance fee for monthly) to a checking account or credit/debit card. Automatic payments also make the plan auto-renew each year; without them the plan does not auto-renew and is renewed in MyAccount or by phone (844-954-3743). Choosing the monthly billing day is by phone (888-543-2902). Plan changes (upgrade, downgrade, add-ons) are only within 60 days of the start date and by phone (855-799-3434), so the built-in downgrade-plan task is suppressed and replaced by a phone-lookup task; plan prices are quote-based and not published, so the plan page keeps the family's synthetic plans. Cancellation is by phone: AHS first offers pause, transfer or downgrade at 844-300-5270 and processes cancellations at 855-822-7419; refunds are full within 30 days (less claims costs) and prorated after, less an administrative fee of up to one month's payment. The $100 or $125 service fee per request is not a bill-payment fee and is not modelled. Guest payment, paperless and autopay cancellation are not documented publicly and stay at family defaults. Reviewer (2026-10-09): moved from utility-account to streaming, because AHS bills a home-warranty plan subscription that renews automatically, and the utility template showed an energy-usage chart and Start, Stop or Move.",
+  "officialDomains": [
+    "ahs.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ahs.com/faqs/",
+      "title": "Frequently Asked Questions About Home Warranties | AHS",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://myaccount.ahs.com/",
+      "title": "Login | MyAccount AHS",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "AHS",
+    "displayName": "American Home Shield",
+    "primary": "#003a70",
+    "accent": "#00264a",
+    "monogram": "AH"
+  },
+  "labels": {
+    "signIn": "Log in to MyAccount",
+    "register": "Create Account",
+    "forgot": "Forgot Password?",
+    "dashboard": "MyAccount",
+    "autopay": "Automatic Payments",
+    "cancel": "Cancel Plan",
+    "plan": "Change Plan",
+    "help": "FAQs",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "MyAccount",
+        "page": "login"
+      },
+      {
+        "label": "Create Account",
+        "page": "register"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAccount",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Change Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Cancel Plan",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [
+      "google",
+      "apple"
+    ],
+    "evidence": "observed_public",
+    "source": "https://myaccount.ahs.com/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ahs.com/faqs/",
+      "note": "With automatic payments set up, your plan also renews automatically each year."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.ahs.com/faqs/",
+      "note": "Cancel by phone: call 855-822-7419. To pause, transfer or downgrade instead, call 844-300-5270.",
+      "channel": "phone",
+      "phone": "8558227419"
+    },
+    "google_login": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://myaccount.ahs.com/"
+    }
+  },
+  "billing": {
+    "source": "https://www.ahs.com/faqs/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "You can be billed monthly or annually; monthly billing has no extra finance fee.",
+        "AHS accepts checking accounts and credit or debit cards. To choose the day your monthly billing cycle starts, call 888-543-2902."
+      ],
+      "source": "https://www.ahs.com/faqs/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments and renewal",
+      "topic": "autopay",
+      "paragraphs": [
+        "If automatic payments are set up, your coverage renews automatically. AHS notifies you 30 days before the renewal and sends next year's plan agreement so you can review it.",
+        "Without automatic payments the plan does not renew on its own. AHS contacts you 30 days before it expires, and you can renew in MyAccount or by calling 844-954-3743."
+      ],
+      "source": "https://www.ahs.com/faqs/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your plan",
+      "topic": "account",
+      "paragraphs": [
+        "You can cancel at any time. Before cancelling, AHS suggests pausing, transferring or downgrading the plan; call 844-300-5270 to talk through these options or to transfer the plan to a home buyer if you are moving.",
+        "To cancel, call 855-822-7419.",
+        "Cancel within the first 30 days and AHS refunds your agreement fees minus any service and claim costs. After 30 days you get a prorated refund for the rest of the term, minus an administrative fee of up to one month's payment where allowed and any claim costs. Terms vary by state."
+      ],
+      "source": "https://www.ahs.com/faqs/"
+    },
+    {
+      "slug": "change-plan",
+      "title": "Change your plan",
+      "topic": "plans",
+      "paragraphs": [
+        "Coverage can be changed within 60 days of your plan's start date. Call 855.799.3434 and a team member will help you upgrade, downgrade or add optional coverage."
+      ],
+      "source": "https://www.ahs.com/faqs/"
+    },
+    {
+      "slug": "faq",
+      "title": "Account and service FAQs",
+      "topic": "faq",
+      "paragraphs": [
+        "Set up MyAccount to request service, view your plan agreement and use member benefits.",
+        "Each service request has a non-refundable service fee of $100 or $125, chosen when you buy the plan.",
+        "Homeowner plans run 13 months, including a 30-day waiting period, then renew for 12-month terms. Request service online in MyAccount, in the AHS app or by calling 877.730.4187."
+      ],
+      "source": "https://www.ahs.com/faqs/"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan"
+    ],
+    "extra": [
+      {
+        "slug": "plan-change-phone",
+        "intent": "You bought an American Home Shield plan last month and want to downgrade it. Using the AHS FAQs, find the phone number to call to change your plan. Do not cancel or change anything online.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8557993434"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8557993434"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans",
+          "limitation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 855-799-3434 (within 60 days of the plan start date)."
+          }
+        ]
+      },
+      {
+        "slug": "service-fee-amount",
+        "intent": "Using the AHS FAQs, find out what service fee amounts American Home Shield charges each time you place a service request. Do not make a payment or request service.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$100",
+              "$125"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$100",
+            "$125"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The service fee is $100 or $125 per request, chosen when the plan is bought."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Forgot Password?"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Automatic Payments"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "855-822-7419"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "844-954-3743"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "change-plan",
+      "contains": "60 days"
+    }
+  ]
+}

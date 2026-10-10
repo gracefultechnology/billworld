@@ -1,0 +1,113 @@
+{
+  "id": "kroger-pharmacy-and-banners-ralphs-fred-meyer-ki-821485",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Kroger Pharmacy (and banners)",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from kroger.com public pharmacy FAQ pages (no sign-in). kroger.com refuses automated connections, so the FAQ text was read from search-engine extracts of the official pages; nothing was bypassed. Kroger Pharmacy has no monthly bill. My Prescriptions (web and app) offers Pay Online ahead of pickup, only for customers with a Shopper's Card (or Alt ID) linked to their digital account; it is unavailable for the first fill of a new or transferred prescription and for some prescriptions. The card is authorised for $0.00 when you pay online and actually charged at pickup; one card per order; accepted cards Mastercard, Visa, Discover, American Express (the insurance page also mentions FSA/HSA cards). The amount shown is a Total Estimated Pay Amount based on previous fills. Fuel Points post at pickup. The mock models Pay Online as paying the balance; bank-account payment is a simulation contract (Kroger takes cards only). No AutoPay, payment plan, guest payment or paperless bill is described: unsupported (inferred).",
+  "officialDomains": ["kroger.com"],
+  "sources": [
+    { "url": "https://www.kroger.com/health/pharmacy/faqs/online-payment", "title": "Online Pharmacy Payment FAQs", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.kroger.com/health/pharmacy/insurance-savings", "title": "Prescription Insurance, Savings & Payment Methods", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.kroger.com/rx/landing-page", "title": "My Prescriptions", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "Kroger Pharmacy", "shortName": "Kroger Pharmacy", "primary": "#134b97", "accent": "#00529f", "monogram": "K" },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Create Account",
+    "dashboard": "My Prescriptions",
+    "payBill": "Pay Online",
+    "amountDue": "Total Estimated Pay Amount",
+    "wallet": "Payment methods",
+    "help": "Pharmacy FAQs"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign In", "page": "login" },
+      { "label": "Create Account", "page": "register" },
+      { "label": "Online Pharmacy Payment FAQs", "helpSlug": "pay-your-bill" },
+      { "label": "Pharmacy FAQs", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Prescriptions", "page": "dashboard" },
+      { "label": "Pay Online", "page": "pay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Payment methods", "page": "wallet" },
+      { "label": "Profile", "page": "profile" }
+    ]
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.kroger.com/health/pharmacy/faqs/online-payment" },
+    "guest_pay": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.kroger.com/health/pharmacy/faqs/online-payment", "note": "Pay Online needs a signed-in account with a Shopper's Card linked; otherwise pay at the pharmacy when you pick up.", "channel": "in_person" },
+    "autopay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.kroger.com/health/pharmacy/faqs/online-payment", "note": "Kroger Pharmacy has no AutoPay. Use Pay Online in My Prescriptions for each order (card charged at pickup), or pay at the pharmacy.", "channel": "none" },
+    "autopay_cancel": { "support": "not_applicable", "evidence": "inferred", "source": "https://www.kroger.com/health/pharmacy/faqs/online-payment" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "source": "https://www.kroger.com/health/pharmacy/insurance-savings", "note": "Kroger does not offer payment plans for prescriptions. Ask your store pharmacy about savings options.", "channel": "in_person" },
+    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://www.kroger.com/health/pharmacy/faqs/online-payment", "note": "Kroger does not mail pharmacy bills, so there is nothing to switch to paperless.", "channel": "none" },
+    "scheduled_payment": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.kroger.com/health/pharmacy/faqs/online-payment", "note": "Pay Online cannot be dated: your card is authorised for $0.00 and charged when you pick up.", "channel": "none" }
+  },
+  "billing": {
+    "source": "https://www.kroger.com/health/pharmacy/faqs/online-payment",
+    "methods": ["bank", "card"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying for prescriptions online",
+      "topic": "payments",
+      "paragraphs": [
+        "In My Prescriptions on the website or app you can pay for prescriptions ahead of pickup with Pay Online. Pay Online is only for customers with a Shopper's Card (or Alt ID) linked to their digital account; if you do not see the option, add your Shopper's Card in your profile.",
+        "Online payment is not available the first time you order a new or transferred prescription, and some prescriptions never appear in the Pay Online list.",
+        "Kroger accepts Mastercard, Visa, Discover and American Express credit cards, one card per order. When you pay online the card is authorised for $0.00 with no funds held; it is charged when you pick up."
+      ],
+      "steps": ["Sign in and open My Prescriptions.", "Make sure a Shopper's Card is linked to your account.", "Choose Pay Online for the eligible prescriptions.", "Pick your card and confirm; it is charged when you pick up."],
+      "source": "https://www.kroger.com/health/pharmacy/faqs/online-payment"
+    },
+    {
+      "slug": "estimated-amount",
+      "title": "Why the amount is an estimate",
+      "topic": "billing",
+      "paragraphs": [
+        "Kroger cannot give the exact cost until it hears from your insurance company, and copays and deductibles change. The Total Estimated Pay Amount is based on what you paid for previous fills; the actual amount appears when the prescription is ready for pickup."
+      ],
+      "source": "https://www.kroger.com/health/pharmacy/faqs/online-payment"
+    },
+    {
+      "slug": "payment-methods",
+      "title": "Payment methods and FSA/HSA cards",
+      "topic": "payments",
+      "paragraphs": [
+        "In My Prescriptions you can add a credit, debit, FSA or HSA card to pay for prescriptions. Fuel Points for Pay Online orders are added to your Shopper's Card when you pick up and the transaction is completed."
+      ],
+      "source": "https://www.kroger.com/health/pharmacy/insurance-savings"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "pay-online-requirement",
+        "intent": "My aunt can't find the Pay Online option for her Kroger Pharmacy prescriptions. What does Kroger say she needs linked to her account? Answer only; do not pay or change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["shopper"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["shopper"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "A Shopper's Card (or Alt ID) linked to her digital account." }]
+      },
+      {
+        "slug": "preauth-amount",
+        "intent": "When I use Kroger Pharmacy Pay Online, how much is held on my card before pickup? Find the answer in Kroger's help; don't pay anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["0.00", "$0", "nothing", "no funds"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["0.00", "$0", "nothing", "no funds"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Nothing: the pre-authorization is $0.00 and the card is charged at pickup." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "Shopper's Card" },
+    { "page": "pay", "signedIn": true, "label": "payBill" },
+    { "page": "dashboard", "signedIn": true, "label": "amountDue" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "$0.00" }
+  ]
+}

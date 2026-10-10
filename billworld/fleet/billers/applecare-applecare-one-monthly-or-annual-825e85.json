@@ -1,0 +1,354 @@
+{
+  "id": "applecare-applecare-one-monthly-or-annual-825e85",
+  "version": 1,
+  "status": "dedicated",
+  "name": "AppleCare+ / AppleCare One (monthly or annual)",
+  "category": "other",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Apple's public AppleCare overview page and Apple Support articles on cancelling a subscription, adding a payment method and viewing purchase history only; never signed in. Monthly and annual AppleCare+ and AppleCare One plans are Apple Account subscriptions charged automatically to the payment method on the Apple Account until cancelled; there is no separate AutoPay enrollment, paper bill, guest payment or payment plan, so those capabilities are not_applicable (payment_arrangement is not_applicable with a note, which the server shows in place of the plan form). Apple Account payment methods in the US are cards and other non-bank methods. Sign-in to the Apple Account is modelled as email first then password (inferred, not observed); Apple's two-factor verification is not modelled. Plans: AppleCare One Individual 19.99 dollars a month (up to three products, 5.99 dollars per extra product) and AppleCare One Family 49.99 dollars a month (up to six people in Family Sharing); per-model AppleCare+ prices are not in the page text and are left out. Switching plans cancels the old one and refunds any amount owed (refund not modelled). Cancelling: Settings > [name] > Subscriptions > the plan > Cancel Subscription, or the Subscriptions page of the Apple Account on the web. Charges show in purchase history. Accidental-damage service fees and theft/loss deductibles (for example iPhone screen 29 dollars, other damage 99 dollars, theft or loss 149 dollars) are claim fees, not bill payments, and are only described in help. Support 1-800-692-7753 (1-800-MY-APPLE). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "apple.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.apple.com/applecare/",
+      "title": "AppleCare - Apple",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://support.apple.com/en-us/118428",
+      "title": "Cancel a subscription from Apple",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://support.apple.com/en-us/118429",
+      "title": "Add a payment method to your Apple Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.apple.com/en-us/118212",
+      "title": "View your purchase history for the App Store and other Apple media services",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "AppleCare",
+    "shortName": "AppleCare",
+    "primary": "#1d1d1f",
+    "accent": "#0066cc",
+    "monogram": "AC"
+  },
+  "labels": {
+    "dashboard": "Apple Account",
+    "cancel": "Cancel Subscription",
+    "plan": "Subscriptions",
+    "wallet": "Payment & Shipping",
+    "history": "Purchase History",
+    "signIn": "Sign In",
+    "username": "Email or Phone Number",
+    "help": "Apple Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "AppleCare plans",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Apple Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Apple Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Subscriptions",
+        "page": "plan"
+      },
+      {
+        "label": "Payment & Shipping",
+        "page": "wallet"
+      },
+      {
+        "label": "Purchase History",
+        "page": "history"
+      },
+      {
+        "label": "Cancel Subscription",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://support.apple.com/en-us/118428"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/118429",
+      "note": "AppleCare plans are charged to the payment method on your Apple Account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.apple.com/applecare/",
+      "note": "Monthly and annual plans renew and are charged automatically until cancelled; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/118428",
+      "note": "To stop the charges, cancel the AppleCare subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/118212",
+      "note": "Apple does not mail bills; charges appear in your purchase history and emailed receipts."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/118429"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/118429",
+      "note": "AppleCare plans have no payment plans or arrangements; the plan is charged to your Apple Account each month or year, and you can cancel it at any time instead."
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/118429"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/118428"
+    }
+  },
+  "billing": {
+    "source": "https://www.apple.com/applecare/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.apple.com/applecare/"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "applecare-one",
+        "name": "AppleCare One Individual",
+        "cents": 1999
+      },
+      {
+        "id": "applecare-one-family",
+        "name": "AppleCare One Family",
+        "cents": 4999,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "AppleCare plans and prices",
+      "topic": "account",
+      "paragraphs": [
+        "AppleCare One Individual covers up to three products for 19.99 dollars a month until cancelled; each extra product is 5.99 dollars a month.",
+        "AppleCare One Family covers all eligible products for up to six people in your Family Sharing group for 49.99 dollars a month.",
+        "AppleCare+ (with Theft and Loss for iPhone, iPad and Apple Watch) covers one product and is billed monthly or annually until cancelled. You can add a plan within 60 days of buying a new product in Settings, and add or remove devices under Settings > General > AppleCare & Warranty.",
+        "Switching to an AppleCare One plan automatically cancels your current plan and refunds any amount owed."
+      ],
+      "source": "https://www.apple.com/applecare/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your AppleCare plan",
+      "topic": "account",
+      "paragraphs": [
+        "Monthly and annual AppleCare plans are Apple subscriptions and can be cancelled at any time.",
+        "On iPhone or iPad: open Settings, tap your name, tap Subscriptions, tap the plan and tap Cancel Subscription. On the web, open the Subscriptions page of your Apple Account and follow the instructions.",
+        "If there is no Cancel button, or you see an expiration message in red, the subscription is already cancelled. If you can't find an AppleCare plan, you may need to finish setting it up and link it to your Apple Account."
+      ],
+      "steps": [
+        "Open Settings and tap your name.",
+        "Tap Subscriptions.",
+        "Tap the AppleCare plan.",
+        "Tap Cancel Subscription."
+      ],
+      "source": "https://support.apple.com/en-us/118428"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "How AppleCare is charged",
+      "topic": "payments",
+      "paragraphs": [
+        "Your AppleCare plan is charged to the payment method on your Apple Account each month or year until you cancel.",
+        "To add a payment method on iPhone: open Settings, tap your name, tap Payment & Shipping, tap Add Payment Method, enter the details (matching what your bank has on file) and tap Done. You can also add one after signing in to your Apple Account on the web.",
+        "To choose which method is charged first, tap Edit on the Payment & Shipping screen and drag the methods into order."
+      ],
+      "steps": [
+        "Open Settings and tap your name.",
+        "Tap Payment & Shipping.",
+        "Tap Add Payment Method and enter the details.",
+        "Tap Done."
+      ],
+      "source": "https://support.apple.com/en-us/118429"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "See your AppleCare charges",
+      "topic": "billing",
+      "paragraphs": [
+        "Your purchase history lists subscriptions, including AppleCare, with dates and amounts. Apple may group several purchases or subscriptions into one charge.",
+        "On iPhone: in the App Store tap your photo, then Apps & Purchase History, then Purchase History; search by amount to find a specific charge. On the web, sign in at Apple's report-a-problem site to see your purchases."
+      ],
+      "source": "https://support.apple.com/en-us/118212"
+    },
+    {
+      "slug": "service-fees",
+      "title": "Service fees and deductibles",
+      "topic": "faq",
+      "paragraphs": [
+        "Accidental damage repairs carry a service fee per incident and theft or loss claims a deductible, plus tax. For iPhone: screen or back glass 29 dollars, other accidental damage 99 dollars, theft or loss 149 dollars. Battery service and mechanical failures have no fee.",
+        "Questions: call 1-800-692-7753 (1-800-MY-APPLE)."
+      ],
+      "source": "https://www.apple.com/applecare/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "family-plan-price",
+        "intent": "Using Apple's AppleCare page, find the monthly price of AppleCare One Family and how many people it covers. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "49.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "49.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AppleCare One Family is $49.99 per month and covers up to six people in a Family Sharing group."
+          }
+        ]
+      },
+      {
+        "slug": "screen-repair-fee",
+        "intent": "You cracked your iPhone screen and have AppleCare. Using Apple's AppleCare page, find the service fee for a screen repair. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "29"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "29"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The iPhone screen or back glass service fee is $29 plus tax."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email or Phone Number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Subscriptions",
+        "Purchase History"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "AppleCare One Individual",
+        "AppleCare One Family"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Cancel Subscription"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "19.99"
+    }
+  ]
+}

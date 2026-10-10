@@ -1,0 +1,317 @@
+{
+  "id": "dignity-memorial-service-corporation-internation-20f6ef",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Dignity Memorial",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public Dignity Memorial Online Bill Pay & Secure Account Management home and Quick Pay pages, the hosted sign-in page and the pre-planning payment-plan page (no sign-in, no search submitted). The portal home lists: view and manage all contracts, pay multiple accounts, set up and manage autopay, statement and payment history, saved payment methods; Quick Pay finds an account by Account or Contract Number plus the Purchaser's Last Name (personal or business account), with help at +1 800-894-2024 if the number is not found. Sign-in is email first (Sign in with your email address, then password) on login.dignitymemorial.com; Sign up now creates an account. Pre-need plans are paid in installments whose amount and length are chosen when the contract is signed; no interest, fee, autopay-rule or cancellation terms are published, so none are modelled and cancel_service is unsupported online (inferred; contract cancellation rights depend on state pre-need law). 24/7 line 800-343-4464. Other SCI brands (Neptune Society, National Cremation, Trident, Rose Hills) run separate copies of this portal. Reviewer 2026-10-09: the cancel-service help now cites the bill-pay portal home (its feature list has no cancellation) instead of the payment-plan page, which says nothing about cancellation.",
+  "officialDomains": [
+    "dignitymemorial.com"
+  ],
+  "sources": [
+    {
+      "url": "https://pay.dignitymemorial.com/",
+      "title": "Dignity Memorial Online Bill Pay & Secure Account Management",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://pay.dignitymemorial.com/contract-search",
+      "title": "Locate an account or contract | Quick Pay",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://login.dignitymemorial.com/",
+      "title": "Sign In | Dignity Memorial",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.dignitymemorial.com/pre-planning/funeral-costs/payment-plan",
+      "title": "Funeral Payment Plans | Dignity Memorial",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "Dignity Memorial",
+    "primary": "#1d3c6e",
+    "accent": "#5b4a2e",
+    "monogram": "DM"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "register": "Register Now",
+    "guestPay": "Quick Pay",
+    "username": "Email Address",
+    "accountNumber": "Account or Contract Number",
+    "dashboard": "Secure Account Management",
+    "autopay": "Autopay",
+    "statements": "Statement and Payment History",
+    "wallet": "Payment Methods"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Register Now",
+        "page": "register"
+      },
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Contracts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statement and Payment History",
+        "page": "statements"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName"
+    ],
+    "evidence": "observed_public",
+    "source": "https://login.dignitymemorial.com/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://pay.dignitymemorial.com/"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://pay.dignitymemorial.com/contract-search",
+      "note": "Quick Pay finds your contract by account or contract number and the purchaser's last name."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://pay.dignitymemorial.com/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://pay.dignitymemorial.com/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.dignitymemorial.com/pre-planning/funeral-costs/payment-plan",
+      "channel": "phone",
+      "phone": "800-343-4464",
+      "note": "Pre-need contracts cannot be cancelled online. Call Dignity Memorial at 800-343-4464 (24/7) or your local provider; cancellation rights depend on your contract and state law."
+    }
+  },
+  "billing": {
+    "source": "https://pay.dignitymemorial.com/",
+    "autopay": {
+      "policies": [
+        "full"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your contract",
+      "topic": "payments",
+      "source": "https://pay.dignitymemorial.com/",
+      "paragraphs": [
+        "Log in to Secure Account Management to see all of your contracts, pay several accounts at once, set up autopay, review statements and payment history, and save payment methods.",
+        "To make a single payment without an account, use Quick Pay: find your account or contract, check the current balance and make a secure one-time payment."
+      ]
+    },
+    {
+      "slug": "quick-pay",
+      "title": "Using Quick Pay",
+      "topic": "payments",
+      "source": "https://pay.dignitymemorial.com/contract-search",
+      "paragraphs": [
+        "Choose a personal or business account, then enter your account or contract number and the purchaser's last name and search. If your number does not come up, call 1-800-894-2024 for help."
+      ],
+      "steps": [
+        "Open Quick Pay.",
+        "Choose Personal Account or Business Account.",
+        "Enter the account or contract number and the purchaser's last name.",
+        "Select Search, check the balance and pay."
+      ]
+    },
+    {
+      "slug": "payment-plan",
+      "title": "Paying for a pre-planned service in installments",
+      "topic": "billing",
+      "source": "https://www.dignitymemorial.com/pre-planning/funeral-costs/payment-plan",
+      "paragraphs": [
+        "Funeral homes, cremation providers and cemeteries usually do not offer payment plans at the time of need, but most let you pay for an arrangement made ahead of time in installments. You decide how much to pay and over how long when you sign the contract and make your first payment.",
+        "Paying ahead locks in today's prices for the services you choose."
+      ]
+    },
+    {
+      "slug": "account-login",
+      "title": "Logging in",
+      "topic": "account",
+      "source": "https://login.dignitymemorial.com/",
+      "paragraphs": [
+        "Sign in with your email address, then enter your password. If you do not have an account yet, choose Sign up now (Register Now on the bill-pay page) to create one and link your contracts."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Changing or cancelling a pre-need contract",
+      "topic": "account",
+      "source": "https://pay.dignitymemorial.com/",
+      "paragraphs": [
+        "The online bill-pay portal lets you view contracts, pay, manage autopay and see statements, but it has no option to change or cancel a pre-arranged funeral, cremation or cemetery contract. Call Dignity Memorial at 800-343-4464 or contact the provider named on your contract. Your cancellation rights depend on the contract and your state's pre-need law."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "quick-pay-help-phone",
+        "intent": "Find the phone number Dignity Memorial's Quick Pay gives for help when your account or contract number cannot be found. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8008942024"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8008942024"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-894-2024"
+          }
+        ]
+      },
+      {
+        "slug": "quick-pay-fields",
+        "intent": "Using Dignity Memorial's bill-pay help, find what besides the account or contract number Quick Pay asks for to find a contract. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "last name"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "last name"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "guest"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The purchaser's last name."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": [
+        "Account or Contract Number"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "quick-pay",
+      "contains": "1-800-894-2024"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "800-343-4464"
+    }
+  ]
+}

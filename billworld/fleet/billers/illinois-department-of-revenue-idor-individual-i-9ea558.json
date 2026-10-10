@@ -1,0 +1,373 @@
+{
+  "id": "illinois-department-of-revenue-idor-individual-i-9ea558",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Illinois Department of Revenue (IDOR) - individual income tax",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public tax.illinois.gov pages only. MyTax Illinois takes free bank (ACH) payments with or without an account; card payments go through Illinois E-Pay (State Treasurer) with a 2.25% convenience fee ($1 minimum, not expressible). Pending MyTax Illinois payments can be cancelled in the account before the scheduled date. Payment installment plans: pre-approved plan online, or custom terms requested in MyTax Illinois (reviewed by Collections) or with Form CPP-1 (plus EG-13-I over $15,000); automated pay-by-phone 866-490-2061 for plan payments. No recurring AutoPay for income tax balances is documented (unsupported, inferred). Sign-in by username inferred; registration link is 'Sign Up!'.",
+  "officialDomains": [
+    "tax.illinois.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://tax.illinois.gov/programs/electronicservices/payment-options-for-individuals.html",
+      "title": "Make a Payment - Options for Individuals",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://tax.illinois.gov/forms/misc/paymentplan.html",
+      "title": "Payment Plan",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://tax.illinois.gov/payments/creditcard.html",
+      "title": "Credit Card",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://tax.illinois.gov/questionsandanswers/answer.939.html",
+      "title": "How do I cancel an income tax return electronic payment?",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Illinois Department of Revenue (IDOR)",
+    "shortName": "IDOR",
+    "primary": "#004b87",
+    "accent": "#8a5300",
+    "monogram": "IL"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "guestPay": "Pay without a MyTax Illinois account",
+    "dashboard": "MyTax Illinois",
+    "register": "Sign Up!",
+    "signIn": "Log In",
+    "arrangement": "Payment Installment Plan",
+    "help": "Taxpayer Answer Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay without a MyTax Illinois account",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options for Individuals",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Credit Card",
+        "helpSlug": "credit-card"
+      },
+      {
+        "label": "Payment Plan",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Taxpayer Answer Center",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyTax Illinois",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Installment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://tax.illinois.gov/forms/misc/paymentplan.html"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.illinois.gov/programs/electronicservices/payment-options-for-individuals.html",
+      "note": "Pay from your checking or savings account through MyTax Illinois without an account."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://tax.illinois.gov/forms/misc/paymentplan.html",
+      "note": "Recurring automatic payments are not offered for income tax balances. Schedule each payment in MyTax Illinois; plan customers are encouraged to pay each installment by ACH debit.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.illinois.gov/questionsandanswers/answer.939.html"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.illinois.gov/forms/misc/paymentplan.html"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.illinois.gov/forms/misc/paymentplan.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.illinois.gov/forms/misc/paymentplan.html",
+      "note": "Automated pay-by-phone for payment plan installments from a checking or savings account.",
+      "phone": "8664902061"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.illinois.gov/programs/electronicservices/payment-options-for-individuals.html"
+    }
+  },
+  "billing": {
+    "source": "https://tax.illinois.gov/programs/electronicservices/payment-options-for-individuals.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.25,
+      "evidence": "documented_official",
+      "source": "https://tax.illinois.gov/payments/creditcard.html"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options for individuals",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online at MyTax Illinois from your checking or savings account, either after logging in or without an account. You can also pay by credit card online (the card provider adds a convenience fee) or mail a check or money order following the instructions on your form or voucher.",
+        "If you owe but have not filed, file your IL-1040 and pay what you can; you can make more payments at any time. Payments after the April 15 due date may be charged late-payment penalties and interest until paid in full."
+      ],
+      "source": "https://tax.illinois.gov/programs/electronicservices/payment-options-for-individuals.html"
+    },
+    {
+      "slug": "credit-card",
+      "title": "Credit card payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Credit and debit card payments for IL-1040, IL-1040-ES and several business taxes are made through Illinois E-Pay, run by the Illinois State Treasurer. Visa, MasterCard, Discover and American Express are accepted.",
+        "A convenience fee of 2.25% of the payment, at least $1.00, applies to every card payment. You can also pay by card at an IDOR regional office."
+      ],
+      "source": "https://tax.illinois.gov/payments/creditcard.html"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment installment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you cannot pay a delinquency in full because of financial hardship, use the pre-approved payment plan at MyTax Illinois: select Set up a Payment Installment Plan with IDOR and accept the terms shown. If those terms do not fit, request your own terms from your MyTax Illinois account; Collections reviews the request.",
+        "You can also send Form CPP-1. If the plan amount, including penalties and interest, is over $15,000, also send Form EG-13-I (individuals). All returns must be filed and all outstanding liabilities go into the same plan.",
+        "Pay installments by ACH debit (recommended), MyTax Illinois, credit card, automated Pay-by-Phone at (866) 490-2061, or by check to Installment Contract Unit, Illinois Department of Revenue, PO Box 19035, Springfield, IL 62794-9035."
+      ],
+      "source": "https://tax.illinois.gov/forms/misc/paymentplan.html"
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Cancel an electronic payment",
+      "topic": "payments",
+      "paragraphs": [
+        "A payment that has not been processed may still be cancelled, but only before its scheduled date. If you scheduled it in MyTax Illinois, log in and cancel the pending payment.",
+        "Card or bank-initiated payments must be stopped through your financial institution (stop-payment fees may apply). Payments scheduled through a tax professional or software can be cancelled by email to IDOR no later than 11:59 p.m. Central time two business days before the payment date."
+      ],
+      "source": "https://tax.illinois.gov/questionsandanswers/answer.939.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "financial-statement-threshold",
+        "intent": "Using the IDOR website's help pages, find the plan amount above which Form EG-13-I must be sent with a payment plan request. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$15,000",
+              "15,000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$15,000",
+            "15,000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Plans over $15,000 (including penalties and interest) also need Form EG-13-I."
+          }
+        ]
+      },
+      {
+        "slug": "pay-by-phone-number",
+        "intent": "Using the IDOR website's help pages, find the automated Pay-by-Phone number for payment plan installments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "866-490-2061",
+              "(866) 490-2061",
+              "8664902061"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "866-490-2061",
+            "(866) 490-2061",
+            "8664902061"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "pay_by_phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call (866) 490-2061 for automated Pay-by-Phone."
+          }
+        ]
+      },
+      {
+        "slug": "card-convenience-fee",
+        "intent": "Using the IDOR website's help pages, find the convenience fee for paying by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.25%",
+              "2.25 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.25%",
+            "2.25 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments carry a 2.25% convenience fee with a $1.00 minimum."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Options for Individuals",
+        "Taxpayer Answer Center"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "MyTax Illinois",
+        "Payment Installment Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "CPP-1",
+        "(866) 490-2061"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "credit-card",
+      "contains": "2.25%"
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+{
+  "id": "georgia-department-of-revenue-individual-income--b2776e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Georgia Department of Revenue (individual income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public dor.georgia.gov pages only. Georgia Tax Center (GTC): Quick Payment without login (SSN or tax ID), saved bank payment sources with a login, electronic payments scheduled on or before the due date (later dates refused) and cancellable before 3:00 p.m. ET on the payment date. Card/PayPal via a third-party vendor at 2.31% ($1 minimum, not expressible); card payments cannot be cancelled and are not accepted for amended returns. Payment plans requested in GTC (More > Payments and Returns > Request Payment Plan) with bank debit and electronic notices required, or by Form GA-9465. No recurring AutoPay for balances (unsupported, inferred). Sign-in by username inferred.",
+  "officialDomains": [
+    "dor.georgia.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://dor.georgia.gov/payment-options",
+      "title": "How Do I Make a Tax Payment? | Department of Revenue",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://dor.georgia.gov/make-payment-faq",
+      "title": "Make A Payment - FAQ | Department of Revenue",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://dor.georgia.gov/how-request-payment-plan",
+      "title": "How to Request a Payment Plan | Department of Revenue",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://dor.georgia.gov/make-quick-payment",
+      "title": "Make a Quick Payment | Department of Revenue",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Georgia Department of Revenue",
+    "shortName": "Georgia DOR",
+    "primary": "#005a32",
+    "accent": "#8a5300",
+    "monogram": "GA"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "guestPay": "Make a Quick Payment",
+    "dashboard": "Georgia Tax Center",
+    "arrangement": "Request Payment Plan",
+    "wallet": "Payment Sources",
+    "help": "Make A Payment - FAQ",
+    "signIn": "Log In"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a Quick Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Request a Payment Plan",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Make A Payment - FAQ",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Georgia Tax Center",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Sources",
+        "page": "wallet"
+      },
+      {
+        "label": "Request Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://dor.georgia.gov/payment-options"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.georgia.gov/make-quick-payment",
+      "note": "Make a Quick Payment in the Georgia Tax Center without logging in, using your SSN or tax ID."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://dor.georgia.gov/make-payment-faq",
+      "note": "GTC has no recurring automatic payments for tax balances. Schedule each electronic payment on or before its due date; an approved payment plan debits your bank account automatically.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.georgia.gov/make-payment-faq"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.georgia.gov/how-request-payment-plan"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.georgia.gov/payment-options"
+    }
+  },
+  "billing": {
+    "source": "https://dor.georgia.gov/payment-options",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.31,
+      "evidence": "documented_official",
+      "source": "https://dor.georgia.gov/payment-options"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make a tax payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay individual income tax and assessed liabilities in the Georgia Tax Center (GTC) or by mail. Electronic payments can be set up to occur on or before the due date.",
+        "Quick Payments need no GTC login, only your SSN or tax ID. With a GTC login you can save one or more bank payment sources for later use.",
+        "Credit cards and PayPal carry a 2.31% convenience fee ($1.00 minimum) charged by a third-party vendor; the Department keeps none of it. Cards are not accepted for amended return payments, and card payments cannot be cancelled once submitted. To pay by mail, send a check or money order with Form 525-TV, IT-560 or 500-ES as applicable."
+      ],
+      "source": "https://dor.georgia.gov/payment-options"
+    },
+    {
+      "slug": "quick-payment",
+      "title": "Make a Quick Payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Quick Payment in GTC lets you pay without logging in."
+      ],
+      "source": "https://dor.georgia.gov/make-quick-payment",
+      "steps": [
+        "Go to the Georgia Tax Center and under Tasks select Make a Quick Payment.",
+        "Review the request details and select Next.",
+        "Choose Individual as the customer type and Social Security # or Individual Taxpayer ID # as the ID type.",
+        "Say whether you have a payment number, complete the ID, payor and payment information.",
+        "Review, submit, and keep the confirmation number."
+      ]
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Cancel or time a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "An electronic payment can be cancelled until 3:00 p.m. Eastern on the payment date you entered. Credit card payments cannot be cancelled.",
+        "When the due date falls on a weekend or holiday, set up an EFT payment before 3 p.m. Eastern on or before the last business day before the due date. Payment dates after the due date are not accepted."
+      ],
+      "source": "https://dor.georgia.gov/make-payment-faq"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Request a payment plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "Payment plans are available for individual income tax. Request one online in GTC or with Form GA-9465.",
+        "You must agree to receive electronic notices about the plan and authorize the Department to debit your bank account until the plan is complete. Once approved, the terms appear as a web notice in the GTC Action Center."
+      ],
+      "source": "https://dor.georgia.gov/how-request-payment-plan",
+      "steps": [
+        "Log in to GTC.",
+        "Under the More tab, open Payments and Returns and select Request Payment Plan.",
+        "Review the terms and enter your banking information.",
+        "Optionally add a down payment, then enter the first payment date and number of payments.",
+        "Agree to electronic notices, review the conditions and submit; enter your GTC password to authorize the debits."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "epayment-cancel-cutoff",
+        "intent": "Using the Georgia DOR website's help pages, find the time by which an electronic payment must be cancelled on its payment date. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3:00",
+              "3 p.m.",
+              "3 pm",
+              "3pm"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3:00",
+            "3 p.m.",
+            "3 pm",
+            "3pm"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled_payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Electronic payments must be cancelled before 3:00 p.m. Eastern on the payment date."
+          }
+        ]
+      },
+      {
+        "slug": "card-fee",
+        "intent": "Using the Georgia DOR website's help pages, find the convenience fee for paying by credit card or PayPal. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.31%",
+              "2.31 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.31%",
+            "2.31 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Cards and PayPal carry a 2.31% convenience fee with a $1.00 minimum."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Request a Payment Plan",
+        "Payment Options"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Georgia Tax Center",
+        "Payment Sources"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-payment",
+      "contains": "3:00 p.m."
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "2.31%"
+    }
+  ]
+}

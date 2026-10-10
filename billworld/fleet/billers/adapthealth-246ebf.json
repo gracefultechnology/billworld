@@ -1,0 +1,134 @@
+{
+  "id": "adapthealth-246ebf",
+  "version": 1,
+  "status": "dedicated",
+  "name": "AdaptHealth",
+  "category": "medical",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public adapthealth.com Pay Your Bill page (no sign-in). Pay online with the invoice number in the BillPay tool (adapthealth.hmebillpay.com) or in the patient portal / MyApp; payments apply in 24-48 hours; mailed checks go to a lockbox and take 2-3 weeks. AutoPAY is required before delivery for patients renting equipment or on recurring supply orders who owe a deductible or coinsurance (Medicaid patients exempt); a card or checking account must be on file before products ship. The invoice goes out 10 days before each AutoPAY debit and the debit date cannot be chosen (so no day choice is modelled). Changing the AutoPAY method, cancelling AutoPAY and payment plans are by phone with Patient Financial Services 855-389-4043 (cancel route inferred: the page gives no online cancel). Invoices are electronic only since 6/1/2025. No fees are mentioned. Refunds are not issued while a rental or balance is open.",
+  "officialDomains": ["adapthealth.com"],
+  "sources": [
+    { "url": "https://adapthealth.com/pages/pay-your-bill", "title": "Pay Your Bill", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://adapthealth.com/pages/contact-us", "title": "Contact Us", "fetchedAt": "2026-10-09", "kind": "help" }
+  ],
+  "brand": { "shortName": "AdaptHealth", "primary": "#005a8b", "accent": "#00415f", "monogram": "AH" },
+  "labels": {
+    "payBill": "Pay Your Bill Now",
+    "guestPay": "Pay Your Bill Now",
+    "autopay": "AutoPAY",
+    "accountNumber": "Invoice number",
+    "paperless": "Delivery preferences",
+    "arrangement": "Payment plans",
+    "statements": "Past invoices",
+    "help": "Billing FAQ",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay Your Bill Now", "page": "guest" },
+      { "label": "Patient portal", "page": "login" },
+      { "label": "AutoPAY", "helpSlug": "autopay" },
+      { "label": "Billing FAQ", "page": "help" }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": ["accountNumber"],
+    "evidence": "documented_official",
+    "source": "https://adapthealth.com/pages/pay-your-bill"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://adapthealth.com/pages/pay-your-bill" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://adapthealth.com/pages/pay-your-bill" },
+    "autopay_cancel": { "support": "unsupported", "evidence": "inferred", "source": "https://adapthealth.com/pages/pay-your-bill", "note": "AutoPAY changes are made by phone: call Patient Financial Services at 855-389-4043 before the due date.", "channel": "phone", "phone": "855-389-4043" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "documented_official", "source": "https://adapthealth.com/pages/pay-your-bill", "note": "Payment plans for deductibles and copays are set up by phone with Patient Financial Services at 855-389-4043.", "channel": "phone", "phone": "855-389-4043" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://adapthealth.com/pages/pay-your-bill" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://adapthealth.com/pages/pay-your-bill" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://adapthealth.com/pages/pay-your-bill", "phone": "855-389-4043" }
+  },
+  "billing": {
+    "source": "https://adapthealth.com/pages/pay-your-bill",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "AutoPAY",
+      "topic": "autopay",
+      "paragraphs": [
+        "If you rent equipment or get a recurring supply order and owe a yearly deductible or coinsurance, AdaptHealth requires AutoPAY enrollment before delivery. Patients whose insurer is Medicaid do not need a card on file or AutoPAY.",
+        "You get an invoice 10 days before each AutoPAY charge, and the debit always happens 10 days after the invoice opens. You cannot choose the debit date with AutoPAY; a payment plan lets you pick a date, so ask Patient Financial Services whether you qualify.",
+        "To change the card or account AutoPAY uses, call 855-389-4043 before the due date. AdaptHealth also sends texts about enrollment, upcoming AutoPAY charges and declined payments."
+      ],
+      "source": "https://adapthealth.com/pages/pay-your-bill"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "paragraphs": [
+        "Choose Pay Your Bill Now and use your invoice number in the online BillPay tool, or pay and see past invoices in the patient portal or the bill pay feature of MyApp. Online payments usually apply within 24 to 48 hours.",
+        "Mailed checks go to a lockbox and can take 2 to 3 weeks to show on your account. Collection-agency balances are paid to the agency directly and can take up to a week to update with AdaptHealth.",
+        "Before products ship you need a credit card or checking account on file to cover what insurance does not pay."
+      ],
+      "steps": ["Choose Pay Your Bill Now.", "Enter your invoice number.", "Pick a card or bank account and the amount.", "Submit the payment."],
+      "source": "https://adapthealth.com/pages/pay-your-bill"
+    },
+    {
+      "slug": "paperless",
+      "title": "Electronic invoices",
+      "topic": "account",
+      "paragraphs": [
+        "Since June 1, 2025 AdaptHealth sends invoices electronically to the email address on file. Update your email or delivery preferences in the patient portal or by calling 855-389-4043. Without email or portal access, register on the portal or call to arrange another way to get bills."
+      ],
+      "source": "https://adapthealth.com/pages/pay-your-bill"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "AdaptHealth offers payment plans for deductibles and copays. Call Patient Financial Services at 855-389-4043 to set one up; unlike AutoPAY, a plan lets you choose your payment date."
+      ],
+      "source": "https://adapthealth.com/pages/pay-your-bill"
+    },
+    {
+      "slug": "refunds",
+      "title": "Refunds and credits",
+      "topic": "billing",
+      "paragraphs": [
+        "Refunds are not issued while you have an active rental or an open balance; the credit stays on your account for future balances. Amounts can change from the original estimate once insurance adjusts the claim."
+      ],
+      "source": "https://adapthealth.com/pages/pay-your-bill"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-invoice-lead-time",
+        "intent": "Using AdaptHealth's billing help, find how many days before an AutoPAY charge the invoice is sent. Do not change AutoPAY or make a payment.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["10"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["10"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "The invoice is sent 10 days before the AutoPAY charge." }]
+      },
+      {
+        "slug": "payment-plan-phone",
+        "intent": "Find the phone number AdaptHealth gives for setting up a payment plan for a deductible or copay. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8553894043"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8553894043"] },
+        "tags": ["help", "information", "assistance"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "855-389-4043" }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": ["Invoice number"] },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "helpArticle", "slug": "autopay", "contains": ["Medicaid", "10 days"] },
+    { "page": "arrangement", "signedIn": true, "contains": "855-389-4043" }
+  ]
+}

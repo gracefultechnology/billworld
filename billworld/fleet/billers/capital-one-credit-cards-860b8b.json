@@ -1,0 +1,408 @@
+{
+  "id": "capital-one-credit-cards-860b8b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Capital One (credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public capitalone.com help-center pages only (no sign-in). Payments come from a bank account only: Capital One states another credit card cannot be used to pay the card, so card payment methods are removed and no card fee exists. AutoPay amounts are Minimum payment, Statement balance or a Fixed payment, drafted on a chosen date on or before the due date from a bank account. Up to 3 one-time payments may be scheduled online. Accounts are closed online under 'I want to' > 'Close Account' (some cards must call instead). Sign-in is by username; one-time PINs go by text, voice or email. Pay-without-sign-in does not exist. Hardship/payment relief is documented as a call to the number on the card. The family payment-plan page therefore stays. Minimum-payment formula and late-fee amount are not published on the pages used, so they are left at family defaults. AutoPay options are Minimum payment, Statement balance and Fixed payment. Review 2026-10-09: removed billing.scheduled.maxDaysAhead=60, which no Capital One page states (the payments page only caps pending payments at 3); the family default horizon applies. Integrated 2026-10-09: payment_arrangement marked unsupported now that the payment-plan page explains instead of showing a form. Integrated 2026-10-09: billing.scheduled.maxPending 3.",
+  "officialDomains": [
+    "capitalone.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.capitalone.com/help-center/credit-cards/payments-credit-card-support/",
+      "title": "Making credit card payments",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.capitalone.com/help-center/credit-cards/how-to-set-up-autopay/",
+      "title": "How to set up AutoPay",
+      "fetchedAt": "2026-10-05",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.capitalone.com/help-center/credit-cards/manage-account-settings/",
+      "title": "Managing your account settings",
+      "fetchedAt": "2026-10-05",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.capitalone.com/help-center/credit-cards/close-your-account/",
+      "title": "How to close a credit card account",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.capitalone.com/help-center/credit-cards/late-payment-support/",
+      "title": "Late payment support",
+      "fetchedAt": "2026-10-05",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.capitalone.com/help-center/contact-us/",
+      "title": "Call Capital One Customer Service",
+      "fetchedAt": "2026-10-05",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.capitalone.com/learn-grow/money-management/cant-pay-credit-card-bill/",
+      "title": "Can't Pay Your Credit Card Bill?",
+      "fetchedAt": "2026-10-05",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "Capital One",
+    "primary": "#004977",
+    "accent": "#a12830",
+    "monogram": "C1"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Statements",
+    "statements": "Statements",
+    "history": "Payment Activity",
+    "wallet": "Payment Accounts",
+    "cancel": "Close Account",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "forgot": "Forgot Username or Password?",
+    "register": "Set Up Online Access",
+    "help": "Help Center",
+    "username": "Username",
+    "dueDate": "Due Date",
+    "amountDue": "Minimum Payment Due"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Set Up Online Access",
+        "page": "register"
+      },
+      {
+        "label": "Making credit card payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment Activity",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless Statements",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "Close Account",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "evidence": "documented_official",
+    "source": "https://www.capitalone.com/help-center/credit-cards/manage-account-settings/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.capitalone.com/help-center/credit-cards/payments-credit-card-support/",
+      "note": "There is no pay-without-signing-in option. Sign in to pay online, or call the number on your card to pay by phone.",
+      "channel": "phone",
+      "phone": "1-800-227-4825"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.capitalone.com/help-center/credit-cards/how-to-set-up-autopay/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.capitalone.com/help-center/credit-cards/payments-credit-card-support/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.capitalone.com/help-center/credit-cards/manage-account-settings/"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.capitalone.com/help-center/credit-cards/close-your-account/",
+      "note": "Close a card online from the account's 'I want to' menu; cards that cannot be closed online are closed by calling the number on the back of the card."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.capitalone.com/help-center/credit-cards/payments-credit-card-support/"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.capitalone.com/help-center/credit-cards/payments-credit-card-support/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.capitalone.com/help-center/contact-us/",
+      "note": "Payment relief for cardholders is arranged by calling the number on the back of your card.",
+      "channel": "phone"
+    }
+  },
+  "billing": {
+    "source": "https://www.capitalone.com/help-center/credit-cards/payments-credit-card-support/",
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.capitalone.com/help-center/credit-cards/payments-credit-card-support/"
+    },
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "statement",
+        "minimum",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "scheduled": {
+      "maxPending": 3
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Making credit card payments",
+      "topic": "payments",
+      "paragraphs": [
+        "The quickest way to pay is to sign in and make or schedule a one-time payment online from a bank account. You can have up to three online payments scheduled at a time.",
+        "Capital One does not accept another credit card as payment for your Capital One card; payments come from a checking or savings account.",
+        "For the payment to count on time it must arrive before midnight Eastern time on the due date, or before 8 p.m. Eastern when the due date falls on the statement closing date.",
+        "You can also pay by phone using the number on your card or statement, by mail, or in person with cash or a check at a Capital One location."
+      ],
+      "steps": [
+        "Sign in to your account.",
+        "Choose Make a Payment for the card.",
+        "Pick the amount, the bank account and the date.",
+        "Review and submit the payment."
+      ],
+      "source": "https://www.capitalone.com/help-center/credit-cards/payments-credit-card-support/"
+    },
+    {
+      "slug": "autopay",
+      "title": "How to set up AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay pays your card automatically each month from the bank account you choose.",
+        "Pick one of three amounts: the minimum payment (which changes with your balance), your statement balance, or a fixed amount you choose. Then pick a payment date on or before your due date.",
+        "If you pay part of the bill before AutoPay runs, a minimum-payment or statement-balance AutoPay is reduced by what you already paid."
+      ],
+      "steps": [
+        "Sign in and select the card.",
+        "Open AutoPay.",
+        "Choose the bank account, the amount and a date on or before the due date.",
+        "Review and turn on AutoPay."
+      ],
+      "source": "https://www.capitalone.com/help-center/credit-cards/how-to-set-up-autopay/"
+    },
+    {
+      "slug": "close-account",
+      "title": "How to close a credit card account",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in, select the card, open the 'I want to' menu and choose Close Account under Control Your Card. There is no fee to close a card.",
+        "Any remaining balance still has to be paid off, and statements keep coming until it reaches zero. Stop recurring charges first, because transactions are declined once the card is closed.",
+        "Some cards cannot be closed online; for those, call the number on the back of the card."
+      ],
+      "source": "https://www.capitalone.com/help-center/credit-cards/close-your-account/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements and account settings",
+      "topic": "account",
+      "paragraphs": [
+        "Go paperless to read every statement on the website or in the app; Capital One notifies you electronically when a new statement is ready.",
+        "Account settings also cover alerts, your username and password, linked payment accounts and sign-in security such as passkeys."
+      ],
+      "source": "https://www.capitalone.com/help-center/credit-cards/manage-account-settings/"
+    },
+    {
+      "slug": "late-payments",
+      "title": "Late payments",
+      "topic": "billing",
+      "paragraphs": [
+        "A late fee is charged when an online, phone or mailed payment is not received by the due date, and the fee can rise after repeated late payments. Your exact fee is shown when you sign in.",
+        "AutoPay and payment reminders are the simplest ways to avoid a late fee. If you cannot make your payment, call the number on the back of your card to ask about payment relief."
+      ],
+      "source": "https://www.capitalone.com/help-center/credit-cards/late-payment-support/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Call Capital One Customer Service",
+      "topic": "contact",
+      "paragraphs": [
+        "Credit card customer service: 1-800-CAPITAL (1-800-227-4825). Help with your online account: 1-866-750-0873. From outside the U.S., call collect at 1-804-934-2001."
+      ],
+      "source": "https://www.capitalone.com/help-center/contact-us/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "online-support-phone",
+        "intent": "Using the Capital One website's help pages, find the phone number for help with your credit card online account (not the general card line). Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8667500873"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8667500873"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-866-750-0873"
+          }
+        ]
+      },
+      {
+        "slug": "pay-with-credit-card-abstain",
+        "intent": "Pay your Capital One card bill using a different credit card. If Capital One does not allow paying with another credit card, do not pay at all and say so.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "abstain"
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "abstain"
+        },
+        "tags": [
+          "limitation",
+          "abstention",
+          "payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Capital One does not accept another credit card as payment; you cannot pay this way."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Fixed",
+        "on or before your due date"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "1-866-750-0873"
+    }
+  ]
+}

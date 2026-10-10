@@ -1,0 +1,377 @@
+{
+  "id": "truist-bank-formerly-bbt-and-suntrust-41a123",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Truist Bank (formerly BB&T and SunTrust)",
+  "category": "banks",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public truist.com pages only (no sign-in). The mock bill is a Truist secured auto loan. Online: sign in, choose the auto loan on the Dashboard and select Make payment; Account details shows the payoff amount. Phone 844-4TRUIST (844-487-8478); mail Truist Item Processing Center, P.O. Box 580057, Charlotte, NC 28258-0057; branches. The auto-loan page does not document AutoPay/recurring setup for secured loans (a HELOC guide shows Make Payment > Recurring), so autopay is kept supported as inferred. No prepayment penalty. Online banking help 888-228-6654. Sign-in: User ID + password (passkey/QR options not modelled); MFA one-time code by text or email. Paperless statements stay online up to 24 months for auto and personal loans (7 years for deposit accounts). No guest pay page for loans (inferred; a separate onlinepayments portal serves association services only). Reviewed 2026-10-09: register label is Register now on the public sign-in page; loan statement retention corrected from 7 years to 24 months.",
+  "officialDomains": [
+    "truist.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.truist.com/loans/auto-loans",
+      "title": "Auto Loans with Competitive Rates and Terms | Truist",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.truist.com/digital-banking",
+      "title": "Enroll in Online & Mobile Banking | Truist",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.truist.com/fraud-and-security/protect-yourself",
+      "title": "Protect and prevent bank fraud | Truist",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.truist.com/contact",
+      "title": "Truist Bank Customer Service & Contact Numbers",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://dias.bank.truist.com/ui/login",
+      "title": "Login Page | Truist",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Truist",
+    "shortName": "Truist",
+    "primary": "#2e1a47",
+    "accent": "#5b4a8a",
+    "monogram": "TR"
+  },
+  "labels": {
+    "payBill": "Make payment",
+    "dashboard": "Dashboard",
+    "viewBill": "Account details",
+    "statements": "Documents",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "username": "User ID",
+    "register": "Register now",
+    "profile": "My Settings"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Register now",
+        "page": "register"
+      },
+      {
+        "label": "Pay your auto loan",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Contact us",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make payment",
+        "page": "pay"
+      },
+      {
+        "label": "Account details",
+        "page": "bill"
+      },
+      {
+        "label": "Recurring payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      },
+      {
+        "label": "My Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "evidence": "documented_official",
+    "source": "https://www.truist.com/fraud-and-security/protect-yourself"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.truist.com/loans/auto-loans"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.truist.com/loans/auto-loans"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.truist.com/loans/auto-loans",
+      "phone": "844-487-8478"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.truist.com/loans/auto-loans"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.truist.com/fraud-and-security/protect-yourself"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.truist.com/loans/auto-loans",
+      "note": "Truist auto loans are paid after signing in to online banking, by phone at 844-4TRUIST (844-487-8478), by mail or at a branch.",
+      "channel": "phone",
+      "phone": "844-487-8478"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.truist.com/fraud-and-security/protect-yourself"
+    }
+  },
+  "billing": {
+    "source": "https://www.truist.com/loans/auto-loans",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Truist auto loan",
+      "paragraphs": [
+        "Sign in to online banking, select your auto loan from the Dashboard, choose Make payment and follow the prompts.",
+        "You can also pay by phone at 844-4TRUIST (844-487-8478), by mail to Truist Item Processing Center, P.O. Box 580057, Charlotte, NC 28258-0057, or at a Truist branch."
+      ],
+      "steps": [
+        "Sign in to online banking.",
+        "Select your auto loan on the Dashboard.",
+        "Choose Make payment.",
+        "Follow the prompts to submit."
+      ],
+      "source": "https://www.truist.com/loans/auto-loans"
+    },
+    {
+      "slug": "payoff",
+      "title": "Paying off your loan",
+      "topic": "billing",
+      "paragraphs": [
+        "Select your auto loan from the Dashboard and open Account details in the top right corner to see the payoff amount as of today, then choose Make payment. There is no prepayment penalty for paying off a Truist secured auto loan early."
+      ],
+      "source": "https://www.truist.com/loans/auto-loans"
+    },
+    {
+      "slug": "sign-in-security",
+      "title": "Signing in and one-time codes",
+      "topic": "account",
+      "paragraphs": [
+        "Truist online banking uses a User ID and password. Multi-factor authentication adds a second step at sign-in using biometrics or a one-time code sent by text or email; to turn it on, sign in and follow the prompts.",
+        "Never share a one-time code with someone who contacts you; scammers use codes to get past account protections."
+      ],
+      "source": "https://www.truist.com/fraud-and-security/protect-yourself"
+    },
+    {
+      "slug": "paperless",
+      "title": "Digital statements",
+      "paragraphs": [
+        "Getting statements digitally helps reduce the risk of mail theft. Statements are under Documents in Truist online banking. Paperless statements for auto loans and personal loans stay available for up to 24 months (deposit accounts up to 7 years)."
+      ],
+      "source": "https://www.truist.com/fraud-and-security/protect-yourself"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Truist",
+      "paragraphs": [
+        "Call 844-4TRUIST (844-487-8478), weekdays 8 am to 8 pm ET and Saturday 8 am to 5 pm ET; press 9 for Spanish. From outside the U.S. call +1-910-914-8250. For online or mobile banking help, call 888-228-6654."
+      ],
+      "source": "https://www.truist.com/digital-banking",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "mail-payment-po-box",
+        "intent": "Find the P.O. Box Truist lists for mailing a secured auto loan payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "580057"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "580057"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Truist Item Processing Center, P.O. Box 580057, Charlotte, NC 28258-0057."
+          }
+        ]
+      },
+      {
+        "slug": "payoff-where",
+        "intent": "Using Truist's auto loan pages, find which screen in online banking shows your loan's payoff amount as of today. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Account details"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Account details"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Account details, opened from your auto loan on the Dashboard."
+          }
+        ]
+      },
+      {
+        "slug": "statement-retention",
+        "intent": "Using Truist help pages, find how long paperless statements for a Truist auto loan stay available online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24 months",
+              "two years",
+              "2 years",
+              "24"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24 months",
+            "two years",
+            "2 years",
+            "24"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Auto loan paperless statements stay available for up to 24 months."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "User ID"
+    },
+    {
+      "page": "home",
+      "contains": "Register now"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make payment",
+        "Account details"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "580057"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "888-228-6654"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "24 months"
+    }
+  ]
+}

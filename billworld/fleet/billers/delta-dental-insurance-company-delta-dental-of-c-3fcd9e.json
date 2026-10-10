@@ -1,0 +1,284 @@
+{
+  "id": "delta-dental-insurance-company-delta-dental-of-c-3fcd9e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Delta Dental Insurance Company / Delta Dental of California (individual plans)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public deltadentalins.com pages only (no sign-in; the CIAM sign-in page renders by JavaScript, so its field labels were not observed). Member FAQ: individual-plan premiums are paid directly to Delta Dental online or by check; online, sign in and choose 'Pay my bill' for a one-time payment by bank account, debit or credit card; 'Set up autopay' and 'Manage autopay' (update or cancel); autopay frequency depends on the plan (monthly, quarterly, semiannual or annual). Paperless delivers claim statements, estimates and plan documents online with an email alert, and paperless bill holders get an email when a bill is ready. Accounts are created after the enrollment confirmation with the enrollee/member ID ('Create an account', then 'Enrollee/Adult Dependent'), modelled as a registration field accountNumber. Cancellation is not described as self-service: members contact Delta Dental and the policy documents hold the terms, so cancel_service is unsupported online with Customer Care's phone. Fees, grace periods, MFA and the sign-in identifier are not published and keep family defaults. Dashboard and payment-history labels in the account nav are generic (synthetic). Public nav is left to the family template: the insurance template's public tab bar uppercases link text and paints dossier links in the brand color on the brand background, so a dossier public nav fails dossier_contract (reported as a cross-owner request).",
+  "officialDomains": [
+    "deltadentalins.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www1.deltadentalins.com/faqs/members.html",
+      "title": "Member FAQs | Delta Dental",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www1.deltadentalins.com/about/contact.html",
+      "title": "Contact us | Delta Dental",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.deltadentalins.com/ciam/login",
+      "title": "Delta Dental - Sign In",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Delta Dental",
+    "shortName": "Delta Dental",
+    "primary": "#006341",
+    "accent": "#1f4e79",
+    "monogram": "D"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "register": "Create an account",
+    "payBill": "Pay my bill",
+    "autopay": "Manage autopay",
+    "help": "FAQs",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "Pay my bill",
+        "page": "pay"
+      },
+      {
+        "label": "Manage autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "registrationFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www1.deltadentalins.com/faqs/members.html"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www1.deltadentalins.com/faqs/members.html",
+      "note": "Mail a check to the remittance address on your bill."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www1.deltadentalins.com/faqs/members.html",
+      "note": "To cancel your individual plan, contact Delta Dental Customer Care at 888-282-9501. Cancellation terms are in your Policy and Benefit Details or Evidence of Coverage.",
+      "channel": "phone",
+      "phone": "8882829501"
+    }
+  },
+  "billing": {
+    "source": "https://www1.deltadentalins.com/faqs/members.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-my-bill",
+      "title": "Pay your individual plan premium",
+      "topic": "billing",
+      "paragraphs": [
+        "If you bought your dental plan yourself, you pay Delta Dental directly, either online or by check.",
+        "To pay online, log in and choose Pay my bill. A one-time payment can come from a bank account, a debit card or a credit card.",
+        "If you have chosen paperless bills you get an email when a new bill is ready; otherwise your bill comes in the mail."
+      ],
+      "steps": [
+        "Log in to your online account.",
+        "Choose Pay my bill.",
+        "Enter the amount and pick a bank account, debit card or credit card.",
+        "Review and submit the payment."
+      ],
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up or manage autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in and choose Set up autopay to have your premium paid automatically from a bank account, debit card or credit card. You can also set it up when you enroll.",
+        "How often autopay runs depends on your plan: it may be monthly, quarterly, semiannual or annual.",
+        "To change or stop automatic payments later, choose Manage autopay."
+      ],
+      "steps": [
+        "Log in to your online account.",
+        "Choose Set up autopay (or Manage autopay to change or cancel it).",
+        "Pick your payment method and confirm."
+      ],
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless",
+      "topic": "account",
+      "paragraphs": [
+        "With paperless delivery your claim statements, pre-treatment estimates and plan documents are posted to your online account, and you get an email each time a new document arrives.",
+        "If you have not gone paperless, your bills and documents come by mail."
+      ],
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    {
+      "slug": "create-account",
+      "title": "Create your online account",
+      "topic": "account",
+      "paragraphs": [
+        "Wait for your enrollment confirmation, which includes your enrollee or member ID. Then go to the log in page, choose Create an account, pick Enrollee/Adult Dependent from the list and follow the prompts.",
+        "The site works in a mobile browser, so there is no app to download."
+      ],
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your plan",
+      "topic": "account",
+      "paragraphs": [
+        "Plans are not cancelled online. Contact Delta Dental Customer Care at 888-282-9501 (TTY 711), Monday to Friday 8am to 9pm Eastern.",
+        "Your Policy and Benefit Details or Evidence of Coverage explains the cancellation terms for your plan."
+      ],
+      "source": "https://www1.deltadentalins.com/faqs/members.html"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Customer Care",
+      "topic": "contact",
+      "paragraphs": [
+        "Delta Dental Customer Care: 888-282-9501 (TTY 711), Monday to Friday 8am to 9pm Eastern. Mail: P.O. Box 1803, Alpharetta, GA 30023.",
+        "Premiums can be paid by credit card, check or electronic funds transfer, and most people pay monthly; depending on the plan you may also pay quarterly, twice a year or once a year."
+      ],
+      "source": "https://www1.deltadentalins.com/about/contact.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-frequency-options",
+        "intent": "Using the Delta Dental help pages, find how often autopay can run for an individual dental plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "quarterly"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "quarterly"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Depending on the plan, autopay can be monthly, quarterly, semiannual or annual."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Create an account",
+        "888-282-9501"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay my bill",
+        "Manage autopay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "semiannual"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "create-account",
+      "contains": "Enrollee/Adult Dependent"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "Evidence of Coverage"
+    }
+  ]
+}

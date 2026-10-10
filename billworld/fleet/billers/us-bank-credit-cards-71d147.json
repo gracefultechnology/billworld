@@ -1,0 +1,376 @@
+{
+  "id": "us-bank-credit-cards-71d147",
+  "version": 1,
+  "status": "dedicated",
+  "name": "U.S. Bank (credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public usbank.com pages only (no sign-in). Home page shows 'Log in' and 'Enroll in online banking'. Autopay: 'Transfer & pay' > 'Pay bills' > 'Autopay set up now'; 'Pay this amount' = minimum payment, statement balance, minimum payment with extra, or other amount; 'Send payments before or on due date'; 'Pay from' (external accounts must be added first); 'Start autopay'. Change/remove: Pay bills > Autopay tab > 'Manage autopay' > Save or 'Remove autopay'; single payments can't be changed within 3 business days of the date. 'Minimum payment with extra' cannot be modelled; 'full' is kept for the reference solver. Online payments need a linked checking or savings account (card methods removed). Closing: online banking 'Card controls' > 'Close account' (app: Manage > Manage card > Close account), give a reason, confirm; closes immediately; or call/fax/mail. Paperless: My accounts > My documents > 'Paperless preferences'; credit card e-statements build up to 7 years and remain viewable after closing; mailed statement copies can be ordered. Cardmember Service 800-285-8585 for most consumer cards (Altitude Reserve 844-357-2015). No pay-without-login option (inferred). Login page (onlinebanking.usbank.com): Username, Remember my username, Password, Log in with password, Use passkey, Forgot username or password, Enroll in online banking. Re-verified 2026-10-09; nav label 'Activity' matches the Activity tab named in the autopay help, 'My accounts' is from the paperless page.",
+  "officialDomains": [
+    "usbank.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.usbank.com/customer-service/personal-banking/credit-cards.html",
+      "title": "Credit card customer service | U.S. Bank",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.usbank.com/customer-service/knowledge-base/KB0069348.html",
+      "title": "How do I edit or cancel autopay on my credit card, loan, lease, or line of credit?",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.usbank.com/customer-service/knowledge-base/KB0069636.html",
+      "title": "How do I close my credit card?",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/how-to-pay-credit-card-bill.html",
+      "title": "How to pay a credit card bill | U.S. Bank",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.usbank.com/online-mobile-banking/paperless-documents.html",
+      "title": "Online bank statements | U.S. Bank",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.usbank.com/index.html",
+      "title": "U.S. Bank | Personal and business banking",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://onlinebanking.usbank.com/auth/login/",
+      "title": "U.S. Bank online banking - Account login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "U.S. Bank",
+    "primary": "#0c2074",
+    "accent": "#b3121f",
+    "monogram": "US"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "register": "Enroll in online banking",
+    "payBill": "Pay bills",
+    "autopay": "Autopay",
+    "paperless": "Paperless preferences",
+    "statements": "My documents",
+    "cancel": "Close account",
+    "wallet": "External payment accounts",
+    "profile": "Card controls",
+    "help": "Customer service",
+    "username": "Username",
+    "forgot": "Forgot username or password"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Enroll in online banking",
+        "page": "register"
+      },
+      {
+        "label": "How to pay a credit card bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Transfer & pay",
+        "page": "pay"
+      },
+      {
+        "label": "Activity",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "My documents",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless preferences",
+        "page": "paperless"
+      },
+      {
+        "label": "Card controls",
+        "page": "profile"
+      },
+      {
+        "label": "Close account",
+        "page": "cancel"
+      }
+    ]
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/how-to-pay-credit-card-bill.html",
+      "note": "U.S. Bank has no pay-without-logging-in option for credit cards. Log in to online banking or the app, call the number on the back of your card, or mail a check.",
+      "channel": "phone",
+      "phone": "1-800-285-8585"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usbank.com/customer-service/personal-banking/credit-cards.html"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usbank.com/customer-service/knowledge-base/KB0069348.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usbank.com/online-mobile-banking/paperless-documents.html"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usbank.com/customer-service/knowledge-base/KB0069636.html",
+      "note": "Close the card in online banking (Card controls, then Close account) or in the app; it closes immediately. You can also call, fax or mail a request."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/how-to-pay-credit-card-bill.html"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/how-to-pay-credit-card-bill.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.usbank.com/customer-service/personal-banking/credit-cards.html",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "minimum",
+        "statement",
+        "fixed",
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your credit card bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Online or in the app, link a checking or savings account and pay the minimum, the statement balance, the current balance or a custom amount. To be safe, submit an online payment at least one business day before the due date.",
+        "By phone, call the number on the back of your card. By mail, send a check or money order with the statement payment coupon to the payment address on your statement, or write your full name and card account number on the check; mail it about 7 to 10 days before the due date."
+      ],
+      "source": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/how-to-pay-credit-card-bill.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up autopay for your credit card",
+      "topic": "autopay",
+      "paragraphs": [
+        "Select Transfer & pay, then Pay bills, choose the card and select Autopay set up now.",
+        "Under Pay this amount pick minimum payment, statement balance, minimum payment with extra, or another amount. Under Send payments before or on due date choose when it is sent, and under Pay from choose the account; add external accounts first.",
+        "Select Continue, review and choose Start autopay. If you recently changed your due date, wait until after the new due date to set up autopay."
+      ],
+      "steps": [
+        "Select Transfer & pay, then Pay bills.",
+        "Choose the card and Autopay set up now.",
+        "Set Pay this amount, the timing and Pay from.",
+        "Continue, review and Start autopay."
+      ],
+      "source": "https://www.usbank.com/customer-service/personal-banking/credit-cards.html"
+    },
+    {
+      "slug": "manage-autopay",
+      "title": "Edit or cancel autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Go to Transfer & pay, Pay bills, open the Autopay tab, select the card and choose Manage autopay. Change the amount, account or date and Save, or choose Remove autopay and confirm.",
+        "To change one upcoming payment, use Edit this payment or Cancel on the Activity tab. Payments less than three business days away, processing or completed cannot be changed."
+      ],
+      "source": "https://www.usbank.com/customer-service/knowledge-base/KB0069348.html"
+    },
+    {
+      "slug": "close-account",
+      "title": "How do I close my credit card?",
+      "topic": "account",
+      "paragraphs": [
+        "In online banking select the card, choose Card controls and then Close account; in the app choose Manage, Manage card and Close account. Review the impact, give a reason, submit and confirm. The account closes right away.",
+        "You still owe any balance, unredeemed rewards may be lost, and automatic charges should be moved first. Statements of closed cards remain viewable online."
+      ],
+      "source": "https://www.usbank.com/customer-service/knowledge-base/KB0069636.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "topic": "account",
+      "paragraphs": [
+        "In online banking go to My accounts, My documents, then Paperless preferences, choose documents and Save. In the app use Statements & docs, then Paperless preferences.",
+        "Card accounts get paper and e-statements until you go paperless. You can view, print and save up to seven years of statements, and order mailed copies when you need them."
+      ],
+      "source": "https://www.usbank.com/online-mobile-banking/paperless-documents.html"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Cardmember Service phone numbers",
+      "topic": "contact",
+      "paragraphs": [
+        "Most consumer cards (Altitude Go, Altitude Connect, Shopper Cash Rewards, Cash+, Platinum, Secured and others): 800-285-8585. Altitude Reserve: 844-357-2015. To speak with a banker: 800-USBANKS (872-2657)."
+      ],
+      "source": "https://www.usbank.com/customer-service/personal-banking/credit-cards.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-change-window",
+        "intent": "Using U.S. Bank's help pages, find how close to the scheduled date an automatic credit card payment can no longer be changed or cancelled. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "three business days",
+              "3 business days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "three business days",
+            "3 business days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "It can't be changed within three business days of the scheduled date."
+          }
+        ]
+      },
+      {
+        "slug": "altitude-reserve-phone",
+        "intent": "Using U.S. Bank's help pages, find the Cardmember Service number for the Altitude Reserve card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8443572015"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8443572015"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "844-357-2015"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Autopay set up now",
+        "Start autopay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "manage-autopay",
+      "contains": "Remove autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "800-285-8585"
+    }
+  ],
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://onlinebanking.usbank.com/auth/login/"
+  }
+}

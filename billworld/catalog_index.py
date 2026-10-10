@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import sqlite3
 import sys
+import time
 from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -18,7 +19,7 @@ from billworld.discover_routes import IndexedCandidates
 
 # Structural URL signals only. Each association still needs biller-specific review.
 DOMAINS = {
-    'invoicecloud.com': 'InvoiceCloud', 'smarthub.coop': 'SmartHub', 'paymentus.com': 'Paymentus',
+    'starnik.net': 'Starnik', 'invoicecloud.com': 'InvoiceCloud', 'smarthub.coop': 'SmartHub', 'paymentus.com': 'Paymentus',
     'xpressbillpay.com': 'Xpress Bill Pay', 'municipalonlinepayments.com': 'Municipal Online Payments',
     'munisselfservice.com': 'Munis Self Service', 'ezpay.com': 'EZPay', 'doxo.com': 'doxo',
     'pay.gov': 'Pay.gov', 'payitgov.com': 'PayIt', 'paylocity.com': 'Paylocity',
@@ -115,7 +116,7 @@ def frontend_family_signals(directory,captures,biller_id=None):
     """Structural provider-host hints; metadata freshness, not fresh byte audit."""
     path=directory/'frontends/frontends.sqlite'
     if not path.exists():return {}
-    db=sqlite3.connect(f'file:{path}?mode=ro',uri=True);signals=defaultdict(list)
+    db=sqlite3.connect(f'file:{path}?mode=ro',uri=True);signals=defaultdict(list);seen=defaultdict(set)
     try:
         query='SELECT a.id,a.url,a.status,a.evidence FROM assets a'
         if biller_id:query+=' WHERE a.id IN(SELECT r.asset_id FROM page_billers b JOIN refs r ON r.page_id=b.page_id WHERE b.biller_id=?)'
@@ -136,17 +137,28 @@ def frontend_family_signals(directory,captures,biller_id=None):
                         'asset_body_sha256':asset_sha,'reference_kind':kind,'review_status':'unreviewed',
                         'integrity_scope':'catalog_hash_metadata_only; packet export must verify bytes',
                         'meaning':'Static provider-host reference; not enabled billing/auth capability or observed browser request'}
-                    if signal not in signals[bid]:signals[bid].append(signal)
+                    # Keep first-seen order without rescanning every prior signal for this biller.
+                    key=tuple(signal.items())
+                    if key not in seen[bid]:
+                        seen[bid].add(key);signals[bid].append(signal)
     finally:db.close()
     return dict(signals)
 
-def build(root=ROOT, directory=None):
+def build(root=ROOT, directory=None, progress=None):
+    started=time.monotonic()
+    def report(phase, **details):
+        if progress is not None:
+            progress({'phase':phase,'elapsed_seconds':round(time.monotonic()-started,3),**details})
     directory = directory or root / 'billworld/research-data'; directory.mkdir(parents=True, exist_ok=True)
     paths = sorted((root / 'categories').glob('*.json'))
     if not paths: raise ValueError('No category sources found; refusing to replace the coverage snapshot')
+    report('capture_metadata_started')
     captures = load_captures(directory,compact=True)
+    report('frontend_signals_started',captured_urls=len(captures))
     frontend_signals = frontend_family_signals(directory,captures)
+    report('discovered_routes_started',billers_with_frontend_signals=len(frontend_signals))
     discovered = IndexedCandidates(directory)
+    report('catalog_records_started',billers_with_discovered_routes=len(discovered))
     sites = {}
     for path in sorted((root / 'billworld/sites').glob('*.json')):
         site = json.loads(path.read_text())
@@ -189,7 +201,9 @@ def build(root=ROOT, directory=None):
                         old=representatives[f].get(path.stem)
                         if old is None or (representative['runtime_site_id'] is None,representative['id'])<(old['runtime_site_id'] is None,old['id']):representatives[f][path.stem]=representative
                 stream.write(json.dumps(record, sort_keys=True) + '\n')
+            report('category_completed',category=path.stem,records_written=total)
     if matched != len(sites): raise ValueError('Some explicitly mapped runtime catalog records were not found')
+    report('snapshot_verification_started',records_written=total)
     discovered.verify_current()
     digest=hashlib.sha256()
     with temporary.open('rb') as stream:
@@ -215,8 +229,10 @@ def build(root=ROOT, directory=None):
     target = root / 'billworld/research/family-coverage.json'; target.parent.mkdir(exist_ok=True)
     summary_temp=target.with_name(target.name+f'.{os.getpid()}.tmp');summary_temp.write_text(json.dumps(summary, indent=2) + '\n')
     temporary.replace(output);summary_temp.replace(target)
+    report('published',records_written=total,catalog_index_sha256=digest.hexdigest())
     print(json.dumps({key: summary[key] for key in ('catalog_records', 'records_without_family_signal', 'records_with_multiple_url_families', 'runnable_first_slices', 'fidelity_certified_records')}, indent=2))
     return summary
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(); parser.add_argument('--directory', type=Path, default=ROOT / 'billworld/research-data'); args = parser.parse_args(); build(directory=args.directory)
+    parser = argparse.ArgumentParser(); parser.add_argument('--directory', type=Path, default=ROOT / 'billworld/research-data'); args = parser.parse_args()
+    build(directory=args.directory,progress=lambda event:print(json.dumps(event,sort_keys=True),file=sys.stderr,flush=True))

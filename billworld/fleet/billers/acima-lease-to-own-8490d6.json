@@ -1,0 +1,366 @@
+{
+  "id": "acima-lease-to-own-8490d6",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Acima (lease-to-own)",
+  "category": "other",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Acima's public Support / FAQ pages (About Leasing, Lease Agreements, Payment Information, Service & Support) and the public customer-portal sign-in page only; never signed in. The customer portal (Log into Customer Portal) asks first for a Mobile Phone number with Continue, with a Sign in with Username Instead option; modelled as the Sign in with Username Instead path (username identifier, two steps) plus a texted code (mfa sms, inferred: the code step is not shown before entering a number). The mobile-phone path is a gap: the invoice-portal template renders the identifier field as type=email, so phone numbers cannot be entered (cross-owner request on kit.field). Most renewal payments are drafted automatically by ACH from the customer's bank account; credit, debit and most prepaid cards (Mastercard, Visa, Discover) can also be used and set to process automatically. Payments can be made in the app, online or by phone at (801) 297-1982. Due dates follow the pay dates from the application; frequency can change after the first renewal payment; date changes for any payment need contact at least three business days before it processes. The initial payment is generally 1 to 70 dollars and counts toward the lease. Early purchase options are described in each lease (not auto-enrolled; a 90-day purchase option is mentioned) and are arranged by calling or chatting; specific buyout percentages and fees are not published on the FAQ pages, so none are modelled. The lease can be cancelled any time without penalty by first calling (801) 297-1982 (the About Leasing footnote also lists (801) 297-1980 for early purchase or cancellation). Failed or late payments may accrue fees per the lease (amounts not published). Statement delivery and paperless are not described publicly, so they keep the family defaults. Reviewer 2026-10-09: removed claims not found on the current official pages (retail cash payments with a 1.50 dollar fee, no billing statements, a 25 dollar purchase fee and a 65 percent buyout).",
+  "officialDomains": [
+    "acima.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.acima.com/en/aboutleasing",
+      "title": "Acima FAQs Regarding How To Manage Payments, Leases, and More | Acima Leasing",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.acima.com/en/paymentinformation",
+      "title": "Payment Information | Acima",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.acima.com/en/leaseagreements",
+      "title": "Lease Agreements | Acima",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.acima.com/en/servicesupport",
+      "title": "Services & Support | Acima",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://customer.acima.com/",
+      "title": "Log into Customer Portal",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Acima",
+    "shortName": "Acima",
+    "primary": "#4b2a85",
+    "accent": "#2d1a52",
+    "monogram": "A"
+  },
+  "labels": {
+    "signIn": "Log into Customer Portal",
+    "username": "Username",
+    "dashboard": "My Lease",
+    "payBill": "Make a Payment",
+    "autopay": "Automatic Payments",
+    "help": "Support / FAQ",
+    "contact": "Chat with Acima"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Customer Login",
+        "page": "login"
+      },
+      {
+        "label": "Payment Information",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Support / FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Lease",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Chat with Acima",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "socialProviders": [],
+    "evidence": "observed_public",
+    "source": "https://customer.acima.com/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.acima.com/en/paymentinformation"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.acima.com/en/paymentinformation",
+      "phone": "8012971982"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.acima.com/en/paymentinformation",
+      "note": "Payment-date changes and early purchase options are arranged with Customer Service, not online: call (801) 297-1982 or chat, at least three business days before the payment processes.",
+      "channel": "phone",
+      "phone": "8012971982"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.acima.com/en/servicesupport",
+      "note": "To return the merchandise or cancel your lease (no penalty), first call Customer Service at (801) 297-1982.",
+      "channel": "phone",
+      "phone": "8012971982"
+    }
+  },
+  "billing": {
+    "source": "https://www.acima.com/en/paymentinformation",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Most lease renewal payments are drafted automatically by ACH from your bank account. You can also use a credit, debit or most prepaid cards (Mastercard, Visa and Discover) and have those process automatically too.",
+        "You can also pay in the mobile app, in your online account, or by phone with Customer Service at (801) 297-1982."
+      ],
+      "source": "https://www.acima.com/en/paymentinformation"
+    },
+    {
+      "slug": "faq",
+      "title": "Payment information",
+      "topic": "faq",
+      "paragraphs": [
+        "Your renewal payment due dates follow the pay dates you gave on your application. After your first renewal payment you can change the payment frequency by calling or chatting with Customer Service.",
+        "To change when any payment processes (automatic, one-time or a final purchase payment), contact Acima at least three business days before it is set to process. Once processing starts it can't be changed.",
+        "The initial payment, generally between 1 and 70 dollars depending on the store, is due before you receive the merchandise and counts toward your total lease amount."
+      ],
+      "source": "https://www.acima.com/en/paymentinformation"
+    },
+    {
+      "slug": "early-purchase",
+      "title": "Purchase options",
+      "topic": "account",
+      "paragraphs": [
+        "You can buy the merchandise any time after you receive it. Your lease describes the early purchase options available to you, which cost less than making every renewal payment over the 12, 18 or 24 month term.",
+        "You are not enrolled in an early purchase option automatically. To purchase early or use a 90-day purchase option, call or chat with Customer Service.",
+        "If you make every renewal payment you will own the merchandise, at roughly double the original price. Failed or late payments may add fees listed in your lease."
+      ],
+      "source": "https://www.acima.com/en/leaseagreements"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Return the merchandise or cancel your lease",
+      "topic": "account",
+      "paragraphs": [
+        "You may cancel your lease at any time without penalty. Start by calling Customer Service at (801) 297-1982.",
+        "Call the same number to return the property, or if it is damaged, defective, lost, stolen or not what you ordered."
+      ],
+      "source": "https://www.acima.com/en/servicesupport"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Acima",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer Service: (801) 297-1982, Monday to Friday 6:00 am to 7:00 pm and Saturday 7:00 am to 4:00 pm Mountain time, closed Sunday.",
+        "Online chat on the website: Monday to Friday 7:00 am to 9:00 pm and Saturday 7:00 am to 7:00 pm Mountain time."
+      ],
+      "source": "https://www.acima.com/en/servicesupport"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "initial-payment-range",
+        "intent": "You are about to start an Acima lease. Using Acima's support pages, find out roughly how much the initial payment usually is and whether it counts toward the lease. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "70"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "70"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The initial payment is generally between $1 and $70 and is deducted from your total lease amount."
+          }
+        ]
+      },
+      {
+        "slug": "early-purchase-enrollment",
+        "intent": "You want to buy your leased Acima merchandise early. Using Acima's support pages, find out whether you are enrolled in an early purchase option automatically and how to use one. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "call",
+              "chat"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "call",
+            "chat"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You are not enrolled automatically; call or chat with Acima Customer Service at (801) 297-1982 to purchase early."
+          }
+        ]
+      },
+      {
+        "slug": "change-date-notice",
+        "intent": "You need to move the date of your next Acima payment. Using Acima's support pages, find out how many business days of notice Acima needs. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3",
+              "three"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3",
+            "three"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least three business days before the payment is set to process."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "home",
+      "label": "signIn"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Automatic Payments"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "(801) 297-1982"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": "three business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "early-purchase",
+      "contains": "not enrolled in an early purchase option automatically"
+    }
+  ]
+}

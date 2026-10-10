@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-10-05T20:11:26.776380+00:00",
+  "runtime_revision": "0.47.0",
+  "kind": "smarthub_fragment_navigation_race_fix",
+  "environment_build_id": "33bd2a8c6cc83ea12f514641b5a0a343a16f93eea59b5f5b793f1a7507b6949c",
+  "evaluator_build_id": "ac0409f6d21802be9d3a811d861ac41c4df4d1e27889ec79dc43d95ef0bf5154",
+  "change": [
+    "Deduplicate hashchange/popstate for one URL.",
+    "Ignore stale session responses; SmartHub ignores stale dashboard/guest responses and stale logout redirects.",
+    "Remove reference network-idle workaround; visible form readiness remains."
+  ],
+  "validation": {
+    "before_fix": "Browser regression fails: two dashboard requests for one fragment navigation.",
+    "after_fix": "AVEC and GVP: one dashboard request, selected bank and amount preserved, deliberately delayed old dashboard cannot overwrite history, Back/Forward working, no page errors.",
+    "domain_passed": 371,
+    "research_passed": 140,
+    "research_skipped": 1,
+    "sdk_passed": 4,
+    "construction_reference_passed": 34,
+    "released_reference_passed": 31
+  },
+  "limits": [
+    "Shared session guard and navigation deduplication apply to app.js consumers; downstream stale-response guards in other frontend modules are not claimed.",
+    "Initial released validation timed out waiting for broad network idle; retained failure. Final run removes that obsolete workaround.",
+    "Construction references preceded the SmartHub-only reference wait removal; final environment/evaluator builds match.",
+    "No new catalog sites or tasks; counts remain nine released sites, four construction tenants, 31 released and 34 construction tasks.",
+    "References are unmetered scripts, not autonomous scores. Full catalog and original private-flow fidelity remain incomplete."
+  ],
+  "artifacts": {
+    "billworld/artifacts/infinity/smarthub-navigation-construction/summary.json": "9d983c62b42fc891cfeba5ba03a99eb7d32fe82cc0bb2f0f79940f41ec92d55d",
+    "billworld/artifacts/infinity/smarthub-navigation-released-final/summary.json": "f517cc1e0bf07bb661a110ca03eeb208e62af38183d9bc506ce076eb30e0c181",
+    "billworld/public/app.js": "bb7daada072b791d49004bd9aba1f4d8ef74fa23422e74af3348cd06da360dc6",
+    "billworld/public/smarthub.js": "caed58f736167d7ef0c58c2c54001b3307242e96904f110e645d9034b1b10100",
+    "billworld/infinity/reference.mjs": "f53e797fd731c5e3ffe1563ab892626fc180f8ba4f8bf79bb03f896122b5bc26",
+    "billworld/tests/smarthub-navigation-browser.mjs": "90baab0234128b259e59bc10b93e3fe9150f22afa8dc736fd71a3c66717e2fa1",
+    "billworld/artifacts/smarthub-navigation/results.json": "100ff64805de402b21c185c30caae9d28ed426d778abccab8aa626e872141c47",
+    "billworld/artifacts/smarthub-navigation-before.log": "55c385599ac074625570fab47d06c6908f8faa68d8cfa780f692f452027dc7da",
+    "billworld/artifacts/smarthub-navigation-domain.log": "8a5110fda5bc344b545bb6fc14ffafc667be192289812a876c00cba443b91cc6",
+    "billworld/artifacts/smarthub-navigation-research.log": "89579e641dbec172709632b1bc43541f8fba374ce6bfc7108a1c92d2b4aee8db",
+    "billworld/artifacts/smarthub-navigation-sdk.log": "4bd4ab498cd0aa0fa6fb80950df097e96640adad2dd3dd93fc034e17df7998df",
+    "billworld/artifacts/smarthub-navigation-released.log": "94a75db5477fb294a03f5dae01fd3c13a17218ed000158f57594d1b6b648ed25",
+    "billworld/artifacts/smarthub-navigation-build.json": "5c1af50641f3a18edd7880accdae69ff50db0a3deb5dbcb58fb279f6cdd664d7"
+  }
+}

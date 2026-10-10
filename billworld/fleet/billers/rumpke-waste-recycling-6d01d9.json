@@ -1,0 +1,324 @@
+{
+  "id": "rumpke-waste-recycling-6d01d9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Rumpke Waste & Recycling",
+  "category": "trash",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public rumpke.com pages (Pay My Bill, Contact Us) and the public RumpkePay sign-in page (Kubra i-doxs; observed, never signed in). RumpkePay accepts credit cards, debit cards and bank accounts; a $2.95 convenience fee applies to every one-time online payment (card or bank) and to all phone payments, and enrolling in auto-pay avoids it (modelled as a flat $2.95 bank and card fee on one-time payments). Phone payments (800-828-8171, 24/7) take Visa, Mastercard and Discover only. Walmart MoneyCenter/customer service desks and Rumpke facilities take in-person payments (fee applies). Sign-in is Username + Password with a personal sign-in seal; Make a OneTime Payment needs no account. Paperless, autopay timing, late fees and payment plans are not published (family defaults kept). No online stop-service form exists: the Contact Us page lists forms to request, transfer or update service and says to call 800-828-8171 otherwise, so cancel_service is unsupported online (inferred). Integrated 2026-10-09: labels.autopay set to \"Auto-Pay\" now that the template uses the label as a noun (\"Turn off Auto-Pay\").",
+  "officialDomains": [
+    "rumpke.com",
+    "i-doxs.net"
+  ],
+  "sources": [
+    {
+      "url": "https://www.rumpke.com/pay-my-bill",
+      "title": "Pay My Bill | Rumpke",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.rumpke.com/contact-us",
+      "title": "Contact Us | Rumpke",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://secure8.i-doxs.net/BDX/default.aspx?BillerID=9oQiieNtU5",
+      "title": "RumpkePay sign in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Rumpke",
+    "shortName": "Rumpke",
+    "primary": "#0b6b2f",
+    "accent": "#7a4a00",
+    "monogram": "R"
+  },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "guestPay": "Make a OneTime Payment",
+    "signIn": "Sign In",
+    "register": "Sign up now",
+    "forgot": "Forgot your Username/Password?",
+    "help": "FAQ",
+    "contact": "Contact Us",
+    "username": "Username",
+    "autopay": "Auto-Pay"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay My Bill",
+        "page": "guest"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Sign up now",
+        "page": "register"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "RumpkePay",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Auto-Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://secure8.i-doxs.net/BDX/default.aspx?BillerID=9oQiieNtU5"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://secure8.i-doxs.net/BDX/default.aspx?BillerID=9oQiieNtU5"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rumpke.com/pay-my-bill"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rumpke.com/pay-my-bill",
+      "phone": "800-828-8171",
+      "note": "24/7 automated line; Visa, Mastercard and Discover only; $2.95 fee."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rumpke.com/pay-my-bill"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.rumpke.com/contact-us",
+      "channel": "phone",
+      "phone": "800-828-8171",
+      "note": "Service cannot be cancelled online. Call Rumpke customer service at 800-828-8171 (Mon-Fri 8am-5pm ET) to stop service."
+    }
+  },
+  "billing": {
+    "source": "https://www.rumpke.com/pay-my-bill",
+    "fees": {
+      "bankCents": 295,
+      "cardCents": 295,
+      "evidence": "documented_official",
+      "source": "https://www.rumpke.com/pay-my-bill"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Rumpke bill",
+      "topic": "payments",
+      "paragraphs": [
+        "RumpkePay, Rumpke's online system powered by Kubra, takes credit cards, debit cards and bank accounts. Register to manage your account, or use Make a OneTime Payment without signing up. Each one-time online payment carries a $2.95 convenience fee; enroll in auto-pay to avoid it.",
+        "Pay by phone any time at 800-828-8171 and choose the pay by phone option. Phone payments accept Visa, Mastercard and Discover and always carry the $2.95 fee.",
+        "You can also pay in person at a Rumpke facility or at any Walmart MoneyCenter or customer service desk (bring your current statement and cash or a PIN debit card; a fee applies), or mail a check. Residential payments go to Rumpke, P.O. Box 538709, Cincinnati, OH 45253-8709."
+      ],
+      "steps": [
+        "Open Pay My Bill and go to RumpkePay.",
+        "Sign In, or choose Make a OneTime Payment.",
+        "Enter the amount and a card or bank account.",
+        "Review the $2.95 fee and submit."
+      ],
+      "source": "https://www.rumpke.com/pay-my-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto-pay with RumpkePay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Register for RumpkePay to set up auto-pay from a card or bank account. Auto-pay payments do not carry the $2.95 convenience fee charged on one-time online and phone payments."
+      ],
+      "source": "https://www.rumpke.com/pay-my-bill"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Starting, moving or stopping service",
+      "topic": "account",
+      "paragraphs": [
+        "Use the Request Service form to start or add service, Transfer Service when you move to a new address, and Update My Information to change account details.",
+        "There is no online form to stop service. Call customer service at 800-828-8171, Monday to Friday 8 a.m. to 5 p.m. Eastern."
+      ],
+      "source": "https://www.rumpke.com/contact-us"
+    },
+    {
+      "slug": "register",
+      "title": "Signing in to RumpkePay",
+      "topic": "account",
+      "paragraphs": [
+        "RumpkePay signs you in with a username and password. Choose Sign up now under Don't have an account? to register. Forgot your Username/Password? helps you recover either one.",
+        "You can set a personal sign-in seal (a message or picture). Check that your seal appears each time you sign in; if it does not, you may not be on the real site."
+      ],
+      "source": "https://secure8.i-doxs.net/BDX/default.aspx?BillerID=9oQiieNtU5"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "avoid-convenience-fee",
+        "intent": "Using Rumpke's help pages, find how much the convenience fee on a one-time online payment is and how you can avoid it. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.95",
+              "auto"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.95",
+            "auto"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "One-time online payments carry a $2.95 convenience fee; enrolling in auto-pay avoids it."
+          }
+        ]
+      },
+      {
+        "slug": "residential-mail-address",
+        "intent": "Using Rumpke's help pages, find the P.O. Box number residential customers should mail their payment to. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "538709"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "538709"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mail residential payments to Rumpke, P.O. Box 538709, Cincinnati, OH 45253-8709."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Pay My Bill",
+        "Make a OneTime Payment"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Forgot your Username/Password?"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$2.95",
+        "538709"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "800-828-8171"
+    }
+  ]
+}

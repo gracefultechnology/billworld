@@ -1,0 +1,138 @@
+{
+  "id": "aetna-dental-aetna-dental-direct-individual-plan-ef891b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Aetna Dental (Aetna Dental Direct individual plans; employer dental)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-09",
+  "notes": "Modelled as the Aetna Dental Direct individual member portal. Source: Aetna's public 'Member portal frequently asked questions' PDF (2673150-01-03, 2/25) linked from the portal, read without signing in. Premiums are collected as a recurring payment; payment information, past-due status and the recurring payment method live under 'View or Update Billing Information'; a notice is mailed if the recurring payment fails on the second attempt. IMPORTANT GAP: the FAQ says one-time payments are made by calling the billing area (855-837-6453 dental, 855-804-2410 vision), not online. The dedicated tier cannot express pay_online=unsupported yet (tests/driver.mjs plannedFlows always runs pay_bank and the other pay flows, and the engine refuses unsupported payments), so pay_online keeps the family value; the help center and an extra task state the real phone route, and this is reported as a cross-owner request. Cancellation is by phone (eligibility area) or mail to Aetna Direct, P.O. Box 2568, Frisco, TX 75034. Plan changes happen at renewal, up to 60 days before the renewal date ('Change Plan'); plans renew automatically. Fees, grace period, sign-in identifier and MFA are not published and keep family defaults. Dashboard, history and contact nav labels are generic (synthetic). No public nav: see the insurance-template cross-owner request.",
+  "officialDomains": ["aetna.com"],
+  "sources": [
+    { "url": "https://direct.aetna.com/member/assets/docs/faq.pdf", "title": "Member portal frequently asked questions (Aetna Dental Direct)", "fetchedAt": "2026-10-09", "kind": "help" }
+  ],
+  "brand": { "displayName": "Aetna Dental Direct", "shortName": "Aetna", "primary": "#7d3f98", "accent": "#5a2a72", "monogram": "A" },
+  "labels": {
+    "viewBill": "View or Update Billing Information",
+    "profile": "Update Your Profile",
+    "autopay": "Recurring payment"
+  },
+  "nav": {
+    "account": [
+      { "label": "My plan", "page": "dashboard" },
+      { "label": "View or Update Billing Information", "page": "bill" },
+      { "label": "Recurring payment", "page": "autopay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Update Your Profile", "page": "profile" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "capabilities": {
+    "view_bill": { "support": "supported", "evidence": "documented_official", "source": "https://direct.aetna.com/member/assets/docs/faq.pdf" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://direct.aetna.com/member/assets/docs/faq.pdf", "note": "Premiums are collected as a recurring payment; change the method under View or Update Billing Information." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://direct.aetna.com/member/assets/docs/faq.pdf", "note": "To make a payment, call the billing area at 855-837-6453 (vision 855-804-2410).", "phone": "8558376453" },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://direct.aetna.com/member/assets/docs/faq.pdf",
+      "note": "To cancel, call the eligibility area at 855-837-6453 (TTY 711; vision 855-804-2410) or write to Aetna Direct, P.O. Box 2568, Frisco, TX 75034.",
+      "channel": "phone",
+      "phone": "8558376453"
+    }
+  },
+  "billing": {
+    "source": "https://direct.aetna.com/member/assets/docs/faq.pdf",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "billing-information",
+      "title": "See or update your billing information",
+      "topic": "billing",
+      "paragraphs": [
+        "Your payment information is in the member portal under View or Update Billing Information. That is also where you change the payment method used for your recurring premium payment.",
+        "Any past-due amount shows there too. If your recurring payment fails on the second try, Aetna mails you a notice."
+      ],
+      "steps": ["Sign in to the member portal.", "Open View or Update Billing Information.", "Review your payment details or change your payment method."],
+      "source": "https://direct.aetna.com/member/assets/docs/faq.pdf"
+    },
+    {
+      "slug": "make-a-payment",
+      "title": "Make a one-time payment",
+      "topic": "billing",
+      "paragraphs": [
+        "To make a payment, call the billing area at 855-837-6453 (TTY 711) for dental plans or 855-804-2410 (TTY 711) for vision plans.",
+        "Call the same numbers for refunds and any other billing question."
+      ],
+      "source": "https://direct.aetna.com/member/assets/docs/faq.pdf"
+    },
+    {
+      "slug": "change-plan",
+      "title": "Change or renew your plan",
+      "topic": "plans",
+      "paragraphs": [
+        "Your plan renews automatically unless you ask to cancel.",
+        "You can switch plans at renewal, up to 60 days before your renewal date, under Change Plan in the portal or by calling customer service at 855-837-6453 (dental) or 855-804-2410 (vision)."
+      ],
+      "source": "https://direct.aetna.com/member/assets/docs/faq.pdf"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your coverage",
+      "topic": "account",
+      "paragraphs": [
+        "Coverage is not cancelled in the portal. Call the eligibility area at 855-837-6453 (TTY 711) for dental or 855-804-2410 (TTY 711) for vision, or send a letter to Aetna Direct, P.O. Box 2568, Frisco, TX 75034.",
+        "To cancel back to a date of death, a death certificate is required."
+      ],
+      "source": "https://direct.aetna.com/member/assets/docs/faq.pdf"
+    },
+    {
+      "slug": "moving",
+      "title": "Moving or updating your details",
+      "topic": "account",
+      "paragraphs": [
+        "Update your name, marital status or address under Update Your Profile. Let Aetna know about a move 31 days ahead if you can.",
+        "When you change your address you are asked to pick a plan available in your new ZIP code, and the new policy starts with no break in coverage. If no plan is offered there, your policy ends."
+      ],
+      "source": "https://direct.aetna.com/member/assets/docs/faq.pdf"
+    },
+    {
+      "slug": "add-coverage",
+      "title": "Add vision coverage or dependents",
+      "topic": "plans",
+      "paragraphs": [
+        "If you have a dental-only plan you can add vision at any time by enrolling online or calling 855-804-2410. Add or remove dependents at any time under Add or Remove Dependents, or call customer service."
+      ],
+      "source": "https://direct.aetna.com/member/assets/docs/faq.pdf"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "one-time-payment-phone",
+        "intent": "You want to make a one-time payment on your Aetna Dental Direct dental plan. Using the Aetna help pages, find the phone number the plan says to call to make a payment. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8558376453"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8558376453"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Call the billing area at 855-837-6453 (TTY 711)." }]
+      },
+      {
+        "slug": "plan-change-window",
+        "intent": "Using the Aetna Dental Direct help pages, find how many days before your renewal date you can change your dental plan. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["60"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["60"] },
+        "tags": ["help", "information", "plans"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Plan changes can be made up to 60 days before the renewal date." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "P.O. Box 2568" },
+    { "page": "dashboard", "signedIn": true, "contains": ["View or Update Billing Information", "Recurring payment"] },
+    { "page": "helpArticle", "slug": "make-a-payment", "contains": "855-837-6453" },
+    { "page": "helpArticle", "slug": "change-plan", "contains": "60 days" },
+    { "page": "cancel", "signedIn": true, "contains": "eligibility area" }
+  ]
+}

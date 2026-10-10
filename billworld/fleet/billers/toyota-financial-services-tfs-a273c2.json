@@ -1,0 +1,397 @@
+{
+  "id": "toyota-financial-services-tfs-a273c2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Toyota Financial Services (TFS)",
+  "category": "loans",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public toyotafinancial.com pages only (no sign-in). TFS does not take cash, credit or debit card payments directly: online, app and phone payments come from a bank account, so payments are modelled bank-only (debit cards only work through Western Union Quick Collect, which charges its own fee). Recurring payments are set up online under Manage Recurring Payments; AutoCheque is a separate form-based automatic debit. Registering online turns on paperless statements automatically. Extensions/deferrals are discussed by phone only (no online request is described), so payment_arrangement is unsupported online. Sign-in uses a username (login FAQ titles). Late fees depend on state law and the contract, so no amount is modelled. Leases and loans close at payoff/turn-in, so cancel service stays not applicable. A site notice mentioned an outage at fetch time.",
+  "officialDomains": [
+    "toyotafinancial.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.toyotafinancial.com/us/en/planning_tools/ways_to_pay.html",
+      "title": "Ways to Pay",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.toyotafinancial.com/us/en/planning_tools/faq/managing_pay_online/how_do_i_set_up_a_onetime_or_recurring_payment.html",
+      "title": "How do I set up a one-time or recurring payment?",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.toyotafinancial.com/us/en/planning_tools/faq/managing_pay_online/how_do_i_cancel_pay_online.html",
+      "title": "How do I cancel Pay Online?",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.toyotafinancial.com/us/en/planning_tools/faq/paperless_billing/how_do_i_enroll_in_paperless_billing.html",
+      "title": "How do I enroll in Paperless Billing?",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.toyotafinancial.com/us/en/planning_tools/faq/extension_and_deferral/what_is_an_extension_and_does_tfs_offer_extensions.html",
+      "title": "What is an extension and does TFS offer extensions?",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.toyotafinancial.com/us/en/planning_tools/faq/payments/what_payment_methods_do_you_offer_can_i_pay_with_cash_credit_or_debit_card.html",
+      "title": "What payment methods do you offer?",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.toyotafinancial.com/us/en/planning_tools/faq/payments/will_i_be_charged_a_late_fee_if_my_payment_is_not_received_by_the_due_date.html",
+      "title": "Will I be charged a late fee?",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.toyotafinancial.com/us/en/planning_tools/faq/login-faqs.html",
+      "title": "Login FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Toyota Financial Services",
+    "primary": "#b5001a",
+    "accent": "#1a1a1a",
+    "monogram": "TF"
+  },
+  "labels": {
+    "payBill": "Make One-Time Payment",
+    "autopay": "Manage Recurring Payments",
+    "history": "Transactions",
+    "statements": "Billing Statements",
+    "paperless": "Go Paperless",
+    "wallet": "Manage Bank Accounts",
+    "dashboard": "Dashboard",
+    "profile": "My Profile",
+    "contact": "Contact Us",
+    "username": "Username",
+    "arrangement": "Payment Relief Options",
+    "signIn": "Log In",
+    "forgot": "Forgot Username Or Password?"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Contact Us",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make One-Time Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Transactions",
+        "page": "history"
+      },
+      {
+        "label": "Billing Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Manage Bank Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/login-faqs.html"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/managing_pay_online/how_do_i_set_up_a_onetime_or_recurring_payment.html",
+      "note": "Recurring payments are set up online from the Dashboard; AutoCheque automatic debit needs a separate form."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/managing_pay_online/how_do_i_cancel_pay_online.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/paperless_billing/how_do_i_enroll_in_paperless_billing.html",
+      "note": "Registering online enrolls you in paperless statements automatically."
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/ways_to_pay.html",
+      "note": "Online payments need a registered TFS account. Without one, pay by phone at 1-800-874-8822 (24 hours) or by mail.",
+      "channel": "phone",
+      "phone": "8008748822"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/extension_and_deferral/what_is_an_extension_and_does_tfs_offer_extensions.html",
+      "note": "Extensions and deferrals are not requested online. Call TFS at 1-800-874-8822 to review payment relief options.",
+      "channel": "phone",
+      "phone": "8008748822"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/extension_and_deferral/what_is_an_extension_and_does_tfs_offer_extensions.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/ways_to_pay.html"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/ways_to_pay.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/payments/what_payment_methods_do_you_offer_can_i_pay_with_cash_credit_or_debit_card.html",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Pay online or in the myTFS app from a bank account (you need your routing and account numbers, added after you log in). The automated phone line at 1-800-874-8822 takes payments 24 hours a day, and a team member can take a checking-account payment by phone.",
+        "By mail, send a check with your payment stub to the address on your statement: finance accounts use P.O. Box 94305, Palatine, IL 60094-4305 and lease accounts use P.O. Box 94316, Palatine, IL 60197-4316. You can also pay cash or by debit card through Western Union Quick Collect (1-800-325-6000) or cash at CheckFreePay retailers; both charge their own fee."
+      ],
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/ways_to_pay.html",
+      "mode": "append"
+    },
+    {
+      "slug": "payment-methods",
+      "title": "Can I pay with cash or a card?",
+      "paragraphs": [
+        "Toyota Financial Services does not accept cash, credit card or debit card payments directly; cash sent by mail may be returned. Pay from a bank account online or by phone, use AutoCheque, or mail a check."
+      ],
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/payments/what_payment_methods_do_you_offer_can_i_pay_with_cash_credit_or_debit_card.html",
+      "topic": "payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring payments and AutoCheque",
+      "paragraphs": [
+        "After you log in, choose Set Up Recurring Payments (or Make One-Time Payment) from your Dashboard, fill in the payment details and select Confirm. AutoCheque is a separate automatic debit program that starts after you send in an enrollment form."
+      ],
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/managing_pay_online/how_do_i_set_up_a_onetime_or_recurring_payment.html",
+      "topic": "autopay",
+      "steps": [
+        "Log in to your account.",
+        "From the Dashboard choose Set Up Recurring Payments.",
+        "Complete the required fields.",
+        "Select Confirm on the Payment page."
+      ]
+    },
+    {
+      "slug": "cancel-recurring",
+      "title": "Cancel a recurring or scheduled payment",
+      "paragraphs": [
+        "Open Payments, then Website Payments. To stop recurring payments, choose Delete next to the profile under Recurring Payments Profiles and confirm with Delete Profile. To stop a single scheduled payment, choose Cancel and then Cancel Payment; its status changes from Scheduled to Cancelled.",
+        "Deleting a bank account under Bank Information also cancels every scheduled payment that uses it. On joint accounts you cannot change another holder's recurring profile or payments."
+      ],
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/managing_pay_online/how_do_i_cancel_pay_online.html",
+      "topic": "autopay"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "paragraphs": [
+        "Registering for online access turns on paperless statements automatically. If you still get paper statements, open Menu, then Billing Statements under Manage Account, switch the Go Paperless toggle on and confirm."
+      ],
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/paperless_billing/how_do_i_enroll_in_paperless_billing.html",
+      "topic": "paperless"
+    },
+    {
+      "slug": "payment-relief",
+      "title": "Extensions and payment relief",
+      "paragraphs": [
+        "An extension moves a monthly payment to the end of your contract, so the term and maturity date grow by the number of payments moved. Interest keeps accruing daily, so an extension can add finance charges.",
+        "Extensions are not requested online. Call 1-800-874-8822 to hear which relief options you may qualify for."
+      ],
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/extension_and_deferral/what_is_an_extension_and_does_tfs_offer_extensions.html",
+      "topic": "assistance"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late fees",
+      "paragraphs": [
+        "Whether a late fee applies, and how much it is, depends on your state's laws and your contract. Check your contract or billing statement for your account's terms."
+      ],
+      "source": "https://www.toyotafinancial.com/us/en/planning_tools/faq/payments/will_i_be_charged_a_late_fee_if_my_payment_is_not_received_by_the_due_date.html",
+      "topic": "billing"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "western-union-phone",
+        "intent": "Using the Toyota Financial Services website's help pages, find the phone number for Western Union Quick Collect support when paying a TFS account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8003256000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8003256000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-325-6000"
+          }
+        ]
+      },
+      {
+        "slug": "card-payments-accepted",
+        "intent": "Using the Toyota Financial Services help pages, find out whether TFS accepts credit or debit card payments directly, and say what to use instead. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "bank account",
+              "checking"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "bank account",
+            "checking"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. TFS does not accept credit or debit cards directly; pay from a bank account online or by phone, or mail a check."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make One-Time Payment",
+        "Manage Recurring Payments"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Debit card"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "1-800-874-8822"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-methods",
+      "contains": "does not accept"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-relief",
+      "contains": "end of your contract"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "gmg-download-current-bill-v1",
+  "version": 1,
+  "site_id": "greater-minnesota-gas",
+  "evidence_cohort": "observed_pdf_download_synthetic_statement",
+  "prompt": "Sign in to Greater Minnesota Gas as alex.morgan / Billworld-2026!. From your account summary, download the current September 2026 bill using View Bill (PDF), and report the filename offered by the portal. Leave credentials, preferences, methods, payments, invoices and other accounts unchanged. The authenticated PDF download is observed in public client code; this statement content and layout are synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_statement",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "filename": "gmg-inv-current.pdf",
+    "document_sha256": "ad1ebd7eaeb1f82938a9426e6cd4c13b395e76b29b08060150dc75b2b83a4b3a"
+  },
+  "grading_limit": "Private verifier confirms authorized issuance and filename answer, not the remote agent filesystem. Puppeteer reference separately verifies completed browser download and saved bytes."
+}

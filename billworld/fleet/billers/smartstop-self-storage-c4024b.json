@@ -1,0 +1,335 @@
+{
+  "id": "smartstop-self-storage-c4024b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "SmartStop Self Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public SmartStop FAQ, mobile-app page and My Account log-in page (no sign-in). My Account menu: Login, Create Account, Make a Payment, Storage, Account Info, Payment History, Logout. Creating an account needs the Storage Account Number. The rendered log-in form shows Email and Password fields (observed by reviewer). Payments: online (My Account > Storage > Make Payment, or Pay All Units), phone with a card only and a $10 convenience fee (888-977-8672), or in person (cash/check/card, no fee). The phone fee is not an online fee and is described in help only. SmartPay automatic payments can be enrolled in the app, or with an automatic-payment form from the property manager; no cancel route is described (autopay_cancel unsupported, inferred). E-bills are \"in development\"; monthly emailed invoices on request from the store manager (paperless unsupported). Partial payments and payment plans are not accepted; late fees cannot be waived and vary by state. Move-out: 10 days' written or verbal notice to the property manager or call center. Reviewer 2026-10-09: the My Account menu has separate \"Storage\" and \"Account Info\" items (not \"Storage Account Info\"); profile label fixed; sign-in identifier now observed.",
+  "officialDomains": [
+    "smartstopselfstorage.com"
+  ],
+  "sources": [
+    {
+      "url": "https://smartstopselfstorage.com/support/faqs",
+      "title": "FAQs | SmartStop Self Storage",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://smartstopselfstorage.com/support/mobile-app",
+      "title": "Mobile App | SmartStop Self Storage",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://smartstopselfstorage.com/my-account/login",
+      "title": "Login to SmartStop Storage Account | SmartStop Self Storage",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "SmartStop",
+    "primary": "#1d4f91",
+    "accent": "#1f2937",
+    "monogram": "SS"
+  },
+  "labels": {
+    "signIn": "Login",
+    "signOut": "Logout",
+    "register": "Create Account",
+    "payBill": "Make a Payment",
+    "history": "Payment History",
+    "profile": "Account Info",
+    "autopay": "SmartPay",
+    "help": "FAQs",
+    "dashboard": "My Account",
+    "username": "Email",
+    "forgot": "Forgot Password?"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Create Account",
+        "page": "register"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Account Info",
+        "page": "profile"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "SmartPay",
+        "page": "autopay"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://smartstopselfstorage.com/my-account/login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://smartstopselfstorage.com/support/faqs"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://smartstopselfstorage.com/support/mobile-app",
+      "note": "Enroll in SmartPay in the SmartStop app, or ask your property manager for an automatic payment form."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://smartstopselfstorage.com/support/faqs",
+      "channel": "phone",
+      "phone": "888-977-8672",
+      "note": "SmartStop does not describe turning off automatic payments online; ask your property manager or call (888) 977-8672."
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://smartstopselfstorage.com/support/faqs",
+      "channel": "in_person",
+      "phone": "888-977-8672",
+      "note": "E-bills are not available yet. Ask your store manager to set up monthly invoices by email."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://smartstopselfstorage.com/support/faqs",
+      "channel": "phone",
+      "phone": "888-977-8672",
+      "note": "SmartStop does not accept partial payments or offer payment plans; the full balance is due."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://smartstopselfstorage.com/support/faqs",
+      "channel": "phone",
+      "phone": "888-977-8672",
+      "note": "Give at least 10 days' written or verbal notice to your property manager or the call center at (888) 977-8672, then empty the unit and remove your lock."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://smartstopselfstorage.com/support/faqs",
+      "phone": "888-977-8672",
+      "note": "Card payments only, with a $10 convenience fee."
+    }
+  },
+  "billing": {
+    "source": "https://smartstopselfstorage.com/support/faqs",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "source": "https://smartstopselfstorage.com/support/faqs",
+      "paragraphs": [
+        "Paying online is the preferred way: log in to My Account, open Storage and choose Make Payment for a unit, or Pay All Units to pay every unit at once.",
+        "You can also pay by phone at (888) 977-8672 with a debit or credit card (Mastercard, Visa, Discover or American Express) for a $10 convenience fee, or in person with cash, check or card at no charge."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "Open the Storage tab.",
+        "Choose Make Payment (or Pay All Units).",
+        "Enter your payment details and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "SmartPay automatic payments",
+      "topic": "autopay",
+      "source": "https://smartstopselfstorage.com/support/mobile-app",
+      "paragraphs": [
+        "You can enroll in SmartPay automatic payments in the SmartStop app. Your property manager can also give you an automatic payment form to fill out and return."
+      ]
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late rent",
+      "topic": "billing",
+      "source": "https://smartstopselfstorage.com/support/faqs",
+      "paragraphs": [
+        "Rent is due on the anniversary date of your rental. After a grace period set by your state's lien law and listed in your lease, a late fee is charged that cannot be waived.",
+        "Partial payments and payment plans are not accepted. Past-due units can lose gate access and be over-locked, and may eventually be sold at an online auction under state law."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://smartstopselfstorage.com/support/faqs",
+      "paragraphs": [
+        "Give at least 10 days' written or verbal notice to your property manager or the call center at (888) 977-8672. Empty the unit, remove your lock and move out by your date; the manager inspects the unit before it is marked vacant."
+      ]
+    },
+    {
+      "slug": "billing-history",
+      "title": "Payment history and invoices",
+      "topic": "billing",
+      "source": "https://smartstopselfstorage.com/support/mobile-app",
+      "paragraphs": [
+        "In the app, tap Account and then Payment History to see the past 12 months of payments; you can email a receipt to the address on your account.",
+        "E-bills are still in development. If you want a monthly invoice by email, ask your store manager to set it up."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "phone-payment-fee",
+        "intent": "Using SmartStop's help pages, find the convenience fee for paying by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10",
+              "10 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10",
+            "10 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Phone payments carry a $10 convenience fee."
+          }
+        ]
+      },
+      {
+        "slug": "move-out-notice",
+        "intent": "Using SmartStop's help pages, find how many days of notice you must give before moving out. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10",
+              "ten"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10",
+            "ten"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 10 days' written or verbal notice."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "label": "signIn"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$10",
+        "(888) 977-8672"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "contains": "store manager"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "10 days"
+    }
+  ]
+}

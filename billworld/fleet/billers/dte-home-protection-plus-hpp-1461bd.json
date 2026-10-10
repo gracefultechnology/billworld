@@ -1,0 +1,167 @@
+{
+  "id": "dte-home-protection-plus-hpp-1461bd",
+  "version": 1,
+  "status": "dedicated",
+  "name": "DTE Home Protection Plus (HPP)",
+  "category": "other",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public Home Protection Plus pages (home, Repair Plans, Support Center FAQ) and DTE Energy's public Card Processing Fee and AutoPay pages only; never signed in. HPP repair plans are a business unit of DTE Gas, sold to DTE customers in Michigan (225,000+), and are not regulated by the MPSC. The monthly or yearly plan charge appears on the DTE Energy statement and is paid with the DTE bill, so sign-in, payment, AutoPay and eBill are DTE Energy's (account managed by signing in to the DTE Energy account; email identifier inferred from DTE's own sign-in, not observed here). DTE applies payments to electric and gas first, then other products such as HPP, so a partial payment can leave the plan unpaid; an unpaid plan balance is checked and can be paid by credit card at (800) 556-0011. DTE card payments (including Guest Pay, which takes cards only) carry a 2.99 dollar residential processing fee since March 2, 2026; bank payments and bank AutoPay are free. Plan prices are the published 'starting at' monthly prices of the four plan families; exact plan tiers are not listed on the overview page. Coverage begins 15 days after enrollment is processed (1-2 days). Plans can be cancelled without penalty within 10 days of enrollment by phone or email; cancellation later is not described publicly, so cancel_service is modelled as phone-only. Repairs are requested by phone 24/7 at (800) 556-0011.",
+  "officialDomains": ["hppservices.com", "dteenergy.com"],
+  "sources": [
+    { "url": "https://www.hppservices.com/SupportServices", "title": "Support Center - DTE Energy Home Protection Plus", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.hppservices.com/ARP", "title": "Home Protection Plus Repair Plans", "fetchedAt": "2026-10-09", "kind": "plans" },
+    { "url": "https://www.hppservices.com/", "title": "Home Protection Plus - DTE Energy", "fetchedAt": "2026-10-09", "kind": "other" },
+    { "url": "https://www.dteenergy.com/us/en/quicklinks/card-processing-fee.html", "title": "Card Processing Fee | DTE Energy", "fetchedAt": "2026-10-09", "kind": "fees" },
+    { "url": "https://www.dteenergy.com/us/en/residential/billing-and-payments/payment-programs/autopay.html", "title": "AutoPay | DTE Energy", "fetchedAt": "2026-10-09", "kind": "autopay" }
+  ],
+  "brand": { "displayName": "DTE Home Protection Plus", "shortName": "Home Protection Plus", "primary": "#004b87", "accent": "#00325a", "monogram": "HP" },
+  "labels": {
+    "signIn": "Sign In",
+    "help": "Support Center",
+    "plan": "Repair Plans",
+    "autopay": "AutoPay",
+    "paperless": "eBill Paperless Billing",
+    "guestPay": "Guest Pay",
+    "username": "Email Address",
+    "dashboard": "My Plans"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign In", "page": "login" },
+      { "label": "Repair Plans", "helpSlug": "repair-plans" },
+      { "label": "Guest Pay", "page": "guest" },
+      { "label": "Support Center", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Plans", "page": "dashboard" },
+      { "label": "Bill", "page": "bill" },
+      { "label": "Pay Bill", "page": "pay" },
+      { "label": "AutoPay", "page": "autopay" },
+      { "label": "eBill Paperless Billing", "page": "paperless" },
+      { "label": "Repair Plans", "page": "plan" },
+      { "label": "Payment History", "page": "history" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": ["accountNumber"],
+    "evidence": "inferred",
+    "source": "https://www.hppservices.com/SupportServices"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/quicklinks/card-processing-fee.html", "note": "Guest Pay on the DTE bill takes credit or debit cards only, each with a 2.99 dollar residential processing fee; sign in to pay free from a bank account." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/payment-programs/autopay.html" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/payment-programs/autopay.html" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.hppservices.com/SupportServices", "note": "Home Protection Plus plans are not cancelled online. Call (800) 556-0011 (or email HPP); within 10 days of enrollment you can cancel without penalty.", "channel": "phone", "phone": "8005560011" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.hppservices.com/SupportServices", "note": "An unpaid plan balance is handled by phone: call (800) 556-0011 to confirm what is owed and pay it in full by credit card.", "channel": "phone", "phone": "8005560011" }
+  },
+  "billing": {
+    "source": "https://www.hppservices.com/SupportServices",
+    "fees": { "bankCents": 0, "cardCents": 299, "evidence": "documented_official", "source": "https://www.dteenergy.com/us/en/quicklinks/card-processing-fee.html" },
+    "methods": ["bank", "card"],
+    "guestMethods": ["card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] },
+    "plans": [
+      { "id": "maintenance", "name": "Maintenance Plans (from $9.95/mo)", "cents": 995 },
+      { "id": "heating-cooling", "name": "Heating & Cooling Plans (from $11.95/mo)", "cents": 1195, "current": true },
+      { "id": "appliances", "name": "Appliance Plans (from $25.95/mo)", "cents": 2595 },
+      { "id": "whole-home", "name": "Whole Home Plans (from $53.95/mo)", "cents": 5395 }
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How you are billed for Home Protection Plus",
+      "topic": "payments",
+      "paragraphs": [
+        "Your monthly or yearly Home Protection Plus charge is included on your DTE Energy statement. As long as you pay your DTE Energy bill in full, your coverage continues.",
+        "DTE applies payments to your electric and gas charges first, then to other DTE products and services. If you do not pay the full bill, your Home Protection Plus plan may go unpaid. Call (800) 556-0011 to check what is owed; you can pay the balance in full by credit card on that call.",
+        "Paying from a bank account is free. Credit and debit card payments to DTE carry a 2.99 dollar processing fee per residential transaction."
+      ],
+      "source": "https://www.hppservices.com/SupportServices"
+    },
+    {
+      "slug": "repair-plans",
+      "title": "Repair plans and prices",
+      "topic": "account",
+      "paragraphs": [
+        "Home Protection Plus offers four plan families, each with one monthly payment: Heating & Cooling plans (furnace, air conditioner, water heater) starting at 11.95 dollars a month; Appliance plans starting at 25.95 dollars; Whole Home plans (heating, cooling, plumbing and electrical) starting at 53.95 dollars; and SmartGuard Maintenance plans starting at 9.95 dollars.",
+        "Parts, labor and service calls are covered for covered equipment. Add-ons include GreenBacks Cash (up to 2,500 dollars a year toward a replacement appliance) and Water Heater Replacement.",
+        "Enroll through your DTE Energy account or by calling (800) 556-0011. You can add other appliances at any time by phone."
+      ],
+      "source": "https://www.hppservices.com/ARP"
+    },
+    {
+      "slug": "faq",
+      "title": "Home Protection Plus FAQs",
+      "topic": "faq",
+      "paragraphs": [
+        "Coverage begins 15 days after your enrollment is processed; processing usually takes 1 to 2 days.",
+        "Covered equipment must meet code, be reasonably clean and safely accessible, and work properly when coverage begins; DTE may inspect it.",
+        "When a covered appliance needs repair, call the 24/7 hotline at (800) 556-0011 and a DTE technician or authorized contractor is scheduled, with no out-of-pocket cost at the time of service.",
+        "Enrolling does not change your regulated utility rates or service, and the program is not regulated by the Michigan Public Service Commission."
+      ],
+      "source": "https://www.hppservices.com/SupportServices"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your plan",
+      "topic": "account",
+      "paragraphs": [
+        "You may cancel your Home Protection Plus contract without penalty up to 10 days after enrollment by calling (800) 556-0011 or by email."
+      ],
+      "source": "https://www.hppservices.com/SupportServices"
+    },
+    {
+      "slug": "autopay",
+      "title": "Pay automatically with DTE AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Your plan charge is part of your DTE Energy bill, so DTE AutoPay pays it along with your energy charges. AutoPay from a bank account has no fee; card payments carry DTE's processing fee."
+      ],
+      "steps": ["Sign in to your DTE Energy account.", "Open AutoPay.", "Choose a bank account or card.", "Confirm enrollment."],
+      "source": "https://www.dteenergy.com/us/en/residential/billing-and-payments/payment-programs/autopay.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "unpaid-plan-balance-phone",
+        "intent": "You got a letter saying your DTE Home Protection Plus plan has an unpaid balance even though you pay your DTE bill. Using the Home Protection Plus support pages, find out why this can happen and which number to call. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8005560011"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8005560011"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Payments go to electric and gas first, so a partial payment can leave the plan unpaid. Call (800) 556-0011." }]
+      },
+      {
+        "slug": "coverage-start-days",
+        "intent": "You just enrolled in a DTE Home Protection Plus repair plan. Using the Home Protection Plus support pages, find out how many days after enrollment your coverage begins. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["15"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["15"] },
+        "tags": ["help", "information", "account"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Coverage begins 15 days after enrollment is processed." }]
+      },
+      {
+        "slug": "cheapest-plan-family",
+        "intent": "Using the DTE Home Protection Plus repair plans page, find which plan family has the lowest starting monthly price and what that price is. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["9.95"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["9.95"] },
+        "tags": ["help", "information", "plans"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Maintenance plans, starting at $9.95 per month." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "dashboard", "signedIn": true, "contains": ["AutoPay", "Repair Plans"] },
+    { "page": "plan", "signedIn": true, "contains": "Heating & Cooling Plans" },
+    { "page": "cancel", "signedIn": true, "contains": "(800) 556-0011" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "electric and gas charges first" },
+    { "page": "helpArticle", "slug": "faq", "contains": "15 days" }
+  ]
+}

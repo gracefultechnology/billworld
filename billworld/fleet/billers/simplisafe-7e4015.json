@@ -1,0 +1,356 @@
+{
+  "id": "simplisafe-7e4015",
+  "version": 1,
+  "status": "dedicated",
+  "name": "SimpliSafe",
+  "category": "home-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public support.simplisafe.com articles and the public SimpliSafe sign-in page only (never signed in). Monitoring is charged monthly to the default credit card on file (Visa, Mastercard, American Express, Discover; prepaid cards not accepted for professional monitoring) on the activation-day of the month after a three-day Practice Mode. There is no guest payment, AutoPay enrollment, paper bill or payment plan, so those are not_applicable. Card only. Sign-in is email-first on auth.simplisafe.com (Email address, Continue, then password), so loginSteps is 2. Upgrades can be made online at any time, but downgrades are by phone (1-888-783-8441) or chat only and only by the Account Owner; the dossier cannot mark plan downgrades as offline-only, so the built-in downgrade-plan task is suppressed and a phone-lookup task replaces it (see CROSS-OWNER request). Cancellation is by chat or phone, with an online request form only in some states during business hours; modelled as unsupported online with the phone. Plan prices are published only as daily rates (Standard 76 cents/day, Core $1.10/day, Pro and Pro Plus $1.66-$2.66/day), not monthly, so the plan page keeps the family's synthetic plans. Due-date changes are by request to Support and take effect within 10 days. Permit and false-alarm fee invoices are not shown online. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "simplisafe.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.simplisafe.com/articles/account-billing/how-to-update-your-payment-method?lang=en-US",
+      "title": "How To Update Your Payment Method",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.simplisafe.com/articles/account-billing/how-do-i-change-my-monitoring-plan?lang=en-US",
+      "title": "How do I change my monitoring plan?",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://support.simplisafe.com/articles/account-billing/how-can-i-see-my-payment-and-billing-history?lang=en-US",
+      "title": "How can I see my payment and billing history?",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://support.simplisafe.com/articles/account-billing/when-is-my-bill-due-and-can-i-change-the-due-date?lang=en-US",
+      "title": "When is my bill due and can I change the due date?",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://support.simplisafe.com/page/monitoring-plans",
+      "title": "SimpliSafe monitoring plans",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://webapp.simplisafe.com/",
+      "title": "SimpliSafe WebApp log in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "SimpliSafe",
+    "primary": "#0b5394",
+    "accent": "#132f4c",
+    "monogram": "S"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "register": "Sign up",
+    "dashboard": "Security Dashboard",
+    "plan": "Monitoring",
+    "wallet": "Payment Methods",
+    "history": "Monitoring Payments",
+    "statements": "Monitoring Payments",
+    "profile": "Manage Account",
+    "cancel": "Cancel Monitoring",
+    "help": "Support",
+    "username": "Email address"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Monitoring Plans",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Security Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Monitoring",
+        "page": "plan"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Monitoring Payments",
+        "page": "history"
+      },
+      {
+        "label": "Manage Account",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel Monitoring",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "evidence": "observed_public",
+    "source": "https://webapp.simplisafe.com/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.simplisafe.com/articles/account-billing/how-to-update-your-payment-method?lang=en-US",
+      "note": "Monitoring is charged to the card on your account; there is no bill to pay without logging in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://support.simplisafe.com/articles/account-billing/when-is-my-bill-due-and-can-i-change-the-due-date?lang=en-US",
+      "note": "Monitoring is charged automatically every month to your default card; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.simplisafe.com/articles/account-billing/how-do-i-change-my-monitoring-plan?lang=en-US",
+      "note": "Monthly charges stop only when monitoring is cancelled."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.simplisafe.com/articles/account-billing/how-can-i-see-my-payment-and-billing-history?lang=en-US",
+      "note": "SimpliSafe does not mail monthly bills; invoices are under Monitoring Payments online."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.simplisafe.com/articles/account-billing/when-is-my-bill-due-and-can-i-change-the-due-date?lang=en-US"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.simplisafe.com/articles/account-billing/how-to-update-your-payment-method?lang=en-US"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://support.simplisafe.com/articles/account-billing/how-do-i-change-my-monitoring-plan?lang=en-US",
+      "note": "Only the Account Owner can cancel, by chat or by calling 1-888-783-8441 (have your Safe Word ready). Some states offer an online request form during business hours.",
+      "channel": "phone",
+      "phone": "8887838441"
+    }
+  },
+  "billing": {
+    "source": "https://support.simplisafe.com/articles/account-billing/how-to-update-your-payment-method?lang=en-US",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://support.simplisafe.com/articles/account-billing/how-to-update-your-payment-method?lang=en-US"
+    },
+    "methods": [
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Change your monitoring plan",
+      "topic": "plans",
+      "paragraphs": [
+        "Upgrades can be made at any time. In the online account, choose Monitoring on the left, select Upgrade under your current plan and pick the new plan; repeat for each location. In the app, open Plan & Billing.",
+        "Downgrades cannot be made online. The Account Owner must call 1-888-783-8441 or contact Support by chat, and may need to give the Safe Word.",
+        "SimpliSafe lists residential monitoring at daily rates: Standard about 76 cents a day, Core $1.10 a day, and Pro or Pro Plus between $1.66 and $2.66 a day. Self Monitoring with camera recordings is about 33 cents a day."
+      ],
+      "source": "https://support.simplisafe.com/articles/account-billing/how-do-i-change-my-monitoring-plan?lang=en-US"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel monitoring",
+      "topic": "account",
+      "paragraphs": [
+        "To cancel, the Account Owner contacts Support by chat or calls 1-888-783-8441. You may be asked for your Safe Word.",
+        "In some states you can start a cancellation request online: open the Account icon, then Security Dashboard, then Manage Account, and use the request at the bottom of the page. This is only available during standard business hours.",
+        "A confirmation email goes to the Account Owner once the cancellation is processed."
+      ],
+      "source": "https://support.simplisafe.com/articles/account-billing/how-do-i-change-my-monitoring-plan?lang=en-US"
+    },
+    {
+      "slug": "update-payment-method",
+      "title": "Update your payment method",
+      "topic": "payments",
+      "paragraphs": [
+        "SimpliSafe takes Visa, Mastercard, American Express and Discover. Prepaid cards are no longer accepted for professional monitoring plans.",
+        "In the online account, choose Monitoring, select Edit under Credit Card in the blue banner, choose to add a new card and submit. The new card becomes your default; repeat for each monitored property.",
+        "In the app, open Plan & Billing, then Payment Methods, and tap Add New Payment. Cards can only be deleted in the app, and the default card cannot be deleted."
+      ],
+      "steps": [
+        "Log in to the online account.",
+        "Select Monitoring.",
+        "Select Edit under Credit Card.",
+        "Add a new credit card and submit."
+      ],
+      "source": "https://support.simplisafe.com/articles/account-billing/how-to-update-your-payment-method?lang=en-US"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "See your payment and billing history",
+      "topic": "billing",
+      "paragraphs": [
+        "Use a desktop browser: the mobile app does not show this menu. Log in, select Manage Account under your email address, and scroll to Monitoring Payments. Click an invoice number to open it and use the page selector for older invoices.",
+        "Some permit and false-alarm fee invoices do not appear online; contact Support for a copy of a specific invoice."
+      ],
+      "steps": [
+        "Log in on a desktop browser.",
+        "Select Manage Account.",
+        "Scroll to Monitoring Payments.",
+        "Click an invoice number."
+      ],
+      "source": "https://support.simplisafe.com/articles/account-billing/how-can-i-see-my-payment-and-billing-history?lang=en-US"
+    },
+    {
+      "slug": "faq",
+      "title": "When is my bill due?",
+      "topic": "faq",
+      "paragraphs": [
+        "Billing starts after a three-day Practice Mode that follows activation. After that you are charged every month on the same day you activated plus three days; for example, activating on the 17th means billing on the 20th.",
+        "To move the billing date, contact Support. The change takes effect within 10 days, or at the next cycle if you ask within 10 days of your current billing date."
+      ],
+      "source": "https://support.simplisafe.com/articles/account-billing/when-is-my-bill-due-and-can-i-change-the-due-date?lang=en-US"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "setup-payment-plan",
+      "downgrade-plan"
+    ],
+    "extra": [
+      {
+        "slug": "downgrade-phone",
+        "intent": "You want to move your SimpliSafe monitoring to a cheaper plan. Using SimpliSafe's help pages, find out how to downgrade and report the phone number to call. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8887838441"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8887838441"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans",
+          "limitation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Downgrades are by chat or by calling 1-888-783-8441."
+          }
+        ]
+      },
+      {
+        "slug": "due-date-change-time",
+        "intent": "You asked SimpliSafe to move your monthly billing date. Using their help pages, find out how many days the change takes to go into effect. Do not change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Billing date changes take effect within 10 days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Monitoring Payments",
+        "Payment Methods"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-888-783-8441"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "Downgrades cannot be made online"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "update-payment-method",
+      "contains": "Prepaid cards"
+    }
+  ]
+}

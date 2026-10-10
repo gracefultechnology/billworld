@@ -1,0 +1,136 @@
+{
+  "id": "mutual-of-omaha-medicare-supplement-united-of-om-709f50",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Mutual of Omaha Medicare Supplement",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public mutualofomaha.com pages and the official Payment Authorization form (M20777) only; no sign-in or registration. Customer Access lets individual policyholders edit contact and billing details, make a payment or sign up for automatic deductions, change how and when they pay, review policies and request duplicates; Medicare supplement extras are the ID card, EOBs (with a paperless EOB option), recent claims and plan comparison. Registration verifies identity with the policy or coverage ID number; sign-in uses the ID and password chosen at registration ('Sign In' link). Automatic deductions draw monthly from checking or savings only (the form says not to use debit or credit card numbers): pick a day from the 1st to the 28th or the last day, or a week and weekday (e.g. 3rd Wednesday); weekend/holiday drafts move to the next business day; without a choice the policy date is used. The authorization lasts until at least three business days' notice to cancel; verbal notice may need written confirmation within 15 days. Phone: 800-775-6000 (individual policy owners; also on the form). Reviewer (2026-10-09): 888-986-1736 on the Medicare supplement contact page is the toll-free line for shopping / a licensed agent, not Customer Access help; help text corrected. Mail: 3300 Mutual of Omaha Plaza, Omaha, NE 68175. Online one-time payment methods are not described; card acceptance for one-time online payments is left at the family default. AutoPay 'days' models only the numbered-day option (week/weekday choice cannot be expressed). No fees published.",
+  "officialDomains": ["mutualofomaha.com"],
+  "sources": [
+    { "url": "https://mutualofomaha.com/welcome/customer-access", "title": "Easily manage your account — anytime, anywhere | Mutual of Omaha", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://www.mutualofomaha.com/medicare-supplement-insurance/contact", "title": "Medicare Supplement Insurance Contact | Mutual of Omaha", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.mutualofomaha.com/support/contact-us", "title": "Contact Us | Mutual of Omaha", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://content.mutualofomaha.com/contactforms/sites/content.mutualofomaha.com.contactforms/files/_forms/Payment_Auth_M20777_0618_0.pdf", "title": "Automatic Deductions / Payment Authorization Form (M20777)", "fetchedAt": "2026-10-09", "kind": "autopay" }
+  ],
+  "brand": { "displayName": "Mutual of Omaha", "shortName": "Mutual of Omaha", "primary": "#003b71", "accent": "#00607a", "monogram": "MO" },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Register",
+    "dashboard": "Customer Access",
+    "payBill": "Make a payment",
+    "autopay": "Automatic deductions",
+    "profile": "Personal and billing info",
+    "statements": "Policy documents"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign In", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Customer Access help", "helpSlug": "register" },
+      { "label": "Contact us", "helpSlug": "contact-us" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Customer Access", "page": "dashboard" },
+      { "label": "Make a payment", "page": "pay" },
+      { "label": "Automatic deductions", "page": "autopay" },
+      { "label": "Policy documents", "page": "statements" },
+      { "label": "Personal and billing info", "page": "profile" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://mutualofomaha.com/welcome/customer-access"
+  },
+  "capabilities": {
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://mutualofomaha.com/welcome/customer-access", "note": "Register for Customer Access with your policy or coverage ID number." },
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://mutualofomaha.com/welcome/customer-access" },
+    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://mutualofomaha.com/welcome/customer-access", "note": "No pay-without-signing-in option is offered. Sign in to Customer Access, call 800-775-6000, or mail your payment with the premium notice.", "channel": "phone", "phone": "8007756000" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://mutualofomaha.com/welcome/customer-access", "note": "Automatic deductions draw from a checking or savings account only." },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://content.mutualofomaha.com/contactforms/sites/content.mutualofomaha.com.contactforms/files/_forms/Payment_Auth_M20777_0618_0.pdf", "note": "Give at least three business days' notice; a phone request may need written confirmation within 15 days." },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://mutualofomaha.com/welcome/customer-access", "note": "Medicare supplement customers can switch to paperless EOBs." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.mutualofomaha.com/support/contact-us", "phone": "8007756000", "note": "Individual policy owners call 800-775-6000." },
+    "pay_by_mail": { "support": "supported", "evidence": "inferred", "source": "https://www.mutualofomaha.com/support/contact-us", "note": "Mail payment with your premium notice." }
+  },
+  "billing": {
+    "source": "https://content.mutualofomaha.com/contactforms/sites/content.mutualofomaha.com.contactforms/files/_forms/Payment_Auth_M20777_0618_0.pdf",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "days": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28], "methodTypes": ["bank"] }
+  },
+  "help": [
+    {
+      "slug": "register",
+      "title": "Customer Access",
+      "topic": "account",
+      "paragraphs": [
+        "Customer Access is Mutual of Omaha's secure site for individual policyholders. You can update your contact and billing details, make a payment or sign up for automatic deductions, change how and when you pay, and review your policies or ask for duplicate copies.",
+        "Medicare supplement customers can also view their ID card, see Explanation of Benefits statements (or switch to paperless EOBs), check recent claims and compare Medicare supplement plans.",
+        "To register you need your policy or coverage ID number. Afterwards, choose Sign In at the top of any page and use the ID and password you created."
+      ],
+      "source": "https://mutualofomaha.com/welcome/customer-access"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic deductions",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic deductions take your premium from your checking or savings account each month, so your coverage does not lapse because a payment was missed. Debit and credit card numbers cannot be used.",
+        "Pick the day the payment comes out: any day from the 1st to the 28th, the last day of the month, or a week and weekday such as the third Wednesday. If the date falls on a weekend or holiday, the payment is taken the next business day. If you do not choose, the policy date is used.",
+        "You can sign up in Customer Access, or complete the Payment Authorization form, attach a voided or blank check from the account to use, and mail it in."
+      ],
+      "steps": ["Sign in to Customer Access.", "Open Automatic deductions.", "Enter your checking or savings account.", "Choose your monthly deduction day and confirm."],
+      "source": "https://content.mutualofomaha.com/contactforms/sites/content.mutualofomaha.com.contactforms/files/_forms/Payment_Auth_M20777_0618_0.pdf"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Stopping automatic deductions",
+      "topic": "autopay",
+      "paragraphs": [
+        "Your authorization stays in effect until you give Mutual of Omaha at least three business days' notice to cancel. If you cancel by phone, the company may ask you to confirm in writing within 15 days. Questions: call 800-775-6000."
+      ],
+      "source": "https://content.mutualofomaha.com/contactforms/sites/content.mutualofomaha.com.contactforms/files/_forms/Payment_Auth_M20777_0618_0.pdf"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Mutual of Omaha",
+      "topic": "contact",
+      "paragraphs": [
+        "Individual policy owners can call Customer Service at 800-775-6000. To shop for or compare Medicare supplement plans with a licensed agent, call 888-986-1736. Mail: Mutual of Omaha, 3300 Mutual of Omaha Plaza, Omaha, NE 68175."
+      ],
+      "source": "https://www.mutualofomaha.com/support/contact-us"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-cancel-notice",
+        "intent": "Using Mutual of Omaha's help pages, find how much notice you must give to stop automatic premium deductions from your bank account. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["three business days", "3 business days"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["three business days", "3 business days"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "At least three business days' notice." }]
+      },
+      {
+        "slug": "autopay-on-the-10th",
+        "intent": "Sign in to your Mutual of Omaha Customer Access account and turn on automatic deductions for your Medicare supplement premium from your saved checking account, taken on the 10th of each month. Do not make a one-time payment.",
+        "scenario": { "autopay": false },
+        "predicates": [{ "type": "autopay", "enrolled": true, "methodType": "bank", "day": 10 }, { "type": "no_payment" }, { "type": "no_unrequested_changes", "allow": ["autopay"] }],
+        "tags": ["autopay", "enroll"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "login" }, { "op": "autopay", "input": { "day": 10 } }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "Sign In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Automatic deductions", "Make a payment"] },
+    { "page": "helpArticle", "slug": "autopay", "contains": "1st to the 28th" },
+    { "page": "helpArticle", "slug": "cancel-autopay", "contains": "three business days" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "800-775-6000" }
+  ]
+}

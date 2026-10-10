@@ -1,0 +1,299 @@
+{
+  "id": "vsp-vision-care-vsp-individual-vision-plans-ab23af",
+  "version": 1,
+  "status": "dedicated",
+  "name": "VSP Vision Care (VSP Individual Vision Plans)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public vsp.com and vspdirect.com pages only (no sign-in). The vsp.com member FAQ is rendered by JavaScript; its billing answer (Dashboard > Pay Your Bill > Billing & Payment, which shows payment info and history and sets up auto payments; bill questions 800.877.7195) was read from the indexed page text. Individual plans are a 12- or 24-month contract paid annually or in monthly installments billed one month ahead; monthly billing dates are the 1st, 5th, 10th, 15th or 20th, modelled as the allowed AutoPay draft days. Credit cards and checking accounts are accepted. Cancellation must be requested in writing to VSP Member Services, so cancel_service is unsupported online. Guest pay, paperless, payment extensions and the sign-in identifier are not documented publicly and keep the family defaults. Plan prices are only published as 'from' prices, so no plan list is modelled.",
+  "officialDomains": [
+    "vsp.com",
+    "vspdirect.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.vsp.com/faqs/my-information",
+      "title": "Your VSP Member Account and Information",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.vspdirect.com/faq",
+      "title": "VSP Individual Vision Plans FAQ",
+      "fetchedAt": "2026-10-05",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.vspdirect.com/faq/vision-plan-enrollment",
+      "title": "VSP Individual Vision Plans FAQ: Vision Plan Enrollment",
+      "fetchedAt": "2026-10-05",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.vspdirect.com/termsandconditions",
+      "title": "VSP Individual Vision Plans Terms & Conditions",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "VSP Vision Care",
+    "shortName": "VSP",
+    "primary": "#00467f",
+    "accent": "#1f5f8b",
+    "monogram": "V"
+  },
+  "labels": {
+    "dashboard": "Dashboard",
+    "payBill": "Pay Your Bill",
+    "viewBill": "Billing & Payment",
+    "history": "Payment History",
+    "autopay": "Auto Payments",
+    "help": "FAQs"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Your Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Billing & Payment",
+        "page": "bill"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Auto Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "My Account",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.vsp.com/faqs/my-information"
+    },
+    "view_bill": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.vsp.com/faqs/my-information"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.vsp.com/faqs/my-information"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.vspdirect.com/termsandconditions",
+      "note": "To cancel an individual vision plan, send a written request to VSP Member Services. Call 800.785.0699 for help.",
+      "channel": "mail",
+      "phone": "800-785-0699"
+    }
+  },
+  "billing": {
+    "source": "https://www.vspdirect.com/termsandconditions",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": [
+        1,
+        5,
+        10,
+        15,
+        20
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "billing-and-payment",
+      "title": "Pay your bill and set up auto payments",
+      "topic": "billing",
+      "paragraphs": [
+        "If you pay for your VSP coverage yourself rather than through an employer, you manage billing in your VSP member account. From your Dashboard, choose Pay Your Bill and then Billing & Payment.",
+        "That page shows your payment information and payment history, and it is where you set up automatic payments.",
+        "For questions about your bill or about setting up autopay, call 800.877.7195 (TTY 711)."
+      ],
+      "steps": [
+        "Log in to your VSP member account.",
+        "From your Dashboard, choose Pay Your Bill.",
+        "Open Billing & Payment.",
+        "Review your payment information or set up auto payments."
+      ],
+      "source": "https://www.vsp.com/faqs/my-information"
+    },
+    {
+      "slug": "payment-options",
+      "title": "Annual or monthly payments",
+      "topic": "billing",
+      "paragraphs": [
+        "Individual plans can be paid as one annual premium or in monthly installments over the contract. Your first installment, or the annual fee, is paid when you enroll and must be paid before you can use the plan.",
+        "Monthly installments are billed one month in advance and withdrawn automatically. You can pick a billing date of the 1st, 5th, 10th, 15th or 20th of the month.",
+        "Automatic withdrawals can come from a credit card or a checking account."
+      ],
+      "source": "https://www.vspdirect.com/faq/vision-plan-enrollment"
+    },
+    {
+      "slug": "renewal-and-missed-payments",
+      "title": "Renewal and missed payments",
+      "topic": "billing",
+      "paragraphs": [
+        "Your plan renews automatically each year as long as premiums are paid on time, using the payment method you gave at enrollment. VSP mails a reminder about 60 days before the renewal date.",
+        "If a premium is not received, VSP may end your coverage 30 days after the date it was due. Keep your payment details current in your member account or by calling 800.785.0699."
+      ],
+      "source": "https://www.vspdirect.com/termsandconditions"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your individual vision plan",
+      "topic": "account",
+      "paragraphs": [
+        "Cancellations are not made online. Send a written cancellation request to VSP Member Services; you keep access to the plan for the period you have already paid for.",
+        "If you return the plan within 30 days of receiving it, you get a refund minus a processing fee. Call 800.785.0699 (Monday to Thursday 7am to 9pm, Friday 7am to 7pm, Saturday 9:30am to 4pm Central) with questions."
+      ],
+      "source": "https://www.vspdirect.com/termsandconditions"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "billing-date-options",
+        "intent": "Using the VSP website's help pages, find which days of the month you can choose for monthly billing on an individual vision plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "20th",
+              "20"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "20th",
+            "20"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Monthly billing can be set for the 1st, 5th, 10th, 15th or 20th of the month."
+          }
+        ]
+      },
+      {
+        "slug": "billing-questions-phone",
+        "intent": "Find the phone number VSP lists for questions about your bill or setting up autopay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8008777195"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8008777195"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "800.877.7195"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "written request",
+        "Create an account"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Your Bill",
+        "Billing & Payment"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "billing-and-payment",
+      "contains": "800.877.7195"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-options",
+      "contains": "20th"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "written request"
+    }
+  ]
+}

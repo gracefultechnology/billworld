@@ -1,0 +1,332 @@
+{
+  "id": "athens-services-cfbc97",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Athens Services",
+  "category": "trash",
+  "template": "waste-hauler",
+  "reviewedAt": "2026-10-09",
+  "notes": "Moved from the catalog default utility-account family (energy-utility portal with an energy-usage panel and Budget Billing) to the trash-specific waste-hauler family. Researched from the public athensservices.com Billing page and the public Athens Online Bill Pay (Soft-Pak Web-Pak) sign-in page and its FAQ; never signed in. Sign-in is one page with E-Mail and a case-sensitive password; Register Now needs the Customer Number and Access Code from a statement or invoice and is confirmed by an emailed link; Reset Password emails a link. The real portal limits passwords to 3-10 characters, which would reject the fleet test passwords, so no passwordRule is set. Online payments are free (card processing by Fusebox, tokenized). AutoPay is enrolled with the Autopay Enrollment button and changed with Modify under Billing Options; the FAQ does not describe turning it off, so autopay_cancel is inferred. Bill delivery (paperless) has three switches under Billing Options: E-Mail Notifications Only, E-Mail Notifications With Bill Attached, Printed Bill. Walk-in payment at Irwindale, Thousand Oaks and Pomona customer service centers; Customer Support (888) 336-6100. A Resume Service Fee applies after a non-payment stop (amount not published). No guest pay, late-fee or payment-plan policy is published (family defaults kept). The Web-Pak bill-pay portal only handles payments, AutoPay, payment methods and bill delivery; service requests go to Customer Support or a Customer Service Center, so cancel_service is unsupported online (inferred).",
+  "officialDomains": [
+    "athensservices.com"
+  ],
+  "sources": [
+    {
+      "url": "https://athensservices.com/billing/",
+      "title": "Billing | Athens Services",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://billing.athensservices.com/webpak/signin.jsp",
+      "title": "Athens Online Bill Pay",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://billing.athensservices.com/webpak/faq.jsp",
+      "title": "Online Bill Pay - Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Athens Services",
+    "shortName": "Athens",
+    "primary": "#005f86",
+    "accent": "#3a6b1e",
+    "monogram": "A"
+  },
+  "labels": {
+    "payBill": "Pay My Bill Online",
+    "signIn": "Sign In",
+    "register": "Register Now",
+    "forgot": "Reset Password",
+    "autopay": "Autopay Enrollment",
+    "paperless": "Billing Options",
+    "wallet": "Payment Methods",
+    "profile": "User Options",
+    "help": "FAQ",
+    "contact": "Billing Questions",
+    "accountNumber": "Customer Number",
+    "username": "E-Mail"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Register Now",
+        "page": "register"
+      },
+      {
+        "label": "Pay My Bill In Person",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Online Bill Pay",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill Online",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay Enrollment",
+        "page": "autopay"
+      },
+      {
+        "label": "Billing Options",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "User Options",
+        "page": "profile"
+      },
+      {
+        "label": "Billing Questions",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://billing.athensservices.com/webpak/signin.jsp"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://billing.athensservices.com/webpak/faq.jsp",
+      "note": "Register Now with the Customer Number and Access Code from your statement or invoice, then confirm through the emailed link."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://billing.athensservices.com/webpak/faq.jsp"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://billing.athensservices.com/webpak/faq.jsp"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://billing.athensservices.com/webpak/faq.jsp",
+      "note": "AutoPay is managed from Billing Options (Modify); turning it off there is inferred."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://billing.athensservices.com/webpak/faq.jsp"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://athensservices.com/billing/",
+      "channel": "phone",
+      "phone": "888-336-6100",
+      "note": "Service cannot be stopped through Online Bill Pay. Call Athens Services Customer Support at (888) 336-6100 or visit a Customer Service Center to stop or change service."
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://athensservices.com/billing/"
+    }
+  },
+  "billing": {
+    "source": "https://athensservices.com/billing/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://athensservices.com/billing/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Athens invoice",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay any time online through Athens Online Bill Pay; the service is free. Card payments are processed by Fusebox, a PCI-compliant processor, and your card number is stored only as a token.",
+        "You can also pay in person at the Irwindale, Thousand Oaks (Athens Operations and Sustainability Center) or Pomona customer service centers. Your account number is on your monthly invoice. For payment or account questions call Customer Support at (888) 336-6100."
+      ],
+      "source": "https://athensservices.com/billing/"
+    },
+    {
+      "slug": "register",
+      "title": "How to register for an Online Bill Pay account",
+      "topic": "account",
+      "paragraphs": [
+        "On the Sign In page, under Are you a new user?, choose Register Now. Enter the Customer Number and Access Code printed on your statement or invoice, along with your e-mail address and a password, then select Register Now.",
+        "Athens emails you a link; open it and sign in to finish registering. Your e-mail address is your username, and you can change it later under User Options, Change Username."
+      ],
+      "source": "https://billing.athensservices.com/webpak/faq.jsp"
+    },
+    {
+      "slug": "autopay",
+      "title": "How to enroll in automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic payments pay each invoice from a saved card or bank account. You must accept the Terms and Conditions when you choose the payment method."
+      ],
+      "steps": [
+        "Sign in and select Autopay Enrollment.",
+        "Pick a saved payment method, or choose Add New and enter one.",
+        "Check I agree to the Terms and Conditions.",
+        "Select Select (or Add Payment) to finish enrolling."
+      ],
+      "source": "https://billing.athensservices.com/webpak/faq.jsp"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "How to modify automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Select Autopay Enrollment to open Billing Options, then choose Modify in the Automatic Payments section. Add a new payment method or pick another saved one, agree to the Terms and Conditions and choose Select."
+      ],
+      "source": "https://billing.athensservices.com/webpak/faq.jsp"
+    },
+    {
+      "slug": "paperless",
+      "title": "How to change your bill delivery options",
+      "topic": "billing",
+      "paragraphs": [
+        "Select Billing Options after signing in. You will only see it if your online account is the admin for that account number.",
+        "Three On/Off switches control delivery: E-Mail Notifications Only (an email when the bill is ready online), E-Mail Notifications With Bill Attached (the bill as a PDF), and Printed Bill (a paper bill by mail). Choose Submit to save."
+      ],
+      "source": "https://billing.athensservices.com/webpak/faq.jsp"
+    },
+    {
+      "slug": "fees",
+      "title": "Reactivation and resume service fees",
+      "topic": "billing",
+      "paragraphs": [
+        "A Resume Service Fee is charged when a residential or commercial account that was stopped for non-payment is restarted after payment. A Reactivation Fee applies to permanent commercial accounts reopened after being stopped for bad debt.",
+        "Rate changes generally follow the Consumer Price Index, fuel prices, labor costs and disposal fees."
+      ],
+      "source": "https://athensservices.com/billing/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "registration-codes",
+        "intent": "Using Athens Services' help pages, find which two numbers from your invoice you need to register for Online Bill Pay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "customer number",
+              "access code"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "customer number",
+            "access code"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You need the Customer Number and the Access Code from your statement or invoice."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign In",
+        "Register Now"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "E-Mail",
+        "Reset Password"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Autopay Enrollment",
+        "Billing Options"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "E-Mail Notifications With Bill Attached"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "Access Code"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "(888) 336-6100"
+    }
+  ]
+}

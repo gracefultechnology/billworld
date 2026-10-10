@@ -1,0 +1,334 @@
+{
+  "id": "cubesmart-fe3b27",
+  "version": 1,
+  "status": "dedicated",
+  "name": "CubeSmart",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public CubeSmart FAQ, fee schedule, mobile-app page and the Customer Center log-in page (no sign-in). Customer Center log-in uses email address + password; the app uses the same credentials. Rent is due on the move-in day each month. Fees: 3% convenience fee on one-time card AND one-time ACH payments online/phone and on card AutoPay; bank-account (ACH) AutoPay and in-store payments are free. The dossier fee model has no percentage fee for bank payments, so only the 3% card fee is modelled (see report). Other fees by state: $29 admin rental fee, $1/month invoice fee, $110 lien fee after 30 days, $30 NSF; late fees vary by state (e.g. Florida: greater of $20 or 20% of rent on day 6), so no single late fee is modelled. Phone agents do not take payments; the automated line 855-535-5785 does. Move-out notice is appreciated but not required; no online move-out is described, so cancel_service is marked unsupported online (inferred). Badly past-due accounts must talk to the store manager. Reviewer 2026-10-09: cubesmart.com header shows \"Pay Bill\" and \"Account Login\" and the footer link is \"FAQs\"; nav updated.",
+  "officialDomains": [
+    "cubesmart.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cubesmart.com/about-us/frequently-asked-questions/",
+      "title": "Frequently Asked Questions | CubeSmart",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.cubesmart.com/feeschedule",
+      "title": "Fee Schedule | CubeSmart",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://mycube.cubesmart.com/account/login",
+      "title": "CubeSmart Customer Center - Log in",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.cubesmart.com/mobileapp/",
+      "title": "CubeSmart Mobile App",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "shortName": "CubeSmart",
+    "primary": "#b4152c",
+    "accent": "#1f2937",
+    "monogram": "CS"
+  },
+  "labels": {
+    "payBill": "Pay Bill",
+    "dashboard": "Customer Center",
+    "autopay": "AutoPay",
+    "signIn": "Log in",
+    "register": "Register a new account",
+    "forgot": "Forgot Password?",
+    "username": "Email address",
+    "help": "FAQs",
+    "cancel": "Move Out"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Bill",
+        "page": "login"
+      },
+      {
+        "label": "Account Login",
+        "page": "login"
+      },
+      {
+        "label": "Register a new account",
+        "page": "register"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Customer Center",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://mycube.cubesmart.com/account/login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cubesmart.com/about-us/frequently-asked-questions/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cubesmart.com/about-us/frequently-asked-questions/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cubesmart.com/about-us/frequently-asked-questions/",
+      "phone": "855-535-5785",
+      "note": "Agents cannot take payments; use the automated payment line."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cubesmart.com/about-us/frequently-asked-questions/",
+      "channel": "in_person",
+      "phone": "877-279-7585",
+      "note": "CubeSmart rentals are month-to-month and no online move-out is offered; tell your store when you plan to move out (notice is appreciated, not required) or call 1-877-279-7585."
+    }
+  },
+  "billing": {
+    "source": "https://www.cubesmart.com/about-us/frequently-asked-questions/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "cardPercent": 3,
+      "evidence": "documented_official",
+      "source": "https://www.cubesmart.com/feeschedule"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your rent",
+      "topic": "payments",
+      "source": "https://www.cubesmart.com/about-us/frequently-asked-questions/",
+      "paragraphs": [
+        "Rent is due on your move-in day and on that same day every month after. You can pay online in the CubeSmart Customer Center, in the CubeSmart app, on the automated payment line at 855-535-5785, or at your store.",
+        "Phone agents cannot take payments. In-store payments by cash, check or card have no convenience fee. CubeSmart accepts Visa, Mastercard, Discover and American Express."
+      ],
+      "steps": [
+        "Log in to the Customer Center with your email address.",
+        "Choose Pay Bill.",
+        "Pick a card or bank account.",
+        "Review any convenience fee and submit."
+      ]
+    },
+    {
+      "slug": "convenience-fees",
+      "title": "Convenience fees",
+      "topic": "billing",
+      "source": "https://www.cubesmart.com/feeschedule",
+      "paragraphs": [
+        "One-time payments made online or by phone carry a 3% convenience fee, whether you pay by card or from a bank account. AutoPay with a card also carries the fee.",
+        "AutoPay from a bank account has no convenience fee, and neither do payments made in the store."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "source": "https://www.cubesmart.com/about-us/frequently-asked-questions/",
+      "paragraphs": [
+        "AutoPay pays your rent automatically each month. Enroll a bank account to avoid the convenience fee; card AutoPay is also available but carries the 3% fee.",
+        "You can set up AutoPay in the Customer Center or in the CubeSmart app."
+      ]
+    },
+    {
+      "slug": "late-fees",
+      "title": "Past-due rent",
+      "topic": "billing",
+      "source": "https://www.cubesmart.com/feeschedule",
+      "paragraphs": [
+        "Late fees depend on your state and are listed in the fee schedule. For example, in Florida the late fee is the greater of $20 or 20% of monthly rent if rent is not received by the sixth day after it was due.",
+        "If rent is still unpaid 30 days after it was due, most states add an administrative lien fee. Once an account is far enough behind you must speak with your store manager about payment, and payments made after hours do not restore gate access until the next business day."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://www.cubesmart.com/about-us/frequently-asked-questions/",
+      "paragraphs": [
+        "CubeSmart rentals are month-to-month. Advance notice that you are moving out is appreciated but not required; let your store know your move-out date."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "fee-free-autopay",
+        "intent": "Using CubeSmart's help pages, find which kind of AutoPay has no convenience fee. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "bank",
+              "ACH",
+              "checking"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "bank",
+            "ACH",
+            "checking"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AutoPay from a bank account (ACH) has no convenience fee."
+          }
+        ]
+      },
+      {
+        "slug": "automated-payment-line",
+        "intent": "Find the phone number of CubeSmart's automated payment line. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8555355785"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8555355785"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "855-535-5785"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email address",
+        "Log in"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "convenience-fees",
+      "contains": [
+        "3%",
+        "bank account"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "855-535-5785"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "877-279-7585"
+    }
+  ]
+}

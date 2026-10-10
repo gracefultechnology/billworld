@@ -1,0 +1,292 @@
+{
+  "id": "optimum-altice-usa-optimum-tv-4c9226",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Optimum TV (Altice USA)",
+  "category": "tv",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public optimum.net / optimum.com pages and the public Optimum sign-in page only (no sign-in, no forms). Sign-in is two-step on auth.optimum.net: 'Username' (the Optimum ID) then Continue to the password, with Forgot your Optimum ID?, Create ID and a passkey option. Quick Pay takes a one-time payment without signing in using the account number and the ZIP code on the account (guestLookupFields accountNumber + zip), by credit card, debit card or bank account. Auto Pay pays the bill on the due date from a bank account or debit/credit card, starts with the next bill, and turns off immediately (Turn off Auto Pay). Paperless Billing is enrolled on the same Auto Pay page (Go paperless). Discount: as of 8/17/2026 $10/month for Auto Pay from a checking account plus Paperless Billing (not for certain group/specialty accounts); Auto Pay failing two months in a row unenrolls you. Phone payments: automated line 866.213.7456 is free; since June 3, 2025 a $5 Payment Assistance Fee applies when paying with an Optimum Expert. Late fee amounts are not stated on the pages used. How to cancel TV service is not documented on the public pages found (only terms saying cancellation takes effect at the end of the billing period), so cancel_service keeps the family default; flagged as a gap. Plans vary by address and are left out.",
+  "officialDomains": [
+    "optimum.net",
+    "optimum.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.optimum.net/pages/how-to-pay-my-bill.html",
+      "title": "Ways to Pay Your Optimum Bill | Optimum",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.optimum.net/FAQ/#/answers/a_id/2593",
+      "title": "Optimum | FAQ - Auto Pay and Paperless Billing",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.optimum.com/welcome/billing-support",
+      "title": "Optimum Billing & Support | Pay Your Bill, Account Help & Contact",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.optimum.net/login/",
+      "title": "Optimum sign-in (auth.optimum.net)",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Optimum",
+    "shortName": "Optimum",
+    "primary": "#0f2a71",
+    "accent": "#c4122f",
+    "monogram": "O"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "username": "Username",
+    "register": "Create ID",
+    "forgot": "Forgot your Optimum ID?",
+    "guestPay": "Quick Pay",
+    "payBill": "Pay bill",
+    "viewBill": "View my bill",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "dashboard": "My Optimum",
+    "profile": "My Profile",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Optimum",
+        "page": "dashboard"
+      },
+      {
+        "label": "View my bill",
+        "page": "bill"
+      },
+      {
+        "label": "Pay bill",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.optimum.net/login/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593",
+      "note": "Auto Pay starts with your next bill; make a one-time payment now if a balance is due."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html",
+      "phone": "8662137456"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Optimum bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Quick Pay lets you make a one-time payment by credit card, debit card or bank account without signing in: you only need the account number from the top of your bill and the ZIP code on the account. Signed in, you can make or schedule a payment, or set up Auto Pay. In the My Optimum app, go to My Account and then Billing.",
+        "To pay through your bank's bill pay, add Optimum as a payee with your 14-digit account number (no dashes or spaces). By mail, send a check or money order with the remit stub at least a week before the due date; late payments may be charged a late fee and returned checks a returned payment charge.",
+        "By phone, the automated line at 866.213.7456 takes check or card payments with no added fee. Since June 3, 2025, paying with the help of an Optimum Expert adds a $5 Payment Assistance Fee. You can also pay cash at CheckFreePay or Western Union, or pay at an Optimum Store."
+      ],
+      "source": "https://www.optimum.net/pages/how-to-pay-my-bill.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay and Paperless Billing",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay pays your monthly bill automatically on the due date from a bank account or debit or credit card, and you get an email each time a payment is processed. It takes effect with your next bill, so make a one-time payment now if a balance is due.",
+        "To enroll, go to Auto Pay, sign in with your primary Optimum ID, select or enter a payment method, keep Go paperless on, enter your billing email and select Enroll. If you already paid your latest bill you can tick the box to skip the first automatic payment.",
+        "To change the method, choose Change automatic payment settings; changes apply to the next bill. Turning off Auto Pay with Turn off Auto Pay takes effect immediately, so pay on time yourself afterwards."
+      ],
+      "steps": [
+        "Go to Auto Pay and sign in with your primary Optimum ID.",
+        "Select or enter your payment method.",
+        "Keep Go paperless on and enter your billing email.",
+        "Select Enroll."
+      ],
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    {
+      "slug": "autopay-discount",
+      "title": "Auto Pay and Paperless Billing discount",
+      "topic": "billing",
+      "paragraphs": [
+        "As of August 17, 2026, eligible residential customers get $10 off each month for paying by Auto Pay from a checking account and staying enrolled in Paperless Billing. Only checking accounts qualify, and you must keep both to keep the discount. Certain group, employee and specialty accounts, such as Optimum Advantage Internet and Big Apple Connect, are not eligible.",
+        "If Auto Pay fails two months in a row, or two one-time payments are made in a row, you can be unenrolled from Auto Pay and lose the discount."
+      ],
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "With Paperless Billing you get an email as soon as your bill is ready and can view the last 12 months of bills online or in the My Optimum app. If you already use Auto Pay, open Auto Pay, check Go paperless under your account number, enter your billing email and select Go paperless. To return to paper bills, choose Manage paperless billing and then Opt-out of Paperless Billing."
+      ],
+      "source": "https://www.optimum.net/FAQ/#/answers/a_id/2593"
+    },
+    {
+      "slug": "billing-support",
+      "title": "Billing and support",
+      "topic": "billing",
+      "paragraphs": [
+        "Internet, TV and Home Phone are billed together in My Optimum, while Mobile has its own bill in MyMobile. Your first bill may be higher because of installation or activation fees, equipment purchases or a partial month of service.",
+        "For help, chat with the virtual assistant Allie at any time, use the Help Center, or visit an Optimum Store to make payments and pick up equipment."
+      ],
+      "source": "https://www.optimum.com/welcome/billing-support"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "agent-payment-fee",
+        "intent": "Using Optimum's Ways to Pay page, find out what fee applies if you pay your bill by phone with the help of an Optimum Expert instead of the automated line. Do not make a payment.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["$5", "5 dollars", "five dollar"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["$5", "5 dollars", "five dollar"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "A $5 Payment Assistance Fee; the automated line has no fee." }
+        ]
+      },
+      {
+        "slug": "autopay-discount-method",
+        "intent": "Find out which payment method Optimum requires for the monthly Auto Pay and Paperless Billing discount and how much it is. Do not change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["checking"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["checking"] },
+        "tags": ["help", "information", "autopay", "discount"],
+        "evidence": "documented_official",
+        "solution": [
+          { "op": "answer", "text": "Auto Pay must use a checking account (with Paperless Billing) for the $10 monthly discount." }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["Username"] },
+    { "page": "guest", "contains": "ZIP" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Auto Pay", "Paperless Billing"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "866.213.7456" },
+    { "page": "helpArticle", "slug": "autopay-discount", "contains": "checking account" }
+  ]
+}

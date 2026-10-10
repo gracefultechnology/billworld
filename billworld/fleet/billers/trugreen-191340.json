@@ -1,0 +1,338 @@
+{
+  "id": "trugreen-191340",
+  "version": 1,
+  "status": "dedicated",
+  "name": "TruGreen",
+  "category": "home-services",
+  "template": "invoice-portal",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from TruGreen's public Customer Support page (billing FAQs) and the public Pay Your Bill page only (never signed in; the Find my bill form was not submitted). Sign-in takes a Username or email and password on one form. Pay My Bill without signing in finds the bill by last name plus either phone number and ZIP or customer number and ZIP; modelled as guest lookup by customer number, last name and ZIP. Payment options are PrePay (discounted), EasyPay (automatic charge to a bank account or card after each completed service) and Pay as You Go (invoice after each service). Online payments accept ACH and Visa, American Express, Mastercard and Discover; TruGreen may add a credit-card surcharge of up to 3% (2% in Oklahoma), modelled as cardPercent 3. Pay by phone at 1-855-495-0365 or mail a check to the Phoenix or Louisville processing centers. Cancellation is phone only (1-844-768-0421); the FAQ states it cannot be done in My Account. Stopping EasyPay online is not described (left at family default). Plan names (TruPro, TruCore, TruNatural, TruBasic) are real, but prices are quoted per property and not published, so the plan page keeps the family's synthetic plans. Reviewer (2026-10-09): moved from utility-account to invoice-portal, because TruGreen bills per lawn application and the utility template showed an energy-usage chart and Start, Stop or Move. Sign-in labels were confirmed on the public login page (Username or email, Password, Forgot your password?, Login, Register).",
+  "officialDomains": [
+    "trugreen.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.trugreen.com/customer-support",
+      "title": "Customer support | TruGreen",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.trugreen.com/pay-your-bill",
+      "title": "Pay Your Bill | TruGreen",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.trugreen.com/my-account/login",
+      "title": "TruGreen Account Login",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "TruGreen",
+    "primary": "#00663a",
+    "accent": "#004225",
+    "monogram": "T"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "register": "Register",
+    "forgot": "Forgot your password?",
+    "guestPay": "Pay My Bill",
+    "dashboard": "Account Summary",
+    "payBill": "Pay a bill",
+    "autopay": "EasyPay",
+    "history": "Billing history",
+    "statements": "Invoices",
+    "profile": "Account Settings",
+    "help": "Customer Support",
+    "username": "Username or email",
+    "accountNumber": "Customer Number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "guest"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Customer Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay a bill",
+        "page": "pay"
+      },
+      {
+        "label": "Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Billing history",
+        "page": "history"
+      },
+      {
+        "label": "EasyPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Account Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.trugreen.com/my-account/login"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.trugreen.com/pay-your-bill",
+      "note": "Find your bill with your last name and either phone number and ZIP code or customer number and ZIP code."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.trugreen.com/customer-support",
+      "note": "EasyPay charges your bank account or card automatically after each completed service."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.trugreen.com/customer-support",
+      "phone": "8554950365"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.trugreen.com/customer-support"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.trugreen.com/customer-support",
+      "note": "Services cannot be cancelled online through My Account. Call TruGreen at 1-844-768-0421 to cancel.",
+      "channel": "phone",
+      "phone": "8447680421"
+    }
+  },
+  "billing": {
+    "source": "https://www.trugreen.com/customer-support",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 3,
+      "evidence": "documented_official",
+      "source": "https://www.trugreen.com/pay-your-bill"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "TruGreen offers three ways to pay: PrePay for a plan or service in advance at a discount, EasyPay to have each payment drawn automatically from a bank account or card after the service is done, or Pay as You Go with an invoice after each service.",
+        "Pay online any time by bank withdrawal (ACH) or by Visa, American Express, Mastercard or Discover. TruGreen may add a surcharge of up to 3% on credit card payments (2% for Oklahoma customers).",
+        "You can also pay by phone at 1-855-495-0365, or mail a check payable to TruGreen to TruGreen Processing Center, P.O. Box 78611, Phoenix, AZ 85062-8611 or P.O. Box 9001128, Louisville, KY 40290-1128."
+      ],
+      "source": "https://www.trugreen.com/customer-support"
+    },
+    {
+      "slug": "guest-pay",
+      "title": "Pay My Bill without logging in",
+      "topic": "payments",
+      "paragraphs": [
+        "Open Pay My Bill and enter your last name plus either your phone number and ZIP code or your customer number and ZIP code, then select Find my bill.",
+        "An online account adds billing history, prepaying for services, EasyPay enrollment, service history and documents such as service summaries, invoices and PrePay letters."
+      ],
+      "source": "https://www.trugreen.com/pay-your-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "EasyPay and PrePay",
+      "topic": "autopay",
+      "paragraphs": [
+        "With EasyPay the amount due is taken from your payment method on file after each completed application.",
+        "PrePay covers a set number of applications in advance. When those are used up you need to renew PrePay; otherwise your account moves to EasyPay. You can see how many prepaid applications remain on the Account Summary page or in the app."
+      ],
+      "source": "https://www.trugreen.com/customer-support"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel TruGreen services",
+      "topic": "account",
+      "paragraphs": [
+        "To cancel, call TruGreen at 1-844-768-0421. Services cannot currently be cancelled online through My Account."
+      ],
+      "source": "https://www.trugreen.com/customer-support"
+    },
+    {
+      "slug": "faq",
+      "title": "Billing questions",
+      "topic": "faq",
+      "paragraphs": [
+        "A bill can differ from what you signed up for when several seasonal services were done in the same visit, for example fertilization and grub control. Check the Payments section of your Account Summary or the app for the services performed.",
+        "If you asked for a free re-service, your regular scheduled services continue, so a new bill usually reflects the next round of regular service.",
+        "Customers can call 1-844-768-0421 or text MYLAWN (695296)."
+      ],
+      "source": "https://www.trugreen.com/customer-support"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-surcharge",
+        "intent": "Before paying your TruGreen bill by credit card, use TruGreen's website to find the maximum surcharge percentage they may add to credit card payments. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3%",
+              "3 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3%",
+            "3 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "TruGreen may add a surcharge of up to 3% (2% in Oklahoma)."
+          }
+        ]
+      },
+      {
+        "slug": "pay-by-phone-number",
+        "intent": "You would rather pay your TruGreen bill over the phone. Find the phone number TruGreen lists for paying by phone. Do not make a payment online.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8554950365"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8554950365"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Pay by phone at 1-855-495-0365."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username or email"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": "Last name"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "EasyPay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-844-768-0421"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "up to 3%"
+    }
+  ]
+}

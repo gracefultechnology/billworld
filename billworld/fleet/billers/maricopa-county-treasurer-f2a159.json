@@ -1,0 +1,294 @@
+{
+  "id": "maricopa-county-treasurer-f2a159",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Maricopa County Treasurer",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-09",
+  "template": "property-tax",
+  "notes": "Researched from public treasurer.maricopa.gov pages only. Moved from the paymentus family to property-tax: the Treasurer's own site is a parcel-based tax office (I Want To > Pay My Property Taxes), with Paymentus only as the card processor. Card/digital wallet payments cost 2.25% (credit and PayPal/Venmo/Apple Pay/Google Pay) or 1.80% (debit), no minimum, one card per transaction, up to $2,000,000; the engine charges one card rate, so 2.25% is used and the debit rate is stated in help. E-check fee is not stated on the pages read (bank fee left at default). Paperless is through eNoticesOnline with the authorization code on the bill. No automatic payment program is listed. My MCTO exists in the header but its sign-in page did not load publicly, so email/none sign-in is synthetic. Interest rate on delinquent taxes was not confirmed on a fetched page and is left out. Second-half dates (March 1 / May 1) were not on the calendar page read and are left out. Review 2026-10-09: the Payment Options page points to the website e-check as the way to pay without an additional fee, so bankCents is 0.",
+  "officialDomains": [
+    "treasurer.maricopa.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions",
+      "title": "Payment Options - Maricopa County Treasurer",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://treasurer.maricopa.gov/",
+      "title": "Maricopa County - Treasurer's Office",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://treasurer.maricopa.gov/PropertyTaxInformation/calendar/",
+      "title": "Property Tax Information - Calendar",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Maricopa County Treasurer's Office",
+    "shortName": "Maricopa County Treasurer",
+    "primary": "#5c2a0c",
+    "accent": "#1f4e5f",
+    "monogram": "MC"
+  },
+  "labels": {
+    "payBill": "Pay My Property Taxes",
+    "guestPay": "Find My Property & Tax Information",
+    "paperless": "Go Paperless with eNotices",
+    "dashboard": "My MCTO",
+    "help": "FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay My Property Taxes",
+        "page": "guest"
+      },
+      {
+        "label": "See Available Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Calendar",
+        "helpSlug": "due-dates"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "My MCTO",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My MCTO",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Property Taxes",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Go Paperless with eNotices",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions",
+      "note": "Pay by parcel without an account: card or digital wallet through Paymentus, or e-check through the website."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://treasurer.maricopa.gov/",
+      "note": "Enroll in eNotices on eNoticesOnline with the authorization code printed on your tax bill."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions",
+      "note": "No automatic payment program is offered. Pay each half online, through your bank's bill pay, at a bank branch, by mail or in person.",
+      "channel": "none"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions"
+    }
+  },
+  "billing": {
+    "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions",
+    "fees": {
+      "cardPercent": 2.25,
+      "evidence": "documented_official",
+      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions",
+      "bankCents": 0
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/PaymentOptions",
+      "paragraphs": [
+        "Card and digital payments are processed by Paymentus. Credit cards (Visa, MasterCard, Discover, American Express) and PayPal, Venmo, Apple Pay and Google Pay cost 2.25%; debit cards cost 1.80%. There is no minimum fee, the Treasurer keeps none of it, only one card may be used per transaction, and a payment can be up to $2,000,000.",
+        "To avoid a fee, pay by e-check on the Treasurer's website. Other options are an e-check through your own bank's bill pay (ask your bank; it avoids a fee), payment at a bank branch, by mail, or in person at 301 W. Jefferson St., Suite 100, Phoenix. Allow 1 to 3 business days for a payment to post."
+      ]
+    },
+    {
+      "slug": "due-dates",
+      "title": "Key property tax dates",
+      "topic": "billing",
+      "source": "https://treasurer.maricopa.gov/PropertyTaxInformation/calendar/",
+      "paragraphs": [
+        "First-half 2026 taxes are due October 1 and become delinquent after 5 p.m. on November 2, 2026.",
+        "If you miss the first-half date, you can still pay the full year by December 31 without interest when the bill is over $100. Full-year bills of $100 or less become delinquent after 5 p.m. on December 31. When December 31 is a weekend or holiday, interest starts after 5 p.m. on the next business day."
+      ]
+    },
+    {
+      "slug": "enotices",
+      "title": "Go paperless with eNotices",
+      "topic": "paperless",
+      "source": "https://treasurer.maricopa.gov/",
+      "paragraphs": [
+        "To stop paper tax bills, enroll on eNoticesOnline using the authorization code printed on your tax bill. If you cannot find your bill, email the Treasurer's Office for the code."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "debit-card-fee",
+        "intent": "Using the Maricopa County Treasurer's website help pages, find the fee Paymentus charges for paying property taxes with a debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.80%",
+              "1.8%"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.80%",
+            "1.8%"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Debit card payments cost 1.80%; credit cards and digital wallets cost 2.25%."
+          }
+        ]
+      },
+      {
+        "slug": "full-year-deadline",
+        "intent": "Using the Maricopa County Treasurer's website help pages, find the last day to pay the full year of 2026 taxes (over $100) without interest if the first half was missed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "December 31",
+              "Dec 31",
+              "12/31"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "December 31",
+            "Dec 31",
+            "12/31"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "due_date"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The full year can be paid without interest through December 31."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "See Available Payment Options",
+        "My MCTO"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "Go Paperless with eNotices"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.25%",
+        "1.80%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-dates",
+      "contains": "December 31"
+    }
+  ]
+}

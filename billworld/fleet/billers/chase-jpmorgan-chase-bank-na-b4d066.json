@@ -1,0 +1,379 @@
+{
+  "id": "chase-jpmorgan-chase-bank-na-b4d066",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Chase (JPMorgan Chase Bank, N.A.)",
+  "category": "banks",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public chase.com pages only (no sign-in). The mock bill is a Chase Auto loan payment. Online payments are made after signing in (chase.com or Chase Mobile) via Pay & transfer > Pay bills or the auto account's Pay loan button, from a Chase checking account or an external bank account added under Pay-from accounts; no card payment is documented, so methods are bank only. Cut-offs: 11 PM ET from Chase accounts, 8 PM ET from other banks. Phone: automated 1-800-346-9127; same-day by phone 1-800-346-8915. Loan due dates may be changed twice over the life of the loan, online via the auto account > More > Update settings and preferences > Payment due date (no due-date engine rule exists; answer task only). No pay-without-sign-in page exists (inferred from the ways-to-pay page, which requires sign-in for online payments). Statements: up to 7 years depending on account. Sign-in: username/password (passkeys also offered, not modelled) with 2-step verification by one-time code; the code channel is not named publicly beyond phone/email, so email_or_sms is inferred. Reviewed 2026-10-09: removed autopay eligibility/skip rules that the cited Chase pages do not state.",
+  "officialDomains": [
+    "chase.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.chase.com/personal/auto-loans/ways-to-pay",
+      "title": "Ways to pay | Chase Auto",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments",
+      "title": "Payments | Chase Auto Servicing FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.chase.com/personal/mobile-online-banking/login-paperless",
+      "title": "Go paperless and view statements | Chase",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.chase.com/digital/resources/privacy-security/questions/security-protection",
+      "title": "How we protect you | Chase",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.chase.com/personal/auto-loans/servicing",
+      "title": "Auto Servicing | Chase",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.chase.com/digital/customer-service/helpful-tips/credit-cards/mobile/set-up-autopay",
+      "title": "How To Set Up Automatic Payments | Chase",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    }
+  ],
+  "brand": {
+    "displayName": "Chase",
+    "shortName": "Chase",
+    "primary": "#005eb8",
+    "accent": "#1a3c6e",
+    "monogram": "CH"
+  },
+  "labels": {
+    "payBill": "Pay loan",
+    "autopay": "Automatic payments",
+    "paperless": "Paperless",
+    "statements": "Statements & documents",
+    "wallet": "Pay-from accounts",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "profile": "Profile & Settings",
+    "help": "Customer Service",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Auto Servicing",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay loan",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements & documents",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Pay-from accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "Profile & Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "evidence": "documented_official",
+    "source": "https://www.chase.com/digital/resources/privacy-security/questions/security-protection"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/ways-to-pay"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/mobile-online-banking/login-paperless"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/mobile-online-banking/login-paperless"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/ways-to-pay",
+      "phone": "1-800-346-9127"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/ways-to-pay"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.chase.com/personal/auto-loans/ways-to-pay",
+      "note": "Chase Auto has no pay-without-signing-in option. Sign in to pay online, or call the automated line at 1-800-346-9127.",
+      "channel": "phone",
+      "phone": "1-800-346-9127"
+    }
+  },
+  "billing": {
+    "source": "https://www.chase.com/personal/auto-loans/ways-to-pay",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Chase Auto loan",
+      "paragraphs": [
+        "Sign in to chase.com or the Chase Mobile app and choose Pay loan on your auto account, or go to Pay & transfer and then Pay bills. Paying from another bank's account? Add it first under Pay-from accounts as an external account.",
+        "You can also call the automated line at 1-800-346-9127 with your routing and account numbers, mail a check or money order with your payment coupon to the address on your statement, or pay at a Chase branch. Checks and money orders must be drawn on a U.S. bank in U.S. dollars.",
+        "Anything you pay above the amount due goes toward principal on a loan."
+      ],
+      "steps": [
+        "Sign in to chase.com or Chase Mobile.",
+        "Open your auto account and choose Pay loan (or Pay & transfer > Pay bills).",
+        "Pick the pay-from account, amount and date.",
+        "Review and submit."
+      ],
+      "source": "https://www.chase.com/personal/auto-loans/ways-to-pay"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments for your auto loan",
+      "paragraphs": [
+        "Automatic payments draw your monthly payment from a checking account, at Chase or another bank. To set them up, sign in, open your auto account, choose Pay loan and follow the steps.",
+        "To turn automatic payments off, go to Pay & transfer, choose Automatic payments, pick your auto account under See automatic payments, choose Turn off and confirm. If another bank sends your automatic payments, ask that bank to stop them."
+      ],
+      "steps": [
+        "Sign in and open your auto account.",
+        "Choose Pay loan and set up automatic payments.",
+        "Pick the amount and pay-from account.",
+        "Review and confirm."
+      ],
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments"
+    },
+    {
+      "slug": "payment-posting",
+      "title": "When your payment is credited",
+      "topic": "billing",
+      "paragraphs": [
+        "Payments are generally credited the day Chase receives them. Online payments from a Chase account must be made by 11 PM ET, and payments from an account at another bank by 8 PM ET, Monday to Friday except holidays. Later, weekend and holiday payments are credited the next business day.",
+        "Need a same-day payment? Call 1-800-346-8915 before 10:30 PM ET on a business day. Overnight mail can take up to 3 business days to post.",
+        "A scheduled payment can be cancelled until its status shows Sent, In Process or Complete."
+      ],
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments"
+    },
+    {
+      "slug": "due-date-change",
+      "title": "Changing your due date",
+      "topic": "billing",
+      "paragraphs": [
+        "On an auto loan you may change your payment due date twice over the life of the loan; other restrictions apply. Sign in, choose your auto account, then More, Update settings and preferences, and Payment due date. On a lease the due date can be changed once, by calling 1-800-227-5151."
+      ],
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless and find statements",
+      "paragraphs": [
+        "On chase.com open the Profile & Settings icon, choose Account Settings and then Paperless, select the accounts you want and save. In the app the path is Profile & Settings, Settings, Account settings, Paperless. Paper statements can take about a month to stop.",
+        "Statements & documents in the main menu shows your statements by year and account; depending on the account, up to 7 years are available."
+      ],
+      "source": "https://www.chase.com/personal/mobile-online-banking/login-paperless"
+    },
+    {
+      "slug": "sign-in-security",
+      "title": "Signing in securely",
+      "topic": "account",
+      "paragraphs": [
+        "Chase uses 2-step verification. When you sign in for the first time, on a new device or when something looks unusual, you may be asked to confirm it is you with a one-time code or a mobile app notification.",
+        "chase.com also supports passkeys and password managers, and the app can use face or fingerprint sign-in."
+      ],
+      "source": "https://www.chase.com/digital/resources/privacy-security/questions/security-protection"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "due-date-change-limit",
+        "intent": "Using Chase's auto loan help pages, find how many times a borrower may change the payment due date on a Chase auto loan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "twice",
+              "two times",
+              "2 times"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "twice",
+            "two times",
+            "2 times"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You can change the due date twice over the life of the loan."
+          }
+        ]
+      },
+      {
+        "slug": "external-account-cutoff",
+        "intent": "Using Chase's auto loan help pages, find the cut-off time for an online auto loan payment made from an account at another bank to be credited the same day. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "8 PM",
+              "8 p.m.",
+              "8:00 PM",
+              "8pm"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "8 PM",
+            "8 p.m.",
+            "8:00 PM",
+            "8pm"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payments from non-Chase accounts must be made by 8 PM ET on a business day."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": "Sign in"
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay loan",
+        "Automatic payments"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-posting",
+      "contains": "11 PM ET"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date-change",
+      "contains": "twice"
+    }
+  ]
+}

@@ -1,0 +1,352 @@
+{
+  "id": "starlink-spacex-satellite-internet-6f2c0a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Starlink (SpaceX satellite internet)",
+  "category": "internet",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public starlink.com help articles, the US Residential page and the public sign-in page only (no sign-in). Sign-in page observed: Email then Next (password next), so identifier=email, loginSteps=2. Starlink is a month-to-month subscription billed automatically to the payment method on file (card, Apple Pay, Google Pay, PayPal, or ACH in the US); there is no separate AutoPay to enroll in or turn off, no paper bill (e-invoices only), and no guest payment, so autopay/autopay_cancel/paperless are not_applicable and guest_pay is unsupported. Past-due balances are paid from the Billing tab with Make a Payment. Starlink does not accept checks or mailed payments, cannot offer payment plans, split payments, partial payments or deferred due dates: payment_arrangement and pay_by_mail are unsupported, scheduled_payment is unsupported (billing.scheduled.  Service plans (US Residential, starting prices, vary by location): Residential 100 Mbps $55/mo, Residential 200 Mbps $85/mo, Residential Max $130/mo; upgrades are charged pro-rated immediately, downgrades take effect at the end of the current period (the engine applies changes immediately). Cancel online: Your Subscription > Manage > Cancel Service; service runs to the end of the paid period; changes must be made before 12:00 AM UTC on the billing day. Starlink's phone line is sales; support is by ticket in the account. Integrated 2026-10-09: billing.scheduled.maxDaysAhead 0 and billing.fullBalanceOnly now modelled; partial-payment and payment-plan tasks are dropped by the engine rule instead of suppressed by hand.",
+  "officialDomains": [
+    "starlink.com"
+  ],
+  "sources": [
+    {
+      "url": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa",
+      "title": "Additional FAQs - Billing - Starlink Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://starlink.com/support/article/9d43bef2-36fe-bcd1-9f6a-e0304e9cf22e",
+      "title": "How do I cancel service? - Starlink Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://starlink.com/us/residential",
+      "title": "Starlink | Residential",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://starlink.com/auth/login",
+      "title": "Starlink Sign In",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Starlink",
+    "shortName": "Starlink",
+    "primary": "#1a1a1a",
+    "accent": "#000000",
+    "monogram": "S"
+  },
+  "labels": {
+    "dashboard": "Home",
+    "viewBill": "Billing",
+    "payBill": "Make a Payment",
+    "plan": "Change Plan",
+    "cancel": "Cancel Service",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "Email",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Service Plans",
+        "helpSlug": "service-plans"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Change Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Cancel Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "evidence": "observed_public",
+    "source": "https://starlink.com/auth/login"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa",
+      "note": "Starlink payments are made after signing in: open the Billing tab and select Make a Payment. There is no pay-without-signing-in option.",
+      "channel": "none"
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa",
+      "note": "Your subscription is charged automatically each month to the payment method on file; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://starlink.com/support/article/9d43bef2-36fe-bcd1-9f6a-e0304e9cf22e",
+      "note": "To stop being charged, cancel or pause the service plan before your next billing day."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa",
+      "note": "Starlink sends electronic invoices only; there is no paper bill to turn off."
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa",
+      "note": "Starlink can't defer or move payment dates; pay the full balance now from Billing > Make a Payment."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa",
+      "note": "Starlink does not offer payment plans or partial payments; the full balance must be paid in one transaction.",
+      "channel": "none"
+    },
+    "pay_by_mail": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa",
+      "note": "Starlink does not accept checks or mailed payments.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa",
+      "note": "Payments are made in your Starlink account or app; support is handled through tickets.",
+      "channel": "none"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://starlink.com/support/article/9d43bef2-36fe-bcd1-9f6a-e0304e9cf22e"
+    }
+  },
+  "billing": {
+    "source": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "residential-100",
+        "name": "Residential - 100 Mbps",
+        "cents": 5500
+      },
+      {
+        "id": "residential-200",
+        "name": "Residential - 200 Mbps",
+        "cents": 8500,
+        "current": true
+      },
+      {
+        "id": "residential-max",
+        "name": "Residential Max",
+        "cents": 13000
+      }
+    ],
+    "scheduled": {
+      "maxDaysAhead": 0
+    },
+    "fullBalanceOnly": true
+  },
+  "help": [
+    {
+      "slug": "service-plans",
+      "title": "Residential service plans",
+      "topic": "billing",
+      "paragraphs": [
+        "US Residential plans start at $55 a month for Residential - 100 Mbps, $85 a month for Residential - 200 Mbps (with free professional installation) and $130 a month for Residential Max (up to 400+ Mbps). All include unlimited data; prices vary by location.",
+        "Upgrading to a pricier plan is charged right away, pro-rated for the rest of the current period. Downgrades start at the end of the current monthly period and the new price shows on the following bill."
+      ],
+      "source": "https://starlink.com/us/residential"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Starlink bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Your subscription is month to month and is charged automatically to your payment method. The first charge happens at activation or seven days after delivery, whichever comes first.",
+        "To pay a past-due balance, sign in, open the Billing tab (Manage billing in the app) and select Make a Payment. Starlink accepts credit and debit cards, Apple Pay, Google Pay, PayPal and, in the US, ACH bank payments. Checks and mailed payments are not accepted.",
+        "The full balance must be paid in one transaction: Starlink can't offer payment plans, split a payment across methods, pay past balances separately, or move due dates. Unpaid invoices lead to suspension; paying restarts service and your billing day stays the same."
+      ],
+      "source": "https://starlink.com/support/article/9334ff65-c6e4-00d3-23ca-4ac4007c88fa"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel service",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in, select Your Subscription on the Home page, choose Manage next to your service plan and click Cancel Service. Service stays active until the end of the period you paid for.",
+        "Billing runs on UTC time: make changes before 12:00 AM UTC on your billing day or they wait until the next one. Until the cancellation takes effect you can choose Resume in the alert at the top of the page. Reactivating later depends on capacity in your area."
+      ],
+      "steps": [
+        "Sign in to your Starlink account.",
+        "Select Your Subscription on the Home page.",
+        "Choose Manage next to your service plan.",
+        "Click Cancel Service."
+      ],
+      "source": "https://starlink.com/support/article/9d43bef2-36fe-bcd1-9f6a-e0304e9cf22e"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "partial-payment-policy",
+        "intent": "A Starlink customer wants to pay only part of their past-due balance this week. Using Starlink's help, find out whether partial payments or payment plans are possible. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "full balance",
+              "full"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "full balance",
+            "full"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. Starlink requires the full balance in one transaction and does not offer payment plans or partial payments."
+          }
+        ]
+      },
+      {
+        "slug": "residential-max-price",
+        "intent": "Using Starlink's plan information, find the starting monthly price of the Residential Max plan. Do not change the plan.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$130"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$130"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Residential Max starts at $130 per month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "home",
+      "contains": "Service Plans"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Residential - 200 Mbps",
+        "Residential Max"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing",
+        "Change Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "full balance"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Cancel Service"
+    }
+  ]
+}

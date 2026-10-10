@@ -1,0 +1,373 @@
+{
+  "id": "cook-county-treasurer-d3cd8a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Cook County Treasurer",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public cookcountytreasurer.com pages only (no sign-in, no PIN search). Real site: pay online from a bank account for free by address or Property Index Number (PIN); cards carry a 2.08% third-party fee (the online FAQ and pamphlet still say 2.1%); 10+ PINs paid online add a $2.00 enhanced processing fee per PIN and installment (not expressible). Six ways to pay: online free, online by card, Chase branches, community banks, mail, Treasurer's Office. No pay-by-phone and no automatic payment program are listed. The electronic billing account (Sign In with Email Address + password, Sign Up link) exists for email bills and contact details; it is not a payment wallet, so the signed-in payment pages are a simulation choice (synthetic). Late interest is 0.75% per month for tax year 2023 and later (1.5% for 2022 and earlier) and is not a one-time fee, so lateFeePercent is left out. The Payment Plan Calculator is a partial-payment schedule for delinquent balances of $100+, with email/text reminders, not a formal agreement; the property-tax template always offers an online plan form, so payment_arrangement stays at the family default and the real rule is in the help article. MFA not documented (none assumed). Review 2026-10-09: the account-side history label is now the real 'Check Your Payment Status' (the site's '20-Year Tax Bill History' is a bill archive, not payment history); due dates now cite the Important Dates page.",
+  "officialDomains": [
+    "cookcountytreasurer.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cookcountytreasurer.com/payonlinewithyourbankaccount.aspx",
+      "title": "Pay Online with Your Bank Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cookcountytreasurer.com/waystopay.aspx",
+      "title": "Ways to pay Cook County property taxes",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cookcountytreasurer.com/makingpaymentsbymailorinperson.aspx",
+      "title": "Making Payments by Mail or In Person",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cookcountytreasurer.com/paymentplaninformationalvideos.aspx",
+      "title": "Payment Plan Calculator informational videos",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.cookcountytreasurer.com/accountsignin.aspx",
+      "title": "Sign In to Your Electronic Billing Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.cookcountytreasurer.com/frequentlyaskedquestions.aspx",
+      "title": "Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://cookcountytreasurer.com/newsarticle.aspx?articleid=1809",
+      "title": "Treasurer news: late interest rate cut",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.cookcountytreasurer.com/duedates.aspx",
+      "title": "Important Dates",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Cook County Treasurer",
+    "shortName": "Cook County Treasurer",
+    "primary": "#14365d",
+    "accent": "#7a2e0e",
+    "monogram": "CC"
+  },
+  "labels": {
+    "guestPay": "Pay Online for Free",
+    "payBill": "Payments",
+    "statements": "Get a Copy of Your Tax Bill",
+    "history": "Check Your Payment Status",
+    "paperless": "Receive Your Tax Bill By Email",
+    "signIn": "Sign In",
+    "register": "Sign Up",
+    "forgot": "Forgot your password?",
+    "username": "Email Address",
+    "arrangement": "Payment Plan Calculator",
+    "help": "Frequently Asked Questions",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Online for Free",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plan Calculator",
+        "helpSlug": "payment-plan-calculator"
+      },
+      {
+        "label": "Frequently Asked Questions",
+        "page": "help"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Your Property Tax Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Payments",
+        "page": "pay"
+      },
+      {
+        "label": "Check Your Payment Status",
+        "page": "history"
+      },
+      {
+        "label": "Get a Copy of Your Tax Bill",
+        "page": "statements"
+      },
+      {
+        "label": "Receive Your Tax Bill By Email",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "source": "https://www.cookcountytreasurer.com/accountsignin.aspx",
+    "evidence": "observed_public"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cookcountytreasurer.com/payonlinewithyourbankaccount.aspx",
+      "note": "Pay without an account by entering the property address or Property Index Number (PIN); bank-account (ACH) payments are free."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cookcountytreasurer.com/accountsignin.aspx",
+      "note": "Sign up to receive the tax bill by email through the electronic billing account."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cookcountytreasurer.com/waystopay.aspx",
+      "note": "The Treasurer lists no automatic payment program. Pay each installment online, at a Chase or community bank, by mail, in person, or through a mortgage escrow account.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cookcountytreasurer.com/waystopay.aspx",
+      "note": "Payments are not taken by phone. Pay online, at Chase or a participating community bank, by mail, or at 118 N. Clark St., Room 112.",
+      "channel": "none"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cookcountytreasurer.com/makingpaymentsbymailorinperson.aspx",
+      "note": "Mail one coupon and one check per PIN to P.O. Box 805438, Chicago, IL 60680-4116."
+    }
+  },
+  "billing": {
+    "source": "https://www.cookcountytreasurer.com/waystopay.aspx",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.08,
+      "evidence": "documented_official",
+      "source": "https://www.cookcountytreasurer.com/waystopay.aspx"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "source": "https://www.cookcountytreasurer.com/waystopay.aspx",
+      "paragraphs": [
+        "There are six ways to pay. Online from a checking or savings account (ACH debit) costs nothing; online by credit card adds a 2.08% processing fee charged by the third-party processor, not the Treasurer. You can also pay at any Chase branch in Illinois with the full original bill, at one of more than 100 participating community banks where you hold an account, by mail, or at the Treasurer's Office, 118 N. Clark St., Room 112, Chicago.",
+        "Paying online for ten or more PINs adds an enhanced processing fee of $2.00 per PIN and installment, billed at least once a year. Taxpayers with delinquent taxes should make only one online payment per day so late interest posts correctly.",
+        "Payments are not taken over the phone; the office line, (312) 443-5100, is for questions."
+      ]
+    },
+    {
+      "slug": "due-dates-interest",
+      "title": "Due dates and late interest",
+      "topic": "billing",
+      "source": "https://www.cookcountytreasurer.com/duedates.aspx",
+      "paragraphs": [
+        "Cook County bills taxes in two installments each year. For tax year 2025, the first installment was due April 1, 2026 and the second installment is due October 1, 2026.",
+        "Unpaid installments accrue statutory interest from the installment due date until paid: 0.75% per month for tax year 2023 and later, and 1.5% per month for tax year 2022 and earlier. Partial payments are accepted, but interest keeps running on the unpaid balance."
+      ]
+    },
+    {
+      "slug": "payment-plan-calculator",
+      "title": "Payment Plan Calculator",
+      "topic": "assistance",
+      "source": "https://www.cookcountytreasurer.com/paymentplaninformationalvideos.aspx",
+      "paragraphs": [
+        "The free Payment Plan Calculator helps taxpayers with a delinquent balance of $100 or more pay it down in partial payments, monthly or twice a month, with optional email or text reminders.",
+        "A plan covers one tax year at a time, so a separate plan is needed for each unpaid year. Using the calculator does not protect the property from the Annual Tax Sale: the unpaid balance must be paid in full before the sale starts."
+      ]
+    },
+    {
+      "slug": "pay-by-mail",
+      "title": "Paying by mail or in person",
+      "topic": "payments",
+      "source": "https://www.cookcountytreasurer.com/makingpaymentsbymailorinperson.aspx",
+      "paragraphs": [
+        "Mail one payment coupon and one check per PIN in each envelope to Cook County Treasurer, P.O. Box 805438, Chicago, IL 60680-4116, and write the PIN on the check. Pay the amount that matches the U.S. Postal Service postmark date; private carriers are dated when the office receives the payment. Checks from foreign banks are returned.",
+        "At Chase branches, bring the entire original bill and pay by debit from a checking or savings account. Open item and forfeiture redemption bills can be paid only by mail or at the Treasurer's Office."
+      ]
+    },
+    {
+      "slug": "email-bills",
+      "title": "Receive your tax bill by email",
+      "topic": "paperless",
+      "source": "https://www.cookcountytreasurer.com/accountsignin.aspx",
+      "paragraphs": [
+        "Create an electronic billing account with your email address and a password to receive your tax bill by email and keep your contact details current. Use Forgot your password? on the sign-in page to reset it."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-rate",
+        "intent": "Using the Cook County Treasurer's website help pages, find the processing fee for paying property taxes online by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.08%",
+              "2.08 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.08%",
+            "2.08 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments carry a 2.08% third-party processing fee; paying from a bank account is free."
+          }
+        ]
+      },
+      {
+        "slug": "late-interest-rate",
+        "intent": "Using the Cook County Treasurer's website help pages, find the monthly late interest rate on unpaid property taxes for tax year 2023 and later. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "0.75%",
+              "0.75 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "0.75%",
+            "0.75 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Late interest is 0.75% per month for tax year 2023 and later."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Ways to Pay",
+        "Payment Plan Calculator"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Email Address"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Check Your Payment Status",
+        "Get a Copy of Your Tax Bill"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.08%",
+        "Chase"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-dates-interest",
+      "contains": "0.75%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plan-calculator",
+      "contains": "Annual Tax Sale"
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "id": "state-farm-7e6fce",
+  "version": 1,
+  "status": "dedicated",
+  "name": "State Farm",
+  "category": "insurance",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public statefarm.com Help Center pages only (no sign-in). Online: Log in to the Payment Center to pay, schedule payments, see billing history and update payment methods; pay as a guest or enroll in AutoPay as a guest with phone number and date of birth (modelled as account number + date of birth because the schema has no phone guest-lookup field). Cards accepted: Visa, MasterCard, American Express, Discover; EFT from checking, money market or savings. Unenrolling from AutoPay requires contacting the agent (autopay_cancel unsupported online); eligible State Farm Billing customers may postpone one AutoPay draft at least one business day before the due date (postponed draft runs 5 calendar days after the due date). Policies are cancelled through the agent by phone or in person (cancel_service unsupported online). Partial payments ('Pay Other Amount' / 'Pay Half') only for eligible accounts. Due date can be changed online for future bills. Life and health premiums are not eligible for standard AutoPay. Review 2026-10-09: the public log-in page asks for a User ID first and then Continue (two-step; username sign-in); the public guest-pay form asks for a 10-digit phone number and date of birth. 800-782-8332 is State Farm's general 800-STATE-FARM line (the cancel page lists it for agent changes, not as a cancellation line), so notes no longer claim auto policies can be cancelled there. MFA and fee amounts are not published; no convenience fee is documented. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template).",
+  "officialDomains": [
+    "statefarm.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/pay-my-bill-sf",
+      "title": "How do I pay my State Farm bill?",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.statefarm.com/help-center/account-management/billing-payments/autopay/enroll-in-autopay-sf",
+      "title": "How do I enroll in AutoPay?",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.statefarm.com/help-center/account-management/billing-payments/autopay/unenroll-in-autopay-sf",
+      "title": "How do I unenroll in AutoPay?",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.statefarm.com/help-center/account-management/billing-payments/billing-account-management/start-or-stop-paperless-billing-sf",
+      "title": "How do I start or stop paperless billing?",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/change-due-date-sf",
+      "title": "How can I change my bill due date?",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/partial-payment-sf",
+      "title": "Can I make a partial payment on my State Farm bill?",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.statefarm.com/help-center/account-management/billing-payments/autopay/update-autopay-payment-method-sf",
+      "title": "How do I update my AutoPay payment method?",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.statefarm.com/customer-care/manage-your-accounts/cancel-my-policy",
+      "title": "How to Cancel Your State Farm Insurance Policy",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://auth.proofing.statefarm.com/login-ui/login",
+      "title": "State Farm Log In",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.statefarm.com/customer-care/contact-us",
+      "title": "Contact Us | State Farm",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://financials.statefarm.com/guest-pay/",
+      "title": "Provide bill information (guest pay)",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "State Farm",
+    "shortName": "State Farm",
+    "primary": "#b5121b",
+    "accent": "#7a0c12",
+    "monogram": "SF"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "payBill": "Make a Payment",
+    "viewBill": "Payment Center",
+    "autopay": "AutoPay",
+    "guestPay": "Pay as a guest",
+    "paperless": "Communication preferences",
+    "profile": "Profile & Preferences",
+    "history": "Billing history",
+    "wallet": "Payment methods",
+    "contact": "Contact your agent",
+    "username": "User ID"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "Payment Center",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Billing history",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Profile & Preferences",
+        "page": "profile"
+      },
+      {
+        "label": "Contact your agent",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "dob"
+    ],
+    "evidence": "observed_public",
+    "source": "https://auth.proofing.statefarm.com/login-ui/login",
+    "identifier": "username",
+    "loginSteps": 2
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/pay-my-bill-sf"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/pay-my-bill-sf"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/pay-my-bill-sf"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/autopay/enroll-in-autopay-sf"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/autopay/unenroll-in-autopay-sf",
+      "note": "AutoPay cannot be turned off online: contact your State Farm agent to unenroll (general line 800-STATE-FARM, 800-782-8332). Eligible accounts can ask to postpone one draft.",
+      "channel": "phone",
+      "phone": "800-782-8332"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/billing-account-management/start-or-stop-paperless-billing-sf"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.statefarm.com/customer-care/manage-your-accounts/cancel-my-policy",
+      "note": "Policies are cancelled through your State Farm agent by phone or in person, not online. Find your agent, or call 800-STATE-FARM (800-782-8332) for help.",
+      "channel": "phone",
+      "phone": "800-782-8332"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/pay-my-bill-sf",
+      "phone": "800-440-0998"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/pay-my-bill-sf"
+    }
+  },
+  "billing": {
+    "source": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/pay-my-bill-sf",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your State Farm bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to your State Farm account to pay, schedule payments, review billing history and update payment methods in one place.",
+        "Not ready to log in? Choose Pay as a guest and identify your bill with your phone number and date of birth.",
+        "The automated phone line at 800-440-0998 is open 24/7; it also asks for your phone number and date of birth and takes a card or bank account.",
+        "To pay by mail, send a check or money order to State Farm Insurance, PO Box 588002, North Metro, GA 30029-8002.",
+        "Online, by phone or in person State Farm takes Visa, MasterCard, American Express and Discover, plus electronic funds transfer from checking, money market or savings accounts."
+      ],
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/pay-my-bill-sf"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "You can enroll after logging in, or as a guest with just your phone number and date of birth.",
+        "Some bills cannot be enrolled: for example when nothing is due, when there is a credit balance, when the bill includes a renewal offer, when it is paid through a mortgage, when several bills were selected at once, or when it is a life or health premium. Your agent can help in those cases.",
+        "To change the account AutoPay draws from, open the Payment Center, choose Manage next to the billing account, pick Change AutoPay method and confirm with I Agree and Save."
+      ],
+      "steps": [
+        "Log in, or choose Enroll as a guest.",
+        "Select the bill to enroll.",
+        "Choose the payment account.",
+        "Agree to the terms to finish enrolling."
+      ],
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/autopay/enroll-in-autopay-sf"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Unenroll from or postpone AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay cannot be turned off online: to unenroll, contact your State Farm agent.",
+        "Some State Farm Billing customers can postpone one upcoming draft if there is an amount due and the request is made at least one business day before the due date. A postponed draft is taken 5 calendar days after the due date.",
+        "Leaving AutoPay can raise the installment fee on your next State Farm Billing statement."
+      ],
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/autopay/unenroll-in-autopay-sf"
+    },
+    {
+      "slug": "paperless",
+      "title": "Start or stop paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless billing is set in your communication preferences. Verify your email address, then choose Email (paperless) or Paper for insurance bill statements and save."
+      ],
+      "steps": [
+        "Log in.",
+        "Open the menu in the upper right and choose Profile & Preferences.",
+        "Select Communication preferences.",
+        "Under Insurance bill statements choose Email or Paper.",
+        "Save your changes."
+      ],
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/billing-account-management/start-or-stop-paperless-billing-sf"
+    },
+    {
+      "slug": "change-due-date",
+      "title": "Change your bill due date",
+      "topic": "billing",
+      "paragraphs": [
+        "On State Farm Payment Plan accounts, open Manage Payment Plan, choose Manage next to the account, then Change due date, and decide whether it applies to future bills only or to the current and future bills.",
+        "On State Farm Billing accounts, open the Payment Center, choose Manage on the bill and then Change Your Due Date. The change applies to future bills, and depending on the date you pick, your next bill may cover two months."
+      ],
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/change-due-date-sf"
+    },
+    {
+      "slug": "partial-payment",
+      "title": "Partial payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Only eligible accounts can pay part of a bill. On Payment Plan accounts look for Pay Other Amount on the Make a Payment page; on State Farm Billing accounts choose Manage, then Change payment schedule, and select Pay Half.",
+        "If you do not see these options, contact your agent. Not paying every policy in full on a State Farm Billing account can add an installment fee."
+      ],
+      "source": "https://www.statefarm.com/help-center/account-management/billing-payments/payments/partial-payment-sf"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel a policy",
+      "topic": "account",
+      "paragraphs": [
+        "State Farm policies are cancelled through your agent by phone or in person, not online. Have your policy number, name and date of birth ready; a phone cancellation usually takes effect right away, or on a later date you choose.",
+        "If you sold the vehicle, you may need a bill of sale or proof that the plates were forfeited. Many states also expect you to tell the DMV, and you should have new coverage in place before cancelling. For general questions call 800-STATE-FARM (800-782-8332)."
+      ],
+      "source": "https://www.statefarm.com/customer-care/manage-your-accounts/cancel-my-policy"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "guest-pay-identifiers",
+        "intent": "On the State Farm site, find out what two pieces of information you need to pay a bill as a guest without logging in. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "date of birth"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "date of birth"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "guest"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You need your phone number and your date of birth."
+          }
+        ]
+      },
+      {
+        "slug": "pay-by-phone-number",
+        "intent": "Find State Farm's 24/7 automated pay-by-phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8004400998"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8004400998"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "800-440-0998"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": "contact your State Farm agent"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment Center",
+        "Profile & Preferences"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-autopay",
+      "contains": "5 calendar days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "800-440-0998"
+    },
+    {
+      "page": "login",
+      "contains": "User ID"
+    }
+  ]
+}

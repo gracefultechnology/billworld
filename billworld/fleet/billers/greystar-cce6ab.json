@@ -1,0 +1,233 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-09",
+  "id": "greystar-cce6ab",
+  "name": "Greystar",
+  "category": "housing",
+  "notes": "Researched from public greystar.com pages (FAQ for residents whose property is transitioning to Greystar; Resident Support Services page). Greystar has no single national payment portal: each community activates its own resident portal (announced by email and posted notice) where residents pay rent and submit maintenance requests. Until the portal is live, pay by cashier's check or personal check; money orders may not be accepted. Rent changes come with at least 60 days' notice (lease may differ). Resident Support Services is a web form (community, issue, contact preference) - no national phone. Fees, autopay rules, sign-in fields and notice-to-vacate rules vary by community and are not published (family defaults kept, inferred).",
+  "officialDomains": [
+    "greystar.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.greystar.com/renters-resources/moving/faqs-property-manager-transitioning-to-greystar",
+      "title": "FAQs: Property Manager Transitioning to Greystar",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.greystar.com/residents",
+      "title": "Resident Support Services | Greystar",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Greystar",
+    "shortName": "Greystar",
+    "primary": "#1d4f3a",
+    "accent": "#7d3c00",
+    "monogram": "GS"
+  },
+  "labels": {
+    "help": "Resident Support Services",
+    "contact": "Maintenance requests",
+    "signIn": "Resident portal login"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident portal login",
+        "page": "login"
+      },
+      {
+        "label": "Resident Support Services",
+        "page": "help"
+      },
+      {
+        "label": "New to Greystar?",
+        "helpSlug": "transition-faq"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Rent",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Maintenance requests",
+        "page": "contact"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.greystar.com/renters-resources/moving/faqs-property-manager-transitioning-to-greystar",
+      "note": "Once your community's resident portal is live you can pay rent online there; until then pay by cashier's or personal check."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.greystar.com/renters-resources/moving/faqs-property-manager-transitioning-to-greystar",
+      "note": "Cashier's checks and personal checks are accepted; money orders may not be. Confirm the preferred method with your leasing office."
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.greystar.com/renters-resources/moving/faqs-property-manager-transitioning-to-greystar",
+      "note": "No public pay-without-login page exists: residents pay inside their community's resident portal or by check through the leasing office."
+    }
+  },
+  "billing": {
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "transition-faq",
+      "title": "When your community moves to Greystar",
+      "paragraphs": [
+        "When Greystar takes over management, your community's new resident portal is announced by email and posted notice. Once it is active you can pay rent and submit maintenance requests online.",
+        "Until then, pay with a cashier's check or personal check; money orders may not be accepted, so confirm the preferred method with your leasing office. Your rent stays the same until your lease renews, and future rent changes come with at least 60 days' notice unless your lease says otherwise."
+      ],
+      "source": "https://www.greystar.com/renters-resources/moving/faqs-property-manager-transitioning-to-greystar",
+      "topic": "payments"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying rent",
+      "paragraphs": [
+        "Each Greystar community has its own resident portal; there is no single national payment site. Pay rent and set up recurring payments in your community's portal or app once it is live. Before that, use a cashier's or personal check."
+      ],
+      "source": "https://www.greystar.com/renters-resources/moving/faqs-property-manager-transitioning-to-greystar",
+      "topic": "payments"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Resident Support Services",
+      "paragraphs": [
+        "For questions your leasing office could not solve, use the Resident Support Services form: pick your community, describe the issue, say whether you already spoke with a Greystar team member, and choose phone or email as your preferred contact method. Payment procedures and questions are handled by your leasing office."
+      ],
+      "source": "https://www.greystar.com/residents",
+      "topic": "contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "pay-before-portal-live",
+        "intent": "Your building just switched to Greystar management and the new resident portal is not live yet. Using the help pages, find what kinds of payment are accepted in the meantime. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "cashier"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "cashier"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "transition"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Pay by cashier's check or personal check; money orders may not be accepted."
+          }
+        ]
+      },
+      {
+        "slug": "rent-change-notice",
+        "intent": "Using the Greystar help pages, find how much notice residents get before a rent change. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "60"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "60"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 60 days' notice unless the lease says otherwise."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "helpArticle",
+      "slug": "transition-faq",
+      "contains": [
+        "cashier",
+        "60 days"
+      ]
+    },
+    {
+      "page": "help",
+      "label": "help"
+    }
+  ]
+}

@@ -119,8 +119,9 @@ export const obsNav = vm => vm.obs?.nav?.length && !vm.authenticated ? html`<nav
 // Footer labels as one line of mapped links / plain text.
 export const obsFooter = vm => vm.obs?.footer?.length ? html`<p class="obs-foot">${vm.obs.footer.map((l, i) => html`${i ? ' · ' : ''}${navItem(vm, l)}`)}</p>` : '';
 // Hero heading from the biller's public homepage (or the given fallback).
-export const heroText = (vm, fallback) => vm.obs?.hero || fallback;
-export const heroLine = (vm, cls = 'obs-hero') => vm.obs?.hero ? html`<p class="${cls}">${vm.obs.hero}</p>` : '';
+// Dedicated billers skip the captured hero headline (often a stale promotion); their dossier wording stands.
+export const heroText = (vm, fallback) => (vm.tier === 'dedicated' ? null : vm.obs?.hero) || fallback;
+export const heroLine = (vm, cls = 'obs-hero') => vm.obs?.hero && vm.tier !== 'dedicated' ? html`<p class="${cls}">${vm.obs.hero}</p>` : '';
 
 // ---------- login ----------
 const ID_LABEL = { email: 'Email address', username: 'Username or email', userid: 'User ID or email', user: 'Username or email', account: 'Account number or email', accountnumber: 'Account number or email' };
@@ -133,6 +134,7 @@ export function idLabel(vm, fallback) {
 // 'next' (first page of a two-step login) or 'final' (password page of a two-step login).
 const SUBMIT = { single: /^(?:secure )?(?:log ?in|log ?on|sign ?in|sign on|login|logon|continue|submit|go)(?: now| securely)?$/i, next: /^(?:continue|next)$/i, final: /^(?:secure )?(?:log ?in|log ?on|sign ?in|sign on|login|logon)(?: now| securely)?$/i };
 export function submitLabel(vm, fallback, step = 'single') {
+  if (step !== 'next' && vm?.labels?.signIn) return vm.labels.signIn; // the biller's own sign-in wording
   const re = SUBMIT[step] || SUBMIT.single;
   const b = vm.obs?.buttons?.find(x => re.test(x) && !/google|apple|facebook|microsoft|guest|register|create|sign ?up/i.test(x));
   return b || fallback;

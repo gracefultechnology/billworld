@@ -1,0 +1,162 @@
+{
+  "id": "scan-health-plan-da4e00",
+  "version": 1,
+  "status": "dedicated",
+  "name": "SCAN Health Plan",
+  "category": "medicare",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public scanhealthplan.com pages only (no sign-in). Premiums are due on the 1st and a monthly billing statement shows the amount and deadline; late payment can bring late fees or plan termination (no fee amount published). Ways to pay: the SCAN online member account (eBill, offered through U.S. Bank, reached with 'Go to SCAN's banking portal'; one-time or recurring payments, payment date up to or on the due date, settings changeable any time), automatic bank withdrawal, phone 1-800-559-3500 (TTY 711), check by mail to a state-specific P.O. box in Los Angeles, and Social Security deduction. The member account page adds payment history, email payment reminders, updating the payment account, and electronic delivery of plan materials. Automatic payments can also be turned on under 'Billing' or 'Payment Settings'. No pay-without-signing-in option is listed, so guest pay is marked unsupported (inferred). Tech support (tech_HEALTH, 24/7) 1-833-437-0555. Member Services hours: 8 a.m.-8 p.m. daily Oct 1-Mar 31, weekdays Apr 1-Sep 30. Sign-in: reviewer (2026-10-09) opened members.scanhealthplan.com/sign-in; the SCAN Online Account log-in page asks for Username or Email address and Password, with Reset password and Register Now.",
+  "officialDomains": ["scanhealthplan.com"],
+  "sources": [
+    { "url": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/faq-detail-pages/monthly-premium-payment", "title": "How do I pay my monthly premium? | SCAN Health Plan", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/how-to-pay-your-bill-online", "title": "How to pay your bill online | SCAN Health Plan", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/faq-detail-pages/when-is-premium-due", "title": "When is my premium due? | SCAN Health Plan", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://scanhealthplan.com/members/medicare-advantage-plan-online-member-account", "title": "What's a SCAN online account? | SCAN Health Plan", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://members.scanhealthplan.com/sign-in", "title": "Log in | SCAN Online Account", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://www.scanhealthplan.com/members", "title": "Members | SCAN Health Plan", "fetchedAt": "2026-10-09", "kind": "other" }
+  ],
+  "brand": { "displayName": "SCAN Health Plan", "shortName": "SCAN", "primary": "#5b2a86", "accent": "#00606e", "monogram": "S" },
+  "labels": {
+    "signIn": "Log In or Sign Up",
+    "username": "Username or Email address",
+    "register": "Register Now",
+    "forgot": "Reset password",
+    "dashboard": "SCAN online member account",
+    "payBill": "eBill",
+    "autopay": "Recurring payments",
+    "wallet": "Payment account",
+    "history": "Payment history",
+    "contact": "Contact Us",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In or Sign Up", "page": "login" },
+      { "label": "Ways to pay", "helpSlug": "pay-your-bill" },
+      { "label": "Check the FAQs", "page": "help" },
+      { "label": "Contact Us", "helpSlug": "contact-us" }
+    ],
+    "account": [
+      { "label": "My Account", "page": "dashboard" },
+      { "label": "eBill", "page": "pay" },
+      { "label": "Recurring payments", "page": "autopay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Payment account", "page": "wallet" },
+      { "label": "Communication preferences", "page": "paperless" },
+      { "label": "Contact Us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://members.scanhealthplan.com/sign-in"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/how-to-pay-your-bill-online" },
+    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/faq-detail-pages/monthly-premium-payment", "note": "SCAN lists no way to pay online without logging in. Pay in your SCAN online member account, call Member Services at 1-800-559-3500 (TTY 711), or mail a check.", "channel": "phone", "phone": "8005593500" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/how-to-pay-your-bill-online", "note": "Set up recurring monthly payments in eBill; you can change eBill settings at any time." },
+    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/how-to-pay-your-bill-online", "note": "Choose a payment date up to and including the due date." },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://scanhealthplan.com/members/medicare-advantage-plan-online-member-account", "note": "Check your payment history in your online member account." },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://scanhealthplan.com/members/medicare-advantage-plan-online-member-account", "note": "Set communication preferences to get plan materials electronically." },
+    "cancel_service": { "support": "unsupported", "evidence": "inferred", "source": "https://www.scanhealthplan.com/members", "note": "SCAN does not take plan disenrollment online. To leave the plan, enroll in another Medicare plan during an enrollment period or call Member Services at 1-800-559-3500 (TTY 711).", "channel": "phone", "phone": "8005593500" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/faq-detail-pages/monthly-premium-payment", "phone": "8005593500", "note": "Call 1-800-559-3500 (TTY 711)." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/faq-detail-pages/monthly-premium-payment", "note": "Mail a check to the P.O. box for your state." }
+  },
+  "billing": {
+    "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/how-to-pay-your-bill-online",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How do I pay my monthly premium?",
+      "topic": "payments",
+      "paragraphs": [
+        "Your premium is due on the 1st of each month, and your monthly billing statement shows how much you owe and the deadline. Paying late can lead to late fees or termination of your plan.",
+        "You can pay in your SCAN online member account, set up automatic withdrawals from your bank account, call 1-800-559-3500 (TTY 711), mail a check, or have the premium taken out of your Social Security check.",
+        "Mail checks to the address for your state: Arizona, SCAN Desert Health, PO Box 511354; California, SCAN California, PO Box 511339 (VillageHealth members PO Box 511336); Nevada, PO Box 511365; New Mexico, PO Box 511391; Texas, SCAN Texas, PO Box 511271; Washington, PO Box 515346. All are in Los Angeles, CA."
+      ],
+      "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/faq-detail-pages/monthly-premium-payment"
+    },
+    {
+      "slug": "ebill",
+      "title": "Paying online with eBill",
+      "topic": "payments",
+      "paragraphs": [
+        "eBill is SCAN's online bill payment service, offered through U.S. Bank. Use it for your monthly plan premium and any optional dental buy-up premium.",
+        "Make a single payment whenever you like, or set up recurring monthly payments so you do not have to remember. You can pick a payment date up to or on the due date and change your eBill settings at any time."
+      ],
+      "steps": ["Log in to your SCAN online member account.", "Choose Go to SCAN's banking portal.", "Follow the prompts to set up eBill or make a payment."],
+      "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/how-to-pay-your-bill-online"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Turn on automatic payments in the Billing or Payment Settings section of your SCAN member account, or set up recurring payments in eBill. If Social Security deducts your premium, payment already happens automatically each month."
+      ],
+      "source": "https://www.scanhealthplan.com/help-center/frequently-asked-questions/faq-detail-pages/when-is-premium-due"
+    },
+    {
+      "slug": "register",
+      "title": "Your SCAN online member account",
+      "topic": "account",
+      "paragraphs": [
+        "Your online member account is open 24/7. Use it to find plan information and your digital ID card, message SCAN, track screenings and medications, and pay your premium with eBill. You can also check payment history, get email payment reminders and update your payment account.",
+        "One sign-in also reaches your extra benefit accounts such as dental, vision, prescriptions, telehealth and over-the-counter items. Set your communication preferences to get plan materials electronically."
+      ],
+      "source": "https://scanhealthplan.com/members/medicare-advantage-plan-online-member-account"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact SCAN",
+      "topic": "contact",
+      "paragraphs": [
+        "Member Services: 1-800-559-3500 (TTY 711), 8 a.m. to 8 p.m. seven days a week from October 1 to March 31, and Monday to Friday from April 1 to September 30. Messages left on holidays or after hours are returned within one business day.",
+        "For help setting up your online account or eBill, call tech_HEALTH, SCAN's 24/7 tech support line, at 1-833-437-0555."
+      ],
+      "source": "https://www.scanhealthplan.com/members"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "premium-due-day",
+        "intent": "Using SCAN Health Plan's help pages, find which day of the month your plan premium is due. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["1st", "first"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["1st", "first"] },
+        "tags": ["help", "information"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "It is due on the 1st of each month." }]
+      },
+      {
+        "slug": "ebill-tech-support-phone",
+        "intent": "You are having trouble setting up SCAN eBill. Using SCAN's help pages, find the phone number for SCAN's 24/7 tech support line. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8334370555"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8334370555"] },
+        "tags": ["help", "information", "contact"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Call tech_HEALTH at 1-833-437-0555." }]
+      },
+      {
+        "slug": "texas-mail-address",
+        "intent": "You live in Texas and want to mail a check for your SCAN premium. Using SCAN's help pages, find the P.O. box number to send it to. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["511271"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["511271"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "SCAN Texas, PO Box 511271, Los Angeles, CA." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "1-800-559-3500" },
+    { "page": "dashboard", "signedIn": true, "contains": ["eBill", "Recurring payments"] },
+    { "page": "helpArticle", "slug": "ebill", "contains": "U.S. Bank" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "PO Box 511271" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "1-833-437-0555" }
+  ]
+}

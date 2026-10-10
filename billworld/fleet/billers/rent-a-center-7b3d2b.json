@@ -1,0 +1,391 @@
+{
+  "id": "rent-a-center-7b3d2b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Rent-A-Center",
+  "category": "other",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Rent-A-Center's public FAQs page and the public My Account sign-in landing page (with its My Account FAQs) only; never signed in. My Account sign-in is email and password, followed by a one-time code emailed to the customer that must be entered within 4 minutes (mfa email). Create My Account: use the email the agreement was set up with, follow the emailed link within 24 hours, create a password, then enter the exact first and last name and the agreement number (registration fields lastName + account number). Online payments (Make a Payment) accept credit/debit cards, PayPal, Venmo, Apple Pay, Google Pay or Cash App Pay; bank accounts are not listed. Partial or split payments are not possible online, and AutoPay only pays the standard amount due for your pay frequency (policy full). Payments are due by 11:59 pm local time on the due date (weekly, biweekly, semimonthly or monthly, fixed by the agreement). Pay by phone through your local store with Visa or Mastercard ($1.99 convenience fee may apply; there is no central pay-by-phone number, so it is not modelled as a fee on online payments). Changing the payment date, special payment arrangements, extensions, returns/pauses, LDW changes and account details other than email are handled by the local store, not online. Early payoff is possible online through the Early Purchase Option (most locations: 50 percent off the remaining total after the same-as-cash period). Late fees may apply (amount not published). Agreement-number help line 1-800-422-8186. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "rentacenter.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.rentacenter.com/en-us/faqs",
+      "title": "Rent-A-Center Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.rentacenter.com/en-us/myaccount/payonline-getstarted",
+      "title": "Sign in | Rent-A-Center My Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Rent-A-Center",
+    "shortName": "Rent-A-Center",
+    "primary": "#00663d",
+    "accent": "#1d3c34",
+    "monogram": "RC"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "wallet": "Saved Payment Methods",
+    "dashboard": "My Account",
+    "signIn": "Sign in",
+    "register": "Create My Account",
+    "forgot": "Forgot password?",
+    "username": "Email",
+    "accountNumber": "Agreement number",
+    "help": "FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Create My Account",
+        "page": "register"
+      },
+      {
+        "label": "Account / Payment FAQs",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Saved Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "email",
+    "socialProviders": [],
+    "registrationFields": [
+      "lastName"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.rentacenter.com/en-us/myaccount/payonline-getstarted"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rentacenter.com/en-us/faqs"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rentacenter.com/en-us/myaccount/payonline-getstarted"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.rentacenter.com/en-us/faqs",
+      "note": "Special payment arrangements, extensions and payment-date changes are not available in My Account. Contact your local Rent-A-Center store.",
+      "channel": "in_person"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.rentacenter.com/en-us/faqs",
+      "note": "Returns and agreement pauses are not done online. Contact your local Rent-A-Center store to schedule a return or bring the item back in person.",
+      "channel": "in_person"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.rentacenter.com/en-us/faqs"
+    }
+  },
+  "billing": {
+    "source": "https://www.rentacenter.com/en-us/faqs",
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online in My Account or the app: sign in and select Make a Payment. Depending on what is available, you can pay with a credit or debit card, PayPal, Venmo, Apple Pay, Google Pay or Cash App Pay.",
+        "Partial payments and splitting a payment between cards are not available online; ask your store about special arrangements.",
+        "You can also call your local store to pay by phone with Visa or Mastercard (a $1.99 convenience fee may apply) or pay in store, where most locations take cash and major cards and some take checks or money orders.",
+        "Payments are due by 11:59 pm local time on your due date, and you get reminders before each one."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Select Make a Payment.",
+        "Choose your payment method.",
+        "Review and submit."
+      ],
+      "source": "https://www.rentacenter.com/en-us/faqs"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "You can sign up for AutoPay and save payment methods in My Account, and enroll, unenroll or update your agreements at any time from the dashboard.",
+        "AutoPay can only be set for the standard amount due on your items for your pay frequency. To pay more, for example to use Same As Cash or an early purchase discount, contact your store."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Open AutoPay from your dashboard.",
+        "Choose the agreements and a saved payment method.",
+        "Confirm enrollment."
+      ],
+      "source": "https://www.rentacenter.com/en-us/faqs"
+    },
+    {
+      "slug": "faq",
+      "title": "Account and payment questions",
+      "topic": "faq",
+      "paragraphs": [
+        "Your payment schedule (weekly, every two weeks, twice a month or monthly) is set when you start the agreement and is shown on your rental agreement. To change your payment date, contact your local store.",
+        "If you miss a payment, late fees may apply. If you can't pay or need an extension, contact your store right away; it can work with you at its discretion.",
+        "To update your phone number, address or other details, contact your store. The only detail you can change yourself in My Account is your email address.",
+        "Rent-A-Center does not report payment history to the credit bureaus."
+      ],
+      "source": "https://www.rentacenter.com/en-us/faqs"
+    },
+    {
+      "slug": "early-purchase",
+      "title": "Own it early",
+      "topic": "account",
+      "paragraphs": [
+        "You can pay off your agreement early at any time, online or in the store; choosing Early Purchase Option in My Account usually earns a discount, and there is no fee or penalty for buying early.",
+        "Same As Cash: own the item within the same-as-cash period (4 months at most locations, 3 in California) for the cash price plus tax.",
+        "After that period most locations offer 50 percent off the remaining total, though this varies by state; check your agreement."
+      ],
+      "source": "https://www.rentacenter.com/en-us/faqs"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Returning or pausing your agreement",
+      "topic": "account",
+      "paragraphs": [
+        "You can return your product at any time without further obligation. Contact your store to schedule a pickup or return it in person; this pauses your payments.",
+        "When you return an item before owning it you get a payment protection voucher. Bring your last receipt to the store within two years to reinstate the agreement with the same or a comparable item, use the credit toward another item, or give it to a friend."
+      ],
+      "source": "https://www.rentacenter.com/en-us/faqs"
+    },
+    {
+      "slug": "register",
+      "title": "Create My Account",
+      "topic": "account",
+      "paragraphs": [
+        "Select Create My Account and use the same email address your agreement was set up with. Open the link Rent-A-Center emails you within 24 hours, create your password, then enter your first and last name exactly as on the agreement and your agreement number.",
+        "The agreement number is at the top of your agreement papers. If you can't find it, call your store or 1-800-422-8186.",
+        "To sign in, enter your email and password, then the one-time code sent to your email within 4 minutes."
+      ],
+      "steps": [
+        "Select Create My Account.",
+        "Enter the email used on your agreement.",
+        "Open the emailed link within 24 hours and create a password.",
+        "Enter your name and agreement number."
+      ],
+      "source": "https://www.rentacenter.com/en-us/myaccount/payonline-getstarted"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "phone-payment-fee",
+        "intent": "You are thinking of paying your Rent-A-Center agreement by phone through your store. Using Rent-A-Center's FAQs, find out what convenience fee may apply to phone payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $1.99 convenience fee may apply to phone payments with Visa or Mastercard."
+          }
+        ]
+      },
+      {
+        "slug": "payment-cutoff-time",
+        "intent": "Using Rent-A-Center's FAQs, find out the latest time on your due date that a payment is still on time. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "11:59"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "11:59"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payments are due by 11:59 pm local time on the due date."
+          }
+        ]
+      },
+      {
+        "slug": "agreement-number-help",
+        "intent": "You want to create a Rent-A-Center My Account but cannot find your agreement number. Using the Rent-A-Center site, find the phone number to call for help. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8004228186"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8004228186"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call your store or 1-800-422-8186."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "home",
+      "label": "register"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "local Rent-A-Center store"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "11:59 pm"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "1-800-422-8186"
+    }
+  ]
+}

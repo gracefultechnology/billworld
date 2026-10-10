@@ -1,0 +1,329 @@
+{
+  "id": "orange-county-treasurer-tax-collector-8a181b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Orange County Treasurer-Tax Collector",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public octreasurer.gov pages only. Pay / View Property Tax on TaxBill: eCheck is free; credit and debit cards 2.25% with a $1.50 minimum (minimum not expressible), fee kept by the processor and not waivable. Automated phone payments by card at 714-834-3411. Last timely payment dates are December 10 and April 10; the Treasurer cannot extend them. Text/Email eSubscriptions (Secured Tax Reminder) are reminders, not paperless bills; paperless stays at family default. Payment plans are only for delinquent taxes (5-Pay Plan: 20% down + $25 setup, certified funds; Four-Year plan for unsecured escape bills over $500, $48 fee), applied for by paper application; current-year taxes are never on a plan. The template always offers an online plan form, so payment_arrangement stays at family default with the real rules in help. No automatic or prepayment program is described. No taxpayer login for TaxBill; email sign-in is synthetic. Review 2026-10-09: no paperless bill exists (reminders only) and plans are paper applications for delinquent taxes only, so paperless and payment_arrangement are unsupported; guest label is the real 'Pay/View Property Tax Bill'. The catalog's general phone (855-886-5400) is the County of Orange directory-assistance line, not the Treasurer-Tax Collector; the office line is 714-834-3411 (also the pay-by-phone line). A dossier cannot override the catalog phone (reported).",
+  "officialDomains": [
+    "octreasurer.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.octreasurer.gov/online-payments-eservices",
+      "title": "Online Payments / eServices",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.octreasurer.gov/cardfees",
+      "title": "Credit Card/Debit Card Service Fees",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.octreasurer.gov/faq/frequently-asked-questions-faqs-secured-property-tax-payments",
+      "title": "FAQs - Secured Property Tax Payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.octreasurer.gov/PaymentPlans",
+      "title": "Payment Plans",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Orange County Treasurer-Tax Collector",
+    "shortName": "OC Treasurer-Tax Collector",
+    "primary": "#0f3b5f",
+    "accent": "#8a3b00",
+    "monogram": "OC"
+  },
+  "labels": {
+    "guestPay": "Pay/View Property Tax Bill",
+    "payBill": "Pay/View Property Tax Bill",
+    "arrangement": "Payment Plans",
+    "help": "FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay/View Property Tax Bill",
+        "page": "guest"
+      },
+      {
+        "label": "Credit Card/Debit Card Service Fees",
+        "helpSlug": "card-fees"
+      },
+      {
+        "label": "Secured Tax Reminder",
+        "helpSlug": "tax-reminders"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay/View Property Tax Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Plans",
+        "page": "arrangement"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.octreasurer.gov/faq/frequently-asked-questions-faqs-secured-property-tax-payments",
+      "note": "Pay on TaxBill without an account; eCheck from a checking or savings account is free."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.octreasurer.gov/PaymentPlans",
+      "note": "There is no automatic payment or prepayment program. Pay each installment online, by phone, by mail or in person; sign up for text or email reminders instead.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.octreasurer.gov/faq/frequently-asked-questions-faqs-secured-property-tax-payments",
+      "note": "Automated phone line, 24/7, card only with the service fee.",
+      "phone": "7148343411"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.octreasurer.gov/faq/frequently-asked-questions-faqs-secured-property-tax-payments",
+      "note": "Mail to County of Orange, Attn. Treasurer-Tax Collector, P.O. Box 1438, Santa Ana, CA 92702-1438."
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.octreasurer.gov/online-payments-eservices",
+      "note": "Secured tax bills are mailed. Text/Email eSubscriptions such as the Secured Tax Reminder send reminders before each deadline but do not replace the mailed bill.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.octreasurer.gov/PaymentPlans",
+      "note": "Current-year taxes are never on a plan. The Five-Year Plan for delinquent secured taxes starts with a paper application, 20% down and a $25 setup fee in certified funds or cash.",
+      "channel": "mail"
+    }
+  },
+  "billing": {
+    "source": "https://www.octreasurer.gov/cardfees",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.25,
+      "evidence": "documented_official",
+      "source": "https://www.octreasurer.gov/cardfees"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying secured property taxes",
+      "topic": "payments",
+      "source": "https://www.octreasurer.gov/faq/frequently-asked-questions-faqs-secured-property-tax-payments",
+      "paragraphs": [
+        "Pay online on TaxBill by eCheck from a checking or savings account at no cost, or by card for a service fee. Online payments get same-day credit and a receipt you can email or print.",
+        "Card payments can also be made 24/7 on the automated phone line, 714-834-3411, which reaches staff from 9 a.m. to 5 p.m. Mail payments to County of Orange, Attn. Treasurer-Tax Collector, P.O. Box 1438, Santa Ana, CA 92702-1438; a hand-cancelled U.S. Postal Service postmark on or before the deadline is recommended.",
+        "The last timely payment dates are December 10 and April 10. State law does not let the Treasurer extend or postpone them."
+      ]
+    },
+    {
+      "slug": "card-fees",
+      "title": "Credit card and debit card service fees",
+      "topic": "payments",
+      "source": "https://www.octreasurer.gov/cardfees",
+      "paragraphs": [
+        "Credit and debit cards (American Express, Discover, Visa, Mastercard) are charged one rate of 2.25% with a $1.50 minimum. For example, a $500 tax payment carries an $11.25 fee, for $511.25 in total.",
+        "The card processor keeps the fee; the County receives none of it and cannot waive it. eCheck payments have no fee."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "source": "https://www.octreasurer.gov/PaymentPlans",
+      "paragraphs": [
+        "Plans are only for delinquent taxes, and current-year taxes are never included.",
+        "The Five-Year (5-Pay) Plan for delinquent secured taxes can start after June 30 of the year the taxes became delinquent and before the property becomes subject to the Power to Sell. Submit the application with at least 20% of the delinquent amount plus a $25 setup fee in certified funds or cash; each year by April 10 pay the current taxes and at least 20% more. Interest is 1.5% per month on the unpaid balance.",
+        "The Four-Year Plan for unsecured escape bills over $500 requires a written request before the due date, a $48 fee and at least 20% down."
+      ]
+    },
+    {
+      "slug": "tax-reminders",
+      "title": "Text and email tax reminders",
+      "topic": "paperless",
+      "source": "https://www.octreasurer.gov/faq/frequently-asked-questions-faqs-secured-property-tax-payments",
+      "paragraphs": [
+        "Sign up for the Secured Tax Reminder through Text/Email eSubscriptions to get a reminder before each installment deadline. Reminders do not replace the mailed bill."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-minimum",
+        "intent": "Using the OC Treasurer-Tax Collector's website help pages, find the minimum service fee for paying property taxes by credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments cost 2.25% with a $1.50 minimum; eCheck is free."
+          }
+        ]
+      },
+      {
+        "slug": "five-pay-setup-fee",
+        "intent": "Using the OC Treasurer-Tax Collector's website help pages, find the setup fee for the Five-Year payment plan for delinquent secured taxes. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$25"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$25"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Five-Year plan has a $25 setup fee plus at least 20% of the delinquent amount."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Credit Card/Debit Card Service Fees",
+        "Secured Tax Reminder"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "Payment Plans"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "card-fees",
+      "contains": [
+        "2.25%",
+        "$1.50"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "714-834-3411"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": "$25"
+    }
+  ]
+}

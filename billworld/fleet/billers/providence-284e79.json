@@ -1,0 +1,122 @@
+{
+  "id": "providence-284e79",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Providence",
+  "category": "medical",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public providence.org billing-support pages (no sign-in). Pay Your Medical Bill links to MyChart after you select your state/region (AK, CA, MT, NM, OR, TX, WA), date of service and facility; or mail a check/money order with the bill's mail-in portion. Payment is due 30 days after you receive a statement; overdue accounts get follow-up billing for up to 180 days. Payment plans are interest-free with no late fees or early-payoff penalty, from $25 a month, set up in MyChart; automatic monthly plan payments from a card or bank account, with a choice to add future bills. Balance notices by statement, MyChart, email or text per communication preferences (paperless setting not described: family default). Standalone AutoPay outside a payment plan is not described publicly; autopay is kept supported (evidence inferred) and the autopay help explains the plan-based automatic payments. Guest pay is not described on the public pages (family default kept). Billing office (disputes) 800-378-4189 M-F 8-4:30; financial counselors 855-229-6466 M-F 7-5:30 PT; customer service 8-8 PT via Contact us.",
+  "officialDomains": ["providence.org"],
+  "sources": [
+    { "url": "https://www.providence.org/billing-support/bill-pay", "title": "Pay your bill", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.providence.org/billing-support/payment-plans", "title": "No-Interest Payment Plans", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.providence.org/billing-support/help-paying-your-bill", "title": "Help paying your bill", "fetchedAt": "2026-10-09", "kind": "plans" }
+  ],
+  "brand": { "displayName": "Providence", "shortName": "Providence", "primary": "#005a9c", "accent": "#003e6b", "monogram": "P" },
+  "labels": {
+    "payBill": "Pay Your Medical Bill",
+    "arrangement": "Payment Plans",
+    "autopay": "Automatic payments",
+    "help": "Billing support",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay Your Medical Bill", "page": "login" },
+      { "label": "Payment Plans", "helpSlug": "payment-plan" },
+      { "label": "Help paying your bill", "helpSlug": "payment-assistance" },
+      { "label": "Billing support", "page": "help" }
+    ]
+  },
+  "capabilities": {
+    "autopay": { "support": "supported", "evidence": "inferred", "source": "https://www.providence.org/billing-support/payment-plans" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.providence.org/billing-support/payment-plans" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.providence.org/billing-support/help-paying-your-bill" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.providence.org/billing-support/bill-pay" }
+  },
+  "billing": {
+    "source": "https://www.providence.org/billing-support/bill-pay",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Providence describes automatic payments as part of its no-interest payment plans: when you set up a plan in MyChart you can have each monthly payment taken automatically from a credit or debit card or a bank account.",
+        "You can also choose whether future bills are added to the plan automatically or left out. For help changing a plan or a balance, call the billing customer service number on your statement."
+      ],
+      "source": "https://www.providence.org/billing-support/payment-plans"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Providence bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Choose Pay Your Medical Bill, then select the state where you received care (not necessarily where you live), the date of service if asked, and the facility. You are taken to MyChart to see balances and payment options.",
+        "To pay by mail, fill out the mail-in portion of your paper bill and send a check or money order to the address on the bill.",
+        "Payment is due 30 days after you receive your statement. Overdue accounts may get follow-up billing for up to 180 days, during which you can still pay, set up a plan or apply for financial assistance."
+      ],
+      "source": "https://www.providence.org/billing-support/bill-pay"
+    },
+    {
+      "slug": "payment-plan",
+      "title": "No-interest payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "Providence payment plans charge no interest and no late fees, with monthly payments starting at $25. You pick the number of months; options depend on your balance. Paying early or paying off the plan carries no penalty.",
+        "Sign in to MyChart to set up a plan. You can pay automatically each month from a credit or debit card or a bank account, and choose whether future bills are added to the plan."
+      ],
+      "steps": ["Sign in to MyChart.", "Open Payment Plans.", "Choose the number of months.", "Add a card or bank account for automatic payments.", "Confirm the plan."],
+      "source": "https://www.providence.org/billing-support/payment-plans"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help paying your bill",
+      "topic": "assistance",
+      "paragraphs": [
+        "Providence offers financial assistance. For help with the application or translation, call financial counselors at 1-855-229-6466, weekdays 7 a.m. to 5:30 p.m. Pacific."
+      ],
+      "source": "https://www.providence.org/billing-support/help-paying-your-bill"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Billing contacts",
+      "topic": "contact",
+      "paragraphs": [
+        "For billing disputes call the patient billing office at 800-378-4189, weekdays 8 a.m. to 4:30 p.m. Billing customer service is open weekdays 8 a.m. to 8 p.m. Pacific; use Contact us to find the number for your location."
+      ],
+      "source": "https://www.providence.org/billing-support/bill-pay"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "plan-minimum-monthly",
+        "intent": "Using Providence's billing support pages, find the lowest monthly payment a Providence no-interest payment plan can start at. Do not set up a plan or make a payment.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["25"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["25"] },
+        "tags": ["help", "information", "assistance"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "$25 a month." }]
+      },
+      {
+        "slug": "followup-billing-days",
+        "intent": "Find how many days Providence may send follow-up billing on an overdue account. Do not change anything on the account.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["180"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["180"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Up to 180 days." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "Pay Your Medical Bill" },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "helpArticle", "slug": "payment-plan", "contains": ["$25", "no interest"] },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "800-378-4189" }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "id": "gfl-environmental-c86e5f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "GFL Environmental",
+  "category": "trash",
+  "template": "waste-hauler",
+  "reviewedAt": "2026-10-09",
+  "notes": "Moved from the catalog default utility-account family (energy-utility portal with an energy-usage panel and Budget Billing) to the trash-specific waste-hauler family. Researched from public gflenv.com pages (Pay My Bill, FAQ, Setting Up AutoPay, Creating Your MyAccount) and the public MyAccount sign-in screen (observed, never signed in). Sign-in is one page with Email Address + Password, plus Microsoft and Google buttons (the mock renders Google only); Sign Up Now verifies the email with a code, then accounts are linked with Link Account using the account number (or the invoice number from the latest invoice); no ZIP is asked for when linking. US payment methods: card, ACH, Venmo, Google Pay, Apple Pay and PayPal, in MyAccount or by Guest Checkout (account number + billing ZIP); wallets are modelled as cards. No convenience-fee amount is published. AutoPay schedule choices are When the Bill is Issued, Invoice Due Date, or a chosen number of Days before Due Date; the engine can only model one rule, so the due-date option is used. Late fees follow the invoice/service agreement (no amount published). Cancellation rules (no proration mid-cycle; full term owed if cancelled in the first three months) are published but no online cancel flow is described, so cancel_service keeps the family default. Former WCA customers had to re-enroll in AutoPay and e-billing.",
+  "officialDomains": ["gflenv.com"],
+  "sources": [
+    { "url": "https://gflenv.com/pay-my-bill/", "title": "Pay My Bill | GFL Environmental", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://gflenv.com/frequently-asked-questions/", "title": "Frequently Asked Questions | GFL Environmental", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://gflenv.com/setting-up-autopay/", "title": "Setting Up AutoPay | GFL Environmental", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://gflenv.com/creating-your-myaccount/", "title": "Creating Your MyAccount | GFL Environmental", "fetchedAt": "2026-10-09", "kind": "login" },
+    { "url": "https://myaccount.gflenv.com", "title": "GFL MyAccount sign up or sign in", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "GFL Environmental", "shortName": "GFL", "primary": "#006a3b", "accent": "#1b365d", "monogram": "GF" },
+  "labels": {
+    "payBill": "Pay my bill",
+    "guestPay": "Guest Checkout",
+    "signIn": "Log in to My Account",
+    "register": "Sign Up Now",
+    "forgot": "Forgot your password?",
+    "dashboard": "Overview",
+    "statements": "Invoices & Payments",
+    "autopay": "AutoPay",
+    "paperless": "Payment Preferences",
+    "help": "Support",
+    "username": "Email Address"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay my bill", "page": "guest" },
+      { "label": "Log in to My Account", "page": "login" },
+      { "label": "Sign Up Now", "page": "register" },
+      { "label": "Setting Up AutoPay", "helpSlug": "autopay" },
+      { "label": "FAQ", "page": "help" }
+    ],
+    "account": [
+      { "label": "Overview", "page": "dashboard" },
+      { "label": "Pay my bill", "page": "pay" },
+      { "label": "Invoices & Payments", "page": "statements" },
+      { "label": "AutoPay", "page": "autopay" },
+      { "label": "Payment Preferences", "page": "paperless" },
+      { "label": "Support", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": ["google", "microsoft"],
+    "registrationFields": ["accountNumber", "email"],
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "documented_official",
+    "source": "https://gflenv.com/creating-your-myaccount/"
+  },
+  "capabilities": {
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/creating-your-myaccount/" },
+    "password_reset": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/frequently-asked-questions/" },
+    "google_login": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/creating-your-myaccount/" },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/pay-my-bill/" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/setting-up-autopay/" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/frequently-asked-questions/" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/frequently-asked-questions/" },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/frequently-asked-questions/" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/pay-my-bill/", "note": "Call the number printed on your invoice; you need your account number and billing ZIP code." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://gflenv.com/pay-my-bill/" }
+  },
+  "billing": {
+    "source": "https://gflenv.com/pay-my-bill/",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "days": "due_date", "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How can I pay my GFL bill?",
+      "topic": "payments",
+      "paragraphs": [
+        "In MyAccount you can make a one-time payment by credit card, ACH, Venmo, Google Pay, Apple Pay or PayPal, enroll in AutoPay, or turn on Pay by Text in SMS/Mobile Settings. MyAccount is not available to every customer.",
+        "Without signing in, use the online one-time payment (Guest Checkout) with your customer account number and billing ZIP code. You can also pay by phone at the number on your invoice, or mail a check with the remittance slip to the address on the invoice.",
+        "Digital wallets only work through MyAccount or Guest Checkout; searching for GFL inside a wallet app will not find your bill. Payments can take up to two business days to show in MyAccount."
+      ],
+      "steps": ["Log in to MyAccount.", "Under Payment Review choose Pay another amount, or pay the balance.", "Pick Pay per account or Pay per invoice and enter the amount.", "Select Continue to Checkout, then Pay Now."],
+      "source": "https://gflenv.com/pay-my-bill/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Setting up AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay charges a saved credit card or bank account automatically. You choose when it runs: when the bill is issued, on the invoice due date, or a set number of days before the due date.",
+        "To change the payment method or stop AutoPay, open Payment Preferences from the Overview page and update or un-enroll the account."
+      ],
+      "steps": ["Log in to MyAccount and select Payment Preferences on the Overview page.", "Choose the account(s) and select AutoPay.", "Enter a card or bank account in the From section.", "Pick the schedule in the Date section.", "Check the authorization box, select Save Changes, then Confirm AutoPay."],
+      "source": "https://gflenv.com/setting-up-autopay/"
+    },
+    {
+      "slug": "paperless",
+      "title": "How do I enroll in paperless billing?",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in to MyAccount, select Payment Preferences on the right side of the Overview page and switch on paperless billing for the account. Changes save automatically.",
+        "GFL recommends e-billing together with automated payments to avoid late fees."
+      ],
+      "source": "https://gflenv.com/frequently-asked-questions/"
+    },
+    {
+      "slug": "billing-history",
+      "mode": "append",
+      "title": "Downloading invoices",
+      "paragraphs": [
+        "In MyAccount open Invoices & Payments from the left menu. Use the Download PDF icon for one invoice, or the PDF and CSV buttons above the table for several. The list covers the past year."
+      ],
+      "source": "https://gflenv.com/frequently-asked-questions/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancelling service",
+      "topic": "account",
+      "paragraphs": [
+        "If you cancel within the first three months you still owe the full contract term, without proration. Cancelling partway through a billing cycle is not prorated or refunded: charges, fees and taxes run to the end of that cycle.",
+        "These terms do not apply where a franchise agreement, municipal contract or other written contract says otherwise. Contact your local GFL branch to cancel or reinstate service."
+      ],
+      "source": "https://gflenv.com/frequently-asked-questions/"
+    },
+    {
+      "slug": "register",
+      "title": "Creating your MyAccount",
+      "topic": "account",
+      "paragraphs": [
+        "Find your customer account number in the upper left of your invoice. Sign up with a Google or Microsoft account, or choose Sign Up Now, enter any email address and select Verify, then type the emailed code and select Verify Code.",
+        "After signing in, select Link Account on the Overview page and enter your account number, or the invoice number from your latest invoice; several accounts can be linked at once. You can then enroll in paperless billing and AutoPay."
+      ],
+      "source": "https://gflenv.com/creating-your-myaccount/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-schedule-options",
+        "intent": "Using GFL's help pages, find the three choices GFL offers for when AutoPay runs. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["issued", "due date", "before"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["issued", "due date", "before"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "AutoPay can run when the bill is issued, on the invoice due date, or a chosen number of days before the due date." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": ["Pay my bill", "Log in to My Account"] },
+    { "page": "login", "contains": ["Email Address", "Forgot your password?"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Invoices & Payments", "Payment Preferences"] },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "days before the due date" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "Venmo" }
+  ]
+}

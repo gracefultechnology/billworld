@@ -1,0 +1,301 @@
+{
+  "id": "king-county-treasury-operations-589978",
+  "version": 1,
+  "status": "dedicated",
+  "name": "King County Treasury Operations",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public kingcounty.gov pages only. Online payment (payment.kingcounty.gov) by card, debit or eCheck: eCheck $0.55 flat, cards/PayPal 2.35% ($2.00 minimum), international cards 3.95% (minimums and international rate not expressible). Payments by mail (201 S. Jackson St., Suite 710, Seattle), in person (cash, check, card) and drop box; phone numbers are for customer service only, so pay_by_phone is unsupported (inferred). Deadlines April 30 and October 31 (second half 2026 due November 2). Payment plans are only for delinquent prior-year taxes, set up by email/phone with signed paper agreements and serviced by Evergreen Notes Servicing ($100 setup, $17/month); the property-tax template always offers an online plan form, so payment_arrangement stays at family default with the real rules in help. No automatic or monthly prepayment program is described. Interest/penalty rates were not stated on the pages read. Sign-in is synthetic.",
+  "officialDomains": [
+    "kingcounty.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax",
+      "title": "Property taxes - King County, Washington",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax/payment-plans",
+      "title": "Property tax payment plans - King County",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://payment.kingcounty.gov/Home/Index?app=PropertyTaxes",
+      "title": "Property Taxes - King County payments",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "King County Treasury Operations",
+    "shortName": "King County Treasury",
+    "primary": "#1e3f2c",
+    "accent": "#5a2d82",
+    "monogram": "KC"
+  },
+  "labels": {
+    "guestPay": "View my account or pay online",
+    "payBill": "Pay property taxes",
+    "arrangement": "Payment plans",
+    "help": "Property tax FAQ",
+    "contact": "Property Tax Customer Service"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "View my account or pay online",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Property tax FAQ",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay property taxes",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Property Tax Customer Service",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax",
+      "note": "Pay online by credit card, debit card or electronic check; a service fee applies."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax/payment-plans",
+      "note": "King County has no automatic payment program. Pay each half online, by mail, at the drop box or in person.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax",
+      "note": "Payments are not taken by phone. Pay online, by mail, at the King Street Center drop box, or in person at 201 S. Jackson St.",
+      "channel": "none"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax",
+      "note": "Mail a check or money order to King County Treasury, 201 S. Jackson St., Suite 710, Seattle, WA 98104."
+    }
+  },
+  "billing": {
+    "source": "https://payment.kingcounty.gov/Home/Index?app=PropertyTaxes",
+    "fees": {
+      "bankCents": 55,
+      "cardPercent": 2.35,
+      "evidence": "documented_official",
+      "source": "https://payment.kingcounty.gov/Home/Index?app=PropertyTaxes"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "source": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax",
+      "paragraphs": [
+        "Pay online by credit card, debit card or electronic check; a service fee applies. By mail, send a check, cashier's check or money order (never cash) to King County Treasury, 201 S. Jackson St., Suite 710, Seattle, WA 98104, postmarked by the due date.",
+        "In person, the Customer Service Center on the second floor of 201 S. Jackson St. takes cash, check, money order or card on weekdays from 8:30 a.m. to 4:30 p.m. A secure drop box inside King Street Center takes checks and money orders only during the same hours. Phone lines are for questions only: Property Tax Customer Service is 206-263-2890."
+      ]
+    },
+    {
+      "slug": "online-fees",
+      "title": "Online payment fees",
+      "topic": "payments",
+      "source": "https://payment.kingcounty.gov/Home/Index?app=PropertyTaxes",
+      "paragraphs": [
+        "An eCheck costs a flat $0.55. Credit cards, debit cards and PayPal cost 2.35% with a $2.00 minimum; international credit cards cost 3.95% with a $2.00 minimum. King County keeps none of these fees."
+      ]
+    },
+    {
+      "slug": "due-dates",
+      "title": "Due dates",
+      "topic": "billing",
+      "source": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax",
+      "paragraphs": [
+        "Property taxes are due in two halves, by April 30 and October 31; for 2026 the second half is due November 2. Reminders go out about 30 days before each deadline, and fees are added to late payments."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans for delinquent taxes",
+      "topic": "assistance",
+      "source": "https://kingcounty.gov/en/dept/executive-services/buildings-property/treasury-operations/property-tax/payment-plans",
+      "paragraphs": [
+        "Payment plans cover delinquent prior-year taxes only, for homes, commercial property, land and mobile homes, and cannot run past the date the property becomes subject to foreclosure. Owners with a mortgage must tell their lender.",
+        "To enroll, email or call the payment plans team with your contact details, tax account number, tax year and a 6- or 12-month term, then sign and return the plan agreement and the Evergreen Notes Servicing (ENS) contract. ENS collects the payments by the 5th of each month; payments sent to Treasury are rejected.",
+        "Plans cost a one-time $100 setup fee plus $17 a month, with monthly interest built in. Missing a payment cancels the plan."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "echeck-fee",
+        "intent": "Using the King County Treasury Operations website help pages, find the fee for paying property taxes online by eCheck. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$0.55",
+              "55 cents"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$0.55",
+            "55 cents"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An eCheck payment costs $0.55; cards cost 2.35% ($2.00 minimum)."
+          }
+        ]
+      },
+      {
+        "slug": "plan-setup-fee",
+        "intent": "Using the King County Treasury Operations website help pages, find the one-time setup fee for a delinquent property tax payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$100"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$100"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The plan has a one-time $100 setup fee plus $17 per month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Ways to pay",
+        "Payment plans"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "Property Tax Customer Service"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "online-fees",
+      "contains": [
+        "$0.55",
+        "2.35%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": "Evergreen Notes Servicing"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-dates",
+      "contains": "April 30"
+    }
+  ]
+}

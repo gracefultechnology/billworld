@@ -1,0 +1,385 @@
+{
+  "id": "homeserve-usa-163ceb",
+  "version": 1,
+  "status": "dedicated",
+  "name": "HomeServe USA",
+  "category": "home-services",
+  "template": "streaming",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from HomeServe's public Payment Portal FAQs, general FAQs and the public HomeServe ID sign-in page only (never signed in). HomeServe ID sign-in is identifier-first on the real site (Email address, then Sign In with password or a passkey), and is modelled as two steps (loginSteps 2). Password rule: at least 8 characters with 3 of 4 character classes; the account locks after 5 wrong passwords. Plans bill automatically each month or year to the card or checking account on file per plan (Plan Payment Options); there is no separate AutoPay enrollment page on the real site, so the AutoPay page models the recurring plan payment. Stopping recurring billing online is not described (the FAQs only cover switching methods, frequency or cancelling the plan); autopay_cancel is modelled as unsupported online with the 24/7 number (inferred). One-time payments (Payment > One-Time Payment) are for paper-invoice customers or suspended plans and take card or checking (checking must be saved first). Payment history goes back one year. Paperless documents are set under Account Settings > Account Details > Go Paperless. Plans can be cancelled at any time by phone (1-833-521-0208), email, webchat, the contact form, mail or online in My Account, so cancel_service is supported. Guest payment is not documented. Plans billed on a partner utility bill are not modelled. Plan prices vary by ZIP code and are not published, so the plan page keeps the family's synthetic plans. Reviewer (2026-10-09): moved from utility-account to streaming. HomeServe bills recurring repair-plan subscriptions, and the utility template showed an energy-usage chart and Start, Stop or Move. The streaming template also renders the real two-step sign-in. The lockout and password rules now cite the general FAQs (HomeServe ID section) rather than the payment FAQs.",
+  "officialDomains": [
+    "homeserve.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.homeserve.com/en-us/customers/payments/faq/",
+      "title": "Payment FAQs | HomeServe",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.homeserve.com/en-us/faqs/",
+      "title": "Frequently Asked Questions | HomeServe",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.homeserve.com/sc/login",
+      "title": "Sign In | HomeServe",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "HomeServe",
+    "primary": "#b0103a",
+    "accent": "#5c0a22",
+    "monogram": "H"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Create account",
+    "forgot": "Trouble signing in?",
+    "dashboard": "My Account",
+    "payBill": "One-Time Payment",
+    "autopay": "Plan Payment Options",
+    "wallet": "Payment Methods",
+    "history": "Payment History",
+    "paperless": "Go Paperless",
+    "profile": "Account Details",
+    "cancel": "Cancel My Plan",
+    "help": "Help Center",
+    "contact": "Contact Us",
+    "username": "Email address"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create account",
+        "page": "register"
+      },
+      {
+        "label": "Payment FAQs",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "One-Time Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Plan Payment Options",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Account Details",
+        "page": "profile"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Cancel My Plan",
+        "page": "cancel"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "lockoutAttempts": 5,
+    "passwordRule": {
+      "pattern": "^(?=.{8,})(?:(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9])).*$",
+      "message": "At least 8 characters, using at least 3 of: lowercase letters, uppercase letters, numbers and special characters."
+    },
+    "evidence": "observed_public",
+    "source": "https://www.homeserve.com/sc/login"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.homeserve.com/en-us/customers/payments/faq/",
+      "note": "Plans are paid automatically to the card or checking account you pick for each plan in Plan Payment Options."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.homeserve.com/en-us/customers/payments/faq/",
+      "note": "Recurring plan payments cannot be switched off online; you can change the method or frequency, or cancel the plan. Call 1-855-336-2465 with billing questions.",
+      "channel": "phone",
+      "phone": "8553362465"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.homeserve.com/en-us/faqs/"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.homeserve.com/en-us/faqs/",
+      "note": "Plans can also be cancelled by calling 1-833-521-0208, by email, webchat or mail."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.homeserve.com/en-us/faqs/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.homeserve.com/en-us/customers/payments/faq/",
+      "phone": "8553362465"
+    }
+  },
+  "billing": {
+    "source": "https://www.homeserve.com/en-us/customers/payments/faq/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a one-time payment",
+      "topic": "payments",
+      "paragraphs": [
+        "After signing in, open the Payment menu at the top right and choose One-Time Payment, then pick the plan under Select an active plan.",
+        "One-time payments are mainly for customers who get paper invoices or whose plan has been suspended. You can pay by credit or debit card or by checking account (ACH). A checking account must be saved to your account first; a card can be saved or used just once.",
+        "HomeServe accepts checking accounts and American Express, Discover, Mastercard and Visa cards."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Open the Payment menu.",
+        "Select One-Time Payment.",
+        "Choose the plan and enter the payment."
+      ],
+      "source": "https://www.homeserve.com/en-us/customers/payments/faq/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Plan Payment Options and recurring payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Each active plan is paid automatically from the payment method assigned to it. Use Plan Payment Options in the Payment menu to switch any plan to another saved card or checking account.",
+        "Scheduled Payments lists the date and amount of the next payment for every active plan. Update Recurring Payment lets you change how often each plan is billed (for example monthly or yearly).",
+        "Add, update or remove saved cards and accounts under Payment Methods."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Open the Payment menu.",
+        "Select Plan Payment Options.",
+        "Pick the payment method for each plan."
+      ],
+      "source": "https://www.homeserve.com/en-us/customers/payments/faq/"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "Payment history and next payment",
+      "topic": "billing",
+      "paragraphs": [
+        "Payment History, in the Payment menu, shows payments from the past year: the plan number, payment date, payment type and amount.",
+        "To see when your next payment is due and how much it will be, choose Scheduled Payments."
+      ],
+      "source": "https://www.homeserve.com/en-us/customers/payments/faq/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless",
+      "topic": "paperless",
+      "paragraphs": [
+        "Paperless sends your service contract documents by email instead of mail.",
+        "Sign in with your HomeServe ID, open Account Settings and choose Account Details, then select Go Paperless in the Email Communication section."
+      ],
+      "steps": [
+        "Sign in with your HomeServe ID.",
+        "Open Account Settings, then Account Details.",
+        "Select Go Paperless under Email Communication."
+      ],
+      "source": "https://www.homeserve.com/en-us/faqs/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel a plan",
+      "topic": "account",
+      "paragraphs": [
+        "You can cancel a HomeServe plan at any time.",
+        "Sign in to My Account to cancel online, call 1-833-521-0208, use webchat (Monday to Friday 8 AM to 8 PM, Saturday 8 AM to 4 PM) or the Contact Us form, or email or mail HomeServe USA, 7134 Lee Hwy, Chattanooga, TN 37421 with your full name, covered property address and plan name."
+      ],
+      "source": "https://www.homeserve.com/en-us/faqs/"
+    },
+    {
+      "slug": "faq",
+      "title": "Payment portal FAQs",
+      "topic": "faq",
+      "paragraphs": [
+        "If you think you were charged incorrectly, contact customer support by chat, by email or by calling 1-855-336-2465.",
+        "If your plan is suspended, make a One-Time Payment or update the payment method under Payment Methods to keep it active."
+      ],
+      "source": "https://www.homeserve.com/en-us/customers/payments/faq/"
+    },
+    {
+      "slug": "homeserve-id",
+      "title": "HomeServe ID sign-in, passwords and lockouts",
+      "topic": "account",
+      "paragraphs": [
+        "A HomeServe ID is one sign-in (email address plus a password or a passkey) for both HomeServe.com and the HomeServe app.",
+        "Passwords need at least 8 characters and at least 3 of these: lowercase letters, uppercase letters, numbers and special characters. A password cannot contain part of your username or repeat one of your last 10 passwords.",
+        "After 5 wrong passwords your HomeServe ID is locked and you get a Blocked Access email. Use its Unblock your account link to set a new password. To reset a password any time, choose Trouble signing in? on the sign-in screen."
+      ],
+      "source": "https://www.homeserve.com/en-us/faqs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "history-how-far-back",
+        "intent": "Using HomeServe's payment FAQs, find out how far back the Payment History screen goes. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "one year",
+              "1 year",
+              "12 months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "one year",
+            "1 year",
+            "12 months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "history"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payment History shows payments from one year before today."
+          }
+        ]
+      },
+      {
+        "slug": "cancel-by-phone-number",
+        "intent": "Your parent wants to cancel a HomeServe plan over the phone. Using HomeServe's FAQs, find the phone number for cancellations. Do not cancel anything or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8335210208"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8335210208"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 1-833-521-0208."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "One-Time Payment",
+        "Plan Payment Options"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "1-833-521-0208"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "view-your-bill",
+      "contains": "past year"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "inframark-guest-card-payment-v1",
+  "version": 1,
+  "site_id": "inframark",
+  "evidence_cohort": "observed_guest_entry_client_sequence_synthetic_checkout",
+  "prompt": "From Inframark billing help, choose one-time payment without signing in. Verify security code INF1048 and service ZIP 77001. Pay the full $84.32 balance using card. Visa: 4242424242424242; expiry 12/30; security code 123. Holder Alex Morgan. Billing: Alex Morgan, 1 Test Street, Mankato, MN 56001, United States. Receipt email alex@billworld.test. Review the $2.53 fee, authorize once, view the receipt, then return to the account to verify a zero balance. Do not sign in, save a method, enroll in AutoPay or change any other account. Checkout is simulated from the public client sequence. Operator-level fees are used; district-specific exceptions remain unverified.",
+  "budget": {
+    "seconds": 300,
+    "actions": 150
+  },
+  "goal": {
+    "type": "starnik_guest_payment",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "amount_cents": 8432,
+    "fee_cents": 253,
+    "method_kind": "card",
+    "instrument_number": "4242424242424242",
+    "routing": "",
+    "receipt_email": "alex@billworld.test",
+    "billing": {
+      "firstName": "Alex",
+      "lastName": "Morgan",
+      "address": "1 Test Street",
+      "city": "Mankato",
+      "state": "MN",
+      "zip": "56001",
+      "country": "United States",
+      "email": "alex@billworld.test"
+    },
+    "holder_name": "Alex Morgan",
+    "instrument_details": {
+      "brand": "Visa",
+      "expiry": "12/30"
+    }
+  }
+}

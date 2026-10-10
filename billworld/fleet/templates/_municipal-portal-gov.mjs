@@ -1,7 +1,7 @@
 // Shared government-portal pieces used by municipal-portal, property-tax and income-tax.
 // Only content builders live here (field names follow the kit contract); every page shell, label
 // and layout stays in the individual template.
-import { html, raw, form, field, select, checkbox, button, hidden, money, fmtDate, methodText, radio } from '../kit.mjs';
+import { html, raw, form, field, select, checkbox, button, hidden, money, fmtDate, methodText, radio, L } from '../kit.mjs';
 
 export const offline = vm => vm.biller.capabilities.online_account.support === 'unsupported';
 export const sup = (vm, k) => vm.biller.capabilities[k]?.support === 'supported';
@@ -30,8 +30,11 @@ ${save ? checkbox(vm, { name: 'save', label: 'Save this payment method to my wal
 
 // Saved methods + "add new" disclosure.
 export function savedMethods(vm, { legend = 'Payment method', newLabel = 'Use a new payment method', fields = {} } = {}) {
-  const sel = vm.values.methodId || vm.draft?.methodId || vm.methods.find(m => !m.expired)?.id || '';
-  return html`<fieldset class="methods"><legend>${legend}</legend>${vm.methods.map(m => radio(vm, { name: 'methodId', value: m.id, checked: sel === m.id, label: methodText(m), extra: html` <span class="fee-tag">${m.type === 'bank' ? bankFeeText(vm) : cardFeeText(vm)}</span>` }))}<details class="new-method"${!vm.methods.length ? raw(' open') : ''}><summary>${newLabel}</summary>${methodFields(vm, fields)}</details></fieldset>`;
+  // Only the method types this page accepts (a dossier may make AutoPay or guest pay bank-only).
+  const okType = t => !Array.isArray(vm.methodTypes) || vm.methodTypes.includes(t);
+  const list = vm.methods.filter(m => okType(m.type));
+  const sel = vm.values.methodId || vm.draft?.methodId || list.find(m => !m.expired)?.id || '';
+  return html`<fieldset class="methods"><legend>${legend}</legend>${list.map(m => radio(vm, { name: 'methodId', value: m.id, checked: sel === m.id, label: methodText(m), extra: html` <span class="fee-tag">${m.type === 'bank' ? bankFeeText(vm) : cardFeeText(vm)}</span>` }))}<details class="new-method"${!list.length ? raw(' open') : ''}><summary>${newLabel}</summary>${methodFields(vm, { allowCard: okType('card'), ...fields })}</details></fieldset>`;
 }
 
 export function amountRadios(vm, labels = {}, legend = 'Payment amount') {
@@ -71,7 +74,7 @@ export function autopayBody(vm, { h = t => html`<h1>${t}</h1>`, title = 'Autopay
     // Enrollment is not offered online, but an existing enrollment (set up by phone or on paper) must still be
     // visible, and cancellable here when the office documents online cancellation.
     const current = ap.enrolled ? html`<div class="card status-on"><p><strong>Automatic payments are on.</strong> We pay the ${ap.policy === 'fixed' ? `fixed amount of ${money(ap.fixedCents)}` : 'full amount due'} ${ap.day ? `on day ${ap.day} of each month` : 'on each due date'} from ${vm.autopayMethod ? methodText(vm.autopayMethod) : 'your bank account on file'}.</p>${sup(vm, 'autopay_cancel') ? form(vm, 'autopay', html`${hidden('action', 'cancel')}${checkbox(vm, { name: 'confirm', label: 'I understand future bills will not be paid automatically.' })}${button('Turn off automatic payments', { cls: 'btn btn-danger' })}`) : html`<p>To stop or change automatic payments, contact the office${vm.biller.phone ? ` at ${vm.biller.phone}` : ''}.</p>`}</div>` : '';
-    return html`${h(title)}${current}<p>${ap.enrolled ? 'New automatic payment enrollments are not taken online.' : (offLabel || 'Automatic payments are not offered online for this account.')} You can make a one-time payment or schedule a future-dated payment instead.</p><p><a class="btn btn-primary" href="${vm.url('pay')}">Make a payment</a></p>`;
+    return html`${h(title)}${current}<p>${ap.enrolled ? 'New automatic payment enrollments are not taken online.' : (offLabel || 'Automatic payments are not offered online for this account.')} You can make a one-time payment or schedule a future-dated payment instead.</p><p><a class="btn btn-primary" href="${vm.url('pay')}">${L(vm, 'pay', 'Make a payment')}</a></p>`;
   }
   return html`${h(title)}${ap.enrolled ? html`<div class="card status-on"><p><strong>Autopay is on.</strong> We pay the ${ap.policy === 'fixed' ? `fixed amount of ${money(ap.fixedCents)}` : 'full amount due'} ${ap.day ? `on day ${ap.day} of each month` : 'on each due date'} from ${vm.autopayMethod ? methodText(vm.autopayMethod) : 'your saved method'}.</p>${form(vm, 'autopay', html`${hidden('action', 'cancel')}${checkbox(vm, { name: 'confirm', label: 'I understand future bills will not be paid automatically.' })}${button('Turn off autopay', { cls: 'btn btn-danger' })}`)}</div><h2>Change autopay</h2>` : html`<p>${intro || 'Autopay is off. Enroll to pay automatically on each due date.'}</p>`}${form(vm, 'autopay', html`${hidden('action', 'enroll')}${methodsBlock || savedMethods(vm, { legend: 'Pay from' })}${select(vm, { name: 'policy', label: 'Amount to pay', options: policyOptions || [['full', 'Full amount due'], ['fixed', 'Fixed amount']] })}${field(vm, { name: 'fixedAmount', label: 'Fixed amount (if selected)', required: false, inputmode: 'decimal' })}${checkbox(vm, { name: 'acceptTerms', label: 'I authorize recurring electronic debits under the autopay terms and conditions.' })}<div class="actions">${button(ap.enrolled ? 'Save changes' : 'Enroll in autopay')}</div>`)}`;
 }

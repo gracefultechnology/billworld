@@ -1,0 +1,363 @@
+{
+  "id": "southwest-gas-corporation-137012",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Southwest Gas Corporation",
+  "category": "gas",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public swgas.com pages only. Online card, debit or electronic-check payments cost residential customers $2.50 (capped at $750; commercial pay 1.5%, not modelled); bank-account payments in MyAccount are free. The Automatic Payment Plan (APP) drafts a checking or savings account on the bill due date (debit data goes to the bank 3 business days earlier); it is enrolled under Billing > Automatic Payment Plan and stopped with Stop Automatic Payment Plan at least 3 business days before the debit. A 5-day payment extension can be requested online; longer arrangements need a call to 877-860-6020. Start, stop and move service are available online in MyAccount. Sign-in identifier and MFA are not documented publicly (family defaults kept). The FAQ offers a guest payment without a MyAccount (card or electronic check, convenience fee applies); the fields it asks for are not published, so the family guest form is kept. Recurring card payments are no longer accepted, so APP is bank-only.",
+  "officialDomains": [
+    "swgas.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.swgas.com/en/ways-to-pay",
+      "title": "Ways to Pay",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.swgas.com/en/automatic-payment-plan",
+      "title": "Automatic Payment Plan",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.swgas.com/en/faqs",
+      "title": "Frequently Asked Questions",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.swgas.com/en/contact-us",
+      "title": "Contact Us",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "Southwest Gas",
+    "primary": "#005a9c",
+    "accent": "#003b66",
+    "monogram": "SW"
+  },
+  "labels": {
+    "dashboard": "MyAccount",
+    "payBill": "Pay Bill Online",
+    "autopay": "Automatic Payment Plan",
+    "paperless": "Go Paperless",
+    "arrangement": "Request Payment Extension",
+    "cancel": "Stop Service",
+    "help": "FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Automatic Payment Plan",
+        "helpSlug": "autopay"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAccount",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill Online",
+        "page": "pay"
+      },
+      {
+        "label": "Billing History",
+        "page": "statements"
+      },
+      {
+        "label": "Automatic Payment Plan",
+        "page": "autopay"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Request Payment Extension",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/faqs",
+      "note": "Pay online without a MyAccount by making a guest payment; card and electronic-check payments carry the $2.50 residential fee."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/automatic-payment-plan"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/automatic-payment-plan",
+      "note": "Select Stop Automatic Payment Plan in MyAccount at least 3 business days before the debit date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/faqs"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/faqs"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/faqs",
+      "note": "A 5-day extension can be requested online; other payment arrangements are made by calling 877-860-6020."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/contact-us"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/ways-to-pay",
+      "phone": "877-860-6020"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/ways-to-pay"
+    }
+  },
+  "billing": {
+    "source": "https://www.swgas.com/en/ways-to-pay",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 250,
+      "evidence": "documented_official",
+      "source": "https://www.swgas.com/en/faqs"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "mode": "append",
+      "topic": "payments",
+      "paragraphs": [
+        "Paying from a bank account in MyAccount is free. Residential customers pay a $2.50 fee for an online credit card, debit card or electronic-check payment (payments up to $750); commercial customers pay a 1.5% surcharge.",
+        "No MyAccount? You can still pay online as a guest by card or electronic check; the same convenience fee applies.",
+        "You can also pay with the mobile app, by phone around the clock at 877-860-6020 (press 2), by mail to Southwest Gas Corporation, P.O. Box 24531, Oakland, CA 94623-1531, or at an authorized payment location."
+      ],
+      "source": "https://www.swgas.com/en/faqs"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payment Plan (APP)",
+      "topic": "autopay",
+      "paragraphs": [
+        "APP pays your gas bill from your checking or savings account on the due date, at no charge. Southwest Gas sends the debit to your bank three business days before the due date, and once sent it cannot be recalled.",
+        "Enroll in MyAccount under Billing, then Automatic Payment Plan, or mail the enrollment form. Enrollment shows on your bill within one or two billing cycles. Accounts on APP cannot get a payment extension."
+      ],
+      "steps": [
+        "Log in to MyAccount.",
+        "Open Billing.",
+        "Select Automatic Payment Plan.",
+        "Enter your checking or savings account and submit."
+      ],
+      "source": "https://www.swgas.com/en/automatic-payment-plan"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Stop the Automatic Payment Plan",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in to MyAccount and choose Stop Automatic Payment Plan from the Billing menu. Do this at least three business days before the debit date, or the next payment will still be drafted.",
+        "To change the bank account instead, choose Change Automatic Payment Plan; bank approval can take up to 10 business days."
+      ],
+      "source": "https://www.swgas.com/en/automatic-payment-plan"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment extensions and arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "You can ask for a 5-day payment extension in MyAccount, in the app, or through the automated phone line at 877-860-6020 at any hour.",
+        "For other payment arrangements, call Customer Solutions at 877-860-6020, Monday to Friday, 7 a.m. to 6 p.m. Pacific."
+      ],
+      "source": "https://www.swgas.com/en/faqs"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, stop or move service",
+      "topic": "account",
+      "paragraphs": [
+        "You can start, stop or move gas service online in MyAccount, in the mobile app, or by calling Customer Solutions at 877-860-6020 on weekdays."
+      ],
+      "source": "https://www.swgas.com/en/contact-us"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "online-card-fee",
+        "intent": "Using the Southwest Gas website's help pages, find the fee a residential customer pays to make an online credit or debit card payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Residential customers pay $2.50 per online card payment."
+          }
+        ]
+      },
+      {
+        "slug": "app-stop-deadline",
+        "intent": "Using the Southwest Gas help pages, find how many business days before the debit date the Automatic Payment Plan must be stopped. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3",
+              "three"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3",
+            "three"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "It must be stopped at least 3 business days before the debit date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Ways to Pay",
+        "Automatic Payment Plan"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Request Payment Extension",
+        "Go Paperless"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$2.50"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-autopay",
+      "contains": "three business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "guest"
+    }
+  ]
+}

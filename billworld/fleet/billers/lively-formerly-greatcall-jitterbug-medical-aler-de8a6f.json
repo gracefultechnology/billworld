@@ -1,0 +1,349 @@
+{
+  "id": "lively-formerly-greatcall-jitterbug-medical-aler-de8a6f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Lively (formerly GreatCall / Jitterbug)",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from Lively's public Help Center pages (Payments, Billing, Change or cancel your plan) and the public My Account sign-in page only (never signed in). Sign-in is a single page with Email and Password, 'Remember my email', 'Sign in', 'Forgot your password?' and 'Create an account'; no MFA is described. Ways to pay: My Account online, the free automated phone line 1-866-237-8641, a customer care advisor (adds a $5 processing fee; not modelled because the engine only charges online fees), or mail to P.O. Box 660688, Dallas TX. Automatic payments: recurring credit/debit card payments can be set up in My Account; bank (checking/savings) direct debit is set up with the mailed Direct Payment form, so online autopay is modelled with both methods (bank inferred, a fleet requirement). HSA/FSA/HRA cards are not accepted. Monthly statements bill plan fees in advance and usage in arrears and include regulatory fees. Online cancellation exists only for plans bought on Lively.com (a cancellation form linked from the My Account overview); others call 1-800-733-6632, and keeping a phone number requires a call, so cancel_service stays supported online (documented) with the phone route in help. No payment-plan or future-dated payment doc: payment_arrangement is phone-only (inferred) and scheduled_payment unknown. Health & Safety package prices are not on these pages, so the family plans remain. Review 2026-10-09: the Direct Payment form (PDF linked from the Payments page) adds that bank drafts run on or shortly after the due date, stop only in writing or via 1-800-733-6632, and a returned ACH payment costs $25 (not modelled as an online fee).",
+  "officialDomains": [
+    "lively.com"
+  ],
+  "sources": [
+    {
+      "url": "https://shop.lively.com/blogs/help-center/payments",
+      "title": "Payments | Lively Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://shop.lively.com/blogs/help-center/billing",
+      "title": "Billing | Lively Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://shop.lively.com/blogs/help-center/change-or-cancel-your-plan",
+      "title": "Change or cancel your plan | Lively Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.lively.com/myaccount/login",
+      "title": "Lively - Sign in here to access your Lively account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Lively",
+    "shortName": "Lively",
+    "primary": "#4b2a7b",
+    "accent": "#0b5c75",
+    "monogram": "L"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Create an account",
+    "forgot": "Forgot your password?",
+    "username": "Email",
+    "dashboard": "My Account",
+    "payBill": "Make a payment",
+    "autopay": "Automatic payments",
+    "cancel": "Cancel service",
+    "plan": "Change plan",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Create an account",
+        "page": "register"
+      },
+      {
+        "label": "Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Change plan",
+        "page": "plan"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.lively.com/myaccount/login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://shop.lively.com/blogs/help-center/payments"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://shop.lively.com/blogs/help-center/payments"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://shop.lively.com/blogs/help-center/change-or-cancel-your-plan"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "note": "Payment plans are not offered online. Call Lively Customer Care at 1-800-733-6632 to discuss your balance.",
+      "channel": "phone",
+      "phone": "8007336632"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://shop.lively.com/blogs/help-center/payments",
+      "phone": "8662378641"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://shop.lively.com/blogs/help-center/payments"
+    }
+  },
+  "billing": {
+    "source": "https://shop.lively.com/blogs/help-center/payments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Lively bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Online: sign in to My Account at lively.com. If you have not used it before, create an account first; new registrations get 50 free anytime minutes.",
+        "Automated phone line: call 1-866-237-8641 to pay at no extra charge.",
+        "With a customer care advisor: advisors can take your payment seven days a week, but a $5 processing fee applies.",
+        "By mail: send your payment slip, or a check with your Lively account number written on it, to Lively, P.O. Box 660688, Dallas, TX 75266-0688.",
+        "Lively cannot accept HSA, FSA or HRA cards, and will never ask for your date of birth or Social Security number when you pay."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Select Make a payment.",
+        "Choose the amount and payment method.",
+        "Review and submit."
+      ],
+      "source": "https://shop.lively.com/blogs/help-center/payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic payments are free. You can set up recurring credit or debit card payments yourself by signing in to My Account.",
+        "To pay automatically from a checking or savings account, fill in the Direct Payment form from the Help Center and mail it in. A separate credit card payment form is also available.",
+        "The Direct Payment form also lets you choose paperless billing, so you get a monthly email to view your statement online instead of a paper bill.",
+        "Bank Direct Payments are drawn on or shortly after your due date and stay on until you cancel them in writing. To turn off recurring billing, call Customer Care at 1-800-733-6632. A returned bank payment costs $25 and ends your Direct Payment enrollment."
+      ],
+      "source": "https://shop.lively.com/blogs/help-center/payments"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "Understand your monthly statement",
+      "topic": "billing",
+      "paragraphs": [
+        "Each monthly statement shows plan fees, usage charges and minutes used. Plan fees are billed in advance, while usage normally appears on the following month's bill, so a delayed charge can make a later bill higher.",
+        "Your first bill may include prorated charges for a partial month. Calls are rounded up to the next full minute.",
+        "Taxes and fees on the bill include government-mandated taxes and fees, state and local cost recovery fees, the Universal Services Fee and an Administrative and Regulatory Fee; these vary by location.",
+        "Going over your plan's minutes costs at least 35 cents per minute, and data over your allowance costs 2 cents per megabyte."
+      ],
+      "source": "https://shop.lively.com/blogs/help-center/billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Change or cancel your plan",
+      "topic": "account",
+      "paragraphs": [
+        "The easiest way to change or cancel is to call Customer Care at 1-800-733-6632 (weekdays 7 a.m. to 10 p.m. ET, weekends 9 a.m. to 7 p.m. ET).",
+        "If you bought on Lively.com, you can also sign in to My Account and use the cancellation form linked from your overview dashboard.",
+        "If you are cancelling phone service and want to keep your phone number, you must call."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "On the overview dashboard, open the cancellation form link.",
+        "Complete and submit the form."
+      ],
+      "source": "https://shop.lively.com/blogs/help-center/change-or-cancel-your-plan"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "advisor-payment-fee",
+        "intent": "You'd like to pay your Lively bill by talking to a customer care advisor on the phone. Using Lively's help pages, find out what fee is charged when an advisor processes the payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5 dollars",
+              "five dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5 dollars",
+            "five dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fee"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $5 processing fee applies when an advisor processes the payment; the automated line 1-866-237-8641 is free."
+          }
+        ]
+      },
+      {
+        "slug": "free-phone-payment-line",
+        "intent": "Find the Lively automated phone number you can call to pay your bill without any extra charge. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8662378641"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8662378641"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call the automated line at 1-866-237-8641."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "register"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "1-866-237-8641",
+        "$5 processing fee",
+        "75266-0688"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Direct Payment form"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "1-800-733-6632"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "$25"
+    }
+  ]
+}

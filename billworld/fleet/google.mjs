@@ -34,6 +34,7 @@ const PAR_TTL = 10 * MIN, TX_TTL = 20 * MIN, CODE_TTL = 5 * MIN, SESSION_TTL = 1
 export function googleSupport(biller, template, overrides = null) {
   if (!biller || biller.template === 'offline' || biller.capabilities?.online_account?.support === 'unsupported') return null;
   const o = overrides?.[biller.id]; if (Array.isArray(o)) return o.map(String).includes('google') ? 'override' : null;
+  const ds = biller.dossier?.auth?.socialProviders; if (Array.isArray(ds)) return ds.includes('google') ? 'dossier' : null; // dedicated tier is authoritative
   let profile = null; try { profile = biller.profile; } catch { profile = null; }
   if (Array.isArray(profile?.login?.socialProviders) && profile.login.socialProviders.map(s => String(s).toLowerCase()).includes('google')) return 'observed_public';
   const m = template?.meta || {};

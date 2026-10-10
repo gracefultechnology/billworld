@@ -1,0 +1,358 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "sling-tv-7b0fdd",
+  "name": "Sling TV",
+  "notes": "Researched from public sling.com help and plan pages only (no sign-in). Sling is paid upfront and charged on the same calendar day each month to the card or digital wallet on file until canceled; there is no separate AutoPay, paper bill, guest pay or payment plan, and no refunds for partial months. Prices are the \"from\" prices on the compare-plans page. Pause (up to 6 months, or Pause Extra for 1-3 months with a $5 monthly deposit) cannot be modeled and is described in help. Wallet-billed customers (Apple Pay, Google Pay, Amazon Pay, PayPal) update payment details with that wallet. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "sling.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.sling.com/service/compare-plans",
+      "title": "Compare Our Live TV Plans | Sling TV",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.sling.com/help/en/account-questions/account-changes/pause-cancel-subscription",
+      "title": "Cancel your Sling subscription | Sling TV Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.sling.com/help/en/account-questions/billing-payments",
+      "title": "Billing & payments | Sling TV Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "shortName": "Sling",
+    "primary": "#0f5fc2",
+    "accent": "#b44c00",
+    "monogram": "S"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "plan": "Manage",
+    "wallet": "Update billing information",
+    "history": "View billing history",
+    "statements": "View billing history",
+    "cancel": "Cancel",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "help": "Help Center",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Shop plans",
+        "helpSlug": "plans-and-prices"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Manage",
+        "page": "plan"
+      },
+      {
+        "label": "Update billing information",
+        "page": "wallet"
+      },
+      {
+        "label": "View billing history",
+        "page": "history"
+      },
+      {
+        "label": "Cancel",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "evidence": "inferred",
+    "source": "https://www.sling.com/help/en/account-questions/billing-payments"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.sling.com/help/en/account-questions/billing-payments",
+      "note": "The membership is charged to the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.sling.com/help/en/account-questions/billing-payments",
+      "note": "Sling charges the card or wallet on file on the same calendar day each month until you cancel; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.sling.com/help/en/account-questions/account-changes/pause-cancel-subscription",
+      "note": "Recurring charges stop only when you cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.sling.com/help/en/account-questions/billing-payments",
+      "note": "No paper bills are mailed; charges are shown on the account page and receipts are emailed."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.sling.com/help/en/account-questions/billing-payments"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.sling.com/help/en/account-questions/billing-payments"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sling.com/help/en/account-questions/account-changes/pause-cancel-subscription",
+      "note": "Access continues until your next regular bill date and you are not charged again. Pause (up to 6 months) is offered as an alternative."
+    }
+  },
+  "billing": {
+    "source": "https://www.sling.com/service/compare-plans",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.sling.com/help/en/account-questions/billing-payments"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "essentials",
+        "name": "Sling Essentials",
+        "cents": 1999
+      },
+      {
+        "id": "essentials-select",
+        "name": "Sling Essentials & Select",
+        "cents": 3499
+      },
+      {
+        "id": "orange",
+        "name": "Sling Orange",
+        "cents": 4599
+      },
+      {
+        "id": "blue",
+        "name": "Sling Blue",
+        "cents": 4599
+      },
+      {
+        "id": "orange-blue",
+        "name": "Sling Orange & Blue",
+        "cents": 6099,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-prices",
+      "title": "Sling plans and prices",
+      "topic": "plans",
+      "source": "https://www.sling.com/service/compare-plans",
+      "paragraphs": [
+        "Sling Essentials (ESPN and more) is $19.99 a month and Sling Select (FOX News and more) starts at $19.99 a month; together they start at $34.99. Sling Orange (sports and family, 1 stream) and Sling Blue (news and entertainment, 3 streams) each start at $45.99 a month, and Orange & Blue together start at $60.99 a month with up to 4 streams.",
+        "Every plan includes 50 hours of DVR storage; Unlimited DVR is $5 a month."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your Sling subscription",
+      "topic": "account",
+      "source": "https://www.sling.com/help/en/account-questions/account-changes/pause-cancel-subscription",
+      "steps": [
+        "Sign in to your account.",
+        "Select Manage.",
+        "Select Cancel."
+      ],
+      "paragraphs": [
+        "Your access continues until the date of your next regular bill and you will not be charged again. Sling emails a confirmation. Deleting the app does not cancel your subscription."
+      ]
+    },
+    {
+      "slug": "pause-subscription",
+      "title": "Pause your Sling subscription",
+      "topic": "account",
+      "source": "https://www.sling.com/help/en/account-questions/account-changes/pause-cancel-subscription",
+      "steps": [
+        "Sign in to your account.",
+        "Select Manage.",
+        "Select See pause options."
+      ],
+      "paragraphs": [
+        "A standard pause lasts up to 6 months and starts on your next billing date; your DVR recordings are saved and the subscription restarts automatically. Pause Extra (1, 2 or 3 months) costs a $5 monthly deposit, refunded when service restarts, and lets you keep watching recordings.",
+        "Pause is not available with promotions such as prepaid bundles or free trials, when paying only with a gift card or BitPay, or for subscriptions billed through Apple Pay, Google Pay or other third parties."
+      ]
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "How Sling billing works",
+      "topic": "billing",
+      "source": "https://www.sling.com/help/en/account-questions/billing-payments",
+      "steps": [
+        "Sign in to your account.",
+        "Select Update billing information to change your card, or View billing history to see past charges."
+      ],
+      "paragraphs": [
+        "Sling is paid upfront: you are charged the day you sign up and then on the same calendar day each month until you cancel, using the debit card, credit card or digital wallet on file.",
+        "If you signed up with Apple Pay, Google Pay, Amazon Pay or PayPal, update your payment details with that wallet. Your billing address is tied to the card on file, so re-enter the card to change it."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "orange-blue-price",
+        "intent": "Find the starting monthly price of Sling Orange & Blue. Do not change your plan.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "60.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "60.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Sling Orange & Blue starts at $60.99 a month."
+          }
+        ]
+      },
+      {
+        "slug": "pause-extra-deposit",
+        "intent": "Find out what monthly deposit Sling charges for Pause Extra. Do not pause or cancel.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Pause Extra requires a $5 monthly deposit, returned when service restarts."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Shop plans",
+        "Sign in"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Update billing information",
+        "View billing history"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Sling Orange & Blue",
+        "Sling Essentials"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-prices",
+      "contains": "$60.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pause-subscription",
+      "contains": "6 months"
+    }
+  ]
+}

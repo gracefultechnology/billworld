@@ -23,8 +23,8 @@ function entries(base,files){return [...new Set(files)].sort().map(name=>{
  const bytes=readFileSync(path);return{file:relative(base,path).split(sep).join('/'),sha256:hash(bytes),bytes:bytes.length};
 });}
 export function fingerprint(base=root){
- const files=['package.json','package-lock.json','billworld/research/wvu-documents.json','billworld/research/paymentus-statements.json'].filter(x=>existsSync(resolve(base,x)));
- files.push(...collect(base,'billworld/output/pdf',x=>/^batavia-inv-[a-z]+\.pdf$/.test(x)));
+ const files=['package.json','package-lock.json','billworld/research/wvu-documents.json','billworld/research/paymentus-statements.json','billworld/research/starnik-statements.json'].filter(x=>existsSync(resolve(base,x)));
+ files.push(...collect(base,'billworld/output/pdf',x=>/^(?:batavia|gmg)-inv-[a-z]+\.pdf$/.test(x)));
  files.push(...collect(base,'billworld',x=>x.endsWith('.mjs')));
  const snapshotRoot=resolve(base,'billworld/public/reference-pages');
  if(existsSync(snapshotRoot)){

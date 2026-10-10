@@ -1,0 +1,415 @@
+{
+  "id": "amerigas-propane-8713c9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "AmeriGas Propane",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-05",
+  "notes": "Researched from public amerigas.com and myamerigas.com pages only (no sign-in, no guest lookup). Sign-in is MyAmeriGas with Email Address + Password on one page; the forgot-password link is labelled Login Help. No MFA is described publicly, so the family default is kept. Auto Pay is a toggle under Billing & Payments > Payment Methods and processes on the invoice due date; the accepted Auto Pay method types are not published (family default kept). Closing an account is phone-only (1-888-495-7697, Moving Out page). Late charge is the GREATER of 1.5% of the average daily balance or $36.00 (Maryland differs). Credit-card surcharge varies by state and is capped at cost of acceptance (debit/ACH exempt), so no card fee is modelled. $3.99 paper invoice fee (waived with paperless; not in ME, NY, NJ, RI) is in help only. Integrated 2026-10-09: late charge modelled as the greater of 1.5% or $36.00 (billing.lateFeeMinCents).",
+  "officialDomains": [
+    "amerigas.com",
+    "myamerigas.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.amerigas.com/support/billing-payment/how-to-pay-my-bill",
+      "title": "How To Pay My Bill",
+      "fetchedAt": "2026-10-05",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.amerigas.com/support/billing-payment/enroll-in-automatic-payments",
+      "title": "Enroll In Automatic Payments",
+      "fetchedAt": "2026-10-05",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.amerigas.com/support/billing-payment/enroll-in-paperless-billing",
+      "title": "Enroll In Paperless Billing",
+      "fetchedAt": "2026-10-05",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.amerigas.com/propane-pricing-delivery/payment-plans",
+      "title": "AmeriGas Propane Payment Plans",
+      "fetchedAt": "2026-10-05",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.myamerigas.com/Login/Login?BrandId=002",
+      "title": "AmeriGas Login - Access Your Online Account",
+      "fetchedAt": "2026-10-05",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.amerigas.com/support/moving/moving/moving-out",
+      "title": "What To Expect When Moving Out Of A Propane Home",
+      "fetchedAt": "2026-10-05",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.amerigas.com/fees-rates",
+      "title": "AmeriGas Fees and Rates",
+      "fetchedAt": "2026-10-05",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "shortName": "AmeriGas",
+    "primary": "#00539b",
+    "accent": "#b5121b",
+    "monogram": "AG"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "statements": "View Invoices",
+    "dashboard": "Account Summary",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "wallet": "Payment Methods",
+    "signIn": "Log In",
+    "forgot": "Login Help",
+    "register": "Create a MyAmeriGas Online Account",
+    "guestPay": "Pay or Order As a Guest",
+    "username": "Email Address",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Pay or Order As a Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Create a MyAmeriGas Online Account",
+        "page": "register"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Fees & Rates",
+        "helpSlug": "fees-rates"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "View Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.myamerigas.com/Login/Login?BrandId=002"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.myamerigas.com/Login/Login?BrandId=002"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amerigas.com/support/billing-payment/enroll-in-automatic-payments"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.amerigas.com/support/billing-payment/enroll-in-automatic-payments",
+      "note": "Auto Pay is an on/off toggle in MyAmeriGas, so it is turned off with the same toggle."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amerigas.com/support/billing-payment/enroll-in-paperless-billing"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amerigas.com/support/billing-payment/how-to-pay-my-bill"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amerigas.com/support/billing-payment/how-to-pay-my-bill",
+      "phone": "800-263-7442"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amerigas.com/support/billing-payment/how-to-pay-my-bill"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.amerigas.com/propane-pricing-delivery/payment-plans"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.amerigas.com/support/moving/moving/moving-out",
+      "channel": "phone",
+      "phone": "888-495-7697",
+      "note": "To close your AmeriGas account when moving out, call 1-888-495-7697. Accounts cannot be closed online."
+    }
+  },
+  "billing": {
+    "source": "https://www.amerigas.com/support/billing-payment/how-to-pay-my-bill",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date"
+    },
+    "lateFeePercent": 1.5,
+    "lateFeeMinCents": 3600
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your AmeriGas bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to MyAmeriGas and choose Make a Payment from your Account Summary. You can pay the amount due or pay specific invoices, pick a payment date, and use a saved payment method or add a new one.",
+        "You can also pay or order as a guest without logging in, pay by phone at any hour at 1-800-263-7442, or mail a check or money order to AmeriGas, PO Box 371473, Pittsburgh, PA 15250."
+      ],
+      "steps": [
+        "Log in to MyAmeriGas.",
+        "Choose Make a Payment from Account Summary.",
+        "Pick Payment Due or Pay By Invoice.",
+        "Choose a date and payment method.",
+        "Confirm the payment."
+      ],
+      "source": "https://www.amerigas.com/support/billing-payment/how-to-pay-my-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay charges your saved payment method automatically on the day each invoice is due, so you do not need to log in or schedule payments. You can opt in to text reminders a few days before an Auto Pay payment runs.",
+        "Auto Pay is a switch on the Payment Methods screen in MyAmeriGas; switch it off the same way to stop automatic payments."
+      ],
+      "steps": [
+        "Log in to MyAmeriGas.",
+        "Open Billing & Payments, then Payment Methods.",
+        "Review or add a payment method.",
+        "Turn the Auto Pay switch on and confirm the method."
+      ],
+      "source": "https://www.amerigas.com/support/billing-payment/enroll-in-automatic-payments"
+    },
+    {
+      "slug": "paperless",
+      "title": "Enroll in Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "With Paperless Billing your invoices arrive by email instead of by mail, and they stay available in MyAmeriGas. Invoice history goes back two years whether or not you are enrolled.",
+        "Customers who keep paper invoices pay a $3.99 paper invoice fee per invoice. Enrolling in Paperless Billing avoids it. The fee does not apply in Maine, New York, New Jersey or Rhode Island."
+      ],
+      "steps": [
+        "Log in to MyAmeriGas.",
+        "Open Billing & Payments, then Billing Notifications.",
+        "In Billing & Payment Email Notifications, switch Paperless on.",
+        "Check the email address that will receive your invoices."
+      ],
+      "source": "https://www.amerigas.com/support/billing-payment/enroll-in-paperless-billing"
+    },
+    {
+      "slug": "fees-rates",
+      "title": "Fees and rates",
+      "topic": "billing",
+      "paragraphs": [
+        "Invoices not paid by the due date are charged a late charge of 1.5% of the average daily balance or $36.00, whichever is greater. Maryland customers have a different late charge.",
+        "Credit card payments may carry a surcharge no higher than AmeriGas's cost of acceptance; it never applies to debit cards, bank (ACH) payments or third-party payments, and some states prohibit or cap it.",
+        "A returned check or ACH payment costs $33.00 unless state law sets a lower amount. Paper invoices cost $3.99 each unless you go paperless (not charged in ME, NY, NJ or RI)."
+      ],
+      "source": "https://www.amerigas.com/fees-rates"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "Pay Per Month (Convenience Pay) spreads your yearly propane cost over twelve monthly payments that are recalculated every three months. It requires a soft credit check.",
+        "Pay Per Delivery means you pay for each fill-up, either in advance (no credit check) or after delivery (soft credit check). Choose a plan when you get a quote or in MyAmeriGas.",
+        "AmeriGas accepts LIHEAP and other energy assistance payments."
+      ],
+      "source": "https://www.amerigas.com/propane-pricing-delivery/payment-plans"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out: closing your account",
+      "topic": "account",
+      "paragraphs": [
+        "To close your AmeriGas account when you move out, call 1-888-495-7697. AmeriGas helps you settle any remaining balance and start the transfer to the new owner."
+      ],
+      "source": "https://www.amerigas.com/support/moving/moving/moving-out"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "paper-invoice-fee",
+        "intent": "Using the AmeriGas website's help pages, find the fee AmeriGas charges for each paper invoice for customers who are not on paperless billing. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AmeriGas charges a $3.99 paper invoice fee per invoice."
+          }
+        ]
+      },
+      {
+        "slug": "late-charge-minimum",
+        "intent": "Using the AmeriGas website's help pages, find the minimum dollar late charge AmeriGas applies to invoices not paid by the due date. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "36"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "36"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The late charge is 1.5% of the average daily balance or $36.00, whichever is greater."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address",
+        "Login Help"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Account Summary",
+        "View Invoices",
+        "Payment Methods"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fees-rates",
+      "contains": [
+        "$36.00",
+        "1.5%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "$3.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "1-888-495-7697"
+    }
+  ]
+}

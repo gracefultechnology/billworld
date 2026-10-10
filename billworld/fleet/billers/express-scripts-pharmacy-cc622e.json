@@ -1,0 +1,162 @@
+{
+  "id": "express-scripts-pharmacy-cc622e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Express Scripts Pharmacy",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from the public express-scripts.com FAQ (no sign-in). Home delivery orders are charged only when the medication ships; accepted methods are checking account, credit card, debit card, PayPal and the Extended Payment Plan (EPP). Autopay charges automatically each time a prescription ships, with an optional maximum amount above which Express Scripts asks first; the mock models it as the AutoPay page (full balance), the maximum-amount check is not modelled. EPP splits an order into three equal card payments (at shipment, 30 and 60 days), no service fee, expedited shipping billed with the first payment; modelled as the payment-arrangement page. Sign-in is username + password with required two-step verification: a single-use code to the registered email (text messages can be added under Account > Two-Step Verification); codes expire after 15 minutes. Registration uses the prescription ID or Social Security number. Paperless statements are not described (marked unsupported, inferred). PayPal is not modelled.",
+  "officialDomains": ["express-scripts.com"],
+  "sources": [
+    { "url": "https://www.express-scripts.com/frequently-asked-questions", "title": "Frequently Asked Questions", "fetchedAt": "2026-10-09", "kind": "help" }
+  ],
+  "brand": { "displayName": "Express Scripts Pharmacy", "shortName": "Express Scripts", "primary": "#004b87", "accent": "#1a4a7a", "monogram": "ES" },
+  "labels": {
+    "signIn": "Log in",
+    "register": "Register",
+    "username": "Username",
+    "autopay": "Autopay",
+    "arrangement": "Extended Payment Plan",
+    "history": "Claims History",
+    "payBill": "Pay a Bill",
+    "wallet": "Payment methods",
+    "help": "Frequently Asked Questions",
+    "dashboard": "My Medications"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Frequently Asked Questions", "page": "help" },
+      { "label": "Two-Step Verification", "helpSlug": "two-step-verification" }
+    ],
+    "account": [
+      { "label": "My Medications", "page": "dashboard" },
+      { "label": "Pay a Bill", "page": "pay" },
+      { "label": "Autopay", "page": "autopay" },
+      { "label": "Extended Payment Plan", "page": "arrangement" },
+      { "label": "Claims History", "page": "history" },
+      { "label": "Payment methods", "page": "wallet" },
+      { "label": "Account", "page": "profile" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "mfa": "email_or_sms",
+    "evidence": "documented_official",
+    "source": "https://www.express-scripts.com/frequently-asked-questions"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.express-scripts.com/frequently-asked-questions" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.express-scripts.com/frequently-asked-questions" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.express-scripts.com/frequently-asked-questions" },
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://www.express-scripts.com/frequently-asked-questions" },
+    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.express-scripts.com/frequently-asked-questions", "note": "There is no guest payment; log in to pay, or call Express Scripts Pharmacy 24/7 at 800-282-2881 (or the number on your member ID card).", "channel": "phone", "phone": "800-282-2881" },
+    "paperless": { "support": "unsupported", "evidence": "inferred", "source": "https://www.express-scripts.com/frequently-asked-questions", "note": "Express Scripts does not describe paperless billing; order charges and out-of-pocket totals are in Claims History online.", "channel": "none" },
+    "pay_by_phone": { "support": "supported", "evidence": "inferred", "source": "https://www.express-scripts.com/frequently-asked-questions", "phone": "800-282-2881" }
+  },
+  "billing": {
+    "source": "https://www.express-scripts.com/frequently-asked-questions",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying for home delivery",
+      "topic": "payments",
+      "paragraphs": [
+        "Home delivery orders can be paid with a checking account, credit card, debit card, PayPal, or the Extended Payment Plan. You are not charged for an order until the medication ships.",
+        "If a home delivery total is higher than expected, an earlier outstanding balance may have been added to it. To check an order, log in and open My Medications under Prescriptions."
+      ],
+      "source": "https://www.express-scripts.com/frequently-asked-questions"
+    },
+    {
+      "slug": "autopay",
+      "title": "Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Autopay is available for home delivery. It charges your payment method automatically each time a prescription ships.",
+        "You can set a maximum amount; if a charge would be above it, Express Scripts contacts you to confirm before charging."
+      ],
+      "source": "https://www.express-scripts.com/frequently-asked-questions"
+    },
+    {
+      "slug": "extended-payment-plan",
+      "title": "Extended Payment Plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "The Extended Payment Plan (EPP) splits the cost of eligible home delivery prescriptions into three monthly payments with no service fee, charged automatically to your preferred credit or debit card.",
+        "The first payment is taken when the order ships, the second 30 days later and the third at 60 days. For example, a $90 order is paid as $30, $30 and $30. Expedited shipping is not split; its cost is added to the first payment."
+      ],
+      "source": "https://www.express-scripts.com/frequently-asked-questions"
+    },
+    {
+      "slug": "claims-history",
+      "title": "Claims History and out-of-pocket totals",
+      "topic": "statements",
+      "paragraphs": [
+        "Log in and choose Claims History under Prescriptions. Filter by date range or by covered person to see the number of claims, what your plan paid and your out-of-pocket total, plus each claim's detail.",
+        "You can view out-of-pocket spending for the last 6, 12, 18 or 24 months and download or print it for your records, your doctor or your taxes."
+      ],
+      "source": "https://www.express-scripts.com/frequently-asked-questions"
+    },
+    {
+      "slug": "two-step-verification",
+      "title": "Two-step verification",
+      "topic": "account",
+      "paragraphs": [
+        "Two-step verification is required on express-scripts.com and the mobile app. After you enter your username and password, a single-use code is sent to your registered email; enter it to finish logging in. Email codes expire after 15 minutes, and requesting a new code or restarting the login cancels earlier codes.",
+        "To also receive codes by text, or to change the email used for codes, go to Account, then Two-Step Verification. Choosing Remember my login information skips codes on a trusted device for six months. If you cannot reach your registered email, call web support at 800-711-5672."
+      ],
+      "source": "https://www.express-scripts.com/frequently-asked-questions"
+    },
+    {
+      "slug": "shipping",
+      "title": "Shipping costs and timing",
+      "topic": "fees",
+      "paragraphs": [
+        "Standard shipping is included in your plan. Next-day or two-day shipping may be offered for an extra fee, and temperature-sensitive medications ship expedited at no extra cost. Refills usually arrive 5 to 8 days after the order is received."
+      ],
+      "source": "https://www.express-scripts.com/frequently-asked-questions"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Express Scripts",
+      "topic": "contact",
+      "paragraphs": [
+        "Express Scripts Pharmacy, open 24/7 with patient care advocates and pharmacists: 800-282-2881 or the toll-free number on your member ID card. Web and online account support: 800-711-5672."
+      ],
+      "source": "https://www.express-scripts.com/frequently-asked-questions"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "epp-second-payment",
+        "intent": "Express Scripts just shipped my order on the Extended Payment Plan. Using the Express Scripts FAQ, how many days after shipping is the second payment charged? Don't pay or change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["30"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["30"] },
+        "tags": ["help", "information", "assistance"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "The second payment is charged 30 days after the order ships." }]
+      },
+      {
+        "slug": "web-support-phone",
+        "intent": "My dad no longer has access to the email his Express Scripts verification codes go to. Find the phone number Express Scripts says to call. Do not change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8007115672"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8007115672"] },
+        "tags": ["help", "information", "account"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "800-711-5672" }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "Username" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Autopay", "Extended Payment Plan"] },
+    { "page": "arrangement", "signedIn": true, "label": "arrangement" },
+    { "page": "helpArticle", "slug": "extended-payment-plan", "contains": "60 days" },
+    { "page": "helpArticle", "slug": "two-step-verification", "contains": "800-711-5672" }
+  ]
+}

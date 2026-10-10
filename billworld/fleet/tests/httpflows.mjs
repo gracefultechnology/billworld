@@ -4,7 +4,8 @@
 // assertions after each submission. Used by sweep.mjs (phase "authed") and authed.test.mjs.
 import http from 'node:http';
 import { PUBLIC_PAGES, templateFor } from '../server.mjs';
-import { PASSWORD } from '../engine.mjs';
+import { loginId } from './solve.mjs';
+import { PASSWORD, primaryMethodId } from '../engine.mjs';
 import { esc } from '../kit.mjs';
 
 // Research metadata must never reach a rendered page (evidence labels, capture fields, internal file names).
@@ -104,12 +105,12 @@ export async function authedChecks({ server, world, ep, biller: b, client }) {
   let f = formOn(r, x => x.has('username') || x.has('password'));
   if (!f) { fail('login', 'no login form'); return fails; }
   if (!f.has('password')) {
-    const step = await client.post(f.action, encodeForm(f, { username: ep.persona.email }));
+    const step = await client.post(f.action, encodeForm(f, { username: loginId(world, ep, b.id) }));
     if (step.status !== 303) { fail('login', `username step -> ${step.status}`); return fails; }
     r = await client.get(step.headers.location); f = formOn(r, x => x.has('password'));
     if (!f) { fail('login', 'no password form on second step'); return fails; }
   }
-  const creds = { password: PASSWORD }; if (f.controls.some(c => c.name === 'username' && c.type !== 'hidden')) creds.username = ep.persona.email;
+  const creds = { password: PASSWORD }; if (f.controls.some(c => c.name === 'username' && c.type !== 'hidden')) creds.username = loginId(world, ep, b.id);
   r = await client.post(f.action, encodeForm(f, creds));
   if (r.status !== 303 || pathOf(r.headers.location) !== url(t.flow.afterLogin)) { fail('login', `expected 303 to ${url(t.flow.afterLogin)}, got ${r.status} ${r.headers.location || alertOf(r.body)}`); return fails; }
   if (!client.cookies.get('bwf_sid')) { fail('login', 'no session cookie'); return fails; }
@@ -146,7 +147,7 @@ export async function authedChecks({ server, world, ep, biller: b, client }) {
   // ---- account forms, each followed by a ledger assertion ----
   if (t.routes.arrangement && world.balance(acct()) >= 5000) {
     const pg = await page('arrangement'); const offered = !!formOn(pg, x => x.has('months'));
-    if (!offered && !/not (offered|available)/i.test(pg.body)) fail('arrangement', 'no payment-plan form and no "not offered" explanation');
+    if (!offered && !/not (offered|available)/i.test(pg.body) && !pg.body.includes('data-capability="payment_arrangement"')) fail('arrangement', 'no payment-plan form and no "not offered" explanation');
     const res = offered ? await submitOn('arrangement', 'arrangement', x => x.has('months'), { months: '6' }) : null;
     if (res?.status === 303 && acct().arrangement?.months !== 6) fail('arrangement', 'ledger has no 6-month plan');
   }
@@ -164,7 +165,8 @@ export async function authedChecks({ server, world, ep, biller: b, client }) {
   }
   if (t.routes.wallet) {
     const known = new Set(acct().methods.map(m => m.id)); // a seeded method may also end in 4321: identify the new one by id
-    const res = await submitOn('wallet', 'wallet', x => x.has('methodType'), { methodType: 'bank', routing: '021000021', bankAccount: '000987654321', bankAccountConfirm: '000987654321' });
+    const viaCard = primaryMethodId(b) !== 'pm-chk'; // card-only billers save a card ending 4321 instead
+    const res = await submitOn('wallet', 'wallet', x => x.has('methodType'), viaCard ? { methodType: 'card', cardNumber: '4000056655064321', exp: '12/29', cvv: '123' } : { methodType: 'bank', routing: '021000021', bankAccount: '000987654321', bankAccountConfirm: '000987654321' });
     const added = acct().methods.find(m => !known.has(m.id) && m.last4 === '4321' && m.saved && !m.removed);
     if (res?.status === 303 && !added) fail('wallet', 'added method not saved');
     if (added) {
@@ -175,7 +177,7 @@ export async function authedChecks({ server, world, ep, biller: b, client }) {
   const sup = cap => b.capabilities[cap]?.support === 'supported';
   if (sup('autopay') && t.routes.autopay) {
     const ov = { acceptTerms: true }; const res0 = await page('autopay'); const af = formOn(res0, x => x.has('acceptTerms'));
-    if (af?.has('methodId')) ov.methodId = 'pm-chk'; if (af?.has('policy')) ov.policy = 'full';
+    if (af?.has('methodId')) ov.methodId = primaryMethodId(b, { autopay: true }); if (af?.has('policy')) { const pv = af.controls.filter(x => x.name === 'policy').flatMap(x => x.options || [x.value]); ov.policy = pv.includes('full') || !pv.length ? 'full' : pv.includes('statement') ? 'statement' : pv[0]; }
     const res = await submitOn('autopay', 'autopay', x => x.has('acceptTerms'), ov);
     if (res?.status === 303 && !acct().autopay.enrolled) fail('autopay', 'not enrolled after submit');
     if (acct().autopay.enrolled && t.routes.wallet) {
@@ -189,7 +191,8 @@ export async function authedChecks({ server, world, ep, biller: b, client }) {
     const res = await submitOn('paperless', 'paperless', x => x.has('paperless'), {});
     if (res?.status === 303 && acct().paperless !== true) fail('paperless', 'not enrolled after submit');
   }
-  if (t.routes.plan && world.plans(acct()).length) {
+  const planOffline = ['unsupported', 'not_applicable'].includes(b.capabilities.change_plan?.support); // dossier: plans change offline only (the page shows the note, no form)
+  if (t.routes.plan && world.plans(acct()).length && !planOffline) {
     const target = world.plans(acct()).find(p => !p.current);
     if (target) { const res = await submitOn('plan', 'plan', x => x.has('planId'), { planId: target.id }); if (res?.status === 303 && acct().service.plan !== target.id) fail('plan', 'plan not changed'); }
   }
@@ -204,7 +207,7 @@ export async function authedChecks({ server, world, ep, biller: b, client }) {
     if (rf) { review = rf; break; }
     const sf = formOn(res, x => x.has('amountChoice') || x.has('amount') || x.has('methodId') || x.has('methodType'));
     if (!sf) { fail('pay', `no pay form at ${at}`); break; }
-    const ov = {}; if (sf.has('amountChoice')) ov.amountChoice = sf.valuesOf('amountChoice').includes('due') ? 'due' : sf.valuesOf('amountChoice')[0]; if (sf.has('methodId') && sf.valuesOf('methodId').includes('pm-chk')) ov.methodId = 'pm-chk';
+    const ov = {}; if (sf.has('amountChoice')) ov.amountChoice = sf.valuesOf('amountChoice').includes('due') ? 'due' : sf.valuesOf('amountChoice')[0]; if (sf.has('methodId') && sf.valuesOf('methodId').includes(primaryMethodId(b))) ov.methodId = primaryMethodId(b);
     let body; try { body = encodeForm(sf, ov); } catch (e) { fail('pay', e.message); break; }
     const step = await client.post(sf.action, body);
     if (step.status !== 303) { fail('pay', `step ${i} POST -> ${step.status} ${alertOf(step.body)}`); break; }

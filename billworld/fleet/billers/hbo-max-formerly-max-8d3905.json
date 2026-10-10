@@ -1,0 +1,372 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-09",
+  "id": "hbo-max-formerly-max-8d3905",
+  "name": "HBO Max",
+  "notes": "Researched from public help.hbomax.com articles and the public hbomax.com plan page only (no sign-in; the sign-in form sits behind a terms/cookie consent dialog that was not accepted, so the email identifier is inferred). Subscriptions billed by WarnerMedia renew automatically to a US-issued card, Apple Pay or PayPal until canceled; there is no separate AutoPay, paper bill, guest pay or payment plan. Everything is managed on the Subscription page (Change Your Plan, Payment Method, Payment History, Cancel Your Subscription). Upgrades apply immediately with the price difference charged; downgrades and billing-period changes wait for the next billing date and can be undone with Cancel Pending Plan (the engine applies plan changes immediately). Cancel at least 24 hours before the next billing date. Subscribers billed by an app store or TV/internet provider manage the plan there. No installment plans; setup-payment-plan is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "hbomax.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.hbomax.com/",
+      "title": "HBO Max | Stream Series and Movies",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.hbomax.com/us/Answer/Detail/000002528",
+      "title": "Change a WarnerMedia-billed subscription | HBO Max Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://help.hbomax.com/us/Answer/Detail/000002525",
+      "title": "Change your payment method | HBO Max Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.hbomax.com/us/Answer/Detail/000002526",
+      "title": "How do I cancel HBO Max? | HBO Max Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.hbomax.com/us/Answer/Detail/000002529",
+      "title": "Manage an HBO Max subscription | HBO Max Help",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "HBO Max",
+    "shortName": "HBO Max",
+    "primary": "#5b4ee8",
+    "accent": "#0b0b1a",
+    "monogram": "HM"
+  },
+  "labels": {
+    "dashboard": "Subscription",
+    "plan": "Change Your Plan",
+    "wallet": "Payment Method",
+    "history": "Payment History",
+    "statements": "Payment History",
+    "cancel": "Cancel Your Subscription",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "help": "Help Center",
+    "register": "Sign Up Now",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Plans",
+        "helpSlug": "plans-and-prices"
+      },
+      {
+        "label": "Sign Up Now",
+        "page": "register"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Subscription",
+        "page": "dashboard"
+      },
+      {
+        "label": "Change Your Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Cancel Your Subscription",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "evidence": "inferred",
+    "source": "https://help.hbomax.com/us/Answer/Detail/000002529"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002525",
+      "note": "The subscription is charged to the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002528",
+      "note": "HBO Max renews automatically on each billing date and charges the payment method on file; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002526",
+      "note": "Recurring charges stop only when you cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002528",
+      "note": "No paper bills are mailed; receipts are listed under Payment History."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002528"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002528"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002526",
+      "note": "Cancel at least 24 hours before your next billing date; you can stream until the paid period ends. App-store or provider-billed subscriptions are canceled with that company."
+    }
+  },
+  "billing": {
+    "source": "https://www.hbomax.com/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002528"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "basic-ads",
+        "name": "Basic With Ads",
+        "cents": 1099
+      },
+      {
+        "id": "standard",
+        "name": "Standard",
+        "cents": 1849,
+        "current": true
+      },
+      {
+        "id": "premium",
+        "name": "Premium",
+        "cents": 2299
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-prices",
+      "title": "HBO Max plans and prices",
+      "topic": "plans",
+      "source": "https://www.hbomax.com/",
+      "paragraphs": [
+        "Basic With Ads is $10.99 a month or $109.99 a year and streams on 2 devices in full HD. Standard is $18.49 a month or $184.99 a year, adds 30 downloads and live sports, and also streams on 2 devices.",
+        "Premium is $22.99 a month or $229.99 a year, with 4 streams at once, 4K video and Dolby Atmos where available, and 100 downloads. Yearly billing is paid upfront. Bundles with Disney+ and Hulu start at $21.99 a month."
+      ]
+    },
+    {
+      "slug": "change-plan",
+      "title": "Change your plan",
+      "topic": "plans",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002528",
+      "steps": [
+        "Sign in on a phone, tablet or computer.",
+        "Choose your profile, then Subscription.",
+        "Choose Change Your Plan.",
+        "Pick a plan and billing period and confirm."
+      ],
+      "paragraphs": [
+        "Moving to a higher-priced plan happens right away: you pay the price difference and your next billing date is adjusted. Moving to a lower-priced plan, or only switching between monthly and yearly billing, takes effect on your next billing date. Until then you can undo it with Cancel Pending Plan. Current promotions end when the new plan starts. Only adult profiles can manage the subscription."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How to cancel HBO Max",
+      "topic": "account",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002526",
+      "steps": [
+        "Go to the Subscription page and sign in.",
+        "Choose Cancel Your Subscription.",
+        "Confirm and note your expiration date."
+      ],
+      "paragraphs": [
+        "Your subscription renews automatically until you cancel; cancel at least 24 hours before the next billing date to avoid another charge. Deleting the app does not cancel. You keep streaming until the end of the paid period, get a confirmation email, and can choose Resume Your Subscription before then if you change your mind.",
+        "If there is no cancel option, the top of the Subscription page shows who bills you (an app store, or an internet, mobile or TV provider); cancel with them. An Extra Member Add-On ends with the base plan and its unused days are refunded pro rata."
+      ]
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment method and history",
+      "topic": "billing",
+      "source": "https://help.hbomax.com/us/Answer/Detail/000002528",
+      "steps": [
+        "Open Subscription.",
+        "Choose Payment Method to add or change how you pay, or Payment History to see receipts."
+      ],
+      "paragraphs": [
+        "WarnerMedia-billed subscriptions accept American Express, Apple Pay, Discover, JCB, Mastercard, PayPal and Visa issued by a US bank that allow recurring online payments; some prepaid cards do not. For cards, the ZIP code and state must match the card billing address. A new payment method is used from your next charge."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "standard-annual-price",
+        "intent": "Find the yearly price of the HBO Max Standard plan. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "184.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "184.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "HBO Max Standard costs $184.99 a year."
+          }
+        ]
+      },
+      {
+        "slug": "downgrade-timing",
+        "intent": "Find out when a switch to a lower-priced HBO Max plan takes effect. Do not change your plan.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "next billing date"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "next billing date"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A move to a lower-priced plan takes effect on your next billing date."
+          }
+        ]
+      }
+    ],
+    "suppress": [
+      "setup-payment-plan"
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign In",
+        "Sign Up Now"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment Method",
+        "Payment History"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Basic With Ads",
+        "Premium"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-prices",
+      "contains": "$184.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "24 hours"
+    }
+  ]
+}

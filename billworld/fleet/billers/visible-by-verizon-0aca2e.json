@@ -1,0 +1,379 @@
+{
+  "id": "visible-by-verizon-0aca2e",
+  "status": "dedicated",
+  "name": "Visible (by Verizon)",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public visible.com help and plan pages only (no sign-in; rendered with a headless browser). Visible is app/online-only prepaid service with no stores and chat-only care (no published phone number). Payments are applied immediately, can be made up to 7 days before the due date and must be made by 11:59 PM on the due date or the account lapses; future-dated payments are not offered (scheduled_payment not_applicable; billing.scheduled.maxDaysAhead 0 is not used because of an engine bug, see CROSS-OWNER request). Accepted: credit/debit/prepaid cards, PayPal, Venmo, Apple Pay (iOS one-time only); EFT/bank, checks and cash are not accepted. Up to five payment methods with a default and an optional backup. Autopay is a toggle and charges on the due date. Cancel online via My Account > Settings > Cancel service (Request cancellation); service ends on the next payment due date and the request can be undone. Plan downgrades take effect at the next payment (the engine applies them immediately). No paper bills, no guest payments and no payment plans are documented (paperless/guest_pay/payment_arrangement not_applicable, inferred). Sign-in uses the Visible email address and password (managing-visible-account help page); password resets send a link by text to active members; the published password rule is set as passwordRule. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "visible.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.visible.com/help/billing-payments",
+      "title": "Making a payment | Visible Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.visible.com/plans",
+      "title": "Go Unlimited With Prepaid Plans | Visible",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.visible.com/m/help/your-account/managing-visible-account",
+      "title": "Manage your Visible account | Visible Help Center",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Visible",
+    "shortName": "Visible",
+    "primary": "#1d34c5",
+    "accent": "#0c1a6b",
+    "monogram": "V"
+  },
+  "labels": {
+    "dashboard": "Overview",
+    "payBill": "Make payment",
+    "autopay": "Autopay",
+    "wallet": "Payment methods",
+    "history": "Payment History",
+    "cancel": "Cancel service",
+    "plan": "Change plan",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "help": "Help Center",
+    "profile": "Settings"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Plans",
+        "helpSlug": "visible-plans"
+      },
+      {
+        "label": "Making a payment",
+        "helpSlug": "making-a-payment"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Change plan",
+        "page": "plan"
+      },
+      {
+        "label": "Settings",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "evidence": "documented_official",
+    "source": "https://www.visible.com/m/help/your-account/managing-visible-account",
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$",
+      "message": "Use 8 or more characters with an upper case letter, a lower case letter and a symbol (!@#$%^&*)."
+    }
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.visible.com/help/billing-payments",
+      "note": "Payments are made in the Visible app or after signing in to your account online."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.visible.com/help/billing-payments",
+      "note": "Autopay charges your default payment method on your due date; a backup method can be added."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.visible.com/help/billing-payments",
+      "note": "Use the Autopay toggle to turn it off."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.visible.com/help/billing-payments",
+      "note": "Payments are applied as soon as you submit them; you can pay up to 7 days before the due date."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.visible.com/help/billing-payments",
+      "note": "Visible is managed in the app and online; there are no paper bills."
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.visible.com/help/billing-payments",
+      "note": "Visible does not offer payment plans; payments are due by 11:59 PM on the due date or the account lapses."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.visible.com/m/help/your-account/managing-visible-account",
+      "note": "Cancellation is not immediate: service is disconnected on your next payment due date, and you can undo the request until then."
+    },
+    "pay_by_phone": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.visible.com/help/billing-payments",
+      "note": "Visible has no phone payment line; pay in the app or online."
+    },
+    "pay_by_mail": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.visible.com/help/billing-payments",
+      "note": "Visible does not accept mailed cash or checks."
+    }
+  },
+  "billing": {
+    "source": "https://www.visible.com/help/billing-payments",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.visible.com/plans"
+    },
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ],
+      "leadDays": 0
+    },
+    "plans": [
+      {
+        "id": "visible",
+        "name": "Visible",
+        "cents": 2500
+      },
+      {
+        "id": "visible-plus",
+        "name": "Visible+",
+        "cents": 3500,
+        "current": true
+      },
+      {
+        "id": "visible-plus-pro",
+        "name": "Visible+ Pro",
+        "cents": 4500
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "making-a-payment",
+      "title": "Making a payment",
+      "paragraphs": [
+        "Payments are applied as soon as you submit them. You can pay as early as 7 days before your next due date, and payment must be made by 11:59 PM on the due date; paying the day after can cost you service and the account lapses.",
+        "In the app, open Account and select Make payment in the Service and plans box, then select Pay. Online, sign in, go to Overview and select Make payment. Make sure a payment method is added first.",
+        "Visible takes all major credit, debit and prepaid cards, PayPal and Venmo, plus Apple Pay in the iOS app for one-time payments only. Physical cards, EFT, mailed cash or checks and wire transfers are not accepted. You can keep up to five payment methods, with one default and an optional backup."
+      ],
+      "source": "https://www.visible.com/help/billing-payments",
+      "topic": "payments"
+    },
+    {
+      "slug": "autopay-visible",
+      "title": "Autopay and backup payment",
+      "paragraphs": [
+        "Turn Autopay on or off with the Autopay toggle. With Autopay on, your default payment method is charged on your due date.",
+        "If a charge fails, Visible retries your default method up to three times, or tries both your default and backup methods across three attempts. If every attempt fails, you need to make a manual payment."
+      ],
+      "source": "https://www.visible.com/help/billing-payments",
+      "topic": "autopay"
+    },
+    {
+      "slug": "visible-plans",
+      "title": "Visible plans",
+      "paragraphs": [
+        "Visible offers three monthly plans with taxes and fees included: Visible at $25 a month, Visible+ at $35 a month and Visible+ Pro at $45 a month. Annual versions cost $275, $375 and $450 a year.",
+        "Moving to a lower plan may remove benefits, and you can cancel a plan change request before your next payment."
+      ],
+      "source": "https://www.visible.com/plans",
+      "topic": "plans"
+    },
+    {
+      "slug": "cancel-visible",
+      "title": "Cancel your Visible service",
+      "paragraphs": [
+        "Go to My Account, then Settings, then Cancel service. Check the acknowledgement boxes and select Request cancellation, then Back to account; a Service scheduled to end on notice appears.",
+        "Cancelling is not immediate: service is disconnected on your next payment due date, and until then you can select Undo cancellation request. If you want to keep your number with another carrier, start the port-out before cancelling."
+      ],
+      "source": "https://www.visible.com/m/help/your-account/managing-visible-account",
+      "steps": [
+        "Open My Account, then Settings.",
+        "Select Cancel service.",
+        "Check the acknowledgement boxes.",
+        "Select Request cancellation."
+      ],
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "setup-payment-plan"
+    ],
+    "extra": [
+      {
+        "slug": "visible-plus-pro-price",
+        "intent": "Using Visible's pages, find the regular monthly price of the Visible+ Pro plan. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "45"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "45"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Visible+ Pro is $45 a month."
+          }
+        ]
+      },
+      {
+        "slug": "early-payment-window",
+        "intent": "Find out how many days before the due date Visible lets you make a payment. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "7",
+              "seven"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "7",
+            "seven"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 7 days before the due date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Plans",
+        "Making a payment"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make payment",
+        "Payment methods"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Visible+ Pro",
+        "Visible+"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "making-a-payment",
+      "contains": "11:59 PM"
+    }
+  ],
+  "version": 1
+}

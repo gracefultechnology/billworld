@@ -1,0 +1,191 @@
+{
+  "id": "republic-services-304ceb",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Republic Services",
+  "category": "trash",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public republicservices.com pages only (Pay Bill hub, FAQ, Auto-Pay support page, payment-platform notice, fee disclosures and residential service terms); never signed in. Online account sign-up needs only an email address and password, verified by an emailed link; the account is then linked with the account number and invoice number. One-Time Payment (Continue as Guest) needs the 12-digit account number (starts with 3) and the billing ZIP. Cards (Visa, Mastercard, Amex, Discover) and checking/savings accounts are accepted; no card convenience fee is published, but a $5.95 ADMIN fee applies to every invoice (not modelled as a payment fee). Auto Pay always drafts on the invoice due date. Service cancellation is by phone with local customer support only (contract early-termination fees may apply); cancellation takes effect at the end of the month and cart removal fees up to $75 per container apply. No payment-plan or extension program is published, so payment arrangements are marked unsupported online (inferred). Late fees: the local subsidiary may charge one once an invoice is past its due date, capped for residential service at the greater of $5 or 10% (subsidiary-specific, so no lateFee field). Auto-Pay is now managed from Manage Account > Auto-Pay (cancel via the menu, then Cancel and Confirm); an already scheduled Auto-Pay payment can still process. Summary-billed customers (paid through an HOA or city) cannot pay online. During the 2026 payment-platform migration Auto-Pay changes and wallet edits are temporarily unavailable; the mock keeps them available.",
+  "officialDomains": ["republicservices.com"],
+  "sources": [
+    { "url": "https://www.republicservices.com/pay-bill", "title": "Online Bill Pay With Republic Services", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.republicservices.com/customer-support/faq", "title": "FAQs | Republic Services", "fetchedAt": "2026-10-09", "kind": "help" },
+    { "url": "https://www.republicservices.com/customer-support/auto-pay", "title": "Auto-Pay | Republic Services", "fetchedAt": "2026-10-09", "kind": "autopay" },
+    { "url": "https://www.republicservices.com/customer-support/payment-platform", "title": "Payment Platform Update | Republic Services", "fetchedAt": "2026-10-09", "kind": "pay" },
+    { "url": "https://www.republicservices.com/customer-support/fee-disclosures", "title": "Fee Disclosures", "fetchedAt": "2026-10-09", "kind": "fees" },
+    { "url": "https://www.republicservices.com/customer-support/residential-service-terms", "title": "Residential Service Terms", "fetchedAt": "2026-10-09", "kind": "cancel" },
+    { "url": "https://www.republicservices.com/account/login", "title": "Log In | Republic Services", "fetchedAt": "2026-10-09", "kind": "login" }
+  ],
+  "brand": { "displayName": "Republic Services", "shortName": "Republic", "primary": "#004b87", "accent": "#00335c", "monogram": "RS" },
+  "labels": {
+    "payBill": "Pay Bill",
+    "guestPay": "Continue as Guest",
+    "signIn": "Log In",
+    "register": "Sign Up",
+    "forgot": "Forgot Your Password",
+    "dashboard": "My Account",
+    "history": "Payments",
+    "statements": "Invoice History",
+    "wallet": "Payment Settings",
+    "autopay": "Auto Pay",
+    "profile": "Manage Account",
+    "help": "Customer Support",
+    "contact": "Contact Us",
+    "accountNumber": "Account Number",
+    "username": "Email Address"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay Bill", "page": "guest" },
+      { "label": "Log In", "page": "login" },
+      { "label": "Sign Up", "page": "register" },
+      { "label": "Auto Pay", "helpSlug": "autopay" },
+      { "label": "Customer Support", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Account", "page": "dashboard" },
+      { "label": "Pay Bill", "page": "pay" },
+      { "label": "Payments", "page": "history" },
+      { "label": "Invoice History", "page": "statements" },
+      { "label": "Payment Settings", "page": "wallet" },
+      { "label": "Auto Pay", "page": "autopay" },
+      { "label": "Manage Account", "page": "profile" },
+      { "label": "Contact Us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": ["accountNumber", "email"],
+    "guestLookupFields": ["accountNumber", "zip"],
+    "evidence": "documented_official",
+    "source": "https://www.republicservices.com/customer-support/faq"
+  },
+  "capabilities": {
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://www.republicservices.com/customer-support/faq", "note": "Sign up with an email address and password, verify the email link (valid 24 hours), then link the account with the account number and invoice number." },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.republicservices.com/pay-bill" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.republicservices.com/customer-support/auto-pay" },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.republicservices.com/customer-support/faq" },
+    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.republicservices.com/customer-support/faq" },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.republicservices.com/customer-support/faq" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.republicservices.com/customer-support/faq" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.republicservices.com/customer-support/faq", "channel": "phone", "phone": "844-737-8254", "note": "Service cannot be cancelled online. Call your local Republic Services customer support (or 844-737-8254) with your account number and service address; early termination fees may apply." },
+    "payment_arrangement": { "support": "unsupported", "evidence": "inferred", "channel": "phone", "phone": "844-737-8254", "note": "Payment plans are not offered online. Call Republic Services customer support to discuss a past-due balance." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.republicservices.com/pay-bill", "phone": "877-692-9729" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.republicservices.com/pay-bill" }
+  },
+  "billing": {
+    "source": "https://www.republicservices.com/customer-support/faq",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "days": "due_date", "leadDays": 0, "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Republic Services bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Signed in, open Payments from the My Account menu and choose Pay Now. Without an online account, choose Pay Bill and then Continue as Guest for a One-Time Payment: you need your 12-digit account number (it starts with 3) and the billing ZIP code, and your payment details are not stored.",
+        "Republic accepts Visa, Mastercard, American Express and Discover cards, and checking or savings accounts with a valid routing number. Online payments made before 5 p.m. Central post by 7 a.m. Central the next business day; later or weekend payments post one business day later.",
+        "You can also pay by phone at 877-692-9729 with your account number and service ZIP code, or mail a check with the remittance slip to the PO box printed on your invoice (allow 5 to 7 business days). Customers whose city or HOA pays Republic directly cannot pay online."
+      ],
+      "steps": ["Log In and open Payments under My Account.", "Select Pay Now.", "Choose the amount and a saved or new payment method.", "Review and submit."],
+      "source": "https://www.republicservices.com/customer-support/faq"
+    },
+    {
+      "slug": "autopay",
+      "title": "How do I enroll in Auto Pay?",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay pays each new invoice automatically on the invoice due date, from a saved card or bank account (ACH). The payment date follows the due date and cannot be changed; to pay on a different day, turn Auto Pay off and make one-time payments.",
+        "Auto Pay starts with your next invoice, so you may still need to pay the current invoice yourself. Keep the card's expiration date current to avoid a declined automatic payment."
+      ],
+      "steps": ["Log In and open Manage Account (or Auto-Pay from the My Account menu).", "Choose Auto-Pay.", "Pick a saved payment method or add a card or bank account.", "Review, accept the authorization and select Save Auto-Pay Schedule."],
+      "source": "https://www.republicservices.com/customer-support/auto-pay"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "How do I change or cancel Auto Pay?",
+      "topic": "autopay",
+      "paragraphs": [
+        "Go to Manage Account and open Auto-Pay. To change the payment method choose Edit Auto-Pay and save; to stop it, open the menu (three dots) at the top right, choose Cancel and then Confirm.",
+        "Cancelling stops future automatic payments. A payment that Auto-Pay already scheduled stays scheduled and may still process; if eligible you can cancel it separately from the Payments page."
+      ],
+      "source": "https://www.republicservices.com/customer-support/auto-pay"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "How can I cancel my service?",
+      "topic": "account",
+      "paragraphs": [
+        "Republic Services does not cancel service online. Call your local customer support team (find the number on the Contact Us page by entering your address, or call 844-737-8254) and have your account number and service address ready.",
+        "A new residential order can be cancelled free within 3 days. Later cancellations take effect at the end of the month in which you give notice, containers are collected then, and a container removal fee of up to $75 per container may apply. Ending a contract early may also bring early termination fees."
+      ],
+      "source": "https://www.republicservices.com/customer-support/residential-service-terms"
+    },
+    {
+      "slug": "fees",
+      "title": "What fees appear on my invoice?",
+      "topic": "billing",
+      "paragraphs": [
+        "Every invoice carries an administrative (ADMIN) fee of $5.95 that covers account maintenance, invoicing and payment processing.",
+        "Hauling invoices also include an Environmental Recovery Fee (currently 18% of the invoice charges before taxes) and a Fuel Recovery Fee that changes monthly with diesel prices.",
+        "If an invoice is not paid by its due date, the local operating company may add a late payment fee. For residential service that fee will not exceed the greater of $5 or 10% of the applicable charges, and service may be interrupted, with a service interruption fee of up to $50."
+      ],
+      "source": "https://www.republicservices.com/customer-support/fee-disclosures"
+    },
+    {
+      "slug": "billing-history",
+      "mode": "append",
+      "title": "Printing past invoices",
+      "paragraphs": [
+        "To print a past invoice, Log In, choose Payments under My Account and open the Invoice History tab under Account Activity. Select the invoice number, then the printer icon. Online payments can take up to 48 hours to appear in recent account activity."
+      ],
+      "source": "https://www.republicservices.com/customer-support/faq"
+    },
+    {
+      "slug": "register",
+      "title": "Creating a Republic Services online account",
+      "topic": "account",
+      "paragraphs": [
+        "Signing up needs only an email address and a password. Republic emails you a verification link that expires after 24 hours; you can request a new one by logging in and selecting Resend Email.",
+        "Once your first invoice arrives, link the account with its account number and invoice number (or the service address if you pay through a city or HOA). After linking you can choose paperless billing and Auto Pay, and use Switch Account to move between several linked accounts."
+      ],
+      "source": "https://www.republicservices.com/customer-support/faq"
+    }
+  ],
+  "tasks": {
+    "suppress": ["setup-payment-plan"],
+    "extra": [
+      {
+        "slug": "admin-fee-amount",
+        "intent": "Using Republic Services' help pages, find how much the administrative (ADMIN) fee on each invoice is. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["5.95"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["5.95"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "The administrative (ADMIN) fee is $5.95 per invoice." }]
+      },
+      {
+        "slug": "autopay-draft-day",
+        "intent": "Using Republic Services' help pages, find out on which day Auto Pay charges your payment method each billing cycle. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["due date"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["due date"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Auto Pay processes on the invoice due date." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": ["Pay Bill", "Log In"] },
+    { "page": "login", "contains": ["Email Address", "Forgot Your Password"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Invoice History", "Payment Settings"] },
+    { "page": "autopay", "signedIn": true, "label": "autopay" },
+    { "page": "helpArticle", "slug": "fees", "contains": "$5.95" },
+    { "page": "helpArticle", "slug": "cancel-service", "contains": "844-737-8254" },
+    { "page": "cancel", "signedIn": true, "contains": "cannot be cancelled online" },
+    { "page": "arrangement", "signedIn": true, "contains": "not offered online" }
+  ]
+}

@@ -1,0 +1,341 @@
+{
+  "id": "usaa-auto-property-insurance-a92332",
+  "version": 1,
+  "status": "dedicated",
+  "name": "USAA (auto & property insurance)",
+  "category": "insurance",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public usaa.com billing support and FAQ pages only (no sign-in). One monthly bill for all auto and property policies, viewed under Insurance Bill (Payments tab = history). Pay online, Express Pay without logging on (Bill ID + ZIP, debit/credit card only, no Discover, no fee, one-time only), app, phone 800-531-8722, mail, or another bank's bill pay. Automatic Payment Plan (APP) set up online; starts with the next due date; cancel under Insurance > Bills > Manage Automatic Payments. Pending payments can be changed or cancelled at least 1 business day before the due date. Installment fees: $2 for paper statements and $3 for one-time (non-automatic) payments, billed on the statement, so they are described in help rather than charged as a convenience fee. Need more time to pay: pause an APP payment, carry over, or spread the balance over the next three bills (modelled as payment_arrangement). Bills under $5 roll forward. Review 2026-10-09: the public Log On page asks for an Online ID and then Next (two-step; username sign-in). MFA is not documented publicly. Express Pay takes cards only and not Discover; bank accounts are listed as coming later. Integrated 2026-10-09: auth.loginSteps 2 (the password step now carries the user ID on every template).",
+  "officialDomains": [
+    "usaa.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.usaa.com/support/insurance/auto-property-billing/faq/",
+      "title": "Auto and property billing FAQ",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.usaa.com/support/insurance/auto-property-billing/",
+      "title": "Find support for insurance billing matters",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.usaa.com/my/logon",
+      "title": "Member Account Login | USAA",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "USAA",
+    "shortName": "USAA",
+    "primary": "#12395b",
+    "accent": "#0b2540",
+    "monogram": "U"
+  },
+  "labels": {
+    "signIn": "Log On",
+    "signOut": "Log Off",
+    "viewBill": "Insurance Bill",
+    "payBill": "Pay Bills",
+    "autopay": "Automatic Payment Plan",
+    "guestPay": "Express Pay",
+    "arrangement": "Need more time to pay",
+    "history": "Payments",
+    "statements": "My Documents",
+    "wallet": "Payment accounts",
+    "username": "Online ID"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "Insurance Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Bills",
+        "page": "pay"
+      },
+      {
+        "label": "Payments",
+        "page": "history"
+      },
+      {
+        "label": "Manage Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Need more time to pay",
+        "page": "arrangement"
+      },
+      {
+        "label": "My Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Payment accounts",
+        "page": "wallet"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "statementId",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.usaa.com/my/logon",
+    "identifier": "username",
+    "loginSteps": 2
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/",
+      "phone": "800-531-8722"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/"
+    }
+  },
+  "billing": {
+    "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full",
+        "minimum"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your insurance bill",
+      "topic": "payments",
+      "paragraphs": [
+        "USAA sends one monthly bill for all your auto and property policies. Pay the full premium or at least the minimum due; paying more lowers your next bill.",
+        "Pay online in your Insurance Bill, without logging on through Express Pay, in the USAA Mobile App, by phone at 800-531-8722, by mail to 9800 Fredericksburg Road, San Antonio, TX 78288-0001, or through another bank's bill pay.",
+        "USAA takes credit cards, debit cards, bank accounts and checks, but not cash."
+      ],
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/"
+    },
+    {
+      "slug": "express-pay",
+      "title": "Express Pay",
+      "topic": "payments",
+      "paragraphs": [
+        "Express Pay lets anyone, such as a spouse, parent or friend, make a one-time auto or property insurance payment without logging on.",
+        "You need a debit or credit card plus the Bill ID and ZIP code from the billing statement. Discover cards are not accepted, and bank accounts are not yet supported.",
+        "There is no fee for Express Pay. It cannot schedule payments or set up automatic payments, and it is not available for life or small business insurance."
+      ],
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payment Plan (APP)",
+      "topic": "autopay",
+      "paragraphs": [
+        "Set up an APP on usaa.com or in the app by choosing the account to pay from, the payment date and whether to pay the balance in full, monthly or twice a month.",
+        "An APP starts with your next due date, so pay the current bill yourself. It also avoids the installment fee for one-time payments.",
+        "To cancel, log on, choose Bills under Insurance to open Auto and Property Billing, and select Manage Automatic Payments."
+      ],
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/"
+    },
+    {
+      "slug": "installment-fees",
+      "title": "Installment fees",
+      "topic": "fees",
+      "paragraphs": [
+        "Installment fees depend on how you receive and pay your bill and appear as an Installment Fee line on your statement.",
+        "Paper statements add $2, while online statements add nothing. One-time payments add $3, while automatic payments add nothing.",
+        "Only the policyholder can make the changes that avoid these fees."
+      ],
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Need more time to pay?",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you are on an APP you may be able to pause a payment; the skipped amount is added to your next bill and a late fee may apply.",
+        "If you tell USAA before you miss a payment you might carry the balance over to the next bill. If you need longer, tell USAA how much of the current bill you can pay and, if you qualify, the rest is spread over your next three bills.",
+        "A nonpayment cancellation (NPC) notice must be paid by its Last day to pay date or the policy is canceled."
+      ],
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/"
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Change or cancel a pending payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Find the payment in your recent bill pay activity and choose to modify or cancel it. For bank account payments this usually has to be done at least 1 business day before the due date.",
+        "If you cancel a pending automatic payment, make another payment to keep the account current."
+      ],
+      "source": "https://www.usaa.com/support/insurance/auto-property-billing/faq/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "one-time-payment-fee",
+        "intent": "Using USAA's auto and property billing FAQ, find the installment fee USAA adds when a bill is paid by one-time payment instead of automatic payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $3 installment fee applies to one-time payments."
+          }
+        ]
+      },
+      {
+        "slug": "express-pay-needs",
+        "intent": "Find out what information, besides a card, USAA's Express Pay needs to pay an insurance bill without logging on. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Bill ID"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Bill ID"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "guest"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Bill ID and ZIP code from the billing statement."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": "Log On"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Insurance Bill",
+        "Need more time to pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "installment-fees",
+      "contains": "$3"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "express-pay",
+      "contains": "Discover"
+    },
+    {
+      "page": "login",
+      "contains": "Online ID"
+    }
+  ]
+}

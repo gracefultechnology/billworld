@@ -1,0 +1,463 @@
+{
+  "id": "cricket-wireless-6447ad",
+  "status": "dedicated",
+  "name": "Cricket Wireless",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public cricketwireless.com support and plan pages only (no sign-in). Cricket is prepaid: service is paid by the due date (11:59 pm CT) or all lines are suspended. Sign-in accepts a username, email or 10-digit Cricket number with a password (password 8-24 characters with a letter and a number); no second factor is documented at sign-in (mfa none, inferred), resets use a texted code. Pay Bill and Quick Pay (no sign-in, keyed by the Cricket phone number) accept credit/debit cards, PayPal (signed in), refill and service payment cards; bank account drafts, checks and money orders are NOT accepted. Quick Pay looks up by phone number, which guestLookupFields cannot express (family default kept). Auto Pay charges the card two days before the due date; $5 monthly Auto Pay credit on eligible plans. BridgePay splits the amount due into two payments for a $5 (single line) / $15 (multi-line) fee, set up 7 days before to 59 days after the due date; modelled by the arrangement form. Agent/store payments carry a $5 Customer Assistance Fee. Cricket does not mail paper bills (paperless not_applicable, inferred). Closing an account is handled by Customer Support (no online cancel), so cancel_service is unsupported online. Plans are the published monthly prices without Auto Pay. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "officialDomains": [
+    "cricketwireless.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cricketwireless.com/support/billing-and-payments/bill-pay-methods",
+      "title": "Bill Pay Methods | Cricket Wireless",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cricketwireless.com/support/billing-and-payments/auto-pay-setup",
+      "title": "Auto Pay Setup | Cricket Wireless",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.cricketwireless.com/support/billing-and-payments/bridge-pay",
+      "title": "What is BridgePay? | Cricket Wireless",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.cricketwireless.com/support/billing-and-payments/quick-pay",
+      "title": "What is Quick Pay? | Cricket Wireless",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cricketwireless.com/cell-phone-plans",
+      "title": "Cell Phone Plans | Cricket Wireless",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.cricketwireless.com/support/account-management/forgot-username-password",
+      "title": "Forgot Username or Password | Cricket Wireless",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Cricket Wireless",
+    "shortName": "Cricket",
+    "primary": "#00664f",
+    "accent": "#2a2a2a",
+    "monogram": "C"
+  },
+  "labels": {
+    "dashboard": "Account Summary",
+    "payBill": "Pay Bill",
+    "autopay": "Auto Pay",
+    "arrangement": "BridgePay",
+    "guestPay": "Quick Pay",
+    "history": "Billing History",
+    "statements": "Billing History",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "register": "Create Sign In",
+    "username": "Username, email or Cricket number",
+    "forgot": "Forgot Password",
+    "help": "Support",
+    "plan": "Change Plan",
+    "amountDue": "Amount Due",
+    "wallet": "Payment Methods"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Bill Pay Methods",
+        "helpSlug": "bill-pay-methods"
+      },
+      {
+        "label": "Auto Pay",
+        "helpSlug": "auto-pay-setup"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "BridgePay",
+        "page": "arrangement"
+      },
+      {
+        "label": "Billing History",
+        "page": "history"
+      },
+      {
+        "label": "Change Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 1,
+    "mfa": "none",
+    "passwordRule": {
+      "pattern": "^(?=.*[A-Za-z])(?=.*\\d).{8,24}$",
+      "message": "Password must be 8-24 characters and include at least one letter and one number."
+    },
+    "evidence": "documented_official",
+    "source": "https://www.cricketwireless.com/support/account-management/forgot-username-password"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/quick-pay",
+      "note": "Quick Pay takes a credit, debit, Cricket Refill or Service Payment Card without signing in; it does not store your payment details."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/auto-pay-setup",
+      "note": "Auto Pay uses a credit or debit card only; bank account debits and gift cards cannot be used."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/auto-pay-setup",
+      "note": "Select OFF under Auto Pay Status, or Turn Off Auto Pay in the myCricket App."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/bill-pay-methods",
+      "note": "Cricket is prepaid and does not mail paper bills; your balance and billing history are online and in the myCricket App."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/bridge-pay",
+      "note": "BridgePay splits your amount due into two payments for a $5 (single line) or $15 (multi-line) fee; Auto Pay must be off."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/bill-pay-methods",
+      "note": "Accounts are closed through Cricket Customer Support: call 1-800-CRICKET (1-800-274-2538) or dial 611 from your Cricket phone. Unpaid accounts are suspended and canceled after 60 days.",
+      "channel": "phone",
+      "phone": "8002742538"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/bill-pay-methods",
+      "note": "Dial *PAY (*729) from your Cricket phone; a $5 Customer Assistance Fee applies."
+    },
+    "pay_by_mail": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/bill-pay-methods",
+      "note": "Cricket does not accept checks or money orders; pay online, in the app, by *PAY or in a store.",
+      "channel": "phone",
+      "phone": "8002742538"
+    }
+  },
+  "billing": {
+    "source": "https://www.cricketwireless.com/support/billing-and-payments/bill-pay-methods",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/bill-pay-methods"
+    },
+    "methods": [
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ],
+      "leadDays": 2
+    },
+    "plans": [
+      {
+        "id": "select-unlimited",
+        "name": "Select Unlimited",
+        "cents": 4000
+      },
+      {
+        "id": "smart-unlimited",
+        "name": "Smart Unlimited",
+        "cents": 5000,
+        "current": true
+      },
+      {
+        "id": "supreme-unlimited",
+        "name": "Supreme Unlimited",
+        "cents": 6000
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "bill-pay-methods",
+      "title": "Bill Pay Methods",
+      "paragraphs": [
+        "Online through Pay Bill or Quick Pay you can use a credit card, debit card, PayPal (online only), a Cricket Refill Card (Quick Pay only), a Service Payment Card, gift cards or reloadable prepaid cards. The myCricket App also takes Apple Pay, Google Pay and Samsung Pay.",
+        "Paying through the automated phone system (dial *PAY from your Cricket phone) or in a Cricket store adds a $5 Customer Assistance Fee, except in Connecticut and Vermont stores. Payment centers take cash but may charge their own fee.",
+        "Cricket does not accept bank account drafts, checks or money orders."
+      ],
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/bill-pay-methods",
+      "topic": "payments"
+    },
+    {
+      "slug": "auto-pay-setup",
+      "title": "Auto Pay Setup",
+      "paragraphs": [
+        "Turn on Auto Pay in Manage Your Account or the myCricket App and Cricket charges your credit or debit card for your plan total plus added features. Auto Pay cannot draft a bank account, and gift cards cannot be used. Multi-line accounts use one card for all lines.",
+        "Cricket places the charge two days before your due date and the money is taken the day before. If you turn on Auto Pay less than five days before the due date you may need to make a one-time payment first.",
+        "Individual customers on the Sensible 10GB plan or higher get a $5 Auto Pay credit each month while Auto Pay stays on (enroll at least six days before the due date); Simply Data and multi-month plans are excluded. To stop Auto Pay, select OFF under Auto Pay Status."
+      ],
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/auto-pay-setup",
+      "steps": [
+        "Sign in to Manage Your Account.",
+        "Under Auto Pay Status, select ON.",
+        "Enter your card.",
+        "Check Enroll in Auto Pay and Electronic Communications Consent.",
+        "Select Activate Auto Pay."
+      ],
+      "topic": "autopay"
+    },
+    {
+      "slug": "bridgepay",
+      "title": "What is BridgePay?",
+      "paragraphs": [
+        "BridgePay splits your monthly amount due into two payments, giving you seven extra days to pay in full. Set it up online, by chat or in a store between 7 days before and 59 days after your original due date.",
+        "It costs $5 for a single-line account or $15 for a multi-line account, paid with the first payment. Auto Pay must be off to enroll, and you can cancel BridgePay before the original due date.",
+        "If you miss the second payment you must pay next month's bill in full to restore service. Setting up BridgePay after a suspension resets your monthly due date."
+      ],
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/bridge-pay",
+      "topic": "payments"
+    },
+    {
+      "slug": "quick-pay",
+      "title": "What is Quick Pay?",
+      "paragraphs": [
+        "Quick Pay lets you pay a Cricket account without signing in. Enter the Cricket phone number, the amount and a credit or debit card, Cricket Refill Card or Service Payment Card, agree to the terms and select Submit Payment. Keep the confirmation number; Cricket also texts a confirmation.",
+        "Quick Pay payments are applied to the whole account as a credit, not to one line. If the account is not paid in full by 11:59 pm Central Time on the due date, every line is suspended."
+      ],
+      "source": "https://www.cricketwireless.com/support/billing-and-payments/quick-pay",
+      "topic": "payments"
+    },
+    {
+      "slug": "cricket-plans",
+      "title": "Cricket plans",
+      "paragraphs": [
+        "Select Unlimited is $40 a month, Smart Unlimited is $50 a month and Supreme Unlimited is $60 a month before discounts; each is $5 less with Auto Pay (so $35, $45 and $55)."
+      ],
+      "source": "https://www.cricketwireless.com/cell-phone-plans",
+      "topic": "plans"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "bridgepay-multiline-fee",
+        "intent": "Using Cricket's support pages, find the BridgePay fee for a multi-line account. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$15",
+              "15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$15",
+            "15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "BridgePay costs $15 for a multi-line account."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-bank-account",
+        "intent": "Find out whether Cricket Auto Pay can take payments straight from a bank account. Answer yes or no and do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "no",
+              "cannot",
+              "can't",
+              "not"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "no",
+            "cannot",
+            "can't",
+            "not"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No - Cricket Auto Pay only charges a credit or debit card; bank account debits are not accepted."
+          }
+        ]
+      },
+      {
+        "slug": "assistance-fee",
+        "intent": "Find the fee Cricket charges for paying through the automated phone system or in a store. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $5 Customer Assistance Fee applies."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username, email or Cricket number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "BridgePay",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Smart Unlimited",
+        "Select Unlimited"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-274-2538"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "bill-pay-methods",
+      "contains": "Customer Assistance Fee"
+    }
+  ],
+  "version": 1
+}

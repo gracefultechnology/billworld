@@ -1,0 +1,426 @@
+{
+  "id": "t-mobile-home-internet-5g-home-internet-and-t-mo-89fa48",
+  "version": 1,
+  "status": "dedicated",
+  "name": "T-Mobile Home Internet (5G Home Internet) and T-Mobile Fiber",
+  "category": "internet",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public t-mobile.com support pages and the public sign-in page only (no sign-in attempted). Home Internet is billed on the regular T-Mobile account (T-Life app / My T-Mobile) with a T-Mobile ID. Sign-in page observed: 'Email or phone number', Next (password on the next step), Sign up, and 'Pay as a guest' (no login), so loginSteps=2 and guest pay is supported. Home Internet customers get their One-Time PINs by email (mfa=email). Payments: no fee online or in T-Life; $5 payment support fee in stores and $10 through Customer Care (not modelled: the engine has no agent channel). Methods: Visa/Mastercard/Amex/Discover, bank account (ACH checking or savings), T-Mobile MONEY debit card, PayPal. AutoPay draws about two days before the due date by default (leadDays=2) and the withdrawal date can be moved to another day except the 29th-31st (days 1-28); the AutoPay discount needs a linked bank account (Pay by Bank), the T-Mobile Visa or a debit card on an eligible plan (other credit cards and wallets don't qualify). Cancelling the account does not cancel AutoPay. Payment Arrangements are self-service only (T-Life / My T-Mobile / automated line), for postpaid accounts less than 30 days past due; AutoPay pauses during an arrangement; $20 restore fee per line if suspended. Cancelling Home Internet requires contacting T-Mobile (no online cancel; the Home Internet contact page lists 1-844-275-9310, labelled tech support, and 1-844-839-5057 for sales — 1-844-275-9310 is used); the gateway must be returned within 45 days or a non-return fee up to $370 applies ($79 for excessive damage). Plan changes are done in a store or by contacting T-Mobile (capabilities.change_plan unsupported). Plan prices are not modelled. Paperless billing is managed in the T-Mobile account.",
+  "officialDomains": [
+    "t-mobile.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.t-mobile.com/support/account/pay-your-bill",
+      "title": "Ways to pay your T-Mobile bill | T-Mobile Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.t-mobile.com/support/account/autopay",
+      "title": "AutoPay | T-Mobile Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.t-mobile.com/support/account/payment-arrangement",
+      "title": "Payment Arrangement | T-Mobile Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.t-mobile.com/support/home-internet/id-and-billing",
+      "title": "Account Support | T-Mobile 5G Home Internet",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.t-mobile.com/support/home-internet/contact-us",
+      "title": "Contact T-Mobile Internet Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://account.t-mobile.com/signin/v2/",
+      "title": "Log In To Your T-Mobile Account",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "T-Mobile Home Internet",
+    "shortName": "T-Mobile",
+    "primary": "#b8005c",
+    "accent": "#e20074",
+    "monogram": "T"
+  },
+  "labels": {
+    "dashboard": "Account",
+    "payBill": "Make a payment",
+    "autopay": "AutoPay",
+    "paperless": "Paperless billing",
+    "arrangement": "Payment Arrangement",
+    "guestPay": "Pay as a guest",
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "register": "Sign up",
+    "username": "Email or phone number",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Pay as a guest",
+        "page": "guest"
+      },
+      {
+        "label": "Sign up",
+        "page": "register"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Paperless billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "email",
+    "evidence": "observed_public",
+    "source": "https://account.t-mobile.com/signin/v2/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://account.t-mobile.com/signin/v2/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/payment-arrangement"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/autopay"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/autopay",
+      "note": "Cancelling your account doesn't cancel AutoPay; turn AutoPay off separately."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/home-internet/id-and-billing"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/payment-arrangement"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/home-internet/contact-us",
+      "note": "Home Internet can't be cancelled online; contact T-Mobile Home Internet customer service (1-844-275-9310). Return the gateway within 45 days to avoid a non-return fee of up to $370.",
+      "channel": "phone",
+      "phone": "8442759310"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/pay-your-bill"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/pay-your-bill"
+    },
+    "change_plan": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/payment-arrangement",
+      "note": "Plan changes are made in a T-Mobile store or by contacting T-Mobile, not online.",
+      "channel": "phone"
+    }
+  },
+  "billing": {
+    "source": "https://www.t-mobile.com/support/account/pay-your-bill",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.t-mobile.com/support/account/pay-your-bill"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "leadDays": 2,
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay your T-Mobile bill",
+      "paragraphs": [
+        "Paying online or in the T-Life app has no fee. Log in to pay your own bill, or choose Pay as a guest to pay without logging in.",
+        "A $5 payment support fee applies to payments made in a store, and a $10 payment support fee applies to payments made through Customer Care.",
+        "Accepted: Visa, Mastercard, American Express and Discover (credit or debit), checking or savings (ACH), the T-Mobile MONEY debit card and PayPal; cash in stores only. Mailed checks go to T-Mobile, P.O. Box 742596, Cincinnati, OH 45274-2596; allow at least five days."
+      ],
+      "source": "https://www.t-mobile.com/support/account/pay-your-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay is free and pays your bill automatically from a linked bank account, debit card or credit card. Payments come out about two days before the due date by default; you can choose another withdrawal date in T-Life or My T-Mobile, except the 29th, 30th or 31st. A bill due the day after you enroll may already be paid automatically.",
+        "To get the monthly AutoPay discount on an eligible plan you must be enrolled when the bill is made, have paid last month's bill on time, and pay with a linked bank account (Pay by Bank), the T-Mobile Visa or a debit card. Other credit cards and Apple Pay or Google Pay don't qualify, and paying early with an ineligible method removes the discount from the next bill.",
+        "Unprocessed AutoPay payments are retried after five banking days. Cancelling your account does not cancel AutoPay, so turn it off separately."
+      ],
+      "source": "https://www.t-mobile.com/support/account/autopay"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "Payment Arrangements are self-service only: set them up in T-Life or My T-Mobile. They're for postpaid accounts less than 30 days past due; anything 31 or more days past due must be paid first.",
+        "In T-Life, open the Account tab, choose Set up a payment arrangement, adjust the amount, method and date, then select Agree and Submit. AutoPay pauses while the arrangement is active and resumes after it's completed; a failed arrangement removes you from AutoPay.",
+        "Late fees may apply for dates after the original due date, and if the account is suspended a $20 restore fee per line (up to three lines) is added to the installments."
+      ],
+      "steps": [
+        "Open T-Life or My T-Mobile.",
+        "Go to the Account tab.",
+        "Choose Set up a payment arrangement.",
+        "Edit the amount, method and date.",
+        "Select Agree and Submit."
+      ],
+      "source": "https://www.t-mobile.com/support/account/payment-arrangement"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel Home Internet",
+      "topic": "account",
+      "paragraphs": [
+        "To cancel T-Mobile Home Internet, contact T-Mobile Home Internet customer service at 1-844-275-9310 (listed with 1-844-839-5057 for sales); it can't be done online. You need to return the gateway within 45 days or you'll be charged a non-return fee of up to $370. If the returned gateway has excessive damage, a one-time $79 charge is added within one or two bill cycles."
+      ],
+      "source": "https://www.t-mobile.com/support/home-internet/id-and-billing"
+    },
+    {
+      "slug": "first-bill",
+      "title": "Your first Home Internet bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Your first bill covers Home Internet from the day the gateway ships to the end of your first month, and is due within 21 days of shipping. Existing T-Mobile customers may also see the second month on the first bill, so it can look higher than usual.",
+        "To change your plan, visit a T-Mobile store or contact T-Mobile."
+      ],
+      "source": "https://www.t-mobile.com/support/home-internet/id-and-billing"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "care-payment-fee",
+        "intent": "Using T-Mobile's help pages, find the payment support fee T-Mobile charges when a bill payment is made through Customer Care, and how to avoid it. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payments through Customer Care carry a $10 payment support fee; paying online or in T-Life is free."
+          }
+        ]
+      },
+      {
+        "slug": "gateway-return-deadline",
+        "intent": "A T-Mobile Home Internet customer is cancelling. Look up how many days they have to return the gateway before a non-return fee applies. Do not change anything on the account.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "45"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "45"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The gateway must be returned within 45 days or a non-return fee of up to $370 applies."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email or phone number",
+        "Log in"
+      ]
+    },
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay",
+        "Payment Arrangement"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$10",
+        "$5"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "45 days"
+    }
+  ]
+}

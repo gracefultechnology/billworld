@@ -1,0 +1,308 @@
+{
+  "id": "eyemed-vision-care-individual-family-plans-5d0cc1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "EyeMed Vision Care (Individual & Family plans)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public pages only (no sign-in). The individual-plan FAQ at individual.eyemed.com is rendered by JavaScript; its text was read from the site's public content feed (content.eyemedvisioncare.com, individual/eyemed/page/faq). EyeMed Individual billing and enrollment are run by its administration partner InsuranceTPA.com (charges show as InsuranceTPA); the FAQ sends members to the customer login link emailed after enrollment, and InsuranceTPA's current-members page lists Pay Your Bill in that customer login plus the Individual EyeMed billing line 1-844-225-3107 (M-F 7am-5pm CT). Payments are set up at enrollment: 12 monthly payments or one annual payment with a 5% discount in most states, on a credit card or bank account; every enrollment is a 12-month commitment and renews automatically. Cancellation is not self-service: after the coverage period, the primary policyholder calls the ID-card number and sends a valid written request (signed form or email), then must receive a confirmation email. There is no public self-registration (the login link arrives by email at enrollment), so register is kept out of the public nav; sign-in identifier, MFA, paperless, fees and grace-period length are not published and keep family defaults. Signed-in nav labels other than Pay Your Bill are not published and are generic (synthetic). Plan prices are only 'starting at' figures that vary by state, so no plan list is modelled. Public nav is left to the family template: the insurance template's public tab bar uppercases link text and paints dossier links in the brand color on the brand background, so a dossier public nav fails dossier_contract (reported as a cross-owner request).",
+  "officialDomains": [
+    "eyemed.com",
+    "insurancetpa.com"
+  ],
+  "sources": [
+    {
+      "url": "https://individual.eyemed.com/eyemed/en/faq",
+      "title": "EyeMed Individual Vision Plans: FAQs",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.eyemed.com/en-us/member/faq/",
+      "title": "EyeMed Member FAQ",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://eyemed.com/en-us/broker/working-with-us/individual/individual-faqs",
+      "title": "Answers to the top questions from brokers about EyeMed",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://eyemed.com/en-us/member/individual",
+      "title": "EyeMed Individual & Family Vision Plans",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.insurancetpa.com/current-members/",
+      "title": "InsuranceTPA Current Members",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "EyeMed Individual",
+    "shortName": "EyeMed",
+    "primary": "#4b286d",
+    "accent": "#5c3a8a",
+    "monogram": "E"
+  },
+  "labels": {
+    "signIn": "Login",
+    "payBill": "Pay Your Bill",
+    "help": "Get Answers"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Your Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Payment method",
+        "page": "wallet"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.insurancetpa.com/current-members/",
+      "note": "Pay Your Bill is part of the customer login run by InsuranceTPA, EyeMed's billing partner."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://individual.eyemed.com/eyemed/en/faq",
+      "note": "Payments are set up at enrollment: 12 monthly payments or one annual payment."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.insurancetpa.com/current-members/",
+      "phone": "8442253107"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://individual.eyemed.com/eyemed/en/faq",
+      "note": "Plans are a 12-month commitment and cannot be cancelled online. After your coverage period, the primary policyholder calls the number on the ID card and sends a signed form or email request.",
+      "channel": "phone",
+      "phone": "8442253107"
+    }
+  },
+  "billing": {
+    "source": "https://individual.eyemed.com/eyemed/en/faq",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "payment-setup",
+      "title": "How payment for your vision plan is set up",
+      "topic": "billing",
+      "paragraphs": [
+        "Your payments are arranged when you enroll. You can pay in 12 monthly payments, or make one payment a year, which earns a 5% discount in most states.",
+        "Every enrollment is a 12-month (one-year) commitment. To change your payment method or other details, sign in with the customer login link that was emailed to you after enrollment and make the change online."
+      ],
+      "steps": [
+        "Open the customer login link from your enrollment email.",
+        "Sign in and open your payment details.",
+        "Update your card or bank account and save."
+      ],
+      "source": "https://individual.eyemed.com/eyemed/en/faq"
+    },
+    {
+      "slug": "insurancetpa-charges",
+      "title": "Why your statement shows InsuranceTPA",
+      "topic": "billing",
+      "paragraphs": [
+        "InsuranceTPA.com is EyeMed's administration partner for individual plans and handles billing and enrollment. Card charges and bank withdrawals for your EyeMed Individual plan appear under the InsuranceTPA name.",
+        "If there is a problem with a payment, call the number on your ID card or the Individual EyeMed billing line at 1-844-225-3107 (Monday to Friday, 7am to 5pm Central)."
+      ],
+      "source": "https://individual.eyemed.com/eyemed/en/faq"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your bill in the customer login",
+      "topic": "billing",
+      "paragraphs": [
+        "The primary policyholder's customer login, run by InsuranceTPA, is where you pay your bill, check claim status, submit a claim and look up benefit and plan information.",
+        "Covered adults who are not the primary policyholder have a separate login and cannot manage billing."
+      ],
+      "source": "https://www.insurancetpa.com/current-members/"
+    },
+    {
+      "slug": "renewal",
+      "title": "Does my plan renew automatically?",
+      "topic": "account",
+      "paragraphs": [
+        "Your policy renews automatically, so coverage continues into the next coverage period without you doing anything. Payments keep coming from the same card or bank account, and the charge still shows under the InsuranceTPA name."
+      ],
+      "source": "https://individual.eyemed.com/eyemed/en/faq"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your EyeMed Individual plan",
+      "topic": "account",
+      "paragraphs": [
+        "Coverage is bought as a 12-month commitment. If you want to end your plan after your coverage period, call the number on your ID card. Only the primary policyholder can cancel, and EyeMed needs a valid written request, such as a signed form or an email.",
+        "Once your request is accepted you are sent a confirmation email. Your coverage is not cancelled until you have received that email."
+      ],
+      "source": "https://individual.eyemed.com/eyemed/en/faq"
+    },
+    {
+      "slug": "coverage-end",
+      "title": "When coverage ends",
+      "topic": "account",
+      "paragraphs": [
+        "Coverage continues through the last day for which premium was paid, subject to the grace period. It also ends on a premium due date if the company chooses not to renew, or on the date you give a written request to cancel.",
+        "Dependents' coverage ends when yours does, at the end of the policy year in which they stop being eligible, or on the last paid day."
+      ],
+      "source": "https://individual.eyemed.com/eyemed/en/faq"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "annual-payment-discount",
+        "intent": "Using the EyeMed help pages, find what discount an EyeMed Individual member gets for paying once a year instead of monthly. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5%",
+              "5 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5%",
+            "5 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Paying annually gives a 5% discount in most states."
+          }
+        ]
+      },
+      {
+        "slug": "card-statement-name",
+        "intent": "A charge for your EyeMed Individual vision plan appeared on your card under a different company name. Using the EyeMed help pages, find which company name the charge shows. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "InsuranceTPA"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "InsuranceTPA"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The charge shows as InsuranceTPA, EyeMed's billing and enrollment partner."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "12-month commitment",
+        "Get Answers"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-setup",
+      "contains": [
+        "5% discount",
+        "12 monthly payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "insurancetpa-charges",
+      "contains": "1-844-225-3107"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Your Bill",
+        "My Account"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "primary policyholder"
+    }
+  ]
+}

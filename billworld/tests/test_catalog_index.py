@@ -8,6 +8,24 @@ import unittest
 from billworld.catalog_index import host_family, classify, build, frontend_family_signals, load_captures
 
 class IndexTests(unittest.TestCase):
+    def test_repeated_page_associations_dedupe_without_losing_reference_kind(self):
+        from billworld.tests.test_research_frontends import FrontendTests
+        with tempfile.TemporaryDirectory() as tmp:
+            d,c,db,bid=FrontendTests().fixture(Path(tmp))
+            db.execute("UPDATE assets SET url='https://cdn.paymentus.com/client.js' WHERE url='https://utility.example/app.js'")
+            aid=db.execute("SELECT id FROM assets WHERE url='https://cdn.paymentus.com/client.js'").fetchone()[0]
+            source,digest=db.execute("SELECT url,body_sha256 FROM pages WHERE id='page'").fetchone()
+            for i in range(200):
+                page=f'duplicate-{i}'
+                db.execute('INSERT INTO pages(id,url,body_sha256) VALUES(?,?,?)',(page,source,digest))
+                db.execute('INSERT INTO page_billers VALUES(?,?)',(page,bid))
+                db.execute('INSERT INTO refs VALUES(?,?,?,?)',(page,aid,'script','same_host'))
+            db.execute('INSERT INTO refs VALUES(?,?,?,?)',('page',aid,'style','same_host'));db.commit()
+            signals=frontend_family_signals(d,load_captures(d),bid)[bid]
+            self.assertEqual(len(signals),2)
+            self.assertEqual({s['reference_kind'] for s in signals},{'script','style'})
+            self.assertTrue(all(s['source_url']==source and s['body_sha256']==digest for s in signals))
+            db.close();c.close()
     def test_compact_capture_metadata_preserves_classification_without_large_arrays(self):
         from billworld.tests.test_research_frontends import FrontendTests
         with tempfile.TemporaryDirectory() as tmp:
@@ -48,6 +66,18 @@ class IndexTests(unittest.TestCase):
             signals=frontend_family_signals(d,load_captures(d),bid)[bid]
             self.assertEqual(signals[0]['type'],'captured_static_asset_final_host');self.assertEqual(signals[0]['asset_body_sha256'],'script-hash')
             db.close();c.close()
+    def test_starnik_host_signal_preserves_claim_and_does_not_grant_equivalence(self):
+        self.assertEqual(host_family('https://inframark.starnik.net/RP_default.aspx'), 'Starnik')
+        self.assertEqual(host_family('https://changingliveswithenergy.starnik.net/starnikERP/#/rp_guestpay/rp_guestpay'), 'Starnik')
+        self.assertIsNone(host_family('https://starnik.net.attacker.example/'))
+        self.assertIsNone(host_family('https://fake-starnik.net/'))
+        self.assertIsNone(host_family('https://user:secret@inframark.starnik.net/'))
+        record=classify({'login_url':'https://inframark.starnik.net/RP_default.aspx','payment_processor':'Starnik'}, {})
+        self.assertEqual(record['url_family_candidates'], ['Starnik'])
+        self.assertEqual({s['type'] for s in record['family_candidates'][0]['signals']}, {'provided_route_host','catalog_processor_claim'})
+        self.assertEqual(record['family_candidates'][0]['flow_equivalence'], 'unverified')
+        self.assertEqual(record['route_evidence'][0]['capture_status'], 'pending')
+
     def test_host_boundaries_and_private_or_credential_urls(self):
         self.assertEqual(host_family('https://tenant.smarthub.coop/ui/#/accountAccess'), 'SmartHub')
         self.assertIsNone(host_family('https://smarthub.coop.attacker.example/login'))
@@ -76,7 +106,12 @@ class IndexTests(unittest.TestCase):
                 {'name': 'Implemented Utility', 'service_area': ['NY'], 'bill_type': 'water', 'verified': True, 'login_url': 'https://tenant.smarthub.coop/ui/#/login'},
                 {'name': 'Same Processor Different Utility', 'service_area': ['NY'], 'bill_type': 'water', 'verified': True, 'login_url': 'https://other.smarthub.coop/ui/#/login'}]}))
             (root/'billworld/sites/prototype.json').write_text(json.dumps({'id': 'prototype-site', 'implementation_status': 'first_slice', 'catalog_records': [{'category': 'water', 'name': 'Implemented Utility'}]}))
-            with contextlib.redirect_stdout(io.StringIO()): result = build(root)
+            events=[]
+            with contextlib.redirect_stdout(io.StringIO()): result = build(root,progress=events.append)
+            self.assertEqual([e['phase'] for e in events],['capture_metadata_started','frontend_signals_started','discovered_routes_started','catalog_records_started','category_completed','snapshot_verification_started','published'])
+            self.assertEqual(events[-1]['records_written'],2)
+            self.assertEqual(events[-1]['catalog_index_sha256'],result['catalog_index_sha256'])
+            self.assertEqual([e['elapsed_seconds'] for e in events],sorted(e['elapsed_seconds'] for e in events))
             self.assertEqual(result['catalog_records'], 2); self.assertEqual(result['runnable_first_slices'], 1); self.assertEqual(result['fidelity_certified_records'], 0)
             self.assertEqual(result['catalog_index_sha256'],hashlib.sha256((root/'billworld/research-data/catalog-index.jsonl').read_bytes()).hexdigest())
             records = [json.loads(line) for line in (root/'billworld/research-data/catalog-index.jsonl').read_text().splitlines()]
@@ -93,7 +128,9 @@ class IndexTests(unittest.TestCase):
             (root/'categories/water.json').write_text(json.dumps({'entries':[{'name':'Example','website':'https://example.com/'}]}))
             (root/'billworld/sites/missing.json').write_text(json.dumps({'id':'missing','implementation_status':'first_slice','catalog_records':[{'category':'water','name':'Absent'}]}))
             index=root/'billworld/research-data/catalog-index.jsonl';summary=root/'billworld/research/family-coverage.json';index.write_text('old-index');summary.write_text('old-summary')
-            with self.assertRaisesRegex(ValueError,'not found'):build(root)
+            events=[]
+            with self.assertRaisesRegex(ValueError,'not found'):build(root,progress=events.append)
+            self.assertNotIn('published',[event['phase'] for event in events])
             self.assertEqual(index.read_text(),'old-index');self.assertEqual(summary.read_text(),'old-summary')
 
     def test_captured_anchor_is_a_candidate_signal_and_stale_hash_is_not_evidence(self):

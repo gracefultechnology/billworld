@@ -1,0 +1,407 @@
+{
+  "id": "spectrum-internet-charter-communications-ae9ae5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Spectrum Internet (Charter Communications)",
+  "category": "internet",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public spectrum.net support articles and the public sign-in page only (no sign-in attempted). The sign-in page (id.spectrum.net) was observed: one page with Username and Password, a Sign in button, Create username, Forgot username? and Forgot password?, so loginSteps is 1 and the identifier is a username. Only the Primary (or Admin) user pays and manages Auto Pay. One-time payment: Billing > Make a Payment, adjust Payment Amount, Payment Date and Payment Method, then Make Payment. Auto Pay: Billing > Enroll in Auto Pay with a credit/debit card or checking/savings (non-reloadable prepaid cards not allowed); withdrawal date can be customized under Manage Auto Pay > Auto Pay Date (allowed days not published, family default kept); cancel under Billing > Manage Auto Pay > Cancel Auto Pay. Since May 14, 2025 a $5 fee applies to failed Auto Pay payments after a three-day grace window, and a $5.00 processing fee applies to phone payments taken by an agent (automated line, bank bill pay and Spectrum Stores are free). Paperless Billing is a toggle under More > Settings > Notifications. No pay-without-signing-in option is documented on the payment page, so guest_pay is unsupported (inferred); no online payment extension is documented, so payment_arrangement keeps the family default. Cancelling: the support page only says to sign in to view cancellation options, with no self-service flow described, so cancel_service is marked unsupported (inferred) pointing to the TV/Internet/Home Phone line 833-267-6094. Subscription services are not pro-rated on cancellation (charged through the end of the billing period, or cancellation can be postponed to period end). Late fee amounts vary by area and are left out; plan prices vary by ZIP and are not modelled.",
+  "officialDomains": [
+    "spectrum.net"
+  ],
+  "sources": [
+    {
+      "url": "https://www.spectrum.net/support/account-and-billing/pay-my-bill",
+      "title": "How to pay your bill - quick and easy | Spectrum Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.spectrum.net/support/account-and-billing/set-auto-pay-automatic-payment",
+      "title": "How to Set Up Auto Pay | Spectrum Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.spectrum.net/support/account-and-billing/billing-payment-faq",
+      "title": "Billing and payment FAQ | Spectrum Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.spectrum.net/support/account-and-billing/payment-failure-fees-changes-billing-rates-charges-and-promotions",
+      "title": "Payment Failure Fees, Changes to Billing Rates, Charges and Promotions | Spectrum Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.spectrum.net/support/account-and-billing/change-or-cancel-service",
+      "title": "Change or Cancel Your Spectrum Service | Spectrum Support",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.spectrum.net/",
+      "title": "Spectrum Account Sign-In & Bill Pay | Spectrum",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Spectrum",
+    "shortName": "Spectrum",
+    "primary": "#0057b8",
+    "accent": "#003057",
+    "monogram": "S"
+  },
+  "labels": {
+    "dashboard": "Home",
+    "viewBill": "Billing",
+    "payBill": "Make a Payment",
+    "statements": "Statements",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "profile": "Settings",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "register": "Create a Username",
+    "forgot": "Forgot password?",
+    "username": "Username",
+    "help": "Support",
+    "plan": "Upgrade"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create a Username",
+        "page": "register"
+      },
+      {
+        "label": "Account & billing",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Upgrade",
+        "page": "plan"
+      },
+      {
+        "label": "Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.spectrum.net/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/account-and-billing/pay-my-bill"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.spectrum.net/support/account-and-billing/pay-my-bill",
+      "note": "Online payments need a Spectrum username. Without signing in, pay through the free automated line at 833-267-6094, your bank's bill pay, a Spectrum Store or by mail.",
+      "channel": "phone",
+      "phone": "8332676094"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/account-and-billing/pay-my-bill"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/account-and-billing/set-auto-pay-automatic-payment"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/account-and-billing/set-auto-pay-automatic-payment"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/account-and-billing/billing-payment-faq"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.spectrum.net/support/account-and-billing/change-or-cancel-service",
+      "note": "Spectrum doesn't describe a self-service way to cancel Internet online. Sign in to see your cancellation options, call 833-267-6094, or visit a Spectrum Store.",
+      "channel": "phone",
+      "phone": "8332676094"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/account-and-billing/pay-my-bill",
+      "phone": "8332676094"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.spectrum.net/support/account-and-billing/pay-my-bill"
+    }
+  },
+  "billing": {
+    "source": "https://www.spectrum.net/support/account-and-billing/pay-my-bill",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "How to pay your bill",
+      "paragraphs": [
+        "Online or in the My Spectrum App, sign in as the Primary or Admin user, select Billing, then Make a Payment. Adjust the Payment Amount, Payment Date and Payment Method, check your details and select Make Payment. A notice in Billing shows the amount and status of each payment you make or schedule.",
+        "By phone, the automated service at 833-267-6094 takes checking, savings, debit and major credit cards. If a customer service agent takes the payment instead, a $5.00 processing fee is added to your account.",
+        "Paying through your bank's bill pay or at a Spectrum Store has no processing fee. The mailing address is printed on your statement, which you see after signing in."
+      ],
+      "steps": [
+        "Sign in as the Primary or Admin user.",
+        "Select Billing.",
+        "Select Make a Payment.",
+        "Set the amount, date and method.",
+        "Select Make Payment."
+      ],
+      "source": "https://www.spectrum.net/support/account-and-billing/pay-my-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Pay any existing balance first with a one-time payment so you don't get a late fee. Then sign in as the Primary user, open the Billing tab and select Enroll in Auto Pay. You can use a credit card (Visa, MasterCard, Discover or American Express), a debit card, or a checking or savings account; non-reloadable prepaid cards can't be used.",
+        "Auto Pay follows your billing cycle, so if you enroll after your billing date the first draft happens next cycle. You can pick a different withdrawal date under Manage Auto Pay, Auto Pay Date.",
+        "To cancel, open Billing, choose Manage Auto Pay, then Cancel Auto Pay and confirm."
+      ],
+      "steps": [
+        "Sign in as the Primary user.",
+        "Open the Billing tab.",
+        "Select Enroll in Auto Pay.",
+        "Enter your payment method and follow the prompts."
+      ],
+      "source": "https://www.spectrum.net/support/account-and-billing/set-auto-pay-automatic-payment"
+    },
+    {
+      "slug": "failed-autopay-fee",
+      "title": "Failed Auto Pay fee",
+      "topic": "fees",
+      "paragraphs": [
+        "Since May 14, 2025, Spectrum charges a $5 fee when an Auto Pay payment fails. You are notified right away and have three days to put a valid electronic payment method on the account before the fee is added."
+      ],
+      "source": "https://www.spectrum.net/support/account-and-billing/payment-failure-fees-changes-billing-rates-charges-and-promotions"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign in, choose More from the menu on the left, then Settings, and open the Notifications tab. Turn on the Paperless Billing toggle; the status changes to Enrolled."
+      ],
+      "steps": [
+        "Sign in.",
+        "Select More, then Settings.",
+        "Open Notifications.",
+        "Turn on Paperless Billing."
+      ],
+      "source": "https://www.spectrum.net/support/account-and-billing/billing-payment-faq"
+    },
+    {
+      "slug": "billing-disputes",
+      "title": "Payment problems and disputed charges",
+      "topic": "billing",
+      "paragraphs": [
+        "If a payment fails, try again with a different method online or at a Spectrum Store.",
+        "To dispute a charge, contact Spectrum within 60 days of your billing date.",
+        "In most areas, subscription services are no longer billed or credited for partial months: if you cancel before your billing period ends you pay for the rest of that period, or you can choose to have the cancellation take effect at the end of the period."
+      ],
+      "source": "https://www.spectrum.net/support/account-and-billing/billing-payment-faq"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Change or cancel service",
+      "topic": "account",
+      "paragraphs": [
+        "To upgrade, sign in as the primary user, choose Upgrade, pick a service and plan, review it and select Purchase.",
+        "Spectrum's support pages ask you to sign in to see your cancellation options and do not describe a self-service cancel step. You can call 833-267-6094 or visit a Spectrum Store, where equipment can also be returned. Part-time residents can ask about a seasonal hold instead."
+      ],
+      "source": "https://www.spectrum.net/support/account-and-billing/change-or-cancel-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "failed-autopay-fee",
+        "intent": "Using Spectrum's help pages, find the fee Spectrum charges when an Auto Pay payment fails and how many days you have to fix the payment method first. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $5 fee applies to failed Auto Pay payments, after a three-day window to update the payment method."
+          }
+        ]
+      },
+      {
+        "slug": "dispute-window",
+        "intent": "A Spectrum customer sees a charge they disagree with. Look up in Spectrum's help how long after the billing date they have to dispute it. Do not change anything on the account.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "60 days",
+              "60"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "60 days",
+            "60"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Disputes must be raised within 60 days of the billing date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Create a Username",
+        "Account & billing"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing",
+        "Upgrade"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "failed-autopay-fee",
+      "contains": "$5"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "833-267-6094"
+    }
+  ]
+}

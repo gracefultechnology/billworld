@@ -1,0 +1,422 @@
+{
+  "id": "southern-california-edison-sce-c8af8e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Southern California Edison (SCE)",
+  "category": "electric",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public sce.com Help Center pages only (no sign-in). My Account signs in with a User ID and password; multi-factor authentication is now required and the code can go by text, voice call or email (modelled as email_or_sms). The login form itself did not render for the fetcher, so the field label 'User ID' comes from the MFA FAQ wording. One-time card and digital-wallet payments (PayPal, Venmo, Google Pay, Apple Pay) are handled by JP Morgan Chase for a $1.65 residential fee (2.15% commercial, not modelled); checking-account payments in My Account are free. Pay as Guest uses checking-account details; card payments without an account go through the Chase link with the account number and 5-digit mailing ZIP. Auto Pay is bank-only, set from Settings > Billing & Payment, and withdraws 11 days before the due date (leadDays 11). Payment extension and installment arrangement are both offered from 'Request Payment Arrangement'; the engine models one arrangement flow. A 0.6% monthly late charge appears in an SCE collections FAQ PDF that could not be read in full, so no late fee is modelled. Stop service is done in the Move Center (dates up to 30 days ahead per search excerpt of the Move Center FAQ; not modelled).",
+  "officialDomains": [
+    "sce.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/how-do-i-pay-my-bill",
+      "title": "How do I pay my bill?",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/card-digital-wallet-payment",
+      "title": "Pay by Card or Digital Wallet | Help Center | SCE",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.sce.com/customer-service-center/help-center/billing-payments/auto-pay/pay-bill-through-auto-pay",
+      "title": "Paying Through Auto Pay | Help Center | SCE",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.sce.com/customer-service-center/help-center/billing-payments/auto-pay/can-i-cancel-autopay",
+      "title": "What Is Auto Pay and How Does It Work? | SCE",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.sce.com/customer-service-center/help-center/billing-payments/paperless-billing",
+      "title": "Paperless Billing | Help Center | SCE",
+      "fetchedAt": "2026-10-09",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/request-payment-arrangement",
+      "title": "Request a Bill Payment Arrangement | Help Center | SCE",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/how-do-payment-arrangements-work",
+      "title": "How Do Payment Arrangements Work?",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.sce.com/customer-service-center/help-center/my-account/managing-your-account/mfa-customer-faqs",
+      "title": "Multi-Factor Authentication (MFA) FAQs | Help Center | SCE",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.sce.com/customer-service-center/move-center",
+      "title": "Start or Stop Service",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "SCE",
+    "primary": "#00664f",
+    "accent": "#004b3a",
+    "monogram": "SC"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Register",
+    "guestPay": "Pay as Guest",
+    "dashboard": "My Account",
+    "arrangement": "Request Payment Arrangement",
+    "cancel": "Stop Service",
+    "help": "Help Center",
+    "username": "User ID"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Pay as Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Start, Stop or Move Service",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Request Payment Arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.sce.com/customer-service-center/help-center/my-account/managing-your-account/mfa-customer-faqs",
+    "socialProviders": []
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/card-digital-wallet-payment",
+      "note": "Pay as Guest takes a checking account; card payments without an account need the account number and 5-digit mailing ZIP."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/auto-pay/pay-bill-through-auto-pay",
+      "note": "Auto Pay uses a checking account only; cards and digital wallets cannot be used."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/auto-pay/can-i-cancel-autopay"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/paperless-billing"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/request-payment-arrangement"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sce.com/customer-service-center/move-center",
+      "note": "Stopping service is a Move Center request; moving within SCE territory can be a transfer that keeps programs and alerts."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/how-do-i-pay-my-bill"
+    }
+  },
+  "billing": {
+    "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/how-do-i-pay-my-bill",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 165,
+      "evidence": "documented_official",
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/card-digital-wallet-payment"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "leadDays": 11,
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "SCE Auto Pay withdraws your bill from a bank checking account 11 days before the due date. Credit cards and digital wallets cannot be used for Auto Pay.",
+        "You turn it on in My Account under Settings, on the Billing & Payment tab."
+      ],
+      "steps": [
+        "Log in to My Account and choose Settings.",
+        "On the Billing & Payment tab, switch the Auto Pay toggle on and choose Yes, Continue.",
+        "Pick or add the bank account to use, then choose Next.",
+        "Review, accept the terms and conditions, and Submit."
+      ],
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/auto-pay/pay-bill-through-auto-pay"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Cancel Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "You can cancel Auto Pay at any time from the billing and payment settings in My Account. It stops right away, so you must pay later bills yourself by their due dates.",
+        "If you also have a payment arrangement, its scheduled installments are still withdrawn on their own due dates."
+      ],
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/auto-pay/can-i-cancel-autopay"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay your bill",
+      "paragraphs": [
+        "In My Account, choose Make a Payment, pick the amount and date, and pay from a checking account at no charge. To use a card, choose Pay by Card at the bottom of the payment page; you are sent to JP Morgan Chase.",
+        "Card and digital-wallet payments (debit, credit, PayPal, Venmo, Google Pay, Apple Pay) carry a $1.65 convenience fee per residential payment, charged by JP Morgan Chase. The fee cannot be waived.",
+        "Without a User ID you can use Pay as Guest with a checking account, or the card payment link with your SCE account number and 5-digit mailing ZIP code. Cash payments are taken at SCE Authorized Payment Agencies, and mailed checks should be sent with the bill stub, allowing 2 to 5 business days."
+      ],
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/card-digital-wallet-payment"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment extensions and arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "If your balance is overdue you can ask for a payment extension (pay the full amount later) or a payment arrangement (pay it off in smaller monthly installments). No down payment is needed the first time you enroll.",
+        "Installments show up on your monthly statement alongside new charges and may have their own due date. Missing an installment or a current bill can default the arrangement; residential customers then need to pay 20% of the past-due balance to reinstate it. Late payment charges still apply while you are on an extension or arrangement.",
+        "You cannot request one if the account is scheduled for disconnection that day, is already disconnected for nonpayment, is on the Arrearage Management Plan or Budget Billing Plan, or has returned checks with fees."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "In the account balance section, choose Request Payment Arrangement.",
+        "Choose an extension or an installment arrangement and confirm."
+      ],
+      "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/paying-your-bill/how-do-payment-arrangements-work"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, stop or move service",
+      "topic": "account",
+      "paragraphs": [
+        "SCE handles stop-service requests in its Move Center: choose Residential, then Stop Service, and fill in the prompts. If you are moving to another SCE address, a transfer request keeps your existing programs and alerts, while stopping and starting separately ends them.",
+        "After submitting you get an email confirmation number for each address, which you can use to look up or cancel the request."
+      ],
+      "source": "https://www.sce.com/customer-service-center/move-center"
+    },
+    {
+      "slug": "sign-in-help",
+      "title": "Logging in and multi-factor authentication",
+      "topic": "account",
+      "paragraphs": [
+        "My Account uses your User ID and password, followed by a verification code. You choose whether the code arrives by text message, voice call or email, and you can change that choice in Profile Settings.",
+        "A new code is sent every time you log in. If you get a code you did not ask for, do not share it and change your password; SCE never calls asking for a security code. If you have lost access to every verification method, call SCE customer support at 1-800-284-2365."
+      ],
+      "source": "https://www.sce.com/customer-service-center/help-center/my-account/managing-your-account/mfa-customer-faqs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-draft-timing",
+        "intent": "Using SCE's help pages, find out how many days before the due date SCE Auto Pay withdraws the payment. Do not enroll or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "11"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "11"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Auto Pay withdraws the payment 11 days before the due date."
+          }
+        ]
+      },
+      {
+        "slug": "card-fee-lookup",
+        "intent": "Find out how much a residential SCE customer is charged to pay the bill with a debit or credit card. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.65",
+              "1.65"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.65",
+            "1.65"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "$1.65 per payment, charged by JP Morgan Chase."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Start, Stop or Move Service",
+        "Log In"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "User ID"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay",
+        "Request Payment Arrangement"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$1.65",
+        "JP Morgan Chase"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "11 days"
+    }
+  ]
+}

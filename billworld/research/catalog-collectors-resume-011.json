@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-10-06T12:43:56.345066+00:00",
+  "kind": "catalog_collectors_resume_011",
+  "prior_process_check": "PIDs 89626, 89638, 89639 and 89671 absent; no matching replacement collectors before resume.",
+  "jobs": [
+    {
+      "role": "frontend_capture",
+      "pid": 2944,
+      "exec_session": 46179,
+      "min_free_gib": 3,
+      "log": "billworld/artifacts/frontend-capture-atomic-resume-011.log",
+      "observed_progress": "batch 2 completed"
+    },
+    {
+      "role": "dependency_analysis",
+      "pid": 2969,
+      "exec_session": 18979,
+      "min_free_gib": 2,
+      "log": "billworld/artifacts/catalog-dependency-atomic-resume-011.log",
+      "observed_progress": "first batch analyzed 199 sources"
+    },
+    {
+      "role": "child_dependency_capture",
+      "pid": 2996,
+      "exec_session": 62856,
+      "min_free_gib": 4,
+      "log": "billworld/artifacts/catalog-child-atomic-resume-011.log",
+      "observed_progress": "biller sweep advancing"
+    },
+    {
+      "role": "resource_capture",
+      "pid": 3016,
+      "exec_session": 9541,
+      "min_free_gib": 6,
+      "log": "billworld/artifacts/resource-catalog-atomic-resume-011.log",
+      "observed_progress": "new resource bodies captured"
+    }
+  ],
+  "status": "all_four_processes_verified_live_after_resume",
+  "limits": [
+    "Check exact processes and checkpoints before any future restart.",
+    "A resumed collector is not source completeness, implementation coverage or benchmark success."
+  ]
+}

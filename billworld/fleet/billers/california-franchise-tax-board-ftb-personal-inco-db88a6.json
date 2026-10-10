@@ -1,0 +1,429 @@
+{
+  "id": "california-franchise-tax-board-ftb-personal-inco-db88a6",
+  "version": 1,
+  "status": "dedicated",
+  "name": "California Franchise Tax Board (FTB) - personal income tax",
+  "category": "government",
+  "reviewedAt": "2026-10-09",
+  "notes": "Researched from public ftb.ca.gov pages only. Web Pay (bank account, free) works without a MyFTB account by logging in with SSN and last name (mapped to the guest lookup, bank only); MyFTB adds viewing, cancelling and scheduling future payments. Credit cards go through ACI Payments (2.3% service fee, also by phone 800-272-9829). Payment plans: $34 setup fee added to the balance, balance up to $25,000 payable within 60 months, all returns for the past 5 years filed; may take up to 90 days. MyFTB sign-in uses a username (inferred from the 'MyFTB login' wording; MFA details not documented on the public pages, left at family default); registration needs recent California return data and is activated by TransUnion identity questions or a mailed PIN letter. No recurring AutoPay for balances is documented; AutoPay marked unsupported (inferred). MyFTB can email you when a notice is sent, but no paper opt-out is documented, so paperless is left at the family default.",
+  "officialDomains": [
+    "ftb.ca.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ftb.ca.gov/pay/index.html",
+      "title": "Pay | FTB.ca.gov",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ftb.ca.gov/pay/payment-options.html",
+      "title": "Payment options | FTB.ca.gov",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ftb.ca.gov/pay/bank-account/index.asp",
+      "title": "Pay by bank account (Web Pay) | Personal or Businesses | FTB.ca.gov",
+      "fetchedAt": "2026-10-09",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ftb.ca.gov/pay/bank-account/help-with-bank-account-payments.html",
+      "title": "Help with bank account payments (Web Pay) | FTB.ca.gov",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.ftb.ca.gov/pay/payment-plans/index.asp",
+      "title": "Payment Plans | FTB.ca.gov",
+      "fetchedAt": "2026-10-09",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.ftb.ca.gov/pay/credit-card.html",
+      "title": "Pay by credit card | FTB.ca.gov",
+      "fetchedAt": "2026-10-09",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.ftb.ca.gov/myftb/index.asp",
+      "title": "MyFTB account | FTB.ca.gov",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.ftb.ca.gov/myftb/features.html",
+      "title": "MyFTB Features | FTB.ca.gov",
+      "fetchedAt": "2026-10-09",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.ftb.ca.gov/myftb/create-an-account.html",
+      "title": "Create a MyFTB account | FTB.ca.gov",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Franchise Tax Board (FTB)",
+    "shortName": "FTB",
+    "primary": "#00466e",
+    "accent": "#8a5300",
+    "monogram": "FT"
+  },
+  "labels": {
+    "payBill": "Make a payment",
+    "guestPay": "Web Pay",
+    "signIn": "MyFTB login",
+    "register": "Create an account",
+    "dashboard": "MyFTB",
+    "arrangement": "Payment plan",
+    "history": "Payment history",
+    "statements": "Notices and correspondence",
+    "viewBill": "Account balance",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Web Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Credit card",
+        "helpSlug": "pay-by-credit-card"
+      },
+      {
+        "label": "Payment plan",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Payment options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      },
+      {
+        "label": "MyFTB login",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyFTB",
+        "page": "dashboard"
+      },
+      {
+        "label": "Account balance",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Payment plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Notices and correspondence",
+        "page": "statements"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "registrationFields": [
+      "lastName",
+      "zip"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName"
+    ],
+    "evidence": "inferred",
+    "source": "https://www.ftb.ca.gov/myftb/create-an-account.html"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ftb.ca.gov/pay/bank-account/index.asp",
+      "note": "Web Pay: pay from a checking or savings account for free without a MyFTB account."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.ftb.ca.gov/pay/bank-account/index.asp",
+      "note": "FTB does not offer recurring automatic payments for a tax balance. Make each Web Pay payment yourself; with MyFTB you can schedule future payments.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ftb.ca.gov/pay/bank-account/index.asp"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ftb.ca.gov/pay/payment-plans/index.asp"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ftb.ca.gov/pay/payment-plans/index.asp"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ftb.ca.gov/pay/credit-card.html",
+      "note": "Credit card payments by phone through ACI Payments (2.3% service fee).",
+      "phone": "8002729829"
+    }
+  },
+  "billing": {
+    "source": "https://www.ftb.ca.gov/pay/payment-options.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.3,
+      "evidence": "documented_official",
+      "source": "https://www.ftb.ca.gov/pay/credit-card.html"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay directly from your bank account through Web Pay for free, pay by credit card for a service fee, or apply for a payment plan if you qualify (setup fee). You can also pay by check or money order, or by electronic funds withdrawal when you e-file.",
+        "Send a separate payment for each tax year so it is applied correctly. Your balance keeps accruing interest and penalties until it is paid in full. Be careful with third-party bill payment companies: some charge high fees or look affiliated with FTB when they are not."
+      ],
+      "source": "https://www.ftb.ca.gov/pay/payment-options.html"
+    },
+    {
+      "slug": "web-pay",
+      "title": "Web Pay (bank account)",
+      "topic": "payments",
+      "paragraphs": [
+        "Web Pay lets individuals pay a bill or balance due, a current-year or amended return, estimated tax or an extension from a checking or savings account at no cost. You can log in without registering using your Social Security number and the last name on your return.",
+        "Paying through a MyFTB account adds the ability to view payments, cancel payments and schedule future payments.",
+        "To change a Web Pay request you must cancel it and submit a new one. A request can be cancelled up to 2 business days before the scheduled payment date."
+      ],
+      "source": "https://www.ftb.ca.gov/pay/bank-account/help-with-bank-account-payments.html"
+    },
+    {
+      "slug": "pay-by-credit-card",
+      "title": "Pay by credit card",
+      "topic": "payments",
+      "paragraphs": [
+        "FTB uses ACI Payments to process credit card payments for a bill or balance due, a current-year return, an extension or estimated tax. A 2.3% service fee is added. Pay online with ACI Payments or call 800-272-9829.",
+        "Refunds that result from credit card payments may be delayed or need verification. Employers cannot use a credit card for wage garnishment payments."
+      ],
+      "source": "https://www.ftb.ca.gov/pay/credit-card.html"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans (installment agreement)",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you cannot pay your tax bill, you can apply for an installment agreement online, by phone at 800-689-4776, or by mail with the payment plan request form. Processing can take up to 90 days; keep paying while you wait to limit interest and penalties.",
+        "Individuals may qualify if the amount due is $25,000 or less, it can be paid in 60 months or less, and all income tax returns for the past 5 years are filed. If approved, a $34 setup fee is added to your balance and an acceptance letter is mailed.",
+        "You cannot apply online if you already have an installment agreement or have a wage garnishment, bank levy or other collection order; call instead. A financial statement or a tax lien may be required."
+      ],
+      "source": "https://www.ftb.ca.gov/pay/payment-plans/index.asp"
+    },
+    {
+      "slug": "myftb",
+      "title": "MyFTB account",
+      "topic": "account",
+      "paragraphs": [
+        "MyFTB shows your account balance and tax year details, estimated payments and credits, payment history, returns, and notices and correspondence. You can request and manage a payment plan, send secure messages, update contact details and choose to get an email when FTB sends you a notice.",
+        "To create an account you need information from a recent California tax return. Activate it right away by answering identity questions from TransUnion, or have a PIN letter mailed to you (5 to 7 business days)."
+      ],
+      "source": "https://www.ftb.ca.gov/myftb/features.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "payment-plan-setup-fee",
+        "intent": "Using the FTB website's help pages, find the setup fee for an individual payment plan (installment agreement). Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$34"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$34"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_plan",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An individual installment agreement costs $34, added to the balance."
+          }
+        ]
+      },
+      {
+        "slug": "web-pay-cancel-deadline",
+        "intent": "Using the FTB website's help pages, find how close to the scheduled date you can still cancel a Web Pay payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2 business days",
+              "two business days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2 business days",
+            "two business days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled_payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You can cancel a Web Pay request up to 2 business days before the scheduled payment date."
+          }
+        ]
+      },
+      {
+        "slug": "card-service-fee",
+        "intent": "Using the FTB website's help pages, find the service fee for paying by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.3%",
+              "2.3 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.3%",
+            "2.3 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments carry a 2.3% service fee charged by ACI Payments."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Credit card",
+        "MyFTB login"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Notices and correspondence",
+        "Payment plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "$34",
+        "$25,000"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "web-pay",
+      "contains": "2 business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-by-credit-card",
+      "contains": "800-272-9829"
+    }
+  ]
+}
