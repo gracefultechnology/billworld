@@ -234,3 +234,9 @@ the synthetic confirmation reviewable by a person and by a checked payment
 reader. It does not add private evaluator data, change grading, or claim these
 private screens match the live biller's UI. Existing benchmark runs retain their
 original source/build fingerprints; results from this version are distinct.
+
+The synthetic PersonaPay review displays the public statement charge numbers
+for each quoted allocation, matched by invoice ID from the authorized statement.
+A missing match stops review rendering. This lets people verify an edited split
+using the same charge numbers they saw on the statement. It changes no payment
+or grading rules and does not claim private live-site fidelity.
