@@ -1,0 +1,321 @@
+{
+  "id": "blink-subscription-plans-9282e3",
+  "version": 1,
+  "status": "dedicated",
+  "category": "home-services",
+  "reviewedAt": "2026-10-10",
+  "name": "Blink Subscription Plans",
+  "notes": "Researched from public Blink Support articles and the public Blink plans page only (never signed in). Blink plans renew automatically and are managed where they were bought: Blink.com (My Plan: view, change payment, upgrade, cancel), Amazon (Memberships & Subscriptions) or Apple; only Blink.com is modelled. Signing in on Blink.com uses the Blink email and password and then a verification code sent by text, WhatsApp or email (modelled as mfa email_or_sms; WhatsApp not modelled). No guest payment, AutoPay enrollment, paper bill or payment plan: not_applicable. Card only (inferred). Cancelling on Blink.com keeps benefits until the next renewal date with no refund for the unused part; Amazon cancellations follow Amazon's prorated rules (in help only). US prices on blinkforhome.com/plans: Basic $3.99/mo ($39.99/yr), Plus $11.99/mo ($119.99/yr), Basic ai $6.99/mo, Plus ai $19.99/mo; the engine models monthly prices. Cancelling a Plus plan may void the extended warranty (catalog research, not re-verified; left out). setup-payment-plan is suppressed. Reviewed 2026-10-10 (independent review): sign-in fields and the verification code are documented in Manage Your Blink Plan, so auth is documented_official with email_or_sms MFA; automatic renewal cited to the Subscriptions FAQ; ai plans also have yearly prices ($69.99 Basic ai, $199.99 Plus ai) not modelled.",
+  "officialDomains": [
+    "blinkforhome.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.blinkforhome.com/en_US/plan-management/manage-your-subscriptions",
+      "title": "Manage Your Blink Plan - Blink Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.blinkforhome.com/en_US/plan-management/how-to-cancel-subscription-plan",
+      "title": "How to Cancel a Subscription Plan - Blink Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://blinkforhome.com/plans",
+      "title": "Plans - Blink Smart Security",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://support.blinkforhome.com/en_US/subscriptions-faq/subscription-faq",
+      "title": "Subscriptions FAQ - Blink Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Blink",
+    "primary": "#0b61a4",
+    "accent": "#073f6b",
+    "monogram": "B"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "dashboard": "My Plan",
+    "plan": "Plan Details",
+    "wallet": "Change Payment",
+    "cancel": "Cancel My Plan",
+    "help": "Support",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Plans",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Plan",
+        "page": "dashboard"
+      },
+      {
+        "label": "Plan Details",
+        "page": "plan"
+      },
+      {
+        "label": "Change Payment",
+        "page": "wallet"
+      },
+      {
+        "label": "Billing",
+        "page": "history"
+      },
+      {
+        "label": "Cancel My Plan",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://support.blinkforhome.com/en_US/plan-management/manage-your-subscriptions",
+    "mfa": "email_or_sms"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.blinkforhome.com/en_US/plan-management/manage-your-subscriptions",
+      "note": "Blink plans are charged to the payment method on your account; there is no bill to pay without logging in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://support.blinkforhome.com/en_US/subscriptions-faq/subscription-faq",
+      "note": "Blink plans renew automatically on the renewal date shown in My Plan; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.blinkforhome.com/en_US/plan-management/how-to-cancel-subscription-plan",
+      "note": "To stop renewal, cancel your plan."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.blinkforhome.com/en_US/plan-management/manage-your-subscriptions",
+      "note": "Blink does not mail bills; billing details are in My Plan."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.blinkforhome.com/en_US/plan-management/manage-your-subscriptions"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.blinkforhome.com/en_US/plan-management/manage-your-subscriptions"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.blinkforhome.com/en_US/plan-management/manage-your-subscriptions"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.blinkforhome.com/en_US/plan-management/how-to-cancel-subscription-plan",
+      "note": "Your plan benefits continue until the next renewal date, and you can reactivate before then. There is no refund for the unused part of the plan. Plans bought through Amazon or Apple are cancelled there."
+    }
+  },
+  "billing": {
+    "source": "https://blinkforhome.com/plans",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://support.blinkforhome.com/en_US/plan-management/manage-your-subscriptions"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "blink-basic",
+        "name": "Basic Plan",
+        "cents": 399
+      },
+      {
+        "id": "blink-basic-ai",
+        "name": "Basic ai Plan",
+        "cents": 699
+      },
+      {
+        "id": "blink-plus",
+        "name": "Plus Plan",
+        "cents": 1199,
+        "current": true
+      },
+      {
+        "id": "blink-plus-ai",
+        "name": "Plus ai Plan",
+        "cents": 1999
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Blink subscription plans",
+      "topic": "plans",
+      "paragraphs": [
+        "Basic covers one device for $3.99 a month or $39.99 a year. Plus covers unlimited devices for $11.99 a month or $119.99 a year. Both include motion-activated notifications and cloud video storage for up to 60 days. Prices are plus applicable tax.",
+        "The ai plans add features such as video descriptions: Basic ai is $6.99 a month for one device and Plus ai is $19.99 a month for unlimited devices."
+      ],
+      "source": "https://blinkforhome.com/plans"
+    },
+    {
+      "slug": "update-payment-method",
+      "title": "Manage your Blink plan",
+      "topic": "payments",
+      "paragraphs": [
+        "Where you manage a plan depends on where you bought it. On Blink.com, log in, enter the verification code and open My Plan to view your plan, change payment, upgrade or cancel.",
+        "Plans bought on Amazon are managed in Memberships & Subscriptions on the Amazon website or app. In-app purchases on Apple devices are managed from the iOS Subscriptions screen."
+      ],
+      "source": "https://support.blinkforhome.com/en_US/plan-management/manage-your-subscriptions"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your Blink plan",
+      "topic": "account",
+      "paragraphs": [
+        "Cancel through the store where you bought the plan. On Blink.com, go to My Plan, choose Cancel My Plan under Plan Details, review the devices that will lose coverage and confirm. You get a confirmation page and an email.",
+        "Blink.com plans keep their benefits until the next renewal date and can be reactivated before then; there is no refund for the unused portion.",
+        "Plans bought on Amazon are cancelled in Your Memberships & Subscriptions, where you choose to cancel now or on the renewal date. Apple purchases are cancelled in the iPhone or iPad Settings under Subscriptions."
+      ],
+      "source": "https://support.blinkforhome.com/en_US/plan-management/how-to-cancel-subscription-plan"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "setup-payment-plan"
+    ],
+    "extra": [
+      {
+        "slug": "plus-annual-price",
+        "intent": "Using Blink's help pages, find the yearly price of the Plus plan. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$119.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$119.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Plus plan is $119.99 a year."
+          }
+        ]
+      },
+      {
+        "slug": "amazon-cancel-where",
+        "intent": "You bought your Blink plan on Amazon. Using Blink's help pages, find where on Amazon you cancel it. Do not cancel anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Memberships"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Memberships"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "In Your Memberships & Subscriptions on Amazon."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Plan Details",
+        "Cancel My Plan"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "next renewal date"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$119.99 a year"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Memberships & Subscriptions"
+    }
+  ]
+}

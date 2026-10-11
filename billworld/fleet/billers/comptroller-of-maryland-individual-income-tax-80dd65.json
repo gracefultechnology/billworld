@@ -1,0 +1,324 @@
+{
+  "id": "comptroller-of-maryland-individual-income-tax-80dd65",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Comptroller of Maryland (individual income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public marylandcomptroller.gov pages only. Maryland Tax Connect (MTC) replaced the legacy interactive services for individuals on Sept 1, 2026: file Form 502, pay, view balances, payment and filing history, notices; free; some transactions (online payments) work without registering; existing filers register with information from a prior return. Payment plans: register an MTC profile, link the individual income tax account, Tax Accounts > File and Pay > Request Payment Plan; one active plan at a time combining all eligible liabilities; choose down payment and installment; a Payment Plan ID is issued; Manage Payment Plans offers Make Down Payment, Manage Auto Pay, Make One-Time Payment (Request a Payment Plan Guide, Sept 2026 PDF; text re-read by the reviewer: sign-in with User ID and password, down payment by ACH direct debit, Taxpayer Services 410-260-7980 / 1-800-638-2937). Card: Truist/Govolution 2.45% with $1.00 minimum (Visa, MasterCard, Discover), fee not kept by the state; online or by phone (number not published on the pages read). The KB payment-methods page is a ServiceNow page that renders only with JavaScript; its content was read from the search index. Bank e-check payments carry no fee. No recurring AutoPay for tax balances outside a payment plan (inferred). Sign-in by User ID documented in the plan guide.",
+  "officialDomains": [
+    "marylandcomptroller.gov",
+    "services.marylandcomptroller.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.marylandcomptroller.gov/individuals/tax-services/mtc-individual-taxpayers.html",
+      "title": "Maryland Tax Connect (MTC) | Comptroller of Maryland",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.marylandcomptroller.gov/individualtaxhub.html",
+      "title": "MTC Individual Taxpayers | Comptroller of Maryland",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/filing-online/maryland-tax-connect/request-a-payment-plan-guide.pdf",
+      "title": "Maryland Tax Connect Request A Payment Plan Guide September 2026",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://services.marylandcomptroller.gov/taxes/en/payment-methods?id=kb_article_view&sysparm_article=KB0010092",
+      "title": "Tax Guidance - Payment Methods - Taxpayer Services",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "Comptroller of Maryland",
+    "shortName": "MD Comptroller",
+    "primary": "#7a1a1a",
+    "accent": "#6b4e00",
+    "monogram": "MD"
+  },
+  "labels": {
+    "dashboard": "Maryland Tax Connect",
+    "payBill": "Make a Payment",
+    "guestPay": "Pay without registering",
+    "arrangement": "Request Payment Plan",
+    "help": "Tax Guidance",
+    "register": "Register for an MTC Profile",
+    "signIn": "Log In",
+    "username": "User ID"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay without registering",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Methods",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Tax Debt Assistance",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Tax Guidance",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Maryland Tax Connect",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Notices",
+        "page": "statements"
+      },
+      {
+        "label": "Request Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "documented_official",
+    "source": "https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/filing-online/maryland-tax-connect/request-a-payment-plan-guide.pdf"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.marylandcomptroller.gov/individualtaxhub.html",
+      "note": "Online payments can be made in Maryland Tax Connect without registering an MTC profile."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/filing-online/maryland-tax-connect/request-a-payment-plan-guide.pdf",
+      "note": "Maryland Tax Connect has no standing automatic payment for income tax balances. If you have a payment plan, you can manage its auto pay under Manage Payment Plans.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/filing-online/maryland-tax-connect/request-a-payment-plan-guide.pdf",
+      "note": "Only one payment plan can be active at a time; all eligible liabilities are combined into it."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/filing-online/maryland-tax-connect/request-a-payment-plan-guide.pdf"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://services.marylandcomptroller.gov/taxes/en/payment-methods?id=kb_article_view&sysparm_article=KB0010092"
+    }
+  },
+  "billing": {
+    "source": "https://services.marylandcomptroller.gov/taxes/en/payment-methods?id=kb_article_view&sysparm_article=KB0010092",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.45,
+      "cardMinCents": 100,
+      "evidence": "documented_official",
+      "source": "https://services.marylandcomptroller.gov/taxes/en/payment-methods?id=kb_article_view&sysparm_article=KB0010092"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay Maryland income tax",
+      "topic": "payments",
+      "source": "https://services.marylandcomptroller.gov/taxes/en/payment-methods?id=kb_article_view&sysparm_article=KB0010092",
+      "paragraphs": [
+        "Pay individual income tax in Maryland Tax Connect by e-check from a U.S. bank account at no charge, or by Visa, MasterCard or Discover. You do not need an MTC profile to make an online payment.",
+        "Card payments are handled by Truist/Govolution, which charges a non-refundable service fee of 2.45% with a $1.00 minimum. The fee goes to the processor, not to the State of Maryland, and should not be added to the tax amount you enter.",
+        "Payments you make can take 7 to 10 business days to appear in your account. If one still does not show after that, submit a request through MyCOMConnect."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Request a payment plan in Maryland Tax Connect",
+      "topic": "assistance",
+      "source": "https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/filing-online/maryland-tax-connect/request-a-payment-plan-guide.pdf",
+      "paragraphs": [
+        "To request a payment plan you need a Maryland Tax Connect profile with your individual income tax account linked to it.",
+        "You can have only one active payment plan. All eligible past and current liabilities are combined into that one plan, and every approved plan receives a Payment Plan ID number that you should keep.",
+        "After approval, Manage Payment Plans under File and Pay lets you make the down payment, manage auto pay for the plan, or make a one-time payment. For help, call Taxpayer Services at 410-260-7980 or 1-800-638-2937, Monday to Friday, 8:30 a.m. to 4:30 p.m."
+      ],
+      "steps": [
+        "Log in to Maryland Tax Connect with your User ID and password; you land on Tax Accounts.",
+        "Choose File and Pay, then Request Payment Plan, and accept the terms.",
+        "Select the individual income tax debts, pick a down payment and an installment amount or number of months, then review the plan including penalty and interest.",
+        "Enter bank details for the ACH down payment, authorize it, and note the Payment Plan ID number."
+      ]
+    },
+    {
+      "slug": "maryland-tax-connect",
+      "title": "About Maryland Tax Connect",
+      "topic": "account",
+      "source": "https://www.marylandcomptroller.gov/individuals/tax-services/mtc-individual-taxpayers.html",
+      "paragraphs": [
+        "Maryland Tax Connect is the free portal where individuals file Form 502, make payments, check refund status, and view balances, payment and filing history, and notices. It went live on September 1, 2026.",
+        "Registering gives full access. Existing filers can register using information from a return they filed before."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee",
+        "intent": "Using the MD Comptroller website's help pages, find the service fee for paying income tax by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.45%",
+              "2.45 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.45%",
+            "2.45 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments carry a 2.45% service fee with a $1.00 minimum, charged by the processor."
+          }
+        ]
+      },
+      {
+        "slug": "payment-plan-id",
+        "intent": "Using the MD Comptroller website's help pages, find what identifier you receive when a payment plan is approved in Maryland Tax Connect. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Payment Plan ID"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Payment Plan ID"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_arrangement"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Every approved plan gets a Payment Plan ID number."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Methods",
+        "Tax Debt Assistance"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Maryland Tax Connect",
+        "Request Payment Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "2.45%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": "Payment Plan ID"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": "410-260-7980"
+    }
+  ],
+  "contact": {
+    "phone": "4102607980",
+    "source": "https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/filing-online/maryland-tax-connect/request-a-payment-plan-guide.pdf"
+  }
+}

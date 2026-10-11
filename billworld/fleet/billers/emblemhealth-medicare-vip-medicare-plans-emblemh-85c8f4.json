@@ -1,0 +1,316 @@
+{
+  "id": "emblemhealth-medicare-vip-medicare-plans-emblemh-85c8f4",
+  "version": 1,
+  "status": "dedicated",
+  "name": "EmblemHealth - Medicare (VIP Medicare plans, EmblemHealth PDP)",
+  "category": "medicare",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from EmblemHealth's public Pay My Bill and Payments and Accounts help pages only (no sign-in, no guest payment). Both pages cover all members: sign in or register for the myEmblemHealth portal or app to pay or set up autopay ('Pay Now'); 'Pay as Guest' one-time payment needs the 11-digit member ID, ZIP code, date of birth, email and first and last name, and guests cannot see history or manage payments; first automatic payment can take up to six business days; one-time payments process in two to three business days; phone 888-447-7703 (TTY 711), choose 'Pay My Bill', questions Mon-Fri 8-6; in-person billing help at EmblemHealth Neighborhood Care; mail a check with a copy of the invoice or online confirmation: Medicare Supplement EmblemHealth, P.O. Box 21613, New York, NY 10087-1613; Individual and Family P.O. Box 21104; all other plans (including Medicare Advantage and PDP) the return address on the bill. First premium must arrive no later than 10 days after the first bill's due date. No fees published. Online methods (bank or card) are not spelled out on the fetched pages (inferred from the autopay description in search snippets of the same site). Guest email and first name cannot be expressed (lookup = member ID, last name, ZIP, date of birth). Sign-in identifier (username) is inferred. Review (tier-20): removed the NY State of Health wording from the first-payment help (it concerns individual plans, not Medicare).",
+  "officialDomains": [
+    "emblemhealth.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.emblemhealth.com/paymybill",
+      "title": "Pay My Bill | EmblemHealth",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.emblemhealth.com/resources/help/payments-and-accounts",
+      "title": "Payments and Accounts | EmblemHealth",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "EmblemHealth Medicare",
+    "shortName": "EmblemHealth",
+    "primary": "#1d4f91",
+    "accent": "#00627a",
+    "monogram": "EH"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "payBill": "Pay Now",
+    "guestPay": "Pay as Guest",
+    "autopay": "Autopay",
+    "dashboard": "myEmblemHealth"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Pay as Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Pay My Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "myEmblemHealth",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Billing history",
+        "page": "history"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName",
+      "zip",
+      "dob"
+    ],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.emblemhealth.com/paymybill"
+  },
+  "contact": {
+    "phone": "888-447-7703",
+    "payPhone": "888-447-7703",
+    "source": "https://www.emblemhealth.com/paymybill",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.emblemhealth.com/paymybill",
+      "note": "One-time payments are usually processed within two to three business days."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.emblemhealth.com/paymybill",
+      "note": "Pay as Guest with the 11-digit member ID, ZIP code, date of birth, email and name. Guests cannot see payment history or manage payments."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.emblemhealth.com/paymybill",
+      "note": "Your first automatic payment can take up to six business days to complete."
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.emblemhealth.com/resources/help/payments-and-accounts",
+      "note": "Sign in to see your billing history and confirm a payment posted."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.emblemhealth.com/paymybill",
+      "phone": "8884477703",
+      "note": "Call 888-447-7703 (TTY 711) and choose Pay My Bill. Have your payment information and member ID ready."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.emblemhealth.com/paymybill",
+      "note": "Mail a check with a copy of your invoice. Medicare Supplement plans use P.O. Box 21613; other Medicare plans use the return address on the bill."
+    }
+  },
+  "billing": {
+    "source": "https://www.emblemhealth.com/paymybill",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay my bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in or register for the myEmblemHealth member portal or app to pay your premium or set up autopay. One-time payments are usually processed in two to three business days; check your latest invoice or billing history to confirm a payment posted.",
+        "Pay as Guest: make a one-time payment without signing in. You need the 11-digit member ID from the ID card or invoice, the ZIP code, date of birth, an email address and the first and last name. Guests cannot view payment history or manage payments.",
+        "By phone: call 888-447-7703 (TTY 711) and choose Pay My Bill. Questions about a payment: 8 a.m. to 6 p.m., Monday through Friday."
+      ],
+      "source": "https://www.emblemhealth.com/paymybill"
+    },
+    {
+      "slug": "pay-by-mail",
+      "title": "Paying by mail",
+      "topic": "payments",
+      "paragraphs": [
+        "Send a check with a copy of your invoice or online confirmation. Medicare Supplement plans: EmblemHealth, P.O. Box 21613, New York, NY 10087-1613. Individual and Family Plans: EmblemHealth, P.O. Box 21104, New York, NY 10087-1104. All other plans: the return address on your bill."
+      ],
+      "source": "https://www.emblemhealth.com/paymybill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Set up autopay in the myEmblemHealth portal or app so your monthly premium is paid automatically. The first automatic payment can take up to six business days to complete."
+      ],
+      "source": "https://www.emblemhealth.com/paymybill"
+    },
+    {
+      "slug": "first-payment",
+      "title": "Your first premium",
+      "topic": "payments",
+      "paragraphs": [
+        "Coverage cannot start until the first month's premium is paid. Make sure we receive it no later than 10 days after the due date on your first bill.",
+        "For billing help in person, visit an EmblemHealth Neighborhood Care location."
+      ],
+      "source": "https://www.emblemhealth.com/resources/help/payments-and-accounts"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "medigap-mail-po-box",
+        "intent": "You have an EmblemHealth Medicare Supplement plan and want to mail a check. Using EmblemHealth's payment help, find the P.O. box to send it to. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "21613"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "21613"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "EmblemHealth, P.O. Box 21613, New York, NY 10087-1613."
+          }
+        ]
+      },
+      {
+        "slug": "first-autopay-time",
+        "intent": "Using EmblemHealth's payment help, find how long your first automatic payment can take to complete. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "six",
+              "6 business"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "six",
+            "6 business"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to six business days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Now",
+        "Autopay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-by-mail",
+      "contains": "P.O. Box 21613"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "888-447-7703"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "first-payment",
+      "contains": "10 days"
+    }
+  ]
+}

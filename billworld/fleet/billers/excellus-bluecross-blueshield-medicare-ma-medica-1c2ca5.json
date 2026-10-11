@@ -1,0 +1,143 @@
+{
+  "id": "excellus-bluecross-blueshield-medicare-ma-medica-1c2ca5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Excellus BlueCross BlueShield - Medicare",
+  "category": "medicare",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public medicare.excellusbcbs.com pages only (no sign-in, no Express Pay). Bill Pay Options: 'Log in to Pay' online or in the app (credit card, debit card and/or bank account; American Express not accepted); 'Express Pay' pays any amount without logging in (have member info, card and a copy of the bill); automatic payments set up online or, for Medicare members, with the Automatic Premium Withdrawal Form (PDF-enrolled members cannot change them online); withdrawals on the 4th (next business day on weekends/holidays); Social Security deduction by phone (up to three months); 'Pay By Phone' (number on the member card); mail with the return portion to Excellus Health Plan, P.O. Box 5267, Binghamton, NY 13902-5267; 'Go Paperless' after logging in. No fee online or by phone; partial payments accepted but the full balance is due by the due date; online/phone payments post in 24-48 hours; invoices are mailed about a month ahead. Contact page: Customer Care and Billing and Payment 1-877-883-9577 (TTY 711); billing line Mon-Fri 8-6. The catalog phone 855-355-5777 is not on these Medicare pages, so contact is overridden. No Amex and the PDF-only change rule cannot be expressed. The page does not describe how online automatic payments are stopped (family default kept). Express Pay lookup fields are not listed (family defaults). Sign-in identifier (username) is inferred.",
+  "officialDomains": ["excellusbcbs.com"],
+  "sources": [
+    { "url": "https://medicare.excellusbcbs.com/bill-pay-options", "title": "Medicare Member Bill Pay Options | Excellus BlueCross BlueShield", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://medicare.excellusbcbs.com/contact/phone", "title": "Contact Us by Phone | Excellus BlueCross BlueShield Medicare", "fetchedAt": "2026-10-10", "kind": "help" }
+  ],
+  "brand": { "displayName": "Excellus BlueCross BlueShield Medicare", "shortName": "Excellus", "primary": "#0a4a8a", "accent": "#00627a", "monogram": "EX" },
+  "labels": {
+    "signIn": "Log in",
+    "payBill": "Log in to Pay",
+    "guestPay": "Express Pay",
+    "autopay": "Automatic payments",
+    "paperless": "Go Paperless",
+    "contact": "Customer Care"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Express Pay", "page": "guest" },
+      { "label": "Bill Pay Options", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "My account", "page": "dashboard" },
+      { "label": "Pay my bill", "page": "pay" },
+      { "label": "Automatic payments", "page": "autopay" },
+      { "label": "Go Paperless", "page": "paperless" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Customer Care", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://medicare.excellusbcbs.com/bill-pay-options"
+  },
+  "contact": { "phone": "877-883-9577", "payPhone": "877-883-9577", "source": "https://medicare.excellusbcbs.com/contact/phone", "evidence": "documented_official" },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://medicare.excellusbcbs.com/bill-pay-options", "note": "Pay by credit card, debit card or bank account (American Express is not accepted). Payments post in 24 to 48 hours." },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://medicare.excellusbcbs.com/bill-pay-options", "note": "Express Pay lets you, a caregiver or a spouse pay any amount without logging in. Have the member information and a copy of the bill ready." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://medicare.excellusbcbs.com/bill-pay-options", "note": "Automatic payments are withdrawn on the 4th of each month, or the next business day. If you enrolled with the paper withdrawal form, change it by form, not online." },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://medicare.excellusbcbs.com/bill-pay-options", "note": "Log in and choose Go Paperless to get your premium bill digitally." },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://medicare.excellusbcbs.com/contact/phone", "phone": "8778839577", "note": "Call Billing and Payment at 1-877-883-9577 (TTY 711), Monday to Friday 8 a.m. to 6 p.m. No fee." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://medicare.excellusbcbs.com/bill-pay-options", "note": "Send the return portion of your bill with a check or money order to Excellus Health Plan, P.O. Box 5267, Binghamton, NY 13902-5267." }
+  },
+  "billing": {
+    "source": "https://medicare.excellusbcbs.com/bill-pay-options",
+    "methods": ["bank", "card"],
+    "guestMethods": ["card"],
+    "autopay": { "policies": ["full"], "days": [4], "methodTypes": ["bank", "card"] },
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "documented_official", "source": "https://medicare.excellusbcbs.com/bill-pay-options" }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Medicare member bill pay options",
+      "topic": "payments",
+      "paragraphs": [
+        "Online or in the app: log in to pay, view your bill and manage automatic payments. We accept credit cards, debit cards and bank accounts, but not American Express. There is no fee to pay online or by phone, and payments post in 24 to 48 hours.",
+        "Express Pay: pay any amount without logging in. Caregivers and spouses can use it too; have the member's information, your card and a copy of the bill ready.",
+        "Partial payments are accepted, but the full balance must be paid by the due date to avoid possible termination. Invoices are usually mailed about one month ahead."
+      ],
+      "source": "https://medicare.excellusbcbs.com/bill-pay-options"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Set up or update automatic payments in your online account. Medicare members can also use the Automatic Premium Withdrawal Form; if you enrolled that way, you cannot change it online.",
+        "The withdrawal is made on the 4th of each month, or the next business day if the 4th is a weekend or holiday. The amount changes only when your premium changes or when what you paid differs from what was due.",
+        "Payments you scheduled through your own bank must be changed with your bank."
+      ],
+      "source": "https://medicare.excellusbcbs.com/bill-pay-options"
+    },
+    {
+      "slug": "social-security-deduction",
+      "title": "Paying through Social Security",
+      "topic": "payments",
+      "paragraphs": [
+        "Call Customer Care to have your premium deducted from your Social Security benefit or to update the deduction. It can take up to three months to start, so keep paying until it is confirmed."
+      ],
+      "source": "https://medicare.excellusbcbs.com/bill-pay-options"
+    },
+    {
+      "slug": "pay-by-mail",
+      "title": "Paying by mail",
+      "topic": "payments",
+      "paragraphs": [
+        "Send the return portion of your bill with a check or money order payable to Excellus Health Plan, P.O. Box 5267, Binghamton, NY 13902-5267."
+      ],
+      "source": "https://medicare.excellusbcbs.com/bill-pay-options"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Customer Care phone numbers",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer Care: 1-877-883-9577 (TTY 711), 8 a.m. to 8 p.m. Monday through Friday, and seven days a week from October 1 to March 31.",
+        "Billing and payment: 1-877-883-9577 (TTY 711), 8 a.m. to 6 p.m. Monday through Friday."
+      ],
+      "source": "https://medicare.excellusbcbs.com/contact/phone"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-withdrawal-day",
+        "intent": "Using Excellus BlueCross BlueShield's Medicare bill pay help, find which day of the month automatic premium payments are withdrawn. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["4th", "fourth"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["4th", "fourth"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "On the 4th of each month (next business day if it falls on a weekend or holiday)." }]
+      },
+      {
+        "slug": "card-not-accepted",
+        "intent": "Using Excellus BlueCross BlueShield's Medicare bill pay help, find which card brand is not accepted for online premium payments. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["American Express", "Amex"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["American Express", "Amex"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "American Express is not accepted." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Automatic payments", "Go Paperless"] },
+    { "page": "helpArticle", "slug": "autopay", "contains": "4th of each month" },
+    { "page": "helpArticle", "slug": "pay-by-mail", "contains": "P.O. Box 5267" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "1-877-883-9577" }
+  ]
+}

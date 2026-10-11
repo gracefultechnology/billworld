@@ -1,0 +1,356 @@
+{
+  "id": "riverside-county-treasurer-tax-collector-1c6242",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Riverside County Treasurer-Tax Collector",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public countytreasurer.org pages (Internet Archive snapshots; the live site is behind a Cloudflare challenge) and the public PublicAccessNow e-billing terms page; no sign-in, no lookup, no form. Online payments (eCheck free, cards with a convenience fee whose amount is not published on the pages read, so no card fee is charged in the mock and it is listed in fees.notes) via ca-riverside-ttc.publicaccessnow.com; phone (951) 955-3900 or (877) 748-2689, card only; mail (check payable to the Tax Collector, PIN on the check) P.O. Box 12005, Riverside, CA 92502-2205. Two installments: due Nov 1 / Feb 1, delinquent after 5 p.m. Dec 10 / Apr 10; 10% penalty, plus $38.06 administrative charge on the second. The county cannot take more than two payments a year; monthly payments only through the endorsed third-party Easy Smart Pay (1.99%), so AutoPay is unsupported. E-billing requires a registered portal account; cancel online or by email. Installment plan of redemption only for tax-defaulted property (20% down, five years, mailed application). Email sign-in in the mock is synthetic. Reviewed 2026-10-10: How To Pay Your Taxes and Current Secured pages re-read live in a headless browser.",
+  "officialDomains": [
+    "countytreasurer.org"
+  ],
+  "sources": [
+    {
+      "url": "https://countytreasurer.org/tax-collector/how-pay-your-taxes",
+      "title": "How To Pay Your Taxes | Office of the Treasurer-Tax Collector, Riverside County",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://countytreasurer.org/current-secured-property-tax-information",
+      "title": "Current Secured Property Tax Information",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://countytreasurer.org/tax-collector/tax-cycle-calendar-and-important-dates-remember",
+      "title": "Tax Cycle Calendar and Important Dates to Remember",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://countytreasurer.org/easysmartpay",
+      "title": "EasySmartPay | Office of the Treasurer-Tax Collector, Riverside County",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://countytreasurer.org/installment-payment-plan-information",
+      "title": "Installment Payment Plan Information",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://ca-riverside-ttc.publicaccessnow.com/Home/E-BillingTerms.aspx",
+      "title": "E-Billing Terms - Riverside County Treasurer - Tax Collector",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Riverside County Treasurer-Tax Collector",
+    "shortName": "Riverside County Treasurer-Tax Collector",
+    "primary": "#1f4e3d",
+    "accent": "#6b3e00",
+    "monogram": "RC"
+  },
+  "labels": {
+    "guestPay": "Account Search/Make a Payment",
+    "payBill": "How To Pay Your Taxes",
+    "paperless": "E-Billing",
+    "arrangement": "Installment Payment Plan",
+    "help": "Property Tax Frequently Asked Questions",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Account Search/Make a Payment",
+        "page": "guest"
+      },
+      {
+        "label": "How To Pay Your Taxes",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Important Dates",
+        "helpSlug": "due-dates-penalties"
+      },
+      {
+        "label": "EasySmartPay",
+        "helpSlug": "monthly-payments"
+      },
+      {
+        "label": "Property Tax Frequently Asked Questions",
+        "page": "help"
+      },
+      {
+        "label": "Login or Register",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "How To Pay Your Taxes",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "E-Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://countytreasurer.org/current-secured-property-tax-information",
+      "note": "Search for the bill and pay online by eCheck (no fee) or Visa, MasterCard, Discover or American Express (convenience fee added)."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://countytreasurer.org/easysmartpay",
+      "note": "The county can only accept the two installments each year. For monthly payments, use an impound account with your lender or the county-endorsed third-party Easy Smart Pay (1.99% fee).",
+      "channel": "none"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ca-riverside-ttc.publicaccessnow.com/Home/E-BillingTerms.aspx",
+      "note": "Register on the payment site and accept the e-billing terms to get future annual bills by email instead of paper. Cancel by logging in or by emailing the office."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://countytreasurer.org/tax-collector/how-pay-your-taxes",
+      "note": "Credit or debit card only; call (951) 955-3900 (desert area (877) 748-2689) and choose the card payment option.",
+      "phone": "9519553900"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://countytreasurer.org/tax-collector/how-pay-your-taxes",
+      "note": "Mail a check or money order payable to the Tax Collector, with your PIN written on it, to P.O. Box 12005, Riverside, CA 92502-2205."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://countytreasurer.org/installment-payment-plan-information",
+      "note": "Current-year taxes cannot go on a plan. For tax-defaulted property, an installment plan of redemption needs at least 20% down and a signed, mailed application.",
+      "channel": "mail"
+    }
+  },
+  "billing": {
+    "source": "https://countytreasurer.org/tax-collector/how-pay-your-taxes",
+    "fees": {
+      "bankCents": 0,
+      "notes": [
+        "Credit and debit card payments carry a convenience fee set by the processor; the amount is not published on the Tax Collector's pages."
+      ],
+      "evidence": "documented_official",
+      "source": "https://countytreasurer.org/current-secured-property-tax-information"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "lateFeePercent": 10
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your taxes",
+      "topic": "payments",
+      "source": "https://countytreasurer.org/tax-collector/how-pay-your-taxes",
+      "paragraphs": [
+        "Pay online by e-check at no cost, or by Visa, MasterCard, Discover or American Express with a convenience fee added to each card payment. You can also pay straight from your bank account by signing in with your online banking.",
+        "By phone, call (951) 955-3900, or (877) 748-2689 from the desert area, and choose the card payment option; phone payments are card only. By mail, send a check or money order payable to the Tax Collector with your PIN written on it to P.O. Box 12005, Riverside, CA 92502-2205, using the envelopes that came with the bill. Card payments are not accepted by mail.",
+        "If you pay through home banking, make the payment to Riverside County Treasurer-Tax Collector with the bill number or PIN in the account field, and send it 5 to 7 days early: it must arrive by the delinquent date. Postdated checks are not held."
+      ]
+    },
+    {
+      "slug": "due-dates-penalties",
+      "title": "Due dates and penalties",
+      "topic": "billing",
+      "source": "https://countytreasurer.org/current-secured-property-tax-information",
+      "paragraphs": [
+        "Annual bills are mailed by November 1 and can be paid in two installments. The first is due November 1 and becomes delinquent at 5 p.m. on December 10; the second is due February 1 and becomes delinquent at 5 p.m. on April 10. You may pay the whole bill with the first installment.",
+        "A late first installment gets a 10% penalty. A late second installment gets a 10% penalty plus a $38.06 administrative charge, and the second cannot be paid before the first. Taxes still unpaid at 5 p.m. on June 30 default and add further penalties of 1.5% a month. If a delinquent date falls on a weekend or holiday, it moves to the next business day."
+      ]
+    },
+    {
+      "slug": "monthly-payments",
+      "title": "Monthly payments and Easy Smart Pay",
+      "topic": "autopay",
+      "source": "https://countytreasurer.org/easysmartpay",
+      "paragraphs": [
+        "The Tax Collector's systems accept only the two installments each year. To spread the cost monthly, you can add the taxes to a lender impound account, save monthly in your own account, or use Easy Smart Pay.",
+        "Easy Smart Pay is a separate company the county endorses but is not affiliated with. It collects monthly ACH or card payments (currently a 1.99% fee) and forwards them to the county at the due dates. It does not cover supplemental taxes, and the November 1/December 10 and February 1/April 10 dates still apply."
+      ]
+    },
+    {
+      "slug": "e-billing",
+      "title": "E-billing",
+      "topic": "paperless",
+      "source": "https://ca-riverside-ttc.publicaccessnow.com/Home/E-BillingTerms.aspx",
+      "paragraphs": [
+        "Registered users of the payment site can sign up to receive future annual tax bills by email instead of paper. You must accept the e-billing terms and confirm the email sent to you within 24 hours.",
+        "You do not need e-billing to pay online. Parcels are removed from e-billing automatically when ownership changes. Cancel at any time by logging in or by emailing the Treasurer-Tax Collector."
+      ]
+    },
+    {
+      "slug": "installment-plan-redemption",
+      "title": "Installment plan for defaulted taxes",
+      "topic": "assistance",
+      "source": "https://countytreasurer.org/installment-payment-plan-information",
+      "paragraphs": [
+        "If your property is tax-defaulted (unpaid after June 30), you can open a five-year installment plan of redemption by paying at least 20% of the redemption amount, paying the current year's taxes, and signing and submitting the Installment Payment Plan Application and Agreement.",
+        "Each year by April 10 you must pay at least 20% plus interest of 1.5% a month on the unpaid balance and an annual maintenance fee, along with that year's taxes. Missing a payment defaults the plan. There is a start-up fee each time a plan is opened."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "second-installment-charge",
+        "intent": "Using the Riverside County Treasurer-Tax Collector website's help pages, find the administrative charge added (besides the 10% penalty) when the second property tax installment is late. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$38.06"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$38.06"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A late second installment adds a 10% penalty plus a $38.06 administrative charge."
+          }
+        ]
+      },
+      {
+        "slug": "easy-smart-pay-fee",
+        "intent": "Using the Riverside County Treasurer-Tax Collector website's help pages, find the fee Easy Smart Pay currently charges for monthly property tax payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.99%",
+              "1.99 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.99%",
+            "1.99 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Easy Smart Pay currently charges 1.99%."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Important Dates",
+        "EasySmartPay"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "E-Billing"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "(951) 955-3900",
+        "P.O. Box 12005"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-dates-penalties",
+      "contains": "$38.06"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "monthly-payments",
+      "contains": "1.99%"
+    }
+  ]
+}

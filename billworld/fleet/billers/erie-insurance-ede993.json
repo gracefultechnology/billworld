@@ -1,0 +1,329 @@
+{
+  "id": "erie-insurance-ede993",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Erie Insurance",
+  "category": "insurance",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public erieinsurance.com pages only (no sign-in, no form submitted). Billing support page: one-time payment without logging in needs the ERIE policy/account bill number and the ZIP code from the invoice (the one-time-pay form also requires an authorization checkbox and reCAPTCHA); pay in the online account; phone and mail; Automatic Payments (checking/savings draft) for auto, home, boat and PCL on Annual, Quarterly, 9 Month or Monthly plans are set up through the local ERIE agent (not available for Bonds, Flagship Auto, Account Billed and Assigned Risk; 9 Month plan not in KY); Chek-matic monthly draft for life; ERIExpressPay for business; Account Billing combines policies via the agent. Credit cards are not accepted on every payment plan nor for Erie Family Life. Online accounts can schedule a payment up to the due date (or up to 30 days ahead with no due date), not when past due. Payment changes/cancellations: Customer Care the same day. Online-account FAQ: username is the email address the agent uses; registration asks name, address, date of birth and last four SSN digits plus third-party identity questions (not expressible: registrationFields only allows accountNumber/lastName/zip/email/phone). The one-time-pay page also says automatic payments may be set up by logging in, which conflicts with the billing page; the billing page (agent) is modelled and autopay/autopay_cancel are offline. No convenience fees are published. Login page not reachable publicly (404 on /login), so loginSteps/MFA are not set.",
+  "officialDomains": [
+    "erieinsurance.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.erieinsurance.com/support-center/billing-payments",
+      "title": "Billing and Payment Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.erieinsurance.com/PaymentCenterWeb/BillPay/Payment/BillPayment",
+      "title": "One Time Pay - Erie Insurance",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.erieinsurance.com/support-center/online-account",
+      "title": "Online Account Support & FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Erie Insurance",
+    "shortName": "ERIE",
+    "primary": "#00539f",
+    "accent": "#003a70",
+    "monogram": "E"
+  },
+  "labels": {
+    "guestPay": "Make a payment",
+    "payBill": "Make a payment",
+    "signIn": "Log In",
+    "register": "Create an Online Account",
+    "forgot": "Reset Password",
+    "autopay": "Automatic Payments",
+    "paperless": "Paperless billing",
+    "wallet": "Wallet",
+    "statements": "Invoices",
+    "dashboard": "My Account",
+    "username": "Username (email)"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Wallet",
+        "page": "wallet"
+      },
+      {
+        "label": "Paperless billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.erieinsurance.com/PaymentCenterWeb/BillPay/Payment/BillPayment"
+  },
+  "contact": {
+    "phone": "800-458-0811",
+    "payPhone": "800-458-0811",
+    "source": "https://www.erieinsurance.com/support-center/billing-payments"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.erieinsurance.com/support-center/billing-payments"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.erieinsurance.com/PaymentCenterWeb/BillPay/Payment/BillPayment"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.erieinsurance.com/support-center/billing-payments",
+      "note": "With an online account you can date a payment up to your due date (or up to 30 days ahead when no due date is set). Future-dated payments are not available while a payment is past due."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.erieinsurance.com/support-center/billing-payments",
+      "note": "Automatic Payments (checking or savings draft on Annual, Quarterly, 9 Month or Monthly plans) are set up through your local ERIE agent. Not available for Bonds, Flagship Auto, Account Billed or Assigned Risk policies.",
+      "channel": "phone",
+      "phone": "800-458-0811"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.erieinsurance.com/support-center/billing-payments",
+      "note": "To change or stop Automatic Payments, contact your local ERIE agent or Customer Care at (800) 458-0811, option 5.",
+      "channel": "phone",
+      "phone": "800-458-0811"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.erieinsurance.com/support-center/billing-payments"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.erieinsurance.com/support-center/billing-payments",
+      "phone": "800-458-0811"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.erieinsurance.com/support-center/billing-payments"
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.erieinsurance.com/support-center/online-account"
+    }
+  },
+  "billing": {
+    "source": "https://www.erieinsurance.com/support-center/billing-payments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How can I pay my ERIE bill?",
+      "topic": "payments",
+      "paragraphs": [
+        "Make a one-time payment online without logging in: you need the ERIE policy or account bill number and the ZIP code exactly as they appear on your invoice, plus a checking or savings account, debit card, or Visa, Mastercard, American Express or Discover card. Credit cards are not accepted on every payment plan or for Erie Family Life policies.",
+        "You can also log in to your online account to pay and save payment methods in your wallet, call Customer Care at (800) 458-0811 option 5 (Monday to Friday 8 a.m. to 7 p.m., Saturday 9 a.m. to 4:30 p.m. Eastern), or mail a payment to Erie Insurance Group, 100 Erie Insurance Place, Erie, PA 16530.",
+        "Each policy or account billing number is paid as a separate transaction. Payments made after 11 p.m. Eastern can take up to two business days to process."
+      ],
+      "source": "https://www.erieinsurance.com/support-center/billing-payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic Payments draw your premium from a checking or savings account. They are available for auto, home, boat and personal catastrophe liability policies on the Annual, Quarterly, 9 Month or Monthly plans (the 9 Month plan is not offered in Kentucky).",
+        "Sign up through your local ERIE agent. Automatic Payments are not available for Bonds, Flagship Auto, Account Billed or Assigned Risk policies. Life policies use Chek-matic monthly direct debit instead."
+      ],
+      "source": "https://www.erieinsurance.com/support-center/billing-payments"
+    },
+    {
+      "slug": "change-or-cancel-payment",
+      "title": "Change or cancel a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "To change or cancel a payment, contact Customer Care on the same day the payment was made: (800) 458-0811, option 5. For Erie Family Life, choose option 3 (Monday to Friday 8 a.m. to 5:30 p.m. Eastern).",
+        "With an online account you can schedule a payment up to your due date, or up to 30 days ahead if no due date is set. Customers who are past due cannot schedule a future payment."
+      ],
+      "source": "https://www.erieinsurance.com/support-center/billing-payments"
+    },
+    {
+      "slug": "account-billing",
+      "title": "Combine your bills with Account Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Account Billing puts more than one ERIE policy on a single billing statement; each policy can keep its own effective date and payment plan. Ask your ERIE agent to set it up.",
+        "Account Billing is not offered in Kentucky, for Erie Family Life policies or for business surety bonds, and personal and commercial policies cannot share an account."
+      ],
+      "source": "https://www.erieinsurance.com/support-center/billing-payments"
+    },
+    {
+      "slug": "manage-online",
+      "title": "Your ERIE online account",
+      "topic": "account",
+      "paragraphs": [
+        "In your online account you can view current and previous invoices and billing activity, make a payment and save payment information in your wallet, choose paperless delivery, see your agent's contact details, check claims and get auto ID cards.",
+        "To register, enter your name, address and date of birth exactly as they appear on your policy, plus identity details, and use the email address your ERIE agent has on file as your username. A verification email completes setup. To reset a password, choose Reset Password on the login page."
+      ],
+      "source": "https://www.erieinsurance.com/support-center/online-account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "billing-phone",
+        "intent": "Find the ERIE Customer Care phone number (and menu option) for billing questions or paying by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8004580811"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8004580811"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "(800) 458-0811, option 5"
+          }
+        ]
+      },
+      {
+        "slug": "autopay-how-to-enroll",
+        "intent": "Using ERIE's help pages, find out how to sign up for Automatic Payments on an ERIE auto policy. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "agent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "agent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Automatic Payments are set up through your local ERIE agent."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "local ERIE agent",
+        "9 Month"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "100 Erie Insurance Place"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "agent"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Invoices",
+        "Wallet"
+      ]
+    }
+  ]
+}

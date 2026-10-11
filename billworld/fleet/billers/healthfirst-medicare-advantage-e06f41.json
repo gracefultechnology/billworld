@@ -1,0 +1,256 @@
+{
+  "id": "healthfirst-medicare-advantage-e06f41",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Healthfirst - Medicare Advantage",
+  "category": "medicare",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from Healthfirst's public 'Make a Medicare Payment' page only (no sign-in, no first-payment lookup). Online: 'Manage your account' with a Log In button for ongoing monthly payments, and 'Activate your plan' with a 'Make Your First Payment' button (separate first-payment site) for a new plan; credit card, debit card or checking; each invoice or transaction ID is paid separately; have the Account Number or Marketplace ID ready. Mail: payable to Healthfirst Medicare, account number on the check, P.O. boxes by plan (CompleteCare P.O. Box 95000-5170 Philadelphia; Medicare Advantage plans P.O. Box 48243 Newark; Signature PPO LB 8418 P.O. Box 95000 Philadelphia; Senior Health Partners P.O. Box 48344 Newark). Phone: Signature HMO 1-855-771-1081, Signature PPO 1-833-350-2910, all other Medicare plans and CompleteCare 1-888-260-1010, TTY 1-888-542-3821; Oct-Mar 7 days 8-8, Apr-Sep Mon-Fri 8-8. The page does not describe autopay, fees or due dates, so the family defaults stay for autopay and fees are left out. The first-payment site is modelled as pay without signing in with the account number (its fields are not shown publicly; inferred). Sign-in identifier (username) is inferred. Review (tier-20): the Make Your First Payment link (hfbillpay.org) now redirects to the member portal, so paying it without signing in is inferred (guest_pay evidence set to inferred).",
+  "officialDomains": [
+    "healthfirst.org"
+  ],
+  "sources": [
+    {
+      "url": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment",
+      "title": "Make a Medicare Payment | Healthfirst",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://healthfirst.org/medicare-advantage-plans/member-resources/answers-to-common-questions",
+      "title": "Answers to Common Questions | Healthfirst Medicare",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Healthfirst Medicare",
+    "shortName": "Healthfirst",
+    "primary": "#1b3a6b",
+    "accent": "#0a6a6a",
+    "monogram": "HF"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "guestPay": "Make Your First Payment",
+    "payBill": "Make a Medicare Payment",
+    "dashboard": "Manage your account"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Make Your First Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Make a Medicare Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Manage your account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Medicare Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "inferred",
+    "source": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment"
+  },
+  "contact": {
+    "phone": "888-260-1010",
+    "payPhone": "888-260-1010",
+    "source": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment",
+      "note": "Pay by credit card, debit card or checking account. Each invoice is paid separately."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment",
+      "note": "New members can make their first payment to activate the plan. Have your Account Number or Marketplace ID ready."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment",
+      "phone": "8882601010",
+      "note": "Signature (HMO) 1-855-771-1081, Signature (PPO) 1-833-350-2910, all other Medicare plans 1-888-260-1010 (TTY 1-888-542-3821)."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment",
+      "note": "Make your check or money order payable to Healthfirst Medicare, write your account number on it and mail it to your plan's P.O. box."
+    }
+  },
+  "billing": {
+    "source": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a Medicare payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Online: log in to manage your account and pay your monthly premium. If your plan is new, use Make Your First Payment to activate it. You can pay by credit card, debit card or checking account, and each invoice or transaction ID has to be paid separately. Keep your Account Number or Marketplace ID handy.",
+        "By phone: have your account number or Marketplace ID and your bank account or card ready. Signature (HMO) 1-855-771-1081; Signature (PPO) 1-833-350-2910; all other Medicare plans and CompleteCare 1-888-260-1010. TTY 1-888-542-3821.",
+        "Phone hours: October through March, 8am to 8pm seven days a week; April through September, 8am to 8pm Monday to Friday."
+      ],
+      "source": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment"
+    },
+    {
+      "slug": "pay-by-mail",
+      "title": "Paying by mail",
+      "topic": "payments",
+      "paragraphs": [
+        "Make your check or money order payable to Healthfirst Medicare and write your Account Number or Marketplace ID on it.",
+        "Healthfirst CompleteCare (HMO SNP): Healthfirst CompleteCare, P.O. Box 95000-5170, Philadelphia, PA 19195-5645. Healthfirst Medicare Advantage plans: Healthfirst Medicare Plans, P.O. Box 48243, Newark, NJ 07101-4843. Healthfirst Signature (PPO): Healthfirst Insurance Company, Inc., LB 8418, P.O. Box 95000, Philadelphia, PA 19195-0001. Senior Health Partners: P.O. Box 48344, Newark, NJ."
+      ],
+      "source": "https://healthfirst.org/medicare-advantage-plans/member-resources/make-a-payment"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "signature-ppo-pay-phone",
+        "intent": "You have a Healthfirst Signature (PPO) plan. Using Healthfirst's payment help, find the phone number to call to pay your premium by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8333502910"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8333502910"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 1-833-350-2910."
+          }
+        ]
+      },
+      {
+        "slug": "check-payee",
+        "intent": "You want to mail a check for your Healthfirst Medicare Advantage premium. Using Healthfirst's payment help, find who the check should be made payable to. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Healthfirst Medicare"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Healthfirst Medicare"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Make it payable to Healthfirst Medicare."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Medicare Payment"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "1-833-350-2910"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-by-mail",
+      "contains": "P.O. Box 48243"
+    }
+  ]
+}

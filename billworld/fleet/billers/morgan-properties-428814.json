@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-10",
+  "id": "morgan-properties-428814",
+  "name": "Morgan Properties",
+  "category": "housing",
+  "notes": "Researched from public morgan-properties.com pages. The FAQ page loads its answers from an on-page search widget; the reviewer read them through that widget (queries such as pay rent, late fee, maintenance): pay online in the resident portal by checking/savings or credit/debit card (some communities also Apple Pay and Masterpass), other payment options via the leasing office; rent due on the first; late payments and penalty fees via the leasing office (amount not published, not modelled); maintenance requests in the portal or the MP Resident App. Resident Login links to the RentCafe portal morgan-properties.securecafe.com (Cloudflare bot check; sign-in fields not observed, auth family default). HQ 227 Washington Street, Conshohocken, PA 19428. No resident phone, card fee, autopay rules or notice periods published (family defaults kept).",
+  "officialDomains": [
+    "morgan-properties.com",
+    "securecafe.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.morgan-properties.com/faq",
+      "title": "FAQ for Morgan Properties",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Morgan Properties",
+    "shortName": "Morgan Properties",
+    "primary": "#12355b",
+    "accent": "#7c2d12",
+    "monogram": "MP"
+  },
+  "labels": {
+    "signIn": "Resident Login"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident Login",
+        "page": "login"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      },
+      {
+        "label": "Contact Us",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Charges",
+        "page": "bill"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Auto-pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Service Requests",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.morgan-properties.com/faq",
+      "note": "Pay rent online in the resident portal with a checking or savings account or a credit or debit card. Some communities also accept Apple Pay and Masterpass. For other ways to pay, contact your leasing office."
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying rent",
+      "paragraphs": [
+        "Rent is due on the first of the month. Choose Resident Login to sign in to the resident portal and pay online with a checking or savings account or a credit or debit card; some communities also take Apple Pay and Masterpass. For other payment options, and for late payment rules and fees, contact your community's leasing office."
+      ],
+      "source": "https://www.morgan-properties.com/faq",
+      "topic": "payments"
+    },
+    {
+      "slug": "maintenance-requests",
+      "title": "Maintenance requests",
+      "paragraphs": [
+        "Enter a maintenance request in the resident portal (Resident Login at the top of the site) or in the MP Resident App for Apple or Android."
+      ],
+      "source": "https://www.morgan-properties.com/faq",
+      "topic": "account"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Morgan Properties",
+      "paragraphs": [
+        "Morgan Properties is based at 227 Washington Street, Conshohocken, PA 19428. For questions about your apartment, contact your community's leasing office or use the Contact Us page."
+      ],
+      "source": "https://www.morgan-properties.com/faq",
+      "topic": "contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "hq-town",
+        "intent": "Using the Morgan Properties help pages, find the town where Morgan Properties is headquartered. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Conshohocken"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Conshohocken"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Conshohocken, PA (227 Washington Street)."
+          }
+        ]
+      },
+      {
+        "slug": "rent-due-day",
+        "intent": "Using the Morgan Properties help pages, find which day of the month rent is due. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "first"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "first"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Rent is due on the first of the month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "label": "signIn"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "Conshohocken"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Masterpass"
+    }
+  ],
+  "billing": {
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "source": "https://www.morgan-properties.com/faq"
+  }
+}

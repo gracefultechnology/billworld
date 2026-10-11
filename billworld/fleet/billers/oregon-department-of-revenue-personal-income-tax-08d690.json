@@ -1,0 +1,320 @@
+{
+  "id": "oregon-department-of-revenue-personal-income-tax-08d690",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Oregon Department of Revenue (personal income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public oregon.gov/dor pages only. Revenue Online: Make a Payment logged in or not; bank payments free (requires a department letter or a filed Oregon return); Visa/MasterCard/Discover with a provider fee shown during the transaction (amount not published); confirmation number. Sign-up with a letter ID; Forgot username or password?; temporary lockout after too many failures. Cancel: More Options > Search Submissions > Cancel Payment on a pending submission. Payment history: More Options > Payments & Returns > Manage Payments & Returns. Pay by phone 800-356-4222. Payment plans in Revenue Online up to 36 months (longer needs a Statement of Financial Condition), automatic ACH can be set up for the plan; Individuals Owing Tax 503-945-8200; dishonored-payment penalty $25 or 3x payment (max $500) after two or more in two years. No recurring AutoPay for balances outside a plan (inferred). Sign-in: the help page mentions both a username (Forgot username or password?) and logging in with an email and password, so the identifier is email_or_username.",
+  "officialDomains": [
+    "oregon.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.oregon.gov/dor/Pages/Payments.aspx",
+      "title": "Payments | Oregon Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.oregon.gov/dor/programs/Collections/Pages/payment-plan.aspx",
+      "title": "Payment plans | Oregon Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.oregon.gov/dor/pages/revenue-online-help.aspx",
+      "title": "Revenue Online help | Oregon Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Oregon Department of Revenue",
+    "shortName": "Oregon DOR",
+    "primary": "#1e4d2b",
+    "accent": "#6b4b00",
+    "monogram": "OR"
+  },
+  "labels": {
+    "dashboard": "Revenue Online",
+    "payBill": "Make a Payment",
+    "guestPay": "Pay Online",
+    "history": "Manage Payments & Returns",
+    "arrangement": "Payment plan",
+    "forgot": "Forgot username or password?",
+    "help": "Revenue Online help",
+    "signIn": "Log in",
+    "username": "Username or email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Online",
+        "page": "guest"
+      },
+      {
+        "label": "Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Revenue Online help",
+        "page": "help"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Revenue Online",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Payments & Returns",
+        "page": "history"
+      },
+      {
+        "label": "Payment plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "documented_official",
+    "source": "https://www.oregon.gov/dor/pages/revenue-online-help.aspx"
+  },
+  "contact": {
+    "phone": "5033784988",
+    "payPhone": "8003564222",
+    "source": "https://www.oregon.gov/dor/Pages/Payments.aspx"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.oregon.gov/dor/pages/revenue-online-help.aspx",
+      "note": "Use Make a Payment in Revenue Online with or without logging in."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.oregon.gov/dor/programs/Collections/Pages/payment-plan.aspx",
+      "note": "Revenue Online has no recurring automatic payments for a tax balance. If you set up a payment plan, you can have its monthly payments drawn from your bank account automatically.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.oregon.gov/dor/programs/Collections/Pages/payment-plan.aspx",
+      "note": "Payment plans run up to 36 months. Longer plans need a Statement of Financial Condition."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.oregon.gov/dor/programs/Collections/Pages/payment-plan.aspx"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.oregon.gov/dor/Pages/Payments.aspx",
+      "note": "Pay by phone at 800-356-4222.",
+      "phone": "8003564222"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.oregon.gov/dor/Pages/Payments.aspx"
+    }
+  },
+  "billing": {
+    "source": "https://www.oregon.gov/dor/Pages/Payments.aspx",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.oregon.gov/dor/Pages/Payments.aspx",
+      "notes": [
+        "Card payments (Visa, MasterCard, Discover) may carry a service provider fee based on the payment amount; the fee is shown during the transaction and is not published."
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "source": "https://www.oregon.gov/dor/Pages/Payments.aspx",
+      "paragraphs": [
+        "Pay online in Revenue Online from a checking or savings account at no charge, as long as you have received a letter from the department or filed an Oregon return. Visa, MasterCard and Discover are also accepted; the card service provider may charge a fee, which is shown before you pay.",
+        "Keep the confirmation number you receive as proof of payment. You can also pay by phone at 800-356-4222.",
+        "To mail a check or money order for personal income tax you owe, send it to PO Box 14555, Salem, OR 97309-0940. Questions: 503-378-4988 or 800-356-4222, 7:30 a.m. to 5 p.m. weekdays (closed 9 to 11 a.m. Thursdays)."
+      ]
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Cancel a payment or view payment history",
+      "topic": "payments",
+      "source": "https://www.oregon.gov/dor/pages/revenue-online-help.aspx",
+      "paragraphs": [
+        "To cancel, open More Options and Search Submissions. If the payment can still be cancelled, a Cancel Payment link appears on the pending submission. Payments made through tax software can only be cancelled if they are future-dated.",
+        "Your payments, including estimated payments, are listed under More Options, Payments & Returns, Manage Payments & Returns."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "source": "https://www.oregon.gov/dor/programs/Collections/Pages/payment-plan.aspx",
+      "paragraphs": [
+        "If you cannot pay in full, set up a payment plan in Revenue Online, or call Individuals Owing Tax at 503-945-8200, Monday to Friday, 7:15 a.m. to 5:15 p.m.",
+        "Plans can run up to 36 months. For a longer plan, send a Statement of Financial Condition and supporting documents through Revenue Online.",
+        "You can have plan payments drawn automatically from your bank account by entering your bank details when you set up the plan. After two or more dishonored payments within two years, a penalty of $25 or three times the payment (up to $500) applies."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "plan-max-months",
+        "intent": "Using the Oregon DOR website's help pages, find the maximum length of a payment plan before a financial statement is required. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "36 months",
+              "36"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "36 months",
+            "36"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_arrangement"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payment plans can run up to 36 months."
+          }
+        ]
+      },
+      {
+        "slug": "plan-phone",
+        "intent": "Using the Oregon DOR website's help pages, find the phone number for individuals who owe tax and need a payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "503-945-8200",
+              "5039458200",
+              "(503) 945-8200"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "503-945-8200",
+            "5039458200",
+            "(503) 945-8200"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_arrangement",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Individuals Owing Tax at 503-945-8200."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment plans",
+        "Revenue Online help"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Revenue Online",
+        "Manage Payments & Returns"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "503-945-8200",
+        "36 months"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-payment",
+      "contains": "Search Submissions"
+    }
+  ]
+}

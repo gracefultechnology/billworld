@@ -1,0 +1,323 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "mortgage",
+  "reviewedAt": "2026-10-10",
+  "id": "loancare-llc-5d772b",
+  "name": "LoanCare, LLC",
+  "notes": "Researched from public myloancare.com pages only (Angular site; rendered in a browser, no sign-in). Home page sign-in form: User ID + Password, \"Need help signing in?\", \"Don't have an account? Create one\"; AutoPay \"is located within the Payments section\" after sign-in. FAQ: register with the loan number; forgot user ID needs loan number + last 4 SSN (sent to the registered email); app uses same user ID/password (loan number may be used to log in). eStatements: enroll in the Document Center, free, paper resumes 2-4 weeks after opting out. Auto draft is suspended during forbearance; cancel drafts 3 days before the draft date; no late fees during forbearance. Contact page: Customer Care 1-800-274-6600 (M-F 8-9 ET, Sat 8-3 ET) plus an automated loan information line; FAQ lists a general Customer Service 1-800-410-9609 (M-F 8-10 ET) - catalog number kept. Payment mailing addresses Philadelphia (Eastern) / City of Industry (Western). Every public myloancare.com page footer states LoanCare does not accept credit or debit card payments (methods bank-only, documented). Online fees, cutoff times and grace period are not on the public pages; pay_by_phone left to the catalog. Financial assistance: forbearance, repayment plans, payment deferrals, modifications; apply online after sign-in. Lakeview-owned loans use a Lakeview-branded LoanCare site (same portal, not a separate pick). Reviewed 2026-10-10 (t20 review): card policy re-read on the home/contact footer; auto-draft 3-day cancel rule is from the forbearance FAQ answer.",
+  "officialDomains": [
+    "myloancare.com"
+  ],
+  "sources": [
+    {
+      "url": "https://myloancare.com/web/home",
+      "title": "LoanCare - HomeOwners (sign in)",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://myloancare.com/web/help-center/faqFullList/undefined",
+      "title": "LoanCare - FAQ",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://myloancare.com/web/contact-us",
+      "title": "LoanCare - Contact Us",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://myloancare.com/mortgage-assistance/financial-assistance",
+      "title": "LoanCare - Financial Assistance",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "LoanCare",
+    "primary": "#00577d",
+    "accent": "#1f3a5f",
+    "monogram": "LC"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "User ID",
+    "forgot": "Need help signing in?",
+    "register": "Create an account",
+    "autopay": "AutoPay",
+    "paperless": "eStatements",
+    "statements": "Document Center",
+    "arrangement": "Financial Assistance",
+    "help": "Help Center",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create an account",
+        "page": "register"
+      },
+      {
+        "label": "Financial Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Payments",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Document Center",
+        "page": "statements"
+      },
+      {
+        "label": "eStatements",
+        "page": "paperless"
+      },
+      {
+        "label": "Financial Assistance",
+        "page": "arrangement"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://myloancare.com/web/home"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://myloancare.com/web/home"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://myloancare.com/web/help-center/faqFullList/undefined",
+      "note": "To stop an upcoming draft, cancel at least 3 days before the draft date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://myloancare.com/web/help-center/faqFullList/undefined"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://myloancare.com/web/contact-us"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://myloancare.com/mortgage-assistance/financial-assistance"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://myloancare.com/mortgage-assistance/financial-assistance"
+    }
+  },
+  "contact": {
+    "phone": "8002746600",
+    "source": "https://myloancare.com/web/contact-us"
+  },
+  "billing": {
+    "source": "https://myloancare.com/web/contact-us",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay LoanCare",
+      "paragraphs": [
+        "Sign in and open the Payments section to make a payment or manage AutoPay. You can also pay in the My LoanCare Go mobile app, which uses the same user ID and password as the website.",
+        "Payments come from a bank account. LoanCare does not accept credit or debit card payments and will never ask you for card details.",
+        "To pay by mail, send your check to LoanCare, P.O. Box 37628, Philadelphia, PA 19101-0628 (Eastern location) or LoanCare, P.O. Box 60509, City of Industry, CA 91716-0509 (Western location). Overnight payments go to 3637 Sentara Way, Virginia Beach, VA 23452.",
+        "If you received a late notice but your payment left your bank, send proof of payment with your name and loan number to the payment research team."
+      ],
+      "source": "https://myloancare.com/web/contact-us"
+    },
+    {
+      "slug": "paperless",
+      "title": "eStatements",
+      "topic": "paperless",
+      "paragraphs": [
+        "To get your statements online, sign in and enroll in eStatements in the Document Center. The service is free.",
+        "You can cancel eStatements at any time to go back to paper. It can take 2 to 4 weeks after you unsubscribe before paper statements start arriving again."
+      ],
+      "source": "https://myloancare.com/web/help-center/faqFullList/undefined"
+    },
+    {
+      "slug": "register",
+      "title": "Create your online account",
+      "topic": "account",
+      "paragraphs": [
+        "First-time users choose Create one (Register) and use their loan number to set up an account.",
+        "Forgot your user ID? Choose Forgot User ID on the home page and enter your loan number and the last four digits of your Social Security number; the user ID is sent to the email address on file."
+      ],
+      "source": "https://myloancare.com/web/help-center/faqFullList/undefined"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Financial assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "If a change in employment, marital status, health, a death in the family or military deployment makes your payment hard to afford, options may include temporary forbearance, a repayment plan, a payment deferral or a loan modification. Apply with the online Mortgage Assistance application after signing in, or call Customer Care.",
+        "While a forbearance plan is in place, AutoPay drafts are suspended and late fees are not charged. If you bring the loan current, drafts resume one month after the plan ends. For free housing counseling, call HUD at 800-569-4287."
+      ],
+      "source": "https://myloancare.com/mortgage-assistance/financial-assistance"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "estatement-paper-delay",
+        "intent": "You turned off LoanCare eStatements. Using the LoanCare help pages, find how long it may take before paper statements start arriving again. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2 to 4 weeks",
+              "2-4 weeks",
+              "two to four weeks"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2 to 4 weeks",
+            "2-4 weeks",
+            "two to four weeks"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "paperless"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "It can take 2 to 4 weeks."
+          }
+        ]
+      },
+      {
+        "slug": "forgot-user-id",
+        "intent": "A borrower forgot their LoanCare user ID. Using the LoanCare help pages, find what they must enter to recover it. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "loan number"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "loan number"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your loan number and the last four digits of your Social Security number; the ID is emailed to you."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "User ID",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "2 to 4 weeks"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "City of Industry"
+    }
+  ]
+}

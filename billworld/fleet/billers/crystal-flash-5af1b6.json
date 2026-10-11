@@ -1,0 +1,234 @@
+{
+  "id": "crystal-flash-5af1b6",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Crystal Flash",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public crystalflash.com pages (For Your Home, Programs, Support) and the public my.crystalflash.com 'Login or Register' page; no sign-in, no registration, no forms submitted. Sign-in: Email Address + Password (Login / Register tabs). Registration asks for the Billing Account Number, the house or PO Box number from the bill-to address (house number only) and an email address, then a password is set; the dossier format has no house-number registration field, so registration is modelled with account number + email and the house-number rule is described in help (CROSS-OWNER REQUEST: a 'houseNumber' registration field). Registration help: portalhelp@crystalflash.com or 800.875.4851 (weekdays 8 a.m. to 5 p.m.). The portal pays bills and shows delivery and statement history. Programs: Budget Payment Plan (even monthly payments, includes Auto-Fill, credit-approved homeowners, no enrollment fee), Auto-Fill and Will Call delivery, Price Protection Program (Fixed Price, Pre-Buy, Market Rate; no enrollment fees). No guest payment on the portal page. AutoPay, paperless billing, card fees, late charges and closing an account are not described on the pages used and are left at the family defaults.",
+  "officialDomains": [
+    "crystalflash.com"
+  ],
+  "sources": [
+    {
+      "url": "https://my.crystalflash.com/",
+      "title": "Crystal Flash - Login or Register",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://crystalflash.com/programs/",
+      "title": "Programs - Crystal Flash",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://crystalflash.com/support/",
+      "title": "Support - Crystal Flash",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.crystalflash.com/",
+      "title": "For Your Home - Crystal Flash",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "shortName": "Crystal Flash",
+    "primary": "#004b87",
+    "accent": "#b3261e",
+    "monogram": "CF"
+  },
+  "labels": {
+    "signIn": "Login",
+    "register": "Register",
+    "username": "Email Address",
+    "accountNumber": "Billing Account Number",
+    "dashboard": "My Account",
+    "payBill": "Pay a Bill",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Budget Payment Plan",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay a Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Contact",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://my.crystalflash.com/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "observed_public",
+      "source": "https://my.crystalflash.com/",
+      "channel": "phone",
+      "phone": "800-875-4851",
+      "note": "Pay online by logging in to My Account. New here? Register with your billing account number, the house number from your bill-to address and your email, or call 800.875.4851."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://crystalflash.com/programs/"
+    }
+  },
+  "contact": {
+    "phone": "800-875-4851",
+    "source": "https://crystalflash.com/support/"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay your Crystal Flash bill any time in My Account, where you can also view delivery and statement history and manage your account.",
+        "Questions? Call Customer Support at 800.875.4851, Monday to Friday, 8 a.m. to 5 p.m."
+      ],
+      "steps": [
+        "Open My Account and log in with your email address and password.",
+        "Choose Pay a Bill.",
+        "Pick a payment method and amount.",
+        "Submit the payment."
+      ],
+      "source": "https://www.crystalflash.com/"
+    },
+    {
+      "slug": "register",
+      "title": "Register for My Account",
+      "topic": "account",
+      "paragraphs": [
+        "On the Register tab, enter your billing account number, the house or PO Box number from your bill-to address (the number only) and a valid email address, then choose Continue and create your password.",
+        "For registration help, email portalhelp@crystalflash.com or call 800.875.4851."
+      ],
+      "source": "https://my.crystalflash.com/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Budget Payment Plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "The Budget Payment Plan spreads your expected yearly propane cost into even monthly payments, so your payment stays the same no matter how much is delivered. It includes Auto-Fill delivery, has no enrollment fee and is open to credit-approved homeowners, including those who own their tank.",
+        "The Price Protection Program offers Fixed Price, Pre-Buy and Market Rate options with no enrollment or lock-in fees."
+      ],
+      "source": "https://crystalflash.com/programs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "portal-help-phone",
+        "intent": "Using the Crystal Flash website's help pages, find the Customer Support phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8008754851"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8008754851"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "800.875.4851"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "My Account",
+        "Budget Payment Plan"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Email Address"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": [
+        "house or PO Box number",
+        "portalhelp@crystalflash.com"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "Auto-Fill"
+    }
+  ]
+}

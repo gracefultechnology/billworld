@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-10",
+  "id": "winncompanies-a22fda",
+  "name": "WinnCompanies",
+  "category": "housing",
+  "notes": "Researched from public winncompanies.com pages (Contact, Residential). WinnResidential manages affordable, military and conventional housing (240,000+ residents). Residents should first contact their community management office; further help from the Resident Help Center (617) 239-4596 or the resident hotline email. HQ One Washington Mall, Suite 500, Boston MA 02108, (617) 742-4500. Winn's public pages do not describe the resident payment portal (catalog research names RealPage ActiveBuilding/LOFT, not on Winn's pages), fees or autopay; family defaults kept (inferred).",
+  "officialDomains": [
+    "winncompanies.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.winncompanies.com/contact",
+      "title": "WinnCompanies | Contact",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.winncompanies.com/residential",
+      "title": "WinnCompanies | Residential",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "WinnCompanies",
+    "shortName": "Winn",
+    "primary": "#003a5d",
+    "accent": "#7a2e0e",
+    "monogram": "WC"
+  },
+  "labels": {
+    "help": "Resident Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident Portal",
+        "page": "login"
+      },
+      {
+        "label": "Resident Help Center",
+        "page": "help"
+      },
+      {
+        "label": "Contact",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Rent",
+        "page": "pay"
+      },
+      {
+        "label": "Ledger",
+        "page": "bill"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Contact Management",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "contact": {
+    "phone": "6172394596",
+    "source": "https://www.winncompanies.com/contact",
+    "evidence": "documented_official"
+  },
+  "help": [
+    {
+      "slug": "contact-us",
+      "title": "Contact WinnCompanies",
+      "paragraphs": [
+        "Start with your community's management office. For more help, call the Resident Help Center at (617) 239-4596 or email the resident hotline at Residenthotline@winnco.com. Corporate headquarters: One Washington Mall, Suite 500, Boston, MA 02108, (617) 742-4500."
+      ],
+      "source": "https://www.winncompanies.com/contact",
+      "topic": "contact"
+    },
+    {
+      "slug": "about-winnresidential",
+      "title": "About WinnResidential",
+      "paragraphs": [
+        "WinnResidential manages affordable, military and conventional apartment communities and serves more than 240,000 residents with about 4,600 team members."
+      ],
+      "source": "https://www.winncompanies.com/residential",
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "resident-help-center-phone",
+        "intent": "Using the WinnCompanies help pages, find the Resident Help Center phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "6172394596"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "6172394596"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call the Resident Help Center at (617) 239-4596."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "239-4596"
+    },
+    {
+      "page": "help",
+      "label": "help"
+    }
+  ]
+}

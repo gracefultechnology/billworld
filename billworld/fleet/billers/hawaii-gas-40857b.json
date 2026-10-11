@@ -1,0 +1,362 @@
+{
+  "id": "hawaii-gas-40857b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Hawaii Gas",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public hawaiigas.com pages (Pay Bill, MyAccount, FAQ), the public MyAccount sign-in page (myaccount.hawaiigas.com/app/login.jsp) and Hawaii Gas's InvoiceCloud one-time pay page; no sign-in, no registration, no guest lookup submitted. Payments run through InvoiceCloud (One Time Pay, no registration needed, account number + billing ZIP); MyAccount sign-in uses User Name + Password with 'Forgot your User Name?' and 'Sign Up Now'. Registration needs the account number and the first five digits of the service ZIP; single-meter accounts only; password 12-20 characters meeting at least two of letters / numbers / special characters (reviewer-verified on the public register.jsp page; the sign-up form also asks for user name, name, email, security question and Terms of Use acceptance). Convenience fee for residential card AND e-check payments is 2.95% (minimum $2.75), commercial 3.15% (minimum $4.95), $125,000 per-payment limit; AutoPay from a checking or savings account is free, while recurring scheduled payments and card AutoPay carry the convenience fee. The dossier format has no percentage fee for bank payments, so bankCents is left unset (engine charges $0) and the e-check fee is listed in fees.notes (CROSS-OWNER REQUEST: bankPercent/bankMinCents). AutoPay deducts current charges on the due date (two weeks to review). Stopping residential service is by phone during office hours with at least two business days' notice; business closures need a signed letter. Payment arrangements are by phone (808-535-5933 or the local office). Late-charge amounts are not published on the pages used. Review 2026-10-10: password rule corrected to 2-of-3 character classes per register.jsp; paperless help no longer claims paper and paperless are exclusive (not stated); AutoPay steps follow the MyAccount page wording.",
+  "officialDomains": [
+    "hawaiigas.com",
+    "invoicecloud.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.hawaiigas.com/pay-bill",
+      "title": "Pay Bill | Hawaii Gas",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.hawaiigas.com/myaccount",
+      "title": "MyAccount | Hawaii Gas",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.hawaiigas.com/faq",
+      "title": "Frequently Asked Questions | Hawaii Gas",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://myaccount.hawaiigas.com/app/login.jsp",
+      "title": "Hawaii Gas :: My Account Login",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.invoicecloud.com/hawaiigas",
+      "title": "Pay or View Bills | Hawaii Gas",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://myaccount.hawaiigas.com/app/register.jsp",
+      "title": "Hawaii Gas :: MyAccount Sign Up",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Hawaiʻi Gas",
+    "shortName": "Hawaii Gas",
+    "primary": "#00587c",
+    "accent": "#b5371b",
+    "monogram": "HG"
+  },
+  "labels": {
+    "payBill": "Pay Bill",
+    "guestPay": "One Time Pay",
+    "signIn": "Log In",
+    "username": "User Name",
+    "register": "Sign Up Now",
+    "forgot": "Forgot your password?",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Bills",
+    "dashboard": "MyAccount",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "One Time Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Sign Up Now",
+        "page": "register"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Stop Service",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "passwordRule": {
+      "pattern": "^(?:(?=.*[A-Za-z])(?=.*\\d)|(?=.*[A-Za-z])(?=.*[^A-Za-z0-9])|(?=.*\\d)(?=.*[^A-Za-z0-9])).{12,20}$",
+      "message": "Use 12 to 20 characters with at least two of these: letters, numbers, special characters."
+    },
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://myaccount.hawaiigas.com/app/login.jsp"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hawaiigas.com/pay-bill",
+      "note": "One Time Pay needs no registration: enter your Hawaiʻi Gas account number and billing ZIP code."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hawaiigas.com/faq",
+      "note": "Auto Pay deducts your current charges on the due date, so you have about two weeks to review each bill first. It is free from a checking or savings account."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hawaiigas.com/faq"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hawaiigas.com/myaccount"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hawaiigas.com/myaccount",
+      "note": "With Paperless Bills you stop receiving printed bills; each bill is emailed to the address you registered with."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.invoicecloud.com/hawaiigas",
+      "phone": "844-637-1315"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hawaiigas.com/pay-bill"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.hawaiigas.com/faq",
+      "channel": "phone",
+      "phone": "808-535-5933",
+      "note": "Payment arrangements are made by phone. Call Customer Service at (808) 535-5933 or your local Hawaiʻi Gas office to discuss term arrangements."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.hawaiigas.com/pay-bill"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.hawaiigas.com/faq",
+      "channel": "phone",
+      "phone": "808-535-5933",
+      "note": "To stop residential gas service, call our office Monday to Friday, 7:30 a.m. to 4:30 p.m., at least two business days before your stop date. Business accounts must send a signed written request."
+    }
+  },
+  "contact": {
+    "phone": "808-535-5933",
+    "payPhone": "844-637-1315",
+    "source": "https://myaccount.hawaiigas.com/app/login.jsp"
+  },
+  "billing": {
+    "source": "https://www.hawaiigas.com/pay-bill",
+    "fees": {
+      "cardPercent": 2.95,
+      "cardMinCents": 275,
+      "autopayCardPercent": 2.95,
+      "notes": [
+        "Residential electronic-check (e-check) payments also carry the 2.95% convenience fee ($2.75 minimum); Auto Pay from a checking or savings account is free.",
+        "Commercial accounts pay 3.15% per card or e-check payment ($4.95 minimum)."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.invoicecloud.com/hawaiigas"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "maxPaymentCents": 12500000,
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Hawaiʻi Gas bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online with One Time Pay using a credit or debit card or an electronic check. You only need your Hawaiʻi Gas account number and billing ZIP code; no registration is required. Residential payments carry a convenience fee of 2.95% (minimum $2.75); commercial payments 3.15% (minimum $4.95). Each payment can be up to $125,000.",
+        "The automated phone line at (844) 637-1315 takes payments and gives balances 24 hours a day. You can also mail a check or money order with the bottom part of your bill to Hawaiʻi Gas, P.O. Box 29850, Honolulu, HI 96820-2250, or pay at a Western Union location."
+      ],
+      "steps": [
+        "Choose One Time Pay.",
+        "Enter your account number and billing ZIP code.",
+        "Pick card or electronic check and the amount.",
+        "Review the convenience fee and submit."
+      ],
+      "source": "https://www.hawaiigas.com/pay-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay is set up in MyAccount. Your current charges are deducted on the due date, giving you about two weeks to review the bill first. There is no fee when you pay from a checking or savings account; card payments carry the convenience fee.",
+        "If you change bank accounts, allow up to 30 days for the change and make a manual payment if a bill comes due in the meantime. Customers who waived a deposit by enrolling must keep Auto Pay, or the deposit is billed."
+      ],
+      "steps": [
+        "Log in to MyAccount.",
+        "Open Bills & Payment, then Auto Pay.",
+        "Add a bank account if none is saved.",
+        "Choose Yes, put me on AutoPay, then save the setup."
+      ],
+      "source": "https://www.hawaiigas.com/myaccount"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Bills",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless Bills replaces your printed bill: each bill is emailed to the address you used when you signed up for MyAccount. You can also choose Enroll me in Paperless when you make a payment."
+      ],
+      "steps": [
+        "Log in to MyAccount.",
+        "Open Bills & Payment, then Paperless Bills.",
+        "Enroll."
+      ],
+      "source": "https://www.hawaiigas.com/myaccount"
+    },
+    {
+      "slug": "register",
+      "title": "Sign up for MyAccount",
+      "topic": "account",
+      "paragraphs": [
+        "Have your latest bill ready: you need your account number and the first five digits of your service address ZIP code. You also choose a user name, a 12 to 20 character password and a security question. MyAccount is available for single-meter accounts only.",
+        "MyAccount lets you pay and schedule payments, compare bills, monitor gas usage and track service requests."
+      ],
+      "source": "https://myaccount.hawaiigas.com/app/register.jsp"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stopping gas service",
+      "topic": "account",
+      "paragraphs": [
+        "Residential account holders stop service by calling the office Monday to Friday, 7:30 a.m. to 4:30 p.m., at least two business days ahead. Stop requests cannot be back-dated. A technician takes a final reading and locks the service, and you receive a confirmation number.",
+        "Businesses send a signed letter with the stop date, a forwarding address for the final bill, how to reach the gas equipment and a contact name and phone number. Service is not transferred when you move; close this account and open a new one at the new address."
+      ],
+      "source": "https://www.hawaiigas.com/faq"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help paying your bill",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you are having trouble paying, call Customer Service at (808) 535-5933 or your local office about payment arrangements. Referrals are available through the Aloha United Way 211 helpline, and utility help may be available through Catholic Charities Hawaiʻi. Friends and family can also contribute through the Good Energy Gift program."
+      ],
+      "source": "https://www.hawaiigas.com/pay-bill"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "automated-pay-line",
+        "intent": "Find the phone number of Hawaii Gas's automated 24/7 line for paying the bill or checking the balance. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8446371315"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8446371315"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "(844) 637-1315"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "One Time Pay",
+        "Stop Service"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "User Name"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.95%",
+        "(844) 637-1315"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "two business days"
+    }
+  ]
+}

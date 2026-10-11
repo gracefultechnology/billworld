@@ -1,0 +1,142 @@
+{
+  "id": "alaska-communications-2eccdb",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Alaska Communications",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public alaskacommunications.com support pages only (no sign-in). Alaska Communications is the largest incumbent local exchange carrier in Alaska (Anchorage, Fairbanks, Juneau). The online account is AccountView: existing customers choose Create Account and need the account number plus the CPNI password; a registration code is emailed to the address on file (CPNI password is not expressible, so accountNumber + email are modelled). Sign-in is by username and password; Forgot Username and Forgot Password both email recovery messages. QuickPay pays all invoices in one transaction without signing in, by Visa, MasterCard or Discover only (guestMethods card); its lookup fields are not described on the pages used, so the family default lookup is kept. In AccountView: Make Payment (date, amount, method, Continue, Complete Payment); Manage AutoPay below Make a Payment (bank account or credit/debit card, choose a Payment Date, Enroll); a balance must be paid in full before AutoPay takes effect (not expressible). View Current Bill opens the PDF. Phone payments: 24-hour secure line 907-563-3279 (Anchorage) or 800-808-8083. Mail: PO Box 196666, Anchorage, AK 99519-6666, no cash. Disconnecting service is by calling 800-808-8083. Updating contact information online is currently unavailable (call 800-808-8083). Convenience fees, late fees, paperless billing and payment arrangements are not described on the public pages used (family defaults kept, no fee charged).",
+  "officialDomains": ["alaskacommunications.com"],
+  "sources": [
+    { "url": "https://www.alaskacommunications.com/Support/Bill-Payment-Options", "title": "Bill Payment Options - Alaska Communications", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://www.alaskacommunications.com/Support/Billing", "title": "Billing Support", "fetchedAt": "2026-10-10", "kind": "help" },
+    { "url": "https://www.alaskacommunications.com/Support/Account", "title": "Account Support", "fetchedAt": "2026-10-10", "kind": "login" }
+  ],
+  "brand": { "displayName": "Alaska Communications", "shortName": "Alaska Communications", "primary": "#005daa", "accent": "#002b49", "monogram": "AC" },
+  "labels": {
+    "dashboard": "AccountView",
+    "viewBill": "View Current Bill",
+    "payBill": "Make Payment",
+    "autopay": "AutoPay",
+    "wallet": "My Payment Methods",
+    "guestPay": "QuickPay",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Create Account",
+    "username": "Username",
+    "forgot": "Forgot Password",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      { "label": "QuickPay", "page": "guest" },
+      { "label": "AccountView Login", "page": "login" },
+      { "label": "Create Account", "page": "register" },
+      { "label": "Bill Payment Options", "helpSlug": "pay-your-bill" },
+      { "label": "Support", "page": "help" }
+    ],
+    "account": [
+      { "label": "AccountView", "page": "dashboard" },
+      { "label": "View Current Bill", "page": "bill" },
+      { "label": "Make Payment", "page": "pay" },
+      { "label": "Manage AutoPay", "page": "autopay" },
+      { "label": "My Payment Methods", "page": "wallet" },
+      { "label": "Profile", "page": "profile" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "mfa": "email",
+    "registrationFields": ["accountNumber", "email"],
+    "evidence": "documented_official",
+    "source": "https://www.alaskacommunications.com/Support/Account"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.alaskacommunications.com/Support/Bill-Payment-Options", "note": "QuickPay accepts VISA, MasterCard and Discover and can pay all of your Alaska Communications invoices in one transaction." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.alaskacommunications.com/Support/Account", "note": "If you have a balance, pay it in full before AutoPay takes effect." },
+    "autopay_cancel": { "support": "supported", "evidence": "inferred", "source": "https://www.alaskacommunications.com/Support/Account" },
+    "scheduled_payment": { "support": "supported", "evidence": "documented_official", "source": "https://www.alaskacommunications.com/Support/Account" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.alaskacommunications.com/Support/Account", "note": "To disconnect service, call 800-808-8083.", "channel": "phone", "phone": "8008088083" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.alaskacommunications.com/Support/Bill-Payment-Options", "phone": "8008088083" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.alaskacommunications.com/Support/Bill-Payment-Options" }
+  },
+  "contact": { "phone": "1-800-808-8083", "payPhone": "1-800-808-8083", "evidence": "documented_official", "source": "https://www.alaskacommunications.com/Support/Bill-Payment-Options" },
+  "billing": {
+    "source": "https://www.alaskacommunications.com/Support/Bill-Payment-Options",
+    "methods": ["bank", "card"],
+    "guestMethods": ["card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Bill payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "AccountView: log in to make a one-time payment, set up AutoPay and see current and previous invoices. Select Make Payment, choose a date, amount and payment method, then Continue and Complete Payment.",
+        "QuickPay: pay all of your Alaska Communications invoices in one transaction without logging in, with VISA, MasterCard or Discover.",
+        "Phone: the secure 24-hour line has no hold time. Call 907-563-3279 in Anchorage or 800-808-8083 statewide. Mail: send a check with the remittance slip to PO Box 196666, Anchorage, AK 99519-6666 and write your account number on it. Please do not send cash."
+      ],
+      "source": "https://www.alaskacommunications.com/Support/Bill-Payment-Options"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up AutoPay in AccountView",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in and select Manage AutoPay below the Make a Payment button. Choose a bank account or a credit or debit card, give it a nickname, enter the details and Save. Then choose a Payment Date and select Enroll.",
+        "If your account has a balance, pay it in full before AutoPay takes effect. To change the card or bank account later, use Manage AutoPay again."
+      ],
+      "steps": ["Log in to AccountView.", "Select Manage AutoPay.", "Add or choose a payment method and Save.", "Pick a Payment Date and select Enroll."],
+      "source": "https://www.alaskacommunications.com/Support/Account"
+    },
+    {
+      "slug": "accountview",
+      "title": "Create your AccountView login",
+      "topic": "account",
+      "paragraphs": [
+        "Choose Create Account on the login page. You need your account number and your CPNI password. Select Get Registration Code and a code is sent to the email address on file; enter it with your CPNI password, accept the terms and continue.",
+        "You log in with a username and password. Forgot Username and Forgot Password send a recovery email to the address on your account."
+      ],
+      "source": "https://www.alaskacommunications.com/Support/Account"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Disconnect service",
+      "topic": "account",
+      "paragraphs": [
+        "Disconnecting service is handled by phone. Call 800-808-8083. Moves can be ordered in AccountView with Change, then I'm moving to a new address."
+      ],
+      "source": "https://www.alaskacommunications.com/Support/Account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "quickpay-cards",
+        "intent": "Using Alaska Communications' support pages, find which card brands QuickPay accepts. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["Discover"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["Discover"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "QuickPay takes VISA, MasterCard and Discover." }]
+      },
+      {
+        "slug": "anchorage-pay-line",
+        "intent": "You live in Anchorage. Find Alaska Communications' local phone number for paying your bill by phone. Do not make a payment.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["9075633279"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["9075633279"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "907-563-3279" }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "contains": ["Username"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make Payment", "AutoPay"] },
+    { "page": "cancel", "signedIn": true, "contains": "800-808-8083" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["PO Box 196666", "907-563-3279"] }
+  ]
+}

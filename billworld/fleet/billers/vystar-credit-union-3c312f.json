@@ -1,0 +1,357 @@
+{
+  "id": "vystar-credit-union-3c312f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "VyStar Credit Union",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public vystarcu.org pages. The live site answers scripted requests with a Radware/ShieldSquare bot challenge (not bypassed), so the page text was read from Internet Archive copies of the same URLs (make-loan-payment 2026-04-16, e-statements 2026-06-07, hardship-assistance 2026-04-20, enrollment-and-login 2026-05-13). Loans are paid by Internal or External Transfer in Online & Mobile Banking (Pay & Transfer on desktop, Transfers in the app; amount and frequency). Payments from another institution without logging in: \"Make a VyStar Payment\" (BillMatrix/Fiserv guest page; fee and accepted methods not stated on VyStar pages). External transfers are free. Magic*Touch phone payments transfer from VyStar accounts only (904-777-6001 / 800-235-6289, member number + PIN). Automatic Funds Transfer Service (AFTS: loans except credit cards) is set up by phone (904-777-6000 or 800-445-6289 option 9) or at a branch. Hardship: Skip A Pay ($15/month, up to 3 months, consumer loans, 6 payments first), Hardship Deferment (11-60 days past due), Due Date Change - each requested with a DocuSign form, 3-5 business days; no online payment plan (payment_arrangement unsupported). Due-date changes cannot be modelled (open tier-1 request). Statements: Online & Mobile Banking enrollment gives online statements automatically; members can also get mail by toggling e-Statements under Profile & Settings > Statements Delivery (paperless modelled as the family toggle). Enrollment needs member number, SSN/Tax ID, savings account and ZIP, then username/password and a one-time passcode. Online methods bank only (inferred). Review 2026-10-10: the live make-loan-payment page loaded without a challenge for the reviewer and states that Make a VyStar Payment carries a $7.50 fee (now fees.guestBankCents/guestCardCents 750; accepted guest methods still not stated, family default kept).",
+  "officialDomains": [
+    "vystarcu.org"
+  ],
+  "sources": [
+    {
+      "url": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment",
+      "title": "Make a Loan Payment | VyStar Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://vystarcu.org/personal/resources/member-support/managing-your-account/e-statements",
+      "title": "e-Statements | VyStar Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.vystarcu.org/personal/resources/hardship-assistance",
+      "title": "Hardship & Loan Modification Assistance | VyStar Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://vystarcu.org/how-tos/enrollment-and-login",
+      "title": "Enrollment and Login | VyStar Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "VyStar",
+    "displayName": "VyStar Credit Union",
+    "primary": "#00467f",
+    "accent": "#8c3d00",
+    "monogram": "VS"
+  },
+  "labels": {
+    "payBill": "Pay & Transfer",
+    "autopay": "Recurring Transfers",
+    "guestPay": "Make a VyStar Payment",
+    "signIn": "Log in",
+    "register": "Enroll in Online Banking",
+    "paperless": "Statements Delivery",
+    "profile": "Profile & Settings",
+    "arrangement": "Hardship & Loan Assistance",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Make a Loan Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Make a VyStar Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Enroll in Online Banking",
+        "page": "register"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay & Transfer",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Transfers",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Profile & Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "registrationFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "documented_official",
+    "source": "https://vystarcu.org/how-tos/enrollment-and-login"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment",
+      "note": "Pay your loan by Internal Transfer from a VyStar account or External Transfer from another institution; external transfers are free."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment",
+      "note": "Make a VyStar Payment pays a VyStar loan from an account at another financial institution without logging in. A $7.50 fee applies to each payment."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment",
+      "note": "Set a frequency on a transfer to repeat it. Automatic Funds Transfer Service (all loans except credit cards) is set up by calling 904-777-6000 or 800-445-6289, option 9, or at a branch."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/e-statements"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/e-statements"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.vystarcu.org/personal/resources/hardship-assistance"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.vystarcu.org/personal/resources/hardship-assistance",
+      "note": "VyStar has no online payment plan. Skip A Pay, Hardship Deferment and Due Date Change are requested with a short form; call 904-777-6000 or 800-445-6289 for help."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment",
+      "phone": "904-777-6001",
+      "note": "Magic*Touch, our voice response line, moves money from your VyStar checking, savings or money market account to your loan. Call 904-777-6001 or 800-235-6289 and use your member number and Magic*Touch PIN."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment"
+    }
+  },
+  "contact": {
+    "phone": "904-777-6000",
+    "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment"
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment",
+    "fees": {
+      "guestBankCents": 750,
+      "guestCardCents": 750,
+      "evidence": "documented_official",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make a loan payment",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment",
+      "paragraphs": [
+        "Pay your loan in Online & Mobile Banking by moving money from a VyStar savings, checking or money market account, or from your account at another institution. It works like any other transfer, any time, in any amount.",
+        "Log in, select Pay & Transfer on a computer (Transfers in the VyStar Mobile app), choose Internal or External Transfer, pick the loan in the To section, enter the amount and frequency, then continue and finish.",
+        "Without logging in, Make a VyStar Payment takes a payment from an account at another institution for a $7.50 fee; internal and external transfers in Online & Mobile Banking are free. You can also call Magic*Touch at 904-777-6001 or 800-235-6289, or mail a check payable to VyStar Credit Union to P.O. Box 45085, Jacksonville, FL 32232-5085 (credit cards: P.O. Box 71050, Charlotte, NC 28272-1050)."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring and automatic loan payments",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/make-loan-payment",
+      "paragraphs": [
+        "Choose a frequency when you set up a transfer in Online & Mobile Banking and the payment repeats on that schedule.",
+        "With the Automatic Funds Transfer Service, loan payments (except credit cards) are deducted from your VyStar account automatically; just keep enough money in the account. Call 904-777-6000 or 800-445-6289, option 9, or visit a branch to set it up."
+      ]
+    },
+    {
+      "slug": "payment-plan",
+      "title": "Hardship and loan assistance",
+      "topic": "billing",
+      "source": "https://www.vystarcu.org/personal/resources/hardship-assistance",
+      "paragraphs": [
+        "VyStar can adjust payment dates or pause payments for a while. Each option is requested with a form, and approval takes three to five business days.",
+        "Skip A Pay is for consumer loans (not credit cards) that are current or within the 10-day grace period. It costs $15 per month, for up to three months, and you must have made 6 payments before your first skip.",
+        "Hardship Deferment covers consumer loans and credit cards that are 11 to 60 days past due, once for every 12 payments, with a soft credit pull and income verification. A Due Date Change is for consumer loans after the first payment, within the same month, and the loan must stay current."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "e-Statements",
+      "source": "https://vystarcu.org/personal/resources/member-support/managing-your-account/e-statements",
+      "paragraphs": [
+        "Enrolling in Online & Mobile Banking gives you online access to your statements automatically, and we email you when a new one is ready. To also get statements by mail, turn on the e-Statements switch under Profile & Settings, then Statements Delivery.",
+        "For credit card e-Statements, select your VyStar credit card, open the Statements tab, choose e-Statement Enrollment and follow the steps on screen."
+      ]
+    },
+    {
+      "slug": "register",
+      "title": "Enroll in Online & Mobile Banking",
+      "source": "https://vystarcu.org/how-tos/enrollment-and-login",
+      "paragraphs": [
+        "On the login page or in the VyStar Mobile app, select Enroll in Online Banking and fill in your member information: member number, Social Security number or Tax ID, savings account and ZIP code.",
+        "Accept the terms, create a username and password, then verify your identity with a one-time passcode. You should get an email confirming the enrollment."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "skip-a-pay-fee",
+        "intent": "Using VyStar's help pages, find what Skip A Pay costs per month. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Skip A Pay costs $15 per month, for up to three months."
+          }
+        ]
+      },
+      {
+        "slug": "magic-touch-phone",
+        "intent": "Using VyStar's help pages, find the phone number for Magic*Touch loan payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "904-777-6001",
+              "800-235-6289"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "904-777-6001",
+            "800-235-6289"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Magic*Touch at 904-777-6001 or 800-235-6289."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log in",
+        "Make a VyStar Payment"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "guest",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay & Transfer",
+        "Recurring Transfers"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plan",
+      "contains": "$15 per month"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "Statements Delivery"
+    }
+  ]
+}

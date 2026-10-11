@@ -1,0 +1,293 @@
+{
+  "id": "good-to-go-washington-state-tolling-f625db",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Good To Go! (Washington State tolling)",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public WSDOT pages (Toll roads, bridges and tunnels; Good To Go! accounts and passes; Understanding your toll bill or civil penalty). MyGoodToGo.com is a script-rendered app whose HTML shows only the site name, so its sign-in wording was not read and the family defaults stay. Accounts: Pre-Paid ($30 opening balance; refilled automatically by credit card when low, or by electronic check on days of the month you choose) or Pay As You Go (no prepaid balance; tolls charged to the credit card twice a month); same toll rate either way; no fees to create, maintain or close an account; email statements free, mailed paper statements cost extra (amount not stated). Without a pass, account trips add 25 cents each (Pay By Plate). Pay By Mail toll bills cost $2 more per toll; $5 late fee when a bill is not paid by its due date; $40 civil penalty per toll unpaid 80 days after travel; DOL registration hold if a civil penalty is unpaid 20 days; one-time penalty forgiveness by calling customer service with all original tolls paid. Temporary accounts close automatically within 90 days. The $5 late fee is described in help only. AutoPay amount policy stays 'full' (the engine has no twice-monthly schedule; see open tier-1 request for bi-weekly/twice-a-month AutoPay). No installment plan is described (payment_arrangement unsupported, inferred).",
+  "officialDomains": [
+    "wsdot.wa.gov",
+    "mygoodtogo.com"
+  ],
+  "sources": [
+    {
+      "url": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes",
+      "title": "Good To Go! accounts & passes | WSDOT",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes/understanding-your-toll-bill-or-civil-penalty",
+      "title": "Understanding your toll bill or civil penalty | WSDOT",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels",
+      "title": "Toll roads, bridges & tunnels | WSDOT",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Good To Go!",
+    "shortName": "Good To Go!",
+    "primary": "#006341",
+    "accent": "#00508a",
+    "monogram": "GG"
+  },
+  "labels": {
+    "autopay": "Automatic Payments",
+    "guestPay": "Pay a Toll Bill",
+    "register": "Create an Account",
+    "help": "Help"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes",
+      "note": "Pre-Paid accounts refill automatically by credit card when the balance gets low (or by electronic check on days you choose); Pay As You Go accounts charge your credit card for tolls twice a month."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes",
+      "note": "Email statements are free; paper statements by mail cost extra."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes/understanding-your-toll-bill-or-civil-penalty",
+      "note": "Pay a Pay By Mail toll bill online with the customer ID or statement information on your bill; no account is needed."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes",
+      "phone": "8669368246"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes",
+      "note": "No payment plan is offered. Pay toll bills in full by the due date; if you have civil penalties, call Good To Go! at 1-866-936-8246 to ask about the one-time penalty forgiveness program.",
+      "channel": "phone",
+      "phone": "8669368246"
+    }
+  },
+  "billing": {
+    "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "account-options",
+      "title": "Pre-Paid and Pay As You Go accounts",
+      "topic": "autopay",
+      "paragraphs": [
+        "Both account options pay the same low toll rate and there are no fees to create, maintain or close an account.",
+        "Pre-Paid: pay $30 when you open the account to cover future tolls. When the balance gets low it refills automatically from your credit card, or you can choose specific days of the month to refill by electronic check.",
+        "Pay As You Go: no prepaid balance is needed; tolls are charged to your credit card automatically twice a month. Temporary accounts for visitors use Pay As You Go and close on a date you choose within 90 days."
+      ],
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes"
+    },
+    {
+      "slug": "late-fees-penalties",
+      "title": "Late fees and civil penalties",
+      "topic": "fees",
+      "paragraphs": [
+        "Drivers without an account get a Pay By Mail toll bill at the registered owner's address; the Pay By Mail rate is $2 higher per toll. A bill not paid in full by its due date adds a $5 late fee.",
+        "Tolls still unpaid 80 days after travel get a $40 civil penalty each, and a civil penalty unpaid after 20 days can lead to a Department of Licensing hold on the vehicle registration. Collections can add service fees.",
+        "You may qualify for a one-time waiver of unpaid late fees and penalties if you pay all the original tolls; contact customer service to ask."
+      ],
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes"
+    },
+    {
+      "slug": "passes",
+      "title": "Good To Go! passes",
+      "topic": "account",
+      "paragraphs": [
+        "Every type of pass gets the lowest toll rate on all Washington toll roads. You can still use an account without a pass, but each trip then adds a 25-cent fee.",
+        "Buy passes online at MyGoodToGo.com or by calling 1-866-936-8246; sticker and Flex passes are also sold at some QFC and Fred Meyer stores and must be activated before use. The Flex Pass lets carpools ride free in the I-405 and SR 167 express toll lanes."
+      ],
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes"
+    },
+    {
+      "slug": "toll-bills",
+      "title": "Reading and paying a toll bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Each bill shows the amount due, previous balance, payments, new tolls, other charges and any $5 late fees or $40 civil penalties. A Good To Go! trip that stays unpaid for about a month is reversed and re-posted at the higher Pay By Mail rate.",
+        "Pay online at MyGoodToGo.com. If you mail a check or use bank bill pay, include the customer ID from that statement, which can change between bills. Third-party bill pay apps may add fees or delay your payment."
+      ],
+      "source": "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/good-go-accounts-passes/understanding-your-toll-bill-or-civil-penalty"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "prepaid-opening-balance",
+        "intent": "Using the Good To Go! website's help pages, find how much a Pre-Paid account requires when it is opened. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$30",
+              "30 dollars",
+              "thirty dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$30",
+            "30 dollars",
+            "thirty dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Pre-Paid accounts start with $30."
+          }
+        ]
+      },
+      {
+        "slug": "civil-penalty",
+        "intent": "Using the Good To Go! website's help pages, find the civil penalty charged for each toll left unpaid 80 days after travel. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$40",
+              "40 dollars",
+              "forty dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$40",
+            "40 dollars",
+            "forty dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each unpaid toll gets a $40 civil penalty."
+          }
+        ]
+      },
+      {
+        "slug": "no-pass-fee",
+        "intent": "Using the Good To Go! website's help pages, find the extra fee per trip for an account holder driving without a pass. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "25 cents",
+              "$0.25",
+              "25-cent",
+              ".25"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "25 cents",
+            "$0.25",
+            "25-cent",
+            ".25"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each trip without a pass adds a 25-cent fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "account-options",
+      "contains": "twice a month"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-fees-penalties",
+      "contains": "$40 civil penalty"
+    }
+  ]
+}

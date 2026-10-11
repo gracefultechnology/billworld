@@ -1,0 +1,373 @@
+{
+  "id": "guardian-medical-monitoring-7bfd60",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Guardian Medical Monitoring",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from guardianmedicalmonitoring.com (home page Bill Pay link, Contact page) and the public pages of its official Bill Pay site, the Brightree-hosted Patient Portal at guardianmedical.hmebillpay.com (Home, FAQs, Contact, Make One Time Payment and Register pages read without entering anything). Sign-in is one page with Username and Password, 'Forgot your password?' (reset by email address), 'Register now' and 'Register via code'; registration asks for first name, last name and email and then verifies the email. The portal lets you view and pay invoices, see payment history, set up AutoPAY (card or bank account, charged on each invoice due date; the date cannot be chosen; invoices received before enrolling are not paid by AutoPAY) and eDelivery (email alerts instead of paper). Card details are changed under 'User Profile'. One-time payments without signing in verify the patient by Invoice # + Last name plus one of DOB, Account # or the last four SSN digits (modelled as statementId + lastName + accountNumber, guestLookupExact); guest payments do not appear in the signed-in payment history. Payments can take up to 7 business days to clear. Mailed payments: PO Box 713415, Chicago, IL 60677-4315; portal billing phone (855) 627-6381; the main site's customer support line is 888-349-2400. Cancel service, payment plans: no docs, phone-only (inferred). Scheduled payments: unknown. No fees published.",
+  "officialDomains": [
+    "guardianmedicalmonitoring.com",
+    "guardianmedical.hmebillpay.com"
+  ],
+  "sources": [
+    {
+      "url": "https://guardianmedicalmonitoring.com/",
+      "title": "Guardian Medical Monitoring - Medical Alert Systems",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://guardianmedical.hmebillpay.com/",
+      "title": "Home - Patient Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://guardianmedical.hmebillpay.com/Home/Faq",
+      "title": "FAQ - Patient Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://guardianmedical.hmebillpay.com/Home/Contact",
+      "title": "Contact - Patient Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://guardianmedical.hmebillpay.com/Payments/Guest/Payment",
+      "title": "Make One Time Payment - Patient Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://guardianmedical.hmebillpay.com/Account/Register",
+      "title": "Register - Patient Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Guardian Medical Monitoring",
+    "shortName": "Guardian",
+    "primary": "#003a70",
+    "accent": "#8a1c24",
+    "monogram": "GM"
+  },
+  "labels": {
+    "signIn": "Login",
+    "username": "Username",
+    "forgot": "Forgot your password?",
+    "register": "Register now",
+    "guestPay": "Make a one time payment",
+    "autopay": "AutoPAY",
+    "paperless": "eDelivery",
+    "profile": "User Profile",
+    "statements": "Invoices",
+    "history": "Payment history",
+    "help": "FAQs",
+    "contact": "Contact"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Home",
+        "page": "home"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Make payment",
+        "page": "guest"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Contact",
+        "helpSlug": "contact-us"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "lastName"
+    ],
+    "guestLookupFields": [
+      "statementId",
+      "lastName",
+      "accountNumber"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://guardianmedical.hmebillpay.com/"
+  },
+  "contact": {
+    "phone": "855-627-6381",
+    "source": "https://guardianmedical.hmebillpay.com/Home/Contact"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://guardianmedical.hmebillpay.com/Payments/Guest/Payment"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://guardianmedical.hmebillpay.com/"
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://guardianmedical.hmebillpay.com/Account/Register"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://guardianmedical.hmebillpay.com/Home/Faq"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://guardianmedical.hmebillpay.com/Home/Faq"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://guardianmedical.hmebillpay.com/Home/Faq"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://guardianmedical.hmebillpay.com/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://guardianmedicalmonitoring.com/",
+      "note": "Monitoring service cannot be cancelled online. Call Guardian customer support at 888-349-2400.",
+      "channel": "phone",
+      "phone": "8883492400"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://guardianmedical.hmebillpay.com/Home/Contact",
+      "note": "Payment plans are not offered online. Call Guardian Medical Monitoring billing at (855) 627-6381.",
+      "channel": "phone",
+      "phone": "8556276381"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://guardianmedical.hmebillpay.com/Home/Contact"
+    }
+  },
+  "billing": {
+    "source": "https://guardianmedical.hmebillpay.com/Home/Faq",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a one time payment",
+      "topic": "payments",
+      "paragraphs": [
+        "You do not need a profile to pay. Choose Make payment, then verify the patient with the Invoice #, the Last name and one more detail: date of birth, Account # or the last four digits of the Social Security number. You can add an email address for the receipt.",
+        "Payments made without signing in do not show in your payment history; only payments made while logged in to your profile appear there. It can take up to 7 business days for a payment to clear your bank; the emailed receipt confirms Guardian received it.",
+        "To pay by mail, send your payment to Guardian Medical Monitoring, PO Box 713415, Chicago, Illinois 60677-4315."
+      ],
+      "source": "https://guardianmedical.hmebillpay.com/Payments/Guest/Payment",
+      "steps": [
+        "Choose Make payment.",
+        "Pick how to verify the patient and enter the Invoice # and Last name.",
+        "Enter the extra detail you chose and select Next.",
+        "Enter your card or bank account and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPAY",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPAY stores your credit or debit card or bank account and charges it on the due date shown on each invoice, so payments are never late. Register for a Patient Portal profile to sign up.",
+        "You cannot pick a different charge date: every future invoice is charged on its due date. Invoices you received before opting in are not paid by AutoPAY, so pay those separately.",
+        "You will still get paper invoices with AutoPAY unless you also turn on eDelivery. To change the card AutoPAY uses, go to User Profile and add a new payment method."
+      ],
+      "source": "https://guardianmedical.hmebillpay.com/Home/Faq"
+    },
+    {
+      "slug": "paperless",
+      "title": "eDelivery",
+      "topic": "account",
+      "paragraphs": [
+        "Log in to the Patient Portal, create a profile if you have not already, and select eDelivery. You then get email alerts when invoices are ready to pay instead of paper copies."
+      ],
+      "source": "https://guardianmedical.hmebillpay.com/Home/Faq"
+    },
+    {
+      "slug": "faq",
+      "title": "Patient Portal FAQs",
+      "topic": "faq",
+      "paragraphs": [
+        "A profile is not required to pay, but it keeps the invoices you owe and the ones you have paid together and gives you your full transaction history.",
+        "Each email address can be used for only one profile. If registration says your email already exists, check whether you or a family member already registered with it.",
+        "Registration asks for your first name, last name and email address, then sends a link to verify the email before you finish. If the email does not arrive within 24 hours, check spam and register again."
+      ],
+      "source": "https://guardianmedical.hmebillpay.com/Home/Faq"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Guardian billing",
+      "topic": "contact",
+      "paragraphs": [
+        "For questions about an invoice, call Guardian Medical Monitoring at (855) 627-6381 or write to PO Box 713415, Chicago, Illinois 60677-4315.",
+        "For service questions, a quote or support for a current system, call Guardian customer support at 888-349-2400."
+      ],
+      "source": "https://guardianmedical.hmebillpay.com/Home/Contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-charge-date",
+        "intent": "You're thinking about Guardian Medical Monitoring's AutoPAY. Using the portal's FAQs, find out on what date AutoPAY charges your card. Do not enroll or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "due date",
+              "due"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "due date",
+            "due"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AutoPAY charges your card on the due date shown on each invoice."
+          }
+        ]
+      },
+      {
+        "slug": "payment-clearing-time",
+        "intent": "You paid Guardian Medical Monitoring in the portal but don't see it at your bank. Using the FAQs, find how many business days a payment can take to process. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "7",
+              "seven"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "7",
+            "seven"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 7 business days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "888-349-2400"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "due date",
+        "User Profile"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Chicago"
+    }
+  ]
+}

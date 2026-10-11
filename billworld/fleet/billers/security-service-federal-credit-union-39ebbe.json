@@ -1,0 +1,317 @@
+{
+  "id": "security-service-federal-credit-union-39ebbe",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Security Service Federal Credit Union",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-10",
+  "template": "bank-billpay",
+  "notes": "Researched from public ssfcu.org pages (no sign-in). Catalog routed this credit union to kubra; moved to bank-billpay (loans are paid inside Security Service Online Banking). Online: Transfers & Payments tab > Make a Payment (Security Service account) or Manage Transfers & Payments > Add Account (non-Security Service account); recurring via \"Recurring\" under Set the Payment Frequency & Date; enrolment may need the 10-digit savings/checking number. Without online banking: ACI Payments, Inc. (Speedpay guest page) with the 10-digit loan account number or 16-digit card number plus ZIP (guestLookupExact); after 8 p.m. CT processes next business day; card payments may post as a cash advance at the card issuer. Fees: ACI payments by debit card, through a phone rep or in a branch are $7.50 (guestCardCents 750); automated phone line (1.866.397.4512) is free; recurring payments can also be set up on that line, or with the ACH Payment Authorization form. Member Contact Center 1.800.527.7328. Mail: P.O. Box 691530, San Antonio, TX 78269-1530. Hardship/payment plans not found publicly (family default).",
+  "officialDomains": [
+    "ssfcu.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment",
+      "title": "Make an Auto Loan Payment | Security Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ssfcu.org/loans-and-credit/credit-cards/faqs",
+      "title": "Credit Card FAQs | Security Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Security Service",
+    "displayName": "Security Service Federal Credit Union",
+    "primary": "#00487c",
+    "accent": "#8a3b00",
+    "monogram": "SS"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Recurring Payments",
+    "guestPay": "Pay with ACI Payments, Inc.",
+    "signIn": "Log In",
+    "register": "Enroll",
+    "accountName": "Auto Loan",
+    "statements": "View Statements"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Pay with ACI Payments, Inc.",
+        "page": "guest"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Transfers & Payments",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "View Statements",
+        "page": "statements"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment",
+      "note": "Online and mobile payments are free. Pay from a Security Service account, or add a non-Security Service account under Manage Transfers & Payments."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment",
+      "note": "Pay with ACI Payments, Inc. using your 10-digit loan account number (or 16-digit card number) and ZIP code. Payments after 8 p.m. CT process the next business day; debit card payments cost $7.50."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment",
+      "note": "Under Transfers & Payments choose Make a Payment, then Recurring in Set the Payment Frequency & Date. You can also set up recurring payments by phone at 1.866.397.4512."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ssfcu.org/loans-and-credit/credit-cards/faqs"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment",
+      "phone": "1-866-397-4512",
+      "note": "Payments through the automated phone system are free; payments through a representative or by card cost $7.50."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment"
+    }
+  },
+  "contact": {
+    "phone": "1-800-527-7328",
+    "payPhone": "1-866-397-4512",
+    "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment"
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "fees": {
+      "guestCardCents": 750,
+      "notes": [
+        "Phone payments through a representative, and card payments by phone or in a branch, cost $7.50; the automated phone system is free."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment"
+    },
+    "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to make a loan payment",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment",
+      "paragraphs": [
+        "Make your monthly payment in Security Service Online Banking or the mobile app, any time and free of charge. Select Transfers & Payments, then Make a Payment to pay from a Security Service account; to pay from another institution choose Manage Transfers & Payments and Add Account first.",
+        "Without online banking, pay through ACI Payments, Inc. with your full 10-digit loan account number (or 16-digit card number) and ZIP code. Payments after 8 p.m. CT process the next business day, and a card payment may be treated as a cash advance by your card issuer.",
+        "You can also call 1.866.397.4512, mail your payment with the coupon or loan number to Security Service Federal Credit Union, P.O. Box 691530, San Antonio, TX 78269-1530, or pay at a branch or Shared Branching location."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring payments",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment",
+      "paragraphs": [
+        "Log in to Online Banking, open the Transfers & Payments tab, choose the account type you are paying and select Make a Payment. Set the payment accounts and amount, then pick Recurring under Set the Payment Frequency & Date.",
+        "You can also call 1.866.397.4512, make your payment, and stay on the line to schedule a recurring monthly payment, or bring an ACH Payment Authorization form to a branch."
+      ]
+    },
+    {
+      "slug": "payment-fees",
+      "title": "Payment fees",
+      "topic": "billing",
+      "source": "https://www.ssfcu.org/loans-and-credit/auto-loans/make-a-payment",
+      "paragraphs": [
+        "Online and mobile payments are free, and so are payments through the automated phone system. Payments through a phone representative, and debit or credit card payments by phone or in a branch, carry a $7.50 money transfer fee charged through ACI Payments, Inc."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-payment-fee",
+        "intent": "Using Security Service's help pages, find the fee for paying a loan with a debit card through ACI Payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$7.50",
+              "7.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$7.50",
+            "7.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments cost $7.50."
+          }
+        ]
+      },
+      {
+        "slug": "aci-cutoff",
+        "intent": "Using Security Service's help pages, find the time after which ACI Payments processes a payment on the next business day. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "8 p.m.",
+              "8 pm",
+              "8pm",
+              "8:00 p.m.",
+              "8:00 pm",
+              "20:00"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "8 p.m.",
+            "8 pm",
+            "8pm",
+            "8:00 p.m.",
+            "8:00 pm",
+            "20:00"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payments made after 8 p.m. CT process the next business day."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Pay with ACI Payments, Inc."
+      ]
+    },
+    {
+      "page": "guest",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Transfers & Payments",
+        "Recurring Payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-fees",
+      "contains": "$7.50"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Set the Payment Frequency & Date"
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "id": "qmedic-95db0f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "QMedic",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-10",
+  "notes": "No public page describes a customer sign-in or online bill payment for this biller: billing is automatic (card or bank on file) and changes go through customer service by phone. The fleet requires an online account, so the signed-in area, online payment and register flows are a synthetic stand-in (pay_online evidence synthetic); every real route that is phone-only is modelled as an unsupported capability with a customer-facing note. Researched from QMedic's public home page and FAQ (Consumer/Private Pay and Professional Caregiver/Payer sections). The only public login is the Care Manager Dashboard for caregivers and payers (access requested by phone), not a billing account. Private pay: $30 a month or $300 a year, no hidden fees beyond replacement components; up to two extra in-home buttons free; no long-term contract, cancel anytime, unused time not refunded (the FAQ pairs this with a 30-day money-back guarantee from the day the device arrives; not a conflict). Cancel by phone or email; QMedic sends a return label and box and the subscription stays active until the hardware is returned (a renewal charged while the box is in transit is refunded). Phone 877-241-2244: option 1 dashboard/testing/insurance eligibility, option 2 replacements, battery checks, information changes and general customer service. Monthly vs annual cannot be expressed as plans, so no plan list. Reviewed 2026-10-10 (independent review): the FAQ never labels option 2 as 'billing'; option 2 is labelled for replacements, battery checks and changes to your information, so billing notes now say 'customer service ... option 2' (inferred) and the menu task asks about updating account details. The billing-menu task's expected answer was '2', which any answer quoting 877-241-2244 matched; it is now 'option 2'.",
+  "officialDomains": [
+    "qmedichealth.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.qmedichealth.com/",
+      "title": "QMedic - Medical Alert",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.qmedichealth.com/faq",
+      "title": "FAQ | QMedic",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "QMedic",
+    "shortName": "QMedic",
+    "primary": "#1b4a78",
+    "accent": "#8e2b3a",
+    "monogram": "QM"
+  },
+  "labels": {
+    "help": "FAQ",
+    "cancel": "Cancel Service",
+    "username": "Account number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Pricing FAQ",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "loginSteps": 1,
+    "evidence": "synthetic"
+  },
+  "contact": {
+    "phone": "877-241-2244",
+    "source": "https://www.qmedichealth.com/faq"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "synthetic"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.qmedichealth.com/faq",
+      "note": "Billing is handled by QMedic customer service. To change your payment details, call 877-241-2244 and choose option 2.",
+      "channel": "phone",
+      "phone": "8772412244"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.qmedichealth.com/faq",
+      "note": "Automatic billing cannot be changed online. Call 877-241-2244 and choose option 2; your subscription stays active until the hardware is returned.",
+      "channel": "phone",
+      "phone": "8772412244"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.qmedichealth.com/faq",
+      "note": "Service cannot be cancelled online. Call 877-241-2244 or email support; QMedic sends a return label and box, and the subscription ends when the hardware is returned.",
+      "channel": "phone",
+      "phone": "8772412244"
+    },
+    "change_plan": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.qmedichealth.com/faq",
+      "note": "To switch between monthly and annual billing, call QMedic customer service at 877-241-2244 and choose option 2.",
+      "channel": "phone",
+      "phone": "8772412244"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.qmedichealth.com/faq",
+      "note": "Payment plans are not offered online. Call QMedic customer service at 877-241-2244, option 2.",
+      "channel": "phone",
+      "phone": "8772412244"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred"
+    }
+  },
+  "billing": {
+    "source": "https://www.qmedichealth.com/faq"
+  },
+  "help": [
+    {
+      "slug": "faq",
+      "title": "Private pay pricing",
+      "topic": "faq",
+      "paragraphs": [
+        "QMedic costs $30 a month, or $300 a year on the annual plan. There are no hidden fees; the only other charges are for replacement components such as a wristband, pendant or base station. In-home systems can add a second button at no cost.",
+        "There is no long-term contract and you can cancel at any time. You can try QMedic with a 30-day money-back guarantee that starts the day the device arrives; apart from that, QMedic does not give refunds, including for unused subscription time. There is no charge for pressing the button or for false alarms.",
+        "To order replacement parts, have a battery checked or change your account information, call 877-241-2244 and choose option 2. For questions about whether your insurance covers QMedic, choose option 1 for the Sales line."
+      ],
+      "source": "https://www.qmedichealth.com/faq"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel and return your device",
+      "topic": "account",
+      "paragraphs": [
+        "Call 877-241-2244 or email QMedic support to cancel. QMedic sends a prepaid return label and a box if you need one.",
+        "Your subscription stays active until the hardware is returned. If your plan renews while the box is on its way back, that renewal charge is refunded."
+      ],
+      "source": "https://www.qmedichealth.com/faq"
+    },
+    {
+      "slug": "insurance",
+      "title": "Insurance coverage",
+      "topic": "assistance",
+      "paragraphs": [
+        "Some Medicaid, Managed Medicaid and Medicare Advantage members in the states QMedic serves may be covered. Call 877-241-2244 and choose option 1 to check eligibility."
+      ],
+      "source": "https://www.qmedichealth.com/faq"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "billing-menu-option",
+        "intent": "Your address and payment details have changed and you need QMedic to update your account. Using the FAQ, find which phone menu option to choose at 877-241-2244. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "option 2",
+              "option two"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "option 2",
+            "option two"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 877-241-2244 and choose option 2."
+          }
+        ]
+      },
+      {
+        "slug": "annual-price",
+        "intent": "Using QMedic's FAQ, find the price of the annual private-pay plan. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$300",
+              "300"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$300",
+            "300"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "$300 a year."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "877-241-2244"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "option 2"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": [
+        "$300",
+        "option 2"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "return label"
+    },
+    {
+      "page": "home",
+      "contains": "Account number"
+    }
+  ]
+}

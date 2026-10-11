@@ -1,0 +1,356 @@
+{
+  "id": "e-zpass-maryland-driveezmd-video-tolls-pay-by-pl-367ea5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "E-ZPass Maryland / DriveEzMD (Video Tolls, Pay-By-Plate)",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public driveezmd.com pages: home (Account Login with a Username / Account Number / Transponder Number chooser and Password; Pay Tolls Now; Installment Plan), Payment Options (E-ZPass, Pay-By-Plate, Video Tolls), E-ZPass FAQ, Video Tolling FAQ and the Video Toll Installment Plan page. The fleet models the login as username. Auto replenishment: credit card or bank account (ACH) charged when the balance falls below the account's low-balance threshold; variable (re-set every 90 days to average monthly use) or fixed amounts; funds usable after 24 hours in state, 48 out of state. $25 opening deposit; no monthly or annual fees for Maryland residents; non-Maryland addresses pay $1.50 a month unless they make 3 trips in the statement period. No statement is generated in months without travel. Video Tolls: Notice of Toll Due (NOTD); unpaid by the due date becomes a citation with a $25 civil penalty each; 15% off (max $5 per toll) when paid before an NOTD is mailed; debt referred to the Central Collection Unit after a final notice; MVA registration holds. The Installment Plan (HB 1465, 2025) is for unpaid video tolls and penalties of $300 or more and is requested by email, with a signed promissory note: payment_arrangement unsupported online (channel none; email is not a schema channel). The Schedule of Fees PDF (2022) was not read. Review 2026-10-10: the claim that Drive Ez MD charges no online payment fee was not found on the cited pages and was removed; the Payment Options page only warns that third-party tolling apps may add fees. Pay-By-Plate accounts are credit card only (Payment Options page).",
+  "officialDomains": [
+    "driveezmd.com"
+  ],
+  "sources": [
+    {
+      "url": "https://driveezmd.com/",
+      "title": "Maryland E-ZPass and Pay-By-Plate Home | DriveEzMD.com",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://driveezmd.com/acct-types/",
+      "title": "Payment Options | DriveEzMD.com",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://driveezmd.com/acct-types/e-zpass-faq/",
+      "title": "E-ZPass FAQ | DriveEzMD.com",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://driveezmd.com/acct-types/video-tolling-faq/",
+      "title": "Video Tolling FAQ | DriveEzMD.com",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://driveezmd.com/acct-types/installment-plan/",
+      "title": "DriveEzMD's Video Toll Installment Plan",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Drive Ez MD",
+    "shortName": "Drive Ez MD",
+    "primary": "#1f3a68",
+    "accent": "#8a2b1f",
+    "monogram": "MD"
+  },
+  "labels": {
+    "signIn": "Login",
+    "username": "Username",
+    "register": "Create an Account",
+    "guestPay": "Pay Tolls Now",
+    "autopay": "Auto Replenishment",
+    "arrangement": "Installment Plan",
+    "help": "FAQ",
+    "history": "Transactions"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Tolls Now",
+        "page": "guest"
+      },
+      {
+        "label": "Sign Up",
+        "page": "register"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "account-fees"
+      },
+      {
+        "label": "My Account",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Transactions",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Auto Replenishment",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Vehicles & Transponders",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://driveezmd.com/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://driveezmd.com/acct-types/e-zpass-faq/",
+      "note": "Your credit card or bank account is charged automatically whenever the balance falls below your low-balance threshold. Choose variable replenishment (adjusted every 90 days to your average monthly tolls) or a fixed amount."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://driveezmd.com/acct-types/video-tolling-faq/",
+      "note": "Pay a Notice of Toll Due online with the mailing number on the notice, or search by license plate or ZIP code. Video tolls paid before a notice is mailed get 15% off (up to $5 per toll)."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://driveezmd.com/acct-types/installment-plan/",
+      "note": "The Video Toll Installment Plan is for unpaid video tolls and civil penalties of $300 or more. Request it by email with your name, phone number and the mailing number on your notice; MDTA sends a promissory note and payment schedule to sign and return.",
+      "channel": "none"
+    }
+  },
+  "billing": {
+    "source": "https://driveezmd.com/acct-types/e-zpass-faq/",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Automatic replenishment",
+      "topic": "autopay",
+      "paragraphs": [
+        "Private accounts with a credit card or bank account (ACH) on file are replenished automatically whenever the balance falls below the account's low-balance threshold. Business accounts replenish at about 25 percent of their advance payment amount.",
+        "Variable replenishment is adjusted up or down every 90 days to your average monthly tolls, so the account refills about once a month. Fixed replenishment always charges the amount you pick from the list or type in, which can mean several charges in a busy month.",
+        "Replenished funds can be used for Maryland tolls after 24 hours and out of state after 48 hours. You can also pay by check or money order at a Customer Service Center or its 24/7 drop box; include your account number, plate, name and phone number."
+      ],
+      "source": "https://driveezmd.com/acct-types/e-zpass-faq/"
+    },
+    {
+      "slug": "account-fees",
+      "title": "E-ZPass Maryland account costs",
+      "topic": "fees",
+      "paragraphs": [
+        "Windshield transponders are free, and you deposit $25 into the account when you sign up; the whole deposit pays tolls. E-ZPass On the Go transponders from retailers come preloaded with $25 and must be registered within 7 days of first use.",
+        "Maryland residents pay no monthly or annual fees. Accounts without a Maryland address pay a $1.50 monthly maintenance fee, waived when the account uses Maryland toll facilities at least three times in the previous statement period.",
+        "No statement is produced for a month without travel; export your transaction history to CSV or PDF from Transactions."
+      ],
+      "source": "https://driveezmd.com/acct-types/e-zpass-faq/"
+    },
+    {
+      "slug": "video-tolls",
+      "title": "Video Tolls and Notices of Toll Due",
+      "topic": "billing",
+      "paragraphs": [
+        "Drivers without E-ZPass or Pay-By-Plate get a Notice of Toll Due (NOTD) in the mail at the highest rate. Pay it with Pay Tolls Now using the mailing number on the notice, or search by license plate or ZIP code. Paying a video toll before a notice is mailed takes 15% off, up to $5 per toll.",
+        "Any video toll not paid in full by the NOTD due date becomes a citation with a $25 civil penalty each. You can pay the toll and penalty, or contest it in District Court by the citation due date.",
+        "Unpaid violations are referred to the Maryland Central Collection Unit after a final notice mailed at least 15 days earlier; after referral, payments go to the Central Collection Unit instead of MDTA, and registration renewal may be blocked. Third-party tolling apps and sites may add their own fees."
+      ],
+      "source": "https://driveezmd.com/acct-types/video-tolling-faq/"
+    },
+    {
+      "slug": "installment-plan",
+      "title": "Video Toll Installment Plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "Drivers with unpaid video tolls and civil penalties of $300 or more can open an E-ZPass account to resolve the tolls at the lower E-ZPass rate, or enroll in an Installment Plan that reduces penalties not yet sent to collections and spreads the rest over monthly payments.",
+        "To apply, email MDTA with your full name, phone number and the mailing number from your toll notice. MDTA sends a promissory note, the list of violations and a monthly schedule; the plan starts when you return the signed note and the first payment, and registration holds are released then. Missed payments end the plan and restore the original debt."
+      ],
+      "source": "https://driveezmd.com/acct-types/installment-plan/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "out-of-state-maintenance-fee",
+        "intent": "Using the Drive Ez MD website's help pages, find the monthly maintenance fee charged to E-ZPass Maryland accounts without a Maryland address. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.50",
+              "1.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.50",
+            "1.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Accounts without a Maryland address pay $1.50 a month unless they make three trips in the statement period."
+          }
+        ]
+      },
+      {
+        "slug": "citation-civil-penalty",
+        "intent": "Using the Drive Ez MD website's help pages, find the civil penalty assessed for each video toll citation. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$25",
+              "25 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$25",
+            "25 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each citation carries a $25 civil penalty."
+          }
+        ]
+      },
+      {
+        "slug": "installment-plan-minimum",
+        "intent": "Using the Drive Ez MD website's help pages, find the minimum amount of unpaid video tolls and civil penalties needed to qualify for the Installment Plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$300",
+              "300 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$300",
+            "300 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Installment Plan is for unpaid video tolls and civil penalties of $300 or more."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Login"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "video-tolls",
+      "contains": "15%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "installment-plan",
+      "contains": "$300"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "account-fees",
+      "contains": "$1.50 monthly maintenance fee"
+    }
+  ]
+}

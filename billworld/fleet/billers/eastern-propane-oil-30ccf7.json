@@ -1,0 +1,327 @@
+{
+  "id": "eastern-propane-oil-30ccf7",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Eastern Propane & Oil",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public eastern.com pages (Billing & Payment Options, Pay Your Bill Online guide, Customer Care) and the public myaccount.eastern.com sign-in and 'Set Up Your Online Account' pages; no sign-in, no enrollment, no forms submitted. Sign-in: 'Customer Login' with account email + password, 'Remember me', 'Forgot Password?', 'Enroll'. Enrollment asks for Customer # AND the phone number on the account, then name, mobile number, email, password and a security question; there is a paperless invoices/statements checkbox. Password rule stated on the enrollment page: at least six alphanumeric characters plus at least one punctuation character. After sign-in: Account Summary, 'Make Payment' (method, amount and payment date; 'Add a New Payment Method' for a credit card or bank account), 'Payments' menu (methods on file, scheduled payments, history), AutoPay and recurring payments. One-time payment is only available after login (no guest pay). Budget plans spread payments over 10 months; pre-buy plans lock a price before the season; both through Customer Care. Mail: PO Box 1800, Rochester, NH 03866-1800 with the remittance slip or the customer number. Offices take payments in person (drop boxes). Fees, late charges and account closing steps are not published on the pages used and are left at the family defaults.",
+  "officialDomains": [
+    "eastern.com"
+  ],
+  "sources": [
+    {
+      "url": "https://eastern.com/safety-support/customer-care/billing-payment-options/",
+      "title": "Billing & Payment Options - Eastern Propane & Oil",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://eastern.com/pay-your-bill-online/",
+      "title": "Wondering how to pay your bill online? - Eastern Propane & Oil",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://eastern.com/safety-support/customer-care",
+      "title": "Customer Care - Eastern Propane & Oil",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://myaccount.eastern.com/",
+      "title": "Eastern Propane & Oil - Customer Login",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://myaccount.eastern.com/addOnlineAccess",
+      "title": "Eastern Propane & Oil - Set Up Your Online Account",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Eastern",
+    "primary": "#0b4a8b",
+    "accent": "#b42318",
+    "monogram": "EP"
+  },
+  "labels": {
+    "signIn": "Customer Login",
+    "username": "Email",
+    "register": "Enroll",
+    "forgot": "Forgot Password?",
+    "dashboard": "Account Summary",
+    "payBill": "Make Payment",
+    "history": "Payments",
+    "accountNumber": "Customer #",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "MY ACCOUNT",
+        "page": "login"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Billing & Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Budget Plans",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Customer Care",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payments",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "phone",
+      "email"
+    ],
+    "passwordRule": {
+      "pattern": "^(?=(?:.*[A-Za-z0-9]){6})(?=.*[^A-Za-z0-9\\s]).+$",
+      "message": "Password must contain at least six letters or numbers plus at least one punctuation character."
+    },
+    "evidence": "documented_official",
+    "source": "https://myaccount.eastern.com/addOnlineAccess"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "observed_public",
+      "source": "https://myaccount.eastern.com/",
+      "channel": "phone",
+      "phone": "800-523-5237",
+      "note": "Online payments are made after you log in to your Eastern account. Not enrolled yet? Choose Enroll with your Customer # and phone number, or call 800-523-5237."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://eastern.com/pay-your-bill-online/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://eastern.com/pay-your-bill-online/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://eastern.com/pay-your-bill-online/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://eastern.com/safety-support/customer-care/billing-payment-options/",
+      "note": "Paper bills are mailed unless you choose email delivery in your online account."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://eastern.com/safety-support/customer-care/billing-payment-options/",
+      "phone": "800-523-5237"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://eastern.com/safety-support/customer-care/billing-payment-options/"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://eastern.com/safety-support/customer-care/billing-payment-options/"
+    }
+  },
+  "contact": {
+    "phone": "800-523-5237",
+    "source": "https://eastern.com/safety-support/customer-care"
+  },
+  "billing": {
+    "source": "https://eastern.com/pay-your-bill-online/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Billing & payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay any time in your Eastern online account. From the Account Summary choose Make Payment, then pick the payment method, amount and date. For a first payment, choose Add a New Payment Method and enter a credit card or bank account.",
+        "You can also pay by phone at 800-523-5237, at any Eastern office (weekdays 8 a.m. to 4:30 p.m., with drop boxes at each location), or by mail to Eastern Propane & Oil, PO Box 1800, Rochester, NH 03866-1800. Include the remittance slip from your invoice, or write your customer number on the check."
+      ],
+      "steps": [
+        "Select MY ACCOUNT and log in with your email and password.",
+        "On the Account Summary, choose Make Payment.",
+        "Pick a payment method, the amount and the payment date.",
+        "Submit the payment."
+      ],
+      "source": "https://eastern.com/pay-your-bill-online/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay and recurring payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Set up AutoPay or a recurring payment in your Eastern online account. Your payment methods on file, scheduled payments and payment history are all under Payments in the top menu."
+      ],
+      "source": "https://eastern.com/pay-your-bill-online/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Email billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Bills are mailed unless you sign up for email billing in your online account. You can also ask Customer Care to email your delivery tickets on the day of delivery."
+      ],
+      "source": "https://eastern.com/safety-support/customer-care/billing-payment-options/"
+    },
+    {
+      "slug": "register",
+      "title": "Set up your online account",
+      "topic": "account",
+      "paragraphs": [
+        "Choose Enroll and enter your Customer # together with the phone number on your account, then your name, email and a password. The password needs at least six letters or numbers plus at least one punctuation character. With an online account you can pay, request delivery or service, review documents and set notifications any time."
+      ],
+      "source": "https://myaccount.eastern.com/addOnlineAccess"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Budget and pre-buy plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "A budget plan spreads your payments over 10 months. A pre-buy plan locks in a price at the start of the season. Call the Customer Care Team at 800-523-5237 for details and to enroll."
+      ],
+      "source": "https://eastern.com/safety-support/customer-care/billing-payment-options/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "budget-plan-months",
+        "intent": "Using the Eastern Propane & Oil website's help pages, find over how many months a budget plan spreads your payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A budget plan spreads payments over 10 months."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "MY ACCOUNT",
+        "Budget Plans"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Customer Login"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Account Summary",
+        "Make Payment"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "PO Box 1800",
+        "800-523-5237"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "10 months"
+    }
+  ]
+}

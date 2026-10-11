@@ -1,0 +1,373 @@
+{
+  "id": "charlotte-water-ff03a9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Charlotte Water",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public charlottenc.gov Charlotte Water pages (Pay your Bill, Payment Questions, CLTWaterHub FAQs), read through a fetch tool because the site blocks plain HTTP clients; the CLTWaterHub sign-in page itself was not read. CLTWaterHub (launched September 1, 2026) uses the existing account number and username/email; Register creates an account. Make a One-Time Payment opens KUBRA EZ-PAY, which looks up the account by account number and street number (a street-number field cannot be expressed; reported). CLTWaterHub ACH payments are free; card or pinless-debit payments cost $1.50 up to $999.99 and $55 from $1,000 to $5,000 (rolling 26-27 day window); EZ-PAY applies the same tiers to ACH too. Payments over $5,000 are blocked except ACH (up to $1,000,000), so maxPaymentCents is $5,000. Auto Pay drafts checking or savings; the account must be active with no arrears or pending payment plan, customers choose a fixed amount or the amount due plus frequency and processing day, it cannot be cancelled within one day of processing, and enrollment fewer than 5 days before the due date starts after a full cycle (processing-day choice and the eligibility rules cannot be modelled). Payment arrangements and start/stop requests are online in CLTWaterHub. Late-fee amounts are not published on the pages used.",
+  "officialDomains": [
+    "charlottenc.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.charlottenc.gov/water/Pay-your-Bill",
+      "title": "Pay your Bill | Charlotte Water",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions",
+      "title": "Payment Questions | Charlotte Water",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.charlottenc.gov/water/Pay-your-Bill/CLTWaterHub/CLTWaterHub-FAQS",
+      "title": "CLTWaterHub Frequently Ask Questions | Charlotte Water",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Charlotte Water",
+    "shortName": "Charlotte Water",
+    "primary": "#00599c",
+    "accent": "#003e6d",
+    "monogram": "CW"
+  },
+  "labels": {
+    "dashboard": "CLTWaterHub",
+    "register": "Register",
+    "guestPay": "Make a One-Time Payment",
+    "payBill": "Pay your Bill",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "arrangement": "Payment Arrangement",
+    "cancel": "Start or Stop Service",
+    "help": "Payment Questions"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a One-Time Payment",
+        "page": "guest"
+      },
+      {
+        "label": "CLTWaterHub",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Pay your Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer Assistance Program",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Payment Questions",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "CLTWaterHub",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay your Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Start or Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.charlottenc.gov/water/Pay-your-Bill/CLTWaterHub/CLTWaterHub-FAQS"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill",
+      "note": "Make a One-Time Payment through KUBRA EZ-PAY with your account number and street number. A $1.50 fee applies to payments up to $999.99."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions",
+      "note": "Auto Pay drafts your checking or savings account. The account must be active with no past-due balance or pending payment plan. If you enroll fewer than 5 days before the due date, it starts after a full billing cycle."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions",
+      "note": "An Auto Pay payment cannot be cancelled within one day of processing."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions",
+      "note": "Start a payment arrangement in CLTWaterHub from the Payments menu on Account Overview or the Payment Arrangement link under Enrollments."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions",
+      "note": "Request to start or stop service in CLTWaterHub, or call 311 (704-336-7600)."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill",
+      "phone": "704-336-7600"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill"
+    }
+  },
+  "contact": {
+    "phone": "704-336-7600",
+    "payPhone": "704-336-7600",
+    "source": "https://www.charlottenc.gov/water/Pay-your-Bill"
+  },
+  "billing": {
+    "source": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 150,
+      "guestBankCents": 150,
+      "guestCardCents": 150,
+      "notes": [
+        "Card and pinless-debit payments totaling $1,000.00 to $5,000.00 within the payment window cost $55 instead of $1.50."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "maxPaymentCents": 500000,
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your Bill",
+      "topic": "payments",
+      "paragraphs": [
+        "CLTWaterHub lets you pay, set up recurring payments, pay from a bank account, view bills and payment history and choose paperless billing. ACH payments in CLTWaterHub are free.",
+        "Card or pinless-debit payments cost $1.50 for up to $999.99 and $55 for $1,000.00 to $5,000.00. Make a One-Time Payment (KUBRA EZ-PAY) uses the same fees for bank, card, Google Pay and Apple Pay payments, and needs your account number and street number. Payments over $5,000 are blocked except by ACH.",
+        "Call 311 or 704-336-7600 to pay by phone. Mail the bottom of your bill with a check or money order payable to City of Charlotte, P.O. Box 5053, Boone, IA 50950-0053, or pay at the Government Service Center, 600 E. Fourth St., weekdays 8 a.m. to 5 p.m. Retail locations such as CVS and Walgreens take cash for a $1.50 fee."
+      ],
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "To enroll you need an active account with no past-due balance or pending payment plan, and a checking or savings account. Choose a fixed amount or the amount due each cycle, then the payment frequency and processing day.",
+        "If you enroll fewer than 5 days before your due date, Auto Pay starts after a full billing cycle. A payment cannot be cancelled within one day of processing. Customers removed for returned payments need 12 months in a row of good payment history to re-enroll."
+      ],
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment arrangements and assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "You can start a payment arrangement online in CLTWaterHub, from the Payments menu on Account Overview or the Payment Arrangement link under Enrollments.",
+        "Customers facing financial hardship can apply to the Customer Assistance Program through Charlotte Water Cares. For questions call 311 or 704-336-7600."
+      ],
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start or stop service",
+      "topic": "account",
+      "paragraphs": [
+        "Request to start or stop water service in CLTWaterHub, or call 311 or 704-336-7600. Your account number is on your monthly bill, in the portal and in paperless billing reminder emails."
+      ],
+      "source": "https://www.charlottenc.gov/water/Pay-your-Bill/Bill-Questions/Payment-Questions"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-small",
+        "intent": "Find the fee Charlotte Water charges for a $120 card payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.50",
+              "1.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.50",
+            "1.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments up to $999.99 cost $1.50."
+          }
+        ]
+      },
+      {
+        "slug": "card-fee-large",
+        "intent": "Find the fee Charlotte Water charges for a card payment between $1,000 and $5,000. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$55",
+              "55"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$55",
+            "55"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments from $1,000 to $5,000 cost $55."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "CLTWaterHub",
+        "Payment Arrangement"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$1.50",
+        "$55",
+        "704-336-7600"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "5 days"
+      ]
+    }
+  ]
+}

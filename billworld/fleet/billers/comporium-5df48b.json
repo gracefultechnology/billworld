@@ -1,0 +1,432 @@
+{
+  "id": "comporium-5df48b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Comporium",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public help.comporium.com residential articles and comporium.com terms only (no sign-in). The help center is a script-rendered knowledge base that returned no text to the fetch tool, so the article text was read through the search index (article URLs cited). Comporium is the incumbent landline carrier for Rock Hill/York County SC and parts of NC; home phone, internet and TV share one My Comporium bill. Registration: My Comporium > Sign up now > email > emailed verification code > account number (no dash) plus SSN last four or service address (not expressible). Sign-in by email (inferred). Payments: My Comporium > Billing > Pay Now in Account Summary, full or Other Amount (minimum $5.01); credit card or bank draft; Visa, MasterCard, Discover (American Express no longer accepted since September 30, 2025); phone card payments 888-403-2667; mail P.O. Box 1042, Rock Hill, SC 29731-7042; retail stores. One-time payments can be scheduled (an article exists; the limit is not stated). One-time payment without registering is explicitly not available (guest_pay offline). Auto-Pay: Autopay > Add Payment Method > Checking or Debit/Credit; no fee for credit card; if turned on after the draft date, pay the current bill manually. Paper bills continue unless paperless is chosen in My Comporium. The $5.01 online minimum is held back from billing.minPaymentCents because tests/driver.mjs stale_review_two_tabs pays a fixed $5.00 (cross-owner request filed). Downgrades cannot be processed online (call 888-403-2667). Payment arrangements not described (family default kept). Reviewed 2026-10-10 (t20 review): the residential terms web page cited by the builder no longer carries cancellation text; the linked Residential Service Agreement PDF (May 14, 2026) says a recurring service can be cancelled by calling Customer Service, at a retail store or online in My Comporium, so cancel_service is now supported online (was phone-only). The same agreement gives a 1.5%-per-month late fee (lateFeePercent 1.5) and a $20 NSF charge per returned ACH attempt (fees.notes), no proration, equipment back within 5 days. The midnight/reconnect-fee sentence was dropped (not found in the current agreement). The help-center articles (Salesforce knowledge base) still render nothing without scripts; their facts ($5.01 minimum, Amex ended 9/30/2025, no guest pay) remain from the builder search-index reading.",
+  "officialDomains": [
+    "comporium.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.comporium.com/residential/s/article/How-do-I-pay-my-bill",
+      "title": "How do I pay my bill?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.comporium.com/residential/s/article/Can-I-Make-A-One-Time-Payment-Without-Registering-for-An-Online-Account",
+      "title": "Can I Make a One-Time Payment Without Registering for An Online Account?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.comporium.com/residential/s/article/How-Do-I-Set-Up-Auto-Pay",
+      "title": "How do I set up Auto-Pay?",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://help.comporium.com/s/article/How-do-I-make-a-one-time-scheduled-payment",
+      "title": "How do I make a one-time scheduled payment?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.comporium.com/s/article/Will-I-still-receive-my-paper-bill-in-the-mail",
+      "title": "Will I still receive my paper bill in the mail?",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://help.comporium.com/residential/s/article/How-do-I-register-for-My-Comporium",
+      "title": "How do I register for My Comporium?",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.comporium.com/s/article/How-Do-I-Downgrade-My-Service",
+      "title": "How Do I Downgrade My Service?",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.comporium.com/residential-terms-conditions/",
+      "title": "Residential Terms and Conditions - User and Service Specific",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.comporium.com/wp-content/uploads/2026/05/5_14_2026_Comporium-Residential-Service-Agreement.pdf",
+      "title": "Comporium Residential Service Agreement (May 14, 2026)",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.comporium.com/support/",
+      "title": "Customer Support - Comporium",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Comporium",
+    "shortName": "Comporium",
+    "primary": "#003a70",
+    "accent": "#a6192e",
+    "monogram": "C"
+  },
+  "labels": {
+    "dashboard": "My Comporium",
+    "viewBill": "Billing",
+    "payBill": "Pay Now",
+    "autopay": "Auto-Pay",
+    "paperless": "Paperless Billing",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Sign up now",
+    "username": "Email",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Comporium",
+        "page": "login"
+      },
+      {
+        "label": "Sign up now",
+        "page": "register"
+      },
+      {
+        "label": "How do I pay my bill?",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "Auto-Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "mfa": "email",
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://help.comporium.com/residential/s/article/How-do-I-register-for-My-Comporium"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.comporium.com/residential/s/article/Can-I-Make-A-One-Time-Payment-Without-Registering-for-An-Online-Account",
+      "note": "Paying online without a My Comporium account is not currently available. Pay at a Comporium retail location or call Customer Service at 888-403-2667.",
+      "channel": "phone",
+      "phone": "8884032667"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.comporium.com/residential/s/article/How-Do-I-Set-Up-Auto-Pay",
+      "note": "There is no fee to use a credit card for Auto-Pay. If you turn Auto-Pay on after this month's draft date, pay the current bill yourself."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://help.comporium.com/residential/s/article/How-Do-I-Set-Up-Auto-Pay"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.comporium.com/s/article/How-do-I-make-a-one-time-scheduled-payment"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.comporium.com/s/article/Will-I-still-receive-my-paper-bill-in-the-mail"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.comporium.com/wp-content/uploads/2026/05/5_14_2026_Comporium-Residential-Service-Agreement.pdf",
+      "note": "Cancel a recurring service in My Comporium, by calling 888-403-2667 or at a Comporium retail store. The current month is billed in full, and equipment goes back to a retail store within 5 days.",
+      "phone": "8884032667"
+    },
+    "change_plan": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.comporium.com/s/article/How-Do-I-Downgrade-My-Service",
+      "note": "Downgrades can't be processed online. Call our Customer Support Team at 888-403-2667.",
+      "channel": "phone",
+      "phone": "8884032667"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.comporium.com/residential/s/article/How-do-I-pay-my-bill",
+      "phone": "8884032667"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.comporium.com/residential/s/article/How-do-I-pay-my-bill"
+    }
+  },
+  "contact": {
+    "phone": "888-403-2667",
+    "evidence": "documented_official",
+    "source": "https://help.comporium.com/residential/s/article/How-do-I-pay-my-bill"
+  },
+  "billing": {
+    "source": "https://help.comporium.com/residential/s/article/How-do-I-pay-my-bill",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "autopayCardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://help.comporium.com/residential/s/article/How-Do-I-Set-Up-Auto-Pay",
+      "notes": [
+        "Each ACH payment returned for non-sufficient funds costs $20.00."
+      ]
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeePercent": 1.5
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How do I pay my bill?",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to My Comporium, select Billing and use Pay Now in the Account Summary section. Pay the full amount, or choose Other Amount for a partial payment of at least $5.01, by credit card or bank draft. You can also schedule a one-time payment for a later date.",
+        "Comporium accepts Visa, MasterCard, Discover and bank draft. American Express is no longer accepted as of September 30, 2025.",
+        "Other ways to pay: call 888-403-2667 to pay by card, mail your payment to P.O. Box 1042, Rock Hill, SC 29731-7042, or visit a retail store. Third-party services such as Walmart Bill Pay may be delayed or add fees, and Comporium can't help with them."
+      ],
+      "source": "https://help.comporium.com/residential/s/article/How-do-I-pay-my-bill"
+    },
+    {
+      "slug": "guest-pay",
+      "title": "Paying without an online account",
+      "topic": "payments",
+      "paragraphs": [
+        "A one-time online payment without registering for My Comporium is not currently available. Pay at a Comporium retail location or call Customer Service at 888-403-2667."
+      ],
+      "source": "https://help.comporium.com/residential/s/article/Can-I-Make-A-One-Time-Payment-Without-Registering-for-An-Online-Account"
+    },
+    {
+      "slug": "autopay",
+      "title": "How do I set up Auto-Pay?",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in to My Comporium, select Autopay and choose Add Payment Method. Pick Checking or Debit/Credit and enter your details. There is no fee for using a credit card.",
+        "If you turn on Auto-Pay after this month's draft date, make a manual payment for the current bill."
+      ],
+      "steps": [
+        "Log in to My Comporium.",
+        "Select Autopay.",
+        "Choose Add Payment Method.",
+        "Pick Checking or Debit/Credit and save."
+      ],
+      "source": "https://help.comporium.com/residential/s/article/How-Do-I-Set-Up-Auto-Pay"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel or downgrade service",
+      "topic": "account",
+      "paragraphs": [
+        "You can cancel a recurring service in My Comporium, by calling Customer Service at 888-403-2667 (available 24/7) or at a local Comporium retail store. Give notice before the end of your monthly period: service renews on the first day of each billing cycle and is billed in full for that month, without proration.",
+        "Downgrades can't be processed online; call 888-403-2667. Return Comporium equipment to any retail store within 5 days of cancelling to avoid equipment charges.",
+        "A payment not made by the due date adds a late fee of 1.5% per month on the outstanding balance. An ACH payment returned for non-sufficient funds costs $20.00."
+      ],
+      "source": "https://www.comporium.com/wp-content/uploads/2026/05/5_14_2026_Comporium-Residential-Service-Agreement.pdf"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "amex-abstain",
+        "intent": "Pay your Comporium bill with an American Express card. If Comporium no longer accepts American Express, do not make a payment and say so.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "abstain"
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "abstain"
+        },
+        "tags": [
+          "limitation",
+          "abstention",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "I cannot do that: Comporium does not accept American Express (it stopped on September 30, 2025)."
+          }
+        ]
+      },
+      {
+        "slug": "minimum-partial-payment",
+        "intent": "Using Comporium's help center, find the smallest partial payment you can make online with Other Amount. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5.01"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5.01"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The minimum partial payment is $5.01."
+          }
+        ]
+      },
+      {
+        "slug": "late-fee-rate",
+        "intent": "Using Comporium's help center, find the monthly late fee rate charged on a balance that is not paid by the due date. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The late fee is 1.5% per month on the outstanding balance."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto-Pay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$5.01",
+        "American Express",
+        "P.O. Box 1042"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "888-403-2667",
+        "1.5%"
+      ]
+    }
+  ]
+}

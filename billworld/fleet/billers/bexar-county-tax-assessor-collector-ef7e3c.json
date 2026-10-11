@@ -1,0 +1,355 @@
+{
+  "id": "bexar-county-tax-assessor-collector-ef7e3c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Bexar County Tax Assessor-Collector",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public bexar.org pages and two public PDFs (Payment Plans, Automatic Payment Deduction Consent Form); no sign-in, no account search. Online and phone payments through JetPay: eCheck free, credit card 2.10%; phone 1-888-852-3572 (card or checking); a 12-digit tax account number is needed (the mock guest search uses the parcel field). Taxes due by Jan 31, delinquent Feb 1; no early-payment discounts since 2003. Plans: one payment, Half-Payment (Nov 30/Jun 30), Quarter-Payment and 10-Month (Oct-Jul) for 65+/disabled/disabled-veteran homesteads, and a Pre-Payment plan. Plans start by paying on their schedule, not through an online agreement, so payment_arrangement is unsupported online. Automatic Payment Deduction requires a signed consent form mailed to P.O. Box 839950, San Antonio TX 78283-3950, banking details taken by a deputy by phone, and must be rescheduled every year, so AutoPay is unsupported online (channel mail). Certified statements by email are registered from the account page and confirmed by email. Email sign-in is synthetic.",
+  "officialDomains": [
+    "bexar.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.bexar.org/1515/Tax-Assessor-Collector",
+      "title": "Bexar County Tax Assessor-Collector, Albert Uresti",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.bexar.org/1562/Pay-Taxes-OnlineBy-Phone",
+      "title": "Pay Taxes Online | Bexar County, TX - Official Website",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.bexar.org/2582/Property-Tax-Frequently-Asked-Questions",
+      "title": "Property Tax Frequently Asked Questions | Bexar County, TX",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.bexar.org/DocumentCenter/View/25922/Payment-Plans",
+      "title": "Available Payment Plans (PDF)",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.bexar.org/DocumentCenter/View/20814/Automatic-Payment-Deduction-Consent-Form",
+      "title": "Automatic Payment Deduction Agreement (PDF)",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.bexar.org/1561/e-Statement-Instructions",
+      "title": "e-Statement Instructions | Bexar County, TX",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Bexar County Tax Assessor-Collector",
+    "shortName": "Bexar County Tax Office",
+    "primary": "#2b4a1f",
+    "accent": "#6d2a52",
+    "monogram": "BC"
+  },
+  "labels": {
+    "guestPay": "Search Your Account",
+    "payBill": "Pay Taxes Online/By Phone",
+    "paperless": "e-Statements",
+    "arrangement": "Property Tax Payment Plans",
+    "help": "Property Tax Frequently Asked Questions",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Search Your Account",
+        "page": "guest"
+      },
+      {
+        "label": "Pay Taxes Online/By Phone",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Property Tax Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "e-Statement Instructions",
+        "helpSlug": "e-statements"
+      },
+      {
+        "label": "Property Tax Frequently Asked Questions",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Taxes Online/By Phone",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "e-Statements",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bexar.org/1562/Pay-Taxes-OnlineBy-Phone",
+      "note": "Pay online through JetPay with your 12-digit tax account number: eCheck free, credit card 2.10%."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.bexar.org/DocumentCenter/View/20814/Automatic-Payment-Deduction-Consent-Form",
+      "note": "Automatic Payment Deduction is set up by mailing a signed consent form; a deputy then calls for your bank or card details. It must be rescheduled every year.",
+      "channel": "mail"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bexar.org/1561/e-Statement-Instructions",
+      "note": "Search your account, choose to register for certified statements by email, and confirm the verification email."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bexar.org/1562/Pay-Taxes-OnlineBy-Phone",
+      "note": "Call JetPay at 1-888-852-3572 with your 12-digit tax account number; card (2.10%) or checking account.",
+      "phone": "8888523572"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.bexar.org/2582/Property-Tax-Frequently-Asked-Questions",
+      "note": "Mailed payments are on time if postmarked by January 31."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.bexar.org/DocumentCenter/View/25922/Payment-Plans",
+      "note": "Half-Payment, Quarter-Payment, 10-Month and Pre-Payment plans start by paying on the plan schedule; there is no online agreement. Call 210-335-2251 for help.",
+      "channel": "phone"
+    }
+  },
+  "billing": {
+    "source": "https://www.bexar.org/1562/Pay-Taxes-OnlineBy-Phone",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.1,
+      "evidence": "documented_official",
+      "source": "https://www.bexar.org/1562/Pay-Taxes-OnlineBy-Phone"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay taxes online or by phone",
+      "topic": "payments",
+      "source": "https://www.bexar.org/1562/Pay-Taxes-OnlineBy-Phone",
+      "paragraphs": [
+        "Pay property taxes online or by phone through JetPay, the Tax Assessor-Collector's authorized agent. You need your 12-digit tax account number. Electronic checks are free; credit cards add a 2.10% convenience charge from JetPay.",
+        "To pay by phone, call 1-888-852-3572 with your tax account number and your card or your checking account and routing numbers. Card and eCheck payments take 3 to 5 business days to post, but they count as of the transaction date. eChecks must come from a regular U.S. checking account; money market, brokerage and credit-line accounts cannot be used.",
+        "Questions: call the Tax Assessor-Collector at 210-335-2251 during business hours."
+      ]
+    },
+    {
+      "slug": "due-dates",
+      "title": "Due dates, penalties and discounts",
+      "topic": "billing",
+      "source": "https://www.bexar.org/2582/Property-Tax-Frequently-Asked-Questions",
+      "paragraphs": [
+        "Statements go out in October and taxes must be paid, or postmarked, by January 31. Unpaid taxes become delinquent on February 1 and add penalty and interest. Delinquent taxes sent to the collection attorneys (July 1, or April 1 for some business property) add a further 15% or 20% collection fee.",
+        "Early-payment discounts were discontinued in 2003. Instead, use one of the payment plans."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Property tax payment plans",
+      "topic": "assistance",
+      "source": "https://www.bexar.org/DocumentCenter/View/25922/Payment-Plans",
+      "paragraphs": [
+        "One-Time Payment: pay the full bill by January 31. Half-Payment Plan (anyone): pay half by November 30 and the rest by June 30 with no penalty or interest.",
+        "Quarter-Payment Plan (homesteads with a 65 or over, disabled person or disabled veteran exemption): four equal payments by January 31, March 31, May 31 and July 31; at least one quarter must be paid by January 31 to join. 10-Month Payment Plan (same exemptions): ten equal monthly payments from October through July; you can still join in November with 20% down.",
+        "Pre-Payment Plan (anyone without a mortgage escrow, taxes current): prepay in monthly installments through September 15; any remaining balance is billed in October. Call 210-335-2251 for details."
+      ]
+    },
+    {
+      "slug": "automatic-payment-deduction",
+      "title": "Automatic Payment Deduction",
+      "topic": "autopay",
+      "source": "https://www.bexar.org/DocumentCenter/View/20814/Automatic-Payment-Deduction-Consent-Form",
+      "paragraphs": [
+        "Automatic deductions from a checking account, savings account or credit card are arranged by signing the Automatic Payment Deduction Agreement and returning it to the Tax Assessor-Collector at P.O. Box 839950, San Antonio TX 78283-3950. Do not write banking details on the form: a Tax Office deputy collects them by phone or during an office visit.",
+        "Automatic payments must be rescheduled every year; you can ask on the form for a yearly call to reschedule."
+      ]
+    },
+    {
+      "slug": "e-statements",
+      "title": "Certified statements by email",
+      "topic": "paperless",
+      "source": "https://www.bexar.org/1561/e-Statement-Instructions",
+      "paragraphs": [
+        "Search for your property by name, address or account number, open your account page and choose the option to register for certified statements by email. Enter your email address, then click the link in the verification email; the request is not valid until you verify it. Questions: 210-335-2251."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee",
+        "intent": "Using the Bexar County Tax Office website's help pages, find the convenience charge for paying property taxes by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.10%",
+              "2.1%",
+              "2.10 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.10%",
+            "2.1%",
+            "2.10 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments add a 2.10% convenience charge; eCheck is free."
+          }
+        ]
+      },
+      {
+        "slug": "ten-month-plan-start",
+        "intent": "Using the Bexar County Tax Office website's help pages, find the month in which payments under the 10-Month Payment Plan begin. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "October"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "October"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The 10-Month Payment Plan runs from October through July."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Property Tax Payment Plans",
+        "e-Statement Instructions"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "e-Statements"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "JetPay",
+        "2.10%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": "10-Month Payment Plan"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "automatic-payment-deduction",
+      "contains": "rescheduled every year"
+    }
+  ]
+}

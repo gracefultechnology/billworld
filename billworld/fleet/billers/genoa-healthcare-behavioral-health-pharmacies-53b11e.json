@@ -1,0 +1,376 @@
+{
+  "id": "genoa-healthcare-behavioral-health-pharmacies-53b11e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Genoa Healthcare (behavioral health pharmacies)",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Genoa (an Optum company) bills patients by monthly paper statement with a site account number; its own billing site is unrelated to Optum Rx. Researched from the public genoahealthcare.com home page (Pay my bill link), the E-Bill Express instructions and FAQ page on genoahealthcare.com, and the public E-Bill Express login page that Genoa links as its payment site (e-billexpress.com, observed without signing in). Login takes a Login ID and password; Pay Now (no login) takes the account number with a dash after the first five digits (format 00001-123) plus the 5-digit consumer zip code; Enroll needs the account number from the statement and zip code, then name, phone, email, Login ID, password, security image and questions, a paperless choice (Paperless Billing or Online and By Mail) and an optional bank or card account; activation is by email. Three wrong passwords lock the account (lockoutAttempts 3; Genoa unlocks it on request, the 15-minute fleet lock is a simplification). New customers must receive a first statement and complete one billing cycle before enrolling; balances post on the third business day of each month. Recurring payments may not start until the next billing cycle; payments debit on the scheduled date (Genoa suggests 3 business days before the due date); paid e-bills stay 6-12 months; there is no cost to enroll or pay. Billing phone 800-519-1139 (Mon-Fri 6:30 a.m.-4:00 p.m. PT; Visa, Mastercard, American Express, Discover) is from Genoa's indexed Pay my bill text and could not be re-read on the current page, so pay_by_phone evidence is inferred. No payment plan is described (unsupported, inferred). Review 2026-10-10: the E-Bill Express login page Genoa links to publishes customer service number 800-519-1139 and a 30-day limit for future-dated payments in its public page configuration (observed without signing in), so pay_by_phone/contact are observed_public and billing.scheduled.maxDaysAhead is 30; the page also shows no payment fees (consistent with the FAQ). Phone hours remain unverified and are not shown.",
+  "officialDomains": [
+    "genoahealthcare.com",
+    "e-billexpress.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.genoahealthcare.com/",
+      "title": "Welcome to Genoa Healthcare",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html",
+      "title": "E-bill express instructions and FAQ",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://ww2.e-billexpress.com/ebpp/GenoaIND/Login/Index",
+      "title": "GenoaIND Login (E-Bill Express from Genoa)",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Genoa Healthcare",
+    "shortName": "Genoa",
+    "primary": "#5b2c83",
+    "accent": "#3b1d57",
+    "monogram": "G"
+  },
+  "labels": {
+    "signIn": "Login",
+    "register": "Enroll",
+    "guestPay": "Pay Now",
+    "payBill": "Pay My Bills",
+    "autopay": "Recurring Payment",
+    "paperless": "Paperless Billing",
+    "history": "Payment status",
+    "username": "Login ID",
+    "forgot": "Password Help?",
+    "accountNumber": "Acct",
+    "help": "E-Bill Express FAQ"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Pay Now",
+        "page": "guest"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "E-Bill Express Instructions",
+        "helpSlug": "e-bill-express-instructions"
+      },
+      {
+        "label": "E-Bill Express FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Pay My Bills",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payment",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment status",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Payment Accounts",
+        "page": "wallet"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "lockoutAttempts": 3,
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email",
+      "phone"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://ww2.e-billexpress.com/ebpp/GenoaIND/Login/Index"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html",
+      "note": "New to Genoa? You must receive your first statement and complete one full billing cycle before you can enroll."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html",
+      "note": "Your first recurring payment may not start until the next billing cycle, depending on when your bill was loaded, so you may need to pay the first bill yourself."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://ww2.e-billexpress.com/ebpp/GenoaIND/Login/Index",
+      "phone": "800-519-1139"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html",
+      "note": "Payment plans are not set up in E-Bill Express. If you have questions about your bill, contact Genoa customer service or your Genoa pharmacy.",
+      "channel": "phone",
+      "phone": "800-519-1139"
+    }
+  },
+  "billing": {
+    "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "scheduled": {
+      "maxDaysAhead": 30
+    }
+  },
+  "contact": {
+    "phone": "800-519-1139",
+    "payPhone": "800-519-1139",
+    "source": "https://ww2.e-billexpress.com/ebpp/GenoaIND/Login/Index"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Genoa bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in with your Login ID and password, select the bills you want to pay on the Pay My Bills page, and choose a saved payment method or add a bank account or credit card with Add a Payment Method. Select Continue to Payment, check the details on the Verify Payment page, agree to the terms and select Make Payment.",
+        "No account? Choose Pay Now on the login page and enter the account number from your statement (with the dash after the first five digits, for example 00001-123) and your 5-digit zip code. You can enroll after paying.",
+        "Funds are taken on the scheduled payment date, so keep enough in your account that day. Genoa suggests scheduling at least 3 business days before the due date. You can pay more than your regular monthly amount. After the payment date, the Payment status section shows Paid. Enrolling and paying online cost nothing."
+      ],
+      "steps": [
+        "Log in to E-Bill Express.",
+        "Select the bills on Pay My Bills.",
+        "Choose or add a payment method and select Continue to Payment.",
+        "Verify, agree to the terms and select Make Payment."
+      ],
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    {
+      "slug": "e-bill-express-instructions",
+      "title": "How to enroll in E-Bill Express",
+      "topic": "account",
+      "paragraphs": [
+        "Select Enroll on the login screen, enter the account number from your statement and your 5-digit zip code, and select Validate. Add your name, phone number and email, then choose a Login ID, password, security image and security questions, and accept the Terms and Conditions.",
+        "Choose Paperless Billing for e-statements only, or Online and By Mail for both. You can add a bank or card account now or later. Select Finish Enrollment, then use Activate in the email you receive.",
+        "New customers must receive a first statement and complete one full billing cycle before enrolling. Statement balances are available on the third business day of each month. Your account number is on a recent paper bill, or your Genoa pharmacy can give it to you."
+      ],
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    {
+      "slug": "recurring-payment",
+      "title": "Recurring payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Recurring payments pay your Genoa bill automatically. The first one may not start until the next billing cycle, depending on when the bill was loaded, so you may need to pay the first bill yourself. Recurring payments are deleted permanently when they expire or when you un-enroll.",
+        "If you had auto pay before E-Bill Express, that information could not be moved for security reasons; enroll in the new recurring payment service. You still receive an e-bill and a reminder email while a balance is due."
+      ],
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    {
+      "slug": "login-help",
+      "title": "Forgot your Login ID or password",
+      "topic": "account",
+      "paragraphs": [
+        "Forgot your Login ID? Enter your account number and enrollment email and select Request Login ID; it is emailed to you. Password Help? Enter your Login ID and email and select Send My Password to get a temporary password, log in with it, then set a new password and answer your security questions.",
+        "Passwords are case sensitive. Three wrong passwords lock the account; contact Genoa to have it unlocked."
+      ],
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    },
+    {
+      "slug": "statements",
+      "title": "Viewing your e-bills",
+      "topic": "statements",
+      "paragraphs": [
+        "Once you enroll, your most recent bill is available right away and you get an email when a new e-bill arrives. Paid e-bills stay in the Pay My Bills section for six to twelve months; use your browser's print function to print or save one as a PDF. If an e-bill seems wrong or late, contact Genoa customer service."
+      ],
+      "source": "https://www.genoahealthcare.com/e-bill-express-intructions-and-faq.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "lockout-attempts",
+        "intent": "How many wrong passwords does Genoa's E-Bill Express allow before it locks my account? Check the Genoa help and answer with the number. Don't log in or pay anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "3 (three) incorrect attempts lock the account."
+          }
+        ]
+      },
+      {
+        "slug": "schedule-lead-time",
+        "intent": "How many business days before the due date does Genoa suggest scheduling an E-Bill Express payment? Answer from the Genoa help; don't pay anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 3 business days before the due date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "Login ID"
+    },
+    {
+      "page": "guest",
+      "label": "guestPay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "next billing cycle"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "e-bill-express-instructions",
+      "contains": "third business day"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "login-help",
+      "contains": "Three wrong passwords"
+    }
+  ]
+}

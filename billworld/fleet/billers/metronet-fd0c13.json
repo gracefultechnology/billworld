@@ -1,0 +1,347 @@
+{
+  "id": "metronet-fd0c13",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Metronet",
+  "category": "internet",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public metronet.com support pages and the public myMetronet portal help page (portal.metronet.com/cp/help, which shows a Username field and Create Account link) only; no sign-in, no Quick Pay lookup. myMetronet: Bill Pay menu with Manage Automatic Payments and Manage Payment Methods; My Services tab with Manage Vacation Services (suspend/resume). Quick Pay pays without signing in (lookup fields not described; family default kept). AutoPay: Bill Pay > Manage Automatic Payments > ENABLE AUTOPAY, enter a checking/savings account, NEXT, ENABLE AUTOPAY; full monthly bill drafted; a $25 account credit for bank-account autopay set up within 60 days of installation (not modelled). Card AutoPay is not described (methodTypes left at the family default). Turning off AutoPay is not described (autopay_cancel inferred supported). A $25 insufficient-funds fee is added when a payment is returned, and services are suspended (not modelled: the engine has no returned-payment fee). Automated payments by phone 866-517-3712 (24/7); Customer Care 877-407-3224 (the support pages also show 800-250-1517 as a general number). Cancellation is by phone at (877) 407-3224; equipment returns go by FedEx with an emailed label; Metronet-provided eero routers must be returned to avoid an equipment charge (support article on keeping the eero). Reviewer 2026-10-10: a builder claim about refunds of prepaid amounts within 60 days of the final invoice was not found on the cited pages and was removed. Paperless billing and payment plans are not described (family defaults kept). Fees for one-time online payments are not published.",
+  "officialDomains": [
+    "metronet.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.metronet.com/support/quick-pay-your-bill",
+      "title": "Quick Pay Your Bill - Metronet",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.metronet.com/support/set-up-autopay-and-get-a-25-account-credit",
+      "title": "Set up AutoPay and get a $25 account credit - Metronet",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.metronet.com/support/managing-your-payment-methods",
+      "title": "Managing your payment methods - Metronet",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.metronet.com/support/mymetronet-customer-portal-features",
+      "title": "myMetronet customer portal features - Metronet",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.metronet.com/support/cancel-service",
+      "title": "Cancel service - Metronet",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.metronet.com/support/metronet-equipment-return-instructions",
+      "title": "Metronet equipment return instructions",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://portal.metronet.com/cp/help",
+      "title": "We're here to help! - myMetronet Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.metronet.com/support/do-i-get-to-keep-my-eero-router",
+      "title": "Metronet | Do I get to Keep my eero Router?",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Metronet",
+    "shortName": "Metronet",
+    "primary": "#00558c",
+    "accent": "#a33a00",
+    "monogram": "M"
+  },
+  "labels": {
+    "dashboard": "myMetronet",
+    "guestPay": "Quick Pay",
+    "payBill": "Bill Pay",
+    "autopay": "Automatic Payments",
+    "wallet": "Manage Payment Methods",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Create Account",
+    "username": "Username",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Create Account",
+        "page": "register"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "myMetronet",
+        "page": "dashboard"
+      },
+      {
+        "label": "Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Bill Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Manage Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://portal.metronet.com/cp/help"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.metronet.com/support/quick-pay-your-bill"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.metronet.com/support/set-up-autopay-and-get-a-25-account-credit"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.metronet.com/support/set-up-autopay-and-get-a-25-account-credit"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.metronet.com/support/cancel-service",
+      "note": "To cancel Metronet service, call (877) 407-3224 so we can review your account with you. Leased equipment, including eero routers, must be returned when service ends.",
+      "channel": "phone",
+      "phone": "8774073224"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://portal.metronet.com/cp/help",
+      "phone": "8665173712"
+    }
+  },
+  "billing": {
+    "source": "https://portal.metronet.com/cp/help",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "notes": [
+        "A $25 insufficient funds fee is added to your balance when a payment is returned, and services may be suspended."
+      ],
+      "evidence": "documented_official",
+      "source": "https://portal.metronet.com/cp/help"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Set up AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in to myMetronet, open the Bill Pay menu and select Manage Automatic Payments. Select ENABLE AUTOPAY, choose Enter New Checking/Savings Account, pick Checking or Savings and fill in the details, then select NEXT and confirm with ENABLE AUTOPAY. Your full monthly bill is then drafted automatically, so the amount can change from month to month.",
+        "Sign up for automatic payments from a checking or savings account within 60 days of installation to get a $25 account credit (offer terms apply)."
+      ],
+      "steps": [
+        "Log in to myMetronet.",
+        "Open Bill Pay and select Manage Automatic Payments.",
+        "Select ENABLE AUTOPAY.",
+        "Enter your checking or savings account and select NEXT.",
+        "Confirm with ENABLE AUTOPAY."
+      ],
+      "source": "https://www.metronet.com/support/set-up-autopay-and-get-a-25-account-credit"
+    },
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "paragraphs": [
+        "Use Quick Pay to pay without logging in, pay in myMetronet under Bill Pay, or call the automated payment line at 866-517-3712, available 24/7. Manage saved cards and bank accounts under Bill Pay > Manage Payment Methods.",
+        "If a payment is returned for insufficient funds, a $25 fee is added to your balance and services may be suspended."
+      ],
+      "source": "https://portal.metronet.com/cp/help"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel service and return equipment",
+      "topic": "account",
+      "paragraphs": [
+        "Call (877) 407-3224 to cancel; Metronet wants to talk with you before closing your services. Customer Care starts an equipment return and emails you a FedEx label and a QR code. Pack all equipment with remotes and power cords (fiber and ethernet cables can stay), drop it at FedEx and you'll get an email receipt.",
+        "Any eero routers Metronet provided must be returned when service ends to avoid an equipment charge; they only work on the Metronet network. If you own your equipment, there's nothing to send back."
+      ],
+      "source": "https://www.metronet.com/support/metronet-equipment-return-instructions"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "nsf-fee",
+        "intent": "Using Metronet's help, find the fee Metronet charges when a payment is returned for insufficient funds. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$25"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$25"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $25 insufficient funds fee is added to the balance."
+          }
+        ]
+      },
+      {
+        "slug": "automated-pay-line",
+        "intent": "Find the phone number for Metronet's automated (24/7) payment line. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "866-517-3712",
+              "8665173712"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "866-517-3712",
+            "8665173712"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Metronet's automated payment line is 866-517-3712."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Automatic Payments",
+        "Bill Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "ENABLE AUTOPAY",
+        "$25"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "(877) 407-3224"
+    }
+  ],
+  "contact": {
+    "phone": "877-407-3224",
+    "payPhone": "866-517-3712",
+    "source": "https://portal.metronet.com/cp/help",
+    "evidence": "documented_official"
+  }
+}

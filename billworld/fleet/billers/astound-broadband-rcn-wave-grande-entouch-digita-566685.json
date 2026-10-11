@@ -1,0 +1,352 @@
+{
+  "id": "astound-broadband-rcn-wave-grande-entouch-digita-566685",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Astound Broadband",
+  "category": "internet",
+  "reviewedAt": "2026-10-10",
+  "notes": "Internet-category dossier for Astound (same MyAstound site as the tv dossier astound-broadband-rcn-grande-wave-entouch-4e0ea9). Researched 2026-10-10 from astound.com support pages and the public MyAstound sign-in page (Sign In heading, Username and Password, Log In button, Forgot your username or password?, Create one now; no pay-without-signing-in link). Online payments need a MyAstound account (registration with the account number), so guest_pay is unsupported (inferred) with the automated phone system as the alternative. One-time online payments by card or checking carry a convenience/processing fee whose amount is not on the current pages (an undated Washington rate card lists $1.00 web, $2.95 IVR/chat, $9.95 agent - not used), so it is listed in fees.notes and not charged; AutoPay has no fee and is deducted on the due date. Offer terms on the bill page: $10/month off for bank-account autopay plus e-bill, $5/month for card autopay (not modelled). Payment arrangements are made by calling 1-800-427-8686 (payment_arrangement unsupported online). Statements stay online 12 months. Disconnect by calling 1-800-427-8686 to schedule a disconnect work order; return modems and gateways on or before that date (local office or prepaid FedEx label) or a replacement charge may apply. Late and reconnect fee amounts are not published.",
+  "officialDomains": [
+    "astound.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.astound.com/support/billing/payment-options/",
+      "title": "5 ways to pay your bill - Astound",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.astound.com/support/billing/set-up-autopay/",
+      "title": "How to set up AutoPay - Astound",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.astound.com/support/billing/understanding-your-bill/",
+      "title": "Understanding Your Bill - Astound",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.astound.com/support/internet/equipment-return/",
+      "title": "Equipment Return - Astound",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://my.astound.com/login",
+      "title": "MyAstound - Sign In",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Astound",
+    "shortName": "Astound",
+    "primary": "#5b2c83",
+    "accent": "#00658f",
+    "monogram": "A"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "username": "Username",
+    "password": "Password",
+    "forgot": "Forgot your username or password?",
+    "register": "Create one now",
+    "dashboard": "MyAstound",
+    "payBill": "Pay my bill",
+    "autopay": "AutoPay",
+    "paperless": "Paperless billing",
+    "help": "Support Center",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Create one now",
+        "page": "register"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAstound",
+        "page": "dashboard"
+      },
+      {
+        "label": "Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Pay my bill",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Support Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber"
+    ],
+    "evidence": "observed_public",
+    "source": "https://my.astound.com/login"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.astound.com/support/billing/payment-options/",
+      "note": "Paying online needs a MyAstound account. Without signing in, pay through the automated phone system at 1-800-427-8686, by mail or at a payment location.",
+      "channel": "phone",
+      "phone": "8004278686"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/set-up-autopay/",
+      "note": "A convenience fee applies to one-time online payments; AutoPay has no fee."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/set-up-autopay/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/understanding-your-bill/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/understanding-your-bill/",
+      "note": "Payment arrangements are made by phone: call 1-800-427-8686.",
+      "channel": "phone",
+      "phone": "8004278686"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/internet/equipment-return/",
+      "note": "To disconnect Astound service, call 1-800-427-8686 to schedule a disconnect work order, and return your modem or gateway on or before that date.",
+      "channel": "phone",
+      "phone": "8004278686"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/payment-options/",
+      "phone": "8004278686"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/payment-options/"
+    }
+  },
+  "billing": {
+    "source": "https://www.astound.com/support/billing/payment-options/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "notes": [
+        "One-time online payments by card or checking account carry a convenience fee, shown before you confirm. AutoPay has no fee."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.astound.com/support/billing/set-up-autopay/"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay in MyAstound or the Astound app, call 1-800-427-8686 for the automated phone system or a customer service professional, pay in person at an Astound payment location, or mail a check or money order with your bill stub.",
+        "Mail to the address for your area: DC Metro, Illinois, Indiana, Massachusetts, New York and Pennsylvania - Astound, PO Box 830714, Philadelphia, PA 19182-0714; Texas - Astound, PO Box 679367, Dallas, TX 75267-9367; California, Oregon and Washington - Astound, PO Box 31001-2714, Pasadena, CA 91110-2714.",
+        "One-time online payments carry a processing fee; automatic payments do not."
+      ],
+      "source": "https://www.astound.com/support/billing/payment-options/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Register for MyAstound with the account number from your bill, then set up AutoPay in your account or the app menu. Your monthly payment is deducted automatically on the due date, with no convenience fee.",
+        "Current offers take $10 a month off when you enroll in AutoPay from a bank account plus e-bill, or $5 a month with AutoPay by credit or debit card plus e-bill. Enroll within 30 days of ordering; the discount shows within three bill cycles and ends if you cancel AutoPay or e-bill or change services."
+      ],
+      "source": "https://www.astound.com/support/billing/understanding-your-bill/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Disconnecting and returning equipment",
+      "topic": "account",
+      "paragraphs": [
+        "Call 1-800-427-8686 to schedule a disconnect work order. Return converter boxes, cable cards and cable modems (including modem/WiFi combos) on or before the disconnect date, at a local Astound office (call ahead) or by FedEx with a prepaid label. Equipment not returned in time may be charged at replacement cost."
+      ],
+      "source": "https://www.astound.com/support/internet/equipment-return/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "texas-mail-address",
+        "intent": "An Astound customer in Texas wants to mail a check. Find the mailing address Astound gives for Texas payments. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "679367"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "679367"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Astound, PO Box 679367, Dallas, TX 75267-9367"
+          }
+        ]
+      },
+      {
+        "slug": "autopay-discount",
+        "intent": "Find how much Astound's current offers take off the monthly price for AutoPay from a bank account with e-bill. Do not enroll in AutoPay or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "$10 a month off for bank-account AutoPay plus e-bill ($5 for card AutoPay)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Create one now"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay",
+        "Paperless billing"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "679367",
+        "830714"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "1-800-427-8686"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "disconnect work order"
+    }
+  ],
+  "contact": {
+    "phone": "1-800-427-8686",
+    "source": "https://www.astound.com/support/billing/payment-options/",
+    "evidence": "documented_official"
+  }
+}

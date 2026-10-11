@@ -1,0 +1,369 @@
+{
+  "id": "usps-po-box-rental-7e9faa",
+  "version": 1,
+  "status": "dedicated",
+  "name": "USPS PO Box rental",
+  "category": "other",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public USPS 'Rent or Renew PO Box' page and its FAQ (usps.com/manage/po-boxes.htm) only; never signed in to USPS.com or PO Boxes Online. Online management is in PO Boxes Online (Manage PO Box) after signing in to a USPS.com account: open a box, link an existing box, add or manage stored payment cards (up to 3), edit the profile, view online payment history, renew and close/request a refund. Renewal online is by credit or debit card only and is available 30 days before the next payment is due (Renew > Manage PO Box > Renew PO Box, a one-time payment of the full rental-period fee: modelled as fullBalanceOnly, card only, no future-dated payments). Payments are due by the 10th of the month they are due; unpaid boxes are closed on the 11th (not expressible). Rental terms are 3, 6 or 12 months; a 3-month term requires automatic renewal with no opt-out, while 6- and 12-month terms can opt out (where the opt-out is made is not stated; modelled as supported online). Other ways to pay: self-service kiosk, mail (check or money order to the Postmaster of the box's Post Office, PO Box number on the memo line), or in person at that Post Office (cash, check, card). Closing: Close/Request Refund link in Manage PO Box, or at the counter; partial refund depending on time held; then file a Change of Address. Box prices vary by location and size and are not published on the page, so no plans are modelled. USPS.com sign-in uses a username and password (inferred from the USPS.com account; the sign-in page was not read). Customer service 1-800-ASK-USPS (1-800-275-8777).",
+  "officialDomains": [
+    "usps.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.usps.com/manage/po-boxes.htm",
+      "title": "Rent or Renew PO Box | USPS",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.usps.com/help/contact-us.htm",
+      "title": "Contact Us | USPS",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "USPS PO Boxes",
+    "shortName": "USPS",
+    "primary": "#333366",
+    "accent": "#a3172d",
+    "monogram": "PO"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "Username",
+    "dashboard": "Manage PO Box",
+    "payBill": "Renew PO Box",
+    "autopay": "Automatic Renewal",
+    "wallet": "Payment Cards",
+    "history": "Online Payment History",
+    "cancel": "Close/Request Refund",
+    "profile": "User Profile",
+    "help": "PO Box FAQs",
+    "accountNumber": "PO Box number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Rent or Renew PO Box",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "PO Box FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Manage PO Box",
+        "page": "dashboard"
+      },
+      {
+        "label": "Renew PO Box",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Renewal",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Cards",
+        "page": "wallet"
+      },
+      {
+        "label": "Online Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Close/Request Refund",
+        "page": "cancel"
+      },
+      {
+        "label": "User Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://www.usps.com/manage/po-boxes.htm"
+  },
+  "contact": {
+    "phone": "8002758777",
+    "source": "https://www.usps.com/help/contact-us.htm"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usps.com/manage/po-boxes.htm",
+      "note": "Online renewal is available 30 days before your next payment is due and takes a credit or debit card."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usps.com/manage/po-boxes.htm",
+      "note": "A 3-month payment term requires automatic renewal. With a 6- or 12-month term, automatic renewal is optional."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usps.com/manage/po-boxes.htm",
+      "note": "You can opt out of automatic renewal only with a 6- or 12-month payment term; 3-month terms must renew automatically."
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.usps.com/manage/po-boxes.htm",
+      "note": "Renew PO Box makes a one-time payment right away. You can renew online starting 30 days before your next payment is due, by the 10th of the month it is due."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usps.com/manage/po-boxes.htm"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usps.com/manage/po-boxes.htm"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.usps.com/manage/po-boxes.htm",
+      "note": "PO Box rent is paid in full for each 3-, 6- or 12-month term. If the payment isn't made by the 10th of the month it is due, the box is closed on the 11th. For help, call 1-800-ASK-USPS (1-800-275-8777).",
+      "phone": "8002758777",
+      "channel": "phone"
+    }
+  },
+  "billing": {
+    "source": "https://www.usps.com/manage/po-boxes.htm",
+    "methods": [
+      "card"
+    ],
+    "fullBalanceOnly": true,
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Renew your PO Box",
+      "topic": "payments",
+      "paragraphs": [
+        "Online renewal uses a credit or debit card and opens 30 days before your next payment is due. You can store up to 3 cards.",
+        "Payments must be made by the 10th of the month they are due; otherwise the PO Box is closed on the 11th.",
+        "You can also pay at a self-service kiosk, by mail (check or money order to the Postmaster at your box's Post Office, with your PO Box number on the memo line), or in person at that Post Office with cash, check or card."
+      ],
+      "steps": [
+        "Open PO Boxes Online and select Renew.",
+        "Sign in to your USPS.com account.",
+        "On the Manage PO Box page, select Renew PO Box.",
+        "Choose your card and make the one-time payment."
+      ],
+      "source": "https://www.usps.com/manage/po-boxes.htm"
+    },
+    {
+      "slug": "autopay",
+      "title": "Payment terms and automatic renewal",
+      "topic": "autopay",
+      "paragraphs": [
+        "You can pay for 3, 6 or 12 months at a time.",
+        "A 3-month payment term requires enrolling in automatic renewal, with no opt-out. With a 6- or 12-month term you can opt out of automatic renewal."
+      ],
+      "source": "https://www.usps.com/manage/po-boxes.htm"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Close your PO Box",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in to Manage PO Box and select Close/Request Refund next to the box, or ask a retail associate at the Post Office where your box is located.",
+        "You pay for the full rental period up front; when you close the box you may get a partial refund depending on how long you have had it.",
+        "After closing, submit a Change of Address so your mail can be forwarded for up to one year."
+      ],
+      "source": "https://www.usps.com/manage/po-boxes.htm"
+    },
+    {
+      "slug": "faq",
+      "title": "Managing your PO Box online",
+      "topic": "faq",
+      "paragraphs": [
+        "After signing in to Manage PO Box you can open a new box, link a box you already rent, add or manage your payment cards, edit your user profile and view your online payment history.",
+        "Most Post Offices offer five box sizes, from extra small to extra large; prices depend on the size and location.",
+        "Questions? Call 1-800-ASK-USPS (1-800-275-8777), Monday to Friday 8 a.m. to 8:30 p.m. and Saturday 8 a.m. to 6 p.m. ET. For problems with PO Boxes Online or your USPS.com account, call Technical Support at 1-800-344-7779."
+      ],
+      "source": "https://www.usps.com/help/contact-us.htm"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "renewal-window-days",
+        "intent": "Using the USPS PO Box page, find out how many days before your next payment is due online renewal becomes available. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30",
+              "thirty"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30",
+            "thirty"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Online renewal is available 30 days before the next payment is due."
+          }
+        ]
+      },
+      {
+        "slug": "three-month-autorenew",
+        "intent": "Using the USPS PO Box page, find out whether you can opt out of automatic renewal with a 3-month payment term. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "no",
+              "not",
+              "cannot",
+              "can't",
+              "required",
+              "requires"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "no",
+            "not",
+            "cannot",
+            "can't",
+            "required",
+            "requires"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. A 3-month term requires automatic renewal with no opt-out; 6- and 12-month terms can opt out."
+          }
+        ]
+      },
+      {
+        "slug": "payment-deadline-day",
+        "intent": "Using the USPS PO Box page, find out the day of the month by which a PO Box payment must be made before the box is closed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "By the 10th of the month the payment is due; otherwise the box is closed on the 11th."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Renew PO Box",
+        "Close/Request Refund"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "3-month payment term requires"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "30 days before"
+    }
+  ]
+}

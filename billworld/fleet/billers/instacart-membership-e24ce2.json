@@ -1,0 +1,344 @@
+{
+  "id": "instacart-membership-e24ce2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Instacart+ membership",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public instacart.com Help Center articles and the public Instacart+ page only (no sign-in). Instacart+ costs $9.99 a month or $99 a year and auto-renews (annual on the same date each year, monthly on the same day each month); auto-renew settings, payment method, plan type and renewal reminders are managed online under Your Instacart+ membership. Modeled: autopay = Auto-renew (supported, cards), autopay_cancel supported; plans Monthly $9.99 and Annual $99 (current). Payment: saved cards, PayPal or Klarna; Instacart gift cards cannot pay for Instacart+ (except Instacart+ membership gift cards). Annual members can cancel within the first 5 days for a refund only if no orders used the membership; otherwise no refund and benefits continue to the end of the period. Charges may be applied up to 6 hours before renewal. Sign-in details inferred (email). Reviewer 2026-10-10: plan names shortened to Annual/Monthly because the template appends 'plan' (was 'Annual plan plan').",
+  "officialDomains": [
+    "instacart.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.instacart.com/help/section/107169420/423178048",
+      "title": "Instacart Help Center - Manage your Instacart+ membership",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.instacart.com/help/section/107169420/292958743",
+      "title": "Instacart Help Center - Sign up for Instacart+",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.instacart.com/help/section/107169420/3322920958",
+      "title": "Instacart Help Center - Instacart+ benefits",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.instacart.com/plus",
+      "title": "Instacart+",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Instacart+",
+    "shortName": "Instacart",
+    "primary": "#0a6b2e",
+    "accent": "#a34400",
+    "monogram": "I"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "dashboard": "Your Instacart+ membership",
+    "autopay": "Auto-renew",
+    "plan": "Renew membership",
+    "cancel": "Cancel membership",
+    "wallet": "Preferred payment method",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Instacart+ pricing",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Your Instacart+ membership",
+        "page": "dashboard"
+      },
+      {
+        "label": "Renew membership",
+        "page": "plan"
+      },
+      {
+        "label": "Auto-renew",
+        "page": "autopay"
+      },
+      {
+        "label": "Preferred payment method",
+        "page": "wallet"
+      },
+      {
+        "label": "Cancel membership",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "evidence": "inferred",
+    "source": "https://www.instacart.com/help/section/107169420/423178048"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.instacart.com/help/section/107169420/292958743",
+      "note": "Instacart+ is charged to the payment method on your account; there is no bill to pay without logging in."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.instacart.com/help/section/107169420/423178048",
+      "note": "Annual memberships renew on the same date each year and monthly memberships on the same day each month. Charges may be applied up to 6 hours before renewal."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.instacart.com/help/section/107169420/423178048"
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.instacart.com/help/section/107169420/292958743",
+      "note": "Instacart does not mail bills for Instacart+."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.instacart.com/help/section/107169420/292958743"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.instacart.com/help/section/107169420/292958743"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.instacart.com/help/section/107169420/292958743",
+      "note": "Instacart+ is charged each billing period and installment plans are not offered."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.instacart.com/help/section/107169420/423178048",
+      "note": "Annual members who cancel within the first 5 days of a paid membership get a refund only if no orders used the membership. Otherwise there is no refund and $0 delivery fees continue to the end of the billing period."
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.instacart.com/help/section/107169420/423178048"
+    }
+  },
+  "billing": {
+    "source": "https://www.instacart.com/plus",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.instacart.com/help/section/107169420/292958743"
+    },
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "plans": [
+      {
+        "id": "monthly",
+        "name": "Monthly",
+        "cents": 999
+      },
+      {
+        "id": "annual",
+        "name": "Annual",
+        "cents": 9900,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Instacart+ pricing",
+      "topic": "plans",
+      "paragraphs": [
+        "Instacart+ costs $99 a year or $9.99 a month. New members can try it free for 14 days; the trial renews into the paid annual plan unless you cancel.",
+        "Members get a $0 delivery fee on grocery and retail orders of $10 or more, Costco orders of $35 or more and eligible restaurant orders of $25 or more. Service fees, taxes and tips may still apply."
+      ],
+      "source": "https://www.instacart.com/plus"
+    },
+    {
+      "slug": "manage-membership",
+      "title": "Manage your Instacart+ membership",
+      "topic": "billing",
+      "paragraphs": [
+        "Open the menu (or the Account icon in the app) and choose Your Instacart+ membership. Under Manage your membership you can choose Renew membership and pick the Annual plan or Monthly plan, change auto-renew, or set a reminder 7 days before your membership renews.",
+        "To change the card you pay with, choose Change under Preferred payment method, pick or add a payment method and select Confirm payment method. PayPal and Klarna can also be used. Instacart gift cards cannot pay for Instacart+ unless it is an Instacart+ membership gift card."
+      ],
+      "source": "https://www.instacart.com/help/section/107169420/423178048"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel Instacart+",
+      "topic": "account",
+      "paragraphs": [
+        "Open Your Instacart+ membership, choose Cancel membership, then Continue to cancel and Confirm cancellation. Instacart emails you a confirmation. You can choose Renew membership later to come back.",
+        "Annual members who cancel within the first 5 calendar days of a paid membership get the fee back only if no orders used the membership. Otherwise there is no refund, and your $0 delivery fees continue until the end of the billing period."
+      ],
+      "source": "https://www.instacart.com/help/section/107169420/423178048",
+      "steps": [
+        "Open Your Instacart+ membership.",
+        "Choose Cancel membership.",
+        "Select Continue to cancel.",
+        "Select Confirm cancellation."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "annual-refund-window",
+        "intent": "You paid for an annual Instacart+ membership and have not placed an order with it. Using the Instacart help pages, find how many days you have to cancel and get the fee back. Do not cancel or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5",
+              "five"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5",
+            "five"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Within the first 5 calendar days, if no orders used the membership."
+          }
+        ]
+      },
+      {
+        "slug": "annual-price",
+        "intent": "Using the Instacart website, find the yearly price of Instacart+. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Instacart+ costs $99 a year."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log in",
+        "Instacart+ pricing"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto-renew",
+        "Cancel membership"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Monthly",
+        "Annual"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "5 calendar days"
+    }
+  ]
+}

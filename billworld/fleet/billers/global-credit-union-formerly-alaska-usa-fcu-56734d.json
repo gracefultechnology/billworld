@@ -1,0 +1,301 @@
+{
+  "id": "global-credit-union-formerly-alaska-usa-fcu-56734d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Global Credit Union (formerly Alaska USA FCU)",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public globalcu.org FAQ pages (no sign-in). Global (formerly Alaska USA FCU) calls its online banking \"online account access\". Sign-in: username (defaults to the member account number on the statement; can be changed under Account Profile) then a password screen showing a personalized image, so two-step sign-in. Passwords are alphanumeric, 8-12 characters (not set as auth.passwordRule: the fleet test passwords are longer and contain symbols, so the validator rejects the real rule); a temporary password is issued at enrollment. Repeated failed logins lock access until the member resets the password or calls (attempt count not stated). Loans are paid with single or recurring transfers from a Global account or any financial institution in online account access; members not enrolled use pay.globalcu.org (one-time or recurring payments from another institution) for auto/recreational, signature, home improvement, lot/recreational property and qualified misc./business loans - Visa cards, HELOCs and mortgages must be paid from online account access on a computer. Legacy mortgages sub-serviced by Dovenmuehle are paid on its own site. eStatements: Account Services tab > \"Receive eStatements only\" > accept disclosure. Mail: P.O. Box 196613, Anchorage, AK 99519-6613 (3-5 days to process). 24/7 Member Service Center 800-525-9094. Guest lookup fields and fee on pay.globalcu.org not documented (family defaults, no fee). Hardship options not found publicly.",
+  "officialDomains": [
+    "globalcu.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.globalcu.org/support/faqs/payments/",
+      "title": "Payments | Global Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.globalcu.org/support/faqs/online-banking/",
+      "title": "Online Banking FAQs | Global Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Global",
+    "displayName": "Global Credit Union",
+    "primary": "#00426a",
+    "accent": "#8c3b06",
+    "monogram": "G"
+  },
+  "labels": {
+    "payBill": "Transfers and Withdrawals",
+    "autopay": "Recurring Transfers",
+    "signIn": "Log In",
+    "username": "Username",
+    "paperless": "Receive eStatements only",
+    "profile": "Account Profile",
+    "register": "Enroll"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Payment FAQs",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Pay From Another Institution",
+        "page": "guest"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Transfers and Withdrawals",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Transfers",
+        "page": "autopay"
+      },
+      {
+        "label": "Account Services",
+        "page": "paperless"
+      },
+      {
+        "label": "Account Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
+    "evidence": "documented_official",
+    "source": "https://www.globalcu.org/support/faqs/online-banking/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.globalcu.org/support/faqs/payments/",
+      "note": "Confirm your payment amount and due date, then pay with a single or recurring transfer from a Global account or an account at any financial institution."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.globalcu.org/support/faqs/payments/",
+      "note": "Not enrolled in online account access? Schedule one-time or recurring payments from another institution to auto, recreational, signature, home improvement and other qualifying Global loans. Visa cards, HELOCs and mortgages must be paid in online account access on a computer."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.globalcu.org/support/faqs/payments/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.globalcu.org/support/faqs/payments/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.globalcu.org/support/faqs/online-banking/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.globalcu.org/support/faqs/online-banking/"
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.globalcu.org/support/faqs/online-banking/"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.globalcu.org/support/faqs/payments/"
+    }
+  },
+  "contact": {
+    "phone": "800-525-9094",
+    "source": "https://www.globalcu.org/support/faqs/online-banking/"
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "source": "https://www.globalcu.org/support/faqs/payments/"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying a Global loan",
+      "source": "https://www.globalcu.org/support/faqs/payments/",
+      "paragraphs": [
+        "In online account access you can confirm the payment amount and due date and pay any Global loan with single or recurring transfers, from your Global checking or savings or from an account at any financial institution.",
+        "Not enrolled yet? Global's payment site schedules one-time or recurring payments from another institution to auto and recreational vehicle, signature, home improvement, residential lot or recreational property, and other qualifying loans. Credit cards, HELOCs and mortgages need online account access on a computer.",
+        "To pay by mail, send your check to Global, P.O. Box 196613, Anchorage, AK 99519-6613, and allow 3 to 5 days for processing; no receipt is mailed, so check online that it posted."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "eStatements",
+      "source": "https://www.globalcu.org/support/faqs/online-banking/",
+      "paragraphs": [
+        "Members using online account access can receive eStatements instead of paper. Log in, open the Account Services tab, choose Receive eStatements only near the bottom of the page, and accept the Electronic Statements and Notices Disclosure Agreement.",
+        "Add your email address if you want a reminder when a new eStatement is ready. Some communications may still arrive by mail when required."
+      ]
+    },
+    {
+      "slug": "reset-password",
+      "title": "Username and password help",
+      "source": "https://www.globalcu.org/support/faqs/online-banking/",
+      "paragraphs": [
+        "Your username starts out as the account number printed on your statement; you can change it under Account Profile. Passwords are 8 to 12 letters and numbers.",
+        "Forgot your password? Reset it online or call the Member Service Center 24/7 at 800-525-9094. After too many unsuccessful attempts access is locked until the password is reset. If the personalized image on the password screen looks wrong, go back and re-enter your username."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "password-length",
+        "intent": "Using Global Credit Union's help pages, find the maximum number of characters allowed in an online account access password. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Passwords are 8 to 12 alphanumeric characters."
+          }
+        ]
+      },
+      {
+        "slug": "mail-processing-time",
+        "intent": "Using Global Credit Union's help pages, find how many days to allow for a mailed loan payment to be processed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3-5",
+              "3 to 5",
+              "3–5"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3-5",
+            "3 to 5",
+            "3–5"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Allow 3-5 days for mailed payments to be processed."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Enroll"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Transfers and Withdrawals",
+        "Recurring Transfers"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "Receive eStatements only"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "P.O. Box 196613"
+    }
+  ]
+}

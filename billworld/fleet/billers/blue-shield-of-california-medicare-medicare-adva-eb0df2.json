@@ -1,0 +1,145 @@
+{
+  "id": "blue-shield-of-california-medicare-medicare-adva-eb0df2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Blue Shield of California - Medicare",
+  "category": "medicare",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public blueshieldca.com pages only (no sign-in, no 'Pay my premium' lookup). The Medicare 'ways to pay' URL redirects to the shared How to pay page. Online: log in for a one-time payment ('Go to bill pay'); without an account choose 'Pay my premium' (upper right of the site) with the subscriber number, the policy ZIP code and an email address; extra payments before the next bill via 'No payment necessary'. AutoPay ('Set up and manage AutoPay') from a bank account or card; switch the method list to checking/savings if only card shows. Automated phone at the number on the ID card or bill. Bank bill pay with the account number and mailing address from the bill. Social Security/RRB deduction for Medicare Advantage and Part D (call; may take two months or more; cancel by calling). Mail with remit slip: IFP/Medicare Supplement P.O. Box 60532, City of Industry, CA 91716-0532; Medicare Advantage/PDP 'Blue Shield of California - Medicare', P.O. Box 745843, Los Angeles, CA 90074-5843. No processing fee online, including cards; never charges late fees. Payments after 2 p.m. PT may be late and may trigger a Notice of Start of Grace Period. The Medicare contact page lists (800) 776-4466 for Medicare Advantage Prescription Drug Plan members (TTY 711), plus separate PDP, Medicare Supplement and D-SNP lines; the catalog has no phone, so contact uses the MAPD line. The guest email field cannot be expressed (lookup = subscriber number + ZIP). Sign-in identifier (username) is inferred.",
+  "officialDomains": ["blueshieldca.com"],
+  "sources": [
+    { "url": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay", "title": "How to pay your bill | Blue Shield of California", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://www.blueshieldca.com/en/medicare/contact-us", "title": "Contact us | Blue Shield of California Medicare", "fetchedAt": "2026-10-10", "kind": "help" }
+  ],
+  "brand": { "displayName": "Blue Shield of California Medicare", "shortName": "Blue Shield", "primary": "#0a5394", "accent": "#00627a", "monogram": "BS" },
+  "labels": {
+    "signIn": "Log in",
+    "guestPay": "Pay my premium",
+    "payBill": "Go to bill pay",
+    "autopay": "AutoPay"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Pay my premium", "page": "guest" },
+      { "label": "How to pay", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "My account", "page": "dashboard" },
+      { "label": "Go to bill pay", "page": "pay" },
+      { "label": "Set up and manage AutoPay", "page": "autopay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": ["accountNumber", "zip"],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay"
+  },
+  "contact": { "phone": "800-776-4466", "source": "https://www.blueshieldca.com/en/medicare/contact-us", "evidence": "documented_official" },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay", "note": "Payments made after 2 p.m. Pacific time may be counted as late." },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay", "note": "No account needed: enter the subscriber number, the policy ZIP code and an email address for payment updates." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay", "note": "Use a debit or credit card, or choose your checking or savings account from the payment type list." },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay", "note": "Call the number on the back of your member ID card or on your billing statement and follow the automated prompts." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay", "note": "Medicare Advantage and drug plan members mail the remit slip and payment to Blue Shield of California - Medicare, P.O. Box 745843, Los Angeles, CA 90074-5843." }
+  },
+  "billing": {
+    "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] },
+    "fees": { "bankCents": 0, "cardCents": 0, "evidence": "documented_official", "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay" }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in and choose Go to bill pay for a quick one-time payment. No account? Select Pay my premium at the top of the site and enter the subscriber number, the policy ZIP code and an email address for payment updates.",
+        "If nothing is due yet, select No payment necessary and confirm that you want to make an extra payment.",
+        "Blue Shield does not charge a processing fee to pay online, including by credit or debit card, and never charges late fees. Pay by the bill due date; payments made after 2 p.m. Pacific time may count as late and may trigger a Notice of Start of Grace Period."
+      ],
+      "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up and manage AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in and select Set up and manage AutoPay. Your premium then posts automatically each month, and you can change your settings in the same place.",
+        "If you only see a debit/credit card option, open that list and choose your checking or savings account instead.",
+        "If an AutoPay payment was not taken from your account, call Customer Service."
+      ],
+      "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay"
+    },
+    {
+      "slug": "social-security-deduction",
+      "title": "Social Security or RRB deduction",
+      "topic": "payments",
+      "paragraphs": [
+        "Medicare Advantage and Prescription Drug Plan members can have the premium taken from monthly Social Security or Railroad Retirement Board benefits. Call Customer Service to request it or to cancel it.",
+        "Once approved it may take two months or more to start, so keep paying each month until it does. If it is not approved, we will let you know and bill you."
+      ],
+      "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay"
+    },
+    {
+      "slug": "pay-by-mail",
+      "title": "Paying by mail or through your bank",
+      "topic": "payments",
+      "paragraphs": [
+        "Attach the remit slip, write your account number on your check or money order, and mail it to the address for your plan. Medicare Advantage and Prescription Drug Plans: Blue Shield of California - Medicare, P.O. Box 745843, Los Angeles, CA 90074-5843. Medicare Supplement and Individual and Family Plans: Blue Shield of California, P.O. Box 60532, City of Industry, CA 91716-0532.",
+        "With your bank's bill pay, use the account number and mailing address from your bill and make sure the payment arrives by the due date."
+      ],
+      "source": "https://www.blueshieldca.com/en/home/help-and-support/how-to-pay"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Medicare phone numbers",
+      "topic": "contact",
+      "paragraphs": [
+        "Medicare Advantage Prescription Drug Plan members: (800) 776-4466. Prescription Drug Plan members: (888) 239-6469. Medicare Supplement members: (800) 248-2341. Dual Special Needs Plan members: (800) 452-4413. TTY 711, 8 a.m. to 8 p.m. Pacific, seven days a week.",
+        "General questions: (855) 203-3874 (TTY 711)."
+      ],
+      "source": "https://www.blueshieldca.com/en/medicare/contact-us"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-fee-policy",
+        "intent": "Using Blue Shield of California's payment help, find out whether Blue Shield charges a late fee for a past-due premium. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["never", "does not charge", "no late fee", "doesn't charge"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["never", "does not charge", "no late fee", "doesn't charge"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "No. Blue Shield never charges late fees or penalties." }]
+      },
+      {
+        "slug": "mapd-mail-po-box",
+        "intent": "You have a Blue Shield Medicare Advantage plan and want to mail your premium. Using Blue Shield of California's payment help, find the P.O. box number to send it to. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["745843"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["745843"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "P.O. Box 745843, Los Angeles, CA 90074-5843." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": "ZIP" },
+    { "page": "dashboard", "signedIn": true, "contains": ["AutoPay"] },
+    { "page": "helpArticle", "slug": "pay-by-mail", "contains": "P.O. Box 745843" },
+    { "page": "helpArticle", "slug": "social-security-deduction", "contains": "Railroad Retirement" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "(800) 776-4466" }
+  ]
+}

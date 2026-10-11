@@ -1,0 +1,382 @@
+{
+  "id": "barclays-us-barclaycard-credit-cards-6a43ba",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Barclays US (Barclaycard credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public cards.barclaycardus.com help pages only (no sign-in). Public header: 'Log in'; home has 'Set up online account' and 'Forgot username or password?' links (online-registration FAQ); new customers need the 16-digit account number to create a login; a one-time passcode is required from an unknown device or IP address (channel not stated, so auth.mfa is left at the default). Payments: Payments menu > 'Make a payment' (single payment or 'Automatic monthly payments'); bank accounts are added under 'Your profile' > 'Bank accounts' > 'Add a bank account'. No debit-card payment is described, so methods are bank only. AutoPay: Payments menu > 'AutoPay'; amounts 'Your Minimum Due', 'Your Statement Balance' or an amount of your choosing; it can be scheduled up to 10 days before the due date (a range the engine cannot express, so no leadDays); cancel with 'Cancel all' ('Modify all' in the app). Scheduled payments: 'Payment Activity' > modify or cancel until 7:00 p.m. ET on the payment date; 'in process' payments cannot be changed. Cutoffs: online/app/phone by 11:59 p.m. ET; mailed payments by 5 p.m. local time. Due date change: Services menu > 'Change payment due date' (not modelled). Statements: Activity & Statements menu > Statements. Paperless: choose the card and confirm the email address (exact labels not published). Late fee: charged when the minimum is not received by the due date, never more than the minimum due; amount not published (not modelled). Mail: Credit Card Payments, P.O. Box 13337, Philadelphia, PA 19101 (the FAQ also shows 19191) or Card Services, P.O. Box 60517, City of Industry, CA 91716. Customer support 877-523-0478 (24/7); without a card 888-232-0780. No pay-without-login option on the public pages (inferred). Account closing is not described on the public FAQs; cancel_service stays at the family default.",
+  "officialDomains": [
+    "barclaycardus.com"
+  ],
+  "sources": [
+    {
+      "url": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/",
+      "title": "Payments FAQs | Barclays US",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://cards.barclaycardus.com/banking/help-center/faqs/online-registration/",
+      "title": "Online registration FAQs | Barclays US",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://cards.barclaycardus.com/banking/help-center/faqs/general-additional-information/",
+      "title": "General and additional information FAQs | Barclays US",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://cards.barclaycardus.com/banking/help-center/faqs/fees/",
+      "title": "Fees FAQs | Barclays US",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://cards.barclaycardus.com/banking/how-to-enroll-paperless-statements/",
+      "title": "How to enroll in paperless statements | Barclays US",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://cards.barclaycardus.com/banking/help-center/",
+      "title": "Help Center | Barclays US",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Barclays",
+    "primary": "#00395d",
+    "accent": "#006a91",
+    "monogram": "B"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "register": "Set up online account",
+    "forgot": "Forgot username or password?",
+    "username": "Username",
+    "payBill": "Make a payment",
+    "autopay": "AutoPay",
+    "history": "Payment Activity",
+    "statements": "Statements",
+    "wallet": "Bank accounts",
+    "profile": "Your profile",
+    "help": "Help Center",
+    "amountDue": "Minimum Payment Due",
+    "dueDate": "Payment Due Date"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Set up online account",
+        "page": "register"
+      },
+      {
+        "label": "Payments FAQs",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Activity",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Bank accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "Your profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://cards.barclaycardus.com/banking/help-center/faqs/online-registration/"
+  },
+  "contact": {
+    "phone": "1-877-523-0478",
+    "payPhone": "1-877-523-0478",
+    "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/",
+      "note": "Barclays has no pay-without-logging-in option. Log in to pay online or in the Barclays US App, call 1-877-523-0478, or mail a payment.",
+      "channel": "phone",
+      "phone": "1-877-523-0478"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://cards.barclaycardus.com/banking/how-to-enroll-paperless-statements/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+    }
+  },
+  "billing": {
+    "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "minimum",
+        "statement",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Barclays credit card",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay in the Barclays US App, online after you log in, by phone at 1-877-523-0478 or by mail. Online, choose Make a payment from the Payments menu and pick a single payment or automatic monthly payments.",
+        "First add a bank account: on the website open Your profile, then Bank accounts and Add a bank account; in the app use the Profile icon or Manage bank accounts from Payments.",
+        "Pay by the due date. Online, app and phone payments count when made before 11:59 p.m. ET; a payment that reaches Barclays after 7:00 p.m. ET may show a late fee that is reversed automatically once it posts."
+      ],
+      "steps": [
+        "Log in and open the Payments menu.",
+        "Select Make a payment.",
+        "Choose the bank account, amount and date.",
+        "Review and submit."
+      ],
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "On the website choose AutoPay from the Payments menu on your account home page; in the app tap the Payments icon, then AutoPay at the top.",
+        "Pick Your Minimum Due, Your Statement Balance or an amount of your choosing. AutoPay can be scheduled up to 10 days before the payment due date. If your statement balance ends up lower than the scheduled amount, or your chosen amount is below the minimum due, the payment is adjusted.",
+        "To stop it, open the Payments tab from the account summary, choose AutoPay and select Cancel all. In the app you can also choose Modify all."
+      ],
+      "steps": [
+        "Open the Payments menu and choose AutoPay.",
+        "Pick the amount and the bank account.",
+        "Review and confirm."
+      ],
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+    },
+    {
+      "slug": "schedule-payment",
+      "title": "Change or cancel a scheduled payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Choose Payment Activity from the Payments menu and use the modify or cancel link next to the payment. In the app tap Payments, then Payment Activity.",
+        "Changes are accepted until 7:00 p.m. ET on the scheduled payment date. Once a payment shows as in process it can no longer be changed or cancelled. A payment marked Paid in Payment Activity has posted."
+      ],
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+    },
+    {
+      "slug": "other-ways-to-pay",
+      "title": "Pay by phone or by mail",
+      "topic": "payments",
+      "paragraphs": [
+        "By phone, call 1-877-523-0478 before 11:59 p.m. ET.",
+        "By mail, send a check or money order to Credit Card Payments, P.O. Box 13337, Philadelphia, PA 19101, or to Card Services, P.O. Box 60517, City of Industry, CA 91716; use the address on your statement. Allow 7 to 10 days for delivery; mailed payments must arrive by 5:00 p.m. local time."
+      ],
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/Payments/"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late Payment Fee",
+      "topic": "payments",
+      "paragraphs": [
+        "A Late Payment Fee may be charged if Barclays does not receive at least your Minimum Payment Due by the due date. The fee generally won't be more than that minimum payment. See your Cardmember Agreement for amounts."
+      ],
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/fees/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Barclays",
+      "topic": "contact",
+      "paragraphs": [
+        "Credit Card Customer Support: 877-523-0478, 24 hours a day, 7 days a week. If you don't have your card, call 888-232-0780. From abroad, call collect at 001-302-255-8888."
+      ],
+      "source": "https://cards.barclaycardus.com/banking/help-center/faqs/general-additional-information/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "scheduled-payment-change-cutoff",
+        "intent": "Using Barclays' help pages, find the latest time on the payment date that a scheduled Barclays credit card payment can still be changed or cancelled. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "7:00",
+              "7 p.m.",
+              "7 pm",
+              "7pm"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "7:00",
+            "7 p.m.",
+            "7 pm",
+            "7pm"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Until 7:00 p.m. ET on the scheduled payment date."
+          }
+        ]
+      },
+      {
+        "slug": "mail-payment-po-box",
+        "intent": "Using Barclays' help pages, find the P.O. Box number in Philadelphia where Barclays credit card payments can be mailed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "13337"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "13337"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "P.O. Box 13337, Philadelphia, PA 19101."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "username"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Your Statement Balance",
+        "Cancel all"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "877-523-0478"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    }
+  ]
+}

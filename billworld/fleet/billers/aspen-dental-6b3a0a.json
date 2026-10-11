@@ -1,0 +1,276 @@
+{
+  "id": "aspen-dental-6b3a0a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Aspen Dental",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public pages only: aspendental.com FAQ (Billing & payments answers read from the page HTML) and the public PersonaPay (RevSpring) bill-pay entry page linked as 'Pay your bill' from aspendental.com (no lookup submitted). The bill-pay site is reached with the account number from the last statement plus the responsible party's date of birth (modelled as sign-in by account number; the date-of-birth check cannot be expressed as a password), with a Guest Pay link for patients who do not know their account number (guest lookup fields not shown publicly; family default kept). The portal shows the balance, takes payments and updates billing details (address, payment method). Payments usually post in 1-2 business days. Phone payments: 888-210-3373 (bill-pay site) or the local office; billing questions 833-902-4848 or customerservice@aspendental.com. No AutoPay is described anywhere (catalog research also found none), so autopay is unsupported (inferred). Payment extensions, third-party financing (e.g. CareCredit) and the Aspen Dental Savings Plan are arranged by email, so payment_arrangement is offline. Disputed charges get no late fees while under review; interest on overdue balances follows the statement terms (amount not published, not modelled). Itemized invoices on request by email. Offices are independently owned; no single corporate patient line. Accepted card types and fees not published.",
+  "officialDomains": [
+    "aspendental.com",
+    "personapay.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.aspendental.com/about/faq/",
+      "title": "Frequently asked questions | Aspen Dental",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.personapay.com/aspendental/login",
+      "title": "Aspen Dental bill pay - Secure Authentication",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Aspen Dental",
+    "shortName": "Aspen Dental",
+    "primary": "#00543c",
+    "accent": "#1d4f73",
+    "monogram": "AD"
+  },
+  "labels": {
+    "signIn": "Pay your bill",
+    "guestPay": "Guest Bill Pay",
+    "accountNumber": "Account Number",
+    "help": "Billing & payments FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay your bill",
+        "page": "login"
+      },
+      {
+        "label": "Guest Bill Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Billing & payments FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Can't pay in full?",
+        "helpSlug": "payment-help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "evidence": "observed_public",
+    "source": "https://www.personapay.com/aspendental/login"
+  },
+  "contact": {
+    "phone": "833-902-4848",
+    "payPhone": "888-210-3373",
+    "source": "https://www.personapay.com/aspendental/login",
+    "evidence": "observed_public"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aspendental.com/about/faq/"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.personapay.com/aspendental/login"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.aspendental.com/about/faq/",
+      "note": "Automatic payments are not available on the Aspen Dental bill-pay site. Pay each statement online, by phone at 888-210-3373, or at your local office.",
+      "channel": "phone",
+      "phone": "8882103373"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.aspendental.com/about/faq/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.aspendental.com/about/faq/",
+      "note": "Can't pay in full? Email customerservice@aspendental.com about a payment extension, third-party financing or the Aspen Dental Savings Plan, or call 833-902-4848.",
+      "channel": "phone",
+      "phone": "8339024848"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aspendental.com/about/faq/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.personapay.com/aspendental/login",
+      "phone": "8882103373"
+    }
+  },
+  "billing": {
+    "source": "https://www.aspendental.com/about/faq/",
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Aspen Dental bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Use the secure Aspen Dental patient billing site to see your balance, make a payment and update billing details such as your address or payment method. You'll need the account number from your last statement and the responsible party's date of birth. Don't know your account number? Use Guest Bill Pay.",
+        "To pay by phone, call 888-210-3373 or your local Aspen Dental office.",
+        "Payments usually post within 1 to 2 business days. If yours still isn't showing after that, email customerservice@aspendental.com with your payment confirmation."
+      ],
+      "steps": [
+        "Choose Pay your bill.",
+        "Enter the account number from your last statement.",
+        "Review your balance.",
+        "Choose a payment method and amount, then pay."
+      ],
+      "source": "https://www.aspendental.com/about/faq/"
+    },
+    {
+      "slug": "billing-questions",
+      "title": "Questions about a charge",
+      "topic": "billing",
+      "paragraphs": [
+        "For any billing or payment question, call 833-902-4848 or email customerservice@aspendental.com. You can ask for an itemized invoice that lists each procedure and its cost.",
+        "If you think a charge is wrong, email the billing team. Late fees are not added to a disputed charge while it is being reviewed, but other charges keep their normal due dates.",
+        "Interest on overdue balances follows the terms printed on your billing statement. A declined payment is usually due to wrong details, low funds or a technical problem: check with your bank, then contact billing."
+      ],
+      "source": "https://www.aspendental.com/about/faq/"
+    },
+    {
+      "slug": "payment-help",
+      "title": "If you can't pay your bill in full",
+      "topic": "assistance",
+      "paragraphs": [
+        "Email customerservice@aspendental.com to talk about a payment extension, third-party financing, the Aspen Dental Savings Plan (a discount plan, not insurance) or promotional rates on qualifying treatment.",
+        "Aspen Dental does not accept Medicaid, but works with outside lenders for financing."
+      ],
+      "source": "https://www.aspendental.com/about/faq/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "payment-posting-time",
+        "intent": "You paid your Aspen Dental bill online but it isn't showing yet. Using the Aspen Dental billing FAQs, find how long payments typically take to process. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1-2 business days",
+              "1 to 2 business days",
+              "one to two business days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1-2 business days",
+            "1 to 2 business days",
+            "one to two business days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payments typically process within 1 to 2 business days."
+          }
+        ]
+      },
+      {
+        "slug": "billing-phone",
+        "intent": "Find the phone number Aspen Dental gives for billing and payment questions. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "902-4848",
+              "8339024848"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "902-4848",
+            "8339024848"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "(833) 902-4848"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": "Automatic payments are not available"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "888-210-3373",
+        "1 to 2 business days"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "billing-questions",
+      "contains": "itemized invoice"
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "customerservice@aspendental.com"
+    }
+  ]
+}

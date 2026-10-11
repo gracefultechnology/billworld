@@ -1,0 +1,344 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "mortgage",
+  "reviewedAt": "2026-10-10",
+  "id": "mt-bank-mortgage-2d151a",
+  "name": "M&T Bank Mortgage",
+  "template": "loan-servicer",
+  "notes": "Moved from the kubra family to loan-servicer: the catalog routed it to kubra from its processor field, but M&T mortgage payments are made in M&T Online Banking (View My Mortgage Info) and by phone through Speedpay; there is no KUBRA site. Researched from public mtb.com pages only. How to Make a Payment: online at M&T Online Banking (no M&T deposit account needed, any bank's checking/savings) by 10 p.m. ET for same-day credit; automated phone 1-866-241-6014 by 9 p.m. ET; both free. Auto Draft Payment: View My Mortgage Info > Payments > Auto Draft Payment; monthly or Flexible Payment Program (weekly, bi-weekly, half payments - not modelled); free; cancel monthly online or by calling 1-800-724-2224 at least 3 business days before the draft; Flexible by phone only. Credit and debit cards are not accepted. Partial payments are not accepted (Flexible plan holds funds until a full payment) - not modelled as fullBalanceOnly because extra principal is allowed. Grace period typically 15 days after the due date. Sign-in observed on login.mtb.com: \"Log in to view your accounts\", User ID then Continue (two-step), \"Get Help with Your User ID\", \"Enroll Now\". Mortgage assistance by a request-a-call form; no number on that page (customer service number used). Reviewed 2026-10-10 (t20 review): two-step sign-in observed; phone cancellations need 3 business days (online any time); extra-principal changes 5 business days (FAQ).",
+  "officialDomains": [
+    "mtb.com"
+  ],
+  "sources": [
+    {
+      "url": "https://onlinebanking.mtb.com/",
+      "title": "M&T Online Banking",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.mtb.com/personal/mortgages-and-loans/mortgage/manage/paying/how-to-make-a-payment",
+      "title": "How to Make a Mortgage Payment",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.mtb.com/personal/mortgages-and-loans/mortgages/manage/paying/faqs",
+      "title": "Mortgage Payment FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.mtb.com/personal/mortgages-and-loans/repayment-assistance",
+      "title": "Repayment Assistance",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://login.mtb.com/a/digitalbanking/login/",
+      "title": "M&T Bank - Online Banking log in",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "M&T Bank",
+    "primary": "#006245",
+    "accent": "#1d3557",
+    "monogram": "MT"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "username": "User ID",
+    "register": "Enroll Now",
+    "payBill": "Make an Online Payment",
+    "autopay": "Auto Draft Payment",
+    "dashboard": "View My Mortgage Info",
+    "arrangement": "Mortgage Payment Assistance",
+    "help": "Mortgage Payment FAQs",
+    "forgot": "Get Help with Your User ID"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Enroll Now",
+        "page": "register"
+      },
+      {
+        "label": "Making Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Mortgage Payment Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "View My Mortgage Info",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Draft Payment",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Mortgage Payment Assistance",
+        "page": "arrangement"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
+    "evidence": "observed_public",
+    "source": "https://login.mtb.com/a/digitalbanking/login/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgage/manage/paying/how-to-make-a-payment",
+      "note": "Pay by 10 p.m. ET for same-day credit. Pay from any bank's checking or savings account; card payments are not accepted."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgage/manage/paying/how-to-make-a-payment"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgages/manage/paying/faqs",
+      "note": "Cancel monthly Auto Draft here, or by phone at 1-800-724-2224 at least three business days before the scheduled deduction."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgage/manage/paying/how-to-make-a-payment",
+      "phone": "8662416014",
+      "note": "Call by 9 p.m. ET for same-day credit; there is no charge."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgage/manage/paying/how-to-make-a-payment"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/repayment-assistance"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/repayment-assistance"
+    }
+  },
+  "contact": {
+    "phone": "8007242224",
+    "payPhone": "8662416014",
+    "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgages/manage/paying/faqs"
+  },
+  "billing": {
+    "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgage/manage/paying/how-to-make-a-payment",
+    "methods": [
+      "bank"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgage/manage/paying/how-to-make-a-payment"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "How to make a payment",
+      "paragraphs": [
+        "Pay online in M&T Online Banking by 10 p.m. ET, or call the automated payment line at 1-866-241-6014 by 9 p.m. ET, for free same-day credit. You do not need an M&T deposit account; any bank's checking or savings account works. Credit and debit cards are not accepted.",
+        "Mail a check payable to M&T Bank with your coupon and account number to P.O. Box 62182, Baltimore, MD 21264-2182; mailed payments are credited the day they arrive. You can also pay at any M&T branch.",
+        "Partial payments are not accepted. Extra principal is applied after the full monthly payment posts."
+      ],
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgages/manage/paying/faqs"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in, choose View My Mortgage Info, then Payments and Auto Draft Payment. Monthly automatic payments and the Flexible Payment Program (weekly, bi-weekly or half payments twice a month) are free. Deductions adjust automatically when your payment changes.",
+        "Cancel monthly automatic payments online, or call 1-800-724-2224 at least three business days before the scheduled deduction. Flexible Payment Program drafts are cancelled by phone. Changes to an extra principal amount need at least five business days before the draft."
+      ],
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgages/manage/paying/faqs"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Grace period",
+      "topic": "billing",
+      "paragraphs": [
+        "The grace period is typically 15 days after the due date, and you can schedule a payment up to the end of it. If the grace period ends on a weekend or holiday, a payment received the next business day avoids a late fee."
+      ],
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/mortgage/manage/paying/how-to-make-a-payment"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Mortgage payment assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "M&T offers several assistance programs. Request a call online and a representative will contact you. Keep making payments while your request is reviewed; the loan may be reported as delinquent until it is current."
+      ],
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/repayment-assistance"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "online-cutoff",
+        "intent": "Using the M&T Bank mortgage help pages, find the latest time an online payment can be made for same-day credit. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10 p.m.",
+              "10 pm",
+              "10:00"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10 p.m.",
+            "10 pm",
+            "10:00"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "By 10 p.m. ET."
+          }
+        ]
+      },
+      {
+        "slug": "partial-payment",
+        "intent": "A borrower wants to pay half their M&T Bank mortgage payment now and the rest later. Using the M&T Bank help pages, say whether partial payments are accepted. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "not accepted",
+              "not allowed",
+              "cannot",
+              "can't",
+              "does not accept",
+              "do not accept"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "not accepted",
+            "not allowed",
+            "cannot",
+            "can't",
+            "does not accept",
+            "do not accept"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No, partial payments are not accepted; the Flexible Payment Program is the alternative."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "User ID",
+        "Log in"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "debit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "10 p.m."
+    }
+  ]
+}

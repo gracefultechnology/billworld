@@ -1,0 +1,277 @@
+{
+  "id": "irving-energy-us-home-heating-18d2af",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Irving Energy (U.S. home heating)",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public irvingoil.com en-US pages (Home Energy FAQ, Price Protection Plan, Log In) and the public myaccount.irvingenergy.com 'Login or Register' page; no sign-in, no registration, no forms submitted. Residential customers use 'Irving Energy - My Account' (commercial: My Business Account). Sign-in: Email Address + Password. Existing customers who have never logged in register under 'Already a customer, but haven't logged in?' with Account Number (digits before the dash only), Phone Number (10 digits) and Email Address; a temporary password is emailed. In My Account customers view statements and invoices, pay invoices and set up automatic payments; payment options are online, automatic bank transfer (EFT) and credit card per delivery or as automatic card deduction; payments can also be arranged by phone at 1.888.310.1924 (Mon-Fri 7-7, Sat 8-2). Emailed invoices/statements are requested by phone or the online contact form (paperless is therefore modelled as not self-service online). Equalized Payment plan spreads the estimated season cost into equal monthly payments; Cap Price (fee, amount not published) and Fixed Price plans need a Fuel Agreement; automatic-delivery customers can enroll in price protection in My Account. $95 emergency delivery fee for non-automatic customers is a delivery charge, not a payment fee. Late charges and closing an account are not published on the pages used.",
+  "officialDomains": [
+    "irvingoil.com",
+    "irvingenergy.com"
+  ],
+  "sources": [
+    {
+      "url": "https://irvingoil.com/en-US/home-energy/home-energy-faq",
+      "title": "Everything you need to know about Irving Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://myaccount.irvingenergy.com/login",
+      "title": "Irving Energy - Login or Register",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.irvingoil.com/en-US/home-energy/price-protection-plan",
+      "title": "Price Protection Plan for Home Heating | Irving Oil",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://irvingoil.com/en-US/login",
+      "title": "Log In | Irving Oil",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Irving Energy",
+    "shortName": "Irving Energy",
+    "primary": "#a6192e",
+    "accent": "#1f3a68",
+    "monogram": "IE"
+  },
+  "labels": {
+    "signIn": "Login",
+    "register": "Register",
+    "username": "Email Address",
+    "dashboard": "My Account",
+    "payBill": "Pay invoices",
+    "autopay": "Automatic payments",
+    "statements": "Statements & invoices",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Irving Energy - My Account",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Payment options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Price Protection",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay invoices",
+        "page": "pay"
+      },
+      {
+        "label": "Statements & invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Automatic payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "phone",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://myaccount.irvingenergy.com/login"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://irvingoil.com/en-US/home-energy/home-energy-faq",
+      "note": "Automatic payments can come from your bank account (EFT) or be charged to your credit card."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://irvingoil.com/en-US/home-energy/home-energy-faq"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://irvingoil.com/en-US/home-energy/home-energy-faq",
+      "channel": "phone",
+      "phone": "888-310-1924",
+      "note": "Your statements and invoices are always available in My Account. To have them emailed to you instead, call us at 1.888.310.1924 or contact us online."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://irvingoil.com/en-US/home-energy/home-energy-faq",
+      "phone": "888-310-1924"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.irvingoil.com/en-US/home-energy/price-protection-plan"
+    }
+  },
+  "contact": {
+    "phone": "888-310-1924",
+    "source": "https://irvingoil.com/en-US/home-energy/home-energy-faq"
+  },
+  "billing": {
+    "source": "https://irvingoil.com/en-US/home-energy/home-energy-faq",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online in Irving Energy My Account, set up automatic payments from your bank account (EFT), or pay by credit card for each delivery or with an automatic card deduction.",
+        "You can also arrange a payment with our energy experts at 1.888.310.1924, Monday to Friday 7 a.m. to 7 p.m. and Saturday 8 a.m. to 2 p.m."
+      ],
+      "steps": [
+        "Go to Login and choose Irving Energy - My Account.",
+        "Sign in with your email address and password.",
+        "Open your invoices and choose the one to pay.",
+        "Submit the payment."
+      ],
+      "source": "https://irvingoil.com/en-US/home-energy/home-energy-faq"
+    },
+    {
+      "slug": "register",
+      "title": "First time in My Account",
+      "topic": "account",
+      "paragraphs": [
+        "Already a customer but never logged in? On the Register tab enter your account number (only the digits before the dash), the 10-digit phone number on your account and your email address. A temporary password is emailed to you.",
+        "My Account is for residential customers; commercial customers use My Business Account."
+      ],
+      "source": "https://myaccount.irvingenergy.com/login"
+    },
+    {
+      "slug": "paperless",
+      "title": "Emailed statements",
+      "topic": "billing",
+      "paragraphs": [
+        "Your statements and invoices are always available in My Account. To receive them by email instead of on paper, call 1.888.310.1924 or use the online contact form."
+      ],
+      "source": "https://irvingoil.com/en-US/home-energy/home-energy-faq"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Equalized payments and price protection",
+      "topic": "assistance",
+      "paragraphs": [
+        "With the Equalized Payment plan, Irving Energy estimates your fuel cost for the heating season and divides it into equal monthly payments, so your budget is predictable.",
+        "The Price Protection Program, for propane and heating oil customers in Maine, New Hampshire and Vermont, offers a Cap Price (capped for 12 months, with a fee) or a Fixed Price. Both require a signed Fuel Agreement; automatic-delivery customers can sign up in My Account. Call 1.888.310.1924 with questions."
+      ],
+      "source": "https://www.irvingoil.com/en-US/home-energy/price-protection-plan"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "arrange-payment-phone",
+        "intent": "Using the Irving Energy website's help pages, find the phone number to call to arrange a payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8883101924"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8883101924"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1.888.310.1924"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Irving Energy - My Account",
+        "Price Protection"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Email Address"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "temporary password"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "Equalized Payment"
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "id": "benefeds-fedvip-dental-vision-premium-billing-fo-db3ad6",
+  "version": 1,
+  "status": "dedicated",
+  "name": "BENEFEDS (FEDVIP dental & vision premium billing for federal employees and retirees)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public benefeds.gov pages only (FEDVIP 'Billing and payments' and FEDVIP FAQs); no sign-in. BENEFEDS collects premiums for every FEDVIP dental and vision carrier. Most enrollees pay by payroll deduction (federal employees, pre-tax), annuity deduction (annuitants) or allotment (retired uniformed service members); these are set up automatically with the pay provider. Automatic bank withdrawal (ABW, a recurring EFT from checking or savings) is the default for active duty family members, survivors and enrollees whose pay provider cannot deduct; it is drawn on the fifth business day of each month (cannot be modelled exactly: no day picker is set). ABW is cancelled with the Revoke ABW Authorization form (offline). Direct bill applies only in special cases (leave without pay, interim annuity); a one-time online payment appears on the My BENEFEDS dashboard only when a balance is due; mail FEDVIP payments to BENEFEDS-FEDVIP, P.O. Box 414095, Boston, MA 02241-4095. The FAQ says FEDVIP does not take credit cards, so online methods are bank only. Coverage can only be cancelled during Open Season or within 60 days of listed exceptions. Payment history (current and prior years, as of the prior business day) and tax information are in My BENEFEDS. No pay-without-signing-in option is described. Accelerated payments are changed by calling customer service. Fees, paperless and payment plans are not described; family defaults kept for paperless and arrangement. Catalog customer-service number 1-877-888-3337 is used unchanged. Reviewer: the FAQ says direct bills are paid online from My BENEFEDS or by mail and no phone payment is described, so pay_by_phone is unsupported (inferred).",
+  "officialDomains": [
+    "benefeds.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments",
+      "title": "BENEFEDS | Dental and Vision - Billing and payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.benefeds.gov/learn/fedvip/fedvip-faqs",
+      "title": "BENEFEDS | Dental and Vision - Frequently asked questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "BENEFEDS",
+    "shortName": "BENEFEDS",
+    "primary": "#1b3d6d",
+    "accent": "#0f5b8a",
+    "monogram": "B"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "dashboard": "My BENEFEDS",
+    "autopay": "Automatic bank withdrawal (ABW)",
+    "history": "Payment history",
+    "payBill": "Pay direct bill"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Billing and payments",
+        "helpSlug": "billing-and-payments"
+      },
+      {
+        "label": "Frequently asked questions",
+        "page": "help"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments",
+      "note": "One-time online payments are for enrollees who pay by direct bill. The option shows on your My BENEFEDS dashboard only when you have a balance due."
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments",
+      "note": "To pay a direct bill online, sign in to My BENEFEDS. You can also mail your FEDVIP payment to BENEFEDS-FEDVIP, P.O. Box 414095, Boston, MA 02241-4095.",
+      "channel": "mail"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments",
+      "note": "ABW withdraws your premium from a checking or savings account on the fifth business day of every month your coverage is in effect."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments",
+      "note": "To cancel automatic bank withdrawal, complete the Revoke ABW Authorization form. Questions: call BENEFEDS at 1-877-888-3337.",
+      "channel": "mail",
+      "phone": "8778883337"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-faqs",
+      "note": "Outside Open Season you can cancel FEDVIP only within 60 days of an exception, such as returning to active military duty or becoming eligible for VA dental or vision benefits."
+    },
+    "pay_by_phone": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-faqs",
+      "note": "Direct bills are paid online in My BENEFEDS or by mail to BENEFEDS-FEDVIP, P.O. Box 414095, Boston, MA 02241-4095.",
+      "channel": "mail",
+      "phone": "8778883337"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments",
+      "note": "Mail FEDVIP direct-bill payments to BENEFEDS-FEDVIP, P.O. Box 414095, Boston, MA 02241-4095."
+    }
+  },
+  "billing": {
+    "source": "https://www.benefeds.gov/learn/fedvip/fedvip-faqs",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "billing-and-payments",
+      "title": "How FEDVIP premiums are paid",
+      "topic": "billing",
+      "paragraphs": [
+        "When you enroll in FEDVIP, BENEFEDS sets up your premium payments with your pay provider automatically. Federal employees pay by payroll deduction (pre-tax); annuitants and survivor annuitants by annuity deduction; retired uniformed service members by allotment from retirement pay when enough is available. Everyone except federal employees pays post-tax.",
+        "If your pay provider cannot take deductions, or you are an active duty family member or the survivor of a uniformed service member, you pay by automatic bank withdrawal (ABW) instead, and BENEFEDS asks for your bank account details.",
+        "Direct bills are only used in special cases, such as leave without pay or an interim annuity while your deductions move to your annuity."
+      ],
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments"
+    },
+    {
+      "slug": "automatic-bank-withdrawal",
+      "title": "Automatic bank withdrawal (ABW)",
+      "topic": "autopay",
+      "paragraphs": [
+        "ABW takes your premium from your checking or savings account every month. The first withdrawal is on the fifth business day of the month your coverage starts, and later ones on the fifth business day of each month. For a January 1 start, remember January 1 is a holiday, not a business day.",
+        "To cancel ABW, complete the Revoke ABW Authorization form. Active duty family members can switch to an allotment from the sponsor's pay with a Premium Allotment Authorization form, downloaded from the My BENEFEDS dashboard."
+      ],
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments"
+    },
+    {
+      "slug": "direct-bill",
+      "title": "Paying a direct bill",
+      "topic": "billing",
+      "paragraphs": [
+        "If you receive a direct bill, sign in to My BENEFEDS: an alert shows that your bill is ready, and the one-time payment option appears only while a balance is due. FEDVIP does not accept credit cards; pay from a bank account.",
+        "You can also mail FEDVIP premium payments to BENEFEDS-FEDVIP, P.O. Box 414095, Boston, MA 02241-4095. FLTCIP payments go to a different address (P.O. Box 981079, Boston, MA 02298-1079).",
+        "If you are on leave without pay for two pay periods in a row, you are switched to direct bill. Pay those bills on time to keep your coverage."
+      ],
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments"
+    },
+    {
+      "slug": "payment-history",
+      "title": "View your payment history",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in to My BENEFEDS to see your FEDVIP dental and vision payment history for this year and earlier years you were enrolled, plus your tax information. History is current as of the prior business day."
+      ],
+      "source": "https://www.benefeds.gov/learn/fedvip/fedvip-billing-payments"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "abw-withdrawal-day",
+        "intent": "Using the BENEFEDS billing help, find on which day of the month automatic bank withdrawal (ABW) takes your FEDVIP premium. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "fifth business day",
+              "5th business day"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "fifth business day",
+            "5th business day"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "On the fifth business day of each month."
+          }
+        ]
+      },
+      {
+        "slug": "fedvip-mail-address",
+        "intent": "You received a FEDVIP direct bill and want to pay it by check. Using the BENEFEDS help, find the P.O. Box number for FEDVIP premium payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "414095"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "414095"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "BENEFEDS-FEDVIP, P.O. Box 414095, Boston, MA 02241-4095"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": "Billing and payments"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "My BENEFEDS"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "fifth business day"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "direct-bill",
+      "contains": [
+        "414095",
+        "credit cards"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "automatic-bank-withdrawal",
+      "contains": "Revoke ABW Authorization"
+    }
+  ]
+}

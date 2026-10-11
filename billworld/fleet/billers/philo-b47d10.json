@@ -1,0 +1,383 @@
+{
+  "id": "philo-b47d10",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Philo",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public help.philo.com articles only (no sign-in). Philo is charged automatically to a card, a bank account through Stripe Link, Apple Pay, Cash App or Google Pay; no AutoPay enrollment, paper bill, guest payment or payment plans. Plans: Essential $25 and Bundle+ $33 a month (Free Channels $0 is a free tier, not modeled as a plan); add-ons from $3 to $13 a month are in help. Upgrades apply right away (prorated); downgrades from Bundle+ to Essential apply at the next billing cycle (engine applies immediately; gap). Philo has a no-refund policy; access continues to the end of the billing cycle. Sign-in is passwordless: mobile number or email, then a link or one-time code and Confirm sign-in. The engine always asks for a password (gap: no passwordless/one-time-code sign-in identifier), so identifier 'email' with the label 'Mobile number or email'. Third-party billers (Amazon, Apple, Google, Roku, Samsung, Vizio) may add a surcharge and are canceled with that biller.",
+  "officialDomains": [
+    "philo.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.philo.com/account-billing/payment/",
+      "title": "How to pay for Philo - Philo Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.philo.com/account-billing/cancel/",
+      "title": "How to cancel your Philo subscription or trial - Philo Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.philo.com/account-billing/change-your-plan/",
+      "title": "How to change your subscription plan - Philo Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.philo.com/account-billing/packages/",
+      "title": "Subscription plans - Philo Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.philo.com/using-philo/sign-in/",
+      "title": "How to sign in to Philo - Philo Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.philo.com/account-billing/invoice/",
+      "title": "How to view and print your Philo invoice - Philo Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://help.philo.com/account-billing/surcharge/",
+      "title": "Third-party biller surcharge - Philo Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "Philo",
+    "shortName": "Philo",
+    "primary": "#4b2a9e",
+    "accent": "#2e2e2e",
+    "monogram": "P"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "username": "Mobile number or email",
+    "dashboard": "Account",
+    "plan": "Manage Plan",
+    "cancel": "Cancel my subscription",
+    "history": "Billing History",
+    "statements": "Billing History",
+    "wallet": "Payment info",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Plans",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Manage Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Payment info",
+        "page": "wallet"
+      },
+      {
+        "label": "Billing History",
+        "page": "history"
+      },
+      {
+        "label": "Cancel my subscription",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "evidence": "documented_official",
+    "source": "https://help.philo.com/using-philo/sign-in/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.philo.com/account-billing/payment/",
+      "note": "Philo charges the payment method on your account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.philo.com/account-billing/payment/",
+      "note": "Your subscription is charged automatically each billing cycle to the payment method on your account."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.philo.com/account-billing/cancel/",
+      "note": "To stop future charges, cancel your subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.philo.com/account-billing/invoice/",
+      "note": "Philo does not mail bills; invoices are in Billing History on your Account page."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.philo.com/account-billing/payment/"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.philo.com/account-billing/payment/"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.philo.com/account-billing/payment/",
+      "note": "Philo is charged each billing cycle and installment plans are not offered."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.philo.com/account-billing/cancel/",
+      "note": "You keep access until the end of your billing cycle; Philo does not give refunds. If Amazon, Apple, Google, Roku, Samsung or Vizio bills you, cancel with them."
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.philo.com/account-billing/change-your-plan/",
+      "note": "Upgrading to Bundle+ applies right away with a prorated charge. Moving from Bundle+ to Essential applies at your next billing cycle."
+    }
+  },
+  "billing": {
+    "source": "https://help.philo.com/account-billing/packages/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "notes": [
+        "Subscribers billed through Amazon, Apple, Google, Roku, Samsung or Vizio may pay a surcharge; switching to Philo billing avoids it."
+      ],
+      "evidence": "documented_official",
+      "source": "https://help.philo.com/account-billing/surcharge/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "essential",
+        "name": "Essential",
+        "cents": 2500
+      },
+      {
+        "id": "bundle-plus",
+        "name": "Bundle+",
+        "cents": 3300,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Philo plans and add-ons",
+      "topic": "plans",
+      "paragraphs": [
+        "Essential is $25 a month for 70+ channels plus more than 100 free ad-supported channels, with recordings saved up to a year. Bundle+ is $33 a month and adds extra ad-supported AMC+ content, HBO Max Basic with Ads and ad-supported discovery+. Free Channels costs nothing and needs no card.",
+        "Essential and Bundle+ members can add ALLBLK ($7), ad-free AMC+ ($4), ad-free discovery+ ($8), Hallmark+ ($8.99), HBO Max Standard ($13), Movies & More ($3), MGM+ ($8) or STARZ ($12), each per month."
+      ],
+      "source": "https://help.philo.com/account-billing/packages/"
+    },
+    {
+      "slug": "change-plan",
+      "title": "Change your plan",
+      "topic": "plans",
+      "paragraphs": [
+        "On your Account page choose Manage Plan, select a plan and Continue, review your payment info, accept the terms and Submit.",
+        "Upgrading from Essential to Bundle+ takes effect right away with a prorated charge for the rest of the month (during a free trial you are charged a full month). Moving from Bundle+ to Essential keeps Bundle+ until your next billing cycle."
+      ],
+      "source": "https://help.philo.com/account-billing/change-your-plan/",
+      "steps": [
+        "Open your Account page.",
+        "Choose Manage Plan.",
+        "Select a plan and Continue.",
+        "Review, accept the terms and Submit."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your Philo subscription",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in, choose your profile and Account, then Cancel my subscription and Complete cancellation. The Your Philo Subscription section shows the last day of your billing cycle.",
+        "You keep your subscription until that day and Free Channels after it. Philo does not give refunds for the current period. Locking your card does not stop charges. If a device store or TV maker bills you, cancel through them."
+      ],
+      "source": "https://help.philo.com/account-billing/cancel/",
+      "steps": [
+        "Sign in and open Account.",
+        "Choose Cancel my subscription.",
+        "Choose Complete cancellation."
+      ]
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay for Philo",
+      "topic": "billing",
+      "paragraphs": [
+        "On philo.com you can pay with Visa, Mastercard, Discover or American Express credit cards, Visa, Mastercard or American Express debit cards, a bank account through Link, Apple Pay, Cash App or Google Pay.",
+        "If you subscribed through Amazon, Apple, Google, Roku, Samsung or Vizio, that company charges you and may add a surcharge. You can switch to billing by Philo on your Account page; the switch applies after your current billing cycle."
+      ],
+      "source": "https://help.philo.com/account-billing/payment/"
+    },
+    {
+      "slug": "invoice",
+      "title": "View and print your invoice",
+      "topic": "billing",
+      "paragraphs": [
+        "On your Account page, scroll to Billing History and choose View invoice next to a charge. The invoice opens as a PDF you can save or print."
+      ],
+      "source": "https://help.philo.com/account-billing/invoice/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "bundle-plus-price",
+        "intent": "Using the Philo help pages, find the monthly price of the Bundle+ plan. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "33"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "33"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Bundle+ costs $33 a month."
+          }
+        ]
+      },
+      {
+        "slug": "starz-addon-price",
+        "intent": "Using the Philo help pages, find what the STARZ add-on costs per month. Do not add it or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The STARZ add-on is $12 a month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Mobile number or email"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Manage Plan",
+        "Billing History"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Essential",
+        "Bundle+"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$33"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Complete cancellation"
+    }
+  ]
+}

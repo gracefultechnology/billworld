@@ -1,0 +1,308 @@
+{
+  "id": "magicjack-3d233a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "magicJack",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public help.magicjack.com billing articles only (no sign-in). magicJack is a national VoIP home phone sold as a device with prepaid service: there is no monthly bill; service is renewed by subscription term (plus premium numbers and prepaid international credit). The fleet's balance/payment model maps a payment to a renewal (Account > Device Status > Add Months / Click to Reactivate > choose a plan > Add to Cart > card > accept the subscriber agreement > Complete Order). Card only (Visa, MasterCard, American Express, Discover; no cash, check, PayPal or EFT), so billing.methods is card. A 9% administrative fee applies to every purchase, plus sales tax where applicable and USF on prepaid credit; this is part of the order price rather than a convenience fee, so it is in help/fees.notes and not charged by the engine. AutoRenew (Account > AutoRenew, per subscription) charges the card on file; an email comes 30 days before renewal; a failed renewal payment disconnects service; to disable, toggle it off and select Agree and Disable Auto-Renew, or call Customer Care 1-844-866-2442 (US/Canada) / 1-561-594-9925. Rapid Renew: enter the magicJack phone number and a single-use link valid one hour is emailed to the primary account address (no on-page payment without signing in, so guest_pay is modelled offline). No mailed bills exist (paperless not applicable, inferred). There is no cancellation or early termination fee; unused subscription time is not refunded; the service simply ends when the paid term runs out without AutoRenew, so cancel_service is modelled as not done online (turn off AutoRenew or call Customer Care). Device plan prices are not listed on the help pages (no plans modelled). Premium numbers: vanity $10/yr, custom $3/yr, Canadian $10/yr. Sign-in is by email and password. Reviewed 2026-10-10 (t20 review): a renewal is an immediate purchase of a full term, so partial amounts and future-dated renewals do not exist; fullBalanceOnly plus scheduled.maxDaysAhead 0 was tried but the telecom driver's schedule_and_cancel and dossier_contract flows still use Pay another amount and a future date, so both stay at family defaults (cross-owner request).",
+  "officialDomains": [
+    "magicjack.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.magicjack.com/faq/support/billing-payment/",
+      "title": "Billing & Payment",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://help.magicjack.com/faq/support/billing-payment/service-phone-number-renewal/",
+      "title": "Service & Phone Number Renewal",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    }
+  ],
+  "brand": {
+    "displayName": "magicJack",
+    "shortName": "magicJack",
+    "primary": "#b0122c",
+    "accent": "#1a1a2e",
+    "monogram": "MJ"
+  },
+  "labels": {
+    "dashboard": "Account",
+    "viewBill": "Device Status",
+    "payBill": "Add Months",
+    "autopay": "AutoRenew",
+    "signIn": "Login",
+    "signOut": "Logout",
+    "username": "Email address",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Renewal",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Billing & Payment",
+        "helpSlug": "fees"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Device Status",
+        "page": "bill"
+      },
+      {
+        "label": "Add Months",
+        "page": "pay"
+      },
+      {
+        "label": "AutoRenew",
+        "page": "autopay"
+      },
+      {
+        "label": "Billing Information",
+        "page": "wallet"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "evidence": "documented_official",
+    "source": "https://help.magicjack.com/faq/support/billing-payment/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.magicjack.com/faq/support/billing-payment/service-phone-number-renewal/",
+      "note": "To renew without logging in, use Rapid Renew: enter your magicJack phone number and a single-use renewal link, good for one hour, is emailed to the primary address on the account.",
+      "channel": "none"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.magicjack.com/faq/support/billing-payment/service-phone-number-renewal/",
+      "note": "AutoRenew charges the credit card on file for each subscription you turn it on for. You get an email 30 days before the renewal date. If the card payment fails, service is disconnected."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.magicjack.com/faq/support/billing-payment/service-phone-number-renewal/",
+      "note": "You can also opt out by calling Customer Care at 1-844-866-2442."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.magicjack.com/faq/support/billing-payment/",
+      "note": "magicJack does not send monthly bills. Service is prepaid by subscription term, and order confirmations and renewal notices come by email."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.magicjack.com/faq/support/billing-payment/",
+      "note": "There is no cancellation or early termination fee. Service ends when your paid term runs out; turn off AutoRenew so it is not renewed, or call Customer Care at 1-844-866-2442. Unused subscription time is not refunded.",
+      "channel": "phone",
+      "phone": "8448662442"
+    },
+    "pay_by_mail": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.magicjack.com/faq/support/billing-payment/",
+      "note": "magicJack accepts Visa, MasterCard, American Express and Discover only. Cash, checks, PayPal and bank transfers are not accepted.",
+      "channel": "none"
+    }
+  },
+  "contact": {
+    "phone": "1-844-866-2442",
+    "evidence": "documented_official",
+    "source": "https://help.magicjack.com/faq/support/billing-payment/service-phone-number-renewal/"
+  },
+  "billing": {
+    "source": "https://help.magicjack.com/faq/support/billing-payment/",
+    "fees": {
+      "cardCents": 0,
+      "notes": [
+        "A 9% administrative fee applies to every purchase, plus sales tax where applicable."
+      ],
+      "evidence": "documented_official",
+      "source": "https://help.magicjack.com/faq/support/billing-payment/"
+    },
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Renew your magicJack service",
+      "topic": "payments",
+      "paragraphs": [
+        "magicJack service is prepaid. To renew, log in, open the Account tab and under Device Status select Add Months (or Click to Reactivate). Choose a plan, Add to Cart, enter your card, accept the subscriber agreement and select Complete Order. If the renewal doesn't show right away, unplug and re-plug your device.",
+        "Rapid Renew works without logging in: choose Login on magicJack.com, start Rapid Renew and enter your magicJack phone number. A single-use link, valid for one hour, is emailed to the primary address on the account.",
+        "Premium numbers renew separately with Add a Year under Number Status: vanity $10 a year, custom $3 a year, Canadian $10 a year, plus taxes and fees."
+      ],
+      "source": "https://help.magicjack.com/faq/support/billing-payment/service-phone-number-renewal/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoRenew",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in, open the Account tab, select AutoRenew and turn it on for each subscription. You need an active credit card on file. An email arrives 30 days before each renewal with the date and rate, and another once it is processed. If the card payment fails, service is disconnected.",
+        "To turn it off, select the AutoRenew toggle, review the disclaimer, check the box and choose Agree and Disable Auto-Renew. You can also call Customer Care at 1-844-866-2442 (US and Canada) or 1-561-594-9925."
+      ],
+      "steps": [
+        "Log in and open the Account tab.",
+        "Select AutoRenew.",
+        "Turn it on for each subscription."
+      ],
+      "source": "https://help.magicjack.com/faq/support/billing-payment/service-phone-number-renewal/"
+    },
+    {
+      "slug": "fees",
+      "title": "Fees, taxes and payment methods",
+      "topic": "payments",
+      "paragraphs": [
+        "A 9% administrative fee applies to every purchase. Sales tax is added for taxable items in states where magicJack must collect it, and a USF fee applies to prepaid credit. There are no activation or start-up fees and no cancellation or early termination fees.",
+        "magicJack takes Visa, MasterCard, American Express and Discover. Cash, checks, PayPal and bank transfers (EFT) are not accepted. Unused subscription time is not refundable; devices bought on magicJack.com have a 30-day money-back guarantee."
+      ],
+      "source": "https://help.magicjack.com/faq/support/billing-payment/"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "paperless-on"
+    ],
+    "extra": [
+      {
+        "slug": "admin-fee",
+        "intent": "Using magicJack's billing help, find the administrative fee percentage added to every purchase. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "9%"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "9%"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A 9% administrative fee applies to every purchase."
+          }
+        ]
+      },
+      {
+        "slug": "paypal-abstain",
+        "intent": "Renew your magicJack service using PayPal. If magicJack does not accept PayPal, do not make a payment and say so.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "abstain"
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "abstain"
+        },
+        "tags": [
+          "limitation",
+          "abstention",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "magicJack does not accept PayPal; only Visa, MasterCard, American Express and Discover."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoRenew",
+        "Add Months"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "label": "payBill"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fees",
+      "contains": [
+        "9%",
+        "PayPal"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "30 days"
+    }
+  ]
+}

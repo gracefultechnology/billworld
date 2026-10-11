@@ -1,0 +1,478 @@
+{
+  "id": "c-spire-8008f0",
+  "status": "dedicated",
+  "name": "C Spire",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public cspire.com wireless support and plan pages (rendered with a headless browser; no sign-in, Express Pay not started). Postpaid monthly bills. Online accounts are registered with the C Spire mobile number (a texted PIN completes registration) and signed into with a chosen username and password; passwords are 6-20 characters, case-sensitive (passwordRule). Express Pay pays without signing in using the mobile number (or account number) plus ZIP code (guestLookupFields [phone, zip], guestLookupExact); it can also schedule a date and pay a different amount. Online one-time payments take card, bank account or a third-party service; a $2.99 convenience fee applies to one-time card payments (billing.fees.cardCents 299, autopayCardCents 0). AutoPay drafts a bank account, debit or credit card on the due date and also enrolls paperless billing; the AutoPay credit is full with bank/debit and half with a credit card. C Spire moved to paperless billing on 1 Feb 2023 but a Postal Mail option can be requested, so paperless stays supported. Pay by phone: #PAY (#729) or 1-855-CSPIRE5 (277-4735), which is also used as the contact number (catalog had 855-438-1009). Mail payments with the bill stub are accepted. Canceling service is not documented online (cancel_service unsupported, inferred). Payment arrangements are not documented and are left to the family default. Plan prices are the published one-line Broadband Facts prices. GAP: whether the $2.99 card fee applies to Express Pay is not stated (guest card fee left at the family default).",
+  "officialDomains": [
+    "cspire.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cspire.com/web/help/wireless/how-set-autopay-and-paperless-billing-for-your-spire-wireless-bill",
+      "title": "How to set up AutoPay and Paperless Billing for your C Spire Wireless bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.cspire.com/web/wireless/ways-to-pay",
+      "title": "Ways To Pay Your Wireless Bill | C Spire Wireless",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cspire.com/web/help/wireless/how-to-pay-your-bill-using-your-online-account",
+      "title": "How to pay your bill using your online account",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cspire.com/web/help/wireless/pay-your-bill-by-phone-by-mail-or-in-person",
+      "title": "Pay your bill by phone, by mail or in person",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cspire.com/web/help/wireless/how-to-pay-your-bill-online-using-express-pay",
+      "title": "How to pay your bill online using Express Pay",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cspire.com/web/help/wireless/how-to-register-to-manage-your-account-online",
+      "title": "How to register to manage your account online",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.cspire.com/web/wireless/paperless",
+      "title": "Paperless | C Spire Wireless",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.cspire.com/web/wireless/plans",
+      "title": "C Spire Unlimited Data Plans with 5G, Talk, and Text | C Spire",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.cspire.com/my_account/personal/express-pay/",
+      "title": "Make a Payment - Express Pay | C Spire",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "C Spire",
+    "shortName": "C Spire",
+    "primary": "#005a8b",
+    "accent": "#5b2a86",
+    "monogram": "C"
+  },
+  "labels": {
+    "dashboard": "Account Dashboard",
+    "payBill": "Make A Payment",
+    "guestPay": "Express Pay",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "viewBill": "View Bill",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "Username",
+    "register": "Register",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Express Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "ways-to-pay"
+      },
+      {
+        "label": "AutoPay",
+        "helpSlug": "autopay-paperless"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "View Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Make A Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "none",
+    "passwordRule": {
+      "pattern": "^.{6,20}$",
+      "message": "Password must be 6-20 characters (letters, numbers and symbols allowed; case-sensitive)."
+    },
+    "guestLookupFields": [
+      "phone",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.cspire.com/web/help/wireless/how-to-register-to-manage-your-account-online"
+  },
+  "contact": {
+    "phone": "8552774735",
+    "payPhone": "8552774735",
+    "source": "https://www.cspire.com/web/help/wireless/pay-your-bill-by-phone-by-mail-or-in-person",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cspire.com/web/help/wireless/how-to-pay-your-bill-online-using-express-pay",
+      "note": "Express Pay needs your mobile number (or account number) and ZIP code; no sign-in or registration."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cspire.com/web/help/wireless/how-set-autopay-and-paperless-billing-for-your-spire-wireless-bill",
+      "note": "AutoPay drafts your bank account, debit or credit card on the due date and also enrolls you in Paperless Billing. The AutoPay credit is halved when you pay by credit card."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.cspire.com/web/help/wireless/how-set-autopay-and-paperless-billing-for-your-spire-wireless-bill"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cspire.com/web/help/wireless/how-to-pay-your-bill-using-your-online-account",
+      "note": "Use the calendar to pick a later payment date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cspire.com/web/wireless/paperless",
+      "note": "Bills are emailed and the last 18 months can be viewed and printed online; you can ask for Postal Mail instead."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cspire.com/web/help/wireless/pay-your-bill-by-phone-by-mail-or-in-person",
+      "note": "To cancel C Spire wireless service, call 1-855-CSPIRE5 (277-4735), dial 611 from your C Spire phone, or visit a C Spire store.",
+      "channel": "phone",
+      "phone": "8552774735"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cspire.com/web/help/wireless/pay-your-bill-by-phone-by-mail-or-in-person",
+      "note": "Dial #PAY (#729) from your C Spire phone or call 1-855-CSPIRE5 (277-4735). Visa, Mastercard, American Express, Discover, C Spire gift cards and electronic checks are accepted."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cspire.com/web/help/wireless/pay-your-bill-by-phone-by-mail-or-in-person",
+      "note": "Mail your check with the remittance stub from your bill."
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.cspire.com/web/wireless/plans"
+    }
+  },
+  "billing": {
+    "source": "https://www.cspire.com/web/help/wireless/how-to-pay-your-bill-using-your-online-account",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 299,
+      "autopayCardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.cspire.com/web/help/wireless/how-to-pay-your-bill-using-your-online-account",
+      "notes": [
+        "A service fee applies to payments at a C Spire payment kiosk or a CheckFreePay location."
+      ]
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ],
+      "days": "due_date"
+    },
+    "plans": [
+      {
+        "id": "connect-essentials",
+        "name": "Connect Essentials",
+        "cents": 6000
+      },
+      {
+        "id": "connect-plus",
+        "name": "Connect Plus",
+        "cents": 7000,
+        "current": true
+      },
+      {
+        "id": "connect-premium",
+        "name": "Connect Premium",
+        "cents": 8000
+      },
+      {
+        "id": "connect-elite",
+        "name": "Connect Elite",
+        "cents": 10000
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-online",
+      "title": "How to pay your bill using your online account",
+      "topic": "payments",
+      "source": "https://www.cspire.com/web/help/wireless/how-to-pay-your-bill-using-your-online-account",
+      "paragraphs": [
+        "Sign in and select Make A Payment in the Pay Bill section of your Account Dashboard. The default pays your full balance today; use the calendar to schedule a later date or the drop-down to pay a different amount.",
+        "Pay with a credit or debit card, a bank account or a third-party payment service. One-time payments by credit or debit card carry a $2.99 convenience fee. A receipt can be printed and a confirmation is emailed."
+      ]
+    },
+    {
+      "slug": "autopay-paperless",
+      "title": "AutoPay and Paperless Billing",
+      "topic": "autopay",
+      "source": "https://www.cspire.com/web/help/wireless/how-set-autopay-and-paperless-billing-for-your-spire-wireless-bill",
+      "paragraphs": [
+        "AutoPay pays your bill each month from a credit or debit card or a bank account, and enrolling also signs you up for Paperless Billing, so bill-ready notices come by email.",
+        "The full monthly AutoPay credit applies with a bank account or debit card; a credit card earns half. Until your bill says a bank debit will be drawn on the due date, keep paying by hand."
+      ],
+      "steps": [
+        "Sign in to your online account.",
+        "Choose Enroll in AutoPay in the Pay Bill section of the dashboard.",
+        "Pick the payment method and select Start AutoPay.",
+        "Confirm your email address and enter the payment details.",
+        "Accept the AutoPay and Paperless Billing terms and set it as your AutoPay source."
+      ]
+    },
+    {
+      "slug": "ways-to-pay",
+      "title": "Ways to pay your wireless bill",
+      "topic": "payments",
+      "source": "https://www.cspire.com/web/help/wireless/pay-your-bill-by-phone-by-mail-or-in-person",
+      "paragraphs": [
+        "Pay online or in the My C Spire app, without signing in through Express Pay (mobile or account number plus ZIP code), by dialing #PAY (#729) or calling 1-855-CSPIRE5 (277-4735), by mail with your remittance stub, in a store, or with Pay By Text (reply Pay to your monthly text alert).",
+        "Store kiosks take cash, checks and cards; kiosk and CheckFreePay payments carry a service fee, and prepaid customers pay $5 at a kiosk."
+      ]
+    },
+    {
+      "slug": "cspire-plans",
+      "title": "C Spire plans",
+      "topic": "plans",
+      "source": "https://www.cspire.com/web/wireless/plans",
+      "paragraphs": [
+        "Single-line monthly prices: Connect Essentials $60, Connect Plus $70, Connect Premium $80 and Connect Elite $100, before taxes and the monthly recovery charges. Lines get a $10 discount with AutoPay and more off as lines are added."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-convenience-fee",
+        "intent": "Using C Spire's support pages, find the convenience fee for a one-time payment by credit or debit card. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2.99",
+              "2.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2.99",
+            "2.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $2.99 convenience fee applies to one-time card payments."
+          }
+        ]
+      },
+      {
+        "slug": "express-pay-fields",
+        "intent": "Find what information C Spire Express Pay asks for to pay a wireless bill without signing in. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "ZIP",
+              "zip"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "ZIP",
+            "zip"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "guest-pay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your mobile number or account number plus your ZIP code."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-credit-card-credit",
+        "intent": "Find out how much of the AutoPay credit C Spire gives when AutoPay uses a credit card. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "half",
+              "50%"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "half",
+            "50%"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Half of the monthly AutoPay credit."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Connect Plus",
+        "Connect Essentials"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "277-4735"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-online",
+      "contains": "$2.99"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,308 @@
+{
+  "id": "members-1st-federal-credit-union-5f86ff",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Members 1st Federal Credit Union",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-10",
+  "template": "bank-billpay",
+  "notes": "Researched from public members1st.org pages (no sign-in). Catalog routed this credit union to the paymentus utility family; moved to bank-billpay because the main loan payment route is Members 1st Digital Banking (Members 1st Online / app): one-time or recurring payments from a Members 1st or external account, no fees. The \"Pay With an External Account\" option is Paymentus (linked from the page as \"Make a Payment\"): one-time or recurring payments from outside financial institutions (eCheck), debit card or digital payment services (PayPal, Venmo, Apple Pay, Google Pay per the page's payment-method image alt text), $4.95 processing fee per transaction (modelled as the guest-pay flow, bank and card; review corrected the earlier card-only setting). eStatements: Members 1st Online > STATEMENTS top menu, accept disclosures; eDocuments kept 2 years. Skip-A-Pay in digital banking under the loan's Actions: $30 per skip, up to two per calendar year, loans must be current - not a payment plan (payment_arrangement unsupported online). Customer Service (800) 237-7288. Sign-in identifier/MFA not documented (family defaults).",
+  "officialDomains": [
+    "members1st.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.members1st.org/personal/borrow/pay-my-loan",
+      "title": "Loan Payment Tool | Members 1st Federal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.members1st.org/about-us/digital-banking/estatements",
+      "title": "eStatements | Members 1st Federal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.members1st.org/personal/borrow/skip-a-pay",
+      "title": "Skip-A-Pay | Members 1st Federal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "Members 1st",
+    "displayName": "Members 1st Federal Credit Union",
+    "primary": "#004e7c",
+    "accent": "#8a3b00",
+    "monogram": "M1"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Recurring Payments",
+    "guestPay": "Pay With an External Account",
+    "signIn": "Log In",
+    "register": "Register for Digital Banking",
+    "paperless": "eStatements",
+    "statements": "Statements"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Loan Payment Tool",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Pay With an External Account",
+        "page": "guest"
+      },
+      {
+        "label": "Register for Digital Banking",
+        "page": "register"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "eStatements",
+        "page": "paperless"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.members1st.org/personal/borrow/pay-my-loan",
+      "note": "Paying in Digital Banking is free, from a Members 1st account or an external account."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.members1st.org/personal/borrow/pay-my-loan",
+      "note": "Pay With an External Account takes one-time or recurring loan payments from an account at another financial institution, a debit card or a digital payment service, with a $4.95 processing fee per payment."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.members1st.org/personal/borrow/pay-my-loan"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.members1st.org/personal/borrow/pay-my-loan"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.members1st.org/about-us/digital-banking/estatements"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.members1st.org/about-us/digital-banking/estatements"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.members1st.org/personal/borrow/skip-a-pay"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.members1st.org/personal/borrow/skip-a-pay",
+      "note": "Members 1st does not offer online payment plans. Current, eligible loans can use Skip-A-Pay in Digital Banking ($30 per skip, two per calendar year); for other help call (800) 237-7288."
+    }
+  },
+  "contact": {
+    "phone": "800-237-7288",
+    "source": "https://www.members1st.org/about-us/digital-banking/estatements"
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "fees": {
+      "guestCardCents": 495,
+      "evidence": "documented_official",
+      "source": "https://www.members1st.org/personal/borrow/pay-my-loan",
+      "guestBankCents": 495
+    },
+    "source": "https://www.members1st.org/personal/borrow/pay-my-loan"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Two ways to pay your loan",
+      "source": "https://www.members1st.org/personal/borrow/pay-my-loan",
+      "paragraphs": [
+        "Manage your loan with Digital Banking on our website or in the Members 1st app: set up one-time or recurring payments from a Members 1st account or an external account, get loan alerts, and see all your balances in one place. There are no fees.",
+        "Or use Pay With an External Account to make a one-time or recurring payment from an account at another financial institution (eCheck), a debit card or a digital payment service such as PayPal, Venmo, Apple Pay or Google Pay. You can make a same-day payment or schedule payments ahead. A $4.95 processing fee applies to each payment."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "eStatements",
+      "source": "https://www.members1st.org/about-us/digital-banking/estatements",
+      "paragraphs": [
+        "Log in to Members 1st Online, choose STATEMENTS in the top menu and accept the current disclosures to enroll. You get an email whenever a new statement, notice or tax document is ready, so keep your email address current under Contact Information in your profile.",
+        "eStatements, eNotices and eTax documents stay available for 2 years after they post, and you can print or save them."
+      ]
+    },
+    {
+      "slug": "skip-a-pay",
+      "title": "Skip-A-Pay",
+      "topic": "billing",
+      "source": "https://www.members1st.org/personal/borrow/skip-a-pay",
+      "paragraphs": [
+        "Skip-A-Pay lets you defer up to two loan payments per calendar year. In Digital Banking select your loan, look under Actions for Skip-A-Pay, and answer the required questions.",
+        "Loans must be current. A $30 non-refundable processing fee is taken from your Regular Savings (or checking if savings is short) for each skip, interest keeps accruing, and the loan maturity date moves out."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "external-payment-fee",
+        "intent": "Using Members 1st's help pages, find the processing fee for paying a loan with Pay With an External Account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$4.95",
+              "4.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$4.95",
+            "4.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $4.95 processing fee applies per transaction."
+          }
+        ]
+      },
+      {
+        "slug": "skip-a-pay-fee",
+        "intent": "Using Members 1st's help pages, find the fee for each Skip-A-Pay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each skip costs a $30 non-refundable processing fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Pay With an External Account"
+      ]
+    },
+    {
+      "page": "guest",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Recurring Payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$4.95"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "skip-a-pay",
+      "contains": "$30"
+    }
+  ]
+}

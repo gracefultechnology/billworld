@@ -1,0 +1,337 @@
+{
+  "id": "meridian-waste-solutions-b62611",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Meridian Waste Solutions",
+  "category": "trash",
+  "reviewedAt": "2026-10-10",
+  "template": "waste-hauler",
+  "notes": "Moved from the catalog default utility-account family to the trash-specific waste-hauler family. Researched from the public meridianwaste.com home page (My Account menu: Pay My Bill, Select Billing Options, Change Account Password, Request Extra Pick Up, Report Missed Collection, Help / FAQ, all linking to the Soft-Pak Web-Pak sign-in), the Find a Facility page and the public Meridian Waste Online Bill Pay sign-in page and FAQ; never signed in. Sign-in is one page with E-Mail and a case-sensitive password (8-64 characters, set as passwordRule). Register Now needs the Customer Number (account number plus check digit) and the numeric Access Code from the invoice and is confirmed by an e-mailed link. Residential customers can also request an extra pickup, schedule bulk and white-goods collection and report missed collection online (no mock flow). The FAQ does not describe turning AutoPay off, so autopay_cancel is inferred. No convenience fee, late fee, guest payment or payment-plan policy is published: guest pay and payment arrangements are unsupported online (inferred) and no fees are set. 866-440-3983 is the phone listed for Meridian hauling locations on Find a Facility. New residential subscription sign-ups go through customercare.meridianwaste.com (not modelled).",
+  "officialDomains": [
+    "meridianwaste.com",
+    "soft-pak.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.meridianwaste.com/",
+      "title": "Meridian Waste: Trash Pickup, Waste Disposal & Recycling Services",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.meridianwaste.com/find-a-facility/",
+      "title": "Find a Facility | Meridian Waste",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://secure.soft-pak.com/webpakmw/signin.jsp",
+      "title": "Meridian Waste Online Bill Pay",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://secure.soft-pak.com/webpakmw/faq.jsp",
+      "title": "Online Bill Pay - Frequently Asked Questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Meridian Waste",
+    "shortName": "Meridian",
+    "primary": "#1b5e20",
+    "accent": "#0d47a1",
+    "monogram": "M"
+  },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "signIn": "Sign In",
+    "register": "Register Now",
+    "forgot": "Reset Password",
+    "autopay": "Autopay Enrollment",
+    "paperless": "Select Billing Options",
+    "wallet": "Payment Methods",
+    "profile": "User Options",
+    "help": "Help / FAQ",
+    "accountNumber": "Customer Number",
+    "username": "E-Mail"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay My Bill",
+        "page": "login"
+      },
+      {
+        "label": "Register Now",
+        "page": "register"
+      },
+      {
+        "label": "Help / FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Manage My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay Enrollment",
+        "page": "autopay"
+      },
+      {
+        "label": "Select Billing Options",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Change Account Password",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "passwordRule": {
+      "pattern": "^.{8,64}$",
+      "message": "Your password must be 8-64 characters long."
+    },
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://secure.soft-pak.com/webpakmw/signin.jsp"
+  },
+  "contact": {
+    "phone": "866-440-3983",
+    "source": "https://www.meridianwaste.com/find-a-facility/",
+    "evidence": "observed_public"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://secure.soft-pak.com/webpakmw/faq.jsp",
+      "note": "Register Now with the Customer Number and Access Code from your statement or invoice, then confirm through the e-mailed link."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://secure.soft-pak.com/webpakmw/faq.jsp"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://secure.soft-pak.com/webpakmw/signin.jsp"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://secure.soft-pak.com/webpakmw/signin.jsp",
+      "note": "Meridian Waste online payments are made after signing in to Online Bill Pay. Register with the Customer Number and Access Code from your invoice, or call 866-440-3983.",
+      "channel": "phone",
+      "phone": "866-440-3983"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://secure.soft-pak.com/webpakmw/faq.jsp"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://secure.soft-pak.com/webpakmw/faq.jsp",
+      "note": "Automatic payments are managed under Billing Options: choose Modify in the Automatic Payments section to change the payment method."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://secure.soft-pak.com/webpakmw/faq.jsp"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.meridianwaste.com/find-a-facility/",
+      "note": "Payment plans are not offered online. Call Meridian Waste at 866-440-3983 about a past-due balance.",
+      "channel": "phone",
+      "phone": "866-440-3983"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.meridianwaste.com/find-a-facility/",
+      "note": "Service cannot be stopped through Online Bill Pay. Call Meridian Waste at 866-440-3983 or contact your local facility to stop or change service.",
+      "channel": "phone",
+      "phone": "866-440-3983"
+    }
+  },
+  "billing": {
+    "source": "https://secure.soft-pak.com/webpakmw/faq.jsp",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "register",
+      "title": "How to register for Online Bill Pay",
+      "topic": "account",
+      "paragraphs": [
+        "On the Meridian Waste Online Bill Pay Sign In page, find the Are you a new user? section and choose Register Now. Enter the Customer Number and the Access Code printed on your statement or invoice, your e-mail address and a password, then select Register Now.",
+        "An e-mail with a confirmation link is sent to the address you entered. Open the link and sign in to finish. Your e-mail address is your username; you can change it later under User Options, Change Username."
+      ],
+      "source": "https://secure.soft-pak.com/webpakmw/faq.jsp"
+    },
+    {
+      "slug": "autopay",
+      "title": "How to enroll in automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic payments pay each invoice from a saved card or bank account. You agree to the Terms and Conditions when you pick the payment method."
+      ],
+      "steps": [
+        "Sign in and select Autopay Enrollment.",
+        "Pick a saved payment method, or choose Add New and enter one.",
+        "Check I agree to the Terms and Conditions.",
+        "Choose Select (or Add Payment) to finish enrolling."
+      ],
+      "source": "https://secure.soft-pak.com/webpakmw/faq.jsp"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "How to change automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Select Autopay Enrollment to open Billing Options, then choose Modify in the Automatic Payments section. Add a new payment method or pick another saved one, agree to the Terms and Conditions and choose Select."
+      ],
+      "source": "https://secure.soft-pak.com/webpakmw/faq.jsp"
+    },
+    {
+      "slug": "paperless",
+      "title": "How to change your bill delivery options",
+      "topic": "billing",
+      "paragraphs": [
+        "After signing in, select Billing Options. The button only appears when your online login is the admin for that account number.",
+        "Three On/Off switches control delivery: E-Mail Notifications Only (an e-mail when the bill is ready to view online), E-Mail Notifications With Bill Attached (the bill as a PDF), and Printed Bill (a paper bill by mail). Choose Submit to save. The same window holds the primary billing e-mail address."
+      ],
+      "source": "https://secure.soft-pak.com/webpakmw/faq.jsp"
+    },
+    {
+      "slug": "online-services",
+      "title": "What you can do in Online Bill Pay",
+      "topic": "account",
+      "paragraphs": [
+        "Residential customers can pay online, change the account password, request an extra pickup, schedule an on-call bulk and white-goods collection and report a missed collection.",
+        "Have your e-mail address and password ready to sign in. The first time, you also need the Access Code from your Meridian Waste invoice. Passwords are case-sensitive and must be 8 to 64 characters long."
+      ],
+      "source": "https://secure.soft-pak.com/webpakmw/signin.jsp"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "password-length",
+        "intent": "Using Meridian Waste's Online Bill Pay help, find the allowed password length for an Online Bill Pay account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "8",
+              "64"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "8",
+            "64"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Passwords must be 8 to 64 characters long."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "E-Mail",
+        "Reset Password"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Autopay Enrollment",
+        "Billing Options"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "E-Mail Notifications With Bill Attached"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "Access Code"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "online-services",
+      "contains": "white-goods"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "866-440-3983"
+    }
+  ]
+}

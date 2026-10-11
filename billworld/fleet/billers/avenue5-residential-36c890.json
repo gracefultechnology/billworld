@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-10",
+  "id": "avenue5-residential-36c890",
+  "name": "Avenue5 Residential",
+  "category": "housing",
+  "notes": "Researched from public avenue5.com pages (High-Five Living, Contact Us, Former Resident Billing Inquiry). Avenue5 is a third-party manager: each community has its own 24/7 resident portal (submit service requests, view account information, pay rent); portal vendor varies by property. Bilt Rewards partnership: residents can earn points on rent. Current-resident support line 844.727.4541 (Mon-Fri 7-5 PT), after hours via the portal; Former Resident Billing 833.443.1961 (cannot help current residents or refunds). Fees, autopay rules, notice periods and sign-in fields are per community and not published (family defaults kept, inferred).",
+  "officialDomains": [
+    "avenue5.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.avenue5.com/high-five-living",
+      "title": "High-Five Living | Avenue5 Residential Customer Experience",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.avenue5.com/contact-us",
+      "title": "Contact Us | Avenue5 Residential",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.avenue5.com/former-resident-billing-inquiry",
+      "title": "Former Resident Billing Inquiry | Avenue5 Residential",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Avenue5 Residential",
+    "shortName": "Avenue5",
+    "primary": "#1d2b4f",
+    "accent": "#9a3412",
+    "monogram": "A5"
+  },
+  "labels": {
+    "help": "Resident Resources"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident Portal",
+        "page": "login"
+      },
+      {
+        "label": "Resident Resources",
+        "page": "help"
+      },
+      {
+        "label": "Former Resident Billing",
+        "helpSlug": "former-resident-billing"
+      },
+      {
+        "label": "Contact Us",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Rent",
+        "page": "pay"
+      },
+      {
+        "label": "Account",
+        "page": "bill"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Service Requests",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "contact": {
+    "phone": "8447274541",
+    "source": "https://www.avenue5.com/contact-us",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.avenue5.com/high-five-living",
+      "note": "Pay rent any time in your community's 24/7 resident portal, where you can also view your account and submit service requests."
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying rent",
+      "paragraphs": [
+        "Each Avenue5 community has a 24/7 resident portal where you can pay rent, view your account information and submit service requests. Through Avenue5's partnership with Bilt, residents who enroll in rent rewards can earn points on rent and use them for rent, dining, fitness, travel and more."
+      ],
+      "source": "https://www.avenue5.com/high-five-living",
+      "topic": "payments"
+    },
+    {
+      "slug": "former-resident-billing",
+      "title": "Former resident billing",
+      "paragraphs": [
+        "If you have moved out and have a question about your final bill, call the Former Resident Billing team at 833.443.1961 or send a Former Resident Billing Inquiry. This team cannot help current residents and does not handle refund questions."
+      ],
+      "source": "https://www.avenue5.com/contact-us",
+      "topic": "billing"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Avenue5",
+      "paragraphs": [
+        "Current residents can call 844.727.4541, Monday to Friday 7 a.m. to 5 p.m. Pacific Time, or submit a Resident Inquiry. After hours, contact your property team through the resident portal. Avenue5 is headquartered in Seattle."
+      ],
+      "source": "https://www.avenue5.com/contact-us",
+      "topic": "contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "former-resident-billing-phone",
+        "intent": "You moved out of an Avenue5 apartment and have a question about your final bill. Using the help pages, find the phone number to call. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8334431961"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8334431961"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Former Resident Billing at 833.443.1961."
+          }
+        ]
+      },
+      {
+        "slug": "current-resident-phone",
+        "intent": "Using the Avenue5 help pages, find the phone number for current resident inquiries. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8447274541"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8447274541"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 844.727.4541."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "helpArticle",
+      "slug": "former-resident-billing",
+      "contains": "833.443.1961"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Bilt"
+    }
+  ]
+}

@@ -1,0 +1,416 @@
+{
+  "id": "claro-puerto-rico-473c24",
+  "status": "dedicated",
+  "name": "Claro Puerto Rico",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public claropr.com pages (Spanish), the Mi Claro sign-in page and the Mi Claro Express landing page (rendered with a headless browser; nothing submitted). Labels keep Claro's Spanish names for its own features (Mi Claro, Mi Claro Express, Debito Directo). Mi Claro sign-in asks for an email address or phone number plus password (identifier phone; the engine accepts the phone only). Mi Claro Express pays without signing in with the account number (BAN) or phone number plus the last 4 digits of the SSN; the format has no SSN field, so guestLookupFields [phone] only (GAP). Postpaid bills are due in full within 20 days of mailing; late payments carry 1.5% of the overdue balance or $5 a month, whichever is greater (lateFeePercent 1.5, lateFeeMinCents 500); reconnection costs $20 per line; returned checks $10. Online payment methods: Visa, Mastercard, American Express, direct debit from a bank account (ACH) and Banco Popular ATH. Debito Directo (automatic bank debit) is enrolled in Mi Claro. Other channels: *PAGO from the phone or 787-775-0000, bank branches and cooperatives, mail to PO Box 70366 San Juan PR 00936-8366, Paga Aqui locations and stores. Paper vs electronic bill choice, payment arrangements and online cancellation are not documented on the pages read: paperless left to the family default, cancel_service unsupported (inferred, call customer service). Reviewer (2026-10-10): plans added from the public Pospago page (RED Basic/Plus/Extreme/Sin Fronteras); contact phone changed to Servicio al Cliente 787-763-3333 (the billing terms page), keeping 787-775-0000 as the pay-by-phone number; the Metodos de Pago page is titled for prepaid but lists the same channels; the Mi Claro sign-up link reads Registrate.",
+  "officialDomains": [
+    "claropr.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.claropr.com/personas/servicios/metodos-pago/",
+      "title": "Métodos de Pago Prepago | Claro Puerto Rico",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.claropr.com/portal/pr/legal-regulatorio/lightbox/descripcion-ED-92.html",
+      "title": "Información General - facturación y pagos | Claro",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://miclaro.claropr.com/login",
+      "title": "Miclaro - Inicio de sesión",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://miclaroexpressweb.claropr.com/",
+      "title": "Mi Claro Express",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.claropr.com/personas/",
+      "title": "Móvil, Telefonía Fija, Internet y TV+ Servicios | Claro",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.claropr.com/personas/servicios/servicios-moviles/pospago/",
+      "title": "Claro Update | Pospago | Prepago | Sin Contrato | Claro Puerto Rico",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Claro Puerto Rico",
+    "shortName": "Claro",
+    "primary": "#c8102e",
+    "accent": "#2b2b2b",
+    "monogram": "C"
+  },
+  "labels": {
+    "dashboard": "Mi Claro",
+    "payBill": "Paga tu factura",
+    "guestPay": "Mi Claro Express",
+    "autopay": "Débito Directo",
+    "statements": "Descarga tu factura",
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "username": "Correo electrónico o número de teléfono",
+    "password": "Contraseña",
+    "forgot": "Recuperar contraseña",
+    "register": "Regístrate",
+    "help": "Ayuda"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Mi Claro Express",
+        "page": "guest"
+      },
+      {
+        "label": "Iniciar sesión",
+        "page": "login"
+      },
+      {
+        "label": "Métodos de pago",
+        "helpSlug": "metodos-de-pago"
+      },
+      {
+        "label": "Ayuda",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Mi Claro",
+        "page": "dashboard"
+      },
+      {
+        "label": "Paga tu factura",
+        "page": "pay"
+      },
+      {
+        "label": "Descarga tu factura",
+        "page": "statements"
+      },
+      {
+        "label": "Débito Directo",
+        "page": "autopay"
+      },
+      {
+        "label": "Ayuda",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "phone"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://miclaro.claropr.com/login"
+  },
+  "contact": {
+    "phone": "7877633333",
+    "payPhone": "7877750000",
+    "source": "https://www.claropr.com/portal/pr/legal-regulatorio/lightbox/descripcion-ED-92.html",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://miclaroexpressweb.claropr.com/",
+      "note": "Mi Claro Express lets you pay without signing in using your account (BAN) or phone number and the last 4 digits of your Social Security number."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.claropr.com/personas/servicios/metodos-pago/",
+      "note": "Sign up for Débito Directo (automatic debit from your bank account) in Mi Claro."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.claropr.com/personas/servicios/metodos-pago/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.claropr.com/portal/pr/legal-regulatorio/lightbox/descripcion-ED-92.html",
+      "note": "To cancel service, call Claro Servicio al Cliente at 787-763-3333 (or *611 from your Claro phone) or visit a Claro store.",
+      "channel": "phone",
+      "phone": "7877633333"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.claropr.com/personas/servicios/metodos-pago/",
+      "note": "Dial *PAGO from your Claro phone or call 787-775-0000 from any number."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.claropr.com/personas/servicios/metodos-pago/",
+      "note": "Mail your payment to Puerto Rico Telephone / Claro, PO Box 70366, San Juan PR 00936-8366."
+    }
+  },
+  "billing": {
+    "source": "https://www.claropr.com/portal/pr/legal-regulatorio/lightbox/descripcion-ED-92.html",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.claropr.com/portal/pr/legal-regulatorio/lightbox/descripcion-ED-92.html",
+      "notes": [
+        "Reconnecting service after a suspension costs $20.00 per line.",
+        "A returned check costs $10.00 or the most allowed by law."
+      ]
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "lateFeePercent": 1.5,
+    "lateFeeMinCents": 500,
+    "plans": [
+      {
+        "id": "red-basic",
+        "name": "Plan Ilimitado RED Basic",
+        "cents": 5000
+      },
+      {
+        "id": "red-plus",
+        "name": "Plan Ilimitado RED Plus",
+        "cents": 6000,
+        "current": true
+      },
+      {
+        "id": "red-extreme",
+        "name": "Plan Ilimitado RED Extreme",
+        "cents": 7500
+      },
+      {
+        "id": "red-sin-fronteras",
+        "name": "Plan Ilimitado RED Sin Fronteras",
+        "cents": 8500
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "metodos-de-pago",
+      "title": "Métodos de pago (ways to pay)",
+      "topic": "payments",
+      "source": "https://www.claropr.com/personas/servicios/metodos-pago/",
+      "paragraphs": [
+        "Pay in Mi Claro or the Mi Claro app, without signing in through Mi Claro Express, by dialing *PAGO from your Claro phone or 787-775-0000 from any phone, at your bank branch or cooperative, at Paga Aquí locations, at Claro stores and authorized dealers, or by mail to Puerto Rico Telephone / Claro, PO Box 70366, San Juan PR 00936-8366.",
+        "Sign up for Débito Directo in Mi Claro to have your bill debited automatically. Regular payments post in 2-3 business days; instant payments post right away."
+      ]
+    },
+    {
+      "slug": "facturacion-y-pagos",
+      "title": "Bills, due dates and late charges",
+      "topic": "billing",
+      "source": "https://www.claropr.com/portal/pr/legal-regulatorio/lightbox/descripcion-ED-92.html",
+      "paragraphs": [
+        "Bills are due in full within 20 days of the mailing date, and you may dispute charges in writing on or before the due date. Online you can pay by Visa, Mastercard, American Express, bank account (ACH) or Banco Popular ATH, 24 hours a day; payments apply the same business day.",
+        "Payments received after the due date carry 1.5% of the overdue balance or $5.00 a month, whichever is greater. Service can be suspended for an overdue balance, and reconnection costs $20.00 per line."
+      ]
+    },
+    {
+      "slug": "planes-pospago",
+      "title": "Planes Pospago (postpaid plans)",
+      "topic": "plans",
+      "source": "https://www.claropr.com/personas/servicios/servicios-moviles/pospago/",
+      "paragraphs": [
+        "Claro's unlimited postpaid plans: RED Basic $50, RED Plus $60, RED Extreme $75 and RED Sin Fronteras $85 a month. All include unlimited local calling and texting, plus calling and roaming in the U.S., Mexico and Canada; they differ in hotspot allowance (10 GB, 60 GB, 100 GB or unlimited), and Sin Fronteras adds 15 more Latin American destinations."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "reconnection-fee",
+        "intent": "Using Claro Puerto Rico's billing terms, find the reconnection charge per line after a suspension. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$20",
+              "20"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$20",
+            "20"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Reconnection costs $20.00 per line."
+          }
+        ]
+      },
+      {
+        "slug": "claro-pay-phone",
+        "intent": "Find the phone number to call to pay a Claro Puerto Rico bill from any phone. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "787-775-0000",
+              "7877750000",
+              "775-0000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "787-775-0000",
+            "7877750000",
+            "775-0000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 787-775-0000 (or dial *PAGO from a Claro phone)."
+          }
+        ]
+      },
+      {
+        "slug": "claro-due-days",
+        "intent": "Find how many days after mailing a Claro Puerto Rico bill must be paid. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "20",
+              "twenty"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "20",
+            "twenty"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Within 20 days of the mailing date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Correo electrónico o número de teléfono"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Débito Directo"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "787-763-3333"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "facturacion-y-pagos",
+      "contains": "$20.00"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Plan Ilimitado RED Plus",
+        "Plan Ilimitado RED Basic"
+      ]
+    }
+  ],
+  "version": 1
+}

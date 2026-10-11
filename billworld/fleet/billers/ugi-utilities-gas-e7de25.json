@@ -1,0 +1,326 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "gas",
+  "reviewedAt": "2026-10-10",
+  "id": "ugi-utilities-gas-e7de25",
+  "name": "UGI Utilities - Gas",
+  "notes": "Researched from public ugi.com pages only. Online Account Center (sign-in, save payment info) plus Quick Pay with bank account, card or digital wallet, each labeled No Service Charge (Quick Pay links go to a Paymentus domain). AutoPay is free, pays on the due date, and any outstanding balance (including supplier charges) is charged immediately at enrollment (not expressible). The AutoPay page speaks of the bank account; a payment method is chosen at enrollment, so methodTypes is bank (card not confirmed). Unenroll under Billing > AutoPay. Paperless: My Profile > service address tile > Edit Paperless Settings. Stop service via online Start/Stop form, allow 7 working days. Pay by phone 800-276-2722 (bank payments by phone only Mon-Fri 8-5). Shut-off and payment-arrangement questions go to the office by phone; online arrangements not described, so payment_arrangement is unsupported online with the phone route (reviewer, inferred). Sign-in identifier and MFA not documented. Reviewer: replaced the quick-pay-fee task (expected answer 'no' matched almost any reply) with a mail P.O. Box task.",
+  "officialDomains": [
+    "ugi.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ugi.com/payments-billing/",
+      "title": "Payments & Billing",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ugi.com/payments-billing/autopay/",
+      "title": "AutoPay",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.ugi.com/paperless/",
+      "title": "Paperless Billing",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.ugi.com/start-stop-transfer-service/natural-gas/",
+      "title": "Natural Gas Start Stop Service Form",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "UGI Utilities",
+    "shortName": "UGI",
+    "primary": "#00529b",
+    "accent": "#00386b",
+    "monogram": "U"
+  },
+  "labels": {
+    "dashboard": "Online Account Center",
+    "guestPay": "Quick Pay",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "cancel": "Stop Service",
+    "help": "Billing FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Payments & Billing",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Billing FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Online Account Center",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Billing History",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ugi.com/payments-billing/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ugi.com/payments-billing/autopay/",
+      "note": "Any outstanding balance on your account is charged right away when you enroll; after that AutoPay pays on each due date."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ugi.com/payments-billing/autopay/",
+      "note": "Log in, go to Billing, then AutoPay, and choose to unenroll. There is no fee or penalty."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ugi.com/paperless/"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ugi.com/start-stop-transfer-service/natural-gas/",
+      "note": "Allow 7 working days for your request to be processed; incomplete information delays it."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ugi.com/payments-billing/",
+      "phone": "800-276-2722"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ugi.com/payments-billing/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.ugi.com/payments-billing/",
+      "channel": "phone",
+      "phone": "800-276-2722",
+      "note": "To discuss a payment arrangement, or if you received a termination notice, call us at 800-276-2722."
+    }
+  },
+  "billing": {
+    "source": "https://www.ugi.com/payments-billing/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.ugi.com/payments-billing/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "mode": "append",
+      "topic": "payments",
+      "source": "https://www.ugi.com/payments-billing/",
+      "paragraphs": [
+        "Pay in the Online Account Center to save your payment details, or use Quick Pay without logging in: Quick Pay with Bank Account, Quick Pay with Card and Quick Pay with digital wallet (Apple Pay, Venmo, Google Pay, PayPal or PayPal Credit) all have no service charge. You need your UGI account number.",
+        "By phone, call 800-276-2722 and enter your account number; bank account payments by phone are available Monday to Friday, 8 a.m. to 5 p.m. Mail payments with your account number to UGI Utilities, Inc., P.O. Box 15503, Wilmington, DE 19850-5503, or pay in person at an authorized CheckFreePay location.",
+        "If you paid to avoid a shut-off, call 800-276-2722 before the shut-off date with your confirmation number."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "source": "https://www.ugi.com/payments-billing/autopay/",
+      "paragraphs": [
+        "AutoPay is free and pays your bill from your bank account on the due date each month. Any outstanding balance, including supplier charges, is charged immediately when you enroll, so make sure the funds are available first.",
+        "To enroll, log in to the Online Account Center, open AutoPay in the Billing menu, click Enroll in AutoPay, choose a payment method, click Next, accept the Terms & Conditions and click Enroll. Cancel any time from the same page with no fee."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "source": "https://www.ugi.com/paperless/",
+      "paragraphs": [
+        "Log in, open My Profile, find the tile for your service address, open its menu and select Edit Paperless Settings, then choose Paperless Billing and click Continue. Each month you get an email with a link to your bill, and you can view up to two years of bills online."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop service",
+      "topic": "account",
+      "source": "https://www.ugi.com/start-stop-transfer-service/natural-gas/",
+      "paragraphs": [
+        "Submit the online start, stop or transfer form instead of calling. Allow 7 working days for processing; incomplete information delays it. If your meter is inside, we will contact you to arrange access.",
+        "Do not use the form to report a gas leak: if you smell gas, leave and call 800-276-2722 from a safe place."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "stop-processing-days",
+        "intent": "Using the UGI help pages, find how many working days a stop service request can take to process. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "7"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "7"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Allow 7 working days."
+          }
+        ]
+      },
+      {
+        "slug": "mail-po-box",
+        "intent": "Using the UGI help pages, find the P.O. Box number for mailing a gas bill payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "15503"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "15503"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mail payments to UGI Utilities, Inc., P.O. Box 15503, Wilmington, DE 19850-5503."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Online Account Center",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "charged immediately"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "7 working days"
+    }
+  ]
+}

@@ -1,0 +1,393 @@
+{
+  "id": "gta-guam-dcfcbd",
+  "version": 1,
+  "status": "dedicated",
+  "name": "GTA (Guam)",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public gta.net help center articles only (no sign-in). GTA (TeleGuam) is the incumbent landline carrier for Guam; postpaid home phone, internet and TV bill through the myGTA web portal (ebill.gta.net, formerly GTA E-Pay). Registration: Register here > Invoice Number and Amount Due from the latest statement (not expressible; accountNumber is modelled) > CAPTCHA > email address, password, security question > confirm via email link; sign-in uses the email address as the eBill username (Forgot Your Password? asks for the email username and the security answer). myGTA: Overview (balance, pending payments, amount due), Invoices (PDF/CSV), Pay (one-time or scheduled, choose amount and date), Auto Pay (recurring on the scheduled date; add a method, accept terms), saved credit/debit cards and bank accounts, Payment History. No online payment fee is published (none charged). Phone payments: Customer Support Center 671-644-4482 (8 am-9 pm for payments) with account number and card or bank details; LiveChat/WhatsApp 671-489-8255. In person at four GTA stores (Tamuning Experience Center, Micronesia Mall, Andersen AFB BX, NEX). No mailing address is published. A pay-without-signing-in page is not described (family default kept). Paperless: Settings > General > Invoice Preferences > Web bill only; printed bills cost $3.00 a month, but landline-only and Lifeline customers are exempt (so the fee is in help only). Due within 30 days of the bill date; past-due balances must be paid by the 15th to avoid disconnection; late fee 1.5% of the amount owed for landline-only service (flat $10.00 for bundles or standalone data/TV; the engine uses the landline 1.5%); returned payments $26; suspension, then termination after 45 days unpaid. Payment Arrangement Plan (extended periods, late fees waived during the plan) via the Customer Support Center, a store or chat. Adding or removing services is done with a GTA representative (phone, store, chat, email), not self-service online. Reviewed 2026-10-10 (t20 review): GTA's own pages disagree on the LiveChat/WhatsApp number (671-489-8255 on the pay and phone-payment pages, 671-489-8225 on the add/remove-service page); the service-change texts now omit it and the payment help keeps 671-489-8255 (two pages agree). The Payment Arrangement Plan text comes from the phone-payment page.",
+  "officialDomains": [
+    "gta.net"
+  ],
+  "sources": [
+    {
+      "url": "https://www.gta.net/help-center/how-pay-my-bill",
+      "title": "How to pay my bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.gta.net/help-center/mygta-web-portal-",
+      "title": "myGTA Web Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.gta.net/help-center/how-to-setup-paperless-billing",
+      "title": "How to setup paperless billing",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.gta.net/help-center/how-payments-over-the-phone",
+      "title": "How to make payments over the phone",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.gta.net/help-center/understand-my-gta-bill-late-payments",
+      "title": "Understand My GTA Bill: Late Payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.gta.net/help-center/managing-my-gta-account-adding-or-removing-a-service",
+      "title": "Managing my GTA Account: Adding or Removing a Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.gta.net/help-center/pay-my-bill-in-person",
+      "title": "Pay my bill in person",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "GTA",
+    "shortName": "GTA",
+    "primary": "#005a9c",
+    "accent": "#1a2b3c",
+    "monogram": "G"
+  },
+  "labels": {
+    "dashboard": "Overview",
+    "viewBill": "Invoices",
+    "payBill": "Pay",
+    "autopay": "Auto Pay",
+    "paperless": "Invoice Preferences",
+    "history": "Payment History",
+    "profile": "Settings",
+    "signIn": "Login",
+    "signOut": "Logout",
+    "register": "Register here",
+    "forgot": "Forgot Your Password?",
+    "username": "Email Address",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "myGTA Login",
+        "page": "login"
+      },
+      {
+        "label": "Register here",
+        "page": "register"
+      },
+      {
+        "label": "How to pay my bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Invoices",
+        "page": "bill"
+      },
+      {
+        "label": "Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Invoice Preferences",
+        "page": "paperless"
+      },
+      {
+        "label": "Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "mfa": "email",
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.gta.net/help-center/how-to-setup-paperless-billing"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gta.net/help-center/mygta-web-portal-"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.gta.net/help-center/mygta-web-portal-"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gta.net/help-center/mygta-web-portal-"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gta.net/help-center/how-to-setup-paperless-billing",
+      "note": "Printed bills cost $3.00 a month. Landline-only and Lifeline customers are exempt from the fee."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.gta.net/help-center/managing-my-gta-account-adding-or-removing-a-service",
+      "note": "Services are added or removed with a GTA representative. Call 671-644-4482 (6 AM to 12 AM daily), use LiveChat or WhatsApp, email ask@gta.net, or visit a GTA store. Have your account number, the account holder's name and your PIN or password ready.",
+      "channel": "phone",
+      "phone": "6716444482"
+    },
+    "change_plan": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.gta.net/help-center/managing-my-gta-account-adding-or-removing-a-service",
+      "note": "Service changes are made with a GTA representative: call 671-644-4482, chat, email ask@gta.net or visit a GTA store.",
+      "channel": "phone",
+      "phone": "6716444482"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gta.net/help-center/how-payments-over-the-phone",
+      "phone": "6716444482"
+    }
+  },
+  "contact": {
+    "phone": "671-644-4482",
+    "payPhone": "671-644-4482",
+    "evidence": "documented_official",
+    "source": "https://www.gta.net/help-center/how-payments-over-the-phone"
+  },
+  "billing": {
+    "source": "https://www.gta.net/help-center/how-pay-my-bill",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "notes": [
+        "Returned payments from a financial institution cost $26.",
+        "Printed bills cost $3.00 a month (landline-only and Lifeline customers are exempt)."
+      ],
+      "evidence": "inferred",
+      "source": "https://www.gta.net/help-center/understand-my-gta-bill-late-payments"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeePercent": 1.5
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay my GTA bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to myGTA to pay online. Overview shows your balance, pending payments and due date. Choose Pay to make a one-time or scheduled payment with a saved or new credit/debit card or bank account, or set up Auto Pay.",
+        "By phone, call the Customer Support Center at 671-644-4482 (payments 8 am to 9 pm daily) with your account number and card or bank details, and ask for a confirmation number. LiveChat and WhatsApp are at 671-489-8255.",
+        "In person, pay at the GTA Experience Center in Tamuning, Micronesia Mall in Dededo, the Andersen Air Force Base BX or the NEX."
+      ],
+      "source": "https://www.gta.net/help-center/how-pay-my-bill"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Payment is due within 30 days of the bill date. Past-due balances must be paid in full by the 15th of the month to avoid disconnection.",
+        "Late fee: 1.5% of the total owed for landline-only service, or a flat $10.00 for bundles and standalone data or TV. Returned payments cost $26. A suspended account is terminated if nothing is paid within 45 days, and restoring service requires all charges, late fees and reconnection fees.",
+        "The Payment Arrangement Plan offers extended payment periods with late fees waived during the plan. Ask the Customer Support Center at 671-644-4482, a GTA store or LiveChat."
+      ],
+      "source": "https://www.gta.net/help-center/understand-my-gta-bill-late-payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay in myGTA",
+      "topic": "autopay",
+      "paragraphs": [
+        "In myGTA, open Auto Pay, add a credit/debit card or bank account, accept the Terms and Conditions and submit. Payments are then deducted automatically on the scheduled date, which helps you avoid late fees."
+      ],
+      "source": "https://www.gta.net/help-center/mygta-web-portal-"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in to myGTA, go to Settings, then General, change your Invoice Preferences and select Web bill only.",
+        "Printed bills cost $3.00 a month. Landline-only and Lifeline customers are exempt from this fee."
+      ],
+      "source": "https://www.gta.net/help-center/how-to-setup-paperless-billing"
+    },
+    {
+      "slug": "register",
+      "title": "Register for myGTA",
+      "topic": "account",
+      "paragraphs": [
+        "Have your latest statement ready. Select Register here, enter the Invoice Number and Amount Due, complete the robot check and continue. Enter your email address, a password and a security question, then select Register and confirm with the link emailed to you.",
+        "Forgot your password? Choose Forgot Your Password?, enter your email username and answer your security question to get a temporary password."
+      ],
+      "source": "https://www.gta.net/help-center/how-to-setup-paperless-billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Add or remove a service",
+      "topic": "account",
+      "paragraphs": [
+        "Services are added or removed with a GTA representative. Call 671-644-4482 (6 AM to 12 AM daily), use LiveChat or WhatsApp, email ask@gta.net, or visit a GTA store.",
+        "Have your account number, the account holder's name, the phone number on the account and your 4-digit PIN or password ready."
+      ],
+      "source": "https://www.gta.net/help-center/managing-my-gta-account-adding-or-removing-a-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "returned-payment-fee",
+        "intent": "Using GTA's help center, find the fee GTA charges when a payment is returned by your bank. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "26"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "26"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Returned payments cost $26."
+          }
+        ]
+      },
+      {
+        "slug": "paper-fee-landline-exempt",
+        "intent": "You have GTA landline service only. Find out whether you pay the monthly printed bill fee. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "exempt"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "exempt"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Landline-only customers are exempt from the $3.00 printed bill fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email Address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Invoices",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "671-644-4482"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-fees",
+      "contains": [
+        "1.5%",
+        "$26"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "Web bill only"
+    }
+  ]
+}

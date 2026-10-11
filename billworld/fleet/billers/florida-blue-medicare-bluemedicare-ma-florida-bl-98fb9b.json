@@ -1,0 +1,317 @@
+{
+  "id": "florida-blue-medicare-bluemedicare-ma-florida-bl-98fb9b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Florida Blue - Medicare",
+  "category": "medicare",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public floridablue.com member pages only (no sign-in, no guest payment). Payment options page (individual members, including Medicare): log in to the member account or app for one-time payments or automatic payments; 'Make a guest payment' for someone else with the member ID number and birth date; first (binder) payment button; automated phone 1-800-352-2583 (say 'make a payment'); mail check/cashier's check/money order with the stub to the invoice address, member ID on the memo line; bank bill pay with the member ID as account number; retail with the invoice barcode (CVS and Navarro cash/credit/debit, Florida Blue Center credit/debit, Dollar General cash/debit, Family Dollar cash only; up to $999 per policy per 24 hours; 'Florida Blue Payment Center' as biller for cash; vendors may add a convenience fee); ACE Cash Express 1-877-223-2274 and MoneyGram 1-800-666-3947 (code 13731), MoneyGram not accepted for Blue Medicare. Enrollment-and-payments FAQ: autopay from checking/savings or debit/credit card in the account or app, cancel or change any time; phone/online payments by card or EFT; payments due the last day of the month (general member FAQ, not Medicare-specific, so not used as a rule). No paperless page found (family default kept). Retail limits and vendor fees cannot be expressed by the engine (help/fees.notes only). Sign-in identifier (username) is inferred. Review (tier-20): the Florida Blue Medicare site links its members to the individual Payment Options page, so those options apply to Medicare members.",
+  "officialDomains": [
+    "floridablue.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.floridablue.com/members/individual/payment-options",
+      "title": "Payment Options | Florida Blue",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.floridablue.com/members/tools-resources/faq/enrollment-making-payments",
+      "title": "Enrollment and Making Payments FAQ | Florida Blue",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.floridablue.com/medicare",
+      "title": "Medicare | Florida Blue",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Florida Blue Medicare",
+    "shortName": "Florida Blue",
+    "primary": "#0057a3",
+    "accent": "#00627a",
+    "monogram": "FB"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "guestPay": "Make a guest payment",
+    "payBill": "Make a payment",
+    "autopay": "Automatic payments"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Make a guest payment",
+        "page": "guest"
+      },
+      {
+        "label": "Payment options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "dob"
+    ],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.floridablue.com/members/individual/payment-options"
+  },
+  "contact": {
+    "phone": "800-352-2583",
+    "payPhone": "800-352-2583",
+    "source": "https://www.floridablue.com/members/individual/payment-options",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.floridablue.com/members/tools-resources/faq/enrollment-making-payments",
+      "note": "Pay by credit card, debit card or electronic funds transfer in your account or the Florida Blue app."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.floridablue.com/members/individual/payment-options",
+      "note": "Make a one-time guest payment for someone else with their member ID number and birth date."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.floridablue.com/members/tools-resources/faq/enrollment-making-payments",
+      "note": "Pay automatically from a checking or savings account or with a debit or credit card. We email you about each monthly draft."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.floridablue.com/members/tools-resources/faq/enrollment-making-payments",
+      "note": "You can cancel automatic payments or change your payment method at any time."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.floridablue.com/members/individual/payment-options",
+      "phone": "8003522583",
+      "note": "Call 1-800-352-2583 and say make a payment to use the automated system."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.floridablue.com/members/individual/payment-options",
+      "note": "Mail a check, cashier's check or money order with your payment stub to the address on your invoice; write your member ID on the memo line."
+    }
+  },
+  "billing": {
+    "source": "https://www.floridablue.com/members/tools-resources/faq/enrollment-making-payments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "fees": {
+      "notes": [
+        "Stores that take cash payments may charge their own convenience fee."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.floridablue.com/members/individual/payment-options"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Online: log in to your Florida Blue member account or the Florida Blue app to make a one-time payment or set up automatic payments, using a credit or debit card or a bank account.",
+        "Paying for someone else? Choose Make a guest payment and enter the member's ID number and birth date.",
+        "Phone: call 1-800-352-2583 and say make a payment. Mail: send a check, cashier's check or money order with your payment stub to the address on your invoice, with your member ID on the memo line. If you use your bank's bill pay, enter your member ID as the account number."
+      ],
+      "source": "https://www.floridablue.com/members/individual/payment-options"
+    },
+    {
+      "slug": "pay-in-person",
+      "title": "Paying at a store",
+      "topic": "payments",
+      "paragraphs": [
+        "Bring the barcode from your invoice. CVS and Navarro Discount Pharmacy take cash, credit or debit; Florida Blue Centers take credit or debit only; Dollar General takes cash or debit; Family Dollar takes cash only. For cash, choose Florida Blue Payment Center as the biller.",
+        "Stores accept up to $999 per policy in 24 hours and cannot see your account, so check your amount due online first. Stores may charge a convenience fee.",
+        "MoneyGram does not accept payments for Blue Medicare plans."
+      ],
+      "source": "https://www.floridablue.com/members/individual/payment-options"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in to your member account or the Florida Blue app to set up automatic monthly payments in a few steps, from a checking or savings account or with a debit or credit card. Make sure your email address is right; we use it to tell you about each draft.",
+        "You can cancel automatic payments or change your payment method at any time."
+      ],
+      "source": "https://www.floridablue.com/members/tools-resources/faq/enrollment-making-payments"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "retail-daily-limit",
+        "intent": "Using Florida Blue's payment help, find the most you can pay at a retail store per policy in 24 hours. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "999"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "999"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to $999 per policy in 24 hours."
+          }
+        ]
+      },
+      {
+        "slug": "guest-pay-fields",
+        "intent": "You want to pay your mother's Florida Blue Medicare premium without logging in. Using Florida Blue's payment help, find which two pieces of her information you need besides payment details. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "birth"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "birth"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "guest"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Her member ID number and her date of birth."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a payment",
+        "Automatic payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "1-800-352-2583"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-in-person",
+      "contains": "Navarro"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "any time"
+    }
+  ]
+}

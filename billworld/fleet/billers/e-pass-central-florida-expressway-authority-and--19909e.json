@@ -1,0 +1,332 @@
+{
+  "id": "e-pass-central-florida-expressway-authority-and--19909e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "E-PASS (Central Florida Expressway Authority) and CFX Pay By Plate",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public cfxway.com pages (E-PASS, About E-PASS, Toll Payment Options, FAQs), the public E-PASS account login page (Username + Password, or Account Number + PIN after a reset) and the E-PASS Customer Agreement (board approved Oct 9, 2025). Personal prepaid accounts open with $10; no monthly or annual account fees. E-PASS Auto Replenishment links a credit or debit card and refills a pre-set amount at a pre-set low-balance threshold set at enrollment (CFX may adjust both); manual Reload E-PASS online takes a card or checking account number, so methods are bank+card while AutoPay is card-only. Statements are emailed free; a printed statement costs $0.50 each (FAQ); statements printed from the website or app are free. Pay By Plate invoices are mailed monthly, due in 30 days, at double the E-PASS rate; pay online by credit card, in the app, by phone with a card, or in person. No installment plan is described (payment_arrangement unsupported, inferred). Account closure is through any CFX customer service channel; the online steps were not described, so cancel_service keeps the template default. Review 2026-10-10: the Touch-n-Buy kiosk option ($1.50) is commented out of the live FAQ page, so it was removed from help and its task replaced by the $0.50 printed-statement fee.",
+  "officialDomains": [
+    "cfxway.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cfxway.com/e-pass/",
+      "title": "E-PASS | Central Florida Expressway Authority",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.cfxway.com/e-pass/about-e-pass/",
+      "title": "About E-PASS | Central Florida Expressway Authority",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.cfxway.com/for-travelers/tolls/toll-payment-options/",
+      "title": "Toll Payment Options | Central Florida Expressway Authority",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cfxway.com/faqs/",
+      "title": "FAQs | Central Florida Expressway Authority",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://epass.cfxway.com/EpassWeb/Account/Login",
+      "title": "E-PASS Purchase-Register-Reload - Account Login",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.cfxway.com/wp-content/uploads/2025/10/E-PASS-Customer-Agreement-Oct.-2025-FINAL-1.pdf",
+      "title": "E-PASS Customer Agreement (October 2025)",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "E-PASS",
+    "shortName": "E-PASS",
+    "primary": "#4b2a7b",
+    "accent": "#a33a00",
+    "monogram": "EP"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "username": "Username",
+    "register": "Get E-PASS",
+    "forgot": "Forgot Password?",
+    "guestPay": "Pay Your Toll Invoice",
+    "payBill": "Reload E-PASS",
+    "autopay": "Auto Replenishment",
+    "help": "FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Get E-PASS",
+        "page": "register"
+      },
+      {
+        "label": "Pay Your Toll Invoice",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-by-plate"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "E-PASS Login",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Manage E-PASS",
+        "page": "dashboard"
+      },
+      {
+        "label": "Reload E-PASS",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Auto Replenishment",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Vehicles & Transponders",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://epass.cfxway.com/EpassWeb/Account/Login"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cfxway.com/wp-content/uploads/2025/10/E-PASS-Customer-Agreement-Oct.-2025-FINAL-1.pdf",
+      "note": "E-PASS Auto Replenishment refills your prepaid balance by a pre-set amount from your linked credit or debit card whenever the balance drops to your low-balance threshold."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cfxway.com/faqs/",
+      "note": "Monthly statements are emailed and available online and in the E-PASS app at no charge; a printed statement mailed to you costs $0.50."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cfxway.com/for-travelers/tolls/toll-payment-options/",
+      "note": "Pay By Plate invoices can be paid online with a credit card; have the reference number and license plate from your invoice."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cfxway.com/for-travelers/tolls/toll-payment-options/",
+      "phone": "8003537277"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cfxway.com/for-travelers/tolls/toll-payment-options/",
+      "note": "No payment plan is described. Pay Pay By Plate invoices in full within 30 days, or call E-PASS at 1-800-353-7277 about a balance you cannot pay.",
+      "channel": "phone",
+      "phone": "8003537277"
+    }
+  },
+  "billing": {
+    "source": "https://www.cfxway.com/faqs/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Auto Replenishment",
+      "topic": "autopay",
+      "paragraphs": [
+        "E-PASS Auto Replenishment links a credit or debit card to your prepaid account and adds a pre-set amount whenever the balance drops to the low-balance threshold. Both amounts are set at enrollment from your expected tolls, and CFX may adjust them later.",
+        "Charges at participating facilities such as airport parking that exceed your balance go directly to the linked card. If the card expires or is declined, the account can be suspended and tolls billed at the higher Pay By Plate rate."
+      ],
+      "source": "https://www.cfxway.com/wp-content/uploads/2025/10/E-PASS-Customer-Agreement-Oct.-2025-FINAL-1.pdf"
+    },
+    {
+      "slug": "account-basics",
+      "title": "E-PASS accounts",
+      "topic": "account",
+      "paragraphs": [
+        "Open an account online, by phone at (407) 823-7277 or (800) 353-7277, or at the E-PASS Service Center at 525 South Magnolia Ave, Orlando. You need a driver license, license plate number and a card; the opening deposit is $10 and goes toward tolls.",
+        "There are no monthly or annual account fees and toll credit never expires. Reload online or by phone with a credit/debit card or checking account, in the E-PASS app, by mailing a check or money order to PO Box 585070, Orlando, FL 32858, or in person with cash, check or card at the E-PASS Service Center (Monday-Friday 8 a.m.-6 p.m., Saturday 9 a.m.-1 p.m.)."
+      ],
+      "source": "https://www.cfxway.com/faqs/"
+    },
+    {
+      "slug": "pay-by-plate",
+      "title": "Pay By Plate invoices",
+      "topic": "billing",
+      "paragraphs": [
+        "Without E-PASS, the license plate is photographed at each toll point and a monthly invoice is mailed to the registered owner. Payment is due within 30 days to avoid violations and fines, and Pay By Plate rates are double the E-PASS rate.",
+        "Pay online with a credit card, in the E-PASS app, by phone with a credit or debit card at 1-800-353-7277 or 407-823-7277, or in person with cash or card at the E-PASS Service Center. Have the reference number and license plate from the invoice."
+      ],
+      "source": "https://www.cfxway.com/for-travelers/tolls/toll-payment-options/"
+    },
+    {
+      "slug": "statements",
+      "title": "Statements",
+      "topic": "account",
+      "paragraphs": [
+        "Each month's statement lists every toll on any road that accepts E-PASS. Monthly statements are emailed and statements printed from the website or the E-PASS app are free; a printed statement mailed to you costs $0.50 each."
+      ],
+      "source": "https://www.cfxway.com/faqs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "opening-deposit",
+        "intent": "Using the E-PASS website's help pages, find the deposit needed to open a personal E-PASS account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10",
+              "10 dollars",
+              "ten dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10",
+            "10 dollars",
+            "ten dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A personal E-PASS account opens with a $10 deposit."
+          }
+        ]
+      },
+      {
+        "slug": "printed-statement-fee",
+        "intent": "Using the E-PASS website's help pages, find what a printed statement mailed to you costs. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$0.50",
+              "50 cents",
+              ".50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$0.50",
+            "50 cents",
+            ".50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees",
+          "paperless"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A printed statement mailed to you costs $0.50 each; emailed statements are free."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Log In"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-by-plate",
+      "contains": "double the E-PASS rate"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "account-basics",
+      "contains": "$10"
+    }
+  ]
+}

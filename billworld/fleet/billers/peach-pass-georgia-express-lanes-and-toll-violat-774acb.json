@@ -1,0 +1,384 @@
+{
+  "id": "peach-pass-georgia-express-lanes-and-toll-violat-774acb",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Peach Pass (Georgia Express Lanes) and toll violations",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public peachpass.com pages (home, FAQs, Pay Toll Violations) and the public My Peach Pass login page (Email Address + Password, CAPTCHA; Forgot Email Address? / Forgot Password?; Set Up Web Access). State Road and Tollway Authority (SRTA) runs Peach Pass; mypeachpass.com is its account and violation-payment site (added to officialDomains). Personal Toll Accounts need a $20 opening prepaid balance and a valid credit or debit card for replenishment, so billing.methods is card-only; checks, money orders and cash only at retail centers. Close online with Request Account Closure (My Account menu); transponder deactivated immediately, account stays open 15 business days, $5 fee on paper check refunds. Violations: $25 administrative fee each; up to $70 civil penalty per violation after an OSAH order; registration suspended if unpaid 30 days after the order; disputes within 90 days. In-state violations are paid on mypeachpass.com; out-of-state and Final Demand letters go through Professional Account Management (the catalog's 833 numbers are PAM collection lines, so contact.phone is set to the customer service center, 1-855-724-7277). Annual statements are not offered; monthly and custom statements are online. No payment plan is described (payment_arrangement unsupported, inferred). Replenishment threshold and amount are not published.",
+  "officialDomains": [
+    "peachpass.com",
+    "mypeachpass.com"
+  ],
+  "sources": [
+    {
+      "url": "https://peachpass.com/",
+      "title": "Peach Pass | Travel Georgia's Express Lanes with Peach Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://peachpass.com/faqs/",
+      "title": "FAQs - Peach Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://peachpass.com/pay-toll-violations/",
+      "title": "Pay a Violation | Settle Your Peach Pass Toll Charges - Peach Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://mypeachpass.com/user/login",
+      "title": "Log in | SRTA",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Peach Pass",
+    "shortName": "Peach Pass",
+    "primary": "#8a3a00",
+    "accent": "#1f5a2e",
+    "monogram": "PP"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "username": "Email Address",
+    "register": "Sign Up",
+    "forgot": "Forgot Password?",
+    "guestPay": "Pay Toll Violations",
+    "autopay": "Auto-Replenishment",
+    "wallet": "Manage Payment Method",
+    "cancel": "Request Account Closure",
+    "help": "FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "About Peach Pass",
+        "helpSlug": "opening-an-account"
+      },
+      {
+        "label": "Pay Toll Violations",
+        "page": "guest"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Sign Up",
+        "page": "register"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing and Payments",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Auto-Replenishment",
+        "page": "autopay"
+      },
+      {
+        "label": "Manage Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "Manage Vehicles/ Peach Pass",
+        "page": "profile"
+      },
+      {
+        "label": "Request Account Closure",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://mypeachpass.com/user/login"
+  },
+  "contact": {
+    "phone": "855-724-7277",
+    "source": "https://mypeachpass.com/user/login"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://peachpass.com/faqs/",
+      "note": "Your credit or debit card on file automatically refills your prepaid toll balance; depending on your tolls there may be more than one refill in a month."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://peachpass.com/faqs/",
+      "note": "Choose Request Account Closure under My Account. Your Peach Pass is deactivated right away, and the account stays open 15 business days for final tolls before the remaining balance is refunded."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://peachpass.com/pay-toll-violations/",
+      "note": "Pay an in-state toll violation online without signing in."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://peachpass.com/pay-toll-violations/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://peachpass.com/pay-toll-violations/",
+      "note": "No payment plan is described. Pay violations in full, or call the Peach Pass Customer Service Center at 1-855-724-7277 about a balance you cannot pay.",
+      "channel": "phone",
+      "phone": "8557247277"
+    }
+  },
+  "billing": {
+    "source": "https://peachpass.com/faqs/",
+    "methods": [
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "opening-an-account",
+      "title": "Opening a Peach Pass account",
+      "topic": "account",
+      "paragraphs": [
+        "Peach Pass transponders are free. A Personal Toll Account needs a $20 prepaid toll balance paid by credit or debit card online (check, money order or cash at select retail centers) and a valid card for replenishment. Personal accounts can hold up to 10 transponders, one per vehicle.",
+        "Tolls and other charges come out of the prepaid balance. Keep at least $5 in the account to travel toll-free with Peach Pass Verify and to avoid invoices from other states."
+      ],
+      "source": "https://peachpass.com/faqs/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto-replenishment",
+      "topic": "autopay",
+      "paragraphs": [
+        "When auto-replenishment is on, the credit or debit card on your account refills the prepaid balance automatically; busy months can have more than one refill. Peach Pass Plus parking charges at the airport decks go straight to that card and do not reduce your toll balance.",
+        "To change cards, sign in, open Manage Payment Method, choose Edit or Remove, then Add Payment Method. Most violations happen when drivers forget to update an expired card or a new license plate."
+      ],
+      "source": "https://peachpass.com/faqs/"
+    },
+    {
+      "slug": "violation-fees",
+      "title": "Toll violation fees and penalties",
+      "topic": "fees",
+      "paragraphs": [
+        "Using a Georgia Express Lane without a valid, funded Peach Pass is a violation. The registered owner owes the toll plus a $25 administrative fee per violation.",
+        "Unpaid violations can be sent to a collection agency and to the Office of State Administrative Hearings, which can add a civil penalty of up to $70 per violation. If everything is not paid within 30 days of that order, the vehicle registration is suspended.",
+        "Pay in-state violations online with Pay Toll Violations, or mail a cashier's check, personal check or money order. Disputes must be made within 90 days; call 1-855-PCH-PASS (724-7277) with questions."
+      ],
+      "source": "https://peachpass.com/pay-toll-violations/"
+    },
+    {
+      "slug": "close-account",
+      "title": "Closing your account",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in to My Peach Pass or the Peach Pass GO! app, choose Request Account Closure under My Account (or in the footer), pick a reason if you like, and select Close Account. You can also call 1-855-724-7277 or visit a Peach Pass Retail Center.",
+        "The transponder is deactivated immediately, and the account stays open 15 business days for outstanding tolls. Card refunds post in about 15 business days; paper check refunds take 6-8 weeks and cost $5, and checks under $5 are not issued."
+      ],
+      "source": "https://peachpass.com/faqs/"
+    },
+    {
+      "slug": "statements",
+      "title": "Statements",
+      "topic": "account",
+      "paragraphs": [
+        "Monthly statements and custom statements for any date range are available in your account on mypeachpass.com. Annual statements are not offered. Statement dates show when the trip happened, not when it posted."
+      ],
+      "source": "https://peachpass.com/faqs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "violation-admin-fee",
+        "intent": "Using the Peach Pass website's help pages, find the administrative fee charged for each toll violation. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$25",
+              "25 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$25",
+            "25 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each violation carries a $25 administrative fee."
+          }
+        ]
+      },
+      {
+        "slug": "opening-balance",
+        "intent": "Using the Peach Pass website's help pages, find the prepaid balance required to open a Personal Toll Account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$20",
+              "20 dollars",
+              "twenty dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$20",
+            "20 dollars",
+            "twenty dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A Personal Toll Account needs a $20 prepaid balance."
+          }
+        ]
+      },
+      {
+        "slug": "check-refund-fee",
+        "intent": "Using the Peach Pass website's help pages, find the fee for receiving a closed account's refund as a paper check. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5 dollars",
+              "five dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5 dollars",
+            "five dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Paper check refunds cost $5."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address",
+        "Log in"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "violation-fees",
+      "contains": "$70"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "close-account",
+      "contains": "15 business days"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "id": "palmer-gas-oil-f88405",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Palmer Gas & Oil",
+  "category": "propane-heating-oil",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public palmergas.com pages (home, Policies) and the public myaccount.palmergas.com Login and MyAccount Signup pages; no sign-in, no signup, no forms submitted. Login: USERNAME + PASSWORD with 'Forgot password?' and 'Register for a MyAccount'; users of the previous portal sign in with their email address as username (and their account number as a one-time initial password they must change), so the identifier is modelled as username. Portal menu on the signup page: Contact Us, Forgot Password, MyAccount Signup, New Customer Enrollment, Notifications, Contract Payment; accepted payments listed there: MasterCard, Visa, Discover, E-Check (plus check and cash offline). MyAccount: pay online, order a delivery, request service, look up account history. Policies: balances due within 30 days of the invoice (net 30 for credit-approved accounts); prompt-pay discount within 10 days of delivery; overdue balances are charged a late fee of 2% per month (capped at 24% a year or the legal maximum); past-due accounts go on delivery hold; returned checks carry an unpublished insufficient-funds charge; budget plan up to 11 equal monthly installments, mainly for heating accounts, starting from a zero balance, reviewed mid-season, cancelled after more than one missed payment; tank rental fees for low-usage propane tanks. Signup form fields and AutoPay/paperless details are not visible publicly and stay at the family defaults. Review 2026-10-10: the MyAccount Signup page also says payments can be made over the phone, on the website, by mail or in person, so pay_by_phone and pay_by_mail are set (no remittance address is published).",
+  "officialDomains": [
+    "palmergas.com"
+  ],
+  "sources": [
+    {
+      "url": "https://palmergas.com/policies-procedures/",
+      "title": "Policies & Procedures - Palmer Gas & Oil",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://myaccount.palmergas.com/",
+      "title": "Login | Palmer Gas & Oil",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://myaccount.palmergas.com/myaccount-signup",
+      "title": "MyAccount Signup | Palmer Gas & Oil",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://palmergas.com/",
+      "title": "Home - Palmer Gas & Oil",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "shortName": "Palmer",
+    "primary": "#13447c",
+    "accent": "#b42318",
+    "monogram": "PG"
+  },
+  "labels": {
+    "signIn": "ACCOUNT LOGIN",
+    "username": "USERNAME",
+    "password": "PASSWORD",
+    "register": "Register for a MyAccount",
+    "forgot": "Forgot password?",
+    "dashboard": "MyAccount",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "ACCOUNT LOGIN",
+        "page": "login"
+      },
+      {
+        "label": "Register for a MyAccount",
+        "page": "register"
+      },
+      {
+        "label": "Payment Terms",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Budget Plan",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Policies",
+        "helpSlug": "fees-rates"
+      },
+      {
+        "label": "CONTACT US",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://myaccount.palmergas.com/"
+  },
+  "capabilities": {
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://palmergas.com/policies-procedures/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://myaccount.palmergas.com/myaccount-signup",
+      "phone": "800-420-9045"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://myaccount.palmergas.com/myaccount-signup"
+    }
+  },
+  "contact": {
+    "phone": "800-420-9045",
+    "source": "https://myaccount.palmergas.com/"
+  },
+  "billing": {
+    "source": "https://palmergas.com/policies-procedures/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "lateFeePercent": 2
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment terms",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online in MyAccount with MasterCard, Visa, Discover or an e-check. Payments are also taken over the phone, by mail or in person, where checks and cash are accepted. MyAccount also lets you order a delivery, request service and look up your account history.",
+        "All balances are due within 30 days of the invoice date. Paying within 10 days of delivery earns a prompt-pay discount. Accounts with an overdue balance are placed on delivery hold until the balance is paid in full. Questions: 603-898-7986 or toll free 800.420.9045."
+      ],
+      "steps": [
+        "Choose ACCOUNT LOGIN.",
+        "Enter your USERNAME and PASSWORD.",
+        "Choose to pay and pick a card or e-check.",
+        "Submit the payment."
+      ],
+      "source": "https://palmergas.com/policies-procedures/"
+    },
+    {
+      "slug": "fees-rates",
+      "title": "Late fees and other charges",
+      "topic": "billing",
+      "paragraphs": [
+        "Overdue balances are charged a late fee of 2% per month, up to 24% a year or the maximum the law allows. A returned check adds an insufficient-funds charge that must be paid with the balance before the next delivery; after two returned checks your credit terms are reviewed.",
+        "Propane tanks that use one fill or less per year are subject to tank rental fees, and a reconnection fee applies if service has to be restored after a disconnection."
+      ],
+      "source": "https://palmergas.com/policies-procedures/"
+    },
+    {
+      "slug": "register",
+      "title": "Register for a MyAccount",
+      "topic": "account",
+      "paragraphs": [
+        "New users choose Register for a MyAccount. If you used the previous portal, your username is your email address and your first password is your account number; you will be asked to change it when you first log in."
+      ],
+      "source": "https://myaccount.palmergas.com/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Budget Plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "The budget plan, mainly for heating accounts, spreads your cost over up to 11 equal monthly installments, each due by the start of the next month. You need a zero balance to join, and you earn a discount after each delivery while your budget is current.",
+        "Payments may be adjusted at the mid-season review, the balance must be paid before the new season starts, and the plan may be cancelled if more than one payment is missed."
+      ],
+      "source": "https://palmergas.com/policies-procedures/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-fee-rate",
+        "intent": "Using the Palmer Gas & Oil website's help pages, find the monthly late fee percentage charged on overdue balances. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2%"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2%"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Overdue balances are charged 2% per month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "ACCOUNT LOGIN",
+        "Budget Plan"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "USERNAME"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fees-rates",
+      "contains": [
+        "2% per month",
+        "24%"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "11 equal monthly"
+    }
+  ]
+}

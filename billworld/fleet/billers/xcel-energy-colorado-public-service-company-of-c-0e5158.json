@@ -1,0 +1,400 @@
+{
+  "id": "xcel-energy-colorado-public-service-company-of-c-0e5158",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Xcel Energy - Colorado (Public Service Company of Colorado)",
+  "category": "electric",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public co.my.xcelenergy.com pages (Salesforce site, read in a browser; no sign-in). My Account signs in with the email address used to register (help articles). Card payments are made through KUBRA EZ-Pay without My Account, fee $1.80 per residential payment (support article; an older billing page says $1.50, the newer article is used); bank payments in My Account are free. KUBRA EZ-Pay is modelled as card-only guest pay. Auto Pay draws the bill from a checking or savings account on the due date, needs My Account, is not available with a past-due balance, cannot use a credit card, and starts with the next bill; a mail-in application also exists (not modelled). Phone payments at 800-895-4999. Custom Due Date and Average Monthly Payment exist (not modelled as plans). Start/Stop Service is online. Late fee not read, so none modelled.",
+  "officialDomains": [
+    "xcelenergy.com"
+  ],
+  "sources": [
+    {
+      "url": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/payment-options",
+      "title": "Payment Options | Billing & Payment | Xcel Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/auto-pay",
+      "title": "Auto Pay | Billing & Payment | Xcel Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://co.my.xcelenergy.com/customersupport/s/article/Can-I-pay-my-bill-with-a-credit-or-debit-card",
+      "title": "Can I pay my bill with a credit or debit card? | Xcel Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://co.my.xcelenergy.com/customersupport/s/article/What-can-I-do-if-I-can-t-log-in-to-My-Account",
+      "title": "What can I do if I can't log in to My Account? | Xcel Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://my.xcelenergy.com/s/billing-payment/manage-bill/paperless",
+      "title": "Paperless Billing | Xcel Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://co.my.xcelenergy.com/s/billing-payment/energy-assistance",
+      "title": "Energy Assistance | Xcel Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "Xcel Energy",
+    "primary": "#005a8c",
+    "accent": "#00415f",
+    "monogram": "XE"
+  },
+  "labels": {
+    "payBill": "Pay Bill",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "guestPay": "KUBRA EZ-Pay",
+    "dashboard": "My Account",
+    "cancel": "Start/Stop Service",
+    "arrangement": "Payment Arrangement",
+    "statements": "Bill History",
+    "username": "Email Address",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Pay by Card (KUBRA EZ-Pay)",
+        "page": "guest"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Energy Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Bill History",
+        "page": "statements"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Start/Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "documented_official",
+    "source": "https://co.my.xcelenergy.com/customersupport/s/article/What-can-I-do-if-I-can-t-log-in-to-My-Account"
+  },
+  "contact": {
+    "phone": "800-895-4999",
+    "payPhone": "800-895-4999",
+    "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/payment-options"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://co.my.xcelenergy.com/customersupport/s/article/Can-I-pay-my-bill-with-a-credit-or-debit-card",
+      "note": "Credit and debit card payments go through KUBRA EZ-Pay; residential customers pay a $1.80 processing fee that Xcel Energy does not keep."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/auto-pay",
+      "note": "Auto Pay uses a checking or savings account only and is not available while your account has a past-due balance."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/payment-options"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/energy-assistance"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/energy-assistance"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/payment-options"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/payment-options"
+    }
+  },
+  "billing": {
+    "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/payment-options",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 180,
+      "guestCardCents": 180,
+      "evidence": "documented_official",
+      "source": "https://co.my.xcelenergy.com/customersupport/s/article/Can-I-pay-my-bill-with-a-credit-or-debit-card"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment Options",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to My Account (or the mobile app) to pay your bill from a bank account.",
+        "Credit and debit card payments are made through KUBRA EZ-Pay. Residential customers pay a $1.80 fee per payment (non-residential 2.2%); the fee covers KUBRA's service and Xcel Energy does not benefit from it.",
+        "You can also call 800-895-4999 to make a one-time payment or pay at a pay station, where transaction fees apply."
+      ],
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/payment-options",
+      "steps": [
+        "Sign In to My Account.",
+        "Choose Pay Bill.",
+        "Select your bank account.",
+        "Review and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay withdraws your bill payment from your checking or savings account on the due date. You must be enrolled in My Account, and you cannot use a credit card.",
+        "If your account has a past-due balance you cannot use Auto Pay. Enrollment is immediate, but the first automatic payment is for your next bill, so sign up before that bill is due. A mail-in application is also available and takes two to three weeks."
+      ],
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/auto-pay",
+      "steps": [
+        "Sign in to My Account.",
+        "Enter or select your bank information.",
+        "Schedule your payment and click Next.",
+        "Review the details and select I Agree - Submit."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Energy assistance and bill options",
+      "topic": "assistance",
+      "paragraphs": [
+        "Average Monthly Payment (AMP) averages your energy costs over 12 months so you pay a similar amount each month.",
+        "Custom Due Date lets you pick your own bill due date for free.",
+        "Payment arrangements and energy assistance programs are available if you need help paying; see Energy Assistance for programs in Colorado."
+      ],
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/payment-options"
+    },
+    {
+      "slug": "billing-history",
+      "title": "Bill history",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign in to My Account to see your past bills and payments. You can also view your bill through the mobile app, or through your bank with Bank View and Pay."
+      ],
+      "source": "https://co.my.xcelenergy.com/s/billing-payment/manage-bill/payment-options"
+    },
+    {
+      "slug": "faq",
+      "title": "Frequently asked questions",
+      "topic": "faq",
+      "paragraphs": [
+        "Your email address is your My Account username. If you did not get the verification email after registering, check your spam or junk folder, or call 800-895-4999.",
+        "Custom Due Date lets you choose your bill's due date for free."
+      ],
+      "source": "https://co.my.xcelenergy.com/customersupport/s/article/What-can-I-do-if-I-can-t-log-in-to-My-Account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee",
+        "intent": "Using Xcel Energy's customer service articles, find the fee a residential customer pays for a credit or debit card payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.80"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.80"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Residential customers pay a $1.80 fee through KUBRA EZ-Pay."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-past-due",
+        "intent": "Can an Xcel Energy customer with a past-due balance enroll in Auto Pay? Find the answer without enrolling or changing any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "cannot",
+              "can't",
+              "not available",
+              "not allowed",
+              "not eligible",
+              "not able"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "cannot",
+            "can't",
+            "not available",
+            "not allowed",
+            "not eligible",
+            "not able"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. Customers with a past-due balance cannot use Auto Pay."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Payment Options",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Email Address"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$1.80",
+        "KUBRA EZ-Pay"
+      ]
+    }
+  ]
+}

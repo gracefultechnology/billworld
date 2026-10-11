@@ -1,0 +1,401 @@
+{
+  "id": "east-bay-municipal-utility-district-ebmud-03de72",
+  "version": 1,
+  "status": "dedicated",
+  "name": "East Bay Municipal Utility District (EBMUD)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public ebmud.com pages (Pay your bill, Billing questions, Setting up your online account, Start or stop service, Customer Assistance Program) and the public EBMUD sign-in page (no sign-in). Sign-in uses an EBMUD ID (email address) and password; registration creates the EBMUD ID, activates it from an email link (valid 1 hour), then links the 11-digit account number with the last name or company name exactly as on the bill. The Online One-Time Payment (ebmud.com/payments) and phone payments (1-888-963-0909) carry a $3.50 third-party fee for card, debit card or e-check. Once enrolled in paperless billing, bank payments in the account are free and automatic payments can draw from a bank account (no fee) or Mastercard, Discover or American Express; the fee for a card payment made inside the account is not stated, so the $3.50 one-time fee is applied to signed-in card payments as an inference. Bills are mostly bimonthly. Payment extensions are requested online under Request Services. Stop service is online under Request Services with one business day notice and no more than 30 days ahead (the 30-day window cannot be modelled on the cancel form). Review: the online-account page says paperless customers can make online payments without a fee, while the pay page lists the no-fee item only for bank direct debit; the signed-in card fee therefore remains an inference ($3.50) and should be re-checked.",
+  "officialDomains": [
+    "ebmud.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ebmud.com/customers/account/pay-your-bill",
+      "title": "Pay your bill :: East Bay Municipal Utility District",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ebmud.com/customers/billing-questions",
+      "title": "Billing questions :: East Bay Municipal Utility District",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.ebmud.com/customers/account/setting-your-online-account",
+      "title": "Setting up your online account :: East Bay Municipal Utility District",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.ebmud.com/customers/start-or-stop-service",
+      "title": "Start or stop service :: East Bay Municipal Utility District",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.ebmud.com/customers/customer-assistance-program",
+      "title": "Customer Assistance Program :: East Bay Municipal Utility District",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "EBMUD",
+    "shortName": "EBMUD",
+    "primary": "#005a9c",
+    "accent": "#003e6b",
+    "monogram": "EB"
+  },
+  "labels": {
+    "dashboard": "Manage your account",
+    "signIn": "Sign in",
+    "username": "EBMUD ID (email address)",
+    "register": "Create an EBMUD ID",
+    "forgot": "Forgot your password?",
+    "guestPay": "Online One-Time Payment",
+    "payBill": "Pay your bill",
+    "autopay": "Automatic payment",
+    "paperless": "Paperless Billing",
+    "arrangement": "Payment Extensions",
+    "cancel": "Stop Service",
+    "contact": "Contact Info",
+    "help": "Billing questions"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Online One-Time Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Create an EBMUD ID",
+        "page": "register"
+      },
+      {
+        "label": "Pay your bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer Assistance Program",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Billing questions",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Manage your account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay your bill",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Automatic payment",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Extensions",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Contact Info",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "registrationFields": [
+      "accountNumber",
+      "lastName",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.ebmud.com/customers/account/setting-your-online-account"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ebmud.com/customers/account/pay-your-bill",
+      "note": "The Online One-Time Payment takes a credit card, debit card or e-check for a $3.50 fee set by EBMUD's payment provider."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ebmud.com/customers/account/pay-your-bill",
+      "note": "Automatic payments are available once you are enrolled in paperless billing, from a bank account (no fee) or a Mastercard, Discover or American Express card."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ebmud.com/customers/account/setting-your-online-account",
+      "note": "Paperless billing replaces paper bills with an email or text when a bill is due, and lets you pay from your bank account without a fee. Cancel any time; paper bills resume next cycle."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ebmud.com/customers/billing-questions",
+      "note": "Request a payment extension under Request Services in your account, or call 1-866-403-2683 weekdays 8 a.m. to 4:30 p.m."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ebmud.com/customers/customer-assistance-program"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ebmud.com/customers/start-or-stop-service",
+      "note": "Stop service under Request Services. Give at least one business day of notice; stop dates can be up to 30 days ahead, business days only."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ebmud.com/customers/account/pay-your-bill",
+      "phone": "1-888-963-0909"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ebmud.com/customers/account/pay-your-bill"
+    }
+  },
+  "contact": {
+    "phone": "1-866-403-2683",
+    "payPhone": "1-888-963-0909",
+    "source": "https://www.ebmud.com/customers/account/pay-your-bill"
+  },
+  "billing": {
+    "source": "https://www.ebmud.com/customers/account/pay-your-bill",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 350,
+      "guestBankCents": 350,
+      "guestCardCents": 350,
+      "notes": [
+        "Fees for one-time and phone payments are set by EBMUD's third-party payment providers."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.ebmud.com/customers/account/pay-your-bill"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Enroll in paperless billing in your online account to pay from your bank account with no fee, set up automatic payments or pay by text. Without signing in, the Online One-Time Payment accepts a credit card, debit card or e-check for a $3.50 fee.",
+        "Pay by phone at 1-888-963-0909 (credit card, debit card or e-check, $3.50 fee). Mail a check or money order to EBMUD Payment Center, PO Box 51191, Los Angeles, CA 90051-5491, or use an EBMUD dropbox. Pay stations take cash only and post in 3 business days; EBMUD's office is not a pay station.",
+        "Most payments are processed in 2 business days. Your 11-digit account number is in the upper right corner of your bill. Most customers are billed every two months."
+      ],
+      "source": "https://www.ebmud.com/customers/account/pay-your-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "After you enroll in paperless billing, you can schedule automatic payments from your bank account at no cost, or from a Mastercard, Discover or American Express card.",
+        "Sign in to Manage your account with your EBMUD ID (email address) and password to set up or change automatic payments."
+      ],
+      "source": "https://www.ebmud.com/customers/account/pay-your-bill"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "With paperless billing you stop receiving paper bills and get an email or text message when your bill is due. It also unlocks free bank payments, automatic payments and pay by text.",
+        "Sign in, choose Go Paperless, then Enroll in paperless. You can cancel at any time and paper bills start again with your next billing cycle."
+      ],
+      "source": "https://www.ebmud.com/customers/account/setting-your-online-account"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment extensions and assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "To ask for more time, sign in and choose Request Services, then Payment Extensions, or call Customer Service at 1-866-403-2683 (weekdays 8 a.m. to 4:30 p.m.). Some customers pay half of each two-month bill one month and the rest the next.",
+        "The Customer Assistance Program gives eligible low-income residential customers a discount on their bimonthly water bill; an application is required."
+      ],
+      "source": "https://www.ebmud.com/customers/billing-questions"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop or transfer service",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in, open Request Services and choose Stop Service, then follow the steps and submit. At least one business day of notice is needed, and stop requests can be dated no more than 30 days ahead, on business days only.",
+        "Moving within EBMUD's area? Stop service at your current address online, then request new service for the new address. Starting service online carries a $65 account establishment fee ($80 by phone). You can also call 1-866-403-2683 to stop and start in one call."
+      ],
+      "source": "https://www.ebmud.com/customers/start-or-stop-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "one-time-fee",
+        "intent": "Find the fee EBMUD charges for an Online One-Time Payment made without signing in. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3.50",
+              "3.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3.50",
+            "3.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Online One-Time Payment carries a $3.50 fee."
+          }
+        ]
+      },
+      {
+        "slug": "stop-notice",
+        "intent": "Find how much advance notice EBMUD needs to stop water service. Do not stop service or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "one business day",
+              "1 business day"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "one business day",
+            "1 business day"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Stopping service needs one business day of advance notice."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "EBMUD ID (email address)"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Manage your account",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$3.50",
+        "1-888-963-0909"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "one business day",
+        "30 days"
+      ]
+    }
+  ]
+}

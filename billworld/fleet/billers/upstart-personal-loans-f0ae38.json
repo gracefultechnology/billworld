@@ -1,0 +1,285 @@
+{
+  "id": "upstart-personal-loans-f0ae38",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Upstart (personal loans)",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public upstarthelp.upstart.com articles only (no sign-in). AutoPay debits a bank account monthly on the chosen date; Edit AutoPay changes the date, bank account or (monthly only) raises the amount, and Turn Off AutoPay stops it; changes can take up to 3 business days. Twice-monthly split AutoPay exists for eligible loans (not modelled). One-time payments online by ACH from a verified bank account; debit card on some loans only; credit cards are not accepted (methods bank-only). Check payments go to the address shown under Pay by Check in the dashboard and are applied when received. No fees are documented on these pages (fees omitted). Upstart does not mail statements (catalog note). The iOS app supports AutoPay; Android does not. Reviewer 2026-10-10: the public login page asks for Email then Continue (two steps) and offers Continue with Google and Continue with Apple. Hardship options are not on these pages (payment_arrangement not asserted).",
+  "officialDomains": [
+    "upstart.com"
+  ],
+  "sources": [
+    {
+      "url": "https://upstarthelp.upstart.com/loan-payments-autopay/setting-up-and-managing-automatic-loan-payments-autopay",
+      "title": "Setting up and managing automatic loan payments (AutoPay)",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://upstarthelp.upstart.com/loan-payments-autopay/loan-repayment-options",
+      "title": "Loan repayment options",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.upstart.com/login",
+      "title": "Upstart Login",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Upstart",
+    "primary": "#0e6a73",
+    "accent": "#0b4a52",
+    "monogram": "U"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "signIn": "Log in",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Repayment options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "socialProviders": [
+      "google",
+      "apple"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.upstart.com/login"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://upstarthelp.upstart.com/loan-payments-autopay/setting-up-and-managing-automatic-loan-payments-autopay",
+      "note": "AutoPay takes your payment from your bank account each month on the date you pick. Changes can take up to 3 business days."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://upstarthelp.upstart.com/loan-payments-autopay/setting-up-and-managing-automatic-loan-payments-autopay",
+      "note": "Choose Edit AutoPay, then Turn Off AutoPay. Allow up to 3 business days; a payment already scheduled in that window may still process."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://upstarthelp.upstart.com/loan-payments-autopay/loan-repayment-options"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://upstarthelp.upstart.com/loan-payments-autopay/loan-repayment-options",
+      "note": "Mail checks to the address shown under Pay by Check in your dashboard, with your account number in the memo."
+    }
+  },
+  "billing": {
+    "source": "https://upstarthelp.upstart.com/loan-payments-autopay/loan-repayment-options",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Repayment options",
+      "paragraphs": [
+        "AutoPay is the simplest way to stay on time. You can also log in to My Account and choose Make a Payment for a one-time payment, call your loan servicer to pay through the phone menu or with a representative, or mail a check. Credit cards are not accepted; debit card payments are available on some loans.",
+        "Check payments go to the address under Pay by Check in your dashboard, with your account number in the memo. They are recorded on the day they arrive, so allow 7-10 business days by standard mail or 1-3 business days by overnight mail."
+      ],
+      "source": "https://upstarthelp.upstart.com/loan-payments-autopay/loan-repayment-options",
+      "mode": "append"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "paragraphs": [
+        "Log in to My Account, find AutoPay on the left side and choose Set Up AutoPay, pick your preferences and select Schedule Payments. Payments come from your bank account each month on the date you choose.",
+        "Edit AutoPay lets you change the date, switch bank accounts, raise a monthly payment or Turn Off AutoPay. Changes can take up to 3 business days. Failed payments are retried automatically unless the bank account was closed. AutoPay may be unavailable during an active bankruptcy."
+      ],
+      "source": "https://upstarthelp.upstart.com/loan-payments-autopay/setting-up-and-managing-automatic-loan-payments-autopay",
+      "topic": "autopay",
+      "steps": [
+        "Log in to My Account.",
+        "Choose Set Up AutoPay in the AutoPay section.",
+        "Pick your bank account and payment date.",
+        "Select Schedule Payments."
+      ]
+    },
+    {
+      "slug": "twice-monthly",
+      "title": "Twice-monthly payments",
+      "paragraphs": [
+        "Eligible loans can split the monthly payment into two automatic payments on set dates, such as the 1st and 15th. Split amounts cannot be raised; switch to monthly AutoPay or make a one-time payment instead."
+      ],
+      "source": "https://upstarthelp.upstart.com/loan-payments-autopay/loan-repayment-options",
+      "topic": "autopay"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-change-time",
+        "intent": "Using Upstart's help center, find how long changes to AutoPay can take to process. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3 business days",
+              "three business days",
+              "3 days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3 business days",
+            "three business days",
+            "3 days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AutoPay changes can take up to 3 business days."
+          }
+        ]
+      },
+      {
+        "slug": "check-address-location",
+        "intent": "Using Upstart's help center, find where in the account you can see the mailing address for check payments. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Pay by Check"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Pay by Check"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The check mailing address is shown under Pay by Check in your dashboard."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Debit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Turn Off AutoPay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Pay by Check"
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "gas",
+  "reviewedAt": "2026-10-10",
+  "id": "philadelphia-gas-works-pgw-31bfd0",
+  "name": "Philadelphia Gas Works (PGW)",
+  "notes": "Researched from public pgworks.com pages only. My Account sign-in uses email and password (Forgot email? / Forgot password?); registration requires having received a first bill. My Account payments from checking/savings are free; card fee in My Account is not stated (PGW guest and phone card payments cost $2.65, used for cards). Pay as a guest (no login) by bank or card with a $2.65 convenience fee (guest link goes to an i-doxs host). AutoPay, E-bill and billing history are My Account features; AutoPay method/timing/cancel not published (family defaults, cancel inferred). Payment Agreement Plans and Budget Billing are arranged by phone (Collection Department 215-235-1777; 215-235-1000) or in person, so payment_arrangement is unsupported online. Stop service online requires My Account; notify at least seven days ahead. MyCheckFree stopped processing PGW payments March 15, 2024.",
+  "officialDomains": [
+    "pgworks.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.pgworks.com/customer-care/your-home/ways-to-pay",
+      "title": "Ways to Pay",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.pgworks.com/customer-care/your-home/manage-my-account",
+      "title": "Manage My Account",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.pgworks.com/customer-care/payment-assistance",
+      "title": "Payment Assistance",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.pgworks.com/customer-care/your-home/service",
+      "title": "Start/Stop Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "PGW",
+    "shortName": "PGW",
+    "primary": "#00529b",
+    "accent": "#00386b",
+    "monogram": "PG"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "signIn": "Sign In",
+    "register": "Register For My Account",
+    "guestPay": "Pay as a guest",
+    "payBill": "Pay with My Account",
+    "autopay": "Autopay",
+    "paperless": "E-bill",
+    "cancel": "Start/Stop Service",
+    "arrangement": "Payment Agreement Plans",
+    "help": "Customer Care",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Pay as a guest",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Customer Care",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay with My Account",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "E-bill",
+        "page": "paperless"
+      },
+      {
+        "label": "Start/Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "evidence": "documented_official",
+    "source": "https://www.pgworks.com/customer-care/your-home/manage-my-account"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pgworks.com/customer-care/your-home/ways-to-pay"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pgworks.com/customer-care/your-home/manage-my-account"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.pgworks.com/customer-care/your-home/manage-my-account",
+      "note": "Manage or stop Autopay from My Account."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pgworks.com/customer-care/your-home/manage-my-account"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.pgworks.com/customer-care/your-home/manage-my-account",
+      "note": "Payment Agreement Plans are arranged by phone with the Collection Department at 215-235-1777 or in person at a Customer Service Center.",
+      "channel": "phone",
+      "phone": "215-235-1777"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pgworks.com/customer-care/payment-assistance"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pgworks.com/customer-care/your-home/service",
+      "note": "Please give PGW at least seven days notice. You are responsible for gas used until PGW can reach the meter to shut it off."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pgworks.com/customer-care/your-home/ways-to-pay",
+      "phone": "215-235-1000"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pgworks.com/customer-care/your-home/ways-to-pay"
+    }
+  },
+  "billing": {
+    "source": "https://www.pgworks.com/customer-care/your-home/ways-to-pay",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 265,
+      "guestBankCents": 265,
+      "guestCardCents": 265,
+      "evidence": "documented_official",
+      "source": "https://www.pgworks.com/customer-care/your-home/ways-to-pay"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "mode": "append",
+      "topic": "payments",
+      "source": "https://www.pgworks.com/customer-care/your-home/ways-to-pay",
+      "paragraphs": [
+        "Pay with My Account: payments from a checking or savings account are free. Pay as a guest without logging in by checking, savings or credit card for a $2.65 convenience fee.",
+        "Pay by phone 24 hours a day at (215) 235-1000 with your account number (a $2.65 convenience fee may apply), or mail a check or money order payable to Philadelphia Gas Works with your account number to P.O. Box 11700, Newark, NJ 07101-4700. Cash payments are free at participating local retailers; other payment centers may charge a fee.",
+        "MyCheckFree stopped processing PGW payments on March 15, 2024."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment assistance",
+      "topic": "assistance",
+      "source": "https://www.pgworks.com/customer-care/payment-assistance",
+      "paragraphs": [
+        "The Customer Responsibility Program (CRP) can cut monthly gas bills for low-income customers by more than 50%. LIHEAP cash, crisis and hardship grants help households facing shutoff or broken heating equipment, and CARES helps customers with medical emergencies, unemployment or other hardship.",
+        "Budget Billing spreads your yearly gas cost evenly over 12 months for residential customers in good standing. Call 215-235-1000 about Budget Billing or payment options, or the Collection Department at 215-235-1777 about a Payment Agreement Plan."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop service",
+      "topic": "account",
+      "source": "https://www.pgworks.com/customer-care/your-home/service",
+      "paragraphs": [
+        "To turn off service online you need a PGW My Account; log in or register first. Notify PGW at least seven days before the shutoff, or call (215) 235-1000. You are responsible for gas used until PGW can access the meter.",
+        "Moving within Philadelphia? Complete both a turn on and a turn off request. Landlords stopping service for a tenant must submit a notarized Voluntary Discontinuance Form signed by all tenants."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "guest-fee",
+        "intent": "Using the PGW website's help pages, find the convenience fee for paying as a guest. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.65"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.65"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Guest payments cost $2.65."
+          }
+        ]
+      },
+      {
+        "slug": "collections-phone",
+        "intent": "Find the phone number PGW customers call to set up a Payment Agreement Plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "2152351777"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "2152351777"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "215-235-1777"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "E-bill",
+        "Start/Stop Service"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$2.65",
+        "P.O. Box 11700"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "seven days"
+    }
+  ]
+}

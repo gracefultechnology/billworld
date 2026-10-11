@@ -1,0 +1,389 @@
+{
+  "id": "city-of-chicago-department-of-finance-utility-bi-bc14cc",
+  "version": 1,
+  "status": "dedicated",
+  "name": "City of Chicago Department of Finance - Utility Billing (Water/Sewer)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public chicago.gov Utility Billing & Customer Service pages and the public utilitybill.chicago.gov home, FAQ and enrollment pages (no sign-in, no form submitted). The portal login asks for Username and Password (Forgot Username / Password links); Sign Me Up enrollment starts with Account (entered with dashes as on the bill) and Service Zip Code. Quick Pay! (Pay My Bill) goes to the City's CHIPAY payment site without signing in; its lookup fields are not visible without scripts, so only the account number is required here. AutoPay debits a bank account with no service fee and a reminder email before each debit; SelectPay is also offered in the portal (not modelled). Online payments accept e-check or credit/debit cards; no convenience fee amount is published on the pages used, so fees are omitted. Payment plans can be set up online for up to 60 months with no down payment; accounts with a plan are billed monthly. Late balances accrue a 1.25% penalty. There is no online stop-service: accounts are in the property owner's name and transfer through the Full Payment Certificate process or a Change of Owner Name/Mailing Address form. The AutoPay debit day is not published, so billing.autopay.days is left to the family default.",
+  "officialDomains": [
+    "chicago.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility-bill.html",
+      "title": "City of Chicago :: Pay Utility Bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility_bill_payment_plan.html",
+      "title": "City of Chicago :: Utility Bill Payment Plan",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.chicago.gov/city/en/depts/fin/supp_info/utility-billing/common-questions-on-utility-services.html",
+      "title": "City of Chicago :: General Billing Questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://utilitybill.chicago.gov/main/guest/",
+      "title": "City of Chicago Utility Payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing.html",
+      "title": "City of Chicago :: Utility Billing & Customer Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "City of Chicago Utility Billing",
+    "shortName": "Chicago Utility Billing",
+    "primary": "#0b5394",
+    "accent": "#073763",
+    "monogram": "CH"
+  },
+  "labels": {
+    "dashboard": "Online Account Management",
+    "signIn": "Login",
+    "username": "Username",
+    "register": "Sign Me Up",
+    "forgot": "Forgot Password",
+    "guestPay": "Quick Pay",
+    "payBill": "Pay Utility Bill",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "arrangement": "Payment Plan",
+    "profile": "Change My Profile",
+    "help": "Frequently Asked Questions"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Sign Me Up",
+        "page": "register"
+      },
+      {
+        "label": "Pay Utility Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Utility Bill Payment Plan",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Utility Billing Relief",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Frequently Asked Questions",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Online Account Management",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Utility Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View bills",
+        "page": "statements"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Change My Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "observed_public",
+    "source": "https://utilitybill.chicago.gov/main/guest/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://utilitybill.chicago.gov/main/guest/",
+      "note": "Quick Pay lets you pay your utility bill without signing in."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility-bill.html",
+      "note": "AutoPay debits your bank account automatically with no service fee. You get a reminder email before each debit."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility-bill.html"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility_bill_payment_plan.html",
+      "note": "Plans cover past-due and current charges for up to 60 months with no down payment; the first payment equals one monthly installment. Accounts with a plan are billed monthly from then on."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://utilitybill.chicago.gov/main/guest/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.chicago.gov/city/en/depts/fin/supp_info/utility-billing/common-questions-on-utility-services.html",
+      "note": "Accounts are in the property owner's name and are not closed online. On a sale, service moves to the buyer through the Full Payment Certificate process. To change the owner name or mailing address, use the Change of Owner Name/Mailing Address Form or call 312-744-4426."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility-bill.html",
+      "phone": "312-744-4426"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility-bill.html"
+    }
+  },
+  "contact": {
+    "phone": "312-744-4426",
+    "payPhone": "312-744-4426",
+    "source": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility-bill.html"
+  },
+  "billing": {
+    "source": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility-bill.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "lateFeePercent": 1.25
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay Utility Bill",
+      "topic": "payments",
+      "paragraphs": [
+        "The easiest way to pay is the City's utility billing web portal, where you can view and download bills, enroll in paperless billing, see payment history and usage, make a quick payment, set up a payment plan and sign up for AutoPay. Quick Pay lets you pay without signing in.",
+        "Online and phone payments accept an electronic check or a credit or debit card (Visa, Mastercard, American Express and Discover; debit cards need a Visa or Mastercard logo). Pay by phone through the automated system at 312-744-4426.",
+        "By mail, send a check, cashier's check or money order to City of Chicago Utility Billing, P.O. Box 6330, Chicago, IL 60680-6330. You can also pay in person at City Hall (121 N. LaSalle St., Room 107A), at neighborhood payment centers, or at EZ Pay Stations.",
+        "A penalty of 1.25% accrues on late balances."
+      ],
+      "source": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility-bill.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay pays your utility bill with automatic debits from your bank account, so you do not have to remember the due date. There are no service fees, and you receive a reminder email before each automatic debit.",
+        "Sign in to Online Account Management to sign up for AutoPay or to turn it off."
+      ],
+      "source": "https://www.chicago.gov/city/en/depts/fin/supp_info/utility-billing/common-questions-on-utility-services.html"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Utility Bill Payment Plan",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you cannot pay in full, set up a payment plan 24 hours a day in Online Account Management or through the automated phone system at 312-744-4426, or in person at a Department of Finance payment center. A representative at the same number can arrange a longer schedule.",
+        "Plans include past-due and current charges and can run up to 60 months when set up online or by phone. No down payment is required; the first payment equals one monthly installment. Stay current with installments and new bills or the plan may default.",
+        "Plans can be refreshed online to add new charges. An account with a new plan is billed monthly, and stays on monthly billing even after the plan is finished."
+      ],
+      "source": "https://www.chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility_bill_payment_plan.html"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Utility Billing Relief",
+      "topic": "assistance",
+      "paragraphs": [
+        "The Utility Billing Relief (UBR) program helps eligible low-income households with a 50% reduced rate, no penalties or debt collection, and debt forgiveness. Check your eligibility from the portal home page.",
+        "The Leak Relief Program can lower bills caused by eligible outdoor or underground leaks to about your usual usage. Seniors and not-for-profit organizations may qualify for exemptions and rebates."
+      ],
+      "source": "https://utilitybill.chicago.gov/main/guest/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Changing the owner on an account",
+      "topic": "account",
+      "paragraphs": [
+        "Utility accounts are in the property owner's name, and there is no online form to close one. When property is sold, the seller must obtain a Full Payment Certificate, which also transfers service to the buyer.",
+        "If bills still come in the prior owner's name, or to change a mailing address, complete the Change of Owner Name/Mailing Address Form or call 312-744-4426. You may be asked for a copy of the deed or the Full Payment Certificate."
+      ],
+      "source": "https://www.chicago.gov/city/en/depts/fin/supp_info/utility-billing/common-questions-on-utility-services.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "plan-max-term",
+        "intent": "Find the longest City of Chicago Utility Billing payment plan you can set up yourself online, in months. Do not set up a plan or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "60"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "60"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payment plans can run up to 60 months online."
+          }
+        ]
+      },
+      {
+        "slug": "late-penalty-rate",
+        "intent": "Find the penalty rate City of Chicago Utility Billing charges on late balances. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.25"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.25"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A penalty of 1.25% accrues on late balances."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Online Account Management",
+        "Payment Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "60 months",
+        "312-744-4426"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "1.25%",
+        "P.O. Box 6330"
+      ]
+    }
+  ]
+}

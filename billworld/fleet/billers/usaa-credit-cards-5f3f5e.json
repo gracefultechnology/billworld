@@ -1,0 +1,356 @@
+{
+  "id": "usaa-credit-cards-5f3f5e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "USAA (credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public usaa.com support pages and the public USAA Credit Card Agreement PDF only (no log on). usaa.com answers automated fetches with a cookie wall, so page text was read from the search index's copies of the cited pages; a reviewer should re-check them in a browser. Log on uses an 'Online ID' and password ('I need help logging on' > 'Recover My Online ID' / 'Reset My Password'; 'Register for online access' with the USAA number). The published password rule (8 to 12 characters with a lowercase letter, an uppercase letter and a number) rejects the fleet test passwords, which are longer than 12 characters, so auth.passwordRule is not set. Credit cards are paid only after logging on to Pay Bills: Express Pay is for auto and property insurance only, so guest_pay is unsupported. Pay Bills: USAA bills can be paid from any checking or savings account; cards (Visa, Mastercard, Amex) only pay insurance bills, so methods are bank only. Credit card payments can be scheduled up to 90 days ahead and post the same day when made before 11:59 p.m. CT. Automatic payments: select the biller on Pay Bills, then 'Set Up Automatic Payments' or 'Modify Automatic Payments'; the automatic plan pays the minimum due or the statement balance; to modify a credit card plan, cancel it and set up a new one; a one-time payment can reduce the automatic amount. Pay Bills may cover up to $50 of late fees when a correctly scheduled payment posts late (not modelled). Paperless: My Documents > 'Manage Paperless' > 'Paperless for all documents'. Closing: the card agreement says any cardmember (not an authorized user) closes the account by calling the customer service number on the statement; the account-closure page lists 800-531-USAA (8722) or chat. Late payment fee is 'up to $35' per the agreement (dated 08/2025), never more than the minimum due; not modelled because the exact amount varies.",
+  "officialDomains": [
+    "usaa.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.usaa.com/support/banking/bills/",
+      "title": "Learn all about paying bills online with USAA Pay Bills",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.usaa.com/support/banking/online-bill-pay/",
+      "title": "Online Bill Pay | USAA",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.usaa.com/support/security/registration-passwords/faq/",
+      "title": "Registration and Passwords FAQ | USAA",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.usaa.com/support/managing-online-documents-faq/",
+      "title": "Managing Online Documents FAQs | USAA",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.usaa.com/support/account-closure-policy-termination/",
+      "title": "Account Closure and Policy Termination | USAA",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://static.usaa.com/content/dam/digital/documents/pdf/bank/bk-credit-card-combined-agreement.pdf",
+      "title": "USAA Credit Card Agreement",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "shortName": "USAA",
+    "primary": "#12395b",
+    "accent": "#00598a",
+    "monogram": "UA"
+  },
+  "labels": {
+    "signIn": "Log On",
+    "username": "Online ID",
+    "register": "Register for online access",
+    "forgot": "I need help logging on",
+    "payBill": "Pay Bills",
+    "autopay": "Automatic Payments",
+    "statements": "My Documents",
+    "paperless": "Manage Paperless",
+    "history": "Payment History"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log On",
+        "page": "login"
+      },
+      {
+        "label": "Register for online access",
+        "page": "register"
+      },
+      {
+        "label": "Pay Bills help",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bills",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "My Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Manage Paperless",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.usaa.com/support/security/registration-passwords/faq/"
+  },
+  "contact": {
+    "phone": "1-800-531-8722",
+    "source": "https://www.usaa.com/support/account-closure-policy-termination/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/banking/bills/",
+      "note": "Express Pay without logging on is only for auto and property insurance. USAA credit cards are paid by logging on to Pay Bills.",
+      "channel": "phone",
+      "phone": "1-800-531-8722"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/banking/bills/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/banking/bills/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/banking/bills/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.usaa.com/support/managing-online-documents-faq/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://static.usaa.com/content/dam/digital/documents/pdf/bank/bk-credit-card-combined-agreement.pdf",
+      "note": "To close your USAA credit card, call the customer service number on your statement or 800-531-USAA (8722). Authorized users can't close the account.",
+      "channel": "phone",
+      "phone": "1-800-531-8722"
+    }
+  },
+  "billing": {
+    "source": "https://www.usaa.com/support/banking/bills/",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "minimum",
+        "statement"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "scheduled": {
+      "maxDaysAhead": 90
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your USAA credit card with Pay Bills",
+      "topic": "payments",
+      "paragraphs": [
+        "Log on and go to Pay Bills to pay your USAA credit card from any checking or savings account. Express Pay works only for auto and property insurance, so credit card payments always go through Pay Bills.",
+        "Credit card payments can be scheduled up to 90 days in advance. Payments made before 11:59 p.m. Central time post that same day."
+      ],
+      "source": "https://www.usaa.com/support/banking/bills/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments for your credit card",
+      "topic": "autopay",
+      "paragraphs": [
+        "On the Pay Bills page select your card's name, then choose Set Up Automatic Payments. The automatic plan for USAA bills pays the minimum due or your statement balance.",
+        "To change a credit card automatic payment, cancel the current plan and set up a new one. A one-time payment may change the automatic amount, and the automatic payment can still go out on its date unless you cancel it."
+      ],
+      "steps": [
+        "Log on and open Pay Bills.",
+        "Select your credit card.",
+        "Choose Set Up Automatic Payments.",
+        "Pick minimum due or statement balance and the account."
+      ],
+      "source": "https://www.usaa.com/support/banking/bills/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go paperless",
+      "topic": "account",
+      "paragraphs": [
+        "From the My Documents page select Manage Paperless and turn on Paperless for all documents. Turn the same setting off to receive paper again."
+      ],
+      "source": "https://www.usaa.com/support/managing-online-documents-faq/"
+    },
+    {
+      "slug": "log-on-help",
+      "title": "Help logging on",
+      "topic": "account",
+      "paragraphs": [
+        "Forgot your Online ID? On the log on page choose I need help logging on, then Recover My Online ID; the ID is texted to the phone number on file. Forgot your password? Choose Reset My Password and use the texted link.",
+        "No Online ID yet? Select Register for online access and use your USAA number."
+      ],
+      "source": "https://www.usaa.com/support/security/registration-passwords/faq/"
+    },
+    {
+      "slug": "close-account",
+      "title": "Closing your credit card",
+      "topic": "account",
+      "paragraphs": [
+        "Any cardmember can close the account by calling the customer service number on the billing statement; an authorized user cannot. You can also call 800-531-USAA (8722) or chat with USAA to talk about closing accounts.",
+        "After closing you must destroy your cards and convenience checks and repay what you owe."
+      ],
+      "source": "https://static.usaa.com/content/dam/digital/documents/pdf/bank/bk-credit-card-combined-agreement.pdf"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late payment fee",
+      "topic": "payments",
+      "paragraphs": [
+        "If USAA does not receive at least the Minimum Payment Due by the due date, a late payment fee of up to $35 may apply. It is never more than the minimum payment that was due."
+      ],
+      "source": "https://static.usaa.com/content/dam/digital/documents/pdf/bank/bk-credit-card-combined-agreement.pdf"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "schedule-horizon",
+        "intent": "Using USAA's help pages, find how many days in advance a USAA credit card payment can be scheduled in Pay Bills. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "90 days",
+              "ninety days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "90 days",
+            "ninety days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 90 days in advance."
+          }
+        ]
+      },
+      {
+        "slug": "same-day-posting-cutoff",
+        "intent": "Using USAA's help pages, find the time by which a USAA credit card payment must be made to post the same day. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "11:59"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "11:59"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Before 11:59 p.m. Central time."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "username"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Set Up Automatic Payments"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "8722"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    }
+  ]
+}

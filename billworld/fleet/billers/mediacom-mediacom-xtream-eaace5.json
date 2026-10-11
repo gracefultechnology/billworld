@@ -1,0 +1,337 @@
+{
+  "id": "mediacom-mediacom-xtream-eaace5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Mediacom (Mediacom Xtream)",
+  "category": "internet",
+  "reviewedAt": "2026-10-10",
+  "notes": "Internet-category dossier for Mediacom (the same company and sign-in as the tv dossier mediacom-communications-mediacom-xtream-tv-1562a7). Researched 2026-10-10 from the Residential Customer and User Agreement (effective June 1, 2026) and the Electronic Payments terms (last updated June 11, 2018); the Customer Support sign-in page is script-rendered, so its labels (Mediacom ID, Password, Forgot Password, register now) come from the tv builder's 2026-10-09 public observation. Mediacom's EBP Service takes one-time payments and Autopay by bank account (EFT), debit card or credit card, online or at 1-855-633-4226. Autopay deducts the balance on or up to eight days before the due date (the engine drafts on the due date); a cancellation must reach Mediacom 4 days before the payment date for EFT or 1 day before for card (the agreement says three business days). A returned item / payment failure fee exists but its amount is not published; late fees exist, amounts on a rate card not reviewed. No pay-without-signing-in option is shown (guest_pay unsupported, inferred). Cancel by calling 855-633-4226 or at a customer service location (some services can also be changed or cancelled online or in the Xtream1 app, but the cancel path is not documented, so cancel_service stays offline). Equipment must be returned within seven days of the end of service or an unreturned equipment fee applies; billing errors must be reported within 60 days of the bill date. A $10/month discount for Autopay plus paperless appears on some offers (not modelled). Plans and prices left out. Reviewer 2026-10-10: re-checked the agreement and Electronic Payments terms (7-day equipment return, 60-day dispute window, 4/1-day Autopay cancellation, 8-day Autopay window); the home page offer terms use the Autopay and Paperless Billing wording.",
+  "officialDomains": [
+    "mediacomcable.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.mediacomcable.com/Log/In",
+      "title": "Mediacom Customer Support - Log In",
+      "fetchedAt": "2026-10-09",
+      "kind": "login"
+    },
+    {
+      "url": "https://mediacomcable.com/legal/residential-customer-and-user-agreement",
+      "title": "Residential Customer and User Agreement - Effective June 1st, 2026",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://mediacomcable.com/legal/electronic-payments",
+      "title": "Electronic Payments Terms & Conditions",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://mediacomcable.com/",
+      "title": "Mediacom home page (No B.S. Internet 300 | Fiber Powered Internet)",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Mediacom",
+    "shortName": "Mediacom",
+    "primary": "#00539b",
+    "accent": "#a6192e",
+    "monogram": "M"
+  },
+  "labels": {
+    "signIn": "SIGN IN",
+    "username": "Mediacom ID",
+    "forgot": "Forgot Password",
+    "register": "register now",
+    "dashboard": "Account Overview",
+    "payBill": "Pay Bill",
+    "autopay": "Autopay",
+    "paperless": "Paperless Billing",
+    "profile": "Settings",
+    "help": "Answer Center",
+    "contact": "Contact Us",
+    "signOut": "Log Out"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Answer Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Settings",
+        "page": "profile"
+      },
+      {
+        "label": "Answer Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://support.mediacomcable.com/Log/In"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://mediacomcable.com/legal/electronic-payments",
+      "note": "Online payments need a Mediacom ID. Without signing in, pay by phone at 1-855-633-4226, by mail or at a Mediacom payment center.",
+      "channel": "phone",
+      "phone": "8556334226"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mediacomcable.com/legal/electronic-payments"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mediacomcable.com/legal/electronic-payments",
+      "note": "To stop an upcoming Autopay payment, cancel at least 4 days before the payment date for a bank account or 1 day before for a card."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mediacomcable.com/legal/residential-customer-and-user-agreement"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://mediacomcable.com/legal/residential-customer-and-user-agreement",
+      "note": "Mediacom services are cancelled by calling 855-633-4226 or visiting a Mediacom customer service location. Return all Mediacom equipment within seven days to avoid an unreturned equipment fee.",
+      "channel": "phone",
+      "phone": "8556334226"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mediacomcable.com/legal/electronic-payments",
+      "phone": "8556334226"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mediacomcable.com/legal/electronic-payments"
+    }
+  },
+  "billing": {
+    "source": "https://mediacomcable.com/legal/electronic-payments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "notes": [
+        "A returned item fee applies to each failed payment, plus any fee your bank or card company charges.",
+        "Late fees may be charged on past-due balances; see your rate card for the amount."
+      ],
+      "evidence": "documented_official",
+      "source": "https://mediacomcable.com/legal/electronic-payments"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "Ways to pay your Mediacom bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in with your Mediacom ID to pay online, or pay by phone at 1-855-633-4226. You can also mail a check, pay by electronic funds transfer from your bank, or pay in person at a Mediacom payment center or authorized location (cash accepted there).",
+        "Online and by phone Mediacom takes a bank account (EFT), a debit card or a credit card. If a payment is rejected, a returned item fee applies and your service may be suspended; Mediacom may retry a failed bank payment for up to 30 days."
+      ],
+      "source": "https://mediacomcable.com/legal/electronic-payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Autopay pays your balance automatically each month from your bank account, debit card or credit card. Your statement or email notice arrives at least 15 days before the due date, and the payment is taken on or up to eight days before the due date.",
+        "To stop Autopay, turn it off in your online account or call 1-855-633-4226. Bank-account payments must be cancelled at least 4 days before the payment date and card payments at least 1 day before; after that the payment goes through. If your first Autopay payment fails, a payment failure fee may apply."
+      ],
+      "source": "https://mediacomcable.com/legal/electronic-payments"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel Mediacom service",
+      "topic": "account",
+      "paragraphs": [
+        "To cancel, call 855-633-4226 or visit a Mediacom customer service location. You are billed until the service is disconnected, and dropping a promotional service can end the discount on what you keep.",
+        "Return all Mediacom equipment, such as your modem or gateway, within seven days after service ends. Unreturned equipment is charged to your account and any deposit refund is reduced by unpaid amounts."
+      ],
+      "source": "https://mediacomcable.com/legal/residential-customer-and-user-agreement"
+    },
+    {
+      "slug": "billing-disputes",
+      "title": "Questions about a charge",
+      "topic": "billing",
+      "paragraphs": [
+        "If you think your bill is wrong, tell Mediacom within 60 days of the bill date; after that the charge can no longer be disputed. Outages longer than 24 hours can earn a credit based on the daily share of your monthly fee."
+      ],
+      "source": "https://mediacomcable.com/legal/residential-customer-and-user-agreement"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "equipment-return-days",
+        "intent": "A Mediacom internet customer is cancelling. Using Mediacom's help, find how many days they have to return their equipment after service ends. Do not cancel anything or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "seven",
+              "7"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "seven",
+            "7"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Return all Mediacom equipment within seven days after service ends."
+          }
+        ]
+      },
+      {
+        "slug": "dispute-window",
+        "intent": "Find how long a Mediacom customer has, from the bill date, to dispute a charge on their bill. Do not change anything on the account.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "60"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "60"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Billing errors must be reported within 60 days of the bill date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Mediacom ID"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Autopay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "855-633-4226"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "seven days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "billing-disputes",
+      "contains": "60 days"
+    }
+  ],
+  "contact": {
+    "phone": "1-855-633-4226",
+    "source": "https://mediacomcable.com/legal/electronic-payments",
+    "evidence": "documented_official"
+  }
+}

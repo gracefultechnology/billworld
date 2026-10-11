@@ -1,0 +1,316 @@
+{
+  "id": "morningstar-storage-85b8ee",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Morningstar Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Make a Payment, Pay as Guest and My Account log-in pages (no sign-in, no guest lookup). New payment portal: Sign in to Your Account with the same email and password as the previous portal; Create a New Account links your unit(s); Pay as Guest is a quick card payment found by location, unit number and the phone number on the contract (location is modelled through the account/unit field; exact lookup). Fee: credit card payments carry a 2% processing fee; ACH and co-branded Visa/Mastercard debit cards are free online (the fee model charges every card 2%; cross-owner request: credit-only fees). AutoPay, late fees, statements and move-out are not described publicly; the catalog note says to call 1-800-671-7552, so autopay is marked unknown with a contact note and move-out unsupported online (inferred). FAQ is only reachable through the footer and returns 404 at /faq.",
+  "officialDomains": [
+    "morningstarstorage.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.morningstarstorage.com/make-a-payment",
+      "title": "Make a Payment | Morningstar Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.morningstarstorage.com/pay-as-guest",
+      "title": "Pay as Guest | Morningstar Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.morningstarstorage.com/account/login",
+      "title": "My Account | Morningstar Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Morningstar Storage",
+    "shortName": "Morningstar",
+    "primary": "#1b365d",
+    "accent": "#8a4b00",
+    "monogram": "MS"
+  },
+  "labels": {
+    "payBill": "Make A Payment",
+    "dashboard": "My Account",
+    "signIn": "Sign in",
+    "register": "Create a New Account",
+    "guestPay": "Pay as Guest",
+    "accountNumber": "Unit Number",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make A Payment",
+        "page": "login"
+      },
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Pay as Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Create a New Account",
+        "page": "register"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make A Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "phone"
+    ],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.morningstarstorage.com/make-a-payment"
+  },
+  "contact": {
+    "phone": "800-671-7552",
+    "source": "https://www.morningstarstorage.com/make-a-payment",
+    "evidence": "observed_public"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.morningstarstorage.com/make-a-payment"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.morningstarstorage.com/make-a-payment",
+      "note": "Pay as Guest is a quick card payment: enter your unit number and the phone number on your contract."
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.morningstarstorage.com/account/login",
+      "note": "Create a New Account, then select your unit(s) to link them to your online account."
+    },
+    "autopay": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "source": "https://www.morningstarstorage.com/make-a-payment",
+      "channel": "phone",
+      "phone": "800-671-7552",
+      "note": "For automatic monthly payments, please call Morningstar Storage at 1-800-671-7552 or ask your store."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.morningstarstorage.com/make-a-payment",
+      "channel": "phone",
+      "phone": "800-671-7552",
+      "note": "Moving out is not done online. Contact your Morningstar store or call 1-800-671-7552."
+    }
+  },
+  "billing": {
+    "source": "https://www.morningstarstorage.com/pay-as-guest",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "fees": {
+      "cardPercent": 2,
+      "notes": [
+        "Only credit cards carry the 2% fee. ACH and co-branded Visa or Mastercard debit cards are free online, and personal or cashier's checks are free in person."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.morningstarstorage.com/pay-as-guest"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "source": "https://www.morningstarstorage.com/make-a-payment",
+      "paragraphs": [
+        "Morningstar has a new payment portal. Sign in with the same email and password you used on the previous portal, create a new account and link your units, or pay as a guest.",
+        "Pay as Guest is a quick card payment: you enter your location, unit number and the phone number on your contract."
+      ],
+      "steps": [
+        "Choose Make A Payment.",
+        "Sign in, or choose Pay as Guest.",
+        "Pick your unit and the amount.",
+        "Choose ACH or a card and submit."
+      ]
+    },
+    {
+      "slug": "convenience-fees",
+      "title": "Processing fee",
+      "topic": "billing",
+      "source": "https://www.morningstarstorage.com/pay-as-guest",
+      "paragraphs": [
+        "Credit card payments carry a 2% processing fee. Paying online by ACH or with a co-branded Visa or Mastercard debit card is free, and so is paying in person by personal or cashier's check."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "source": "https://www.morningstarstorage.com/make-a-payment",
+      "paragraphs": [
+        "The payment pages do not describe automatic payments. Call 1-800-671-7552 or ask your store about setting up recurring payments."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://www.morningstarstorage.com/make-a-payment",
+      "paragraphs": [
+        "Moving out is arranged with your store rather than online. Contact your Morningstar location or call 1-800-671-7552."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "credit-card-fee",
+        "intent": "Using Morningstar Storage's payment pages, find the processing fee on credit card payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2%",
+              "2 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2%",
+            "2 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments have a 2% processing fee."
+          }
+        ]
+      },
+      {
+        "slug": "guest-pay-fields",
+        "intent": "Find what you need to enter to pay a Morningstar Storage bill as a guest. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "unit"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "unit"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your location, unit number and the phone number on your contract."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Sign in"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "convenience-fees",
+      "contains": [
+        "2%",
+        "debit"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "671-7552"
+    }
+  ]
+}

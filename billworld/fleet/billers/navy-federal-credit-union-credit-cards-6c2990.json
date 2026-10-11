@@ -1,0 +1,359 @@
+{
+  "id": "navy-federal-credit-union-credit-cards-6c2990",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Navy Federal Credit Union (credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public navyfederal.org pages only (no sign-in). Sign-in to digital banking uses username, password and two-step verification (the 4-digit app passcode was retired); online-banking enrollment sends a texted security code that must be entered within 6 minutes, so auth.mfa is 'sms'. The digitalomni sign-in page is script-rendered and could not be read; field labels are the family defaults. Paying: on the Accounts screen choose 'Make Payment' for the card and follow the prompts; payments from a Navy Federal account post the same day, from an external account in 2 to 5 days. Recurring payments: under Make Payment choose 'Recurring Monthly Payment' (the payments page says the Move Money tab); any day from the 1st to the 28th, and only when the card is not past due (the not-past-due rule is not modelled). Due date can be changed once every 6 months and may take up to 2 billing cycles (not modelled). The due date is 25 days after the billing cycle closes. Paperless: Statements > 'Paperless Delivery Preferences' (app: More > Account and Tax Statements); up to 36 months of statements are kept; the page describes Digital Banking accounts generally. Fees page: late payment $20.00, returned payment no charge. Closing: call 1-888-842-6328 any time, visit a branch, send a secure message or mail PO Box 3000, Merrifield, VA 22180; a closed card cannot be reopened and unredeemed rewards are forfeited (rewards terms). Member Services 1-888-842-6328, 24/7. Cancelling a recurring payment is not described on the cited pages (catalog research says Move Money or by phone); autopay_cancel stays at the family default. No pay-without-sign-in option (inferred).",
+  "officialDomains": [
+    "navyfederal.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html",
+      "title": "Making Credit Card Payments | Navy Federal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.navyfederal.org/loans-cards/credit-cards/faqs.html",
+      "title": "Credit Card FAQs | Navy Federal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.navyfederal.org/services/mobile-online-banking/paperless-statements.html",
+      "title": "Paperless Statements | Navy Federal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.navyfederal.org/services/mobile-online-banking/faqs.html",
+      "title": "Mobile and Online Banking FAQs | Navy Federal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.navyfederal.org/membership/fees-and-charges.html",
+      "title": "Fees & Charges | Navy Federal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "shortName": "Navy Federal",
+    "primary": "#003366",
+    "accent": "#8a5a00",
+    "monogram": "NF"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "Username",
+    "dashboard": "Accounts",
+    "payBill": "Make Payment",
+    "autopay": "Recurring Monthly Payment",
+    "statements": "Statements",
+    "paperless": "Paperless Delivery Preferences",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Making Credit Card Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Monthly Payment",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless Delivery Preferences",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "sms",
+    "evidence": "documented_official",
+    "source": "https://www.navyfederal.org/services/mobile-online-banking/faqs.html"
+  },
+  "contact": {
+    "phone": "1-888-842-6328",
+    "payPhone": "1-888-842-6328",
+    "source": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html",
+      "note": "Navy Federal card payments are made after you sign in to digital banking or the app. You can also call Member Services at 1-888-842-6328, 24/7.",
+      "channel": "phone",
+      "phone": "1-888-842-6328"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/loans-cards/credit-cards/faqs.html",
+      "note": "Recurring payments can be set for any day from the 1st through the 28th, as long as your card is not past due."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/services/mobile-online-banking/paperless-statements.html"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/services/mobile-online-banking/faqs.html",
+      "note": "To close your card, call 1-888-842-6328 any time, visit a branch, send us a secure message, or mail a letter to PO Box 3000, Merrifield, VA 22180.",
+      "channel": "phone",
+      "phone": "1-888-842-6328"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "lateFeeCents": 2000
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Making credit card payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to digital banking or the app. On your Accounts screen choose Make Payment for the card you want to pay and follow the steps on screen.",
+        "A payment from a Navy Federal account posts the same day. A payment from an account at another bank can take 2 to 5 days to post. You can also pay by phone through Member Services at 1-888-842-6328, 24/7."
+      ],
+      "steps": [
+        "Sign in to digital banking.",
+        "On the Accounts screen choose Make Payment for your card.",
+        "Follow the on-screen steps to finish."
+      ],
+      "source": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring monthly payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Set up a recurring monthly payment in mobile or online banking: under Make Payment choose Recurring Monthly Payment (the Move Money tab also offers automatic payments).",
+        "Pick any day from the 1st through the 28th of the month. Recurring payments can be set up only while your card is not past due."
+      ],
+      "source": "https://www.navyfederal.org/loans-cards/credit-cards/faqs.html"
+    },
+    {
+      "slug": "due-date",
+      "title": "Your due date",
+      "topic": "payments",
+      "paragraphs": [
+        "You can change your credit card's due date once every 6 months; the change can take up to 2 billing cycles to take effect."
+      ],
+      "source": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in and choose Statements from the menu (in the app tap More, then Account and Tax Statements). Select Paperless Delivery Preferences, choose your options and save.",
+        "Up to 36 months of statements are saved for you to view or print at any time."
+      ],
+      "source": "https://www.navyfederal.org/services/mobile-online-banking/paperless-statements.html"
+    },
+    {
+      "slug": "fees",
+      "title": "Credit card payment fees",
+      "topic": "payments",
+      "paragraphs": [
+        "A late payment fee of $20.00 applies when the minimum payment is not made by the due date. There is no charge for a returned payment."
+      ],
+      "source": "https://www.navyfederal.org/membership/fees-and-charges.html"
+    },
+    {
+      "slug": "close-account",
+      "title": "Closing an account",
+      "topic": "account",
+      "paragraphs": [
+        "To close an account, visit a branch, send a secure message, call 1-888-842-6328 or mail a letter to PO Box 3000, Merrifield, VA 22180."
+      ],
+      "source": "https://www.navyfederal.org/services/mobile-online-banking/faqs.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "due-date-change-frequency",
+        "intent": "Using Navy Federal's help pages, find how often a Navy Federal credit card's payment due date can be changed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "6 months",
+              "six months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "6 months",
+            "six months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Once every 6 months."
+          }
+        ]
+      },
+      {
+        "slug": "late-fee-amount",
+        "intent": "Using Navy Federal's help pages, find the late payment fee on a Navy Federal credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$20",
+              "20 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$20",
+            "20 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The late payment fee is $20.00."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Recurring Monthly Payment",
+        "28th"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-888-842-6328"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fees",
+      "contains": "$20.00"
+    }
+  ]
+}

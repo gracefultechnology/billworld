@@ -1,0 +1,122 @@
+{
+  "id": "banner-health-e99d50",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Banner Health",
+  "category": "medical",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public bannerhealth.com billing pages (no sign-in, no bill lookup). Banner sends one statement for all outstanding balances (hospital, doctor visit, imaging, urgent care, home health); Pay Now goes to Banner Bill Pay, which finds the bill with the Banner Health account number and date of birth (surgery centers have a separate payment site). No-interest payment arrangements can be self-set online for existing balances or by phone; Banner also offers a vendor (Curae) revolving credit line up to $10,000, credit-approved, with interest-free options for terms up to 2 years (not modelled: third-party credit). Self-pay discounts (not for packaged-rate services such as bariatric surgery or obstetrics). Locations take Visa, MasterCard, American Express and Discover at time of service and no longer take cash or personal checks there. Billing phones: hospital and doctor visit bills (888) 264-2127 Mon-Thu 8-7, Fri 8-5, Sat 8-12 MST; Home Care (888) 562-7513; Urgent Care (866) 807-9776. Banner recently changed statement vendors; statements from the old vendor must still be paid on that vendor's portal. AutoPay, paperless, online fees and the sign-in identifier are not described publicly (family defaults kept). Online payment methods are not listed publicly (family default kept).",
+  "officialDomains": ["bannerhealth.com"],
+  "sources": [
+    { "url": "https://www.bannerhealth.com/patients/billing", "title": "Help Me Find Payment Options & Information", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://www.bannerhealth.com/patients/billing/payment-arrangements-and-financing", "title": "Payment & Financing Options", "fetchedAt": "2026-10-10", "kind": "plans" },
+    { "url": "https://www.bannerhealth.com/patients/billing/faqs", "title": "Billing FAQs", "fetchedAt": "2026-10-10", "kind": "help" },
+    { "url": "https://www.bannerhealth.com/patients/billing/contact-us", "title": "Billing Contact Us", "fetchedAt": "2026-10-10", "kind": "help" }
+  ],
+  "brand": { "displayName": "Banner Health", "shortName": "Banner Health", "primary": "#0b4f7c", "accent": "#063a5c", "monogram": "B" },
+  "labels": {
+    "payBill": "Pay my bill",
+    "guestPay": "Pay Now",
+    "signIn": "Sign in to Patient Account",
+    "arrangement": "Payment arrangements",
+    "help": "Billing FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay Now", "page": "guest" },
+      { "label": "Sign in to Patient Account", "page": "login" },
+      { "label": "Payment & Financing Options", "helpSlug": "payment-plan" },
+      { "label": "Help Paying Your Bill", "helpSlug": "payment-assistance" },
+      { "label": "Billing FAQs", "page": "help" }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": ["accountNumber", "dob"],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.bannerhealth.com/patients/billing/payment-arrangements-and-financing"
+  },
+  "contact": { "phone": "888-264-2127", "source": "https://www.bannerhealth.com/patients/billing/contact-us" },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.bannerhealth.com/patients/billing/payment-arrangements-and-financing" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.bannerhealth.com/patients/billing/payment-arrangements-and-financing" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.bannerhealth.com/patients/billing/payment-arrangements-and-financing" }
+  },
+  "billing": {
+    "source": "https://www.bannerhealth.com/patients/billing/payment-arrangements-and-financing"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Banner Bill Pay",
+      "topic": "payments",
+      "paragraphs": [
+        "Banner Health sends a single statement for all of your outstanding balances. Pay a hospital, doctor visit, imaging, urgent care or home health bill online with your Banner Health account number and the patient's date of birth. Surgery center bills have their own online payment page.",
+        "Have your bill and account number ready before you start. If you still get a statement from Banner's previous statement vendor, it still needs to be paid, on that vendor's payment site.",
+        "At Banner locations, copays and deductibles are due at the time of service by Visa, MasterCard, American Express or Discover; the locations no longer take cash or personal checks."
+      ],
+      "steps": ["Choose Pay Now.", "Enter your Banner Health account number and date of birth.", "Review the balance.", "Pay and keep your confirmation."],
+      "source": "https://www.bannerhealth.com/patients/billing/payment-arrangements-and-financing"
+    },
+    {
+      "slug": "payment-plan",
+      "title": "Payment arrangements and financing",
+      "topic": "assistance",
+      "paragraphs": [
+        "Banner offers no-interest payment arrangements for existing balances. You can set one up yourself online, or call (888) 264-2127 for help.",
+        "Through a partner, Banner also offers a revolving line of credit of up to $10,000 that can be used at participating Banner locations. It requires credit approval, and interest-free options are available for terms of up to 2 years.",
+        "Self-pay patients can get discounts. They do not apply to services with packaged rates, such as bariatric surgery or obstetrics."
+      ],
+      "source": "https://www.bannerhealth.com/patients/billing/payment-arrangements-and-financing"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Help paying your bill",
+      "topic": "assistance",
+      "paragraphs": [
+        "Banner has financial assistance programs, including region-specific programs in Arizona, California, Colorado, Nebraska, Nevada and Wyoming. Patient Financial Representatives can also talk with uninsured patients about payment arrangements.",
+        "For questions about financial assistance or help setting up a payment arrangement, call (888) 264-2127."
+      ],
+      "source": "https://www.bannerhealth.com/patients/billing/faqs"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Billing contacts",
+      "topic": "contact",
+      "paragraphs": [
+        "Hospital and doctor visit bills: (888) 264-2127, Monday through Thursday 8 a.m. to 7 p.m., Friday 8 a.m. to 5 p.m. and Saturday 8 a.m. to noon (Mountain Standard Time). Holiday hours may vary.",
+        "Home Care bills: (888) 562-7513. Urgent Care bills: (866) 807-9776."
+      ],
+      "source": "https://www.bannerhealth.com/patients/billing/contact-us"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "credit-line-limit",
+        "intent": "Using Banner Health's payment and financing information, find the largest line of credit Banner's financing partner offers for care at Banner locations. Do not make a payment or change anything.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["10,000", "10000"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["10,000", "10000"] },
+        "tags": ["help", "information", "assistance"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Up to $10,000." }]
+      },
+      {
+        "slug": "urgent-care-billing-phone",
+        "intent": "Find the phone number Banner Health lists for questions about an Urgent Care bill. Do not change anything on the account.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["807-9776", "8078079776"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["807-9776", "8078079776"] },
+        "tags": ["help", "information", "contact"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "(866) 807-9776" }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": ["date of birth"] },
+    { "page": "helpArticle", "slug": "payment-plan", "contains": ["$10,000", "no-interest"] },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "807-9776" }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "id": "florida-vehicle-registration-renewal-flhsmv-mydm-e0905e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Florida vehicle registration renewal (FLHSMV MyDMV Portal / county tax collectors)",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public flhsmv.gov pages (Renew or Replace Your Registration; Fees) and the public MyDMV Portal Motor Vehicle Express Renewal landing page. Renew 1 or 2 years, up to three months before expiration (registrations expire at midnight on the first owner's birthday unless business-owned); FLHSMV must verify insurance; any stop (including toll-violation stops since July 1, 2022) blocks online renewal and needs an office visit or a call to (850) 617-2000. MyDMV Portal: $2.00 processing fee per transaction (express renewal landing calls it a non-refundable convenience fee; orders cannot be canceled; no address changes); registration mailed in 7-10 business days, emailed receipt meanwhile. MyFlorida app: up to five vehicles in one transaction, $4.00 by card or $3.75 by checking, digital document. Offices issue the registration the same day. MyDMV Portal takes credit cards only (Renew Online: 'Payment options: Credit card'), so billing is card-only with the flat $2.00 fee; the app takes card or checking. No automatic renewal or installment plan (inferred). The fleet's guest lookup keeps the DMV template fields; the real portal asks for owner identifying information.",
+  "officialDomains": [
+    "flhsmv.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.flhsmv.gov/motor-vehicles-tags-titles/license-plates-registration/renew-replace-registration/",
+      "title": "Renew or Replace Your Registration - Florida Department of Highway Safety and Motor Vehicles",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://mydmvportal.flhsmv.gov/Home/en/ExpressRenew/Landing",
+      "title": "FLHSMV - MyDMV Portal - MV Express Renewal",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.flhsmv.gov/fees/",
+      "title": "Fees - Florida Department of Highway Safety and Motor Vehicles",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "Florida Highway Safety and Motor Vehicles",
+    "shortName": "FLHSMV",
+    "primary": "#0b3d6e",
+    "accent": "#7a4b00",
+    "monogram": "FL"
+  },
+  "labels": {
+    "guestPay": "Motor Vehicle Express Renewal",
+    "dashboard": "MyDMV Portal",
+    "help": "Help"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.flhsmv.gov/motor-vehicles-tags-titles/license-plates-registration/renew-replace-registration/",
+      "note": "Florida has no automatic registration renewal. Renew each time online at MyDMV Portal, in the MyFlorida app, or at a motor vehicle service center.",
+      "channel": "in_person"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.flhsmv.gov/motor-vehicles-tags-titles/license-plates-registration/renew-replace-registration/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.flhsmv.gov/motor-vehicles-tags-titles/license-plates-registration/renew-replace-registration/",
+      "note": "Registration fees are paid in full when you renew; there is no installment plan.",
+      "channel": "none"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mydmvportal.flhsmv.gov/Home/en/ExpressRenew/Landing",
+      "note": "Express renewal needs no account. A non-refundable $2.00 convenience fee applies, and an order cannot be canceled once placed."
+    }
+  },
+  "billing": {
+    "source": "https://www.flhsmv.gov/motor-vehicles-tags-titles/license-plates-registration/renew-replace-registration/",
+    "fees": {
+      "cardCents": 200,
+      "guestCardCents": 200,
+      "evidence": "documented_official",
+      "source": "https://www.flhsmv.gov/motor-vehicles-tags-titles/license-plates-registration/renew-replace-registration/"
+    },
+    "methods": [
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Renew your registration online",
+      "topic": "billing",
+      "paragraphs": [
+        "Renew a vehicle or vessel for one or two years, up to three months before it expires. Registrations expire at midnight on the first owner's birthday unless a business owns the vehicle.",
+        "MyDMV Portal asks for the owner's identifying information and checks insurance; if FLHSMV cannot verify valid insurance, no registration is issued. MyDMV Portal takes credit cards only, and a $2.00 processing fee is added to each transaction.",
+        "Your registration arrives by mail in 7-10 business days. On the payment confirmation page choose to email the receipt, which you can use until the registration arrives."
+      ],
+      "source": "https://www.flhsmv.gov/motor-vehicles-tags-titles/license-plates-registration/renew-replace-registration/",
+      "mode": "append"
+    },
+    {
+      "slug": "myflorida-app",
+      "title": "Renewing in the MyFlorida app",
+      "topic": "billing",
+      "paragraphs": [
+        "The free MyFlorida app renews up to five vehicles or vessels in one transaction for one or two years. You need the license plate number or the VIN or hull number.",
+        "The app charges $4.00 per transaction by credit card or $3.75 by checking account, and gives you a digital document to use until the registration arrives by mail."
+      ],
+      "source": "https://www.flhsmv.gov/motor-vehicles-tags-titles/license-plates-registration/renew-replace-registration/"
+    },
+    {
+      "slug": "registration-stops",
+      "title": "Stops that block renewal",
+      "topic": "account",
+      "paragraphs": [
+        "If a stop appears on your registration, you cannot renew online; visit a motor vehicle service center or call FLHSMV Customer Service at (850) 617-2000.",
+        "Since July 1, 2022, drivers with registration stops for unpaid toll violations cannot renew or replace plates until the toll violations are paid. Renewing at a service center gives you the registration the same day."
+      ],
+      "source": "https://www.flhsmv.gov/motor-vehicles-tags-titles/license-plates-registration/renew-replace-registration/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "portal-processing-fee",
+        "intent": "Using the FLHSMV website's help pages, find the processing fee for renewing a registration on MyDMV Portal. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2",
+              "2 dollars",
+              "two dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2",
+            "2 dollars",
+            "two dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "MyDMV Portal adds a $2.00 processing fee."
+          }
+        ]
+      },
+      {
+        "slug": "app-checking-fee",
+        "intent": "Using the FLHSMV website's help pages, find the MyFlorida app processing fee when paying with a checking account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3.75",
+              "3.75"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3.75",
+            "3.75"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The MyFlorida app charges $3.75 for checking-account payments."
+          }
+        ]
+      },
+      {
+        "slug": "renew-early-window",
+        "intent": "Using the FLHSMV website's help pages, find how far ahead of expiration a registration can be renewed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "three months",
+              "3 months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "three months",
+            "3 months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You can renew up to three months before expiration."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "no automatic registration renewal"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "myflorida-app",
+      "contains": "$3.75"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "registration-stops",
+      "contains": "July 1, 2022"
+    }
+  ]
+}

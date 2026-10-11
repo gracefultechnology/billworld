@@ -1,0 +1,294 @@
+{
+  "id": "e-zpass-ohio-ohio-turnpike-0e1ab1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "E-ZPass Ohio (Ohio Turnpike)",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public ohioturnpike.org pages (E-ZPass Hub and E-ZPass FAQ). The account site ezpassoh.com returned an almost empty script-rendered page, so sign-in wording keeps the family defaults (ezpassoh.com is linked from the hub as the official account and unpaid-toll site and is in officialDomains). Prepaid private accounts: $25 per transponder opening deposit, a credit card is required, replenishment charged to the card when the balance reaches or falls below $10 per transponder (commercial $50 / $20); one-time $3.00 shipping charge; transponders leased at $0.75 per month each, waived after 30 single or 15 round trips in Ohio in the previous month. Monthly statements on the account anniversary; transactions online 24/7; paper statements by mail carry a processing fee (amount not stated). Closing: return transponders by mail to P.O. Box 460, Berea, OH 44017; refund to the card about 60 days later; $10 per unreturned transponder (cancel_service unsupported online, channel mail). Unpaid Toll Invoices and Unpaid Toll Tickets are paid online at ezpassoh.com by credit or debit card, or by check/money order to P.O. Box 94672, Cleveland, OH 44101. Card-only billing. No payment plan described (payment_arrangement unsupported, inferred).",
+  "officialDomains": [
+    "ohioturnpike.org",
+    "ezpassoh.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ohioturnpike.org/e-zpass",
+      "title": "E-ZPass Hub - Ohio Turnpike",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.ohioturnpike.org/e-zpass/faq",
+      "title": "E-ZPass FAQ - Ohio Turnpike",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    }
+  ],
+  "brand": {
+    "displayName": "Ohio Turnpike E-ZPass",
+    "shortName": "Ohio Turnpike",
+    "primary": "#003f87",
+    "accent": "#8a1c1c",
+    "monogram": "OH"
+  },
+  "labels": {
+    "guestPay": "Pay Unpaid Toll",
+    "help": "E-ZPass FAQ",
+    "autopay": "Automatic Replenishment",
+    "wallet": "Billing & Payments",
+    "history": "My Transactions"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ohioturnpike.org/e-zpass/faq",
+      "note": "Your credit card on file is charged automatically whenever the balance reaches or falls below $10 per transponder."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ohioturnpike.org/e-zpass/faq",
+      "note": "Statements and transactions are online 24/7; paper statements mailed to you carry a processing fee."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ohioturnpike.org/e-zpass/faq",
+      "note": "Pay an Unpaid Toll Invoice or Unpaid Toll Ticket online with a credit or debit card."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.ohioturnpike.org/e-zpass/faq",
+      "note": "Accounts are closed by returning your transponders by mail to the Ohio Turnpike and Infrastructure Commission, P.O. Box 460, Berea, OH 44017. Any positive balance is refunded to your card about 60 days later; each unreturned transponder costs $10.",
+      "channel": "mail"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ohioturnpike.org/e-zpass/faq"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.ohioturnpike.org/e-zpass/faq",
+      "note": "No payment plan is described. Pay unpaid toll invoices in full, or call the Ohio Turnpike E-ZPass Customer Service Center at (440) 971-2222.",
+      "channel": "phone",
+      "phone": "4409712222"
+    }
+  },
+  "billing": {
+    "source": "https://www.ohioturnpike.org/e-zpass/faq",
+    "methods": [
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Prepaid account replenishment",
+      "topic": "autopay",
+      "paragraphs": [
+        "A prepaid private account needs an initial deposit of $25 per transponder and a credit card to maintain it. Tolls are deducted as your transponder is read, and when the balance reaches or falls below $10 per transponder your card is charged to refill it.",
+        "Commercial accounts deposit $50 per transponder and refill at $20 per transponder. Update your card online under Billing & Payments or by calling (440) 971-2222."
+      ],
+      "source": "https://www.ohioturnpike.org/e-zpass/faq"
+    },
+    {
+      "slug": "account-fees",
+      "title": "Account fees",
+      "topic": "fees",
+      "paragraphs": [
+        "Ohio Turnpike transponders are leased for $0.75 per month each, charged on the monthly anniversary of the account even without travel; the fee is waived for a transponder used for 30 single or 15 round trips in Ohio the month before. A one-time $3.00 charge applies when a transponder is shipped.",
+        "Paper statements mailed to you carry a processing fee; statements and transactions are free online. There is no Ohio Turnpike service fee for using another agency's E-ZPass."
+      ],
+      "source": "https://www.ohioturnpike.org/e-zpass/faq"
+    },
+    {
+      "slug": "close-account",
+      "title": "Closing your account",
+      "topic": "account",
+      "paragraphs": [
+        "Close your account at any time by returning every transponder to the Ohio Turnpike and Infrastructure Commission, P.O. Box 460, Berea, OH 44017, in its mylar bag or wrapped in aluminum foil.",
+        "Any positive balance is refunded to your credit card about 60 days after closure. A $10.00 fee is charged for each transponder that is not returned."
+      ],
+      "source": "https://www.ohioturnpike.org/e-zpass/faq"
+    },
+    {
+      "slug": "unpaid-tolls",
+      "title": "Unpaid Toll Invoices",
+      "topic": "billing",
+      "paragraphs": [
+        "If your plate is not on an active E-ZPass account, an Unpaid Toll Invoice is mailed. Pay it, or an Unpaid Toll Ticket handed out in the lane, online with a credit or debit card using Pay Unpaid Toll.",
+        "To pay by check or money order, mail it with the invoice to the Ohio Turnpike and Infrastructure Commission, P.O. Box 94672, Cleveland, OH 44101. To dispute a charge, request a hearing from Pay Unpaid Toll or the Contact Us page."
+      ],
+      "source": "https://www.ohioturnpike.org/e-zpass/faq"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "monthly-transponder-fee",
+        "intent": "Using the Ohio Turnpike website's help pages, find the monthly lease fee for each Ohio Turnpike E-ZPass transponder. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$0.75",
+              "75 cents",
+              ".75"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$0.75",
+            "75 cents",
+            ".75"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each transponder is leased for $0.75 per month."
+          }
+        ]
+      },
+      {
+        "slug": "opening-deposit",
+        "intent": "Using the Ohio Turnpike website's help pages, find the initial deposit per transponder for a prepaid private E-ZPass account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$25",
+              "25 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$25",
+            "25 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A prepaid account needs $25 per transponder to open."
+          }
+        ]
+      },
+      {
+        "slug": "unreturned-transponder-fee",
+        "intent": "Using the Ohio Turnpike website's help pages, find the fee for each transponder not returned when an account is closed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10",
+              "10 dollars",
+              "ten dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10",
+            "10 dollars",
+            "ten dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each unreturned transponder costs $10.00."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "P.O. Box 460"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "account-fees",
+      "contains": "$0.75 per month"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "unpaid-tolls",
+      "contains": "P.O. Box 94672"
+    }
+  ]
+}

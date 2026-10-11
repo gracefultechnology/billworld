@@ -1,0 +1,328 @@
+{
+  "id": "centerwell-pharmacy-formerly-humana-pharmacy-57a4b2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "CenterWell Pharmacy (formerly Humana Pharmacy)",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from the public CenterWell Pharmacy home page and FAQ (no sign-in). An outstanding balance is paid online after signing in via the Outstanding balance link on the dashboard (debit, credit, HSA or FSA card; no cash), in the app under the Account tab, or by phone at 800-379-0092; checks and money orders by mail, credit card or check by phone. Online methods are cards only (billing.methods card). Afterpay (pay in 4 interest-free installments over 6 weeks, third-party, website only, not in the app) can pay an outstanding balance from the Outstanding balance screen; it is a third-party loan, not a CenterWell payment plan, so payment_arrangement is unsupported with a customer-facing pointer to Afterpay. Sign-in uses a MyHumana or CenterWell Pharmacy username and password (identifier username); 2-step login by text or email is mandatory (cannot opt out; codes expire after 5 minutes; Resend code), so mfa email_or_sms. Order status can be checked without signing in (order number + date of birth) and up to 5 prescriptions refilled with Quick refill, but no guest payment is described. No AutoPay enrollment is described on the public pages (unsupported, inferred); the card in the account is used for orders. No paperless-bill setting is described (unsupported, inferred). Financial assistance line 844-645-7262 (payment_assistance supported).",
+  "officialDomains": [
+    "centerwellpharmacy.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.centerwellpharmacy.com/support/faq.html",
+      "title": "CenterWell Pharmacy FAQ",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.centerwellpharmacy.com/",
+      "title": "CenterWell Pharmacy",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "CenterWell Pharmacy",
+    "shortName": "CenterWell",
+    "primary": "#0b5c3f",
+    "accent": "#06402b",
+    "monogram": "C"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "payBill": "Outstanding balance",
+    "wallet": "Account",
+    "help": "FAQ",
+    "contact": "Contact us",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Quick refill",
+        "helpSlug": "quick-refill"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      },
+      {
+        "label": "Contact us",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Manage Rx",
+        "page": "dashboard"
+      },
+      {
+        "label": "Outstanding balance",
+        "page": "pay"
+      },
+      {
+        "label": "Order status",
+        "page": "history"
+      },
+      {
+        "label": "Account",
+        "page": "wallet"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "mfa": "email_or_sms",
+    "evidence": "documented_official",
+    "source": "https://www.centerwellpharmacy.com/support/faq.html"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html",
+      "phone": "800-379-0092"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html",
+      "note": "You can check an order or refill up to 5 prescriptions without signing in, but paying a balance needs a sign-in. You can also pay by phone at 800-379-0092 (TTY: 711).",
+      "channel": "phone",
+      "phone": "800-379-0092"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html",
+      "note": "CenterWell Pharmacy does not offer an online AutoPay enrollment for balances. Pay an outstanding balance from your dashboard, in the app, or by phone at 800-379-0092.",
+      "channel": "phone",
+      "phone": "800-379-0092"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html",
+      "note": "CenterWell Pharmacy does not set up payment plans itself. On the Outstanding balance screen you can choose Continue to Afterpay to split the balance into 4 interest-free payments over 6 weeks with Afterpay (website only, not in the app). If you can't afford your medication, call 800-379-0092.",
+      "channel": "phone",
+      "phone": "800-379-0092"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html",
+      "note": "There is no paperless-billing setting online; your outstanding balance is shown on your dashboard after you sign in.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.centerwellpharmacy.com/support/faq.html",
+      "note": "Balance payments are charged right away; future-dated payments are not offered online.",
+      "channel": "none"
+    }
+  },
+  "billing": {
+    "source": "https://www.centerwellpharmacy.com/support/faq.html",
+    "methods": [
+      "card"
+    ]
+  },
+  "contact": {
+    "phone": "800-379-0092",
+    "payPhone": "800-379-0092",
+    "source": "https://www.centerwellpharmacy.com/support/faq.html"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying an outstanding balance",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in and select the Outstanding balance link on your dashboard. Online you can pay with a debit, credit, HSA or FSA card; cash is not accepted. In the mobile app, sign in, open the Account tab and edit or add a debit or credit card.",
+        "You can also pay by phone at 800-379-0092 (TTY: 711) with a credit card or check, or by mail with a personal check or money order made payable to CenterWell Pharmacy; Humana members should write their member ID on it. For specialty medications, a pharmacy representative calls you to discuss payment."
+      ],
+      "steps": [
+        "Sign in to your account.",
+        "Select Outstanding balance on your dashboard.",
+        "Choose or add a card.",
+        "Confirm the payment."
+      ],
+      "source": "https://www.centerwellpharmacy.com/support/faq.html"
+    },
+    {
+      "slug": "afterpay",
+      "title": "Paying over time with Afterpay",
+      "topic": "payments",
+      "paragraphs": [
+        "Afterpay splits a purchase into 4 interest-free payments over 6 weeks. It can pay an outstanding balance, but not a new order. Select Continue to Afterpay on the Outstanding balance screen; you are taken to Afterpay to sign in or create an account and add a debit card, credit card or bank account.",
+        "You make the first payment, then 3 more every 2 weeks. Afterpay can charge them automatically and sends text and email reminders. Afterpay is not available in the mobile app; questions about an Afterpay transaction go to Afterpay. You must be 18 or older and a U.S. resident, and late fees may apply."
+      ],
+      "source": "https://www.centerwellpharmacy.com/support/faq.html"
+    },
+    {
+      "slug": "two-step-login",
+      "title": "2-step login",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in with your MyHumana username and password, or your CenterWell Pharmacy username and password. 2-step login is required and cannot be turned off: a code is sent by text or email, expires after 5 minutes, and Resend code sends a new one. Check your spam folder for emailed codes. Your email address must be unique to you.",
+        "For help setting up 2-step login call 855-255-9315 (TTY: 711), Monday through Friday 8 a.m. to 11 p.m. and Saturday 8 a.m. to 6:30 p.m. Eastern."
+      ],
+      "source": "https://www.centerwellpharmacy.com/support/faq.html"
+    },
+    {
+      "slug": "quick-refill",
+      "title": "Quick refill and order status without signing in",
+      "topic": "account",
+      "paragraphs": [
+        "You can refill up to 5 prescriptions without signing in using your date of birth and prescription number, and check an order with your order number and date of birth. An order cannot be canceled online once it has been processed; call 800-379-0092 as soon as possible."
+      ],
+      "source": "https://www.centerwellpharmacy.com/support/faq.html"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact CenterWell Pharmacy",
+      "topic": "contact",
+      "paragraphs": [
+        "CenterWell Pharmacy: 800-379-0092 (TTY: 711), Monday through Friday 8 a.m. to 11 p.m. and Saturday 8 a.m. to 6:30 p.m. Eastern. CenterWell Specialty Pharmacy: 800-486-2668. Help finding financial assistance for brand-name drugs: 844-645-7262, Monday through Friday 8 a.m. to 6:30 p.m. Eastern. A pharmacist is available 24 hours a day for urgent medication matters."
+      ],
+      "source": "https://www.centerwellpharmacy.com/support/faq.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "afterpay-installments",
+        "intent": "I want to spread my CenterWell Pharmacy balance out. How many payments does Afterpay split it into, and over how long? Check the CenterWell help and answer; don't pay anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "4"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "4"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "4 interest-free payments over 6 weeks."
+          }
+        ]
+      },
+      {
+        "slug": "financial-assistance-phone",
+        "intent": "My CenterWell Pharmacy brand-name medication is too expensive. Find the phone number CenterWell gives for help finding financial assistance programs. Don't pay or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8446457262"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8446457262"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "844-645-7262"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "label": "payBill"
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "Afterpay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "two-step-login",
+      "contains": "5 minutes"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "844-645-7262"
+    }
+  ]
+}

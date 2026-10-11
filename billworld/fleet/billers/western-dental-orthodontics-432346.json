@@ -1,0 +1,249 @@
+{
+  "id": "western-dental-orthodontics-432346",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Western Dental & Orthodontics",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public pages only: the westerndental.com 'Pay bill' link goes to the PersonaPay (RevSpring) page personapay.com/western-dental/login (no lookup submitted), and the Insurance & financing page. Bill pay access uses the full account number from the last statement without the dash (if it is shorter than 9 digits, zeros go after the office number and before the chart number, e.g. 123-012345), plus ZIP code and date of birth; modelled as sign-in by account number and, for paying without an account, a lookup with exactly account number, ZIP and date of birth. Support specialists: (866) 620-8390 and (866) 624-7215 on the bill-pay page; catalog line (800) 579-3783 not shown there (not used). Western Dental does not offer its own payment plans; financing through CareCredit and Sunbit; accepts many insurance plans, Medi-Cal and Medicaid. No AutoPay, paperless, fees or phone/mail payment options are published; those keep family defaults. Reviewer: the real 'Pay bill' link opens one page, 'Access your account securely', that asks for account number, ZIP and date of birth with no password; it is modelled as the pay-without-signing-in page (nav 'Pay bill' -> guest, label guestPay), and the password sign-in ('Sign in') is a synthetic account area kept for the family's signed-in flows.",
+  "officialDomains": [
+    "westerndental.com",
+    "personapay.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.personapay.com/western-dental/login",
+      "title": "Western Dental bill pay - Access your account securely",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.westerndental.com/en-us/insurance-financing/",
+      "title": "Insurance & financing | Western Dental",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Western Dental & Orthodontics",
+    "shortName": "Western Dental",
+    "primary": "#a3141c",
+    "accent": "#1f3f6e",
+    "monogram": "WD"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "accountNumber": "Account Number",
+    "guestPay": "Access your account securely"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay bill",
+        "page": "guest"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Find your account number",
+        "helpSlug": "pay-bill"
+      },
+      {
+        "label": "Insurance & financing",
+        "helpSlug": "financing"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "guestLookupFields": [
+      "accountNumber",
+      "zip",
+      "dob"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.personapay.com/western-dental/login"
+  },
+  "contact": {
+    "phone": "866-624-7215",
+    "source": "https://www.personapay.com/western-dental/login",
+    "evidence": "observed_public"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.personapay.com/western-dental/login"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.personapay.com/western-dental/login"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.westerndental.com/en-us/insurance-financing/",
+      "note": "Western Dental does not offer payment plans itself. Ask your office about CareCredit or Sunbit financing.",
+      "channel": "in_person"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.westerndental.com/en-us/insurance-financing/"
+    }
+  },
+  "billing": {
+    "source": "https://www.personapay.com/western-dental/login",
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-bill",
+      "title": "Pay your Western Dental bill",
+      "topic": "payments",
+      "paragraphs": [
+        "To reach your account, enter the full account number from your last statement without the dash, plus your ZIP code and date of birth.",
+        "If your account number is shorter than 9 digits, add zeros after the office number and before the chart number. For example, 123-012345 is entered as 123012345.",
+        "Then review your account, choose a payment option and pay. For help finding your account number, call a support specialist at (866) 624-7215 or (866) 620-8390."
+      ],
+      "steps": [
+        "Choose Pay bill.",
+        "Enter your 9-digit account number, ZIP code and date of birth.",
+        "Review your account.",
+        "Choose a payment option and pay."
+      ],
+      "source": "https://www.personapay.com/western-dental/login"
+    },
+    {
+      "slug": "financing",
+      "title": "Insurance and financing",
+      "topic": "assistance",
+      "paragraphs": [
+        "Western Dental accepts many major insurance plans as well as Medi-Cal and Medicaid. It does not offer payment plans itself, but CareCredit and Sunbit financing can help spread out the cost whether or not you have insurance.",
+        "New patients may qualify for a free checkup and X-rays; see your office for details."
+      ],
+      "source": "https://www.westerndental.com/en-us/insurance-financing/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "account-number-format",
+        "intent": "Your Western Dental statement shows account number 123-012345. Using Western Dental's bill-pay help, find how many digits the account number must have when you enter it. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "9",
+              "nine"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "9",
+            "nine"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "observed_public",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "9 digits, entered without the dash (pad with zeros before the chart number)."
+          }
+        ]
+      },
+      {
+        "slug": "financing-partners",
+        "intent": "Western Dental does not offer its own payment plans. Using its help pages, find the two financing options it names. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Sunbit"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Sunbit"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "CareCredit and Sunbit."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "signIn"
+    },
+    {
+      "page": "guest",
+      "contains": "Account Number"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-bill",
+      "contains": [
+        "without the dash",
+        "123-012345"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "financing",
+      "contains": "Sunbit"
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "does not offer payment plans"
+    }
+  ]
+}

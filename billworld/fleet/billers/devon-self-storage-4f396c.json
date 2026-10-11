@@ -1,0 +1,314 @@
+{
+  "id": "devon-self-storage-4f396c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Devon Self Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Devon Self Storage FAQ and home page (no sign-in). The header Pay Online link goes to the hosted SSM ERP Online Payment Portal (devon-payment.ssm-erp.com, script-rendered; its fields were not observed, so auth keeps the family default). FAQ: cash, check and credit card accepted; automatic credit card payment sign-up; pay online without visiting. Rent is due by the end of the first business day of each month; late fees vary by location and state (see rental agreement), so none is modelled. Move-out: written notice at least 3 days ahead, or sign an intent to vacate at the facility. No company-wide phone is published (each facility lists its own), so limitation notes point to the facility. Review 2026-10-10: the portal (rendered in a browser, not signed in) is an Azure B2C sign-in titled My Account Sign In / Pay My Bill with Username or email address + Password, Forgot your password? and toll-free 888-55-DEVON (888-553-3866); new customers set a password through Forgot Password with the rental email (registration unsupported). Its linked Customer Portal FAQ PDF shows One Time Payment with prepay months by credit card only, Autopay Setup by card, Schedule Moveout (date, reason, optional Cancel Auto CC/ACH) and Contact Info, so cancel_service is supported online and methods are card only.",
+  "officialDomains": [
+    "devonselfstorage.com",
+    "ssm-erp.com",
+    "stdevonprod.blob.core.windows.net"
+  ],
+  "sources": [
+    {
+      "url": "https://www.devonselfstorage.com/faqs",
+      "title": "FAQs | Devon Self Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.devonselfstorage.com/",
+      "title": "Devon Self Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://devon-payment.ssm-erp.com/",
+      "title": "Devon Self Storage - My Account Sign In / Pay My Bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://stdevonprod.blob.core.windows.net/b2ccontainer/B2C/CustomerPortal/public/CustomerPortalFAQ.pdf",
+      "title": "Devon Self Storage Customer Portal FAQ",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Devon Self Storage",
+    "shortName": "Devon",
+    "primary": "#00467f",
+    "accent": "#7c2d12",
+    "monogram": "DS"
+  },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "dashboard": "My Account",
+    "autopay": "Auto Pay",
+    "help": "FAQs",
+    "cancel": "Schedule Moveout",
+    "signIn": "Sign in",
+    "username": "Username or email address",
+    "forgot": "Forgot your password?"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Online",
+        "page": "login"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Schedule Moveout",
+        "page": "cancel"
+      },
+      {
+        "label": "Contact Info",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.devonselfstorage.com/faqs"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://stdevonprod.blob.core.windows.net/b2ccontainer/B2C/CustomerPortal/public/CustomerPortalFAQ.pdf",
+      "note": "Auto Pay charges your credit card each month. Select your unit, choose Autopay Setup, enter your card and save."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://stdevonprod.blob.core.windows.net/b2ccontainer/B2C/CustomerPortal/public/CustomerPortalFAQ.pdf",
+      "note": "Schedule your move-out at least 3 days ahead: select the unit, choose Schedule Moveout, pick the date and a reason, and submit. You can also sign an intent to vacate at your facility."
+    },
+    "registration": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://devon-payment.ssm-erp.com/",
+      "channel": "in_person",
+      "phone": "888-553-3866",
+      "note": "There is no sign-up form. New customers choose Forgot your password? and use the email address given when renting to create a password. If you still cannot get in, contact your Devon facility team."
+    }
+  },
+  "billing": {
+    "source": "https://stdevonprod.blob.core.windows.net/b2ccontainer/B2C/CustomerPortal/public/CustomerPortalFAQ.pdf",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "methods": [
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying rent",
+      "topic": "payments",
+      "source": "https://stdevonprod.blob.core.windows.net/b2ccontainer/B2C/CustomerPortal/public/CustomerPortalFAQ.pdf",
+      "paragraphs": [
+        "Devon accepts cash, checks and credit cards at the facility. Online, sign in to My Account, select one or more units, choose One Time Payment and select Go. You can pay ahead by choosing how many months to prepay, check the payment breakdown, then pay by credit card.",
+        "Rent is due by the end of the first business day of each month. Payments made online after business hours post on the next business day."
+      ],
+      "steps": [
+        "Sign in with your username or email address.",
+        "Select your unit(s).",
+        "Choose One Time Payment and select Go.",
+        "Pick any months to prepay, then select Pay and enter your card."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic credit card payments",
+      "topic": "autopay",
+      "source": "https://stdevonprod.blob.core.windows.net/b2ccontainer/B2C/CustomerPortal/public/CustomerPortalFAQ.pdf",
+      "paragraphs": [
+        "Auto Pay charges your monthly rent to your credit card. Select your unit, choose Autopay Setup and select Go, then Setup AutoPay. Enter your card details and save to confirm. You can update the card used for Auto Pay in My Account."
+      ]
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late fees",
+      "topic": "billing",
+      "source": "https://www.devonselfstorage.com/faqs",
+      "paragraphs": [
+        "Late fees differ by location and state because the laws differ. Check your rental agreement or ask your facility for the amount that applies to you."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://stdevonprod.blob.core.windows.net/b2ccontainer/B2C/CustomerPortal/public/CustomerPortalFAQ.pdf",
+      "paragraphs": [
+        "Devon asks for written notice at least 3 days before you move out. In My Account, select the unit, choose Schedule Moveout, pick your move-out date and a reason, and submit; you can turn off automatic card payments in the same step. You can also sign an intent to vacate at your facility office."
+      ]
+    },
+    {
+      "slug": "account-login",
+      "title": "Getting into My Account",
+      "topic": "account",
+      "source": "https://devon-payment.ssm-erp.com/",
+      "paragraphs": [
+        "Sign in with your username or email address and password. New customers do not register: choose Forgot your password?, enter the email address you gave when renting, and use the verification code sent by email to create a password. Your facility team can also help you get access."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "accept-retention",
+      "downgrade-plan",
+      "register-and-pay"
+    ],
+    "extra": [
+      {
+        "slug": "rent-due-day",
+        "intent": "Using Devon Self Storage's FAQ, find when monthly rent is due. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "first business day"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "first business day"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "By the end of the first business day of each month."
+          }
+        ]
+      },
+      {
+        "slug": "move-out-notice",
+        "intent": "Find how many days of written notice Devon Self Storage asks for before a move-out. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3",
+              "three"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3",
+            "three"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 3 days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay My Bill",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "first business day"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "Schedule Moveout",
+        "3 days"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username or email address"
+      ]
+    }
+  ],
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://devon-payment.ssm-erp.com/"
+  },
+  "contact": {
+    "phone": "888-553-3866",
+    "source": "https://devon-payment.ssm-erp.com/",
+    "evidence": "observed_public"
+  }
+}

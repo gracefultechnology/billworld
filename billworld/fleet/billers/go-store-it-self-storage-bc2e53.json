@@ -1,0 +1,236 @@
+{
+  "id": "go-store-it-self-storage-bc2e53",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Go Store It Self Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Go Store It FAQ and the StoreEase verification menu that My Account links to (no sign-in, no code requested). The portal offers Quick Payment (no login; find your unit; one-time payment; no payment-method or AutoPay changes; for people paying for someone else) or Login to Account (a secure link sent to the account holder's phone; detailed charges, payment methods and autopay, several units and facilities). Modelled as phone identifier, two steps, SMS verification (the real flow is a magic link, not a code). Quick Payment (opened in a browser, nothing submitted) asks for Unit number, Tenant first name and Tenant last name (modelled as accountNumber + lastName, exact; first name is not expressible). FAQ: pay through the online portal or in person; no deposit; autopay can be set up when you rent. No fees, due date, move-out terms or company-wide phone are published.",
+  "officialDomains": [
+    "gostoreit.com",
+    "storeease.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.gostoreit.com/frequently-asked-questions/",
+      "title": "Self Storage Frequently Asked Questions - Go Store It",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://portal.storeease.com/organization/10/verification?destination=BILLING",
+      "title": "Verification Menu | GoStoreIt",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Go Store It Self Storage",
+    "shortName": "Go Store It",
+    "primary": "#0f5b3a",
+    "accent": "#1f2937",
+    "monogram": "GS"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "signIn": "Login",
+    "guestPay": "Quick Payment",
+    "username": "Phone",
+    "autopay": "Autopay",
+    "help": "FAQ",
+    "accountNumber": "Unit number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Quick Payment",
+        "page": "guest"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Charges",
+        "page": "bill"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "evidence": "observed_public",
+    "source": "https://portal.storeease.com/organization/10/verification?destination=BILLING",
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName"
+    ],
+    "guestLookupExact": true
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gostoreit.com/frequently-asked-questions/"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://portal.storeease.com/organization/10/verification?destination=BILLING",
+      "note": "Quick Payment needs no login: enter the unit number and the tenant's first and last name to find the balance, then make a one-time payment. Payment methods and autopay can only be changed after you log in."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gostoreit.com/frequently-asked-questions/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.gostoreit.com/frequently-asked-questions/",
+      "channel": "in_person",
+      "note": "Moving out is handled by your local Go Store It facility. Contact the facility office to give notice."
+    }
+  },
+  "billing": {
+    "source": "https://www.gostoreit.com/frequently-asked-questions/",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying for your unit",
+      "topic": "payments",
+      "source": "https://www.gostoreit.com/frequently-asked-questions/",
+      "paragraphs": [
+        "Pay through the online payment portal (My Account), or pay in person at your facility. No deposit is needed to rent or reserve a unit."
+      ]
+    },
+    {
+      "slug": "quick-payment",
+      "title": "Quick Payment or Login",
+      "topic": "payments",
+      "source": "https://portal.storeease.com/organization/10/verification?destination=BILLING",
+      "paragraphs": [
+        "Quick Payment needs no login and suits someone paying on another person's behalf or who cannot find the account: enter the unit number and the tenant's first and last name to find the balance, then make a one-time payment.",
+        "Log in to your account when you are the account holder or know the phone number on file. A secure link is sent to that phone, and once in you can see detailed charges and fees, update payment methods or autopay, and handle several units and facilities."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Autopay",
+      "topic": "autopay",
+      "source": "https://www.gostoreit.com/frequently-asked-questions/",
+      "paragraphs": [
+        "Go Store It offers autopay. You can set up automatic payments when you open your account, and account holders can change autopay after logging in."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://www.gostoreit.com/frequently-asked-questions/",
+      "paragraphs": [
+        "Go Store It does not describe an online move-out. Contact your local facility office to give notice."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "quick-payment-limits",
+        "intent": "Using Go Store It's payment portal help, find whether Quick Payment lets you change autopay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "no",
+              "log in",
+              "login"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "no",
+            "log in",
+            "login"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No. Quick Payment is a one-time payment; log in to change payment methods or autopay."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Phone"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "quick-payment",
+      "contains": [
+        "one-time payment",
+        "secure link"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "id": "san-diego-gas-electric-sdge-a8e47c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "San Diego Gas & Electric (SDG&E)",
+  "category": "electric",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public sdge.com pages and the My Energy Center sign-in page (no sign-in). My Energy Center signs in with Username and Password, then a verification code sent by text (the page shows a Text option, Send Code / Verify / Remember this device), so MFA is modelled as sms. Guest Pay (Paymentus) looks up the account by account number plus last 4 of SSN/TIN or ZIP; card, wallet or e-check through the third-party processor for $1.50 per transaction (stated on the service-restoration page). Card payments inside My Energy Center are not priced on the pages read; the same processor fee is assumed (cardCents 150, inferred). Bank payments in My Energy Center are free. Auto Pay is bank-only (checking or savings) and pays 0-5 days before the due date (customer's choice; leadDays not fixed, family default kept). A separate Direct Debit program exists (not modelled). Payment arrangements (extension or installment plan, no fees or interest) are set up, viewed or cancelled online. Stop Service is in My Energy Center. Late fee not stated, so none modelled.",
+  "officialDomains": [
+    "sdge.com",
+    "myenergycenter.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.sdge.com/residential/pay-bill/my-bill",
+      "title": "Pay My Bill | San Diego Gas & Electric",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.sdge.com/auto-pay",
+      "title": "Auto Pay | San Diego Gas & Electric",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.sdge.com/residential/pay-bill/payment-arrangements",
+      "title": "Payment Arrangements | San Diego Gas & Electric",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.sdge.com/disconnection",
+      "title": "Disconnection | San Diego Gas & Electric",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://myenergycenter.com/portal/PreLogin/Validate",
+      "title": "My Energy Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.sdge.com/residential/customer-service/service-requests/start-stop-move",
+      "title": "Start Stop Move | San Diego Gas & Electric",
+      "kind": "cancel",
+      "fetchedAt": "2026-10-10"
+    }
+  ],
+  "brand": {
+    "shortName": "SDG&E",
+    "primary": "#005a9c",
+    "accent": "#00426e",
+    "monogram": "SD"
+  },
+  "labels": {
+    "payBill": "Pay Online",
+    "autopay": "Auto Pay",
+    "paperless": "Go Paperless",
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "register": "Sign up today",
+    "guestPay": "Guest Pay",
+    "arrangement": "Payment Arrangements",
+    "cancel": "Stop Service",
+    "username": "Username",
+    "dashboard": "My Energy Center",
+    "statements": "Billing and Payment History"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Guest Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Pay My Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Arrangements",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Energy Center",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Online",
+        "page": "pay"
+      },
+      {
+        "label": "Billing and Payment History",
+        "page": "statements"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Arrangements",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "sms",
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://myenergycenter.com/portal/PreLogin/Validate"
+  },
+  "contact": {
+    "phone": "1-800-411-7343",
+    "payPhone": "1-800-411-7343",
+    "source": "https://www.sdge.com/disconnection"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sdge.com/disconnection",
+      "note": "Guest Pay uses SDG&E's third-party processor and charges $1.50 per payment."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sdge.com/auto-pay"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sdge.com/residential/pay-bill/my-bill"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sdge.com/residential/pay-bill/payment-arrangements"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sdge.com/residential/customer-service/service-requests/start-stop-move"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sdge.com/disconnection"
+    }
+  },
+  "billing": {
+    "source": "https://www.sdge.com/residential/pay-bill/my-bill",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 150,
+      "guestBankCents": 150,
+      "guestCardCents": 150,
+      "evidence": "documented_official",
+      "source": "https://www.sdge.com/disconnection"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to My Energy Center to view your bill and pay with a bank account, debit or credit card, or a digital wallet.",
+        "Guest Pay is a one-time payment without logging in: look up your account with the account number and either the last 4 digits of your Social Security or federal tax ID or your ZIP code. Guest and phone payments go through SDG&E's third-party processor for a $1.50 fee per payment.",
+        "To pay by phone, call 1-800-411-7343. Card and digital wallet payments can only be made through My Energy Center or by calling SDG&E directly; be wary of anyone else asking for card payments."
+      ],
+      "source": "https://www.sdge.com/residential/pay-bill/my-bill",
+      "steps": [
+        "Log in to My Energy Center.",
+        "Choose Pay Online.",
+        "Pick a bank account or card.",
+        "Review and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay in My Energy Center or the app pays your bill automatically each month from a checking or savings account; cards are not accepted for Auto Pay.",
+        "You choose the payment date, from 0 to 5 days before your bill is due. You get a bill-ready notice with the amount each month and can change or cancel Auto Pay anytime online."
+      ],
+      "source": "https://www.sdge.com/auto-pay",
+      "steps": [
+        "Log in to My Energy Center.",
+        "Open the Billing tab and select Auto Pay.",
+        "Choose your bank account.",
+        "Select a payment date 0-5 days before the due date."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "Set up, view or cancel a payment arrangement in My Energy Center without calling. Choose a payment extension to move your due date, or a payment plan that splits your bill into monthly installments (a down payment may be required).",
+        "There are no fees or interest on either option. Each month your current charges plus the installment are due by the bill due date. CARE and FERA customers with past-due bills may qualify for debt forgiveness through the Arrearage Management Payment Plan."
+      ],
+      "source": "https://www.sdge.com/residential/pay-bill/payment-arrangements",
+      "steps": [
+        "Log in to My Energy Center.",
+        "Open Payment Arrangements.",
+        "Choose an extension or a payment plan.",
+        "Confirm."
+      ]
+    },
+    {
+      "slug": "faq",
+      "title": "Frequently asked questions",
+      "topic": "faq",
+      "paragraphs": [
+        "View your bills and payments anytime in My Energy Center under Billing, then Billing and Payment History, including PDFs of your monthly bills.",
+        "Level Pay evens out your energy bill from month to month."
+      ],
+      "source": "https://www.sdge.com/auto-pay"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, stop or move service",
+      "topic": "account",
+      "paragraphs": [
+        "Log in to My Energy Center to start, transfer or stop your service online. To change a request or look up its date, use the Service Request Tracker in My Energy Center."
+      ],
+      "source": "https://www.sdge.com/residential/customer-service/service-requests/start-stop-move"
+    },
+    {
+      "slug": "billing-history",
+      "title": "Billing and Payment History",
+      "topic": "billing",
+      "paragraphs": [
+        "In My Energy Center, open Billing and then Billing and Payment History to see past bills and payments, including PDF copies of your monthly bills."
+      ],
+      "source": "https://www.sdge.com/auto-pay"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "guest-fee",
+        "intent": "Using SDG&E's website, find the processing fee for a one-time Guest Pay payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Guest Pay charges a $1.50 processing fee per transaction."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-window",
+        "intent": "Find out how many days before the due date SDG&E Auto Pay can be scheduled. Do not enroll or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "0 to 5",
+              "0-5",
+              "0–5",
+              "zero to five",
+              "up to 5",
+              "up to five"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "0 to 5",
+            "0-5",
+            "0–5",
+            "zero to five",
+            "up to 5",
+            "up to five"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Auto Pay can pay from 0 to 5 days before the bill is due."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Pay My Bill",
+        "Payment Arrangements"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay",
+        "Payment Arrangements"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$1.50"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "0 to 5 days"
+    }
+  ]
+}

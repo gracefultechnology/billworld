@@ -1,0 +1,378 @@
+{
+  "id": "pnc-bank-credit-cards-dce8b8",
+  "version": 1,
+  "status": "dedicated",
+  "name": "PNC Bank (credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public pnc.com pages only (no sign-on). Online Banking sign-on: 'User ID (required)', 'Password (required)', 'Show Password', 'Remember User ID', 'Forgot ID or Password?', 'Enroll In Online Banking', heading 'Sign On to Online Banking'. Credit card payments: one-time, same-day, future-dated and recurring in Online Banking and the PNC Mobile app, from a PNC deposit account or an external account (mobile); consumer-card transfers scheduled before midnight ET are credited that day. Recurring (Online Banking): find the card > 'Make a Payment' > 'From Account' > 'Frequency', 'Start Date', optional 'End Date'; mobile: 'Make a Payment' > 'Pay From Account' > 'Payment Type' Recurring > 'Payment Option' > 'Submit Payment'. Amount options are not listed (autopay.policies left at default). No card-funded payments are described, so methods are bank only. Automated Payment Program by paper form (mail, fax or branch; keep paying until the confirmation letter) is not modelled. Phone: Voice Banking 1-800-282-7541 (11:59 p.m. ET; cannot be cancelled once submitted); PNC consultant by 6 p.m. ET. Mail: P.O. Box 71335, Philadelphia, PA 19176-1335; overnight: Consumer Loan Center, BR-YB58-01-5, 6750 Miller Rd., Brecksville, OH 44141. Branch payments are effective the same day. Paperless: Profile and Settings > Alerts and Communication > Paperless > choose accounts > Online > Save; credit card statements are kept online up to 4 years (48 months). Hardship (client-resource page): 1-month minimum payment suspension, 6-month and 60-month programs and settlement, via the online Hardship Application or 1-800-544-3623; these are applications reviewed by PNC, so payment_arrangement is unsupported online with a note. Customer Care 1-888-762-2265. Account closing: no self-service close is published; the card agreement says PNC may ask for written confirmation of a phone request (inferred from the public secured-card agreement). Changing or cancelling a recurring payment is not described on the cited pages; autopay_cancel stays at the family default.",
+  "officialDomains": [
+    "pnc.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.pnc.com/en/customer-service/make-a-payment/credit-card-payment-options.html",
+      "title": "Make A Credit Card Payment: Discover Options & Support | PNC",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.pnc.com/en/personal-banking/banking/online-and-mobile-banking.html",
+      "title": "Online and Mobile Banking | PNC",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.pnc.com/en/personal-banking/banking/online-and-mobile-banking/online-statements.html",
+      "title": "Online Statements | PNC",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.pnc.com/en/personal-banking/banking/services/manage-credit-card-online.html",
+      "title": "Manage Credit Card in Online Banking | PNC",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.pnc.com/en/customer-service/client-resource.html",
+      "title": "Client Resource Center | PNC",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.pnc.com/content/dam/pnc-com/pdf/personal/CreditCards/Agreement-Secured-Credit-Card.pdf",
+      "title": "PNC Bank Consumer Credit Card Agreement (secured card)",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "PNC",
+    "primary": "#0e2a47",
+    "accent": "#b14e00",
+    "monogram": "PN"
+  },
+  "labels": {
+    "signIn": "Sign On",
+    "username": "User ID",
+    "password": "Password",
+    "forgot": "Forgot ID or Password?",
+    "register": "Enroll In Online Banking",
+    "dashboard": "Account Summary",
+    "payBill": "Make a Payment",
+    "history": "Transactions",
+    "statements": "Online Statements",
+    "paperless": "Paperless",
+    "profile": "Profile and Settings",
+    "help": "Customer Service",
+    "autopay": "Recurring payments"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign On",
+        "page": "login"
+      },
+      {
+        "label": "Enroll In Online Banking",
+        "page": "register"
+      },
+      {
+        "label": "Credit card payment options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Transactions",
+        "page": "history"
+      },
+      {
+        "label": "Online Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Profile and Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.pnc.com/en/personal-banking/banking/online-and-mobile-banking.html"
+  },
+  "contact": {
+    "phone": "1-888-762-2265",
+    "payPhone": "1-800-282-7541",
+    "source": "https://www.pnc.com/en/customer-service/client-resource.html"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/credit-card-payment-options.html",
+      "note": "PNC credit card payments online need Online Banking or the PNC Mobile app. Without signing on, pay through Voice Banking at 1-800-282-7541, at a branch, or by mail.",
+      "channel": "phone",
+      "phone": "1-800-282-7541"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/credit-card-payment-options.html"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/credit-card-payment-options.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/personal-banking/banking/online-and-mobile-banking/online-statements.html"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/client-resource.html"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/client-resource.html",
+      "note": "Hardship programs for credit cards start with PNC's Hardship Application or a call to 1-800-544-3623; a consultant reviews your eligibility.",
+      "channel": "phone",
+      "phone": "1-800-544-3623"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.pnc.com/content/dam/pnc-com/pdf/personal/CreditCards/Agreement-Secured-Credit-Card.pdf",
+      "note": "To close your PNC credit card, call Customer Care at 1-888-762-2265. PNC may ask you to confirm the request in writing.",
+      "channel": "phone",
+      "phone": "1-888-762-2265"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/credit-card-payment-options.html",
+      "phone": "1-800-282-7541"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/credit-card-payment-options.html"
+    }
+  },
+  "billing": {
+    "source": "https://www.pnc.com/en/customer-service/make-a-payment/credit-card-payment-options.html",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Credit card payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "In Online Banking or the PNC Mobile app you can make a one-time, same-day, future-dated or recurring payment. In the app you can pay from a PNC account or an account at another bank. Consumer card transfers scheduled before midnight ET are credited that day.",
+        "By phone, call Voice Banking at 1-800-282-7541 by 11:59 p.m. ET with your account and routing numbers; a phone payment can't be cancelled once submitted. A PNC consultant can take payments until 6 p.m. ET.",
+        "By mail, send the payment slip or write your account number on the check to PNC Bank, P.O. Box 71335, Philadelphia, PA 19176-1335, and allow 7 to 10 days. Branch payments are effective the day you make them."
+      ],
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/credit-card-payment-options.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up recurring credit card payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "In Online Banking, find your credit card, select Make a Payment, choose a From Account, then set a Frequency, Start Date and optional End Date and follow the prompts.",
+        "In the PNC Mobile app, select the account, then Make a Payment and Pay From Account. Set Payment Type to Recurring, choose your Payment Option, review and select Submit Payment."
+      ],
+      "steps": [
+        "Select Make a Payment for your card.",
+        "Choose the From Account.",
+        "Set Frequency, Start Date and optional End Date.",
+        "Review and submit."
+      ],
+      "source": "https://www.pnc.com/en/customer-service/make-a-payment/credit-card-payment-options.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "topic": "account",
+      "paragraphs": [
+        "Sign on and select the Profile and Settings icon, then Alerts and Communication and Paperless. Choose your accounts, select Online to confirm your notification email and Save. In the app use More, Statements and Documents, then Paperless Settings.",
+        "Credit card statements stay available online for up to 4 years."
+      ],
+      "steps": [
+        "Open Profile and Settings.",
+        "Select Alerts and Communication, then Paperless.",
+        "Choose accounts and select Online.",
+        "Select Save."
+      ],
+      "source": "https://www.pnc.com/en/personal-banking/banking/online-and-mobile-banking/online-statements.html"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Credit card hardship options",
+      "topic": "payments",
+      "paragraphs": [
+        "PNC may offer a one-month minimum payment suspension, a six-month program with a lower APR and fixed payments, a sixty-month program that closes the account, or a settlement for less than the full balance.",
+        "Start with the Hardship Application online or call 1-800-544-3623 (Monday to Thursday 8 a.m. to 9 p.m., Friday 8 a.m. to 7 p.m., Saturday 8 a.m. to 2 p.m. ET). Options may not be available during an active bankruptcy."
+      ],
+      "source": "https://www.pnc.com/en/customer-service/client-resource.html"
+    },
+    {
+      "slug": "contact-us",
+      "title": "PNC credit card phone numbers",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer Care: 1-888-762-2265. Pay by phone (Voice Banking or an agent): 1-800-282-7541. Hardship assistance: 1-800-544-3623. Business card payments: 1-800-474-2101."
+      ],
+      "source": "https://www.pnc.com/en/customer-service/client-resource.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "hardship-phone",
+        "intent": "Using PNC's help pages, find the phone number to call about credit card hardship assistance. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8005443623"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8005443623"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-544-3623"
+          }
+        ]
+      },
+      {
+        "slug": "statement-retention",
+        "intent": "Using PNC's help pages, find how long PNC credit card statements stay available online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "4 years",
+              "four years",
+              "48 months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "4 years",
+            "four years",
+            "48 months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 4 years."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "username"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Frequency",
+        "Start Date"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "1-800-282-7541"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-888-762-2265"
+    }
+  ]
+}

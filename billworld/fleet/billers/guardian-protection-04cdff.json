@@ -1,0 +1,372 @@
+{
+  "id": "guardian-protection-04cdff",
+  "version": 1,
+  "status": "dedicated",
+  "category": "home-services",
+  "reviewedAt": "2026-10-10",
+  "name": "Guardian Protection",
+  "notes": "Researched from public Guardian Protection customer-support articles and the public Customer Care sign-in and one-time payment lookup pages only (never signed in, never submitted a lookup). Sign-in asks for User Name / Email and Password (LOG IN, Forgot Username or Password?, New to Guardian Online? Enroll now), modelled as email_or_username. One-time payment without logging in looks up the account by Customer Number or phone, Alarm System Zip Code and the Verbal Alarm Password; the alarm-password field is not expressible, so the guest form asks for customer number and ZIP. AutoPay: web Billing tab > Billing > Enroll in autopay (app: My Account > Manage billing). Annual billing saves 5% on monitoring (not modelled as a plan; in help). Text-to-pay via Communication Preferences (Billing for SMS). Phone 1-800-776-8328 (press 2 for billing, then 1 for automated payment); mail to P.O. Box 37751, Philadelphia, PA 19101-5051. A paper statement fee (amount unpublished) applies unless enrolled in AutoPay; AutoPay customers get no mailed statements and there is no separate paperless switch, so paperless is not_applicable. Late fees apply at 30+ days past due, amount unpublished. No public page on turning off AutoPay (left at family default) or on cancelling monitoring; cancellation is modelled as phone-only (inferred) with the billing number. Plan prices are not published, so the plan page keeps the family's synthetic plans. Reviewed 2026-10-10 (independent review): all cited pages re-read (login form placeholder User Name / Email, lookup form Customer Number or Phone Number, Alarm System Zip Code, Verbal Alarm Password); added the due-date-change (phone, prorated), cancel-a-payment and annual-billing articles.",
+  "officialDomains": [
+    "guardianprotection.com"
+  ],
+  "sources": [
+    {
+      "url": "https://guardianprotection.com/customer-support/frequently-asked-questions-about-billing",
+      "title": "Frequently Asked Questions About Billing | Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://guardianprotection.com/customer-support/payment-methods",
+      "title": "Payment Methods | Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://guardianprotection.com/customer-support/what-is-a-paper-statem",
+      "title": "What is a paper statement fee? | Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://guardianprotection.com/customer-support/i-moved-or-cancelled-but-am-still-receiving-a-bill-why",
+      "title": "I moved or cancelled, but am still receiving a bill. Why? | Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://customercare.guardianprotection.com/Account/Login",
+      "title": "Guardian Customer Care log in",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://customercare.guardianprotection.com/Payment/AccountLookup",
+      "title": "Make a One-Time Payment - Guardian Customer Care",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://guardianprotection.com/customer-support/can-i-change-when-my-bill-is-due",
+      "title": "Can I change when my bill is due? | Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://guardianprotection.com/customer-support/can-i-cancel-a-payment",
+      "title": "Can I cancel a payment? | Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://guardianprotection.com/customer-support/annual-billing",
+      "title": "How to Set Up Annual Payments | Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "contact": {
+    "phone": "8007768328",
+    "payPhone": "8007768328",
+    "source": "https://guardianprotection.com/customer-support/payment-methods"
+  },
+  "brand": {
+    "shortName": "Guardian",
+    "primary": "#004a80",
+    "accent": "#002e52",
+    "monogram": "G"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "register": "Enroll now",
+    "forgot": "Forgot Username or Password?",
+    "dashboard": "My Account",
+    "viewBill": "Billing",
+    "statements": "Statements",
+    "payBill": "Make a Payment",
+    "guestPay": "Make a One-Time Payment",
+    "autopay": "AutoPay",
+    "profile": "Account info",
+    "contact": "Contact Us",
+    "help": "Customer Support",
+    "username": "User Name / Email",
+    "accountNumber": "Customer Number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Make a One-Time Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Customer Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Account info",
+        "page": "profile"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://customercare.guardianprotection.com/Account/Login"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://customercare.guardianprotection.com/Payment/AccountLookup"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://guardianprotection.com/customer-support/payment-methods",
+      "note": "AutoPay customers do not get mailed statements and are not charged the paper statement fee. Statements stay available online under Billing."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://guardianprotection.com/customer-support/what-is-a-paper-statem",
+      "note": "Guardian has no separate paperless setting. Enroll in AutoPay to stop mailed statements and the paper statement fee."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://guardianprotection.com/customer-support/payment-methods",
+      "phone": "8007768328"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://guardianprotection.com/customer-support/payment-methods"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://guardianprotection.com/customer-support/i-moved-or-cancelled-but-am-still-receiving-a-bill-why",
+      "note": "To cancel or move your service, call 1-800-PROTECT (1-800-776-8328) and speak with a Specialist.",
+      "channel": "phone",
+      "phone": "8007768328"
+    }
+  },
+  "billing": {
+    "source": "https://guardianprotection.com/customer-support/payment-methods",
+    "fees": {
+      "notes": [
+        "A paper statement fee applies to mailed statements unless you are enrolled in AutoPay; Guardian does not publish the amount.",
+        "Late fees apply when a balance is 30 days or more past due; the amount is not published."
+      ],
+      "evidence": "documented_official",
+      "source": "https://guardianprotection.com/customer-support/frequently-asked-questions-about-billing"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "payments",
+      "paragraphs": [
+        "Signed in, open the Billing tab and choose Make a Payment. Without logging in, use Make a One-Time Payment and look up the account with your customer number or phone number, your alarm system ZIP code and your verbal alarm password.",
+        "To pay by text, turn on Billing for SMS under Account info, Communication Preferences, and add your mobile number.",
+        "By phone, call 1-800-776-8328, press 2 for billing and then 1 for an automated payment. By mail, send your payment with your customer number to P.O. Box 37751, Philadelphia, PA 19101-5051, or use your bank's bill pay."
+      ],
+      "source": "https://guardianprotection.com/customer-support/payment-methods"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in AutoPay or annual billing",
+      "topic": "autopay",
+      "paragraphs": [
+        "On the web, log in, open the Billing tab, choose Billing and then Enroll in autopay, pick the account and save. In the app, open My Account, scroll to Billing, choose Manage billing and then Enroll in autopay.",
+        "Paying annually instead saves 5% on monitoring for the year: choose Proceed with Annual Billing in the same place and confirm.",
+        "AutoPay customers do not receive statements by mail and avoid the paper statement fee."
+      ],
+      "steps": [
+        "Log in and open the Billing tab.",
+        "Choose Billing.",
+        "Choose Enroll in autopay.",
+        "Pick the account and save."
+      ],
+      "source": "https://guardianprotection.com/customer-support/payment-methods"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "Statements and late fees",
+      "topic": "billing",
+      "paragraphs": [
+        "Statements are available online any time under Billing, then Statements; service charges appear there too. For a printed copy, log in and send a request through Contact Us.",
+        "Statements are mailed only when $1 or more is due. Late fees apply when a balance is 30 days or more past due.",
+        "If you moved or cancelled and still get a bill, check Billing, then Statements, and call 1-800-776-8328 about any discrepancy.",
+        "To change your payment due date, call 1-800-776-8328; monitoring charges are prorated when your billing cycle date changes. A pending payment may be cancelled by calling the same number, but debit card payments process right away and cannot be cancelled."
+      ],
+      "source": "https://guardianprotection.com/customer-support/frequently-asked-questions-about-billing"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "annual-billing-discount",
+        "intent": "Using Guardian's support pages, find out how much you save on monitoring by paying annually. Do not change your billing or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5%",
+              "5 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5%",
+            "5 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Annual billing saves 5% on monitoring."
+          }
+        ]
+      },
+      {
+        "slug": "mail-po-box",
+        "intent": "You want to mail a check to Guardian Protection. Using their support pages, find the P.O. Box number to mail it to. Do not make a payment online.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "37751"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "37751"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "P.O. Box 37751, Philadelphia, PA 19101-5051."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "User Name / Email",
+        "Forgot Username or Password?"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Statements",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": "Customer Number"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-776-8328"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "5%"
+    }
+  ]
+}

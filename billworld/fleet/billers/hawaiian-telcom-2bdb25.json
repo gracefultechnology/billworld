@@ -1,0 +1,160 @@
+{
+  "id": "hawaiian-telcom-2bdb25",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Hawaiian Telcom",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public hawaiiantel.com help center pages only (no sign-in). Hawaiian Telcom is the incumbent landline carrier for Hawaii (owned by altafiber, but billed separately through its own My Account at hawaiiantel.com). My Account registration needs the 15-digit account number, name, email, ZIP code and a password, with an email code (plus an automated call code for phone customers); sign-in is by email and password. Fees: online one-time payment $1.95, phone payment $1.95, First Hawaiian Bank branch $2.50; mail and AutoPay free; AutoPay by credit card adds 2.5% of the bill each month (engine applies autopayCardPercent to any card AutoPay, debit included). Late fee: greater of 1.5% of the past-due balance or $15.95 when more than $10.00 is unpaid 30 days after the due date (the engine cannot express the $10 threshold or the 30-day delay). AutoPay collects 10 calendar days before the due date (leadDays 10); it can be capped at a maximum amount (not expressible); stop it in My Account by 9:00 PM HST the night before collection (Billing > AutoPay tab > Edit > do not want AutoPay > Save). eBill is free; turn it on with Get eBill on the Overview page; new-customer promos lose the eBill discount if eBill is not activated within 30 days. A pay-without-signing-in page is not described on the help pages (the footer Pay My Bill link opens My Account), so guest_pay is offline. Cancelling and service changes are by phone, chat or a retail store; billing is prorated to the disconnection date. Payment arrangements by calling 808-643-2356; disconnection no sooner than 14 days after the due date with a 7-day written notice. Payment History shows 24 months; Billing History shows 18 months of bills. Vacation Service (phone only) is 50% off line charges for a one-time $14.00 fee.",
+  "officialDomains": ["hawaiiantel.com"],
+  "sources": [
+    { "url": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill", "title": "Paying My Bill", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://www.hawaiiantel.com/help-center/account-billing/autopay-ebill", "title": "AutoPay & eBill", "fetchedAt": "2026-10-10", "kind": "autopay" },
+    { "url": "https://www.hawaiiantel.com/help-center/account-billing", "title": "Account & Billing - Hawaiian Telcom Help Center", "fetchedAt": "2026-10-10", "kind": "help" },
+    { "url": "https://www.hawaiiantel.com/help-center/account-billing/change-add-remove-service", "title": "Change/Add/Remove Service", "fetchedAt": "2026-10-10", "kind": "cancel" },
+    { "url": "https://www.hawaiiantel.com/help-center/account-billing/my-account-help", "title": "My Account Help", "fetchedAt": "2026-10-10", "kind": "login" }
+  ],
+  "brand": { "displayName": "Hawaiian Telcom", "shortName": "Hawaiian Telcom", "primary": "#00539b", "accent": "#1b365d", "monogram": "HT" },
+  "labels": {
+    "dashboard": "Overview",
+    "viewBill": "Billing",
+    "payBill": "Pay Now",
+    "autopay": "AutoPay",
+    "paperless": "eBill",
+    "history": "Payment History",
+    "statements": "Billing History",
+    "wallet": "Payment Options",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Create a Profile",
+    "username": "Email",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Create a Profile", "page": "register" },
+      { "label": "Paying My Bill", "helpSlug": "pay-your-bill" },
+      { "label": "Help Center", "page": "help" }
+    ],
+    "account": [
+      { "label": "Overview", "page": "dashboard" },
+      { "label": "Billing", "page": "bill" },
+      { "label": "Pay Now", "page": "pay" },
+      { "label": "Payment History", "page": "history" },
+      { "label": "AutoPay", "page": "autopay" },
+      { "label": "eBill", "page": "paperless" },
+      { "label": "Profile", "page": "profile" }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "mfa": "email",
+    "registrationFields": ["accountNumber", "lastName", "zip", "email"],
+    "evidence": "documented_official",
+    "source": "https://www.hawaiiantel.com/help-center/account-billing/my-account-help"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "unsupported", "evidence": "inferred", "source": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill", "note": "Online payments are made in My Account. Without logging in you can pay by phone at 808-643-3456 ($1.95 fee), by mail with the remit slip, at a retail store or at a First Hawaiian Bank branch ($2.50 fee).", "channel": "phone", "phone": "8086433456" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/autopay-ebill", "note": "AutoPay collects your bill 10 calendar days before the due date. Paying by credit card adds 2.5% of the bill each month; checking accounts and debit cards have no fee. Changes take effect within 2 business days." },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/autopay-ebill", "note": "To stop the next collection, cancel by 9:00 PM HST the night before the collection date." },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/autopay-ebill" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/change-add-remove-service", "note": "To cancel some or all services, call 808-643-3456, chat with us or visit a Hawaiian Telcom retail store. Charges are prorated to your disconnection date.", "channel": "phone", "phone": "8086433456" },
+    "change_plan": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/change-add-remove-service", "note": "Service changes are made by calling 808-643-3456, chatting with us or visiting a retail store.", "channel": "phone", "phone": "8086433456" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill", "note": "If you can't pay by the due date, call Customer Service at 808-643-2356 to ask about payment arrangements.", "channel": "phone", "phone": "8086432356" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill" }
+  },
+  "contact": { "phone": "808-643-3456", "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill" },
+  "billing": {
+    "source": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill",
+    "fees": { "bankCents": 195, "cardCents": 195, "autopayCardPercent": 2.5, "notes": ["Phone payments cost $1.95.", "In-person payments at First Hawaiian Bank branches cost $2.50."], "evidence": "documented_official", "source": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill" },
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"], "leadDays": 10 },
+    "lateFeePercent": 1.5,
+    "lateFeeMinCents": 1595
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Hawaiian Telcom bill",
+      "topic": "payments",
+      "paragraphs": [
+        "In My Account, select Pay Now in the Current Balance section of the Overview or Billing page. Linked accounts can be paid from the Account page. You get a confirmation email.",
+        "Fees: a one-time online payment costs $1.95 and a phone payment costs $1.95. Paying at a First Hawaiian Bank branch costs $2.50. Mail and AutoPay are free; bank bill pay fees are set by your bank.",
+        "Online, phone and retail store payments usually post within 2 business days; checks dropped at a store and bank bill pay can take up to 7 business days. Payment History in Billing shows the last 24 months."
+      ],
+      "source": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late payments and arrangements",
+      "topic": "payments",
+      "paragraphs": [
+        "If more than $10.00 is still unpaid 30 days after the due date, a late fee of 1.5% of the past-due balance or $15.95, whichever is greater, is charged.",
+        "If you can't pay on time because of illness or other circumstances beyond your control, call 808-643-2356 about payment arrangements. Service is not disconnected sooner than 14 days after the due date, and you receive written notice at least 7 days before."
+      ],
+      "source": "https://www.hawaiiantel.com/help-center/account-billing/paying-my-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Go to Billing, then AutoPay, then Enroll Today. Use a checking account, debit card or credit card; credit card AutoPay adds 2.5% of the total bill each month. You can pay the full bill or set a maximum amount.",
+        "AutoPay collects 10 calendar days before the due date. Changes take effect within 2 business days.",
+        "To stop AutoPay, open Billing, choose the AutoPay tab, select Edit next to your payment method, choose the option that you do not want AutoPay, and Save. Do it by 9:00 PM HST the night before the collection date."
+      ],
+      "source": "https://www.hawaiiantel.com/help-center/account-billing/autopay-ebill"
+    },
+    {
+      "slug": "paperless",
+      "title": "eBill",
+      "topic": "billing",
+      "paragraphs": [
+        "eBill is free. Log in to My Account and select Get eBill on the Overview page. Your bill is ready to view 1 to 2 days after the billing date and you get a courtesy email.",
+        "New-customer promotions include an eBill discount that is removed if eBill is not activated within 30 days of signing up."
+      ],
+      "source": "https://www.hawaiiantel.com/help-center/account-billing/autopay-ebill"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Change or cancel service",
+      "topic": "account",
+      "paragraphs": [
+        "Service changes and cancellations are handled by our support team: call 808-643-3456, chat with us, or visit a Hawaiian Telcom retail store. An agent covers final payments, equipment return and any offers.",
+        "Your bill is prorated, so you pay only through the disconnection date. Phone-only customers can choose Vacation Service instead: 50% off line charges for a one-time $14.00 fee."
+      ],
+      "source": "https://www.hawaiiantel.com/help-center/account-billing/change-add-remove-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "online-payment-fee",
+        "intent": "Using Hawaiian Telcom's help center, find the fee for a one-time online payment and the fee for paying at a First Hawaiian Bank branch. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["1.95", "2.50"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["1.95", "2.50"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Online one-time payments cost $1.95; First Hawaiian Bank branch payments cost $2.50." }]
+      },
+      {
+        "slug": "autopay-stop-deadline",
+        "intent": "Find the deadline (time of day) for stopping a Hawaiian Telcom AutoPay collection before it is taken. Do not change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["9"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["9"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "By 9:00 PM HST the night before the collection date." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": ["Email"] },
+    { "page": "dashboard", "signedIn": true, "contains": ["Payment History", "eBill"] },
+    { "page": "cancel", "signedIn": true, "contains": "808-643-3456" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["$1.95", "$2.50"] },
+    { "page": "helpArticle", "slug": "late-fees", "contains": "$15.95" }
+  ]
+}

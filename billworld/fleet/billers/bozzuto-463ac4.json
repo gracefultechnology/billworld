@@ -1,0 +1,225 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-10",
+  "id": "bozzuto-463ac4",
+  "name": "Bozzuto",
+  "category": "housing",
+  "notes": "Researched from public bozzuto.com pages (home, Contact Us). Contact Us offers a 'Current and New Residents' inquiry path, a Residential Escalation Inquiry for concerns about a specific community, Community Contact and 'Bozzuto Listens'; corporate phone 301.220.0100. Bozzuto's public site does not link a resident payment portal; catalog research names RentCafe (bozzuto.securecafe.com, 403 to automated reading). Fees, autopay, notice periods and sign-in fields not published (family defaults kept, inferred). Reviewer: added the Welcome Home Commitment (30-day move-out guarantee at select properties) and the escalation page.",
+  "officialDomains": [
+    "bozzuto.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.bozzuto.com/contact-us",
+      "title": "Contact Us | The Bozzuto Group | Bozzuto",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.bozzuto.com",
+      "title": "Bozzuto | Luxury Apartment Rentals & Real Estate Development",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.bozzuto.com/contact-us/i-want-to-escalate-a-concern-about-a-residential-community",
+      "title": "Escalate a Concern | Bozzuto Residential Support | Bozzuto",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.bozzuto.com/welcome-home-commitment",
+      "title": "Welcome Home Commitment | Bozzuto",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Bozzuto",
+    "shortName": "Bozzuto",
+    "primary": "#1f2933",
+    "accent": "#8c2d19",
+    "monogram": "BZ"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident Login",
+        "page": "login"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      },
+      {
+        "label": "Welcome Home Commitment",
+        "helpSlug": "welcome-home-commitment"
+      },
+      {
+        "label": "Escalate a Concern",
+        "helpSlug": "escalate-a-concern"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Rent",
+        "page": "pay"
+      },
+      {
+        "label": "Charges",
+        "page": "bill"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Community Contact",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "contact": {
+    "phone": "3012200100",
+    "source": "https://www.bozzuto.com/contact-us",
+    "evidence": "documented_official"
+  },
+  "help": [
+    {
+      "slug": "contact-us",
+      "title": "Contact Bozzuto",
+      "paragraphs": [
+        "Current and new residents can reach Bozzuto through the Contact Us page by choosing the Current and New Residents option, or contact their community team directly. Bozzuto's corporate number is 301.220.0100."
+      ],
+      "source": "https://www.bozzuto.com/contact-us",
+      "topic": "contact"
+    },
+    {
+      "slug": "escalate-a-concern",
+      "title": "Escalating a concern",
+      "paragraphs": [
+        "If an issue with your community has not been resolved, submit a Residential Escalation Inquiry from the Contact Us page and say which community you are writing about, so the concern is reviewed by Bozzuto beyond your community team."
+      ],
+      "source": "https://www.bozzuto.com/contact-us/i-want-to-escalate-a-concern-about-a-residential-community",
+      "topic": "contact"
+    },
+    {
+      "slug": "welcome-home-commitment",
+      "title": "Welcome Home Commitment and 30-day guarantee",
+      "paragraphs": [
+        "Every Bozzuto apartment is cleaned and inspected against a checklist of more than 70 items and sealed before you move in. If you are not happy in your new home, the 30-day guarantee lets you move out within 30 days of moving in without a penalty. Not every property offers the guarantee, so ask your community's leasing office whether it applies to you."
+      ],
+      "source": "https://www.bozzuto.com/welcome-home-commitment",
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "corporate-phone",
+        "intent": "Using the Bozzuto help pages, find Bozzuto's corporate phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "3012200100"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "3012200100"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 301.220.0100."
+          }
+        ]
+      },
+      {
+        "slug": "move-out-guarantee-days",
+        "intent": "You just moved into a Bozzuto apartment and are unhappy with it. Using the Bozzuto help pages, find within how many days of moving in you can move out without a penalty under the guarantee. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30 days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30 days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Within 30 days of moving in, penalty-free (at properties that offer the guarantee)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "301.220.0100"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "escalate-a-concern",
+      "contains": "Escalation"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "welcome-home-commitment",
+      "contains": "30 days"
+    }
+  ]
+}

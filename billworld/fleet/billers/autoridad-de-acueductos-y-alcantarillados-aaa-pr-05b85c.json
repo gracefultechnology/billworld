@@ -1,0 +1,385 @@
+{
+  "id": "autoridad-de-acueductos-y-alcantarillados-aaa-pr-05b85c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Autoridad de Acueductos y Alcantarillados (AAA / PRASA)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public acueductos.pr.gov pages (Mi Acueductos FAQ, Centro Telefonico) and the public Pago Expreso page on aaa.pr.gov (no sign-in, no lookup submitted). The real site is in Spanish; Spanish UI labels are kept as names. Mi Acueductos signs in with the profile email plus a security code sent by SMS (if a cell phone is registered) or email, so MFA is email_or_sms; passwords need 12+ characters with a lowercase letter, an uppercase letter and a special character. Linking a billing account to a profile asks for the account number, the owner's license/ID number and the phone registered on the account (ID number cannot be expressed; phone is used). Pago Expreso looks up the balance with the account number and the phone number on the account. Debito Directo (AutoPay) accepts a credit card, debit card or bank account and asks for a maximum monthly amount; any part of a bill above that cap must be paid by the due date (a cap cannot be modelled; reported). Phone payments by card are limited to $10,000 per transaction (card-only cap cannot be modelled). No convenience fees or late-charge amounts are published on the pages used, so fees are omitted. Plan de pago and Baja de Servicio are listed in the account menu and Servicios. Kiosk rules (card, debit or cash, no change given, posting on the second business day before 3 p.m.) come from the Kioscos de pago page. The $10,000 phone limit is footnoted on the credit-card option only.",
+  "officialDomains": [
+    "acueductos.pr.gov",
+    "aaa.pr.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes",
+      "title": "Preguntas Frecuentes - Mi Acueductos",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://aaa.pr.gov/pagoexpreso",
+      "title": "AAA - Portal de Pago Expreso",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.acueductos.pr.gov/servicios/centro-telefonico",
+      "title": "Centro Telefonico - AAA",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://acueductos.pr.gov/servicios/kioscos-de-pago",
+      "title": "Kioscos de pago - AAA",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Autoridad de Acueductos y Alcantarillados",
+    "shortName": "AAA",
+    "primary": "#00539b",
+    "accent": "#003a6c",
+    "monogram": "AA"
+  },
+  "labels": {
+    "dashboard": "Mis Cuentas",
+    "signIn": "Conéctate",
+    "register": "Regístrate",
+    "forgot": "Olvidé mi contraseña",
+    "username": "Correo electrónico",
+    "guestPay": "Pago Expreso",
+    "autopay": "Débito Directo",
+    "paperless": "Factura electrónica",
+    "statements": "Historial de facturas",
+    "history": "Historial de pagos",
+    "arrangement": "Plan de pago",
+    "cancel": "Baja de Servicio",
+    "profile": "Mi Perfil",
+    "help": "Preguntas Frecuentes"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pago Expreso",
+        "page": "guest"
+      },
+      {
+        "label": "Conéctate",
+        "page": "login"
+      },
+      {
+        "label": "Regístrate",
+        "page": "register"
+      },
+      {
+        "label": "Formas de pago",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Preguntas Frecuentes",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Mis Cuentas",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pagar",
+        "page": "pay"
+      },
+      {
+        "label": "Historial de facturas",
+        "page": "statements"
+      },
+      {
+        "label": "Historial de pagos",
+        "page": "history"
+      },
+      {
+        "label": "Débito Directo",
+        "page": "autopay"
+      },
+      {
+        "label": "Factura electrónica",
+        "page": "paperless"
+      },
+      {
+        "label": "Plan de pago",
+        "page": "arrangement"
+      },
+      {
+        "label": "Baja de Servicio",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "mfa": "email_or_sms",
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{12,}$",
+      "message": "Use at least 12 characters, including a lowercase letter, an uppercase letter and a special character."
+    },
+    "registrationFields": [
+      "accountNumber",
+      "email",
+      "phone"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "phone"
+    ],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://aaa.pr.gov/pagoexpreso",
+      "note": "Pago Expreso shows your balance and takes a payment with your account number and the phone number on the account."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes",
+      "note": "Débito Directo charges a credit card, debit card or bank account and asks you to set a maximum monthly amount. If a bill is higher than that amount, pay the rest by the due date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes",
+      "note": "Open the actions menu next to an account in Mis Cuentas and choose Plan de pago."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes",
+      "note": "Request Baja de Servicio from the Servicios menu in Mi Acueductos."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.acueductos.pr.gov/servicios/centro-telefonico",
+      "phone": "787-620-2482"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.acueductos.pr.gov/servicios/centro-telefonico"
+    }
+  },
+  "contact": {
+    "phone": "787-620-2482",
+    "payPhone": "787-620-2482",
+    "source": "https://www.acueductos.pr.gov/servicios/centro-telefonico"
+  },
+  "billing": {
+    "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Formas de pago (ways to pay)",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online in Mi Acueductos after you create a free profile, or use Pago Expreso without signing in: enter your account number and the phone number on the account to see the balance and pay.",
+        "Pay by phone by calling customer service at (787) 620-2482. Option 1 is the automated system, open 24 hours; option 5 reaches a representative from 6 a.m. to 11 p.m. every day, holidays included. You can pay from a checking or savings account or with a credit card, up to $10,000 per card transaction, and the payment is confirmed right away.",
+        "By mail, send payments to AAA, PO Box 70101, San Juan, PR 00936-8101. Payment kiosks take credit cards, debit cards and cash but give no change (any extra is credited to your account); kiosk payments made by 3 p.m. post on the second business day. Commercial office payment windows also take payments. The hearing-impaired line is (787) 679-7322."
+      ],
+      "source": "https://www.acueductos.pr.gov/servicios/centro-telefonico"
+    },
+    {
+      "slug": "autopay",
+      "title": "Débito Directo",
+      "topic": "autopay",
+      "paragraphs": [
+        "Débito Directo pays your bill automatically from a credit card, debit card or bank account. You need an account linked under Mis Cuentas; if you have several accounts, choose the one to enroll.",
+        "When you enroll you set a maximum amount to charge each month. If a bill is higher than that maximum, AAA charges up to the maximum and you pay the remaining balance by the bill's due date. Customers who used Débito Directo in the old Mi Cuenta app must enroll again in Mi Acueductos."
+      ],
+      "steps": [
+        "Conéctate to Mi Acueductos.",
+        "Open Pagos, then Débito Directo.",
+        "Choose Añadir método de pago and enter your card or bank details.",
+        "Accept the terms and set your maximum monthly amount."
+      ],
+      "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes"
+    },
+    {
+      "slug": "paperless",
+      "title": "Factura electrónica",
+      "topic": "billing",
+      "paragraphs": [
+        "Electronic bills arrive by email. To manage the service, register in Mi Acueductos and open the actions menu (three dots) next to the account, where Factura electrónica y envío de SMS lets you choose email bills and text alerts for overdue bills and processed payments.",
+        "If you used electronic billing in the old Mi Cuenta app you keep getting bills by email, but you need a Mi Acueductos profile to change the setting, and SMS alerts must be turned on again."
+      ],
+      "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes"
+    },
+    {
+      "slug": "register",
+      "title": "Create your Mi Acueductos profile",
+      "topic": "account",
+      "paragraphs": [
+        "Choose Regístrate and fill in the required fields to create your profile. The password needs at least 12 characters with a lowercase letter, an uppercase letter and a special character. You may add a cell phone to receive your security code by text; otherwise the code is sent by email.",
+        "Activate the profile with the Activar button in the email within 30 minutes. To link a billing account you need the account number, the owner's license or ID number and the phone number registered on the account."
+      ],
+      "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Baja de Servicio",
+      "topic": "account",
+      "paragraphs": [
+        "Mi Acueductos lets you request service changes under Servicios, including starting service (Alta de servicio), stopping service (Baja de Servicio), reporting a bill you did not receive and disputing a bill. You can follow the request under Estatus de Orden de Servicio.",
+        "You can also call the Centro Telefónico at (787) 620-2482, open 6 a.m. to 11 p.m. every day."
+      ],
+      "source": "https://www.acueductos.pr.gov/mi-acueductos/preguntas-frecuentes"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-phone-limit",
+        "intent": "Find the largest credit card payment AAA accepts in a single phone transaction. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10,000",
+              "10,000",
+              "10000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10,000",
+            "10,000",
+            "10000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments are limited to $10,000 per transaction."
+          }
+        ]
+      },
+      {
+        "slug": "password-length",
+        "intent": "Before creating an AAA Mi Acueductos profile, find the minimum number of characters a password must have. Do not register or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Passwords need at least 12 characters."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Mis Cuentas"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$10,000",
+        "(787) 620-2482"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": [
+        "12 characters"
+      ]
+    }
+  ]
+}

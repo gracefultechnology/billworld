@@ -1,0 +1,331 @@
+{
+  "id": "wells-fargo-auto-35b786",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Wells Fargo Auto",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public wellsfargo.com auto-loan pages only (no sign-in). Online payments come from a bank account and can be made now or scheduled up to 30 days ahead; no card payments or online fees are described (bank-only, no fee: inferred). Autopay draws checking or savings monthly at no cost; to change amount or date you cancel and set up Autopay again, at least 3 business days before the next withdrawal; it can also be set up by phone or a mailed/faxed form (not modelled). Due-date changes (one per loan, within 15 days, current or <=10 days past due) and deferments are only by phone at 1-800-289-8004, so payment_arrangement is unsupported online. Paperless via Manage delivery preferences; 12 months of statements online. Late fees are in the loan agreement (not modelled). Enrollment needs SSN and date of birth; sign-on uses a username.",
+  "officialDomains": [
+    "wellsfargo.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.wellsfargo.com/auto-loans/make-payments/",
+      "title": "Make Auto Loan Payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/",
+      "title": "Auto Loan FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Wells Fargo Auto",
+    "primary": "#c41f2a",
+    "accent": "#8a1a1f",
+    "monogram": "WF"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Autopay",
+    "signIn": "Sign On",
+    "username": "Username",
+    "statements": "Statements and Documents",
+    "dashboard": "Account Summary",
+    "arrangement": "Payment Assistance",
+    "help": "Auto Loan FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign On",
+        "page": "login"
+      },
+      {
+        "label": "Make Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Auto Loan FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements and Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Payment Assistance",
+        "page": "arrangement"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/",
+      "note": "Autopay withdraws your monthly payment from checking or savings at no cost. To change the amount or date, cancel the schedule and set up Autopay again."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/",
+      "note": "Cancel under Manage Autopay at least 3 business days before the next withdrawal."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/",
+      "note": "Pay now or schedule a payment up to 30 days ahead."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/",
+      "note": "Stop paper statements under Manage delivery preferences; up to 12 months of statements stay online."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/",
+      "note": "Payment deferments, arrangements and due date changes are handled by phone. Call 1-800-289-8004.",
+      "channel": "phone",
+      "phone": "8002898004"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/",
+      "note": "The automated system at 1-800-289-8004 is open 24 hours a day, 7 days a week."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/"
+    }
+  },
+  "contact": {
+    "phone": "800-289-8004",
+    "payPhone": "800-289-8004",
+    "evidence": "documented_official",
+    "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/"
+  },
+  "billing": {
+    "source": "https://www.wellsfargo.com/auto-loans/make-payments/",
+    "methods": [
+      "bank"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/"
+    },
+    "scheduled": {
+      "maxDaysAhead": 30
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Sign on to Wells Fargo Online or the mobile app to pay now or schedule a payment up to 30 days ahead. You can also use the automated phone line at 1-800-289-8004 any time, pay at any Wells Fargo branch (no Wells Fargo account needed), or use MoneyGram (receive code 1815) or Western Union, which may charge their own fees.",
+        "By mail, make your check or money order payable to Wells Fargo Auto, add your account number, and send it to Wells Fargo Auto, PO Box 51963, Los Angeles, CA 90051-6263. Do not send cash."
+      ],
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/",
+      "mode": "append"
+    },
+    {
+      "slug": "due-date-change",
+      "title": "Changing your due date",
+      "paragraphs": [
+        "You can change your due date once during the loan if your first payment has been made, the new date is within 15 days of the current one, and your account is current or no more than 10 days past due. Your maturity date moves but your payment stays the same. Call 1-800-289-8004 to ask."
+      ],
+      "source": "https://www.wellsfargo.com/help/loans/auto-loans-faqs/",
+      "topic": "account"
+    },
+    {
+      "slug": "pay-ahead",
+      "title": "Paying ahead",
+      "paragraphs": [
+        "You can pay up to 3 months ahead. Extra money paid on or before the due date reduces principal and counts toward the next payment; once the loan is 3 months ahead, extra payments go entirely to principal."
+      ],
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/",
+      "topic": "payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "Autopay",
+      "paragraphs": [
+        "Autopay takes your monthly payment from checking or savings at no extra cost. To change the amount or date, cancel the current schedule and set up Autopay again. To stop it, sign on, choose the loan and select Manage Autopay at least 3 business days before the next withdrawal. Before paying off the loan, stop Autopay at least 3 business days ahead."
+      ],
+      "source": "https://www.wellsfargo.com/auto-loans/make-payments/",
+      "topic": "autopay",
+      "steps": [
+        "Sign on and pick your auto loan in Account Summary.",
+        "Select Set up Autopay.",
+        "Choose the checking or savings account.",
+        "Review and confirm."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "schedule-ahead-limit",
+        "intent": "Using the Wells Fargo Auto help pages, find how far in advance you can schedule an online auto loan payment. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30 days",
+              "30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30 days",
+            "30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments",
+          "scheduled"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Online payments can be scheduled up to 30 days in advance."
+          }
+        ]
+      },
+      {
+        "slug": "moneygram-code",
+        "intent": "Using the Wells Fargo Auto help pages, find the MoneyGram receive code for a Wells Fargo Auto payment. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1815"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1815"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The MoneyGram receive code is 1815."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Autopay"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "1-800-289-8004"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date-change",
+      "contains": "15 days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "3 business days"
+    }
+  ]
+}

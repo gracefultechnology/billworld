@@ -1,0 +1,270 @@
+{
+  "id": "myeyedr-404d58",
+  "version": 1,
+  "status": "dedicated",
+  "name": "MyEyeDr.",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public pages only: myeyedr.com 'Pay Your MyEyeDr. Bill' (with its Bill Pay FAQs) and the public patient portal entry page it links (myeyedr.mypaymed.com, which now redirects to personapay.com/myeyedr/login; no lookup submitted). Three ways to pay: online by credit card in the portal, by phone with a credit card at 1-888-725-5482 (have the invoice), or in person at any office with cash, check or credit card during regular hours. Online and phone payments are card-only (methods card). MyEyeDr. never charges extra fees for bill payments (fees 0, documented) and warns against paying through third parties such as Doxo. The portal asks for the account number (only the digits after the hyphen) or reference number, date of birth and ZIP code; modelled as sign-in by account number. The portal also shows past transactions, prescription information and purchases, and lets patients enroll in electronic statements. Bills may come from Avadyne Health, MyEyeDr.'s business-office extension (not a collector). AutoPay, payment plans (Affirm is for purchases) and mail payments are not described; autopay keeps the family default with card-only method types. Reviewer: the real portal entry ('Access your account securely') asks for account number (digits after the hyphen) or reference number, date of birth and ZIP code with no password, so it is modelled as the pay-without-signing-in page with exactly those three fields (nav 'Pay your bill online' -> guest); the password sign-in ('Sign in') is a synthetic account area kept for the family's signed-in flows.",
+  "officialDomains": [
+    "myeyedr.com",
+    "personapay.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.myeyedr.com/pay-your-bill-online",
+      "title": "Pay Your MyEyeDr. Bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.personapay.com/myeyedr/login",
+      "title": "MyEyeDr. bill pay - Access your account securely",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "MyEyeDr.",
+    "shortName": "MyEyeDr.",
+    "primary": "#22346b",
+    "accent": "#7a1f5c",
+    "monogram": "M"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "payBill": "Pay your bill",
+    "accountNumber": "Account Number or Reference Number",
+    "paperless": "Electronic statements",
+    "history": "Past transactions",
+    "username": "Account Number or Reference Number",
+    "guestPay": "Access your account securely"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay your bill online",
+        "page": "guest"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Bill Pay FAQs",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "evidence": "observed_public",
+    "source": "https://www.personapay.com/myeyedr/login",
+    "guestLookupFields": [
+      "accountNumber",
+      "dob",
+      "zip"
+    ],
+    "guestLookupExact": true
+  },
+  "contact": {
+    "phone": "888-725-5482",
+    "payPhone": "888-725-5482",
+    "source": "https://www.myeyedr.com/pay-your-bill-online",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.myeyedr.com/pay-your-bill-online",
+      "note": "Online payments are made with a credit card."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.myeyedr.com/pay-your-bill-online",
+      "note": "Have your invoice ready and call 1-888-725-5482 to pay by credit card.",
+      "phone": "8887255482"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.myeyedr.com/pay-your-bill-online"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.myeyedr.com/pay-your-bill-online"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.personapay.com/myeyedr/login",
+      "note": "Enter only the numbers after the hyphen of your account number (or your reference number), plus your date of birth and ZIP code."
+    }
+  },
+  "billing": {
+    "source": "https://www.myeyedr.com/pay-your-bill-online",
+    "methods": [
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.myeyedr.com/pay-your-bill-online"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "3 safe ways to pay your MyEyeDr. bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Online: pay your invoice with a credit card in the MyEyeDr. patient portal. Enter only the digits after the hyphen of your account number, or your reference number, plus your date of birth and ZIP code.",
+        "By phone: with your invoice in hand, call 1-888-725-5482 and pay by credit card.",
+        "In person: pay at your local MyEyeDr. with cash, check or credit card during regular hours. No appointment is needed.",
+        "MyEyeDr. never charges extra fees for bill payments."
+      ],
+      "source": "https://www.myeyedr.com/pay-your-bill-online"
+    },
+    {
+      "slug": "third-party-sites",
+      "title": "Should I pay through a site like Doxo?",
+      "topic": "payments",
+      "paragraphs": [
+        "MyEyeDr. recommends paying directly. Third-party bill-pay sites can charge you fees for a bill you could pay for free, and they are not connected to your insurance, so they cannot check that your payment matches your benefits."
+      ],
+      "source": "https://www.myeyedr.com/pay-your-bill-online"
+    },
+    {
+      "slug": "statements-and-history",
+      "title": "Electronic statements and past transactions",
+      "topic": "account",
+      "paragraphs": [
+        "You can sign up for electronic statements in the patient portal. The portal also lists your past MyEyeDr. transactions, prescription information and purchases.",
+        "A bill from Avadyne Health is a MyEyeDr. bill: Avadyne is an extension of MyEyeDr.'s business office, not a collection agency. If you think your insurance was not applied correctly, call 1-888-725-5482."
+      ],
+      "source": "https://www.myeyedr.com/pay-your-bill-online"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "avadyne-bill",
+        "intent": "You received a bill from Avadyne Health after a MyEyeDr. visit. Using MyEyeDr.'s bill-pay FAQs, find what Avadyne Health is. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "business office"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "business office"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An extension of MyEyeDr.'s business office, not a collection agency."
+          }
+        ]
+      },
+      {
+        "slug": "in-person-methods",
+        "intent": "You want to pay your MyEyeDr. bill at an office. Using the bill-pay help, find which payment methods offices accept in person. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "cash"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "cash"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Cash, check or credit card."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "signIn"
+    },
+    {
+      "page": "guest",
+      "contains": "Account Number or Reference Number"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "1-888-725-5482",
+        "never charges extra fees"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "statements-and-history",
+      "contains": "Avadyne"
+    }
+  ]
+}

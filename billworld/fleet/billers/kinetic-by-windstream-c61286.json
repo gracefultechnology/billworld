@@ -1,0 +1,345 @@
+{
+  "id": "kinetic-by-windstream-c61286",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Kinetic by Windstream",
+  "category": "internet",
+  "reviewedAt": "2026-10-10",
+  "notes": "Internet-category dossier for Kinetic (same company and Go Kinetic portal as the phone-landline dossier kinetic-by-windstream-bb9ae4). Researched 2026-10-10 from gokinetic.com support and legal pages and the public Go Kinetic sign-in page (login.windstream.com; my.gokinetic.com redirects there): heading Sign in, Username and Password fields with Forgot username? / Forgot password?, Remember my username, Sign In button, Get a quick access link, Continue as guest (opens a search page, not a payment) and Set up online access under Can't sign in?. No pay-without-signing-in payment is described, so guest_pay is unsupported (inferred) with the free automated phone line and mail. A $1.46 surcharge applies to every credit card payment (the engine applies it to debit cards too). Automated phone payments at (800) 347-1991 are free; agent-processed payments may carry a processing fee (amount unpublished). Kinetic Internet customers who keep paper bills pay a paper bill charge (amount unpublished). Auto Pay draws from checking or a credit card on the invoice date (family timing kept). Modems under the Modem Rental Program must be returned within 30 days after service ends or a $100 fee is charged. Month-to-month customers cancel by phone with no termination fee; the last month is not prorated. Payment arrangements are not described publicly. Plans left out.",
+  "officialDomains": [
+    "gokinetic.com",
+    "windstream.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.gokinetic.com/support/my-account/billing-payments/what-payment-options-are-available-to-pay-my-bill",
+      "title": "What payment options are available to pay my bill?",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.gokinetic.com/support/my-account/billing-payments/auto-pay",
+      "title": "Auto Pay",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.gokinetic.com/about/legal/autopay-terms-and-conditions",
+      "title": "AutoPay Terms and Conditions",
+      "fetchedAt": "2026-10-09",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.gokinetic.com/about/legal/kinetic-online-terms",
+      "title": "Kinetic Online Terms",
+      "fetchedAt": "2026-10-09",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.gokinetic.com/about/legal/product-specific-terms",
+      "title": "Service-Specific Terms and Conditions for Service and/or Equipment Provided by Kinetic",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://login.windstream.com/idp/startSSO.ping",
+      "title": "Sign in - Kinetic",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Kinetic",
+    "shortName": "Kinetic",
+    "primary": "#005f86",
+    "accent": "#123049",
+    "monogram": "K"
+  },
+  "labels": {
+    "dashboard": "Go Kinetic",
+    "viewBill": "View & Pay Bill",
+    "payBill": "Make A Payment",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "signIn": "Sign In",
+    "signOut": "Log Out",
+    "register": "Set up online access",
+    "username": "Username",
+    "forgot": "Forgot password?",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Set up online access",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Go Kinetic",
+        "page": "dashboard"
+      },
+      {
+        "label": "View & Pay Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Make A Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://login.windstream.com/idp/startSSO.ping"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.gokinetic.com/support/my-account/billing-payments/what-payment-options-are-available-to-pay-my-bill",
+      "note": "Paying online needs a Go Kinetic account. Without signing in, pay through the free automated line at (800) 347-1991 or mail a check.",
+      "channel": "phone",
+      "phone": "8003471991"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gokinetic.com/support/my-account/billing-payments/auto-pay"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gokinetic.com/about/legal/autopay-terms-and-conditions"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gokinetic.com/support/my-account/billing-payments/what-payment-options-are-available-to-pay-my-bill"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.gokinetic.com/about/legal/kinetic-online-terms",
+      "note": "Kinetic internet service is cancelled by phone at 1-800-347-1991. Month-to-month customers pay no termination fee, but the last month is billed in full. Return a rented modem within 30 days to avoid a $100 charge.",
+      "channel": "phone",
+      "phone": "8003471991"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gokinetic.com/support/my-account/billing-payments/what-payment-options-are-available-to-pay-my-bill",
+      "phone": "8003471991"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gokinetic.com/support/my-account/billing-payments/what-payment-options-are-available-to-pay-my-bill"
+    }
+  },
+  "billing": {
+    "source": "https://www.gokinetic.com/support/my-account/billing-payments/what-payment-options-are-available-to-pay-my-bill",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 146,
+      "notes": [
+        "Payments taken by a representative over the phone may carry a processing fee.",
+        "Kinetic Internet customers who choose a paper bill pay a monthly paper bill charge."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.gokinetic.com/support/my-account/billing-payments/what-payment-options-are-available-to-pay-my-bill"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Kinetic bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay and manage your bill in Go Kinetic or the Go Kinetic app, where you can also set up Auto Pay and switch to paperless billing. You can mail a check to Kinetic, P.O. Box 9001908, Louisville, KY 40290-1908 so it arrives by the due date, or call (800) 347-1991 and pay through the automated system at no charge.",
+        "Every credit card payment carries a $1.46 surcharge. A representative-assisted phone payment may carry a processing fee, and Kinetic Internet customers who keep a paper bill pay a paper bill charge; the electronic invoice is free. A late payment can add a charge to your next bill."
+      ],
+      "source": "https://www.gokinetic.com/support/my-account/billing-payments/what-payment-options-are-available-to-pay-my-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in to Go Kinetic to start Auto Pay. Payments come from your checking account or credit card on the date shown on your monthly invoice, with no extra charge for Auto Pay itself (credit cards still carry the card surcharge).",
+        "Change or stop Auto Pay in Go Kinetic or by calling 800-347-1991. Keep your bank or card details current; after two returned payments Kinetic may end your Auto Pay."
+      ],
+      "source": "https://www.gokinetic.com/about/legal/autopay-terms-and-conditions"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel Kinetic internet",
+      "topic": "account",
+      "paragraphs": [
+        "Month-to-month customers can cancel any time by calling 1-800-347-1991, with no termination fee. Service is billed through the disconnection date and the last month is not prorated.",
+        "If you rent a modem, return it to Kinetic within 30 days after service ends. Otherwise a $100 fee is charged to your account and Kinetic may keep any unrefunded advance payment or deposit."
+      ],
+      "source": "https://www.gokinetic.com/about/legal/product-specific-terms"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "modem-return-fee",
+        "intent": "A Kinetic internet customer is cancelling and rents a modem. Find in Kinetic's help how long they have to return it and what they are charged if they don't. Do not cancel or pay anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$100"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$100"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Return the modem within 30 days after service ends or a $100 fee is charged."
+          }
+        ]
+      },
+      {
+        "slug": "card-surcharge",
+        "intent": "Using Kinetic's help, find the surcharge added to payments made by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.46"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.46"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Kinetic adds a $1.46 surcharge to each credit card payment."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Set up online access"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "View & Pay Bill",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-347-1991"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "$100"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$1.46",
+        "9001908"
+      ]
+    }
+  ]
+}

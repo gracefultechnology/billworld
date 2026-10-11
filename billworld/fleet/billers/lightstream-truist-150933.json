@@ -1,0 +1,271 @@
+{
+  "id": "lightstream-truist-150933",
+  "version": 1,
+  "status": "dedicated",
+  "name": "LightStream (Truist)",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public lightstream.com FAQ only (no sign-in). Borrowers choose AutoPay (lower rate) or Invoice (rate 0.50 points higher) before funding; the AutoPay discount cannot be added after funding. Payments only from a personal bank account (bank-only). Same-day payments are not possible: sign in at least two business days before the payment date (no minimum lead time exists in the schema; noted as a gap). A payment 18+ days early counts as an extra payment. Due dates cannot be changed after funding. No fees of any kind; late fees not mentioned. Invoice payments by mail to PO Box 117320, Atlanta, GA 30368-7320 or bank bill pay; not at Truist branches. No phone number is published (email and hours only), so pay_by_phone is not asserted. Sign-in uses a user ID. Stopping AutoPay is not described; marked supported (inferred) because the account tools let you manage payments.",
+  "officialDomains": [
+    "lightstream.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.lightstream.com/faq",
+      "title": "LightStream FAQ",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.lightstream.com/customer-sign-in",
+      "title": "Customer Sign In",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "LightStream",
+    "primary": "#2a5f2f",
+    "accent": "#1d4321",
+    "monogram": "LS"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "User ID",
+    "autopay": "AutoPay",
+    "payBill": "Make a Payment",
+    "dashboard": "Account Summary",
+    "help": "FAQ"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Making payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.lightstream.com/customer-sign-in"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lightstream.com/faq",
+      "note": "AutoPay debits your personal bank account on each due date. AutoPay pricing is 0.50 points lower than invoice pricing, and that discount is only available before your loan funds."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.lightstream.com/faq"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lightstream.com/faq",
+      "note": "Invoice payments can be mailed or sent through your bank's bill pay; they cannot be made at Truist branches."
+    }
+  },
+  "billing": {
+    "source": "https://www.lightstream.com/faq",
+    "methods": [
+      "bank"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.lightstream.com/faq"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Making payments",
+      "paragraphs": [
+        "Sign in to schedule a one-time payment from your personal bank account; business and third-party accounts cannot be used. Same-day payments are not available, so sign in at least two business days before the date you want the payment made.",
+        "Invoice customers can also mail the payment to the address printed on the invoice (LightStream's mailing address is PO Box 117320, Atlanta, GA 30368-7320) or use their bank's bill pay. Payments cannot be made at Truist branches."
+      ],
+      "source": "https://www.lightstream.com/faq",
+      "mode": "append"
+    },
+    {
+      "slug": "autopay-vs-invoice",
+      "title": "AutoPay or invoice",
+      "paragraphs": [
+        "You choose AutoPay or invoice billing before your loan funds. Invoice rates are 0.50 percentage points higher than AutoPay rates, and the AutoPay discount cannot be added after funding. With AutoPay, the regular payment is always taken on the due date; any extra payment is applied as an extra payment."
+      ],
+      "source": "https://www.lightstream.com/faq",
+      "topic": "autopay"
+    },
+    {
+      "slug": "extra-payments",
+      "title": "Extra payments and payoff",
+      "paragraphs": [
+        "LightStream loans have no fees and no prepayment penalty. A payment that arrives 18 or more days before the due date is applied as an extra payment, and the regular payment is still due. For a principal-only payment, schedule it on the same date as your monthly payment. Due dates cannot be changed after the loan funds."
+      ],
+      "source": "https://www.lightstream.com/faq",
+      "topic": "payments"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "payment-lead-time",
+        "intent": "Using the LightStream FAQ, find how far ahead you must sign in to schedule a payment. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "two business days",
+              "2 business days",
+              "two",
+              "2"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "two business days",
+            "2 business days",
+            "two",
+            "2"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments",
+          "scheduled"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Sign in at least two business days before the payment date; same-day payments are not available."
+          }
+        ]
+      },
+      {
+        "slug": "invoice-rate-difference",
+        "intent": "Using the LightStream FAQ, find how much higher the rate is for invoice billing than for AutoPay. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "0.50",
+              "0.5",
+              "half a percent",
+              "half of a percentage"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "0.50",
+            "0.5",
+            "half a percent",
+            "half of a percentage"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Invoice rates are 0.50 percentage points higher than AutoPay rates."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "User ID"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "0.50"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "two business days"
+    }
+  ]
+}

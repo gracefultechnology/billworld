@@ -1,0 +1,325 @@
+{
+  "id": "alameda-county-treasurer-tax-collector-28980e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Alameda County Treasurer-Tax Collector",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public propertytax.alamedacountyca.gov pages (rendered headlessly) and treasurer.acgov.org FAQs; no sign-in, no lookup. Pay / Look Up Property Taxes Online (GovHub processor): e-check free; card fee amount is blank on the public phone page, so no card fee is charged in the mock (fees.notes). Phone IVR 510-272-6800 for card payments. Mail to 1221 Oak Street, Room 131, Oakland, CA 94612, payable to Treasurer Tax Collector, Alameda County; mailed payments must be the full stub amount (no partial payments). Two installments: due Nov 1/Feb 1, delinquent 5 p.m. Dec 10/Apr 10; 10% penalty, plus $10 cost on the second. A rejected online payment blocks online payment for the rest of the fiscal year and must be replaced by mail with a $61 returned check fee. County accepts only two installments; monthly payments only through lender impound or the endorsed third-party Easy Smart Pay (1.99%), so AutoPay is unsupported. Only due-date email reminders are offered (paperless unsupported, inferred). Email sign-in is synthetic.",
+  "officialDomains": [
+    "alamedacountyca.gov",
+    "acgov.org"
+  ],
+  "sources": [
+    {
+      "url": "https://propertytax.alamedacountyca.gov/",
+      "title": "Property Taxes - Lookup - Alameda County",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://propertytax.alamedacountyca.gov/phone",
+      "title": "Pay Your Property Taxes By Phone",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://propertytax.alamedacountyca.gov/mail",
+      "title": "Pay Your Property Taxes By Mail",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://propertytax.alamedacountyca.gov/monthlypayments",
+      "title": "Property Taxes - Secured Monthly Payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://treasurer.acgov.org/taxes-faqs/",
+      "title": "Taxes FAQs | Treasurer Tax Collector",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Alameda County Treasurer-Tax Collector",
+    "shortName": "Alameda County Treasurer-Tax Collector",
+    "primary": "#1b4d6b",
+    "accent": "#6a3d14",
+    "monogram": "AC"
+  },
+  "labels": {
+    "guestPay": "Pay / Look Up Property Taxes Online",
+    "payBill": "Pay Your Property Tax",
+    "help": "Frequently Asked Questions",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay / Look Up Property Taxes Online",
+        "page": "guest"
+      },
+      {
+        "label": "Other Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Secured Monthly Payments",
+        "helpSlug": "monthly-payments"
+      },
+      {
+        "label": "Frequently Asked Questions",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Your Property Tax",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://propertytax.alamedacountyca.gov/",
+      "note": "Look up a secured bill by parcel number and pay online; e-check payments are free."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://propertytax.alamedacountyca.gov/monthlypayments",
+      "note": "The county accepts only the two installments each year. For monthly payments, use a lender impound account or the county-endorsed third-party Easy Smart Pay (1.99% fee).",
+      "channel": "none"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://propertytax.alamedacountyca.gov/",
+      "note": "Tax bills are mailed by November 1. You can subscribe to email reminders before due dates and look up or download your bill online.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://propertytax.alamedacountyca.gov/phone",
+      "note": "Pay by credit card through the 24-hour automated line at 510-272-6800; a transaction fee is added.",
+      "phone": "5102726800"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://propertytax.alamedacountyca.gov/mail",
+      "note": "Mail the full stub amount, payable to Treasurer Tax Collector, Alameda County, to 1221 Oak Street, Room 131, Oakland, CA 94612. Partial payments are returned."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://propertytax.alamedacountyca.gov/monthlypayments",
+      "note": "Current-year taxes must be paid in the two installments; there is no county payment plan. Consider an impound account or Easy Smart Pay.",
+      "channel": "none"
+    }
+  },
+  "billing": {
+    "source": "https://propertytax.alamedacountyca.gov/",
+    "fees": {
+      "bankCents": 0,
+      "notes": [
+        "Card payments carry a transaction fee; the amount is not shown on the county's public pages.",
+        "A rejected online payment must be replaced by mail with a $61.00 returned check fee, and online payment is blocked for the rest of the fiscal year."
+      ],
+      "evidence": "documented_official",
+      "source": "https://treasurer.acgov.org/taxes-faqs/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "lateFeePercent": 10
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay property taxes",
+      "topic": "payments",
+      "source": "https://propertytax.alamedacountyca.gov/mail",
+      "paragraphs": [
+        "Paying online is the best way to avoid late fees, and e-check payments are free. You can also pay by phone, by mail, in person or by wire.",
+        "By phone, use the 24-hour automated line at 510-272-6800 to pay by credit card; a transaction fee is added. By mail, send a check payable to Treasurer Tax Collector, Alameda County, with the payment stub to 1221 Oak Street, Room 131, Oakland, CA 94612. Mailed payments must be for the full stub amount; partial payments are returned. Use the first stub before the second, or send both to pay the whole year.",
+        "Since December 24, 2025 the Postal Service dates mail when its machines first process it, not when it is collected, so mail early or ask the post office for a manual postmark, or pay online."
+      ]
+    },
+    {
+      "slug": "due-dates-penalties",
+      "title": "Due dates and penalties",
+      "topic": "billing",
+      "source": "https://treasurer.acgov.org/taxes-faqs/",
+      "paragraphs": [
+        "The secured bill is paid in two installments: the first is due November 1 and becomes delinquent at 5 p.m. on December 10, with a 10% penalty; the second is due February 1 and becomes delinquent at 5 p.m. on April 10, with a 10% penalty plus a $10 cost. To pay both at once, pay the total with both stubs by December 10.",
+        "Taxes still unpaid at 5 p.m. on June 30 add redemption penalties of 1.5% a month and a redemption fee; after five years the Tax Collector can sell tax-defaulted property."
+      ]
+    },
+    {
+      "slug": "monthly-payments",
+      "title": "Secured monthly payments",
+      "topic": "autopay",
+      "source": "https://propertytax.alamedacountyca.gov/monthlypayments",
+      "paragraphs": [
+        "The county's systems accept only the two installments each year. To pay monthly, ask your lender to set up an impound account, save monthly in your own bank account, or use Easy Smart Pay.",
+        "Easy Smart Pay is an outside company endorsed by, but not affiliated with, Alameda County. It collects monthly ACH or card payments (currently a 1.99% fee) and forwards them to the county when taxes are due. It does not cover supplemental taxes, and the December 10 and April 10 deadlines still apply."
+      ]
+    },
+    {
+      "slug": "rejected-payments",
+      "title": "Rejected online payments",
+      "topic": "payments",
+      "source": "https://treasurer.acgov.org/taxes-faqs/",
+      "paragraphs": [
+        "If your bank rejects an online payment, you cannot pay online again for the rest of that fiscal year. Mail the payment for the rejected installment with a $61.00 returned check fee before the due date, and mail any later installments as well. Online payments resume the next fiscal year."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "returned-check-fee",
+        "intent": "Using the Alameda County Treasurer-Tax Collector website's help pages, find the returned check fee owed after an online property tax payment is rejected by your bank. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$61"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$61"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A rejected online payment must be replaced by mail with a $61.00 returned check fee."
+          }
+        ]
+      },
+      {
+        "slug": "second-installment-delinquency",
+        "intent": "Using the Alameda County Treasurer-Tax Collector website's help pages, find the time and date when the second property tax installment becomes delinquent. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "April 10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "April 10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "due_date"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The second installment becomes delinquent at 5 p.m. on April 10."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Other Ways to Pay",
+        "Secured Monthly Payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "510-272-6800",
+        "1221 Oak Street"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "monthly-payments",
+      "contains": "Easy Smart Pay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "rejected-payments",
+      "contains": "$61.00"
+    }
+  ]
+}

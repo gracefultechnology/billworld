@@ -1,0 +1,273 @@
+{
+  "id": "american-water-resources-oncourse-home-solutions-23bc25",
+  "version": 1,
+  "status": "dedicated",
+  "category": "home-services",
+  "reviewedAt": "2026-10-10",
+  "name": "American Water Resources / Oncourse Home Solutions",
+  "template": "streaming",
+  "notes": "Researched from the public Oncourse Home Solutions FAQs and the public sign-in page only (never signed in). American Water Resources (awrusa.com) now points to Oncourse Home Solutions. Sign-in (Azure B2C) shows Email Address and Password, Sign in, Forgot your password? and Sign up now. Plans are 12-month terms that renew automatically at then-current rates; payment by Visa or Mastercard, check or ACH, monthly or annually; some customers are billed on their utility bill (not modelled). Automatic payment is chosen at enrollment; turning it off online is not described, so autopay_cancel is modelled as unsupported with the 24/7 number (inferred). Cancellation is by phone only (1-855-800-5195, 24/7, choose the cancel option): full refund within 30 days of enrollment; monthly payers end at the end of the billing cycle with no refund; annual payers get a refund for the rest of the term. Renewal and other questions can also go by text to 630-534-9190. Moved from utility-account to streaming like HomeServe and AHS: this is a protection-plan subscription, not a metered utility. The online account's features are not described publicly; the family's pages stay. Plan prices vary by ZIP and are not published, so the plan page keeps synthetic plans. Reviewed 2026-10-10 (independent review): FAQ re-read (payment options, auto-renewal, text renewals, cancellation refunds, failed payments); contact page confirms existing-customer line 1-855-800-5195 (24/7) and new-customer line 1-877-513-8520.",
+  "officialDomains": [
+    "oncourse.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.oncourse.com/company/faqs",
+      "title": "Oncourse Home Solutions FAQs | Home Warranty Questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://auth-service-production.ohscloud.net/login/ngdp_oncourse/azure_b2c",
+      "title": "Oncourse Home Solutions sign in",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.oncourse.com/company/contact-us",
+      "title": "Contact Oncourse Home Solutions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "contact": {
+    "phone": "8558005195",
+    "source": "https://www.oncourse.com/company/contact-us"
+  },
+  "brand": {
+    "displayName": "Oncourse Home Solutions",
+    "shortName": "Oncourse",
+    "primary": "#0b4f8a",
+    "accent": "#08365e",
+    "monogram": "OH"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Sign up now",
+    "forgot": "Forgot your password?",
+    "dashboard": "My Account",
+    "autopay": "Automatic Payments",
+    "cancel": "Cancel Protection",
+    "help": "FAQs",
+    "username": "Email Address"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Cancel Protection",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://auth-service-production.ohscloud.net/login/ngdp_oncourse/azure_b2c"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.oncourse.com/company/faqs",
+      "note": "With automatic payment on file, your plan renews every 12 months at the then-current rate; you get a reminder before it expires."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.oncourse.com/company/faqs",
+      "note": "To change how your plan is paid or stop automatic renewal, call 1-855-800-5195 (24/7) or text 630-534-9190.",
+      "channel": "phone",
+      "phone": "8558005195"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.oncourse.com/company/faqs",
+      "note": "Call 1-855-800-5195 any time, day or night, and choose the cancel option. Cancel within 30 days of enrollment for a full refund.",
+      "channel": "phone",
+      "phone": "8558005195"
+    }
+  },
+  "billing": {
+    "source": "https://www.oncourse.com/company/faqs",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying for your protection plan",
+      "topic": "payments",
+      "paragraphs": [
+        "You can pay by Visa or Mastercard, by check or by ACH bank transfer, monthly or once a year. Depending on where you live and your utility, you may be able to add your plan to your utility bill.",
+        "If a payment fails, Oncourse could not charge the payment method on file. Contact them to set up another payment method so your coverage stays active."
+      ],
+      "source": "https://www.oncourse.com/company/faqs"
+    },
+    {
+      "slug": "autopay",
+      "title": "Renewals",
+      "topic": "autopay",
+      "paragraphs": [
+        "Coverage runs for 12 months and renews automatically each year at the then-current rate. If you chose auto-renewal at enrollment, you do not need to do anything.",
+        "Otherwise, renew by calling 1-855-800-5195 (24/7) or texting 630-534-9190. A reminder arrives by email or mail before your coverage expires; if you do not have an automatic payment method and do not respond, your coverage ends."
+      ],
+      "source": "https://www.oncourse.com/company/faqs"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your plan",
+      "topic": "account",
+      "paragraphs": [
+        "Call 1-855-800-5195 any time, choose the cancel option and tell the agent you want to cancel.",
+        "Cancel within 30 days of enrollment for a full refund of program fees, issued within 30 days. After that, monthly payers' cancellation takes effect at the end of the billing cycle with no refund; annual payers' cancellation takes effect at the end of the current billing month and the rest of the term is refunded to the original payment method.",
+        "If you pay on your utility bill, Oncourse tells the utility; a charge may still appear on one or two more utility bills. Coverage stays active until the cancellation takes effect."
+      ],
+      "source": "https://www.oncourse.com/company/faqs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "renewal-text-number",
+        "intent": "You want to renew your Oncourse protection plan by text message. Using the FAQs, find the number to text. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "6305349190"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "6305349190"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Text 630-534-9190."
+          }
+        ]
+      },
+      {
+        "slug": "full-refund-window",
+        "intent": "Using the Oncourse FAQs, find within how many days of enrollment you must cancel to get a full refund. Do not cancel anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Within 30 days of enrollment."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email Address",
+        "Forgot your password?"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Automatic Payments"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-855-800-5195"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "630-534-9190"
+    }
+  ]
+}

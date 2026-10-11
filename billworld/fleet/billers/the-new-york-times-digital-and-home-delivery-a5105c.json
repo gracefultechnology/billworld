@@ -1,0 +1,464 @@
+{
+  "id": "the-new-york-times-digital-and-home-delivery-a5105c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "The New York Times (digital and home delivery)",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public help.nytimes.com articles only (no sign-in). Subscriptions are billed in advance, most often every four weeks; digital subscriptions are charged automatically to the payment method on file (cards, Google Pay, Apple Pay, PayPal), Home Delivery accepts cards and check/money order (mailed invoice) and offers Enroll in Autopay under Billing. Modeled: autopay supported (Home Delivery wording); autopay_cancel supported is inferred (turning Autopay off is not described). billing.methods ['card'] (no bank account for either product). Cancel online (Subscription Overview > Cancel your Subscription), by chat or by phone 866-273-3612. Change subscription (upgrade/replace) applies immediately with a prorated credit; reviewer 2026-10-10: nytimes.com/subscription (rendered) states All Access $30 and All Access Family $34 every four weeks after the intro offer; modeled as plans with change_plan supported (documented). Paper vs. emailed Home Delivery invoices are not documented; paperless 'unknown'. Sign-in: email, Continue, then password (two steps); Continue with Google/Apple is offered (socialProviders google). Password at least 6 characters. Subscriptions bought through Apple or Google Play are managed there.",
+  "officialDomains": [
+    "nytimes.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413146685076-Understanding-Your-Bill",
+      "title": "Understanding Your Bill - The New York Times Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413154415252-Paying-Your-Bill",
+      "title": "Paying Your Bill - The New York Times Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4408046933012-Update-Your-Payment-Information",
+      "title": "Update Your Payment Information - The New York Times Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.nytimes.com/115003007668-Manage-Account/360003499613-Cancel-Your-Subscription",
+      "title": "Cancel Your Subscription - The New York Times Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.nytimes.com/115003007668-Manage-Account/4409158078740-Change-Your-Subscription",
+      "title": "Change Your Subscription - The New York Times Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://help.nytimes.com/115003007668-Manage-Account/115010905707-Log-in-to-Your-New-York-Times-Account",
+      "title": "Log in to Your New York Times Account - The New York Times Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.nytimes.com/115003007668-Manage-Account/360052335791-Reset-Your-Password",
+      "title": "Reset Your Password - The New York Times Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413146716948-Payment-Issues",
+      "title": "Payment Issues - The New York Times Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://help.nytimes.com/115002788207-Subscriptions/115015852367-Digital-Subscriptions",
+      "title": "Digital Subscriptions - The New York Times Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.nytimes.com/subscription",
+      "title": "Subscribe to The New York Times",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "The New York Times",
+    "shortName": "New York Times",
+    "primary": "#121212",
+    "accent": "#326891",
+    "monogram": "T"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "username": "Email address",
+    "forgot": "Forgot your password?",
+    "dashboard": "Subscription Overview",
+    "history": "Billing history",
+    "statements": "Billing history",
+    "wallet": "Payment information",
+    "plan": "Change subscription",
+    "cancel": "Cancel your Subscription",
+    "autopay": "Autopay",
+    "help": "Help Center",
+    "dueDate": "Next payment date"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Subscription Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing history",
+        "page": "history"
+      },
+      {
+        "label": "Payment information",
+        "page": "wallet"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Change subscription",
+        "page": "plan"
+      },
+      {
+        "label": "Cancel your Subscription",
+        "page": "cancel"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "none",
+    "socialProviders": [
+      "google"
+    ],
+    "passwordRule": {
+      "pattern": "^.{6,}$",
+      "message": "Enter a new password that is at least 6 characters long."
+    },
+    "evidence": "documented_official",
+    "source": "https://help.nytimes.com/115003007668-Manage-Account/115010905707-Log-in-to-Your-New-York-Times-Account"
+  },
+  "contact": {
+    "phone": "866-273-3612",
+    "source": "https://help.nytimes.com/115003007668-Manage-Account/360003499613-Cancel-Your-Subscription"
+  },
+  "capabilities": {
+    "google_login": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.nytimes.com/115003007668-Manage-Account/115010905707-Log-in-to-Your-New-York-Times-Account"
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.nytimes.com/115003007668-Manage-Account/360052335791-Reset-Your-Password"
+    },
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413154415252-Paying-Your-Bill",
+      "note": "Your subscription is paid from your account or by mailing a check with your Home Delivery invoice."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413154415252-Paying-Your-Bill",
+      "note": "Digital subscriptions are charged automatically before each service period. Home Delivery subscribers can choose Enroll in Autopay on the Billing page."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413154415252-Paying-Your-Bill"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413154415252-Paying-Your-Bill",
+      "note": "Home Delivery subscribers can mail a check or money order payable to The New York Times with the invoice payment slip. Checks can take up to 21 business days to process."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413146685076-Understanding-Your-Bill"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413146685076-Understanding-Your-Bill",
+      "note": "For questions about how you receive Home Delivery invoices, contact Customer Care at 866-273-3612."
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413146716948-Payment-Issues"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413146685076-Understanding-Your-Bill",
+      "note": "Subscriptions are billed in advance for each service period and installment plans are not offered."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.nytimes.com/115003007668-Manage-Account/360003499613-Cancel-Your-Subscription",
+      "note": "You can also cancel by chat or by calling 866-273-3612 (7 a.m.-5 p.m. ET weekdays, 7 a.m.-2 p.m. ET weekends and holidays). Subscriptions bought through Apple or Google Play are canceled with them.",
+      "phone": "866-273-3612"
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.nytimes.com/115003007668-Manage-Account/4409158078740-Change-Your-Subscription",
+      "note": "Changes take effect right away; the unused part of your current subscription is credited toward future payments."
+    }
+  },
+  "billing": {
+    "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413154415252-Paying-Your-Bill",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413154415252-Paying-Your-Bill"
+    },
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "plans": [
+      {
+        "id": "all-access",
+        "name": "All Access",
+        "cents": 3000
+      },
+      {
+        "id": "all-access-family",
+        "name": "All Access Family",
+        "cents": 3400,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "understanding-your-bill",
+      "title": "Understanding your bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Subscriptions are billed in advance. The most common billing cycle is every four weeks, so some months have two charges.",
+        "Billing history in your account lists each invoice with its date, the subscription it covers, the service period and the amount. Home Delivery invoices can be downloaded as a PDF; for digital subscriptions, take a screenshot of the Billing history if you need a copy. Your Next payment date is in the Payment information section of Subscription Overview.",
+        "A bill can change when a promotional rate ends, after an upgrade or downgrade, when a delivery credit is applied, or after a price increase that was announced to you in advance."
+      ],
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413146685076-Understanding-Your-Bill"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Digital subscriptions can be paid with any major debit or credit card, Google Pay, Apple Pay or PayPal, and are charged automatically before each service period. Home Delivery accepts major debit and credit cards, checks and money orders.",
+        "To pay by check, make it payable to The New York Times, write your account number on it, and mail it with the invoice payment slip in the return envelope. Checks can take up to 21 business days to process.",
+        "Home Delivery subscribers can set up recurring payments: log in, choose Billing, then Enroll in Autopay."
+      ],
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4413154415252-Paying-Your-Bill"
+    },
+    {
+      "slug": "update-payment",
+      "title": "Update your payment information",
+      "topic": "billing",
+      "paragraphs": [
+        "In Subscription overview, find Payment information and choose Update next to your current payment method. Choose a credit card or PayPal (PayPal is for digital subscribers), enter the details and Save."
+      ],
+      "source": "https://help.nytimes.com/4413127329812-Manage-Your-Billing/4408046933012-Update-Your-Payment-Information",
+      "steps": [
+        "Log in and open Subscription Overview.",
+        "Find Payment information and choose Update.",
+        "Enter the new card or PayPal details.",
+        "Select Save."
+      ]
+    },
+    {
+      "slug": "change-plan",
+      "title": "Change your subscription",
+      "topic": "plans",
+      "paragraphs": [
+        "Subscriptions billed by The New York Times can be upgraded to All Access or replaced with another subscription. Open Subscription Overview, choose Change subscription, pick an option, choose Review Changes to see the new rate and terms, then Confirm.",
+        "Changes take effect right away. The unused part of your old subscription is prorated and applied as a credit to future payments. Gift and bonus subscriptions cannot be changed."
+      ],
+      "source": "https://help.nytimes.com/115003007668-Manage-Account/4409158078740-Change-Your-Subscription"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your subscription",
+      "topic": "account",
+      "paragraphs": [
+        "Eligible digital and Home Delivery subscriptions billed by The New York Times can be canceled in your account: open Subscription Overview, choose Cancel your Subscription under Manage Subscription and follow the steps.",
+        "You can also cancel by chat or by calling 866-273-3612, 7 a.m. to 5 p.m. ET on weekdays and 7 a.m. to 2 p.m. ET on weekends and holidays. If you subscribed through Apple or Google Play, cancel with them."
+      ],
+      "source": "https://help.nytimes.com/115003007668-Manage-Account/360003499613-Cancel-Your-Subscription",
+      "steps": [
+        "Log in and open Subscription Overview.",
+        "Choose Cancel your Subscription.",
+        "Follow the instructions to finish."
+      ]
+    },
+    {
+      "slug": "reset-password",
+      "title": "Reset your password",
+      "topic": "account",
+      "paragraphs": [
+        "Choose Forgot your password? when logging in and enter your account email address. Enter the verification code from the email, then a new password of at least 6 characters, and select Submit. You are then logged in automatically."
+      ],
+      "source": "https://help.nytimes.com/115003007668-Manage-Account/360052335791-Reset-Your-Password"
+    },
+    {
+      "slug": "plans-and-pricing",
+      "title": "Digital subscription prices",
+      "topic": "plans",
+      "paragraphs": [
+        "All Access includes News plus Games, Cooking, Audio, Wirecutter and The Athletic. After any introductory offer, All Access is billed $30 every four weeks and All Access Family $34 every four weeks. Introductory offers are for new subscribers and the print edition is not included."
+      ],
+      "source": "https://www.nytimes.com/subscription"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "billing-cycle",
+        "intent": "You were charged twice by The New York Times this month. Using the help pages, find the most common billing cycle that explains this. Do not change anything or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "four weeks",
+              "4 weeks",
+              "28 days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "four weeks",
+            "4 weeks",
+            "28 days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The most common billing cycle is every four weeks, so two charges can fall in one month."
+          }
+        ]
+      },
+      {
+        "slug": "check-processing-time",
+        "intent": "You want to pay your New York Times Home Delivery invoice by check. Using the help pages, find how long a mailed check can take to process. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "21"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "21"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Checks can take up to 21 business days to process."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing history",
+        "Payment information"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "understanding-your-bill",
+      "contains": "four weeks"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "21 business days"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "All Access",
+        "All Access Family"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "id": "priority-waste-0ec36e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Priority Waste",
+  "category": "trash",
+  "reviewedAt": "2026-10-10",
+  "template": "waste-hauler",
+  "notes": "Moved from the catalog default utility-account family to the trash-specific waste-hauler family. Researched from the public prioritywaste.com Online Bill Pay page, FAQ, the How to Create an Account and How to Set Up Auto-Pay PDF guides, and the AMCS customer portal home (linked from Login); never signed in. Online Bill Pay offers a no-sign-in credit-card one-time payment and a no-sign-in electronic check/ACH one-time payment with no processing fees (Customer # = account number); one-time payments can take up to five business days to post, so the site recommends the portal or AutoPay when the due date is near. Registration (Sign Up with Invoice Number) asks for first/last name, telephone, e-mail, password, security question and the Customer Number plus Invoice Number from the first Priority bill, then e-mail confirmation; the mock models accountNumber, lastName, phone and email (invoice number and security question are not expressible). Auto Pay: save a card under Payment Accounts (Save New Card), then switch Auto Pay ON; payments come from the default saved account and changes may not apply to existing invoices. The guide shows card setup only, so AutoPay methodTypes is card. Paperless billing is enrolled by calling (586) 228-1200 (FAQ), so paperless is unsupported online. No card convenience fee or late fee amount is published. Main line 1-855-927-8365; billing questions (586) 228-1200 (used as contact phone). Former GFL Michigan communities moved to Priority.",
+  "officialDomains": [
+    "prioritywaste.com",
+    "amcsplatform.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.prioritywaste.com/online-bill-pay/",
+      "title": "Online Bill Pay - Priority Waste",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.prioritywaste.com/faq/",
+      "title": "Frequently Asked Questions - Priority Waste",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.prioritywaste.com/wp-content/uploads/2024/07/how-to-set-up-auto-pay_compressed.pdf",
+      "title": "How to Set Up Auto Pay (Priority Waste PDF guide)",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.prioritywaste.com/wp-content/uploads/2024/07/create-account_compressed.pdf",
+      "title": "Create an Account with Priority (PDF guide)",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://prioritywaste-portal.amcsplatform.com/",
+      "title": "Priority Waste customer portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Priority Waste",
+    "shortName": "Priority",
+    "primary": "#1f3a8a",
+    "accent": "#b91c1c",
+    "monogram": "P"
+  },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "signIn": "Sign In",
+    "register": "Sign Up",
+    "guestPay": "One Time Payment",
+    "autopay": "Auto Pay",
+    "wallet": "Payment Accounts",
+    "statements": "Invoices",
+    "history": "Transaction history",
+    "help": "FAQ",
+    "accountNumber": "Customer Number",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "One Time Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Sign Up",
+        "page": "register"
+      },
+      {
+        "label": "Online Bill Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Quick Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Transaction history",
+        "page": "history"
+      },
+      {
+        "label": "Payment Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "lastName",
+      "phone",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.prioritywaste.com/wp-content/uploads/2024/07/create-account_compressed.pdf"
+  },
+  "contact": {
+    "phone": "586-228-1200",
+    "source": "https://www.prioritywaste.com/faq/",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.prioritywaste.com/online-bill-pay/",
+      "note": "One-time payments need no sign-in, but can take up to five business days to post. If your due date is less than five days away, pay in the portal or use Auto Pay."
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.prioritywaste.com/wp-content/uploads/2024/07/create-account_compressed.pdf",
+      "note": "Sign Up with Invoice Number: you need the invoice number and customer number from your first Priority bill. Confirm your account from the e-mail before signing in."
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.prioritywaste.com/online-bill-pay/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.prioritywaste.com/wp-content/uploads/2024/07/how-to-set-up-auto-pay_compressed.pdf",
+      "note": "Save a card under Payment Accounts, then switch Auto Pay on. Payments come from your default saved account; changes may not apply to invoices already issued."
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.prioritywaste.com/faq/",
+      "note": "Paperless billing is set up by phone. Call Priority Waste at (586) 228-1200 to enroll.",
+      "channel": "phone",
+      "phone": "586-228-1200"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.prioritywaste.com/faq/",
+      "note": "Payment plans are not offered online. Call Priority Waste billing at (586) 228-1200.",
+      "channel": "phone",
+      "phone": "586-228-1200"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.prioritywaste.com/faq/",
+      "note": "Service changes and cancellations are handled by phone. Call Priority Waste at 1-855-927-8365.",
+      "channel": "phone",
+      "phone": "855-927-8365"
+    }
+  },
+  "billing": {
+    "source": "https://www.prioritywaste.com/online-bill-pay/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "guestBankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.prioritywaste.com/online-bill-pay/"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Priority Waste bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Without signing in, you can make a one-time credit card payment or a one-time electronic check (ACH) payment. ACH one-time payments have no processing fee; your Customer # is your account number.",
+        "One-time payments can take up to five business days to show on your account. If your due date is less than five days away, pay through the customer portal after creating an account, or enroll in Auto Pay.",
+        "Billing questions or trouble creating your account: call (586) 228-1200."
+      ],
+      "source": "https://www.prioritywaste.com/online-bill-pay/"
+    },
+    {
+      "slug": "register",
+      "title": "How to create a portal account",
+      "topic": "account",
+      "paragraphs": [
+        "Choose Login on prioritywaste.com, then Sign Up, then Sign Up with Invoice Number. Fill in your name, telephone number, e-mail, a password and a security question, plus the Customer Number and Invoice Number shown on your first Priority bill, and select Register.",
+        "Confirm the account from the e-mail Priority sends you, then sign in. In the portal you can pay your bill, set up Auto Pay and view your transaction history."
+      ],
+      "source": "https://www.prioritywaste.com/wp-content/uploads/2024/07/create-account_compressed.pdf"
+    },
+    {
+      "slug": "autopay",
+      "title": "How to set up Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "When Auto Pay is on, Priority takes payment automatically from your default saved account. Changes to Auto Pay may not take effect right away and do not update invoices already issued."
+      ],
+      "steps": [
+        "Sign in to your Priority account.",
+        "Open the Payment Accounts tab and choose Save New Card.",
+        "Enter the card details and submit; a message confirms the card is saved and authorized for future payments.",
+        "Back on Payment Accounts, switch Auto Pay to ON."
+      ],
+      "source": "https://www.prioritywaste.com/wp-content/uploads/2024/07/how-to-set-up-auto-pay_compressed.pdf"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "To enroll in paperless billing, call Priority Waste at (586) 228-1200. The Automatic Payments & Paperless Billing terms are posted on the FAQ page."
+      ],
+      "source": "https://www.prioritywaste.com/faq/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "one-time-posting",
+        "intent": "Using Priority Waste's help pages, find how long a one-time payment made without signing in can take to post to your account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "five"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "five"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "One-time payments can take up to five business days to post."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment Accounts",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "five business days",
+        "(586) 228-1200"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Save New Card"
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "contains": "(586) 228-1200"
+    }
+  ]
+}

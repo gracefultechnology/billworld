@@ -1,0 +1,367 @@
+{
+  "id": "snap-finance-fd736e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Snap Finance",
+  "category": "other",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Snap Finance customer help page (snapfinance.com/customers-help) only; never signed in. The Customer Portal (customer.snapfinance.com) and the Snap Leasing / Snap Loan apps show agreement details, payment history, upcoming payments and the remaining balance. First-time users choose Create an Account, enter the email used on the application and get an email to create a password; the reset link is 'Forgot your username or password?' and Snap emails the username, so the sign-in identifier is modelled as email or username (inferred). Default payments are automatic ACH from the bank account on file, scheduled on the customer's paydays; a debit/credit card can be made the primary method online (Lease Detail > Add a Payment Option > Change Primary Payment Method), while a different bank account needs a call. Extra payments: Schedule Payment on the dashboard; bank payments can be dated up to a week ahead (not weekends/holidays) and post the next business day, card payments are same day. Automatic payments can be turned off, but changes to how/when/how much you pay go through Customer Care chat or 877-557-3769, so turning AutoPay on/off online is modelled as unsupported (inferred). Payment frequency and amount changes, early buyout (lease) and early payoff (loan) are arranged with Customer Care; the payoff amount itself can be paid in the portal by card. The default lease is the 12-18 month Maximum-Term Plan. Ending a lease means returning the merchandise in good condition, started through Customer Care. A processing fee or initial payment may be due at checkout (amount varies, not modelled). No convenience fees, paperless or statement settings are published; those keep the family defaults. Approval range $300-$5,000; lease-to-own and Snap Loan (bank-partner installment loans and retail installment contracts serviced by Snap). HELD BACK: billing.scheduled.maxDaysAhead 7 (bank payments up to a week ahead) is real but not set, because the generated schedule-payment task (2026-10-15) and the driver's schedule_and_cancel flow (2026-10-20) date payments beyond 7 days after the fleet clock (cross-owner request: date them within maxDaysAhead); the limit is stated in the pay-your-bill help article instead. REVIEW 2026-10-10: pay_by_mail override removed (the help page lists a mailing address for correspondence only, no mail-payment process). The help page says ending a lease can be started through Customer Care or the Customer Portal; cancel_service stays unsupported online because the return itself is arranged with Customer Care.",
+  "officialDomains": [
+    "snapfinance.com"
+  ],
+  "sources": [
+    {
+      "url": "https://snapfinance.com/customers-help",
+      "title": "Snap Finance customer help (FAQ)",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://customer.snapfinance.com/",
+      "title": "Snap Finance Customer Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Snap Finance",
+    "shortName": "Snap",
+    "primary": "#1b3f7a",
+    "accent": "#0e6b4f",
+    "monogram": "SF"
+  },
+  "labels": {
+    "payBill": "Schedule Payment",
+    "wallet": "Payment Options",
+    "history": "Payment History",
+    "dashboard": "Dashboard",
+    "signIn": "Log in",
+    "register": "Create an Account",
+    "forgot": "Forgot your username or password?",
+    "help": "Customer Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Customers Login",
+        "page": "login"
+      },
+      {
+        "label": "Create an Account",
+        "page": "register"
+      },
+      {
+        "label": "Payments FAQ",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Customer Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Schedule Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment Options",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://snapfinance.com/customers-help"
+  },
+  "contact": {
+    "phone": "8775573769",
+    "payPhone": "8775573769",
+    "source": "https://snapfinance.com/customers-help"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://snapfinance.com/customers-help",
+      "note": "Automatic payments are set up with your agreement to match your paydays. To turn automatic payments back on, or to change how or when they are made, chat with Customer Care or call 877-557-3769.",
+      "channel": "phone",
+      "phone": "8775573769"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://snapfinance.com/customers-help",
+      "note": "You can turn off automatic payments by chatting with Customer Care or calling 877-557-3769. Afterwards you make each payment yourself in the Customer Portal or through Customer Care.",
+      "channel": "phone",
+      "phone": "8775573769"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://snapfinance.com/customers-help",
+      "note": "To change how often you pay or the amount of your regular payments, or to schedule an early buyout, chat with Customer Care or call 877-557-3769.",
+      "channel": "phone",
+      "phone": "8775573769"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://snapfinance.com/customers-help",
+      "note": "You can end your lease at any time without penalty by returning the merchandise to Snap Finance in good condition (this is not the same as a return to the store). Contact Customer Care at 877-557-3769 to start.",
+      "channel": "phone",
+      "phone": "8775573769"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://snapfinance.com/customers-help"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://snapfinance.com/customers-help",
+      "phone": "8775573769"
+    }
+  },
+  "billing": {
+    "source": "https://snapfinance.com/customers-help",
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make an additional payment",
+      "topic": "payments",
+      "paragraphs": [
+        "You can make extra payments in the Snap Finance mobile app or in the Customer Portal.",
+        "Bank account payments made early in the day are generally processed the next business day; later in the day they may take one more business day. You can date a bank payment up to a week ahead, but not on a weekend or holiday.",
+        "Debit or credit card payments are made the same day."
+      ],
+      "steps": [
+        "Log in to the Customer Portal.",
+        "Select Schedule Payment on the dashboard (or open Lease Details / Loan Details and add a card first).",
+        "Choose your stored bank account or add a new payment method.",
+        "Enter the amount and the payment date.",
+        "Check the details and select Submit Payment."
+      ],
+      "source": "https://snapfinance.com/customers-help"
+    },
+    {
+      "slug": "faq",
+      "title": "How Snap payments work",
+      "topic": "faq",
+      "paragraphs": [
+        "Most accounts pay automatically by ACH from the bank account on file, on a schedule that matches your paydays.",
+        "You can turn automatic payments off, but then you must make each payment in the Customer Portal or through Customer Care. To change how often you pay or the amount of your regular payments, chat with Customer Care or call 877-557-3769.",
+        "For a lease you can make a debit or credit card your primary payment method in the portal: open Lease Detail, select Add a Payment Option, then Change Primary Payment Method. To switch to a different bank account, call Customer Care.",
+        "Snap does not charge interest on a lease-to-own agreement; there is a cost of lease on top of the purchase price, shown in your agreement."
+      ],
+      "source": "https://snapfinance.com/customers-help"
+    },
+    {
+      "slug": "early-purchase",
+      "title": "Early buyout and early payoff",
+      "topic": "account",
+      "paragraphs": [
+        "The default lease plan is the Maximum-Term Plan: 12- to 18-month renewable terms with the lowest payments and the highest total cost.",
+        "You can own your items sooner and save on the cost of lease by making every regular payment on time and paying the required amount within the applicable timeframe, including any early buyout promotion. Early ownership options must be scheduled.",
+        "For a Snap Loan, paying the full principal plus any processing fee within the promotional window saves on finance charges; paying off later but before maturity still reduces them.",
+        "Pay a buyout or payoff in the Customer Portal (Schedule Payment, then select the payoff amount shown) or chat or call Customer Care at 877-557-3769."
+      ],
+      "source": "https://snapfinance.com/customers-help"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "End your lease",
+      "topic": "account",
+      "paragraphs": [
+        "You can end your lease-to-own agreement at any time without penalty by returning the merchandise to Snap Finance in good condition.",
+        "This is different from returning or exchanging an item with the store. To begin, contact Customer Care at 877-557-3769."
+      ],
+      "source": "https://snapfinance.com/customers-help"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Snap Finance",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer Care by phone: 877-557-3769, Monday to Friday 6:30 a.m. to 7:00 p.m. Mountain time.",
+        "Chat: Monday to Friday 7:00 a.m. to 7:00 p.m. and Saturday to Sunday 8:00 a.m. to 5:30 p.m. Mountain time.",
+        "Email customer@snapfinance.com, fax 866-332-6617, or write to P.O. Box 26561, Salt Lake City, UT 84126."
+      ],
+      "source": "https://snapfinance.com/customers-help"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "bank-payment-max-days-ahead",
+        "intent": "You want to schedule an extra Snap Finance payment from your bank account for a later date. Using Snap's help, find out how far ahead a bank account payment can be scheduled. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "week",
+              "7",
+              "seven"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "week",
+            "7",
+            "seven"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Bank account payments can be scheduled up to a week from today (not on weekends or holidays)."
+          }
+        ]
+      },
+      {
+        "slug": "change-payment-frequency-phone",
+        "intent": "You want to change how often your Snap Finance payments are taken. Find out how to do that and report the phone number to call. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8775573769"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8775573769"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payment frequency changes are made with Customer Care by chat or by phone at 877-557-3769."
+          }
+        ]
+      },
+      {
+        "slug": "default-lease-term",
+        "intent": "Using Snap Finance's help, find out the name of the default lease-to-own payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Maximum-Term",
+              "Maximum Term"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Maximum-Term",
+            "Maximum Term"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The default is the Maximum-Term Plan (12- to 18-month renewable terms)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "register"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Schedule Payment",
+        "Payment History"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "877-557-3769"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "up to a week ahead"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "early-purchase",
+      "contains": "Maximum-Term Plan"
+    }
+  ]
+}

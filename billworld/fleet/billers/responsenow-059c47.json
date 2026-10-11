@@ -1,0 +1,268 @@
+{
+  "id": "responsenow-059c47",
+  "version": 1,
+  "status": "dedicated",
+  "name": "ResponseNow",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-10",
+  "notes": "No public page describes a customer sign-in or online bill payment for this biller: billing is automatic (card or bank on file) and changes go through customer service by phone. The fleet requires an online account, so the signed-in area, online payment and register flows are a synthetic stand-in (pay_online evidence synthetic); every real route that is phone-only is modelled as an unsupported capability with a customer-facing note. Researched from ResponseNow's public home page, FAQ and Pricing Policy. Only dealer and affiliate logins exist publicly. Pricing Policy: annual plan $299.40 In Home / $454.40 Belle (equals $24.95/$34.95 a month), quarterly $83.85 / $148.85 ($27.95/$37.95), monthly $29.95 / $39.95 with $14.95 shipping; it also lists a one-time $35 activation fee, while the FAQ says there are no activation, equipment or shipping fees (conflict reported; activation fee left out of the engine). Home page: Belle $39.95, Belle X $49.95, Belle W $39.95 a month; optional caregiver app or fall detection $9.95/mo; Care+ device insurance $3.95/mo. No equipment to buy. 30-day money-back guarantee by calling within 30 days (prepaid return label). Plan changes and cancellation by phone 866-795-4321; account is cancelled when the equipment is received (mail to 9900 SW Wilshire St., Ste. 250, Portland, OR 97225). change_plan is unsupported online (documented: plan changes by phone); with change_plan unsupported the family plan page shows only the note, so the published plans are in help instead of billing.plans.",
+  "officialDomains": [
+    "responsenow.com"
+  ],
+  "sources": [
+    {
+      "url": "https://responsenow.com/",
+      "title": "ResponseNow Medical Alert Systems",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://responsenow.com/about-us/faqs/",
+      "title": "FAQs | ResponseNow",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://responsenow.com/pricing-policy/",
+      "title": "Pricing Policy | ResponseNow.com",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "ResponseNow",
+    "shortName": "ResponseNow",
+    "primary": "#0e4a7b",
+    "accent": "#9a2d1d",
+    "monogram": "RN"
+  },
+  "labels": {
+    "help": "FAQs",
+    "cancel": "Cancel Service",
+    "contact": "Contact Us",
+    "username": "Account number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Pricing Policy",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "loginSteps": 1,
+    "evidence": "synthetic"
+  },
+  "contact": {
+    "phone": "866-795-4321",
+    "source": "https://responsenow.com/about-us/faqs/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "synthetic"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://responsenow.com/pricing-policy/",
+      "note": "Your plan is billed to the payment method you gave when ordering. To change it, call ResponseNow at 866-795-4321.",
+      "channel": "phone",
+      "phone": "8667954321"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://responsenow.com/about-us/faqs/",
+      "note": "Automatic billing cannot be changed online. Call ResponseNow at 866-795-4321.",
+      "channel": "phone",
+      "phone": "8667954321"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://responsenow.com/about-us/faqs/",
+      "note": "Service cannot be cancelled online. Call ResponseNow at 866-795-4321 and return the system; the account is cancelled once the equipment is received.",
+      "channel": "phone",
+      "phone": "8667954321"
+    },
+    "change_plan": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://responsenow.com/about-us/faqs/",
+      "note": "Plan changes are made by phone. Call ResponseNow at 866-795-4321 to change your plan at any time.",
+      "channel": "phone",
+      "phone": "8667954321"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://responsenow.com/about-us/faqs/",
+      "note": "Payment plans are not offered online. Call ResponseNow at 866-795-4321.",
+      "channel": "phone",
+      "phone": "8667954321"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred"
+    }
+  },
+  "billing": {
+    "source": "https://responsenow.com/pricing-policy/"
+  },
+  "help": [
+    {
+      "slug": "faq",
+      "title": "Service pricing",
+      "topic": "faq",
+      "paragraphs": [
+        "Monthly: $29.95 for In Home service and $39.95 for Belle, plus $14.95 shipping. Quarterly: $83.85 for In Home or $148.85 for Belle, about $27.95 and $37.95 a month. Annual: $299.40 for In Home or $454.40 for Belle, about $24.95 and $34.95 a month. Quarterly and annual plans ship free.",
+        "There is no equipment to buy; you only return it when your service ends. Belle X is $49.95 a month, and the caregiver app or fall detection adds $9.95 a month. Care+ device insurance is $3.95 a month and covers one replacement a year.",
+        "You can change your plan at any time by calling 866-795-4321."
+      ],
+      "source": "https://responsenow.com/pricing-policy/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel service",
+      "topic": "account",
+      "paragraphs": [
+        "Call 866-795-4321 to cancel, then return the system. Your account is cancelled once ResponseNow receives the equipment. You can mail it to ResponseNow, 9900 SW Wilshire St., Ste. 250, Portland, OR 97225.",
+        "ResponseNow has a 30-day money-back guarantee: call within 30 days to cancel, use the prepaid label to return the system, and your service plan payment is refunded once it arrives."
+      ],
+      "source": "https://responsenow.com/about-us/faqs/"
+    },
+    {
+      "slug": "fees",
+      "title": "Fees and replacements",
+      "topic": "billing",
+      "paragraphs": [
+        "Repairs for normal wear and manufacturer defects are free, and there is never a charge when the device goes into alarm. A lost or damaged device can be replaced for a one-time fee that depends on the system, or covered by Care+ for $3.95 a month. Expedited overnight shipping costs extra; call for a quote."
+      ],
+      "source": "https://responsenow.com/about-us/faqs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "return-address-city",
+        "intent": "You're cancelling ResponseNow and mailing the equipment back. Using the help pages, find the city you mail it to. Do not cancel or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Portland"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Portland"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Portland, Oregon (9900 SW Wilshire St., Ste. 250)."
+          }
+        ]
+      },
+      {
+        "slug": "care-plus-price",
+        "intent": "Using ResponseNow's help pages, find the monthly price of Care+ device insurance. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "$3.95 a month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "866-795-4321"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": "866-795-4321"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": [
+        "$454.40",
+        "$14.95"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Portland"
+    },
+    {
+      "page": "home",
+      "contains": "Account number"
+    }
+  ]
+}

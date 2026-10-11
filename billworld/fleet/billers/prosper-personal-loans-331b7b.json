@@ -1,0 +1,355 @@
+{
+  "id": "prosper-personal-loans-331b7b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Prosper (personal loans)",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public help.prosper.com articles (read through the help center's public article API; no sign-in). AutoPay deducts the monthly payment on the due date from the linked bank account at no cost; enroll online or by phone; allow 3 business days for changes; turning AutoPay off requires contacting customer support, so autopay_cancel is unsupported online. One-time online payments come from the linked bank account and process the same day if scheduled by 5:30pm PT (bank-only). Mailed payments on loans from 8/1/2017 carry a processing charge of 5% or $5, whichever is less (help only). Due date changes are self-service once every 365 days (not modelled). Late fee if not paid in full within 15 days (amount not published). Sign-in is by email with a code (prosper.com/auth/email-code, catalog); Reviewer 2026-10-10: the public login page shows \"Log in to Prosper\" with an Email address field and Continue, so it is modelled as email, two steps; the second step (password or code) was not opened, and passwordless code sign-in is a gap. The AutoPay early-payment rule and the no-fee due-date change come from two more help articles now in sources.",
+  "officialDomains": [
+    "prosper.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/115000420903-How-can-I-make-payments-on-my-personal-loan",
+      "title": "How can I make payments on my personal loan?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/208500956-What-is-AutoPay",
+      "title": "What is AutoPay?",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/210013843-Can-I-turn-off-AutoPay",
+      "title": "Can I turn off AutoPay?",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/208500946-Can-I-pay-my-personal-loan-by-check",
+      "title": "Can I pay my personal loan by check?",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/210013883-Can-I-change-the-day-my-payment-is-due",
+      "title": "Can I change the day my payment is due?",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/360047097632-How-many-times-can-I-change-my-due-date",
+      "title": "How many times can I change my due date?",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/210013733-What-if-I-m-late-on-a-loan-payment",
+      "title": "What if I'm late on a loan payment?",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/210013743-Can-I-pay-my-personal-loan-payments-by-phone",
+      "title": "Can I pay my personal loan payments by phone?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/360047535811-What-happens-to-AutoPay-if-I-make-a-separate-payment",
+      "title": "What happens to AutoPay if I make a separate payment?",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://help.prosper.com/hc/en-us/articles/360047535751-Is-there-a-fee-to-change-my-due-date",
+      "title": "Is there a fee to change my due date?",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.prosper.com/auth/email-code",
+      "title": "Log in to Prosper",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Prosper",
+    "primary": "#154a7a",
+    "accent": "#0e3354",
+    "monogram": "P"
+  },
+  "labels": {
+    "autopay": "AutoPay",
+    "payBill": "Make a Payment",
+    "signIn": "Log In",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Making payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "evidence": "observed_public",
+    "source": "https://www.prosper.com/auth/email-code"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.prosper.com/hc/en-us/articles/208500956-What-is-AutoPay",
+      "note": "AutoPay deducts your monthly payment from your bank account on your due date at no cost. Allow 3 business days for changes to take effect."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.prosper.com/hc/en-us/articles/210013843-Can-I-turn-off-AutoPay",
+      "note": "To turn off AutoPay, contact Prosper customer support at 1-866-615-6319.",
+      "channel": "phone",
+      "phone": "8666156319"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.prosper.com/hc/en-us/articles/210013743-Can-I-pay-my-personal-loan-payments-by-phone",
+      "note": "Call 1-866-615-6319 with your bank account and routing numbers ready."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.prosper.com/hc/en-us/articles/208500946-Can-I-pay-my-personal-loan-by-check",
+      "note": "Mailed payments on loans from August 1, 2017 carry a processing charge of 5% of the payment or $5, whichever is less."
+    }
+  },
+  "contact": {
+    "phone": "866-615-6319",
+    "payPhone": "866-615-6319",
+    "evidence": "documented_official",
+    "source": "https://help.prosper.com/hc/en-us/articles/210013743-Can-I-pay-my-personal-loan-payments-by-phone"
+  },
+  "billing": {
+    "source": "https://help.prosper.com/hc/en-us/articles/115000420903-How-can-I-make-payments-on-my-personal-loan",
+    "methods": [
+      "bank"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "notes": [
+        "Check, money order or cashier's check payments on loans from August 1, 2017 carry a processing charge of 5% of the payment or $5, whichever is less."
+      ],
+      "evidence": "documented_official",
+      "source": "https://help.prosper.com/hc/en-us/articles/208500946-Can-I-pay-my-personal-loan-by-check"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Making payments",
+      "paragraphs": [
+        "Pay by AutoPay, by signing in to schedule a one-time payment from your linked bank account, by phone at 1-866-615-6319, or by mailing a personal check, money order or cashier's check. Online payments scheduled by 5:30pm PT process the same day.",
+        "Mailed payments go to Prosper Marketplace Inc., P.O. Box 886081, Los Angeles, CA 90088-6081, with your loan ID and legal name. On loans from August 1, 2017 a check processing charge of 5% or $5, whichever is less, applies."
+      ],
+      "source": "https://help.prosper.com/hc/en-us/articles/115000420903-How-can-I-make-payments-on-my-personal-loan",
+      "mode": "append"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "paragraphs": [
+        "AutoPay is free. It deducts your monthly payment from your bank account on your due date. Turn it on during your application or any time in your online account, and allow 3 business days for changes. To turn AutoPay off, contact customer support.",
+        "A full monthly payment made before the due date means AutoPay skips that cycle; a smaller payment does not stop the full AutoPay draft."
+      ],
+      "source": "https://help.prosper.com/hc/en-us/articles/208500956-What-is-AutoPay",
+      "topic": "autopay",
+      "steps": [
+        "Sign in to your Prosper account.",
+        "Open AutoPay.",
+        "Choose the linked bank account.",
+        "Confirm enrollment."
+      ]
+    },
+    {
+      "slug": "due-date-change",
+      "title": "Changing your due date",
+      "paragraphs": [
+        "In most cases you can change your due date yourself with the change payment date button on your dashboard. It can be changed once every 365 days while your account is in good standing, and there is no fee, though interest keeps accruing daily."
+      ],
+      "source": "https://help.prosper.com/hc/en-us/articles/360047097632-How-many-times-can-I-change-my-due-date",
+      "topic": "account"
+    },
+    {
+      "slug": "late-payments",
+      "title": "Late payments",
+      "paragraphs": [
+        "To avoid a late fee, pay in full within 15 days of the due date. Loans 30 days delinquent are reported to the credit bureaus."
+      ],
+      "source": "https://help.prosper.com/hc/en-us/articles/210013733-What-if-I-m-late-on-a-loan-payment",
+      "topic": "fees"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "check-payment-fee",
+        "intent": "Using Prosper's help center, find the processing charge for paying a recent personal loan by check. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5%"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5%"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Loans from August 1, 2017 carry a check processing charge of 5% of the payment or $5, whichever is less."
+          }
+        ]
+      },
+      {
+        "slug": "due-date-change-limit",
+        "intent": "Using Prosper's help center, find how often you can change your loan due date. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "365",
+              "once a year",
+              "once per year",
+              "every year"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "365",
+            "once a year",
+            "once per year",
+            "every year"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You can change your due date once every 365 days if your account is in good standing."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "1-866-615-6319"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "5:30pm PT"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date-change",
+      "contains": "365 days"
+    }
+  ]
+}

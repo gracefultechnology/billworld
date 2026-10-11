@@ -1,0 +1,329 @@
+{
+  "id": "store-space-self-storage-7ece59",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Store Space Self Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Store Space help center (Your Account; Managing Your Storage Unit), the header RapidPay form and the MyAccount log-in page (no sign-in, RapidPay not submitted). Log-in: Email + Password, Remember me, Login, Forgot your password?, Need an account?. RapidPay asks for Phone Number and Zip Code, then Continue (guestLookupFields phone+zip, exact). Rent is due on the 1st when the month-to-month lease renews; late fee up to the greater of $20 or 20% of rent after the 5th (lateFeePercent is capped at 10 in the schema, so the late fee is in help only; cross-owner request). First month prorated; rent due at move-in. Invoices by mail or electronically per preference (paperless supported). Payments online in MyAccount, by mail, by phone with the Care Center 833-786-7366, or in person. AutoPay is free and drafts on the 1st (modelled as day 1). Move-out: written notice at least 10 days before vacating; vacant when empty and lock removed; no refunds for unused rent. Accepted online methods are not listed, so billing.methods keeps the family default.",
+  "officialDomains": [
+    "storespace.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.storespace.com/help-center/my-storage/your-account",
+      "title": "Your Account - Store Space Self Storage Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.storespace.com/help-center/my-storage/managing-your-storage-unit",
+      "title": "Managing Your Storage Unit - Store Space Self Storage Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.storespace.com/my-account/login",
+      "title": "Login - Store Space Self Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.storespace.com/help-center",
+      "title": "Help Center - Store Space Self Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Store Space Self Storage",
+    "shortName": "Store Space",
+    "primary": "#00594f",
+    "accent": "#7c2d12",
+    "monogram": "SS"
+  },
+  "labels": {
+    "signIn": "Login",
+    "username": "Email",
+    "forgot": "Forgot your password?",
+    "register": "Need an account?",
+    "dashboard": "MyAccount",
+    "guestPay": "RapidPay",
+    "autopay": "AutoPay",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "RapidPay",
+        "page": "guest"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAccount",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Billing History",
+        "page": "history"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "phone",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.storespace.com/my-account/login"
+  },
+  "contact": {
+    "phone": "833-786-7366",
+    "payPhone": "833-786-7366",
+    "source": "https://www.storespace.com/help-center/my-storage/your-account",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storespace.com/help-center/my-storage/your-account"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.storespace.com/help-center",
+      "note": "RapidPay finds your account by the phone number and ZIP code on file."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storespace.com/help-center/my-storage/your-account",
+      "note": "AutoPay is free and draws your rent on the first of each month."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storespace.com/help-center/my-storage/your-account"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storespace.com/help-center/my-storage/your-account",
+      "phone": "833-786-7366",
+      "note": "Call the Care Center to pay by phone."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storespace.com/help-center/my-storage/your-account"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.storespace.com/help-center/my-storage/managing-your-storage-unit",
+      "channel": "in_person",
+      "phone": "833-786-7366",
+      "note": "Give your Store Space office written notice at least 10 days before you move out. The unit is vacant once it is empty and your lock is removed; unused rent is not refunded."
+    }
+  },
+  "billing": {
+    "source": "https://www.storespace.com/help-center/my-storage/your-account",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": [
+        1
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payments and billing",
+      "topic": "payments",
+      "source": "https://www.storespace.com/help-center/my-storage/your-account",
+      "paragraphs": [
+        "Rent is due on the first of each month, when your month-to-month lease renews. Rentals that start after the first are prorated, and rent plus any fees is due at move-in.",
+        "Pay online in MyAccount, by mail, by phone with the Care Center at 833-786-7366, or in person with a store employee. RapidPay lets you pay with just the phone number and ZIP code on your account."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "source": "https://www.storespace.com/help-center/my-storage/your-account",
+      "paragraphs": [
+        "AutoPay is Store Space's free automatic billing service. Turn it on in MyAccount and your rent is drawn from your account on the first of each month."
+      ]
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late fees",
+      "topic": "billing",
+      "source": "https://www.storespace.com/help-center/my-storage/your-account",
+      "paragraphs": [
+        "If rent is not paid by the fifth of the month, a late fee may be added. It can be up to $20 or 20% of your monthly rent, whichever is greater."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "Invoices by mail or email",
+      "topic": "billing",
+      "source": "https://www.storespace.com/help-center/my-storage/your-account",
+      "paragraphs": [
+        "Store Space can mail your invoices or send them electronically, whichever you prefer. MyAccount also shows your billing history."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://www.storespace.com/help-center/my-storage/managing-your-storage-unit",
+      "paragraphs": [
+        "Notify the office in writing at least 10 days before you vacate. The unit counts as vacant once it is empty and your lock has been removed. Rent for the unused part of a month is not refunded."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "late-fee-day",
+        "intent": "Using Store Space's help center, find after which day of the month a late fee is added to unpaid rent. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5",
+              "fifth"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5",
+            "fifth"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "After the fifth of the month."
+          }
+        ]
+      },
+      {
+        "slug": "move-out-notice",
+        "intent": "Find how much written notice Store Space asks for before you move out. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 10 days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Login"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-fees",
+      "contains": [
+        "$20",
+        "20%"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "10 days"
+    }
+  ]
+}

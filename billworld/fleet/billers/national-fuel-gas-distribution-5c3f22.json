@@ -1,0 +1,363 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "gas",
+  "reviewedAt": "2026-10-10",
+  "id": "national-fuel-gas-distribution-5c3f22",
+  "name": "National Fuel Gas Distribution",
+  "template": "invoicecloud",
+  "notes": "Researched from public nationalfuel.com pages only. National Fuel's Bill Pay Portal and phone payments are run by Invoice Cloud (moved from the utility-account category template to invoicecloud). Accepted: Visa, MasterCard, Discover, American Express, electronic check, Apple Pay, Google Pay, PayPal, Venmo. One-time payments need no registration (account number, ZIP, latest bill); an email is required for confirmations. AutoPay pays the full balance on each due date from the default card or bank account; unenroll under Payments > AutoPay > Unenroll from AutoPay (or the dashboard widget). Paperless emails each bill. Scheduled payments may be dated any day before the due date (no fixed maximum, family default kept). Pay by Text and Remind Me exist (not expressible). Convenience fee amounts are not published on the current pages (an older brochure mentions $2.95 for card AutoPay; not used), so fees are left out. Reviewer: stop service is by phone only (call 1-800-365-3234 at least one week ahead, stop-service-ny-home page) and deferred payment agreements are by phone (Payment Plan Options page), so both are unsupported online. The FAQ says accounts sign in with a username (Invoice Cloud family default identifier kept). The Payment Plan Options page describes AutoPay from checking or savings while the portal FAQ says default card or bank account; both kept.",
+  "officialDomains": [
+    "nationalfuel.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.nationalfuel.com/utility/make-a-payment-ny-home-biz/",
+      "title": "Make a Payment (NY Home & Business)",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.nationalfuel.com/utility/new-bill-pay-portal/new-bill-pay-portal-faqs/",
+      "title": "New Bill Pay Portal FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.nationalfuel.com/utility/new-bill-pay-portal/",
+      "title": "New Bill Pay Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.nationalfuel.com/utility/payment-assistance-programs/",
+      "title": "Payment Assistance Programs",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.nationalfuel.com/utility/stop-service-ny-home/",
+      "title": "Turn Off My Gas Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.nationalfuel.com/utility/payment-plan-options-ny-home-business/",
+      "title": "Payment Plan Options",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "National Fuel",
+    "shortName": "National Fuel",
+    "primary": "#00467f",
+    "accent": "#002f56",
+    "monogram": "NF"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Enroll",
+    "guestPay": "Make a One Time Payment",
+    "autopay": "AutoPay",
+    "paperless": "Paperless",
+    "help": "FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In or Enroll to Pay",
+        "page": "login"
+      },
+      {
+        "label": "Make a One Time Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.nationalfuel.com/utility/make-a-payment-ny-home-biz/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/make-a-payment-ny-home-biz/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/new-bill-pay-portal/new-bill-pay-portal-faqs/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/new-bill-pay-portal/new-bill-pay-portal-faqs/",
+      "note": "Log in, go to Payments, then AutoPay, and select Unenroll from AutoPay on the Manage AutoPay screen."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/new-bill-pay-portal/new-bill-pay-portal-faqs/",
+      "note": "Pick any date before your due date; you can change it until the scheduled date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/new-bill-pay-portal/new-bill-pay-portal-faqs/"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/payment-assistance-programs/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/make-a-payment-ny-home-biz/",
+      "phone": "855-437-1168"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/make-a-payment-ny-home-biz/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/stop-service-ny-home/",
+      "channel": "phone",
+      "phone": "800-365-3234",
+      "note": "To turn off gas service, call us at 1-800-365-3234 at least one week before the date you want service stopped. We need a final meter reading to send your final bill."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.nationalfuel.com/utility/payment-plan-options-ny-home-business/",
+      "channel": "phone",
+      "phone": "800-365-3234",
+      "note": "If you cannot pay your bill, call us as soon as possible at 1-800-365-3234 to discuss a deferred payment agreement. You may be asked about your income and expenses."
+    }
+  },
+  "billing": {
+    "source": "https://www.nationalfuel.com/utility/make-a-payment-ny-home-biz/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a payment",
+      "mode": "append",
+      "topic": "payments",
+      "source": "https://www.nationalfuel.com/utility/make-a-payment-ny-home-biz/",
+      "paragraphs": [
+        "Sign In or Enroll to Pay through the Bill Pay Portal, or choose Make a One Time Payment with your account number, ZIP code and most recent bill; registration is not needed for a one-time payment. Visa, MasterCard, Discover, American Express, electronic check, Apple Pay, Google Pay, PayPal and Venmo are accepted.",
+        "Pay by phone 24/7 at 1-855-437-1168, mail your payment to National Fuel Gas, P.O. Box 371835, Pittsburgh, PA 15250-7835, or pay in person at a National Fuel office, drop box, or Western Union agent location."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "source": "https://www.nationalfuel.com/utility/new-bill-pay-portal/new-bill-pay-portal-faqs/",
+      "paragraphs": [
+        "AutoPay pays your full balance on each bill's due date using your default credit card or bank account, which helps you avoid late fees. Registering in the portal lets you set up automatic payments and store payment information."
+      ]
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Unenroll from AutoPay",
+      "topic": "autopay",
+      "source": "https://www.nationalfuel.com/utility/new-bill-pay-portal/new-bill-pay-portal-faqs/",
+      "paragraphs": [
+        "Log in, go to Payments, then AutoPay, and select Unenroll from AutoPay on the Manage AutoPay screen. You can also use the AutoPay widget on your dashboard."
+      ]
+    },
+    {
+      "slug": "scheduled-payments",
+      "title": "Scheduling payments",
+      "topic": "payments",
+      "source": "https://www.nationalfuel.com/utility/new-bill-pay-portal/new-bill-pay-portal-faqs/",
+      "paragraphs": [
+        "Unlike AutoPay, a scheduled payment is one you set up yourself for a date before the due date. You can change the date as long as you do it before the scheduled date. Card payments are authorized immediately and usually settle in about 48 hours; electronic checks take 48 to 72 hours."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "source": "https://www.nationalfuel.com/utility/new-bill-pay-portal/new-bill-pay-portal-faqs/",
+      "paragraphs": [
+        "Paperless sends an email to your registration address each time a bill is ready, and you can add a courtesy email address. To go back to paper bills, log in and select Billing, then Paperless Billing."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment assistance",
+      "topic": "assistance",
+      "source": "https://www.nationalfuel.com/utility/payment-assistance-programs/",
+      "paragraphs": [
+        "New York customers may qualify for the Energy Affordability Program or the Enhanced Energy Affordability Program (one or the other), HEAP heating grants, and the Neighbor for Neighbor Heat Fund. Special Protections and the Extra Security Plan help older, disabled or retired customers.",
+        "A Catch-up Coach can help you find programs and payment options: call 1-800-365-3234, 7 a.m. to 6 p.m., Monday to Friday. If you expect a hospital stay of 10 days or more, call to have your due date extended by 30 days."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Turn off gas service",
+      "topic": "account",
+      "source": "https://www.nationalfuel.com/utility/stop-service-ny-home/",
+      "paragraphs": [
+        "Call 1-800-365-3234 at least one week before the date you want your gas turned off. We must read the meter to send your final bill, and you may be billed for gas used until that reading is taken."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plan options",
+      "topic": "assistance",
+      "source": "https://www.nationalfuel.com/utility/payment-plan-options-ny-home-business/",
+      "paragraphs": [
+        "The Budget Plan spreads your estimated yearly cost over 12 equal monthly payments, or 10 payments from September to June; sign in to enroll. The amount may be adjusted during the year.",
+        "If you cannot make a payment, call 1-800-365-3234 as soon as possible. We may be able to set up a deferred payment agreement based on your income and expenses."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "ach-settle-time",
+        "intent": "Using the National Fuel help pages, find how long electronic check (ACH) payments typically take to settle. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "72"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "72"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Typically 48 to 72 hours."
+          }
+        ]
+      },
+      {
+        "slug": "catch-up-coach-phone",
+        "intent": "Find the phone number for National Fuel's Catch-up Coach. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8003653234"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8003653234"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-365-3234"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-autopay",
+      "contains": "Unenroll from AutoPay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "1-855-437-1168",
+        "Venmo"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "Catch-up Coach"
+    }
+  ]
+}

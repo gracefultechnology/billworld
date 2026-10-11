@@ -1,0 +1,353 @@
+{
+  "id": "first-technology-federal-credit-union-692221",
+  "version": 1,
+  "status": "dedicated",
+  "name": "First Technology Federal Credit Union",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-10",
+  "template": "bank-billpay",
+  "notes": "Researched from public firsttechfed.com pages only (no sign-in). Catalog routed this credit union to the kubra utility family; moved to bank-billpay because loans are paid by transfer inside First Tech Online/Mobile Banking (Transfer & Pay > Transfer, with Amount, Frequency and Date; source can be a First Tech account or a linked external account). One-time payments without online banking go through ACI Pay (ACI Payments, Inc., Speedpay-hosted guest page) with a non-First Tech debit card or checking/savings account; lookup needs the First Tech account number AND the last 4 digits of the Taxpayer Identification Number (TIN cannot be expressed as a guest lookup field, so only accountNumber is modelled; guestLookupExact set in review so the form no longer asks for a borrower last name that ACI Pay does not use). ACI Pay limits: $2,999.99 per transaction (guest-only cap, cannot be expressed: maxPaymentCents must be >= $5,000 and applies to all payments), no payoffs, no principal-only payments, 5:00 PM PT same-day cutoff; ACI charges a fee whose amount First Tech does not publish (fees.notes). Phone payments through ACI at 855.855.8805. eStatements: Accounts and services > Statements and Tax Forms > Subscribe, accept the disclosure. First Tech merged with Digital Federal Credit Union (DCU) in 2026 and operates as two divisions; this dossier models the First Tech division. Sign-in identifier/MFA not documented publicly (family defaults). Hardship/payment-plan options not found on public pages (left to the family default).",
+  "officialDomains": [
+    "firsttechfed.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.firsttechfed.com/help/how-to-make-payments",
+      "title": "All Your Options on How to Make a Loan Payment | First Tech",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.firsttechfed.com/help/aci-pay",
+      "title": "ACI Pay | First Tech",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.firsttechfed.com/learn/how-to-documentation/how-to-make-loan-payments",
+      "title": "How to make loan payments | First Tech",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.firsttechfed.com/learn/how-to-documentation/how-to-enroll-in-electronic-statements-on-desktop",
+      "title": "How to enroll in electronic statements on Desktop | First Tech",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.firsttechfed.com/help/contact",
+      "title": "Contact | First Tech",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "First Tech",
+    "displayName": "First Tech Federal Credit Union",
+    "primary": "#00507a",
+    "accent": "#8a3a00",
+    "monogram": "FT"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Recurring Payments",
+    "guestPay": "Pay via ACI Pay",
+    "signIn": "Log In",
+    "register": "Register for Online Banking",
+    "paperless": "Statements and Tax Forms",
+    "contact": "Message Center",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Pay via ACI Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Register for Online Banking",
+        "page": "register"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Transfer & Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements and Tax Forms",
+        "page": "paperless"
+      },
+      {
+        "label": "Message Center",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.firsttechfed.com/help/aci-pay",
+    "guestLookupExact": true
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.firsttechfed.com/help/how-to-make-payments",
+      "note": "Pay a First Tech loan in Online or Mobile Banking from a First Tech account or a linked external account."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.firsttechfed.com/help/aci-pay",
+      "note": "ACI Pay takes a one-time loan payment without online banking, from a non-First Tech debit card or bank account. Payments are limited to $2,999.99 and cannot pay off a loan; ACI Payments, Inc. charges a fee."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.firsttechfed.com/learn/how-to-documentation/how-to-make-loan-payments",
+      "note": "Recurring payments are transfers with a Frequency: Transfer & Pay > Transfer, pick the loan, then set Amount, Frequency and Date."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.firsttechfed.com/help/how-to-make-payments"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.firsttechfed.com/learn/how-to-documentation/how-to-enroll-in-electronic-statements-on-desktop"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.firsttechfed.com/learn/how-to-documentation/how-to-enroll-in-electronic-statements-on-desktop"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.firsttechfed.com/help/aci-pay",
+      "phone": "855-855-8805",
+      "note": "Call 855.855.8805 to make an ACI Pay payment by phone."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.firsttechfed.com/help/contact"
+    }
+  },
+  "contact": {
+    "phone": "855-855-8805",
+    "source": "https://www.firsttechfed.com/help/contact"
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "fees": {
+      "notes": [
+        "ACI Pay is a fee-based service of ACI Payments, Inc.; First Tech does not publish the fee amount."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.firsttechfed.com/help/aci-pay"
+    },
+    "source": "https://www.firsttechfed.com/help/how-to-make-payments"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make a loan payment",
+      "source": "https://www.firsttechfed.com/help/how-to-make-payments",
+      "paragraphs": [
+        "In First Tech Online or Mobile Banking you can make a one-time payment or schedule recurring payments to a loan, from a First Tech account or from an external account you have linked. Online banking also shows your payment history.",
+        "To pay on a desktop, choose Transfer & Pay, then Transfer. Pick the account to move money from, choose the loan in the To Account field, set the amount, frequency and date, then review and submit the transfer.",
+        "Not enrolled in online banking? ACI Pay lets you make a quick one-time payment with a non-First Tech debit card or bank account. Mail loan and mortgage payments to PO Box 4317, Portland, OR 97208-4317, and credit card payments to PO Box 2780, Portland, OR 97208-2780."
+      ]
+    },
+    {
+      "slug": "guest-pay",
+      "title": "ACI Pay",
+      "source": "https://www.firsttechfed.com/help/aci-pay",
+      "paragraphs": [
+        "ACI Pay, a fee-based service of ACI Payments, Inc., lets members pay a First Tech loan without a branch visit, a phone call or digital banking. You need your First Tech account number and the last four digits of your Taxpayer Identification Number. You can also use the service by calling 855.855.8805.",
+        "Most members pay with a debit card from another institution; a checking or savings account (account and routing number) also works. Payments made by 5:00 PM Pacific are effective the same day; later payments are effective the next business day.",
+        "Each ACI Pay payment is limited to $2,999.99. ACI Pay cannot be used for payoffs or principal-only payments, and only loans serviced by First Tech can be paid there. A confirmation goes to the email you give, and the payment can take 3 to 5 days to show on your First Tech account."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "Enroll in electronic statements",
+      "source": "https://www.firsttechfed.com/learn/how-to-documentation/how-to-enroll-in-electronic-statements-on-desktop",
+      "paragraphs": [
+        "Electronic statements give you secure access to statements, notices and tax documents at any time. On a desktop, select Accounts and services, then Statements and Tax Forms.",
+        "On the Overview tab choose Subscribe, confirm your information, tick I Agree to accept the disclosure, and select Subscribe again."
+      ]
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact First Tech",
+      "source": "https://www.firsttechfed.com/help/contact",
+      "paragraphs": [
+        "Call the 24-hour toll-free line at 855.855.8805, or +1 503.644.4034 from outside the U.S. Digital Banking members can also use the Message Center or chat from the Questions bubble."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "aci-pay-limit",
+        "intent": "Using First Tech's help pages, find the largest single payment ACI Pay accepts. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2,999.99",
+              "2999.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2,999.99",
+            "2999.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "ACI Pay payments are limited to $2,999.99 each."
+          }
+        ]
+      },
+      {
+        "slug": "aci-pay-cutoff",
+        "intent": "Using First Tech's help pages, find the time of day by which an ACI Pay payment must be made to be effective the same day. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5:00 pm",
+              "5 pm",
+              "5pm",
+              "5:00pm",
+              "5 p.m.",
+              "5:00 p.m.",
+              "17:00"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5:00 pm",
+            "5 pm",
+            "5pm",
+            "5:00pm",
+            "5 p.m.",
+            "5:00 p.m.",
+            "17:00"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payments made by 5:00 PM Pacific time are effective the same day."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Pay via ACI Pay"
+      ]
+    },
+    {
+      "page": "guest",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Transfer & Pay",
+        "Recurring Payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "guest-pay",
+      "contains": "$2,999.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "Statements and Tax Forms"
+    }
+  ]
+}

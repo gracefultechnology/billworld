@@ -1,0 +1,104 @@
+{
+  "id": "hackensack-meridian-health-9f3f1f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Hackensack Meridian Health",
+  "category": "medical",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public hackensackmeridianhealth.org Pay Bill page (no sign-in, no guest lookup). Hospital bills: pay online by logging in to MyChart, or choose 'Pay as Guest', or create an account with 'Sign Up and Verify'. Accepted: Visa, MasterCard, American Express, Discover, and checks by routing/account number. Phone: 551-996-1960 automated 24/7; agents Mon-Fri 8-5 at the same number; payments after 5 p.m. are processed the next business day; bank statements show the entry description 'EPAY HOSP'. Mail with the statement stub to PO Box 48028, Newark, NJ 07101-4828. Interest-free payment plans are set up through Customer Service (551-996-1960, Mon-Fri 8-5), so payment_arrangement is modelled phone-only. Physician/physician-group statements carry their own phone number. Estimates: Patient Access 551-996-2808. Guest lookup fields, fees, AutoPay and paperless are not described (family defaults kept).",
+  "officialDomains": ["hackensackmeridianhealth.org"],
+  "sources": [
+    { "url": "https://www.hackensackmeridianhealth.org/en/pay-bill", "title": "Pay Medical Bills with Hackensack Meridian Health", "fetchedAt": "2026-10-10", "kind": "pay" }
+  ],
+  "brand": { "displayName": "Hackensack Meridian Health", "shortName": "Hackensack Meridian Health", "primary": "#005a8b", "accent": "#00364f", "monogram": "HM" },
+  "labels": {
+    "signIn": "Log in to MyChart",
+    "guestPay": "Pay as Guest",
+    "register": "Sign Up and Verify",
+    "dashboard": "MyChart",
+    "arrangement": "Interest-free payment plan",
+    "help": "Billing help",
+    "contact": "Customer Service"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in to MyChart", "page": "login" },
+      { "label": "Pay as Guest", "page": "guest" },
+      { "label": "Sign Up and Verify", "page": "register" },
+      { "label": "Ways to pay", "helpSlug": "pay-your-bill" },
+      { "label": "Billing help", "page": "help" }
+    ]
+  },
+  "contact": { "phone": "551-996-1960", "payPhone": "551-996-1960", "source": "https://www.hackensackmeridianhealth.org/en/pay-bill" },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.hackensackmeridianhealth.org/en/pay-bill" },
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://www.hackensackmeridianhealth.org/en/pay-bill" },
+    "payment_arrangement": { "support": "unsupported", "evidence": "documented_official", "source": "https://www.hackensackmeridianhealth.org/en/pay-bill", "note": "To set up an interest-free payment plan, call Customer Service at 551-996-1960, Monday through Friday, 8 a.m. to 5 p.m.", "channel": "phone", "phone": "551-996-1960" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.hackensackmeridianhealth.org/en/pay-bill", "phone": "551-996-1960" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.hackensackmeridianhealth.org/en/pay-bill" }
+  },
+  "billing": {
+    "source": "https://www.hackensackmeridianhealth.org/en/pay-bill",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your hospital bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Online: log in to MyChart to pay. Without an account, choose Pay as Guest, or create one with Sign Up and Verify so you can also see your chart and send messages. Visa, MasterCard, American Express and Discover are accepted, and you can pay by check with your routing and checking account numbers.",
+        "By phone: the automated system at 551-996-1960 is available 24 hours a day, 7 days a week. To pay with an agent, call the same number Monday through Friday, 8 a.m. to 5 p.m. Payments made after 5 p.m. are processed the next business day. The payment appears on your bank statement as EPAY HOSP.",
+        "By mail: send your payment with the stub from the bottom of your statement to PO Box 48028, Newark, NJ 07101-4828."
+      ],
+      "source": "https://www.hackensackmeridianhealth.org/en/pay-bill"
+    },
+    {
+      "slug": "payment-plan",
+      "title": "Interest-free payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "Customer Service can set up an interest-free payment plan for your hospital balance and answer questions about recent charges or your account balance. Call 551-996-1960, Monday through Friday, 8 a.m. to 5 p.m. Questions about a physician or physician group statement go to the number on that statement."
+      ],
+      "source": "https://www.hackensackmeridianhealth.org/en/pay-bill"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Billing contacts",
+      "topic": "contact",
+      "paragraphs": [
+        "Hospital statements, payments and payment plans: Customer Service at 551-996-1960, Monday through Friday, 8 a.m. to 5 p.m. Estimates of coinsurance for upcoming care: Patient Access at 551-996-2808, Monday through Friday, 8 a.m. to 5 p.m."
+      ],
+      "source": "https://www.hackensackmeridianhealth.org/en/pay-bill"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "bank-statement-descriptor",
+        "intent": "Using Hackensack Meridian Health's bill payment page, find how a hospital bill payment is described on your bank statement. Do not make a payment.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["EPAY HOSP"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["EPAY HOSP"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "EPAY HOSP" }]
+      },
+      {
+        "slug": "mail-po-box",
+        "intent": "Find the PO Box where Hackensack Meridian Health wants hospital bill payments mailed. Do not change anything on the account.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["48028"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["48028"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "PO Box 48028, Newark, NJ 07101-4828." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "home", "contains": "interest-free payment plan" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["EPAY HOSP", "48028"] },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "551-996-2808" }
+  ]
+}

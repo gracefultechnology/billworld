@@ -1,0 +1,343 @@
+{
+  "id": "upgrade-personal-loans-upgrade-card-d919dc",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Upgrade (personal loans, Upgrade Card)",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public upgrade.com help articles only (no sign-in); modelled as the personal loan. Autopay withdraws the disclosed monthly payment on the due date and must be enrolled or cancelled at least 3 business days before the payment date; cancelling autopay cancels all future payments (online cancel is inferred; pending drafts are cancelled by contacting Upgrade). Scheduled one-time payments can be cancelled online (trash icon) up to 1 business day before. Due date changes are self-service for current personal loans (within 15 days, at least 3 business days before the next due date; not modelled). Short-Term Hardship program by phone at (888) 873-5960, so payment_arrangement is unsupported online. Late fee may apply after 15 days (amount not published). Debit card payments exist (terms page) but no fee is published; methods bank and card (inferred). No prepayment fees. Reviewer 2026-10-10: the sign-in page asks for Email Address and Password on one screen (also offers passkey sign-in). The make-a-payment article lists (855) 598-1271 for phone payments while the pay-by-phone article lists (844) 899-9931; both are shown.",
+  "officialDomains": [
+    "upgrade.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.upgrade.com/help/account-management-payments/payments-billing/how-do-i-make-a-payment/",
+      "title": "How do I make a payment?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.upgrade.com/help/account-management-payments/payments-billing/what-is-autopay/",
+      "title": "What is autopay?",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.upgrade.com/help/account-management-payments/payments-billing/can-i-cancel-my-scheduled-payment/",
+      "title": "Can I cancel my scheduled payment?",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.upgrade.com/help/account-management-payments/payments-billing/can-i-change-my-payment-due-date/",
+      "title": "Can I change my payment due date?",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.upgrade.com/help/account-management-payments/payments-billing/are-there-any-late-fees/",
+      "title": "Are there any late fees?",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.upgrade.com/help/account-management-payments/payments-billing/what-if-i-m-unable-to-make-my-monthly-payment/",
+      "title": "What if I'm unable to make my monthly payment?",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.upgrade.com/help/account-management-payments/payments-billing/am-i-able-to-pay-by-phone/",
+      "title": "Am I able to pay by phone?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.upgrade.com/portal/login",
+      "title": "Upgrade sign in",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Upgrade",
+    "primary": "#1b7a3d",
+    "accent": "#135a2c",
+    "monogram": "U"
+  },
+  "labels": {
+    "dashboard": "Dashboard",
+    "payBill": "Make a Payment",
+    "autopay": "Autopay",
+    "history": "Payments",
+    "signIn": "Sign In",
+    "arrangement": "Hardship Options",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Payments & Billing",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payments",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Hardship Options",
+        "page": "arrangement"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.upgrade.com/portal/login"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/what-is-autopay/",
+      "note": "Autopay withdraws your monthly payment on your due date. Enroll at least 3 business days before the payment date."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/what-is-autopay/",
+      "note": "Cancel at least 3 business days before the payment date. Cancelling autopay cancels all future payments."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/can-i-cancel-my-scheduled-payment/",
+      "note": "Scheduled one-time payments can be cancelled up to 1 business day before the payment date."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/what-if-i-m-unable-to-make-my-monthly-payment/",
+      "note": "Hardship options, such as reduced payments for a set time, are arranged by phone. Call (888) 873-5960.",
+      "channel": "phone",
+      "phone": "8888735960"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/what-if-i-m-unable-to-make-my-monthly-payment/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/am-i-able-to-pay-by-phone/",
+      "note": "Call Account Servicing at (844) 899-9931, Monday-Friday 5AM-7PM PT and weekends 6AM-5PM PT."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/how-do-i-make-a-payment/"
+    }
+  },
+  "contact": {
+    "payPhone": "844-899-9931",
+    "evidence": "documented_official",
+    "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/am-i-able-to-pay-by-phone/"
+  },
+  "billing": {
+    "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/how-do-i-make-a-payment/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Set up autopay or make one-time payments from your dashboard, pay by phone at (855) 598-1271 or through Account Servicing at (844) 899-9931, or mail a personal check, cashier's check or money order payable to Upgrade, Inc. with your Account ID in the memo.",
+        "Personal loan payments by mail go to Upgrade, Inc., Lbx #452210, P.O. Box 52210, Phoenix, AZ 85072-2210."
+      ],
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/how-do-i-make-a-payment/",
+      "mode": "append"
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Cancelling a scheduled payment",
+      "paragraphs": [
+        "Sign in, select Payments, find Scheduled Payments and select the trash icon next to the payment. Scheduled one-time payments can be cancelled up to 1 business day before the payment date. To stop a pending autopay draft, contact Upgrade at least 3 business days before it."
+      ],
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/can-i-cancel-my-scheduled-payment/",
+      "topic": "payments"
+    },
+    {
+      "slug": "due-date-change",
+      "title": "Changing your due date",
+      "paragraphs": [
+        "If your personal loan is current, you can change your due date in your dashboard to a date no more than 15 days before or after the original one. Request it at least 3 business days before your next due date, or it takes effect the following month. Moving the date later can add interest at the end of the loan."
+      ],
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/can-i-change-my-payment-due-date/",
+      "topic": "account"
+    },
+    {
+      "slug": "late-fees",
+      "title": "Late fees",
+      "paragraphs": [
+        "For personal loans, a late fee may apply if your payment is not received within 15 calendar days of the due date. A late fee is charged only once per late payment, and interest keeps accruing daily. There are no prepayment fees."
+      ],
+      "source": "https://www.upgrade.com/help/account-management-payments/payments-billing/are-there-any-late-fees/",
+      "topic": "fees"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-fee-window",
+        "intent": "Using Upgrade's help center, find how many days after the due date a personal loan payment can arrive before a late fee may apply. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A late fee may apply if the payment is not received within 15 calendar days of the due date."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-lead-time",
+        "intent": "Using Upgrade's help center, find how many business days before the payment date you must cancel autopay for it to apply to the upcoming payment. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3 business days",
+              "three business days",
+              "3",
+              "three"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3 business days",
+            "three business days",
+            "3",
+            "three"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Enroll in or cancel autopay at least 3 business days before the scheduled payment date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Autopay"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "(888) 873-5960"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-fees",
+      "contains": "15 calendar days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-payment",
+      "contains": "1 business day"
+    }
+  ]
+}

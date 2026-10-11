@@ -1,0 +1,257 @@
+{
+  "id": "rescue-alert-a8ffb8",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Rescue Alert",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-10",
+  "notes": "No public page describes a customer sign-in or online bill payment for this biller: billing is automatic (card or bank on file) and changes go through customer service by phone. The fleet requires an online account, so the signed-in area, online payment and register flows are a synthetic stand-in (pay_online evidence synthetic); every real route that is phone-only is modelled as an unsupported capability with a customer-facing note. Researched from Rescue Alert's public home, Pricing and Contact pages only (the only login on the site is a distributor login). Pricing page: myConnect mobile rental $44.95 every month, $119.85 every 3 months ($39.95/mo) or $455.40 a year ($37.95/mo); MXD-LTE cellular base rental $42.95/month, $119.85/quarter, $455.40/year; MXD landline base rental $32.95/month, $89.95/quarter, $335.40/year; purchase options: MXD-LTE $299 equipment + $20.95/mo monitoring, MXD $199 + $15.95/mo, or $849 one-time; keysafe $39.99; free gift lock box or second help button on base units. Plan changes are phone-only (inferred), so plans are described in help rather than billing.plans (an unsupported change_plan hides the plan list). Recurring 'every month' plan charges are the only billing documented; no cancellation, autopay, refund or payment-plan policy is published, so those are phone-only (inferred). Contact: toll free 800-688-9576 (24/7), local 801-571-4121, office hours Mon-Fri 8-5, info@rescuealert.com, 10321 South Beckstead Lane, South Jordan, UT 84095.",
+  "officialDomains": [
+    "rescuealert.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.rescuealert.com/",
+      "title": "Rescue Alert - Medical Alert Systems",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.rescuealert.com/blank-4",
+      "title": "Pricing | Rescue Alert",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.rescuealert.com/blank-5",
+      "title": "Contact | Rescue Alert",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Rescue Alert",
+    "shortName": "Rescue Alert",
+    "primary": "#8a1c1c",
+    "accent": "#1f3f6b",
+    "monogram": "RA"
+  },
+  "labels": {
+    "help": "Contact",
+    "cancel": "Cancel Service",
+    "username": "Account number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Pricing",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Contact",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "loginSteps": 1,
+    "evidence": "synthetic"
+  },
+  "contact": {
+    "phone": "800-688-9576",
+    "source": "https://www.rescuealert.com/blank-5"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "synthetic"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.rescuealert.com/blank-4",
+      "note": "Rental plans renew automatically each month, quarter or year on the payment method you ordered with. To change it, call Rescue Alert at 800-688-9576.",
+      "channel": "phone",
+      "phone": "8006889576"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.rescuealert.com/blank-4",
+      "note": "Automatic plan renewals cannot be changed online. Call Rescue Alert at 800-688-9576.",
+      "channel": "phone",
+      "phone": "8006889576"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.rescuealert.com/blank-5",
+      "note": "Service cannot be cancelled online. Call Rescue Alert at 800-688-9576.",
+      "channel": "phone",
+      "phone": "8006889576"
+    },
+    "change_plan": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.rescuealert.com/blank-4",
+      "note": "Plan and billing-period changes are made by phone. Call Rescue Alert at 800-688-9576.",
+      "channel": "phone",
+      "phone": "8006889576"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.rescuealert.com/blank-5",
+      "note": "Payment plans are not offered online. Call Rescue Alert at 800-688-9576.",
+      "channel": "phone",
+      "phone": "8006889576"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred"
+    }
+  },
+  "billing": {
+    "source": "https://www.rescuealert.com/blank-4"
+  },
+  "help": [
+    {
+      "slug": "faq",
+      "title": "Pricing",
+      "topic": "faq",
+      "paragraphs": [
+        "myConnect mobile rental: $44.95 every month, $119.85 every 3 months ($39.95 a month) or $455.40 a year ($37.95 a month). MXD-LTE cellular base rental: $42.95 a month, $119.85 a quarter or $455.40 a year. MXD landline base rental: $32.95 a month, $89.95 a quarter or $335.40 a year.",
+        "You can also buy the equipment: MXD-LTE for $299 plus $20.95 a month for monitoring, MXD for $199 plus $15.95 a month, or a single $849 payment. Base-unit plans include a free lock box or a second help button. A keysafe for a spare key is $39.99.",
+        "Rental plans renew automatically every month, quarter or year depending on the plan you chose."
+      ],
+      "source": "https://www.rescuealert.com/blank-4"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Rescue Alert",
+      "topic": "contact",
+      "paragraphs": [
+        "Call toll free 800-688-9576 (available 24/7) or locally 801-571-4121. Office hours are Monday to Friday, 8 a.m. to 5 p.m.",
+        "Email info@rescuealert.com or write to Rescue Alert, 10321 South Beckstead Lane, South Jordan, UT 84095."
+      ],
+      "source": "https://www.rescuealert.com/blank-5"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "local-phone",
+        "intent": "You'd rather call Rescue Alert's local number than the toll-free one. Using the website, find the local phone number. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8015714121"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8015714121"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "801-571-4121"
+          }
+        ]
+      },
+      {
+        "slug": "annual-mxd-lte-price",
+        "intent": "Using Rescue Alert's pricing, find the price of the annual MXD-LTE rental plan. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "455.40"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "455.40"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "$455.40 a year."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "800-688-9576"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": "800-688-9576"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": [
+        "$455.40",
+        "$849"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "South Jordan"
+    },
+    {
+      "page": "home",
+      "contains": "Account number"
+    }
+  ]
+}

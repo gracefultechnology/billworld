@@ -1,0 +1,358 @@
+{
+  "id": "sparklight-cable-one-incl-hargray-fidelity-newwa-fcb37c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Sparklight (Cable One)",
+  "category": "internet",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public support.sparklight.com articles only (no sign-in; the sign-in page redirects to a script-rendered Cable One SSO page, not read). The Sparklight Online Account uses a username and password. Quick Pay makes a one-time payment without signing in using the account number and ZIP code. Online, Auto Pay and IVR payments by credit card carry a 3% surcharge; debit cards and checking/savings are free (the engine applies the percentage to every card, debit included). Paying by phone with a representative costs $10. Auto Pay: Billing > Setup Auto Pay, choose or add a bank account, debit or credit card, accept the terms; pays by the due date (family timing kept); the app can turn Auto Pay on or off. The $10/month Auto Pay + Paperless discount is debit-card only (not modelled). Paperless billing is free and stops paper statements. No online cancel or payment-plan flow: billing support at 877-692-2253 (8-5 Mon-Fri) handles disconnects and late or missed payment options, so cancel_service and payment_arrangement are unsupported online. Disconnects: choose the end day, no partial-month credits; most plan changes now take effect next billing period (not modelled). Billing cycles can be changed by Billing Support. Late, reconnect, returned-check and termination fee amounts are not published. Mail: Sparklight, PO Box 78026, Phoenix, AZ 85062-8026.",
+  "officialDomains": [
+    "sparklight.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.sparklight.com/hc/en-us/articles/115010352727-Payment-Options",
+      "title": "Payment Options - Sparklight Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://support.sparklight.com/hc/en-us/articles/360022498113-Auto-Pay",
+      "title": "Auto Pay - Sparklight Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://support.sparklight.com/hc/en-us/articles/115010352528-Billing-FAQs",
+      "title": "Billing FAQs - Sparklight Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://support.sparklight.com/hc/en-us/articles/36877511606167-Sparklight-Paperless-Billing-FAQs",
+      "title": "Sparklight Paperless Billing FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://support.sparklight.com/hc/en-us/articles/39196367984535-MySparklight-Mobile-App-Billing-Overview",
+      "title": "MySparklight Mobile App - Billing Overview",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    }
+  ],
+  "brand": {
+    "displayName": "Sparklight",
+    "shortName": "Sparklight",
+    "primary": "#4b2a85",
+    "accent": "#1f1f1f",
+    "monogram": "S"
+  },
+  "labels": {
+    "guestPay": "Quick Pay",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "viewBill": "Billing",
+    "payBill": "Online Payment",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "Username",
+    "help": "Support",
+    "dashboard": "My Account"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Online Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "documented_official",
+    "source": "https://support.sparklight.com/hc/en-us/articles/360022498113-Auto-Pay"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sparklight.com/hc/en-us/articles/115010352727-Payment-Options"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sparklight.com/hc/en-us/articles/360022498113-Auto-Pay"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sparklight.com/hc/en-us/articles/39196367984535-MySparklight-Mobile-App-Billing-Overview"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sparklight.com/hc/en-us/articles/36877511606167-Sparklight-Paperless-Billing-FAQs"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://support.sparklight.com/hc/en-us/articles/115010352528-Billing-FAQs",
+      "note": "Payment arrangements aren't set up online. To talk about options for a late or missed payment, call Billing Support at 877-692-2253, 8 a.m. to 5 p.m., Monday through Friday.",
+      "channel": "phone",
+      "phone": "8776922253"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://support.sparklight.com/hc/en-us/articles/115010352528-Billing-FAQs",
+      "note": "To disconnect Sparklight service, call 877-692-2253 (Billing Support, 8 a.m. to 5 p.m., Monday through Friday). You choose the day service ends; partial-month credits aren't offered.",
+      "channel": "phone",
+      "phone": "8776922253"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sparklight.com/hc/en-us/articles/115010352727-Payment-Options",
+      "phone": "8776922253"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.sparklight.com/hc/en-us/articles/115010352727-Payment-Options"
+    }
+  },
+  "billing": {
+    "source": "https://support.sparklight.com/hc/en-us/articles/115010352727-Payment-Options",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 3,
+      "autopayCardPercent": 3,
+      "notes": [
+        "Paying by phone with a representative costs $10; the automated phone system has no convenience charge.",
+        "Late, reconnect, returned-check and termination fees may apply to past-due accounts."
+      ],
+      "evidence": "documented_official",
+      "source": "https://support.sparklight.com/hc/en-us/articles/115010352727-Payment-Options"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online in your Sparklight account, use Quick Pay with your account number and ZIP code without signing in, set up Auto Pay, call 877-692-2253 for the automated system or an agent, pay at a local bill-pay location such as MoneyGram, Western Union or CheckFreePay, or mail a check or money order to Sparklight, PO Box 78026, Phoenix, AZ 85062-8026 with your account number and bill stub.",
+        "Credit card payments made online, through Quick Pay, Auto Pay or the automated phone system carry a 3% surcharge. Debit cards and checking or savings accounts have no surcharge. Paying with a phone representative costs $10. Online and phone payments post within about a minute; mailed payments take 3-5 business days."
+      ],
+      "source": "https://support.sparklight.com/hc/en-us/articles/115010352727-Payment-Options"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in, open Billing and check your Auto Pay status. Select Setup Auto Pay, pick a saved payment method or Add Payment Method (bank account, debit card or credit card), enter your email if asked and accept the terms. A thank-you message confirms it.",
+        "Making a one-time payment doesn't turn on Auto Pay. In the MySparklight app you can turn Auto Pay on or off from Billing > Manage on the Auto Pay card."
+      ],
+      "steps": [
+        "Sign in to your Sparklight account.",
+        "Open Billing.",
+        "Select Setup Auto Pay.",
+        "Choose or add a payment method and continue.",
+        "Accept the terms and conditions."
+      ],
+      "source": "https://support.sparklight.com/hc/en-us/articles/360022498113-Auto-Pay"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Disconnecting service",
+      "topic": "account",
+      "paragraphs": [
+        "Call Billing Support at 877-692-2253 (8 a.m. to 5 p.m., Monday through Friday) to disconnect. You choose the day your service ends. Partial-month credits aren't offered, so you can keep service through the last day you've already been billed for.",
+        "Most plan changes now take effect at the start of your next billing period."
+      ],
+      "source": "https://support.sparklight.com/hc/en-us/articles/115010352528-Billing-FAQs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-surcharge",
+        "intent": "Using Sparklight's help, find the surcharge Sparklight adds to credit card payments, and which payment types avoid it. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3%"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3%"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments carry a 3% surcharge; debit cards and checking or savings accounts don't."
+          }
+        ]
+      },
+      {
+        "slug": "agent-phone-fee",
+        "intent": "Find what Sparklight charges to pay a bill by phone with a representative. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Paying by phone with a representative costs $10."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "3%",
+        "78026"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "877-692-2253"
+    }
+  ],
+  "contact": {
+    "phone": "877-692-2253",
+    "source": "https://support.sparklight.com/hc/en-us/articles/115010352727-Payment-Options",
+    "evidence": "documented_official"
+  }
+}

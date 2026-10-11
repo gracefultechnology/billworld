@@ -1,0 +1,388 @@
+{
+  "id": "pennsylvania-turnpike-e-zpass-and-toll-by-plate-268a8c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Pennsylvania Turnpike E-ZPass and Toll By Plate",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-10",
+  "template": "toll-account",
+  "notes": "Tier 2. Researched from public paturnpike.com pages (E-ZPass, Pay a Bill, Toll By Plate, E-ZPass Personal Account), the Personal E-ZPass Addendum of Fees and Charges (rev. 09/2026 PDF) and the public E-ZPass login page at ezpass.csc.paturnpike.com (User Name + Password). The catalog routed this biller to kubra because KUBRA handles retail cash pay slips; the customer portal itself is a TransCore E-ZPass / TOLL BY PLATE customer service site, so the dossier moves it to toll-account. Auto-replenishment: bank account (ACH) or payment card, $35 per transponder whenever the balance reaches $10 per transponder (more than 2 card or 3 ACH replenishments a month means the amount must rise); manual replenishment accounts are notified at $15 per transponder. Opening balance $35 per transponder; $3.00 annual account fee; interior transponder $10, exterior/motorcycle $17, sticker free; lost/stolen $10; paper statements $4 per 3 transponders (online free for 18 months); returned payment up to $25. Toll By Plate invoices arrive about 40 days after travel; past due invoices add the greater of $5 or 1.5%; after 60 days they go to collections; registration suspension after 4+ unpaid tolls or $250+. A Registered TOLL BY PLATE account with automatic payment saves 15%. The TBP late fee is described in help only (it applies to plate invoices, not E-ZPass accounts). No installment plan or online account closure is described; payment_arrangement unsupported (inferred).",
+  "officialDomains": [
+    "paturnpike.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.paturnpike.com/e-zpass",
+      "title": "E-ZPass | PA Turnpike",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.paturnpike.com/pay-a-bill",
+      "title": "Pay a Bill | PA Turnpike",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.paturnpike.com/toll-by-plate",
+      "title": "Toll By Plate | PA Turnpike",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.paturnpike.com/e-zpass/personal-account",
+      "title": "E-ZPass Personal Account | PA Turnpike",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://files.paturnpike.com/production/docs/default-source/resources/e-zpass/personal/pov-addendum-of-fees-charges--09-2026.pdf",
+      "title": "Personal E-ZPass Addendum - Fees and Charges (Rev. 09/2026)",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.ezpass.csc.paturnpike.com/ezpass/Maintenance/Login",
+      "title": "Login Page - Pennsylvania's Turnpike E-ZPass",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Pennsylvania Turnpike E-ZPass",
+    "shortName": "PA Turnpike",
+    "primary": "#00447c",
+    "accent": "#7a4d00",
+    "monogram": "PA"
+  },
+  "labels": {
+    "signIn": "Login",
+    "username": "User Name",
+    "register": "Open E-ZPass Account",
+    "guestPay": "Pay TOLL BY PLATE Invoice",
+    "autopay": "Auto-Replenishment",
+    "help": "Help Center",
+    "statements": "Statements"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "E-ZPass Login",
+        "page": "login"
+      },
+      {
+        "label": "Open E-ZPass Account",
+        "page": "register"
+      },
+      {
+        "label": "Pay TOLL BY PLATE Invoice",
+        "page": "guest"
+      },
+      {
+        "label": "Fees and Charges",
+        "helpSlug": "fee-schedule"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Auto-Replenishment",
+        "page": "autopay"
+      },
+      {
+        "label": "Billing Information",
+        "page": "wallet"
+      },
+      {
+        "label": "Vehicles & Contact Information",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.ezpass.csc.paturnpike.com/ezpass/Maintenance/Login"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.paturnpike.com/e-zpass",
+      "note": "Auto-replenishment charges your bank account or payment card at least $35 per transponder whenever the balance drops to $10 per transponder or less."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://files.paturnpike.com/production/docs/default-source/resources/e-zpass/personal/pov-addendum-of-fees-charges--09-2026.pdf",
+      "note": "Statements are free online for 18 months; paper statements cost $4 for every 3 transponders."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.paturnpike.com/toll-by-plate",
+      "note": "TOLL BY PLATE invoices can be paid online with a payment card, no E-ZPass account needed."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.paturnpike.com/toll-by-plate",
+      "phone": "8777366727"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.paturnpike.com/toll-by-plate"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.paturnpike.com/toll-by-plate",
+      "note": "No payment plan is offered online. Pay TOLL BY PLATE invoices in full by the due date, or call the PA Turnpike Customer Service Center at (877) 736-6727 about a balance you cannot pay.",
+      "channel": "phone",
+      "phone": "8777366727"
+    }
+  },
+  "billing": {
+    "source": "https://www.paturnpike.com/e-zpass",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "guestMethods": [
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Auto-replenishment",
+      "topic": "autopay",
+      "paragraphs": [
+        "Choose automatic replenishment from a bank account (ACH) or a payment card. Each time the account balance reaches $10 or less per transponder, at least $35 per transponder is added automatically.",
+        "If the account needs more than two card replenishments (or three bank replenishments) in a month, the replenishment amount must be raised to match your travel. A payment card on automatic replenishment is required for E-ZPass Plus (airport parking charges).",
+        "With manual replenishment instead, you are notified when the balance reaches $15 or less per transponder and must add at least $35 per transponder by check, cash at the Customer Service Center, or a one-time card payment."
+      ],
+      "source": "https://files.paturnpike.com/production/docs/default-source/resources/e-zpass/personal/pov-addendum-of-fees-charges--09-2026.pdf"
+    },
+    {
+      "slug": "fee-schedule",
+      "title": "E-ZPass fees and charges",
+      "topic": "fees",
+      "paragraphs": [
+        "Opening an account needs a prepaid balance of $35 per transponder. Personal accounts pay a $3.00 annual account fee in the month the account was opened.",
+        "Transponders: sticker free, interior $10.00, roof or bumper mount and motorcycle $17.00. A lost, stolen or damaged hardcase transponder costs $10.00. Retailers may add up to $7 to a Go Pak purchase.",
+        "Statements are free online for 18 months; paper statements cost $4 for every 3 transponders. A returned check or ACH payment costs up to $25. Amounts can change."
+      ],
+      "source": "https://files.paturnpike.com/production/docs/default-source/resources/e-zpass/personal/pov-addendum-of-fees-charges--09-2026.pdf"
+    },
+    {
+      "slug": "toll-by-plate-invoices",
+      "title": "TOLL BY PLATE invoices",
+      "topic": "billing",
+      "paragraphs": [
+        "Vehicles without a valid E-ZPass are photographed at each toll point, and an invoice for all trips in a 30-day cycle is mailed to the registered owner about 40 days after travel. E-ZPass rates are about half the TOLL BY PLATE rates.",
+        "Pay online with Pay TOLL BY PLATE Invoice (log in with the invoice account number and license plate), in the PA Toll Pay app, by phone, or by mail to PA Turnpike Toll By Plate, PO Box 645631, Pittsburgh, PA 15264-5254. Cash is accepted only at the Customer Service Center in Harrisburg.",
+        "An invoice not paid within 30 days is followed by a past due invoice with a late fee of $5 or 1.5% of the amount owed, whichever is higher; after 60 days unpaid invoices go to a collection agency. Four or more unpaid tolls, or $250 or more, can lead to suspension of a Pennsylvania vehicle registration.",
+        "A Registered TOLL BY PLATE account (up to four vehicles) with automatic payment saves 15% on invoices and sends email notices when an invoice is ready."
+      ],
+      "source": "https://www.paturnpike.com/toll-by-plate"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "topic": "billing",
+      "paragraphs": [
+        "E-ZPass accounts are funded by automatic replenishment from a payment card or bank account, or manually by card, check, money order or cash at participating retailers. Update your card in your online account, in the PA Toll Pay app, or by calling 1-877-736-6727.",
+        "The PA Turnpike Customer Service Center is at 300 East Park Drive, Harrisburg, PA 17111, open 8:00 a.m. to 6:00 p.m. Monday through Friday."
+      ],
+      "source": "https://www.paturnpike.com/pay-a-bill",
+      "mode": "append"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "annual-account-fee",
+        "intent": "Using the PA Turnpike website's help pages, find the annual account fee charged on a personal E-ZPass account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3",
+              "3 dollars",
+              "three dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3",
+            "3 dollars",
+            "three dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Personal E-ZPass accounts pay a $3.00 annual account fee."
+          }
+        ]
+      },
+      {
+        "slug": "paper-statement-fee",
+        "intent": "Using the PA Turnpike website's help pages, find what paper statements cost. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$4",
+              "4 dollars",
+              "four dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$4",
+            "4 dollars",
+            "four dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees",
+          "paperless"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Paper statements cost $4 for every 3 transponders; online statements are free."
+          }
+        ]
+      },
+      {
+        "slug": "tbp-late-fee",
+        "intent": "Using the PA Turnpike website's help pages, find the minimum late fee added to a past due TOLL BY PLATE invoice. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5 dollars",
+              "five dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5 dollars",
+            "five dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Past due invoices add $5 or 1.5% of the amount owed, whichever is higher."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "User Name",
+        "Login"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fee-schedule",
+      "contains": "$3.00 annual account fee"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "toll-by-plate-invoices",
+      "contains": "PO Box 645631"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "$35 per transponder"
+    }
+  ]
+}

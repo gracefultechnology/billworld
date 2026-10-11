@@ -1,0 +1,296 @@
+{
+  "id": "win-waste-innovations-residential-collection-ca6cad",
+  "version": 1,
+  "status": "dedicated",
+  "name": "WIN Waste Innovations",
+  "category": "trash",
+  "reviewedAt": "2026-10-10",
+  "template": "waste-hauler",
+  "notes": "Moved from the catalog default utility-account family to the trash-specific waste-hauler family. Researched from the public win-waste.com My Account page (Sign In with Username and Password, Remember me, Forgot password?, Forgot Username?, Make a one time payment, Sign up), the Sign up form (Username, Email, First name, Last name, optional Primary and Mobile phone), the Charges and Fees page, and the public one-time payment page on web.ebppay.com that My Account links to (Account Number with dashes + ZIP Code; so ebppay.com is in officialDomains); never signed in or submitted anything. The Charges and Fees page says a recurring Manual Payment Administrative Fee applies until the customer enrolls in AutoPay (amount not published: fees.notes, no engine fee; cross-owner request for a recurring non-AutoPay invoice fee). It also lists fuel and environmental charges (percentages of invoice charges) and overage fees. Paperless, payment plans, late fees and the AutoPay schedule are not described publicly: paperless is left at the family default, payment arrangements and online cancellation are unsupported (inferred, call 866-WIN-WASTE). Customer service 866-946-9278.",
+  "officialDomains": [
+    "win-waste.com",
+    "ebppay.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.win-waste.com/my-account/",
+      "title": "My Account | WIN Waste Innovations",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.win-waste.com/charges-fees/",
+      "title": "Charges and Fees | WIN Waste Innovations",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://web.ebppay.com/winw/WebPay/BillInfo",
+      "title": "WIN Waste Innovations one-time payment",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "WIN Waste Innovations",
+    "shortName": "WIN Waste",
+    "primary": "#00546e",
+    "accent": "#2e6b1f",
+    "monogram": "W"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Sign up",
+    "forgot": "Forgot password?",
+    "guestPay": "Make a one time payment",
+    "dashboard": "My Account",
+    "username": "Username",
+    "contact": "Contact Us",
+    "accountNumber": "Account Number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Make a one time payment",
+        "page": "guest"
+      },
+      {
+        "label": "Sign up",
+        "page": "register"
+      },
+      {
+        "label": "Charges and Fees",
+        "helpSlug": "fees"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "lastName",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.win-waste.com/my-account/"
+  },
+  "contact": {
+    "phone": "866-946-9278",
+    "source": "https://www.win-waste.com/my-account/",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://web.ebppay.com/winw/WebPay/BillInfo",
+      "note": "Enter your full account number with dashes and your ZIP code to make a one-time payment without signing in."
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.win-waste.com/my-account/"
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.win-waste.com/my-account/"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.win-waste.com/my-account/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.win-waste.com/charges-fees/",
+      "note": "Enrolling in AutoPay ends the recurring Manual Payment Administrative Fee on your invoices."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.win-waste.com/my-account/",
+      "note": "Payment plans are not offered online. Call WIN Waste customer service at 866-WIN-WASTE (866-946-9278).",
+      "channel": "phone",
+      "phone": "866-946-9278"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.win-waste.com/my-account/",
+      "note": "Service changes and cancellations are handled by customer service. Call 866-WIN-WASTE (866-946-9278).",
+      "channel": "phone",
+      "phone": "866-946-9278"
+    }
+  },
+  "billing": {
+    "source": "https://www.win-waste.com/charges-fees/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "notes": [
+        "A recurring Manual Payment Administrative Fee is charged on invoices until you enroll in AutoPay (amount set on your invoice)."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.win-waste.com/charges-fees/"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "fees",
+      "title": "Charges and fees on your invoice",
+      "topic": "billing",
+      "paragraphs": [
+        "Manual Payment Administrative Fee: a recurring charge that helps cover the cost of processing payments. It stays on your invoices until you enroll in AutoPay.",
+        "Fuel charge and environmental charge: recurring charges that recover part of WIN Waste's fuel, environmental and regulatory costs. For collection service they are percentages of the invoice and can change; they are not government taxes or fees.",
+        "Overage fee: charged when a container is overfilled, the lid cannot close, or waste is placed on or around it. Contact customer service at 866-WIN-WASTE to add a pickup or change container size or frequency."
+      ],
+      "source": "https://www.win-waste.com/charges-fees/"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your WIN Waste bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to My Account with your username and password to pay, or choose Make a one time payment to pay without signing in. For a one-time payment, enter your full account number with dashes (for example 11-1234-1111) and your ZIP code; if there is a zero right after the first dash, leave it out.",
+        "Enroll in AutoPay in My Account to avoid the Manual Payment Administrative Fee. Questions: 866-WIN-WASTE (866-946-9278)."
+      ],
+      "source": "https://web.ebppay.com/winw/WebPay/BillInfo"
+    },
+    {
+      "slug": "register",
+      "title": "How to sign up for My Account",
+      "topic": "account",
+      "paragraphs": [
+        "On the My Account page choose Sign up and enter a username, your e-mail address, first and last name, and optionally a primary and mobile phone number. Forgot your username or password? Use the Forgot Username? or Forgot password? links on the sign-in page."
+      ],
+      "source": "https://www.win-waste.com/my-account/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-fee-avoided",
+        "intent": "Using WIN Waste Innovations' help pages, find which recurring invoice fee stops once you enroll in AutoPay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "manual payment"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "manual payment"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Manual Payment Administrative Fee stops once you enroll in AutoPay."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Forgot password?"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fees",
+      "contains": "Manual Payment Administrative Fee"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "Manual Payment Administrative Fee"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "866-946-9278"
+    }
+  ]
+}

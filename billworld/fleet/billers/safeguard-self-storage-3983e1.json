@@ -1,0 +1,323 @@
+{
+  "id": "safeguard-self-storage-3983e1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Safeguard Self Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Safeguard Online Service Center welcome page (mysafeguardselfstorage.com, linked as My Account / Pay Online from safeguardit.com) and the safeguardit.com FAQ (no sign-in). The welcome page lists: pay by E-check (described as interest-saving) or credit card; enroll in the E-check or credit card Automatic Payment Plan; balance and paid-thru date; payment history for the previous 6 months; update address/phone/email; pay the current balance only (no partial payments -> fullBalanceOnly); delinquent accounts can pay online only up to 30 days past due; next month can be paid after the 15th; several units per store. New customers choose Create Account, which needs the email address on file. Online-account help 1-800-590-0494; main number (866) 214-0221. The log-in form itself is rendered by script and was not observed, so the identifier is the family default. No fee, late-fee, move-out or AutoPay-cancel terms are published; cancel_service and autopay_cancel are marked unsupported online (inferred). Review 2026-10-10: the PayNow.aspx frame (My Account Options: Make Payment, Change Contact Info, Create Account, Forgot Password, Change Password) carries the Online Bill Pay and Auto Payment Plan agreement: charges may vary with the lease, the authorization lasts until revoked in writing (autopay_cancel offline, documented), and lists (866) 544-7300 for payment inquiries. Sign-in fields appear only after a postback and were not observed.",
+  "officialDomains": [
+    "safeguardit.com",
+    "mysafeguardselfstorage.com"
+  ],
+  "sources": [
+    {
+      "url": "https://mysafeguardselfstorage.com/",
+      "title": "Safeguard Self Storage - My Account (Online Service Center)",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.safeguardit.com/self-storage-faq",
+      "title": "Self Storage FAQ | Safeguard Self Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.mysafeguardselfstorage.com/PayNow.aspx",
+      "title": "Safeguard Self Storage - My Account (payment options and Auto Payment Plan agreement)",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    }
+  ],
+  "brand": {
+    "displayName": "Safeguard Self Storage",
+    "shortName": "Safeguard",
+    "primary": "#b5121b",
+    "accent": "#1f2937",
+    "monogram": "SG"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Pay Online",
+    "register": "Create Account",
+    "autopay": "Automatic Payment Plan",
+    "history": "Payment History",
+    "forgot": "Forgot Password"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Online",
+        "page": "login"
+      },
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Create Account",
+        "page": "register"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Online",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payment Plan",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Contact Information",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "registrationFields": [
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://mysafeguardselfstorage.com/"
+  },
+  "contact": {
+    "phone": "866-214-0221",
+    "source": "https://www.safeguardit.com/self-storage-faq",
+    "evidence": "observed_public"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mysafeguardselfstorage.com/",
+      "note": "Pay your full current balance (no partial payments). Accounts more than 30 days past due cannot be paid online; next month can be paid after the 15th."
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mysafeguardselfstorage.com/",
+      "note": "To create an online account we must already have your current email address on file. Need help? Call 1-800-590-0494."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mysafeguardselfstorage.com/"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.mysafeguardselfstorage.com/PayNow.aspx",
+      "channel": "phone",
+      "phone": "800-590-0494",
+      "note": "The Automatic Payment Plan stays in place until you cancel it in writing. Contact your Safeguard store, or call 1-800-590-0494 for help."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://mysafeguardselfstorage.com/",
+      "channel": "in_person",
+      "phone": "866-214-0221",
+      "note": "Safeguard asks that you pay your current balance in full; partial payments are not accepted online. Contact your store to discuss your account."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.safeguardit.com/self-storage-faq",
+      "channel": "in_person",
+      "phone": "866-214-0221",
+      "note": "Moving out is handled by your Safeguard store. Visit or call the store, or call (866) 214-0221."
+    }
+  },
+  "billing": {
+    "source": "https://mysafeguardselfstorage.com/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fullBalanceOnly": true,
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying online",
+      "topic": "payments",
+      "source": "https://mysafeguardselfstorage.com/",
+      "paragraphs": [
+        "In the Online Service Center (My Account) you can pay by E-check, which saves card interest, or by credit card. You can check your balance and the date your unit is paid through, and pay for several units at the same store.",
+        "Pay the full current balance; partial payments are not accepted. Delinquent accounts can be paid online only up to 30 days past due. Next month's rent can be paid ahead once the 15th of the current month has passed."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payment Plan",
+      "topic": "autopay",
+      "source": "https://www.mysafeguardselfstorage.com/PayNow.aspx",
+      "paragraphs": [
+        "Enroll in the E-check or credit card Automatic Payment Plan from My Account so the amount due each month is charged to your bank account or card. The amount can change from month to month if your lease terms, rate or fees change.",
+        "If a payment cannot be processed you still need to pay another way. The plan stays in effect until you cancel it in writing with Safeguard."
+      ]
+    },
+    {
+      "slug": "payment-history",
+      "title": "Payment history",
+      "topic": "billing",
+      "source": "https://mysafeguardselfstorage.com/",
+      "paragraphs": [
+        "My Account shows your payments from the previous six months. For older records, contact your store."
+      ]
+    },
+    {
+      "slug": "register",
+      "title": "Creating your online account",
+      "topic": "account",
+      "source": "https://mysafeguardselfstorage.com/",
+      "paragraphs": [
+        "New customers select Create Account. Safeguard must already have your current email address on file before an online account can be created. If you need help creating or getting into your account, call 1-800-590-0494 or send the online contact form."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://www.safeguardit.com/self-storage-faq",
+      "paragraphs": [
+        "Safeguard does not describe an online move-out. Tell your store when you plan to move out, or call (866) 214-0221."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "max-days-past-due-online",
+        "intent": "Using Safeguard's My Account help, find the most days past due an account can be and still be paid online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 30 days past due."
+          }
+        ]
+      },
+      {
+        "slug": "online-account-help-phone",
+        "intent": "Find the phone number Safeguard gives for help creating or accessing your online account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8005900494"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8005900494"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-800-590-0494"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Automatic Payment Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "E-check",
+        "30 days"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "1-800-590-0494"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "214-0221"
+    }
+  ]
+}

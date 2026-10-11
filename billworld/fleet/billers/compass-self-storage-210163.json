@@ -1,0 +1,278 @@
+{
+  "id": "compass-self-storage-210163",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Compass Self Storage",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Compass Self Storage FAQ and home page (no sign-in). Pay Online in the header opens the hosted SSM ERP Online Payment Portal (compass-payment.ssm-erp.com, script-rendered; not observed, so auth keeps the family default). Home features: All Major Credit Cards Accepted, Month to Month Leases, Auto Pay. FAQ: automatic monthly payment is encouraged to avoid missed payments and late fees and the lease then renews at the start of each month; monthly invoices are normally not sent but can be requested (paperless not modelled); no long-term contract or deposit; refunds and cancellations go to the site manager. No fee amounts, due date or company-wide phone are published (facilities list their own numbers). Review 2026-10-10: the hosted portal (rendered in a browser, not signed in) shows My Account Sign In / Pay My Bill with Username or email address + Password and Forgot your password?; the username is the rental email and new customers get a temporary password by email (registration unsupported, register-and-pay suppressed). The same SSM portal at Devon offers Schedule Moveout, but Compass's FAQ sends cancellations and refunds to the site manager, so cancel_service stays offline.",
+  "officialDomains": [
+    "compassselfstorage.com",
+    "ssm-erp.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.compassselfstorage.com/faq/",
+      "title": "Frequently Asked Questions | Compass Self Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.compassselfstorage.com/",
+      "title": "Compass Self Storage",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://compass-payment.ssm-erp.com/",
+      "title": "Compass Self Storage - My Account Sign In / Pay My Bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Compass Self Storage",
+    "shortName": "Compass",
+    "primary": "#003865",
+    "accent": "#a4161a",
+    "monogram": "CS"
+  },
+  "labels": {
+    "payBill": "Pay Online",
+    "dashboard": "My Account",
+    "autopay": "Auto Pay",
+    "help": "FAQ",
+    "cancel": "Move Out",
+    "signIn": "Sign in",
+    "username": "Username or email address",
+    "forgot": "Forgot your password?"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Online",
+        "page": "login"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Online",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.compassselfstorage.com/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.compassselfstorage.com/faq/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.compassselfstorage.com/faq/",
+      "channel": "in_person",
+      "note": "Leases are month-to-month. For move-outs, cancellations or refunds, call or visit the site manager at your Compass facility."
+    },
+    "registration": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://compass-payment.ssm-erp.com/",
+      "channel": "in_person",
+      "note": "There is no sign-up form. Your username is the email you used to rent, and a temporary password is emailed when you rent; you set your own password at first sign-in. Trouble signing in? Contact your Compass location."
+    }
+  },
+  "billing": {
+    "source": "https://www.compassselfstorage.com/faq/",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your bill",
+      "topic": "payments",
+      "source": "https://www.compassselfstorage.com/",
+      "paragraphs": [
+        "Choose Pay Online to pay through the Compass Online Payment Portal. Compass accepts all major credit cards.",
+        "Compass normally does not mail a monthly invoice, but your facility will send one if you ask."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic monthly payments",
+      "topic": "autopay",
+      "source": "https://www.compassselfstorage.com/faq/",
+      "paragraphs": [
+        "Compass encourages automatic monthly payment so you never miss a payment or pay a late fee. Once you sign up, your month-to-month lease renews at the beginning of each month."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out and refunds",
+      "topic": "account",
+      "source": "https://www.compassselfstorage.com/faq/",
+      "paragraphs": [
+        "Leases are month-to-month with no long-term contract or deposit. For questions about moving out, cancellations or refunds, call the site manager at your facility."
+      ]
+    },
+    {
+      "slug": "account-login",
+      "title": "Signing in for the first time",
+      "topic": "account",
+      "source": "https://compass-payment.ssm-erp.com/",
+      "paragraphs": [
+        "Your username is the email address you used to rent your unit. New customers sign in with the temporary password that was emailed at rental (check junk or spam folders) and are then asked to create a permanent password. If you have trouble signing in, contact your Compass location."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "accept-retention",
+      "downgrade-plan",
+      "register-and-pay"
+    ],
+    "extra": [
+      {
+        "slug": "monthly-invoice-policy",
+        "intent": "Using the Compass Self Storage FAQ, find out whether Compass mails a monthly invoice. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "request",
+              "ask"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "request",
+            "ask"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Not normally, but they will send one if you request it."
+          }
+        ]
+      },
+      {
+        "slug": "refund-contact",
+        "intent": "Find who Compass Self Storage says to contact about refunds or cancellations. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "site manager",
+              "manager"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "site manager",
+            "manager"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The site manager at your facility."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "beginning of each month"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "site manager"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username or email address"
+      ]
+    }
+  ],
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://compass-payment.ssm-erp.com/"
+  }
+}

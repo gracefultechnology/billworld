@@ -1,0 +1,428 @@
+{
+  "id": "midco-midcontinent-communications-5bff62",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Midco (Midcontinent Communications)",
+  "category": "tv",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public midco.com support pages and the Cable TV Subscription Terms only (no sign-in). Pay in My Account or the My Account app (Billing; one-time, Auto Pay, split pay across statements), by phone at 1.800.888.1300, or by mail to Midco, PO Box 5010, Sioux Falls, SD 57117; checking, savings, Visa, Mastercard, Discover; Midco charges no fee to take a payment. A footer Pay Bill pop-up leads to a secure payment site, but whether it works without signing in is not stated, so guest_pay keeps the family default. Sign-in: password reset sends a link to the email on the account and Midco's registration help says the email and password are the login for My Account and Midco apps, so identifier is email (inferred); passwords are 8-32 characters with a number, an uppercase and a lowercase letter. Log in by text (one-time passcode) is an alternative sign-in, not MFA. Auto Pay: Billing > Menu > Wallet to add a method, then Auto Pay > Add Auto Pay; defaults start next billing cycle and pay on the due date, payment date can be moved as early as ten days before the due date (not expressible beyond days: due_date); also by EFT form or phone. Auto Pay is stopped by removing the wallet item it uses. The Auto Pay/paperless discount needs Auto Pay from a bank account (amount not stated). Statements: 12 months online; paper statements carry a $1 monthly fee; paperless is set under Account > My Profile (email or text). Midco cannot extend due dates. Cancellation is by calling 1.800.888.1300 or in person at a Customer Service Center; equipment including remotes must be returned. Late fee amount not published; left out. Plans/prices left out. Reviewer (t20, 2026-10-10): Re-checked the six cited pages plus Payment Due Dates & Processing. Fixed the mailed-payment timing in pay-your-bill (the dossier said six days; Midco says five to seven business days for mail, up to two business days online, immediate with an agent) and added scheduled_payment with the 10-days-before-due rule and a scheduled-payments article. The my-account page also says 'User ID'; email stays the identifier (reset by email). Reviewer: guest_pay was left at the family default by the builder; the public Pay Bill pop-up on every midco.com support page links (Proceed) to KUBRA EZ-PAY OneTimeValidate for Midco, which states it takes one-time payments when you are not logged in and asks only for the account number (viewed, nothing entered). guest_pay is now supported (observed_public) with guestLookupFields [accountNumber] exact; i-doxs.net added to officialDomains as Midco's linked payment site. Guest payment methods and fees on that site are not shown before lookup, so guestMethods keeps the default.",
+  "officialDomains": [
+    "midco.com",
+    "i-doxs.net"
+  ],
+  "sources": [
+    {
+      "url": "https://midco.com/support/account-and-billing/billing-and-payments/",
+      "title": "Billing & Payments | Midco Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://midco.com/support/account-and-billing/billing-and-payments/auto-pay/",
+      "title": "Auto Pay | Midco Account & Billing Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://midco.com/support/account-and-billing/billing-and-payments/statements/",
+      "title": "Statements | Midco Account & Billing Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://midco.com/support/account-and-billing/my-account/",
+      "title": "My Account | Midco Account & Billing Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://midco.com/support/account-and-billing/my-account/reset-password-and-PIN/",
+      "title": "Reset My Account Password | Midco Account & Billing Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://midco.com/legal/cable-tv-subscription-terms-and-conditions/",
+      "title": "Cable TV Subscription Terms and Conditions | Midco",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://midco.com/support/account-and-billing/billing-and-payments/due-date-processing/",
+      "title": "Payment Due Dates & Processing | Midco Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://secure8.i-doxs.net/ezpay/OneTimeValidate.aspx?BillerID=1CQuaajP5T",
+      "title": "Account Lookup - KUBRA EZ-PAY (Midco one-time payment)",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Midco",
+    "shortName": "Midco",
+    "primary": "#00577d",
+    "accent": "#6d2077",
+    "monogram": "M"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "viewBill": "Billing",
+    "payBill": "Pay Bill",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "wallet": "Wallet",
+    "history": "Payments",
+    "statements": "Statements",
+    "profile": "My Profile",
+    "forgot": "Forgot Password?",
+    "register": "Register Now",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "guest"
+      },
+      {
+        "label": "Register Now",
+        "page": "register"
+      },
+      {
+        "label": "Billing & Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Wallet",
+        "page": "wallet"
+      },
+      {
+        "label": "Payments",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "passwordRule": {
+      "pattern": "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$",
+      "message": "Use 8 to 32 characters with at least one number, one uppercase letter and one lowercase letter."
+    },
+    "evidence": "inferred",
+    "source": "https://midco.com/support/account-and-billing/my-account/reset-password-and-PIN/",
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "guestLookupExact": true
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/auto-pay/",
+      "note": "Auto Pay starts with your next statement. Pay any current balance with a one-time payment to avoid late fees. Each Midco account needs its own Auto Pay."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/auto-pay/",
+      "note": "Cancel any scheduled payments first; payments already scheduled still process."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/statements/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://midco.com/legal/cable-tv-subscription-terms-and-conditions/",
+      "note": "To cancel Midco service, call Midco Customer Service at 1.800.888.1300 or visit a Midco Customer Service Center. All Midco equipment, including remotes, must be returned.",
+      "channel": "phone",
+      "phone": "8008881300"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/",
+      "phone": "8008881300"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/due-date-processing/",
+      "note": "You can schedule a payment up to 10 days before your due date, never after it."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/",
+      "note": "Not signed in? Make a one-time payment through Midco's secure payment site with just your account number. To see your statement or set up Auto Pay, log in to My Account."
+    }
+  },
+  "contact": {
+    "phone": "8008881300",
+    "payPhone": "8008881300",
+    "source": "https://midco.com/support/account-and-billing/billing-and-payments/",
+    "evidence": "documented_official"
+  },
+  "billing": {
+    "source": "https://midco.com/support/account-and-billing/billing-and-payments/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "notes": [
+        "Paper statements carry a $1 monthly service fee.",
+        "Midco may charge a late fee when payment is not received by the due date."
+      ],
+      "evidence": "documented_official",
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Billing and payments",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to My Account or the My Account app and go to Billing to make a one-time payment or set up Auto Pay from a credit card, checking or savings account. If you have more than one Midco statement you can split a payment. You can also pay by phone at 1.800.888.1300, or mail a check with your statement stub (or your name and account number) to Midco, PO Box 5010, Sioux Falls, SD 57117.",
+        "Midco does not charge a fee to take a payment. Midco accepts Visa, Mastercard and Discover.",
+        "Statements bill a month in advance and your due date depends on when your services were installed. Midco can't extend due dates, and the due date is the same however you pay. Online and automated phone payments can take up to two business days to process, a payment taken by a Midco agent processes right away, and mailed payments take five to seven business days."
+      ],
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "In My Account go to Billing, open the Menu and choose Wallet to save a bank account or card. Then open Auto Pay, select Add Auto Pay, choose the account and the wallet item under Pay With, and save. By default Auto Pay starts with the next billing cycle and pays on the due date; you can move the payment date as early as ten days before the due date, never after it.",
+        "Auto Pay starts with your next statement, so pay any current balance with a one-time payment. Each Midco account needs its own Auto Pay, and you still get a paper bill unless you also choose paperless billing. The full Auto Pay and paperless discount needs Auto Pay from a bank account.",
+        "To stop Auto Pay, remove the card or bank account it uses from your Wallet. Cancel any scheduled payments first (Billing, Menu, Payments, Cancel Your Payment), because scheduled payments still process. You can also enroll or cancel by calling 1.800.888.1300."
+      ],
+      "steps": [
+        "Sign in to My Account and go to Billing.",
+        "Open Menu, then Wallet, and add a payment method.",
+        "Open Auto Pay and select Add Auto Pay.",
+        "Choose the wallet item under Pay With and Save."
+      ],
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/auto-pay/"
+    },
+    {
+      "slug": "statements",
+      "title": "Statements and paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "View current and recent statements in My Account or the app from the Home tab or under Billing. Midco keeps statements online for only 12 months, so download any you want to keep.",
+        "To go paperless, open Account, then My Profile, check Billing / Paperless Billing for email or text and save. Paper statements carry a $1 monthly service fee, and paper is only available when everyone on the account has turned off email and text billing notices."
+      ],
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/statements/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancelling Midco service",
+      "topic": "account",
+      "paragraphs": [
+        "You can end service at any time by written notice, by calling Midco Customer Service at 1.800.888.1300, or in person at a Midco Customer Service Center. Return all Midco equipment, including remote controls; damaged or unreturned equipment is charged at the current price guide.",
+        "Services are billed in advance. If payment is late Midco may charge a late fee, and returned checks may carry a charge up to the state maximum."
+      ],
+      "source": "https://midco.com/legal/cable-tv-subscription-terms-and-conditions/"
+    },
+    {
+      "slug": "scheduled-payments",
+      "title": "Scheduling a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "In My Account you can schedule a one-time payment, or set your Auto Pay date, up to 10 days before your due date. Payments cannot be scheduled after the due date. Although partial payments are allowed online, the full balance is due on the due date.",
+        "You can cancel a payment while its status is Scheduled or Pending (Billing, Menu, Payments). If your bank declines a payment, Midco may charge a non-sufficient funds fee."
+      ],
+      "source": "https://midco.com/support/account-and-billing/billing-and-payments/due-date-processing/"
+    },
+    {
+      "slug": "guest-pay",
+      "title": "Pay without logging in",
+      "topic": "payments",
+      "paragraphs": [
+        "Select Pay Bill at the bottom of any Midco page and choose Proceed to open Midco's secure payment site. Enter the account number from your bill, add your payment and check out. This makes a one-time payment only; log in to My Account to view statements or manage Auto Pay."
+      ],
+      "source": "https://secure8.i-doxs.net/ezpay/OneTimeValidate.aspx?BillerID=1CQuaajP5T"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "paper-statement-fee",
+        "intent": "Using Midco's statement help, find the monthly fee for paper statements. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1",
+              "1 dollar",
+              "one dollar"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1",
+            "1 dollar",
+            "one dollar"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "paperless"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Paper statements carry a $1 monthly service fee."
+          }
+        ]
+      },
+      {
+        "slug": "statements-kept-online",
+        "intent": "Find out how many months of statements Midco keeps online. Do not change anything on the account.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12",
+              "twelve"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12",
+            "twelve"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Midco keeps statements online for 12 months."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1.800.888.1300"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "statements",
+      "contains": "12 months"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "can't extend due dates"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Pay Bill"
+      ]
+    }
+  ]
+}

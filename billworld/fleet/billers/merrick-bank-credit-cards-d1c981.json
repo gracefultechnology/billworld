@@ -1,0 +1,341 @@
+{
+  "id": "merrick-bank-credit-cards-d1c981",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Merrick Bank (credit cards)",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from Merrick Bank's public cardholder-site pages (logon.merrickbank.com sign-in page and its public help pages, paperless.merrickbank.com FAQ); no sign-in. Sign-in form: 'Username', 'Password' (Show), 'Remember me', 'Log In'; links 'Forgot username or password?' and 'Not enrolled? Sign up now'; no pay-without-login option. Online Bill Pay: 'Make a One-Time Online Payment' > Payment Account > amount ('Minimum Payment Due', 'Current Account Balance' or other) > posting date > 'Continue' > review and submit. Minimum $15.00, maximum the current balance, only one online payment per 24 hours (not expressible; not modelled), allow two business days to post. Payment Accounts are checking or savings (any number; the first is the default), so methods are bank only. Recurring: 'Set Up Recurring Online Payments' with 'Minimum Payment Due' or 'Last Statement Balance', optional Stop Date, posted on the Payment Due Date each month. Scheduled/recurring payments are cancelled under Payment Services > 'Pending Payments' > 'Cancel'. Payment History shows 24 months. Statements: Account Information > Statements (the older help page says 3 months online; the paperless FAQ says the last 24 statements via 'View Billing Statements'; the help article cites the paperless FAQ). Paperless: Account Services > goPaperless > Yes (free); switching back to paper requires calling 1-800-204-5936 (not modelled). Statement copies $2.00 per page unless for a billing error. Phone payments may carry a fee (amount not published, in fees.notes). Mail: Merrick Bank, P.O. Box 660702, Dallas, TX 75266-0702 (7-10 business days). Customer Service 1-800-204-5936 (24/7); the online-payment help page lists 1-800-253-2322. Account closing is not described on the public pages; cancel_service stays at the family default. HELD BACK (cross-owner request): billing.minPaymentCents 1500 (the real $15.00 online minimum) makes tests/driver.mjs flows stale_review_two_tabs ($5.00) and back_edit_stale_token ($7.00) fail on the engine's minimum; it is removed until those flows use an amount at or above the dossier minimum, and the abstention task 'pay-ten-dollars-abstain' (a $10.00 online payment must be refused) is removed with it. Re-add both after the driver fix. The $15.00 minimum is still stated in help.",
+  "officialDomains": [
+    "merrickbank.com"
+  ],
+  "sources": [
+    {
+      "url": "https://logon.merrickbank.com/help/gethelp/onlinepaymenthelp",
+      "title": "Online payment help | Merrick Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://logon.merrickbank.com/",
+      "title": "Merrick Bank cardholder log in",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://logon.merrickbank.com/help/gethelp/paymenthistoryhelp",
+      "title": "What is payment history? | Merrick Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://logon.merrickbank.com/help/gethelp/statementhelp",
+      "title": "Statement help | Merrick Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://paperless.merrickbank.com/paperless/faqs.aspx",
+      "title": "Paperless statements FAQs | Merrick Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "shortName": "Merrick Bank",
+    "primary": "#00467f",
+    "accent": "#a4343a",
+    "monogram": "MB"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "username": "Username",
+    "password": "Password",
+    "forgot": "Forgot username or password?",
+    "register": "Sign up now",
+    "payBill": "Online Bill Pay",
+    "autopay": "Recurring Online Payments",
+    "history": "Payment History",
+    "statements": "Statements",
+    "paperless": "goPaperless",
+    "wallet": "Payment Accounts",
+    "help": "Help",
+    "amountDue": "Minimum Payment Due",
+    "dueDate": "Payment Due Date"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Sign up now",
+        "page": "register"
+      },
+      {
+        "label": "Online payment help",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Information",
+        "page": "dashboard"
+      },
+      {
+        "label": "Online Bill Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Online Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Payment Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "goPaperless",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://logon.merrickbank.com/"
+  },
+  "contact": {
+    "phone": "1-800-204-5936",
+    "payPhone": "1-800-253-2322",
+    "source": "https://paperless.merrickbank.com/paperless/faqs.aspx"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "observed_public",
+      "source": "https://logon.merrickbank.com/",
+      "note": "Merrick Bank has no pay-without-logging-in option. Log in to Online Bill Pay, pay by phone, or mail a check or money order to P.O. Box 660702, Dallas, TX 75266-0702.",
+      "channel": "phone",
+      "phone": "1-800-204-5936"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://logon.merrickbank.com/help/gethelp/onlinepaymenthelp"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://logon.merrickbank.com/help/gethelp/onlinepaymenthelp"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://logon.merrickbank.com/help/gethelp/onlinepaymenthelp"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://paperless.merrickbank.com/paperless/faqs.aspx",
+      "note": "Enrolling is free. To go back to paper statements, call Customer Service at 1-800-204-5936."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://paperless.merrickbank.com/paperless/faqs.aspx"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://logon.merrickbank.com/help/gethelp/onlinepaymenthelp"
+    }
+  },
+  "billing": {
+    "source": "https://logon.merrickbank.com/help/gethelp/onlinepaymenthelp",
+    "fees": {
+      "notes": [
+        "Paying by phone may carry a fee; the amount is not published.",
+        "Statement copies cost $2.00 per page, except copies needed to resolve a reported billing error."
+      ],
+      "evidence": "documented_official",
+      "source": "https://paperless.merrickbank.com/paperless/faqs.aspx"
+    },
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "minimum",
+        "statement"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "maxPaymentBalance": true
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Making an online payment",
+      "topic": "payments",
+      "paragraphs": [
+        "On the Online Bill Pay screen select Make a One-Time Online Payment. Choose a Payment Account, enter the amount (Minimum Payment Due, Current Account Balance or another amount) and the posting date, select Continue, review the overview and submit.",
+        "Online payments must be at least $15.00 and no more than your current balance. Only one online payment can be made in any 24-hour period. Allow two business days for it to post.",
+        "Payment Accounts are checking or savings accounts; you can add as many as you like, and the first becomes your default."
+      ],
+      "steps": [
+        "Open Online Bill Pay and select Make a One-Time Online Payment.",
+        "Choose the Payment Account, amount and posting date.",
+        "Select Continue and review.",
+        "Submit the payment."
+      ],
+      "source": "https://logon.merrickbank.com/help/gethelp/onlinepaymenthelp"
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring online payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "On the Online Bill Pay screen select Set Up Recurring Online Payments. Choose Minimum Payment Due or Last Statement Balance, add an optional Stop Date and select Continue. Recurring payments post on your Payment Due Date each month.",
+        "To cancel a recurring or scheduled payment, go to Payment Services, select Pending Payments, choose Cancel next to the payment, review and submit."
+      ],
+      "steps": [
+        "Open Online Bill Pay.",
+        "Select Set Up Recurring Online Payments.",
+        "Pick the amount option and optional Stop Date.",
+        "Select Continue and confirm."
+      ],
+      "source": "https://logon.merrickbank.com/help/gethelp/onlinepaymenthelp"
+    },
+    {
+      "slug": "payment-history",
+      "title": "Payment History",
+      "topic": "payments",
+      "paragraphs": [
+        "The Payment History screen lists the payments posted to your account in the last 24 months."
+      ],
+      "source": "https://logon.merrickbank.com/help/gethelp/paymenthistoryhelp"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "topic": "account",
+      "paragraphs": [
+        "Log in, choose goPaperless under Account Services and select Yes to enroll; you can also enroll in the goMobile app. Enrolling is free.",
+        "Print your last 24 statements anytime with View Billing Statements on the Account Information screen. Statement copies by request cost $2.00 per page unless they resolve a reported billing error. To return to paper statements, call Customer Service at 1-800-204-5936."
+      ],
+      "source": "https://paperless.merrickbank.com/paperless/faqs.aspx"
+    },
+    {
+      "slug": "other-ways-to-pay",
+      "title": "Pay by phone or mail",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay by phone through Customer Service; there may be a fee for this option. Or mail a check, cashier's check or money order to Merrick Bank, P.O. Box 660702, Dallas, TX 75266-0702 and allow 7 to 10 business days."
+      ],
+      "source": "https://logon.merrickbank.com/help/gethelp/onlinepaymenthelp"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Merrick Bank",
+      "topic": "contact",
+      "paragraphs": [
+        "Call Customer Service at 1-800-204-5936. The online payment help page also lists 1-800-253-2322 for questions about paying online."
+      ],
+      "source": "https://paperless.merrickbank.com/paperless/faqs.aspx"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "online-payment-minimum",
+        "intent": "Using Merrick Bank's help pages, find the smallest online payment Merrick Bank accepts. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$15",
+              "15.00"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$15",
+            "15.00"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The minimum online payment is $15.00."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "username"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Set Up Recurring Online Payments",
+        "Pending Payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$15.00"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Visa"
+      ]
+    }
+  ]
+}

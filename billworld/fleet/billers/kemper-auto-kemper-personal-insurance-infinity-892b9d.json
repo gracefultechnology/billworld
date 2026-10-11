@@ -1,0 +1,288 @@
+{
+  "id": "kemper-auto-kemper-personal-insurance-infinity-892b9d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Kemper Auto / Kemper Personal Insurance / Infinity",
+  "category": "insurance",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public kemper.com pages only (no sign-in, no form submitted). Make-a-payment page: Quick Pay for Kemper Auto and Kemper Personal Insurance policyholders with Policy Number + ZIP Code (no login); Kemper Life uses separate links/agent; warns third-party payment providers may not apply payments promptly. Customer login (signin.kemper.com): Username + Continue first (two-step), Forgot Username, Register Now, Quick Access 'Make a Payment' without logging in. Kemper EZPay Auto Recurring Payment FAQ: monthly draft from checking/savings or Visa/Mastercard credit/debit; lower installment fees while enrolled (amounts not published); notice before first draft and when the amount changes; same day each month on/after the date in the Notification of Automatic Withdrawal; switching bank to card can be done online (3-5 days); change the draft date or cancel EZPay by calling Kemper Specialty Customer Service 800-456-0448 before the next due date (autopay_cancel offline). Declined bank draft is resubmitted once, declined card schedules cancellation. Contact page (Kemper Auto / Infinity): customer service 800-782-1020 (Infinity option 3), claims 800-353-6737, general mail P.O. Box 830189, Birmingham, AL 35283-0189. Card brands for EZPay limited to Visa/Mastercard (not expressible). Reviewed 2026-10-10 (independent review): the contact page does list Kemper Personal Insurance customer service (877-252-7878, mail in Jacksonville, FL) under its brand selector; added to the contact article. labels.forgot ('Forgot Username') removed because the fleet's forgot flow resets the password; the family wording covers both.",
+  "officialDomains": [
+    "kemper.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.kemper.com/my-policy/make-a-payment",
+      "title": "Make a Payment | Kemper",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://cloud.web.kemper.com/EZPayFAQs",
+      "title": "Kemper EZPay Auto Recurring Payment FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.kemper.com/my-policy/customer-login",
+      "title": "Kemper Customer Login",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.kemper.com/about-kemper/contact-us",
+      "title": "Contact Us | Kemper",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Kemper Auto",
+    "shortName": "Kemper",
+    "primary": "#003b71",
+    "accent": "#002950",
+    "monogram": "K"
+  },
+  "labels": {
+    "signIn": "Customer Login",
+    "register": "Register Now",
+    "guestPay": "Quick Pay",
+    "payBill": "Make a Payment",
+    "autopay": "Kemper EZPay",
+    "username": "Username"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "My Policy",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Kemper EZPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 2,
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.kemper.com/my-policy/customer-login"
+  },
+  "contact": {
+    "phone": "800-782-1020",
+    "source": "https://www.kemper.com/about-kemper/contact-us"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.kemper.com/my-policy/customer-login"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.kemper.com/my-policy/make-a-payment"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://cloud.web.kemper.com/EZPayFAQs",
+      "note": "Kemper EZPay drafts your monthly payment from a checking or savings account or a Visa or Mastercard credit or debit card. We mail a Notification of Automatic Withdrawal before the first draft."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://cloud.web.kemper.com/EZPayFAQs",
+      "note": "To cancel Kemper EZPay or change its draft date, call Kemper Specialty Customer Service at 800-456-0448 before your next payment due date.",
+      "channel": "phone",
+      "phone": "800-456-0448"
+    }
+  },
+  "billing": {
+    "source": "https://cloud.web.kemper.com/EZPayFAQs",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Kemper Auto and Kemper Personal Insurance policyholders can use Quick Pay without logging in: enter your policy number and ZIP code.",
+        "Paying directly with Kemper is the preferred way to make sure your payment is applied quickly and correctly. If you pay through a third-party payment provider, check that the payment was applied to your account.",
+        "Kemper Life customers pay through their agent or Kemper Life customer service."
+      ],
+      "source": "https://www.kemper.com/my-policy/make-a-payment"
+    },
+    {
+      "slug": "autopay",
+      "title": "Kemper EZPay Auto Recurring Payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Kemper EZPay pays your monthly bill automatically from a checking or savings account or a Visa or Mastercard credit or debit card. Enrolled policies get lower installment fees.",
+        "Before the first draft we mail a Notification of Automatic Withdrawal with the amount and start date. If you get a bill before then, pay it. Drafts happen on the same day each month, on or after the date in that letter, and you are notified if the amount changes.",
+        "You can switch EZPay from a bank account to a card online (allow 3-5 days). To cancel EZPay or change the draft date, call Kemper Specialty Customer Service at 800-456-0448 before your next due date."
+      ],
+      "source": "https://cloud.web.kemper.com/EZPayFAQs"
+    },
+    {
+      "slug": "declined-payment",
+      "title": "What if an EZPay payment is declined?",
+      "topic": "payments",
+      "paragraphs": [
+        "For bank drafts, a declined withdrawal is submitted again; if the second attempt is also declined, the policy is scheduled to cancel.",
+        "For card payments, the policy is scheduled to cancel as soon as we learn the funds are not available. Recurring payments can continue if you replace the payment with certified funds and the policy is reinstated."
+      ],
+      "source": "https://cloud.web.kemper.com/EZPayFAQs"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Kemper",
+      "topic": "contact",
+      "paragraphs": [
+        "Kemper Auto customer service: 800-782-1020 (Infinity customers choose option 3). Kemper Personal Insurance customer service: 877-252-7878. Claims: 800-353-6737. General mail for Kemper Auto and Infinity: P.O. Box 830189, Birmingham, AL 35283-0189."
+      ],
+      "source": "https://www.kemper.com/about-kemper/contact-us"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "ezpay-cancel-phone",
+        "intent": "Find the phone number Kemper gives for cancelling Kemper EZPay recurring payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8004560448"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8004560448"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "800-456-0448"
+          }
+        ]
+      },
+      {
+        "slug": "ezpay-fee-benefit",
+        "intent": "Using Kemper's EZPay help, find what gets lower when you are enrolled in Kemper EZPay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "installment"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "installment"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Installment fees are lower while enrolled in Kemper EZPay."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Notification of Automatic Withdrawal",
+        "800-456-0448"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "800-456-0448"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Kemper EZPay",
+        "Payment History"
+      ]
+    }
+  ]
+}

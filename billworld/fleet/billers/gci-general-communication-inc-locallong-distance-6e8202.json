@@ -1,0 +1,379 @@
+{
+  "id": "gci-general-communication-inc-locallong-distance-6e8202",
+  "version": 1,
+  "status": "dedicated",
+  "name": "GCI (General Communication Inc.)",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public gci.com support pages and the GCI phone service terms only (no sign-in). GCI is Alaska's largest cable/telecom provider; home phone is billed in MyGCI with its other services. MyGCI sign-up: Sign Up under Don't have a login?, enter an email (CAPTCHA), then the GCI account number from the invoice plus either the account password or Security PIN (not expressible), then choose a username and password and add first and last name; confirm by clicking the emailed link within 24 hours. Sign-in is by username. Password: at least 6 characters with a letter, a number and a special character from !@#$%. Payments: MyGCI online, GCI stores (cash only in store), automated phone line 1-800-800-4800 (invoice/account number and PIN), mail to PO Box 99016, Anchorage, AK 99509-9016; cards Visa, MasterCard, Discover, American Express, checking or savings, GCI gift cards. No payment fees are published (none charged). A pay-without-signing-in web page is not described (guest_pay offline). Autopay: Overview or Billing tab > Turn on Autopay > Manage Autopay toggle, pick a method (credit card or EFT), the default date is on or near the due date or any other day of the month (custom day not expressible), Save Changes; turning off is via the same Manage Autopay toggle (inferred). Paperless: Billing > Paperless Billing toggle On/Off; residential customers who choose a printed bill pay a $2.99 monthly Paper Bill Fee (help/notes only). Cancellation: allowed any time under the phone terms (no prorated refunds mid-cycle, equipment must be returned to a GCI store); the terms give no online route, so cancel_service is modelled as by phone (inferred). Late fee and finance charge exist but amounts are published only in the regulatory schedule (not modelled). Reviewed 2026-10-10 (t20 review): paperless source corrected to the live article URL (the old one returned 404); the $2.99 Paper Bill Fee was confirmed directly on the paperless and Understand Your Bill pages.",
+  "officialDomains": [
+    "gci.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.gci.com/support/m/make-a-payment",
+      "title": "Make a Payment",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.gci.com/support/s/set-up-autopay",
+      "title": "How to Set up Autopay with MyGCI",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.gci.com/support/a/activate-paperless-billing",
+      "title": "How to Activate Paperless Billing in MyGCI",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.gci.com/support/c/create-mygci-profile",
+      "title": "Create a MyGCI login profile",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.gci.com/terms-conditions/phone-service",
+      "title": "GCI Phone Service Terms & Conditions",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.gci.com/support/u/understand-your-bill",
+      "title": "Understand Your Bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "GCI",
+    "shortName": "GCI",
+    "primary": "#0055a5",
+    "accent": "#1f2a44",
+    "monogram": "G"
+  },
+  "labels": {
+    "dashboard": "Overview",
+    "viewBill": "Billing",
+    "payBill": "Make a Payment",
+    "autopay": "Autopay",
+    "paperless": "Paperless Billing",
+    "signIn": "Login",
+    "signOut": "Logout",
+    "register": "Sign Up",
+    "username": "Username",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login to MyGCI",
+        "page": "login"
+      },
+      {
+        "label": "Sign Up",
+        "page": "register"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Users",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "mfa": "email",
+    "passwordRule": {
+      "pattern": "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%]).{6,}$",
+      "message": "Use at least 6 characters with at least one letter, one number and one special character (!@#$%)."
+    },
+    "registrationFields": [
+      "accountNumber",
+      "email",
+      "lastName"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.gci.com/support/c/create-mygci-profile"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.gci.com/support/m/make-a-payment",
+      "note": "Online payments are made in MyGCI. Without logging in, call 1-800-800-4800 and follow the prompts (have your invoice or account number and PIN ready), pay at a GCI store, or mail your payment.",
+      "channel": "phone",
+      "phone": "8008004800"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/s/set-up-autopay"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.gci.com/support/s/set-up-autopay"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/a/activate-paperless-billing",
+      "note": "Residential customers who choose a printed bill pay a $2.99 monthly Paper Bill Fee."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.gci.com/terms-conditions/phone-service",
+      "note": "To cancel service, call GCI at 1-800-800-4800 or visit a GCI store. Company equipment must be returned to a GCI store, and there are no prorated refunds for part of a billing cycle.",
+      "channel": "phone",
+      "phone": "8008004800"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/m/make-a-payment",
+      "phone": "8008004800"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/m/make-a-payment"
+    }
+  },
+  "contact": {
+    "phone": "1-800-800-4800",
+    "payPhone": "1-800-800-4800",
+    "evidence": "documented_official",
+    "source": "https://www.gci.com/support/m/make-a-payment"
+  },
+  "billing": {
+    "source": "https://www.gci.com/support/m/make-a-payment",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "notes": [
+        "Residential customers who choose a printed bill pay a $2.99 monthly Paper Bill Fee."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/u/understand-your-bill"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online in MyGCI, in a GCI store, by phone or by mail. GCI accepts Visa, MasterCard, Discover and American Express, checking or savings accounts, checks and GCI gift cards; cash is taken in stores only.",
+        "By phone, call 1-800-800-4800 toll-free and follow the prompts to hear your balance or pay. Have your invoice or account number and your PIN ready.",
+        "By mail, send your payment to PO Box 99016, Anchorage, AK 99509-9016."
+      ],
+      "source": "https://www.gci.com/support/m/make-a-payment"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up Autopay in MyGCI",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in to MyGCI and select Turn on Autopay on the Overview or Billing tab. If you have no payment method saved, choose Create Payment Method and add a credit card or a bank account (EFT), then Save and Return to Autopay.",
+        "On Manage Autopay, switch the toggle on, confirm the payment date (MyGCI suggests a date on or near your due date, or pick another day of the month), choose your payment method and select Save Changes. Your next payment date then shows on the Overview screen; use Show more to view or change it."
+      ],
+      "steps": [
+        "Log in to MyGCI.",
+        "Select Turn on Autopay.",
+        "Switch the Manage Autopay toggle on.",
+        "Confirm the date and method, then Save Changes."
+      ],
+      "source": "https://www.gci.com/support/s/set-up-autopay"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "In MyGCI on the web or in the app, open Billing and set the Paperless Billing toggle to On. Your bill is then emailed instead of mailed. Set it to Off to get paper bills again.",
+        "Residential customers who choose a printed bill pay a $2.99 monthly Paper Bill Fee."
+      ],
+      "source": "https://www.gci.com/support/a/activate-paperless-billing"
+    },
+    {
+      "slug": "register",
+      "title": "Create a MyGCI login",
+      "topic": "account",
+      "paragraphs": [
+        "Select Sign Up under Don't have a login?, enter your email address and continue. Enter your GCI account number from your invoice and either your account password or your Security PIN.",
+        "Choose a username and password and add your name. The password needs at least 6 characters with a letter, a number and one of !@#$%. Click the link in the confirmation email within 24 hours to finish."
+      ],
+      "source": "https://www.gci.com/support/c/create-mygci-profile"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel GCI phone service",
+      "topic": "account",
+      "paragraphs": [
+        "You may cancel at any time, subject to any term agreement fees. Call GCI at 1-800-800-4800 or visit a GCI store. You pay for service through the termination date, and there are no prorated refunds for cancelling partway through a billing cycle.",
+        "Return company equipment to a GCI store or you will be charged for it. A remaining credit is refunded by mail once there are no outstanding charges and the equipment is back."
+      ],
+      "source": "https://www.gci.com/terms-conditions/phone-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "paper-bill-fee",
+        "intent": "Using GCI's support pages, find the monthly fee GCI charges residential customers who choose a printed bill. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Paper Bill Fee is $2.99 a month."
+          }
+        ]
+      },
+      {
+        "slug": "mail-address",
+        "intent": "Find the PO Box GCI uses for bill payments sent by mail. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "99016"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "99016"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "PO Box 99016, Anchorage, AK 99509-9016"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-800-4800"
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "contains": "$2.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "PO Box 99016",
+        "American Express"
+      ]
+    }
+  ]
+}

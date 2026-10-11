@@ -1,0 +1,350 @@
+{
+  "id": "quantum-fiber-227486",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Quantum Fiber",
+  "category": "internet",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public quantumfiber.com support pages only (no sign-in). AT&T closed its purchase of Lumen's consumer fiber business on 2026-02-02; the site now carries AT&T trademarks but Quantum Fiber still bills in its own account (login.quantumfiber.com, app), separate from myAT&T, so this is not a duplicate of the AT&T Internet pick. Billing is prepaid and automatic: the first month is paid at order and each month is charged on a fixed payment date (set by activation day, can't be changed) to the saved payment method (bank account transfer, Mastercard/Visa/Discover credit or debit, or PayPal - PayPal is not modelled). There is no separate AutoPay to enroll in or turn off (autopay/autopay_cancel not_applicable), statements are emailed (paperless not_applicable, inferred: no paper option is described), payments can't be taken by phone. A failed payment is retried once the customer updates the method (Billing > Saved Payment Method > Update Payment Method); service is disabled 15 days after a failed bank payment, two failed bank transfers block that method for 12 months, and no payment by the next bill date cancels the account. Modelled as full-balance-only, pay-today-only, no arrangements (inferred). Email is the username; passwords need 8+ characters with a letter, number and special character. Cancel by contacting the Fiber Success Team (833-250-6306, 7 a.m.-11 p.m. CT daily, or chat); no contract, no proration; return the modem and 360 WiFi pods within 30 days; a wall-mounted SmartNID stays. Pause online for 1-9 months at a reduced charge (not modelled). Plan prices left out. billing.fees is left out (bank transfers are free; cards carry no published fee) because tests/dedicated.mjs dossier_contract pays a $25.00 'other' amount to check card fees, which a fullBalanceOnly biller does not offer (cross-owner request filed).",
+  "officialDomains": [
+    "quantumfiber.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.quantumfiber.com/support/account/billing-payments.html",
+      "title": "Billing & Payments | Quantum Fiber Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.quantumfiber.com/support/account/billing-payments/update-payment.html",
+      "title": "Update payment info | Quantum Fiber",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.quantumfiber.com/support/account/billing-payments/bank-payment.html",
+      "title": "Payment by bank account | Quantum Fiber",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.quantumfiber.com/support/account/billing-payments/view-statements.html",
+      "title": "View your bill | Quantum Fiber",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.quantumfiber.com/support/account/account-faq.html",
+      "title": "Account FAQs | Quantum Fiber",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.quantumfiber.com/support/account/manage-service/cancel.html",
+      "title": "How to Cancel Your Service | Quantum Fiber",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.quantumfiber.com/support/contact.html",
+      "title": "Contact Us | Quantum Fiber",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Quantum Fiber",
+    "shortName": "Quantum Fiber",
+    "primary": "#1f2a44",
+    "accent": "#0b5cad",
+    "monogram": "Q"
+  },
+  "labels": {
+    "viewBill": "Billing",
+    "payBill": "Make a payment",
+    "wallet": "Saved Payment Method",
+    "history": "My Payments",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "Email",
+    "forgot": "Forgot Password",
+    "help": "Support",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Billing & Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Saved Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "My Payments",
+        "page": "history"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "passwordRule": {
+      "pattern": "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$",
+      "message": "Use at least 8 characters, including a letter, a number and a special character."
+    },
+    "evidence": "documented_official",
+    "source": "https://www.quantumfiber.com/support/account/account-faq.html"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.quantumfiber.com/support/account/account-faq.html",
+      "note": "Quantum Fiber payments are made in your account: sign in to update your payment method and any late payment is processed automatically. Payments can't be taken over the phone."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.quantumfiber.com/support/account/account-faq.html",
+      "note": "Quantum Fiber is prepaid: each month's service is charged automatically to your saved payment method on your payment date. There's nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.quantumfiber.com/support/account/manage-service/cancel.html",
+      "note": "Automatic monthly payments stop when you cancel or pause your service; contact us at 833-250-6306 to cancel."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.quantumfiber.com/support/account/account-faq.html",
+      "note": "Quantum Fiber statements are emailed each month and up to two years of invoices are online; there's no paper bill to turn off."
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.quantumfiber.com/support/account/account-faq.html",
+      "note": "Your payment date is set by your service activation day and can't be changed; payments are charged automatically on that date."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.quantumfiber.com/support/account/account-faq.html",
+      "note": "Quantum Fiber doesn't offer payment plans online. If a payment fails, sign in and update your payment method so the past-due amount can be charged."
+    },
+    "pay_by_phone": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.quantumfiber.com/support/account/account-faq.html",
+      "note": "Quantum Fiber can't take payments over the phone. Sign in to the website or app to pay or update your payment method."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.quantumfiber.com/support/account/manage-service/cancel.html",
+      "note": "To cancel, contact the Fiber Success Team at 833-250-6306 (7 a.m. to 11 p.m. CT, 7 days a week) or by chat. There's no contract, you pick your end date, and the current month isn't prorated.",
+      "channel": "phone",
+      "phone": "8332506306"
+    }
+  },
+  "billing": {
+    "source": "https://www.quantumfiber.com/support/account/account-faq.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "scheduled": {
+      "maxDaysAhead": 0
+    },
+    "fullBalanceOnly": true
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How billing works",
+      "topic": "payments",
+      "paragraphs": [
+        "Quantum Fiber service is prepaid and charged automatically every month on your payment date, which is set by the day your service was activated and can't be changed. You get an emailed statement, a reminder five days before each payment and a receipt afterwards.",
+        "Pay with a bank account transfer, a Mastercard, Visa or Discover credit or debit card, or PayPal. Bank transfers have no fee and don't expire. Payments can't be taken over the phone.",
+        "To change how you pay, sign in, select Billing, then Update Payment Method in the Saved Payment Method box, enter the new details and save. If a payment fails, update your method and the late payment is processed automatically. Service is disabled if no payment arrives within 15 days of a failed bank payment, and two failed bank transfers block that method for 12 months."
+      ],
+      "steps": [
+        "Sign in and select Billing.",
+        "In Saved Payment Method, select Update Payment Method.",
+        "Enter your bank account, card or PayPal details.",
+        "Select Update Payment Method to save."
+      ],
+      "source": "https://www.quantumfiber.com/support/account/billing-payments/bank-payment.html"
+    },
+    {
+      "slug": "statements",
+      "title": "View your invoices",
+      "topic": "billing",
+      "paragraphs": [
+        "On the website select Billing, then View invoice details next to a payment date under My Payments. In the app, tap Billing Information and open a date under Payment history. Invoices from the last two years are available."
+      ],
+      "source": "https://www.quantumfiber.com/support/account/billing-payments/view-statements.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your service",
+      "topic": "account",
+      "paragraphs": [
+        "There's no contract, so you can cancel any time: contact the Fiber Success Team at 833-250-6306 (7 a.m. to 11 p.m. CT, 7 days a week) or by chat and choose your end date. Monthly payments cover a full month, and partial refunds aren't available.",
+        "Return all leased equipment, including the modem and any 360 WiFi pods, within 30 days to avoid extra charges. Leave a SmartNID that is mounted on your wall in place. If you only need a break, sign in and pause service for 1 to 9 months at a reduced charge."
+      ],
+      "source": "https://www.quantumfiber.com/support/account/manage-service/cancel.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "bank-transfer-block",
+        "intent": "Using Quantum Fiber's help, find what happens after two failed bank transfer payments. Do not make a payment or change the payment method.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "12 months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "12 months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Two unsuccessful bank transfers block bank transfer as a payment method for 12 months."
+          }
+        ]
+      },
+      {
+        "slug": "equipment-return",
+        "intent": "A Quantum Fiber customer is cancelling. Find how many days they have to return leased equipment such as the modem and WiFi pods. Do not cancel anything or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30 days",
+              "30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30 days",
+            "30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Return leased equipment, including the modem and 360 WiFi pods, within 30 days of cancelling."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing",
+        "Saved Payment Method"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "PayPal",
+        "12 months"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "833-250-6306"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "SmartNID"
+    }
+  ],
+  "contact": {
+    "phone": "833-250-6306",
+    "source": "https://www.quantumfiber.com/support/contact.html",
+    "evidence": "documented_official"
+  }
+}

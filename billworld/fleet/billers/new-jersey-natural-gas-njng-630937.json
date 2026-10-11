@@ -1,0 +1,358 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "gas",
+  "reviewedAt": "2026-10-10",
+  "id": "new-jersey-natural-gas-njng-630937",
+  "name": "New Jersey Natural Gas",
+  "notes": "Researched from public njng.com pages only. My Account sign-in uses a username (no spaces) and password; registration needs the account number and account name exactly as on the bill plus three security questions (account name not expressible). Password rule 8-32 characters with a lowercase letter, an uppercase letter and a number or special character. Pay Bill Now needs no login and has no fee (cards incl. Amex, Venmo, Apple Pay, Google Pay), so guestMethods is card. Automatic Payments are free and deduct from the designated bank account on the date shown on the bill (bank only). Payment Arrangements online under Billing and Payment > Payment Arrangements. Equal Payment Plan (Equal Pay). Stop service through the My Account service request form (account validation, lookup, personal info, stop date/time, review). Mailing address and AutoPay cancel steps not on the public pages (family default / inferred). Reviewer: replaced the guest-fee task (expected answer 'no' matched almost any reply) with a phone-prompt task.",
+  "officialDomains": [
+    "njng.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.njng.com/my-account/payment-options/index.aspx",
+      "title": "Billing and Payment Options",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.njng.com/my-account/customer-service/myaccount-help.aspx",
+      "title": "My Account Help",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.njng.com/my-account/payment-options/payment-assistance.aspx",
+      "title": "Trouble Paying Your Bills?",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://myaccount.njng.com/Portal/outer-service-request_template.aspx",
+      "title": "Stop, Start Existing Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "New Jersey Natural Gas",
+    "shortName": "NJNG",
+    "primary": "#00487c",
+    "accent": "#003056",
+    "monogram": "NJ"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "username": "Username",
+    "forgot": "Forgot Password",
+    "guestPay": "Pay Bill Now",
+    "autopay": "Automatic Payments",
+    "paperless": "E-Bill",
+    "arrangement": "Payment Arrangements",
+    "cancel": "Stop, Start Existing Service",
+    "help": "My Account Help",
+    "profile": "My Profile",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Pay Bill Now",
+        "page": "guest"
+      },
+      {
+        "label": "Billing and Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Trouble Paying Your Bills?",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "My Account Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Billing History",
+        "page": "statements"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "E-Bill",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Arrangements",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop, Start Existing Service",
+        "page": "cancel"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z]).{8,32}$",
+      "message": "Use 8 to 32 characters with at least one lowercase letter, one uppercase letter and one number or special character."
+    },
+    "evidence": "documented_official",
+    "source": "https://www.njng.com/my-account/customer-service/myaccount-help.aspx"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx",
+      "note": "Manage Automatic Payments in My Account, or call 800-221-0051."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx",
+      "note": "For past-due balances: open the Billing and Payment tab and select Payment Arrangements, or call 800-221-0051."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.njng.com/my-account/payment-options/payment-assistance.aspx"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://myaccount.njng.com/Portal/outer-service-request_template.aspx"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx",
+      "phone": "800-221-0051"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx"
+    }
+  },
+  "billing": {
+    "source": "https://www.njng.com/my-account/payment-options/index.aspx",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Billing and payment options",
+      "mode": "append",
+      "topic": "payments",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx",
+      "paragraphs": [
+        "Pay Bill Now needs no login and has no fee; it accepts cards including Amex, plus Venmo, Apple Pay and Google Pay. To pay by phone with a card or checking account, call 800-221-0051 and say Make a Payment.",
+        "You can also mail your payment, pay at one of four customer service locations or the drop box, or pay cash at participating Western Union Quick Collect locations."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payments",
+      "topic": "autopay",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx",
+      "paragraphs": [
+        "Automatic Payments are free. Each monthly bill shows the amount due and the date it will be deducted from your designated bank account."
+      ]
+    },
+    {
+      "slug": "register",
+      "title": "Registering for My Account",
+      "topic": "account",
+      "source": "https://www.njng.com/my-account/customer-service/myaccount-help.aspx",
+      "paragraphs": [
+        "Have a recent bill ready. Enter your account number and account name exactly as they appear on the bill, create a username (no spaces) and password, and answer three security questions used for password resets.",
+        "Passwords must be 8 to 32 characters with at least one lowercase letter, one uppercase letter and one number or special character. Use Forgot Username or Forgot Password on the login screen if you need help, or call 800-221-0051."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment arrangements and assistance",
+      "topic": "assistance",
+      "source": "https://www.njng.com/my-account/payment-options/index.aspx",
+      "paragraphs": [
+        "If you have a past-due balance, you may be able to pay it in monthly installments: sign in to My Account, open the Billing and Payment tab and select Payment Arrangements, or call 800-221-0051.",
+        "The Equal Payment Plan spreads your estimated yearly gas costs over 12 monthly payments. Grants and other help are available to eligible customers with limited income or a temporary hardship."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop service",
+      "topic": "account",
+      "source": "https://myaccount.njng.com/Portal/outer-service-request_template.aspx",
+      "paragraphs": [
+        "Use the Stop, Start Existing Service request in My Account: validate your account, look it up, confirm your personal information, choose a stop date and time, then review and confirm. You can also call 800-221-0051."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "password-length",
+        "intent": "Using the New Jersey Natural Gas (NJNG) help pages, find the maximum number of characters allowed in a My Account password. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "32"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "32"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Passwords can be up to 32 characters (minimum 8)."
+          }
+        ]
+      },
+      {
+        "slug": "phone-pay-prompt",
+        "intent": "Using the New Jersey Natural Gas (NJNG) help pages, find what to say at the phone prompt to pay a bill by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "make a payment"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "make a payment"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 800-221-0051 and say Make a Payment."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment Arrangements",
+        "E-Bill"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "8 to 32"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "Make a Payment"
+    }
+  ]
+}

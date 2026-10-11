@@ -1,0 +1,201 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-10",
+  "id": "irt-living-independence-realty-trust-5dca21",
+  "name": "IRT Living (Independence Realty Trust)",
+  "category": "housing",
+  "notes": "Researched from public irtliving.com pages (Resident Benefits, Contact Us). The online resident portal (24/7) lets residents submit rent payments, check the balance, schedule auto payments, submit maintenance requests, access documents and message staff. Flex partnership: pay part of rent up front and the rest later in the month (third-party split rent, not modelled). Esusu reports on-time rent to credit bureaus. Contact form: inquiry type Resident Relations with subjects Past Resident / Resident Financial / Resident Customer Service Inquiry; HQ Philadelphia, office hours M-F 8-5; corporate 312.924.1600. Fees, late fees, notice periods and sign-in fields not published (family defaults kept, inferred).",
+  "officialDomains": [
+    "irtliving.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.irtliving.com/living-here/resident-benefits",
+      "title": "Resident Benefits & Benefits at IRT Living | IRT Living",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.irtliving.com/contact-us",
+      "title": "Our Corporate Headquarters | IRT Living",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "IRT Living",
+    "shortName": "IRT",
+    "primary": "#173f5f",
+    "accent": "#8b3a1a",
+    "monogram": "IR"
+  },
+  "labels": {
+    "autopay": "Auto Payments"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident Portal",
+        "page": "login"
+      },
+      {
+        "label": "Resident Benefits",
+        "page": "help"
+      },
+      {
+        "label": "Flex Rent",
+        "helpSlug": "flex-rent"
+      },
+      {
+        "label": "Contact Us",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Rent",
+        "page": "pay"
+      },
+      {
+        "label": "Account Balance",
+        "page": "bill"
+      },
+      {
+        "label": "Auto Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Message Staff",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "contact": {
+    "phone": "3129241600",
+    "source": "https://www.irtliving.com/contact-us",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.irtliving.com/living-here/resident-benefits",
+      "note": "Submit rent payments and check your balance in the 24/7 online resident portal."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.irtliving.com/living-here/resident-benefits",
+      "note": "Schedule auto payments in the online resident portal."
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying rent online",
+      "paragraphs": [
+        "The IRT online resident portal is open 24/7: submit rent payments, check your account balance, schedule auto payments, submit maintenance requests, open important documents and message your community staff."
+      ],
+      "source": "https://www.irtliving.com/living-here/resident-benefits",
+      "topic": "payments"
+    },
+    {
+      "slug": "flex-rent",
+      "title": "Splitting rent with Flex",
+      "paragraphs": [
+        "IRT partners with Flex, a renter's assistance program that lets you pay part of your rent up front and the rest later in the month, so you can spread out your budget. Sign up through Flex."
+      ],
+      "source": "https://www.irtliving.com/living-here/resident-benefits",
+      "topic": "payments"
+    },
+    {
+      "slug": "credit-reporting",
+      "title": "Building credit with Esusu",
+      "paragraphs": [
+        "Through IRT's partnership with Esusu, your on-time rent payments can be reported to the major credit bureaus to help build your credit."
+      ],
+      "source": "https://www.irtliving.com/living-here/resident-benefits",
+      "topic": "billing"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact IRT Living",
+      "paragraphs": [
+        "Contact your community's leasing office, or use the Contact Us form: choose Resident Relations and a subject such as Resident Financial Inquiry, Resident Customer Service Inquiry or Past Resident Inquiry. IRT's corporate office (312.924.1600) is open Monday to Friday, 8 a.m. to 5 p.m.; headquarters are in Philadelphia, with regional offices in Chicago and Tampa."
+      ],
+      "source": "https://www.irtliving.com/contact-us",
+      "topic": "contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "split-rent-partner",
+        "intent": "Using the IRT Living help pages, find the name of the partner that lets residents split rent into two payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Flex"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Flex"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Flex."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "helpArticle",
+      "slug": "flex-rent",
+      "contains": "Flex"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    }
+  ]
+}

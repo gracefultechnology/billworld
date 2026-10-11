@@ -1,0 +1,325 @@
+{
+  "id": "connecticut-department-of-revenue-services-drs-i-5a3f47",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Connecticut Department of Revenue Services (DRS) - individual income tax",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public portal.ct.gov/drs pages only. myconneCT: Create a Username (federal AGI from a CT return in the last three years, or CT driver license/ID; Letter ID or recent payment/return amount or mailed PIN; email required); password at least 8 characters with upper, lower, number and special character, not the username; optional two-step verification (text, email, app) so mfa left at the family default. Pay without login: Make a Bill Payment with the Letter ID. ACH debit scheduled up to 45 days ahead (up to the due date per the tax information page), cancel pending ACH under More... > View Submissions > Pending; card payments via ACI Payments with a convenience fee (amount not published), no future dating, cannot be cancelled; no ACH credit for individual income tax. Letters under View Letters; secure messages under Send Message. Payment plans cannot be set up in myconneCT (maximum $50,000, 2-12 months); the pages read give no plan phone line, so the general Taxpayer Services number is used. No recurring AutoPay (inferred). Bank-payment fee not stated (bankCents 0 inferred).",
+  "officialDomains": [
+    "portal.ct.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://portal.ct.gov/drs/individuals/resident-income-tax/tax-information",
+      "title": "Tax Information - Resident Income Tax | DRS",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://portal.ct.gov/drs/myconnect/myconnect-2/faq",
+      "title": "myconneCT Frequently Asked Questions | DRS",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://portal.ct.gov/drs/contact-drs/contact/contact-drs",
+      "title": "Contact DRS",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Connecticut Department of Revenue Services",
+    "shortName": "CT DRS",
+    "primary": "#14325c",
+    "accent": "#7f2b0a",
+    "monogram": "CT"
+  },
+  "labels": {
+    "dashboard": "myconneCT",
+    "payBill": "Make a Payment",
+    "guestPay": "Make a Bill Payment",
+    "register": "Create a Username",
+    "history": "View Submissions",
+    "statements": "View Letters",
+    "contact": "Send Message",
+    "profile": "Manage My Profile",
+    "help": "myconneCT FAQ",
+    "signIn": "Log In"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a Bill Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "myconneCT FAQ",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "myconneCT",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "View Submissions",
+        "page": "history"
+      },
+      {
+        "label": "View Letters",
+        "page": "statements"
+      },
+      {
+        "label": "Send Message",
+        "page": "contact"
+      },
+      {
+        "label": "Manage My Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$",
+      "message": "Use at least 8 characters with upper and lower case letters, a number and a special character."
+    },
+    "evidence": "documented_official",
+    "source": "https://portal.ct.gov/drs/myconnect/myconnect-2/faq"
+  },
+  "contact": {
+    "phone": "8602975962",
+    "source": "https://portal.ct.gov/drs/contact-drs/contact/contact-drs"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://portal.ct.gov/drs/myconnect/myconnect-2/faq",
+      "note": "Make a Bill Payment without logging in, using the Letter ID in the top right corner of your notice."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://portal.ct.gov/drs/myconnect/myconnect-2/faq",
+      "note": "myconneCT has no recurring automatic payments. You can schedule an ACH debit payment up to 45 days ahead.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://portal.ct.gov/drs/myconnect/myconnect-2/faq",
+      "note": "ACH debit payments can be scheduled up to 45 days ahead and cancelled while pending. Card payments cannot be future-dated or cancelled."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://portal.ct.gov/drs/myconnect/myconnect-2/faq",
+      "note": "Payment plans cannot be set up in myconneCT. Call DRS Taxpayer Services at 860-297-5962 or 800-382-9463 to discuss a plan; once a plan is in place, its payments appear in your Action Center.",
+      "channel": "phone",
+      "phone": "8602975962"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://portal.ct.gov/drs/individuals/resident-income-tax/tax-information"
+    }
+  },
+  "billing": {
+    "source": "https://portal.ct.gov/drs/individuals/resident-income-tax/tax-information",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "scheduled": {
+      "maxDaysAhead": 45
+    },
+    "fees": {
+      "bankCents": 0,
+      "evidence": "inferred",
+      "source": "https://portal.ct.gov/drs/myconnect/myconnect-2/faq",
+      "notes": [
+        "Card payments are processed by ACI Payments, Inc., which charges a convenience fee; the amount is shown before you confirm and DRS does not publish it."
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "source": "https://portal.ct.gov/drs/individuals/resident-income-tax/tax-information",
+      "paragraphs": [
+        "Pay in myconneCT by ACH debit from a checking or savings account, choosing a withdrawal date up to the due date, or by American Express, Discover, Mastercard, Visa or a comparable debit card.",
+        "The card service provider charges a convenience fee; you are told the amount and can cancel before paying. If you file a return with a balance due and pay by mail, send Form CT-1040V with your check or money order."
+      ]
+    },
+    {
+      "slug": "schedule-and-cancel",
+      "title": "Schedule or cancel a payment",
+      "topic": "payments",
+      "source": "https://portal.ct.gov/drs/myconnect/myconnect-2/faq",
+      "paragraphs": [
+        "ACH debit payments can generally be scheduled up to 45 days in advance. Card payments cannot have a future payment date. A payment is on time if it is made by 11:59 p.m. Eastern on the due date.",
+        "Only pending ACH payments can be cancelled: open More..., choose View Submissions, open the Pending tab, select the payment and choose Cancel. Card payments cannot be cancelled once submitted.",
+        "To pay without logging in, choose Make a Bill Payment and enter the Letter ID from the top right corner of your notice. ACH credit is not available for individual income tax."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans",
+      "topic": "assistance",
+      "source": "https://portal.ct.gov/drs/myconnect/myconnect-2/faq",
+      "paragraphs": [
+        "Payment plans cannot be set up in myconneCT. Plans are limited to balances of $50,000 or less and last from 2 to 12 months, depending on the minimum installment.",
+        "Call DRS Taxpayer Services at 860-297-5962 or 800-382-9463, Monday through Friday, 8:30 a.m. to 4:30 p.m. Once a plan is in place, a payment option for it appears in your myconneCT Action Center."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "schedule-ahead",
+        "intent": "Using the CT DRS website's help pages, find how many days in advance an ACH debit payment can be scheduled in myconneCT. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "45 days",
+              "45"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "45 days",
+            "45"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled_payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "ACH debit payments can be scheduled up to 45 days ahead."
+          }
+        ]
+      },
+      {
+        "slug": "plan-max-balance",
+        "intent": "Using the CT DRS website's help pages, find the largest balance a DRS payment plan can cover. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$50,000",
+              "50,000",
+              "$50000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$50,000",
+            "50,000",
+            "$50000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_arrangement"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payment plans cover balances up to $50,000."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Options",
+        "myconneCT FAQ"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "myconneCT",
+        "View Letters"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "$50,000",
+        "860-297-5962"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "schedule-and-cancel",
+      "contains": "45 days"
+    }
+  ]
+}

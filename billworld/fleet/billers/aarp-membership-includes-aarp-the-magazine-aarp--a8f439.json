@@ -1,0 +1,364 @@
+{
+  "id": "aarp-membership-includes-aarp-the-magazine-aarp--a8f439",
+  "version": 1,
+  "status": "dedicated",
+  "name": "AARP membership",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public AARP Membership FAQ, the public renewal lookup page and the public log-in page only (no sign-in, no form submitted). Membership is $15 the first year with Automatic Renewal and $20 a year after; 3-year terms save 8% and 5-year terms save 21% (exact multi-year prices not published, so no billing.plans; the term is chosen at join/renewal, so change_plan is not_applicable). Automatic Renewal can be set up online with a credit/debit card, e-check or checking account; payment details and billing date are changed online (My Account > Account Details > AARP Membership Payment Details), but turning Automatic Renewal off is documented only by phone (866-804-1278) or email, so autopay_cancel is unsupported. The FAQ says membership can be canceled at any time but does not say how; cancel_service is unsupported online with the main member line (inferred). Renewal without signing in is real: the renew page looks a member up by first name, last name, ZIP/postal code, country and birthday — guest lookup by name + ZIP + date of birth without an account-number field is not expressible (guestLookupFields needs a primary identifier), so guest lookup fields are left to the family default (gap, cross-owner request). Log-in page: email address, then password (8-64 characters), also 'Log in with a one-time code'. Reviewer 2026-10-10: billing.fees ({0,0}, inferred) removed: no convenience fee is published, and with fullBalanceOnly the contract's $25 card-fee check cannot run.",
+  "officialDomains": [
+    "aarp.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.aarp.org/membership/faqs/",
+      "title": "AARP Membership FAQs: Cost, Contact & Account Help",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://appsec.aarp.org/mem/renew",
+      "title": "Renew AARP Membership Today - Continue to enjoy all of AARP's Benefits",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://secure.aarp.org/applications/user/login",
+      "title": "AARP.ORG log in - Register Free Online",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "AARP",
+    "shortName": "AARP",
+    "primary": "#b30d00",
+    "accent": "#2f2f2f",
+    "monogram": "A"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Create Account",
+    "forgot": "Forgot your password?",
+    "username": "Email Address",
+    "dashboard": "My Account",
+    "profile": "Account Details",
+    "payBill": "Renew",
+    "guestPay": "Renew Now",
+    "autopay": "Automatic Renewal",
+    "wallet": "AARP Membership Payment Details",
+    "cancel": "Cancel Membership",
+    "help": "Help",
+    "dueDate": "Renewal date"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Renew Now",
+        "page": "guest"
+      },
+      {
+        "label": "Membership cost",
+        "helpSlug": "membership-cost"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Renew",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Renewal",
+        "page": "autopay"
+      },
+      {
+        "label": "Account Details",
+        "page": "profile"
+      },
+      {
+        "label": "Payment Details",
+        "page": "wallet"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "none",
+    "passwordRule": {
+      "pattern": "^.{8,64}$",
+      "message": "Use 8-64 characters. Enter a phrase you will remember."
+    },
+    "evidence": "observed_public",
+    "source": "https://secure.aarp.org/applications/user/login"
+  },
+  "contact": {
+    "phone": "888-687-2277",
+    "source": "https://www.aarp.org/membership/faqs/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://appsec.aarp.org/mem/renew",
+      "note": "You can renew without logging in: AARP finds your membership from your name, ZIP code and birthday."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aarp.org/membership/faqs/",
+      "note": "Automatic Renewal charges your membership dues each term to your credit or debit card, e-check or checking account. You get a reminder well before each renewal."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.aarp.org/membership/faqs/",
+      "note": "To turn off Automatic Renewal, call 1-866-804-1278 or email Member Services at member@aarp.org.",
+      "phone": "866-804-1278",
+      "channel": "phone"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.aarp.org/membership/faqs/",
+      "note": "Your membership can be canceled at any time. To cancel, call AARP at 1-888-687-2277 (Spanish: 1-877-342-2277).",
+      "phone": "888-687-2277",
+      "channel": "phone"
+    },
+    "change_plan": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.aarp.org/membership/faqs/",
+      "note": "You choose a 1-, 3- or 5-year membership term when you join or renew."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.aarp.org/membership/faqs/",
+      "note": "AARP does not send monthly bills; dues are paid once per membership term."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.aarp.org/membership/faqs/"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.aarp.org/membership/faqs/"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.aarp.org/membership/faqs/",
+      "note": "Membership dues are paid once per term and installment plans are not offered."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aarp.org/membership/faqs/",
+      "phone": "888-687-2277"
+    }
+  },
+  "billing": {
+    "source": "https://www.aarp.org/membership/faqs/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fullBalanceOnly": true,
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "membership-cost",
+      "title": "What AARP membership costs",
+      "topic": "plans",
+      "paragraphs": [
+        "Membership is $15 for the first year when you sign up for Automatic Renewal, then $20 a year after that. It is risk-free and can be canceled at any time.",
+        "Longer terms cost less per year: a three-year membership saves 8% off the annual rate and a five-year membership saves 21%. Membership includes a free second membership for someone in your household and a subscription to AARP The Magazine.",
+        "AARP also offers a lifetime membership for a one-time payment of $250."
+      ],
+      "source": "https://www.aarp.org/membership/faqs/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Renewal",
+      "topic": "billing",
+      "paragraphs": [
+        "With Automatic Renewal you never have to renew by mail or online. To enroll, choose Join or Renew and pick 1 year with Automatic Renewal; you can pay with a credit or debit card, e-check or checking account. You can also enroll with a card by phone at 1-888-687-2277.",
+        "AARP sends a reminder well before each automatic renewal. To change your payment method or your Automatic Renewal status, call 1-866-804-1278 or email member@aarp.org."
+      ],
+      "source": "https://www.aarp.org/membership/faqs/"
+    },
+    {
+      "slug": "payment-details",
+      "title": "Change your payment method or billing date",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in, open My Account, choose the Account Details tab and scroll to AARP Membership Payment Details. There you can update your payment details or change your billing date."
+      ],
+      "source": "https://www.aarp.org/membership/faqs/",
+      "steps": [
+        "Log in and open My Account.",
+        "Choose the Account Details tab.",
+        "Scroll to AARP Membership Payment Details.",
+        "Update the payment method or billing date."
+      ]
+    },
+    {
+      "slug": "renew-without-logging-in",
+      "title": "Renew without logging in",
+      "topic": "billing",
+      "paragraphs": [
+        "Choose Renew Now and enter your first name, last name, ZIP code, country and birthday so AARP can find your membership, then pick your term and pay. Choosing Automatic Renewal takes 25% off your first year: $15 instead of $20.",
+        "If you have trouble with the renewal page, call 1-800-566-0242, Monday to Friday, 8 a.m. to 8 p.m. ET."
+      ],
+      "source": "https://appsec.aarp.org/mem/renew"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autorenew-change-phone",
+        "intent": "You want to stop your AARP Automatic Renewal. Using the AARP website, find the phone number AARP gives for changing your Automatic Renewal status. Do not change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "866-804-1278",
+              "8668041278"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "866-804-1278",
+            "8668041278"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 1-866-804-1278."
+          }
+        ]
+      },
+      {
+        "slug": "five-year-savings",
+        "intent": "Using the AARP website, find how much you save off the annual rate by choosing a five-year AARP membership. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "21"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "21"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A five-year membership saves 21%."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "Renew Now"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email Address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Automatic Renewal"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "1-866-804-1278"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "membership-cost",
+      "contains": "$15"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-details",
+      "contains": "AARP Membership Payment Details"
+    }
+  ]
+}

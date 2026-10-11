@@ -1,0 +1,113 @@
+{
+  "id": "great-expressions-dental-centers-9dcb0a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Great Expressions Dental Centers",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public pages only: greatexpressions.com Bill Pay page (with its General Account and E-Statement FAQs) and the public Make a Payment entry page of greatexpressions.mysecurebill.com (RevSpring; no lookup submitted). Bill Pay lets patients view and pay statements and see past statements online. One-time payments without logging in use the myEasyMatch code printed on the left side of the statement under the mailing address plus the addressee ZIP code (modelled as guest lookup with exactly account number + ZIP). Registration needs a recent statement's myEasyMatch code and the account guarantor's ZIP code; only the guarantor registers and all dependents share one statement; an email confirmation is required before logging in. Registering enrolls you in e-statements automatically; paper can be chosen again under Profile. E-statements and online payments are only for non-orthodontic accounts; orthodontic patients contact their orthodontics office. Zero-balance accounts get no statement and cannot register. CareCredit cardholders can pay treatment through CareCredit. Catalog details (cards accepted, no fee, 3-5 day posting, billing line 888-764-5380) are not on the pages read and are not used beyond the catalog phone. AutoPay is not described (family default kept).",
+  "officialDomains": ["greatexpressions.com", "mysecurebill.com"],
+  "sources": [
+    { "url": "https://www.greatexpressions.com/bill-pay/", "title": "Bill Pay | Great Expressions Dental Centers", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://greatexpressions.mysecurebill.com/", "title": "Great Expressions - Make a Payment", "fetchedAt": "2026-10-10", "kind": "pay" }
+  ],
+  "brand": { "displayName": "Great Expressions Dental Centers", "shortName": "Great Expressions", "primary": "#005a9c", "accent": "#6a2c7a", "monogram": "GE" },
+  "labels": {
+    "payBill": "Pay Online Now",
+    "guestPay": "Make a Payment",
+    "accountNumber": "myEasyMatch code",
+    "paperless": "E-statements",
+    "statements": "Past statements",
+    "help": "Bill Pay FAQs"
+  },
+  "nav": {
+    "public": [
+      { "label": "Make a Payment", "page": "guest" },
+      { "label": "Pay Online Now", "page": "login" },
+      { "label": "Register for Bill Pay", "page": "register" },
+      { "label": "Bill Pay FAQs", "page": "help" }
+    ]
+  },
+  "auth": {
+    "registrationFields": ["accountNumber", "zip", "email"],
+    "guestLookupFields": ["accountNumber", "zip"],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.greatexpressions.com/bill-pay/"
+  },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.greatexpressions.com/bill-pay/", "note": "Use the myEasyMatch code on your statement and the ZIP code it is addressed to for a one-time payment without logging in." },
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.greatexpressions.com/bill-pay/", "note": "Online payments are for non-orthodontic accounts. For an orthodontic payment, contact your Great Expressions orthodontics office." },
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://www.greatexpressions.com/bill-pay/", "note": "Only the account guarantor registers, using the myEasyMatch code from a recent statement and the guarantor's ZIP code. Confirm your email address before logging in." },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.greatexpressions.com/bill-pay/", "note": "You are enrolled in e-statements automatically when you register. To get paper statements again, change it under Profile." },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.greatexpressions.com/bill-pay/" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.greatexpressions.com/bill-pay/" }
+  },
+  "billing": {
+    "source": "https://www.greatexpressions.com/bill-pay/",
+    "methods": ["bank", "card"]
+  },
+  "help": [
+    {
+      "slug": "bill-pay",
+      "title": "Bill Pay: view and pay statements online",
+      "topic": "payments",
+      "paragraphs": [
+        "Great Expressions Bill Pay lets you view and pay your statements online at any time, see past statements and save them, and stop paper statements.",
+        "To make a one-time payment without logging in, enter the myEasyMatch code and ZIP code exactly as they appear on your statement. The myEasyMatch code is usually on the left side of the statement, just under your mailing address.",
+        "E-statements and online payments are only for non-orthodontic patients. For an orthodontic payment or a copy of an orthodontic statement, contact your Great Expressions orthodontics office. You can also pay for treatment with a CareCredit account."
+      ],
+      "steps": ["Choose Make a Payment.", "Enter the myEasyMatch code and the ZIP code from your statement.", "Choose Continue and review the balance.", "Pick a payment method and pay."],
+      "source": "https://www.greatexpressions.com/bill-pay/"
+    },
+    {
+      "slug": "register",
+      "title": "How do I register for Bill Pay?",
+      "topic": "account",
+      "paragraphs": [
+        "You need a recent statement with a myEasyMatch code and the account guarantor's ZIP code. If you don't have a current statement, contact your local Great Expressions office.",
+        "Only the account guarantor signs up; all dependents appear on one statement. After you sign up, confirm your email address from the message we send, then log in.",
+        "Statements are not sent for a zero balance, so you cannot register until you have a balance."
+      ],
+      "source": "https://www.greatexpressions.com/bill-pay/"
+    },
+    {
+      "slug": "e-statements",
+      "title": "E-statements",
+      "topic": "account",
+      "paragraphs": [
+        "An e-statement is an electronic copy of your mailed statement that you can view, print or save. You are enrolled in e-statements automatically when you register. If you would rather keep paper statements, change your choice under the Profile tab of your account."
+      ],
+      "source": "https://www.greatexpressions.com/bill-pay/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "easymatch-location",
+        "intent": "You want to make a one-time Great Expressions payment. Using the Bill Pay FAQs, find where the myEasyMatch code is printed on your statement. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["mailing address", "left"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["mailing address", "left"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "On the left side of the statement, just under your mailing address." }]
+      },
+      {
+        "slug": "orthodontic-payment",
+        "intent": "Your child has an orthodontic account at Great Expressions. Using the Bill Pay FAQs, find whether you can pay it online and, if not, who to contact. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["orthodontics office", "orthodontic office"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["orthodontics office", "orthodontic office"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "No, online payment is only for non-orthodontic accounts; contact your Great Expressions orthodontics office." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": "myEasyMatch code" },
+    { "page": "helpArticle", "slug": "bill-pay", "contains": ["under your mailing address", "non-orthodontic"] },
+    { "page": "helpArticle", "slug": "register", "contains": "guarantor" },
+    { "page": "paperless", "signedIn": true, "contains": "Profile" }
+  ]
+}

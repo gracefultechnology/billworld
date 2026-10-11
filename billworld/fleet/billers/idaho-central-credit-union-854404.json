@@ -1,0 +1,333 @@
+{
+  "id": "idaho-central-credit-union-854404",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Idaho Central Credit Union",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public iccu.com pages (no sign-in). Online banking is called eBranch. Loan payments: eBranch Transfer & Pay > Transfers (From/To account, Payment Type, date, frequency, memo, Review Transfer); monthly automatic payments use frequency Monthly with a series end date. Payment types vary by loan (auto/RV/motorcycle/signature: Regular, Amount Due, Principal Only, Other). Quick Payments (partner site iccu.lenderpayments.com) take another bank account or a debit card without eBranch and can be recurring; fee not stated on the ICCU page (no guest fee set). Phone payments 1-800-456-5067, \"fee may apply\" (amount unpublished). eStatements are on automatically with eBranch; paper is chosen under Tools & Services > Statement Management; documents under Tools & Services > eDocuments. Most installment loans have no separate loan bill - they appear on the regular statement (Visa, mortgage, HELOC are separate). Skip-A-Pay in eBranch (Transfer & Pay > Skip a Pay): $29 fee, up to twice a year, first after 6 months; not a payment plan, so payment_arrangement is unsupported online. Sign-in identifier/MFA not documented publicly (family defaults).",
+  "officialDomains": [
+    "iccu.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.iccu.com/services/payments/",
+      "title": "Make a Payment - ICCU",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.iccu.com/services/statements/",
+      "title": "Statements & Documents - ICCU",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.iccu.com/services/skip-a-pay/",
+      "title": "Skip-A-Pay - ICCU",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "ICCU",
+    "displayName": "Idaho Central Credit Union",
+    "primary": "#003f72",
+    "accent": "#8b3a0e",
+    "monogram": "IC"
+  },
+  "labels": {
+    "payBill": "Transfer & Pay",
+    "autopay": "Recurring Transfers",
+    "guestPay": "Quick Payments",
+    "signIn": "Log into eBranch",
+    "dashboard": "eBranch",
+    "paperless": "Statement Management",
+    "statements": "eDocuments",
+    "profile": "Tools & Services"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log into eBranch",
+        "page": "login"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Quick Payments",
+        "page": "guest"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Contact & Locations",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "eBranch",
+        "page": "dashboard"
+      },
+      {
+        "label": "Transfer & Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Transfers",
+        "page": "autopay"
+      },
+      {
+        "label": "eDocuments",
+        "page": "statements"
+      },
+      {
+        "label": "Statement Management",
+        "page": "paperless"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/payments/",
+      "note": "Pay in eBranch from an ICCU account or by transferring from an account at another financial institution."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/payments/",
+      "note": "Quick Payments pay your ICCU loan from another financial institution with a bank account number or debit card, without eBranch; payments can also be scheduled to repeat."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/payments/",
+      "note": "For a monthly automatic loan payment, choose Monthly as the frequency and set a series end date for when it should stop."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/payments/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/statements/",
+      "note": "eStatements turn on automatically when you enroll in eBranch. To get paper statements instead, change your delivery preference under Tools & Services > Statement Management."
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/statements/"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/skip-a-pay/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/skip-a-pay/",
+      "note": "ICCU does not offer online payment plans. Eligible loans and Visa cards can use Skip-A-Pay in eBranch ($29 fee); for other help call 1-800-456-5067 or start a VideoChat."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/payments/",
+      "phone": "1-800-456-5067",
+      "note": "Call 1-800-456-5067 to pay by phone. A fee may apply."
+    }
+  },
+  "contact": {
+    "phone": "1-800-456-5067",
+    "source": "https://www.iccu.com/services/payments/"
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "fees": {
+      "notes": [
+        "A fee may apply to payments made by phone; ICCU does not publish the amount."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.iccu.com/services/payments/"
+    },
+    "source": "https://www.iccu.com/services/payments/"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a loan payment",
+      "source": "https://www.iccu.com/services/payments/",
+      "paragraphs": [
+        "Pay in eBranch from one of your ICCU accounts, transfer money from an account at another financial institution, or set up recurring automatic transfers. Quick Payments, through ICCU's partner site, takes a bank account or debit card from another institution without eBranch. You can also pay by phone at 1-800-456-5067 (a fee may apply), by VideoChat or at any branch.",
+        "In eBranch go to Transfer & Pay > Transfers, select the From and To accounts, choose the payment type, set the date and frequency, add a memo if you like, and select Review Transfer before you submit.",
+        "Payment types depend on the loan. Auto, RV, motorcycle and signature loans offer Regular, Amount Due, Principal Only and Other."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic monthly loan payments",
+      "source": "https://www.iccu.com/services/payments/",
+      "paragraphs": [
+        "To set up a monthly automatic loan payment in eBranch, create the transfer under Transfer & Pay > Transfers, choose Monthly as the frequency, and set a series end date for when the payments should stop."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "eStatements and eDocuments",
+      "source": "https://www.iccu.com/services/statements/",
+      "paragraphs": [
+        "eStatements are enabled automatically when you enroll in eBranch; you need a valid email address on file. If you would rather get paper statements, update your delivery preference in Tools & Services > Statement Management.",
+        "Find statements, notices, tax forms and loan bills in Tools & Services > eDocuments. Most installment loans (auto, personal, RV, boat) appear on your regular statement instead of a separate loan bill; Visa credit cards, mortgages and HELOCs have their own statements."
+      ]
+    },
+    {
+      "slug": "skip-a-pay",
+      "title": "Skip-A-Pay",
+      "topic": "billing",
+      "source": "https://www.iccu.com/services/skip-a-pay/",
+      "paragraphs": [
+        "Request Skip-A-Pay in eBranch under Transfer & Pay > Skip a Pay, or with the Skip-A-Pay quick action on the loan. Most installment loans, deposit-secured loans, RV loans with an original term of 94 months or less, and Visa cards with a minimum due over $29.00 can qualify; mortgages, PLOCs, HELOCs, commercial loans and business Visas cannot.",
+        "There is a $29 processing fee, added to the loan balance. Interest keeps accruing and the term is extended. Most eligible loans can skip up to twice a year, starting once the loan has been open 6 months. Stop any automatic payment for the skipped month."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "skip-a-pay-fee",
+        "intent": "Using ICCU's help pages, find the processing fee for Skip-A-Pay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$29"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$29"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Skip-A-Pay has a $29 processing fee."
+          }
+        ]
+      },
+      {
+        "slug": "skip-a-pay-limit",
+        "intent": "Using ICCU's help pages, find how many times a year most eligible loans can use Skip-A-Pay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "twice",
+              "two times",
+              "2 times",
+              "two skips",
+              "2 skips"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "twice",
+            "two times",
+            "2 times",
+            "two skips",
+            "2 skips"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to twice per year."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log into eBranch",
+        "Quick Payments"
+      ]
+    },
+    {
+      "page": "guest",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Transfer & Pay",
+        "Recurring Transfers"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "skip-a-pay",
+      "contains": "$29"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "Statement Management"
+    }
+  ]
+}

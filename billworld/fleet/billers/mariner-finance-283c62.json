@@ -1,0 +1,261 @@
+{
+  "id": "mariner-finance-283c62",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Mariner Finance",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public marinerfinance.com FAQ only (no sign-in); payment answers were read from the page's published FAQ data. The Customer Account Center lets borrowers make a single payment, set up recurring payments, check the balance and view history. Payments can also be made at any branch, by phone or by mail (P.O. Box 44490, Baltimore, MD 21236). One-time debit payments may carry a fee in some states (amount not published, fees.notes only); recurring ACH, branch and mailed payments are free. No prepayment penalty. The header Quick Pay button links to the account login, so it is not modelled as guest pay. Hardship, late fee and paperless are not documented on the FAQ (family defaults kept). Reviewer 2026-10-10: the Customer Account Center sign-in page asks for Email Address and Password.",
+  "officialDomains": [
+    "marinerfinance.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.marinerfinance.com/resources/faq",
+      "title": "Frequently Asked Questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://loans.marinerfinance.com/login",
+      "title": "Customer Account Center sign in",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Mariner Finance",
+    "primary": "#15803d",
+    "accent": "#14532d",
+    "monogram": "MF"
+  },
+  "labels": {
+    "dashboard": "Customer Account Center",
+    "autopay": "Recurring Payments",
+    "payBill": "Make a Payment",
+    "signIn": "Sign in",
+    "help": "FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Payment questions",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Customer Account Center",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.marinerfinance.com/resources/faq",
+      "note": "Recurring ACH payments are free."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.marinerfinance.com/resources/faq"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.marinerfinance.com/resources/faq"
+    }
+  },
+  "contact": {
+    "phone": "877-310-2373",
+    "evidence": "documented_official",
+    "source": "https://www.marinerfinance.com/resources/faq"
+  },
+  "billing": {
+    "source": "https://www.marinerfinance.com/resources/faq",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "notes": [
+        "One-time debit card payments may carry a fee in some states; recurring ACH, branch and mailed payments are free."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.marinerfinance.com/resources/faq"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment questions",
+      "paragraphs": [
+        "From the Customer Account Center you can make a single payment, set up recurring payments, check your balance and see your payment history. You can also pay at any Mariner Finance branch or by phone.",
+        "To pay by mail, send your payment with your account number to Mariner Finance, LLC, P.O. Box 44490, Baltimore, MD 21236. One-time debit payments may carry a fee in some states; recurring ACH, branch and mailed payments are free."
+      ],
+      "source": "https://www.marinerfinance.com/resources/faq",
+      "mode": "append"
+    },
+    {
+      "slug": "prepayment",
+      "title": "Paying off early",
+      "paragraphs": [
+        "There is no prepayment penalty; you only pay interest for the time the loan is open. For a payoff amount, contact your branch or Customer Service at 877-310-2373."
+      ],
+      "source": "https://www.marinerfinance.com/resources/faq",
+      "topic": "payments"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "mail-payment-box",
+        "intent": "Using the Mariner Finance FAQ, find the P.O. Box for mailing a loan payment. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "44490"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "44490"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Mail payments to Mariner Finance, LLC, P.O. Box 44490, Baltimore, MD 21236."
+          }
+        ]
+      },
+      {
+        "slug": "free-payment-options",
+        "intent": "Using the Mariner Finance FAQ, name a way to pay that never carries a fee. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "recurring",
+              "ACH",
+              "branch",
+              "mail"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "recurring",
+            "ACH",
+            "branch",
+            "mail"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Recurring ACH payments, branch payments and mailed payments are free."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Recurring Payments"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "44490"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "prepayment",
+      "contains": "no prepayment penalty"
+    }
+  ],
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://loans.marinerfinance.com/login"
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "id": "armstrong-armstrong-utilities-zoom-internet-9cf318",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Armstrong (Armstrong Utilities / Zoom Internet)",
+  "category": "tv",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public armstrongonewire.com Billing & Account Support articles only (no sign-in). New sign-in experience: Armstrong username or the email linked to the account, or Sign in with Apple, Google or Microsoft (identifier email_or_username; socialProviders google; Apple/Microsoft not modelled). Registration: email, password (at least 8 characters with a number; the sign-in article asks for at least 3 of lowercase, uppercase, number, special), Armstrong account number, then a recovery email or SMS number verified with a 6-digit code (recovery setup, not sign-in MFA). Payment options: automatic monthly payments from checking/savings (save $1 per month) or debit/credit card, one-time payments by bank or card, mail to the remittance address for the customer's company (AUI, ATC or ATI), or cash/check/money order at a local store; no payment fees are stated (inferred free). All online pay buttons go to the signed-in Pay My Bill page; no pay-without-signing-in option is described, so guest_pay keeps the family default. Auto-Pay: Account Dashboard > My Bill > Enroll; Modify Auto-Pay > Cancel Enrollment to cancel. Statement: billed one month in advance, payment in full due upon receipt (allow 5 working days), late fee, reconnect, returned payment and delinquent pickup fees exist but amounts are not published; leased equipment must be returned within five business days of service ending. Cancelling service is not described on the billing pages, so cancel_service is unknown with the customer-service number. Account roles let a family member or caregiver manage or view the account. Reviewer (t20, 2026-10-10): Re-checked the six cited articles plus the Reset Password article and the Armstrong Terms and Conditions PDF (v5.12). Fixes: passwordRule now enforces the sign-in article's 8+ characters with three of four character types (plus the number the sign-up article requires); cancel_service is unsupported online, documented in the terms ('contacting Armstrong customer service', at least 24 hours' notice) instead of unknown; added the $2.50 paper statement fee from the Electronic Billing Program terms, a reset-password article and a cancel-service article. Reviewer: guest_pay set to unsupported (inferred) with a customer-facing note: the family default showed a working pay-without-signing-in form although Armstrong's Payment Options lists only signed-in online payments, mail and in-store payments.",
+  "officialDomains": [
+    "armstrongonewire.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.armstrongonewire.com/Support/Billing/Articles/PaymentOptions",
+      "title": "Payment Options | Armstrong",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.armstrongonewire.com/Support/Billing/Articles/Signupmodifycancelautopay",
+      "title": "Sign up, Modify or Cancel Auto-Pay Enrollment | Armstrong",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.armstrongonewire.com/Support/Billing/Articles/CreateAnAccount",
+      "title": "How to Create An Account | Armstrong",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.armstrongonewire.com/Support/Billing/Articles/SingleSignOn",
+      "title": "A New Sign-In Experience | Armstrong",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.armstrongonewire.com/Support/Billing/Articles/UnderstandStatement",
+      "title": "Understanding Your Armstrong Statement | Armstrong",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.armstrongonewire.com/Support/Billing/Index",
+      "title": "Billing & Account Support | Armstrong",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.armstrongonewire.com/Content/Documents/master-terms.pdf",
+      "title": "Armstrong Terms and Conditions of Use of Services and Products",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.armstrongonewire.com/Support/Billing/Articles/ResetPassword",
+      "title": "Reset or Change Password for Your Armstrong Account and Zoom Email | Armstrong",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Armstrong",
+    "shortName": "Armstrong",
+    "primary": "#003a70",
+    "accent": "#c8102e",
+    "monogram": "A"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "Username or email",
+    "register": "Create An Account",
+    "dashboard": "Account Dashboard",
+    "viewBill": "My Bill",
+    "payBill": "Pay Bill",
+    "autopay": "Auto-Pay",
+    "help": "Billing & Account Support",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create An Account",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Billing & Account Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "My Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Auto-Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "socialProviders": [
+      "google"
+    ],
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "passwordRule": {
+      "pattern": "^(?=.*\\d)(?:(?=.*[a-z])(?=.*[A-Z])|(?=.*[a-z])(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*[^A-Za-z0-9])).{8,}$",
+      "message": "Use at least 8 characters, including a number and at least three of: lowercase letters, uppercase letters, numbers and special characters."
+    },
+    "evidence": "documented_official",
+    "source": "https://www.armstrongonewire.com/Support/Billing/Articles/SingleSignOn"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/CreateAnAccount"
+    },
+    "google_login": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/SingleSignOn"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/PaymentOptions"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/Signupmodifycancelautopay"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/Signupmodifycancelautopay"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.armstrongonewire.com/Content/Documents/master-terms.pdf",
+      "note": "To cancel Armstrong service, contact Customer Service at 1-877-277-5711 at least 24 hours ahead. Return leased equipment to your local store within five business days after service ends.",
+      "channel": "phone",
+      "phone": "8772775711"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/PaymentOptions"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/PaymentOptions",
+      "note": "Online payments are made after you sign in to your Armstrong account. Without signing in, mail a check or money order to the remittance address on your statement, or pay with cash, check or money order at a local Armstrong store.",
+      "channel": "in_person"
+    }
+  },
+  "contact": {
+    "phone": "8772775711",
+    "source": "https://www.armstrongonewire.com/Support/Billing/Articles/PaymentOptions",
+    "evidence": "documented_official"
+  },
+  "billing": {
+    "source": "https://www.armstrongonewire.com/Support/Billing/Articles/PaymentOptions",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "notes": [
+        "Late, returned payment, reconnect and delinquent payment pickup fees apply where stated on your statement; amounts are not published online.",
+        "If you leave the Electronic Billing Program and get paper statements again, a paper statement fee (currently $2.50 per billing cycle) may apply."
+      ],
+      "evidence": "inferred",
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/UnderstandStatement"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in and choose Pay Bill to make a one-time payment from a checking or savings account or with a debit or credit card, or enroll in automatic monthly payments. Automatic payments from a checking or savings account save $1 per month on your bill.",
+        "To pay by mail, send a check or money order to the remittance address on your statement: AUI customers to P.O. Box 37749, Philadelphia, PA 19101-5049; ATC customers to P.O. Box 640075, Pittsburgh, PA 15264-0075; ATI customers to Armstrong Telecommunications Inc., P.O. Box 645713, Pittsburgh, PA 15264-5255. You can also pay with cash, check or money order at a local Armstrong store."
+      ],
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/PaymentOptions"
+    },
+    {
+      "slug": "autopay",
+      "title": "Sign up, modify or cancel Auto-Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in, go to the My Bill section of your Account Dashboard and choose Enroll. Pick Bank Account or Credit/Debit, enter your email, the one-time payment amount (Total Charges from your Statement Summary) and your bank or card details, then the billing address, and continue to the confirmation screen.",
+        "To change Auto-Pay, choose Modify Auto-Pay in My Bill, then Modify My Enrollment for payment details or Modify My Enrollment (Email Only) for the email address. To stop it, open Modify Auto-Pay, select Cancel Enrollment at the bottom of the screen and confirm with Yes."
+      ],
+      "steps": [
+        "Sign in and open My Bill on the Account Dashboard.",
+        "Choose Enroll.",
+        "Select Bank Account or Credit/Debit and enter the details.",
+        "Enter the billing address and continue to confirm."
+      ],
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/Signupmodifycancelautopay"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "Cancel Auto-Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "In the My Bill section choose Modify Auto-Pay, then select Cancel Enrollment at the bottom of the screen. Confirm with Yes in the pop-up (or Abort to keep it). A confirmation shows when Auto-Pay is cancelled."
+      ],
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/Signupmodifycancelautopay"
+    },
+    {
+      "slug": "statement",
+      "title": "Understanding your statement",
+      "topic": "billing",
+      "paragraphs": [
+        "Armstrong service is a subscription, so you are billed one month in advance. Payment in full is due when you receive your statement; allow at least five working days for a payment to be credited before the due date.",
+        "If full payment is not received by the due date, a late fee shows on your next statement and a Past Due message prints; service may then be discontinued. Reconnecting after a nonpayment disconnect needs the full balance plus a reconnect fee. Returned payments and paying the technician sent to disconnect also carry fees, and leased equipment not returned within five business days after service ends is charged at replacement cost."
+      ],
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/UnderstandStatement"
+    },
+    {
+      "slug": "sign-in",
+      "title": "Signing in to your Armstrong account",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in with your Armstrong username or the email address linked to your account, or choose to sign in with an Apple, Google or Microsoft account. Passwords need at least 8 characters with at least three of lowercase, uppercase, numbers and special characters.",
+        "To create an account, enter your email, a password and your Armstrong account number, then add a recovery email or mobile number and enter the 6-digit code sent to it."
+      ],
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/SingleSignOn"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Reset or change your password",
+      "topic": "account",
+      "paragraphs": [
+        "At the Armstrong sign-in screen enter your username, select Continue, then Forgot password?. Choose your recovery email or text number and select Reset Password; follow the link or code sent to you. If you never validated a recovery method, call 1-877-277-5711.",
+        "To change a password you know, sign in, open Settings from the Account Dashboard menu, find your username under Manage Users and choose Change beside Password."
+      ],
+      "source": "https://www.armstrongonewire.com/Support/Billing/Articles/ResetPassword"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancelling Armstrong service",
+      "topic": "account",
+      "paragraphs": [
+        "You can cancel at any time by contacting Armstrong Customer Service at 1-877-277-5711 and asking to cancel; give at least 24 hours of notice. Return leased equipment to your local store within five business days after service ends, or it is charged at replacement cost.",
+        "Leaving the Electronic Billing Program (AutoPay with online statements) is done in writing; Armstrong then mails paper statements again and may charge a paper statement fee, currently $2.50 per billing cycle. The $1 monthly AutoPay discount applies only to payments from a checking or savings account, not to credit cards."
+      ],
+      "source": "https://www.armstrongonewire.com/Content/Documents/master-terms.pdf"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-bank-savings",
+        "intent": "Using Armstrong's payment options, find how much you save each month by paying automatically from a checking or savings account. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1",
+              "1 dollar",
+              "one dollar"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1",
+            "1 dollar",
+            "one dollar"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Automatic payments from checking or savings save $1 per month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username or email"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto-Pay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-877-277-5711"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$1 per month"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-autopay",
+      "contains": "Cancel Enrollment"
+    }
+  ]
+}

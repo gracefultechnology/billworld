@@ -1,0 +1,252 @@
+{
+  "id": "storage-sense-2cc470",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Storage Sense",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Storage Sense Pay Bill page and FAQ (no sign-in, no one-time code requested). Pay Bill: choose a location, Email, Password (6-20 characters), Forgot your password?, Sign in with One-Time Code (code sent to email or phone), Register a new account; new website users must create an account before paying. Help line (877) 330-0227. FAQ: Pay Bill -> log in -> pick the unit; you can prepay upcoming months; month-to-month leases, move out any time without penalty even during a discount; 5% senior (65+) and 10% active-military discounts; $50 referral credit; lien sales held online after the state lien process. No AutoPay, fee, late-fee or move-out steps are published: autopay unknown with a contact note, cancel_service unsupported online (inferred). The one-time-code sign-in is not modelled (cross-owner request: passwordless code sign-in). Review 2026-10-10: the Pay Bill page also has Sign in with Google / Create with Google (socialProviders google) and Quick Pay - Checkout as Guest with location, Mobile Phone Number and Unit# (guest_pay supported; location is not modelled).",
+  "officialDomains": [
+    "storagesense.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.storagesense.com/pay-bill/?action=quick-pay",
+      "title": "Pay Your Bill at Storage Sense",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.storagesense.com/self-storage-faq/",
+      "title": "Self Storage FAQ | Storage Sense",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Storage Sense",
+    "shortName": "Storage Sense",
+    "primary": "#1d4f91",
+    "accent": "#7c2d12",
+    "monogram": "SS"
+  },
+  "labels": {
+    "payBill": "Pay Bill",
+    "signIn": "Sign in",
+    "username": "Email",
+    "forgot": "Forgot your password?",
+    "register": "Register a new account",
+    "help": "FAQ",
+    "guestPay": "Quick Pay",
+    "accountNumber": "Unit#"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Bill",
+        "page": "login"
+      },
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Register a new account",
+        "page": "register"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Units",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "passwordRule": {
+      "pattern": "^.{6,20}$",
+      "message": "Password must be between 6 and 20 characters"
+    },
+    "evidence": "observed_public",
+    "source": "https://www.storagesense.com/pay-bill/?action=quick-pay",
+    "guestLookupFields": [
+      "accountNumber",
+      "phone"
+    ],
+    "guestLookupExact": true,
+    "socialProviders": [
+      "google"
+    ]
+  },
+  "contact": {
+    "phone": "877-330-0227",
+    "source": "https://www.storagesense.com/pay-bill/?action=quick-pay",
+    "evidence": "observed_public"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.storagesense.com/self-storage-faq/"
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.storagesense.com/pay-bill/?action=quick-pay",
+      "note": "New to the Storage Sense website? Create an account before using online payments."
+    },
+    "autopay": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "source": "https://www.storagesense.com/self-storage-faq/",
+      "channel": "phone",
+      "phone": "877-330-0227",
+      "note": "For automatic payments, contact your Storage Sense office or call (877) 330-0227."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.storagesense.com/self-storage-faq/",
+      "channel": "phone",
+      "phone": "877-330-0227",
+      "note": "Leases are month-to-month and you can move out any time without a penalty. Tell your Storage Sense office, or call (877) 330-0227."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.storagesense.com/pay-bill/?action=quick-pay",
+      "note": "Quick Pay lets you check out as a guest: choose your location and enter your unit number and mobile phone number."
+    }
+  },
+  "billing": {
+    "source": "https://www.storagesense.com/self-storage-faq/"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your bill online",
+      "topic": "payments",
+      "source": "https://www.storagesense.com/self-storage-faq/",
+      "paragraphs": [
+        "Select Pay Bill at the top of the site, sign in, and choose the unit you want to pay for. You can also pay ahead for upcoming months.",
+        "If you are new to the Storage Sense website, register a new account before you pay, or use Quick Pay to check out as a guest with your location, unit number and mobile phone number. You can also sign in with Google or with a one-time code sent to your email or phone. Trouble signing in? Call (877) 330-0227."
+      ],
+      "steps": [
+        "Select Pay Bill.",
+        "Choose your location and sign in with your email.",
+        "Choose the unit.",
+        "Enter the amount and pay."
+      ]
+    },
+    {
+      "slug": "discounts",
+      "title": "Discounts",
+      "topic": "billing",
+      "source": "https://www.storagesense.com/self-storage-faq/",
+      "paragraphs": [
+        "Customers 65 and older get a 5% senior discount on the monthly bill, and active-duty military members get 10% off. When you refer a friend, you both get $50 off your next rental."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://www.storagesense.com/self-storage-faq/",
+      "paragraphs": [
+        "All Storage Sense leases are month-to-month, so you can move out whenever you like, even in the middle of a discount period, without a penalty. Let your office know, or call (877) 330-0227."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "senior-discount",
+        "intent": "Using the Storage Sense FAQ, find the senior discount on the monthly bill and who qualifies. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5%",
+              "5 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5%",
+            "5 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Customers 65 and older get 5% off the monthly bill."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Sign in"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "discounts",
+      "contains": [
+        "5%",
+        "65"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "330-0227"
+    },
+    {
+      "page": "home",
+      "label": "guestPay"
+    }
+  ]
+}

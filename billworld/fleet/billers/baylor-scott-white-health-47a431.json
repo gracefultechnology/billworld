@@ -1,0 +1,102 @@
+{
+  "id": "baylor-scott-white-health-47a431",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Baylor Scott & White Health",
+  "category": "medical",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public bswhealth.com Pay Your Bill page (no sign-in, no guest lookup). Four ways to pay: in person at the facility, online through MyBSWHealth, by mail, by phone. Online: 'Pay a Bill as a Guest' for a one-time payment without registering, or enroll/log in to MyBSWHealth to view balances and statements, set up a payment plan or enroll in paperless statements. HealthTexas Provider Network (HTPN) practice bills are paid in MyBSWHealth too; HTPN phone 1-866-377-1650. Automated phone payments 24/7 at 1-800-994-0371 post the next business day; agents take phone payments Mon-Fri 8-5 at the same number. Mail: detach the slip, include the account number on the check or money order, mail to the address on the statement. Extended interest-free payment plans and financial assistance (financial counselors). Guest lookup fields, accepted online methods, fees and AutoPay are not published (family defaults kept). Catalog billing customer-service number 1-833-968-5862 is not shown on the page (kept out; the page's 1-800-994-0371 is used).",
+  "officialDomains": ["bswhealth.com"],
+  "sources": [
+    { "url": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill", "title": "Pay Your Bill", "fetchedAt": "2026-10-10", "kind": "pay" }
+  ],
+  "brand": { "displayName": "Baylor Scott & White Health", "shortName": "Baylor Scott & White", "primary": "#00467f", "accent": "#002d56", "monogram": "BW" },
+  "labels": {
+    "payBill": "Pay Your Bill",
+    "signIn": "Log in to MyBSWHealth",
+    "register": "Enroll in MyBSWHealth",
+    "guestPay": "Pay a Bill as a Guest",
+    "dashboard": "MyBSWHealth",
+    "arrangement": "Set up a payment plan",
+    "paperless": "Paperless statements",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "public": [
+      { "label": "Pay a Bill as a Guest", "page": "guest" },
+      { "label": "Log in to MyBSWHealth", "page": "login" },
+      { "label": "Enroll in MyBSWHealth", "page": "register" },
+      { "label": "Financial assistance", "helpSlug": "payment-assistance" },
+      { "label": "Billing help", "page": "help" }
+    ]
+  },
+  "contact": { "phone": "800-994-0371", "payPhone": "800-994-0371", "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill" },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill" },
+    "payment_arrangement": { "support": "supported", "evidence": "documented_official", "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill" },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill", "phone": "800-994-0371" },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill" }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Four ways to pay",
+      "topic": "payments",
+      "paragraphs": [
+        "Online through MyBSWHealth: choose Pay a Bill as a Guest to make a one-time payment without registering, or enroll in or log in to MyBSWHealth to see balances and statements, set up a payment plan or sign up for paperless statements. Bills from HealthTexas Provider Network (HTPN) practices are paid in MyBSWHealth as well.",
+        "By phone: the automated system at 1-800-994-0371 takes payments 24 hours a day, seven days a week, and those payments post the next business day. Customer Service agents take payments at the same number Monday through Friday, 8 a.m. to 5 p.m. For HTPN locations call 1-866-377-1650.",
+        "By mail: detach the slip from your statement and return it with your payment to the address on the statement. Write your account number on a check or money order. In person: pay at the facility where you received care."
+      ],
+      "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill"
+    },
+    {
+      "slug": "payment-plan",
+      "title": "Interest-free payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you cannot pay your bills all at once, Baylor Scott & White offers extended payment plans with no interest. Log in to MyBSWHealth to set one up, or call Customer Service at 1-800-994-0371."
+      ],
+      "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Financial assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "Patients are expected to meet the financial obligation for their care. If you cannot, speak with a financial counselor and review the Baylor Scott & White financial assistance policy and options. You can also send a billing or financial assistance question to Customer Service with the online form."
+      ],
+      "source": "https://www.bswhealth.com/patient-tools/registration-and-billing/pay-your-bill"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "phone-payment-posting",
+        "intent": "Using Baylor Scott & White Health's Pay Your Bill information, find when a payment made through the automated phone system posts to your account. Do not make a payment.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["next business day"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["next business day"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "It posts the next business day." }]
+      },
+      {
+        "slug": "htpn-phone",
+        "intent": "Find the phone number Baylor Scott & White Health lists for paying a bill from an HTPN (HealthTexas Provider Network) location. Do not change anything on the account.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["377-1650", "8663771650"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["377-1650", "8663771650"] },
+        "tags": ["help", "information", "contact"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "1-866-377-1650" }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "login", "label": "signIn" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["next business day", "1-800-994-0371"] },
+    { "page": "helpArticle", "slug": "payment-plan", "contains": "no interest" }
+  ]
+}

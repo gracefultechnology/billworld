@@ -1,0 +1,327 @@
+{
+  "id": "csaa-insurance-group-aaa-insurance-8082ba",
+  "version": 1,
+  "status": "dedicated",
+  "name": "CSAA Insurance Group (AAA Insurance)",
+  "category": "insurance",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public CSAA pages only (no sign-in, no form submitted). Quick pay: 'Make a secure one-time payment without signing in' asks Policy number + Zip code (billing ZIP). MyPolicy FAQs and Help (public): pay from Home > Make a payment > Bills, choosing the minimum due, the full amount or another amount; payments may take up to 48 business hours to show; AutoPay set up from Bills and payments > AutoPay settings > Set up AutoPay with checking, savings, debit or credit card; bills are in the Document library; paperless via Communication preferences (email notifications, payment reminders three days before the due date; paper and email bills are exclusive); property-policy changes and address changes are phone-only; Insurance Service 24/7 at 888-980-5650. Manage MyPolicy page: sign-up needs policy number and AAA membership number (membership number not expressible in registrationFields). Automatic Payment Authorization terms: charges on or shortly after each due date, may include installment fees and returned payment fees (amounts unpublished); cancel Automatic Payment by calling Insurance Service 800-922-8228 (CA), 888-222-0094 (DE, DC, MD, NJ, PA, VA) or 800-207-3618 (other states) - modelled as autopay_cancel offline (phone). Many members pay through their own AAA club website instead; that routing is not modelled. Login form is a hosted SPA; identifier not observed, so auth.identifier is not set.",
+  "officialDomains": [
+    "csaa-insurance.aaa.com",
+    "aaa.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.mypolicy.csaa-insurance.aaa.com/quickpay",
+      "title": "Pay My Bill | AAA Insurance",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.mypolicy.csaa-insurance.aaa.com/quickpay/pay-your-bill",
+      "title": "Pay your bill (one-time payment)",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.mypolicy.csaa-insurance.aaa.com/help",
+      "title": "FAQs and Help | AAA Insurance",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://csaa-insurance.aaa.com/content/aaa-ie/b2c/en/misc/manage-mypolicy.html",
+      "title": "Manage Your Policy Online | CSAA Insurance Group",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://csaa-insurance.aaa.com/content/aaa-ie/b2c/en/misc/auth-terms.html",
+      "title": "Automatic Payment Authorization",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    }
+  ],
+  "brand": {
+    "displayName": "AAA Insurance (CSAA Insurance Group)",
+    "shortName": "AAA Insurance",
+    "primary": "#004b8d",
+    "accent": "#00336a",
+    "monogram": "A"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Sign up",
+    "guestPay": "Pay your bill",
+    "payBill": "Make a payment",
+    "viewBill": "Bills",
+    "autopay": "AutoPay",
+    "paperless": "Communication preferences",
+    "statements": "Document library",
+    "help": "FAQs and Help"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Bills",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay settings",
+        "page": "autopay"
+      },
+      {
+        "label": "Document library",
+        "page": "statements"
+      },
+      {
+        "label": "Communication preferences",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.mypolicy.csaa-insurance.aaa.com/quickpay/pay-your-bill"
+  },
+  "contact": {
+    "phone": "888-980-5650",
+    "payPhone": "888-980-5650",
+    "source": "https://www.mypolicy.csaa-insurance.aaa.com/help"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mypolicy.csaa-insurance.aaa.com/help"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.mypolicy.csaa-insurance.aaa.com/quickpay/pay-your-bill"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mypolicy.csaa-insurance.aaa.com/help"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://csaa-insurance.aaa.com/content/aaa-ie/b2c/en/misc/auth-terms.html",
+      "note": "To cancel Automatic Payment, call Insurance Service before the next payment is processed: 800-922-8228 (CA), 888-222-0094 (DE, DC, MD, NJ, PA, VA) or 800-207-3618 (all other states).",
+      "channel": "phone",
+      "phone": "800-207-3618"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mypolicy.csaa-insurance.aaa.com/help"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mypolicy.csaa-insurance.aaa.com/help"
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://csaa-insurance.aaa.com/content/aaa-ie/b2c/en/misc/manage-mypolicy.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.mypolicy.csaa-insurance.aaa.com/help",
+      "phone": "888-980-5650"
+    }
+  },
+  "billing": {
+    "source": "https://www.mypolicy.csaa-insurance.aaa.com/help",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How do I make a payment?",
+      "topic": "payments",
+      "paragraphs": [
+        "Without signing in, make a secure one-time payment with your policy number and your billing ZIP code.",
+        "In MyPolicy, choose Make a payment on the Home screen, find the policy on the Bills screen, confirm or edit the amount (minimum due, full amount or another amount), choose a payment method, review and select Pay. A confirmation is emailed if we have your email address.",
+        "It can take up to 48 business hours for your policy to show the payment."
+      ],
+      "source": "https://www.mypolicy.csaa-insurance.aaa.com/help",
+      "steps": [
+        "Select Make a payment on the Home screen.",
+        "Find the policy on the Bills screen and select Make a payment.",
+        "Confirm or edit the amount.",
+        "Choose a payment method and select Continue.",
+        "Review and select Pay."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "From Bills and payments, open AutoPay settings, find the policy and select Set up AutoPay. Pay automatically from a checking or savings account or a debit or credit card.",
+        "Automatic Payment charges your saved method on or shortly after each due date for the amount you owe, including installment and returned-payment fees. If your regular amount changes you are told at least 10 days before the charge.",
+        "To cancel Automatic Payment, call Insurance Service before the payment is processed: 800-922-8228 in California, 888-222-0094 in Delaware, DC, Maryland, New Jersey, Pennsylvania and Virginia, or 800-207-3618 elsewhere."
+      ],
+      "source": "https://csaa-insurance.aaa.com/content/aaa-ie/b2c/en/misc/auth-terms.html"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless preferences",
+      "topic": "paperless",
+      "paragraphs": [
+        "Choose Communication preferences in the main menu and turn on email notifications for all policies, or switch each policy from Paperless is off to Paperless is on, then Save.",
+        "You get an email when a bill or document is ready and a payment reminder three days before the due date. Bills come either by email notification or by mail, not both. Up to two years of bills and documents stay in MyPolicy."
+      ],
+      "source": "https://www.mypolicy.csaa-insurance.aaa.com/help"
+    },
+    {
+      "slug": "manage-online",
+      "title": "What you can do in MyPolicy",
+      "topic": "account",
+      "paragraphs": [
+        "Print or view proof of insurance, set up and manage automatic payments or make one-time payments, add or remove drivers and vehicles on eligible auto policies, and open your policy documents.",
+        "Have your policy number and AAA membership number ready to create your account. Changes to property policies and address changes are made by phone with Insurance Service, 24/7, at 888-980-5650."
+      ],
+      "source": "https://csaa-insurance.aaa.com/content/aaa-ie/b2c/en/misc/manage-mypolicy.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-cancel-phone",
+        "intent": "Find the phone number AAA Insurance (CSAA) tells California customers to call to cancel Automatic Payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8009228228"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8009228228"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "800-922-8228"
+          }
+        ]
+      },
+      {
+        "slug": "payment-posting-time",
+        "intent": "Using the AAA Insurance MyPolicy help, find how long it can take for a payment to show on your policy. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "48"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "48"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 48 business hours."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "888-222-0094",
+        "10 days"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "48 business hours"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "800-922-8228"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay settings",
+        "Document library"
+      ]
+    }
+  ]
+}

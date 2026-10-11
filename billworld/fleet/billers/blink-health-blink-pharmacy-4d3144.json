@@ -1,0 +1,327 @@
+{
+  "id": "blink-health-blink-pharmacy-4d3144",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Blink Health / Blink Pharmacy",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from the public Blink Health Customer Service help center (support-faq articles, no sign-in). Blink is paid up front online or in the app, for home delivery or local pharmacy pickup: refills are bought from Your Medications (Add to Cart, then complete the purchase) on the web or Your Meds > Pay in the app. Accepted: credit, debit, FSA and HSA cards (Visa, American Express, MasterCard and others), so billing.methods card. Final receipts are under BlinkHealth.com/Account for FSA/HSA reimbursement. A purchase can be canceled before pickup (retail) or before processing starts (home delivery) from Your Medications > More Details > Cancel Order; refunds take 3 to 5 business days. Accounts need a valid email (receipts and tracking are emailed) and a name and date of birth matching the prescription; sign-up help at 1 (833) 844-9621; order by phone at 1 (844) 265-6444. The help center mentions auto-refills and a Medicare Prescription Payment Plan article, but their details were not read, so no AutoPay or payment plan is modelled (unsupported, inferred). No guest payment or paperless bill exists (pay-first model). Review 2026-10-10: the help center's Medicare Prescription Payment Plan article is the standard Medicare notice (enrollment is through the member's drug plan, not Blink), so the payment_arrangement note now points Part D members to their plan. The refill article links auto-refill details to a legacy support site that would not load; auto-refill stays unmodelled.",
+  "officialDomains": [
+    "blinkhealth.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.blinkhealth.com/support-faq",
+      "title": "Blink Health Customer Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.blinkhealth.com/support-faq/article/5ytc9eM2t2Etu4lhY8Lude",
+      "title": "What payment methods does Blink accept?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.blinkhealth.com/support-faq/article/2VJLL2qjWtQH1Xw3y5086I",
+      "title": "Can I use my FSA or HSA with Blink?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.blinkhealth.com/support-faq/article/3GGoQ8rvM533GHfbwPSam9",
+      "title": "How do I cancel a Blink purchase?",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.blinkhealth.com/support-faq/article/1BwW9L8dvQUeChQrHlTWir",
+      "title": "How do I refill my medication with Blink?",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.blinkhealth.com/support-faq/article/R07viK6PdCwqMV9TmVKLI",
+      "title": "How do I create a Blink Account?",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.blinkhealth.com/support-faq/article/6CLnrzE9aw1aIEDUMn4WVN",
+      "title": "Medicare Prescription Payment Plan | Blink Health Customer Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Blink Health",
+    "shortName": "Blink",
+    "primary": "#2b3a8c",
+    "accent": "#1b255c",
+    "monogram": "B"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "dashboard": "Your Medications",
+    "payBill": "Complete your purchase",
+    "history": "Receipts",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      },
+      {
+        "label": "Order by phone",
+        "helpSlug": "order-by-phone"
+      }
+    ],
+    "account": [
+      {
+        "label": "Your Medications",
+        "page": "dashboard"
+      },
+      {
+        "label": "Complete your purchase",
+        "page": "pay"
+      },
+      {
+        "label": "Receipts",
+        "page": "history"
+      },
+      {
+        "label": "Payment methods",
+        "page": "wallet"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "evidence": "documented_official",
+    "source": "https://www.blinkhealth.com/support-faq/article/R07viK6PdCwqMV9TmVKLI"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.blinkhealth.com/support-faq/article/1BwW9L8dvQUeChQrHlTWir"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.blinkhealth.com/support-faq/article/2VJLL2qjWtQH1Xw3y5086I"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.blinkhealth.com/support-faq",
+      "phone": "844-265-6444"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.blinkhealth.com/support-faq/article/R07viK6PdCwqMV9TmVKLI",
+      "note": "Blink purchases are made in your free Blink account, or you can order by phone at 1 (844) 265-6444.",
+      "channel": "phone",
+      "phone": "844-265-6444"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.blinkhealth.com/support-faq/article/1BwW9L8dvQUeChQrHlTWir",
+      "note": "Blink is paid up front for each purchase: add the medication to your cart and complete the purchase. There is no automatic balance payment.",
+      "channel": "none"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.blinkhealth.com/support-faq/article/1BwW9L8dvQUeChQrHlTWir"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.blinkhealth.com/support-faq/article/6CLnrzE9aw1aIEDUMn4WVN",
+      "note": "Blink does not offer payment plans; each purchase is paid in full. If you have a Medicare drug plan, you can ask your plan about the Medicare Prescription Payment Plan, which spreads Part D drug costs across the year. For questions, call 1 (844) 265-6444.",
+      "channel": "phone",
+      "phone": "844-265-6444"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.blinkhealth.com/support-faq/article/R07viK6PdCwqMV9TmVKLI",
+      "note": "Blink does not mail bills: receipts and tracking information are sent by email and kept in your account.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.blinkhealth.com/support-faq/article/1BwW9L8dvQUeChQrHlTWir",
+      "note": "You pay when you complete a purchase; future-dated payments are not offered.",
+      "channel": "none"
+    }
+  },
+  "billing": {
+    "source": "https://www.blinkhealth.com/support-faq/article/5ytc9eM2t2Etu4lhY8Lude",
+    "methods": [
+      "card"
+    ]
+  },
+  "contact": {
+    "phone": "844-265-6444",
+    "payPhone": "844-265-6444",
+    "source": "https://www.blinkhealth.com/support-faq"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying for your medication",
+      "topic": "payments",
+      "paragraphs": [
+        "With Blink you pay up front, online or in the app, and then get your medication by home delivery or at a local pharmacy. On the web, go to your online account, select Your Medications, choose Add to Cart next to the medication and complete your purchase. In the Blink Health app, open Your Meds and tap Pay next to the medication.",
+        "Blink accepts credit, debit, FSA and HSA cards, including Visa, American Express and MasterCard. If you have no refills left, contact your healthcare provider."
+      ],
+      "steps": [
+        "Sign In to your Blink account.",
+        "Select Your Medications.",
+        "Choose Add to Cart next to your medication.",
+        "Complete your purchase."
+      ],
+      "source": "https://www.blinkhealth.com/support-faq/article/1BwW9L8dvQUeChQrHlTWir"
+    },
+    {
+      "slug": "cancel-purchase",
+      "title": "Canceling a purchase",
+      "topic": "payments",
+      "paragraphs": [
+        "For local pharmacy pickup you can cancel until you pick up the medication; for home delivery, until the order starts processing. Go to your online account, select Your Medications, choose More Details next to the medication, then Cancel Order and Yes. You get an email confirmation, and the refund reaches your payment method in 3 to 5 business days."
+      ],
+      "source": "https://www.blinkhealth.com/support-faq/article/3GGoQ8rvM533GHfbwPSam9"
+    },
+    {
+      "slug": "receipts",
+      "title": "Receipts for FSA or HSA",
+      "topic": "statements",
+      "paragraphs": [
+        "You can pay with an FSA or HSA card. For your records and reimbursement, your final receipts are in your account at BlinkHealth.com/Account. Receipts and tracking information are also emailed, so sign up with a valid email address."
+      ],
+      "source": "https://www.blinkhealth.com/support-faq/article/2VJLL2qjWtQH1Xw3y5086I"
+    },
+    {
+      "slug": "order-by-phone",
+      "title": "Ordering or signing up by phone",
+      "topic": "contact",
+      "paragraphs": [
+        "To order by phone, call 1 (844) 265-6444. For help creating your free account over the phone, call 1 (833) 844-9621. When you sign up, use a valid email and make sure your name and date of birth match your doctor's prescription."
+      ],
+      "source": "https://www.blinkhealth.com/support-faq/article/R07viK6PdCwqMV9TmVKLI"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "refund-time",
+        "intent": "I canceled a Blink home delivery order. How long until the refund shows up on my card? Answer from the Blink help center; don't buy or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "3 to 5 business days."
+          }
+        ]
+      },
+      {
+        "slug": "signup-phone",
+        "intent": "My mom wants help creating a Blink account over the phone. Find the phone number Blink gives for that. Don't change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8338449621"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8338449621"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1 (833) 844-9621"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "pay",
+      "signedIn": true,
+      "label": "payBill"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "label": "dashboard"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-purchase",
+      "contains": "3 to 5 business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "order-by-phone",
+      "contains": "844-9621"
+    }
+  ]
+}

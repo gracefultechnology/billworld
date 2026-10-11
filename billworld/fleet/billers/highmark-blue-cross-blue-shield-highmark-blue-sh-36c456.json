@@ -1,0 +1,323 @@
+{
+  "id": "highmark-blue-cross-blue-shield-highmark-blue-sh-36c456",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Highmark Blue Cross Blue Shield / Highmark Blue Shield - Medicare",
+  "category": "medicare",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public highmark.com pages only (no sign-in). The eBill Help FAQ covers direct-pay Individual and Medicare members: register for the member portal, then use the Pay Premium tab; add a bank account (checking/direct withdrawal, Terms and Conditions checkbox for ACH) or a major credit/debit card with Add Payment Method; remove one under Member Profile > Manage Payment Methods (trash can, YES, REMOVE); enroll in auto pay from the Medical Summary card in three steps (pick a payment date before the due date in 'I want to pay', optional 'Make payments until coverage ends'; pick the method; accept the authorization and CREATE AUTO PAY); cancel under Member Profile > Manage Auto Pay (trash can, YES, REMOVE); Go Paperless is a toggle under Member Profile; Manage Notifications sets email/text for payment, billing and auto payment messages. Customer Service for eBill is 1-800-241-5704; refunds, lockouts and reinstatement go to the Member Service number on the ID card. The Medicare site's resources page says eBill pays monthly premiums or sets up recurring payments. No pay-without-signing-in option, mail address, fee or Medicare pay-by-phone number is published on these pages, so guest pay is modelled unsupported (inferred) and fees/mail are left out. A non-Highmark retiree member guide says eBill payments must equal the full invoice; that is not on an official page, so fullBalanceOnly is not set. The auto pay day picker ('a day before the due date') cannot be expressed exactly. Sign-in identifier (username) is inferred. Review (tier-20): statements set to inferred (the resources page does not mention statements; eBill shows billing on its home screen). The Medicare contact page lists no premium mailing address or pay line; benefit and billing questions go to the number on the ID card.",
+  "officialDomains": [
+    "highmark.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.highmark.com/resources/answers/faq/ebill-help",
+      "title": "eBill Help | Highmark",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://medicare.highmark.com/resources",
+      "title": "Medicare Resources | Highmark",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://medicare.highmark.com/contact-us.html",
+      "title": "Contact Us | Highmark Medicare",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Highmark Medicare",
+    "shortName": "Highmark",
+    "primary": "#004b87",
+    "accent": "#00627a",
+    "monogram": "H"
+  },
+  "labels": {
+    "signIn": "Member Login",
+    "payBill": "Pay Premium",
+    "autopay": "Auto Pay",
+    "paperless": "Go Paperless",
+    "wallet": "Manage Payment Methods",
+    "profile": "Member Profile",
+    "dashboard": "eBill"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Member Login",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "eBill Help",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "eBill",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Premium",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Manage Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Member Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://www.highmark.com/resources/answers/faq/ebill-help"
+  },
+  "contact": {
+    "phone": "800-241-5704",
+    "source": "https://www.highmark.com/resources/answers/faq/ebill-help",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help",
+      "note": "Direct-pay Medicare members register for the member portal to pay premiums online."
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help",
+      "note": "After you log in, open the Pay Premium tab to pay with a bank account or a credit or debit card."
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help",
+      "note": "Premiums are paid online after you log in to your member account. For billing help call Customer Service at 1-800-241-5704.",
+      "channel": "phone",
+      "phone": "8002415704"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help",
+      "note": "Choose a payment date before your due date and a saved payment method, then accept the authorization."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help",
+      "note": "Open Member Profile, choose Manage Auto Pay and select the trash can to remove it."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help",
+      "note": "Turn Go Paperless on or off from the Member Profile menu."
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help"
+    }
+  },
+  "billing": {
+    "source": "https://www.highmark.com/resources/answers/faq/ebill-help",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "eBill help: paying your premium",
+      "topic": "payments",
+      "paragraphs": [
+        "If you pay your Medicare premium directly to Highmark, register for the member portal. After your first login, look for the Pay Premium tab, where you can pay, add payment methods, set up auto pay and choose how you hear from us.",
+        "You can pay from a checking account (direct withdrawal) or with a major credit or debit card. Bank payments need you to accept the Terms and Conditions.",
+        "Questions about eBill? Call Customer Service at 1-800-241-5704. For refunds, lockouts, reinstating a cancelled plan or a final bill, call the Member Service number on the back of your ID card."
+      ],
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help"
+    },
+    {
+      "slug": "autopay",
+      "title": "Setting up and canceling Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Enroll from the Medical Summary card. You pick a payment date that falls before your due date, and you can choose to keep paying until your coverage ends.",
+        "To cancel, open the Member Profile menu, choose Manage Auto Pay, select the trash can and confirm with YES, REMOVE."
+      ],
+      "steps": [
+        "Select Enroll in auto pay on the Medical Summary card.",
+        "Choose your payment date in the I want to pay list.",
+        "Choose the payment method and select NEXT.",
+        "Check the authorization box and select CREATE AUTO PAY."
+      ],
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help"
+    },
+    {
+      "slug": "payment-methods",
+      "title": "Adding, editing and removing payment methods",
+      "topic": "payments",
+      "paragraphs": [
+        "Add a method with Add Payment Method on the billing screen and follow the steps, finishing with ADD PAYMENT.",
+        "To remove one, open Member Profile, choose Manage Payment Methods, select the trash can and confirm. To update a card's nickname, expiration date, security code, name or address, select the pencil icon and save your changes."
+      ],
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go Paperless and notifications",
+      "topic": "paperless",
+      "paragraphs": [
+        "Open the Member Profile menu and use the Go Paperless toggle to turn paper bills off or on.",
+        "Under Manage Notifications you can choose email, text, both or none for general payment messages, billing messages and auto payment messages."
+      ],
+      "source": "https://www.highmark.com/resources/answers/faq/ebill-help"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "ebill-help-phone",
+        "intent": "Using Highmark's eBill help, find the Customer Service phone number for questions about paying your premium online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8002415704"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8002415704"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Customer Service at 1-800-241-5704."
+          }
+        ]
+      },
+      {
+        "slug": "cancel-autopay-menu",
+        "intent": "Using Highmark's eBill help, find which option under the Member Profile menu you use to cancel auto pay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Manage Auto Pay"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Manage Auto Pay"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Member Profile, then Manage Auto Pay, then the trash can."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": "Member Login"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Premium",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Manage Auto Pay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "1-800-241-5704"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "Manage Notifications"
+    }
+  ]
+}

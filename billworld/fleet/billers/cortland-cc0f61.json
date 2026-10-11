@@ -1,0 +1,232 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-10",
+  "id": "cortland-cc0f61",
+  "name": "Cortland",
+  "category": "housing",
+  "notes": "Researched from public cortland.com pages (Resident Login, Cortland Resident Portal and Mobile App, Contact). Residents pick their community on Resident Login to reach its portal, where they place service requests and schedule rent payments. The portal/app (Cortland Connect) lists online rent payments, service request tracking, Face/Touch ID login, move-in checklist, push notifications, community announcements, amenity reservations and in-app messaging. Contact: residents use the Residents tab form or call the Resident Services team at 770-629-8528 (the tel link directly under that sentence on Contact - reviewer correction); Atlanta office 3424 Peachtree Rd NE Suite 300, 404-965-3988. Fees, autopay specifics, notice periods not published (family defaults kept, inferred).",
+  "officialDomains": [
+    "cortland.com"
+  ],
+  "sources": [
+    {
+      "url": "https://cortland.com/resident-login/",
+      "title": "Resident Login | Cortland",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://cortland.com/cortland-living/cortland-resident-portal-and-mobile-app/",
+      "title": "Cortland Resident Portal and Mobile App | Cortland Living | Cortland",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://cortland.com/contact/",
+      "title": "Contact | Cortland",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Cortland",
+    "shortName": "Cortland",
+    "primary": "#22313f",
+    "accent": "#8a3a0f",
+    "monogram": "CO"
+  },
+  "labels": {
+    "signIn": "Resident Login",
+    "contact": "Service Requests"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident Login",
+        "page": "login"
+      },
+      {
+        "label": "Resident Guide",
+        "page": "help"
+      },
+      {
+        "label": "Portal & App",
+        "helpSlug": "mobile-app"
+      },
+      {
+        "label": "Contact",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Rent",
+        "page": "pay"
+      },
+      {
+        "label": "Scheduled Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Service Requests",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://cortland.com/resident-login/",
+      "note": "Select your community to open its resident portal, where you can schedule rent payments any time."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://cortland.com/resident-login/",
+      "note": "Schedule rent payments in your resident portal or the Cortland app."
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying rent",
+      "paragraphs": [
+        "On Resident Login, select your community to open its resident portal. There you can schedule rent payments and place service requests any time, from anywhere."
+      ],
+      "source": "https://cortland.com/resident-login/",
+      "topic": "payments"
+    },
+    {
+      "slug": "mobile-app",
+      "title": "Cortland resident portal and app",
+      "paragraphs": [
+        "The Cortland resident portal and mobile app bring online rent payments, service request tracking, Face and Touch ID login, a move-in checklist, push notifications, community announcements, amenity reservations and in-app messaging with your community team."
+      ],
+      "source": "https://cortland.com/cortland-living/cortland-resident-portal-and-mobile-app/",
+      "topic": "account"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Cortland",
+      "paragraphs": [
+        "For a resident question or concern, fill out the form under the Residents tab of the Contact page or call the Resident Services team at 770-629-8528. Cortland's Atlanta office is at 3424 Peachtree Rd NE, Suite 300, Atlanta, GA 30326 (404-965-3988)."
+      ],
+      "source": "https://cortland.com/contact/",
+      "topic": "contact"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "app-login-feature",
+        "intent": "Using the Cortland help pages, find which biometric sign-in options the Cortland resident app supports. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Face"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Face"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Face ID and Touch ID login."
+          }
+        ]
+      },
+      {
+        "slug": "resident-services-phone",
+        "intent": "Using the Cortland help pages, find the phone number for Cortland's Resident Services team. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "7706298528"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "7706298528"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Resident Services at 770-629-8528."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "label": "signIn"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "mobile-app",
+      "contains": "Touch ID"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "770-629-8528"
+    }
+  ],
+  "contact": {
+    "phone": "7706298528",
+    "source": "https://cortland.com/contact/",
+    "evidence": "documented_official"
+  }
+}

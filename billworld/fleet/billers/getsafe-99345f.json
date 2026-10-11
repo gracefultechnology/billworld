@@ -1,0 +1,309 @@
+{
+  "id": "getsafe-99345f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "GetSafe",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from GetSafe's public home, Customer Support, Pricing and Terms of Use pages and the public Account Manager sign-in page (portal.getsafe.com, rendered in a browser; never signed in). GetSafe and Bay Alarm Medical (tier 1) are sister companies (footer: both part of the Balco Properties family) and the Account Manager is the same platform as Bay Alarm's, but GetSafe has its own portal, phone and plans. Sign-in: 'Log in to your Account.' with Email and Password, 'Login', 'Sign in with OTP' (a one-time passcode alternative, not a second factor) and 'Forgot Password?'; no registration link. The portal's public page bundle (no sign-in) contains billing screens: Invoices, Billing Cycle, Billing Plan, Due Date, Payment Summary, Update Payment Method with credit card or ACH authorization, and a convenience charge line on invoices (amount not published, so not modelled); pay_online is observed_public from that bundle and bank payments are allowed. No public page documents automatic billing for GetSafe, AutoPay is inferred from the monthly monitoring subscription (Terms allow credit, debit or another payment account). Pricing: Starter, Standard and Select equipment packages ($79/$193/$307 regular, shown at 50% off) all with $29.95/mo monitoring; automatic fall detection button $10/mo; 30-day risk-free trial; the base console must be returned on cancellation. Plans all cost the same monthly, so no plan list. Cancel and payment plans: no online route documented, phone-only (inferred). Support hours Mon-Fri 7:00 a.m. to 3:30 p.m. PT; HQ 1140 Galaxy Way Suite 150, Concord, CA 94520.",
+  "officialDomains": [
+    "getsafe.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.getsafe.com/",
+      "title": "GetSafe Medical Alert Systems",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.getsafe.com/customer-support/",
+      "title": "Customer Support | GetSafe",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.getsafe.com/medical-alert-systems/pricing/",
+      "title": "Medical Alert Pricing | GetSafe",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.getsafe.com/terms-of-use/",
+      "title": "Terms of Use | GetSafe",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://portal.getsafe.com/",
+      "title": "GetSafe - Account Manager",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "GetSafe",
+    "shortName": "GetSafe",
+    "primary": "#0a4f7d",
+    "accent": "#a0350b",
+    "monogram": "GS"
+  },
+  "labels": {
+    "signIn": "Login",
+    "username": "Email",
+    "forgot": "Forgot Password?",
+    "dashboard": "Account Manager",
+    "statements": "Invoices",
+    "wallet": "Update Payment Method",
+    "help": "Customer Support",
+    "cancel": "Cancel Service"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Medical Alert Login",
+        "page": "login"
+      },
+      {
+        "label": "Pricing",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Customer Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Manager",
+        "page": "dashboard"
+      },
+      {
+        "label": "Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Update Payment Method",
+        "page": "wallet"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Cancel Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://portal.getsafe.com/"
+  },
+  "contact": {
+    "phone": "1-888-799-6255",
+    "source": "https://www.getsafe.com/customer-support/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://portal.getsafe.com/"
+    },
+    "registration": {
+      "support": "unsupported",
+      "evidence": "observed_public",
+      "source": "https://portal.getsafe.com/",
+      "note": "Online accounts are set up with your GetSafe order; there is no self-registration. Call 1-888-799-6255 if you cannot log in.",
+      "channel": "phone",
+      "phone": "8887996255"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.getsafe.com/terms-of-use/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.getsafe.com/medical-alert-systems/pricing/",
+      "note": "Service cannot be cancelled online. Call GetSafe at 1-888-799-6255; the base console must be returned when you cancel.",
+      "channel": "phone",
+      "phone": "8887996255"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.getsafe.com/customer-support/",
+      "note": "Payment plans are not offered online. Call GetSafe at 1-888-799-6255, Monday to Friday 7:00 a.m. to 3:30 p.m. PT.",
+      "channel": "phone",
+      "phone": "8887996255"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    }
+  },
+  "billing": {
+    "source": "https://www.getsafe.com/terms-of-use/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "faq",
+      "title": "Pricing and plans",
+      "topic": "faq",
+      "paragraphs": [
+        "GetSafe sells wall-button systems sized to your home: Starter (0 to 1 bedrooms), Standard (2 to 3 bedrooms) and Select (4 to 5 bedrooms). Every package uses AT&T 4G LTE cellular, so no landline is needed, and monitoring is $29.95 a month for each package.",
+        "Equipment is a one-time purchase; the regular prices are $79, $193 and $307. Extra wearable buttons are $25, standard wall buttons $35 and voice-activated wall buttons $79. An automatic fall detection button adds $10 a month.",
+        "You can try GetSafe risk-free for 30 days. If you cancel, the main base console has to be returned."
+      ],
+      "source": "https://www.getsafe.com/medical-alert-systems/pricing/"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your bill in Account Manager",
+      "topic": "payments",
+      "paragraphs": [
+        "Choose Medical Alert Login and log in to Account Manager with your email and password. You can also choose Sign in with OTP to get a one-time passcode by email instead of using a password, or Forgot Password? to reset it.",
+        "Orders and payments can be made by credit card, debit card or another payment account. Keep your billing information accurate; GetSafe may place a temporary pre-authorization hold on a card, which your card issuer releases."
+      ],
+      "source": "https://portal.getsafe.com/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact GetSafe",
+      "topic": "contact",
+      "paragraphs": [
+        "Call GetSafe toll free at 1-888-799-6255. The office is open Monday to Friday, 7:00 a.m. to 3:30 p.m. Pacific time; the monitoring center is staffed 24 hours a day, 7 days a week, including holidays.",
+        "GetSafe's headquarters is at 1140 Galaxy Way, Suite 150, Concord, California 94520."
+      ],
+      "source": "https://www.getsafe.com/customer-support/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "fall-detection-price",
+        "intent": "You're adding automatic fall detection to your GetSafe system. Using the website, find how much the fall detection button adds per month. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$10",
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$10",
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "It adds $10 a month."
+          }
+        ]
+      },
+      {
+        "slug": "support-hours-close",
+        "intent": "Using GetSafe's support pages, find what time the office closes on weekdays (Pacific time). Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3:30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3:30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The office closes at 3:30 p.m. PT."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-888-799-6255"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": [
+        "$29.95",
+        "Select"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "Concord"
+    }
+  ]
+}

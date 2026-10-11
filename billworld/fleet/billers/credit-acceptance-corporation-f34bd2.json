@@ -1,0 +1,348 @@
+{
+  "id": "credit-acceptance-corporation-f34bd2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Credit Acceptance Corporation",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public creditacceptance.com pages only (no sign-in, no guest lookup). One-time payments through the Customer Portal, Mobile App, guest page or phone carry an ACI processing fee (the FAQ gives $3.75 for app payments, says the fee is based on the payment amount, caps it at $5.00 for Georgia and $9.95 for Texas accounts, and Credit Acceptance cannot waive it); AutoPay, mail and in-person drop box payments are free. Fee modelled as $3.75 per one-time bank or debit payment; the engine also charges bankCents on AutoPay drafts, which is wrong here (cross-owner request: fees.autopayBankCents). Only debit or prepaid cards are accepted (no credit cards). AutoPay runs weekly, bi-weekly, semi-monthly or monthly (only monthly modelled) and must be changed before 12:00 am ET the day before the next payment date. Payment dates cannot be changed, there is no grace period, deferrals are not offered and payment arrangements are only made by phone. Guest payment needs the account number plus the last four digits of the SSN (no SSN lookup field exists; modelled as account number only). Mobile App one-time payments are capped at $2,500, and Georgia and Texas accounts at $2,500 per payment (below the schema floor, not modelled). Reviewer 2026-10-10: the Customer Portal sign-in page (customer.creditacceptance.com/login) asks for Email and Password, so auth is email, one step; guest lookup needs account number plus SSN last 4 on the live site.",
+  "officialDomains": [
+    "creditacceptance.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.creditacceptance.com/make-a-payment",
+      "title": "Make a Payment",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.creditacceptance.com/fragments/faqs/customer/making-payments",
+      "title": "Customer FAQ: Making payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.creditacceptance.com/customer-faq",
+      "title": "Commonly Asked Customer Questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://customer.creditacceptance.com/login",
+      "title": "Customer Portal Sign In",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Credit Acceptance",
+    "primary": "#00539f",
+    "accent": "#003366",
+    "monogram": "CA"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "guestPay": "Guest Payment",
+    "arrangement": "Payment Arrangements",
+    "signIn": "Sign In",
+    "help": "Customer FAQ"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Guest Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Arrangements",
+        "page": "arrangement"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://customer.creditacceptance.com/login",
+    "identifier": "email",
+    "loginSteps": 1
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditacceptance.com/make-a-payment",
+      "note": "Make a one-time Guest Payment from a debit card, checking or savings account without logging in. A processing fee applies."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditacceptance.com/make-a-payment",
+      "note": "AutoPay is free and can run weekly, bi-weekly, semi-monthly or monthly. Make changes before 12:00 am ET the day before your next payment date."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditacceptance.com/fragments/faqs/customer/making-payments",
+      "note": "To stop AutoPay, choose Modify AutoPay, then Disable. You will get a letter or email confirming the cancellation."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.creditacceptance.com/fragments/faqs/customer/making-payments",
+      "note": "Payment arrangements cannot be set up, changed or cancelled online, and payment deferrals are not offered. Call 1-800-634-1506 to talk about an arrangement.",
+      "channel": "phone",
+      "phone": "8006341506"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditacceptance.com/fragments/faqs/customer/making-payments"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditacceptance.com/make-a-payment",
+      "note": "The automated phone system at 1-800-634-1506 is open 24 hours a day; a processing fee applies."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.creditacceptance.com/make-a-payment"
+    }
+  },
+  "contact": {
+    "phone": "800-634-1506",
+    "payPhone": "800-634-1506",
+    "evidence": "documented_official",
+    "source": "https://www.creditacceptance.com/make-a-payment"
+  },
+  "billing": {
+    "source": "https://www.creditacceptance.com/make-a-payment",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 375,
+      "cardCents": 375,
+      "autopayCardCents": 0,
+      "notes": [
+        "The ACI processing fee is based on the payment amount and appears as a separate transaction; Georgia accounts pay no more than $5.00 and Texas accounts no more than $9.95.",
+        "CheckFreePay $5.00 (cash), MoneyGram $7.99, Western Union $8.50."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.creditacceptance.com/fragments/faqs/customer/making-payments"
+    },
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Free options: AutoPay, a check or money order mailed with your payment coupon and account number to Credit Acceptance, PO Box 88535, Chicago, IL 60680-1535, or the drop box at 25505 West 12 Mile Road in Southfield, Michigan.",
+        "One-time payments in the Customer Portal, the Mobile App, the Guest Payment page or by phone carry an ACI processing fee that Credit Acceptance cannot waive. They post the same day when submitted by 11:59 pm ET. Only debit or prepaid cards are accepted; credit cards are not."
+      ],
+      "source": "https://www.creditacceptance.com/make-a-payment",
+      "mode": "append"
+    },
+    {
+      "slug": "processing-fee",
+      "title": "Payment processing fees",
+      "paragraphs": [
+        "A one-time Mobile App payment adds a $3.75 ACI processing fee to the payment. The fee depends on the payment amount, shows as a separate transaction on your bank statement, and is capped at $5.00 for Georgia accounts and $9.95 for Texas accounts.",
+        "Cash payments cost $5.00 at CheckFreePay, $7.99 at MoneyGram (code 4093) and $8.50 at Western Union. AutoPay, mail and drop box payments are free."
+      ],
+      "source": "https://www.creditacceptance.com/fragments/faqs/customer/making-payments",
+      "topic": "fees"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "paragraphs": [
+        "AutoPay is free. Choose a weekly, bi-weekly, semi-monthly or monthly schedule from a debit card, checking or savings account; if you pick the 29th, 30th or 31st, the last day of shorter months is used. A schedule stays active until you cancel it.",
+        "Changes must be made before 12:00 am ET the day before your next payment date. To stop AutoPay, choose Modify AutoPay, then Disable, then confirm."
+      ],
+      "source": "https://www.creditacceptance.com/fragments/faqs/customer/making-payments",
+      "topic": "autopay",
+      "steps": [
+        "Log in to the Customer Portal.",
+        "Choose Enroll in AutoPay.",
+        "Pick the schedule, amount and payment account.",
+        "Confirm the schedule."
+      ]
+    },
+    {
+      "slug": "due-date",
+      "title": "Changing your payment date",
+      "paragraphs": [
+        "Payment dates cannot be changed because they come from the contract you signed. There is no grace period, and a payment more than 30 days past due is reported as delinquent. Payment arrangements are made by phone at 1-800-634-1506; deferrals are not offered."
+      ],
+      "source": "https://www.creditacceptance.com/fragments/faqs/customer/making-payments",
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "app-processing-fee",
+        "intent": "Using the Credit Acceptance help pages, find the processing fee added to a one-time payment made in the Mobile App. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3.75",
+              "3.75"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3.75",
+            "3.75"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A one-time Mobile App payment adds a $3.75 ACI processing fee."
+          }
+        ]
+      },
+      {
+        "slug": "moneygram-code",
+        "intent": "Using the Credit Acceptance help pages, find the MoneyGram receive code for paying a Credit Acceptance account in cash. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "4093"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "4093"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The MoneyGram code is 4093 (fee $7.99)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "1-800-634-1506"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "processing-fee",
+      "contains": "$3.75"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "semi-monthly"
+    }
+  ]
+}

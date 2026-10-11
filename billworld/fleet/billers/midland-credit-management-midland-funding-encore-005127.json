@@ -1,0 +1,364 @@
+{
+  "id": "midland-credit-management-midland-funding-encore-005127",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Midland Credit Management (Midland Funding)",
+  "category": "other",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from Midland Credit Management's public Payment Options and FAQs pages only; never looked up an account. MCM is a debt buyer/servicer (Encore Capital) that also services Midland Funding, Atlantic Credit & Finance, Asset Acceptance and affiliates. Real sign-in (Look Up Your Account, accounts.midlandcredit.com) has no password and no registration: option 1 is the MCM Account Number plus the last four SSN digits; option 2 ('I don't know my MCM Account Number') is last name, date of birth and last four SSN digits. The fleet requires a password, so the signed-in area is a stand-in keyed on the account number (auth.identifier=account, inferred; same approach as the Lifeline dossier) and registration is modelled unsupported with the real verification described (cross-owner request: passwordless account-number + SSN-last-4 verification sign-in). In the portal customers can set up and manage payment plans, make one-time payments, view payment history, review documents (Document Center), update contact information and request email communication (paperless supported). Online methods: ACH electronic check, debit, credit (Visa, Mastercard, Discover) and prepaid cards; switching the payment method online is done through live chat. Whether payment-plan installments are drafted automatically and how to stop them is not published, so autopay and autopay_cancel are 'unknown' with a contact note. Discounts are offered periodically per account. Credit reporting: none for the first six months after the initial notice, deletion requested once paid or settled. Pay by phone (877) 653-5193; Account Managers (800) 296-2657 Mon-Sun 8am-midnight ET; Consumer Support Services (800) 825-8131 ext 32980; mail payments to 320 E Big Beaver Rd., Suite 300, Troy, MI 48083. Hardship: collection can pause after the customer reports a hardship by phone, chat or the online Contact Us form.",
+  "officialDomains": [
+    "midlandcredit.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.midlandcredit.com/payment-options/",
+      "title": "Payment Options | Midland Credit Management",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.midlandcredit.com/help-center/faqs/",
+      "title": "FAQs | Midland Credit Management",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.midlandcredit.com/contact-us/",
+      "title": "Contact Us | Midland Credit Management",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Midland Credit Management",
+    "shortName": "Midland Credit Management",
+    "primary": "#00507a",
+    "accent": "#7a3b00",
+    "monogram": "MC"
+  },
+  "labels": {
+    "signIn": "Look Up Your Account",
+    "username": "MCM Account Number",
+    "accountNumber": "MCM Account Number",
+    "dashboard": "My Account",
+    "arrangement": "Payment Plan",
+    "payBill": "Make a Payment",
+    "history": "Payment History",
+    "statements": "Document Center",
+    "help": "FAQs",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Look Up Your Account",
+        "page": "login"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Document Center",
+        "page": "statements"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://www.midlandcredit.com/help-center/faqs/"
+  },
+  "contact": {
+    "phone": "8002962657",
+    "payPhone": "8776535193",
+    "source": "https://www.midlandcredit.com/help-center/faqs/"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.midlandcredit.com/help-center/faqs/",
+      "note": "There is no separate sign-up. Look up your account with your MCM Account Number (on every letter and email) and the last four digits of your Social Security number. Without the account number, use your last name, date of birth and the last four SSN digits. Need help? Call (800) 296-2657.",
+      "phone": "8002962657",
+      "channel": "phone"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.midlandcredit.com/payment-options/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.midlandcredit.com/payment-options/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.midlandcredit.com/help-center/faqs/"
+    },
+    "autopay": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "source": "https://www.midlandcredit.com/help-center/faqs/",
+      "note": "Payments on a payment plan are scheduled when you set up the plan. For questions about automatic payments, chat with an Account Manager or call (800) 296-2657, Monday to Sunday 8 a.m. to midnight ET."
+    },
+    "autopay_cancel": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "source": "https://www.midlandcredit.com/help-center/faqs/",
+      "note": "To change or stop scheduled payments, chat with an Account Manager or call (800) 296-2657, Monday to Sunday 8 a.m. to midnight ET."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.midlandcredit.com/payment-options/",
+      "phone": "8776535193"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.midlandcredit.com/payment-options/"
+    }
+  },
+  "billing": {
+    "source": "https://www.midlandcredit.com/payment-options/",
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Online, any time: set up and manage payment plans, make a one-time payment, view your payment history, update your contact information and request email communication.",
+        "Online payments accept electronic checks (ACH), debit cards, credit cards and prepaid cards. To switch your payment method online, use live chat.",
+        "By phone: (877) 653-5193, Monday to Sunday 8 a.m. to midnight ET; check by phone is accepted.",
+        "By mail: send a personal check, money order or cashier's check with your payment slip and MCM Account Number to 320 E Big Beaver Rd., Suite 300, Troy, MI 48083."
+      ],
+      "source": "https://www.midlandcredit.com/payment-options/"
+    },
+    {
+      "slug": "faq",
+      "title": "Payment plans, discounts and credit reporting",
+      "topic": "faq",
+      "paragraphs": [
+        "Payment plans can be set up online and scheduled around when you get paid. If you can't find a plan that fits, an Account Manager on live chat may create a custom schedule.",
+        "MCM periodically offers discounts; log in to see the options for your account.",
+        "MCM does not report to the credit bureaus during the first six months after its first notice to you. If you start paying in that time and keep paying until the account is resolved, it is never reported. After payoff or settlement MCM asks the bureaus to delete its tradeline, which can take up to 45 days.",
+        "Signing in does not require you to pay and does not restart the statute of limitations."
+      ],
+      "source": "https://www.midlandcredit.com/help-center/faqs/"
+    },
+    {
+      "slug": "sign-in",
+      "title": "How to look up your account",
+      "topic": "account",
+      "paragraphs": [
+        "Option 1: enter your MCM Account Number, found on all letters and emails, then verify the last four digits of your Social Security number.",
+        "Option 2: choose I don't know my MCM Account Number and enter your last name (it may be a former last name), date of birth and the last four SSN digits."
+      ],
+      "source": "https://www.midlandcredit.com/help-center/faqs/"
+    },
+    {
+      "slug": "hardship",
+      "title": "Hardship and disputes",
+      "topic": "account",
+      "paragraphs": [
+        "If you have a significant hardship such as job loss, a natural disaster or medical issues, tell MCM by calling (800) 296-2657, using live chat or the online form on the Contact Us page; collection activity may be paused.",
+        "If you think your account information is wrong, call Consumer Support Services at (800) 825-8131, ext. 32980, Monday to Friday 8 a.m. to 7:30 p.m. ET, or use the Consumer Resolution Center."
+      ],
+      "source": "https://www.midlandcredit.com/help-center/faqs/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Midland Credit Management",
+      "topic": "contact",
+      "paragraphs": [
+        "Account Managers: (800) 296-2657, Monday to Sunday 8 a.m. to midnight ET, or live chat during most business hours.",
+        "Payments by phone: (877) 653-5193."
+      ],
+      "source": "https://www.midlandcredit.com/help-center/faqs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "credit-reporting-grace",
+        "intent": "Using Midland Credit Management's FAQs, find out how many months after its first notice MCM waits before reporting an account to the credit bureaus. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "six",
+              "6"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "six",
+            "6"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Six months after the initial notice."
+          }
+        ]
+      },
+      {
+        "slug": "pay-by-phone-number",
+        "intent": "You want to pay your Midland Credit Management account over the phone. Find the payment phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8776535193"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8776535193"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call (877) 653-5193, Monday to Sunday 8 a.m. to midnight ET."
+          }
+        ]
+      },
+      {
+        "slug": "signin-without-account-number",
+        "intent": "You don't have your MCM account number. Using Midland Credit Management's FAQs, find what you need to look up your account instead. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "date of birth",
+              "birth"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "date of birth",
+            "birth"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your last name, date of birth and the last four digits of your Social Security number."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "MCM Account Number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Payment Plan",
+        "Document Center"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "(877) 653-5193"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": "first six months"
+    }
+  ]
+}

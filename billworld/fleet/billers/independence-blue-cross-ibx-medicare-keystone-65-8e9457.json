@@ -1,0 +1,314 @@
+{
+  "id": "independence-blue-cross-ibx-medicare-keystone-65-8e9457",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Independence Blue Cross (IBX) - Medicare",
+  "category": "medicare",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from IBX's public 'Make a payment' page only (no sign-in). It covers all IBX members: IBX app (log in with ibx.com username and password, Pay My Bill; bank account or prepaid debit card); Pay by Text (log in, Pay My Bill, Pay by Text, Set Up Now; text alert before the due date; message/data rates may apply); eBill at ibx.com from up to 15 days before coverage starts: view the bill, one-time payment from the Dashboard's Pay My Bill, recurring payments ('Add Recurring Payment', 'Set Recurring'; an unpaid bill must first be paid one time; can be scheduled up to 10 days before the due date; a product change needs a new recurring payment); eBill accepts payments only before the due date (past-due bills go another way); alerts for bill due, amount change and payment deducted; cards Amex, Discover, MasterCard, Visa (prepaid debit or credit) by phone 1-888-879-4891 (TTY 711) or eBill; check/money order with the slip; bank bill pay with the billing account number (different from the member ID); automated phone accepts ACH and cards, ongoing payments ACH and prepaid debit/credit only; in person at Independence LIVE, 1919 Market Street, 2nd Floor, Philadelphia (Mon-Fri 8-4). No fees published. No pay-without-signing-in option is listed, so guest pay is modelled unsupported (inferred). The 'no eBill payments after the due date' and 'pay unpaid bill before adding recurring' rules cannot be expressed. Username sign-in is documented (app section). Review (tier-20): the Make a payment page covers all IBX members; the Medicare Member Help Team page (added) says billing questions go to each plan's Member Help Team, listed in a help article.",
+  "officialDomains": [
+    "ibx.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ibx.com/resources/for-members/make-a-payment.html",
+      "title": "Make a payment | Independence Blue Cross",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ibx.com/medicare/resources/for-members/member-help-team.html",
+      "title": "Member Help Team | Independence Blue Cross Medicare",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Independence Blue Cross Medicare",
+    "shortName": "IBX",
+    "primary": "#003b71",
+    "accent": "#00627a",
+    "monogram": "IB"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "payBill": "Pay My Bill",
+    "autopay": "Recurring Payment",
+    "dashboard": "Dashboard"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Make a payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payment",
+        "page": "autopay"
+      },
+      {
+        "label": "eBill",
+        "page": "bill"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.ibx.com/resources/for-members/make-a-payment.html"
+  },
+  "contact": {
+    "phone": "888-879-4891",
+    "payPhone": "888-879-4891",
+    "source": "https://www.ibx.com/resources/for-members/make-a-payment.html",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ibx.com/resources/for-members/make-a-payment.html",
+      "note": "eBill takes payments only before the due date. If your bill is past due, pay by phone, mail or in person."
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.ibx.com/resources/for-members/make-a-payment.html",
+      "note": "Log in at ibx.com or in the IBX app to pay online, or call 1-888-879-4891 (TTY 711) to pay with the automated system.",
+      "channel": "phone",
+      "phone": "8888794891"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ibx.com/resources/for-members/make-a-payment.html",
+      "note": "If you have an unpaid bill, make a one-time payment first. If you change products, set up a new recurring payment."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ibx.com/resources/for-members/make-a-payment.html",
+      "phone": "8888794891",
+      "note": "Call 1-888-879-4891 (TTY 711). Have your member ID, billing account number and bank or card details ready."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ibx.com/resources/for-members/make-a-payment.html",
+      "note": "Return the payment slip with your check or money order so the address shows through the envelope window."
+    }
+  },
+  "billing": {
+    "source": "https://www.ibx.com/resources/for-members/make-a-payment.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "eBill at ibx.com: starting up to 15 days before your coverage begins, log in to view your bill, make a one-time payment from Pay My Bill on your Dashboard, or set up recurring payments. eBill accepts payments only before the due date; pay a past-due bill another way.",
+        "IBX app: log in with your ibx.com username and password and select Pay My Bill to pay with a bank account or prepaid debit card.",
+        "Cards: American Express, Discover, MasterCard and Visa prepaid debit or credit cards, in eBill or by phone at 1-888-879-4891 (TTY 711).",
+        "In person: Independence LIVE, 1919 Market Street, 2nd Floor, Philadelphia, PA 19103, 8 a.m. to 4 p.m. Monday to Friday. Bring your member ID number, billing account number and bank details."
+      ],
+      "source": "https://www.ibx.com/resources/for-members/make-a-payment.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "If you have an unpaid bill, make a one-time payment first. Then select Add Recurring Payment, fill in the required fields and select Set Recurring. A payment can be scheduled up to 10 days before the due date.",
+        "If you change products, for example from an HMO to a PPO, set up a new recurring payment."
+      ],
+      "steps": [
+        "Log in at ibx.com.",
+        "Pay any unpaid bill with a one-time payment.",
+        "Select Add Recurring Payment.",
+        "Complete the fields and select Set Recurring."
+      ],
+      "source": "https://www.ibx.com/resources/for-members/make-a-payment.html"
+    },
+    {
+      "slug": "pay-by-text",
+      "title": "Pay by Text and alerts",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay by Text lets you pay from your phone and sends a text before your due date if you have not paid. Enrolling is free; standard message and data rates may apply, and you can opt out any time. To enroll, log in, select Pay My Bill and under Pay by Text choose Set Up Now.",
+        "In eBill you can also sign up for alerts when your bill is due, when your amount changes and when a payment is deducted."
+      ],
+      "source": "https://www.ibx.com/resources/for-members/make-a-payment.html"
+    },
+    {
+      "slug": "bank-bill-pay",
+      "title": "Paying through your bank",
+      "topic": "payments",
+      "paragraphs": [
+        "Use your bank's online bill pay for one-time or recurring payments. You need your billing account number, which is on your payment slip and is different from your member ID number, and the payment address on your invoice. If you change health plans, delete the old payee and set up a new one."
+      ],
+      "source": "https://www.ibx.com/resources/for-members/make-a-payment.html"
+    },
+    {
+      "slug": "member-help-team",
+      "title": "Medicare Member Help Team",
+      "topic": "contact",
+      "paragraphs": [
+        "Billing questions go to the Member Help Team for your plan (TTY 711): Keystone 65 HMO 1-800-645-3965 and Personal Choice 65 PPO 1-888-718-3333, 8 a.m. to 8 p.m. seven days a week; MedigapSecurity and MedigapFreedom 1-888-926-1212, 8 a.m. to 6 p.m. Monday to Friday; Select Option PDP 1-888-678-7009, 8 a.m. to 8 p.m. seven days a week.",
+        "From April 1 to September 30, weekend and holiday calls may go to voicemail and we call you back. To pay by phone, use the automated line at 1-888-879-4891."
+      ],
+      "source": "https://www.ibx.com/medicare/resources/for-members/member-help-team.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "recurring-schedule-window",
+        "intent": "Using IBX's payment help, find how many days before the due date a recurring eBill payment can be scheduled. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10",
+              "ten"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10",
+            "ten"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 10 days before the due date."
+          }
+        ]
+      },
+      {
+        "slug": "bank-bill-pay-number",
+        "intent": "You want to pay your IBX Medicare premium through your bank's bill pay. Using IBX's payment help, find which number to give your bank as the account number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "billing account number"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "billing account number"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your billing account number from the payment slip, not your member ID number."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay My Bill",
+        "Recurring Payment"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Set Recurring"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-by-text",
+      "contains": "Set Up Now"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "1919 Market Street"
+    }
+  ]
+}

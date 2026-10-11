@@ -1,0 +1,385 @@
+{
+  "id": "nelnet-federal-student-aid-servicer-f16dad",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Nelnet (Federal Student Aid servicer)",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Added by the tier-20 reviewer in place of Mariner Finance (Nelnet services federal Direct Loans for millions of borrowers). Researched from public nelnet.studentaid.gov pages opened in a browser (the site renders with scripts; no sign-in, no forms). One-time payments online from a checking or savings account or a debit card (debit card payments are completed on Pay.gov); credit cards are not accepted. No payment fee is stated for one-time payments (fees 0, inferred); auto debit has no service fee (documented). Bank payments submitted by 4 p.m. ET are effective that day; debit card payments by 11:59 p.m. ET on Pay.gov. Auto debit can be changed or cancelled online up to three business days before the next debit; the rate reduction is 1.00% through June 30, 2028 for borrowers enrolled by 11:59 p.m. ET on Dec. 31, 2026 (standard 0.25% afterwards). Auto debit above the regular amount is allowed on Standard, Tiered Standard, Graduated and Extended plans only. Deferment and forbearance are applied for online under Repayment Options & Resources (payment_arrangement supported). Sign-in is username and password plus a one-time code sent to email or phone (mfa email_or_sms). The mailing payment address (U.S. Department of Education, P.O. Box 2837, Portland, OR 97208-2837) changes on November 4, 2026; re-check it after that date. Federal loans cannot be cancelled, so cancel service stays not applicable.",
+  "officialDomains": [
+    "studentaid.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://nelnet.studentaid.gov/content/howtomakeapayment",
+      "title": "How to Make a Payment",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://nelnet.studentaid.gov/content/faq/faqmakingpayments",
+      "title": "FAQs - Making Payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://nelnet.studentaid.gov/content/faq/faqautodebit",
+      "title": "FAQs - Auto Debit",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://nelnet.studentaid.gov/content/faq/faqstatementscorrespondence",
+      "title": "FAQs - Statements and Correspondence",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://nelnet.studentaid.gov/content/faq/faqaboutyouraccount",
+      "title": "FAQs - Your Online Account",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://nelnet.studentaid.gov/content/faq/faqdefermentandforbearance",
+      "title": "FAQs - Deferment and Forbearance",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://nelnet.studentaid.gov/content/contactus",
+      "title": "Contact Us",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Nelnet",
+    "shortName": "Nelnet",
+    "primary": "#00704a",
+    "accent": "#004d33",
+    "monogram": "N"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Auto Debit",
+    "paperless": "eCorrespondence",
+    "statements": "Inbox & Statements",
+    "history": "Payment Activity",
+    "arrangement": "Repayment Options & Resources",
+    "signIn": "Log In",
+    "register": "Create an Account",
+    "username": "Username",
+    "contact": "Contact Us",
+    "help": "FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Create an Account",
+        "page": "register"
+      },
+      {
+        "label": "How to Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Debit",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Activity",
+        "page": "history"
+      },
+      {
+        "label": "Inbox & Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Repayment Options & Resources",
+        "page": "arrangement"
+      },
+      {
+        "label": "eCorrespondence",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "evidence": "documented_official",
+    "source": "https://nelnet.studentaid.gov/content/faq/faqaboutyouraccount"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqautodebit",
+      "note": "Auto debit is free. Enroll by 11:59 p.m. ET on December 31, 2026 to get a 1.00% interest rate reduction through June 30, 2028 while your loan is in active repayment."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqautodebit",
+      "note": "Change or cancel auto debit at least three business days before your next scheduled debit date."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqmakingpayments",
+      "note": "Bank account payments can be dated any day. Submit by 4 p.m. ET for the payment to be effective the same day."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqstatementscorrespondence"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqdefermentandforbearance",
+      "note": "Apply for a deferment or forbearance online. Many online requests are processed within 24 hours; others take about 10 business days."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqdefermentandforbearance"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://nelnet.studentaid.gov/content/howtomakeapayment",
+      "phone": "8884864722",
+      "note": "Call 888-486-4722 to pay through the automated phone system or with a Customer Service Representative."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://nelnet.studentaid.gov/content/contactus"
+    }
+  },
+  "contact": {
+    "phone": "888-486-4722",
+    "payPhone": "888-486-4722",
+    "evidence": "documented_official",
+    "source": "https://nelnet.studentaid.gov/content/contactus"
+  },
+  "billing": {
+    "source": "https://nelnet.studentaid.gov/content/faq/faqmakingpayments",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqmakingpayments"
+    },
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make a payment",
+      "mode": "append",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqmakingpayments",
+      "paragraphs": [
+        "Log in and choose Make a Payment on the Payments card. Pay from a checking or savings account (you can pick the date and direct the payment to loan groups) or with a debit card, which is completed on Pay.gov. Credit cards are not accepted. You can also call 888-486-4722, use your bank's bill pay, or mail a payment.",
+        "Bank account payments submitted by 4 p.m. ET are effective the same day; debit card payments must be finished on Pay.gov by 11:59 p.m. ET. Mailed and bill pay payments go to U.S. Department of Education, P.O. Box 2837, Portland, OR 97208-2837 with your account number; this address changes on November 4, 2026, so check your statement coupon."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto debit",
+      "topic": "autopay",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqautodebit",
+      "paragraphs": [
+        "Auto debit takes your monthly payment from a checking or savings account in your own name, with no service fee. Borrowers enrolled by 11:59 p.m. ET on December 31, 2026 get a 1.00% interest rate reduction through June 30, 2028, after which it returns to the standard 0.25%.",
+        "On Standard, Tiered Standard, Graduated and Extended plans you can ask for a debit larger than your monthly payment. Changes and cancellations must be made at least three business days before the next debit date. Debits that fall on a weekend or holiday are taken the next business day without making you past due."
+      ],
+      "steps": [
+        "Log in to your online account.",
+        "Open the Auto Debit page.",
+        "Enter your checking or savings account and the amount.",
+        "Review and submit."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "eCorrespondence",
+      "topic": "paperless",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqstatementscorrespondence",
+      "paragraphs": [
+        "With eCorrespondence, billing statements and most letters are delivered to Inbox & Statements in your online account, and we email you when something new arrives. You can opt out and back in at any time in your online account, and you can also sign up for text alerts about due dates."
+      ]
+    },
+    {
+      "slug": "postpone-payments",
+      "title": "Deferment and forbearance",
+      "topic": "assistance",
+      "source": "https://nelnet.studentaid.gov/content/faq/faqdefermentandforbearance",
+      "paragraphs": [
+        "A deferment temporarily suspends payments if you qualify; depending on the loan type, interest may still accrue. A forbearance lets payments stop or shrink for a set time when you do not qualify for a deferment, and interest always accrues.",
+        "Apply for either on the Repayment Options & Resources page of your online account. Many online requests are processed within 24 hours; manual requests take about 10 business days."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autodebit-rate-reduction",
+        "intent": "Using Nelnet's FAQs, find the interest rate reduction for borrowers who enroll in auto debit by December 31, 2026. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.00%",
+              "1%",
+              "1 percent",
+              "one percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.00%",
+            "1%",
+            "1 percent",
+            "one percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Enrolling in auto debit by December 31, 2026 gives a 1.00% interest rate reduction through June 30, 2028."
+          }
+        ]
+      },
+      {
+        "slug": "bank-payment-cutoff",
+        "intent": "Using Nelnet's FAQs, find the time by which a bank account payment must be submitted to be effective the same day. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "4 p.m",
+              "4:00 p.m",
+              "4 pm",
+              "4pm",
+              "4 PM"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "4 p.m",
+            "4:00 p.m",
+            "4 pm",
+            "4pm",
+            "4 PM"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Bank account payments submitted by 4 p.m. Eastern are effective the same day."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Auto Debit"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "three business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "1.00%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "4 p.m. ET"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "id": "mutual-of-omaha-dental-insurance-dcf236",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Mutual of Omaha (dental insurance)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public mutualofomaha.com pages only (Customer Access welcome page, Support / Contact Us, Dental Insurance overview); no sign-in or registration. Individual dental policies (ages 60-99) are managed in Customer Access: update personal and billing information, make a payment or enroll in automatic deduction, change how and when you pay, review policies and request duplicate documents. Registration needs the policy or coverage ID number. Paperless is described only for Medicare supplement EOBs, so paperless keeps the family default. Dental insurance customer support 800-775-1000 (dental page); individual policy owners 800-775-6000; employer-covered 800-655-5142; dental sales 844-918-2569; mailing address 3300 Mutual of Omaha Plaza, Omaha, NE 68175. Fees, AutoPay draft dates, grace periods, payment methods and a mail-in remittance address are not published (family defaults kept). The dental savings plan (administered by Careington) is not insurance and is not modelled.",
+  "officialDomains": ["mutualofomaha.com"],
+  "sources": [
+    { "url": "https://www.mutualofomaha.com/welcome/customer-access", "title": "Customer Access | Mutual of Omaha", "fetchedAt": "2026-10-10", "kind": "login" },
+    { "url": "https://www.mutualofomaha.com/support/contact-us", "title": "Contact Us | Mutual of Omaha", "fetchedAt": "2026-10-10", "kind": "help" },
+    { "url": "https://www.mutualofomaha.com/dental-insurance", "title": "Dental Insurance and Dental Savings Plan | Mutual of Omaha", "fetchedAt": "2026-10-10", "kind": "plans" }
+  ],
+  "brand": { "displayName": "Mutual of Omaha Dental Insurance", "shortName": "Mutual of Omaha", "primary": "#003a70", "accent": "#00588a", "monogram": "M" },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Register",
+    "dashboard": "Customer Access",
+    "autopay": "Automatic deduction",
+    "accountNumber": "Policy or coverage ID number"
+  },
+  "nav": {
+    "public": [
+      { "label": "Sign In", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Customer Access", "helpSlug": "customer-access" },
+      { "label": "Contact Us", "helpSlug": "contact-us" },
+      { "label": "Help", "page": "help" }
+    ]
+  },
+  "auth": { "registrationFields": ["accountNumber"], "evidence": "documented_official", "source": "https://www.mutualofomaha.com/welcome/customer-access" },
+  "contact": { "phone": "800-775-1000", "source": "https://www.mutualofomaha.com/dental-insurance", "evidence": "documented_official" },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.mutualofomaha.com/welcome/customer-access" },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.mutualofomaha.com/welcome/customer-access" },
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://www.mutualofomaha.com/welcome/customer-access", "note": "To register, have your policy or coverage ID number ready to verify your identity." },
+    "online_account": { "support": "supported", "evidence": "documented_official", "source": "https://www.mutualofomaha.com/welcome/customer-access" }
+  },
+  "billing": {
+    "source": "https://www.mutualofomaha.com/welcome/customer-access",
+    "methods": ["bank", "card"]
+  },
+  "help": [
+    {
+      "slug": "customer-access",
+      "title": "Manage your dental policy in Customer Access",
+      "topic": "account",
+      "paragraphs": [
+        "Customer Access is Mutual of Omaha's secure site for individual policy owners. You can update personal and billing information, make a payment or enroll in automatic deduction, change how and when you pay your bill, and review your policies or request duplicate documents.",
+        "To register you need your policy or coverage ID number to help verify who you are. After that, choose Sign In at the top of any page and use the ID and password you picked when you registered."
+      ],
+      "steps": ["Choose Register.", "Enter your policy or coverage ID number and your details.", "Create your ID and password.", "Sign In to pay or set up automatic deduction."],
+      "source": "https://www.mutualofomaha.com/welcome/customer-access"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Mutual of Omaha",
+      "topic": "contact",
+      "paragraphs": [
+        "Dental insurance customer support: 800-775-1000. Individual policy owners can also reach customer service at 800-775-6000; people covered through an employer call 800-655-5142.",
+        "To buy a dental policy or get one-on-one help comparing plans, call 844-918-2569. Mailing address: Mutual of Omaha, 3300 Mutual of Omaha Plaza, Omaha, Nebraska 68175."
+      ],
+      "source": "https://www.mutualofomaha.com/support/contact-us"
+    },
+    {
+      "slug": "dental-products",
+      "title": "Dental insurance and the dental savings plan",
+      "topic": "plans",
+      "paragraphs": [
+        "Mutual of Omaha offers individual dental insurance for ages 60 to 99, which pays benefits toward dental care, and a separate dental savings plan that gives discounts on services. The savings plan is not insurance."
+      ],
+      "source": "https://www.mutualofomaha.com/dental-insurance"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "dental-support-phone",
+        "intent": "Using Mutual of Omaha's help pages, find the phone number for dental insurance customer support. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["775-1000", "8007751000"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["775-1000", "8007751000"] },
+        "tags": ["help", "information", "contact"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "800-775-1000" }]
+      },
+      {
+        "slug": "registration-needs",
+        "intent": "You want to register for Mutual of Omaha Customer Access. Using the help pages, find which number you need to verify your identity. Do not register, make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["policy", "coverage ID"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["policy", "coverage ID"] },
+        "tags": ["help", "information", "account"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Your policy or coverage ID number." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "signIn" },
+    { "page": "register", "contains": "Policy or coverage ID number" },
+    { "page": "dashboard", "signedIn": true, "contains": "Customer Access" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "800-775-1000" },
+    { "page": "autopay", "signedIn": true, "label": "autopay" }
+  ]
+}

@@ -1,0 +1,341 @@
+{
+  "id": "frontpoint-835456",
+  "version": 1,
+  "status": "dedicated",
+  "category": "home-services",
+  "reviewedAt": "2026-10-10",
+  "name": "Frontpoint",
+  "notes": "Researched from public Frontpoint Help Center articles only (never signed in, never used the Quick-Pay portal). Monthly service is billed on the 1st of each month to the payment method set to Autopay (credit card, debit card or checking; checking customers also need a default card for equipment purchases); all billing is digital and paper billing is not offered. Account Billing lives at my.frontpointsecurity.com/account/settings and in the Frontpoint app; sign-in uses the customer's Alarm.com login (modelled as username, inferred); only the primary login can see billing. Past-due balances can be paid with Make a Payment (charges the card on file) or through the Quick-Pay portal without signing in (enough identifying details to find the account, then a two-factor code; card only, entered in full, not saved). The public Quick-Pay page asks for account number, email or phone number, and street address; modelled as account number + phone on top of the family form (street address has no lookup field; the family ZIP stands in). Automatic monthly billing has no off switch (inferred: every account is billed on the 1st to the Autopay method), so autopay_cancel is modelled as unsupported with the cancellation line. Cancellation is by phone only: 877-602-5276 option 7 (Mon-Fri 8am-7pm ET); a final month's charge and contract early-termination fees may apply. Billing support phone 1-833-488-5425 replaces the catalog phone. Plan prices are not published in these articles, so the plan page keeps the family's synthetic plans. Reviewed 2026-10-10 (independent review): all cited Help Center articles re-read; Quick-Pay lookup fields taken from the public Frontpoint Bill Pay page (not submitted).",
+  "officialDomains": [
+    "frontpointsecurity.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.frontpointsecurity.com/en/system-and-account/How-do-the-monthly-billing-payments-work-with-Frontpoint-d08b",
+      "title": "How do the monthly billing payments work with Frontpoint? - Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.frontpointsecurity.com/en/system-and-account/How-do-I-cancel-my-Frontpoint-service-ae73",
+      "title": "How do I cancel my Frontpoint service? - Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.frontpointsecurity.com/en/system-and-account/Bill-Pay-Portal-How-To",
+      "title": "How do I pay a past due bill using the Quick-Pay Portal? - Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.frontpointsecurity.com/en/my-frontpoint-account/self_billing",
+      "title": "Self-Service Billing Now Available - Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://help.frontpointsecurity.com/en/system-and-account/How-do-I-pay-a-past-due-bill-on-the-Website-201a",
+      "title": "How do I pay a past due bill on the Website? - Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.frontpointsecurity.com/en/system-and-account/How-do-I-update-my-payment-information-on-the-Website-be56",
+      "title": "How do I update my payment information on the Website? - Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://billpay.frontpointsecurity.com/login",
+      "title": "Frontpoint Bill Pay",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "contact": {
+    "phone": "8334885425",
+    "source": "https://help.frontpointsecurity.com/en/system-and-account/Bill-Pay-Portal-How-To"
+  },
+  "brand": {
+    "shortName": "Frontpoint",
+    "primary": "#b3261e",
+    "accent": "#7a1a14",
+    "monogram": "F"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "dashboard": "Account Billing",
+    "payBill": "Make a Payment",
+    "autopay": "Autopay",
+    "wallet": "Payment Information",
+    "guestPay": "Quick-Pay Portal",
+    "help": "Help Center",
+    "username": "Alarm.com login",
+    "cancel": "Cancel Service",
+    "accountNumber": "Account Number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Quick-Pay Portal",
+        "page": "guest"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Billing",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Information",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://help.frontpointsecurity.com/en/my-frontpoint-account/self_billing",
+    "guestLookupFields": [
+      "accountNumber",
+      "phone"
+    ]
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.frontpointsecurity.com/en/system-and-account/Bill-Pay-Portal-How-To",
+      "note": "The Quick-Pay Portal is for past-due balances. After your account is found, a two-factor code is sent to you, and you enter your full card details; cards saved on your account are not shown."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.frontpointsecurity.com/en/system-and-account/How-do-I-update-my-payment-information-on-the-Website-be56",
+      "note": "Monthly service is charged on the 1st of each month to the payment method set to Autopay. To change it, add the new payment type and choose Set to Autopay."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://help.frontpointsecurity.com/en/system-and-account/How-do-the-monthly-billing-payments-work-with-Frontpoint-d08b",
+      "note": "Monthly service is always billed automatically to the payment method on file. Billing stops only when service is cancelled by calling 877-602-5276, option 7.",
+      "channel": "phone",
+      "phone": "8776025276"
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://help.frontpointsecurity.com/en/system-and-account/How-do-the-monthly-billing-payments-work-with-Frontpoint-d08b",
+      "note": "All Frontpoint billing is paperless; paper billing is not offered."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.frontpointsecurity.com/en/system-and-account/How-do-I-cancel-my-Frontpoint-service-ae73",
+      "note": "Call 877-602-5276 and choose option 7 to reach an Account Specialist (Mon-Fri 8am-7pm ET). You may owe a final payment, possibly including the last month's service charge; early termination terms are in your contract.",
+      "channel": "phone",
+      "phone": "8776025276"
+    }
+  },
+  "billing": {
+    "source": "https://help.frontpointsecurity.com/en/system-and-account/How-do-the-monthly-billing-payments-work-with-Frontpoint-d08b",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How monthly billing works",
+      "topic": "payments",
+      "paragraphs": [
+        "Monthly service is billed on the first day of each month to the payment account on file, which can be a credit card, debit card or checking account. Your bank may take 1 to 5 business days to process the charge.",
+        "Billing for automated payments and equipment purchases is paperless; paper billing is not offered. If you pay from a checking account, you also need a default credit or debit card for one-time equipment purchases.",
+        "Billing changes and payments are made in the Frontpoint app (More, then My Account, then Account Billing) or on the Frontpoint website under Account Billing, using your Alarm.com login. Only the primary login can open billing."
+      ],
+      "source": "https://help.frontpointsecurity.com/en/system-and-account/How-do-the-monthly-billing-payments-work-with-Frontpoint-d08b"
+    },
+    {
+      "slug": "past-due",
+      "title": "Pay a past-due balance",
+      "topic": "payments",
+      "paragraphs": [
+        "Signed in with the primary login, find the past-due balance under Account Billing and select Make a Payment, which charges the card on file. Update your payment information first if needed.",
+        "Without signing in, use the Quick-Pay Portal: enter enough account details to identify the account, spelled exactly as on the account, then enter the two-factor code sent to you and your full card details. The card you enter is not saved to your account. Questions: 1-833-488-5425."
+      ],
+      "source": "https://help.frontpointsecurity.com/en/system-and-account/Bill-Pay-Portal-How-To"
+    },
+    {
+      "slug": "autopay",
+      "title": "Change your Autopay payment method",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in with the primary login, open account settings and scroll to Account Billing. Choose Add new payment type, enter the details and save.",
+        "If you are adding or changing the payment method for your monthly Autopay, choose Set to Autopay afterwards to make it active."
+      ],
+      "steps": [
+        "Sign in and open Account Billing.",
+        "Choose Add new payment type.",
+        "Enter the details and save.",
+        "Choose Set to Autopay."
+      ],
+      "source": "https://help.frontpointsecurity.com/en/system-and-account/How-do-I-update-my-payment-information-on-the-Website-be56"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel Frontpoint service",
+      "topic": "account",
+      "paragraphs": [
+        "Call 877-602-5276 and choose option 7 to speak with an Account Specialist, Monday to Friday, 8 a.m. to 7 p.m. Eastern Time.",
+        "You may owe an additional payment, possibly including the final month's service charge. Cancellation and early termination terms are in your contract, which you can find in the app under My Account, then Documents.",
+        "If you are moving, having trouble with the system or having trouble paying, Frontpoint suggests contacting them first; Mover Kits are available."
+      ],
+      "source": "https://help.frontpointsecurity.com/en/system-and-account/How-do-I-cancel-my-Frontpoint-service-ae73"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "billing-day",
+        "intent": "Using Frontpoint's Help Center, find out on which day of the month Frontpoint charges for monthly service. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1st",
+              "first"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1st",
+            "first"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Monthly service is billed on the first day of each month."
+          }
+        ]
+      },
+      {
+        "slug": "cancel-menu-option",
+        "intent": "You want to cancel Frontpoint. Using the Help Center, find the phone number and the menu option to choose. Do not change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "option 7",
+              "press 7"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "option 7",
+            "press 7"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel",
+          "limitation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 877-602-5276 and choose option 7."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Autopay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "877-602-5276"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "first day of each month"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Set to Autopay"
+    }
+  ]
+}

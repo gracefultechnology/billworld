@@ -1,0 +1,291 @@
+{
+  "id": "medical-care-alert-54328a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Medical Care Alert",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-10",
+  "notes": "No public page describes a customer sign-in or online bill payment for this biller: billing is automatic (card or bank on file) and changes go through customer service by phone. The fleet requires an online account, so the signed-in area, online payment and register flows are a synthetic stand-in (pay_online evidence synthetic); every real route that is phone-only is modelled as an unsupported capability with a customer-facing note. Researched from Medical Care Alert's public home page, FAQ and Customer Service page. Ongoing payments are by major credit or debit card or by checking through automatic withdrawal (ACH); billing options are quarterly, semi-annual and annual (one month free when paying annually in advance); the price is guaranteed never to go up; no setup, cancellation, activation or deposit fees. Extra buttons $29.95 each, extra AutoFALL pendant $60. 14-day trial with full refund; returning a system that was never tested with the monitoring center costs $50. Cancel by notifying the company and returning the system; service ends when the equipment is received and prepaid balances are refunded pro rata. Billing, contact and account updates go through Customer Service 1-877-913-3680 (Mon-Fri 9-8, Sat 9-4 ET); mail 19575 Victor Parkway, Suite 100, Livonia, MI 48152. Plans: In-Home $29.95, Home & Away GPS $39.95 (current, simulation choice), Smart Watch $39.95 (plus $149.95 watch). AutoPay itself is real but set up with the order or by phone, so autopay/autopay_cancel are unsupported online; cancel and payment plans phone-only.",
+  "officialDomains": [
+    "medicalcarealert.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.medicalcarealert.com/",
+      "title": "Medical Care Alert - Medical Alert Systems",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.medicalcarealert.com/faq/",
+      "title": "FAQ | Medical Care Alert",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.medicalcarealert.com/customer-service-1/",
+      "title": "Customer Service | Medical Care Alert",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Medical Care Alert",
+    "shortName": "Medical Care Alert",
+    "primary": "#14406c",
+    "accent": "#a32b26",
+    "monogram": "MC"
+  },
+  "labels": {
+    "help": "Customer Service",
+    "cancel": "Cancel Service",
+    "username": "Account number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "FAQ",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "loginSteps": 1,
+    "evidence": "synthetic"
+  },
+  "contact": {
+    "phone": "1-877-913-3680",
+    "source": "https://www.medicalcarealert.com/customer-service-1/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "synthetic"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalcarealert.com/faq/",
+      "note": "Automatic card or checking (ACH) payments are set up with your order. To start or change them, call Customer Service at 1-877-913-3680.",
+      "channel": "phone",
+      "phone": "8779133680"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalcarealert.com/customer-service-1/",
+      "note": "Automatic payments cannot be changed online. Call Customer Service at 1-877-913-3680.",
+      "channel": "phone",
+      "phone": "8779133680"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalcarealert.com/faq/",
+      "note": "Service cannot be cancelled online. Call Customer Service at 1-877-913-3680 to cancel and return the system; prepaid balances are refunded once it is received.",
+      "channel": "phone",
+      "phone": "8779133680"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.medicalcarealert.com/customer-service-1/",
+      "note": "Payment plans are not offered online. Call Customer Service at 1-877-913-3680.",
+      "channel": "phone",
+      "phone": "8779133680"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred"
+    }
+  },
+  "billing": {
+    "source": "https://www.medicalcarealert.com/faq/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "in-home",
+        "name": "In-Home System",
+        "cents": 2995
+      },
+      {
+        "id": "home-away-gps",
+        "name": "Home & Away GPS System",
+        "cents": 3995,
+        "current": true
+      },
+      {
+        "id": "smart-watch",
+        "name": "Smart Watch System",
+        "cents": 3995
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "faq",
+      "title": "Billing and payment FAQ",
+      "topic": "faq",
+      "paragraphs": [
+        "Medical Care Alert accepts all major credit and debit cards and checks through automatic withdrawal (ACH). You can be billed quarterly, semi-annually or annually, and paying a year in advance gets you one month free.",
+        "Your price is guaranteed never to go up. There are no setup, activation, cancellation or deposit fees and no charge for pressing the button or for false alarms. Extra wearable or wall buttons are $29.95 each and an extra AutoFALL pendant is $60.",
+        "Monitoring is $29.95 a month for the In-Home System and $39.95 a month for the Home & Away GPS and Smart Watch systems (the watch is a one-time $149.95 purchase). The cost may be eligible for HSA or FSA reimbursement."
+      ],
+      "source": "https://www.medicalcarealert.com/faq/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel or return your system",
+      "topic": "account",
+      "paragraphs": [
+        "There is no long-term commitment. To cancel, let Customer Service know you want to return the system and end service; service is cancelled once the equipment is received, and any prepaid balance is refunded.",
+        "You can try the system for 14 days and return it for a full refund. Test it with the monitoring center before sending it back, or a $50 fee applies."
+      ],
+      "source": "https://www.medicalcarealert.com/faq/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Customer Service",
+      "topic": "contact",
+      "paragraphs": [
+        "For billing, account updates, technical support and general questions call 1-877-913-3680, Monday to Friday 9 a.m. to 8 p.m. and Saturday 9 a.m. to 4 p.m. Eastern; closed Sunday. The monitoring centers answer 24/7.",
+        "New service and referrals: 1-855-272-1010. Mail: 19575 Victor Parkway, Suite 100, Livonia, MI 48152."
+      ],
+      "source": "https://www.medicalcarealert.com/customer-service-1/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "untested-return-fee",
+        "intent": "You might return your Medical Care Alert system during the trial. Using the FAQ, find the fee charged if you return it without testing it first. Do not cancel or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$50",
+              "50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$50",
+            "50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A $50 fee."
+          }
+        ]
+      },
+      {
+        "slug": "billing-cycle-options",
+        "intent": "Using Medical Care Alert's FAQ, find out which billing options (how often you can be billed) are offered. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "quarterly"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "quarterly"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Quarterly, semi-annual or annual billing."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "1-877-913-3680"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-877-913-3680"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Home & Away GPS System"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": [
+        "quarterly",
+        "ACH"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "Livonia"
+    },
+    {
+      "page": "home",
+      "contains": "Account number"
+    }
+  ]
+}

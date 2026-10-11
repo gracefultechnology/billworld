@@ -1,0 +1,326 @@
+{
+  "id": "interstate-waste-services-iws-ceddac",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Interstate Waste Services (IWS)",
+  "category": "trash",
+  "reviewedAt": "2026-10-10",
+  "template": "waste-hauler",
+  "notes": "Moved from the catalog default utility-account family to the trash-specific waste-hauler family. Researched from the public interstatewaste.com home page, Customer Support page and FAQ, and the public MyIWS portal landing page (Sign In, Quick Pay, Create new MyIWS Account); never signed in. MyIWS sign-up: enter an e-mail to get a verification code, then set a password and name; the account links automatically when the e-mail matches a contact on file, otherwise with the Customer ID and postal code (registrationFields accountNumber+zip+email; the sign-up e-mail code is not a sign-in MFA, so mfa stays none). In MyIWS customers make one-time payments, enroll in AutoPay, view schedules, rates and open invoices, report missed pickups and order containers; payments are handed to Billtrust. Payment methods: major credit cards (a convenience fee may apply; not charged on personal debit cards; amount not published, so fees.notes only), debit, checking/ACH and mailed checks (Westmont Lockbox, PO Box 88500, Chicago, IL). Pay by phone at 1-866-DIAL-IWS (1-866-342-5497), press 1. Card payments post in 1-3 business days, checks up to 4 weeks. Payment plans and credit-hold questions go to 1-866-DIAL-IWS. Statements: Billtrust or billing@interstatewaste.com. Customer service Monday-Friday 7:30 a.m.-5 p.m., Saturday 8 a.m.-12:30 p.m. ET. Turning AutoPay off and paperless enrolment are not described publicly (autopay_cancel inferred; paperless left at the family default). IWS warns customers against paying through doxo.",
+  "officialDomains": [
+    "interstatewaste.com"
+  ],
+  "sources": [
+    {
+      "url": "https://interstatewaste.com/",
+      "title": "Interstate Waste Services",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://interstatewaste.com/customer-support/",
+      "title": "Customer Support | Interstate Waste Services",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://interstatewaste.com/frequently-asked-questions/",
+      "title": "FAQs | Interstate Waste Services",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://myiws.interstatewaste.com/",
+      "title": "MyIWS",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Interstate Waste Services",
+    "shortName": "IWS",
+    "primary": "#0a4d8c",
+    "accent": "#2f6e1f",
+    "monogram": "IW"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Create new MyIWS Account",
+    "guestPay": "Quick Pay",
+    "payBill": "Make a Payment",
+    "dashboard": "MyIWS",
+    "help": "FAQ",
+    "contact": "Contact Us",
+    "accountNumber": "Customer ID",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create new MyIWS Account",
+        "page": "register"
+      },
+      {
+        "label": "Pay Online",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyIWS",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Open invoices",
+        "page": "statements"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Contact info",
+        "page": "profile"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://interstatewaste.com/frequently-asked-questions/"
+  },
+  "contact": {
+    "phone": "866-342-5497",
+    "payPhone": "866-342-5497",
+    "source": "https://interstatewaste.com/frequently-asked-questions/",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://interstatewaste.com/frequently-asked-questions/",
+      "note": "Create a MyIWS account with your e-mail and a verification code. If your e-mail is not already on file, link your account with the Customer ID from your invoice and your postal code."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://myiws.interstatewaste.com/"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://interstatewaste.com/frequently-asked-questions/",
+      "note": "Card payments post within 1-3 business days."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://interstatewaste.com/frequently-asked-questions/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://interstatewaste.com/frequently-asked-questions/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://interstatewaste.com/frequently-asked-questions/",
+      "note": "Call 1-866-DIAL-IWS (1-866-342-5497) and press 1.",
+      "phone": "866-342-5497"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://interstatewaste.com/frequently-asked-questions/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://interstatewaste.com/frequently-asked-questions/",
+      "note": "Payment plans are set up by phone. Call 1-866-DIAL-IWS (1-866-342-5497) and IWS will work with you to avoid a gap in service.",
+      "channel": "phone",
+      "phone": "866-342-5497"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://interstatewaste.com/frequently-asked-questions/",
+      "note": "Service changes are made by customer service. Call 1-866-DIAL-IWS (1-866-342-5497) or e-mail customerservice@interstatewaste.com.",
+      "channel": "phone",
+      "phone": "866-342-5497"
+    }
+  },
+  "billing": {
+    "source": "https://interstatewaste.com/frequently-asked-questions/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "notes": [
+        "A convenience fee may apply to credit card payments; it is not charged on personal debit cards."
+      ],
+      "evidence": "documented_official",
+      "source": "https://interstatewaste.com/frequently-asked-questions/"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your IWS bill",
+      "topic": "payments",
+      "paragraphs": [
+        "The easiest way to pay is MyIWS: make a one-time payment or enroll in AutoPay. IWS accepts major credit cards, debit cards, checking account/ACH and mailed checks.",
+        "A convenience fee may apply to credit cards; personal debit cards are recognized and not charged the fee. Card payments post in 1-3 business days; checks can take up to 4 weeks.",
+        "Pay by phone at 1-866-DIAL-IWS (1-866-342-5497), option 1. Mail checks to Westmont Lockbox, Interstate Waste Services, PO Box 88500, Chicago, IL."
+      ],
+      "source": "https://interstatewaste.com/frequently-asked-questions/"
+    },
+    {
+      "slug": "register",
+      "title": "How to sign up for MyIWS",
+      "topic": "account",
+      "paragraphs": [
+        "Choose Create new MyIWS Account and enter your e-mail address to receive a verification code. After verifying, create a password and enter your first and last name.",
+        "If your e-mail matches a contact on file, the account links automatically. Otherwise you are asked for your Customer ID (on your invoice) and postal code."
+      ],
+      "source": "https://interstatewaste.com/frequently-asked-questions/"
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Credit hold and payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "The fastest way off credit hold is to pay the outstanding bill in full online; allow 2-3 business days for it to post. If you cannot pay in full or want a payment plan, call 1-866-DIAL-IWS (1-866-342-5497)."
+      ],
+      "source": "https://interstatewaste.com/frequently-asked-questions/"
+    },
+    {
+      "slug": "contact",
+      "title": "Customer service hours",
+      "topic": "account",
+      "paragraphs": [
+        "Customer service is open Monday through Friday 7:30 a.m. to 5:00 p.m. and Saturday 8:00 a.m. to 12:30 p.m. Eastern. Call 1-866-DIAL-IWS (1-866-342-5497). Billing questions and statement copies: billing@interstatewaste.com."
+      ],
+      "source": "https://interstatewaste.com/frequently-asked-questions/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "debit-card-fee",
+        "intent": "Using IWS's help pages, find which type of card payment is never charged the card convenience fee. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "debit"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "debit"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Personal debit cards are not charged the convenience fee (it may apply to credit cards)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "debit",
+        "1-866-342-5497"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "verification code"
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "866-342-5497"
+    }
+  ]
+}

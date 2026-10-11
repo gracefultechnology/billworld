@@ -1,0 +1,384 @@
+{
+  "id": "cvs-specialty-86b3df",
+  "version": 1,
+  "status": "dedicated",
+  "name": "CVS Specialty",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Separate billing site from CVS Pharmacy and CVS Caremark (cvsspecialty.com, own Balance and Payments page). Researched from the public CVS Specialty FAQ, the Contact CareTeam page and the Making Online Payments how-to video transcript (no sign-in). Signed in, the three-line menu opens Balance and Payments: a posted balance has a payment button; Set Up Automatic Payment saves a personal credit/debit card or bank account and schedules payments on a chosen day every month for a set amount or for the balance up to a pre-authorized amount (autopay policies full + fixed, any day 1-28; the pre-authorized cap is not expressible and stays in help). Online payments accept Visa/Mastercard credit or debit, American Express, Discover or electronic check; HSA/FSA cards, checks and money orders only by phone/mail (money orders mail only). Billing and payments line 1-800-250-9631 (Mon-Fri 8 AM-8 PM ET); login/technical support 1-855-264-3239; refills 1-800-237-2767. Payments can take a few days to post; receipts follow the alert preference. Easy Refill (automatic refill confirmations) is offered after 2-3 clean refills. No payment plan, guest payment or paperless-billing enrollment is described (unsupported, inferred); financial assistance is described (payment_assistance supported). Review 2026-10-10: the FAQ and the online-payments how-to describe only paying a posted balance now or Automatic Payment on a chosen monthly day; no future-dated one-time payment is described, so scheduled_payment is unsupported (inferred) with a pointer to Automatic Payment.",
+  "officialDomains": [
+    "cvsspecialty.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cvsspecialty.com/get-started/specialty/faq.html",
+      "title": "CVS Specialty FAQ",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.cvsspecialty.com/find-resources/cvs-specialty-patient-videos/making-online-payments-with-cvs-specialty.html",
+      "title": "Making Online Payments with CVS Specialty",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cvsspecialty.com/manage-medications-therapy/specialty/careteam.html",
+      "title": "Contact CareTeam",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "CVS Specialty",
+    "shortName": "CVS Specialty",
+    "primary": "#b30d1c",
+    "accent": "#6d0a12",
+    "monogram": "C"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Register",
+    "viewBill": "Balance and Payments",
+    "payBill": "Make a payment",
+    "autopay": "Automatic Payment",
+    "history": "Payment history",
+    "wallet": "Payments",
+    "help": "Frequently asked questions",
+    "contact": "Contact CareTeam",
+    "profile": "My Account",
+    "amountDue": "Current balance"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Frequently asked questions",
+        "page": "help"
+      },
+      {
+        "label": "Payments and more",
+        "helpSlug": "pay-your-bill"
+      }
+    ],
+    "account": [
+      {
+        "label": "Balance and Payments",
+        "page": "bill"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic Payment",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Payments",
+        "page": "wallet"
+      },
+      {
+        "label": "My Account",
+        "page": "profile"
+      },
+      {
+        "label": "Contact CareTeam",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "evidence": "inferred",
+    "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cvsspecialty.com/find-resources/cvs-specialty-patient-videos/making-online-payments-with-cvs-specialty.html"
+    },
+    "view_bill": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html",
+      "note": "Automatic Payment runs on the day of the month you choose, for a set amount or for the balance owed up to the amount you pre-authorize."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.cvsspecialty.com/find-resources/cvs-specialty-patient-videos/making-online-payments-with-cvs-specialty.html"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html",
+      "phone": "800-250-9631"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cvsspecialty.com/find-resources/cvs-specialty-patient-videos/making-online-payments-with-cvs-specialty.html",
+      "note": "To pay online, sign in or register and open Balance and Payments. You can also pay by phone with the Billing department at 1-800-250-9631 (TTY: 711), Monday through Friday, 8 AM to 8 PM ET.",
+      "channel": "phone",
+      "phone": "800-250-9631"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html",
+      "note": "Payment plans are not set up online. If you need help paying for your medication, ask your CareTeam about financial assistance or call Billing at 1-800-250-9631.",
+      "channel": "phone",
+      "phone": "800-250-9631"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html",
+      "note": "There is no separate paperless-billing enrollment. Payment receipts are sent the way you choose in your alert preferences, and your balance is always shown under Balance and Payments.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cvsspecialty.com/find-resources/cvs-specialty-patient-videos/making-online-payments-with-cvs-specialty.html",
+      "note": "A one-time payment is made right away from Balance and Payments. To pay on the same day every month, set up Automatic Payment."
+    }
+  },
+  "billing": {
+    "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "contact": {
+    "phone": "800-250-9631",
+    "payPhone": "800-250-9631",
+    "source": "https://www.cvsspecialty.com/manage-medications-therapy/specialty/careteam.html"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Checking your balance and making a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "After you sign in, open the three-line menu at the top right and choose Balance and Payments. If a balance has posted to your account, it appears there with a button to pay it online.",
+        "Online, CVS Specialty takes Visa and Mastercard credit or debit cards, American Express, Discover and electronic checks. By phone or mail you can also use checks and HSA or FSA cards; money orders are accepted by mail only. Copay assistance or manufacturer debit cards may be accepted by calling Billing at 1-800-250-9631 (TTY: 711).",
+        "A payment can take a few days to appear on your account. You get a receipt, based on your alert preferences, once it has been processed. Your cost is set after your order is processed and billed to your insurer."
+      ],
+      "steps": [
+        "Sign In to CVSspecialty.com.",
+        "Open the menu and choose Balance and Payments.",
+        "Select the payment button next to your balance.",
+        "Choose a card or bank account and submit."
+      ],
+      "source": "https://www.cvsspecialty.com/find-resources/cvs-specialty-patient-videos/making-online-payments-with-cvs-specialty.html"
+    },
+    {
+      "slug": "automatic-payment",
+      "title": "Setting up Automatic Payment",
+      "topic": "autopay",
+      "paragraphs": [
+        "You can schedule payments on a specific day every month, either for a set amount or for the balance owed on your account up to an amount you pre-authorize.",
+        "In Balance and Payments choose Set Up Automatic Payment, add a personal credit or debit card or bank account, and save it. Confirm your automatic payment settings, check the box and Submit. A confirmation appears, and Balance and Payments then shows that automatic payments are on. From there you can also view your payment history and manage your alert settings."
+      ],
+      "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html"
+    },
+    {
+      "slug": "easy-refill",
+      "title": "Easy Refill",
+      "topic": "account",
+      "paragraphs": [
+        "CVS Specialty Easy Refill is usually offered after you have completed two or three refills without issues. Once enrolled you get text and email alerts when it is time to refill; confirm the order from the alert and delivery is scheduled from your previous order's supply. A clinical review may still be needed, so keep CVS Specialty updated about changes to medications, allergies or side effects."
+      ],
+      "source": "https://www.cvsspecialty.com/get-started/specialty/faq.html"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact your CareTeam",
+      "topic": "contact",
+      "paragraphs": [
+        "Live chat is the fastest way to reach your CareTeam: 8 AM to 9 PM ET Monday through Friday and 9 AM to 6 PM ET on weekends; after hours you can leave a secure chat and get a reply the next business day. Sign in or register, then select the chat icon.",
+        "By phone: refills or order status 1-800-237-2767; billing and payments 1-800-250-9631; help with the website or app 1-855-264-3239 (9 AM to 6 PM ET). Billing and refill lines are open Monday through Friday, 8 AM to 8 PM ET. TTY: 711."
+      ],
+      "source": "https://www.cvsspecialty.com/manage-medications-therapy/specialty/careteam.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "tech-support-phone",
+        "intent": "I can't get into my CVS Specialty online account. Find the phone number CVS Specialty lists for login and technical support with its website. Don't pay or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8552643239"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8552643239"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1-855-264-3239"
+          }
+        ]
+      },
+      {
+        "slug": "money-order-channel",
+        "intent": "Can I pay my CVS Specialty balance with a money order, and if so how? Check the CVS Specialty help and answer; don't make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "mail"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "mail"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Yes, but money orders are accepted by mail only."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Balance and Payments",
+        "Automatic Payment"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "pre-authorize"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "1-855-264-3239"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "money orders"
+    }
+  ]
+}

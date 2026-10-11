@@ -1,0 +1,357 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "category": "gas",
+  "reviewedAt": "2026-10-10",
+  "id": "enbridge-gas-utah-wyoming-idaho-formerly-dominio-cfc31f",
+  "name": "Enbridge Gas Utah, Wyoming & Idaho",
+  "notes": "Added by the tier-2 reviewer (replaces NJNG as a pick: 1.2M customers, skipped by the builder without a stated reason). Researched from public enbridgegas.com/utwyid pages only. One-time online payments need sign-in or registration (routing/account number or card); no guest payment is described, so guest_pay is unsupported online (inferred). No fee is stated for one-time payments in the account; recurring credit card payments and authorized payment centers carry a convenience fee whose amount is not published (fees.notes; card fee stays the family default). Auto Pay is bank only, free, deducted on or within two business days after the due date (modeled as due_date); recurring card payments (Pay My Bill > Recurring, with fee) are a separate feature the format cannot express. Auto Pay cancel steps are not published (Set up Auto Pay is used to change an enrollment; online cancel inferred). Payment plans (short- and long-term) are shown after signing in. Stop service online after sign-in or by phone, at least 7 business days notice. No pay-by-phone line is published on the pay page (family default kept). Cutoff 2:45 p.m. MST. Sign-in identifier and MFA not documented (family defaults); the sign-in portal is a JavaScript page that returned no form.",
+  "officialDomains": [
+    "enbridgegas.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill",
+      "title": "Pay My Bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.enbridgegas.com/utwyid/billing/billing-options-and-assistance",
+      "title": "Billing options and assistance",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.enbridgegas.com/utwyid/billing/billing-options-and-assistance/ebill",
+      "title": "eBill",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.enbridgegas.com/utwyid/start-stop-service/stop-service",
+      "title": "Stop service",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill/payment-locations",
+      "title": "Payment locations",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Enbridge Gas Utah, Wyoming & Idaho",
+    "shortName": "Enbridge Gas",
+    "primary": "#00539b",
+    "accent": "#003a6c",
+    "monogram": "EG"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Register",
+    "payBill": "Pay My Bill",
+    "autopay": "Auto Pay",
+    "paperless": "eBill",
+    "cancel": "Stop Service",
+    "arrangement": "Payment plans",
+    "help": "Billing options and assistance",
+    "contact": "Contact Us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Pay My Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Billing options and assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Billing history",
+        "page": "statements"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment plans",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill",
+      "note": "To pay online, register or sign in to your account and choose Pay My Bill. You can also mail a check or pay at an authorized payment location."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill",
+      "note": "Auto Pay is free and deducts your bill from your bank account on or within two business days after your due date."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill",
+      "note": "Sign in and select Set up Auto Pay to change or end your Auto Pay enrollment."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.enbridgegas.com/utwyid/billing/billing-options-and-assistance/ebill"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.enbridgegas.com/utwyid/billing/billing-options-and-assistance",
+      "note": "Sign in to see the short- and long-term payment plans your account qualifies for."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.enbridgegas.com/utwyid/billing/billing-options-and-assistance"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.enbridgegas.com/utwyid/start-stop-service/stop-service",
+      "note": "Give at least 7 business days notice if you can. An adult must provide access if your meter is indoors or blocked."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill"
+    }
+  },
+  "contact": {
+    "phone": "800-323-5517",
+    "source": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill"
+  },
+  "billing": {
+    "source": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill",
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill",
+      "notes": [
+        "Recurring credit card payments carry a convenience fee.",
+        "Authorized payment centers charge a convenience fee."
+      ]
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "mode": "append",
+      "topic": "payments",
+      "source": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill",
+      "paragraphs": [
+        "To make a one-time payment online, register or sign in and click Pay My Bill. Have your bank routing and account numbers or your credit or debit card ready. Payments made before 2:45 p.m. Mountain time on a business day post the same day; later payments, and those made on weekends or holidays, post the next business day.",
+        "You can also mail a check with your account number to Enbridge Gas Utah / Wyoming / Idaho, PO Box 2920, Phoenix, AZ 85062 (checks are converted to electronic debits), or pay in person at an authorized payment location such as participating grocery and retail stores, where a convenience fee applies.",
+        "Questions about bills and payments: call 1-800-323-5517, Monday to Friday, 7 a.m. to 6 p.m. Mountain time."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "source": "https://www.enbridgegas.com/utwyid/billing/pay-my-bill",
+      "paragraphs": [
+        "Auto Pay is free and deducts your bill amount from your bank account on or within two business days after your due date. Register or sign in and select Set up Auto Pay to enroll or to change an existing enrollment; you need your bank account and routing numbers.",
+        "To pay automatically with a credit card instead, sign in, click Pay My Bill and choose Recurring. Recurring card payments carry a convenience fee."
+      ]
+    },
+    {
+      "slug": "paperless",
+      "title": "eBill",
+      "topic": "billing",
+      "source": "https://www.enbridgegas.com/utwyid/billing/billing-options-and-assistance/ebill",
+      "paragraphs": [
+        "eBill lets you receive and pay your bill online, search, view or download years of past bills, and get alerts that help you avoid late fees. Sign in to switch to eBill, or ask us to set it up through Contact Us or by calling 1-800-323-5517."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Billing options and assistance",
+      "topic": "assistance",
+      "source": "https://www.enbridgegas.com/utwyid/billing/billing-options-and-assistance",
+      "paragraphs": [
+        "Budget Billing spreads your estimated gas cost over 12 equal monthly payments. If you have a past-due balance, sign in to see which short- and long-term payment plans you qualify for.",
+        "In Utah, the state HEAT program gives income-qualified households a seasonal payment, and an $86 Energy Assistance Fund credit is added automatically once your HEAT payment posts. REACH offers extra help with heating costs. Wyoming customers can apply for LIEAP or Energy Share of Wyoming, and Idaho customers for LIHEAP. Dial 2-1-1 for local help."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop service",
+      "topic": "account",
+      "source": "https://www.enbridgegas.com/utwyid/start-stop-service/stop-service",
+      "paragraphs": [
+        "Sign in to stop your service online, or call 1-800-323-5517, Monday to Friday, 7 a.m. to 6 p.m. Mountain time. Give at least 7 business days notice when you can; stops are scheduled Monday to Friday with morning, afternoon or all-day windows.",
+        "If your meter is indoors or blocked, an adult must be there for the final reading. Any deposit plus interest is applied to your final bill and any remaining credit is refunded by check."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "payment-cutoff",
+        "intent": "Using the Enbridge Gas Utah, Wyoming & Idaho help pages, find the time of day by which an online payment must be made on a business day to post the same day. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2:45"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2:45"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payments made before 2:45 p.m. MST post the same business day."
+          }
+        ]
+      },
+      {
+        "slug": "stop-notice",
+        "intent": "Using the Enbridge Gas Utah, Wyoming & Idaho help pages, find how many business days of notice are recommended before stopping gas service. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "7"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "7"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 7 business days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay",
+        "eBill"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2:45",
+        "PO Box 2920"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "two business days"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "7 business days"
+    }
+  ]
+}

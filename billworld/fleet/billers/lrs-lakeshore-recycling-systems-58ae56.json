@@ -1,0 +1,298 @@
+{
+  "id": "lrs-lakeshore-recycling-systems-58ae56",
+  "version": 1,
+  "status": "dedicated",
+  "name": "LRS (Lakeshore Recycling Systems)",
+  "category": "trash",
+  "reviewedAt": "2026-10-10",
+  "template": "waste-hauler",
+  "notes": "Moved from the catalog default utility-account family to the trash-specific waste-hauler family. Researched from the public lrsrecycles.com home page and Billing and Payments page (client-rendered, read in a browser) and the public LRS Customer Portal registration page (my.lrsrecyclesdigital.com, linked from the LRS home page as Create an account, so lrsrecyclesdigital.com is in officialDomains); never signed in or submitted a form. Pay My Bill asks whether the bill is for individual (one-off) or recurring services and the ZIP code, because different states use different payment processors; the processor pages were not opened (guest lookup modelled as account number + ZIP, inferred). Paperless billing is requested with a form on the billing page (paperless supported, documented; the mock models it as a toggle). ACH: send remittance details to AR@LRSrecycles.com (bank details published; not modelled). Checks: LRS, PO Box 4700, Carol Stream, IL 60197. Billing questions 844-NEED-LRS (844-633-3577). The new Customer Portal offers Continue with Google or e-mail with a password of at least 8 characters including upper and lower case, a number and a special character (!@#$%^&*), then address verification; it is currently open only to municipal customers in Indianapolis, Evanston, Burbank (IL), Lake Villa Township and Monticello (MN). AutoPay is not described publicly, so autopay is unknown with a contact note. No convenience or late fee is published.",
+  "officialDomains": [
+    "lrsrecycles.com",
+    "lrsrecyclesdigital.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.lrsrecycles.com/",
+      "title": "LRS | Waste & Disposal Services",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.lrsrecycles.com/customers/billing",
+      "title": "Billing and Payments | LRS",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://my.lrsrecyclesdigital.com/register",
+      "title": "LRS Customer Portal - Customer Registration",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "LRS",
+    "shortName": "LRS",
+    "primary": "#00594f",
+    "accent": "#1d4e89",
+    "monogram": "LR"
+  },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "signIn": "Login",
+    "register": "Create an account",
+    "paperless": "Sign Up for Paperless",
+    "help": "LRS Billing FAQs",
+    "contact": "Contact Us",
+    "username": "Email Address"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay My Bill",
+        "page": "guest"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Create an account",
+        "page": "register"
+      },
+      {
+        "label": "Bill Questions?",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "LRS Billing FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Customer Portal",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Sign Up for Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [
+      "google"
+    ],
+    "passwordRule": {
+      "pattern": "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*]).{8,}$",
+      "message": "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number and one special character (!@#$%^&*)."
+    },
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://my.lrsrecyclesdigital.com/register"
+  },
+  "contact": {
+    "phone": "844-633-3577",
+    "source": "https://www.lrsrecycles.com/customers/billing",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lrsrecycles.com/customers/billing",
+      "note": "Choose whether you are paying for recurring service or a one-time service, and enter your ZIP code so your payment goes to the right processor."
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://my.lrsrecyclesdigital.com/register",
+      "note": "The LRS Customer Portal is currently open to municipal customers in Indianapolis, IN; Evanston, IL; Burbank, IL; Lake Villa Township, IL; and Monticello, MN."
+    },
+    "google_login": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://my.lrsrecyclesdigital.com/register"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lrsrecycles.com/customers/billing"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lrsrecycles.com/customers/billing"
+    },
+    "autopay": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "source": "https://www.lrsrecycles.com/customers/billing",
+      "note": "Automatic payment options depend on your community. Call LRS at 844-NEED-LRS (844-633-3577) to ask about AutoPay.",
+      "channel": "phone",
+      "phone": "844-633-3577"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.lrsrecycles.com/customers/billing"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.lrsrecycles.com/customers/billing",
+      "note": "Payment plans are not offered online. Call LRS at 844-NEED-LRS (844-633-3577) about your bill.",
+      "channel": "phone",
+      "phone": "844-633-3577"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.lrsrecycles.com/customers/billing",
+      "note": "Service changes are handled by LRS customer service. Call 844-NEED-LRS (844-633-3577) or use the Contact Us form.",
+      "channel": "phone",
+      "phone": "844-633-3577"
+    }
+  },
+  "billing": {
+    "source": "https://www.lrsrecycles.com/customers/billing",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your LRS bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Start at Pay My Bill and say what you are paying for: recurring services (ongoing contracted pickup with a regular bill, such as weekly waste and recycling) or individual services (standalone rentals or one-time services). Then enter your ZIP code: different states in the LRS network use slightly different payment processors, and the ZIP code routes your payment correctly.",
+        "To pay by check, mail it to LRS, PO Box 4700, Carol Stream, IL 60197 with your customer number, invoice numbers (with their two-letter prefix) and amounts. For ACH, e-mail the same remittance details to the Accounts Receivable team at AR@LRSrecycles.com.",
+        "Questions about your bill: call 844-NEED-LRS (844-633-3577) or use the Contact Us form with your service address, phone number and question."
+      ],
+      "source": "https://www.lrsrecycles.com/customers/billing"
+    },
+    {
+      "slug": "paperless",
+      "title": "Going paperless",
+      "topic": "billing",
+      "paragraphs": [
+        "To receive your LRS bills electronically, fill out the Sign Up for Paperless form at the top of the Billing and Payments page."
+      ],
+      "source": "https://www.lrsrecycles.com/customers/billing"
+    },
+    {
+      "slug": "register",
+      "title": "The LRS Customer Portal",
+      "topic": "account",
+      "paragraphs": [
+        "Create your login with Continue with Google, or with an e-mail address and a password of at least 8 characters that includes an uppercase letter, a lowercase letter, a number and a special character (!@#$%^&*). You then verify your service address.",
+        "The portal is being rolled out: right now it is open to municipal LRS customers in Indianapolis, IN; Evanston, IL; Burbank, IL; Lake Villa Township, IL; and Monticello, MN."
+      ],
+      "source": "https://my.lrsrecyclesdigital.com/register"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "why-zip",
+        "intent": "Using LRS's billing help, find out why LRS asks for your ZIP code before you pay your bill. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "processor"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "processor"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Different states use different payment processors; the ZIP code routes the payment correctly."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Pay My Bill",
+        "Create an account"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "ZIP code",
+        "PO Box 4700",
+        "844-633-3577"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "Monticello"
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    }
+  ]
+}

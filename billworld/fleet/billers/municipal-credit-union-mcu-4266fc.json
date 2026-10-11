@@ -1,0 +1,291 @@
+{
+  "id": "municipal-credit-union-mcu-4266fc",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Municipal Credit Union (MCU)",
+  "category": "credit-unions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public nymcu.org pages (no sign-in). Loan payments page promotes \"MCU Loan Payments\" on Swivelpay (SWBC): one-time payments with a non-MCU debit card or ACH from another institution, and recurring ACH from another institution; members register on Swivelpay (separate sign-up; modelled as the family guest-pay flow). One-time Swivelpay payments carry a $4.95 convenience fee (recurring ACH does not: cannot be expressed per schedule, so guest fees are $4.95 and AutoPay is free); payments after 9:00 PM EST process the next business day; not all loan types/statuses are eligible. Fee-free alternatives: MCU Online Banking / Mobile app, branch, mailed check. Digital Banking: Log In / Register at digital.nymcu.org. Hardship: Consumer Hardship Assistance Application (e-sign or PDF), MCU replies within 2-3 business days, keep paying during review (payment_arrangement unsupported online). Contact 1-844-MCU-NYNY (1-844-628-6969). Sign-in identifier/MFA not documented (family defaults).",
+  "officialDomains": [
+    "nymcu.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.nymcu.org/loan-payments",
+      "title": "Loan Payments | Municipal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.nymcu.org/hardship",
+      "title": "Member Hardship Assistance | Municipal Credit Union",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "MCU",
+    "displayName": "Municipal Credit Union",
+    "primary": "#003d79",
+    "accent": "#8b3a00",
+    "monogram": "MC"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "guestPay": "MCU Loan Payments",
+    "signIn": "Log In",
+    "register": "Register",
+    "arrangement": "Consumer Hardship Assistance"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "MCU Loan Payments",
+        "page": "guest"
+      },
+      {
+        "label": "Loan Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Hardship Assistance",
+        "page": "arrangement"
+      }
+    ]
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nymcu.org/loan-payments",
+      "note": "Paying in MCU Online Banking or the Mobile Banking app avoids the convenience fee."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nymcu.org/loan-payments",
+      "note": "MCU Loan Payments (Swivelpay by SWBC) takes a one-time payment from a non-MCU debit card or another bank account for a $4.95 convenience fee. Payments after 9:00 PM EST process the next business day."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nymcu.org/loan-payments",
+      "note": "Recurring ACH payments from an account at another financial institution have no convenience fee."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nymcu.org/loan-payments"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nymcu.org/hardship"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.nymcu.org/hardship",
+      "note": "Having trouble with loan payments? Submit a Consumer Hardship Assistance Application; MCU will contact you within 2-3 business days. Keep making your regular payments while it is reviewed. Questions: 1-844-628-6969."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nymcu.org/loan-payments"
+    }
+  },
+  "contact": {
+    "phone": "1-844-628-6969",
+    "source": "https://www.nymcu.org/loan-payments"
+  },
+  "billing": {
+    "methods": [
+      "bank"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "fees": {
+      "guestBankCents": 495,
+      "guestCardCents": 495,
+      "evidence": "documented_official",
+      "source": "https://www.nymcu.org/loan-payments"
+    },
+    "source": "https://www.nymcu.org/loan-payments"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Loan payments",
+      "source": "https://www.nymcu.org/loan-payments",
+      "paragraphs": [
+        "MCU Loan Payments, provided by SWBC through Swivelpay, lets you make a one-time loan payment with a non-MCU debit card or an ACH transfer from another institution, or set up recurring ACH payments from another institution. Register once and save the link for future payments.",
+        "One-time payments made there carry a $4.95 convenience fee; recurring ACH payments do not. Payments submitted after 9:00 PM EST are processed the next business day, and not every loan type or status can be paid this way.",
+        "To avoid the fee, pay in MCU Online Banking or the Mobile Banking app, at a branch, or by mailing a check. Questions: 1-844-MCU-NYNY (1-844-628-6969)."
+      ]
+    },
+    {
+      "slug": "payment-plan",
+      "title": "Member hardship assistance",
+      "topic": "billing",
+      "source": "https://www.nymcu.org/hardship",
+      "paragraphs": [
+        "Having trouble making loan payments? Fill out the Consumer Hardship Assistance Application (homeowners use the Residential Hardship Assistance Application) and submit any required documents.",
+        "MCU will reach out within 2 to 3 business days of receiving your application to confirm it and ask for anything else it needs. Keep making your regular monthly payments while it is reviewed; approval is not guaranteed."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "convenience-fee",
+        "intent": "Using MCU's help pages, find the convenience fee for a one-time payment through MCU Loan Payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$4.95",
+              "4.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$4.95",
+            "4.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "One-time payments carry a $4.95 convenience fee."
+          }
+        ]
+      },
+      {
+        "slug": "hardship-response-time",
+        "intent": "Using MCU's help pages, find how soon MCU responds after receiving a hardship assistance application. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2-3",
+              "2 to 3",
+              "2–3"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2-3",
+            "2 to 3",
+            "2–3"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Within 2-3 business days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Log In",
+        "MCU Loan Payments"
+      ]
+    },
+    {
+      "page": "guest",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Hardship Assistance"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$4.95"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plan",
+      "contains": "2 to 3 business days"
+    }
+  ]
+}

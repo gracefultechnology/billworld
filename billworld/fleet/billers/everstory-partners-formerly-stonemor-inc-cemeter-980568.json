@@ -1,0 +1,371 @@
+{
+  "id": "everstory-partners-formerly-stonemor-inc-cemeter-980568",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Everstory Partners",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public MemorialPlanning.com Payment Platform Update page and the two step-by-step PDFs it links (Customer Payment Platform Enrollment Guide, AutoPay Enrollment Guide); no sign-in, no Pay Now lookup. The platform is Paymentus-hosted (My Account on MemorialPlanning.com; ipn4.paymentus.com/cp/evst returns 403 to scripts, so its sign-in form was not observed and auth.identifier keeps the family default). Register Now -> fill profile -> Enroll; Add Account needs Account Number, Last Name and Zip Code plus Terms & Conditions. Pay Now = one-time guest payment. AutoPay: AutoPay in the left navigation -> Add Schedule -> pick account -> Add New method (eCheck/ACH, credit or debit card) -> Select Frequency -> Create AutoPay; existing ACH AutoPay carried over, card AutoPay had to be re-enrolled. Fees: 3% surcharge on credit cards only (2% cap in Colorado, none in Puerto Rico); debit and eCheck free. The dossier fee model cannot charge credit but not debit, so cardPercent 3 applies to every card (cross-owner request: card-type-specific fees). Contract terms, amount and due date did not change; monthly statements continue. Help: Family Service Counselor, serving location or 844-808-3310. Cancelling AutoPay is not described step by step (autopay_cancel supported, inferred from the AutoPay section that manages schedules). Pre-need contract cancellation is not online (inferred). The Archdiocese of Philadelphia Catholic cemeteries use the same platform (separate catalog record, not picked as a duplicate). Review 2026-10-10: the official How to Make a Payment and AutoPay guides show the portal's Login box (Email + Password, Forgot your password?, Register Now), the left menu (Accounts, Pay My Bill, AutoPay, Payment History, My Wallet, My Profile, Log out), a Now/Later payment date and two AutoPay frequencies (Monthly - fixed amount; Bill amount on the due date), so identifier, nav, scheduled payments and AutoPay policies follow them. The live Paymentus page shows a bot check to scripts and was not used.",
+  "officialDomains": [
+    "memorialplanning.com"
+  ],
+  "sources": [
+    {
+      "url": "https://memorialplanning.com/payment-platform-update/",
+      "title": "Payment Platform Update - Memorial Planning",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://memorialplanning.com/wp-content/uploads/2026/08/Everstory-Customer-Portal-Guide-4.pdf",
+      "title": "Customer Payment Platform Enrollment Guide",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://memorialplanning.com/wp-content/uploads/2026/08/Autopay-Guide-Customer-Payment-Platform.pdf",
+      "title": "AutoPay Enrollment Guide",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://memorialplanning.com/wp-content/uploads/2026/08/Payment-Guide-Customer-Payment-Platform.pdf",
+      "title": "How to Make a Payment - Step-by-Step Instructions",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Everstory Partners",
+    "shortName": "Everstory",
+    "primary": "#1f4e5f",
+    "accent": "#5b4a2e",
+    "monogram": "EP"
+  },
+  "labels": {
+    "dashboard": "Accounts",
+    "register": "Register Now",
+    "guestPay": "Pay Now",
+    "autopay": "AutoPay",
+    "accountNumber": "Account Number",
+    "signIn": "Login",
+    "forgot": "Forgot your password?",
+    "payBill": "Pay My Bill",
+    "history": "Payment History",
+    "wallet": "My Wallet",
+    "profile": "My Profile",
+    "signOut": "Log out",
+    "username": "Email"
+  },
+  "auth": {
+    "registrationFields": [
+      "accountNumber",
+      "lastName",
+      "zip",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://memorialplanning.com/wp-content/uploads/2026/08/Payment-Guide-Customer-Payment-Platform.pdf",
+    "identifier": "email",
+    "loginSteps": 1
+  },
+  "contact": {
+    "phone": "844-808-3310",
+    "source": "https://memorialplanning.com/payment-platform-update/",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://memorialplanning.com/payment-platform-update/"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://memorialplanning.com/wp-content/uploads/2026/08/Everstory-Customer-Portal-Guide-4.pdf",
+      "note": "Choose Pay Now to make a one-time payment without creating a profile."
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://memorialplanning.com/wp-content/uploads/2026/08/Everstory-Customer-Portal-Guide-4.pdf",
+      "note": "Create a profile, then add each contract with its account number, the last name on the account and your ZIP code."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://memorialplanning.com/wp-content/uploads/2026/08/Autopay-Guide-Customer-Payment-Platform.pdf"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://memorialplanning.com/payment-platform-update/"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://memorialplanning.com/payment-platform-update/"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://memorialplanning.com/payment-platform-update/",
+      "channel": "phone",
+      "phone": "844-808-3310",
+      "note": "Pre-need cemetery and funeral contracts cannot be changed or cancelled online. Contact your Family Service Counselor, the location serving your account, or call 844-808-3310."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://memorialplanning.com/wp-content/uploads/2026/08/Payment-Guide-Customer-Payment-Platform.pdf"
+    }
+  },
+  "billing": {
+    "source": "https://memorialplanning.com/payment-platform-update/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "cardPercent": 3,
+      "notes": [
+        "The 3% surcharge applies to credit cards only; debit cards and eCheck are free. Colorado caps the surcharge at 2% and Puerto Rico has none."
+      ],
+      "evidence": "documented_official",
+      "source": "https://memorialplanning.com/payment-platform-update/"
+    },
+    "autopay": {
+      "policies": [
+        "full",
+        "fixed"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your contract online",
+      "topic": "payments",
+      "source": "https://memorialplanning.com/wp-content/uploads/2026/08/Payment-Guide-Customer-Payment-Platform.pdf",
+      "paragraphs": [
+        "Open My Account on MemorialPlanning.com to reach the customer payment platform. With a profile you can make one-time payments, see your payment history, save payment methods and manage AutoPay for every contract on one login.",
+        "Your contract terms, payment amount and due date stay the same, and your monthly statement keeps arriving. Payments made before midnight post to your account the next day; later payments can take up to 48 hours. For an early pay-off amount, contact your location. Pay by eCheck or debit card to avoid the credit card surcharge."
+      ],
+      "steps": [
+        "Select My Account and log in with your email and password, or choose Pay Now for a one-time guest payment.",
+        "Select Pay My Bill, pick the contract and select Continue.",
+        "Choose the payment date (now or later) and the payment method, then select Continue.",
+        "Review, check the authorization box and select Pay."
+      ]
+    },
+    {
+      "slug": "register",
+      "title": "Creating a profile and adding your contract",
+      "topic": "account",
+      "source": "https://memorialplanning.com/wp-content/uploads/2026/08/Everstory-Customer-Portal-Guide-4.pdf",
+      "paragraphs": [
+        "Choose Register Now in the login box, fill in the required profile details and select Enroll. Then add your account by entering its Account Number, the Last Name on the account and your Zip Code, agree to the terms and select Add Account.",
+        "You can add several contracts to the same profile and return to your accounts list at any time."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Setting up AutoPay",
+      "topic": "autopay",
+      "source": "https://memorialplanning.com/wp-content/uploads/2026/08/Autopay-Guide-Customer-Payment-Platform.pdf",
+      "paragraphs": [
+        "Select AutoPay in the left-hand menu and then Add Schedule. Pick the account, add a payment method (eCheck/ACH, credit card or debit card) and choose the frequency: the bill amount on the due date, or a fixed monthly amount. Then select Create AutoPay. You receive a confirmation email once the schedule is created, and you can edit it from the AutoPay page.",
+        "If you paid by bank account automatically before the platform change, that AutoPay moved over for you. Card AutoPay did not move over and must be set up again."
+      ],
+      "steps": [
+        "Select AutoPay.",
+        "Select Add Schedule.",
+        "Choose the account and a payment method.",
+        "Choose the frequency and select Create AutoPay."
+      ]
+    },
+    {
+      "slug": "convenience-fees",
+      "title": "Card surcharge",
+      "topic": "billing",
+      "source": "https://memorialplanning.com/payment-platform-update/",
+      "paragraphs": [
+        "Payments made with a credit card carry a 3% surcharge. Debit cards and eCheck (bank account) payments have no surcharge. In Colorado the surcharge is capped at 2%, and there is none in Puerto Rico."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Changing or cancelling a contract",
+      "topic": "account",
+      "source": "https://memorialplanning.com/payment-platform-update/",
+      "paragraphs": [
+        "The payment platform handles payments, AutoPay, saved methods and history only. For questions about your contract, including changes or cancellation, contact your Family Service Counselor or the cemetery or funeral home serving your account, or call 844-808-3310."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention"
+    ],
+    "extra": [
+      {
+        "slug": "credit-card-surcharge",
+        "intent": "Using Everstory's payment help, find the surcharge for paying a contract with a credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3%",
+              "3 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3%",
+            "3 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments carry a 3% surcharge; debit and eCheck are free."
+          }
+        ]
+      },
+      {
+        "slug": "add-account-fields",
+        "intent": "Find which three pieces of information Everstory's payment platform asks for when you add a contract to your profile. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Zip"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Zip"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Account Number, Last Name and Zip Code."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "convenience-fees",
+      "contains": [
+        "3%",
+        "eCheck"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": [
+        "Zip Code",
+        "Add Account"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "844-808-3310"
+    }
+  ],
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Pay Now",
+        "page": "guest"
+      },
+      {
+        "label": "Register Now",
+        "page": "register"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "My Wallet",
+        "page": "wallet"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      }
+    ]
+  }
+}

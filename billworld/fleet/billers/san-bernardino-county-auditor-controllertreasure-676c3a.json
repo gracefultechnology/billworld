@@ -1,0 +1,324 @@
+{
+  "id": "san-bernardino-county-auditor-controllertreasure-676c3a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "San Bernardino County Auditor-Controller/Treasurer/Tax Collector",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public sbcountyatc.gov pages (JavaScript site rendered headlessly, FAQ accordions expanded; no sign-in, no lookup). Pay online at Pay Property Tax Online; checking/savings free; cards 2.30% (minimum $1.95) since Sept 15, 2025; commercial/international cards 3.95% (minimum $1.95); in-office debit $2.95. Phone (909) 387-8308 takes cards or checking/savings. Mail to 268 West Hospitality Lane, First Floor, San Bernardino, CA 92415. Partial Payment Program lets owners pay secured taxes in smaller amounts (late installments get the 10% penalty on the unpaid balance). Payment plans other than the printed due dates only under certain conditions by calling a tax specialist, so payment_arrangement is unsupported online. Payment history dashboard exists; the site describes no e-bill or automatic payment program (inferred unsupported). Email sign-in is synthetic.",
+  "officialDomains": [
+    "sbcountyatc.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.sbcountyatc.gov/tax-collector",
+      "title": "Tax Collector Division - San Bernardino County ATC",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.sbcountyatc.gov/tax-services/property-tax",
+      "title": "Online Services: Tax Services - Pay Property Tax Online",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.sbcountyatc.gov/tax-collector/partial-payment",
+      "title": "Partial Payment Program",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+      "title": "Frequently Asked Questions - Tax Collector",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "San Bernardino County Tax Collector",
+    "shortName": "San Bernardino County Tax Collector",
+    "primary": "#123b6b",
+    "accent": "#7c4a00",
+    "monogram": "SB"
+  },
+  "labels": {
+    "guestPay": "Pay Property Tax Online",
+    "payBill": "Pay Property Tax Online",
+    "history": "View My Property Tax Payments History",
+    "help": "Tax Collector FAQs",
+    "contact": "Contact Tax Collector Division"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Property Tax Online",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Partial Payment Option",
+        "helpSlug": "partial-payments"
+      },
+      {
+        "label": "Tax Collector FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Property Tax Online",
+        "page": "pay"
+      },
+      {
+        "label": "View My Property Tax Payments History",
+        "page": "history"
+      },
+      {
+        "label": "Contact Tax Collector Division",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sbcountyatc.gov/tax-services/property-tax",
+      "note": "Search your parcel and pay online; checking or savings is free, cards cost 2.30% (minimum $1.95)."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+      "note": "The Tax Collector does not offer automatic payments. Pay each installment online, by phone, by mail or in person, or use the Partial Payment Option to pay smaller amounts.",
+      "channel": "none"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+      "note": "Tax bills are mailed; you can print a duplicate bill from the website or call (909) 387-8308.",
+      "channel": "none"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+      "note": "Call (909) 387-8308 to pay by Visa, MasterCard, Discover, American Express or a checking or savings account.",
+      "phone": "9093878308"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+      "note": "Mail to Auditor-Controller/Treasurer/Tax Collector, 268 West Hospitality Lane, First Floor, San Bernardino, CA 92415 with your bill or parcel number."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+      "note": "Payment plans outside the printed due dates are allowed only under certain conditions; call a tax specialist at (909) 387-8308 with your parcel or bill number.",
+      "channel": "phone"
+    }
+  },
+  "billing": {
+    "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.3,
+      "cardMinCents": 195,
+      "notes": [
+        "Commercial or international credit cards: 3.95% (minimum $1.95).",
+        "Debit card payments made in the office: $2.95."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "lateFeePercent": 10
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your property tax bill",
+      "topic": "payments",
+      "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+      "paragraphs": [
+        "Pay online at Pay Property Tax Online (instant confirmation, available 24/7). Paying from a checking or savings account is free; card fees are listed in the card fee article.",
+        "By phone, call (909) 387-8308 and pay with Visa, MasterCard, Discover, American Express, or a checking or savings account. By mail, send your payment with the tax bill (or your parcel number written on the check) to Auditor-Controller/Treasurer/Tax Collector, 268 West Hospitality Lane, First Floor, San Bernardino, CA 92415. Checks must be in U.S. dollars from a U.S. bank account. You can also pay in person at the same address.",
+        "Because of rising mail theft and check fraud, the office recommends paying online instead of mailing checks."
+      ]
+    },
+    {
+      "slug": "card-fees",
+      "title": "Card payment fees",
+      "topic": "payments",
+      "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+      "paragraphs": [
+        "Since September 15, 2025, debit and credit card payments cost 2.30% with a minimum fee of $1.95; commercial and international credit cards cost 3.95% with the same $1.95 minimum. The processor sets the fee and shows it before you pay. Paying from a checking or savings account is free. Debit card payments in the office cost $2.95."
+      ]
+    },
+    {
+      "slug": "partial-payments",
+      "title": "Partial Payment Option",
+      "topic": "assistance",
+      "source": "https://www.sbcountyatc.gov/tax-collector/partial-payment",
+      "paragraphs": [
+        "The Partial Payment Program lets you pay your secured property taxes in smaller amounts that fit your budget, which helps reduce penalties and interest and keep your taxes current.",
+        "Any amount still unpaid on an installment's delinquency date is charged the usual penalty, so plan your partial payments to cover each installment in time."
+      ]
+    },
+    {
+      "slug": "late-payments",
+      "title": "Late payments and penalties",
+      "topic": "billing",
+      "source": "https://www.sbcountyatc.gov/faq?refinementList%5BdivisionNames%5D%5B0%5D=Tax%20Collector",
+      "paragraphs": [
+        "Late taxes generally get a 10% penalty on the amount owed. Taxes that go into default add costs and penalties of 1.5% a month. A payment is on time if it is received or postmarked by the delinquency date; a payment received late without a postmark is late.",
+        "Not receiving a tax bill does not remove penalties. Print a duplicate bill from the website or call (909) 387-8308. Under certain conditions a payment plan can be arranged; ask a tax specialist at the same number."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-minimum",
+        "intent": "Using the San Bernardino County Tax Collector website's help pages, find the minimum fee for paying property taxes online with a debit or credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments cost 2.30% with a $1.95 minimum."
+          }
+        ]
+      },
+      {
+        "slug": "in-office-debit-fee",
+        "intent": "Using the San Bernardino County Tax Collector website's help pages, find the fee for a debit card payment made in the office. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "In-office debit card payments cost $2.95."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Partial Payment Option",
+        "Tax Collector FAQs"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "View My Property Tax Payments History"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "(909) 387-8308",
+        "268 West Hospitality Lane"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "card-fees",
+      "contains": [
+        "2.30%",
+        "$1.95"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "id": "anthem-dental-elevance-health-anthem-blue-cross--b9b26d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Anthem Dental (Elevance Health; Anthem Blue Cross / Blue Cross Blue Shield plans)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public anthem.com pages only: 'How to pay your Anthem bill' (member-resources/billing-and-payments, including its FAQ answers in the page HTML), the public Quick Pay member-details form on payment.anthem.com (not submitted), the account log-in page and the Individual & Family Dental Insurance page. The bill-pay page covers the monthly plan premium for Anthem individual plans (individual dental plans such as Essential Choice PPO are billed the same way; the page does not single out dental). Three online routes: Quick Pay (one-time payment; asks the subscriber's first and last name exactly as on the member ID card, date of birth and Member ID), Log in to the member portal, and the Sydney Health app (run by Carelon Digital Platforms). Autopay is added, edited or removed after logging in to the portal or app. Phone: Member Services number on the back of the ID card (no number published, so no contact override). Mail: opt in to paper bills after logging in; no remittance address is published. First ACA premium payments are made through a state picker (13 states). Fees, accepted card types, grace periods and paperless are not described and keep family defaults. Quick Pay first-name field cannot be expressed (lookup uses last name, date of birth and Member ID). Sign-in identifier inferred from 'Forgot Username or Password?'.",
+  "officialDomains": ["anthem.com"],
+  "sources": [
+    { "url": "https://www.anthem.com/member-resources/billing-and-payments", "title": "Anthem Bill Pay | How to Pay Your Anthem Bill | Anthem", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://payment.anthem.com/validateMember", "title": "Anthem Quick bill pay - Member Details", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://www.anthem.com/account-login/", "title": "Log In | Anthem", "fetchedAt": "2026-10-10", "kind": "login" },
+    { "url": "https://www.anthem.com/individual-and-family/dental-insurance", "title": "Individual & Family Dental Insurance Plans | Anthem", "fetchedAt": "2026-10-10", "kind": "plans" }
+  ],
+  "brand": { "displayName": "Anthem Dental", "shortName": "Anthem", "primary": "#1a4f9c", "accent": "#0b3a6e", "monogram": "A" },
+  "labels": {
+    "signIn": "Log In",
+    "register": "Register now",
+    "forgot": "Forgot Username or Password?",
+    "guestPay": "Quick Pay",
+    "autopay": "Autopay",
+    "payBill": "Pay my bill",
+    "accountNumber": "Member ID"
+  },
+  "nav": {
+    "public": [
+      { "label": "Quick Pay", "page": "guest" },
+      { "label": "Log In", "page": "login" },
+      { "label": "How to pay your Anthem bill", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "guestLookupFields": ["accountNumber", "lastName", "dob"],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://payment.anthem.com/validateMember"
+  },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.anthem.com/member-resources/billing-and-payments" },
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://payment.anthem.com/validateMember", "note": "Quick Pay is for a one-time premium payment. Log in or register to enroll in Autopay or save a payment method for future payments." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.anthem.com/member-resources/billing-and-payments", "note": "Add, edit or remove Autopay after logging in to the member portal or the Sydney Health app." },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.anthem.com/member-resources/billing-and-payments" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.anthem.com/member-resources/billing-and-payments", "note": "Call the Member Services number on the back of your ID card to pay by phone." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.anthem.com/member-resources/billing-and-payments", "note": "To pay by mail, log in, confirm your mailing address and opt in to receive paper bills." }
+  },
+  "billing": {
+    "source": "https://www.anthem.com/member-resources/billing-and-payments",
+    "methods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your Anthem bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Your bill is your monthly plan premium, and you can pay it online, by mail or by phone. Deductibles, copays and coinsurance are not paid to Anthem; you pay those to your care providers.",
+        "There are three ways to pay online: Quick Pay for a one-time payment without logging in, logging in to the member portal, or the Sydney Health app on your phone.",
+        "To pay by phone, call the Member Services number on the back of your ID card. To pay by mail, log in, check your mailing address and opt in to paper bills.",
+        "Making the first payment on a new Individual and Family ACA plan? Choose your state on the bill-pay page to pay and activate your coverage."
+      ],
+      "source": "https://www.anthem.com/member-resources/billing-and-payments"
+    },
+    {
+      "slug": "quick-pay",
+      "title": "Pay with Quick Pay",
+      "topic": "billing",
+      "paragraphs": [
+        "Quick Pay takes a single premium payment without an account. Enter the subscriber's first and last name exactly as they appear on the member ID card, the date of birth and the Member ID.",
+        "Quick Pay cannot set up Autopay or save a payment method. Log in or register for that."
+      ],
+      "steps": ["Choose Quick Pay.", "Enter the subscriber's name, date of birth and Member ID from the ID card.", "Choose the payment amount and method.", "Submit and keep your confirmation."],
+      "source": "https://payment.anthem.com/validateMember"
+    },
+    {
+      "slug": "autopay",
+      "title": "Add, edit or delete Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Autopay is managed in your account. Log in to the online member portal or the Sydney Health app, then follow the steps to add, change or remove Autopay."
+      ],
+      "steps": ["Log In.", "Open Autopay.", "Pick a bank account or card.", "Review and confirm."],
+      "source": "https://www.anthem.com/member-resources/billing-and-payments"
+    },
+    {
+      "slug": "dental-plans",
+      "title": "Individual dental plans",
+      "topic": "plans",
+      "paragraphs": [
+        "Anthem sells stand-alone individual and family dental plans that you can buy at any time of year, or add to an Anthem health or vision plan. Essential Choice PPO plans cover diagnostic and preventive care at 100% with no waiting period when you see an in-network dentist.",
+        "Members can log in to renew a plan or compare options. To talk to a licensed agent about plans, call 833-901-1364 (TTY 711)."
+      ],
+      "source": "https://www.anthem.com/individual-and-family/dental-insurance"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "anthem-mobile-app",
+        "intent": "Using Anthem's bill-pay help, find the name of the mobile app Anthem members can use to pay their premium on the go. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["Sydney"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["Sydney"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "The Sydney Health app." }]
+      },
+      {
+        "slug": "quick-pay-fields",
+        "intent": "You want to use Anthem Quick Pay. Using Anthem's help pages, find which ID number from your member ID card Quick Pay asks for. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["Member ID"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["Member ID"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "observed_public",
+        "solution": [{ "op": "answer", "text": "The Member ID (plus the subscriber's name and date of birth)." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": "Member ID" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": ["Sydney Health", "back of your ID card"] },
+    { "page": "helpArticle", "slug": "quick-pay", "contains": "exactly as they appear" },
+    { "page": "autopay", "signedIn": true, "label": "autopay" }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "id": "pacific-dental-services-pds-health-supported-off-7235e8",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Pacific Dental Services (PDS Health, supported offices)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public pages only: smilegeneration.com Patient Portal and Payment Options pages, the public Smile Generation MyChart (Epic) log-in page, its Pay As Guest step 1 (not submitted) and the MyChart FAQ. PDS-supported offices bill through Smile Generation MyChart: view statements and make secure payments on the web or in the app. Sign-in uses the MyChart username (or Epic ID) and password; two-step verification sends a code by email, text message or an authenticator app (modelled as email_or_sms). Sign up uses an activation code (from the front desk, an after-visit summary, a billing statement, text or email) or self-signup; booking an appointment sends an activation email. Pay As Guest asks for a guarantor or visit account number and the guarantor's last name (modelled exactly). MyChart is free. Support: MyChart@SmileGeneration.com, 800-491-7021; general 1-800-SMILEGEN. Payment help: Smile Generation Dental Plan (discount plan, annual fee, 20-50% off major services, not insurance) and Smile Generation Financing Marketplace (up to $75,000 over up to 144 months, soft credit check to see options) plus the Smile Generation Financial card. AutoPay, payment plans, fees, accepted methods and phone/mail payments are not described; family defaults kept.",
+  "officialDomains": ["smilegeneration.com", "smilegenerationmychart.com"],
+  "sources": [
+    { "url": "https://www.smilegeneration.com/patient-portal/", "title": "Smile Generation MyChart | Patient Portal", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://www.smilegenerationmychart.com/MyChart/Authentication/Login", "title": "Smile Generation MyChart - Login Page", "fetchedAt": "2026-10-10", "kind": "login" },
+    { "url": "https://www.smilegenerationmychart.com/MyChart/Billing/GuestPay/PayasGuest", "title": "Smile Generation MyChart - Pay as Guest", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://www.smilegenerationmychart.com/MyChart/Authentication/Login/StandardFile?option=Faq", "title": "Smile Generation MyChart Frequently Asked Questions", "fetchedAt": "2026-10-10", "kind": "help" },
+    { "url": "https://www.smilegeneration.com/payment-options/", "title": "Payment Options | Smile Generation", "fetchedAt": "2026-10-10", "kind": "plans" }
+  ],
+  "brand": { "displayName": "Smile Generation MyChart", "shortName": "Smile Generation", "primary": "#00626f", "accent": "#3c2f80", "monogram": "SG" },
+  "labels": {
+    "signIn": "Log in to Smile Generation MyChart",
+    "register": "Sign up",
+    "forgot": "Forgot login information?",
+    "guestPay": "Pay As Guest",
+    "dashboard": "Smile Generation MyChart",
+    "username": "MyChart Username",
+    "accountNumber": "Account #"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in", "page": "login" },
+      { "label": "Sign up", "page": "register" },
+      { "label": "Pay As Guest", "page": "guest" },
+      { "label": "Payment options", "helpSlug": "payment-options" },
+      { "label": "FAQs", "page": "help" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "mfa": "email_or_sms",
+    "guestLookupFields": ["accountNumber", "lastName"],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.smilegenerationmychart.com/MyChart/Billing/GuestPay/PayasGuest"
+  },
+  "contact": { "phone": "800-491-7021", "source": "https://www.smilegenerationmychart.com/MyChart/Authentication/Login/StandardFile?option=Faq", "evidence": "documented_official" },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.smilegeneration.com/patient-portal/" },
+    "view_bill": { "support": "supported", "evidence": "documented_official", "source": "https://www.smilegeneration.com/patient-portal/" },
+    "guest_pay": { "support": "supported", "evidence": "observed_public", "source": "https://www.smilegenerationmychart.com/MyChart/Billing/GuestPay/PayasGuest", "note": "Look up your bill with a guarantor or visit account number and the guarantor's last name, both shown on your statement." },
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://www.smilegenerationmychart.com/MyChart/Authentication/Login/StandardFile?option=Faq" },
+    "password_reset": { "support": "supported", "evidence": "observed_public", "source": "https://www.smilegenerationmychart.com/MyChart/Authentication/Login" },
+    "payment_assistance": { "support": "supported", "evidence": "documented_official", "source": "https://www.smilegeneration.com/payment-options/" }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "View and pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Smile Generation MyChart lets you view your statements and make secure payments on the web or in the Smile Generation MyChart app, along with booking appointments, eCheck-in and messaging your dentist.",
+        "No account? Use Pay As Guest. Enter a guarantor account number or a single visit account number and the guarantor's last name. The guarantor is the person responsible for the bill; the name and account number are on your statement. A visit account groups the charges from one visit, so you may have several, each with its own balance."
+      ],
+      "steps": ["Log in to Smile Generation MyChart.", "Open Billing and choose the statement.", "Pay the balance with your saved or a new payment method.", "Keep the confirmation."],
+      "source": "https://www.smilegeneration.com/patient-portal/"
+    },
+    {
+      "slug": "sign-up",
+      "title": "How do I sign up for Smile Generation MyChart?",
+      "topic": "account",
+      "paragraphs": [
+        "You may get an activation code from the front desk, on your after-visit summary or billing statement, or by text or email after a visit; booking an appointment also sends an activation email. Some patients can sign up online by matching their details to their record.",
+        "Codes expire after a set time and work only once. To get a new code, request one on the sign-up page or email MyChart@SmileGeneration.com. MyChart is free to use."
+      ],
+      "source": "https://www.smilegenerationmychart.com/MyChart/Authentication/Login/StandardFile?option=Faq"
+    },
+    {
+      "slug": "two-step-verification",
+      "title": "Two-step verification",
+      "topic": "account",
+      "paragraphs": [
+        "When you log in, Smile Generation MyChart asks for a code sent by email, text message or an authenticator app, in addition to your username and password. Keep the phone number and email on your Personal Information page up to date.",
+        "For help, email MyChart@SmileGeneration.com or call the Smile Generation MyChart Patient Support Line at 800-491-7021."
+      ],
+      "source": "https://www.smilegenerationmychart.com/MyChart/Authentication/Login/StandardFile?option=Faq"
+    },
+    {
+      "slug": "payment-options",
+      "title": "Payment options",
+      "topic": "assistance",
+      "paragraphs": [
+        "Most dental insurance plans are accepted. Without insurance, the Smile Generation Dental Plan is a savings plan with a yearly membership fee that gives 20% to 50% off major services such as implants, root canals and crowns. It is not insurance and has no waiting period.",
+        "Smile Generation Financing Marketplace can finance up to $75,000 with plans up to 144 months, and shows your options after a soft credit check that does not affect your score. Call 1-800-SMILEGEN to get started."
+      ],
+      "source": "https://www.smilegeneration.com/payment-options/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "guest-pay-fields",
+        "intent": "You want to pay a Smile Generation dental bill without a MyChart account. Using the help pages, find what two things Pay As Guest asks for. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["last name"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["last name"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "observed_public",
+        "solution": [{ "op": "answer", "text": "A guarantor or visit account number and the guarantor's last name." }]
+      },
+      {
+        "slug": "financing-maximum",
+        "intent": "Using Smile Generation's payment options help, find the largest amount the Smile Generation Financing Marketplace can finance. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["75,000", "75000"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["75,000", "75000"] },
+        "tags": ["help", "information", "assistance"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Up to $75,000, with plans up to 144 months." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": "Account #" },
+    { "page": "login", "contains": "MyChart Username" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "guarantor" },
+    { "page": "helpArticle", "slug": "two-step-verification", "contains": "800-491-7021" },
+    { "page": "helpArticle", "slug": "payment-options", "contains": "144 months" }
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "id": "santa-clara-county-department-of-tax-and-collect-6fc7f5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Santa Clara County Department of Tax and Collections",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public dtac.santaclaracounty.gov pages (rendered headlessly; the site intermittently blocks automated clients) and the public Teller Online landing page; no sign-in, no search. Pay online through Teller Online (FIS): APN or address for secured bills; user profiles save payment methods; cart up to 30 items. Cards 2.22%, eCheck free. Scheduled payments: with a profile and saved method, split an installment into equal monthly payments on the same day each month; latest date 3 days before delinquency; cancel by 5 p.m. PT the day before; a failed scheduled payment adds an $85 returned payment fee and cancels the rest. Two installments: due Nov 1/Feb 1, delinquent Dec 10/Apr 10 (5 p.m. by mail, midnight online), 10% plus $20 cost each. Partial payments online without a contract. Installment Plan of Redemption only for defaulted taxes. AutoPay is unsupported (no enrollment; scheduled payments cover it). No pay-by-phone line documented (IVR for information only). Email reminder sign-up exists on Teller Online but no e-bill is described (paperless unknown). Customer phone (408) 808-7900 comes from the FAQ (catalog had none). Email sign-in is synthetic.",
+  "officialDomains": [
+    "santaclaracounty.gov",
+    "telleronline.net"
+  ],
+  "sources": [
+    {
+      "url": "https://dtac.santaclaracounty.gov/taxes/property-taxes-frequently-asked-questions-faqs",
+      "title": "Frequently asked questions (FAQs) for property taxes | Department of Tax and Collections",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://dtac.santaclaracounty.gov/scheduled-payments",
+      "title": "Scheduled Collections Payments Frequently Asked Questions (FAQs)",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://santaclaracounty.telleronline.net/",
+      "title": "County of Santa Clara Department of Tax and Collections (Teller Online)",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Santa Clara County Department of Tax and Collections",
+    "shortName": "Santa Clara County Tax and Collections",
+    "primary": "#1d4f7a",
+    "accent": "#5e3a87",
+    "monogram": "SC"
+  },
+  "labels": {
+    "guestPay": "Secured Property Tax",
+    "payBill": "Pay your bill",
+    "help": "Property tax frequently asked questions (FAQs)",
+    "contact": "Contact us",
+    "signIn": "Sign in"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Secured Property Tax",
+        "page": "guest"
+      },
+      {
+        "label": "Pay your bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Scheduled payments",
+        "helpSlug": "scheduled-payments"
+      },
+      {
+        "label": "Partial payments",
+        "helpSlug": "partial-payments"
+      },
+      {
+        "label": "Property tax frequently asked questions (FAQs)",
+        "page": "help"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay your bill",
+        "page": "pay"
+      },
+      {
+        "label": "Schedules",
+        "page": "history"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "contact": {
+    "phone": "4088087900",
+    "source": "https://dtac.santaclaracounty.gov/taxes/property-taxes-frequently-asked-questions-faqs"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://santaclaracounty.telleronline.net/",
+      "note": "Search by Assessor's Parcel Number (APN) or property address and pay by eCheck (free) or card (2.22%)."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dtac.santaclaracounty.gov/scheduled-payments",
+      "note": "With a user profile and saved payment method, schedule equal monthly payments for an installment, ending at least 3 days before it becomes delinquent. Cancel by 5 p.m. PT the day before a payment."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://dtac.santaclaracounty.gov/scheduled-payments",
+      "note": "There is no automatic payment enrollment. Instead, schedule payments for each installment from your user profile; schedules must be set up separately for every installment.",
+      "channel": "none"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "source": "https://santaclaracounty.telleronline.net/",
+      "note": "Tax bills are mailed by November 1. You can sign up for email reminders on the payment site, and call (408) 808-7900 for a duplicate bill."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dtac.santaclaracounty.gov/taxes/property-taxes-frequently-asked-questions-faqs",
+      "note": "Mailed payments must have a U.S. Postal Service postmark on or before the delinquent date; private meter dates do not count."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://dtac.santaclaracounty.gov/taxes/property-taxes-frequently-asked-questions-faqs",
+      "note": "Current-year taxes cannot go on a plan, but you can make partial payments online. Installment plans of redemption are only for defaulted prior-year taxes; call (408) 808-7900.",
+      "channel": "phone"
+    }
+  },
+  "billing": {
+    "source": "https://dtac.santaclaracounty.gov/scheduled-payments",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.22,
+      "notes": [
+        "A failed scheduled payment adds an $85 returned payment fee and cancels the rest of that schedule."
+      ],
+      "evidence": "documented_official",
+      "source": "https://dtac.santaclaracounty.gov/scheduled-payments"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "lateFeePercent": 10
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your property taxes",
+      "topic": "payments",
+      "source": "https://dtac.santaclaracounty.gov/taxes/property-taxes-frequently-asked-questions-faqs",
+      "paragraphs": [
+        "Pay online through the department's Teller Online payment site, processed by FIS. For a secured bill you need the Assessor's Parcel Number (APN) or the property address. Visa, MasterCard, American Express and Discover cards cost 2.22%; eChecks are free. You can create a user profile to save payment methods, and pay up to 30 bills in one cart.",
+        "By mail, your envelope needs a U.S. Postal Service postmark on or before the delinquent date; private postage meter dates are not accepted, so ask the post office to hand-stamp it if you mail on the deadline.",
+        "Questions or a duplicate bill: call (408) 808-7900; the automated phone line gives tax information 24 hours a day."
+      ]
+    },
+    {
+      "slug": "due-dates-penalties",
+      "title": "Due dates and penalties",
+      "topic": "billing",
+      "source": "https://dtac.santaclaracounty.gov/taxes/property-taxes-frequently-asked-questions-faqs",
+      "paragraphs": [
+        "The secured bill is paid in two installments. The first is due November 1 and becomes delinquent after December 10; the second is due February 1 and becomes delinquent after April 10. Each late installment adds a 10% penalty plus a $20 cost. Online payments made before midnight Pacific time on the delinquent date are on time; mailed payments must be postmarked by then.",
+        "Taxes unpaid at 5 p.m. on June 30 default: a $30 redemption fee is added and penalties of 1.5% a month accrue until paid."
+      ]
+    },
+    {
+      "slug": "scheduled-payments",
+      "title": "Scheduled payments",
+      "topic": "autopay",
+      "source": "https://dtac.santaclaracounty.gov/scheduled-payments",
+      "paragraphs": [
+        "To spread an installment over equal monthly payments, create a user profile, save a payment method, and set up a schedule for each installment separately. Payments are the same amount on the same day each month, and the last one must be at least 3 days before the installment's delinquent date (for December 10, no later than December 7). Delinquent bills and bills on an installment plan cannot be scheduled.",
+        "Scheduling is free; cards cost 2.22% per payment and eChecks are free. You can cancel a scheduled payment until 5 p.m. Pacific the day before it runs; to change the date or method, cancel and create a new schedule. If a scheduled payment fails, an $85 returned payment fee is added and the rest of the schedule is cancelled. See all schedules under your name, then Schedules."
+      ]
+    },
+    {
+      "slug": "partial-payments",
+      "title": "Partial payments",
+      "topic": "assistance",
+      "source": "https://dtac.santaclaracounty.gov/taxes/property-taxes-frequently-asked-questions-faqs",
+      "paragraphs": [
+        "You can pay less than the full installment online without signing a contract: open your parcel and choose to enter an amount less than the balance due. The first installment must be paid in full before money goes to the second, and both must be paid by June 30.",
+        "Any amount still unpaid on the delinquent date is charged the 10% penalty plus $20 cost on that unpaid balance only. A Balance Due Statement is posted online after a partial payment."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "failed-schedule-fee",
+        "intent": "Using the Santa Clara County Tax and Collections website's help pages, find the fee added when a scheduled property tax payment fails. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$85"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$85"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A failed scheduled payment adds an $85 returned payment fee and cancels the rest of the schedule."
+          }
+        ]
+      },
+      {
+        "slug": "schedule-cutoff",
+        "intent": "Using the Santa Clara County Tax and Collections website's help pages, find how many days before an installment's delinquency date the last scheduled payment must be. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3 days",
+              "three days"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3 days",
+            "three days"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The scheduled payment date must be at least 3 days before the delinquency date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Scheduled payments",
+        "Partial payments"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.22%",
+        "(408) 808-7900"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "scheduled-payments",
+      "contains": "$85"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-dates-penalties",
+      "contains": "$20 cost"
+    }
+  ]
+}

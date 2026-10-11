@@ -1,0 +1,439 @@
+{
+  "id": "consumers-energy-676ad9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Consumers Energy",
+  "category": "electric",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public consumersenergy.com pages only (no sign-in). Sign-in field is 'User ID or Email' (the User ID may be an email or a username); the login page mentions an extra security step by email or voice call, so MFA is modelled as email (voice call not modelled). Online bank payments are free; every card or digital-wallet payment costs $2.99 (residential) and is capped at $1,000 per card payment (the cap is below the schema's $5,000 maxPaymentCents floor, so it is in help only). Guest Pay charges $2.99 on every payment type. Two automatic options: fee-free bank Auto-Pay and card/wallet Easy Pay at $2.99 per monthly payment; both are modelled as one AutoPay with bank+card methods and autopayCardCents 299. The Easy Pay draft day is not published, so the family default (due date) is kept. Payment Holds give up to 10 extra days (one per billing cycle); Payment Arrangements can be weekly, bi-weekly or monthly (only monthly modelled). No late payment charge amount is published on the pages read, so none is modelled. Stop service: online Move In, Move Out tool for moves within 30 days, or 800-477-5050.",
+  "officialDomains": [
+    "consumersenergy.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay",
+      "title": "Residential Ways To Pay | Consumers Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay/easy-pay",
+      "title": "Easy Pay | Consumers Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/payment-assistance",
+      "title": "Payment Assistance | Consumers Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.consumersenergy.com/login",
+      "title": "Login | Consumers Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment",
+      "title": "Billing and Payment | Consumers Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.consumersenergy.com/residential/account-and-billing/start-stop-service",
+      "title": "Start, Stop or Transfer Service | Consumers Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "Consumers Energy",
+    "primary": "#005288",
+    "accent": "#003b5c",
+    "monogram": "CE"
+  },
+  "labels": {
+    "payBill": "Pay Bill",
+    "viewBill": "View or Pay Bill",
+    "autopay": "Auto-Pay",
+    "paperless": "eBill",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Create a Profile",
+    "forgot": "Reset Your Password",
+    "guestPay": "Pay as a Guest",
+    "dashboard": "Account Details",
+    "arrangement": "Payment Arrangement",
+    "cancel": "Stop Service",
+    "contact": "Contact Us",
+    "username": "User ID or Email",
+    "statements": "Account History"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay as a Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Create a Profile",
+        "page": "register"
+      },
+      {
+        "label": "Ways to Pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plans & Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Details",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View or Pay Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Account History",
+        "page": "statements"
+      },
+      {
+        "label": "Auto-Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "mfa": "email",
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.consumersenergy.com/login"
+  },
+  "contact": {
+    "phone": "800-477-5050",
+    "payPhone": "800-371-9811",
+    "source": "https://www.consumersenergy.com/residential/account-and-billing/start-stop-service"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay",
+      "note": "Guest Pay carries a $2.99 fee on every payment, whatever the payment method."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/payment-assistance"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/payment-assistance"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/start-stop-service"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay"
+    }
+  },
+  "billing": {
+    "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 299,
+      "autopayCardCents": 299,
+      "guestBankCents": 299,
+      "guestCardCents": 299,
+      "notes": [
+        "Each card or digital wallet payment is limited to $1,000."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to pay from a checking or savings account at no charge. Paying by credit or debit card or with a digital wallet (PayPal, PayPal Credit, Venmo, Google Pay or Apple Pay) costs $2.99 per payment for residential customers, and each card or wallet payment can be at most $1,000.",
+        "Pay as a Guest lets you pay without logging in; a $2.99 fee applies to every guest payment, including bank payments.",
+        "By phone, call 800-371-9811 for a same-day payment. Bank payments by phone are free when the account is stored in your wallet; otherwise a $2.99 fee applies. Text-to-pay works for checking or savings only.",
+        "By mail, send a check or money order to Consumers Energy Payment Center, P.O. Box 740309, Cincinnati, OH 45274-0309. You can also pay at authorized payment locations or through your bank's bill pay."
+      ],
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay",
+      "steps": [
+        "Log In.",
+        "Choose Pay Bill.",
+        "Pick a bank account or card.",
+        "Review the amount and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto-Pay and Easy Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto-Pay takes your monthly bill from a checking or savings account with no transaction fee. Enroll online, in the app or by phone.",
+        "Easy Pay is the automatic option for credit or debit cards and digital wallets. Each Easy Pay payment carries the $2.99 residential card fee, and you get an email reminder seven days before each payment. You can cancel Easy Pay any time before your due date."
+      ],
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/ways-to-pay/easy-pay",
+      "steps": [
+        "Log In.",
+        "Open Auto-Pay.",
+        "Choose a bank account (free) or a card (Easy Pay, $2.99 per payment).",
+        "Confirm enrollment."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Plans & Assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "Payment Arrangement: spread a balance over weekly, bi-weekly or monthly payments, depending on your payment and account history. You cannot be on another payment program at the same time.",
+        "Payment Hold: up to 10 more days to pay a bill you can pay in full, once per billing cycle, for accounts in good standing.",
+        "Budget Plan: an even monthly amount based on your last 12 months, reviewed every four months; your past-due balance must be under $75 to join.",
+        "CARE offers a 24-month affordable payment plan with past-due forgiveness for incomes at or below 60% of state median income. Seniors 65 and older on assistance can join the Winter Protection Plan from November to March."
+      ],
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment/payment-assistance",
+      "steps": [
+        "Log In.",
+        "Open Payment Arrangement.",
+        "Choose the number of payments.",
+        "Confirm the arrangement."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, stop or transfer service",
+      "topic": "account",
+      "paragraphs": [
+        "If you are moving out within the next 30 days and do not need new service, use the online Move In, Move Out tool or call 800-477-5050. Your final bill can take up to 40 days.",
+        "If you are on a payment plan at your old address, call 888-450-9143 so the plan is not interrupted."
+      ],
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/start-stop-service"
+    },
+    {
+      "slug": "faq",
+      "title": "Frequently asked questions",
+      "topic": "faq",
+      "paragraphs": [
+        "Your User ID can be an email address or a username. If you forgot it, you can have it emailed to you from the log-in page.",
+        "Past bills are in Account History after you log in. Paperless eBill is turned on from the preference center in your online account."
+      ],
+      "source": "https://www.consumersenergy.com/login"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "View or Pay Bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Log In to see your current bill, amount due and due date. Past bills are in Account History."
+      ],
+      "source": "https://www.consumersenergy.com/login"
+    },
+    {
+      "slug": "paperless",
+      "title": "eBill",
+      "topic": "billing",
+      "paragraphs": [
+        "Enroll in eBill from the preference center in your online account. Each month you get an email with a link to log in and view your bill instead of a paper copy."
+      ],
+      "source": "https://www.consumersenergy.com/residential/account-and-billing/billing-and-payment"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-amount",
+        "intent": "Using the Consumers Energy website's help pages, find out how much the fee is for paying a residential bill by credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card and digital wallet payments cost $2.99 each for residential customers."
+          }
+        ]
+      },
+      {
+        "slug": "card-payment-limit",
+        "intent": "Find the largest single card or digital wallet payment Consumers Energy accepts. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1,000",
+              "1000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1,000",
+            "1000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each card or digital wallet payment can be at most $1,000."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Ways to Pay",
+        "Log In"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "User ID or Email"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto-Pay",
+        "Payment Arrangement"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$2.99",
+        "$1,000"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Easy Pay"
+    }
+  ]
+}

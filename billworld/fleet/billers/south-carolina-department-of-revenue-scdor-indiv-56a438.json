@@ -1,0 +1,331 @@
+{
+  "id": "south-carolina-department-of-revenue-scdor-indiv-56a438",
+  "version": 1,
+  "status": "dedicated",
+  "name": "South Carolina Department of Revenue (SCDOR) - individual income tax",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public dor.sc.gov pages only. MyDORWAY: Make a Payment with or without an account (dor.sc.gov/pay), ACH debit or Visa/Mastercard/AmEx/Discover with no additional fees; ACH debit scheduled up to 13 months ahead for individual income tax (modelled as 365 days, the schema maximum), card payments cannot be scheduled or cancelled; pending ACH payments cancelled under Manage Payments and Returns. Account creation needs SSN/ITIN plus last payment/refund amount, Line 1 of last return or a Letter ID; password at least 14 characters with upper, lower, number, special, different from username; MFA required after first login (authenticator app, phone or email; passkey and recovery code options) - modelled as email_or_sms. Paperless: email alerts for new correspondence, switch to Mail Delivery under Settings. Payment Plan Agreements requested on MyDORWAY: $45 non-refundable fee, 12-48 months by total debt, bank drafts required or 20% down, no active levy or garnishment, default triggers legal action. Individual income tax returns cannot be filed in MyDORWAY. No recurring AutoPay for balances (inferred). Reviewer: three incorrect password attempts lock the account (lockoutAttempts 3); extension payments can be scheduled up to 120 days ahead.",
+  "officialDomains": [
+    "dor.sc.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://dor.sc.gov/iit/iit-file-pay-options",
+      "title": "IIT File & Pay Options | SCDOR",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://dor.sc.gov/payplan",
+      "title": "Payment Plan Agreements | SCDOR",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://dor.sc.gov/mydorway",
+      "title": "MyDORWAY | SCDOR",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "South Carolina Department of Revenue",
+    "shortName": "SCDOR",
+    "primary": "#00325b",
+    "accent": "#7a4100",
+    "monogram": "SC"
+  },
+  "labels": {
+    "dashboard": "MyDORWAY",
+    "payBill": "Make a Payment",
+    "guestPay": "Make a Payment",
+    "history": "Manage Payments and Returns",
+    "statements": "View Letters",
+    "paperless": "Mail Delivery",
+    "contact": "Send SCDOR a Message",
+    "arrangement": "Payment Plan Agreement",
+    "signIn": "Log In"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a Payment",
+        "page": "guest"
+      },
+      {
+        "label": "IIT File & Pay Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plan Agreements",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "MyDORWAY Help",
+        "helpSlug": "mydorway"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyDORWAY",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Payments and Returns",
+        "page": "history"
+      },
+      {
+        "label": "View Letters",
+        "page": "statements"
+      },
+      {
+        "label": "Payment Plan Agreement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Send SCDOR a Message",
+        "page": "contact"
+      },
+      {
+        "label": "Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "email_or_sms",
+    "socialProviders": [],
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{14,}$",
+      "message": "Use at least 14 characters with upper and lower case letters, a number and a special character."
+    },
+    "evidence": "documented_official",
+    "source": "https://dor.sc.gov/mydorway",
+    "lockoutAttempts": 3
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.sc.gov/iit/iit-file-pay-options",
+      "note": "Make a Payment on MyDORWAY without an account: enter your SSN or ITIN and legal name, then choose Individual Income Tax."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://dor.sc.gov/mydorway",
+      "note": "MyDORWAY has no recurring automatic payments for income tax. You can schedule an ACH debit up to 13 months ahead; a Payment Plan Agreement drafts your bank account on its schedule.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.sc.gov/mydorway",
+      "note": "ACH debit payments can be scheduled up to 13 months ahead and cancelled while pending. Card payments cannot be scheduled or cancelled."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.sc.gov/mydorway"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.sc.gov/payplan",
+      "note": "A non-refundable $45 fee applies. Plans last 12 to 48 months depending on your total debt and are paid by bank draft."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.sc.gov/payplan"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.sc.gov/iit/iit-file-pay-options"
+    }
+  },
+  "billing": {
+    "source": "https://dor.sc.gov/iit/iit-file-pay-options",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "scheduled": {
+      "maxDaysAhead": 365
+    },
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://dor.sc.gov/iit/iit-file-pay-options"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Individual income tax payment options",
+      "topic": "payments",
+      "source": "https://dor.sc.gov/iit/iit-file-pay-options",
+      "paragraphs": [
+        "MyDORWAY is the recommended way to pay, by ACH debit from checking or savings or by Visa, Mastercard, American Express or Discover. There are no additional fees for paying on MyDORWAY, and you do not need an account: choose Make a Payment.",
+        "With a paper return you can check the ACH Debit box and enter your bank information, or mail a check drawn on a U.S. bank to the address on your form or notice.",
+        "Third-party bill-pay sites are not affiliated with the SCDOR and may charge extra fees."
+      ]
+    },
+    {
+      "slug": "mydorway",
+      "title": "Using MyDORWAY",
+      "topic": "account",
+      "source": "https://dor.sc.gov/mydorway",
+      "paragraphs": [
+        "To create an account you need your SSN or ITIN and one item to verify it, such as your last payment or refund amount, Line 1 of your last return, or a Letter ID from the last 12 months. Passwords must have at least 14 characters with upper and lower case letters, a number and a special character.",
+        "After your first login, set up at least one more sign-in method: an authentication app, phone or email. Three incorrect password attempts lock your account.",
+        "ACH debit payments for individual income tax can be scheduled up to 13 months ahead and cancelled under Manage Payments and Returns while they are pending. Card payments cannot be scheduled or cancelled. Letters are under View Letters; to get paper mail instead of email alerts, change Mail Delivery under Settings."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment Plan Agreements",
+      "topic": "assistance",
+      "source": "https://dor.sc.gov/payplan",
+      "paragraphs": [
+        "Request a Payment Plan Agreement on MyDORWAY. A non-refundable $45 fee applies. The term runs from 12 to 48 months based on your total individual income tax debt.",
+        "Payments are drafted from your checking or savings account; if you do not allow bank drafts you must pay 20% of the balance up front. You cannot have an active levy or garnishment, and you must file and pay all returns, including estimated tax, during the plan.",
+        "A missed or returned payment puts the agreement in default and the SCDOR will take legal action to collect. Questions: email PPARequest@dor.sc.gov or send a MyDORWAY message."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "plan-fee",
+        "intent": "Using the SCDOR website's help pages, find the fee for an individual income tax Payment Plan Agreement. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$45"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$45"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees",
+          "payment_arrangement"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payment Plan Agreements carry a non-refundable $45 fee."
+          }
+        ]
+      },
+      {
+        "slug": "schedule-ahead",
+        "intent": "Using the SCDOR website's help pages, find how far ahead an ACH debit payment for individual income tax can be scheduled. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "13 months",
+              "thirteen months"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "13 months",
+            "thirteen months"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled_payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "ACH debit payments can be scheduled up to 13 months ahead."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "IIT File & Pay Options",
+        "Payment Plan Agreements"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "MyDORWAY",
+        "Send SCDOR a Message"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "$45",
+        "48 months"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "mydorway",
+      "contains": "13 months"
+    }
+  ]
+}

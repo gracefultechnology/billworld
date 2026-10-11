@@ -1,0 +1,393 @@
+{
+  "id": "ziply-fiber-e28a61",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Ziply Fiber",
+  "category": "phone-landline",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public ziplyfiber.com help center pages only (no sign-in). Ziply Fiber is the former Frontier Northwest ILEC (WA, OR, ID, MT); home phone is billed on the same Ziply Fiber account. a security code is emailed during setup and registration needs the billing account number, account PIN and billing ZIP (PIN is not expressible, so accountNumber + zip + email are modelled). The sign-in identifier is inferred to be the email address (the public pages do not name it; \"Ziply ID\" appears only in page analytics, so it is not used as a label). Payments: Billing tab > Make a Payment (Total balance / Current balance due / Pay another amount); one-time credit card payments carry a fee of up to 3% (modelled as 3%), debit card and ACH are free; phone payments at 1.866.947.5955 carry a service fee whose amount is not published. There is no public pay-without-signing-in page: Ziply can text a single-use payment link (billing ZIP, amount, method) to the primary account user after the customer contacts them, so guest_pay is modelled offline. Autopay: Set up autopay > choose how many days before the due date the payment applies (a per-customer lead time not expressible); $10/month discount with debit or ACH, $5/month with a credit card (discounts not modelled); turn off with Manage autopay > TURNED ON toggle > YES, TURN OFF. Paperless: Billing > Total balance > TURN ON / TURN OFF; no paper fee published. Cancellation and moving to a lower speed are by chat or phone (1.866.699.4759); no fee to cancel residential service; final bill arrives on the regular bill date 2-4 weeks later, bills are 30 days in advance and are not prorated; equipment back within 45 days. Payment arrangements are by phone at 1.888.488.0032. Scheduled-payment limits and late fees are not published (family defaults kept). Reviewed 2026-10-10 (t20 review): re-checked pay, autopay, cancel, setup and make-account-changes pages; sign-in label changed from \"Ziply ID (email)\" to \"Email address\" because no public page names a Ziply ID.",
+  "officialDomains": [
+    "ziplyfiber.com"
+  ],
+  "sources": [
+    {
+      "url": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/pay-your-bill",
+      "title": "Paying your bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/autopay",
+      "title": "Autopay",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/paperless-or-paper-billing",
+      "title": "Paperless billing",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://ziplyfiber.com/helpcenter/categories/account/manage-my-account/cancel",
+      "title": "Cancel Your Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://ziplyfiber.com/helpcenter/categories/account/manage-my-account/make-account-changes",
+      "title": "Make Changes to Your Account",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/final-bill",
+      "title": "Final bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://ziplyfiber.com/helpcenter/categories/account/manage-your-account/set-up-online-account-access",
+      "title": "Set up Online Account Access",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Ziply Fiber",
+    "shortName": "Ziply",
+    "primary": "#0a6640",
+    "accent": "#14213d",
+    "monogram": "Z"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "viewBill": "Billing",
+    "payBill": "Make a Payment",
+    "autopay": "Autopay",
+    "paperless": "Paperless billing",
+    "statements": "Bills",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Register",
+    "forgot": "Forgot Password",
+    "username": "Email address",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Paying your bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Account",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "mfa": "email",
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://ziplyfiber.com/helpcenter/categories/account/manage-your-account/set-up-online-account-access"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/pay-your-bill",
+      "note": "There is no online payment page without logging in. After you contact us, Ziply Fiber can text a one-time payment link to the primary account user, or you can pay by phone at 1.866.947.5955 with your 17-digit account number.",
+      "channel": "phone",
+      "phone": "8669475955"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/autopay",
+      "note": "Autopay saves $10 a month with a debit card or bank account (ACH), or $5 a month with a credit card. You choose how many days before the due date each payment applies."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/autopay"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/paperless-or-paper-billing"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/account/manage-my-account/cancel",
+      "note": "Service can't be cancelled in My Account. Chat with a live agent or call 1.866.699.4759. There is no fee to cancel residential fiber service.",
+      "channel": "phone",
+      "phone": "8666994759"
+    },
+    "change_plan": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/account/manage-my-account/make-account-changes",
+      "note": "Speed upgrades can be made on the Account tab, but moving to a lower speed needs a chat with a live agent or a call to 1.866.699.4759.",
+      "channel": "phone",
+      "phone": "8666994759"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/pay-your-bill",
+      "note": "Payment arrangements are set up by phone. Call 1.888.488.0032.",
+      "channel": "phone",
+      "phone": "8884880032"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/pay-your-bill",
+      "phone": "8669475955"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/pay-your-bill"
+    }
+  },
+  "contact": {
+    "phone": "1-866-699-4759",
+    "payPhone": "1-866-947-5955",
+    "evidence": "documented_official",
+    "source": "https://ziplyfiber.com/helpcenter/categories/account/manage-my-account/cancel"
+  },
+  "billing": {
+    "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/pay-your-bill",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 3,
+      "autopayCardCents": 0,
+      "notes": [
+        "Phone payments at 1.866.947.5955 carry a service fee (amount not published)."
+      ],
+      "evidence": "documented_official",
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/pay-your-bill"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Ziply Fiber bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to My Account or the Ziply Fiber app, open the Billing tab and choose Make a Payment. If autopay is already on you are asked to confirm first. Pick the total balance, the current balance due or another amount, then a saved method, a new card or a new bank account.",
+        "Debit card and bank (ACH) payments are free. One-time credit card payments carry a fee of up to 3% of the amount.",
+        "Without logging in, call 1.866.947.5955 with your 17-digit account number (a service fee applies; American Express is not taken by phone), or mail a check or money order payable to Ziply Fiber with your stub to P.O. Box 740416, Cincinnati, OH 45274-0416. Ziply can also text a one-time payment link to the primary account user after you contact us. For payment arrangements call 1.888.488.0032."
+      ],
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/pay-your-bill"
+    },
+    {
+      "slug": "autopay",
+      "title": "Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "From the Home or Billing tab choose Set up autopay, add or pick a payment method, and choose how many days before the due date each payment should apply.",
+        "Autopay takes $10 a month off with a debit card or bank account, or $5 a month with a credit card.",
+        "To change it, choose Manage autopay, then Edit. To stop it, choose Manage autopay, select the Turned On toggle and confirm with Yes, turn off."
+      ],
+      "steps": [
+        "Log in and open the Home or Billing tab.",
+        "Choose Set up autopay.",
+        "Add or select a payment method.",
+        "Choose how many days before the due date to pay, then Continue."
+      ],
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/autopay"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in, open Billing, and use the button under the paperless status in the Total balance section: Turn on to stop paper bills, Turn off to get them by mail again."
+      ],
+      "source": "https://ziplyfiber.com/helpcenter/categories/billing/read-and-pay-your-bill/paperless-or-paper-billing"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your Ziply Fiber service",
+      "topic": "account",
+      "paragraphs": [
+        "Cancelling, moving to a lower speed, seasonal service and billing name or address changes are handled by a live agent in chat or by phone at 1.866.699.4759. There is no contract and no fee to cancel residential fiber service.",
+        "Bills cover 30 days in advance and are not prorated. Your final bill comes on your regular bill date, usually 2 to 4 weeks after disconnection. Return equipment within 45 days to avoid charges."
+      ],
+      "source": "https://ziplyfiber.com/helpcenter/categories/account/manage-my-account/cancel"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-discount-ach",
+        "intent": "Using Ziply Fiber's help center, find how much the monthly autopay discount is when you pay with a debit card or bank account. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The autopay discount is $10 a month with debit or ACH."
+          }
+        ]
+      },
+      {
+        "slug": "arrangement-phone",
+        "intent": "You need more time to pay your Ziply Fiber bill. Find the phone number for setting up a payment arrangement. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8884880032"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8884880032"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "1.888.488.0032"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email address"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing",
+        "Autopay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1.866.699.4759"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "$10",
+        "$5"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "3%",
+        "P.O. Box 740416"
+      ]
+    }
+  ]
+}

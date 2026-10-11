@@ -1,0 +1,338 @@
+{
+  "id": "storage-rentals-of-america-sroa-837d3f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Storage Rentals of America",
+  "category": "storage-funeral",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public SROA help-center pages (Account Payments & Billing FAQ, Account Management FAQ) and the My Account log-in page (no sign-in). Log-in: Email + Password, Sign In, Forgot Password?, Register (register your units before signing in). Each tenant also gets a monthly invoice alert email with a personal payment link, and Storage Specialists can send a one-time payment link by email or SMS (no public guest-pay form; guest_pay is unsupported because the only no-login route is a personal link). Online: credit or debit card only (no bank), one-time payment, pre-pay or AutoPay from the Make a Payment drop-down next to the unit; AutoPay can also be reviewed under Billing. No partial payments (fullBalanceOnly). Rent is usually due on the 1st (some stores use the anniversary date); email reminders before the due date. Phone payments by card through the office; Storage Specialists 800-457-5678 (Mon-Fri 8-8 ET, Sat-Sun 9-5:30 ET) cannot see stored cards. Move-out: at least 10 days notice; empty the unit. Late fees, admin fee amounts and refund rules are lease-specific and not published.",
+  "officialDomains": [
+    "sroa.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.sroa.com/help-center/account-payments-billing-faq",
+      "title": "FAQ's: Billing & Payments | Storage Rentals of America",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.sroa.com/help-center/account-management-faq",
+      "title": "FAQ: Account Management | Storage Rentals of America",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.sroa.com/my-account/login",
+      "title": "Login to manage your units - Storage Rentals of America",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Storage Rentals of America",
+    "shortName": "SROA",
+    "primary": "#0b4f8a",
+    "accent": "#9a3412",
+    "monogram": "SR"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Register",
+    "forgot": "Forgot Password?",
+    "username": "Email",
+    "dashboard": "My Account",
+    "payBill": "Pay Your Bill",
+    "viewBill": "Billing",
+    "autopay": "AutoPay",
+    "help": "Help Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Your Bill",
+        "page": "login"
+      },
+      {
+        "label": "My Account",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Your Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.sroa.com/my-account/login"
+  },
+  "contact": {
+    "phone": "800-457-5678",
+    "source": "https://www.sroa.com/help-center/account-payments-billing-faq",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sroa.com/help-center/account-payments-billing-faq"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.sroa.com/help-center/account-payments-billing-faq",
+      "channel": "phone",
+      "phone": "800-457-5678",
+      "note": "There is no pay-without-login form. Use the personal payment link in your monthly invoice email, or call a Storage Specialist at 800-457-5678 to get a one-time payment link by email or text."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sroa.com/help-center/account-payments-billing-faq"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sroa.com/my-account/login"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sroa.com/help-center/account-payments-billing-faq",
+      "phone": "800-457-5678",
+      "note": "Call your store office to pay by credit or debit card."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.sroa.com/help-center/account-payments-billing-faq",
+      "channel": "phone",
+      "phone": "800-457-5678",
+      "note": "SROA does not accept partial payments. Talk to your local Property Manager or a Storage Specialist at 800-457-5678 if you need help."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.sroa.com/help-center/account-management-faq",
+      "channel": "phone",
+      "phone": "800-457-5678",
+      "note": "To move out, tell SROA at least 10 days ahead (your store or 800-457-5678), then remove everything from the unit."
+    }
+  },
+  "billing": {
+    "source": "https://www.sroa.com/help-center/account-payments-billing-faq",
+    "methods": [
+      "card"
+    ],
+    "fullBalanceOnly": true,
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your rent",
+      "topic": "payments",
+      "source": "https://www.sroa.com/help-center/account-payments-billing-faq",
+      "paragraphs": [
+        "Every month you get an invoice alert email with a personal payment link. You can also sign in to My Account and use the Make a Payment drop-down next to your unit to make a one-time payment, pay ahead or set up AutoPay. Online payments use a credit or debit card and you get an instant confirmation.",
+        "You can also pay at your store (cash, cashier's check, money order, debit or any major card) or by calling the office with a card. SROA does not accept partial payments. Most stores have an after-hours drop box; write your full name, unit number and payment date on the envelope."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Open the Make a Payment drop-down next to your unit.",
+        "Choose a one-time payment or pre-pay.",
+        "Enter your card and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "source": "https://www.sroa.com/help-center/account-payments-billing-faq",
+      "paragraphs": [
+        "With AutoPay your monthly rent is charged to your credit or debit card automatically at the beginning of each month. Sign in, open the Make a Payment drop-down next to your unit and choose Setup AutoPay. You can see which units are enrolled under Billing, or enroll at your store during office hours."
+      ]
+    },
+    {
+      "slug": "due-date",
+      "title": "When rent is due",
+      "topic": "billing",
+      "source": "https://www.sroa.com/help-center/account-payments-billing-faq",
+      "paragraphs": [
+        "Rent is usually due on the first day of each month, although some locations bill on your move-in anniversary date. SROA emails a reminder before your payment is due. Your own due date is shown in My Account."
+      ]
+    },
+    {
+      "slug": "update-card",
+      "title": "Updating your card",
+      "topic": "account",
+      "source": "https://www.sroa.com/help-center/account-management-faq",
+      "paragraphs": [
+        "Storage Specialists cannot see or change your stored card. Sign in, choose My Account and then Billing to update your card, pre-pay or review AutoPay. If you need help, call 800-457-5678 and a specialist can send you a one-time payment link by email or text."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "source": "https://www.sroa.com/help-center/account-management-faq",
+      "paragraphs": [
+        "Let SROA know at least 10 days before you move out. Your account is noted with the expected move-out date and the property may contact you to confirm. To finish, take your lock off, remove everything and sweep the unit clean.",
+        "Storage Specialists are available Monday to Friday 8 a.m. to 8 p.m. ET and weekends 9 a.m. to 5:30 p.m. ET at 800-457-5678."
+      ]
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "downgrade-plan",
+      "accept-retention",
+      "guest-pay"
+    ],
+    "extra": [
+      {
+        "slug": "partial-payments-policy",
+        "intent": "Using the SROA help center, find out whether SROA accepts partial payments on a storage unit. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "not",
+              "no"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "not",
+            "no"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "No, SROA does not accept partial payments."
+          }
+        ]
+      },
+      {
+        "slug": "move-out-notice",
+        "intent": "Find how many days of notice SROA asks for before you move out of a storage unit. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 10 days."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email",
+        "Sign In"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Your Bill"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "partial payments",
+        "drop box"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "10 days"
+    }
+  ]
+}

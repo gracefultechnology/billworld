@@ -1,0 +1,334 @@
+{
+  "id": "city-of-philadelphia-department-of-revenue-real--3cb945",
+  "version": 1,
+  "status": "dedicated",
+  "name": "City of Philadelphia Department of Revenue (Real Estate Tax)",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public phila.gov pages only (no Tax Center sign-in, no lookup). Real Estate Tax is paid on the Philadelphia Tax Center (sign in or pay as a guest); card payments redirect to KUBRA EZ-PAY. Fees: eCheck free; credit card 2.10% ($1.50 minimum); debit card $3.45 flat (not expressible, in fees.notes; the mock charges the credit-card rate); bounced eCheck $5; bounced check $20. Phone payments (833) 913-0795 with the same methods and fees; Real Estate Tax questions (215) 686-6442. Bills mailed in December, due March 31; from April 1, additions of 1.5% a month up to 15%, delinquent and liened January 1. Installment plan (low-income owner-occupants; all seniors) pays current-year tax in monthly installments through December 31; apply online through the combined assistance application (no login) or by mail by March 31; OOPA for overdue taxes; payment_arrangement supported. 2025 rate 1.3998%; Homestead Exemption $80,000. Look up the balance by address or 9-digit OPA number. No automatic payment or e-bill program is described (autopay unsupported inferred; paperless unknown). Email sign-in is synthetic.",
+  "officialDomains": [
+    "phila.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.phila.gov/services/payments-assistance-taxes/taxes/property-and-real-estate-taxes/real-estate-tax/",
+      "title": "Real Estate Tax | Services | City of Philadelphia",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.phila.gov/services/payments-assistance-taxes/taxes/filing-and-paying-your-taxes/how-to-file-and-pay-city-taxes/",
+      "title": "How to file and pay City taxes | Services | City of Philadelphia",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.phila.gov/services/payments-assistance-taxes/taxes/property-and-real-estate-taxes/get-real-estate-tax-relief/set-up-a-real-estate-tax-installment-plan/",
+      "title": "Set up a Real Estate Tax installment plan | Services | City of Philadelphia",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.phila.gov/services/payments-assistance-taxes/taxes/property-and-real-estate-taxes/look-up-your-property-tax-balance/",
+      "title": "Look up your property tax balance | Services | City of Philadelphia",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Philadelphia Department of Revenue",
+    "shortName": "Philadelphia Department of Revenue",
+    "primary": "#0f4d90",
+    "accent": "#8a3b12",
+    "monogram": "PH"
+  },
+  "labels": {
+    "guestPay": "Look up your property tax balance",
+    "payBill": "Real Estate Tax",
+    "arrangement": "Real Estate Tax installment plan",
+    "help": "Real Estate Tax",
+    "contact": "Get help with tax accounts and payments"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Look up your property tax balance",
+        "page": "guest"
+      },
+      {
+        "label": "How to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Real Estate Tax installment plan",
+        "helpSlug": "installment-plan"
+      },
+      {
+        "label": "Get Real Estate Tax relief",
+        "helpSlug": "tax-relief"
+      },
+      {
+        "label": "Real Estate Tax",
+        "page": "help"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Philadelphia Tax Center",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Real Estate Tax installment plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Get help with tax accounts and payments",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/filing-and-paying-your-taxes/how-to-file-and-pay-city-taxes/",
+      "note": "Pay as a guest on the Philadelphia Tax Center without a username: look up the property by address or 9-digit OPA number, then pay by free eCheck or card."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/filing-and-paying-your-taxes/how-to-file-and-pay-city-taxes/",
+      "note": "Automatic payments are not offered for Real Estate Tax. Pay each bill online, by phone, by mail or in person, or join the installment plan if you are eligible.",
+      "channel": "none"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/property-and-real-estate-taxes/real-estate-tax/",
+      "note": "Real Estate Tax bills are mailed in December. For questions about your bill, call (215) 686-6442."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/filing-and-paying-your-taxes/how-to-file-and-pay-city-taxes/",
+      "note": "Call (833) 913-0795 (English and Spanish, automated); same methods and fees as online.",
+      "phone": "8339130795"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/filing-and-paying-your-taxes/how-to-file-and-pay-city-taxes/",
+      "note": "Return the bill coupon with a check or money order; write the tax type and account number on the check."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/property-and-real-estate-taxes/get-real-estate-tax-relief/set-up-a-real-estate-tax-installment-plan/",
+      "note": "Eligible owner-occupants (all seniors, or low-income households) can apply online for monthly installments of the current year's tax, by March 31. Owners with overdue taxes can apply for an Owner-occupied Payment Agreement (OOPA)."
+    }
+  },
+  "billing": {
+    "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/filing-and-paying-your-taxes/how-to-file-and-pay-city-taxes/",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.1,
+      "cardMinCents": 150,
+      "notes": [
+        "Debit cards (PULSE, STAR, NYCE and most others): $3.45 per payment.",
+        "Bounced or returned eCheck: $5. Bounced check: $20."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/filing-and-paying-your-taxes/how-to-file-and-pay-city-taxes/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay Real Estate Tax",
+      "topic": "payments",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/filing-and-paying-your-taxes/how-to-file-and-pay-city-taxes/",
+      "paragraphs": [
+        "Pay on the Philadelphia Tax Center, signed in or as a guest. eCheck from a checking or savings account is free. Credit cards (Visa, Master Card, Discover, American Express, Diners Club) cost 2.10% with a $1.50 minimum, and most debit cards cost $3.45; card payments are completed on the processor KUBRA EZ-PAY. A bounced eCheck costs $5.",
+        "By phone, call (833) 913-0795; the automated line works in English and Spanish, with the same methods and fees as online. By mail, return the coupon from your bill with a check or money order, writing the tax type and account number on the check; you can print a payment voucher on the Tax Center without logging in. In person, pay at a municipal service center (only the Municipal Services Building in Center City takes cash). Bounced checks cost $20.",
+        "For Real Estate Tax questions call (215) 686-6442."
+      ]
+    },
+    {
+      "slug": "due-dates-additions",
+      "title": "Due date and late charges",
+      "topic": "billing",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/property-and-real-estate-taxes/real-estate-tax/",
+      "paragraphs": [
+        "Bills are usually mailed in December and the tax is due March 31. From April 1, unpaid tax adds charges called additions at 1.5% a month until January 1 of the next year, up to 15%.",
+        "If the tax is still unpaid on January 1, it is registered delinquent, a lien is filed for the full amount, and the City can begin a sheriff sale. For the 2025 tax year the combined City and School District rate is 1.3998% of assessed value."
+      ]
+    },
+    {
+      "slug": "installment-plan",
+      "title": "Real Estate Tax installment plan",
+      "topic": "assistance",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/property-and-real-estate-taxes/get-real-estate-tax-relief/set-up-a-real-estate-tax-installment-plan/",
+      "paragraphs": [
+        "Owners who live in their home and have low household income, and all senior citizens (65 or older, or with a spouse in the household who is), can pay the current year's tax in monthly installments through December 31.",
+        "Apply online on the Philadelphia Tax Center as part of the combined Real Estate Tax assistance application (no username needed), or mail the paper application so it arrives by March 31. If you finish the year's payments you are re-enrolled automatically, with eleven monthly bills from February through December. Missing payments puts the balance in default and removes you from the plan."
+      ]
+    },
+    {
+      "slug": "tax-relief",
+      "title": "Real Estate Tax relief programs",
+      "topic": "assistance",
+      "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/property-and-real-estate-taxes/real-estate-tax/",
+      "paragraphs": [
+        "Assistance programs include the Owner-occupied Real Estate Tax Payment Agreement (OOPA) for past-due taxes, senior and low-income tax freezes, the installment plan, the Longtime Owner Occupants Program (LOOP) for large assessment increases, and a deferral program for increases of 15% or more.",
+        "Every homeowner who applies can get the Homestead Exemption, which takes $80,000 off the taxable assessment."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "debit-card-fee",
+        "intent": "Using the Philadelphia Department of Revenue website's help pages, find the fee for paying Real Estate Tax with a debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$3.45"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$3.45"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Debit card payments cost $3.45; credit cards cost 2.10% ($1.50 minimum); eCheck is free."
+          }
+        ]
+      },
+      {
+        "slug": "homestead-amount",
+        "intent": "Using the Philadelphia Department of Revenue website's help pages, find how much the Homestead Exemption takes off a property's taxable assessment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$80,000",
+              "80,000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$80,000",
+            "80,000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Homestead Exemption reduces the taxable assessment by $80,000."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Real Estate Tax installment plan",
+        "Get Real Estate Tax relief"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "Real Estate Tax installment plan"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "KUBRA EZ-PAY",
+        "(833) 913-0795"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-dates-additions",
+      "contains": "1.5% a month"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "tax-relief",
+      "contains": "$80,000"
+    }
+  ]
+}

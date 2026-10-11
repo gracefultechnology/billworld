@@ -1,0 +1,385 @@
+{
+  "id": "e-zpass-virginia-vdot-and-toll-roads-in-virginia-80f2bf",
+  "version": 1,
+  "status": "dedicated",
+  "name": "E-ZPass Virginia (VDOT) and Toll Roads in Virginia",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public ezpassva.com pages (home, About E-ZPass with funding, statements, closing and On-the-Go sections), the public MyAccount login page (Username + Password, reCAPTCHA) and the Toll Roads in Virginia Make a Payment page that ezpassva.com links for missed tolls and invoices (added to officialDomains). Automatic replenishment usually within 24 hours of reaching the low-balance threshold (typically $10 per transponder), $35 per transponder or average monthly use, whichever is higher; card, or ACH from checking/savings with a backup card. Manual payments online or by phone take debit, credit or prepaid cards only, so billing.methods is card; the fleet's AutoPay is limited to card as well because methods drives the saved methods (the real ACH option with a backup card is described in the AutoPay note and help). Statements free online; mailed statements $2.00/month per group of three transponders. Closing an account needs the Account Closure Form by mail, email or in person (cancel_service unsupported online, channel mail). Lost/stolen fee $10 standard, $20 Flex. On-the-Go transponder $35 at retail, all credited, $15 usable before registration. Reload Card retailer fee $1.50. Missed-toll administrative fees on tollroadsinvirginia.com vary by facility ($0 to $1.50) and are described in help only. No payment plan is described (payment_arrangement unsupported, inferred). Review 2026-10-10: contact.phone set to 1-877-762-7824 (the catalog list also carried the TTY relay line 800-828-1120 and a secondary number, which showed on the close-account page as numbers to call).",
+  "officialDomains": [
+    "ezpassva.com",
+    "tollroadsinvirginia.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ezpassva.com/",
+      "title": "Home | E-ZPass Virginia",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.ezpassva.com/about/",
+      "title": "About E-ZPass | E-ZPass Virginia",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://myaccount.ezpassva.com/Home/Login",
+      "title": "Log in | E-ZPass Virginia",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.tollroadsinvirginia.com/Home/MakeAPayment",
+      "title": "Make A Payment | TollRoadsinVA",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "E-ZPass Virginia",
+    "shortName": "E-ZPass VA",
+    "primary": "#00336a",
+    "accent": "#7a3f00",
+    "monogram": "VA"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "username": "Username",
+    "register": "Create an account",
+    "forgot": "Forgot Username or Password?",
+    "guestPay": "Pay an Invoice/Notice",
+    "autopay": "Automatic Replenishment",
+    "help": "About E-ZPass"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "About E-ZPass",
+        "page": "help"
+      },
+      {
+        "label": "Fund Your Account",
+        "helpSlug": "autopay"
+      },
+      {
+        "label": "Pay an Invoice/Notice",
+        "page": "guest"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Create an account",
+        "page": "register"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Account Activity",
+        "page": "statements"
+      },
+      {
+        "label": "Automatic Replenishment",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Information",
+        "page": "wallet"
+      },
+      {
+        "label": "Vehicles & Contact Details",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://myaccount.ezpassva.com/Home/Login"
+  },
+  "contact": {
+    "phone": "877-762-7824",
+    "source": "https://www.ezpassva.com/about/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezpassva.com/about/",
+      "note": "Automatic replenishment charges your card (or your checking or savings account, with a backup card) usually within 24 hours of the balance reaching the low-balance threshold, typically $10 per transponder."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezpassva.com/about/",
+      "note": "Detailed monthly and quarterly statements are free online; a mailed statement costs $2.00 a month for each group of up to three transponders."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tollroadsinvirginia.com/Home/MakeAPayment",
+      "note": "Toll invoices and violation notices, and unpaid trips before a bill arrives, can be paid online without an E-ZPass account."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.ezpassva.com/about/",
+      "note": "Accounts are not closed online. Send the Account Closure Form by mail or email or bring it to a Customer Service Center, and return your transponders to avoid the lost/stolen fee ($10 standard, $20 Flex).",
+      "channel": "mail"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ezpassva.com/about/",
+      "phone": "8777627824"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.tollroadsinvirginia.com/Home/MakeAPayment",
+      "note": "No payment plan is described online. Pay invoices and notices in full, or call E-ZPass Virginia at 1-877-762-7824 about a balance you cannot pay.",
+      "channel": "phone",
+      "phone": "8777627824"
+    }
+  },
+  "billing": {
+    "source": "https://www.ezpassva.com/about/",
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Fund your E-ZPass account",
+      "topic": "autopay",
+      "paragraphs": [
+        "All transponders on an account share one prepaid balance. With automatic replenishment, the account is refilled usually within 24 hours after it reaches or falls below the low-balance threshold, which is typically $10.00 per transponder.",
+        "You can replenish from a credit or debit card, or by ACH from a checking or savings account as long as a valid card is on file as backup. The replenishment amount is $35 per transponder or your average monthly usage, whichever is higher: two light-use transponders refill with $70.00 when the balance reaches $20.00.",
+        "To replenish manually, pay online or by phone at 1-877-762-7824 with a debit, credit or prepaid card, use card, cash or check at a Customer Service Center, or load cash with an E-ZPass Reload Card at participating retailers (the retailer adds a $1.50 fee each time)."
+      ],
+      "source": "https://www.ezpassva.com/about/"
+    },
+    {
+      "slug": "statements",
+      "title": "Account activity and statements",
+      "topic": "account",
+      "paragraphs": [
+        "Log in to see toll transactions and payments and download account data. Detailed monthly and quarterly statements are free online.",
+        "A detailed statement by mail costs $2.00 per month for the first three transponders and another $2.00 for each additional group of up to three ($2.00 for 1-3, $4.00 for 4-6, $6.00 for 7-9). Sign up for email or text alerts when the balance gets low."
+      ],
+      "source": "https://www.ezpassva.com/about/"
+    },
+    {
+      "slug": "close-account",
+      "title": "Closing your account",
+      "topic": "account",
+      "paragraphs": [
+        "Complete the Account Closure Form and send it by mail or email, or bring it to a Customer Service Center.",
+        "Return each transponder at a Customer Service Center or by mail to E-ZPass Customer Service Center, PO Box 1234, Clifton Forge, VA 24422-1234, wrapped in foil or a mylar bag. Transponders not returned are charged the lost/stolen fee: $10 for a standard transponder, $20 for an E-ZPass Flex."
+      ],
+      "source": "https://www.ezpassva.com/about/"
+    },
+    {
+      "slug": "missed-tolls",
+      "title": "Missed tolls, invoices and violation notices",
+      "topic": "billing",
+      "paragraphs": [
+        "If you used a Virginia toll facility without paying, or received a toll invoice or violation notice, pay it online at Toll Roads in Virginia with Pay a Missed Toll or Pay an Invoice/Notice. You can pay a missed trip before an invoice is sent.",
+        "Some facilities add an administrative fee to missed tolls, for example $1.50 on the Coleman Bridge, I-64 Express, I-66 Inside the Beltway, Powhite Parkway and RMTA Expressway System, and none on the Dulles Toll Road. Privately operated facilities bill separately."
+      ],
+      "source": "https://www.tollroadsinvirginia.com/Home/MakeAPayment"
+    },
+    {
+      "slug": "on-the-go",
+      "title": "E-ZPass On-the-Go",
+      "topic": "account",
+      "paragraphs": [
+        "An E-ZPass On-the-Go transponder costs $35 at participating retailers, and the whole $35 is credited to your account. Before you register it, only $15 can be used, and only on Virginia toll roads and Express Lanes.",
+        "Register it online by opening an account or adding it to your existing account; the rest of the balance is then available in Virginia right away and on other E-ZPass roads within 48 hours."
+      ],
+      "source": "https://www.ezpassva.com/about/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "mailed-statement-fee",
+        "intent": "Using the E-ZPass VA website's help pages, find the monthly cost of a mailed statement for an account with one to three transponders. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2",
+              "2 dollars",
+              "two dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2",
+            "2 dollars",
+            "two dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees",
+          "paperless"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A mailed statement costs $2.00 per month for one to three transponders."
+          }
+        ]
+      },
+      {
+        "slug": "flex-lost-fee",
+        "intent": "Using the E-ZPass VA website's help pages, find the lost/stolen fee for an E-ZPass Flex transponder. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$20",
+              "20 dollars",
+              "twenty dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$20",
+            "20 dollars",
+            "twenty dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The lost/stolen fee for an E-ZPass Flex transponder is $20."
+          }
+        ]
+      },
+      {
+        "slug": "on-the-go-price",
+        "intent": "Using the E-ZPass VA website's help pages, find the retail price of an E-ZPass On-the-Go transponder. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$35",
+              "35 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$35",
+            "35 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "E-ZPass On-the-Go costs $35, all credited to the account."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Forgot Username or Password?"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "Account Closure Form"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "statements",
+      "contains": "$2.00 per month"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "missed-tolls",
+      "contains": "Toll Roads in Virginia"
+    }
+  ]
+}

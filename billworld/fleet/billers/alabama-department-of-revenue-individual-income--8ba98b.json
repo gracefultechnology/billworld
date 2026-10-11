@@ -1,0 +1,355 @@
+{
+  "id": "alabama-department-of-revenue-individual-income--8ba98b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Alabama Department of Revenue (individual income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public revenue.alabama.gov pages only. My Alabama Taxes (MAT): Create An Account with SSN and state AGI (not expressible); Pay a Bill without login with Letter ID and account number; logged-in payments under Accounts > My Accounts > Periods > Pay, saved payment sources, password re-entered to authorize, confirmation number; pending payments under Requests > Waiting to be Processed. ACH draft through MAT free; cards through ACI Payments (1-800-2PAY-TAX, jurisdiction 1100) or Value Payment Systems with a convenience fee whose amount is not published; card or ACH by phone with the Taxpayer Assistance Group (334) 353-8096. IIT payment plan in MAT after a Notice of Final Assessment or Notice of Intent to Offset: last 4 of SSN + letter ID, ACH required, $25/month minimum, up to 24 months, refunds still offset, interest accrues; Collection Services Division 334-242-1220. No recurring AutoPay for balances (inferred). Sign-in by username documented (user ID and password).",
+  "officialDomains": [
+    "revenue.alabama.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.revenue.alabama.gov/make-a-payment/",
+      "title": "Make A Payment - Alabama Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.revenue.alabama.gov/faqs/can-i-pay-my-income-taxes-due-with-a-credit-card/",
+      "title": "Can I pay my income taxes due with a credit card? - Alabama Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.revenue.alabama.gov/faqs/how-do-i-make-a-payment-on-my-alabama-taxes-mat/",
+      "title": "How do I make a payment on My Alabama Taxes? - Alabama Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.revenue.alabama.gov/faqs/does-alabama-offer-a-payment-plan-option/",
+      "title": "Does Alabama offer a payment plan option? - Alabama Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.revenue.alabama.gov/collections/payment-plan/",
+      "title": "Individual Payment Plans - Alabama Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Alabama Department of Revenue",
+    "shortName": "ALDOR",
+    "primary": "#1b365d",
+    "accent": "#8b1a1a",
+    "monogram": "AL"
+  },
+  "labels": {
+    "dashboard": "My Alabama Taxes",
+    "payBill": "Make a Payment",
+    "guestPay": "Pay a Bill",
+    "register": "Create An Account",
+    "arrangement": "Individual Income Tax Payment Plan",
+    "wallet": "Payment Sources",
+    "history": "Requests",
+    "help": "Help Center",
+    "signIn": "Log In"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay a Bill",
+        "page": "guest"
+      },
+      {
+        "label": "Make A Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Credit/Debit Card",
+        "helpSlug": "credit-card"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Alabama Taxes",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Requests",
+        "page": "history"
+      },
+      {
+        "label": "Payment Sources",
+        "page": "wallet"
+      },
+      {
+        "label": "Individual Income Tax Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber",
+      "statementId"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.revenue.alabama.gov/faqs/how-do-i-make-a-payment-on-my-alabama-taxes-mat/"
+  },
+  "contact": {
+    "phone": "3343538096",
+    "payPhone": "3343538096",
+    "source": "https://www.revenue.alabama.gov/make-a-payment/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.alabama.gov/make-a-payment/",
+      "note": "Pay a Bill without logging in, using the Letter ID and account number from the bill you received."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.revenue.alabama.gov/make-a-payment/",
+      "note": "My Alabama Taxes has no recurring automatic payments for an income tax balance. An approved Individual Income Tax Payment Plan is drafted from your bank account each month.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.alabama.gov/faqs/does-alabama-offer-a-payment-plan-option/",
+      "note": "Available after a Notice of Final Assessment or Notice of Intent to Offset. Payments are drafted by ACH: at least $25 a month, for up to 24 months."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.alabama.gov/collections/payment-plan/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.alabama.gov/make-a-payment/",
+      "note": "Pay by credit card or ACH debit by calling the Taxpayer Assistance Group at (334) 353-8096.",
+      "phone": "3343538096"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.alabama.gov/faqs/can-i-pay-my-income-taxes-due-with-a-credit-card/"
+    }
+  },
+  "billing": {
+    "source": "https://www.revenue.alabama.gov/make-a-payment/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.revenue.alabama.gov/faqs/can-i-pay-my-income-taxes-due-with-a-credit-card/",
+      "notes": [
+        "Card payments through ACI Payments or Value Payment Systems carry a convenience fee based on the payment amount, paid to the processor; the Department does not publish the amount. ACH payments in My Alabama Taxes are free."
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a payment",
+      "topic": "payments",
+      "source": "https://www.revenue.alabama.gov/make-a-payment/",
+      "paragraphs": [
+        "Pay a bill you received by mail with Pay a Bill in My Alabama Taxes, using the Letter ID and account number. Credit and debit card payments are accepted for all tax types, and ACH debit payments must be made through My Alabama Taxes.",
+        "To pay by phone with a card or ACH debit, call the Taxpayer Assistance Group at (334) 353-8096. To mail a payment, use Form 40V or the address on your bill or assessment.",
+        "Individuals create a My Alabama Taxes account with their SSN and state adjusted gross income."
+      ]
+    },
+    {
+      "slug": "pay-in-my-alabama-taxes",
+      "title": "Pay in My Alabama Taxes",
+      "topic": "payments",
+      "source": "https://www.revenue.alabama.gov/faqs/how-do-i-make-a-payment-on-my-alabama-taxes-mat/",
+      "paragraphs": [
+        "After you log in, payments are made for a specific account and period. Saved bank accounts appear as payment sources, and you can save a new one as your default.",
+        "You re-enter your password to authorize the payment, then receive a confirmation number. Pending payments are listed under Requests, Waiting to be Processed."
+      ],
+      "steps": [
+        "Open Accounts, then My Accounts, and select the account ID.",
+        "On the Periods tab, find the period under Requires Attention or All and select Pay.",
+        "Choose a saved payment source or enter new bank details, confirm the amount and select Submit.",
+        "Enter your password to authorize, then note the confirmation number."
+      ]
+    },
+    {
+      "slug": "credit-card",
+      "title": "Paying by credit card",
+      "topic": "payments",
+      "source": "https://www.revenue.alabama.gov/faqs/can-i-pay-my-income-taxes-due-with-a-credit-card/",
+      "paragraphs": [
+        "American Express, Visa, Discover and MasterCard are accepted through ACI Payments, Inc. or Value Payment Systems; Value Payment Systems does not take American Express. These processors charge a convenience fee based on the payment amount, paid directly to them.",
+        "ACI Payments also takes card payments by phone at 1-800-2PAY-TAX with Alabama jurisdiction code 1100. ACH draft payments in My Alabama Taxes have no charge."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Individual income tax payment plans",
+      "topic": "assistance",
+      "source": "https://www.revenue.alabama.gov/faqs/does-alabama-offer-a-payment-plan-option/",
+      "paragraphs": [
+        "If you received a Notice of Final Assessment or a Notice of Intent to Offset Federal Income Tax Refund, request a plan in My Alabama Taxes with the Individual Income Tax Payment Plan link, the last 4 digits of your SSN and the letter ID.",
+        "Plan payments must be drafted by ACH from a checking or savings account. The minimum is $25.00 a month and a plan can last up to 24 months. State and federal refunds are still applied to the balance, and interest keeps accruing.",
+        "Notices from the Collection Services Division use the separate Collections payment plan. Call 334-242-1220 for help; plans are created at the Department's discretion."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "plan-terms",
+        "intent": "Using the ALDOR website's help pages, find the maximum length of an individual income tax payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24 months",
+              "24"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24 months",
+            "24"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_arrangement"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Plans require at least $25 a month and can last up to 24 months."
+          }
+        ]
+      },
+      {
+        "slug": "aci-jurisdiction-code",
+        "intent": "Using the ALDOR website's help pages, find the jurisdiction code to use when paying Alabama tax by card through ACI Payments by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1100"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1100"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "pay_by_phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Use jurisdiction code 1100 at 1-800-2PAY-TAX."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Credit/Debit Card",
+        "Payment Plans"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My Alabama Taxes",
+        "Payment Sources"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "$25.00",
+        "24 months"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "credit-card",
+      "contains": "1100"
+    }
+  ]
+}

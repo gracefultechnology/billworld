@@ -1,0 +1,432 @@
+{
+  "id": "apple-subscriptions-apple-tv-apple-music-apple-o-65bb70",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Apple subscriptions (Apple TV, Apple Music, Apple One, iCloud+)",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public support.apple.com articles and the public Apple One page only (no sign-in). Apple subscriptions renew automatically and are charged to the payment methods on the Apple Account in the order the customer sets; there is no separate AutoPay enrollment, no paper bill, no installment plan and no guest payment, so those capabilities are not_applicable. US payment methods are Apple Account balance, Apple Card, Apple Cash, Apple Pay, most credit/debit cards and PayPal; no bank account, so billing.methods is ['card']. Sign-in uses the Apple Account email or phone number and password, then a two-factor verification code (trusted device or trusted phone number); modeled as two-step sign-in with SMS MFA (trusted-device prompts cannot be modeled). Plans are the published US Apple One bundle prices; standalone service prices are in help. Apple does not state when a plan switch takes effect; the engine applies it immediately. Refund requests through reportaproblem.apple.com cannot be modeled and are described in help. The 24-hour rule is documented for free trials only. Third-party app subscriptions billed by Apple (shown as APPLE.COM/BILL) are managed in the same Subscriptions list.",
+  "officialDomains": [
+    "apple.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.apple.com/en-us/118428",
+      "title": "Cancel a subscription from Apple - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://support.apple.com/en-us/118293",
+      "title": "Change, add, or remove Apple Account payment methods - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.apple.com/en-us/111741",
+      "title": "Payment methods that you can use with your Apple Account - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.apple.com/en-us/118212",
+      "title": "See your purchase history for the App Store, iTunes Store, and more - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.apple.com/apple-one/",
+      "title": "Apple One - Apple",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://support.apple.com/en-us/118448",
+      "title": "Switch to a different subscription plan - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://support.apple.com/en-us/102656",
+      "title": "If you forgot your password and can't sign in to your Apple Account - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://support.apple.com/en-us/118223",
+      "title": "Request a refund for apps or content that you bought from Apple - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Apple",
+    "shortName": "Apple",
+    "primary": "#1d1d1f",
+    "accent": "#0066cc",
+    "monogram": "A"
+  },
+  "labels": {
+    "dashboard": "Apple Account",
+    "plan": "See All Plans",
+    "wallet": "Payment Methods",
+    "history": "Purchase History",
+    "statements": "Purchase History",
+    "cancel": "Cancel Subscription",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "help": "Apple Support",
+    "username": "Email or Phone Number",
+    "forgot": "Forgot password?"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Apple One",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Apple Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Apple Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Subscriptions",
+        "page": "plan"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Purchase History",
+        "page": "history"
+      },
+      {
+        "label": "Cancel Subscription",
+        "page": "cancel"
+      },
+      {
+        "label": "Apple Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "evidence": "documented_official",
+    "source": "https://support.apple.com/en-us/102656"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/111741",
+      "note": "Apple charges the payment methods on your Apple Account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/118293",
+      "note": "Subscriptions renew automatically and are charged to the payment methods on your Apple Account, in the order you choose."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/118428",
+      "note": "To stop future charges, cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/118212",
+      "note": "Apple does not mail bills; your Purchase History and emailed receipts are online."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/118293"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/118293"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/118293",
+      "note": "Apple subscriptions are charged each billing period and installment plans are not offered."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/118428",
+      "note": "To avoid being charged after a free trial, cancel at least 24 hours before the trial ends. If you subscribed to Apple Music or Apple TV on an Android device and Google Play bills you, cancel in Google Play."
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/118448"
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/102656"
+    }
+  },
+  "billing": {
+    "source": "https://www.apple.com/apple-one/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/111741"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "apple-one-individual",
+        "name": "Apple One Individual",
+        "cents": 2195
+      },
+      {
+        "id": "apple-one-family",
+        "name": "Apple One Family",
+        "cents": 2795,
+        "current": true
+      },
+      {
+        "id": "apple-one-premier",
+        "name": "Apple One Premier",
+        "cents": 3995
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Apple One plans and prices",
+      "topic": "plans",
+      "paragraphs": [
+        "Apple One bundles several Apple services into one monthly price. Individual is $21.95 a month (iCloud+ with 50GB, Apple TV, Apple Music and Apple Arcade). Family is $27.95 a month, adds 200GB of iCloud+ and can be shared with up to five other people. Premier is $39.95 a month with 2TB of iCloud+ plus Apple Fitness+ and Apple News+, also shareable with five others.",
+        "Bought on their own, the services cost: iCloud+ $0.99 (50GB), $2.99 (200GB) or $9.99 (2TB); Apple TV $14.99; Apple Music $11.99 for one person or $19.99 for a family; Apple Arcade $6.99; Apple Fitness+ $9.99; and Apple News+ $12.99, each per month.",
+        "Services you do not already have are free for the first month after you start Apple One."
+      ],
+      "source": "https://www.apple.com/apple-one/"
+    },
+    {
+      "slug": "change-plan",
+      "title": "Switch to a different subscription plan",
+      "topic": "plans",
+      "paragraphs": [
+        "You can move between Apple One plans, or between the options of any other subscription, from the Subscriptions list of your Apple Account. Choose the subscription, select See All Plans, then follow the prompts to buy the new option.",
+        "If a plan with Family Sharing is chosen, you can then invite family members to share it."
+      ],
+      "source": "https://support.apple.com/en-us/118448",
+      "steps": [
+        "Sign in and open Subscriptions.",
+        "Choose the subscription.",
+        "Select See All Plans.",
+        "Pick the new plan and confirm."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel a subscription",
+      "topic": "account",
+      "paragraphs": [
+        "Open Subscriptions in your Apple Account (Settings, then your name, then Subscriptions on iPhone or iPad), choose the subscription, then choose Cancel Subscription. You can also cancel on the web after signing in to your Apple Account.",
+        "If you started a free trial and do not want to pay, cancel at least 24 hours before the trial ends. If there is no Cancel button, or an expiration message appears in red, the subscription is already canceled.",
+        "Subscriptions that Google Play bills you for are canceled in the Google Play app instead."
+      ],
+      "source": "https://support.apple.com/en-us/118428",
+      "steps": [
+        "Sign in and open Subscriptions.",
+        "Choose the subscription.",
+        "Choose Cancel Subscription and confirm."
+      ]
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "How Apple charges for subscriptions",
+      "topic": "billing",
+      "paragraphs": [
+        "In the United States you can pay with your Apple Account balance (from gift cards or added funds), Apple Card, Apple Cash, Apple Pay, most credit and debit cards, and PayPal.",
+        "Subscription renewals are charged automatically. If you have more than one payment method, you can set the order in which they are charged; open Payment Methods (Payment & Shipping on iPhone) to add, edit, reorder or remove them."
+      ],
+      "source": "https://support.apple.com/en-us/111741"
+    },
+    {
+      "slug": "purchase-history",
+      "title": "See your purchase history",
+      "topic": "billing",
+      "paragraphs": [
+        "Your Purchase History lists App Store, subscription and other Apple purchases. It shows the last 90 days by default; choose that label to change the date range. If you know the amount of a charge but not the item, search for the amount.",
+        "If a charge is missing, check whether it was made with a different Apple Account. Be careful with emails that claim to list Apple purchases; they may not come from Apple."
+      ],
+      "source": "https://support.apple.com/en-us/118212"
+    },
+    {
+      "slug": "refunds",
+      "title": "Request a refund",
+      "topic": "billing",
+      "paragraphs": [
+        "Some purchases and subscriptions can be refunded. Sign in to the Apple report-a-problem page, choose I'd like to, then Request a refund, pick the reason and the item, and submit.",
+        "Apple usually updates you on the request within 24 to 48 hours. If it is approved, the money can take extra time to reach your payment method."
+      ],
+      "source": "https://support.apple.com/en-us/118223"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Forgot your Apple Account password",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in with the email address or phone number on your Apple Account. If you forgot the password, choose Forgot password? on the sign-in screen; Apple may ask for a code sent to your trusted phone number or other recovery details. A trusted iPhone, iPad or Mac that is already signed in can also change the password.",
+        "If you cannot reset it, you can request account recovery, which can take several days."
+      ],
+      "source": "https://support.apple.com/en-us/102656"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "apple-one-premier-price",
+        "intent": "Using the Apple website, find the monthly price of the Apple One Premier plan in the United States. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "39.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "39.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Apple One Premier costs $39.95 a month."
+          }
+        ]
+      },
+      {
+        "slug": "refund-response-time",
+        "intent": "You asked Apple for a refund on a subscription charge. Using the Apple Support pages, find how long Apple says it usually takes to update you on a refund request. Do not change anything on the account.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24",
+              "48"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24",
+            "48"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Apple usually updates you within 24 to 48 hours."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign In",
+        "Apple One"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Email or Phone Number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Purchase History",
+        "Payment Methods"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Apple One Individual",
+        "Apple One Premier"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$39.95"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "24 hours"
+    }
+  ]
+}

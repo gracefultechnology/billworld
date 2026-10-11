@@ -1,0 +1,447 @@
+{
+  "id": "aep-ohio-ohio-power-company-23928f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "AEP Ohio (Ohio Power Company)",
+  "category": "electric",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public aepohio.com pages (no sign-in). The site now says AEP Ohio does business as Ohio Power Company; brand shows both. Log in with User ID and Password. Fees from the Compare Payment Options table: one-time payments (BillMatrix) $1.85 per residential transaction, limit $2,500 per residential transaction (below the schema's $5,000 floor, so help only); AutoPay is free (bank only, paid on the due date, activation takes 3 business days online); paperless customers pay free by e-check. The format cannot make the in-account e-check fee depend on paperless enrollment, so bankCents is 0 (paperless route) and cardCents 185; guest pay (BillMatrix, no login) is $1.85 for bank or card. Phone payments through BillMatrix at 800-611-0964. Payment arrangements and one-time payment extensions are online after logging in. Stop service online.",
+  "officialDomains": [
+    "aepohio.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.aepohio.com/account/bills/pay/",
+      "title": "Pay Your Bill | AEP Ohio",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.aepohio.com/account/bills/pay/compare",
+      "title": "Compare Payment Options | AEP Ohio",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.aepohio.com/account/bills/pay/auto-pay",
+      "title": "AutoPay | AEP Ohio",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.aepohio.com/account/bills/pay/phone",
+      "title": "Pay By Phone | AEP Ohio",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.aepohio.com/account/bills/pay/assistance/arrangement",
+      "title": "Payment Arrangement | AEP Ohio",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.aepohio.com/account/bills/paperless/",
+      "title": "Paperless Billing | AEP Ohio",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.aepohio.com/account/service/start-stop-transfer",
+      "title": "Start, Stop & Transfer Service | AEP Ohio",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Ohio Power Company (AEP Ohio)",
+    "shortName": "AEP Ohio",
+    "primary": "#00529b",
+    "accent": "#b3261e",
+    "monogram": "AO"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "register": "Register for an online account",
+    "forgot": "Trouble with your User ID or password?",
+    "guestPay": "Pay as a guest",
+    "arrangement": "Payment Arrangement",
+    "cancel": "Stop Service",
+    "username": "User ID",
+    "statements": "Payment Activity",
+    "wallet": "Manage Payment Methods"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay as a guest",
+        "page": "guest"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Compare Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Contact",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Bills",
+        "page": "bill"
+      },
+      {
+        "label": "Payment Activity",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Manage Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment Arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.aepohio.com/account/bills/pay/"
+  },
+  "contact": {
+    "phone": "800-672-2231",
+    "payPhone": "800-611-0964",
+    "source": "https://www.aepohio.com/account/bills/pay/phone"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aepohio.com/account/bills/pay/",
+      "note": "Guest pay through BillMatrix carries a $1.85 fee per residential payment."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aepohio.com/account/bills/pay/auto-pay"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aepohio.com/account/bills/paperless/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aepohio.com/account/bills/pay/compare"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aepohio.com/account/bills/pay/assistance/arrangement"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aepohio.com/account/service/start-stop-transfer"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aepohio.com/account/bills/pay/phone",
+      "phone": "800-611-0964"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aepohio.com/account/bills/pay/compare"
+    }
+  },
+  "billing": {
+    "source": "https://www.aepohio.com/account/bills/pay/compare",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 185,
+      "guestBankCents": 185,
+      "guestCardCents": 185,
+      "notes": [
+        "Online e-check payments are free only for Paperless Billing customers; other one-time payments cost $1.85.",
+        "One-time residential payments are limited to $2,500 each."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.aepohio.com/account/bills/pay/compare"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Compare payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Paying online from your checking account is free when you are enrolled in Paperless Billing. Other one-time payments, online, as a guest or by phone, go through BillMatrix and cost $1.85 per residential transaction, up to $2,500 per payment.",
+        "Pay as a guest makes a one-time payment without an online account. To pay by phone, call BillMatrix at 800-611-0964 with your account number; payments after 4:00 p.m. ET, on weekends or holidays post the next business day.",
+        "Cards accepted include Mastercard, Visa, Discover, American Express and Pulse, Accel, STAR and NYCE debit cards. You can also pay in person at CheckFree Pay locations or by mail."
+      ],
+      "source": "https://www.aepohio.com/account/bills/pay/compare",
+      "steps": [
+        "Log In.",
+        "Choose Make a Payment.",
+        "Pick a payment method.",
+        "Review and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay pays your bill from your bank account on the due date each month at no charge and sends you a message when it is paid. Card payments cannot be used for AutoPay.",
+        "Online enrollment takes about 3 business days to activate; mailed enrollment takes 4 to 6 weeks."
+      ],
+      "source": "https://www.aepohio.com/account/bills/pay/auto-pay",
+      "steps": [
+        "Log In.",
+        "Open AutoPay.",
+        "Choose your checking account.",
+        "Enroll."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "A payment arrangement spreads your balance over a few months so you can pay it in full; log in to check eligibility or status. If you only need a few extra days on one bill, a one-time payment extension may be a better fit.",
+        "Average Monthly Payments make bills more predictable. Ohio programs such as PIPP Plus and HEAP may also help."
+      ],
+      "source": "https://www.aepohio.com/account/bills/pay/assistance/arrangement"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "With Paperless Billing you get an email when your bill is ready, a reminder before it is due and free online payments from your checking account. You can see up to 13 months of bills and usage. Paper bills stop once you enroll."
+      ],
+      "source": "https://www.aepohio.com/account/bills/paperless/"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "View your bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in to see your current bill, amount due and due date. Paperless Billing customers can see up to 13 months of billing and usage details."
+      ],
+      "source": "https://www.aepohio.com/account/bills/paperless/"
+    },
+    {
+      "slug": "billing-history",
+      "title": "Payment activity",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in and open Payment Activity to see your recent payments. Bills and usage for up to 13 months are available to Paperless Billing customers."
+      ],
+      "source": "https://www.aepohio.com/account/bills/paperless/"
+    },
+    {
+      "slug": "faq",
+      "title": "Frequently asked questions",
+      "topic": "faq",
+      "paragraphs": [
+        "Ohio Power Company formerly did business as AEP Ohio; references to AEP Ohio on the site apply to Ohio Power Company.",
+        "Payments made after 4:00 p.m. ET, on a weekend or a holiday post on the next business day."
+      ],
+      "source": "https://www.aepohio.com/account/bills/pay/phone"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop service",
+      "topic": "account",
+      "paragraphs": [
+        "To close your account, use the online stop service form under Start, Stop & Transfer Service. If you are moving out of the AEP Ohio service area, fill out the form once you know your move-out date. For help, call 800-672-2231."
+      ],
+      "source": "https://www.aepohio.com/account/service/start-stop-transfer"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "guest-fee",
+        "intent": "Using the AEP Ohio website, find the fee for a one-time residential payment made without logging in. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.85"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.85"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Guest and other one-time residential payments cost $1.85 per transaction."
+          }
+        ]
+      },
+      {
+        "slug": "free-echeck-rule",
+        "intent": "Find out what an AEP Ohio customer must be enrolled in to pay online from a checking account for free. Do not enroll or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "paperless"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "paperless"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Online checking-account payments are free for customers enrolled in Paperless Billing."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Compare Payment Options",
+        "Log In"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "User ID"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay",
+        "Payment Arrangement"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$1.85",
+        "$2,500"
+      ]
+    }
+  ]
+}

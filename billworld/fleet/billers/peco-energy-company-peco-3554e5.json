@@ -1,0 +1,439 @@
+{
+  "id": "peco-energy-company-peco-3554e5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "PECO Energy Company (PECO)",
+  "category": "electric",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public peco.com and secure.peco.com pages (script-rendered; read in a browser without entering anything). Same Exelon platform as the ComEd dossier. Sign-in is one form 'Sign in to Your Account' with Email and Password and a Continue button. Guest payment ('Continue as a Guest') is same-day only, bank account or card, verified by phone + last 4 SSN/TIN or account number + ZIP (or last 4 SSN/TIN); modelled as account number + ZIP. Signed-in customers can schedule future payments. AutoPay is bank-only and free. Card and phone convenience fees exist ('Fees may apply') but no amount is published, so none is modelled. Payment Arrangements need a balance under $3,000 and a My Account; income-based options up to 60 months by phone (1-888-480-1533). Due Date Extension: 21 calendar days, twice a year for residential, not while on AutoPay or Budget Billing; a standard late fee still applies (rate not published on the pages read, so no late fee modelled). Start, Move, or Stop requests are online.",
+  "officialDomains": [
+    "peco.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.peco.com/my-account/my-dashboard/payment-options",
+      "title": "Payment Options | PECO",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.peco.com/my-account/my-dashboard/payment-options/automatic-payment",
+      "title": "Automatic Payment | PECO",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.peco.com/my-account/my-dashboard/payment-options/pay-by-mail-phone",
+      "title": "Pay By Mail or Phone | PECO",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.peco.com/my-account/my-dashboard/payment-options/payment-arrangement",
+      "title": "Payment Arrangements | PECO",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.peco.com/my-account/my-dashboard/payment-options/due-date-extension",
+      "title": "Due Date Extension | PECO",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.peco.com/my-account/my-dashboard/billing-options/paperless-ebill",
+      "title": "Paperless eBill | PECO",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://secure.peco.com/payments/payonline/guest",
+      "title": "Payment | PECO (guest or sign-in choice)",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://secure.peco.com/MyAccount/MyBillUsage/Pages/Secure/MyBillUsage.aspx",
+      "title": "Sign in to Your Account | PECO",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://secure.peco.com/CustomerServices/service/landing",
+      "title": "Start, Move, or Stop Your Service | PECO",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "shortName": "PECO",
+    "primary": "#00539b",
+    "accent": "#003a70",
+    "monogram": "PE"
+  },
+  "labels": {
+    "autopay": "AutoPay",
+    "paperless": "Paperless eBill",
+    "signIn": "Sign In",
+    "register": "Register Now",
+    "forgot": "Forgot password?",
+    "guestPay": "Pay as a Guest",
+    "arrangement": "Payment Arrangements",
+    "cancel": "Stop Service",
+    "username": "Email",
+    "statements": "Account History"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Pay as a Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Register Now",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Due Date Extension",
+        "helpSlug": "due-date-extension"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Account History",
+        "page": "statements"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Arrangements",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "observed_public",
+    "source": "https://secure.peco.com/MyAccount/MyBillUsage/Pages/Secure/MyBillUsage.aspx"
+  },
+  "contact": {
+    "phone": "1-800-494-4000",
+    "payPhone": "1-877-432-9384",
+    "source": "https://www.peco.com/my-account/my-dashboard/payment-options/pay-by-mail-phone"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://secure.peco.com/payments/payonline/guest",
+      "note": "Guest payments are same-day only; sign in to schedule a future payment."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://secure.peco.com/payments/payonline/guest"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/automatic-payment"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.peco.com/my-account/my-dashboard/billing-options/paperless-ebill"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/payment-arrangement"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://secure.peco.com/CustomerServices/service/landing"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/pay-by-mail-phone"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/pay-by-mail-phone"
+    }
+  },
+  "billing": {
+    "source": "https://www.peco.com/my-account/my-dashboard/payment-options",
+    "fees": {
+      "bankCents": 0,
+      "notes": [
+        "Card payments and phone payments may carry a convenience fee from PECO's payment processor; the amount is shown before you pay."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/automatic-payment"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment Options",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to make a same-day payment or schedule a future one from a bank account or a credit or debit card. Fees may apply to card payments.",
+        "Pay as a Guest makes a one-time, same-day payment without an account. You verify with your phone number and the last 4 digits of your SSN/TIN, or with your account number and ZIP code.",
+        "To pay by phone, call 1-877-432-9384; you key in your own card or bank details in PECO's automated system. To pay by mail, make the check payable to PECO, write your account number on it and send it to PECO, P.O. Box 37629, Philadelphia, PA 19101, allowing a week for delivery."
+      ],
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options",
+      "steps": [
+        "Sign In.",
+        "Choose Pay Bill.",
+        "Pick a bank account or card and a date.",
+        "Review and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay pays your monthly bill straight from your bank account with no fees.",
+        "If you recently changed energy suppliers, part of your balance may be due earlier; check the due dates in Account History. For eligibility questions call 1-800-494-4000."
+      ],
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/automatic-payment",
+      "steps": [
+        "Sign In.",
+        "Open AutoPay.",
+        "Choose your bank account.",
+        "Accept the terms and enroll."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "Residential or home business customers with active service, a balance under $3,000, no active bankruptcy and no current arrangement can check eligibility online after signing in.",
+        "Agreements are based on the household income PECO has on file; some households qualify for an extended arrangement of up to 60 months by calling 1-888-480-1533."
+      ],
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/payment-arrangement",
+      "steps": [
+        "Sign In.",
+        "Open Payment Arrangements.",
+        "Check eligibility and pick a plan.",
+        "Confirm."
+      ]
+    },
+    {
+      "slug": "due-date-extension",
+      "title": "Due Date Extension",
+      "topic": "billing",
+      "paragraphs": [
+        "Eligible residential customers can move a bill's due date out by 21 calendar days, up to twice a year. You cannot use it while on AutoPay, Budget Billing or a payment arrangement.",
+        "A standard late payment fee is still charged after the original due date, but the balance will not go to collections. The extension does not change the due date of later bills."
+      ],
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/due-date-extension"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Start, Move, or Stop Service",
+      "topic": "account",
+      "paragraphs": [
+        "Use Start, Move, or Stop Your Service online to stop service on a date you choose; existing requests can be reviewed or changed with View My Request. For help call 1-800-494-4000."
+      ],
+      "source": "https://secure.peco.com/CustomerServices/service/landing"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "View your bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign in to My Account to see your current bill, amount due and due date. Past bills and their due dates are in Account History.",
+        "If you recently changed energy suppliers, part of your balance may have an earlier due date; check Account History."
+      ],
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/automatic-payment"
+    },
+    {
+      "slug": "faq",
+      "title": "Frequently asked questions",
+      "topic": "faq",
+      "paragraphs": [
+        "Paperless eBill needs an active account, a My Account and a valid email address on file. Your eBill looks the same as the paper bill.",
+        "To restore service after a disconnection for nonpayment, call 888-480-1533 to make your payment with a representative."
+      ],
+      "source": "https://www.peco.com/my-account/my-dashboard/payment-options/pay-by-mail-phone"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "extension-days",
+        "intent": "Using PECO's help pages, find how many calendar days a residential Due Date Extension adds. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "21"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "21"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A residential Due Date Extension adds 21 calendar days."
+          }
+        ]
+      },
+      {
+        "slug": "arrangement-balance-limit",
+        "intent": "Find the account balance limit for a PECO online payment arrangement. Do not set up an arrangement or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3,000",
+              "3000"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3,000",
+            "3000"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The balance must be less than $3,000."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Options",
+        "Due Date Extension"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Email"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay",
+        "Payment Arrangements"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "notContains": [
+        "Debit or credit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date-extension",
+      "contains": "21 calendar days"
+    }
+  ]
+}

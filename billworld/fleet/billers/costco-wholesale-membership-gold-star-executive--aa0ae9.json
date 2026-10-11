@@ -1,0 +1,391 @@
+{
+  "id": "costco-wholesale-membership-gold-star-executive--aa0ae9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Costco Wholesale membership (Gold Star / Executive / Business)",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public customerservice.costco.com answers and costco.com membership pages only (no sign-in). Costco membership is an annual fee: Gold Star and Business $65, Executive $130 ($65 plus a $65 upgrade). Renewing online (Account > Renew Membership) is allowed from 90 days before to 90 days after expiration; renewals are also accepted by mail, at any warehouse and through the Member Service Center. Auto Renewal charges the fee on the first day of the renewal month to a Visa credit/debit or Mastercard debit card and is turned off online, at a membership counter, by chat or by phone at least 72 hours before that day; modeled as AutoPay (card only). Costco's pages used do not describe canceling a membership online; cancel_service is unsupported with an inferred counter/phone route (evidence: inferred) — the refund-on-cancel practice (satisfaction guarantee) is only stated generally. Upgrading to Executive is possible but downgrades and level changes are not documented as online; change_plan is unsupported (inferred), noted as a gap (upgrades online vs downgrades offline is not expressible). Executive 2% reward and Shop Card promotions are not modeled. Sign-in identifier (email) is inferred: the sign-in page needs JavaScript and was not rendered. Reviewer 2026-10-10: billing.fees ({0,0}, inferred) removed: no convenience fee is published, and with fullBalanceOnly the contract's $25 card-fee check cannot run. Reviewer 2026-10-10: a_id 7661 documents upgrade to Executive online and downgrade only at a counter or by phone; change_plan stays unsupported (downgrade is the modeled task) with plans kept for the real names/prices — the note names both levels so the plan page lists them. Plans are annual fees; the streaming template prints them '/month' (cross-owner: annual plan prices).",
+  "officialDomains": [
+    "costco.com"
+  ],
+  "sources": [
+    {
+      "url": "https://customerservice.costco.com/app/answers/answer_view/a_id/1812",
+      "title": "How can I manage membership Auto Renewal online? - Costco Customer Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://customerservice.costco.com/app/answers/answer_view/a_id/1160/loc/en_US",
+      "title": "Renewing a membership - Costco Customer Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://customerservice.costco.com/app/answers/answer_view/a_id/8162",
+      "title": "Contact Costco - Costco Customer Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.costco.com/member-privileges-conditions.html",
+      "title": "Member Privileges & Conditions | Costco",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.costco.com/join-costco.html",
+      "title": "Join Costco | Costco",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://customerservice.costco.com/app/answers/answer_view/a_id/7661",
+      "title": "What changes can I make to my Costco membership online? - Costco Customer Service",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Costco Wholesale",
+    "shortName": "Costco",
+    "primary": "#005daa",
+    "accent": "#c8102e",
+    "monogram": "C"
+  },
+  "labels": {
+    "dashboard": "Account",
+    "payBill": "Renew Membership",
+    "autopay": "Auto Renewal",
+    "plan": "Membership",
+    "cancel": "Cancel Membership",
+    "wallet": "Payment Methods",
+    "history": "Order History",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "help": "Customer Service",
+    "username": "Email Address",
+    "dueDate": "Renewal date"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Membership fees",
+        "helpSlug": "membership-fees"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Renew Membership",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Renewal",
+        "page": "autopay"
+      },
+      {
+        "label": "Membership",
+        "page": "plan"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "evidence": "inferred",
+    "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/1812"
+  },
+  "contact": {
+    "phone": "800-774-2678",
+    "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/8162"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/1160/loc/en_US",
+      "note": "You can renew online from 90 days before your membership expires until 90 days after; after that, renew at a warehouse or by phone."
+    },
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/1160/loc/en_US",
+      "note": "Sign in to renew online, or renew at any warehouse, by mail or through the Member Service Center."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/1812",
+      "note": "Auto Renewal charges your annual fee on the first day of your renewal month to a Visa credit or debit card or a Mastercard debit card."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/1812",
+      "note": "Remove Auto Renewal at least 72 hours before the first day of your renewal month to avoid that year's charge. You can also turn it off at a membership counter, by chat, or by calling 1-800-774-2678."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/1160/loc/en_US"
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.costco.com/member-privileges-conditions.html",
+      "note": "Costco does not send monthly bills; your membership fee is paid once a year."
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.costco.com/member-privileges-conditions.html"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.costco.com/member-privileges-conditions.html",
+      "note": "The membership fee is paid once a year and installment plans are not offered."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/8162",
+      "note": "To cancel your membership, visit the membership counter at any Costco warehouse or call Member Services at 1-800-774-2678 (Mon-Fri 6 a.m.-6 p.m. PT, Sat-Sun 8 a.m.-5 p.m. PT).",
+      "phone": "800-774-2678",
+      "channel": "phone"
+    },
+    "change_plan": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/7661",
+      "note": "You can upgrade from Gold Star to Executive online. To change from Executive back to Gold Star, visit a warehouse membership counter or call Member Services at 1-800-774-2678, at least two business days before your renewal date."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.costco.com/member-privileges-conditions.html",
+      "phone": "800-774-2678"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.costco.com/member-privileges-conditions.html"
+    }
+  },
+  "billing": {
+    "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/1812",
+    "methods": [
+      "card"
+    ],
+    "fullBalanceOnly": true,
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "plans": [
+      {
+        "id": "gold-star",
+        "name": "Gold Star",
+        "cents": 6500
+      },
+      {
+        "id": "executive",
+        "name": "Executive",
+        "cents": 13000,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "membership-fees",
+      "title": "Membership fees",
+      "topic": "plans",
+      "paragraphs": [
+        "Gold Star and Business memberships cost $65 a year. Executive membership costs $130 a year: the $65 membership plus a $65 Executive upgrade. Each affiliate business membership is $65 a year. Taxes may apply and fees can change.",
+        "Renewals are charged at the fee in effect on the day the renewal is paid."
+      ],
+      "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/1812"
+    },
+    {
+      "slug": "auto-renewal",
+      "title": "Manage Auto Renewal",
+      "topic": "billing",
+      "paragraphs": [
+        "Once your membership is verified, sign in, go to Account, then Renew Membership, choose or add a card, and check the box agreeing that your fee will renew automatically. Auto Renewal accepts Visa credit and debit cards and Mastercard debit cards.",
+        "Your fee is charged once a year on the first day of your renewal month. To stop it, remove Auto Renewal in your account, at a membership counter, by chat, or by phone at least 72 hours before that day.",
+        "If you remove Auto Renewal within 48 hours of the renewal date, the charge may still go through, and Costco refunds it within two business days. To ask for a refund of an automatic renewal you did not want, use the auto-renewal refund request form; refunds take about 5 to 7 business days."
+      ],
+      "source": "https://customerservice.costco.com/app/answers/answer_view/a_id/1812",
+      "steps": [
+        "Sign in and open Account.",
+        "Choose Renew Membership.",
+        "Select a card and check the consent box.",
+        "Save to turn on Auto Renewal."
+      ]
+    },
+    {
+      "slug": "renew-membership",
+      "title": "Renew your membership",
+      "topic": "billing",
+      "paragraphs": [
+        "Sign in and choose Renew Membership in your account. An active membership can be renewed online within 90 days before it expires, and an expired one within 90 days after. After that you can still renew at a warehouse or by phone.",
+        "Fees are due by the last day of the month your membership expires. Renewing within two months after expiration extends it 12 months from the old expiration date; renewing later extends it 12 months from the day you renew. To shop the same day, renew at the register."
+      ],
+      "source": "https://www.costco.com/member-privileges-conditions.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your membership",
+      "topic": "account",
+      "paragraphs": [
+        "Costco memberships are backed by a satisfaction guarantee. To cancel and ask about a refund of your fee, visit the membership counter at any warehouse or call Member Services at 1-800-774-2678.",
+        "If you only want to stop next year's charge, remove Auto Renewal instead; your membership then expires at the end of the current year."
+      ],
+      "source": "https://www.costco.com/member-privileges-conditions.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "auto-renewal-cutoff",
+        "intent": "You do not want your Costco membership to renew this year. Using the Costco website, find how long before the first day of your renewal month you must remove Auto Renewal to avoid the charge. Do not change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "72"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "72"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Remove Auto Renewal at least 72 hours before the first day of the renewal month."
+          }
+        ]
+      },
+      {
+        "slug": "executive-fee",
+        "intent": "Using the Costco website, find the annual fee for a Costco Executive membership. Do not change your membership or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "130"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "130"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An Executive membership costs $130 a year."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Sign In",
+        "Membership fees"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Renew Membership",
+        "Auto Renewal"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-774-2678"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "membership-fees",
+      "contains": "$130"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "auto-renewal",
+      "contains": "72 hours"
+    }
+  ]
+}

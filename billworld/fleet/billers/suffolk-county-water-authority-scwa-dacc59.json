@@ -1,0 +1,379 @@
+{
+  "id": "suffolk-county-water-authority-scwa-dacc59",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Suffolk County Water Authority (SCWA)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public scwa.com pages (Pay My Bill, the FAQ source page, A Customer's Guide to the SCWA Bill) and the public KUBRA i-Doxs self-service portal sign-in page that SCWA links as Login / Pay Bill (no sign-in, no form submitted). The portal signs in with Username and Password (Forgot your Username/Password?, Sign up now, Make a OneTime Payment, Deactivate your profile). Enrolling and adding an account need the 10-digit account number, the 8-digit security code printed on the bill and the ZIP code (a security-code field cannot be expressed; reported). Online payments accept Visa, Mastercard, Discover, American Express, PIN debit networks, checking or savings and Google Pay/Apple Pay; no convenience fee is published, so fees are omitted. AutoPay applies to new bills only and can be edited or cancelled under Manage AutoPay; future payments can be scheduled up to the due date (the due-date cap cannot be modelled). Bills are quarterly. Pay by Text activates after a successful online one-time payment. No payment-plan process is published on the pages used, so payment arrangements are left to the family default (an unknown setting made the kubra arrangement flow fail; reported). Review found the Moving Out application on scwa.com (five business days, a representative follows up), so stop service is supported. The Coram walk-in center is permanently closed; retail payments use the KUBRA EZ-PAY badge on the back of the bill.",
+  "officialDomains": [
+    "scwa.com",
+    "secure8.i-doxs.net"
+  ],
+  "sources": [
+    {
+      "url": "https://www.scwa.com/pay-my-bill/",
+      "title": "Pay My Bill | Suffolk County Water Authority",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.scwa.com/faq-source/",
+      "title": "FAQ Source | Suffolk County Water Authority",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.scwa.com/water-customers/billing/a-customers-guide-to-the-scwa-bill/",
+      "title": "A Guide to Your Bill | Suffolk County Water Authority",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://secure8.i-doxs.net/BDX/default.aspx?BillerID=EIxpqoESYf",
+      "title": "BDX - Self-service Portal (Suffolk County Water Authority)",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.scwa.com/water-customers/customer-service/moving-out/",
+      "title": "Moving Out? | Suffolk County Water Authority",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Suffolk County Water Authority",
+    "shortName": "SCWA",
+    "primary": "#005b96",
+    "accent": "#003f69",
+    "monogram": "SC"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "Username",
+    "register": "Sign up now",
+    "forgot": "Forgot your Username/Password?",
+    "guestPay": "Make a OneTime Payment",
+    "payBill": "Pay Bill",
+    "autopay": "AutoPay",
+    "paperless": "Go Paperless",
+    "history": "Payment History",
+    "wallet": "Manage Payment Accounts",
+    "help": "Billing FAQs",
+    "cancel": "Moving Out?"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a OneTime Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Sign up now",
+        "page": "register"
+      },
+      {
+        "label": "Pay My Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Billing FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Manage Payment Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "Moving Out?",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "observed_public",
+    "source": "https://secure8.i-doxs.net/BDX/default.aspx?BillerID=EIxpqoESYf"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.scwa.com/faq-source/",
+      "note": "Guest payments through KUBRA EZ-PAY make a one-time payment right away, no registration needed."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.scwa.com/faq-source/",
+      "note": "AutoPay applies to new bills only; pay any bill already issued yourself."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.scwa.com/faq-source/",
+      "note": "Cancel under Manage AutoPay. Payments already scheduled stay active."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.scwa.com/pay-my-bill/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.scwa.com/faq-source/",
+      "note": "Future payments can be scheduled up to the bill due date."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.scwa.com/water-customers/customer-service/moving-out/",
+      "note": "Moving out? Submit the Moving Out application with your account number, a forwarding address for the final bill, phone, email and closing date. Stopping service takes five business days, and a customer representative will contact you."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.scwa.com/pay-my-bill/",
+      "phone": "877-204-2507"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.scwa.com/water-customers/billing/a-customers-guide-to-the-scwa-bill/"
+    }
+  },
+  "contact": {
+    "phone": "631-698-9500",
+    "payPhone": "877-204-2507",
+    "source": "https://www.scwa.com/pay-my-bill/"
+  },
+  "billing": {
+    "source": "https://www.scwa.com/faq-source/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay My Bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to the self-service portal to pay, set up AutoPay and see payment history, or make a one-time guest payment with KUBRA EZ-PAY without registering. Online payments accept Visa, Mastercard, Discover and American Express, Pulse, NYCE, STAR and Alliance debit cards, checking or savings, and Google Pay or Apple Pay.",
+        "Pay by phone 24/7 through the automated line at (877) 204-2507; live support is weekdays 8:30 a.m. to 8 p.m. and Saturdays 8 a.m. to 4:30 p.m. (TTY (631) 589-5210). At CVS, Dollar General, Speedway, Walmart, 7-Eleven, Family Dollar or Walgreens, show the KUBRA EZ-PAY badge on the back of your bill; retail payments cost $1.99. The Coram walk-in center is permanently closed. By mail, send a check to Suffolk County Water Authority, PO Box 9044, Hicksville, NY 11802-9044.",
+        "Online payments are usually processed within two business days; weekend and holiday payments the next business day. Bills cover a three-month quarter and show your 10-digit account number and 8-digit security code, which you need for portal access."
+      ],
+      "source": "https://www.scwa.com/pay-my-bill/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Enrolling needs the security code at the top of your bill. In the portal, add a bank account, credit card or debit card under Manage Payment Accounts, then choose Manage AutoPay, Add AutoPay, select the billing and payment accounts, set the payment options and submit.",
+        "AutoPay only affects new bills; pay any outstanding bill yourself. To change or stop it, use Edit or Cancel in Manage AutoPay. Scheduled payments stay active after a change."
+      ],
+      "source": "https://www.scwa.com/faq-source/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Go Paperless",
+      "topic": "billing",
+      "paragraphs": [
+        "Going paperless sends your bills by email, and you can set up AutoPay at the same time. Paperless options are under Online Accounts, Edit, in the portal; Manage Alerts turns on email notices such as new-bill alerts."
+      ],
+      "source": "https://www.scwa.com/pay-my-bill/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving out",
+      "topic": "account",
+      "paragraphs": [
+        "To stop service when you leave, fill in the Moving Out application on the SCWA website with your account number, name, forwarding address for the final bill, phone number, closing date and email address.",
+        "The termination process takes five business days, and an SCWA customer representative will contact you about it. A $30 customer initiation fee applies when responsibility for an account changes. Questions: Customer Service at (631) 698-9500."
+      ],
+      "source": "https://www.scwa.com/water-customers/customer-service/moving-out/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "ivr-pay-number",
+        "intent": "Find the phone number for SCWA's 24/7 automated phone payment line. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "877-204-2507",
+              "8772042507",
+              "(877) 204-2507"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "877-204-2507",
+            "8772042507",
+            "(877) 204-2507"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The 24/7 automated payment line is (877) 204-2507."
+          }
+        ]
+      },
+      {
+        "slug": "security-code-length",
+        "intent": "Find how many digits the security code on an SCWA bill has (you need it for portal access). Do not register or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "8",
+              "eight"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "8",
+            "eight"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The security code has 8 digits."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "(877) 204-2507",
+        "8-digit security code"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Manage AutoPay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "five business days"
+      ]
+    }
+  ]
+}

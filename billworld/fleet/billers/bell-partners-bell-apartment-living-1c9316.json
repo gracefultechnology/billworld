@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-10",
+  "id": "bell-partners-bell-apartment-living-1c9316",
+  "name": "Bell Partners (Bell Apartment Living)",
+  "category": "housing",
+  "notes": "Researched from public bellpartnersinc.com pages (Support Services, Contact). The site header's Resident Login links to the RentCafe portal bellpartnersinc.securecafe.com (the footer link uses bellapartmentliving.securecafe.com). Contact: Resident Customer Service - choose your community from the list for its dedicated phone and email (no national resident line); HQ 300 N. Greene Street, Suite 1000, Greensboro, NC 27401, 336.232.1900 (listed on Contact for Greensboro HQ - reviewer, used as the contact phone). Portfolio about 65,000 apartments. Note: bellapartmentliving.com (no subdomain) is NOT Bell's site (unrelated listing site) - not used. Fees, autopay, notice periods and sign-in fields not published (family defaults kept, inferred).",
+  "officialDomains": [
+    "bellpartnersinc.com",
+    "securecafe.com"
+  ],
+  "sources": [
+    {
+      "url": "https://bellpartnersinc.com/support-services",
+      "title": "Support Services | Bell Partners",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://bellpartnersinc.com/contact/",
+      "title": "Contact Bell Partners Today",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Bell Partners",
+    "shortName": "Bell",
+    "primary": "#003b5c",
+    "accent": "#7b341e",
+    "monogram": "BP"
+  },
+  "labels": {
+    "signIn": "Resident Login",
+    "help": "Resident Customer Service"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident Login",
+        "page": "login"
+      },
+      {
+        "label": "Resident Customer Service",
+        "page": "help"
+      },
+      {
+        "label": "Contact Us",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Charges",
+        "page": "bill"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Auto-pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Service Requests",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "contact-us",
+      "title": "Resident customer service",
+      "paragraphs": [
+        "Each Bell Partners community has its own customer service phone number and email: choose your community under Resident Customer Service on the Contact page to see them, or send a message with the Resident Services form. Bell Partners' headquarters is at 300 N. Greene Street, Suite 1000, Greensboro, NC 27401 (336.232.1900)."
+      ],
+      "source": "https://bellpartnersinc.com/contact/",
+      "topic": "contact"
+    },
+    {
+      "slug": "pay-your-bill",
+      "title": "Resident Login",
+      "paragraphs": [
+        "Use Resident Login at the top of the Bell Partners site to reach the resident portal."
+      ],
+      "source": "https://bellpartnersinc.com/support-services",
+      "topic": "payments"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "community-phone-where",
+        "intent": "Using the Bell Partners help pages, find out how to get your community's customer service phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "community"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "community"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Choose your community on the Contact page to see its dedicated phone number and email."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "label": "signIn"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "Greensboro"
+    }
+  ],
+  "contact": {
+    "phone": "3362321900",
+    "source": "https://bellpartnersinc.com/contact/",
+    "evidence": "documented_official"
+  }
+}

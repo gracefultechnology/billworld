@@ -1,0 +1,358 @@
+{
+  "id": "texas-disposal-systems-4baf18",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Texas Disposal Systems",
+  "category": "trash",
+  "reviewedAt": "2026-10-10",
+  "template": "waste-hauler",
+  "notes": "Moved from the catalog default utility-account family to the trash-specific waste-hauler family. Researched from the public texasdisposal.com home page (Pay My Bill links to tdspayments.com, the TDS Soft-Pak Web-Pak bill-pay site, so tdspayments.com is listed in officialDomains), the TDS Billing FAQ, and the public Texas Disposal Systems Online Bill Pay sign-in page and its FAQ; never signed in. Sign-in is one page with E-Mail and a case-sensitive password (8-64 characters, set as passwordRule); Register Now needs the Customer Number and the access code printed at the bottom of the TDS statement or invoice. The Billing FAQ says automatic payments can be scheduled, stopped or amended by calling Customer Care at (800) 375-8375 or through the bill-pay site. Mail payments: Texas Disposal Systems Inc, PO Box 674090, Dallas, TX 75267-4090. No convenience fee, late fee, guest payment or payment-plan policy is published: guest pay and payment arrangements are unsupported online (inferred) and no fees are set.",
+  "officialDomains": [
+    "texasdisposal.com",
+    "tdspayments.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.texasdisposal.com/",
+      "title": "Texas Disposal Systems, Inc. - TDS",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.texasdisposal.com/faqs/billing/",
+      "title": "Frequent Asked Billing Questions - Texas Disposal Systems",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.tdspayments.com/webpak/signin.jsp",
+      "title": "Texas Disposal Systems Online Bill Pay",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.tdspayments.com/webpak/faq.jsp",
+      "title": "Online Bill Pay - Frequently Asked Questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Texas Disposal Systems",
+    "shortName": "TDS",
+    "primary": "#0b5d2a",
+    "accent": "#8a1c1c",
+    "monogram": "TD"
+  },
+  "labels": {
+    "payBill": "Pay My Bill Online",
+    "signIn": "Sign In",
+    "register": "Register Now",
+    "forgot": "Reset Password",
+    "autopay": "Autopay Enrollment",
+    "paperless": "Billing Options",
+    "wallet": "Payment Methods",
+    "profile": "User Options",
+    "help": "FAQ",
+    "accountNumber": "Customer Number",
+    "username": "E-Mail"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay My Bill",
+        "page": "login"
+      },
+      {
+        "label": "Register Now",
+        "page": "register"
+      },
+      {
+        "label": "Billing FAQ",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Online Bill Pay",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill Online",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay Enrollment",
+        "page": "autopay"
+      },
+      {
+        "label": "Billing Options",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "User Options",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "passwordRule": {
+      "pattern": "^.{8,64}$",
+      "message": "Your password must be 8-64 characters long."
+    },
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.tdspayments.com/webpak/signin.jsp"
+  },
+  "contact": {
+    "phone": "800-375-8375",
+    "source": "https://www.texasdisposal.com/faqs/billing/",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.texasdisposal.com/faqs/billing/",
+      "note": "Register with your Customer Number and the access code at the bottom of your TDS statement or invoice; the access code is used once."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.tdspayments.com/webpak/signin.jsp"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.texasdisposal.com/faqs/billing/"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.texasdisposal.com/faqs/billing/",
+      "note": "TDS online payments are made after signing in to the Bill Payment website. First-time users register with the access code from their statement, or call Customer Care at (800) 375-8375.",
+      "channel": "phone",
+      "phone": "800-375-8375"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.texasdisposal.com/faqs/billing/",
+      "note": "You can also schedule, stop or change automatic payments by calling Customer Care at (800) 375-8375."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.texasdisposal.com/faqs/billing/",
+      "note": "Stop automatic payments here or call Customer Care at (800) 375-8375."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.tdspayments.com/webpak/faq.jsp"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.texasdisposal.com/faqs/billing/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.texasdisposal.com/faqs/billing/",
+      "note": "Payment plans are not offered online. Call TDS Customer Care at (800) 375-8375 about a past-due balance.",
+      "channel": "phone",
+      "phone": "800-375-8375"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.texasdisposal.com/",
+      "note": "Service cannot be stopped through the Bill Payment website. Call TDS Customer Care at (800) 375-8375 to stop or change service.",
+      "channel": "phone",
+      "phone": "800-375-8375"
+    }
+  },
+  "billing": {
+    "source": "https://www.texasdisposal.com/faqs/billing/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your TDS bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online through the TDS Bill Payment website: first-time users register, returning customers sign in with their login and password, then choose Account/Payment to make a one-time payment. A confirmation is shown when the payment goes through.",
+        "To pay by mail, send your payment to Texas Disposal Systems Inc, PO Box 674090, Dallas, TX 75267-4090.",
+        "Questions about your bill? Call Customer Care at (800) 375-8375."
+      ],
+      "source": "https://www.texasdisposal.com/faqs/billing/"
+    },
+    {
+      "slug": "access-code",
+      "title": "Where to find your access code",
+      "topic": "account",
+      "paragraphs": [
+        "Your access code is printed at the bottom of your TDS statement or invoice. You use it once, together with your Customer Number, to set up your Bill Payment login and automatic payments. Your login can be your e-mail address, and you choose a password for return visits."
+      ],
+      "source": "https://www.texasdisposal.com/faqs/billing/"
+    },
+    {
+      "slug": "register",
+      "title": "How to register for Online Bill Pay",
+      "topic": "account",
+      "paragraphs": [
+        "On the Texas Disposal Systems Online Bill Pay Sign In page, find the Are you a new user? section and choose Register Now. Enter the Customer Number and the Access Code printed on your statement or invoice, your e-mail address and a password, then select Register Now.",
+        "An e-mail with a confirmation link is sent to the address you entered. Open the link and sign in to finish. Your e-mail address is your username; you can change it later under User Options, Change Username."
+      ],
+      "source": "https://www.tdspayments.com/webpak/faq.jsp"
+    },
+    {
+      "slug": "autopay",
+      "title": "How to enroll in automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic payments pay each invoice from a saved card or bank account. You agree to the Terms and Conditions when you pick the payment method."
+      ],
+      "steps": [
+        "Sign in and select Autopay Enrollment.",
+        "Pick a saved payment method, or choose Add New and enter one.",
+        "Check I agree to the Terms and Conditions.",
+        "Choose Select (or Add Payment) to finish enrolling."
+      ],
+      "source": "https://www.tdspayments.com/webpak/faq.jsp"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "How to change automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Select Autopay Enrollment to open Billing Options, then choose Modify in the Automatic Payments section. Add a new payment method or pick another saved one, agree to the Terms and Conditions and choose Select."
+      ],
+      "source": "https://www.tdspayments.com/webpak/faq.jsp"
+    },
+    {
+      "slug": "paperless",
+      "title": "How to change your bill delivery options",
+      "topic": "billing",
+      "paragraphs": [
+        "After signing in, select Billing Options. The button only appears when your online login is the admin for that account number.",
+        "Three On/Off switches control delivery: E-Mail Notifications Only (an e-mail when the bill is ready to view online), E-Mail Notifications With Bill Attached (the bill as a PDF), and Printed Bill (a paper bill by mail). Choose Submit to save. The same window holds the primary billing e-mail address."
+      ],
+      "source": "https://www.tdspayments.com/webpak/faq.jsp"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "access-code-location",
+        "intent": "Using the TDS help pages, find where the access code you need to set up automatic payments is printed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "bottom"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "bottom"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "It is at the bottom of your TDS statement or invoice."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "E-Mail",
+        "Reset Password"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Autopay Enrollment",
+        "Billing Options"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "E-Mail Notifications With Bill Attached"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "Access Code"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "PO Box 674090",
+        "(800) 375-8375"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "(800) 375-8375"
+    }
+  ]
+}

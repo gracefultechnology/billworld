@@ -1,0 +1,367 @@
+{
+  "id": "gci-gci-communication-corp-dab7d0",
+  "version": 1,
+  "status": "dedicated",
+  "name": "GCI (GCI Communication Corp.)",
+  "category": "tv",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public gci.com support pages and the GCI internet terms only (no sign-in; my.gci.com redirects to a login.gci.com OAuth page that was not opened). MyGCI sign-up: Sign Up under 'Don't have a login?', enter email and pass a robot check, then the GCI account number from the invoice and either the account password or the 5-character Security PIN, then first and last name and a MyGCI password (at least 6 characters with a letter, a number and one of ! @ # $ %); activation link within 24 hours. The sign-in identifier is a MyGCI username per GCI's login help as indexed by search (the pages fetched only say 'username'), so identifier is username, evidence inferred. Payment page lists MyGCI online, phone 1-800-800-4800 (invoice/account number and PIN), GCI stores (cash in store only) and mail to PO Box 99016, Anchorage, AK 99509-9016; Visa, Mastercard, Discover, American Express, checking/savings, check and GCI gift card; no fees are mentioned (inferred free). No pay-without-login option is described, so guest_pay is unsupported (inferred). Autopay: Overview or Billing > Turn on Autopay; toggle on the Manage Autopay screen; full balance; MyGCI picks a payment date near the due date and the customer can pick another calendar day (a free day choice is not expressible beyond days: due_date); payments made before the autopay date are subtracted. Turning autopay off is not described on the fetched page (catalog notes say the same toggle turns it off), so autopay_cancel keeps the family default. Paperless: Billing > Paperless Billing toggle; residential printed bills carry a $2.99 monthly Paper Bill Fee. Cancellation: no online flow is described; the internet terms say service can be cancelled anytime (early termination/equipment fees may apply) and billing is in advance with no proration, so cancel_service is unsupported online (inferred) with the customer-service number. Late fee amounts vary by terms version and are left out; the internet terms list a $30 returned payment fee. Reviewer (t20, 2026-10-10): Re-checked the five cited pages plus the Reset MyGCI login and Download billing statements articles. The reset article says Forgot Password asks for the MyGCI username and Forgot Username asks for the registration email, so the username identifier is now documented_official; added reset-password and billing-history help. Cancellation by phone stays inferred (the terms say only that you may cancel any time).",
+  "officialDomains": [
+    "gci.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.gci.com/support/m/make-a-payment",
+      "title": "How Do I Make a Payment | GCI",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.gci.com/support/s/set-up-autopay",
+      "title": "How to Set up Autopay with MyGCI | GCI",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.gci.com/support/a/activate-paperless-billing",
+      "title": "How to Activate Paperless Billing in MyGCI | GCI",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.gci.com/support/c/create-mygci-profile",
+      "title": "Create a MyGCI login profile | GCI Account and Billing Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.gci.com/terms-conditions/internet-service",
+      "title": "Terms and Conditions (Internet Service) | GCI",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.gci.com/support/r/reset-mygci-login",
+      "title": "Reset MyGCI login | GCI",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.gci.com/support/d/download-billing-statements",
+      "title": "Download billing statements | GCI",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "GCI",
+    "shortName": "GCI",
+    "primary": "#00468b",
+    "accent": "#b5121b",
+    "monogram": "G"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "username": "MyGCI Username",
+    "password": "MyGCI Password",
+    "register": "Sign Up",
+    "dashboard": "Overview",
+    "viewBill": "Billing",
+    "payBill": "Make a Payment",
+    "autopay": "Autopay",
+    "paperless": "Paperless Billing",
+    "statements": "Billing History",
+    "help": "Support",
+    "forgot": "Forgot Password"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login to MyGCI",
+        "page": "login"
+      },
+      {
+        "label": "Sign Up",
+        "page": "register"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Billing History",
+        "page": "statements"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "registrationFields": [
+      "accountNumber",
+      "email",
+      "lastName"
+    ],
+    "passwordRule": {
+      "pattern": "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%]).{6,}$",
+      "message": "Your MyGCI password must be at least 6 characters and include a letter, a number and one of ! @ # $ %."
+    },
+    "evidence": "documented_official",
+    "source": "https://www.gci.com/support/r/reset-mygci-login"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/c/create-mygci-profile"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/m/make-a-payment"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.gci.com/support/m/make-a-payment",
+      "note": "Online payments are made in MyGCI. Without signing in, pay by phone at 1-800-800-4800 with your account number and PIN, at a GCI store or by mail.",
+      "channel": "phone",
+      "phone": "8008004800"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/s/set-up-autopay",
+      "note": "Autopay charges your full amount due each month. Payments you make before the autopay date are subtracted from it."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/a/activate-paperless-billing"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.gci.com/terms-conditions/internet-service",
+      "note": "To cancel GCI service, call 1-800-800-4800. Service is billed in advance, so cancelling takes effect at the end of the billing cycle without a partial refund.",
+      "channel": "phone",
+      "phone": "8008004800"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/m/make-a-payment",
+      "phone": "8008004800"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.gci.com/support/m/make-a-payment"
+    }
+  },
+  "contact": {
+    "phone": "8008004800",
+    "payPhone": "8008004800",
+    "source": "https://www.gci.com/support/m/make-a-payment",
+    "evidence": "documented_official"
+  },
+  "billing": {
+    "source": "https://www.gci.com/support/m/make-a-payment",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "notes": [
+        "Residential customers who keep a printed bill pay a $2.99 monthly Paper Bill Fee."
+      ],
+      "evidence": "inferred",
+      "source": "https://www.gci.com/support/m/make-a-payment"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make a GCI payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign up and pay online in MyGCI, call 1-800-800-4800 and follow the prompts (have your invoice or account number and your PIN), visit a GCI store, or mail your payment to GCI, PO Box 99016, Anchorage, AK 99509-9016.",
+        "GCI takes Visa, Mastercard, Discover and American Express credit or debit cards, checking or savings accounts, checks and GCI gift cards wherever you pay. Cash is accepted in stores only. Prepaid customers pay separately online, by phone at 907-444-8100 or at a store or authorized retailer."
+      ],
+      "source": "https://www.gci.com/support/m/make-a-payment"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up Autopay in MyGCI",
+      "topic": "autopay",
+      "paragraphs": [
+        "Log in to MyGCI and click Turn on Autopay on the Overview or Billing tab. If no payment method is saved, create one (credit card or bank account), then return to Autopay.",
+        "On the Manage Autopay screen switch the toggle to on, choose a payment date (MyGCI suggests one near your due date), pick the payment method and save. Autopay charges your full amount due; anything you pay before the autopay date is subtracted so you do not overpay. Your next payment date then shows on the Overview screen."
+      ],
+      "steps": [
+        "Log in to MyGCI.",
+        "Click Turn on Autopay on Overview or Billing.",
+        "Switch the toggle to Autopay is on.",
+        "Choose a payment date and method, then Save Changes."
+      ],
+      "source": "https://www.gci.com/support/s/set-up-autopay"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "In MyGCI on the web or in the app, select Billing and use the Paperless Billing toggle to turn it on or off.",
+        "Residential customers who choose a printed bill are charged a $2.99 Paper Bill Fee each month, so going paperless avoids it."
+      ],
+      "source": "https://www.gci.com/support/a/activate-paperless-billing"
+    },
+    {
+      "slug": "register",
+      "title": "Create a MyGCI login",
+      "topic": "account",
+      "paragraphs": [
+        "On the login screen choose Sign Up, enter your email and pass the robot check. Then enter the account number from your monthly invoice and either your account password or your Security PIN (only one is needed).",
+        "Add your first and last name and create a MyGCI password of at least 6 characters with a letter, a number and one of ! @ # $ %. Click the activation link in the email within 24 hours. If you cannot remember your account password or PIN, call 1-800-800-4800."
+      ],
+      "source": "https://www.gci.com/support/c/create-mygci-profile"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancelling GCI service",
+      "topic": "account",
+      "paragraphs": [
+        "Call GCI at 1-800-800-4800 to cancel. Without a term agreement there is no early termination fee; with one, early termination and equipment fees may apply. Because service is billed in advance, cancelling takes effect at the end of the billing cycle and partial months are not refunded. A returned payment costs $30."
+      ],
+      "source": "https://www.gci.com/terms-conditions/internet-service"
+    },
+    {
+      "slug": "reset-password",
+      "title": "Forgot your MyGCI username or password",
+      "topic": "account",
+      "paragraphs": [
+        "On the MyGCI login page choose Forgot Password, enter your MyGCI username and follow the steps to set a new password.",
+        "If you forgot your username, choose Forgot Username and enter the email address you registered with; GCI emails you your username."
+      ],
+      "source": "https://www.gci.com/support/r/reset-mygci-login"
+    },
+    {
+      "slug": "billing-history",
+      "title": "Past billing statements",
+      "topic": "billing",
+      "paragraphs": [
+        "In MyGCI open the Billing tab. Earlier statements are listed under Billing History: choose View to open one as a PDF or Download to save it."
+      ],
+      "source": "https://www.gci.com/support/d/download-billing-statements"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "paper-bill-fee",
+        "intent": "Using GCI's help, find the monthly fee GCI charges residential customers who keep a printed bill. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "paperless"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "GCI charges a $2.99 monthly Paper Bill Fee for printed bills."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "MyGCI Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Autopay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "1-800-800-4800"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "$2.99"
+    }
+  ]
+}

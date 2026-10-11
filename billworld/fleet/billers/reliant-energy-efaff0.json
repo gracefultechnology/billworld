@@ -1,0 +1,388 @@
+{
+  "id": "reliant-energy-efaff0",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Reliant Energy",
+  "category": "electric",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public reliant.com pages and the sign-in page at auth.reliant.com (no sign-in). Sign-in field 'Username or Email address' with a Login button and a one-time-link option (not modelled). Quick Pay pays without logging in using account number + ZIP, by bank draft or card. AutoPay accepts a bank account or credit card; after online enrollment the balance is paid on the next due date (the page also mentions the next full billing cycle; customers keep paying until a bill shows 'Do Not Pay'); a returned bank payment costs $25 (not modelled); not available on prepaid plans or with two or more returned payments in 6 months. AutoPay can also be enrolled by a mailed/faxed form (not modelled). No convenience fees are stated for online payments ('No hidden fees'), so none is modelled. Payment extensions may carry a 5% late fee plus disconnection-notice fees; modelled as lateFeePercent 5. Deferred payment plans: part up front, the rest in installments with following bills. Cancel online or by phone; fixed-term plans may have an early cancellation fee (on the EFL), waivable on a documented move. Plan prices vary by ZIP, so no plans are modelled. The duplicate catalog record 'Reliant Energy (Texas)' (reliant-energy-texas-65feb0) is the same billing site and gets no dossier.",
+  "officialDomains": [
+    "reliant.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay",
+      "title": "Ways to pay your Reliant bill | Reliant Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay/autopay",
+      "title": "How to Set Up AutoPay | Reliant Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.reliant.com/en/residential/help-support/customer-resources/billing-payments/financial-help",
+      "title": "Financial Aid | Electricity Relief Programs | Reliant Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.reliant.com/en/residential/help-support/customer-resources/cancel-service",
+      "title": "Service Cancellation | Reliant Energy",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://myaccount.reliant.com/",
+      "title": "Reliant account log in",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Reliant",
+    "primary": "#00539f",
+    "accent": "#a34100",
+    "monogram": "R"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "signIn": "Login",
+    "signOut": "Log out",
+    "register": "Create your online account",
+    "forgot": "Forgot password",
+    "guestPay": "Quick Pay",
+    "arrangement": "Payment Extension",
+    "cancel": "Cancel Service",
+    "username": "Username or Email address",
+    "dashboard": "My account",
+    "statements": "Monthly Bills"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Financial help",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help & support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Monthly Bills",
+        "page": "statements"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Extension",
+        "page": "arrangement"
+      },
+      {
+        "label": "Cancel Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email_or_username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://myaccount.reliant.com/"
+  },
+  "contact": {
+    "phone": "1-866-222-7100",
+    "payPhone": "713-207-7243",
+    "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay/autopay",
+      "note": "Once you enroll, AutoPay pays your balance on the next due date. Keep paying as usual until your bill shows Do Not Pay. AutoPay is not available on prepaid plans, and your account must be in good standing."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.reliant.com/en/residential/help-support/customer-resources/billing-payments/financial-help"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.reliant.com/en/residential/help-support/customer-resources/billing-payments/financial-help"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.reliant.com/en/residential/help-support/customer-resources/cancel-service"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay"
+    }
+  },
+  "billing": {
+    "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeePercent": 5
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Reliant bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to your online account to pay securely anytime with a bank account or any major debit or credit card (Discover, Mastercard, Visa, American Express).",
+        "Quick Pay needs only your account number and ZIP code; it takes a bank draft or card and credits your account almost right away.",
+        "By phone, call 713-207-7243 or 1-866-222-7100 to pay by card or bank account. By mail, send a check to Reliant, P.O. Box 650475, Dallas, TX 75265-0475. You can also pay with cash at walk-up locations or with a barcode at participating retailers."
+      ],
+      "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay",
+      "steps": [
+        "Log in.",
+        "Choose Make a Payment.",
+        "Pick a bank account or card.",
+        "Review and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Set up AutoPay once with a bank account or a credit card (Visa, Mastercard, American Express or Discover) and your bill is paid automatically on each due date. Your monthly bill still comes for your records, marked Do Not Pay.",
+        "After you enroll online, your balance is paid on the next due date; keep paying as usual until a bill shows Do Not Pay. Enrolling by the mailed or faxed form takes about 10 days after Reliant receives it.",
+        "Your account must be in good standing, prepaid plans are not eligible, and two or more returned payments in six months make you ineligible. A returned bank payment carries a $25 charge."
+      ],
+      "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay/autopay",
+      "steps": [
+        "Log in.",
+        "Select Payments, then Automatic payments.",
+        "Enter your payment details and agree to the terms.",
+        "Verify your enrollment."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Financial help",
+      "topic": "assistance",
+      "paragraphs": [
+        "Payment extensions give you extra time beyond the due date without risk of disconnection, but a 5% late fee, a disconnection notice fee and a disconnect recovery fee may still apply. If you have a disconnection notice, ask before its due date. If you are on AutoPay, contact Reliant at least three business days before your bill is due.",
+        "A deferred payment plan lets you pay part of what you owe up front and the rest in installments with your next few bills; you cannot switch providers until it is paid.",
+        "CARE, funded by Reliant and customer donations, helps customers facing hardship through partner agencies; call 2-1-1 or visit 211texas.org. Help can take up to 8 weeks."
+      ],
+      "source": "https://www.reliant.com/en/residential/help-support/customer-resources/billing-payments/financial-help",
+      "steps": [
+        "Log in.",
+        "Open Payment Extension.",
+        "Choose the new date or plan.",
+        "Confirm."
+      ]
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel or transfer service",
+      "topic": "account",
+      "paragraphs": [
+        "You can cancel Reliant service online with your account number; moving within Texas, you can transfer service instead with your new address and dates.",
+        "Many fixed-term plans charge an early cancellation fee, which may be waived if you give notice of a move with a forwarding address. You pay for electricity used until service actually stops."
+      ],
+      "source": "https://www.reliant.com/en/residential/help-support/customer-resources/cancel-service"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "View your bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in to see your current bill, amount due and due date. Past bills are under Monthly Bills, where you can view and download them."
+      ],
+      "source": "https://www.reliant.com/en/residential/help-support/information-center/ways-to-pay"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "extension-late-fee",
+        "intent": "Using Reliant's help pages, find the late fee that may still apply when you get a payment extension. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5%",
+              "5 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5%",
+            "5 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A 5% late fee may still be assessed."
+          }
+        ]
+      },
+      {
+        "slug": "quickpay-fields",
+        "intent": "What two pieces of information do you need to use Reliant Quick Pay without logging in? Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "ZIP"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "ZIP"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Your account number and ZIP code."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Ways to pay",
+        "Financial help"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username or Email address"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay",
+        "Payment Extension"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "5%"
+    }
+  ]
+}

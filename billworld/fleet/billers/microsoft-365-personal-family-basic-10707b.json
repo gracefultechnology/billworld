@@ -1,0 +1,396 @@
+{
+  "id": "microsoft-365-personal-family-basic-10707b",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Microsoft 365 (Personal / Family / Basic)",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public support.microsoft.com articles and microsoft.com product pages only (no sign-in). Microsoft 365 consumer subscriptions are managed on the Microsoft account Services & subscriptions page. Recurring billing is the AutoPay equivalent: with it on, the subscription renews and is charged automatically; turning it off lets the subscription end at its expiration date (both online), so autopay/autopay_cancel are supported with the label 'Recurring billing'. A past-due subscription shows Pay now. Prepaid subscriptions and product keys (25 characters, renewals up to 5 years) cannot be modeled and are in help. Payment methods accepted in the US are not listed on the pages used; billing.methods ['card'] is inferred. Sign-in identifier and two-step sign-in (email, phone or Skype name, then password) are inferred from the public Microsoft account experience; mfa none because two-step verification is optional. Plans are the published US monthly prices (Basic $1.99, Personal $9.99, Family $12.99, Premium $19.99); yearly prices are in help. Monthly/yearly switch (Manage > Change > Switch) is modeled as change_plan. Subscriptions bought through Apple App Store or Google Play are canceled there.",
+  "officialDomains": [
+    "microsoft.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/cancel-your-microsoft-subscription",
+      "title": "Cancel a Microsoft subscription - Microsoft Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/change-your-microsoft-subscription-payment-method-and-options",
+      "title": "Change your Microsoft subscription payment method and options - Microsoft Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/how-to-renew-your-microsoft-365-subscription",
+      "title": "Renew Microsoft 365 for home - Microsoft Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.microsoft.com/en-us/microsoft-365/buy/compare-all-microsoft-365-products",
+      "title": "Compare All Microsoft 365 Plans | Microsoft 365",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.microsoft.com/en-us/microsoft-365/basic",
+      "title": "Microsoft 365 Basic | Microsoft 365",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Microsoft 365",
+    "shortName": "Microsoft",
+    "primary": "#0067b8",
+    "accent": "#2e2e2e",
+    "monogram": "M"
+  },
+  "labels": {
+    "dashboard": "Services & subscriptions",
+    "autopay": "Recurring billing",
+    "wallet": "Change how you pay",
+    "payBill": "Pay now",
+    "cancel": "Cancel subscription",
+    "plan": "Change plan",
+    "history": "Order history",
+    "statements": "Order history",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "help": "Microsoft Support",
+    "username": "Email, phone, or Skype"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Compare plans",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Microsoft Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Services & subscriptions",
+        "page": "dashboard"
+      },
+      {
+        "label": "Recurring billing",
+        "page": "autopay"
+      },
+      {
+        "label": "Change how you pay",
+        "page": "wallet"
+      },
+      {
+        "label": "Change plan",
+        "page": "plan"
+      },
+      {
+        "label": "Order history",
+        "page": "history"
+      },
+      {
+        "label": "Cancel subscription",
+        "page": "cancel"
+      },
+      {
+        "label": "Microsoft Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "none",
+    "evidence": "inferred",
+    "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/cancel-your-microsoft-subscription"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/change-your-microsoft-subscription-payment-method-and-options",
+      "note": "Subscriptions are paid from your Microsoft account; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/how-to-renew-your-microsoft-365-subscription",
+      "note": "With recurring billing on, your subscription renews automatically and is charged to the payment method you chose."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/cancel-your-microsoft-subscription",
+      "note": "If you turn off recurring billing, you can keep using the product until the subscription expires."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/change-your-microsoft-subscription-payment-method-and-options",
+      "note": "Microsoft does not mail bills; your orders and charges are in Order history."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/change-your-microsoft-subscription-payment-method-and-options"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/change-your-microsoft-subscription-payment-method-and-options"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/change-your-microsoft-subscription-payment-method-and-options",
+      "note": "Microsoft 365 is charged each billing period and installment plans are not offered."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/cancel-your-microsoft-subscription",
+      "note": "Subscriptions bought through the Apple App Store or Google Play are canceled with that store."
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/change-your-microsoft-subscription-payment-method-and-options",
+      "note": "Switching between monthly and yearly billing requires recurring billing to be on."
+    }
+  },
+  "billing": {
+    "source": "https://www.microsoft.com/en-us/microsoft-365/buy/compare-all-microsoft-365-products",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/change-your-microsoft-subscription-payment-method-and-options"
+    },
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    },
+    "plans": [
+      {
+        "id": "m365-basic",
+        "name": "Microsoft 365 Basic",
+        "cents": 199
+      },
+      {
+        "id": "m365-personal",
+        "name": "Microsoft 365 Personal",
+        "cents": 999
+      },
+      {
+        "id": "m365-family",
+        "name": "Microsoft 365 Family",
+        "cents": 1299,
+        "current": true
+      },
+      {
+        "id": "m365-premium",
+        "name": "Microsoft 365 Premium",
+        "cents": 1999
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Microsoft 365 plans and prices",
+      "topic": "plans",
+      "paragraphs": [
+        "Microsoft 365 Personal is $9.99 a month or $99.99 a year. Microsoft 365 Family is $12.99 a month or $129.99 a year. Microsoft 365 Premium is $19.99 a month or $199.99 a year.",
+        "Microsoft 365 Basic is $1.99 a month or $19.99 a year. AI features are not included in Basic."
+      ],
+      "source": "https://www.microsoft.com/en-us/microsoft-365/buy/compare-all-microsoft-365-products"
+    },
+    {
+      "slug": "autopay",
+      "title": "Turn recurring billing on or off",
+      "topic": "billing",
+      "paragraphs": [
+        "With recurring billing on, your subscription renews automatically and the renewal is charged to your chosen payment method; turning it on also shows what the renewal will cost.",
+        "To stop the next renewal, open Services & subscriptions, find the subscription and choose Manage. If you see Turn on recurring billing, recurring billing is already off and the subscription ends on its expiration date."
+      ],
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/cancel-your-microsoft-subscription",
+      "steps": [
+        "Sign in and open Services & subscriptions.",
+        "Find the subscription and choose Manage.",
+        "Turn recurring billing on or off and confirm."
+      ]
+    },
+    {
+      "slug": "renew-with-product-key",
+      "title": "Renew with a product key",
+      "topic": "billing",
+      "paragraphs": [
+        "Instead of recurring billing, you can renew by redeeming a new 25-character product key from a box, card or emailed receipt. Sign in with the Microsoft account linked to your subscription, enter the key and choose your country or region; your new expiration date then appears.",
+        "Extra keys add time only, not installs or storage, and a subscription can be extended up to 5 years. To move to a prepaid code, turn off recurring billing first and redeem the code after the subscription expires."
+      ],
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/how-to-renew-your-microsoft-365-subscription"
+    },
+    {
+      "slug": "change-payment-method",
+      "title": "Change how you pay",
+      "topic": "billing",
+      "paragraphs": [
+        "In Services & subscriptions, find the subscription, choose Manage, then Change how you pay. Pick a saved payment option or choose Add a new way to pay.",
+        "If Change how you pay does not appear, recurring billing is off and the subscription is already paid until it expires. Prepaid subscriptions cannot change payment method. If a balance is past due, choose Pay now."
+      ],
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/change-your-microsoft-subscription-payment-method-and-options"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your subscription",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in with the account you used to buy the subscription, open Services & subscriptions, choose Manage, then Cancel (or Upgrade or Cancel) and follow the prompts. You can keep using the product until the subscription expires.",
+        "If you bought it through the Apple App Store or Google Play, cancel or request a refund with that store."
+      ],
+      "source": "https://support.microsoft.com/en-us/accounts-billing/subscriptions/cancel-your-microsoft-subscription",
+      "steps": [
+        "Sign in and open Services & subscriptions.",
+        "Choose Manage next to the subscription.",
+        "Choose Cancel subscription and confirm."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "family-yearly-price",
+        "intent": "Using the Microsoft website, find the yearly price of Microsoft 365 Family in the United States. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "129.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "129.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Microsoft 365 Family costs $129.99 a year."
+          }
+        ]
+      },
+      {
+        "slug": "product-key-length",
+        "intent": "Your neighbor gave you a Microsoft 365 renewal card. Using the Microsoft help pages, find how many characters a Microsoft 365 product key has. Do not change anything on the account.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "25"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "25"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A product key has 25 characters."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email, phone, or Skype"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Recurring billing",
+        "Order history"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Microsoft 365 Basic",
+        "Microsoft 365 Premium"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$129.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Services & subscriptions"
+    }
+  ]
+}

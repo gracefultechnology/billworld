@@ -1,0 +1,306 @@
+{
+  "id": "the-general-car-insurance-7e507d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "The General (car insurance)",
+  "category": "insurance",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public thegeneral.com pages and its public help center (chat.thegeneral.com) only (no sign-in, no form submitted). Footer now says The General brand coverages are underwritten by a member of the Sentry Insurance Group (catalog parent_company still says American Family). Express Services 'Pay a Bill' (no login): find policy by Policy Number, Email or Phone, then verify Last Name, Date of Birth and ZIP Code; help article says policy number or last four SSN digits plus last name, DOB and ZIP (modelled as accountNumber + lastName + dob + zip). Payment Methods article: Visa, Mastercard, Discover, American Express and electronic checks. Auto Pay article: MyPolicy > Payment > Manage Auto Pay > Enroll in Auto Pay with credit card, debit card or electronic check; starts with the next invoice; cancel via Manage Auto Pay online. Late Payments article: due date (avoid late fees) vs cancellation date (last day to pay without a lapse); email/text reminders. Contact: 1-844-328-0306 customer service (sign-in page also shows 1-888-333-2331 for sales). Late-fee and installment-fee amounts are not published. Help center also mentions changing the payment due date (not modelled).",
+  "officialDomains": [
+    "thegeneral.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.thegeneral.com/mypolicy/expressServices.htm?dropdown=payment",
+      "title": "Express Services - Pay a Bill | The General",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.thegeneral.com/mypolicy/welcome.htm",
+      "title": "Sign In | The General",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-2766/Enrolling-in-Auto-Pay-for-Convenient-Bill-Payments",
+      "title": "Enrolling in Auto Pay for Convenient Bill Payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-2147/Late-Payments",
+      "title": "Late Payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-3352/Payment-Methods",
+      "title": "Payment Methods",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.thegeneral.com/about/contact/",
+      "title": "Contact Us | The General",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "The General",
+    "shortName": "The General",
+    "primary": "#00594f",
+    "accent": "#003f38",
+    "monogram": "G"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Create Account",
+    "guestPay": "Pay a Bill",
+    "payBill": "Make a Payment",
+    "autopay": "Auto Pay",
+    "dashboard": "MyPolicy",
+    "paperless": "Go Paperless"
+  },
+  "nav": {
+    "account": [
+      {
+        "label": "MyPolicy",
+        "page": "dashboard"
+      },
+      {
+        "label": "Payment",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Go Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Documents",
+        "page": "statements"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName",
+      "dob",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.thegeneral.com/mypolicy/expressServices.htm?dropdown=payment"
+  },
+  "contact": {
+    "phone": "844-328-0306",
+    "source": "https://www.thegeneral.com/about/contact/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-2147/Late-Payments"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.thegeneral.com/mypolicy/expressServices.htm?dropdown=payment"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-2766/Enrolling-in-Auto-Pay-for-Convenient-Bill-Payments",
+      "note": "Auto Pay begins with the next invoice after enrollment is confirmed. Until then, pay any bill you receive."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-2766/Enrolling-in-Auto-Pay-for-Convenient-Bill-Payments"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.thegeneral.com/mypolicy/expressServices.htm?dropdown=payment"
+    }
+  },
+  "billing": {
+    "source": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-3352/Payment-Methods",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay The General",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay a Bill on our Express Services site to pay or check your balance without signing in. Find your policy by policy number, email or phone, then confirm the policyholder's last name, date of birth and ZIP code.",
+        "Or sign in to MyPolicy (or the app), open the payment section and pay with a credit card, debit card or electronic check. We accept Visa, Mastercard, Discover and American Express."
+      ],
+      "source": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-3352/Payment-Methods"
+    },
+    {
+      "slug": "autopay",
+      "title": "Enroll in Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sign in to MyPolicy, go to the Payment section and choose Manage Auto Pay, then Enroll in Auto Pay. Use a credit card, debit card or electronic check, agree to the Auto Pay terms and you will see a confirmation.",
+        "Auto Pay starts with the next invoice generated after enrollment. To change or cancel it later, sign back in and choose Manage Auto Pay."
+      ],
+      "source": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-2766/Enrolling-in-Auto-Pay-for-Convenient-Bill-Payments",
+      "steps": [
+        "Sign in to MyPolicy.",
+        "Open the Payment section and choose Manage Auto Pay.",
+        "Select Enroll in Auto Pay and enter your payment details.",
+        "Agree to the Auto Pay terms to finish."
+      ]
+    },
+    {
+      "slug": "late-payments",
+      "title": "Due date vs. cancellation date",
+      "topic": "payments",
+      "paragraphs": [
+        "Your payment due date is the deadline to avoid late fees. Your cancellation date is the last day a payment can be received to keep the policy active without a lapse in coverage.",
+        "If you are running late, pay on Express Services without signing in, or in MyPolicy. You can also sign up for email or text payment reminders."
+      ],
+      "source": "https://chat.thegeneral.com/system/templates/selfservice/thegeneral/help/customer/locale/en-US/portal/307700000001001/content/PROD-2147/Late-Payments"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact The General",
+      "topic": "contact",
+      "paragraphs": [
+        "Call customer service at 1-844-328-0306 for billing and policy help.",
+        "Express Services also lets you get ID cards and go paperless without signing in."
+      ],
+      "source": "https://www.thegeneral.com/about/contact/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "cancellation-date-meaning",
+        "intent": "Using The General's help pages, explain what the cancellation date on a bill means. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "lapse"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "lapse"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "It is the last day a payment can be received to keep the policy active without a lapse in coverage."
+          }
+        ]
+      },
+      {
+        "slug": "express-pay-needs",
+        "intent": "Find what The General asks for to verify your policy when paying without signing in. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "date of birth"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "date of birth"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Policy number (or email/phone), then the policyholder's last name, date of birth and ZIP code."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "late-payments",
+      "contains": "cancellation date"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Manage Auto Pay"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "next invoice"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Manage Auto Pay",
+        "Go Paperless"
+      ]
+    }
+  ]
+}

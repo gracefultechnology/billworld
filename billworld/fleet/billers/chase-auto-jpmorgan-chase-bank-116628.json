@@ -1,0 +1,322 @@
+{
+  "id": "chase-auto-jpmorgan-chase-bank-116628",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Chase Auto (JPMorgan Chase Bank)",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public chase.com auto-loan servicing pages only (no sign-in). Payments come from a Chase or linked non-Chase checking account (no card payments described). Chase-account payments by 11 PM ET and non-Chase payments by 8 PM ET on business days are credited the same day; after the cutoff, same-day phone payments at 1-800-346-8915 until 10:30 PM ET. Automatic payments are monthly and can be updated or cancelled online (Pay & Transfer > Automatic payments > Turn off). One-time payments can be cancelled unless Sent, In Process or Complete. Loan due dates can be changed twice online (More... > Update settings and preferences > Payment due date); leases once by phone. Hardship is on a separate Disaster and Hardship assistance page (not read), so payment_arrangement is not asserted. First sign-in needs the account number and SSN; the sign-in box on the ways-to-pay page shows a Username field (observed). Reviewer 2026-10-10: the hardship FAQ URL tried returns 404, so hardship stays out.",
+  "officialDomains": [
+    "chase.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments",
+      "title": "Auto loan servicing FAQs: Payments",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.chase.com/personal/auto-loans/ways-to-pay",
+      "title": "Ways to pay your auto loan or lease",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.chase.com/personal/auto-loans/servicing/faqs/statements-documents-letters",
+      "title": "Auto FAQs: Statements, documents and letters",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "shortName": "Chase Auto",
+    "primary": "#0f5ba7",
+    "accent": "#0b3f73",
+    "monogram": "C"
+  },
+  "labels": {
+    "payBill": "Pay loan",
+    "autopay": "Automatic payments",
+    "history": "Account activity",
+    "statements": "Statements",
+    "signIn": "Sign in",
+    "username": "Username",
+    "dashboard": "Accounts",
+    "help": "Auto FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Ways to pay",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Auto FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Accounts",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay loan",
+        "page": "pay"
+      },
+      {
+        "label": "Automatic payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Account activity",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Paperless",
+        "page": "paperless"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://www.chase.com/personal/auto-loans/ways-to-pay"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/ways-to-pay",
+      "note": "Automatic payments draw your monthly payment from a Chase or non-Chase checking account."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments",
+      "note": "Turn off automatic payments under Pay & Transfer, then Automatic payments."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/statements-documents-letters",
+      "note": "Only the primary account holder can change paperless preferences."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/ways-to-pay",
+      "note": "Pay through the automated line at 1-800-346-9127 with your bank routing and account numbers."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.chase.com/personal/auto-loans/ways-to-pay"
+    }
+  },
+  "contact": {
+    "payPhone": "800-346-9127",
+    "evidence": "documented_official",
+    "source": "https://www.chase.com/personal/auto-loans/ways-to-pay"
+  },
+  "billing": {
+    "source": "https://www.chase.com/personal/auto-loans/ways-to-pay",
+    "methods": [
+      "bank"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.chase.com/personal/auto-loans/ways-to-pay"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay",
+      "paragraphs": [
+        "Sign in and choose Pay loan (or Pay Lease) to make a one-time payment or set up automatic payments. To pay from another bank, add it first with Add an account. You can also pay by phone at 1-800-346-9127, or mail a check or money order with your payment coupon and account number; checks can also be brought to a Chase branch.",
+        "Payments from a Chase account made by 11 PM ET on a business day are credited that day; payments from a non-Chase account must be made by 8 PM ET. If you miss the cutoff, call 1-800-346-8915 until 10:30 PM ET on a business day for a same-day payment."
+      ],
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments",
+      "mode": "append"
+    },
+    {
+      "slug": "due-date-change",
+      "title": "Changing your due date",
+      "paragraphs": [
+        "Loan customers can change the due date two times during the loan: choose your account, then More..., Update settings and preferences, and Payment due date. Lease customers can change it once by calling 1-800-227-5151. Other restrictions apply."
+      ],
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments",
+      "topic": "account"
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Cancelling a payment",
+      "paragraphs": [
+        "A one-time payment can be cancelled while it is not yet Sent, In Process or Complete: go to Pay & Transfer, then Payment activity, choose the payment and select Cancel. Automatic payments are turned off under Pay & Transfer, then Automatic payments."
+      ],
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/payments",
+      "topic": "payments"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless statements",
+      "paragraphs": [
+        "If you are the primary account holder, sign in and update your paperless preferences to turn paperless statements and letters on or off. Statements are under your auto account's Statements link."
+      ],
+      "source": "https://www.chase.com/personal/auto-loans/servicing/faqs/statements-documents-letters",
+      "topic": "paperless"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "non-chase-cutoff",
+        "intent": "Using the Chase Auto help pages, find the cutoff time for a payment from a non-Chase bank account to be credited the same business day. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "8 PM",
+              "8 p.m",
+              "8:00",
+              "8pm"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "8 PM",
+            "8 p.m",
+            "8:00",
+            "8pm"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Payments from a non-Chase account made by 8 PM ET on a business day are credited the same day."
+          }
+        ]
+      },
+      {
+        "slug": "due-date-changes",
+        "intent": "Using the Chase Auto help pages, find how many times a loan customer can change the payment due date. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "two",
+              "2",
+              "twice"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "two",
+            "2",
+            "twice"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Loan customers can change the due date two times during the loan."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay loan",
+        "Automatic payments"
+      ]
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "notContains": [
+        "Debit card"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "8 PM ET"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "due-date-change",
+      "contains": "two times"
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "id": "wisconsin-department-of-revenue-individual-incom-c3efa2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Wisconsin Department of Revenue (individual income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public revenue.wi.gov pages only. My Tax Account (MTA) for registered users (save bank information, schedule and cancel future and estimated payments, Manage My Collection for payment plans); Quick Pay without login. Direct debit free; card/Apple Pay/PayPal through Tyler Technologies (egov.com): $1.00 transaction fee on vendor payments plus 2.25% processing fee on card, Apple Pay and PayPal; the dossier can only charge the 2.25% (fixed + percent not expressible; reported as a cross-owner request). Payment plan fee $20; interest 18% per year; delinquent collection fee greater of $35 or 6.5%. Payment plan request online needs a letter ID and bank routing/account numbers. No recurring AutoPay for balances (inferred). Sign-in by username inferred. Reviewer: the Pay page lists \"make payments automatically\" among My Tax Account benefits next to \"schedule and cancel future payments\"; read as scheduled payments, so autopay stays unsupported (inferred).",
+  "officialDomains": [
+    "revenue.wi.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.revenue.wi.gov/Pages/OnlineServices/Pay.aspx",
+      "title": "DOR Make a Payment - Wisconsin Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.revenue.wi.gov/Pages/FAQS/crcard.aspx",
+      "title": "DOR Credit Card and Other Payment Options",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.revenue.wi.gov/Pages/FAQS/ise-delinq.aspx",
+      "title": "DOR Delinquent Tax - Wisconsin Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Wisconsin Department of Revenue",
+    "shortName": "Wisconsin DOR",
+    "primary": "#1d4f91",
+    "accent": "#7a3e00",
+    "monogram": "WI"
+  },
+  "labels": {
+    "dashboard": "My Tax Account",
+    "payBill": "Make a Payment",
+    "guestPay": "Quick Pay",
+    "arrangement": "Request a Payment Plan",
+    "help": "FAQs",
+    "signIn": "Log in"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Quick Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Credit Card and Other Payment Options",
+        "helpSlug": "credit-card"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Tax Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Manage My Collection",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://www.revenue.wi.gov/Pages/OnlineServices/Pay.aspx"
+  },
+  "contact": {
+    "phone": "6082662772",
+    "source": "https://www.revenue.wi.gov/Pages/FAQS/crcard.aspx"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.wi.gov/Pages/OnlineServices/Pay.aspx",
+      "note": "Quick Pay: make an electronic payment without logging in to My Tax Account."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.revenue.wi.gov/Pages/OnlineServices/Pay.aspx",
+      "note": "My Tax Account does not offer an AutoPay enrollment for an income tax balance. Instead, you can schedule individual future payments and estimated payments ahead of time and cancel them before they process.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.wi.gov/Pages/OnlineServices/Pay.aspx"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.wi.gov/Pages/FAQS/ise-delinq.aspx",
+      "note": "A $20 fee applies to every payment plan. Have your letter ID and bank routing and account numbers ready."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.wi.gov/Pages/FAQS/ise-delinq.aspx"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.wi.gov/Pages/OnlineServices/Pay.aspx"
+    }
+  },
+  "billing": {
+    "source": "https://www.revenue.wi.gov/Pages/OnlineServices/Pay.aspx",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.25,
+      "evidence": "documented_official",
+      "source": "https://www.revenue.wi.gov/Pages/FAQS/crcard.aspx",
+      "notes": [
+        "The payment vendor also charges a $1.00 transaction fee on each card, Apple Pay or PayPal payment in addition to the 2.25% processing fee."
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a payment",
+      "topic": "payments",
+      "source": "https://www.revenue.wi.gov/Pages/OnlineServices/Pay.aspx",
+      "paragraphs": [
+        "Pay individual income tax electronically with Quick Pay, no login needed, or log in to My Tax Account, where you can save bank information and schedule or cancel future payments, including estimated payments.",
+        "Paying by direct debit from a checking or savings account is free. Card, Apple Pay, PayPal and other electronic options may carry convenience and processing fees.",
+        "To pay by check or money order, mail an individual income tax payment without a voucher to PO Box 8903, Madison, WI 53708-8903. Payments for a notice or collection go to PO Box 8901, Madison, WI 53708-8901. You can also pay cash at a department office."
+      ]
+    },
+    {
+      "slug": "credit-card",
+      "title": "Credit card and other payment options",
+      "topic": "payments",
+      "source": "https://www.revenue.wi.gov/Pages/FAQS/crcard.aspx",
+      "paragraphs": [
+        "Card (American Express, Discover, Mastercard, Visa), Apple Pay and PayPal payments are processed by the department's third-party vendor, Tyler Technologies.",
+        "The vendor charges a $1.00 transaction fee plus a 2.25% processing fee on card, Apple Pay and PayPal payments. The department keeps no part of these fees. Paying by direct debit from a bank account has no fee.",
+        "Cards are not accepted at department offices. For a problem with a card payment, call the vendor at (608) 250-4606."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Request a payment plan",
+      "topic": "assistance",
+      "source": "https://www.revenue.wi.gov/Pages/FAQS/ise-delinq.aspx",
+      "paragraphs": [
+        "If you cannot pay a delinquent balance in full, request a payment plan online. Registered users log in to My Tax Account, add access to their accounts and choose Manage My Collection; without an account, use Request a Payment Plan under Additional Services. You will need your SSN, letter ID, an email address and your bank routing and account numbers.",
+        "Every payment plan has a $20 fee. Interest of 18% per year continues on the unpaid tax, and a delinquent collection fee of $35 or 6.5% of the amount due (whichever is greater) applies.",
+        "Questions: call (608) 266-7879 or email DORCompliance@wisconsin.gov. You can also send Form A-771 by mail, fax or email."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "plan-fee",
+        "intent": "Using the Wisconsin DOR website's help pages, find the fee charged for a payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$20"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$20"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees",
+          "payment_arrangement"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Every payment plan has a $20 fee."
+          }
+        ]
+      },
+      {
+        "slug": "card-fee",
+        "intent": "Using the Wisconsin DOR website's help pages, find the processing fee percentage for paying by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.25%",
+              "2.25 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.25%",
+            "2.25 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments carry a 2.25% processing fee plus a $1.00 transaction fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Credit Card and Other Payment Options",
+        "Payment Plans"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My Tax Account",
+        "Manage My Collection"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "$20",
+        "(608) 266-7879"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "credit-card",
+      "contains": "2.25%"
+    }
+  ]
+}

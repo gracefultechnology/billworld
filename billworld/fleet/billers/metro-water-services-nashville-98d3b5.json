@@ -1,0 +1,385 @@
+{
+  "id": "metro-water-services-nashville-98d3b5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Metro Water Services (Nashville)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public nashville.gov Metro Water Services pages (Payment Methods, Assistance and Protection Programs, Request/Transfer/Terminate Service) and the public mwsonline.nashville.gov My Account Login page (no sign-in, no lookup submitted). The login page shows User Name and Password plus three access levels: Premium Access (registered; e-bills, service requests, recurring payment enrollment, profile), Standard Access (no registration; balance, payment and history by account), and Landlord Access; Guest Pay takes e-check, credit or debit card payments to any valid MWS account number. The login page states a card service fee of 2.8% with a $1.95 minimum, no fee for e-check (EFT), and a $30 returned payment fee. Online features include saved payment methods, scheduled payments, text alerts and auto pay with e-check or credit card. A separate bank draft program (paper form or phone) drafts 15 days after the billing date (not modelled; the online auto pay is). Stopping service is by phone the day before (confirmation number given). Payment extensions are a qualified-customer program arranged through customer service, not an online plan.",
+  "officialDomains": [
+    "nashville.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.nashville.gov/departments/water/customers/payment-methods",
+      "title": "Metro Water Services Payment Methods | Nashville.gov",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://mwsonline.nashville.gov/app/",
+      "title": "Nashville Metro Water :: My Account Login",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.nashville.gov/departments/water/customers/assistance-and-protection-programs",
+      "title": "Water Services Assistance and Protection Programs | Nashville.gov",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.nashville.gov/departments/water/customers/request-transfer-or-terminate-service",
+      "title": "Request, Transfer or Terminate Water Services | Nashville.gov",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Metro Water Services",
+    "shortName": "Metro Water",
+    "primary": "#004b87",
+    "accent": "#00325a",
+    "monogram": "MW"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "signIn": "Login",
+    "username": "User Name",
+    "register": "Premium Access",
+    "guestPay": "Guest Pay",
+    "payBill": "Online Bill Pay",
+    "autopay": "Auto Pay",
+    "paperless": "E-Bills",
+    "help": "Payment Methods"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Guest Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Premium Access",
+        "page": "register"
+      },
+      {
+        "label": "Payment Methods",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Assistance Programs",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Request, Transfer or Terminate Service",
+        "helpSlug": "cancel-service"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Online Bill Pay",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "E-Bills",
+        "page": "paperless"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://mwsonline.nashville.gov/app/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://mwsonline.nashville.gov/app/",
+      "note": "Guest Pay takes e-check, credit or debit card payments to any account with a valid MWS account number; no registration needed."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nashville.gov/departments/water/customers/payment-methods",
+      "note": "Auto pay works with an e-check or a credit card. Card payments carry a 2.8% service fee ($1.95 minimum)."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nashville.gov/departments/water/customers/payment-methods"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nashville.gov/departments/water/customers/payment-methods"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.nashville.gov/departments/water/customers/assistance-and-protection-programs",
+      "note": "Payment plans are not set up online. Call Metro Water Services at 615-862-4600 about extension programs; qualified customers receiving government benefits can move their payment date.",
+      "phone": "615-862-4600"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nashville.gov/departments/water/customers/assistance-and-protection-programs"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.nashville.gov/departments/water/customers/request-transfer-or-terminate-service",
+      "note": "Service is not stopped online. Call the Customer Service Center at 615-862-4600 the day before service should stop, and keep the confirmation number until your final bill arrives.",
+      "phone": "615-862-4600"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nashville.gov/departments/water/customers/payment-methods",
+      "phone": "615-862-4600"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.nashville.gov/departments/water/customers/payment-methods"
+    }
+  },
+  "contact": {
+    "phone": "615-862-4600",
+    "payPhone": "615-862-4600",
+    "source": "https://www.nashville.gov/departments/water/customers/payment-methods"
+  },
+  "billing": {
+    "source": "https://mwsonline.nashville.gov/app/",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.8,
+      "cardMinCents": 195,
+      "autopayCardPercent": 2.8,
+      "guestBankCents": 0,
+      "notes": [
+        "Returned e-check (EFT) payments carry a $30 returned payment fee."
+      ],
+      "evidence": "documented_official",
+      "source": "https://mwsonline.nashville.gov/app/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment methods",
+      "topic": "payments",
+      "paragraphs": [
+        "Online Bill Pay shows your balance, 12 months of bill images, payment and usage history. Premium Access (with a User Name) adds e-bills, service requests, recurring payments and profile changes; Standard Access and Guest Pay need only your account number.",
+        "Card payments carry a service fee of 2.8%, with a $1.95 minimum. E-check (EFT) payments are free; a returned e-check costs $30. You can save payment methods, schedule payments, get text alerts and pay with Apple Pay, Google Pay, Venmo or PayPal.",
+        "Call 615-862-4600 any time to pay with Visa or Mastercard through automated services. Mail your bill and payment to Metro Water Services, P.O. Box 305225, Nashville, TN 37230-5225, or use the kiosks at 1700 Third Avenue North (one is open 24/7)."
+      ],
+      "source": "https://www.nashville.gov/departments/water/customers/payment-methods"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto pay and bank draft",
+      "topic": "autopay",
+      "paragraphs": [
+        "With Premium Access you can enroll in auto pay with an e-check or a credit card. Card payments carry the 2.8% service fee ($1.95 minimum).",
+        "Metro Water also offers bank draft by paper form or through automated services at 615-862-4600; a bank draft is charged 15 days after the billing date."
+      ],
+      "source": "https://www.nashville.gov/departments/water/customers/payment-methods"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Assistance and extension programs",
+      "topic": "assistance",
+      "paragraphs": [
+        "Qualified residential and not-for-profit customers who receive government benefit payments can extend their payment date to the eighth day of the month after billing, or 15 days after the bill date, whichever is later. The account must be in good standing to apply.",
+        "Metro Water also offers seasonal sewer credits, concealed-leak adjustments and medical-needs registration. For details call 615-862-4600."
+      ],
+      "source": "https://www.nashville.gov/departments/water/customers/assistance-and-protection-programs"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Request, transfer or terminate service",
+      "topic": "account",
+      "paragraphs": [
+        "To stop water service, call the Customer Service Center at 615-862-4600 the day before service should end. Keep the confirmation number you are given until your final bill arrives.",
+        "Starting or transferring residential service costs a non-refundable $35 for guaranteed same-day service or $25 for a later day."
+      ],
+      "source": "https://www.nashville.gov/departments/water/customers/request-transfer-or-terminate-service"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-rate",
+        "intent": "Find the service fee Metro Water charges for paying a water bill by card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.8%",
+              "2.8"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.8%",
+            "2.8"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments carry a 2.8% service fee with a $1.95 minimum."
+          }
+        ]
+      },
+      {
+        "slug": "returned-payment-fee",
+        "intent": "Find the fee Metro Water charges when an e-check payment is returned. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$30",
+              "30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$30",
+            "30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A returned e-check payment carries a $30 fee."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "User Name"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My Account",
+        "Auto Pay"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.8%",
+        "$1.95",
+        "P.O. Box 305225"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "615-862-4600",
+        "confirmation number"
+      ]
+    }
+  ]
+}

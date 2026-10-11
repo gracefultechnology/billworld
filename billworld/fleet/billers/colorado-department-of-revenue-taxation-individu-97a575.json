@@ -1,0 +1,331 @@
+{
+  "id": "colorado-department-of-revenue-taxation-individu-97a575",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Colorado Department of Revenue - Taxation (individual income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public tax.colorado.gov pages only. Revenue Online: Make a Payment under Payment Options without login (ID type CAN/SSN/ITIN, filing period 12/31/<year>, payment type Bill Payment), card or e-check through the Colorado.gov secured payment process. Fees charged to the taxpayer: e-check $1.00; card (amount + $0.75) x 2.25% (modelled as 2.25%; the 75-cent base adds under 2 cents). Logged-in Revenue Online: records, secure messages, payment plan requests, manage payments and returns. Payment plans: no fee, up to 36 months (non-business), amounts under $50 or two months of installments must be paid in full, signed agreement within 30 days waives the collection statute; Collections 303-205-8291. No recurring AutoPay for balances (inferred). Sign-in by username inferred.",
+  "officialDomains": [
+    "tax.colorado.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://tax.colorado.gov/payment-FAQ",
+      "title": "Payment Frequently Asked Questions | Department of Revenue - Taxation",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://tax.colorado.gov/pay-by-credit-debit-echeck",
+      "title": "Pay Online by Credit/Debit Card or E-Check | Department of Revenue - Taxation",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://tax.colorado.gov/payment-plan",
+      "title": "Payment Plans | Department of Revenue - Taxation",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://tax.colorado.gov/ROL-payment-FAQ",
+      "title": "Revenue Online Payment Help | Department of Revenue - Taxation",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://tax.colorado.gov/online-services",
+      "title": "Online Services | Department of Revenue - Taxation",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://tax.colorado.gov/individual-income-tax-return-payment",
+      "title": "Individual Income Tax | Department of Revenue - Taxation",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Colorado Department of Revenue",
+    "shortName": "Colorado DOR",
+    "primary": "#1f3a68",
+    "accent": "#8a4b00",
+    "monogram": "CO"
+  },
+  "labels": {
+    "dashboard": "Revenue Online",
+    "payBill": "Make a Payment",
+    "guestPay": "Make a Payment",
+    "arrangement": "Request a Payment Plan",
+    "contact": "Send a Message",
+    "history": "Manage Payments and Returns",
+    "help": "Payment FAQs",
+    "signIn": "Login"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Pay by Card or E-Check",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plans",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Payment FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Revenue Online",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Manage Payments and Returns",
+        "page": "history"
+      },
+      {
+        "label": "Request a Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Send a Message",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://tax.colorado.gov/online-services"
+  },
+  "contact": {
+    "phone": "3032058291",
+    "source": "https://tax.colorado.gov/payment-plan"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.colorado.gov/pay-by-credit-debit-echeck",
+      "note": "Make a Payment in Revenue Online without logging in, using your Colorado Account Number, SSN or ITIN."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://tax.colorado.gov/ROL-payment-FAQ",
+      "note": "Revenue Online has no recurring automatic payments for income tax balances. Make each payment yourself, or request a payment plan if you cannot pay in full.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.colorado.gov/payment-plan",
+      "note": "Payment plans have no added fee, but penalties and interest keep accruing. Balances under $50 must be paid in full."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.colorado.gov/payment-plan"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.colorado.gov/individual-income-tax-return-payment"
+    }
+  },
+  "billing": {
+    "source": "https://tax.colorado.gov/payment-FAQ",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 100,
+      "cardPercent": 2.25,
+      "evidence": "documented_official",
+      "source": "https://tax.colorado.gov/payment-FAQ",
+      "notes": [
+        "The card fee is 2.25% of the amount due plus 75 cents, that is (amount due + $0.75) x 2.25%."
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay by credit/debit card or e-check",
+      "topic": "payments",
+      "source": "https://tax.colorado.gov/pay-by-credit-debit-echeck",
+      "paragraphs": [
+        "You do not need a Revenue Online login to pay. Use Make a Payment in the Payment Options box, choose Debit or Credit Card or E-Check, enter your taxpayer information and add the payment: account type Individual Income Tax, your ID (Colorado Account Number, SSN or ITIN), the filing period (December 31 of the tax year) and the payment type, usually Bill Payment.",
+        "Processing fees are charged to you and added to the total automatically: an e-check costs $1.00, and a card payment costs 2.25% of the amount due plus 75 cents, calculated as (amount due + $0.75) x 2.25%. Enter only the tax amount; the fee is added for you.",
+        "To pay by check, include the DR 0900 voucher, make the check payable to the Colorado Department of Revenue and write your SSN, the tax year and Form 104 on it."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plans for individuals",
+      "topic": "assistance",
+      "source": "https://tax.colorado.gov/payment-plan",
+      "paragraphs": [
+        "If you cannot pay your Colorado tax debt in full, log in to Revenue Online to request a payment plan, or call the Collections Section at 303-205-8291. For current-year income tax, wait until after April 15 to call.",
+        "There is no fee to join a plan, but late-payment penalties apply and interest accrues until the balance is paid. Standard plans for individuals run up to 36 months. You cannot get a plan if the debt was referred to a collection agency or you are under a wage levy or garnishment.",
+        "Sign and return the installment agreement within 30 days; it waives the statute of limitations for collecting the debt. Missing a payment, a returned payment, or not filing and paying future returns on time makes the whole balance due at once."
+      ]
+    },
+    {
+      "slug": "small-balances",
+      "title": "Small balances and duplicate payments",
+      "topic": "payments",
+      "source": "https://tax.colorado.gov/ROL-payment-FAQ",
+      "paragraphs": [
+        "If you owe less than $50, or the balance would be paid off in two monthly installments, pay it in full; a payment plan is not available.",
+        "Not sure a payment went through? Do not pay again, because a second payment will also process. Send a secure message in Revenue Online or contact the Department; payments show up in a few business days."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "echeck-fee",
+        "intent": "Using the Colorado DOR website's help pages, find the processing fee for paying by e-check. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$1.00",
+              "$1"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$1.00",
+            "$1"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "E-check payments carry a $1.00 processing fee."
+          }
+        ]
+      },
+      {
+        "slug": "plan-max-months",
+        "intent": "Using the Colorado DOR website's help pages, find the maximum length of a standard individual payment plan. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "36 months",
+              "36"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "36 months",
+            "36"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_arrangement"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Standard plans for individuals run up to 36 months."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Pay by Card or E-Check",
+        "Payment FAQs"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Revenue Online",
+        "Request a Payment Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "303-205-8291",
+        "36 months"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "2.25%"
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "id": "consumer-cellular-1d8458",
+  "status": "dedicated",
+  "name": "Consumer Cellular",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public consumercellular.com support FAQs and the plan page (rendered with a headless browser; the support pages now load without the bot check that blocked tier 1). Postpaid monthly invoices, due about 19 days after mailing. My Account sign-in uses the cellphone number and a password (temporary password sent by text or email on the Create Password page); no second factor is documented (mfa none, inferred). Online payments are credit or debit card only (Pay Now in My Account); checks go by mail to the P.O. boxes listed (include the account number), and card payments can be made by phone at (888) 345-5509. Paying without logging in is a texted secure link (text #PAYMENT to 38882821), not a web form, so guest_pay is unsupported online with that note (channel phone, since the format has no text channel). AutoPay charges a credit or debit card on the due date; no bank draft is documented, so autopay.methodTypes [card] and billing.methods [card]. Billing Type lets customers choose Paperless Billing, Extended Detailed Billing ($2) or Standard Paper Invoicing. Plan prices on the public plan page already include a $5 credit for AutoPay and eBilling. Late fee $5 (Broadband Facts label). Canceling: any time, through Customer Support (no online cancel documented; cancel_service unsupported, inferred); charges on the final invoice are not prorated. Scheduled payments and payment arrangements are not documented and are left to the family default. GAP: the SMS payment link cannot be modelled as a guest channel.",
+  "officialDomains": [
+    "consumercellular.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.consumercellular.com/help/billing/payments/how-do-i-make-a-payment",
+      "title": "How do I make a payment?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/payments/what-is-autopay",
+      "title": "What is AutoPay and how do I sign up?",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/my-account-access/how-do-i-log-in-to-my-account-on-the-consumer-cellular-website",
+      "title": "How do I log in to My Account on the Consumer Cellular website?",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/my-account-access/how-do-i-create-or-change-my-my-account-password",
+      "title": "How do I create or change my My Account password?",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/invoices/when-is-my-invoice-balance-due",
+      "title": "When is my invoice balance due?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/invoices/how-do-i-change-my-billing-method",
+      "title": "How do I switch between mail and email for my invoice?",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/miscellaneous/what-if-i-need-to-cancel-service",
+      "title": "What if I need to cancel service?",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/miscellaneous/how-do-i-get-billed-if-i-change-my-rate-plan",
+      "title": "How do I get billed if I change my rate plan?",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/invoices/what-other-charges-are-included-on-my-invoice",
+      "title": "What other charges are included in my invoice?",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/payments/how-do-i-update-my-credit-card-information",
+      "title": "How do I update my credit card information?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.consumercellular.com/shopping/choose/plan",
+      "title": "Cell Phone Plans | Consumer Cellular",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.consumercellular.com/help",
+      "title": "Support and FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.consumercellular.com/help/billing/miscellaneous/are-my-monthly-fees-prorated",
+      "title": "Are my monthly fees prorated? | Consumer Cellular",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Consumer Cellular",
+    "shortName": "Consumer Cellular",
+    "primary": "#00567a",
+    "accent": "#7a2d00",
+    "monogram": "CC"
+  },
+  "labels": {
+    "dashboard": "My Account",
+    "payBill": "Pay Now",
+    "autopay": "AutoPay",
+    "paperless": "Paperless Billing",
+    "viewBill": "Invoice",
+    "statements": "Invoices",
+    "wallet": "Edit Billing Info",
+    "plan": "Change Plan",
+    "signIn": "Login",
+    "signOut": "Logout",
+    "username": "Cellphone number",
+    "register": "Register for My Account",
+    "forgot": "Create Password",
+    "help": "Support",
+    "profile": "Profile"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "make-a-payment"
+      },
+      {
+        "label": "AutoPay",
+        "helpSlug": "autopay"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Invoice",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Change Plan",
+        "page": "plan"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 1,
+    "mfa": "none",
+    "evidence": "documented_official",
+    "source": "https://www.consumercellular.com/help/billing/my-account-access/how-do-i-log-in-to-my-account-on-the-consumer-cellular-website"
+  },
+  "contact": {
+    "phone": "8883455509",
+    "payPhone": "8883455509",
+    "source": "https://www.consumercellular.com/help/billing/payments/how-do-i-make-a-payment",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.consumercellular.com/help/billing/payments/how-do-i-make-a-payment",
+      "note": "To pay without logging in, text #PAYMENT to 38882821 from your phone for a secure payment link, or call (888) 345-5509 to pay by card.",
+      "channel": "phone",
+      "phone": "8883455509"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumercellular.com/help/billing/payments/what-is-autopay",
+      "note": "AutoPay charges your credit or debit card automatically on each invoice due date; you still receive a monthly invoice."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.consumercellular.com/help/billing/payments/what-is-autopay",
+      "note": "Change your Payment Type under Edit Billing Info in the Billing menu, or call (888) 345-5509."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumercellular.com/help/billing/invoices/how-do-i-change-my-billing-method",
+      "note": "Under Billing Type choose Paperless Billing, Extended Detailed Billing ($2) or Standard Paper Invoicing; the change applies to your next invoice."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.consumercellular.com/help/billing/miscellaneous/what-if-i-need-to-cancel-service",
+      "note": "Call Customer Support at (888) 345-5509 to cancel. Service continues to the end of the billing cycle; the final invoice is not prorated. New customers can cancel within 30 days (500MB) under the Risk-Free Guarantee.",
+      "channel": "phone",
+      "phone": "8883455509"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumercellular.com/help/billing/payments/how-do-i-make-a-payment",
+      "note": "Call (888) 345-5509 with your account number and credit or debit card."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumercellular.com/help/billing/payments/how-do-i-make-a-payment",
+      "note": "Mail a check with your account number to Consumer Cellular, P.O. Box 6139, Carol Stream, IL 60197-6139. Allow 8-10 days for mail."
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.consumercellular.com/help/billing/miscellaneous/how-do-i-get-billed-if-i-change-my-rate-plan",
+      "note": "Your invoice uses the plan in place on the last day of the billing cycle."
+    }
+  },
+  "billing": {
+    "source": "https://www.consumercellular.com/help/billing/payments/how-do-i-make-a-payment",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.consumercellular.com/help/billing/payments/how-do-i-make-a-payment",
+      "notes": [
+        "A $10 network activation fee applies per new line, and an Operational Compliance Fee ($3.99 per phone) appears on invoices."
+      ]
+    },
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ],
+      "days": "due_date"
+    },
+    "lateFeeCents": 500,
+    "plans": [
+      {
+        "id": "1gb",
+        "name": "1GB Data",
+        "cents": 2000
+      },
+      {
+        "id": "5gb",
+        "name": "5GB Data",
+        "cents": 2500
+      },
+      {
+        "id": "unlimited-50",
+        "name": "Unlimited (Age 50+)",
+        "cents": 3500,
+        "current": true
+      },
+      {
+        "id": "unlimited-18-49",
+        "name": "Unlimited (Age 18-49)",
+        "cents": 6000
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "make-a-payment",
+      "title": "How do I make a payment?",
+      "topic": "payments",
+      "source": "https://www.consumercellular.com/help/billing/payments/how-do-i-make-a-payment",
+      "paragraphs": [
+        "Card payments: log in to My Account and select Pay Now, call (888) 345-5509, or text #PAYMENT to 38882821 to receive a secure payment link without logging in.",
+        "Checks: mail your check with your account number to one of the Consumer Cellular P.O. boxes (for example P.O. Box 6139, Carol Stream, IL 60197-6139).",
+        "Card payments post the same day; allow 8-10 days for a mailed check."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "What is AutoPay and how do I sign up?",
+      "topic": "autopay",
+      "source": "https://www.consumercellular.com/help/billing/payments/what-is-autopay",
+      "paragraphs": [
+        "AutoPay charges your credit or debit card automatically on each invoice due date. You still get an invoice every month.",
+        "Published plan prices include a $5 monthly credit for using AutoPay together with eBilling."
+      ],
+      "steps": [
+        "Log in to My Account.",
+        "In the Billing menu, click Edit Billing Info.",
+        "Under Payment Type select AutoPay.",
+        "Enter your credit or debit card.",
+        "Click Save Changes."
+      ]
+    },
+    {
+      "slug": "invoice-due-date",
+      "title": "When is my invoice balance due?",
+      "topic": "billing",
+      "source": "https://www.consumercellular.com/help/billing/invoices/when-is-my-invoice-balance-due",
+      "paragraphs": [
+        "Your invoice posts to My Account about 4 days after the billing cycle ends and is generally due 19 days after it is mailed. AutoPay accounts are charged on the due date.",
+        "Text #BALANCE to 38882821 for your balance and due date. To move your due date, contact Customer Support."
+      ]
+    },
+    {
+      "slug": "cc-plans",
+      "title": "Consumer Cellular plans",
+      "topic": "plans",
+      "source": "https://www.consumercellular.com/shopping/choose/plan",
+      "paragraphs": [
+        "Single-line plans with unlimited talk and text: 1GB for $20, 5GB for $25, Unlimited for $35 a month when the account holder is 50 or older, and Unlimited for $60 a month for ages 18-49. Prices include the $5 AutoPay and eBilling credit and exclude taxes and fees.",
+        "If you change plans mid-cycle, the next invoice uses the plan in place on the last day of the cycle."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "detailed-billing-fee",
+        "intent": "Using Consumer Cellular support pages, find the monthly charge for Extended Detailed Billing. Do not change your billing type.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2",
+              "2"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2",
+            "2"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Extended Detailed Billing costs $2."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-charge-day",
+        "intent": "Find out on which day Consumer Cellular AutoPay charges your card each month. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "due date",
+              "due"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "due date",
+            "due"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "AutoPay charges the card on the invoice due date."
+          }
+        ]
+      },
+      {
+        "slug": "payment-text-code",
+        "intent": "Find the short code you text #PAYMENT to for a Consumer Cellular payment link. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "38882821"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "38882821"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Text #PAYMENT to 38882821."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Cellphone number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "AutoPay",
+        "Paperless Billing"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Unlimited (Age 50+)",
+        "5GB Data"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "(888) 345-5509"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "make-a-payment",
+      "contains": "38882821"
+    }
+  ],
+  "version": 1
+}

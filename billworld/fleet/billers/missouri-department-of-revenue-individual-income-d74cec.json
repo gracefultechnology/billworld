@@ -1,0 +1,360 @@
+{
+  "id": "missouri-department-of-revenue-individual-income-d74cec",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Missouri Department of Revenue (individual income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public dor.mo.gov and mytax.mo.gov pages only (no login, no form submitted). MyTax Missouri: Member Sign In with User ID and Password (Forgot User ID? / Forgot password?); New User? Register Here, then register as an Administrator of the individual income tax account using information from the most recently filed return; a PIN is mailed to the address on file to finish registration (prior filing history required; not expressible). Registration form asks for first and last name, phone and email to create a user ID. Password policy: at least 15 characters meeting 3 of 4 complexity rules (upper, lower, number, special); expires every 90 days (expiry not expressible). Public links: Make an individual tax payment as a guest; Request a Payment Plan; Check Payment Status. Fees (NCR Payments, kept by the vendor): e-check $0.50; card 2.0% + $0.25 per transaction (engine charges 2.0%; the 25-cent fixed part is in fees.notes, see cross-owner request on fixed+percent fees); NCR may charge $25 for an insufficient-funds or closed-account debit. Posting: e-check 3-4 business days, card 5-6. Pay by phone 888-929-0513. Mail: MO-1040V with check to PO Box 385, Jefferson City, MO 65105-0385. Payment plans: Internet Installment Agreement request on MyTax Missouri (SSN, the most recent notice including its PIN, bank account or credit card); questions 573-751-7200 or income@dor.mo.gov; interest and additions to tax continue. Additions: failure to pay 5%; failure to file 5% a month up to 25%. No recurring AutoPay for a balance (inferred); scheduling and cancel rules are not published on the pages read (family defaults kept).",
+  "officialDomains": [
+    "dor.mo.gov",
+    "mytax.mo.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://dor.mo.gov/taxation/individual/pay-online.html",
+      "title": "Pay Your Missouri Individual Income Tax",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://dor.mo.gov/taxation/payment-options/",
+      "title": "Payment Options and Payment Plan Agreements",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://dor.mo.gov/faq/taxation/individual/general.html",
+      "title": "Individual Income Tax FAQs - General",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://mytax.mo.gov/rptp/portal/home/",
+      "title": "MyTax Missouri - Home",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://mytax.mo.gov/rptp/portal/home/faq",
+      "title": "MyTax Missouri - Frequently Asked Questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://mytax.mo.gov/rptp/portal/individual/register-taxpayer-user/",
+      "title": "MyTax Missouri - Individuals Register for Secure Services",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Missouri Department of Revenue",
+    "shortName": "Missouri DOR",
+    "primary": "#1f3f6e",
+    "accent": "#7a3e00",
+    "monogram": "MO"
+  },
+  "labels": {
+    "dashboard": "MyTax Missouri",
+    "payBill": "Make a Payment",
+    "guestPay": "Make an individual tax payment as a guest",
+    "arrangement": "Request a Payment Plan",
+    "register": "New User? Register Here",
+    "signIn": "Member Sign In",
+    "username": "User ID",
+    "forgot": "Forgot password?",
+    "help": "FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay as a Guest",
+        "page": "guest"
+      },
+      {
+        "label": "Pay My Taxes",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Plan Agreement",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      },
+      {
+        "label": "Member Sign In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyTax Missouri",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Request a Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "passwordRule": {
+      "pattern": "^(?=.{15,}$)(?:(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)|(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\\d)(?=.*[^A-Za-z0-9])).*$",
+      "message": "Use at least 15 characters with 3 of these 4: an uppercase letter, a lowercase letter, a number, a special character."
+    },
+    "evidence": "documented_official",
+    "source": "https://mytax.mo.gov/rptp/portal/individual/register-taxpayer-user/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://mytax.mo.gov/rptp/portal/home/",
+      "note": "Make an individual tax payment as a guest without a MyTax Missouri account."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://dor.mo.gov/taxation/individual/pay-online.html",
+      "note": "MyTax Missouri has no recurring automatic payments for an income tax balance. Make each payment yourself, or request a payment plan if you cannot pay in full.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.mo.gov/taxation/payment-options/",
+      "note": "Have your Social Security number, your most recent tax notice including its PIN, and a bank account or credit card ready. Interest and additions to tax keep accruing."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.mo.gov/taxation/payment-options/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.mo.gov/faq/taxation/individual/general.html",
+      "note": "Pay by e-check or card by calling 888-929-0513.",
+      "phone": "8889290513"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://dor.mo.gov/faq/taxation/individual/general.html"
+    }
+  },
+  "billing": {
+    "source": "https://dor.mo.gov/taxation/individual/pay-online.html",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 50,
+      "cardPercent": 2,
+      "evidence": "documented_official",
+      "source": "https://dor.mo.gov/taxation/individual/pay-online.html",
+      "notes": [
+        "Card payments also carry a 25-cent fee per transaction on top of the 2.0% convenience fee.",
+        "The payment vendor may charge $25 if an e-check is returned for insufficient funds or a closed account."
+      ]
+    }
+  },
+  "contact": {
+    "phone": "5737517200",
+    "payPhone": "8889290513",
+    "source": "https://dor.mo.gov/taxation/payment-options/"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your Missouri individual income tax",
+      "topic": "payments",
+      "source": "https://dor.mo.gov/taxation/individual/pay-online.html",
+      "paragraphs": [
+        "Pay online by e-check from a checking or savings account or by MasterCard, Discover, Visa or American Express. You can pay as a guest or after you sign in to MyTax Missouri. Payments are processed by the vendor NCR Payments, and the convenience fees go to the vendor, not the Department.",
+        "An e-check costs $0.50 and posts in 3 to 4 business days. A card payment costs 2.0% plus $0.25 per transaction and posts in 5 to 6 business days. The vendor may charge $25 if an e-check is returned for insufficient funds or a closed account.",
+        "You can also pay by e-check or card by calling 888-929-0513, or mail a check or money order payable to the Missouri Department of Revenue with Form MO-1040V to PO Box 385, Jefferson City, MO 65105-0385. Do not postdate the check."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment plan agreements",
+      "topic": "assistance",
+      "source": "https://dor.mo.gov/taxation/payment-options/",
+      "paragraphs": [
+        "If you cannot pay in full, request an individual payment plan with the Internet Installment Agreement request on MyTax Missouri (Request a Payment Plan).",
+        "Before you start, have your Social Security number, your most recent tax notice including its PIN, and your bank account information or a credit card. Payment plans are not offered for motor vehicle sales tax or driver license fees.",
+        "Interest and additions to tax still apply to unpaid tax while you pay. Questions: call 573-751-7200 or email income@dor.mo.gov."
+      ]
+    },
+    {
+      "slug": "mytax-missouri",
+      "title": "Register for MyTax Missouri",
+      "topic": "account",
+      "source": "https://mytax.mo.gov/rptp/portal/home/faq",
+      "paragraphs": [
+        "Sign in to MyTax Missouri with your User ID and password. To register, choose New User? Register Here under the sign-in box and register as an Administrator of your individual income tax account, using information from your most recently filed return. You need a prior filing history with the Department.",
+        "A PIN is then mailed to the address on file. When it arrives, sign in to finish registering.",
+        "Passwords must be at least 15 characters and meet 3 of 4 rules: an uppercase letter, a lowercase letter, a number and a special character. Passwords expire every 90 days."
+      ]
+    },
+    {
+      "slug": "penalties-interest",
+      "title": "Additions to tax and interest",
+      "topic": "payments",
+      "source": "https://dor.mo.gov/faq/taxation/individual/general.html",
+      "paragraphs": [
+        "An extension to file is not an extension to pay. Tax not paid by the due date gets an addition to tax of 5% of the unpaid balance for failure to pay, and simple interest accrues on delinquent tax.",
+        "Not filing on time adds 5% of the unpaid balance for each month, up to 25%. Paying any part of the tax before the due date reduces these amounts."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee",
+        "intent": "Using the Missouri DOR website's help pages, find the convenience fee for paying individual income tax by credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2.0%",
+              "2%",
+              "2 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2.0%",
+            "2%",
+            "2 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments cost 2.0% plus $0.25 per transaction."
+          }
+        ]
+      },
+      {
+        "slug": "plan-pin",
+        "intent": "Using the Missouri DOR website's help pages, find what you need from your most recent tax notice to request a payment plan online. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "PIN"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "PIN"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_arrangement"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You need your most recent tax notice including its PIN, plus your SSN and a bank account or credit card."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Pay My Taxes",
+        "Payment Plan Agreement"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "MyTax Missouri",
+        "Request a Payment Plan"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$0.50",
+        "888-929-0513"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "PIN",
+        "573-751-7200"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "username"
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "id": "ascension-8f6b51",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Ascension",
+  "category": "medical",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public pages: healthcare.ascension.org/billing (market list for online bill pay) and the public Learn More FAQ of Ascension's online billing account at billpay.ascension.org (no sign-in, no enrollment, no guest lookup). The Ascension online account consolidates visits into one monthly electronic statement and one payment for the household; bills only arrive after insurance settles. Enrollment needs information from a recent statement plus demographic data, last four of the SSN, date of birth and an email (only accountNumber and email are expressible; SSN-4/DOB registration fields are an open request). Enrolled accounts are purely digital: no paper statements for eligible visits (paperless modelled as supported; it is effectively always on). The eStatement arrives 21 days before the patient-selected payment due date (due-date choice is an open request). Options: pay in full, a specific amount, a specific visit, or a self-service monthly finance plan; partial or missed payments can send visits to collections. One-time guest payment uses the Responsible Party Account ID from the statement. Accepted: Visa, MasterCard, Discover, American Express and ACH e-check. Payment confirmations go to the notification email. Account questions 833-291-0470. Some visits are not eligible and are billed on paper separately; some markets (e.g. Saint Agnes MD, Florida) have their own pages and phone numbers. No fees and no standalone AutoPay are described (autopay kept as family default, evidence inferred from the self-service monthly finance plan). Reviewer (2026-10-10): guestLookupExact set so the guest form asks only for the Responsible Party Account ID (was statement number + amount + ID). Market bill pay pages (e.g. Ascension Seton, Wisconsin, Saint Thomas) still link to the VisitPay account (ascension.visitpay.com) and also promote the newer Ascension One app/account in FL, IN, KS, OK, TN and Austin TX, with separate doctor-office and hospital phone numbers per market; the dossier models the VisitPay account.",
+  "officialDomains": [
+    "ascension.org"
+  ],
+  "sources": [
+    {
+      "url": "https://healthcare.ascension.org/billing",
+      "title": "Official Billing and Online Bill Pay",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.billpay.ascension.org/Account/LearnMore",
+      "title": "Learn More (online billing FAQ)",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://healthcare.ascension.org/billing/bill-pay-online-texas-ascension-seton",
+      "title": "Official Bill Pay Online | Ascension Seton",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://healthcare.ascension.org/ascension-one",
+      "title": "Ascension One",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Ascension",
+    "shortName": "Ascension",
+    "primary": "#1e4b8f",
+    "accent": "#0f2f63",
+    "monogram": "A"
+  },
+  "labels": {
+    "payBill": "Make a payment",
+    "guestPay": "Pay as guest",
+    "register": "Enroll",
+    "statements": "eStatements",
+    "arrangement": "Finance plan",
+    "help": "Learn More",
+    "accountNumber": "Responsible Party Account ID",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Pay as guest",
+        "page": "guest"
+      },
+      {
+        "label": "Financial assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Learn More",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.billpay.ascension.org/Account/LearnMore",
+    "guestLookupExact": true
+  },
+  "contact": {
+    "phone": "833-291-0470",
+    "source": "https://www.billpay.ascension.org/Account/LearnMore"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.billpay.ascension.org/Account/LearnMore",
+      "note": "To enroll you need a recent Ascension statement, the last four digits of your Social Security number, your date of birth and a valid email address."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.billpay.ascension.org/Account/LearnMore",
+      "note": "Your Ascension account is fully digital: once you enroll, eligible visits are billed by eStatement only, and you can print any statement as a PDF."
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://healthcare.ascension.org/billing"
+    }
+  },
+  "billing": {
+    "source": "https://www.billpay.ascension.org/Account/LearnMore",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Ascension bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Your Ascension account brings all eligible visits together: you get one electronic statement each month and make one payment for your whole household. You will not get a bill until your insurance has settled the claim.",
+        "When a statement arrives you can pay the full balance, pay a specific amount, pay for one visit, or set up a monthly finance plan. Partial or missed payments can mean some visits move into the collection process.",
+        "Ascension accepts Visa, MasterCard, Discover and American Express credit and debit cards and electronic checks (ACH). A confirmation of each payment is emailed to your notification address. Some payments can take several days to post at your bank.",
+        "In some markets you can also see and pay hospital and clinic bills, and set up a payment plan, in the Ascension One app or online account. Your market's bill pay page shows which options it offers and its billing phone numbers."
+      ],
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    {
+      "slug": "guest-pay",
+      "title": "Pay once without logging in",
+      "topic": "payments",
+      "paragraphs": [
+        "You can make a one-time online payment as a guest. Have the statement you want to pay, the Responsible Party Account ID printed on it, and the bank account or card you will use.",
+        "Paying from your Ascension account is recommended, because you do not have to re-enter your details each time."
+      ],
+      "steps": [
+        "Choose Pay as guest.",
+        "Enter the Responsible Party Account ID from your statement.",
+        "Enter your bank account or card.",
+        "Submit and keep the emailed confirmation."
+      ],
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    {
+      "slug": "estatements",
+      "title": "eStatements and paper bills",
+      "topic": "account",
+      "paragraphs": [
+        "Ascension is a digital-only account. After you enroll, eligible visits are no longer billed on paper. You can print a PDF of any current or past eStatement.",
+        "Your eStatement arrives 21 days before the payment due date you selected. New charges can take up to three days to post, so charges that load after the statement period ends appear on the next statement.",
+        "You may still get paper bills for facilities or practitioners whose visits are not eligible for your Ascension account. Those bills are managed separately."
+      ],
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    {
+      "slug": "payment-plan",
+      "title": "Monthly finance plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you need more time, you can set up your own monthly finance plan in your Ascension account and pick a monthly amount that fits your budget.",
+        "If you manage a consolidated household, the managing user arranges finance plans for the people they manage. Managed users can still make payments at any time."
+      ],
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    {
+      "slug": "enroll",
+      "title": "Enrolling in an Ascension account",
+      "topic": "account",
+      "paragraphs": [
+        "You need an Ascension account to log in. To enroll, have a recent Ascension statement, some basic demographic information, the last four digits of your Social Security number, your date of birth and a valid email address.",
+        "After you register you get automatic email reminders about upcoming due dates, and you can send billing questions through the secure communications center."
+      ],
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Questions about your Ascension account",
+      "topic": "contact",
+      "paragraphs": [
+        "For questions about your Ascension online billing account, call 833-291-0470. You can also send a secure message from the communications center in your account."
+      ],
+      "source": "https://www.billpay.ascension.org/Account/LearnMore"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Financial assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "Ascension provides care regardless of ability to pay and offers a financial assistance program. Patients who need help with a bill can apply for assistance or ask about a payment plan."
+      ],
+      "source": "https://healthcare.ascension.org/billing"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "estatement-lead-days",
+        "intent": "Using Ascension's online billing help, find how many days before your selected payment due date your eStatement arrives. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "21"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "21"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "21 days before the due date."
+          }
+        ]
+      },
+      {
+        "slug": "guest-pay-identifier",
+        "intent": "Find which ID from the statement Ascension asks for when you make a one-time payment without logging in. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Responsible Party"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Responsible Party"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The Responsible Party Account ID printed on the statement."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "label": "accountNumber"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "estatements",
+      "contains": [
+        "21 days"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "833-291-0470"
+    }
+  ]
+}

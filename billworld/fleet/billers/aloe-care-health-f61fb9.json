@@ -1,0 +1,317 @@
+{
+  "id": "aloe-care-health-f61fb9",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Aloe Care Health",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from Aloe Care Health's public home page (plans), the public store sign-in page (store.aloecare.com/login, rendered; never signed in), the Terms of Service (updated 2023-05-24) and the support center's cancellation article. Sign-in: 'Welcome back' with Email and Password, 'Log in', 'Forgot your password?' and 'Create an account'. Terms: month-to-month unless another term is chosen in the Portal or App; you authorize Aloe Care to charge a credit card or debit a checking account for the Monitoring Service Fee (modelled as AutoPay, methods bank+card); prepaying up to 12 months freezes the fee for that period; late charge 5% of the late payment (lateFeePercent 5) plus a 1.5% monthly finance charge (help only); either party may cancel with 30 days' written notice; annual plans: full refund in the first month, pro-rated in the first five months, none after six; owned equipment must be returned, insured and tracked, or charged at published rates. The cancellation article says cancelling requires calling Support at 888-256-3227 with the care recipient's name, physical address and account email. Plans: Essentials $39.99/mo (+$199.99 hardware), Mobile Companion 2 $44.99/mo (+$149.99), Essentials Plus $59.99/mo (+$349.99); current plan Essentials Plus is a simulation choice; online plan changes are not documented (left to the family). No public page describes paying an invoice online; pay_online is inferred from the account portal. Payment plans phone-only (inferred); scheduled payments and paperless unknown.",
+  "officialDomains": [
+    "aloecare.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.aloecare.com/",
+      "title": "Aloe Care Health - Medical Alert Systems",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://store.aloecare.com/login",
+      "title": "Login | Aloe Care Health",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.aloecare.com/legal/terms-of-service",
+      "title": "Terms of Service | Aloe Care Health",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://support.aloecare.com/hc/en-us/articles/28084864008087-How-do-I-cancel-my-Aloe-Care-Health-Account-and-Services",
+      "title": "How do I cancel my Aloe Care Health Account and Services?",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Aloe Care Health",
+    "shortName": "Aloe Care",
+    "primary": "#1f5c50",
+    "accent": "#5b3a8c",
+    "monogram": "AC"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "username": "Email",
+    "forgot": "Forgot your password?",
+    "register": "Create an account",
+    "help": "Support & FAQs",
+    "contact": "Contact Us",
+    "cancel": "Cancel Account"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Create an account",
+        "page": "register"
+      },
+      {
+        "label": "Plans",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Support & FAQs",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://store.aloecare.com/login"
+  },
+  "contact": {
+    "phone": "888-256-3227",
+    "source": "https://store.aloecare.com/login"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://store.aloecare.com/login"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.aloecare.com/legal/terms-of-service"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.aloecare.com/legal/terms-of-service"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://support.aloecare.com/hc/en-us/articles/28084864008087-How-do-I-cancel-my-Aloe-Care-Health-Account-and-Services",
+      "note": "Your account and service cannot be cancelled online. Call Aloe Care Support at 888-256-3227 with the care recipient's name, physical address and the account email ready.",
+      "channel": "phone",
+      "phone": "8882563227"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.aloecare.com/legal/terms-of-service",
+      "note": "Payment plans are not offered online. Call Aloe Care Support at 888-256-3227.",
+      "channel": "phone",
+      "phone": "8882563227"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred"
+    }
+  },
+  "billing": {
+    "source": "https://www.aloecare.com/legal/terms-of-service",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeePercent": 5,
+    "plans": [
+      {
+        "id": "essentials",
+        "name": "Essentials",
+        "cents": 3999
+      },
+      {
+        "id": "mobile-companion-2",
+        "name": "Mobile Companion 2",
+        "cents": 4499
+      },
+      {
+        "id": "essentials-plus",
+        "name": "Essentials Plus",
+        "cents": 5999,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "faq",
+      "title": "Plans and pricing",
+      "topic": "faq",
+      "paragraphs": [
+        "Aloe Care plans have a monthly monitoring fee plus a one-time hardware cost: Essentials is $39.99 a month (hardware $199.99), Mobile Companion 2 is $44.99 a month (hardware $149.99) and Essentials Plus is $59.99 a month (hardware $349.99).",
+        "Every plan has a 30-day money-back guarantee. U.S. military members can get a free month of service by calling (888) 256-3227.",
+        "Service is month to month unless you choose a longer term. If you prepay up to 12 months, your monitoring fee cannot go up during that period."
+      ],
+      "source": "https://www.aloecare.com/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic billing",
+      "topic": "autopay",
+      "paragraphs": [
+        "When you sign up you authorize Aloe Care to charge your credit card or debit your checking account for the monitoring service fee each billing period.",
+        "A late payment can carry a late charge of 5% of the amount plus a finance charge of 1.5% a month, and monitoring may stop while a payment is late."
+      ],
+      "source": "https://www.aloecare.com/legal/terms-of-service"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your account and services",
+      "topic": "account",
+      "paragraphs": [
+        "To cancel, Aloe Care has to confirm who you are, so call Support at 888-256-3227. Have the care recipient's first and last name, their physical address and the email address on the account ready.",
+        "Either side may end the agreement with 30 days' written notice; service ends on the 30th day. On an annual plan you get a full refund if you cancel in the first month and a pro-rated refund for the remaining months if you cancel within the first five months; there is no refund after six months.",
+        "If Aloe Care owns your equipment, return it undamaged in its original packaging, insured and with tracking. Equipment that is not returned or is damaged is charged at Aloe Care's published rates."
+      ],
+      "source": "https://support.aloecare.com/hc/en-us/articles/28084864008087-How-do-I-cancel-my-Aloe-Care-Health-Account-and-Services"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Aloe Care",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer Support: 1-888-ALOECARE (888-256-3227) or support@getaloecare.com. Sales and more information: (844) 741-0826.",
+        "Mail: Aloe Care Health, 119 West 24th Street, Suite 315, New York, NY 10011."
+      ],
+      "source": "https://store.aloecare.com/login"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "cancel-notice-days",
+        "intent": "Using Aloe Care Health's terms, find how many days of written notice are needed to cancel the service. Do not cancel or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30",
+              "thirty"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30",
+            "thirty"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "30 days' written notice."
+          }
+        ]
+      },
+      {
+        "slug": "annual-refund-first-month",
+        "intent": "You prepaid an annual Aloe Care plan and are thinking about cancelling in the first month. Using the help pages, find what refund you would get. Do not cancel or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "full"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "full"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A full refund if you cancel within the first month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "888-256-3227"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Mobile Companion 2",
+        "Essentials Plus"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "5%"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "pro-rated"
+    }
+  ]
+}

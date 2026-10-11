@@ -1,0 +1,351 @@
+{
+  "id": "hughesnet-hughes-satellite-internet-5db325",
+  "version": 1,
+  "status": "dedicated",
+  "name": "HughesNet (Hughes satellite internet)",
+  "category": "internet",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public myHughesnet FAQ pages and the consumer plans page only (no sign-in, no Pay Now lookup). Accounts are identified by the SAN (Site Account Number); registration needs the SAN and the daytime phone on the account, then a username, recovery email/mobile, password and security questions. Password: at least 6 characters with a number, upper and lower case letters and a special character, without * # ( ) ^ \\ |. Sign in with the username. Pay: Billing > Make a Payment (Pay button only when a payment is due); Pay Now in the top menu pays without signing in using the SAN and ZIP code. New customers are enrolled in recurring payments (AutoPay) automatically with the card used to order; Billing > Change Payment > Save Payment changes it (credit, debit or checking/ACH; no prepaid gift cards). Turning off automatic payment is by phone only (Customer Care 866-347-3292), so autopay_cancel is unsupported. ACH recurring payments bring unspecified 'additional savings' (no amount published; not modelled; reviewer removed an unverified $5/month claim). Printed invoices on request carry a monthly fee (amount unpublished); statements are otherwise online. Plan changes online (Account > My Services & Plan > Change Plan), effective immediately and prorated; plan names Lite, Select, Elite, Fusion have no published prices, so billing.plans is left out. Cancel by phone; early termination fees apply during the commitment period (amount on the legal site, not reviewed); return modem, power supply and radio within 45 days or pay $300 ($500 Fusion). The catalog's 866-482-1777 is replaced by the FAQ's Customer Care number.",
+  "officialDomains": [
+    "hughesnet.com"
+  ],
+  "sources": [
+    {
+      "url": "https://my.hughesnet.com/support/faq/516/",
+      "title": "Where do I view and pay my bill? | Hughesnet",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://my.hughesnet.com/support/faq/502/",
+      "title": "Am I enrolled in recurring payments? | Hughesnet",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://my.hughesnet.com/support/faq/2327/",
+      "title": "How to register on myhughesnet.com and set-up recurring payments? | Hughesnet",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://my.hughesnet.com/support/faq/425/",
+      "title": "How Do I Cancel Or Modify My Service Plan? | Hughesnet",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://my.hughesnet.com/support/faq/399/",
+      "title": "What is the Hughesnet Return Policy? | Hughesnet",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.hughesnet.com/consumer-plans-pricing",
+      "title": "Consumer Plans & Pricing | Hughesnet",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Hughesnet",
+    "shortName": "Hughesnet",
+    "primary": "#0033a0",
+    "accent": "#1a1a1a",
+    "monogram": "H"
+  },
+  "labels": {
+    "guestPay": "Pay Now",
+    "viewBill": "Billing",
+    "payBill": "Make a Payment",
+    "wallet": "Change Payment",
+    "autopay": "AutoPay",
+    "accountNumber": "SAN",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "username": "Username",
+    "help": "Support",
+    "dashboard": "myHughesnet",
+    "plan": "Change Plan"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Pay Now",
+        "page": "guest"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "myHughesnet",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Change Payment",
+        "page": "wallet"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "phone"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "passwordRule": {
+      "pattern": "^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])[^*#()^\\\\|]{6,}$",
+      "message": "Use at least 6 characters with a number, an uppercase letter, a lowercase letter and a special character. The characters * # ( ) ^ \\ | are not allowed."
+    },
+    "evidence": "documented_official",
+    "source": "https://my.hughesnet.com/support/faq/2327/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://my.hughesnet.com/support/faq/516/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://my.hughesnet.com/support/faq/502/"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://my.hughesnet.com/support/faq/502/",
+      "note": "To turn off automatic payments, call Hughesnet Customer Care at 866-347-3292.",
+      "channel": "phone",
+      "phone": "8663473292"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://my.hughesnet.com/support/faq/425/",
+      "note": "To cancel Hughesnet service, call Customer Care at 866-347-3292. Early termination fees may apply during your commitment period, and equipment must be returned within 45 days.",
+      "channel": "phone",
+      "phone": "8663473292"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://my.hughesnet.com/support/faq/502/",
+      "phone": "8663473292"
+    }
+  },
+  "billing": {
+    "source": "https://my.hughesnet.com/support/faq/502/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "notes": [
+        "Printed paper invoices are available on request for an additional monthly fee."
+      ],
+      "evidence": "documented_official",
+      "source": "https://my.hughesnet.com/support/faq/502/"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "mode": "append",
+      "title": "View and pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to myHughesnet, select Billing and then Make a Payment to see the amount due, invoice number, invoices and payment history; the Pay button appears when a payment is due. Without an account, select Pay Now in the top menu and enter your SAN (Site Account Number) and ZIP code.",
+        "Hughesnet accepts credit cards, debit cards and checking accounts (ACH). Prepaid gift cards aren't accepted. Printed invoices are available on request for an extra monthly fee."
+      ],
+      "source": "https://my.hughesnet.com/support/faq/516/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Recurring payments (AutoPay)",
+      "topic": "autopay",
+      "paragraphs": [
+        "New Hughesnet customers are enrolled in recurring payments automatically, using the payment method given when ordering. To change it, sign in, select Billing, then Change Payment; Payment type on file shows whether AutoPay is set up. Pick the new option, enter the details and select Save Payment.",
+        "Paying by checking account (ACH) brings additional savings on your monthly bill. To turn off automatic payments, call Customer Care at 866-347-3292."
+      ],
+      "steps": [
+        "Sign in to myHughesnet.",
+        "Select Billing, then Change Payment.",
+        "Choose a card or checking account and enter the details.",
+        "Select Save Payment."
+      ],
+      "source": "https://my.hughesnet.com/support/faq/2327/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel or change your plan",
+      "topic": "account",
+      "paragraphs": [
+        "You can change plans any time in myHughesnet under Account > My Services & Plan > Change Plan; changes take effect right away and a mid-cycle change is prorated on your next invoice. To cancel, call Customer Care at 866-347-3292. Cancelling after installation but before your commitment period ends brings an early termination fee.",
+        "Return the modem, power supply and radio transmitter (Fusion: multipath device, power supply and wireless antenna) within 45 days of cancelling. Unreturned equipment costs $300 ($100 modem and power supply, $200 radio), or $500 for Fusion. The dish, mount and cables don't need to be returned."
+      ],
+      "source": "https://my.hughesnet.com/support/faq/399/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "unreturned-equipment-fee",
+        "intent": "A Hughesnet customer (standard service, not Fusion) is cancelling. Find what Hughesnet charges if the modem, power supply and radio aren't returned, and the return deadline. Do not cancel anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$300"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$300"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Return the equipment within 45 days; unreturned equipment costs $300."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-off-phone",
+        "intent": "A Hughesnet customer wants to stop automatic payments. Find how Hughesnet says to turn them off. Do not change any payment settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "866-347-3292",
+              "8663473292"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "866-347-3292",
+            "8663473292"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Hughesnet Customer Care at 866-347-3292 to turn off automatic payments."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "45 days",
+        "$300"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "866-347-3292"
+    }
+  ],
+  "contact": {
+    "phone": "866-347-3292",
+    "source": "https://my.hughesnet.com/support/faq/502/",
+    "evidence": "documented_official"
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "id": "kaiser-permanente-pharmacy-incl-mail-order-4753e3",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Kaiser Permanente Pharmacy (incl. mail order)",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from the public kp.org Prescription delivery page and the Order Prescriptions FAQ (Northern California versions; Washington members use separate pharmacy pages, and fees or shipping may vary by region), plus the kp.org Support Center (no sign-in). Members order on kp.org or the KP app: sign in, open Pharmacy, add prescriptions to the cart, choose Ship to address, review and submit; the card is entered at checkout and a credit card is required to process any order even with no copay (no charge then), so online payment is card-only (billing.methods card). Standard mail delivery is free (3-7 business days); next-day $8.99 and same-day $10.49 for some prescriptions (not covered by the plan, region-dependent; same-day not in Hawaii). No delivery to AK, AR, KS, LA, NE, NC, OK, SD. Auto refills for eligible prescriptions after the first order (at least one refill left, not controlled, approved for mail, labeled Auto Refill Eligible). Order by Rx number uses a family member's MRN and Rx number. No AutoPay for pharmacy charges, guest payment, payment plan or paperless bill is described on the pharmacy pages (unsupported, inferred). The pages read show no pharmacy phone number (they say to call the pharmacy on the prescription bottle or Member Services), so no contact phone is set and limitation notes point to Member Services and the pharmacy.",
+  "officialDomains": [
+    "kaiserpermanente.org",
+    "kp.org"
+  ],
+  "sources": [
+    {
+      "url": "https://healthy.kaiserpermanente.org/northern-california/learn/pharmacy/prescription-delivery",
+      "title": "Prescription Delivery Service | Kaiser Permanente",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://healthy.kaiserpermanente.org/northern-california/support/refill-prescriptions",
+      "title": "Order Prescriptions FAQs | Kaiser Permanente",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://healthy.kaiserpermanente.org/northern-california/support",
+      "title": "Support Center | Kaiser Permanente",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Kaiser Permanente Pharmacy",
+    "shortName": "Kaiser Permanente",
+    "primary": "#0b4a8b",
+    "accent": "#073463",
+    "monogram": "K"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Register",
+    "dashboard": "Pharmacy",
+    "payBill": "Check out",
+    "history": "View orders",
+    "profile": "Profile and Preferences",
+    "help": "Order prescriptions FAQs",
+    "contact": "Contact Member Services"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Register",
+        "page": "register"
+      },
+      {
+        "label": "Prescription delivery",
+        "helpSlug": "prescription-delivery"
+      },
+      {
+        "label": "Order prescriptions FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Pharmacy",
+        "page": "dashboard"
+      },
+      {
+        "label": "Check out",
+        "page": "pay"
+      },
+      {
+        "label": "View orders",
+        "page": "history"
+      },
+      {
+        "label": "Profile and Preferences",
+        "page": "profile"
+      },
+      {
+        "label": "Contact Member Services",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "evidence": "inferred",
+    "source": "https://healthy.kaiserpermanente.org/northern-california/learn/pharmacy/prescription-delivery"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://healthy.kaiserpermanente.org/northern-california/support/refill-prescriptions"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://healthy.kaiserpermanente.org/northern-california/support/refill-prescriptions",
+      "note": "Pharmacy orders are paid at checkout after you sign in to kp.org or the Kaiser Permanente app. You can also pay at a Kaiser Permanente pharmacy, or contact Member Services for billing questions.",
+      "channel": "in_person"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://healthy.kaiserpermanente.org/northern-california/learn/pharmacy/prescription-delivery",
+      "note": "There is no automatic payment for pharmacy charges. You enter a card when you check out each order; auto refills can be set for eligible prescriptions after your first order.",
+      "channel": "none"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://healthy.kaiserpermanente.org/northern-california/learn/pharmacy/prescription-delivery"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://healthy.kaiserpermanente.org/northern-california/support",
+      "note": "Payment plans for pharmacy orders are not set up online. For billing questions, contact Member Services by chat, email or phone, or visit Member Services at a Kaiser Permanente facility.",
+      "channel": "in_person"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://healthy.kaiserpermanente.org/northern-california/learn/pharmacy/prescription-delivery",
+      "note": "Pharmacy orders are paid at checkout, so there is no pharmacy bill to switch to paperless. Order status updates can come by text or email under Profile and Preferences.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://healthy.kaiserpermanente.org/northern-california/learn/pharmacy/prescription-delivery",
+      "note": "Your card is used when you check out an order; future-dated payments are not offered.",
+      "channel": "none"
+    }
+  },
+  "billing": {
+    "source": "https://healthy.kaiserpermanente.org/northern-california/support/refill-prescriptions",
+    "methods": [
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ordering and paying for prescriptions",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to kp.org and open Pharmacy from the main menu. Add prescriptions to your cart, choose Ship to address (or pickup) and check out; before you check out you see any savings for ordering by mail. Review and submit your order, then track it online or in the app.",
+        "A credit card number is required to process any order. If you have no pharmacy copayment, your card is not charged."
+      ],
+      "steps": [
+        "Sign in and open Pharmacy.",
+        "Add prescriptions to your cart.",
+        "Choose a delivery method and enter your card.",
+        "Review and submit the order."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/northern-california/support/refill-prescriptions"
+    },
+    {
+      "slug": "prescription-delivery",
+      "title": "Prescription delivery and fees",
+      "topic": "fees",
+      "paragraphs": [
+        "Members get most prescriptions by mail at no extra cost with standard shipping, which arrives in 3 to 7 business days, as long as the medication is not a controlled substance and is approved for mail. You may be able to get 3 months of a prescription for the price of 2 by mail.",
+        "Some prescriptions can come next day for an extra $8.99 or same day for $10.49; these fees are not covered by your health plan, may vary by region, and same-day delivery is not available in Hawaii. Kaiser Permanente does not ship to Alaska, Arkansas, Kansas, Louisiana, Nebraska, North Carolina, Oklahoma or South Dakota. You do not need to be home for a delivery."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/northern-california/learn/pharmacy/prescription-delivery"
+    },
+    {
+      "slug": "auto-refill",
+      "title": "Auto refills",
+      "topic": "account",
+      "paragraphs": [
+        "After your first order you can set most prescriptions to refill automatically. To qualify, a prescription needs at least one refill left, cannot be a controlled substance, must be approved for mail delivery and must be labeled Auto Refill Eligible in your medication list. Kaiser Permanente refills it when it is due and texts you when it is on the way.",
+        "For order status alerts, open My Account, choose Profile and Preferences, then Notifications, then Pharmacy, and pick text or email."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/northern-california/learn/pharmacy/prescription-delivery"
+    },
+    {
+      "slug": "family-orders",
+      "title": "Ordering for a family member",
+      "topic": "account",
+      "paragraphs": [
+        "Act for a Family Member lets a caregiver order medications and view order status for a member after Kaiser Permanente verifies identity and eligibility. Without it, Order by Rx number lets you order a family member's active prescriptions with their Medical Record Number (MRN) and the Rx number on the label."
+      ],
+      "source": "https://healthy.kaiserpermanente.org/northern-california/support/refill-prescriptions"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "same-day-fee",
+        "intent": "How much does Kaiser Permanente Pharmacy charge for same-day prescription delivery? Look it up on the KP pharmacy pages and answer; don't order or pay anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "10.49"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "10.49"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "$10.49 for same-day delivery."
+          }
+        ]
+      },
+      {
+        "slug": "card-without-copay",
+        "intent": "I have no copay at Kaiser Permanente Pharmacy, so why does checkout ask for my credit card, and will I be charged? Answer from the KP pharmacy help; don't pay anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "no"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "no"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The system needs a card number to process any order; there is no charge if you have no copay."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "pay",
+      "signedIn": true,
+      "label": "payBill"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "View orders"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "prescription-delivery",
+      "contains": "$8.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "auto-refill",
+      "contains": "Auto Refill Eligible"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "auto refills"
+    }
+  ]
+}

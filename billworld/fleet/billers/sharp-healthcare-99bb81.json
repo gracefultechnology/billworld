@@ -1,0 +1,292 @@
+{
+  "id": "sharp-healthcare-99bb81",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Sharp HealthCare",
+  "category": "medical",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public sharp.com Billing and online bill pay page and its FAQs (no sign-in, no guest lookup). 'Sign in to pay' uses the Sharp app/web account (Epic MyChart), which shows Sharp Rees-Stealy and Sharp hospital statements together, pays all invoices in one transaction by credit card, debit card or checking account, and saves a preferred method. 'Pay as guest' uses the guarantor ID and last name from the statement. Partial payments are allowed when signed in but do not stop a past-due bill from going to collections. Monthly installment plans in the Sharp app pay a small amount automatically each month (plans also for connected family). Paperless: choose mail, email or both. Bills and plan installments from before March 1, 2024 (old platform) are paid by phone. Phones Mon-Fri 8-4:30: Sharp hospitals 858-499-2400, Sharp Rees-Stealy 858-499-2410, SharpCare 858-499-2044, specialty groups 858-346-4321. Sharp Tri-City and Sharp Health Plan premiums have separate pay pages (not modelled). Standalone AutoPay is not described; autopay kept supported (inferred) to represent the automatic monthly installments. No fees are stated. Reviewer (2026-10-10): the Sharp billing FAQ also says guests can pay by credit or debit card or check, and that a guarantor can pay a family member's bill as a guest; it still mentions an invoice/visit number for the one-time form while the main billing page names guarantor ID + last name (the main page is kept).",
+  "officialDomains": [
+    "sharp.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.sharp.com/billing",
+      "title": "Billing and online bill pay",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.sharp.com/billing/faqs",
+      "title": "Billing frequently asked questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.sharp.com/billing/old-bill-payment",
+      "title": "Make an old bill payment",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Sharp HealthCare",
+    "shortName": "Sharp",
+    "primary": "#0f4c81",
+    "accent": "#08345c",
+    "monogram": "S"
+  },
+  "labels": {
+    "signIn": "Sign in to pay",
+    "guestPay": "Pay as guest",
+    "dashboard": "Sharp app",
+    "arrangement": "Payment plan",
+    "autopay": "Monthly installments",
+    "paperless": "Paperless billing",
+    "accountNumber": "Guarantor ID",
+    "help": "Billing FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in to pay",
+        "page": "login"
+      },
+      {
+        "label": "Pay as guest",
+        "page": "guest"
+      },
+      {
+        "label": "Financial assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Billing FAQs",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName"
+    ],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.sharp.com/billing"
+  },
+  "contact": {
+    "phone": "858-499-2400",
+    "source": "https://www.sharp.com/billing"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharp.com/billing"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharp.com/billing"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.sharp.com/billing",
+      "note": "Monthly installments come with a payment plan in the Sharp app: a small amount is paid automatically each month until the balance is paid."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharp.com/billing"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharp.com/billing"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.sharp.com/billing",
+      "phone": "858-499-2400"
+    }
+  },
+  "billing": {
+    "source": "https://www.sharp.com/billing",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Sign in to pay or pay as guest",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to the Sharp app (on a computer or phone) to see your Sharp Rees-Stealy and Sharp hospital statements in one place and pay all your invoices in one transaction by credit card, debit card or checking account. You can save a preferred payment method for next time.",
+        "Pay as guest lets you pay online without a Sharp login, using the guarantor ID and last name from your statement.",
+        "Bills and payment-plan installments from before March 1, 2024 were on Sharp's old platform; pay those by calling billing, Monday through Friday, 8 a.m. to 4:30 p.m."
+      ],
+      "source": "https://www.sharp.com/billing"
+    },
+    {
+      "slug": "payment-plan",
+      "title": "If you cannot pay in full",
+      "topic": "assistance",
+      "paragraphs": [
+        "Signed in, you can make a partial payment on a bill, but a partial payment does not keep a past-due bill from going to a collection agency.",
+        "The Sharp app offers monthly installment plans that automatically pay a small amount each month. Plans are also available for connected family members. You can also apply for financial assistance, and Sharp will work out a payment arrangement or assistance based on your situation.",
+        "To change a payment plan for newer bills, sign in to Sharp. For a plan that started before March 1, 2024, call billing Monday through Friday, 8 a.m. to 4:30 p.m."
+      ],
+      "source": "https://www.sharp.com/billing/faqs"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic monthly payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Sharp's automatic payments come with a payment plan: set one up in the Sharp app and a small amount is paid automatically each month until the balance is paid."
+      ],
+      "source": "https://www.sharp.com/billing"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "account",
+      "paragraphs": [
+        "Choose how you get billing statements and notifications: by mail, by email or both. Sign up for paperless billing in the Sharp app to get your medical bills there instead of by mail."
+      ],
+      "source": "https://www.sharp.com/billing"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Billing phone numbers",
+      "topic": "contact",
+      "paragraphs": [
+        "Call Monday through Friday, 8 a.m. to 4:30 p.m.: Sharp hospitals 858-499-2400, Sharp Rees-Stealy 858-499-2410, SharpCare 858-499-2044, Sharp specialty groups 858-346-4321. You can also email billing using the contact form and selecting Billing."
+      ],
+      "source": "https://www.sharp.com/billing"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Financial assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "Sharp offers financial assistance to qualified low-income patients for all or part of a hospital bill for emergency or medically necessary care at a Sharp hospital. Apply online or in the Sharp app."
+      ],
+      "source": "https://www.sharp.com/billing"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "guest-pay-fields",
+        "intent": "Using Sharp's billing FAQs, find which two pieces of information from your statement you need to pay a Sharp bill as a guest. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "guarantor"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "guarantor"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The guarantor ID and the last name on the statement."
+          }
+        ]
+      },
+      {
+        "slug": "rees-stealy-phone",
+        "intent": "Find the billing phone number Sharp lists for Sharp Rees-Stealy bills. Do not change anything on the account.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "499-2410",
+              "8584992410"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "499-2410",
+            "8584992410"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "858-499-2410"
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "label": "accountNumber"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "guarantor ID",
+        "March 1, 2024"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "858-499-2410"
+    }
+  ]
+}

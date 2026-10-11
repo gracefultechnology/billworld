@@ -1,0 +1,276 @@
+{
+  "id": "westlake-financial-7f5c48",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Westlake Financial",
+  "category": "loans",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Westlake customer FAQ only (no sign-in). The canonical page refuses automated fetches (HTTP 403), so its content was read from Westlake's own www-int0.westlakefinancial.com copy of the same FAQ on 2026-10-10; the dossier cites the canonical URL. Recurring payments and MyAccount checking/savings payments are free; MyAccount debit/ATM card payments and automated or agent phone payments carry a $5.00 processing fee that is not charged in some states. MoneyGram $9.95 (code 2603), CheckFree from $1.50 by state, Pay Near Me $3.99 (not in NM, HI, OK). Credit cards are not mentioned (card = debit/ATM). Due-date changes, extensions, paperless and late fees are not on the FAQ (left to family defaults / omitted). The catalog lists a guest pay-invoice portal, but the FAQ does not describe it, so guest pay is not asserted. Reviewer 2026-10-10: the canonical www.westlakefinancial.com/faq/ page (opened in a browser) matches the www-int0 copy for every payment method, fee, MoneyGram code and P.O. box. The MyAccount login page labels the field Username (email placeholder) with a Login button.",
+  "officialDomains": [
+    "westlakefinancial.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.westlakefinancial.com/faq/",
+      "title": "Customer FAQ",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://myaccount.westlakefinancial.com/wfsWebsite/login",
+      "title": "MyAccount login",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "shortName": "Westlake",
+    "primary": "#b71c1c",
+    "accent": "#7f1414",
+    "monogram": "W"
+  },
+  "labels": {
+    "dashboard": "MyAccount",
+    "payBill": "Make a Payment",
+    "autopay": "Recurring Payments",
+    "signIn": "Login",
+    "help": "Customer FAQ",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Login",
+        "page": "login"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Customer FAQ",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAccount",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Recurring Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.westlakefinancial.com/faq/",
+      "note": "Recurring monthly payments from your checking or savings account are free."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.westlakefinancial.com/faq/",
+      "note": "Pay through the automated system or an agent at (888) 739-9192. A $5.00 processing fee may apply, depending on your state."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.westlakefinancial.com/faq/"
+    }
+  },
+  "contact": {
+    "phone": "888-739-9192",
+    "payPhone": "888-739-9192",
+    "evidence": "documented_official",
+    "source": "https://www.westlakefinancial.com/faq/"
+  },
+  "billing": {
+    "source": "https://www.westlakefinancial.com/faq/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 500,
+      "autopayCardCents": 0,
+      "notes": [
+        "The $5.00 debit card and phone processing fee is not charged in some states; where it applies it may come from a third-party processor or from Westlake.",
+        "MoneyGram $9.95; CheckFree from $1.50 depending on the state; Pay Near Me $3.99."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.westlakefinancial.com/faq/"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "paragraphs": [
+        "In MyAccount, payments from checking or savings are free and debit or ATM card payments carry a $5.00 processing fee. Phone payments at (888) 739-9192, automated or with an agent, also carry the $5.00 fee. The fee is not charged in some states.",
+        "Mail monthly payments with your account number to Westlake Financial, P.O. Box 54807, Los Angeles, CA 90054-0807. Payoffs go to P.O. Box 843082, Los Angeles, CA 90084-3082."
+      ],
+      "source": "https://www.westlakefinancial.com/faq/",
+      "mode": "append"
+    },
+    {
+      "slug": "cash-payments",
+      "title": "Paying in cash",
+      "paragraphs": [
+        "MoneyGram costs $9.95: use company name Westlake Financial, city Los Angeles and receive code 2603. CheckFree locations charge from $1.50 depending on your state. Pay Near Me costs $3.99 at 7-Eleven or Family Dollar after you sign up with your account number and ZIP code; it is not available in New Mexico, Hawaii or Oklahoma."
+      ],
+      "source": "https://www.westlakefinancial.com/faq/",
+      "topic": "payments"
+    },
+    {
+      "slug": "debit-card-fee",
+      "title": "Debit card and phone fees",
+      "paragraphs": [
+        "Recurring payments and MyAccount payments from checking or savings are free. A MyAccount debit or ATM card payment, or any phone payment, carries a $5.00 processing fee where your state allows it."
+      ],
+      "source": "https://www.westlakefinancial.com/faq/",
+      "topic": "fees"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "debit-card-fee",
+        "intent": "Using the Westlake Financial customer FAQ, find the processing fee for a one-time debit card payment in MyAccount. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5.00"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5.00"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A MyAccount debit or ATM card payment carries a $5.00 processing fee (not charged in some states)."
+          }
+        ]
+      },
+      {
+        "slug": "moneygram-code",
+        "intent": "Using the Westlake Financial customer FAQ, find the MoneyGram receive code for paying a Westlake account. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "2603"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "2603"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Use MoneyGram code 2603 (company Westlake Financial, city Los Angeles); the fee is $9.95."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a Payment",
+        "Recurring Payments"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "debit-card-fee",
+      "contains": "$5.00"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cash-payments",
+      "contains": "2603"
+    }
+  ],
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://myaccount.westlakefinancial.com/wfsWebsite/login"
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "id": "google-nest-aware-nest-subscriptions-55b459",
+  "version": 1,
+  "status": "dedicated",
+  "category": "home-services",
+  "reviewedAt": "2026-10-10",
+  "name": "Google Nest Aware / Nest subscriptions",
+  "notes": "Researched from public Google Store Help and Google Home Help articles and the public Google Store product page only (never signed in). Nest Aware is now called Google Home Premium (Standard and Advanced). The subscription renews automatically and is charged to the payment method chosen in the Google Store subscription page; there is no bill to pay as a guest, no separate AutoPay enrollment, no paper bill and no payment plan, so those capabilities are not_applicable. Card only (Google Store payment methods; bank accounts are not modelled). Sign-in uses a Google Account (email or phone first, then password), modelled as email with two steps (inferred). Plans: Standard $10/month or $100/year, Advanced $20/month or $200/year (US Google Store page); the engine models the monthly prices. Switching Standard/Advanced is allowed any time, but switching between monthly and annual billing is not (not expressible; in help). Subscriptions bought on Google Play, the Nest Store or through a partner (or included in some Google One / Google AI Pro plans) are managed elsewhere; only the Google Store subscription page is modelled. Cancelling deletes sound-detection clips and unsaved video. setup-payment-plan is suppressed (no installment option). Reviewed 2026-10-10 (independent review): claims re-checked against the cited Store Help, Home Help and product pages (prices, plan switching, Play/partner cancellation) plus the Google Nest billing help hub; no changes needed beyond the added source.",
+  "officialDomains": [
+    "google.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.google.com/store/answer/15315856?hl=en",
+      "title": "Manage your Google Home Premium subscription - Google Store Help",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.google.com/googlehome/answer/9220784?hl=en",
+      "title": "Cancel your Google Home Premium subscription - Google Home and Nest Help",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://store.google.com/us/product/google_home_premium?hl=en-US",
+      "title": "Google Home Premium - Google Store",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://support.google.com/store/answer/13026601?hl=en",
+      "title": "Get help with Google Nest - Google Store Help",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Google Home Premium",
+    "shortName": "Google Home Premium",
+    "primary": "#1557b0",
+    "accent": "#174ea6",
+    "monogram": "G"
+  },
+  "labels": {
+    "signIn": "Sign in",
+    "dashboard": "Subscriptions",
+    "plan": "Change plan",
+    "wallet": "Change payment method",
+    "history": "Order history",
+    "cancel": "Cancel subscription",
+    "help": "Google Store Help",
+    "username": "Email or phone"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "Plans",
+        "helpSlug": "plans-and-pricing"
+      },
+      {
+        "label": "Google Store Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Subscriptions",
+        "page": "dashboard"
+      },
+      {
+        "label": "Change plan",
+        "page": "plan"
+      },
+      {
+        "label": "Change payment method",
+        "page": "wallet"
+      },
+      {
+        "label": "Order history",
+        "page": "history"
+      },
+      {
+        "label": "Cancel subscription",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://support.google.com/store/answer/15315856?hl=en"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/store/answer/15315856?hl=en",
+      "note": "Google Home Premium is charged to the payment method on your Google Store subscription; there is no bill to pay without signing in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/store/answer/15315856?hl=en",
+      "note": "Your subscription renews and is charged automatically each month or year; there is nothing separate to enroll in."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/googlehome/answer/9220784?hl=en",
+      "note": "To stop the recurring charge, cancel the subscription."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/store/answer/15315856?hl=en",
+      "note": "Google does not mail bills for Google Home Premium."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/store/answer/15315856?hl=en"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/store/answer/15315856?hl=en"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://support.google.com/store/answer/15315856?hl=en"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.google.com/store/answer/15315856?hl=en",
+      "note": "Cancelling deletes your sound detection clips and any video you have not saved. Subscriptions bought on Google Play or from a partner are cancelled there."
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.google.com/store/answer/15315856?hl=en",
+      "note": "You can switch between Standard and Advanced at any time. You cannot switch between monthly and annual billing."
+    }
+  },
+  "billing": {
+    "source": "https://store.google.com/us/product/google_home_premium?hl=en-US",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://support.google.com/store/answer/15315856?hl=en"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "ghp-standard",
+        "name": "Google Home Premium Standard",
+        "cents": 1000
+      },
+      {
+        "id": "ghp-advanced",
+        "name": "Google Home Premium Advanced",
+        "cents": 2000,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "plans-and-pricing",
+      "title": "Google Home Premium plans",
+      "topic": "plans",
+      "paragraphs": [
+        "Google Home Premium comes in two plans. Standard costs $10 a month or $100 a year and keeps 30 days of event video history. Advanced costs $20 a month or $200 a year and adds more history and features.",
+        "You can move between Standard and Advanced at any time from the subscription page. You cannot change the billing cycle from monthly to annual or from annual to monthly."
+      ],
+      "source": "https://store.google.com/us/product/google_home_premium?hl=en-US"
+    },
+    {
+      "slug": "update-payment-method",
+      "title": "Change your payment method",
+      "topic": "payments",
+      "paragraphs": [
+        "On the Google Store subscription page, select your Google Home Premium subscription, choose Change payment method, pick the card to use and submit.",
+        "If you bought the subscription on Google Play, change the payment method in Google Play instead."
+      ],
+      "steps": [
+        "Sign in to the Google Store.",
+        "Open Subscriptions and select Google Home Premium.",
+        "Choose Change payment method.",
+        "Pick a payment method and submit."
+      ],
+      "source": "https://support.google.com/store/answer/15315856?hl=en"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel Google Home Premium",
+      "topic": "account",
+      "paragraphs": [
+        "How you cancel depends on where you bought the subscription. Google Store subscriptions are cancelled from the Google Store subscription page: select the subscription, open More, then Cancel subscription. A summary of charges is shown before you confirm.",
+        "Subscriptions bought on Google Play are cancelled in Google Play. If you subscribed through a partner, contact that partner to cancel.",
+        "Cancelling deletes your sound detection clips and any video history you have not saved."
+      ],
+      "source": "https://support.google.com/googlehome/answer/9220784?hl=en"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "setup-payment-plan"
+    ],
+    "extra": [
+      {
+        "slug": "advanced-annual-price",
+        "intent": "Using the Google Home Premium help pages, find the yearly price of the Advanced plan. Do not change your plan or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$200"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$200"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Advanced costs $200 a year ($20 a month)."
+          }
+        ]
+      },
+      {
+        "slug": "play-cancel-where",
+        "intent": "You bought Google Home Premium on Google Play. Using the help pages, find out where you have to cancel it. Do not cancel anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Google Play"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Google Play"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Subscriptions bought on Google Play are cancelled in Google Play."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Email or phone"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Change payment method",
+        "Cancel subscription"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "plans-and-pricing",
+      "contains": "$200 a year"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Google Play"
+    }
+  ]
+}

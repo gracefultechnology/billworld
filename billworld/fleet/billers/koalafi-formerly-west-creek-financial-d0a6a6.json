@@ -1,0 +1,355 @@
+{
+  "id": "koalafi-formerly-west-creek-financial-d0a6a6",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Koalafi (lease-to-own)",
+  "category": "other",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from Koalafi's public Consumer FAQs (help.koalafi.com), the public Lease Customer Login page and the contact page; never signed in. Lease Customer Login asks only for the mobile number used on the application and sends a verification code (no password), modelled as identifier phone, two steps, SMS code (the engine still uses a password step; cross-owner request: passwordless SMS-code sign-in, same as Acima). The customer portal and app show the lease balance, upcoming payments, payoff options, agreement terms, payment activity, scheduled payments, receipts and available approval; customers can make a one-time payment, schedule a payment for a future date and enter a new payment method when paying. Automatic payments are set up from the payment information on the application and follow the pay cycle chosen then; changing the default autopay method and rescheduling a payment (at least 3 business days before it is due) are done by phone, so autopay enrolment/turn-off online are modelled as unsupported (enrolment inferred: it happens at application). Lease terms 12, 18 or 24 months; approvals up to $7,500; payments start when the store reports the items shipped or delivered. Early purchase: initial early buyout within the first 90-120 days (initial payment, item price, tax, an initial early buyout fee of $0-$79 by state, outstanding fees) or the standard early buyout (remaining balance minus past due and fees, times the early buyout percent; amount changes daily and must be paid in one day). Returns: contact Koalafi. Authorized users can be added in the portal. Customer Support 844-937-8275, Mon-Sat 8am-midnight ET (koalafi.com/contact-us; the merchant line 844-238-6500 is separate). In-app chat is not available yet per the FAQ. No convenience fees are published.",
+  "officialDomains": [
+    "koalafi.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.koalafi.com/en/articles/5410029-consumer-faqs",
+      "title": "Consumer FAQs | Koalafi Help Center",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://customer.koalafi.com/login/",
+      "title": "Lease Customer Login",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://koalafi.com/contact-us/",
+      "title": "Contact Us | Koalafi",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Koalafi",
+    "shortName": "Koalafi",
+    "primary": "#1f5a3d",
+    "accent": "#0f3d2a",
+    "monogram": "K"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "username": "Mobile number",
+    "payBill": "Make a payment",
+    "history": "Payment activity",
+    "dashboard": "Overview",
+    "help": "Help Center",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Lease Customer Login",
+        "page": "login"
+      },
+      {
+        "label": "Consumer FAQs",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Overview",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a payment",
+        "page": "pay"
+      },
+      {
+        "label": "Payment activity",
+        "page": "history"
+      },
+      {
+        "label": "Payment methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Personal information",
+        "page": "profile"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "phone",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "socialProviders": [],
+    "evidence": "observed_public",
+    "source": "https://customer.koalafi.com/login/"
+  },
+  "contact": {
+    "phone": "8449378275",
+    "source": "https://koalafi.com/contact-us/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs",
+      "note": "Automatic payments are set up from the payment details on your application and follow the pay cycle you chose. To change the payment method automatic payments use, call Koalafi at 844-937-8275.",
+      "phone": "8449378275",
+      "channel": "phone"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs",
+      "note": "Automatic payments run on your pay cycle for the length of your lease. To change or reschedule an automatic payment, call Koalafi at 844-937-8275 at least 3 business days before it is due.",
+      "phone": "8449378275",
+      "channel": "phone"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs",
+      "note": "To reschedule a payment, call Koalafi at 844-937-8275 and request the change at least 3 business days before it is due.",
+      "phone": "8449378275",
+      "channel": "phone"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs",
+      "note": "For an eligible return of leased items, contact Koalafi Customer Support at 844-937-8275.",
+      "phone": "8449378275",
+      "channel": "phone"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs"
+    }
+  },
+  "billing": {
+    "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs",
+    "methods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to the customer portal or the Koalafi app to view your account and make a one-time payment or schedule one for a future date.",
+        "You can enter a new payment method while making a payment.",
+        "Payments come from a debit card or a checking account. The bank account must be at a physical bank, not a prepaid card or virtual bank.",
+        "Your lease payments start once the store tells Koalafi your items have shipped or been delivered."
+      ],
+      "steps": [
+        "Log in with the mobile number from your application and the code we text you.",
+        "Select your lease.",
+        "Choose Make a payment.",
+        "Pick a one-time payment or a future date and follow the steps to confirm."
+      ],
+      "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs"
+    },
+    {
+      "slug": "faq",
+      "title": "Automatic payments and rescheduling",
+      "topic": "faq",
+      "paragraphs": [
+        "Automatic payments are taken on the pay cycle you selected when you applied, and each one goes toward your total cost of ownership.",
+        "To change the default payment method for automatic payments, call us at 844-937-8275.",
+        "To reschedule a payment, call and request the change at least 3 business days before it is due.",
+        "Koalafi does not charge interest; the lease includes a cost of ownership that depends on your state and is shown in your agreement. Lease terms are 12, 18 or 24 months."
+      ],
+      "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs"
+    },
+    {
+      "slug": "early-purchase",
+      "title": "Early purchase options",
+      "topic": "account",
+      "paragraphs": [
+        "Initial early buyout: pay off the lease within the first 90 to 120 days and pay only the initial payment, the item price, sales tax, a small initial early buyout fee ($0 to $79 depending on where you live) and any outstanding costs or fees.",
+        "Standard early buyout: your remaining balance (minus any past due amounts and fees) times the early buyout percent in your agreement. The amount is shown in the portal and app, can change daily, and must be paid in one day."
+      ],
+      "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Returns",
+      "topic": "account",
+      "paragraphs": [
+        "For eligible returns, contact Koalafi at 844-937-8275. If you received the wrong item or not all your items, contact the store first."
+      ],
+      "source": "https://help.koalafi.com/en/articles/5410029-consumer-faqs"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Koalafi",
+      "topic": "contact",
+      "paragraphs": [
+        "Customer Support: 844-937-8275, Monday to Saturday 8 a.m. to midnight ET. In the Koalafi app, tap Get Help to browse answers to common questions.",
+        "Trouble logging in? Use the mobile number from your application."
+      ],
+      "source": "https://koalafi.com/contact-us/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "reschedule-notice",
+        "intent": "Using Koalafi's Consumer FAQs, find out how many business days before a payment is due you must request to reschedule it. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3",
+              "three"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3",
+            "three"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "At least 3 business days before it's due, by phone."
+          }
+        ]
+      },
+      {
+        "slug": "autopay-method-phone",
+        "intent": "You want Koalafi's automatic payments to come from a different card. Find out how to change the default autopay method and report the phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8449378275"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8449378275"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call Koalafi at 844-937-8275 to update the default autopay method."
+          }
+        ]
+      },
+      {
+        "slug": "lease-term-options",
+        "intent": "Using Koalafi's Consumer FAQs, find out the lease term lengths available. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "12, 18 or 24 months."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Mobile number"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make a payment",
+        "Payment activity"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "844-937-8275"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "early-purchase",
+      "contains": "$0 to $79"
+    }
+  ]
+}

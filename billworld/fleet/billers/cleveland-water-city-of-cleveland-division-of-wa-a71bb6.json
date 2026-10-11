@@ -1,0 +1,421 @@
+{
+  "id": "cleveland-water-city-of-cleveland-division-of-wa-a71bb6",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Cleveland Water (City of Cleveland Division of Water)",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public clevelandwater.com pages and the public My Cleveland Water portal login, enrollment and FAQ pages (no sign-in, no form submitted). The portal login asks for Username and Password (Create new account / Request new password links; Not enrolled yet? Enroll Now). Enrollment asks for an Account Number and Meter Number, a User Name, a password of at least 8 characters with an upper-case letter, a lower-case letter and a number, three secret questions, and first name, last name, email and phone (meter number cannot be expressed). One Time Payment opens a KUBRA EZ-PAY page that looks up the account by Account Number and Zip Code and accepts card, debit card or bank account. The payment-options page says online payments are fee-free. Automatic payments and paperless billing are listed as portal features; paper bills stop after 1 to 2 billing cycles. Payment schedules for customers who are behind are arranged with the Customer Care Center by phone, and service changes after a sale are handled by phone once the deed is recorded, so both are offline. Sewer (NEORSD) charges are billed and paid separately from the Cleveland Water bill. The fee-free statement covers payments made in a My Cleveland Water account; the One Time Payment (KUBRA EZ-PAY) page shows no fee either, so guest fees are set to $0 (inferred).",
+  "officialDomains": [
+    "clevelandwater.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.clevelandwater.com/customer-service/payment-options",
+      "title": "Payment Options | Cleveland Water",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.clevelandwater.com/customer-service/account-services",
+      "title": "Account Services | Cleveland Water",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.clevelandwater.com/customer-service/faqs",
+      "title": "FAQs | Cleveland Water",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://my.clevelandwater.com/",
+      "title": "Welcome to My Cleveland Water Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://my.clevelandwater.com/faq",
+      "title": "FAQ | My Cleveland Water Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://my.clevelandwater.com/enroll",
+      "title": "Enrollment | My Cleveland Water Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.clevelandwater.com/customer-service/contact-us",
+      "title": "Contact Us | Cleveland Water",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Cleveland Water",
+    "shortName": "Cleveland Water",
+    "primary": "#00558c",
+    "accent": "#003b61",
+    "monogram": "CW"
+  },
+  "labels": {
+    "dashboard": "My Cleveland Water",
+    "signIn": "Log in",
+    "username": "Username",
+    "register": "Enroll Now",
+    "forgot": "Request new password",
+    "guestPay": "One Time Payment",
+    "payBill": "Billing and Payment",
+    "autopay": "Automatic Payments",
+    "paperless": "Paperless Billing",
+    "profile": "Profile Settings",
+    "help": "FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "One Time Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Enroll Now",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Discount Programs",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Cleveland Water",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing and Payment",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Payment history",
+        "page": "history"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Profile Settings",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$",
+      "message": "Use at least 8 characters with an upper-case letter, a lower-case letter and a number."
+    },
+    "registrationFields": [
+      "accountNumber",
+      "lastName",
+      "email",
+      "phone"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://my.clevelandwater.com/enroll"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://my.clevelandwater.com/",
+      "note": "One Time Payment takes a card, debit card or bank account payment with your account number and ZIP code, no sign-in needed."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.clevelandwater.com/customer-service/account-services"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://my.clevelandwater.com/faq",
+      "note": "Turn off paper bills under Profile Settings; it takes 1 to 2 billing cycles before paper bills stop."
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://my.clevelandwater.com/faq"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.clevelandwater.com/customer-service/faqs",
+      "note": "Payment schedules are not set up online. If you have fallen behind, call the Customer Care Center at 216-664-3130 (weekdays 7:30 a.m. to 5:30 p.m.) to arrange a manageable schedule and check discount eligibility.",
+      "phone": "216-664-3130"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.clevelandwater.com/customer-service/faqs",
+      "note": "Service is not stopped online. After you sell or buy a home, call Customer Service at 216-664-3130 once the deed is recorded; the old account gets a final bill as of the transfer date.",
+      "phone": "216-664-3130"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.clevelandwater.com/customer-service/faqs"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.clevelandwater.com/customer-service/payment-options",
+      "phone": "216-446-6834"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.clevelandwater.com/customer-service/payment-options"
+    }
+  },
+  "contact": {
+    "phone": "216-664-3130",
+    "payPhone": "216-446-6834",
+    "source": "https://www.clevelandwater.com/customer-service/payment-options"
+  },
+  "billing": {
+    "source": "https://www.clevelandwater.com/customer-service/payment-options",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "guestBankCents": 0,
+      "guestCardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.clevelandwater.com/customer-service/payment-options"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment Options",
+      "topic": "payments",
+      "paragraphs": [
+        "Create an account in My Cleveland Water to make fee-free online payments by credit card, debit card or bank account. Without an account, use One Time Payment with your account number and ZIP code.",
+        "Pay by phone 24 hours a day through the automated line at 216-446-6834, or call the Customer Care Center at 216-664-3130 during business hours.",
+        "In person, visit 1201 Lakeside Ave., Cleveland, weekdays 7:30 a.m. to 5:30 p.m. By mail, send a check or money order payable to the City of Cleveland with your account number and remittance slip to City of Cleveland, Division of Water, P.O. Box 94540, Cleveland, OH 44101-4540.",
+        "Water and sewer bills are separate: pay each with its own check and stub to the address on that bill."
+      ],
+      "source": "https://www.clevelandwater.com/customer-service/payment-options"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "My Cleveland Water lets you set up automatic payments from your saved payment account, and pay or schedule single payments from the Billing and Payment tab by choosing an amount and a date.",
+        "Scheduled payments are still processed if you remove an account from your enrollment, so cancel them first if you do not want them to go through."
+      ],
+      "source": "https://my.clevelandwater.com/faq"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "You can stop paper bills from the Profile Settings tab in My Cleveland Water. It takes 1 to 2 billing cycles before paper bills stop arriving.",
+        "Portal accounts and eBilling enrollment cannot currently be cancelled; you can remove all but one water account from your profile."
+      ],
+      "source": "https://my.clevelandwater.com/faq"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Discount programs and help paying",
+      "topic": "assistance",
+      "paragraphs": [
+        "The Homestead discount gives eligible customers a lower fixed charge and consumption rate, about a 50% discount for an average customer. You must be 65 or older or totally and permanently disabled, own and live at the service address, and have household income at or below the current guidelines.",
+        "If several bills have piled up, call the Customer Care Center at 216-664-3130 to set up a manageable payment schedule and check whether you qualify for a discount program."
+      ],
+      "source": "https://www.clevelandwater.com/customer-service/faqs"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving or selling your home",
+      "topic": "account",
+      "paragraphs": [
+        "Call Customer Service at 216-664-3130 after the title has transferred and the deed is recorded. Service for the old address is stopped and a final bill is issued as of the transfer date, and a new account is opened for the property you bought.",
+        "A new owner is responsible from the day the title transfers, not for the previous owner's balance."
+      ],
+      "source": "https://www.clevelandwater.com/customer-service/faqs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "automated-pay-line",
+        "intent": "Find the phone number for Cleveland Water's 24-hour automated payment line. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "216-446-6834",
+              "2164466834",
+              "(216) 446-6834"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "216-446-6834",
+            "2164466834",
+            "(216) 446-6834"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The 24-hour automated payment line is 216-446-6834."
+          }
+        ]
+      },
+      {
+        "slug": "paperless-delay",
+        "intent": "Find out how many billing cycles it takes before Cleveland Water stops mailing paper bills after you switch them off. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1 to 2",
+              "1-2",
+              "one to two",
+              "two"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1 to 2",
+            "1-2",
+            "one to two",
+            "two"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "It takes 1 to 2 billing cycles before paper bills stop."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My Cleveland Water"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "216-446-6834",
+        "P.O. Box 94540"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": [
+        "216-664-3130"
+      ]
+    }
+  ]
+}

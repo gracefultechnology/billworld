@@ -1,0 +1,121 @@
+{
+  "id": "blue-cross-and-blue-shield-of-north-carolina-blu-5a30e1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Blue Cross and Blue Shield of North Carolina (Blue Cross NC) - Medicare",
+  "category": "medicare",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public bcbsnc.com FAQ pages only (no sign-in, no guest pay). Premium payment options FAQ: payments must be made by 5 PM ET to count that day; online in the member portal (one-time or automatic) or guest pay by you or an authorized representative without logging in; online methods are bank draft, credit card, debit card, PayPal, Venmo and Apple Pay/Google Pay on supported devices; automated pay-by-phone any time, Medicare 844-395-4535 (individual and family 800-333-7009), by debit card, credit card or bank draft; mail a check payable to 'Blue Cross NC' to the address on the bill with the member ID; in person at 8511 Brier Creek Parkway, Suite 107, Raleigh (Mon-Fri 9-5, the only place for check payments in person). Autopay FAQ: enroll and cancel in the member portal; a bank account is required (no cards). Medicare FAQ: bank online bill pay and third-party bill pay vendors are accepted; include the member ID. No fees are published. PayPal/Venmo/wallets and the 5 PM cutoff cannot be expressed (help only). Guest pay lookup fields are not shown publicly (family defaults). Sign-in identifier (username) is inferred.",
+  "officialDomains": ["bcbsnc.com", "bluecrossnc.com"],
+  "sources": [
+    { "url": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options", "title": "What are my premium payment options? | Blue Cross NC", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://www.bcbsnc.com/faq/billing-payments/set-up-autopay", "title": "How do I set up or cancel automatic payments? | Blue Cross NC", "fetchedAt": "2026-10-10", "kind": "autopay" },
+    { "url": "https://www.bcbsnc.com/faq/medicare-billing-payments/medicare-pay-premium-with-bill-pay-or-pc-banking", "title": "Can I pay my premium bill using my bank's bill pay option or PC Banking? | Blue Cross NC", "fetchedAt": "2026-10-10", "kind": "help" }
+  ],
+  "brand": { "displayName": "Blue Cross NC Medicare", "shortName": "Blue Cross NC", "primary": "#0b4f8a", "accent": "#00627a", "monogram": "BC" },
+  "labels": {
+    "signIn": "Log in",
+    "guestPay": "Guest pay",
+    "payBill": "Make a payment",
+    "autopay": "Automatic payments"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in", "page": "login" },
+      { "label": "Register", "page": "register" },
+      { "label": "Guest pay", "page": "guest" },
+      { "label": "Premium payment options", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Member portal", "page": "dashboard" },
+      { "label": "Make a payment", "page": "pay" },
+      { "label": "Automatic payments", "page": "autopay" },
+      { "label": "Payment history", "page": "history" },
+      { "label": "Contact us", "page": "contact" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options"
+  },
+  "contact": { "payPhone": "844-395-4535", "source": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options", "evidence": "documented_official" },
+  "capabilities": {
+    "pay_online": { "support": "supported", "evidence": "documented_official", "source": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options", "note": "Payments made by 5 PM ET count as paid that day." },
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options", "note": "You or an authorized representative can pay without logging in." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://www.bcbsnc.com/faq/billing-payments/set-up-autopay", "note": "Automatic payments must come from a bank account; credit and debit cards cannot be used." },
+    "autopay_cancel": { "support": "supported", "evidence": "documented_official", "source": "https://www.bcbsnc.com/faq/billing-payments/set-up-autopay" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options", "phone": "8443954535", "note": "Medicare members can use the automated line at 844-395-4535 any time, with a debit card, credit card or bank draft." },
+    "pay_by_mail": { "support": "supported", "evidence": "documented_official", "source": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options", "note": "Make your check payable to Blue Cross NC, write your member ID on it and mail it to the address on your bill." }
+  },
+  "billing": {
+    "source": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "methodTypes": ["bank"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "What are my premium payment options?",
+      "topic": "payments",
+      "paragraphs": [
+        "Online: log in to the member portal to pay or set up automatic payments, or use guest pay without logging in. You or an authorized representative can pay. We take bank draft, credit and debit cards, PayPal, Venmo, and Apple Pay or Google Pay on a supported mobile device.",
+        "Payments made by 5 PM ET count as paid that day.",
+        "Phone: the automated pay-by-phone line is available any time. Medicare plans call 844-395-4535; individual and family plans call 800-333-7009. Pay with a debit card, credit card or bank draft."
+      ],
+      "source": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options"
+    },
+    {
+      "slug": "pay-by-mail",
+      "title": "Paying by check or in person",
+      "topic": "payments",
+      "paragraphs": [
+        "Make your check or money order payable to Blue Cross NC, write your member ID number on it and mail it to the address on your bill, using the return envelope if you have it.",
+        "You can also pay in person at Blue Cross NC, 8511 Brier Creek Parkway, Suite 107, Raleigh, NC 27617, Monday to Friday 9 AM to 5 PM except holidays. It is the only location that takes checks in person.",
+        "Your bank's online bill pay or another bill pay service also works; include your member ID so the payment posts on time."
+      ],
+      "source": "https://www.bcbsnc.com/faq/billing-payments/premium-payment-options"
+    },
+    {
+      "slug": "autopay",
+      "title": "Setting up or canceling automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Enroll in or cancel automatic payments in the member portal. You must use a bank account to enroll; credit and debit cards cannot be used for automatic payments."
+      ],
+      "source": "https://www.bcbsnc.com/faq/billing-payments/set-up-autopay"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "medicare-pay-phone",
+        "intent": "Using Blue Cross NC's billing help, find the automated pay-by-phone number for Medicare plans. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "phone", "expected": ["8443954535"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "phone", "expected": ["8443954535"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "Call 844-395-4535." }]
+      },
+      {
+        "slug": "same-day-cutoff",
+        "intent": "Using Blue Cross NC's billing help, find the time of day by which a payment must be made to count as paid that day. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["5 PM", "5 p.m.", "5:00"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["5 PM", "5 p.m.", "5:00"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "By 5 PM ET." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a payment", "Automatic payments"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "844-395-4535" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "bank account" },
+    { "page": "helpArticle", "slug": "pay-by-mail", "contains": "Brier Creek" }
+  ]
+}

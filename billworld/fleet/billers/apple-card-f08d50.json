@@ -1,0 +1,377 @@
+{
+  "id": "apple-card-f08d50",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Apple Card",
+  "category": "credit-cards",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public support.apple.com and apple.com pages only (no sign-in). Apple Card is serviced in the Wallet app (iPhone), Settings > Wallet & Apple Pay (iPad) and on the web at card.apple.com, signed in with the Apple Account. Web sidebar items named in the guides: Payments, Statements, Settings, Support. Payments: Payments > choose an amount (Monthly Balance by default, Other Amount) and date > 'Pay Now' (today) or 'Pay Later' (future) > pick the bank account > 'Pay'. On the web a bank account must be added first (routing and account numbers); no debit-card payments are described, so methods are bank only (Apple Cash can pay in Wallet only, not modelled). Autopay on the web: Payments > 'Set Up Autopay' > 'Set Up Now' > Monthly Balance, Minimum Payment Due or Other Amount (Other Amount can be weekly, every two weeks or monthly; only monthly is modelled) > Next > Confirm. Cancel scheduled payments and Autopay: Settings > Payments > select the payment or 'Manage Autopay' > 'Cancel Payment', by 11:59 p.m. ET the day before; amounts are changed by cancelling and re-creating. Apple states the card has no fees at all (no annual, late, over-limit or foreign-transaction fees); late payments only add interest, so lateFeeCents is 0. Closing the account is not self-service: message or call an Apple Card Specialist (Goldman Sachs) from Wallet, or Support > Call on card.apple.com. Payment assistance plans are requested by messaging a Specialist ('payment assistance plan options'). The only published phone number (877-255-5923) is stated for residents of U.S. territories; the catalog uses it as the contact number. Issuer is Goldman Sachs Bank USA, Salt Lake City Branch; a move of the program to JPMorgan Chase was announced in early 2026 and is not complete on the cited pages. Paperless, pay-by-phone and pay-by-mail are not described on the cited pages and stay at family defaults. Statements: card.apple.com Statements lists monthly PDF statements, newest first.",
+  "officialDomains": [
+    "apple.com"
+  ],
+  "sources": [
+    {
+      "url": "https://support.apple.com/en-us/102534",
+      "title": "How to make an Apple Card payment - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://support.apple.com/guide/apple-card-web-servicing/make-a-payment-devf5e41667f/web",
+      "title": "Make a payment - Apple Card web servicing User Guide",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://support.apple.com/guide/apple-card-web-servicing/view-balance-and-scheduled-payments-dev2c080b28f/web",
+      "title": "View balance and scheduled payments - Apple Card web servicing User Guide",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://support.apple.com/guide/apple-card-web-servicing/download-statements-devd60473e47/web",
+      "title": "Download statements - Apple Card web servicing User Guide",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://support.apple.com/en-us/119925",
+      "title": "How to close your Apple Card account - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://support.apple.com/en-us/109300",
+      "title": "Apple Card payment assistance - Apple Support",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.apple.com/apple-card/",
+      "title": "Apple Card - Apple",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "shortName": "Apple Card",
+    "primary": "#1d1d1f",
+    "accent": "#0066cc",
+    "monogram": "AC"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "Apple Account",
+    "payBill": "Payments",
+    "autopay": "Autopay",
+    "statements": "Statements",
+    "profile": "Settings",
+    "help": "Support",
+    "amountDue": "Minimum Payment Due"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "How to make a payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Payments",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Settings",
+        "page": "profile"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://support.apple.com/en-us/119925"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://support.apple.com/en-us/102534",
+      "note": "Apple Card payments are made after you sign in: on card.apple.com with your Apple Account, or in Wallet on your iPhone or iPad.",
+      "channel": "app"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/guide/apple-card-web-servicing/make-a-payment-devf5e41667f/web"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/guide/apple-card-web-servicing/make-a-payment-devf5e41667f/web"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/guide/apple-card-web-servicing/view-balance-and-scheduled-payments-dev2c080b28f/web"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/guide/apple-card-web-servicing/download-statements-devd60473e47/web"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/119925",
+      "note": "Apple Card can't be closed online. In Wallet, tap Apple Card, More, Account Details, then Message or Call; on card.apple.com choose Support, then Call, to reach an Apple Card Specialist.",
+      "channel": "app"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/109300"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://support.apple.com/en-us/109300",
+      "note": "Ask for a payment assistance plan by message: in Wallet tap Apple Card, More, Account Details, then Message, and type payment assistance plan options.",
+      "channel": "app"
+    }
+  },
+  "billing": {
+    "source": "https://support.apple.com/guide/apple-card-web-servicing/make-a-payment-devf5e41667f/web",
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.apple.com/apple-card/"
+    },
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "statement",
+        "minimum",
+        "fixed"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "lateFeeCents": 0
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make an Apple Card payment",
+      "topic": "payments",
+      "paragraphs": [
+        "On the web, sign in to card.apple.com with your Apple Account and choose Payments in the sidebar. Your Monthly Balance is suggested; you can pick another suggested amount or enter your own. Choose Pay Now to pay today or Pay Later to pick a future date, choose the bank account if you have more than one, then select Pay to finish.",
+        "If you have not added a bank account on the web yet, you are asked for its routing and account numbers first. On iPhone, open Wallet, tap Apple Card and tap next to Card Balance to pay; on iPad use Settings, Wallet & Apple Pay, Apple Card."
+      ],
+      "steps": [
+        "Sign in at card.apple.com and choose Payments.",
+        "Choose or enter an amount.",
+        "Select Pay Now or Pay Later and the date.",
+        "Pick the bank account and select Pay."
+      ],
+      "source": "https://support.apple.com/guide/apple-card-web-servicing/make-a-payment-devf5e41667f/web"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "On card.apple.com choose Payments, then under Set Up Autopay select Set Up Now. Choose Monthly Balance, Minimum Payment Due or Other Amount, select Next, enter the payment details, choose the bank account and select Confirm.",
+        "Other Amount lets you choose how often to pay and when payments begin. In Wallet, tap Apple Card, More, then Autopay and Continue."
+      ],
+      "steps": [
+        "Choose Payments, then Set Up Now under Set Up Autopay.",
+        "Pick Monthly Balance, Minimum Payment Due or Other Amount.",
+        "Select Next and enter the details.",
+        "Choose the bank account and select Confirm."
+      ],
+      "source": "https://support.apple.com/guide/apple-card-web-servicing/make-a-payment-devf5e41667f/web"
+    },
+    {
+      "slug": "manage-autopay",
+      "title": "Cancel a scheduled payment or Autopay",
+      "topic": "autopay",
+      "paragraphs": [
+        "On card.apple.com choose Settings and find your scheduled payments under Payments. Select a one-time payment's amount, or Manage Autopay for a recurring payment, then select Cancel Payment.",
+        "Cancel by 11:59 p.m. Eastern time on the day before the payment date. To change an amount, cancel the payment and set up a new one. In Wallet, tap Apple Card, More, Autopay, then Cancel Autopay."
+      ],
+      "source": "https://support.apple.com/guide/apple-card-web-servicing/view-balance-and-scheduled-payments-dev2c080b28f/web"
+    },
+    {
+      "slug": "fees",
+      "title": "Apple Card fees",
+      "topic": "payments",
+      "paragraphs": [
+        "Apple Card has no fees: no annual fee, no late fee, no over-the-limit fee and no foreign transaction fee. A late or missed payment still adds interest to your balance, and paying only the minimum costs more in interest over time."
+      ],
+      "source": "https://www.apple.com/apple-card/"
+    },
+    {
+      "slug": "close-account",
+      "title": "Close your Apple Card account",
+      "topic": "account",
+      "paragraphs": [
+        "Apple Card is closed by an Apple Card Specialist at Goldman Sachs. In Wallet, tap Apple Card, More, Account Details, then Message or Call. On a computer, sign in at card.apple.com, choose Support in the sidebar and select Call.",
+        "Only the owner or a co-owner can close the account. Any remaining balance must still be paid, and you should move recurring bills off the card first."
+      ],
+      "source": "https://support.apple.com/en-us/119925"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment assistance plans",
+      "topic": "payments",
+      "paragraphs": [
+        "If you are having trouble paying, an Apple Card plan may defer or lower monthly payments, reduce interest, keep the account from falling further behind or let you pay the balance over time with no interest. Terms depend on eligibility.",
+        "In Wallet tap Apple Card, More, Account Details, then Message and type payment assistance plan options. Enrollment and late payments may be reported to credit bureaus, and you must keep making the agreed payments."
+      ],
+      "source": "https://support.apple.com/en-us/109300"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "apple-card-late-fee",
+        "intent": "Using Apple Card's help pages, find out how much Apple Card charges as a late fee if a payment is missed. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "no late fee",
+              "no fee",
+              "doesn't charge",
+              "does not charge",
+              "$0"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "no late fee",
+            "no fee",
+            "doesn't charge",
+            "does not charge",
+            "$0"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "There is no late fee; Apple Card has no fees, though a missed payment adds interest."
+          }
+        ]
+      },
+      {
+        "slug": "cancel-payment-cutoff",
+        "intent": "Using Apple Card's help pages, find the deadline for cancelling a scheduled Apple Card payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "11:59"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "11:59"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "By 11:59 p.m. Eastern time on the day before the payment date."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "notContains": [
+        "Pay without signing in"
+      ]
+    },
+    {
+      "page": "login",
+      "label": "username"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": [
+        "Set Up Now",
+        "Monthly Balance"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fees",
+      "contains": "no late fee"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "Apple Card Specialist"
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "id": "publix-pharmacy-c7a512",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Publix Pharmacy",
+  "category": "pharmacy-dme",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from the public rx.publix.com home page and Help FAQ, the publix.com Pharmacy page and the publix.com Pharmacy App page (no sign-in). Publix says an account lets you manage and pay for prescriptions online; payment is a prepay of ready refills for in-store pickup, curbside (order, pay, park) or Instacart delivery. The signed-in menu (seen in the public header markup) lists My Mobile Number, Communication Preferences, Shared Profiles, Online Purchase History, Payment Options and Statements. Statements are the Medical Expense Summary (up to 24 months). Sign-up needs a recently filled Publix Rx number, a verification code sent to the phone or email on file, and a Club Publix account (email required), so auth.identifier is email. Quick Refill works without an account but does not take payment. Accepted card types and any bank/check option for prepay are not published, so billing.methods is left to the family. No AutoPay, payment plan, guest payment or paperless bill is described (unsupported, inferred). Customer Care 1-800-242-1227 comes from the Help FAQ.",
+  "officialDomains": [
+    "publix.com"
+  ],
+  "sources": [
+    {
+      "url": "https://rx.publix.com/",
+      "title": "Publix Pharmacy (rx.publix.com)",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://rx.publix.com/en/myaccount/faqs",
+      "title": "Publix Pharmacy Help - Frequently Asked Questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.publix.com/pharmacy/pharmacy-services/pharmacy-app",
+      "title": "Publix Pharmacy App",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.publix.com/pharmacy",
+      "title": "Publix Pharmacy",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Publix Pharmacy",
+    "shortName": "Publix Pharmacy",
+    "primary": "#2e7d32",
+    "accent": "#1b5e20",
+    "monogram": "P"
+  },
+  "labels": {
+    "signIn": "Log In",
+    "register": "Sign Up",
+    "dashboard": "Prescriptions",
+    "payBill": "Prepay",
+    "wallet": "Payment Options",
+    "history": "Online Purchase History",
+    "statements": "Statements",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Sign Up",
+        "page": "register"
+      },
+      {
+        "label": "Quick Refill",
+        "helpSlug": "quick-refill"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Prescriptions",
+        "page": "dashboard"
+      },
+      {
+        "label": "Prepay",
+        "page": "pay"
+      },
+      {
+        "label": "Online Purchase History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Options",
+        "page": "wallet"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "evidence": "documented_official",
+    "source": "https://rx.publix.com/en/myaccount/faqs"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.publix.com/pharmacy/pharmacy-services/pharmacy-app"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://rx.publix.com/en/myaccount/faqs"
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://rx.publix.com/en/myaccount/faqs"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://rx.publix.com/en/myaccount/faqs",
+      "note": "Quick Refill lets you order refills without an account, but prepaying needs a Publix Pharmacy account. You can also pay at your Publix Pharmacy when you pick up.",
+      "channel": "in_person"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.publix.com/pharmacy/pharmacy-services/pharmacy-app",
+      "note": "Publix Pharmacy does not offer automatic payments. Prepay each ready order online or in the app, or pay at the pharmacy when you pick up.",
+      "channel": "none"
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.publix.com/pharmacy/pharmacy-services/pharmacy-app"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://rx.publix.com/en/myaccount/faqs",
+      "note": "Payment plans are not offered online. For questions about a pharmacy charge, call Publix Customer Care at 1-800-242-1227 or visit your Publix Pharmacy.",
+      "channel": "phone",
+      "phone": "800-242-1227"
+    },
+    "paperless": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://rx.publix.com/en/myaccount/faqs",
+      "note": "Publix Pharmacy does not mail bills. Your purchases are listed under Online Purchase History, and Statements gives you a Medical Expense Summary to print.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.publix.com/pharmacy/pharmacy-services/pharmacy-app",
+      "note": "Prepay charges your payment option right away for an order that is ready; future-dated payments are not offered.",
+      "channel": "none"
+    }
+  },
+  "billing": {
+    "source": "https://www.publix.com/pharmacy/pharmacy-services/pharmacy-app"
+  },
+  "contact": {
+    "phone": "800-242-1227",
+    "source": "https://rx.publix.com/en/myaccount/faqs"
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Prepaying for your prescriptions",
+      "topic": "payments",
+      "paragraphs": [
+        "With a Publix Pharmacy account you can pay for prescriptions online or in the Publix Pharmacy app before you arrive. Prepay works for in-store pickup, for curbside pickup (order, pay, then park in the curbside space and call the number on the sign) and for delivery, where you can add groceries to the order.",
+        "Curbside pickup and delivery are not available for every prescription. Controlled substances, age-restricted medications and prescriptions covered by Medicare Part B are excluded, refrigerated medications cannot be delivered, delivery is not available with some plans such as Medicaid, and curbside is not offered in Tennessee. Delivery is handled through Instacart, and delivery fees, tips and taxes may apply."
+      ],
+      "steps": [
+        "Log In to your Publix Pharmacy account.",
+        "Wait for the notice that your prescription is ready.",
+        "Choose Prepay and pick pickup, curbside or delivery.",
+        "Review the amount and confirm."
+      ],
+      "source": "https://www.publix.com/pharmacy/pharmacy-services/pharmacy-app"
+    },
+    {
+      "slug": "quick-refill",
+      "title": "Quick Refill without an account",
+      "topic": "account",
+      "paragraphs": [
+        "Quick Refill lets you request a refill without logging in, and you can submit up to 20 prescriptions at a time. You will not get the account features: prescription status, history, refill reminders and ready notifications, Medical Expense Summary reports and profile sharing.",
+        "The 11-digit prescription number is printed on your medication label, just below your name. With an account there is no limit to how many valid prescriptions you can refill at once."
+      ],
+      "source": "https://rx.publix.com/en/myaccount/faqs"
+    },
+    {
+      "slug": "registration",
+      "title": "Creating your Publix Pharmacy account",
+      "topic": "account",
+      "paragraphs": [
+        "To sign up, scan or enter the prescription number of a recent Publix prescription. If it matches the pharmacy's records, Publix sends a verification code to the mobile phone or email address on file; if neither is on file, ask your pharmacy to add one first.",
+        "Next, log in with your Club Publix account or create one (an email address is required). After this one-time setup your full prescription record appears, including prescriptions in progress, and new prescriptions show up automatically. You can add yourself, children 17 and younger, pets, and people who share their profile with you."
+      ],
+      "source": "https://rx.publix.com/en/myaccount/faqs"
+    },
+    {
+      "slug": "statements",
+      "title": "Statements (Medical Expense Summary)",
+      "topic": "statements",
+      "paragraphs": [
+        "For taxes or other records, open Settings, choose Statements and enter a search period within the last 24 months to get your Medical Expense Summary. Your prescription list shows prescriptions up to 90 days after they expire; some are archived automatically and can be found under Archive on the Prescriptions page.",
+        "For details on a prescription that is not in your profile or archive, contact your local Publix Pharmacy."
+      ],
+      "source": "https://rx.publix.com/en/myaccount/faqs"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Getting more help",
+      "topic": "contact",
+      "paragraphs": [
+        "Publix Customer Care can help with your pharmacy account: call 1-800-242-1227, use the contact form on publix.com, or visit your local Publix Pharmacy. For text alerts, text HELP to 44122; reply STOP to stop texts and START to turn them back on."
+      ],
+      "source": "https://rx.publix.com/en/myaccount/faqs"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "statement-window",
+        "intent": "I need my Publix Pharmacy Medical Expense Summary for my taxes. How far back can I get a statement online? Look it up in the Publix Pharmacy help and answer; do not pay or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "24"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "24"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "statements"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 24 months back (Settings > Statements)."
+          }
+        ]
+      },
+      {
+        "slug": "quick-refill-limit",
+        "intent": "Without a Publix Pharmacy account, how many prescriptions can I submit at once with Quick Refill? Check the Publix Pharmacy help and answer with the number; don't pay anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "20"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "20"
+          ]
+        },
+        "tags": [
+          "help",
+          "information"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to 20 prescriptions at a time."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "label": "signIn"
+    },
+    {
+      "page": "pay",
+      "signedIn": true,
+      "label": "payBill"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Online Purchase History"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "statements",
+      "contains": "24 months"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "curbside"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "quick-refill",
+      "contains": "20 prescriptions"
+    }
+  ]
+}

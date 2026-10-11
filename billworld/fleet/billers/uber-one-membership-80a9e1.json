@@ -1,0 +1,322 @@
+{
+  "id": "uber-one-membership-80a9e1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Uber One membership",
+  "category": "streaming-subscriptions",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from the public Uber One page (uber.com/us/en/uber-one) only (no sign-in). Uber One is $9.99 a month (a 4-week free trial for eligible new members) and auto-renews at the rate and frequency chosen at sign-up to the payment method chosen then; charges are non-refundable once a billing cycle starts, except a charge within 24 hours of canceling, which is refunded automatically. Cancel in the app: Uber One > Manage Membership > End Membership. The annual price ($96/yr) is on ubereats.com/uber-one (help only); switching between monthly and annual billing in Manage Membership is not documented on public pages; modeled as change_plan supported (inferred) with plans Monthly $9.99 and Annual $96 (reviewer 2026-10-10; 'unknown' left the plan page without a form); change_plan is 'unknown' with a note. Sign-in (phone number or email, then a code sent by text) is inferred from the public Uber experience: modeled as email identifier, two steps, SMS MFA. Uber One credits expire 60 days after they are added and are revocable when membership ends. Uber is app-first; the mock web portal stands in for the app's Uber One screens.",
+  "officialDomains": [
+    "uber.com",
+    "ubereats.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.uber.com/us/en/uber-one/",
+      "title": "Uber One | Uber",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.ubereats.com/uber-one",
+      "title": "Uber One | Uber Eats",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Uber One",
+    "shortName": "Uber",
+    "primary": "#000000",
+    "accent": "#1a5fd6",
+    "monogram": "U"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "username": "Phone number or email",
+    "dashboard": "Uber One",
+    "plan": "Manage Membership",
+    "cancel": "End Membership",
+    "wallet": "Payment",
+    "help": "Help"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Uber One benefits",
+        "helpSlug": "uber-one-benefits"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Uber One",
+        "page": "dashboard"
+      },
+      {
+        "label": "Manage Membership",
+        "page": "plan"
+      },
+      {
+        "label": "Payment",
+        "page": "wallet"
+      },
+      {
+        "label": "End Membership",
+        "page": "cancel"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 2,
+    "mfa": "sms",
+    "evidence": "inferred",
+    "source": "https://www.uber.com/us/en/uber-one/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.uber.com/us/en/uber-one/",
+      "note": "Uber One is charged to the payment method on your account; there is no bill to pay without logging in."
+    },
+    "autopay": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.uber.com/us/en/uber-one/",
+      "note": "Your membership renews automatically and is charged at the rate and frequency you chose when you joined."
+    },
+    "autopay_cancel": {
+      "support": "not_applicable",
+      "evidence": "documented_official",
+      "source": "https://www.uber.com/us/en/uber-one/",
+      "note": "To stop future charges, end your membership."
+    },
+    "paperless": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.uber.com/us/en/uber-one/",
+      "note": "Uber does not mail bills for Uber One."
+    },
+    "scheduled_payment": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.uber.com/us/en/uber-one/"
+    },
+    "payment_assistance": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.uber.com/us/en/uber-one/"
+    },
+    "payment_arrangement": {
+      "support": "not_applicable",
+      "evidence": "inferred",
+      "source": "https://www.uber.com/us/en/uber-one/",
+      "note": "Uber One is charged each billing cycle and installment plans are not offered."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.uber.com/us/en/uber-one/",
+      "note": "If you end your membership less than 24 hours before it renews, you may see a renewal charge; it is refunded automatically."
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.ubereats.com/uber-one"
+    }
+  },
+  "billing": {
+    "source": "https://www.ubereats.com/uber-one",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "inferred",
+      "source": "https://www.uber.com/us/en/uber-one/"
+    },
+    "methods": [
+      "card"
+    ],
+    "plans": [
+      {
+        "id": "monthly",
+        "name": "Uber One Monthly",
+        "cents": 999
+      },
+      {
+        "id": "annual",
+        "name": "Uber One Annual",
+        "cents": 9600,
+        "current": true
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "uber-one-benefits",
+      "title": "Uber One membership",
+      "topic": "plans",
+      "paragraphs": [
+        "Uber One is $9.99 a month or $96 a year. Eligible first-time members can try it free for 4 weeks.",
+        "Members get a $0 delivery fee on eligible food and grocery orders over the minimum, lower service fees and up to 10% off eligible delivery and pickup orders, 5% back in Uber One credits on eligible rides, and credits on hotel and car rental bookings."
+      ],
+      "source": "https://www.ubereats.com/uber-one"
+    },
+    {
+      "slug": "renewal-and-refunds",
+      "title": "Renewal, refunds and credits",
+      "topic": "billing",
+      "paragraphs": [
+        "Your membership renews automatically, charging your payment method at the rate and frequency you chose when you joined, including when a free trial or promotion ends.",
+        "Once a billing cycle starts, its charge is not refundable unless the law requires it. If you cancel less than 24 hours before renewal, a renewal charge may appear and is refunded automatically. Uber One credits expire 60 days after they reach your wallet and can be taken back when your membership ends."
+      ],
+      "source": "https://www.uber.com/us/en/uber-one/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "End your Uber One membership",
+      "topic": "account",
+      "paragraphs": [
+        "In the Uber app, open Uber One, choose Manage Membership, then End Membership."
+      ],
+      "source": "https://www.uber.com/us/en/uber-one/",
+      "steps": [
+        "Open Uber One.",
+        "Choose Manage Membership.",
+        "Choose End Membership and confirm."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "credits-expiry",
+        "intent": "Using the Uber One page, find how many days Uber One credits last after they are added to your wallet. Do not change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "60"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "60"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Uber One credits expire 60 days after they are added."
+          }
+        ]
+      },
+      {
+        "slug": "monthly-price",
+        "intent": "Using the Uber One page, find the monthly price of Uber One. Do not change your membership or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "9.99"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "9.99"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "plans"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Uber One costs $9.99 a month."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Phone number or email"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Manage Membership",
+        "End Membership"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "label": "cancel"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "uber-one-benefits",
+      "contains": "$9.99"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "renewal-and-refunds",
+      "contains": "60 days"
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Uber One Monthly",
+        "Uber One Annual"
+      ]
+    }
+  ]
+}

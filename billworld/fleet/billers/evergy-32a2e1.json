@@ -1,0 +1,408 @@
+{
+  "id": "evergy-32a2e1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Evergy",
+  "category": "electric",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public evergy.com pages (read in a browser, no sign-in). Log In asks for Username and Password (no email login described); registration needs the account number. No pay-without-signing-in option is offered: the Payment Options page lists only logged-in online payment, the public Pay My Bill link redirects to Log In, and the login page's 'Continue as Guest' link returns to the home page (reviewer re-checked 2026-10-10), so guest_pay is unsupported (observed_public) with phone/mail/in-person alternatives. Auto Pay is processed on the due date and can be updated or cancelled anytime in My Account; payment methods for Auto Pay are not stated, so the family default methods stay. No card convenience fee is stated on the Payment Options page; a 2021 Kansas Central tariff says residential card payments carry no fee (not read), so fees are left out. Phone payments by Visa/Mastercard or check, weekdays 7 am-5 pm. Payment Plans & Extensions (installment plans, payment extensions, adjustable due dates) are handled in My Account; Average Payment Plan spreads costs over 12 months. Paperless has a public enrollment form (not submitted). Stop service is online through Start, Stop or Move.",
+  "officialDomains": [
+    "evergy.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.evergy.com/manage-account/billing-link/payment-options",
+      "title": "Payment Options | Evergy",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.evergy.com/log-in",
+      "title": "Log In | Evergy",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.evergy.com/help-center/billing-and-payments/how-do-i-pay-my-bill-online",
+      "title": "How do I pay my bill online? | Evergy",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.evergy.com/help-center/billing-and-payments/how-do-i-pay-my-bill-by-phone",
+      "title": "How do I pay my bill by phone? | Evergy",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.evergy.com/landing/paperless",
+      "title": "Paperless Billing Information | Evergy",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.evergy.com/help-center/starting-or-stopping-service/how-do-i-stop-service",
+      "title": "How do I stop service? | Evergy",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.evergy.com/manage-account/billing-link/energy-assistance",
+      "title": "Energy Assistance | Evergy",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "shortName": "Evergy",
+    "primary": "#005d7f",
+    "accent": "#003f56",
+    "monogram": "EV"
+  },
+  "labels": {
+    "payBill": "Pay My Bill",
+    "autopay": "Auto Pay",
+    "paperless": "Paperless Billing",
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "register": "Register Now",
+    "forgot": "Can't sign in?",
+    "arrangement": "Payment Plans & Extensions",
+    "cancel": "Stop Service",
+    "username": "Username",
+    "dashboard": "My Account",
+    "profile": "Preferences"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Register Now",
+        "page": "register"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Energy Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Bill",
+        "page": "bill"
+      },
+      {
+        "label": "Auto Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Plans & Extensions",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      },
+      {
+        "label": "Preferences",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://www.evergy.com/log-in"
+  },
+  "contact": {
+    "phone": "1-888-471-5275",
+    "payPhone": "1-888-471-5275",
+    "source": "https://www.evergy.com/manage-account/billing-link/payment-options"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "observed_public",
+      "source": "https://www.evergy.com/log-in",
+      "note": "To pay online, log in to your Evergy account. Without logging in, pay by phone at 1-888-471-5275, by mail with your bill's return envelope, or at an Evergy Connect location or kiosk.",
+      "channel": "phone",
+      "phone": "1-888-471-5275"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.evergy.com/manage-account/billing-link/payment-options",
+      "note": "Auto Pay is processed on your due date. You can update or cancel it anytime."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.evergy.com/landing/paperless"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.evergy.com/manage-account/billing-link/payment-options"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.evergy.com/manage-account/billing-link/energy-assistance"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.evergy.com/help-center/starting-or-stopping-service/how-do-i-stop-service"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.evergy.com/help-center/billing-and-payments/how-do-i-pay-my-bill-by-phone"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.evergy.com/manage-account/billing-link/payment-options"
+    }
+  },
+  "billing": {
+    "source": "https://www.evergy.com/manage-account/billing-link/payment-options",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment Options",
+      "topic": "payments",
+      "paragraphs": [
+        "Log in to your online account to pay anytime; registering is free. You can also pay in the Evergy app or with text commands.",
+        "By phone, call 1-888-471-5275 and follow the prompts. Pay by check with your account number and checkbook ready, or by Visa or Mastercard with your card number; phone payments are taken weekdays 7 am to 5 pm, except holidays.",
+        "By mail, send a check or money order in the return envelope from your bill. In person, visit an Evergy Connect location or a self-service kiosk."
+      ],
+      "source": "https://www.evergy.com/manage-account/billing-link/payment-options",
+      "steps": [
+        "Log in.",
+        "Choose Pay My Bill.",
+        "Pick your payment method.",
+        "Review and submit."
+      ]
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Auto Pay processes your payment automatically on your due date so you avoid late payments. You can update or cancel it anytime from your account preferences."
+      ],
+      "source": "https://www.evergy.com/manage-account/billing-link/payment-options",
+      "steps": [
+        "Log in.",
+        "Open Preferences.",
+        "Turn on Auto Pay and choose your payment method.",
+        "Save."
+      ]
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment plans and energy assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "Payment Plans & Extensions: if you qualify, align your due date with your income schedule, pay down a balance over time with an installment plan, or get extra time to pay a bill. Start from My Account.",
+        "Average Payment Plan spreads your energy costs over the year based on your last 12 months of usage; the amount adjusts as your usage changes.",
+        "If you are having trouble keeping up with your bills, the Energy Assistance page lists programs you may qualify for."
+      ],
+      "source": "https://www.evergy.com/manage-account/billing-link/payment-options"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless Billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless billing (residential customers) replaces your paper bill with email or text notices and reminders and keeps your bill and payment history online. The full bill is available only in your online account or app.",
+        "It can take up to one billing cycle to take effect. You can turn it off anytime under Preferences in your account."
+      ],
+      "source": "https://www.evergy.com/landing/paperless"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Stop service",
+      "topic": "account",
+      "paragraphs": [
+        "Use Start, Stop or Move online. Choose Stop if you are leaving Evergy's service area, or Move if you are moving within it. On the stop date, unlock gates and secure pets so the meter can be reached."
+      ],
+      "source": "https://www.evergy.com/help-center/starting-or-stopping-service/how-do-i-stop-service"
+    },
+    {
+      "slug": "view-your-bill",
+      "title": "View your bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in to your account or the Evergy app to see your current bill, payment history and account information."
+      ],
+      "source": "https://www.evergy.com/help-center/billing-and-payments/how-do-i-pay-my-bill-online"
+    },
+    {
+      "slug": "faq",
+      "title": "Frequently asked questions",
+      "topic": "faq",
+      "paragraphs": [
+        "You can combine payment options, for example Auto Pay with the Average Payment Plan.",
+        "Registering for online access is free; you need your account number to register."
+      ],
+      "source": "https://www.evergy.com/manage-account/billing-link/payment-options"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-timing",
+        "intent": "Find out when Evergy Auto Pay takes your payment each month. Do not enroll or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "due date"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "due date"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Auto Pay is processed on your due date."
+          }
+        ]
+      },
+      {
+        "slug": "phone-pay-hours",
+        "intent": "Using Evergy's help pages, find the hours when you can pay your bill by phone. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "7 am",
+              "7 a.m.",
+              "7am",
+              "7:00"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "7 am",
+            "7 a.m.",
+            "7am",
+            "7:00"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Weekdays from 7 am to 5 pm, excluding holidays."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "contains": [
+        "Payment Options",
+        "Log in"
+      ]
+    },
+    {
+      "page": "login",
+      "contains": "Username"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Pay",
+        "Payment Plans & Extensions"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "1-888-471-5275",
+        "7 am to 5 pm"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "due date"
+    }
+  ]
+}

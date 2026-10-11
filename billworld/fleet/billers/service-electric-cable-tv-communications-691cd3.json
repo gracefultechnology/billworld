@@ -1,0 +1,312 @@
+{
+  "id": "service-electric-cable-tv-communications-691cd3",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Service Electric Cable TV & Communications",
+  "category": "tv",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public sectv.com billing pages and the public My Account login page at my.sectv.com (viewed only; nothing entered). The login form shows Username, Password and a security-image check with Sign In, plus Enroll, 'I forgot my username' and 'I forgot my password' links and 'Not Enrolled in MyAccount? REGISTER HERE'. Billing and Payment Options: My Account to view and pay, go paperless and manage services; Automatic Bill Payment (ABP) from a checking account with no fees (bank only); one-time online payments by credit or debit card or EFT from checking/savings, which can be scheduled for a future date; card payments carry a $3.00 fee, EFT is free; making an electronic payment automatically enrolls the account in paperless billing (side effect not modelled). Pay in person at the Bethlehem, Allentown, Phillipsburg NJ or Wilkes-Barre offices, by phone per region (Lehigh Valley 610-865-9100 / 800-232-9100, New Jersey 800-225-9102, Wilkes-Barre 570-825-8508) or by mail to P.O. Box 65123, Baltimore, MD 21264-5123. Service Electric Cablevision (secv.com, Sunbury/Hazleton) is a separate company and billing site, not covered here. No pay-without-signing-in option is shown, so guest_pay is unsupported (inferred). How to stop ABP and how to cancel service are not described publicly; autopay_cancel keeps the family default and cancel_service is unknown with the Lehigh Valley number. The Understanding Your Bill page lists a Credit Card Processing Fee line. Late fee amounts and plan prices are not on the pages used. Reviewer (t20, 2026-10-10): Re-checked the four cited pages (Pay My Bill, Understand Your Bill, Billing support, the public my.sectv.com login) plus the Lehigh Valley annual policy notice: added the $40 returned check fee and the 1.5% late charge on amounts over 60 days in arrears as fee notes and help (not modelled as lateFeePercent because the engine cannot apply the 60-day condition). Regional phone numbers and the $3.00 card fee confirmed. No public cancellation or ABP-stop instructions exist, so those stay as before.",
+  "officialDomains": [
+    "sectv.com"
+  ],
+  "sources": [
+    {
+      "url": "https://sectv.com/support/billing/pay-my-bill/",
+      "title": "Billing and Payment Options « Service Electric Cable",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://sectv.com/support/billing/understand-your-bill/",
+      "title": "Understanding Your Bill « Service Electric Cable",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://sectv.com/support/billing/",
+      "title": "Billing Support « Service Electric Cable",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://my.sectv.com/MyAccount/aspLogin.aspx",
+      "title": "My Account - Service Electric",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://sectv.com/policies/lehigh-valley/",
+      "title": "Lehigh Valley Policies « Service Electric Cable",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "Service Electric",
+    "shortName": "Service Electric",
+    "primary": "#003f87",
+    "accent": "#b22234",
+    "monogram": "SE"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "username": "Username",
+    "register": "Enroll",
+    "forgot": "I forgot my password",
+    "dashboard": "My Account",
+    "payBill": "Pay My Bill",
+    "autopay": "Auto Bill Pay",
+    "paperless": "Paperless Billing",
+    "help": "Billing Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "My Account Login",
+        "page": "login"
+      },
+      {
+        "label": "Enroll",
+        "page": "register"
+      },
+      {
+        "label": "Billing and Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Billing Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Auto Bill Pay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Billing",
+        "page": "paperless"
+      },
+      {
+        "label": "Billing Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "observed_public",
+    "source": "https://my.sectv.com/MyAccount/aspLogin.aspx"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://my.sectv.com/MyAccount/aspLogin.aspx"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://sectv.com/support/billing/pay-my-bill/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://sectv.com/support/billing/pay-my-bill/"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://sectv.com/support/billing/pay-my-bill/",
+      "note": "Online payments are made in My Account. Without signing in, pay by phone (Lehigh Valley 610-865-9100, New Jersey 800-225-9102, Wilkes-Barre 570-825-8508), at a local office or by mail.",
+      "channel": "phone",
+      "phone": "6108659100"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://sectv.com/support/billing/pay-my-bill/",
+      "note": "Auto Bill Pay is drafted from your checking account, with no fees."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://sectv.com/support/billing/pay-my-bill/"
+    },
+    "cancel_service": {
+      "support": "unknown",
+      "evidence": "inferred",
+      "source": "https://sectv.com/support/billing/",
+      "note": "To cancel or change Service Electric service, call your local office: Lehigh Valley 610-865-9100, New Jersey 800-225-9102 or Wilkes-Barre 570-825-8508.",
+      "channel": "phone",
+      "phone": "6108659100"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://sectv.com/support/billing/pay-my-bill/",
+      "phone": "6108659100"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://sectv.com/support/billing/pay-my-bill/"
+    }
+  },
+  "contact": {
+    "phone": "6108659100",
+    "payPhone": "6108659100",
+    "source": "https://sectv.com/support/billing/pay-my-bill/",
+    "evidence": "documented_official"
+  },
+  "billing": {
+    "source": "https://sectv.com/support/billing/pay-my-bill/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 300,
+      "evidence": "documented_official",
+      "source": "https://sectv.com/support/billing/pay-my-bill/",
+      "notes": [
+        "Returned checks are charged a $40 fee.",
+        "A late charge of 1.5% is added to amounts more than 60 days in arrears."
+      ]
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Billing and payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "Enroll in My Account to view and pay your bill online, stop paper statements, check system status and manage services. Sign in and choose Pay My Bill to pay by credit or debit card or by electronic funds transfer from checking or savings, now or on a future date.",
+        "Card payments carry a $3.00 fee; payments from a checking or savings account are free. Any electronic payment also signs you up for paperless billing.",
+        "You can also pay in person at the Bethlehem, Allentown, Phillipsburg (NJ) or Wilkes-Barre offices, by phone (Lehigh Valley 610-865-9100 or 800-232-9100, New Jersey 800-225-9102, Wilkes-Barre 570-825-8508), or by mail to Service Electric Cable TV, Inc., Attn: Payments, P.O. Box 65123, Baltimore, MD 21264-5123."
+      ],
+      "source": "https://sectv.com/support/billing/pay-my-bill/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Bill Payment (ABP)",
+      "topic": "autopay",
+      "paragraphs": [
+        "With Automatic Bill Payment your bill is deducted from your checking account automatically, with no fees, and you can also drop your paper statement. Sign in to My Account, choose Auto Bill Pay from the menu and set it up online. If you don't have My Account yet, enroll first."
+      ],
+      "steps": [
+        "Sign in to My Account.",
+        "Choose Auto Bill Pay from the menu.",
+        "Enter your checking account and confirm."
+      ],
+      "source": "https://sectv.com/support/billing/pay-my-bill/"
+    },
+    {
+      "slug": "paperless",
+      "title": "Paperless billing",
+      "topic": "billing",
+      "paragraphs": [
+        "Paperless billing (e-billing) replaces your paper bill: each month you get an email about your upcoming bill and view the details in My Account. Choose Paperless Billing from the My Account menu to sign up. Making any electronic payment also enrolls you."
+      ],
+      "source": "https://sectv.com/support/billing/pay-my-bill/"
+    },
+    {
+      "slug": "billing-questions",
+      "title": "Questions about your bill",
+      "topic": "billing",
+      "paragraphs": [
+        "Your bill lists each service, equipment item, tax and fee in order. A Credit Card Processing Fee line recovers the cost of card payments. For billing questions call Lehigh Valley 610-865-9100, New Jersey 800-225-9102 or Wilkes-Barre 570-825-8508, or chat or email Service Electric.",
+        "Charges are due each month on the date shown on your bill. A late charge of 1.5% is added to any amount more than 60 days in arrears, a returned check costs $40, and service can be disconnected for nonpayment after a disconnect notice. You have 30 days from receiving a bill to dispute it; pay the undisputed part promptly."
+      ],
+      "source": "https://sectv.com/policies/lehigh-valley/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-payment-fee",
+        "intent": "Using Service Electric's payment options, find the fee for paying online with a credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3.00",
+              "$3"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3.00",
+            "$3"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments carry a $3.00 fee; payments from checking or savings are free."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Auto Bill Pay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "610-865-9100"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "$3.00"
+    }
+  ]
+}

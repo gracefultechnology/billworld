@@ -1,0 +1,368 @@
+{
+  "id": "miami-dade-county-tax-collector-002f07",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Miami-Dade County Tax Collector",
+  "category": "property-tax",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched 2026-10-10 from public mdctaxcollector.gov pages (read through Internet Archive snapshots because the live site blocks automated clients; no sign-in, no bill lookup). Online payments run through Grant Street Group (county-taxes.net); eCheck is free, cards/mobile wallets 2.50% with a $2.50 minimum (commercial or foreign cards 3.95%, minimum $2.50); the Tax Collector cannot cancel an online payment after checkout. Bills are mailed Oct 31/Nov 1; discounts 4% Nov, 3% Dec, 2% Jan, 1% Feb, gross in March; delinquent April 1; tax certificate sale starts June 1. Quarterly Installment Payment Plan (6%, 4.5%, 3% discounts) and Partial Payment Plan both need an application taken by the office in November, so payment_arrangement and autopay are unsupported online. No pay-by-phone channel is listed (online, mail, in person only). Returned payments: at least $25, up to 5%. The signed-in My Properties account and email sign-in are synthetic (the real portal is a guest search by folio).",
+  "officialDomains": [
+    "mdctaxcollector.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://www.mdctaxcollector.gov/payment-methods",
+      "title": "Payment Methods - Miami-Dade County Office of the Tax Collector",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.mdctaxcollector.gov/services/real-estate-tax-payments",
+      "title": "Real Estate Taxes - Miami-Dade County Office of the Tax Collector",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.mdctaxcollector.gov/discounts-for-early-payment",
+      "title": "Discounts for Early Payment",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.mdctaxcollector.gov/quarterly-installment-payment-plan",
+      "title": "2027 Quarterly Installment Payment Plan",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.mdctaxcollector.gov/partial-payment-plan",
+      "title": "Partial Payment Plan",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.mdctaxcollector.gov/receive-your-tax-bill-by-email-e-bill",
+      "title": "Receive Your Tax Bill by Email (E-Bill)",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Miami-Dade County Tax Collector",
+    "shortName": "Miami-Dade County Tax Collector",
+    "primary": "#0b4f6c",
+    "accent": "#7a3b00",
+    "monogram": "MD"
+  },
+  "labels": {
+    "guestPay": "Pay Online",
+    "payBill": "Real Estate Tax Payments",
+    "paperless": "Go Paperless (e-Bill)",
+    "arrangement": "Partial Payment Plan",
+    "help": "Frequently Asked Questions",
+    "contact": "Customer Contact Center"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Online",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Methods",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Discounts for Early Payment",
+        "helpSlug": "early-payment-discounts"
+      },
+      {
+        "label": "Quarterly Installment Payment Plan",
+        "helpSlug": "quarterly-installment-plan"
+      },
+      {
+        "label": "Frequently Asked Questions",
+        "page": "help"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "My Properties",
+        "page": "dashboard"
+      },
+      {
+        "label": "Real Estate Tax Payments",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Go Paperless (e-Bill)",
+        "page": "paperless"
+      },
+      {
+        "label": "Customer Contact Center",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "parcelId"
+    ],
+    "evidence": "synthetic"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mdctaxcollector.gov/payment-methods",
+      "note": "Search by folio number and pay online by eCheck (free) or card (2.50%, minimum $2.50). Online payments cannot be cancelled after checkout."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.mdctaxcollector.gov/quarterly-installment-payment-plan",
+      "note": "There is no automatic withdrawal. The Quarterly Installment Payment Plan needs an application taken by the office each November; you then pay each installment yourself.",
+      "channel": "phone"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mdctaxcollector.gov/receive-your-tax-bill-by-email-e-bill",
+      "note": "Subscribe to receive the tax bill by email (sent by Grant Street Group); no paper bill is mailed unless you unsubscribe."
+    },
+    "pay_by_phone": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.mdctaxcollector.gov/payment-methods",
+      "note": "The Tax Collector does not take payments by phone. Pay online, by mail to 200 NW 2nd Avenue, Miami, FL 33128, or in person.",
+      "channel": "none"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mdctaxcollector.gov/payment-methods",
+      "note": "Mail a check or money order with your folio and phone number to the Tax Collector, 200 NW 2nd Avenue, Miami, FL 33128. Discounts follow the postmark date."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.mdctaxcollector.gov/partial-payment-plan",
+      "note": "Partial Payment Plan applications are taken by the office starting in November; once you make the first partial payment you stay in the plan for the year and give up the early-payment discount.",
+      "channel": "phone"
+    }
+  },
+  "billing": {
+    "source": "https://www.mdctaxcollector.gov/payment-methods",
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.5,
+      "cardMinCents": 250,
+      "notes": [
+        "Commercial or international credit/debit cards online: 3.95% (minimum $2.50).",
+        "Returned payments: a service fee of at least $25, up to 5% of the payment."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.mdctaxcollector.gov/payment-methods"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment methods",
+      "topic": "payments",
+      "source": "https://www.mdctaxcollector.gov/payment-methods",
+      "paragraphs": [
+        "Pay online by eCheck from a U.S. checking or savings account at no charge. Credit cards, debit cards and mobile wallets cost a non-refundable 2.50% convenience fee (at least $2.50); commercial or foreign cards cost 3.95% (at least $2.50). American Express, Visa, MasterCard and Discover are accepted. Online deadlines use Eastern time.",
+        "The Tax Collector cannot cancel or change an online payment once you check out, so check every item before you submit. For technical problems with online payment, call the payment vendor Grant Street Group at 877-818-4323.",
+        "By mail, send a check, cashier's check, money order or certified funds payable to the Tax Collector, Miami-Dade County, 200 NW 2nd Avenue, Miami, FL 33128, with your folio and phone number on the check. Discounts are based on the postmark date; allow up to four weeks for processing in peak season. In person, cash, checks and cards are accepted at the same address."
+      ]
+    },
+    {
+      "slug": "early-payment-discounts",
+      "title": "Discounts for early payment",
+      "topic": "billing",
+      "source": "https://www.mdctaxcollector.gov/discounts-for-early-payment",
+      "paragraphs": [
+        "Florida law gives a discount for paying early: 4% if paid in November, 3% in December, 2% in January and 1% in February. Paying in March means the full gross amount, with no discount.",
+        "Online and in-person payments get the discount for the date they are submitted; mailed payments use the postmark date. If a discount period ends on a weekend or holiday, online and in-person payments get until the next business day. A bill returned as undeliverable does not extend the discount period."
+      ]
+    },
+    {
+      "slug": "due-dates-delinquency",
+      "title": "Due dates and delinquent taxes",
+      "topic": "billing",
+      "source": "https://www.mdctaxcollector.gov/services/real-estate-tax-payments",
+      "paragraphs": [
+        "Annual tax notices are mailed at the end of October. Taxes become delinquent on April 1, when interest and fees are added.",
+        "Unpaid taxes can be paid online through May 31 (11:59 p.m. Eastern). If the year's real estate taxes are still unpaid on June 1, a tax certificate may be sold on the property, which can eventually lead to losing it. For help call 305-375-5448."
+      ]
+    },
+    {
+      "slug": "quarterly-installment-plan",
+      "title": "Quarterly Installment Payment Plan",
+      "topic": "assistance",
+      "source": "https://www.mdctaxcollector.gov/quarterly-installment-payment-plan",
+      "paragraphs": [
+        "The quarterly plan lets you pay next year's taxes in four installments: by June 30 (one quarter of the estimated taxes, 6% discount), September 30 (4.5% discount), December 31 (3% discount) and March 31 (no discount). A late first installment is accepted without discount through July 31; after that you are removed from the plan.",
+        "Applications are taken by the office starting in November for the following tax year. Do not enroll if your mortgage company pays your taxes. Delinquent taxes cannot be paid in installments."
+      ]
+    },
+    {
+      "slug": "partial-payment-plan",
+      "title": "Partial Payment Plan",
+      "topic": "assistance",
+      "source": "https://www.mdctaxcollector.gov/partial-payment-plan",
+      "paragraphs": [
+        "Partial payments on the current year's taxes are accepted from November 1 through March 31 under the Partial Payment Plan. Contact the office in November for an application.",
+        "Your first partial payment commits you to the plan for the tax year and waives the early-payment discount. Any balance left on April 1 is delinquent. You cannot join if you have a mortgage escrow account, are in the quarterly plan, or filed a Value Adjustment Board petition. Partial payments can be made online by eCheck or card, but not through your bank's bill pay."
+      ]
+    },
+    {
+      "slug": "ebill",
+      "title": "Receive your tax bill by email",
+      "topic": "paperless",
+      "source": "https://www.mdctaxcollector.gov/receive-your-tax-bill-by-email-e-bill",
+      "paragraphs": [
+        "Subscribe online to get your tax bill by email. Bills come from the Tax Collector's software vendor, Grant Street Group; no paper bill is mailed unless you unsubscribe, which you can do from the link in any email.",
+        "Email addresses are public records in Florida, and accounts exempt from public disclosure cannot use e-bill. An undeliverable email bill does not extend the discount period."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-minimum",
+        "intent": "Using the Miami-Dade County Tax Collector website's help pages, find the minimum convenience fee for paying property taxes online with a credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2.50"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2.50"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments cost 2.50% with a minimum fee of $2.50; eCheck is free."
+          }
+        ]
+      },
+      {
+        "slug": "november-discount",
+        "intent": "Using the Miami-Dade County Tax Collector website's help pages, find the discount for paying property taxes in November. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "4%",
+              "4 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "4%",
+            "4 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "discount"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Paying in November earns a 4% discount."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Discounts for Early Payment",
+        "Quarterly Installment Payment Plan"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": "Go Paperless (e-Bill)"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "2.50%",
+        "Grant Street Group"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "early-payment-discounts",
+      "contains": "4% if paid in November"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "partial-payment-plan",
+      "contains": "March 31"
+    }
+  ]
+}

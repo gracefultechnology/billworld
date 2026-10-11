@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "status": "dedicated",
+  "reviewedAt": "2026-10-10",
+  "id": "asset-living-a79ef3",
+  "name": "Asset Living",
+  "category": "housing",
+  "notes": "Researched from the public assetliving.com Contact page. Asset Living is a third-party manager (multifamily, student, affordable, active adult, build-to-rent); each property runs its own resident portal (vendor varies). Residents contact Asset Living through the 'I'm a resident' form on Contact; general contact info@assetliving.com, 713-782-5800; regional offices listed. No public resident payment, fee, autopay or notice information (family defaults kept, inferred).",
+  "officialDomains": [
+    "assetliving.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.assetliving.com/contact",
+      "title": "Contact Asset Living | Get in Touch",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.assetliving.com/about/overview",
+      "title": "Overview | Asset Living",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Asset Living",
+    "shortName": "Asset Living",
+    "primary": "#0f2e4c",
+    "accent": "#8b2f1c",
+    "monogram": "AL"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Resident Portal",
+        "page": "login"
+      },
+      {
+        "label": "Resources",
+        "page": "help"
+      },
+      {
+        "label": "Contact Us",
+        "helpSlug": "contact-us"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Rent",
+        "page": "pay"
+      },
+      {
+        "label": "Charges",
+        "page": "bill"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Contact the Office",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "contact": {
+    "phone": "7137825800",
+    "source": "https://www.assetliving.com/contact",
+    "evidence": "documented_official"
+  },
+  "help": [
+    {
+      "slug": "contact-us",
+      "title": "Contact Asset Living",
+      "paragraphs": [
+        "Residents can reach Asset Living from the Contact page by choosing I'm a resident and sending the form, or by calling 713-782-5800. General email: info@assetliving.com."
+      ],
+      "source": "https://www.assetliving.com/contact",
+      "topic": "contact"
+    },
+    {
+      "slug": "about-asset-living",
+      "title": "About Asset Living",
+      "paragraphs": [
+        "Asset Living manages multifamily, student, affordable, active adult and build-to-rent communities for property owners, and describes itself as the largest affordable housing property manager in the industry. Each community runs its own resident portal and leasing office."
+      ],
+      "source": "https://www.assetliving.com/about/overview",
+      "topic": "account"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "main-phone",
+        "intent": "Using the Asset Living help pages, find Asset Living's main phone number. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "7137825800"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "7137825800"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "phone"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 713-782-5800."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "helpArticle",
+      "slug": "contact-us",
+      "contains": "713-782-5800"
+    }
+  ]
+}

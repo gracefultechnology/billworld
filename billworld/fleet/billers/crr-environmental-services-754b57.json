@@ -1,0 +1,353 @@
+{
+  "id": "crr-environmental-services-754b57",
+  "version": 1,
+  "status": "dedicated",
+  "name": "CR&R Environmental Services",
+  "category": "trash",
+  "reviewedAt": "2026-10-10",
+  "template": "waste-hauler",
+  "notes": "Moved from the catalog default utility-account family to the trash-specific waste-hauler family. Researched from the public crrwasteservices.com Pay and Customer Service pages (client-rendered, read in a browser) and the public CR&R Online Bill Pay (Soft-Pak Web-Pak) sign-in page and FAQ; never signed in. Sign-in is one page with E-Mail and a case-sensitive password; Register Now needs the Customer Number and Access Code from the bill and is confirmed by an e-mailed link. The real portal limits passwords to 3-10 characters, which would reject the fleet test passwords, so no passwordRule is set. The Pay page describes two ways to pay: enroll in recurring payment (charged on the 25th of each month, next business day if the 25th is a weekend; changes take effect from the next billing; a current balance must be paid separately) or a one-time payment (posts within up to two business days). The header Quick Pay link opens the same sign-in page, so guest pay is marked unsupported (inferred). Accounts 60+ days late may have service stopped; restarting after cancellation or container removal may carry a fee and payment arrangements are made with local Customer Service, so payment_arrangement is unsupported online (documented). Customer support 800-826-9677, Monday-Friday 8 a.m.-5 p.m.; live chat Monday-Friday 8:30 a.m.-4:30 p.m. No convenience fee or late-fee amount is published (no fees set). Many CR&R cities bill trash on the city utility or property-tax bill instead. The recurring-payment draft day is modelled with billing.autopay.days [25]; the waste-hauler template has no day picker, so its page uses the generic draft-date wording (cross-owner request: fixed day-of-month AutoPay wording).",
+  "officialDomains": [
+    "crrwasteservices.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.crrwasteservices.com/Pay",
+      "title": "Pay your bill | CR&R Environmental Services",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.crrwasteservices.com/CustomerService",
+      "title": "Customer Service | CR&R Environmental Services",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://secured.crrwasteservices.com/webpak2sw/signin.jsp",
+      "title": "CR&R Online Bill Pay",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://secured.crrwasteservices.com/webpak2sw/faq.jsp",
+      "title": "Online Bill Pay - Frequently Asked Questions",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "CR&R Environmental Services",
+    "shortName": "CR&R",
+    "primary": "#00663a",
+    "accent": "#1f4e79",
+    "monogram": "CR"
+  },
+  "labels": {
+    "payBill": "Pay your Bill",
+    "signIn": "Sign In",
+    "register": "Register Now",
+    "forgot": "Reset Password",
+    "autopay": "Autopay Enrollment",
+    "paperless": "Billing Options",
+    "wallet": "Payment Methods",
+    "profile": "User Options",
+    "help": "FAQ",
+    "accountNumber": "Customer Number",
+    "username": "E-Mail"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay your Bill",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Register Now",
+        "page": "register"
+      },
+      {
+        "label": "Customer Service",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Online Bill Pay",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay your Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay Enrollment",
+        "page": "autopay"
+      },
+      {
+        "label": "Billing Options",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "User Options",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "email"
+    ],
+    "evidence": "observed_public",
+    "source": "https://secured.crrwasteservices.com/webpak2sw/signin.jsp"
+  },
+  "contact": {
+    "phone": "800-826-9677",
+    "source": "https://www.crrwasteservices.com/CustomerService",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "registration": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.crrwasteservices.com/Pay",
+      "note": "Register with the customer number and access code from the front of your bill and a current e-mail address, then confirm through the e-mailed link."
+    },
+    "password_reset": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://secured.crrwasteservices.com/webpak2sw/signin.jsp"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.crrwasteservices.com/Pay",
+      "note": "One-time online payments can take up to two business days to post to your account."
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://secured.crrwasteservices.com/webpak2sw/signin.jsp",
+      "note": "CR&R online payments are made after signing in to Online Bill Pay. Register with the customer number and access code from your bill, or call Customer Support at 800-826-9677.",
+      "channel": "phone",
+      "phone": "800-826-9677"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.crrwasteservices.com/Pay",
+      "note": "Recurring payments are charged on the 25th of each month (the next business day if the 25th falls on a weekend). Enrolling or making changes takes effect with your next billing, so pay any current balance separately."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://secured.crrwasteservices.com/webpak2sw/faq.jsp",
+      "note": "Recurring payments are managed from Billing Options (Modify); changes take effect with your next billing."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://secured.crrwasteservices.com/webpak2sw/faq.jsp"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.crrwasteservices.com/Pay",
+      "note": "Payment arrangements are made with CR&R Customer Service, not online. Call 800-826-9677, Monday through Friday, 8 a.m. to 5 p.m.",
+      "channel": "phone",
+      "phone": "800-826-9677"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.crrwasteservices.com/CustomerService",
+      "note": "Service changes and stops are handled by CR&R Customer Service, not Online Bill Pay. Call 800-826-9677, Monday through Friday, 8 a.m. to 5 p.m.",
+      "channel": "phone",
+      "phone": "800-826-9677"
+    }
+  },
+  "billing": {
+    "source": "https://www.crrwasteservices.com/Pay",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": [
+        25
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Two ways to pay your CR&R bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Recurring payment: enroll once and your card or bank account is charged automatically on the 25th of each month, or the next business day when the 25th falls on a weekend. Enrollment and changes start with your next billing, so if you have a balance now, also make a one-time payment.",
+        "One-time payment: sign in to Online Bill Pay and enter your card or bank account each time you pay. Online payments can take up to two business days to reach your account.",
+        "To get started you need the customer number and the access code from the front of your waste and recycling bill, plus a current e-mail address."
+      ],
+      "source": "https://www.crrwasteservices.com/Pay"
+    },
+    {
+      "slug": "late-accounts",
+      "title": "If your account is past due",
+      "topic": "billing",
+      "paragraphs": [
+        "Service may be stopped on accounts that are 60 days or more late. After you pay, allow up to three business days for service to resume before your next pickup.",
+        "If service was canceled or your containers were removed, a fee may apply to restart. Contact your local CR&R Customer Service to make payment arrangements and restart service: 800-826-9677, Monday through Friday, 8 a.m. to 5 p.m."
+      ],
+      "source": "https://www.crrwasteservices.com/Pay"
+    },
+    {
+      "slug": "register",
+      "title": "How to register for Online Bill Pay",
+      "topic": "account",
+      "paragraphs": [
+        "On the CR&R Online Bill Pay Sign In page, find the Are you a new user? section and choose Register Now. Enter the Customer Number and the Access Code printed on your statement or invoice, your e-mail address and a password, then select Register Now.",
+        "An e-mail with a confirmation link is sent to the address you entered. Open the link and sign in to finish. Your e-mail address is your username; you can change it later under User Options, Change Username."
+      ],
+      "source": "https://secured.crrwasteservices.com/webpak2sw/faq.jsp"
+    },
+    {
+      "slug": "autopay",
+      "title": "How to enroll in automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automatic payments pay each invoice from a saved card or bank account. You agree to the Terms and Conditions when you pick the payment method."
+      ],
+      "steps": [
+        "Sign in and select Autopay Enrollment.",
+        "Pick a saved payment method, or choose Add New and enter one.",
+        "Check I agree to the Terms and Conditions.",
+        "Choose Select (or Add Payment) to finish enrolling."
+      ],
+      "source": "https://secured.crrwasteservices.com/webpak2sw/faq.jsp"
+    },
+    {
+      "slug": "cancel-autopay",
+      "title": "How to change automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "Select Autopay Enrollment to open Billing Options, then choose Modify in the Automatic Payments section. Add a new payment method or pick another saved one, agree to the Terms and Conditions and choose Select."
+      ],
+      "source": "https://secured.crrwasteservices.com/webpak2sw/faq.jsp"
+    },
+    {
+      "slug": "paperless",
+      "title": "How to change your bill delivery options",
+      "topic": "billing",
+      "paragraphs": [
+        "After signing in, select Billing Options. The button only appears when your online login is the admin for that account number.",
+        "Three On/Off switches control delivery: E-Mail Notifications Only (an e-mail when the bill is ready to view online), E-Mail Notifications With Bill Attached (the bill as a PDF), and Printed Bill (a paper bill by mail). Choose Submit to save. The same window holds the primary billing e-mail address."
+      ],
+      "source": "https://secured.crrwasteservices.com/webpak2sw/faq.jsp"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "recurring-charge-day",
+        "intent": "Using CR&R's help pages, find on which day of the month CR&R charges recurring (automatic) payments. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "25"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "25"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Recurring payments are charged on the 25th of each month (next business day if it falls on a weekend)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "E-Mail",
+        "Reset Password"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Autopay Enrollment",
+        "Billing Options"
+      ]
+    },
+    {
+      "page": "paperless",
+      "signedIn": true,
+      "label": "paperless"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "paperless",
+      "contains": "E-Mail Notifications With Bill Attached"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "register",
+      "contains": "Access Code"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "25th",
+        "two business days"
+      ]
+    },
+    {
+      "page": "arrangement",
+      "signedIn": true,
+      "contains": "800-826-9677"
+    }
+  ]
+}

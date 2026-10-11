@@ -1,0 +1,339 @@
+{
+  "id": "medical-alert-medicalalertcom-c60fe1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Medical Alert (MedicalAlert.com)",
+  "category": "senior-services",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from MedicalAlert.com's public FAQ, Customer Service & Support page, Subscriber Terms and Conditions, product pages and the public Bill Pay Portal (billpay.medicalalert.com, rendered in a browser, nothing entered). Medical Alert is a Connect America brand (the terms name support@connectamerica.com) and its Bill Pay Portal is the same platform as Lifeline's (tier 1): steps Verify Account, Payment, Confirmation; fields Last Name, Billing Zip Code (5-digit) and Account Number; button 'Continue to Payment'; footer phone 800-906-0872. No customer sign-in is published, so the signed-in area is a synthetic stand-in keyed on the account number (auth.identifier=account, inferred); the guest Bill Pay flow is the real path. The FAQ says payment is taken automatically on the same day each billing period (monthly, semi-annual or annual plans); no online AutoPay setting is documented, so autopay/autopay_cancel are modelled as phone-only (call 800-800-2537, inferred). Cancel: contact form or 800-800-1003; cancellation completes when the equipment is received at 816 Park Way, Broomall, PA 19008. Terms: three-month minimum monitoring charge (non-refundable), no refund for the month the cancellation takes effect, $35 restocking fee and programming fee deducted from early-cancel refunds, lost unit fee up to $400 if equipment is not returned within 30 days, finance charge on unpaid fees of $5 per month or the legal maximum (modelled as lateFeeCents 500), price increases with 30 days' written notice unless a price lock was bought. Accepted card types are not published; guest methods left at the family default. Prices are 'as low as' annual-plan rates ($29.95 home, $34.95 mobile and smartwatch), so no plan list (family plans remain). Paperless and scheduled payments: no docs (unknown). Reviewed 2026-10-10 (independent review): contact phone and the AutoPay notes now use the Customer Care line 800-906-0872 (Subscriber Terms; support page 'Call us at'); 800-800-2537 is the sales / care-specialist line and stays only for switching systems (FAQ).",
+  "officialDomains": [
+    "medicalalert.com"
+  ],
+  "sources": [
+    {
+      "url": "https://billpay.medicalalert.com/",
+      "title": "Medical Alert - Bill Pay Portal",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.medicalalert.com/frequently-asked-questions/",
+      "title": "Frequently Asked Questions | Medical Alert",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.medicalalert.com/support/",
+      "title": "Customer Service & Support | Medical Alert",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.medicalalert.com/support/terms/",
+      "title": "Subscriber Terms and Conditions | Medical Alert",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "Medical Alert",
+    "shortName": "Medical Alert",
+    "primary": "#1b365d",
+    "accent": "#a6192e",
+    "monogram": "MA"
+  },
+  "labels": {
+    "guestPay": "Bill Pay",
+    "accountNumber": "Account Number",
+    "cancel": "Cancel Service",
+    "help": "Customer Service & Support",
+    "username": "Account Number"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Bill Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Sign in",
+        "page": "login"
+      },
+      {
+        "label": "FAQ",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Customer Service & Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Invoice",
+        "page": "bill"
+      },
+      {
+        "label": "Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Payment Methods",
+        "page": "wallet"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Cancel Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "account",
+    "loginSteps": 1,
+    "guestLookupFields": [
+      "accountNumber",
+      "lastName",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "inferred",
+    "source": "https://billpay.medicalalert.com/"
+  },
+  "contact": {
+    "phone": "800-906-0872",
+    "source": "https://www.medicalalert.com/support/terms/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://billpay.medicalalert.com/"
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalalert.com/frequently-asked-questions/"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.medicalalert.com/frequently-asked-questions/",
+      "note": "Payments are taken automatically on the same day each billing period using the method you gave when you ordered. To change how you are billed, call Customer Care at 800-906-0872.",
+      "channel": "phone",
+      "phone": "8009060872"
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.medicalalert.com/frequently-asked-questions/",
+      "note": "Automatic payments cannot be changed online. Call Customer Care at 800-906-0872; they stop once your service is cancelled and the equipment is received.",
+      "channel": "phone",
+      "phone": "8009060872"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.medicalalert.com/frequently-asked-questions/",
+      "note": "Service cannot be cancelled online. Call 800-800-1003 or use the contact form; cancellation is complete once Medical Alert receives your equipment.",
+      "channel": "phone",
+      "phone": "8008001003"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.medicalalert.com/support/terms/",
+      "note": "Payment plans are not offered online. Call Customer Care at 800-906-0872.",
+      "channel": "phone",
+      "phone": "8009060872"
+    },
+    "scheduled_payment": {
+      "support": "unknown",
+      "evidence": "inferred"
+    },
+    "paperless": {
+      "support": "unknown",
+      "evidence": "inferred"
+    }
+  },
+  "billing": {
+    "source": "https://www.medicalalert.com/support/terms/",
+    "lateFeeCents": 500
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your Medical Alert bill online",
+      "topic": "payments",
+      "paragraphs": [
+        "Bill Pay lets you pay without an account. First verify your account with your Last Name, the 5-digit Billing Zip Code on your billing address and your Account Number, then select Continue to Payment.",
+        "The portal has three steps: Verify Account, Payment and Confirmation. Have your account number ready before you start. For billing help call Customer Care at 800-906-0872."
+      ],
+      "source": "https://billpay.medicalalert.com/",
+      "steps": [
+        "Open Bill Pay.",
+        "Enter your Last Name, Billing Zip Code and Account Number.",
+        "Select Continue to Payment.",
+        "Enter your payment details and confirm."
+      ]
+    },
+    {
+      "slug": "faq",
+      "title": "Rate plans and billing",
+      "topic": "faq",
+      "paragraphs": [
+        "Medical Alert offers monthly, semi-annual and annual rate plans. The annual plan is the best value and includes free ground shipping and a free key lockbox; the semi-annual plan also ships free.",
+        "Your payment is taken automatically on the same day each billing period, depending on the plan you chose. Systems start at $29.95 a month and the price depends on the system, rate plan and add-ons.",
+        "Promotional pricing is for new customers only; the regular monthly fee applies from the first billing cycle after your first payment. There is no long-term commitment, but you sign a monitoring agreement. To switch systems, call 800-800-2537."
+      ],
+      "source": "https://www.medicalalert.com/frequently-asked-questions/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel service and return equipment",
+      "topic": "account",
+      "paragraphs": [
+        "You can cancel at any time by calling 800-800-1003 or by using the contact form. After the cancellation is confirmed, return the equipment to Medical Alert, 816 Park Way, Broomall, PA 19008. The cancellation is complete once the equipment arrives.",
+        "Monthly charges continue until the equipment is returned or a lost unit fee (up to $400) is paid. Equipment must be returned in good working order within 30 days after service ends.",
+        "There is a three-month minimum monitoring charge, and the month in which your cancellation takes effect is not refunded. If you cancel in the first three months, unused prepaid monitoring is refunded minus the minimum, a $35 restocking fee, the programming fee and shipping."
+      ],
+      "source": "https://www.medicalalert.com/frequently-asked-questions/"
+    },
+    {
+      "slug": "fees",
+      "title": "Fees and price changes",
+      "topic": "billing",
+      "paragraphs": [
+        "Unpaid monitoring fees may carry a finance charge of $5 a month or the legal maximum, whichever is less. If you do not pay, monitoring can be stopped and the equipment must be returned.",
+        "Medical Alert may raise the monthly charge with 30 days' written notice unless you bought a price lock for the term. Added features may cost extra, and an optional protection plan covers lost, stolen or damaged equipment."
+      ],
+      "source": "https://www.medicalalert.com/support/terms/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "cancel-phone",
+        "intent": "You want to cancel your Medical Alert service. Using the website's help pages, find the phone number to call to cancel. Do not cancel anything or make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8008001003"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8008001003"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 800-800-1003 to cancel."
+          }
+        ]
+      },
+      {
+        "slug": "equipment-return-city",
+        "intent": "After cancelling Medical Alert you need to send the equipment back. Using the help pages, find the city the equipment is returned to. Do not make a payment or change anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "Broomall"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "Broomall"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancellation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Return it to 816 Park Way, Broomall, PA 19008."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "guest",
+      "contains": [
+        "Account Number"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "800-800-1003"
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "contains": "800-906-0872"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": [
+        "semi-annual",
+        "$29.95"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "Broomall"
+    },
+    {
+      "page": "home",
+      "contains": "Account Number"
+    }
+  ]
+}

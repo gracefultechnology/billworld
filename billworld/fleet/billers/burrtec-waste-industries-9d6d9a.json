@@ -1,0 +1,338 @@
+{
+  "id": "burrtec-waste-industries-9d6d9a",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Burrtec Waste Industries",
+  "category": "trash",
+  "reviewedAt": "2026-10-10",
+  "template": "waste-hauler",
+  "notes": "Moved from the catalog default utility-account family to the trash-specific waste-hauler family. Researched from the public burrtec.com Pay Your Bill community selector and a community Payment Options page (the online bill system changed; the customer number is in the upper right of the invoice and the Login button opens the bill-pay portal), the Contact/Locations page, the Fee Waiver page, and the public Burrtec bill-pay portal login page and FAQ on evokepay.com (RevSpring), which burrtec.com links as its official payment portal (so evokepay.com is in officialDomains); never signed in. Portal access without a login uses the Customer Number plus the mailing ZIP code (guestLookupFields accountNumber+zip, exact). Customers can then create a username and password under My Settings and use Login with Username/Password, so the identifier is username and registration asks for the customer number and ZIP. Saved payment methods live in My wallet; payment history and e-mail/text receipts are in the portal. The online balance reflects the last invoice only (payments between invoices do not change it). AutoPay is set up in the same portal (documented on the Payment Options page). Some communities use a different portal (secure.myonlinebill.com) per the invoice; not modelled. Phones are per division; 888-BURRTEC (888-287-7832) is the toll-free number listed for the Inland Empire division and used as the contact phone. A fee-waiver program (application window) exists for some mountain and San Bernardino County communities, modelled as payment_assistance. No convenience fee, late fee or payment-plan policy is published (no fees set; arrangements unsupported online, inferred). Paperless billing is not described on public pages (left at the family default).",
+  "officialDomains": [
+    "burrtec.com",
+    "evokepay.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.burrtec.com/pay-your-bill/",
+      "title": "Pay Your Bill - Burrtec",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.burrtec.com/pay-your-bill/payment-options/?Service_Area=Adelanto",
+      "title": "Payment Options - Burrtec",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.burrtec.com/contact/",
+      "title": "Contact Us - Burrtec",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.burrtec.com/fee-waiver/",
+      "title": "Fee Waiver - Burrtec",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.evokepay.com/burrtec/login",
+      "title": "Login | Burrtec",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.evokepay.com/burrtec/faq",
+      "title": "FAQ | Burrtec",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "Burrtec Waste Industries",
+    "shortName": "Burrtec",
+    "primary": "#005a32",
+    "accent": "#7a4b00",
+    "monogram": "B"
+  },
+  "labels": {
+    "payBill": "Pay Your Bill",
+    "signIn": "Login with Username/Password",
+    "register": "Create username and password",
+    "guestPay": "No Login Required",
+    "wallet": "My wallet",
+    "history": "View payment history",
+    "profile": "My Settings",
+    "help": "FAQs",
+    "contact": "Contact us",
+    "accountNumber": "Customer Number",
+    "username": "Username"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "No Login Required",
+        "page": "guest"
+      },
+      {
+        "label": "Login with Username/Password",
+        "page": "login"
+      },
+      {
+        "label": "Online Payments",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Fee Waiver",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Account summary",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Your Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View payment history",
+        "page": "history"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "My wallet",
+        "page": "wallet"
+      },
+      {
+        "label": "My Settings",
+        "page": "profile"
+      },
+      {
+        "label": "Contact us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "registrationFields": [
+      "accountNumber",
+      "zip",
+      "email"
+    ],
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.evokepay.com/burrtec/login"
+  },
+  "contact": {
+    "phone": "888-287-7832",
+    "source": "https://www.burrtec.com/contact/",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.evokepay.com/burrtec/login",
+      "note": "No login required: enter the Customer Number from your last invoice and your mailing ZIP code to review your account and pay."
+    },
+    "registration": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.evokepay.com/burrtec/login",
+      "note": "Enter the portal with your Customer Number and mailing ZIP code, then create a username and password under My Settings."
+    },
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.burrtec.com/pay-your-bill/payment-options/?Service_Area=Adelanto"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.burrtec.com/pay-your-bill/payment-options/?Service_Area=Adelanto",
+      "note": "Set up AutoPay in the bill payment portal for your location, using the Customer Number from the upper right of your latest invoice."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.burrtec.com/fee-waiver/",
+      "note": "A fee-waiver program is available in some mountain and San Bernardino County communities during its application window."
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.burrtec.com/contact/",
+      "note": "Payment plans are not offered online. Call the Burrtec office for your area (toll-free 888-287-7832) about a past-due balance.",
+      "channel": "phone",
+      "phone": "888-287-7832"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.burrtec.com/contact/",
+      "note": "Service cannot be stopped in the bill payment portal. Call the Burrtec office for your area (toll-free 888-287-7832) to stop or change service.",
+      "channel": "phone",
+      "phone": "888-287-7832"
+    }
+  },
+  "billing": {
+    "source": "https://www.burrtec.com/pay-your-bill/payment-options/?Service_Area=Adelanto",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Burrtec bill online",
+      "topic": "payments",
+      "paragraphs": [
+        "Burrtec's online bill payment portal changed for many locations. Check the upper right-hand corner of your most recent Burrtec invoice: it shows your Customer Number and which payment portal to use.",
+        "With No Login Required, enter the Customer Number from your last invoice and your mailing ZIP code to see your account and pay. If you prefer a login, enter the portal the same way and create a username and password under My Settings; next time choose Login with Username/Password.",
+        "Your online balance shows the balance as of your last invoice; payments made between invoices are listed under View payment history rather than in the balance."
+      ],
+      "source": "https://www.evokepay.com/burrtec/login"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Fee waiver program",
+      "topic": "assistance",
+      "paragraphs": [
+        "Burrtec runs a fee-waiver application for residents of certain mountain communities (such as Crestline, Lake Arrowhead and Running Springs) and some San Bernardino County areas (Joshua Tree, Landers, Pioneertown).",
+        "Download the application for your area, fill it out and sign it, then upload it with Submit Fee Waiver while the application window is open."
+      ],
+      "source": "https://www.burrtec.com/fee-waiver/"
+    },
+    {
+      "slug": "receipts",
+      "title": "Payment receipts and saved payment methods",
+      "topic": "payments",
+      "paragraphs": [
+        "To print a receipt, open View payment history and choose View receipt. To e-mail or text a copy, open Account activity, pick the payment and choose Send email receipt or Send text receipt.",
+        "To change a saved card or bank account, select your name at the top right, open My wallet and choose the method to edit, or add a new one."
+      ],
+      "source": "https://www.evokepay.com/burrtec/faq"
+    },
+    {
+      "slug": "contact",
+      "title": "Contacting Burrtec",
+      "topic": "account",
+      "paragraphs": [
+        "Burrtec answers billing questions through the office for your service area; the number is on your invoice and on the Locations page. The Inland Empire office in Fontana lists toll-free 1-888-BURRTEC (888-287-7832)."
+      ],
+      "source": "https://www.burrtec.com/contact/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "guest-lookup-fields",
+        "intent": "Using Burrtec's help pages, find which two pieces of information you need to pay without logging in. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "customer number",
+              "zip"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "customer number",
+            "zip"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "observed_public",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "You need your Customer Number from your last invoice and your mailing ZIP code."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "My wallet",
+        "View payment history"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "upper right-hand corner",
+        "mailing ZIP code"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": "Submit Fee Waiver"
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "888-287-7832"
+    }
+  ]
+}

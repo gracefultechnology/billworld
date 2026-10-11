@@ -1,0 +1,397 @@
+{
+  "id": "nc-quick-pass-and-bill-by-mail-747450",
+  "version": 1,
+  "status": "dedicated",
+  "name": "NC Quick Pass and Bill by Mail",
+  "category": "vehicle-tolls",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public ncquickpass.com pages (home, Account Options, Payment Options, What If I Don't Pay?, NC Quick Pass 101, Toll Invoices by Mail or Email, Updating Your Account). The secure site (secure.ncquickpass.com) is script-rendered and was not read; the FAQ says accounts log in with a username and password. Accounts: personal (up to 10 vehicles), business, NC Only (no transponder); $10 prepaid balance for the first two vehicles plus $10 each additional. Automatic payments are on whenever a credit card is listed under Payment Options; the card is charged the replenishment amount when the balance drops below the threshold, both adjusted monthly from 90-day usage, so AutoPay is card-only. Fees: inactive account $1/month after 24 months without travel, quarterly mailed statement $5 each (email free), returned payment $25, I-toll $5/month when plate reads exceed 15% of monthly trips. Toll invoices cost double; 2nd invoice adds $6.00 processing fee, 3rd another $6.00 plus a $25.00 civil penalty, 4th $6.00; after the 4th, DMV registration hold and collections. Closing an account is requested through the in-account Contact form (a case is opened); modeled as cancel_service supported with that note. The catalog's 919-388-3279 is a fax line, so contact.phone is the customer service number. No payment plan is described (payment_arrangement unsupported, inferred).",
+  "officialDomains": [
+    "ncquickpass.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ncquickpass.com/",
+      "title": "NC Quick Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.ncquickpass.com/account-options/",
+      "title": "Account Options - NC Quick Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://www.ncquickpass.com/payment-options/",
+      "title": "Payment Options - NC Quick Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ncquickpass.com/what-if-i-dont-pay/",
+      "title": "What If I Don't Pay? - NC Quick Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.ncquickpass.com/nc-quickpass-accounts-101/",
+      "title": "NC Quick Pass 101 - NC Quick Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.ncquickpass.com/toll-invoices/",
+      "title": "Toll Invoices by Mail or Email - NC Quick Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ncquickpass.com/updating-your-nc-quickpass-account/",
+      "title": "Updating Your Account - NC Quick Pass",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "NC Quick Pass",
+    "shortName": "NC Quick Pass",
+    "primary": "#003a70",
+    "accent": "#7a2e00",
+    "monogram": "NC"
+  },
+  "labels": {
+    "signIn": "Login",
+    "username": "Username",
+    "register": "Open an Account",
+    "guestPay": "Pay Now",
+    "wallet": "Payment Options",
+    "statements": "Statements & Invoices",
+    "profile": "Profile",
+    "contact": "Contact",
+    "autopay": "Automatic Payments",
+    "help": "Common Questions"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay Now",
+        "page": "guest"
+      },
+      {
+        "label": "Open an Account",
+        "page": "register"
+      },
+      {
+        "label": "What If I Don't Pay?",
+        "helpSlug": "fee-escalation"
+      },
+      {
+        "label": "Common Questions",
+        "page": "help"
+      },
+      {
+        "label": "Login",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "One-Time Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Statements & Invoices",
+        "page": "statements"
+      },
+      {
+        "label": "Transactions",
+        "page": "history"
+      },
+      {
+        "label": "Automatic Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Payment Options",
+        "page": "wallet"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      },
+      {
+        "label": "Contact",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.ncquickpass.com/updating-your-nc-quickpass-account/"
+  },
+  "contact": {
+    "phone": "877-769-7277",
+    "source": "https://www.ncquickpass.com/account-options/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncquickpass.com/nc-quickpass-accounts-101/",
+      "note": "Automatic payments are on whenever a credit card is listed under Payment Options: the card is charged your replenishment amount when the balance drops below the threshold."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncquickpass.com/updating-your-nc-quickpass-account/",
+      "note": "Choose Email Statements in the Statements section of your Profile; mailed quarterly statements cost $5 each."
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncquickpass.com/toll-invoices/",
+      "note": "Pay a toll invoice online with the invoice number or license plate number; no account is needed."
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncquickpass.com/updating-your-nc-quickpass-account/",
+      "note": "To close your account, send a request from the Contact section of your account; you will get a case ID to follow its status."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncquickpass.com/payment-options/",
+      "phone": "8777697277"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ncquickpass.com/toll-invoices/"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.ncquickpass.com/what-if-i-dont-pay/",
+      "note": "No payment plan is offered. Pay toll invoices in full by the due date to avoid processing fees and civil penalties, or call NC Quick Pass at 877-769-7277.",
+      "channel": "phone",
+      "phone": "8777697277"
+    }
+  },
+  "billing": {
+    "source": "https://www.ncquickpass.com/nc-quickpass-accounts-101/",
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "autopay",
+      "title": "Automatic payments",
+      "topic": "autopay",
+      "paragraphs": [
+        "If a credit card is listed under Payment Options, automatic payments are already set up. The card is charged the replenishment amount whenever the account balance drops below the threshold amount.",
+        "After the first 30 days, NC Quick Pass reviews your tolls and adjusts the minimum balance each month based on your average 90-day usage. If a payment fails and the balance runs out, the account is suspended and the transponder deactivated until tolls, fees and the balance are paid."
+      ],
+      "source": "https://www.ncquickpass.com/nc-quickpass-accounts-101/"
+    },
+    {
+      "slug": "account-fees",
+      "title": "Account fees",
+      "topic": "fees",
+      "paragraphs": [
+        "Personal and NC Only accounts need a $10 prepaid balance for the first two vehicles and $10 for each additional one; business accounts need $10 per transponder.",
+        "Possible fees: $1 per month for an account with no toll travel for 24 months; $5 per quarterly mailed statement (email statements are free); $25 for a returned payment; and $5 per month when license-plate (I-toll) trips exceed 15% of the month's tolls (not for NC Only accounts)."
+      ],
+      "source": "https://www.ncquickpass.com/nc-quickpass-accounts-101/"
+    },
+    {
+      "slug": "fee-escalation",
+      "title": "What if I don't pay a toll invoice?",
+      "topic": "fees",
+      "paragraphs": [
+        "Toll invoices cost double the NC Quick Pass rate. The first invoice has no fees. An unpaid balance carried to the 2nd invoice adds a $6.00 processing fee; the 3rd invoice adds another $6.00 processing fee and a $25.00 civil penalty; the 4th adds another $6.00 processing fee.",
+        "If the 4th invoice is not paid, the vehicle registration can be held by the DMV and the balance sent to collections. The hold is released only when everything is paid in full."
+      ],
+      "source": "https://www.ncquickpass.com/what-if-i-dont-pay/"
+    },
+    {
+      "slug": "close-account",
+      "title": "Closing your account",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in, open the Contact section, fill out the contact form saying you want to close your account, and select Send. This creates a case with an ID; check its status under History in the Contact section."
+      ],
+      "source": "https://www.ncquickpass.com/updating-your-nc-quickpass-account/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "invoice-civil-penalty",
+        "intent": "Using the NC Quick Pass website's help pages, find the civil penalty added on the third toll invoice when a balance stays unpaid. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$25",
+              "25 dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$25",
+            "25 dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The third invoice adds a $25.00 civil penalty."
+          }
+        ]
+      },
+      {
+        "slug": "processing-fee",
+        "intent": "Using the NC Quick Pass website's help pages, find the processing fee added to each unpaid toll invoice after the first. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$6",
+              "6 dollars",
+              "six dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$6",
+            "6 dollars",
+            "six dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Each later invoice adds a $6.00 processing fee."
+          }
+        ]
+      },
+      {
+        "slug": "mailed-statement-fee",
+        "intent": "Using the NC Quick Pass website's help pages, find the fee for each quarterly mailed statement. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$5",
+              "5 dollars",
+              "five dollars"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$5",
+            "5 dollars",
+            "five dollars"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees",
+          "paperless"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Quarterly mailed statements cost $5 each."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "Username",
+        "Login"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "fee-escalation",
+      "contains": "$6.00 processing fee"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "account-fees",
+      "contains": "$5 per quarterly mailed statement"
+    }
+  ]
+}

@@ -1,0 +1,456 @@
+{
+  "id": "cellcom-wisconsin-ce7176",
+  "status": "dedicated",
+  "name": "Cellcom (Wisconsin)",
+  "category": "phone-wireless",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public cellcom.com support FAQs, plan pages, contact page, the myCellcom sign-in page and the Quik|Pay page (rendered with a headless browser; nothing submitted). Postpaid; Cellcom bills monthly access a month ahead, so plan changes prorate. myCellcom sign-in uses a User ID (username) and password created at registration; forgotten passwords get a temporary password. Quik|Pay pays without signing in using the mobile number or account number plus the account ZIP code (guestLookupFields [phone, zip], guestLookupExact). Online one-time payments by credit card or checking/savings account; recurring payments (autopay) by debit/credit card or checking/savings. The $10 per line Unlimited discount needs autopay from a checking or savings account plus paperless bill with a confirmed email; card autopay does not qualify. Paperless bill is supported. Customer Care: 611, 800-236-0055 (also catalog pay-by-phone). Canceling service is handled by phone, chat or store (account closing described for deceased customers); no online cancel documented (cancel_service unsupported, inferred). Late fees appear on the bill when applicable but the amount is not published. Plan prices are the published one-line prices, which already include the $10 autopay and paperless discount.",
+  "officialDomains": [
+    "cellcom.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.cellcom.com/support/faqs/account-billing",
+      "title": "Account & Billing FAQs | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.cellcom.com/support/faqs/mycellcom",
+      "title": "myCellcom FAQs | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cellcom.com/support/contact-us",
+      "title": "Contact Us | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.cellcom.com/support/how-read-your-bill",
+      "title": "How to Read Your Bill | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www1.cellcom.com/my/login/login.html",
+      "title": "myCellcom Login",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www1.cellcom.com/quikPay.html",
+      "title": "QuickPay Login | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.cellcom.com/plans",
+      "title": "Plans | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.cellcom.com/plans/unlimited-plus-starter",
+      "title": "Unlimited Plus Starter | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.cellcom.com/plans/unlimited-plus-standard",
+      "title": "Unlimited Plus Standard | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.cellcom.com/plans/unlimited-plus-select",
+      "title": "Unlimited Plus Select | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.cellcom.com/legal-center/taxes-fees-surcharges-and-other-charges",
+      "title": "Taxes, Fees, Surcharges and Other Charges | Cellcom",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    }
+  ],
+  "brand": {
+    "displayName": "Cellcom",
+    "shortName": "Cellcom",
+    "primary": "#00703c",
+    "accent": "#1e3a5f",
+    "monogram": "C"
+  },
+  "labels": {
+    "dashboard": "myCellcom",
+    "viewBill": "myBill",
+    "payBill": "Make a Payment",
+    "guestPay": "Quik|Pay",
+    "autopay": "Autopay",
+    "paperless": "Paperless Bill",
+    "plan": "myPlan",
+    "signIn": "Login",
+    "signOut": "Logout",
+    "username": "User ID",
+    "register": "Register Now",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Quik|Pay",
+        "page": "guest"
+      },
+      {
+        "label": "myCellcom Login",
+        "page": "login"
+      },
+      {
+        "label": "Autopay & Paperless",
+        "helpSlug": "autopay-paperless"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "myCellcom",
+        "page": "dashboard"
+      },
+      {
+        "label": "myBill",
+        "page": "bill"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "Autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Paperless Bill",
+        "page": "paperless"
+      },
+      {
+        "label": "myPlan",
+        "page": "plan"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "mfa": "none",
+    "guestLookupFields": [
+      "phone",
+      "zip"
+    ],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www1.cellcom.com/my/login/login.html"
+  },
+  "contact": {
+    "phone": "8002360055",
+    "payPhone": "8002360055",
+    "source": "https://www.cellcom.com/support/contact-us",
+    "evidence": "documented_official"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www1.cellcom.com/quikPay.html",
+      "note": "Quik|Pay needs your mobile number or account number and the account ZIP code."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cellcom.com/support/faqs/account-billing",
+      "note": "Autopay can use a debit or credit card or a checking or savings account, but only checking or savings plus Paperless Bill earns the discounted Unlimited rate."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.cellcom.com/support/faqs/mycellcom"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cellcom.com/support/faqs/account-billing",
+      "note": "Sign up under myBill; confirm your email address to finish enrolling."
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.cellcom.com/support/contact-us",
+      "note": "To cancel Cellcom service, call Customer Care at 800-236-0055 (611 from your Cellcom phone), use chat, or visit a Cellcom store.",
+      "channel": "phone",
+      "phone": "8002360055"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.cellcom.com/support/contact-us",
+      "note": "Call Customer Care at 800-236-0055 or dial 611 from your Cellcom phone."
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.cellcom.com/support/faqs/account-billing",
+      "note": "No fee or contract extension to change plans; because Cellcom bills a month ahead, your next bill shows a proration."
+    }
+  },
+  "billing": {
+    "source": "https://www.cellcom.com/support/faqs/mycellcom",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.cellcom.com/support/faqs/mycellcom",
+      "notes": [
+        "Late fees appear on the bill when applicable; the amount is not published on the support pages.",
+        "A Network and Administrative Support Fee of $5.77 per line (as of April 1, 2026) and other recovery fees and surcharges appear on the bill.",
+        "Activating or upgrading a device costs $35; lines on a service agreement can owe an early termination fee."
+      ]
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "plans": [
+      {
+        "id": "unlimited-plus-starter",
+        "name": "Unlimited Plus Starter",
+        "cents": 5749
+      },
+      {
+        "id": "unlimited-plus-standard",
+        "name": "Unlimited Plus Standard",
+        "cents": 7249,
+        "current": true
+      },
+      {
+        "id": "unlimited-plus-select",
+        "name": "Unlimited Plus Select",
+        "cents": 8249
+      }
+    ]
+  },
+  "help": [
+    {
+      "slug": "autopay-paperless",
+      "title": "Autopay and paperless bill",
+      "topic": "autopay",
+      "source": "https://www.cellcom.com/support/faqs/account-billing",
+      "paragraphs": [
+        "Sign up for autopay and paperless bill under myBill on the myCellcom web portal, under Settings in the myCellcom app, by calling 611, or in a Cellcom store. To get the discounted Unlimited rates ($10 off per line each month) you need both autopay from a checking or savings account and paperless bill with your email confirmed. Credit and debit card autopay works but does not earn the discount.",
+        "You need both autopay from a checking or savings account and paperless bill (with your email confirmed) to get the discounted Unlimited rates of $10 per line. Credit and debit card autopay works but does not earn the discount."
+      ]
+    },
+    {
+      "slug": "pay-in-app",
+      "title": "Making a payment in myCellcom",
+      "topic": "payments",
+      "source": "https://www.cellcom.com/support/faqs/mycellcom",
+      "paragraphs": [
+        "Choose Make a Payment, then pay with a credit card or a checking or savings account. The full balance is preselected; you can pay just the past-due amount or another amount. A confirmation screen appears when the payment posts.",
+        "Quik|Pay lets anyone pay with the mobile or account number and the account ZIP code without logging in. All authorized users on an account can make a payment."
+      ]
+    },
+    {
+      "slug": "cellcom-plans",
+      "title": "Cellcom Unlimited Plus plans",
+      "topic": "plans",
+      "source": "https://www.cellcom.com/plans",
+      "paragraphs": [
+        "One-line monthly prices with the $10 autopay and paperless discount: Unlimited Plus Starter $57.49, Unlimited Plus Standard $72.49 and Unlimited Plus Select $82.49; per-line prices drop as you add lines. A 2-year service agreement adds $20 a month."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "discount-autopay-type",
+        "intent": "Using Cellcom's support pages, find which autopay payment types qualify for the discounted Unlimited rates. Do not change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "checking",
+              "savings"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "checking",
+            "savings"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Only checking or savings accounts (together with paperless bill) qualify."
+          }
+        ]
+      },
+      {
+        "slug": "quikpay-fields",
+        "intent": "Find what Cellcom Quik|Pay asks for besides a mobile or account number. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "ZIP",
+              "zip"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "ZIP",
+            "zip"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "guest-pay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "The account ZIP code."
+          }
+        ]
+      },
+      {
+        "slug": "cellcom-care-phone",
+        "intent": "Find the toll-free Cellcom Customer Care number. Do not make a payment.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "800-236-0055",
+              "8002360055",
+              "236-0055"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "800-236-0055",
+            "8002360055",
+            "236-0055"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 800-236-0055 (or 611 from a Cellcom phone)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "login",
+      "contains": [
+        "User ID"
+      ]
+    },
+    {
+      "page": "guest",
+      "contains": "ZIP"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Autopay",
+        "Paperless Bill"
+      ]
+    },
+    {
+      "page": "plan",
+      "signedIn": true,
+      "contains": [
+        "Unlimited Plus Standard"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay-paperless",
+      "contains": "checking or savings"
+    }
+  ],
+  "version": 1
+}

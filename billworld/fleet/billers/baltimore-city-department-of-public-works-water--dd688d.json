@@ -1,0 +1,398 @@
+{
+  "id": "baltimore-city-department-of-public-works-water--dd688d",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Baltimore City Department of Public Works - Water Billing",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public pay.baltimorecity.gov pages (Online Payment Directory and the water lookup page) and baltimorecity.gov/publicworks water billing pages (no sign-in, no lookup submitted). Water bills are paid through the City's Paymentus Customer Payment Portal (email login; AutoPay on the bill due date with card, debit card or eCheck/ACH; eBill email notices; Pay by Text; payment reminders; Wallet). DPW's separate customer self-service portal (waterbillportal) shows usage and bills; it is not modelled. ACH payments are free; card and instant-payment methods carry a flat $2.39 fee per water payment. The City also caps card payments for water at $1,000 per payment (from a web search of the City's payment FAQ, not confirmed on the pages read in review; a card-only cap cannot be modelled and the engine requires maxPaymentCents >= $5,000). The guest lookup on pay.baltimorecity.gov/water takes the 11-digit account number or the service address. DPW's FAQ says paper bills continue to be mailed while eBill sends email notices, so paperless is described with that caveat. PromisePay offers interest-free payment plans for residential past-due balances of $250 to $5,000 (separate site and phone 410-779-9808). Customers must pay by the due date to avoid a late fee; the amount is not published on the pages used. Accounts are in the property owner's name; opening or closing an account is requested through DPW's online request. Pay-by-phone number 866-377-0765 is from pay.baltimorecity.gov.",
+  "officialDomains": [
+    "baltimorecity.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://pay.baltimorecity.gov/",
+      "title": "Online Payments and Account Lookup | City of Baltimore",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://pay.baltimorecity.gov/water",
+      "title": "Online Payments and Account Lookup (Water) | City of Baltimore",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.baltimorecity.gov/publicworks/waterbillingfaqs",
+      "title": "Frequently Asked Questions (FAQs) for Water Billing | Baltimore City",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.baltimorecity.gov/publicworks/our-work/water-bill/water-bill-assistance/payment-plan-program",
+      "title": "Payment Plan Program | Baltimore City",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.baltimorecity.gov/publicworks/water-bill/water-bill-assistance",
+      "title": "Water Bill Assistance | Baltimore City",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.baltimorecity.gov/publicworks/water-bill",
+      "title": "Water Bill | Baltimore City",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "Baltimore City Water Billing",
+    "shortName": "Baltimore City Water",
+    "primary": "#1f4e79",
+    "accent": "#14334f",
+    "monogram": "BW"
+  },
+  "labels": {
+    "dashboard": "Customer Payment Portal",
+    "guestPay": "Pay or View Water Bills",
+    "payBill": "Pay My Bill",
+    "autopay": "AutoPay",
+    "paperless": "eBill",
+    "wallet": "Wallet",
+    "arrangement": "Payment Plan",
+    "cancel": "Open or Close a Water Account",
+    "profile": "My Profile",
+    "help": "Water Billing FAQs"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Pay or View Water Bills",
+        "page": "guest"
+      },
+      {
+        "label": "Customer Payment Portal",
+        "page": "login"
+      },
+      {
+        "label": "Payment Directory",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Water Bill Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Water Billing FAQs",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Customer Payment Portal",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay My Bill",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Wallet",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment Plan",
+        "page": "arrangement"
+      },
+      {
+        "label": "Open or Close a Water Account",
+        "page": "cancel"
+      },
+      {
+        "label": "My Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://pay.baltimorecity.gov/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://pay.baltimorecity.gov/water",
+      "note": "Look up a water bill with the 11-digit account number (or the service address) and pay without signing in."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://pay.baltimorecity.gov/",
+      "note": "AutoPay pays on the bill due date by credit card, debit card or eCheck/ACH. You get an email 2 to 4 days before each charge, with a link to stop that payment."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://pay.baltimorecity.gov/",
+      "note": "eBill emails you the amount due and due date when a bill is issued. DPW still mails paper bills; bill copies are also in the online portal."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.baltimorecity.gov/publicworks/our-work/water-bill/water-bill-assistance/payment-plan-program",
+      "note": "PromisePay offers interest-free plans for residential past-due balances of $250 to $5,000. Businesses call 410-396-5398."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.baltimorecity.gov/publicworks/water-bill/water-bill-assistance"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.baltimorecity.gov/publicworks/water-bill",
+      "note": "Water accounts are in the property owner's name. Owners request to open or close an account with DPW's online request; tenants should contact their landlord."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://pay.baltimorecity.gov/",
+      "phone": "866-377-0765"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://pay.baltimorecity.gov/"
+    }
+  },
+  "contact": {
+    "phone": "410-396-5398",
+    "source": "https://www.baltimorecity.gov/publicworks/water-bill/water-bill-assistance",
+    "payPhone": "866-377-0765"
+  },
+  "billing": {
+    "source": "https://pay.baltimorecity.gov/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 239,
+      "autopayCardCents": 239,
+      "guestBankCents": 0,
+      "guestCardCents": 239,
+      "evidence": "documented_official",
+      "source": "https://pay.baltimorecity.gov/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your water bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Pay online through the City's Customer Payment Portal, run with Paymentus, or look up a bill without signing in using your 11-digit account number or service address.",
+        "Electronic check (ACH) payments are free. Water payments by credit card or another instant method such as PayPal or Venmo carry a flat $2.39 fee per payment. Have your City billing account number and either your card or your routing and account numbers ready.",
+        "Pay by phone at 866-377-0765 with a card (have your City billing account number, card details and amount ready) or by electronic check (account number, bank routing and account numbers, and amount).",
+        "Pay in person at Walmart, at any business that accepts MoneyGram, or at the Abel Wolman Municipal Building, 200 Holliday Street, weekdays 8:30 a.m. to 4:30 p.m. Mail checks payable to Director of Finance to the address on your bill.",
+        "Pay by the due date on your bill to avoid a late fee."
+      ],
+      "source": "https://pay.baltimorecity.gov/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "Register in the Customer Payment Portal to set up AutoPay on your bill due date with a credit card, debit card or eCheck/ACH. Bills do not say they will be paid automatically; instead the AutoPay button on your accounts page shows green when AutoPay is active.",
+        "You get a reminder email 2 to 4 days before each charge. Nothing is needed unless you want to stop that payment, which you can do from the link in the email."
+      ],
+      "source": "https://pay.baltimorecity.gov/"
+    },
+    {
+      "slug": "paperless",
+      "title": "eBill notices",
+      "topic": "billing",
+      "paragraphs": [
+        "eBill sends an email when a bill is issued, showing the total amount due and the due date. You can also sign up for payment reminders and Pay by Text.",
+        "DPW continues to mail paper bills for now; bill copies are available in the online customer portal."
+      ],
+      "source": "https://pay.baltimorecity.gov/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Water bill assistance and payment plans",
+      "topic": "assistance",
+      "paragraphs": [
+        "DPW works with PromisePay to offer interest-free payment plans to Baltimore City residential customers with past-due balances from $250 to $5,000. Call PromisePay at 410-779-9808 to learn more. Businesses call a water customer service analyst at 410-396-5398.",
+        "Other help includes the water discount program for qualifying residents, the Medical Exemption Program and water and sewer adjustment requests for leaks. Water customer support is at 200 Holliday St, weekdays 8:30 a.m. to 4:30 p.m., or 410-396-5398."
+      ],
+      "source": "https://www.baltimorecity.gov/publicworks/our-work/water-bill/water-bill-assistance/payment-plan-program"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Open or close a water account",
+      "topic": "account",
+      "paragraphs": [
+        "Water accounts are held in the name of the property owner on record with the State Department of Assessments and Taxation. Owners can request to open or close a water account online, and use the Change of Ownership form to update property information.",
+        "Owners can add another person as a bill recipient but remain responsible for payment. Tenants whose names are not on the bill should contact their landlord or property manager."
+      ],
+      "source": "https://www.baltimorecity.gov/publicworks/water-bill"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-amount",
+        "intent": "Find the fee Baltimore City Water Billing charges when you pay a water bill by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2.39",
+              "2.39"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2.39",
+            "2.39"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments on water bills carry a flat $2.39 fee."
+          }
+        ]
+      },
+      {
+        "slug": "promisepay-range",
+        "intent": "Find the smallest past-due balance that qualifies a Baltimore City Water Billing residential customer for a PromisePay plan. Do not set up a plan or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$250",
+              "250"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$250",
+            "250"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "assistance"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "PromisePay plans cover past-due balances of $250 to $5,000."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Customer Payment Portal"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$2.39",
+        "200 Holliday Street"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": [
+        "$250",
+        "410-779-9808"
+      ]
+    }
+  ]
+}

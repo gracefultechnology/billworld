@@ -1,0 +1,422 @@
+{
+  "id": "money-management-international-mmi-includes-form-63b256",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Money Management International (MMI)",
+  "category": "other",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from MMI's public pages (payment instructions, new-DMP instructions, active-client registration, DMP FAQ, existing-DMP contact page, log in page); never signed in or submitted any form. MMI is a nonprofit credit counseling agency; the 'bill' is the client's monthly debt management plan (DMP) deposit to MMI, which MMI distributes to creditors. MyMMI signs in with a username (6+ letters/numbers, not an email address) and password. Registration (moneymanagement.org/create-account or /dmp-activation) asks for first and last name, MMI client number, email and the last four SSN digits (or email validation), then username, password and three security questions; SSN and first name are not expressible as registration fields. The password rule differs between pages: the new-DMP page requires 14+ characters with an uppercase, lowercase, number and special character, the active-client page 8+ with an uppercase, number and special character; the stricter rule is modelled. One-time deposit: MyMMI > DMP Deposits > Make A Deposit (date, amount, distribution to creditors, existing bank account or another account, agree to the one-time deposit terms, Submit Deposit). Automated ACH deposits are required for all new DMPs (DMP Deposit > ACH Deposit Signup; monthly, bi-monthly or weekly; bi-monthly/weekly are not expressible) and can be changed in the Deposits section or by calling Support 888-845-5669 (recommended for time-sensitive deposit changes). Only bank (ACH) deposits are described, so methods are bank only. DMP fees: on average a $38 set-up fee and a $35 monthly fee, varying by state and debt (program fees, not convenience fees; help text only). Creditor balances: update in the Creditors section, by phone or fax 888-845-0501; documents upload in MyMMI or fax 888-812-5358. Cancelling a DMP is not described on these public pages, so it is modelled as a call to Support (inferred). Paperless settings are not described and keep the family defaults. REVIEW 2026-10-10: deposit frequencies are published as 'monthly, bi-monthly, or weekly' (existing-DMP contact page); autopay_cancel is inferred from 'make changes in the Deposits section' (turning automated deposits off entirely is not described).",
+  "officialDomains": [
+    "moneymanagement.org"
+  ],
+  "sources": [
+    {
+      "url": "https://www.moneymanagement.org/instructions/payments",
+      "title": "Payment Instructions",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.moneymanagement.org/instructions",
+      "title": "Instructions for Setting Up a New DMP",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.moneymanagement.org/instructions/active-clients",
+      "title": "Your DMP is Active and Now You Want Online Access to Your Account",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.moneymanagement.org/debt-management/faq",
+      "title": "Debt Management Plan FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.moneymanagement.org/contact-us/existing-debt-management-plan",
+      "title": "Contact Us - Questions about an active Debt Management Plan",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.moneymanagement.org/login",
+      "title": "MyMMI Account log in",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Money Management International",
+    "shortName": "MMI",
+    "primary": "#00557f",
+    "accent": "#b34700",
+    "monogram": "MM"
+  },
+  "labels": {
+    "signIn": "Log in",
+    "register": "Create an account",
+    "forgot": "Forgot Password?",
+    "username": "Username",
+    "dashboard": "MyMMI Dashboard",
+    "payBill": "Make A Deposit",
+    "autopay": "ACH Deposit Signup",
+    "statements": "Document Center",
+    "history": "DMP Deposits",
+    "accountNumber": "Client number",
+    "help": "Contact Us",
+    "signOut": "Log Out"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Create an account",
+        "page": "register"
+      },
+      {
+        "label": "Payment Instructions",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Contact Us",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyMMI Dashboard",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make A Deposit",
+        "page": "pay"
+      },
+      {
+        "label": "ACH Deposit Signup",
+        "page": "autopay"
+      },
+      {
+        "label": "DMP Deposits",
+        "page": "history"
+      },
+      {
+        "label": "Document Center",
+        "page": "statements"
+      },
+      {
+        "label": "Contact Us",
+        "page": "contact"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "passwordRule": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_-]).{14,}$",
+      "message": "Use at least 14 characters, including an uppercase letter, a lowercase letter, a number and one of ! @ # $ % ^ & * ( ) - _"
+    },
+    "registrationFields": [
+      "accountNumber",
+      "lastName",
+      "email"
+    ],
+    "evidence": "documented_official",
+    "source": "https://www.moneymanagement.org/instructions"
+  },
+  "contact": {
+    "phone": "8888455669",
+    "payPhone": "8888455669",
+    "source": "https://www.moneymanagement.org/contact-us/existing-debt-management-plan"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.moneymanagement.org/instructions",
+      "note": "All new debt management plans must use automated ACH deposits from a checking or savings account."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.moneymanagement.org/contact-us/existing-debt-management-plan",
+      "note": "For time-sensitive deposit changes, call Support at 888-845-5669."
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.moneymanagement.org/instructions/active-clients"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.moneymanagement.org/contact-us/existing-debt-management-plan",
+      "note": "Your debt management plan is your repayment plan. To change your deposit amount or schedule, use the Deposits section or call Support at 888-845-5669.",
+      "phone": "8888455669",
+      "channel": "phone"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.moneymanagement.org/contact-us/existing-debt-management-plan",
+      "note": "To make changes to or end your debt management plan, call MMI Support at 888-845-5669.",
+      "phone": "8888455669",
+      "channel": "phone"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.moneymanagement.org/contact-us/existing-debt-management-plan",
+      "phone": "8888455669"
+    }
+  },
+  "billing": {
+    "source": "https://www.moneymanagement.org/instructions/payments",
+    "methods": [
+      "bank"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a one-time DMP deposit",
+      "topic": "payments",
+      "paragraphs": [
+        "A deposit is the money you send to MMI each month for your debt management plan; MMI then pays your creditors. You can think of it as your payment.",
+        "Your bank information on file is shown next to the form. To use another account, choose Use A Different Account or Edit My Automated Deposit Settings."
+      ],
+      "steps": [
+        "Log in to your MyMMI account.",
+        "Open DMP Deposits in the menu and select Make A Deposit.",
+        "Choose a payment date and amount.",
+        "Under Payment Distribution, choose how the money goes to your creditors.",
+        "Select Submit Payment, agree to the one-time deposit terms and select Submit Deposit.",
+        "Review the receipt and return to your MyMMI Dashboard."
+      ],
+      "source": "https://www.moneymanagement.org/instructions/payments"
+    },
+    {
+      "slug": "autopay",
+      "title": "Set up automated deposits",
+      "topic": "autopay",
+      "paragraphs": [
+        "Automated ACH deposits are required for all new debt management plans, so you don't miss a creditor payment. Deposits can be monthly, bi-monthly or weekly.",
+        "Your plan starts once MMI receives your first full month's deposit.",
+        "You can change your regular deposits in the Deposits section of MyMMI, or call Support at 888-845-5669. For time-sensitive changes, calling is recommended."
+      ],
+      "steps": [
+        "Log in to MyMMI.",
+        "Open DMP Deposit in the menu and select ACH Deposit Signup.",
+        "Choose the authorized user and account name.",
+        "Review and agree to the authorization.",
+        "Enter your bank name, routing number and account number (each twice).",
+        "Review and sign the agreement, then select Complete."
+      ],
+      "source": "https://www.moneymanagement.org/contact-us/existing-debt-management-plan"
+    },
+    {
+      "slug": "faq",
+      "title": "Debt management plan fees and basics",
+      "topic": "faq",
+      "paragraphs": [
+        "Most plans have a set-up fee and a monthly fee that depend on where you live and how much debt you are repaying. On average clients pay a $38 set-up fee and a $35 monthly fee.",
+        "All unsecured debts should normally be included, though you can usually keep one credit card open. Your credit score may dip at first as accounts close, then improve as you make your payments.",
+        "Update a creditor balance in the Creditors section of MyMMI, by phone at 888-845-5669 or by fax at 888-845-0501. Upload documents in MyMMI or fax them to 888-812-5358."
+      ],
+      "source": "https://www.moneymanagement.org/debt-management/faq"
+    },
+    {
+      "slug": "create-account",
+      "title": "Get online access to your DMP",
+      "topic": "account",
+      "paragraphs": [
+        "To register, enter your first and last name, email address, the last four digits of your SSN and your MMI client number, then create a username, password and three security questions.",
+        "Your username must be at least 6 letters and numbers and cannot be an email address. Your password needs at least 14 characters, with an uppercase letter, a lowercase letter, a number and a special character.",
+        "Once registered you can monitor creditor payments, set up automated deposits and see your monthly statements."
+      ],
+      "source": "https://www.moneymanagement.org/instructions/active-clients"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Questions about an active DMP",
+      "topic": "contact",
+      "paragraphs": [
+        "Call Support at 888-845-5669 for deposit changes and creditor questions, or send a question through the Contact Us form with your client ID.",
+        "General line: 866-889-9347. Forgot Username? and Forgot Password? links are on the log in page."
+      ],
+      "source": "https://www.moneymanagement.org/contact-us/existing-debt-management-plan"
+    }
+  ],
+  "tasks": {
+    "suppress": [
+      "setup-payment-plan"
+    ],
+    "extra": [
+      {
+        "slug": "dmp-average-monthly-fee",
+        "intent": "You are thinking about MMI's debt management plan. Using MMI's FAQ, find the average monthly fee clients pay. Do not make a deposit or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "35"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "35"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "On average clients pay a $35 monthly fee (and a $38 set-up fee)."
+          }
+        ]
+      },
+      {
+        "slug": "deposit-change-phone",
+        "intent": "You need to change your next MMI deposit urgently. Find out which phone number MMI recommends for time-sensitive deposit changes. Do not make a deposit or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8888455669"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8888455669"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call MMI Support at 888-845-5669."
+          }
+        ]
+      },
+      {
+        "slug": "username-rule",
+        "intent": "You are creating a MyMMI account. Using MMI's instructions, find the minimum number of characters for a username. Do not make a deposit or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "6",
+              "six"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "6",
+            "six"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "account"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A username needs at least 6 characters (letters and numbers only, not an email address)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "login",
+      "contains": [
+        "Username"
+      ]
+    },
+    {
+      "page": "home",
+      "label": "register"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Make A Deposit",
+        "ACH Deposit Signup"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "888-845-5669"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "faq",
+      "contains": "$35 monthly fee"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "required for all new debt management plans"
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "id": "jea-62e687",
+  "version": 1,
+  "status": "dedicated",
+  "name": "JEA",
+  "category": "water-sewer",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public jea.com pages (Billing and Payment Options, Get Assistance, Payment Arrangement FAQs). The jea.com sign-in and Guest Pay pages sit behind bot protection and were not read, so the sign-in identifier is left to the family default. JEA bills electric, water and sewer on one combined bill. Card payments online and by phone go through KUBRA with a tiered vendor fee: $2.35 up to $400, $8.95 from $400.01 to $1,000, $40.00 from $1,000.01 to $2,500 (only the first tier is charged by the engine; tiers are in fees.notes and help). Bank payments are free. Bank-account payments can be scheduled up to 30 days ahead and cancelled before 11 a.m. on the payment date. AutoPay withdraws the balance from a bank account on the due date; enrollment requires no outstanding balance and no payment extension, and starts with the next bill (the no-balance rule cannot be modelled). Fast Pay (one-click card payments confirmed by email) is not modelled. Payment extensions and payment arrangements (up to 12 months, interest- and fee-free, down payment required) are applied for online; the Stop link appears under Add, Move or Stop Service. Guest Pay needs only a valid JEA account number.",
+  "officialDomains": [
+    "jea.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/",
+      "title": "Billing and Payment Options | Residential Customers | JEA",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.jea.com/residential_customers/get_assistance/",
+      "title": "Get Assistance | Residential Customers | JEA",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/Payment_Arrangement_FAQs/",
+      "title": "Payment Arrangement FAQs | Billing and Payment Options | JEA",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "JEA",
+    "shortName": "JEA",
+    "primary": "#005696",
+    "accent": "#003c69",
+    "monogram": "J"
+  },
+  "labels": {
+    "dashboard": "Manage My Account",
+    "signIn": "Sign In",
+    "register": "Create an Account",
+    "guestPay": "Guest Pay",
+    "payBill": "Pay Your Bill Online",
+    "autopay": "AutoPay",
+    "paperless": "eBill",
+    "arrangement": "Payment Arrangement",
+    "cancel": "Stop Service",
+    "help": "Billing and Payment Options"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Guest Pay",
+        "page": "guest"
+      },
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create an Account",
+        "page": "register"
+      },
+      {
+        "label": "Billing and Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Get Assistance",
+        "helpSlug": "payment-assistance"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Manage My Account",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Your Bill Online",
+        "page": "pay"
+      },
+      {
+        "label": "View bill",
+        "page": "bill"
+      },
+      {
+        "label": "Bill History",
+        "page": "statements"
+      },
+      {
+        "label": "AutoPay",
+        "page": "autopay"
+      },
+      {
+        "label": "eBill",
+        "page": "paperless"
+      },
+      {
+        "label": "Payment Arrangement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Stop Service",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "socialProviders": [],
+    "guestLookupFields": [
+      "accountNumber"
+    ],
+    "guestLookupExact": true,
+    "evidence": "documented_official",
+    "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/",
+      "note": "Guest Pay accepts a bank account or debit/credit card for any active JEA account with just the account number. Deposits to start service cannot be paid this way."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/",
+      "note": "AutoPay withdraws your balance due from your bank account on the due date. To enroll, the account must have no outstanding balance and no payment extension; AutoPay begins with your next bill."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/",
+      "note": "Bank-account payments can be scheduled up to 30 days ahead and cancelled before 11 a.m. on the payment date."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/Payment_Arrangement_FAQs/",
+      "note": "Check eligibility and apply online. Arrangements spread a past-due balance over up to 12 monthly installments added to your bills; the down payment is one-third of your last bill's outstanding balance. A missed payment makes the whole balance due."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.jea.com/residential_customers/get_assistance/"
+    },
+    "cancel_service": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/",
+      "phone": "904-665-6000"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/"
+    }
+  },
+  "contact": {
+    "payPhone": "904-665-6000",
+    "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/"
+  },
+  "billing": {
+    "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 235,
+      "guestBankCents": 0,
+      "guestCardCents": 235,
+      "notes": [
+        "Card vendor service fee by total payment: $2.35 up to $400.00; $8.95 from $400.01 to $1,000.00; $40.00 from $1,000.01 to $2,500."
+      ],
+      "evidence": "documented_official",
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank"
+      ]
+    },
+    "scheduled": {
+      "maxDaysAhead": 30
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay your bill",
+      "topic": "payments",
+      "paragraphs": [
+        "Signed in to jea.com, pay from your bank account (store the routing and account numbers or enter them each time) or with a Visa, Mastercard, Discover or American Express card through JEA's vendor, KUBRA. Without an account, use Guest Pay with a JEA account number.",
+        "Card payments online and by phone carry a vendor service fee: $2.35 for payments up to $400.00, $8.95 from $400.01 to $1,000.00 and $40.00 from $1,000.01 to $2,500. Cash, check and bank-account payments are free.",
+        "Bank-account payments can be scheduled up to 30 days ahead. They may take a business day to post, and you can cancel one before 11 a.m. on its scheduled date.",
+        "Pay by phone 24/7 at (904) 665-6000, at an authorized payment location, or by mail with your account number to JEA, P.O. Box 45047, Jacksonville, FL 32232-5047."
+      ],
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay",
+      "topic": "autopay",
+      "paragraphs": [
+        "AutoPay withdraws your balance due from your bank account on your due date. Your bill shows the payment as made when it is prepared, but the money leaves your account on the due date.",
+        "To enroll, the account cannot have an outstanding balance or be on a payment extension. AutoPay starts with your next billing cycle, so pay any current balance by its due date. You can update your bank information in your jea.com account at any time.",
+        "Prefer a card? Fast Pay emails you each month to confirm the amount and charges the card saved in your account with one click."
+      ],
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/"
+    },
+    {
+      "slug": "paperless",
+      "title": "eBill",
+      "topic": "billing",
+      "paragraphs": [
+        "With eBill, JEA emails you when your bill is ready and you view it in your jea.com account, which keeps 24 months of statements. You no longer receive a paper bill.",
+        "To sign up, choose Enroll in eBill under Bill Delivery Options and submit. Your first bill-ready email arrives about when the paper bill would have."
+      ],
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment extensions and arrangements",
+      "topic": "assistance",
+      "paragraphs": [
+        "A payment extension moves your due date back; apply online and the self-serve system tells you if you qualify and gives you the new date.",
+        "A payment arrangement spreads a past-due balance over up to 12 monthly installments that are added to your bills, after a down payment of one-third of your last bill's outstanding balance. Both are free of interest and fees, and you cannot hold an extension and an arrangement at the same time. Missing an arrangement payment makes the full balance due immediately.",
+        "JEA weighs payment history, time as a customer, the past-due amount and its age, and your JEA credit score. MyBudget levelized billing and community assistance referrals are also available."
+      ],
+      "source": "https://www.jea.com/Residential_Customers/Billing_and_Payment_Options/Payment_Arrangement_FAQs/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee-small",
+        "intent": "Find the vendor service fee JEA charges for a card payment of $150. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "$2.35",
+              "2.35"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "$2.35",
+            "2.35"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A card payment up to $400 carries a $2.35 vendor service fee."
+          }
+        ]
+      },
+      {
+        "slug": "schedule-window",
+        "intent": "Find how many days ahead JEA lets you schedule a bank-account payment. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "30"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "30"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Bank-account payments can be scheduled up to 30 days in advance."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Manage My Account",
+        "eBill"
+      ]
+    },
+    {
+      "page": "autopay",
+      "signedIn": true,
+      "label": "autopay"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "$2.35",
+        "$8.95",
+        "(904) 665-6000"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-assistance",
+      "contains": [
+        "12 monthly installments"
+      ]
+    }
+  ]
+}

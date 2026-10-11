@@ -1,0 +1,410 @@
+{
+  "id": "palmetto-palmetto-solar-llc-lightreach-palmetto--26354c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Palmetto (LightReach / Palmetto Energy Plan)",
+  "category": "other",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public Palmetto Help Center articles (Managing Your Palmetto Bill, How to Make a Payment in the Palmetto App, Managing Your Autopay Settings, Skip-a-Payment Deferral Offer, Palmetto Energy Plan FAQs, Activate Your Palmetto Account); never signed in. Accounts are activated from an emailed invite and managed in the Palmetto app or home.palmetto.com (Billing section at home.palmetto.com/finance-accounts); the sign-in identifier is not documented and is modelled as email (inferred from the email activation). Billing shows plan type, account number, monthly payment and the annual rate escalator (0-3.5%); tabs Transactions, Statements and Documents. First bill 15-30 days after the system's Operational At date; invoices about 20 days before the due date; autopay charges on the due date (next business day if it falls on a non-banking day). Everyone is enrolled in autopay at setup ($15/month discount, shown as an Autopay Discount Reversal line); re-enrol and switch method online under Manage autopay; turning autopay off requires contacting Palmetto. Pay Now (one-time) offers Total due, Past due, or a Custom amount (custom only for Palmetto Energy Plan customers); methods ACH (no fee), debit (no fee), credit card Visa/Mastercard/Discover/AmEx with a 3% processing fee. The fee is modelled as cardPercent 3, which the engine also applies to debit cards (cross-owner request: credit-only card fee). Payments before 4 p.m. ET on business days process the same day. Pending payments can be cancelled in Transactions. Failed payments retry immediately after updating the method, otherwise after 5 days. Late fee: $25 starting on day 20 after the due date (modelled as lateFeeCents 2500; the 20-day start is not expressible); 120+ days past due may be reported to credit agencies. Statements by email since January 2026; paper on request (paperless keeps the family default). Skip-a-Payment deferral: autopay customers in good standing may skip one lease payment per calendar year (max 5 per term), requested by email or chat; modelled as payment_arrangement unsupported online. Selling, transferring or cancelling the agreement is handled by the support team. Support 855-339-1831, help@palmetto.com.",
+  "officialDomains": [
+    "palmetto.com"
+  ],
+  "sources": [
+    {
+      "url": "https://help.palmetto.com/en/articles/9945117-managing-your-palmetto-bill",
+      "title": "Managing Your Palmetto Bill",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.palmetto.com/en/articles/15481040-how-to-make-a-payment-in-the-palmetto-app",
+      "title": "How to Make a Payment in the Palmetto App",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://help.palmetto.com/en/articles/16355793-managing-your-autopay-settings",
+      "title": "Managing Your Autopay Settings",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://help.palmetto.com/en/articles/14745550-skip-a-payment-deferral-offer",
+      "title": "Skip-a-Payment Deferral Offer",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://help.palmetto.com/en/articles/9948784-palmetto-energy-plan-faqs",
+      "title": "Palmetto Energy Plan FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://help.palmetto.com/en/articles/9944916-activate-your-palmetto-account",
+      "title": "Activate Your Palmetto Account",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Palmetto",
+    "shortName": "Palmetto",
+    "primary": "#1d5c4d",
+    "accent": "#0f3b31",
+    "monogram": "P"
+  },
+  "labels": {
+    "viewBill": "Billing",
+    "payBill": "Pay Now",
+    "autopay": "Manage autopay",
+    "statements": "Statements",
+    "history": "Transactions",
+    "dashboard": "Home",
+    "help": "Help Center",
+    "signIn": "Log in",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Log in",
+        "page": "login"
+      },
+      {
+        "label": "Managing Your Palmetto Bill",
+        "helpSlug": "faq"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Home",
+        "page": "dashboard"
+      },
+      {
+        "label": "Billing",
+        "page": "bill"
+      },
+      {
+        "label": "Pay Now",
+        "page": "pay"
+      },
+      {
+        "label": "Manage autopay",
+        "page": "autopay"
+      },
+      {
+        "label": "Transactions",
+        "page": "history"
+      },
+      {
+        "label": "Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Account",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://help.palmetto.com/en/articles/9944916-activate-your-palmetto-account"
+  },
+  "contact": {
+    "phone": "8553391831",
+    "source": "https://help.palmetto.com/en/articles/15481040-how-to-make-a-payment-in-the-palmetto-app"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.palmetto.com/en/articles/16355793-managing-your-autopay-settings",
+      "note": "Customers on autopay get a $15 monthly discount. Your payment is charged automatically on your due date."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.palmetto.com/en/articles/16355793-managing-your-autopay-settings",
+      "note": "You can turn off autopay anytime by contacting Palmetto at 855-339-1831 or help@palmetto.com. The $15 monthly autopay discount stops while autopay is off, and you will need to pay each month with Pay Now.",
+      "phone": "8553391831",
+      "channel": "phone"
+    },
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.palmetto.com/en/articles/14745550-skip-a-payment-deferral-offer",
+      "note": "Autopay customers in good standing can skip one lease payment per calendar year (up to 5 per lease term); the skipped amount moves to the end of the lease. Request it by emailing help@palmetto.com or chatting with us.",
+      "phone": "8553391831",
+      "channel": "phone"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://help.palmetto.com/en/articles/9948784-palmetto-energy-plan-faqs",
+      "note": "To transfer or cancel your energy plan agreement, for example when selling your home, contact our team at 855-339-1831 as early as possible. They will walk you through each step.",
+      "phone": "8553391831",
+      "channel": "phone"
+    },
+    "statements": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://help.palmetto.com/en/articles/9945117-managing-your-palmetto-bill"
+    }
+  },
+  "billing": {
+    "source": "https://help.palmetto.com/en/articles/9945117-managing-your-palmetto-bill",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 3,
+      "evidence": "documented_official",
+      "source": "https://help.palmetto.com/en/articles/15481040-how-to-make-a-payment-in-the-palmetto-app"
+    },
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "days": "due_date",
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    },
+    "lateFeeCents": 2500
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make a payment",
+      "topic": "payments",
+      "paragraphs": [
+        "Choose Total due to pay your full balance, Past due to bring your account current, or a Custom amount (Custom is available only to Palmetto Energy Plan customers).",
+        "Bank account (ACH) and debit card payments have no fee. Credit cards (Visa, Mastercard, Discover, American Express) carry a 3% processing fee, shown before you confirm.",
+        "Payments submitted before 4:00 p.m. ET on a business day process the same day; later, or on weekends and holidays, the next business day. A one-time payment does not change your scheduled autopay."
+      ],
+      "steps": [
+        "Open Billing in your account.",
+        "Tap Pay Now under Payment Information.",
+        "Choose your amount and tap Next.",
+        "Select bank account or card and enter the details.",
+        "Review the summary and tap Submit payment."
+      ],
+      "source": "https://help.palmetto.com/en/articles/15481040-how-to-make-a-payment-in-the-palmetto-app"
+    },
+    {
+      "slug": "autopay",
+      "title": "Managing your autopay settings",
+      "topic": "autopay",
+      "paragraphs": [
+        "Everyone is enrolled in autopay during account setup, and autopay customers get a $15 monthly discount. Your payment is charged automatically on the due date.",
+        "To turn autopay back on or switch the payment method, open Billing and tap Manage autopay. Changes apply to your next scheduled payment.",
+        "To turn autopay off, contact our team. The discount stops while autopay is off and you'll need to pay manually each month."
+      ],
+      "source": "https://help.palmetto.com/en/articles/16355793-managing-your-autopay-settings"
+    },
+    {
+      "slug": "faq",
+      "title": "Managing your Palmetto bill",
+      "topic": "faq",
+      "paragraphs": [
+        "Your first bill arrives 15 to 30 days after your system's Operational At date. Each invoice is available about 20 days before its due date.",
+        "Your monthly payment may rise each calendar year by your plan's annual rate escalator, a fixed rate between 0 and 3.5%.",
+        "If a payment fails, update your payment method to retry right away; otherwise it is retried after 5 days. A $25 late fee is charged starting 20 days after the due date, and accounts more than 120 days past due may be reported to credit agencies.",
+        "You will still get a separate bill from your utility for grid connection and any electricity your system doesn't cover."
+      ],
+      "source": "https://help.palmetto.com/en/articles/9945117-managing-your-palmetto-bill"
+    },
+    {
+      "slug": "skip-a-payment",
+      "title": "Skip-a-Payment deferral",
+      "topic": "payments",
+      "paragraphs": [
+        "If you're on autopay and your lease is in good standing (no more than one month past due), you can skip your next lease payment once per calendar year, up to five times per lease term.",
+        "The skipped amount is added as a final payment at the end of your lease. Late fees are waived and your monthly amount and lease end date do not change.",
+        "To request it, email help@palmetto.com or chat with us; no proof of hardship is needed."
+      ],
+      "source": "https://help.palmetto.com/en/articles/14745550-skip-a-payment-deferral-offer"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Moving, selling or changing your agreement",
+      "topic": "account",
+      "paragraphs": [
+        "If you're selling your home or need to transfer or cancel your agreement, reach out as early as possible; transfers take time and buyers usually have questions.",
+        "Call 855-339-1831 or email help@palmetto.com and our team will walk you through each step."
+      ],
+      "source": "https://help.palmetto.com/en/articles/9948784-palmetto-energy-plan-faqs"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Palmetto",
+      "topic": "contact",
+      "paragraphs": [
+        "Call 855-339-1831, email help@palmetto.com, or chat with us from the Help Center or the Palmetto app."
+      ],
+      "source": "https://help.palmetto.com/en/articles/15481040-how-to-make-a-payment-in-the-palmetto-app"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-discount",
+        "intent": "Using Palmetto's Help Center, find out the monthly discount for staying on autopay. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "15"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "15"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "autopay"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Autopay customers get a $15 monthly discount."
+          }
+        ]
+      },
+      {
+        "slug": "credit-card-fee",
+        "intent": "Using Palmetto's Help Center, find out the processing fee for paying by credit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3%",
+              "3 %",
+              "three percent",
+              "3 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3%",
+            "3 %",
+            "three percent",
+            "3 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Credit card payments carry a 3% processing fee; ACH and debit have no fee."
+          }
+        ]
+      },
+      {
+        "slug": "skip-payment-limit",
+        "intent": "Using Palmetto's Help Center, find out how many times per lease term an autopay customer can use the Skip-a-Payment deferral. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5",
+              "five"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5",
+            "five"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payments"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to five times per lease term (once per calendar year)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Pay Now",
+        "Manage autopay"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "855-339-1831"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "$15 monthly discount"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "skip-a-payment",
+      "contains": "once per calendar year"
+    }
+  ]
+}

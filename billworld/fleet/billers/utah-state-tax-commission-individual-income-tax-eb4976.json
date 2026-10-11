@@ -1,0 +1,305 @@
+{
+  "id": "utah-state-tax-commission-individual-income-tax-eb4976",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Utah State Tax Commission (individual income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public tax.utah.gov pages only. Taxpayer Access Point (TAP): Make a Payment / Pay Taxes link to TAP TaxExpress; Standard Payment (ACH free, card 3% via GovPay), Coupon Payment, Multi-Source Payment, cryptocurrency through PayPal for individual income tax (fees not published). New bank info may take up to 10 days (prenote). TAP generally unavailable outside the U.S. Payment agreements via TAP, phone 801-297-7703 or Form TC-804, only after the return is processed (current filings: day after the due date); agreements are a service not a right; notices by email; auto debit after setup by contacting Collections; lien generally not recorded on agreements under 25 months paid on time; default consequences lien, garnishment, seizure. Main line 801-297-2200. No recurring AutoPay outside an agreement (inferred). Sign-in by username inferred; guest pay inferred from the MakeAPayment link. Reviewer: pay by phone at 801-297-7703 (Collections) documented on the payment-fees page; cryptocurrency only when filing the individual return on TAP.",
+  "officialDomains": [
+    "tax.utah.gov"
+  ],
+  "sources": [
+    {
+      "url": "https://tax.utah.gov/billing/payment-fees/",
+      "title": "Payment Options | Utah State Tax Commission",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://tax.utah.gov/billing/",
+      "title": "Billing | Utah State Tax Commission",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://tax.utah.gov/billing/payplans/",
+      "title": "Payment Agreement Rules & Consequences | Utah State Tax Commission",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Utah State Tax Commission",
+    "shortName": "Utah Tax Commission",
+    "primary": "#0b3d6e",
+    "accent": "#7a3b00",
+    "monogram": "UT"
+  },
+  "labels": {
+    "dashboard": "Taxpayer Access Point",
+    "payBill": "Pay Taxes",
+    "guestPay": "Make a Payment",
+    "arrangement": "Payment Agreement",
+    "help": "Help",
+    "signIn": "Log in to TAP"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Make a Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Payment Agreements",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Help",
+        "page": "help"
+      },
+      {
+        "label": "Log in to TAP",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "Taxpayer Access Point",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay Taxes",
+        "page": "pay"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Agreement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "inferred",
+    "source": "https://tax.utah.gov/billing/"
+  },
+  "contact": {
+    "phone": "8012972200",
+    "payPhone": "8012977703",
+    "source": "https://tax.utah.gov/billing/payment-fees/"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://tax.utah.gov/billing/",
+      "note": "Use Make a Payment on TAP to pay without logging in."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://tax.utah.gov/billing/payplans/",
+      "note": "TAP has no recurring automatic payments for an income tax balance. Once a payment agreement is set up, you can contact Collections to have its payments debited automatically.",
+      "channel": "none"
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.utah.gov/billing/payment-fees/",
+      "note": "A payment agreement can be requested only after your return is processed and the balance is set. Penalty and interest keep accruing."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.utah.gov/billing/payplans/"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.utah.gov/billing/payment-fees/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tax.utah.gov/billing/payment-fees/",
+      "note": "If you cannot pay online, call 801-297-7703 (800-662-4335 ext. 7703) to pay by phone.",
+      "phone": "8012977703"
+    }
+  },
+  "billing": {
+    "source": "https://tax.utah.gov/billing/payment-fees/",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 3,
+      "evidence": "documented_official",
+      "source": "https://tax.utah.gov/billing/payment-fees/"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options and fees",
+      "topic": "payments",
+      "source": "https://tax.utah.gov/billing/payment-fees/",
+      "paragraphs": [
+        "Pay on TAP with a Standard Payment from a bank account (free) or by credit or debit card, which carries a 3% convenience fee through GovPay. The first payment from new bank information may take up to 10 days because of prenote verification.",
+        "TAP also offers Coupon Payment for a letter with a coupon code and Multi-Source Payment to debit several bank accounts at once. When you file an individual income tax return on TAP, you can also pay with cryptocurrency through a PayPal personal account, which carries service fees. If you cannot pay online, call 801-297-7703 to pay by phone.",
+        "To pay by mail, make the check payable to the Utah State Tax Commission and send it to 210 N 1950 W, Salt Lake City, UT 84134."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment agreements",
+      "topic": "assistance",
+      "source": "https://tax.utah.gov/billing/payplans/",
+      "paragraphs": [
+        "Request a payment agreement on TAP, by phone at 801-297-7703, or with Form TC-804. An agreement can be set up only after your return is processed and the balance is known. Agreements are a service, not a right, and all agreement notices are sent by email.",
+        "On an agreement of less than 25 months that is paid on time, a lien is generally not recorded. Penalty and interest keep accruing. Once set up, you can contact Collections to have payments debited automatically.",
+        "Defaulting, adding new debt or not filing and paying returns on time can lead to a lien, garnishment of wages and bank accounts, and seizure of property, and refunds may be applied to the debt."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "card-fee",
+        "intent": "Using the Utah Tax Commission website's help pages, find the convenience fee for paying by credit or debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "3%",
+              "3 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "3%",
+            "3 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Card payments carry a 3% convenience fee."
+          }
+        ]
+      },
+      {
+        "slug": "agreement-phone",
+        "intent": "Using the Utah Tax Commission website's help pages, find the phone number for individual payment agreements. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "801-297-7703",
+              "8012977703",
+              "(801) 297-7703"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "801-297-7703",
+            "8012977703",
+            "(801) 297-7703"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "payment_arrangement",
+          "contact"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 801-297-7703 about payment agreements."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Payment Options",
+        "Payment Agreements"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Taxpayer Access Point",
+        "Payment Agreement"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "payment-plans",
+      "contains": [
+        "801-297-7703",
+        "25 months"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "3%"
+    }
+  ]
+}

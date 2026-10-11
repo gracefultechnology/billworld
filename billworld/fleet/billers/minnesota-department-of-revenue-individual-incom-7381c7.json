@@ -1,0 +1,336 @@
+{
+  "id": "minnesota-department-of-revenue-individual-incom-7381c7",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Minnesota Department of Revenue (individual income tax)",
+  "category": "government",
+  "reviewedAt": "2026-10-10",
+  "notes": "Researched from public revenue.state.mn.us pages only. Individuals pay through the Online Services (e-Services) Payment System without login, or in e-Services after creating an Individual username (I Want To... > Access your personal tax accounts; identity verification before some features). Bank payments free (U.S. accounts only); cards via US Bank: 1.25% debit, 2.15% credit (engine charges the credit rate; debit rate not expressible). Cancel: 5 p.m. Central on the processing day; card payments made without logging in cannot be cancelled. Payment Plan Agreement System for individuals with an SSN who received a bill, no existing agreement, no bankruptcy, no levy; else 651-556-3003 / 800-657-3909. No recurring AutoPay (inferred). Sign-in by username documented (Create an Individual username).",
+  "officialDomains": [
+    "revenue.state.mn.us"
+  ],
+  "sources": [
+    {
+      "url": "https://www.revenue.state.mn.us/make-payment",
+      "title": "Make a Payment | Minnesota Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.revenue.state.mn.us/payment-agreements",
+      "title": "Payment Agreements | Minnesota Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    },
+    {
+      "url": "https://www.revenue.state.mn.us/setup-individual-e-services-account",
+      "title": "Set Up an Individual e-Services Account | Minnesota Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.revenue.state.mn.us/cancel-payment",
+      "title": "Cancel a Payment | Minnesota Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.revenue.state.mn.us/e-services-payment-system",
+      "title": "e-Services Payment System | Minnesota Department of Revenue",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Minnesota Department of Revenue",
+    "shortName": "Minnesota Revenue",
+    "primary": "#003865",
+    "accent": "#78350f",
+    "monogram": "MN"
+  },
+  "labels": {
+    "dashboard": "e-Services",
+    "payBill": "Make a Payment",
+    "guestPay": "Online Services Payment",
+    "arrangement": "Payment Agreement",
+    "register": "Create an Individual username",
+    "contact": "Communicate with us",
+    "help": "Help",
+    "signIn": "Log in to e-Services"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Online Services Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Make a Payment",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Cancel a Payment",
+        "helpSlug": "cancel-payment"
+      },
+      {
+        "label": "Payment Agreements",
+        "helpSlug": "payment-plans"
+      },
+      {
+        "label": "Log in to e-Services",
+        "page": "login"
+      }
+    ],
+    "account": [
+      {
+        "label": "e-Services",
+        "page": "dashboard"
+      },
+      {
+        "label": "Make a Payment",
+        "page": "pay"
+      },
+      {
+        "label": "History",
+        "page": "history"
+      },
+      {
+        "label": "Payment Agreement",
+        "page": "arrangement"
+      },
+      {
+        "label": "Communicate with us",
+        "page": "contact"
+      },
+      {
+        "label": "Profile",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "socialProviders": [],
+    "evidence": "documented_official",
+    "source": "https://www.revenue.state.mn.us/setup-individual-e-services-account"
+  },
+  "contact": {
+    "phone": "6515563000",
+    "source": "https://www.revenue.state.mn.us/make-payment"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.state.mn.us/e-services-payment-system",
+      "note": "Pay individual income tax through the Online Services Payment System without an e-Services login."
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.revenue.state.mn.us/make-payment",
+      "note": "e-Services has no recurring automatic payments for income tax. Schedule each payment yourself; you can cancel a bank payment until 5 p.m. Central on its processing date.",
+      "channel": "none"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.state.mn.us/cancel-payment",
+      "note": "Bank payments can be cancelled until 5 p.m. Central Time on the day they are scheduled to process. Card payments made without logging in cannot be cancelled."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.state.mn.us/payment-agreements",
+      "note": "Request a payment agreement online if you received a bill, have no existing agreement, and are not in bankruptcy or under a levy."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.state.mn.us/payment-agreements"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.revenue.state.mn.us/make-payment"
+    }
+  },
+  "billing": {
+    "source": "https://www.revenue.state.mn.us/make-payment",
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "fees": {
+      "bankCents": 0,
+      "cardPercent": 2.15,
+      "evidence": "documented_official",
+      "source": "https://www.revenue.state.mn.us/make-payment",
+      "notes": [
+        "Debit card payments carry a lower 1.25% fee charged by US Bank."
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay individual income tax",
+      "topic": "payments",
+      "source": "https://www.revenue.state.mn.us/make-payment",
+      "paragraphs": [
+        "Pay from a U.S. bank account through the Online Services Payment System; international bank accounts are not accepted. You can also pay by check or money order with a voucher from the Payment Voucher System, or in cash at the department in St. Paul.",
+        "Card payments go through US Bank, which charges 1.25% for debit cards and 2.15% for credit cards.",
+        "Most payments take 3 to 7 days to process. If yours has not processed within 10 days, call 651-556-3000 or 800-657-3666, 8:00 a.m. to 4:30 p.m., Monday through Friday."
+      ]
+    },
+    {
+      "slug": "cancel-payment",
+      "title": "Cancel a payment",
+      "topic": "payments",
+      "source": "https://www.revenue.state.mn.us/cancel-payment",
+      "paragraphs": [
+        "You can cancel a scheduled payment until 5 p.m. Central Time on the day it is set to process. Credit and debit card payments made without logging in cannot be cancelled.",
+        "If you paid while logged in to e-Services, choose I Want To..., then Search for a request on the History card, select the payment and choose Cancel Payment. If you paid from a bank account without logging in, use Search for a confirmation number in Online Services with your confirmation number and email address, then Cancel.",
+        "For a payment scheduled with your income tax return, contact the department before the payment date at 651-296-3781 or 800-652-9094."
+      ]
+    },
+    {
+      "slug": "payment-plans",
+      "title": "Payment agreements",
+      "topic": "assistance",
+      "source": "https://www.revenue.state.mn.us/payment-agreements",
+      "paragraphs": [
+        "If you cannot pay in full, request a payment agreement online with the Payment Plan Agreement System. You qualify online if you are an individual with a Social Security number, received a bill, have no existing agreement, are not in bankruptcy and have no levy against you.",
+        "The payment amount is based on your current financial situation using IRS guidelines, and you may be asked for a personal financial statement.",
+        "If you cannot set it up online, call 651-556-3003 or 800-657-3909, 8:00 a.m. to 4:30 p.m., Monday through Friday."
+      ]
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "cancel-cutoff",
+        "intent": "Using the Minnesota Revenue website's help pages, find the time by which a scheduled bank payment must be cancelled on its processing day. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "5 p.m.",
+              "5:00",
+              "5 pm",
+              "5pm"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "5 p.m.",
+            "5:00",
+            "5 pm",
+            "5pm"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "scheduled_payment"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "A bank payment can be cancelled until 5 p.m. Central Time on its processing day."
+          }
+        ]
+      },
+      {
+        "slug": "debit-card-fee",
+        "intent": "Using the Minnesota Revenue website's help pages, find the fee percentage for paying with a debit card. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "1.25%",
+              "1.25 percent"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "1.25%",
+            "1.25 percent"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Debit card payments carry a 1.25% fee (credit cards 2.15%)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "home",
+      "contains": [
+        "Cancel a Payment",
+        "Payment Agreements"
+      ]
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "e-Services",
+        "Communicate with us"
+      ]
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-payment",
+      "contains": "5 p.m."
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": [
+        "1.25%",
+        "2.15%"
+      ]
+    }
+  ]
+}

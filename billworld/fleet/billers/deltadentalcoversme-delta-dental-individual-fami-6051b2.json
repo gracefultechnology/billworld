@@ -1,0 +1,145 @@
+{
+  "id": "deltadentalcoversme-delta-dental-individual-fami-6051b2",
+  "version": 1,
+  "status": "dedicated",
+  "name": "DeltaDentalCoversMe (Delta Dental individual & family plans service center)",
+  "category": "dental-vision-hearing",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. One dossier for the shared DeltaDentalCoversMe billing site (Delta Dental of Wisconsin / Wyssta Services) that serves individual and family plans underwritten by many Delta Dental companies (AR, CO, CT, IL, MA, ME, MO, NH, NJ, NC, SC, VT, VA, WA, WI per the site footer); the separate catalog entries for those companies bill here, so none of them is picked separately. Researched from public pages only: the member FAQ (my.deltadentalcoversme.com/tools-and-resources/faq), the public Make a payment form (not submitted), Contact us and the enrollment Billing & Payment step (not submitted). First month is paid at enrollment; afterwards premiums are deducted on the 27th of each month for the next month's coverage (modelled as AutoPay day 27); the billing date cannot be changed but members may pay ahead; billing frequency monthly, semi-annual or annual (changed by calling 1-888-899-3734). Methods: EFT from checking or savings, or Visa, Discover or Mastercard (no American Express; card brands cannot be modelled). One-time payments without logging in need member first and last name, Member ID or reference number, date of birth and ZIP code (first name cannot be modelled). The payment method can be updated online, by the automated phone system or with an agent; updating it does not pay a past-due balance. One-month grace period, then termination and a possible 12-month lockout. Billing history shows the ten most recent payments and invoices. Paperless is under My account > Email & communications. Policy termination must be in writing (Email Us form, fax 1-800-807-1970, or mail to P.O. Box 103, Stevens Point, WI 54481); many policies require a 12-month commitment. There is no separate stop-AutoPay function; inferred that automatic billing ends only with the policy. Registration asks for name, date of birth, email and subscriber Member ID (or name, date of birth and address). Contact center Mon-Fri 8 a.m.-5 p.m.; sales 1-844-764-5301. Mail-in premium address (P.O. Box 1237, Wisconsin Rapids) appears only on a Delta Dental of Washington page and is not used.",
+  "officialDomains": ["deltadentalcoversme.com"],
+  "sources": [
+    { "url": "https://my.deltadentalcoversme.com/tools-and-resources/faq", "title": "Frequently asked questions | Delta Dental Covers Me", "fetchedAt": "2026-10-10", "kind": "help" },
+    { "url": "https://www.deltadentalcoversme.com/s/one-time-payment", "title": "Make a payment | Delta Dental Covers Me", "fetchedAt": "2026-10-10", "kind": "pay" },
+    { "url": "https://www.deltadentalcoversme.com/s/contact-us", "title": "Contact us | Delta Dental Covers Me", "fetchedAt": "2026-10-10", "kind": "cancel" },
+    { "url": "https://www.deltadentalcoversme.com/s/billing-information", "title": "Billing Information | Delta Dental", "fetchedAt": "2026-10-10", "kind": "autopay" }
+  ],
+  "brand": { "displayName": "Delta Dental Covers Me", "shortName": "Delta Dental", "primary": "#1e6b3a", "accent": "#4b2e83", "monogram": "DD" },
+  "labels": {
+    "signIn": "Sign in",
+    "register": "Register now",
+    "forgot": "Forgot user name or password",
+    "guestPay": "Make a payment",
+    "autopay": "Recurring payments",
+    "history": "Billing history",
+    "paperless": "Email & communications",
+    "accountNumber": "Member ID or reference number",
+    "contact": "Contact us"
+  },
+  "nav": {
+    "public": [
+      { "label": "Make a payment", "page": "guest" },
+      { "label": "Sign in", "page": "login" },
+      { "label": "Register now", "page": "register" },
+      { "label": "FAQ", "page": "help" },
+      { "label": "Contact us", "helpSlug": "contact-us" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "registrationFields": ["accountNumber", "lastName", "email"],
+    "guestLookupFields": ["accountNumber", "lastName", "dob", "zip"],
+    "guestLookupExact": true,
+    "evidence": "observed_public",
+    "source": "https://www.deltadentalcoversme.com/s/one-time-payment"
+  },
+  "contact": { "phone": "888-899-3734", "payPhone": "888-899-3734", "source": "https://www.deltadentalcoversme.com/s/contact-us", "evidence": "documented_official" },
+  "capabilities": {
+    "guest_pay": { "support": "supported", "evidence": "documented_official", "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq", "note": "Make a one-time payment without signing in. To manage recurring payments or saved card and bank details, sign in or register." },
+    "autopay": { "support": "supported", "evidence": "documented_official", "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq", "note": "Premiums are deducted on the 27th of each month for the next month of coverage. The billing date cannot be changed, but you can pay ahead." },
+    "autopay_cancel": { "support": "unsupported", "evidence": "inferred", "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq", "note": "Recurring payments continue while your policy is active. You can switch the payment method online; to end the policy, send a written request (fax 1-800-807-1970 or mail to P.O. Box 103, Stevens Point, WI 54481).", "channel": "mail", "phone": "8888993734" },
+    "cancel_service": { "support": "unsupported", "evidence": "documented_official", "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq", "note": "Cancellation requests must be in writing: use the Email Us form, fax 1-800-807-1970 or mail P.O. Box 103, Stevens Point, WI 54481. Many policies require a 12-month commitment.", "channel": "mail", "phone": "8888993734" },
+    "paperless": { "support": "supported", "evidence": "documented_official", "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq" },
+    "statements": { "support": "supported", "evidence": "documented_official", "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq" },
+    "pay_by_phone": { "support": "supported", "evidence": "documented_official", "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq", "note": "Pay through the automated phone system or with an agent at 1-888-899-3734.", "phone": "8888993734" },
+    "registration": { "support": "supported", "evidence": "documented_official", "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq" }
+  },
+  "billing": {
+    "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq",
+    "methods": ["bank", "card"],
+    "guestMethods": ["bank", "card"],
+    "autopay": { "policies": ["full"], "days": [27], "methodTypes": ["bank", "card"] }
+  },
+  "help": [
+    {
+      "slug": "payments-and-billing",
+      "title": "How do I make payments for my dental plan?",
+      "topic": "billing",
+      "paragraphs": [
+        "Your first month's premium is due when you enroll. After that, payments are deducted on the 27th of each month and pay for the next month of coverage (for example, the September 27 payment covers October).",
+        "We accept electronic funds transfer (EFT) from a checking or savings account, and Visa, Discover or Mastercard debit and credit cards. American Express is not accepted.",
+        "To pay a past-due amount or pay ahead, you can make a one-time payment on the website without signing in, sign in and pay with your saved method, use the automated phone system, or call customer service at 1-888-899-3734."
+      ],
+      "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq"
+    },
+    {
+      "slug": "billing-date-and-frequency",
+      "title": "Billing date and billing frequency",
+      "topic": "billing",
+      "paragraphs": [
+        "The automatic billing date cannot be changed, but you can pay your premium early to suit your budget.",
+        "You choose monthly, semi-annual or annual billing when you enroll. To change it later, call 1-888-899-3734.",
+        "You can update your payment method by signing in, through the automated phone system, or with a representative. Updating the method does not pay a past-due balance on its own."
+      ],
+      "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq"
+    },
+    {
+      "slug": "missed-payment",
+      "title": "What happens if I miss a payment?",
+      "topic": "billing",
+      "paragraphs": [
+        "A missed premium has a one-month grace period. If nothing is paid by the end of it, the policy ends for non-payment and you may be locked out of buying a new policy for 12 months. Call 1-888-899-3734 about a specific billing situation."
+      ],
+      "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq"
+    },
+    {
+      "slug": "billing-history",
+      "title": "See previous payments and invoices",
+      "topic": "account",
+      "paragraphs": [
+        "Sign in and choose Billing history from the Billing & Payments menu. Your ten most recent payments are shown; use the drop-down above the Billing Period column to show more, search by year, or print and save the page as a PDF.",
+        "To change paperless options or your email address, sign in and open Email & communications under My account."
+      ],
+      "source": "https://my.deltadentalcoversme.com/tools-and-resources/faq"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact us",
+      "topic": "contact",
+      "paragraphs": [
+        "Existing members can call customer service at 1-888-899-3734, Monday to Friday, 8 a.m. to 5 p.m., use the Email Us form, or sign in to chat with a representative. To buy a policy, call sales at 1-844-764-5301.",
+        "To cancel a policy, send a written request with your name, date of birth, address, policy number, reason and requested end date by the Email Us form, fax to 1-800-807-1970, or mail to P.O. Box 103, Stevens Point, WI 54481."
+      ],
+      "source": "https://www.deltadentalcoversme.com/s/contact-us"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "premium-draft-day",
+        "intent": "Using the Delta Dental Covers Me FAQ, find on which day of the month your monthly dental premium is deducted. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["27"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["27"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "On the 27th of each month, for the next month's coverage." }]
+      },
+      {
+        "slug": "grace-period",
+        "intent": "You missed a Delta Dental Covers Me premium payment. Using the FAQ, find how long the grace period is before the policy ends. Do not make a payment or change any settings.",
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["one month", "one-month", "1 month"] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["one month", "one-month", "1 month"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [{ "op": "answer", "text": "A one-month grace period." }]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "label": "guestPay" },
+    { "page": "guest", "contains": "Member ID or reference number" },
+    { "page": "helpArticle", "slug": "payments-and-billing", "contains": ["27th", "American Express"] },
+    { "page": "helpArticle", "slug": "missed-payment", "contains": "12 months" },
+    { "page": "cancel", "signedIn": true, "contains": "1-800-807-1970" },
+    { "page": "history", "signedIn": true, "label": "history" }
+  ]
+}

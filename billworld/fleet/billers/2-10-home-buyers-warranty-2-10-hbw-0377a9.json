@@ -1,0 +1,300 @@
+{
+  "id": "2-10-home-buyers-warranty-2-10-hbw-0377a9",
+  "version": 1,
+  "status": "dedicated",
+  "category": "home-services",
+  "reviewedAt": "2026-10-10",
+  "name": "2-10 Home Buyers Warranty (2-10 HBW)",
+  "template": "streaming",
+  "notes": "Researched from the public 2-10 Help Center Billing & Payments articles and the Create an Account quick guide only (never signed in). Homeowners pay in full at purchase or monthly; the Homeowner Portal (Sign In, Homeowner) is used to request service, manage the account and payment methods (the help article is titled Update Credit Card, so methods are modelled as card only, inferred) and review the plan agreement. The monthly payment date can only be changed by calling Support at 844-784-5209 (not expressible; in help). Cancellation: any time; within 30 days a refund of agreement fees less service and claim costs, after 30 days a prorated refund less an administrative fee of up to one month's payment (where permitted) and claim costs; terms vary by state. The article does not name a channel, so cancel_service is modelled as unsupported online with the Support number (inferred). Monthly payments are charged automatically to the card on file (inferred), so AutoPay is modelled as the recurring plan payment like HomeServe. 2-10 is a Frontdoor brand (AHS is too) but has its own portal. Moved from utility-account to streaming. Plan prices are not published here, so the plan page keeps synthetic plans. Reviewed 2026-10-10 (independent review): all five Help Center articles re-read; the Verify Your Email quick guide (new members verify an email address when creating the portal account) supports the email identifier, which stays inferred.",
+  "officialDomains": [
+    "2-10.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.2-10.com/helpcenter/billing-payments/payment-options/",
+      "title": "Payment Options | 2-10 HBW",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.2-10.com/helpcenter/billing-payments/update-credit-card/",
+      "title": "Update Credit Card | 2-10 HBW",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.2-10.com/helpcenter/billing-payments/cancel-warranty/",
+      "title": "Cancel Your 2-10 Home Warranty Plan | 2-10 HBW",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    },
+    {
+      "url": "https://www.2-10.com/helpcenter/billing-payments/change-payment-date/",
+      "title": "Change Payment Date | 2-10 HBW",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.2-10.com/helpcenter/quick-guides/create-an-account/",
+      "title": "Create an Account | 2-10 HBW",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.2-10.com/helpcenter/quick-guides/verify-your-email/",
+      "title": "Verify Your Email | 2-10 HBW",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "contact": {
+    "phone": "8447845209",
+    "source": "https://www.2-10.com/helpcenter/billing-payments/change-payment-date/"
+  },
+  "brand": {
+    "displayName": "2-10 Home Buyers Warranty",
+    "shortName": "2-10 HBW",
+    "primary": "#00539b",
+    "accent": "#003866",
+    "monogram": "21"
+  },
+  "labels": {
+    "signIn": "Sign In",
+    "register": "Create an Account",
+    "dashboard": "Homeowner Portal",
+    "wallet": "Update Credit Card",
+    "autopay": "Monthly Payments",
+    "cancel": "Cancel Warranty",
+    "help": "Help Center",
+    "username": "Email"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Sign In",
+        "page": "login"
+      },
+      {
+        "label": "Create an Account",
+        "page": "register"
+      },
+      {
+        "label": "Help Center",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "Homeowner Portal",
+        "page": "dashboard"
+      },
+      {
+        "label": "Pay",
+        "page": "pay"
+      },
+      {
+        "label": "Monthly Payments",
+        "page": "autopay"
+      },
+      {
+        "label": "Update Credit Card",
+        "page": "wallet"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Cancel Warranty",
+        "page": "cancel"
+      }
+    ]
+  },
+  "auth": {
+    "identifier": "email",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://www.2-10.com/helpcenter/quick-guides/create-an-account/"
+  },
+  "capabilities": {
+    "autopay": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.2-10.com/helpcenter/billing-payments/payment-options/",
+      "note": "Monthly plan payments are charged automatically to the card on file. To change your monthly payment date, call Support at 844-784-5209."
+    },
+    "autopay_cancel": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.2-10.com/helpcenter/billing-payments/payment-options/",
+      "note": "Monthly payments continue for the plan term. To pay in full instead or ask about your billing, call Support at 844-784-5209.",
+      "channel": "phone",
+      "phone": "8447845209"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.2-10.com/helpcenter/billing-payments/cancel-warranty/",
+      "note": "You can cancel at any time by calling Support at 844-784-5209. Cancel within 30 days for a refund of agreement fees, minus any service and claim costs.",
+      "channel": "phone",
+      "phone": "8447845209"
+    }
+  },
+  "billing": {
+    "source": "https://www.2-10.com/helpcenter/billing-payments/payment-options/",
+    "methods": [
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "When you buy a 2-10 home warranty plan you can pay in full at purchase or make monthly payments.",
+        "Once you are a member, manage your account and payment methods in the Homeowner Portal. To change the day your monthly payment is charged, call Support at 844-784-5209."
+      ],
+      "source": "https://www.2-10.com/helpcenter/billing-payments/payment-options/"
+    },
+    {
+      "slug": "update-payment-method",
+      "title": "Update your credit card",
+      "topic": "payments",
+      "paragraphs": [
+        "Sign in to the Homeowner Portal to update the payment method on your plan.",
+        "In the Homeowner Portal you can also request service, manage your account, review your plan agreement and see special offers. If you get an error, call Customer Support at 844-784-5209."
+      ],
+      "source": "https://www.2-10.com/helpcenter/billing-payments/update-credit-card/"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancel your warranty",
+      "topic": "account",
+      "paragraphs": [
+        "You can cancel at any time. If you cancel within the first 30 days of coverage, 2-10 refunds your agreement fees minus any service and claim costs it has paid.",
+        "After 30 days you get a prorated refund of agreement fees for the rest of the term, minus an administrative fee of up to one month's payment where the law allows, and minus service and claim costs. Terms vary by state."
+      ],
+      "source": "https://www.2-10.com/helpcenter/billing-payments/cancel-warranty/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "change-payment-date-phone",
+        "intent": "You want your 2-10 HBW monthly payment to come out on a different day. Using the 2-10 Help Center, find the phone number to call. Do not change anything online.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8447845209"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8447845209"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "billing",
+          "limitation"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 844-784-5209."
+          }
+        ]
+      },
+      {
+        "slug": "cancel-admin-fee",
+        "intent": "Using the 2-10 HBW Help Center, find the most the administrative fee can be if you cancel after 30 days. Do not cancel anything.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "one month",
+              "1 month",
+              "a month"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "one month",
+            "1 month",
+            "a month"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Up to one month's payment, where permitted by law."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Update Credit Card"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "844-784-5209"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "cancel-service",
+      "contains": "one month's payment"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "pay-your-bill",
+      "contains": "pay in full"
+    }
+  ]
+}

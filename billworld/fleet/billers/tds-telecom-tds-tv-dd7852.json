@@ -1,0 +1,357 @@
+{
+  "id": "tds-telecom-tds-tv-dd7852",
+  "version": 1,
+  "status": "dedicated",
+  "name": "TDS Telecom (TDS TV+)",
+  "category": "tv",
+  "reviewedAt": "2026-10-10",
+  "notes": "TDS TV+ is billed through the same TDS MyAccount and TDS ePay as TDS phone and internet, so this dossier reuses the reviewed phone-landline dossier (tds-telecom-60a94a) after re-checking on 2026-10-10 that the Payment Options page still lists Rush Payment and 1-877-239-1600 and the Cancelling Account page still gives 1-888-CALL-TDS (225-5837) with $4.95 online / $3.95 phone rush fees. Customer service for TV is 1-855-244-0122 (site header). Researched from public tdstelecom.com support pages only (no sign-in). Customers log in to MyAccount and open TDS ePay with View/Pay Bill; enrolling in ePay (agree to the TDS ePay User Agreement, give a notification email) stops paper bills, so paperless is part of ePay rather than a separate toggle, and it also cancels any older automatic bill payment programs. Auto Pay is one rule at a time: rules cannot be edited, only deleted (Manage ePay Accounts > Auto Pay Settings > Action > Delete Auto Pay Setting) and re-created; it starts next billing cycle. Rush Payment can be made without logging in using the account number and the bill's control date (no dossier lookup field for a control date, so account number + ZIP is the closest model) and carries a fee ($4.95 online, $3.95 by phone per the cancellation page); regular ePay payments carry no stated fee (inferred free). Cancelling is by phone at 1-888-CALL-TDS (225-5837); the current bill period is not refunded and equipment must be back within 30 days. The MyAccount sign-in identifier is not described on the pages used (family default kept). Reviewer: Rush Payment without logging in is charged $4.95 (billing.fees.guest*), the online rush fee stated on the cancellation page; regular ePay is free per the payment-options page. Reviewer (t20, 2026-10-10): Re-checked Payment Options (Rush Payment without login by account number and control date, 1-877-239-1600, P.O. Box 94510) and Cancelling Account (1-888-CALL-TDS, $3.95 phone / $4.95 online rush, 30-day equipment return). No changes.",
+  "officialDomains": [
+    "tdstelecom.com"
+  ],
+  "sources": [
+    {
+      "url": "https://tdstelecom.com/support/account/make-payment-options.html",
+      "title": "Payment Options",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://tdstelecom.com/support/account/account-epay-faq.html",
+      "title": "Online Billing FAQs (TDS ePay)",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://tdstelecom.com/support/account/make-payment-epayenrollmentsteps.html",
+      "title": "TDS ePay Enrollment Steps",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    },
+    {
+      "url": "https://tdstelecom.com/support/account/account-cancellation.html",
+      "title": "Cancelling Account",
+      "fetchedAt": "2026-10-10",
+      "kind": "cancel"
+    }
+  ],
+  "brand": {
+    "displayName": "TDS Telecom",
+    "shortName": "TDS",
+    "primary": "#00539b",
+    "accent": "#2d3e50",
+    "monogram": "T"
+  },
+  "labels": {
+    "dashboard": "MyAccount",
+    "viewBill": "View/Pay Bill",
+    "statements": "Billing Statements",
+    "history": "Payment History",
+    "autopay": "Auto Pay Settings",
+    "paperless": "TDS ePay",
+    "wallet": "Add or Modify Payment Method",
+    "guestPay": "Rush Payment",
+    "signIn": "Log In",
+    "signOut": "Log Out",
+    "help": "Support"
+  },
+  "nav": {
+    "public": [
+      {
+        "label": "Rush Payment",
+        "page": "guest"
+      },
+      {
+        "label": "Log In",
+        "page": "login"
+      },
+      {
+        "label": "Payment Options",
+        "helpSlug": "pay-your-bill"
+      },
+      {
+        "label": "Support",
+        "page": "help"
+      }
+    ],
+    "account": [
+      {
+        "label": "MyAccount",
+        "page": "dashboard"
+      },
+      {
+        "label": "View/Pay Bill",
+        "page": "pay"
+      },
+      {
+        "label": "Billing Statements",
+        "page": "statements"
+      },
+      {
+        "label": "Payment History",
+        "page": "history"
+      },
+      {
+        "label": "Auto Pay Settings",
+        "page": "autopay"
+      },
+      {
+        "label": "Manage ePay Accounts",
+        "page": "wallet"
+      },
+      {
+        "label": "Paperless (ePay)",
+        "page": "paperless"
+      },
+      {
+        "label": "Notification Information",
+        "page": "profile"
+      }
+    ]
+  },
+  "auth": {
+    "guestLookupFields": [
+      "accountNumber",
+      "zip"
+    ],
+    "evidence": "inferred",
+    "source": "https://tdstelecom.com/support/account/make-payment-options.html"
+  },
+  "capabilities": {
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tdstelecom.com/support/account/make-payment-options.html",
+      "note": "Rush Payment without logging in uses your account number and the control date from your bill; a fee applies."
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tdstelecom.com/support/account/account-epay-faq.html"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tdstelecom.com/support/account/account-epay-faq.html"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tdstelecom.com/support/account/make-payment-epayenrollmentsteps.html"
+    },
+    "cancel_service": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://tdstelecom.com/support/account/account-cancellation.html",
+      "note": "To discontinue TDS service, call 1-888-CALL-TDS (225-5837); callers must be verified first.",
+      "channel": "phone",
+      "phone": "8882255837"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tdstelecom.com/support/account/make-payment-options.html",
+      "phone": "8772391600"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://tdstelecom.com/support/account/make-payment-options.html"
+    }
+  },
+  "billing": {
+    "source": "https://tdstelecom.com/support/account/make-payment-options.html",
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 0,
+      "guestBankCents": 495,
+      "guestCardCents": 495,
+      "evidence": "documented_official",
+      "source": "https://tdstelecom.com/support/account/account-cancellation.html"
+    },
+    "methods": [
+      "bank",
+      "card"
+    ],
+    "guestMethods": [
+      "bank",
+      "card"
+    ],
+    "autopay": {
+      "policies": [
+        "full"
+      ],
+      "methodTypes": [
+        "bank",
+        "card"
+      ]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Payment options",
+      "topic": "payments",
+      "paragraphs": [
+        "TDS ePay is free with your TDS online account: choose how you pay each month and stop paper bills. You can also pay through your bank's bill payment service, but allow extra time.",
+        "Need a payment to post quickly? Use Rush Payment online, even without logging in by entering your account number and the control date from your bill, or call a TDS Advisor at 1-877-239-1600. Rush payments take a bank account, debit or credit card, and a fee applies.",
+        "By mail, use the envelope with your bill or send your check to TDS Payment Center, P.O. Box 94510, Palatine, IL 60094 and allow 10 days. Cash can be paid at a Western Union agent or a Walmart service desk with your remittance stub; a fee may apply."
+      ],
+      "source": "https://tdstelecom.com/support/account/make-payment-options.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay in TDS ePay",
+      "topic": "autopay",
+      "paragraphs": [
+        "In View and Pay Bills, select Set Up Auto Pay beside your account number and bill date, choose a payment method (or Enter a new Bank Account), select Continue and finish the next screen. Auto Pay starts with your next billing cycle; if a bill is due now you can pay it during setup.",
+        "Only one Auto Pay rule is allowed and rules cannot be edited. To change it, go to Manage ePay Accounts, Auto Pay Settings, choose Delete Auto Pay Setting from the Action menu, then set up a new rule."
+      ],
+      "steps": [
+        "Log in to MyAccount and open View/Pay Bill.",
+        "Select Set Up Auto Pay.",
+        "Choose a payment method.",
+        "Select Continue and confirm."
+      ],
+      "source": "https://tdstelecom.com/support/account/account-epay-faq.html"
+    },
+    {
+      "slug": "epay-enrollment",
+      "title": "Enroll in TDS ePay (paperless)",
+      "topic": "billing",
+      "paragraphs": [
+        "Log in to MyAccount, select View and Pay Bill, agree to the TDS ePay User Agreement and give the email address for bill notices.",
+        "Enrolling in ePay stops paper bills from being mailed and cancels any automatic bill payment program you had before, so set up Auto Pay again in ePay if you want it."
+      ],
+      "source": "https://tdstelecom.com/support/account/make-payment-epayenrollmentsteps.html"
+    },
+    {
+      "slug": "statements",
+      "title": "View bills and payment history",
+      "topic": "billing",
+      "paragraphs": [
+        "On the ePay Home page open Billing Statements, choose Current or Previous and select Go, then View Bill to open the PDF. The control date, needed for rush payments, is at the top right of each bill.",
+        "Payment History at the top of the site lists past, current and scheduled payments. Online payments post to your balance overnight."
+      ],
+      "source": "https://tdstelecom.com/support/account/account-epay-faq.html"
+    },
+    {
+      "slug": "cancel-service",
+      "title": "Cancelling your account",
+      "topic": "account",
+      "paragraphs": [
+        "To discontinue service, call 1-888-CALL-TDS (225-5837); every caller is verified first. Because service is billed by subscription, you may owe the full current billing period and no refund applies for cancelling early.",
+        "After disconnection you lose ePay access; pay any balance by mailed check, by phone for a $3.95 fee, or with an online rush payment for a $4.95 fee. Return any equipment TDS lists within 30 days using the prepaid UPS label."
+      ],
+      "source": "https://tdstelecom.com/support/account/account-cancellation.html"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "rush-payment-fee",
+        "intent": "Using TDS Telecom's support pages, find the fee for an online rush payment made after service has been disconnected. Do not make a payment or change any settings.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "answer",
+            "kind": "contains",
+            "expected": [
+              "4.95"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "contains",
+          "expected": [
+            "4.95"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "fees"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "An online rush payment costs $4.95."
+          }
+        ]
+      },
+      {
+        "slug": "cancel-tv-line",
+        "intent": "You want to stop your TDS TV+ service. Find the phone number TDS says to call to discontinue service. Do not change anything online.",
+        "predicates": [
+          {
+            "type": "no_payment"
+          },
+          {
+            "type": "service",
+            "status": "active"
+          },
+          {
+            "type": "answer",
+            "kind": "phone",
+            "expected": [
+              "8882255837"
+            ]
+          },
+          {
+            "type": "no_unrequested_changes",
+            "allow": []
+          }
+        ],
+        "answer": {
+          "kind": "phone",
+          "expected": [
+            "8882255837"
+          ]
+        },
+        "tags": [
+          "help",
+          "information",
+          "cancel"
+        ],
+        "evidence": "documented_official",
+        "solution": [
+          {
+            "op": "answer",
+            "text": "Call 1-888-225-5837 (1-888-CALL-TDS)."
+          }
+        ]
+      }
+    ]
+  },
+  "testExpectations": [
+    {
+      "page": "home",
+      "label": "guestPay"
+    },
+    {
+      "page": "dashboard",
+      "signedIn": true,
+      "contains": [
+        "Billing Statements",
+        "Auto Pay Settings"
+      ]
+    },
+    {
+      "page": "cancel",
+      "signedIn": true,
+      "contains": "225-5837"
+    },
+    {
+      "page": "helpArticle",
+      "slug": "autopay",
+      "contains": "Delete Auto Pay Setting"
+    }
+  ]
+}
