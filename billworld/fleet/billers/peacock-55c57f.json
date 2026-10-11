@@ -5,7 +5,7 @@
   "reviewedAt": "2026-10-09",
   "id": "peacock-55c57f",
   "name": "Peacock",
-  "notes": "Researched from public peacocktv.com/help articles only (no sign-in). Peacock renews monthly or annually to a credit or debit card, PayPal or an in-app purchase; there is no separate AutoPay, paper bill, guest pay or payment plan, and no refunds for prior payments. The public sign-in page shows Email and Password on one form, with I don't know my password and Sign in without password links; the documented password tip (at least 10 characters with letters and numbers) is applied. Account tabs include Plans & Payment, Subscriptions and Settings. Third-party billed subscribers cancel with that party. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public peacocktv.com/help articles only (no sign-in). Peacock renews monthly or annually to a credit or debit card, PayPal or an in-app purchase; there is no separate AutoPay, paper bill, guest pay or payment plan, and no refunds for prior payments. The public sign-in page shows Email and Password on one form, with I don't know my password and Sign in without password links; the documented password tip (at least 10 characters with letters and numbers) is applied. Account tabs include Plans & Payment, Subscriptions and Settings. Third-party billed subscribers cancel with that party. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. pay-partial-card suppressed (fixer, streaming-subscriptions audit 2026-10-10): the membership is charged its plan price, which is below the generated $25.00 partial amount, so that task would be an overpayment; the service has no partial-payment option.",
   "officialDomains": [
     "peacocktv.com"
   ],
@@ -346,7 +346,8 @@
       }
     ],
     "suppress": [
-      "setup-payment-plan"
+      "setup-payment-plan",
+      "pay-partial-card"
     ]
   },
   "testExpectations": [

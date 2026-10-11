@@ -3,7 +3,9 @@
 import { html, raw, doc, logo, alert, form, field, select, checkbox, button, hidden, amountChooser, methodChooser, newMethodFields, dateField, table, paymentRows, helpList, helpBody, helpSearchForm, money, fmtDate, methodText, statusLabel, L } from '../kit.mjs';
 import * as kitNs from '../kit.mjs';
 import { loadCatalog } from '../catalog.mjs';
+import { HERO_JUNK } from './_hygiene.mjs';
 import { payNotice, payRows, payDate, fmtPayOn, scrollTable, balanceTable, billingCss } from './_generic-billing.mjs';
+import { withdrawn, withdrawnView } from './_withdrawn.mjs';
 
 export const meta = { id: 'generic', name: 'Generic biller portal', description: 'Fallback experience used when a template is not yet implemented.', families: [], sources: [],
   // Where the dedicated tier's dossier nav (vm.nav) goes (server.mjs withDossierNav).
@@ -60,7 +62,7 @@ const pages = {
     return shell(vm, 'AutoPay', html`${h1(L(vm, 'autopay', 'AutoPay'))}${ap.enrolled ? html`<div class="card"><p><strong>AutoPay is on.</strong> We pay your ${ap.policy === 'fixed' ? `fixed amount of ${money(ap.fixedCents)}` : ap.policy === 'minimum' ? 'minimum payment' : 'full balance'} ${ap.day ? `on day ${ap.day}` : 'on each due date'} from ${vm.autopayMethod ? methodText(vm.autopayMethod) : 'your saved method'}.</p>${form(vm, 'autopay', html`${hidden('action', 'cancel')}${checkbox(vm, { name: 'confirm', label: 'I understand future bills will not be paid automatically.' })}${button('Cancel AutoPay', { cls: 'btn btn-danger' })}`)}</div><h2>Change AutoPay</h2>` : html`<p>AutoPay is off. Enroll to pay automatically each month.</p>`}${form(vm, 'autopay', html`${hidden('action', 'enroll')}${methodChooser(vm, { title: 'Pay from' })}${select(vm, { name: 'policy', label: 'Amount', options: [['full', 'Full amount due'], ...(['card', 'loan'].includes(vm.biller.kind) ? [['minimum', 'Minimum payment due']] : []), ['fixed', 'Fixed amount']] })}${field(vm, { name: 'fixedAmount', label: 'Fixed amount (if selected)', required: false, inputmode: 'decimal' })}${checkbox(vm, { name: 'acceptTerms', label: 'I authorize recurring payments under the AutoPay terms.' })}${button(ap.enrolled ? 'Save changes' : 'Enroll in AutoPay')}`)}`);
   },
   paperless(vm) { return shell(vm, 'Paperless billing', html`${h1(L(vm, 'paperless', 'Paperless billing'))}<p>Paperless is currently <strong>${vm.account.paperless ? 'on' : 'off'}</strong>.</p>${form(vm, 'paperless', html`${hidden('paperless', vm.account.paperless ? 'off' : 'on')}${!vm.account.paperless ? field(vm, { name: 'email', label: 'Email for bill notices', type: 'email', value: vm.persona.email }) : ''}${button(vm.account.paperless ? 'Switch to paper bills' : 'Go paperless')}`)}`); },
-  wallet(vm) { return shell(vm, 'Payment methods', html`${h1(L(vm, 'wallet', 'Payment methods'))}<ul class="wallet">${vm.methods.map(m => html`<li>${methodText(m)}${m.nickname ? html` <span class="muted">(${m.nickname})</span>` : ''} ${form(vm, 'wallet', html`${hidden('op', 'remove')}${hidden('methodId', m.id)}${button('Remove', { cls: 'btn btn-link' })}`)}</li>`)}</ul><h2>Add a payment method</h2>${form(vm, 'wallet', html`${hidden('op', 'add')}${newMethodFields(vm)}${field(vm, { name: 'nickname', label: 'Nickname (optional)', required: false })}${button('Save method')}`)}`); },
+  wallet(vm) { return shell(vm, 'Payment methods', html`${h1(L(vm, 'wallet', 'Payment methods'))}<ul class="wallet">${vm.methods.map(m => html`<li>${methodText(m)}${m.nickname ? html` <span class="muted">(${m.nickname})</span>` : ''} ${form(vm, 'wallet', html`${hidden('op', 'remove')}${hidden('methodId', m.id)}<button type="submit" class="btn btn-link" aria-label="Remove ${methodText(m)}">Remove</button>`)}</li>`)}</ul><h2>Add a payment method</h2>${form(vm, 'wallet', html`${hidden('op', 'add')}${newMethodFields(vm)}${field(vm, { name: 'nickname', label: 'Nickname (optional)', required: false })}${button('Save method')}`)}`); },
   cancel(vm) {
     const kind = vm.biller.kind, noun = kind === 'subscription' ? 'membership' : kind === 'utility' ? 'service' : 'account';
     if (vm.service.status !== 'active' && vm.step !== 'done') return shell(vm, 'Cancel', html`${h1(L(vm, 'cancel', 'Cancellation'))}<p>Your ${noun} ${vm.service.status === 'cancel_pending' ? `is scheduled to end on ${fmtDate(vm.service.cancelAt)}` : 'is cancelled'}.</p>${vm.service.status === 'cancel_pending' ? form(vm, 'cancel', html`${hidden('step', 'undo')}${button('Keep my ' + noun)}`) : ''}`);
@@ -68,7 +70,7 @@ const pages = {
       reason: html`${h1(kind === 'utility' ? 'Stop service' : `Cancel your ${noun}`)}${form(vm, 'cancel', html`${hidden('step', 'reason')}${select(vm, { name: 'reason', label: 'Why are you leaving?', options: [['', 'Select a reason'], ['moving', 'Moving'], ['cost', 'Too expensive'], ['not_using', 'Not using it enough'], ['switching', 'Switching providers'], ['other', 'Other']] })}${button('Continue')}`)}`,
       offer: html`${h1('Before you go')}<div class="card offer"><h2>Stay and get 50% off for 3 months</h2><p>Keep your ${noun} at half price for your next three bills.</p>${form(vm, 'cancel', html`${hidden('step', 'offer')}${button('Accept offer', { name: 'accept', value: 'yes' })} ${button('No thanks, continue cancelling', { cls: 'btn', name: 'accept', value: 'no' })}`)}</div>`,
       confirm: html`${h1('Confirm cancellation')}<p>${kind === 'subscription' ? `Your ${noun} will end on ${vm.dueText}, the end of your billing period.` : 'Choose when service should end. A final bill will be mailed to you.'}</p>${form(vm, 'cancel', html`${hidden('step', 'confirm')}${kind !== 'subscription' ? dateField(vm, { name: 'effectiveDate', label: 'Stop date' }) : ''}${checkbox(vm, { name: 'confirm', label: `Yes, cancel my ${noun}.` })}${button(`Cancel ${noun}`, { cls: 'btn btn-danger' })}`)}`,
-      done: html`${h1('Cancellation confirmed')}<p>Your ${noun} will end on <strong>${vm.service.cancelAt ? fmtDate(vm.service.cancelAt) : ''}</strong>. Confirmation number <strong>${vm.service.confirmation || ''}</strong>.</p>`,
+      done: withdrawn(vm) ? withdrawnView(vm) : html`${h1('Cancellation confirmed')}<p>Your ${noun} will end on <strong>${vm.service.cancelAt ? fmtDate(vm.service.cancelAt) : ''}</strong>. Confirmation number <strong>${vm.service.confirmation || ''}</strong>.</p>`,
       kept: html`${h1('Thanks for staying')}<p>Your discount has been applied.</p>`
     };
     return shell(vm, 'Cancel', steps[vm.step]);
@@ -127,7 +129,7 @@ const JUNK_HERO = /cookie|javascript|browser|^welcome$|^home$|^menu$|skip to|^se
 export function profileHero(vm) {
   if (vm.tier === 'dedicated') return null;
   const h = clean(String(profileOf(vm)?.website?.heroHeading || '').replace(/\b[a-z]+_[a-z_]+\b/g, ' '), 110); // drop icon-font ligature words (offline_bolt)
-  return h.length >= 4 && !JUNK_HERO.test(h) ? h : null;
+  return h.length >= 4 && !JUNK_HERO.test(h) && !HERO_JUNK.test(h) ? h : null;
 }
 
 // ---- theme color: accepted only as #rgb/#rrggbb; darkened until white text on it has >= 4.5:1 contrast ----
@@ -192,7 +194,7 @@ export function profileNav(vm, { max = 8 } = {}) {
 }
 // A compact "biller website" nav bar. Unmapped sections are plain text (they are not part of this simulation).
 export function profileNavBar(vm, { cls = 'pf-site', label } = {}) {
-  const items = profileNav(vm);
+  const items = profileNav(vm).filter(i => i.href); // unmapped real-site sections are left out of the header nav
   if (!items.length) return '';
   return html`<nav class="${cls}" aria-label="${label || `${vm.biller.brand?.shortName || vm.biller.name} website`}"><ul>${items.map(i => i.href ? html`<li><a href="${i.href}">${i.label}</a></li>` : html`<li><span class="pf-txt" title="This section of the website is not part of this simulation">${i.label}</span></li>`)}</ul></nav>`;
 }

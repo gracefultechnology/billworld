@@ -4,6 +4,7 @@
 // that reaches a page is cleaned, length-capped and HTML-escaped by the kit's html tag. Real URLs are never rendered.
 import * as kit from '../kit.mjs';
 import { loadCatalog } from '../catalog.mjs';
+import { HERO_JUNK } from './_hygiene.mjs';
 const { html, raw } = kit;
 
 // ---------- profile access ----------
@@ -51,7 +52,7 @@ export function loginTitle(vm) {
 export function heroText(vm) {
   if (vm.tier === 'dedicated') return '';
   const h = okTitle(profileOf(vm)?.website?.heroHeading, 110);
-  if (!h || h.length < 12 || h.split(' ').length < 2 || /cookie|javascript|browser/i.test(h)) return '';
+  if (!h || h.length < 12 || h.split(' ').length < 2 || /cookie|javascript|browser/i.test(h) || HERO_JUNK.test(h)) return '';
   const lower = h.toLowerCase();
   return [vm.biller.name, vm.biller.brand?.shortName, siteTitle(vm)].some(n => String(n || '').toLowerCase() === lower) ? '' : h;
 }
@@ -197,6 +198,8 @@ const SLUG_KINDS = {
   'reset-password': /reset|password|login_help|forgot/, register: /regist|enrol|signup|account_setup/,
   'payment-assistance': /payment_assistance|assist/, 'contact-us': /contact/, faq: /help_center|faq/
 };
+// Captured error-page headings are not help topics.
+const ERROR_HEADING = /^(?:browser error|error|fatal error|error message|error: not found|p[áa]gina no est[áa] disponible|page not found|404\b.*)$/i;
 export function helpEntries(vm, slug = null) {
   const re = slug ? SLUG_KINDS[slug] : null;
   if (slug && !re) return [];
@@ -204,13 +207,14 @@ export function helpEntries(vm, slug = null) {
   for (const h of arr(profileOf(vm)?.help)) {
     if (re && !re.test(String(h?.kind || ''))) continue;
     const excerpt = cleanProse(h?.excerpt, 600); if (!excerpt || excerpt.length < 40 || out.some(o => o.excerpt.includes(excerpt) || excerpt.includes(o.excerpt))) continue;
-    out.push({ title: cleanText(h.title, 90) || null, excerpt, headings: arr(h.headings).map(x => cleanText(x, 70)).filter(Boolean).slice(0, 5) });
+    out.push({ title: cleanText(h.title, 90) || null, excerpt, headings: arr(h.headings).map(x => cleanText(x, 70)).filter(x => x && !ERROR_HEADING.test(x)).slice(0, 5) });
     if (out.length >= (slug ? 2 : 4)) break;
   }
   return out;
 }
 // Real excerpts from the organization's public help pages, quoted as text (no links to the real site).
 export function helpExcerpts(vm, slug = null, { cls = '' } = {}) {
+  if (vm.article?.dossier) return ''; // a researched dossier article is the authority; captured excerpts could contradict it
   const items = helpEntries(vm, slug);
   if (!items.length) return '';
   return html`<section class="pf-src ${cls}" aria-labelledby="pf-src-h"><h2 id="pf-src-h">From the ${vm.biller.brand.shortName} website</h2>${items.map(i => html`<figure class="pf-quote">${i.title ? html`<figcaption>${i.title}</figcaption>` : ''}<blockquote><p>${i.excerpt}</p></blockquote>${i.headings.length ? html`<p class="pf-topics">Topics on that page: ${i.headings.join(' · ')}</p>` : ''}</figure>`)}<p class="pf-note">Quoted from the organization's public help pages for reference.</p></section>`;

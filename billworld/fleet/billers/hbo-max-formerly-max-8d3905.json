@@ -5,7 +5,7 @@
   "reviewedAt": "2026-10-09",
   "id": "hbo-max-formerly-max-8d3905",
   "name": "HBO Max",
-  "notes": "Researched from public help.hbomax.com articles and the public hbomax.com plan page only (no sign-in; the sign-in form sits behind a terms/cookie consent dialog that was not accepted, so the email identifier is inferred). Subscriptions billed by WarnerMedia renew automatically to a US-issued card, Apple Pay or PayPal until canceled; there is no separate AutoPay, paper bill, guest pay or payment plan. Everything is managed on the Subscription page (Change Your Plan, Payment Method, Payment History, Cancel Your Subscription). Upgrades apply immediately with the price difference charged; downgrades and billing-period changes wait for the next billing date and can be undone with Cancel Pending Plan (the engine applies plan changes immediately). Cancel at least 24 hours before the next billing date. Subscribers billed by an app store or TV/internet provider manage the plan there. No installment plans; setup-payment-plan is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public help.hbomax.com articles and the public hbomax.com plan page only (no sign-in; the sign-in form sits behind a terms/cookie consent dialog that was not accepted, so the email identifier is inferred). Subscriptions billed by WarnerMedia renew automatically to a US-issued card, Apple Pay or PayPal until canceled; there is no separate AutoPay, paper bill, guest pay or payment plan. Everything is managed on the Subscription page (Change Your Plan, Payment Method, Payment History, Cancel Your Subscription). Upgrades apply immediately with the price difference charged; downgrades and billing-period changes wait for the next billing date and can be undone with Cancel Pending Plan (the engine applies plan changes immediately). Cancel at least 24 hours before the next billing date. Subscribers billed by an app store or TV/internet provider manage the plan there. No installment plans; setup-payment-plan is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. pay-partial-card suppressed (fixer, streaming-subscriptions audit 2026-10-10): the membership is charged its plan price, which is below the generated $25.00 partial amount, so that task would be an overpayment; the service has no partial-payment option.",
   "officialDomains": [
     "hbomax.com"
   ],
@@ -325,7 +325,8 @@
       }
     ],
     "suppress": [
-      "setup-payment-plan"
+      "setup-payment-plan",
+      "pay-partial-card"
     ]
   },
   "testExpectations": [

@@ -81,10 +81,16 @@ export function instructionFor(task, { persona, mailPassword }) {
   const slug = slugOf(task);
   const access = [`You are ${persona.name} (email ${persona.email}). The browser is open on the biller's website and you are signed out`];
   if (slug === 'register-and-pay') access.push(`If you need to choose a portal password, use ${PASSWORD}`);
-  else if (!NO_PORTAL_PASSWORD.has(slug)) access.push(`Your portal username is your email address and your password is ${PASSWORD}`);
-  else if (slug === 'reset-then-pay') access.push('You do not know your current portal password');
+  // Billers that sign in by account or phone number: the intent already says which identifier to use.
+  const ownId = /You sign in with your (?:account number|mobile phone number)/.test(task.intent);
+  if (slug !== 'register-and-pay' && !NO_PORTAL_PASSWORD.has(slug)) access.push(ownId ? `Your portal password is ${PASSWORD}` : `Your portal username is your email address and your password is ${PASSWORD}`);
+  else if (slug === 'reset-then-pay') access.push(ownId ? 'You do not know your current portal password' : 'Your portal username is your email address, but you do not know your current portal password');
   access.push(`Your email inbox is at /mail on the same site (sign in with ${persona.email} and mailbox password ${mailPassword})`);
   if (slug === 'sms-mfa-pay') access.push(`Text messages to your phone ${persona.phone} are at /sms on the same site`);
+  // Facts only the customer knows that the biller's lookup or registration form asks for (tasks.mjs personaFacts).
+  const facts = new Set(task.personaFacts || []);
+  if (facts.has('phone') && slug !== 'sms-mfa-pay') access.push(`Your phone number is ${persona.phone}`);
+  if (facts.has('dob') && persona.dob) access.push(`Your date of birth is ${new Date(`${persona.dob}T12:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })} (${persona.dob})`);
   const answer = task.answer ? ANSWER_TEXT[task.answer.kind] || ANSWER_TEXT.abstain : 'When you are done, reply with a short summary of what you did.';
   return `${task.intent} ${access.join('. ')}. Use only this website and its mailbox. ${answer}`;
 }

@@ -6,7 +6,8 @@ import { contactInfo, phoneDigits } from './catalog.mjs';
 
 const sentences = text => String(text || '').split(/(?<=[.!?])\s+(?=[A-Z0-9])/).map(s => s.trim()).filter(s => s.length > 12);
 // Research notes can contain URLs and scrape fragments; help pages quote only clean sentences.
-const clean = s => !/https?:\/\/|www\.|context:|fetched \d{4}|<[a-z/]|\bper [a-z0-9.-]+\.(?:com|org|gov|net)\b/i.test(s);
+// Research provenance ("per the help article", "belongs to this brand", CMS/DMEPOS catalog remarks) is not help text either.
+const clean = s => !/https?:\/\/|www\.|context:|fetched \d{4}|<[a-z/]|\bper [a-z0-9.-]+\.(?:com|org|gov|net)\b|\bper (?:the )?(?:help|faq|support|contact|billing|official)[a-z ]{0,20}(?:article|page|site)\b|belongs to this brand|\bCMS DMEPOS\b|\bcatalog (?:record|entry)\b|\bresearch(?:ed)? (?:note|record)/i.test(s);
 const about = (notes, re) => sentences(notes).filter(clean).filter(s => re.test(s));
 
 // The navigation labels each portal template actually shows, so help steps name links that exist.

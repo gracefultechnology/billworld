@@ -211,7 +211,7 @@ export function validateDossier(d, { biller = null, templateIds = null, fileId =
       if (b.cardMinimum != null && (!isObj(b.cardMinimum) || !(typeof b.cardMinimum.percent === 'number' && b.cardMinimum.percent > 0 && b.cardMinimum.percent <= 10) || !(Number.isInteger(b.cardMinimum.floorCents) && b.cardMinimum.floorCents >= 0 && b.cardMinimum.floorCents <= 10000))) e('billing.cardMinimum', '{percent: 0-10, floorCents: 0-10000, plusInterest?: boolean}');
       if (b.plans != null) {
         if (!Array.isArray(b.plans) || b.plans.length < 2 || b.plans.length > 8) e('billing.plans', '2-8 plans');
-        else { const ids = new Set(); b.plans.forEach((p, i) => { if (!isObj(p) || !/^[a-z0-9-]{2,30}$/.test(p.id || '') || !str(p.name, 60) || !(Number.isInteger(p.cents) && p.cents >= 0 && p.cents <= 100000)) e(`billing.plans[${i}]`, '{id: slug, name, cents}'); if (ids.has(p?.id)) e(`billing.plans[${i}].id`, 'duplicate'); ids.add(p?.id); if (p?.current != null && typeof p.current !== 'boolean') e(`billing.plans[${i}].current`, 'boolean'); }); }
+        else { const ids = new Set(); b.plans.forEach((p, i) => { if (!isObj(p) || !/^[a-z0-9-]{2,30}$/.test(p.id || '') || !str(p.name, 60) || !(Number.isInteger(p.cents) && p.cents >= 0 && p.cents <= 100000)) e(`billing.plans[${i}]`, '{id: slug, name, cents}'); if (ids.has(p?.id)) e(`billing.plans[${i}].id`, 'duplicate'); ids.add(p?.id); if (p?.current != null && typeof p.current !== 'boolean') e(`billing.plans[${i}].current`, 'boolean'); if (p?.interval != null && !['month', 'year'].includes(p.interval)) e(`billing.plans[${i}].interval`, "'month' | 'year' (billing period of the price; default month)"); }); }
       }
     }
   }

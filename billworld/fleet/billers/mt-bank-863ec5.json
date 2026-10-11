@@ -1,0 +1,180 @@
+{
+  "id": "mt-bank-863ec5",
+  "version": 1,
+  "status": "dedicated",
+  "name": "M&T Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public mtb.com pages only (no sign-in). The mock bill is an M&T personal loan (unsecured, cash-secured, auto, boat or RV) per 'How to Pay your M&T Loan, Line or Credit Card': log in to Online or Mobile Banking to set up one-time or recurring transfers from M&T checking or savings, or make a one-time payment from a non-M&T checking or savings account; phone 1-877-686-8424 to a representative to set up automatic recurring payments; any branch; Automatic Recurring Payments also by authorization form (includes recurring principal-only payments). Mail: M&T Bank, P.O. Box 64679, Baltimore, MD 21264-4679; overnight: M&T Bank, 1800 Washington Blvd., 8th Floor, Box #64679, Baltimore, MD 21230; principal-only payments only by mail with the Principal-Only Payment form to M&T RLS - Principal-Only Payments, P.O. Box 69719, Baltimore, MD 21264-9719. Sign-in: User ID + password; Get Help with Your User ID sends a reminder by email or text (login help page). The pay page links hardship assistance but gives no details, so payment_assistance stays at the family default. Card payments not described (bank only, inferred).",
+  "officialDomains": [
+    "mtb.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan",
+      "title": "Pay Your Loan | M&T Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.mtb.com/log-in/help-with-user-id-password",
+      "title": "Help With User ID Password | M&T Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "M&T Bank",
+    "shortName": "M&T",
+    "primary": "#00704a",
+    "accent": "#004a31",
+    "monogram": "MT"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Automatic Recurring Payments",
+    "signIn": "Log In",
+    "username": "User ID",
+    "forgot": "Get Help with Your User ID",
+    "accountName": "Personal Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "How to Pay your M&T Loan", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Accounts", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Automatic Recurring Payments", "page": "autopay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "Payment History", "page": "history" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.mtb.com/log-in/help-with-user-id-password"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan",
+      "phone": "1-877-686-8424"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan",
+      "note": "M&T loan payments are made after logging in to Online or Mobile Banking, by calling 1-877-686-8424, at a branch or by mail.",
+      "channel": "phone",
+      "phone": "1-877-686-8424"
+    }
+  },
+  "contact": {
+    "phone": "1-877-686-8424",
+    "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan"
+  },
+  "billing": {
+    "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan",
+    "methods": ["bank"],
+    "autopay": { "methodTypes": ["bank"] }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to pay your M&T personal loan",
+      "paragraphs": [
+        "Log in to M&T Online or Mobile Banking to set up one-time or recurring transfers from your M&T checking or savings account. You can also make a one-time payment from a checking or savings account at another bank. You can also call 1-877-686-8424 or visit any M&T branch.",
+        "By regular mail, send a monthly payment or payoff to M&T Bank, P.O. Box 64679, Baltimore, MD 21264-4679. For overnight delivery, use M&T Bank, 1800 Washington Blvd., 8th Floor, Box #64679, Baltimore, MD 21230."
+      ],
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Recurring Payments",
+      "paragraphs": [
+        "Set up recurring transfers yourself in Online or Mobile Banking, call 1-877-686-8424 and a representative can set them up, or ask at a branch. You can also complete an authorization form so the right amount is paid on each due date; the form also lets you set up recurring principal-only payments."
+      ],
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan"
+    },
+    {
+      "slug": "principal-only",
+      "title": "Principal-only payments",
+      "topic": "billing",
+      "paragraphs": [
+        "One-time principal-only payments can only be made by mail. Complete the Principal-Only Payment form and mail it with your check to M&T RLS - Principal-Only Payments, P.O. Box 69719, Baltimore, MD 21264-9719."
+      ],
+      "source": "https://www.mtb.com/personal/mortgages-and-loans/pay-loan"
+    },
+    {
+      "slug": "user-id-help",
+      "title": "Help with your User ID or password",
+      "topic": "account",
+      "paragraphs": [
+        "You log in to Online Banking with your User ID and password. Forgot your User ID? On the login page choose Get Help with Your User ID and enter the primary email address or mobile number on your account to get a reminder by email or text. You can reset your password online in a few steps."
+      ],
+      "source": "https://www.mtb.com/log-in/help-with-user-id-password"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "principal-only-channel",
+        "intent": "Using M&T's loan payment help, find the only way to make a principal-only payment on an M&T personal loan. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["mail"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["mail"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "By mail, with the Principal-Only Payment form and a check." } ]
+      },
+      {
+        "slug": "mail-po-box",
+        "intent": "Using M&T's loan payment help, find the P.O. Box number for mailing a regular monthly personal loan payment. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["64679"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["64679"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "P.O. Box 64679, Baltimore, MD 21264-4679." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "User ID" },
+    { "page": "home", "contains": "Log In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "Automatic Recurring Payments"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "P.O. Box 64679" },
+    { "page": "helpArticle", "slug": "principal-only", "contains": "P.O. Box 69719" }
+  ]
+}

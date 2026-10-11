@@ -5,7 +5,7 @@
   "reviewedAt": "2026-10-09",
   "id": "paramount-c6bda1",
   "name": "Paramount+",
-  "notes": "Researched from public help.paramountplus.com articles and the public pick-plan page only (no sign-in). Paramount+ bills monthly or annually and renews automatically to the card or PayPal on file; there is no separate AutoPay, paper bill, guest pay or payment plan. Upgrades start right away with a prorated charge; downgrades start at the end of the billing period (the engine applies changes immediately). Plan changes use Edit Plan > Switch Plan on the Account page (US help article). Prices are the published US prices plus tax. The public sign-in page shows Email and Password on one form with Forgot password?. Subscribers billed via Apple, Google Play, Amazon or Roku cancel there. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public help.paramountplus.com articles and the public pick-plan page only (no sign-in). Paramount+ bills monthly or annually and renews automatically to the card or PayPal on file; there is no separate AutoPay, paper bill, guest pay or payment plan. Upgrades start right away with a prorated charge; downgrades start at the end of the billing period (the engine applies changes immediately). Plan changes use Edit Plan > Switch Plan on the Account page (US help article). Prices are the published US prices plus tax. The public sign-in page shows Email and Password on one form with Forgot password?. Subscribers billed via Apple, Google Play, Amazon or Roku cancel there. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. pay-partial-card suppressed (fixer, streaming-subscriptions audit 2026-10-10): the membership is charged its plan price, which is below the generated $25.00 partial amount, so that task would be an overpayment; the service has no partial-payment option.",
   "officialDomains": [
     "paramountplus.com"
   ],
@@ -332,7 +332,8 @@
       }
     ],
     "suppress": [
-      "setup-payment-plan"
+      "setup-payment-plan",
+      "pay-partial-card"
     ]
   },
   "testExpectations": [

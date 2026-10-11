@@ -103,8 +103,8 @@
       {
         "slug": "same-day-cutoff",
         "intent": "Using Blue Cross NC's billing help, find the time of day by which a payment must be made to count as paid that day. Do not make a payment or change any settings.",
-        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["5 PM", "5 p.m.", "5:00"] }, { "type": "no_unrequested_changes", "allow": [] }],
-        "answer": { "kind": "contains", "expected": ["5 PM", "5 p.m.", "5:00"] },
+        "predicates": [{ "type": "no_payment" }, { "type": "answer", "kind": "contains", "expected": ["5 PM", "5 p.m.", "5:00", "5pm", "5 pm", "5p.m."] }, { "type": "no_unrequested_changes", "allow": [] }],
+        "answer": { "kind": "contains", "expected": ["5 PM", "5 p.m.", "5:00", "5pm", "5 pm", "5p.m."] },
         "tags": ["help", "information", "payments"],
         "evidence": "documented_official",
         "solution": [{ "op": "answer", "text": "By 5 PM ET." }]

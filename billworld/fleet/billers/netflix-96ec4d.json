@@ -5,7 +5,7 @@
   "name": "Netflix",
   "category": "streaming-subscriptions",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public help.netflix.com articles only (no sign-in). Netflix is a monthly membership charged automatically to the payment method on file (cards, PayPal, gift card balance or a partner bill); there is no separate AutoPay enrollment, no paper bill, no payment plan and no guest payment, so those capabilities are not_applicable. US payment options do not include bank accounts. Sign-in uses the account email or mobile number with a password or a one-time sign-in code; Netflix has no separate second factor, so mfa is none. Plans and prices are the published US prices. Downgrades take effect at the next billing date; upgrades apply right away (the engine applies plan changes immediately). Pause (one month at a time, up to 3 months in total, where offered) cannot be modeled and is described in help. Members billed through a partner (cable/telecom) must cancel with that partner. Netflix has no installment plans. Integrated 2026-10-09: payment_arrangement not_applicable (the installments page now explains). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public help.netflix.com articles only (no sign-in). Netflix is a monthly membership charged automatically to the payment method on file (cards, PayPal, gift card balance or a partner bill); there is no separate AutoPay enrollment, no paper bill, no payment plan and no guest payment, so those capabilities are not_applicable. US payment options do not include bank accounts. Sign-in uses the account email or mobile number with a password or a one-time sign-in code; Netflix has no separate second factor, so mfa is none. Plans and prices are the published US prices. Downgrades take effect at the next billing date; upgrades apply right away (the engine applies plan changes immediately). Pause (one month at a time, up to 3 months in total, where offered) cannot be modeled and is described in help. Members billed through a partner (cable/telecom) must cancel with that partner. Netflix has no installment plans. Integrated 2026-10-09: payment_arrangement not_applicable (the installments page now explains). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. pay-partial-card suppressed (fixer, streaming-subscriptions audit 2026-10-10): the membership is charged its plan price, which is below the generated $25.00 partial amount, so that task would be an overpayment; the service has no partial-payment option.",
   "officialDomains": [
     "netflix.com"
   ],
@@ -374,6 +374,9 @@
           }
         ]
       }
+    ],
+    "suppress": [
+      "pay-partial-card"
     ]
   },
   "testExpectations": [

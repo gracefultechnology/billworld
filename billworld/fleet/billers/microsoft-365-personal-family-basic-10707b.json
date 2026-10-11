@@ -5,7 +5,7 @@
   "name": "Microsoft 365 (Personal / Family / Basic)",
   "category": "streaming-subscriptions",
   "reviewedAt": "2026-10-10",
-  "notes": "Researched from public support.microsoft.com articles and microsoft.com product pages only (no sign-in). Microsoft 365 consumer subscriptions are managed on the Microsoft account Services & subscriptions page. Recurring billing is the AutoPay equivalent: with it on, the subscription renews and is charged automatically; turning it off lets the subscription end at its expiration date (both online), so autopay/autopay_cancel are supported with the label 'Recurring billing'. A past-due subscription shows Pay now. Prepaid subscriptions and product keys (25 characters, renewals up to 5 years) cannot be modeled and are in help. Payment methods accepted in the US are not listed on the pages used; billing.methods ['card'] is inferred. Sign-in identifier and two-step sign-in (email, phone or Skype name, then password) are inferred from the public Microsoft account experience; mfa none because two-step verification is optional. Plans are the published US monthly prices (Basic $1.99, Personal $9.99, Family $12.99, Premium $19.99); yearly prices are in help. Monthly/yearly switch (Manage > Change > Switch) is modeled as change_plan. Subscriptions bought through Apple App Store or Google Play are canceled there.",
+  "notes": "Researched from public support.microsoft.com articles and microsoft.com product pages only (no sign-in). Microsoft 365 consumer subscriptions are managed on the Microsoft account Services & subscriptions page. Recurring billing is the AutoPay equivalent: with it on, the subscription renews and is charged automatically; turning it off lets the subscription end at its expiration date (both online), so autopay/autopay_cancel are supported with the label 'Recurring billing'. A past-due subscription shows Pay now. Prepaid subscriptions and product keys (25 characters, renewals up to 5 years) cannot be modeled and are in help. Payment methods accepted in the US are not listed on the pages used; billing.methods ['card'] is inferred. Sign-in identifier and two-step sign-in (email, phone or Skype name, then password) are inferred from the public Microsoft account experience; mfa none because two-step verification is optional. Plans are the published US monthly prices (Basic $1.99, Personal $9.99, Family $12.99, Premium $19.99); yearly prices are in help. Monthly/yearly switch (Manage > Change > Switch) is modeled as change_plan. Subscriptions bought through Apple App Store or Google Play are canceled there. pay-partial-card suppressed (fixer, streaming-subscriptions audit 2026-10-10): the membership is charged its plan price, which is below the generated $25.00 partial amount, so that task would be an overpayment; the service has no partial-payment option.",
   "officialDomains": [
     "microsoft.com"
   ],
@@ -352,6 +352,9 @@
           }
         ]
       }
+    ],
+    "suppress": [
+      "pay-partial-card"
     ]
   },
   "testExpectations": [

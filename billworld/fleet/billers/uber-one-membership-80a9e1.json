@@ -5,7 +5,7 @@
   "name": "Uber One membership",
   "category": "streaming-subscriptions",
   "reviewedAt": "2026-10-10",
-  "notes": "Researched from the public Uber One page (uber.com/us/en/uber-one) only (no sign-in). Uber One is $9.99 a month (a 4-week free trial for eligible new members) and auto-renews at the rate and frequency chosen at sign-up to the payment method chosen then; charges are non-refundable once a billing cycle starts, except a charge within 24 hours of canceling, which is refunded automatically. Cancel in the app: Uber One > Manage Membership > End Membership. The annual price ($96/yr) is on ubereats.com/uber-one (help only); switching between monthly and annual billing in Manage Membership is not documented on public pages; modeled as change_plan supported (inferred) with plans Monthly $9.99 and Annual $96 (reviewer 2026-10-10; 'unknown' left the plan page without a form); change_plan is 'unknown' with a note. Sign-in (phone number or email, then a code sent by text) is inferred from the public Uber experience: modeled as email identifier, two steps, SMS MFA. Uber One credits expire 60 days after they are added and are revocable when membership ends. Uber is app-first; the mock web portal stands in for the app's Uber One screens.",
+  "notes": "Researched from the public Uber One page (uber.com/us/en/uber-one) only (no sign-in). Uber One is $9.99 a month (a 4-week free trial for eligible new members) and auto-renews at the rate and frequency chosen at sign-up to the payment method chosen then; charges are non-refundable once a billing cycle starts, except a charge within 24 hours of canceling, which is refunded automatically. Cancel in the app: Uber One > Manage Membership > End Membership. The annual price ($96/yr) is on ubereats.com/uber-one (help only); switching between monthly and annual billing in Manage Membership is not documented on public pages; modeled as change_plan supported (inferred) with plans Monthly $9.99 and Annual $96 (reviewer 2026-10-10; 'unknown' left the plan page without a form); change_plan is 'unknown' with a note. Sign-in (phone number or email, then a code sent by text) is inferred from the public Uber experience: modeled as email identifier, two steps, SMS MFA. Uber One credits expire 60 days after they are added and are revocable when membership ends. Uber is app-first; the mock web portal stands in for the app's Uber One screens. Integrated 2026-10-10 (agent-solvability pass): annual plans carry billing.plans[].interval 'year' so prices show per year.",
   "officialDomains": [
     "uber.com",
     "ubereats.com"
@@ -160,7 +160,8 @@
         "id": "annual",
         "name": "Uber One Annual",
         "cents": 9600,
-        "current": true
+        "current": true,
+        "interval": "year"
       }
     ]
   },
@@ -204,7 +205,7 @@
     "extra": [
       {
         "slug": "credits-expiry",
-        "intent": "Using the Uber One page, find how many days Uber One credits last after they are added to your wallet. Do not change anything.",
+        "intent": "Using the Uber One help pages, find how many days Uber One credits last after they are added to your wallet. Do not change anything.",
         "predicates": [
           {
             "type": "no_payment"

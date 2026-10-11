@@ -16,6 +16,7 @@ import { createConnector, connectorToken, searchMessages } from './mail-connecto
 import { renderSms, smsCss, normalizeScenario, installSmsMfa, smsMfaFor, maskPhone } from './sms.mjs';
 import { MockGoogle, createGoogleRp, googleSupport } from './google.mjs';
 import { socialButtons } from './kit.mjs';
+import { lateNote as lateNoteHtml } from './templates/_hygiene.mjs';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
 
@@ -54,7 +55,7 @@ export const templateFor = biller => {
   return derived.get(key);
 };
 // ---------- dedicated tier: view-model pieces from the dossier ----------
-const CAP_TITLE = { cancel_service: 'Stopping or cancelling service', autopay: 'Automatic payments', autopay_cancel: 'Turning off automatic payments', paperless: 'Paperless billing', guest_pay: 'Paying without signing in', scheduled_payment: 'Future-dated payments', payment_arrangement: 'Payment arrangements', registration: 'Online registration', pay_online: 'Online payments', view_bill: 'Viewing your bill', statements: 'Statements', password_reset: 'Password reset', payment_assistance: 'Payment assistance', pay_by_phone: 'Paying by phone', pay_by_mail: 'Paying by mail', google_login: 'Sign in with Google', online_account: 'Online account' };
+const CAP_TITLE = { cancel_service: 'Stopping or cancelling service', autopay: 'Automatic payments', autopay_cancel: 'Turning off automatic payments', paperless: 'Paperless billing', guest_pay: 'Paying without signing in', scheduled_payment: 'Future-dated payments', payment_arrangement: 'Payment arrangements', registration: 'Online registration', pay_online: 'Online payments', view_bill: 'Viewing your bill', statements: 'Statements', password_reset: 'Password reset', payment_assistance: 'Payment assistance', pay_by_phone: 'Paying by phone', pay_by_mail: 'Paying by mail', google_login: 'Sign in with Google', online_account: 'Online account', change_plan: 'Changing your plan' };
 // Which pages show which capability notes (plus home, dashboard and help, which show all of them).
 const NOTE_PAGES = { cancel: ['cancel_service'], autopay: ['autopay', 'autopay_cancel'], paperless: ['paperless'], guest: ['guest_pay'], pay: ['scheduled_payment', 'pay_online'], arrangement: ['payment_arrangement'], register: ['registration'], plan: ['change_plan'] };
 export function capabilityNotesFor(biller) {
@@ -78,9 +79,13 @@ function withRequiredFields(out, vm) {
   const extra = want[0].filter(f => !form.includes(`name="${f}"`)).map(f => String(kitField(vm, { name: f, label: kitL(vm, f, want[1][f][0]), inputmode: want[1][f][1] || undefined, type: f === 'email' ? 'email' : f === 'phone' ? 'tel' : 'text' }))).join('');
   out = extra ? out.slice(0, pos) + extra + out.slice(pos) : out;
   // guestLookupExact: the real lookup asks for exactly these fields, so the family's other lookup fields go.
-  if (vm.page === 'guest' && vm.auth.guestLookupExact) {
-    const keep = new Set(want[0]); const f0 = out.indexOf(`action="${esc(vm.url(vm.page))}`); const f1 = out.indexOf('</form>', f0);
-    const formHtml = out.slice(f0, f1).replace(/<div\b[^>]*>\s*<label\b[^>]*>(?:(?!<\/label>)[\s\S])*<\/label>\s*<input\b[^>]*\bname="(\w+)"[^>]*>(?:\s*<(?:small|p)\b[^>]*>[^<]*<\/(?:small|p)>)?\s*<\/div>/g, (m, n) => GUEST_FIELD[n] && !keep.has(n) ? '' : m);
+  // Registration: the dossier lists the identity fields the real sign-up asks for; the family's others go
+  // (account number, email and password always stay).
+  const drop = vm.page === 'guest' && vm.auth.guestLookupExact ? n => GUEST_FIELD[n] && !want[0].includes(n)
+    : vm.page === 'register' ? n => ['lastName', 'zip', 'phone'].includes(n) && !want[0].includes(n) : null;
+  if (drop) {
+    const f0 = out.indexOf(`action="${esc(vm.url(vm.page))}`); const f1 = out.indexOf('</form>', f0);
+    const formHtml = out.slice(f0, f1).replace(/<div\b[^>]*>\s*<label\b[^>]*>(?:(?!<\/label>)[\s\S])*<\/label>\s*<input\b[^>]*\bname="(\w+)"[^>]*>(?:\s*<(?:small|p)\b[^>]*>[^<]*<\/(?:small|p)>)?\s*<\/div>/g, (m, n) => drop(n) ? '' : m);
     out = out.slice(0, f0) + formHtml + out.slice(f1);
   }
   return out;
@@ -93,7 +98,7 @@ function withAutopayOptions(out, vm) {
     out = out.replace(new RegExp(`<label[^>]*>(?:(?!</label>)[\\s\\S])*?name="policy" value="${v}"(?:(?!</label>)[\\s\\S])*?</label>`, 'g'), '').replace(new RegExp(`<option value="${v}"[^>]*>[^<]*</option>`, 'g'), '');
   }
   // AutoPay drafted N days after the bill date: the family's "on each due date" wording follows the dossier.
-  if (vm.billing.autopayDaysAfterBill != null) out = out.replace(/\bon (?:each|every|your)(?: invoice| bill| payment)? due date\b/gi, vm.billing.autopayTiming);
+  if (vm.billing.autopayDaysAfterBill != null || (vm.billing.autopayLeadDays && !Array.isArray(days))) out = out.replace(/\bon (?:each|every|your|its|the)(?: invoice| bill| payment| statement)? due date\b/gi, vm.billing.autopayTiming);
   if (days === 'due_date' || Array.isArray(days)) out = out.replace(/(<select[^>]*name="day"[^>]*>)([\s\S]*?)(<\/select>)/g, (m, a, body, c) => a + body.replace(/<option value="(\d+)"[^>]*>[^<]*<\/option>/g, (o, n) => days === 'due_date' || !days.includes(Number(n)) ? '' : o) + c);
   return out;
 }
@@ -111,7 +116,8 @@ function withCapabilityNotes(out, vm) {
 }
 // A dossier that makes a two-step family sign in on one page: the family's first step has no password field, so add it.
 function withLoginPassword(out, vm) {
-  if (typeof out !== 'string' || vm.page !== 'login' || vm.flow?.loginSteps !== 1 || !vm.auth) return out;
+  // Also the signed-out home page's sign-in widget, which posts to the same login handler.
+  if (typeof out !== 'string' || !(vm.page === 'login' || (vm.page === 'home' && !vm.authenticated)) || vm.flow?.loginSteps !== 1 || !vm.auth) return out;
   const at = out.indexOf(`action="${esc(vm.url('login'))}`); if (at < 0) return out;
   const end = out.indexOf('</form>', at); const form = out.slice(at, end);
   if (form.includes('name="password"')) return out;
@@ -183,7 +189,14 @@ function withLoginStep2Action(out, vm) {
   if (out.includes(`action="${step2}`)) return out;
   return out.replace(new RegExp(`action="${step1.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=["?])`, 'g'), `action="${step2}`);
 }
-const decorateBase = (out, vm) => withCapabilityNotes(withoutUnsupportedForms(withAutopayOptions(withRequiredFields(withLoginPassword(withLoginStep2Action(out, vm), vm), vm), vm), vm), vm);
+// A scheduled payment dated after the due date: the review step says so (templates that render it themselves keep theirs).
+function withLateNote(out, vm) {
+  if (typeof out !== 'string' || !vm.draft?.payOn || out.includes('late-note') || vm.page !== vm.flow?.paySteps?.at(-1)) return out;
+  const note = String(lateNoteHtml(vm, vm.draft)).replace(/^<br>/, ''); if (!note) return out;
+  const block = `<p class="late-note-wrap" role="note">${note}</p>`;
+  const h = out.indexOf('</h1>'); return h >= 0 ? out.slice(0, h + 5) + block + out.slice(h + 5) : out;
+}
+const decorateBase = (out, vm) => withLateNote(withCapabilityNotes(withoutUnsupportedForms(withAutopayOptions(withRequiredFields(withLoginPassword(withLoginStep2Action(out, vm), vm), vm), vm), vm), vm), vm);
 
 // Malformed cookies (possibly set by another app on the same host) are skipped, never fatal.
 const safeDecode = v => { try { return decodeURIComponent(v); } catch { return null; } };
@@ -249,7 +262,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
     const vm = {
       page, template: t.id, revision: FLEET_REVISION, nonce: randomBytes(9).toString('base64url'), csrf: csrfFor(ep, session ? sid : null), hasJs: !!t.js,
       biller: { id: biller.id, name: biller.brand.displayName || biller.entry.name, brand: biller.brand, kind: biller.kind, billType: biller.entry.bill_type, category: biller.category, family: biller.family, capabilities: biller.capabilities, fees: biller.fees,
-        phone: biller.contact ? biller.contact.phone : biller.entry.phone_customer_service, payPhone: biller.contact ? biller.contact.payPhone : biller.entry.phone_pay_by_phone, mailAddress: biller.contact ? biller.contact.mailAddress : biller.entry.mail_payment_address, serviceArea: biller.contact ? biller.contact.serviceArea : biller.entry.service_area_detail || (biller.entry.service_area || []).join(', '), signal: biller.signal, entityType: biller.entry.entity_type, parent: biller.entry.parent_company, notes: biller.entry.notes, seniorPrograms: biller.entry.senior_programs, app: biller.entry.app, processor: biller.entry.payment_processor, profile: profileOf(biller) },
+        phone: biller.contact ? biller.contact.phone : biller.entry.phone_customer_service, payPhone: biller.dossier && ['unsupported', 'not_applicable'].includes(biller.capabilities.pay_by_phone?.support) ? null : biller.contact ? biller.contact.payPhone : biller.entry.phone_pay_by_phone, mailAddress: biller.contact ? biller.contact.mailAddress : biller.entry.mail_payment_address, serviceArea: biller.contact ? biller.contact.serviceArea : biller.entry.service_area_detail || (biller.entry.service_area || []).join(', '), signal: biller.signal, entityType: biller.entry.entity_type, parent: biller.entry.parent_company, notes: biller.entry.notes, seniorPrograms: biller.entry.senior_programs, app: biller.entry.app, processor: biller.entry.payment_processor, profile: profileOf(biller) },
       // The sign-out link carries the CSRF token so a cross-site GET cannot sign the user out.
       url: (pg, p = {}, q = null) => urlFor(t, biller.id, pg, p, pg === 'logout' && session ? { ...(q || {}), _csrf: csrfFor(ep, sid) } : q), has: pg => !!t.routes[pg], asset: name => `${base(biller.id)}/_assets/${name}`, mailUrl: '/mail', directoryUrl: '/',
       params, query, values, error, notice, today: isoDate(ep.clock), now: ep.clock, nowText: fmtDate(ep.clock), help, flow: t.flow,
@@ -334,7 +347,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
     switch (page) {
       case 'login': case 'loginPassword': {
         // Two-step login keeps the pending user ID in a short-lived HttpOnly cookie, not in the URL.
-        if (flow.loginSteps === 2 && page === 'login') { if (!input.username) throw new Fault('Enter your user ID or email.', 400, 'missing'); return { to: go('loginPassword', {}, input.next ? { next: input.next } : null), cookies: [pendingUser(String(input.username).slice(0, 200))] }; }
+        if (flow.loginSteps === 2 && page === 'login' && !String(input.password ?? '').trim()) { if (!input.username) throw new Fault('Enter your user ID or email.', 400, 'missing'); return { to: go('loginPassword', {}, input.next ? { next: input.next } : null), cookies: [pendingUser(String(input.username).slice(0, 200))] }; }
         const r = world.login(ep, id, input);
         const next = safeNext(input.next, id) || go(flow.afterLogin);
         return { to: r.mfa ? go('mfa', {}, { next }) : next, cookies: [sessionCookie(r.sid), ...(flow.loginSteps === 2 ? [pendingUser('', 0)] : [])] };

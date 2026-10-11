@@ -1,0 +1,153 @@
+{
+  "id": "huntington-national-bank-aa26c1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Huntington National Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public huntington.com pages only (no sign-in). huntington.com refuses curl/WebFetch (Akamai 403), so pages were read with headless Chrome (public pages only, 45 s cap). The mock bill is a Huntington auto loan. Customer Service FAQ: from another Huntington account use My Accounts - Overview and Pay Now; from an account at another bank use Transfers - Transfer Funds and Make a Payment From an Account at Another Bank; or log in to Huntington.com/the app, select the auto loan and choose make a payment; mail to Huntington Installment Loans, P.O. Box 182519, Columbus, OH 43218; or use huntington.com/payment, which opens the Speedpay (ACI Worldwide) guest page for Huntington National Bank: account number + ZIP code, checking account only (the form was only viewed, never submitted; any Speedpay fee is not published there, so none is modelled). Questions: 1-800-480-BANK (2265). Auto loan AutoPay, paperless and hardship options are not described on these public pages, so they stay at the family defaults (Bill Pay recurring payments on the FAQ are for third-party payees). Sign-in field labels are inferred (username + password).",
+  "officialDomains": [
+    "huntington.com",
+    "speedpay.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.huntington.com/customer-service",
+      "title": "Customer Service | Huntington Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://internet.speedpay.com/huntington/#/login/guest",
+      "title": "Huntington Bank - Login as guest",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.huntington.com/Personal/auto-loans-overview/auto-loans",
+      "title": "Auto Loan Refinancing Made Simple | Huntington Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Huntington Bank",
+    "shortName": "Huntington",
+    "primary": "#00703c",
+    "accent": "#004a28",
+    "monogram": "H"
+  },
+  "labels": {
+    "payBill": "Pay Now",
+    "signIn": "Log In",
+    "guestPay": "Make a Payment",
+    "dashboard": "My Accounts",
+    "accountName": "Auto Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Make a Payment", "page": "guest" },
+      { "label": "How do I make an auto loan payment?", "helpSlug": "pay-your-bill" },
+      { "label": "Customer Service", "page": "help" }
+    ],
+    "account": [
+      { "label": "My Accounts", "page": "dashboard" },
+      { "label": "Pay Now", "page": "pay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "Payment History", "page": "history" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "guestLookupFields": ["accountNumber", "zip"],
+    "guestLookupExact": true,
+    "evidence": "inferred",
+    "source": "https://www.huntington.com/customer-service"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.huntington.com/customer-service"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "observed_public",
+      "source": "https://internet.speedpay.com/huntington/#/login/guest",
+      "note": "Pay from a checking account with your loan account number and ZIP code; no Online Banking login needed."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.huntington.com/customer-service"
+    }
+  },
+  "contact": {
+    "phone": "1-800-480-2265",
+    "source": "https://www.huntington.com/customer-service"
+  },
+  "billing": {
+    "source": "https://www.huntington.com/customer-service",
+    "methods": ["bank"],
+    "guestMethods": ["bank"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How do I make an auto loan payment?",
+      "paragraphs": [
+        "Log in at Huntington.com or in the Huntington mobile app, select your auto loan and choose make a payment. To pay from another Huntington account, go to My Accounts - Overview and select Pay Now next to the loan. To pay from an account at another bank, go to Transfers - Transfer Funds and choose Make a Payment From an Account at Another Bank.",
+        "Without logging in, use Make a Payment: enter your loan account number and ZIP code and pay from a checking account.",
+        "By mail, send your payment to Huntington Installment Loans, P.O. Box 182519, Columbus, OH 43218. You can also pay at a Huntington branch."
+      ],
+      "source": "https://www.huntington.com/customer-service"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Huntington",
+      "paragraphs": [
+        "Call 1-800-480-BANK (2265) with questions about your loan or accounts, or visit your local Huntington branch."
+      ],
+      "source": "https://www.huntington.com/customer-service",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "external-account-route",
+        "intent": "Using Huntington's customer service help, find which page and option you use in Online Banking to pay your auto loan from an account at another bank. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["Another Bank"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["Another Bank"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Transfers - Transfer Funds, then Make a Payment From an Account at Another Bank." } ]
+      },
+      {
+        "slug": "mail-po-box",
+        "intent": "Using Huntington's help, find the P.O. Box for mailing an auto loan payment. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["182519"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["182519"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Huntington Installment Loans, P.O. Box 182519, Columbus, OH 43218." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "Log In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Pay Now", "Auto Loan"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "P.O. Box 182519" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "1-800-480-BANK" }
+  ]
+}

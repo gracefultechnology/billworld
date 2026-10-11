@@ -23,7 +23,8 @@ const STATES = {
   LA: ['Baton Rouge', 700, 714], ME: ['Augusta', 39, 49], MD: ['Annapolis', 206, 219], MA: ['Boston', 10, 27], MI: ['Lansing', 480, 499], MN: ['Saint Paul', 550, 567], MS: ['Jackson', 386, 397], MO: ['Jefferson City', 630, 658], MT: ['Helena', 590, 599],
   NE: ['Lincoln', 680, 693], NV: ['Carson City', 889, 898], NH: ['Concord', 30, 38], NJ: ['Trenton', 70, 89], NM: ['Santa Fe', 870, 884], NY: ['Albany', 100, 149], NC: ['Raleigh', 270, 289], ND: ['Bismarck', 580, 588], OH: ['Columbus', 430, 458],
   OK: ['Oklahoma City', 730, 749], OR: ['Salem', 970, 979], PA: ['Harrisburg', 150, 196], RI: ['Providence', 28, 29], SC: ['Columbia', 290, 299], SD: ['Pierre', 570, 577], TN: ['Nashville', 370, 385], TX: ['Austin', 750, 799], UT: ['Salt Lake City', 840, 847],
-  VT: ['Montpelier', 50, 59], VA: ['Richmond', 220, 246], WA: ['Olympia', 980, 994], WV: ['Charleston', 247, 268], WI: ['Madison', 530, 549], WY: ['Cheyenne', 820, 831], PR: ['San Juan', 6, 9]
+  VT: ['Montpelier', 50, 59], VA: ['Richmond', 220, 246], WA: ['Olympia', 980, 994], WV: ['Charleston', 247, 268], WI: ['Madison', 530, 549], WY: ['Cheyenne', 820, 831], PR: ['San Juan', 6, 9],
+  GU: ['Hagåtña', 969, 969], VI: ['Charlotte Amalie', 8, 8], AS: ['Pago Pago', 967, 967], MP: ['Saipan', 969, 969]
 };
 
 export function rng(seedText) {
@@ -88,6 +89,11 @@ export function autopayPoliciesFor(b) { return dossier(b)?.billing?.autopay?.pol
 export function paymentLimits(b) { const bl = dossier(b)?.billing || {}; return { minCents: bl.minPaymentCents ?? 100, maxCents: bl.maxPaymentCents ?? MAX_PAYMENT_CENTS, maxDaysAhead: bl.scheduled?.maxDaysAhead ?? 365, maxPending: bl.scheduled?.maxPending ?? null, fullBalanceOnly: !!bl.fullBalanceOnly, maxPaymentBalance: !!bl.maxPaymentBalance }; }
 export const lockoutAttempts = b => dossier(b)?.auth?.lockoutAttempts ?? 5;
 // mfa scenario 'default' (or true) means "the biller's own second factor" from its dossier (email unless it texts).
+// The bill notice names the account number with the biller's own word for it (dossier labels.accountNumber), keeping
+// "account number" in the line so either label is recognizable.
+export const noticeLabel = b => { const l = String(b?.dossier?.labels?.accountNumber || '').trim(); if (!l || l.length > 40 || /^(?:account (?:number|#|no\.?)|acct\.?)$/i.test(l) || /guarantor|statement/i.test(l)) return 'Account number'; return /account number/i.test(l) ? l : `${l} (account number)`; };
+// Reads the account number back from a bill notice whatever the biller calls it.
+export const noticeAccountNumber = text => String(text || '').match(/^[^\n:]*account number[^\n:]*: *(\S+)/im)?.[1] || null;
 const mfaDefault = b => { const m = dossier(b)?.auth?.mfa; return m === 'sms' ? 'sms' : m === 'none' ? 'none' : 'email'; };
 // SMS short code a biller texts from (same value sms.mjs shows on the /sms phone page).
 export const smsShortCode = billerId => String(20000 + (parseInt(createHash('sha256').update(String(billerId)).digest('hex').slice(0, 8), 16) % 79999));
@@ -159,6 +165,9 @@ export class FleetWorld {
     const area = (b.entry.service_area || []).find(s => STATES[s]);
     const state = area || (hq && STATES[hq[2]] ? hq[2] : null) || 'OH';
     if (hq && hq[2] === state) return { city: hq[1].trim(), state, zip: hq[3] };
+    // A municipal service area that names one city ("City of Philadelphia"): the customer lives in that city.
+    const town = String(b.contact?.serviceArea || '').match(/^(?:the )?(?:City|Town|Village|Borough) of ([A-Z][A-Za-z.' -]{1,40})$/);
+    if (town && STATES[state]) { const [, lo, hi] = STATES[state]; return { city: town[1].trim(), state, zip: `${String(between(r, lo, hi)).padStart(3, '0')}${digits(r, 2)}` }; }
     const [city, lo, hi] = STATES[state];
     return { city, state, zip: `${String(between(r, lo, hi)).padStart(3, '0')}${digits(r, 2)}` };
   }
@@ -221,6 +230,9 @@ export class FleetWorld {
       acct.payments.push({ id: `pay-h${hash(`${billerId}:${i}:${ep.seed}`, 6)}`, confirmation: `${auto ? 'AP' : b.brand.monogram}${digits(r, 9)}`, idempotencyKey: null, amountCents: cents, feeCents: 0, methodId: chk.id, methodType: chk.type, methodLast4: chk.last4, methodLabel: chk.label, source: auto ? 'autopay' : 'one_time', createdAt: at, appliedAt: at, postedAt: at + 2 * DAY, payOn: null, status: 'posted', amountKey: 'due', allocations: [{ invoiceId: inv.id, cents }], seeded: true, history: true });
     });
     if (sc.scheduledPayment) acct.payments.push({ id: `pay-${hash(`${billerId}:sched:${ep.seed}`, 6)}`, confirmation: `SP${digits(r, 9)}`, idempotencyKey: null, amountCents: amount, feeCents: 0, methodId: chk.id, methodType: chk.type, methodLast4: chk.last4, methodLabel: chk.label, source: 'one_time', createdAt: ep.clock - 2 * DAY, payOn: isoDate(ep.clock + 5 * DAY), wasScheduled: true, status: 'scheduled', amountKey: 'due', seeded: true });
+    // No online account yet (register / guest tasks): the earlier payments were made offline, and the new online
+    // account starts with an empty wallet.
+    if (sc.registered === false && !sc.autopay && !sc.scheduledPayment) acct.methods = [];
     if (planList) acct.service.plan = plan;
     if (sc.cancelPending && b.capabilities.cancel_service.support === 'supported') Object.assign(acct.service, { status: 'cancel_pending', cancelAt: ep.clock + 12 * DAY, reason: 'moving', requestedAt: ep.clock - 2 * DAY, confirmation: `CX${digits(r, 8)}` });
     if (kind === 'card') {
@@ -244,8 +256,8 @@ export class FleetWorld {
   }
   billNotice(ep, b, acct) {
     const inv = this.currentInvoice(acct);
-    const ids = [`Account number: ${acct.accountNumber}`, acct.statementId && `Statement ID: ${acct.statementId}`, acct.guarantorId && `Guarantor ID: ${acct.guarantorId}`, acct.parcelId && `Parcel number: ${acct.parcelId}`, acct.plate && `License plate: ${acct.plate}`, acct.policyNumber && `Policy number: ${acct.policyNumber}`, !acct.statementId && `Bill number: ${inv.number}`, `Service ZIP code: ${acct.zip}`].filter(Boolean);
-    this.mail(ep, b.id, { subject: `Your ${b.brand.shortName} bill is ready`, text: `Hi ${ep.persona.first},\n\nYour statement dated ${fmtDate(inv.issuedAt)} is ready.\n\n${ids.join('\n')}\nAmount due: ${money(Math.max(0, this.balance(acct)))}\nDue date: ${fmtDate(inv.dueAt)}\n\nPay online: {{link:home}}\nKeep this notice: you need your account number to register or to pay without signing in.`, links: [{ key: 'home', page: 'home', query: null }] });
+    const ids = [`${noticeLabel(b)}: ${acct.accountNumber}`, acct.statementId && `Statement ID: ${acct.statementId}`, acct.guarantorId && `Guarantor ID: ${acct.guarantorId}`, acct.parcelId && `Parcel number: ${acct.parcelId}`, acct.plate && `License plate: ${acct.plate}`, acct.policyNumber && `Policy number: ${acct.policyNumber}`, !acct.statementId && `${/bill number/i.test(noticeLabel(b)) ? 'Invoice number' : 'Bill number'}: ${inv.number}`, `Service ZIP code: ${acct.zip}`].filter(Boolean);
+    this.mail(ep, b.id, { subject: `Your ${b.brand.shortName} bill is ready`, text: `Hi ${ep.persona.first},\n\nYour statement dated ${fmtDate(inv.issuedAt)} is ready.\n\n${ids.join('\n')}\nAmount due: ${money(Math.max(0, this.balance(acct)))}\nDue date: ${fmtDate(inv.dueAt)}\n\nPay online: {{link:home}}\nKeep this notice: you need your ${noticeLabel(b).toLowerCase()} ${b.capabilities.guest_pay?.support === 'supported' ? 'to register or to pay without signing in' : 'to register for online access'}.`, links: [{ key: 'home', page: 'home', query: null }] });
   }
   balance(acct) { return acct.invoices.reduce((a, i) => a + i.balanceCents, 0) - (acct.creditCents || 0); }
   currentInvoice(acct) { return acct.invoices[acct.invoices.length - 1]; }
@@ -306,6 +318,7 @@ export class FleetWorld {
     const acct = this.account(ep, billerId);
     this.releaseLock(ep, acct);
     if (acct.lockedUntil > ep.clock) throw new Fault('Your account is temporarily locked after too many attempts. Reset your password or try again later.', 423, 'locked');
+    if (!filled(password)) throw new Fault('Enter your password.', 400, 'missing'); // a missing field is not a failed attempt
     const idOk = this.identifierMatches(b, ep, acct, username);
     if (!acct.registered || !idOk || password !== acct.password) {
       this.countFailure(ep, acct);
@@ -529,7 +542,9 @@ export class FleetWorld {
       const lim = paymentLimits(b);
       if (cents < lim.minCents) throw new Fault(`The minimum payment is ${money(lim.minCents)}.`, 400, 'min_amount');
       if (lim.fullBalanceOnly && this.balance(acct) > 0 && cents !== this.balance(acct)) throw new Fault(`Online payments must be for the full balance of ${money(this.balance(acct))}.`, 400, 'full_balance_only');
-      if (lim.maxPaymentBalance && cents > Math.max(0, this.balance(acct))) throw new Fault(`Online payments cannot exceed your current balance of ${money(Math.max(0, this.balance(acct)))}.`, 400, 'amount_over_balance');
+      // Cards: the cap is the current balance the site offers (cardFigures().current), not the statement balance.
+      const capCents = Math.max(0, acct.kind === 'card' ? this.cardFigures(acct).current : this.balance(acct));
+      if (lim.maxPaymentBalance && cents > capCents) throw new Fault(`Online payments cannot exceed your current balance of ${money(capCents)}.`, 400, 'amount_over_balance');
       if (cents > lim.maxCents || (acct.kind !== 'card' && acct.kind !== 'toll' && cents > Math.max(this.balance(acct), 0) + 500000)) throw new Fault('That amount exceeds the maximum allowed for a single payment.', 400, 'max_amount');
       d.amountCents = cents; d.amountKey = opt.key;
       d.amountMatches = opts.filter(o => o.cents === cents).map(o => o.key); // "Other" typed to exactly the amount due still counts as the amount due
@@ -682,7 +697,7 @@ export class FleetWorld {
     this.mail(ep, billerId, { subject: 'Your plan change is confirmed', text: `Your plan changed from ${plans.find(p => p[0] === from)?.[1] || from} to ${plan[1]}. The new price applies from your next billing date.` });
     this.persist(ep); return acct.service;
   }
-  plans(acct) { return (plansFor(this.catalog.billers.get(acct.billerId)) || []).map(([id, name, cents]) => ({ id, name, cents, current: acct.service.plan === id })); }
+  plans(acct) { const d = dossier(this.catalog.billers.get(acct.billerId))?.billing?.plans || []; return (plansFor(this.catalog.billers.get(acct.billerId)) || []).map(([id, name, cents]) => ({ id, name, cents, interval: d.find(p => p.id === id)?.interval || 'month', current: acct.service.plan === id })); }
   // Cancellation is a multi-step decision: reason → retention offer (subscription/telecom) → confirm. Steps cannot be skipped.
   cancelService(ep, billerId, sid, input) {
     this.guard(ep); const acct = this.requireSession(ep, billerId, sid); const b = this.biller(billerId); const svc = acct.service;
@@ -872,7 +887,7 @@ export class FleetWorld {
         case 'service': { // an account the agent never opened still has its starting service: active, on the default plan
           const svc = acct ? acct.service : { status: 'active', plan: this.catalog.billers.get(pr.billerId) ? defaultPlan(this.catalog.billers.get(pr.billerId)) : null };
           pass = [].concat(pr.status).includes(svc.status) && (!pr.plan || svc.plan === pr.plan); detail = acct ? svc.status : 'untouched (active)'; break; }
-        case 'retention_accepted': pass = !!acct?.service.retentionAccepted === pr.value; break;
+        case 'retention_accepted': pass = !!acct?.service.retentionAccepted === pr.value; detail = `expected ${pr.value ? 'a retention offer accepted' : 'no retention offer accepted'}; ${acct?.service.retentionAccepted ? 'an offer was accepted' : 'none accepted'}`; break;
         case 'scheduled_cancelled': pass = !!acct && acct.payments.some(p => p.status === 'cancelled') && !acct.payments.some(p => p.status === 'scheduled'); break;
         case 'password_changed': pass = ev.some(e => e.type === 'password_reset') && (!pr.password || acct.password === pr.password); break;
         case 'logged_in': pass = ev.some(e => e.type === 'login'); break;
@@ -940,7 +955,7 @@ export function gradeAnswer(pr, actual, acct, agentPayments = []) {
       const pass = confs.some(c => alnum(text).includes(c)); return { pass, detail: pass ? 'confirmation found' : `expected one of ${confs.join(', ') || '(no payment)'}` };
     }
     // Dossier tasks: the answer must contain one of the expected strings (e.g. a fee or rate stated on the site).
-    case 'contains': { const norm = v => String(v).toLowerCase().replace(/\s+/g, ' '); const exp = [].concat(pr.expected || []); const hit = exp.find(x => norm(text).includes(norm(x))); return { pass: !!hit, detail: hit ? `found "${hit}"` : `expected one of ${exp.map(x => `"${x}"`).join(', ')}` }; }
+    case 'contains': { const norm = v => String(v).toLowerCase().replace(/[’']/g, '').replace(/\(\s*\d+\s*\)/g, ' ').replace(/(\d)\s*(a|p)\.?\s*m\b\.?/g, '$1$2m').replace(/[.,;:!?]+(?=\s|$)/g, '').replace(/\s+/g, ' ').trim(); const exp = [].concat(pr.expected || []); const hit = exp.find(x => norm(text).includes(norm(x))); return { pass: !!hit, detail: hit ? `found "${hit}"` : `expected one of ${exp.map(x => `"${x}"`).join(', ')}` }; }
     case 'abstain': { const pass = ABSTAIN.test(text) && !agentPayments.length; return { pass, detail: pass ? 'abstained' : 'expected an explicit statement that it is not possible' }; }
     case 'phone': case 'contact': {
       const exp = pr.expected && typeof pr.expected === 'object' && !Array.isArray(pr.expected) ? pr.expected : { phones: [].concat(pr.expected || []) };
@@ -948,7 +963,8 @@ export function gradeAnswer(pr, actual, acct, agentPayments = []) {
       const got = phoneDigits(text);
       if (phones.length && got.some(d => phones.includes(d))) return new Set(got).size <= 2 || phones.includes(got[0]) ? { pass: true, detail: 'phone matched' } : { pass: false, detail: `answer lists ${new Set(got).size} phone numbers; report the one that applies` };
       if (exp.address) { const zip = exp.address.match(/\b\d{5}\b/)?.[0]; const num = exp.address.match(/\b(?:box\s*)?(\d{1,6})\b/i)?.[1]; const t = text.replace(/,/g, ' '); if (zip && t.includes(zip) && (!num || new RegExp(`\\b${num}\\b`).test(t))) return { pass: true, detail: 'mailing address matched' }; }
-      if (exp.none && !got.length && ABSTAIN.test(text)) return { pass: true, detail: 'abstained correctly' };
+      // Pointing to the biller's own published customer-service line is not an invented route.
+      if (exp.none && ABSTAIN.test(text) && got.every(d => (exp.okPhones || []).includes(d))) return { pass: true, detail: got.length ? 'abstained correctly (named the published customer-service line)' : 'abstained correctly' };
       return { pass: false, detail: `expected ${[...phones.map(p => `${p.slice(0, 3)}-${p.slice(3, 6)}-${p.slice(6)}`), exp.address, exp.none && 'an abstention'].filter(Boolean).join(' or ')}` };
     }
     default: {

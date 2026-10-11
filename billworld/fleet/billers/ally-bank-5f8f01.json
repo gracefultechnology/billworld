@@ -1,0 +1,226 @@
+{
+  "id": "ally-bank-5f8f01",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Ally Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public ally.com help pages only (no sign-in). Ally Bank's consumer bill is the Ally auto loan (Ally Bank is the lender; the loans-category record ally-auto-ally-financial-5ac266 has its own dossier for the same servicing pages, re-checked here on 2026-10-10). Online payments from checking or savings are free; a one-time debit card payment goes through CheckFreePay for $3.75 and ACI Pay phone payments cost $4 (third parties). Auto Pay draws checking or savings on a chosen day (29th-31st falls to the month's last day) and can be cancelled until 3 pm ET on the payment date; Direct Pay is a legacy program. Mail: Payment Processing Center, P.O. Box 71119, Charlotte, NC 28272-1119. Online statements are the default after creating a username and password; 12 months viewable; paper statements arrive about 19 days before the due date. Payment extensions are finalized by making the quoted payment; the online request flow is not publicly described (payment_arrangement inferred, as in the Ally Auto dossier). Sign-in: Username + password (documented on the account information page).",
+  "officialDomains": [
+    "ally.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ally.com/help/auto/auto-payment/",
+      "title": "Make a Payment | Ally Help",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.ally.com/help/auto/auto-pay/",
+      "title": "Auto Pay & Direct Pay | Ally Help",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.ally.com/help/auto/account-information/",
+      "title": "Account Information | Ally Help",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    },
+    {
+      "url": "https://www.ally.com/help/auto/auto-payment-extension/",
+      "title": "Extension | Ally Help",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Ally Bank",
+    "shortName": "Ally",
+    "primary": "#650360",
+    "accent": "#3b0a45",
+    "monogram": "A"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Auto Pay",
+    "signIn": "Log In",
+    "username": "Username",
+    "dashboard": "Snapshot",
+    "statements": "Statements",
+    "paperless": "Paperless Settings",
+    "profile": "Profile and Settings",
+    "arrangement": "Payment Extension",
+    "accountName": "Auto Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Ways to pay", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Snapshot", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Auto Pay", "page": "autopay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "Paperless Settings", "page": "paperless" },
+      { "label": "Payment Extension", "page": "arrangement" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.ally.com/help/auto/account-information/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ally.com/help/auto/auto-payment/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ally.com/help/auto/auto-pay/",
+      "note": "Auto Pay draws your checking or savings account on the day you choose."
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ally.com/help/auto/auto-pay/",
+      "note": "Cancel Auto Pay before 3 pm ET on the scheduled payment date."
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ally.com/help/auto/account-information/",
+      "note": "Online statements are the default once you create a username and password."
+    },
+    "payment_arrangement": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://www.ally.com/help/auto/auto-payment-extension/",
+      "note": "Payment extensions are finalized by making the quoted payment and agreeing to the terms; the number of extensions is limited. Chat with Ally or call 1-888-925-2559 to discuss options."
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ally.com/help/auto/auto-payment-extension/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ally.com/help/auto/auto-payment/",
+      "note": "ACI Pay at 1-888-631-8930 adds a $4 transfer fee."
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.ally.com/help/auto/auto-payment/"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.ally.com/help/auto/auto-payment/",
+      "note": "Pay your Ally auto loan after logging in, by phone at 1-888-925-2559, by mail, or with a debit card through CheckFreePay.",
+      "channel": "phone",
+      "phone": "1-888-925-2559"
+    }
+  },
+  "contact": {
+    "phone": "1-888-925-2559",
+    "source": "https://www.ally.com/help/auto/auto-payment/"
+  },
+  "billing": {
+    "source": "https://www.ally.com/help/auto/auto-payment/",
+    "methods": ["bank", "card"],
+    "fees": {
+      "bankCents": 0,
+      "cardCents": 375,
+      "evidence": "documented_official",
+      "source": "https://www.ally.com/help/auto/auto-payment/"
+    },
+    "autopay": {
+      "policies": ["full"],
+      "methodTypes": ["bank"]
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Ways to pay your Ally auto loan",
+      "paragraphs": [
+        "Log in, pick your vehicle and choose Make a Payment to pay from a checking or savings account at no cost. A one-time debit card payment is handled by CheckFreePay, a third party that adds a $3.75 fee to the payment.",
+        "By phone, call 1-888-925-2559, or use ACI Pay at 1-888-631-8930 (a third party that adds a $4 fee). By mail, send your payment with your name and account number to Payment Processing Center, P.O. Box 71119, Charlotte, NC 28272-1119."
+      ],
+      "source": "https://www.ally.com/help/auto/auto-payment/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay",
+      "paragraphs": [
+        "Auto Pay withdraws your payment from checking or savings each month on the day you pick. If you pick the 29th, 30th or 31st and a month is shorter, the payment is applied on the last day of that month.",
+        "To enroll, log in, choose your vehicle, then Payments and Enroll in Auto Pay. Change or cancel it any time before 3 pm ET on the scheduled payment date. Customers in the older Direct Pay program must cancel it first; Direct Pay cannot be restarted once cancelled."
+      ],
+      "source": "https://www.ally.com/help/auto/auto-pay/"
+    },
+    {
+      "slug": "payment-extension",
+      "title": "Payment extensions",
+      "topic": "assistance",
+      "paragraphs": [
+        "A payment extension moves one or more payments to later in your contract. You finalize it by making the quoted payment and agreeing to the terms. The number of extensions is limited and a processed extension cannot be cancelled. Call 1-888-925-2559 or chat with Ally to talk through options."
+      ],
+      "source": "https://www.ally.com/help/auto/auto-payment-extension/"
+    },
+    {
+      "slug": "statements",
+      "title": "Statements and paperless",
+      "topic": "paperless",
+      "paragraphs": [
+        "Online statements are on by default once you set up your username and password. View up to 12 months under Documents, then Statements. To also get paper statements, go to Profile and Settings and choose Paperless Settings. Mailed statements arrive about 19 days before the due date."
+      ],
+      "source": "https://www.ally.com/help/auto/account-information/"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "phone-payment-fee",
+        "intent": "Using Ally's help pages, find the fee ACI Pay adds when you pay your Ally auto loan by phone through ACI Pay. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["4"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["4"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "$4." } ]
+      },
+      {
+        "slug": "autopay-short-month",
+        "intent": "Using Ally's Auto Pay help, find what happens to an Auto Pay payment scheduled for the 31st in a month that has only 30 days. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["last day"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["last day"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "It is applied on the last day of that month." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "Username" },
+    { "page": "home", "contains": "Log In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "Auto Pay"] },
+    { "page": "helpArticle", "slug": "autopay", "contains": "3 pm ET" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "$3.75" }
+  ]
+}

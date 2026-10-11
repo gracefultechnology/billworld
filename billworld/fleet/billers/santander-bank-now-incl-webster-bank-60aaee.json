@@ -1,0 +1,166 @@
+{
+  "id": "santander-bank-now-incl-webster-bank-60aaee",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Santander Bank (now incl. Webster Bank)",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public santanderbank.com pages only (no sign-in). The mock bill is a Santander Bank personal loan. Managing-your-loan page: payment amount and loan details (principal, rate, payment history, amount owed, next payment date) are in Online and Mobile Banking; ePay automatic payments from any deposit account are set up only by visiting a branch, so AutoPay is offline online. Repaying page: no early-payoff penalty; specialists at 833-SAN-LOAN (833-726-5626) Mon-Fri 8 a.m.-5 p.m. ET; regular mail (statement stub and check) to Santander Bank 10-421-CP2, PO Box 847051, Boston, MA 02284; overnight to Santander Bank, N.A., Mail Code PA-WYO-CP3, 10 Commons Blvd., Reading, PA 19605. One-time payments online (Overview > select the loan > Make a Payment; enter amount, Payment Type and Pay From account) come from the customer-service FAQ 'How do I make a One-Time or Principal Payment to my loan?' (customerservice.santanderbank.com did not resolve from this machine; its text was read from a search-engine excerpt, so pay_online is marked inferred). Sign-in field labels are inferred (username + password). The Bill Pay page describes paying third parties, not loan servicing. Santander Consumer USA auto loans are a different company and were not modelled. Card payments not described (bank only).",
+  "officialDomains": [
+    "santanderbank.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.santanderbank.com/personal/resources/personal-loans/managing-your-loan",
+      "title": "Personal Loan Resources - Managing Your Loan | Santander Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.santanderbank.com/personal/resources/personal-loans/repaying-your-loan",
+      "title": "Personal Loan Resources - Repaying Your Loan | Santander Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://customerservice.santanderbank.com/app/answers/detail/a_id/10542/~/how-do-i-make-a-one-time-or-principal-payment-to-my-loan",
+      "title": "How do I make a One-Time or Principal Payment to my loan?",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    }
+  ],
+  "brand": {
+    "displayName": "Santander Bank",
+    "shortName": "Santander",
+    "primary": "#cc0000",
+    "accent": "#8a0000",
+    "monogram": "S"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "ePay",
+    "signIn": "Log In",
+    "dashboard": "Overview",
+    "accountName": "Personal Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Repaying your personal loan", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Overview", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "Payment History", "page": "history" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://www.santanderbank.com/personal/resources/personal-loans/managing-your-loan"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "inferred",
+      "source": "https://customerservice.santanderbank.com/app/answers/detail/a_id/10542/~/how-do-i-make-a-one-time-or-principal-payment-to-my-loan"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.santanderbank.com/personal/resources/personal-loans/managing-your-loan",
+      "note": "ePay automatic loan payments from any deposit account are set up at your local Santander Bank branch. For questions, call 833-SAN-LOAN (833-726-5626).",
+      "channel": "phone",
+      "phone": "833-726-5626"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.santanderbank.com/personal/resources/personal-loans/repaying-your-loan"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.santanderbank.com/personal/resources/personal-loans/repaying-your-loan",
+      "note": "Santander personal loan payments are made after logging in to Online or Mobile Banking, at a branch or by mail.",
+      "channel": "phone",
+      "phone": "833-726-5626"
+    }
+  },
+  "contact": {
+    "phone": "833-726-5626",
+    "source": "https://www.santanderbank.com/personal/resources/personal-loans/repaying-your-loan"
+  },
+  "billing": {
+    "source": "https://www.santanderbank.com/personal/resources/personal-loans/repaying-your-loan",
+    "methods": ["bank"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Repaying your personal loan",
+      "paragraphs": [
+        "Log in to Online Banking, select your loan in the Overview and choose Make a Payment. Enter the amount, the payment type and the account to pay from, then continue. In the Mobile Banking app, tap the dollar sign on the home screen. Your monthly payment amount is in your loan details and on the first page of your loan agreement.",
+        "By regular mail, send your statement stub and check to Santander Bank 10-421-CP2, PO Box 847051, Boston, MA 02284. For overnight delivery, use Santander Bank, N.A., Mail Code PA-WYO-CP3, 10 Commons Blvd., Reading, PA 19605.",
+        "There is no penalty for paying your loan off early, either with larger monthly payments or a lump sum. For help with an early repayment plan, call a Specialist at 833-SAN-LOAN, Monday to Friday, 8:00 a.m. to 5:00 p.m. ET."
+      ],
+      "source": "https://www.santanderbank.com/personal/resources/personal-loans/repaying-your-loan"
+    },
+    {
+      "slug": "autopay",
+      "title": "ePay automatic payments",
+      "paragraphs": [
+        "With ePay, your monthly installment is transferred automatically from any deposit account. ePay is set up in person: visit your local Santander Bank branch to enroll. It cannot be started in Online Banking."
+      ],
+      "source": "https://www.santanderbank.com/personal/resources/personal-loans/managing-your-loan"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact a personal loan Specialist",
+      "paragraphs": [
+        "Call 833-SAN-LOAN (833-726-5626), Monday to Friday between 8:00 a.m. and 5:00 p.m. ET."
+      ],
+      "source": "https://www.santanderbank.com/personal/resources/personal-loans/repaying-your-loan",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "epay-enroll-route",
+        "intent": "Using Santander's personal loan help, find where you go to set up ePay automatic loan payments. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["branch"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["branch"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "At your local Santander Bank branch." } ]
+      },
+      {
+        "slug": "regular-mail-po-box",
+        "intent": "Using Santander's personal loan help, find the PO Box for mailing a regular loan payment with your statement stub. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["847051"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["847051"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "PO Box 847051, Boston, MA 02284." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "Log In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "Personal Loan"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "PO Box 847051" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "branch" }
+  ]
+}

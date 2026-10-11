@@ -1,0 +1,155 @@
+{
+  "id": "td-bank-24f25f",
+  "version": 1,
+  "status": "dedicated",
+  "name": "TD Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public td.com pages only (no sign-in; the TD Fit Loan servicing site and the payments center are sign-in or form apps and were not opened). The mock bill is a TD Bank home equity loan, the consumer loan whose payment options td.com documents publicly (Manage Your Loan page): pay online from a TD or other bank account through the TD U.S. Payments Center (One Time Pay, no Online Banking login needed; requires the FULL account number with leading zeros; non-business-day payments process the next business day; commercial loans, loans in a specialized status and overdrawn accounts cannot be paid there - call 1-800-937-5020), pay free through the automated phone system at 1-888-751-9000, transfer from a TD checking account in Online Banking, or pay at any of nearly 1,300 stores. Contact: 24/7 customer support 1-888-751-9000; home equity team 1-800-815-6849; charged-off accounts 1-800-742-2651 option 3. AutoPay, paperless and payment plans for home equity loans are not described on these public pages, so they stay at the family defaults. Online Banking sign-in fields (user name + password) are inferred. TD Auto Finance (the old auto loan help URL now returns 404) and TD Fit Loans (separate tdfitloan.com portal) were not modelled. Card payments are not offered (bank only, inferred).",
+  "officialDomains": [
+    "td.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.td.com/us/en/personal-banking/learning/td-how-to/manage-your-loan",
+      "title": "TD Bank Manage Your Loan - Personal, Home Equity & Mortgage",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.td.com/us/en/personal-banking/td-us-payments-center",
+      "title": "One Time Pay - TD Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.td.com/us/en/personal-banking/contact-us",
+      "title": "TD Bank Contact Us - Customer Service & Product Help Phone Numbers",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    }
+  ],
+  "brand": {
+    "displayName": "TD Bank",
+    "shortName": "TD Bank",
+    "primary": "#007a33",
+    "accent": "#1a5336",
+    "monogram": "TD"
+  },
+  "labels": {
+    "payBill": "Make a loan payment",
+    "guestPay": "One Time Pay",
+    "signIn": "Log In",
+    "accountName": "Home Equity Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "One Time Pay", "page": "guest" },
+      { "label": "Make a loan payment", "helpSlug": "pay-your-bill" },
+      { "label": "Contact Us", "page": "help" }
+    ],
+    "account": [
+      { "label": "Accounts", "page": "dashboard" },
+      { "label": "Make a loan payment", "page": "pay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "Payment History", "page": "history" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://www.td.com/us/en/personal-banking/learning/td-how-to/manage-your-loan"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.td.com/us/en/personal-banking/learning/td-how-to/manage-your-loan"
+    },
+    "guest_pay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.td.com/us/en/personal-banking/td-us-payments-center",
+      "note": "Enter your FULL account number, including all leading zeros, as shown on your monthly statement. Payments made on non-business days are processed the next business day."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.td.com/us/en/personal-banking/learning/td-how-to/manage-your-loan",
+      "phone": "1-888-751-9000"
+    }
+  },
+  "contact": {
+    "phone": "1-888-751-9000",
+    "source": "https://www.td.com/us/en/personal-banking/contact-us"
+  },
+  "billing": {
+    "source": "https://www.td.com/us/en/personal-banking/learning/td-how-to/manage-your-loan",
+    "methods": ["bank"],
+    "guestMethods": ["bank"],
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.td.com/us/en/personal-banking/learning/td-how-to/manage-your-loan"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Make a loan payment",
+      "paragraphs": [
+        "Pay online through the TD U.S. Payments Center (One Time Pay) from a TD Bank checking or savings account or an account at another bank. You do not need to log in, but you need your FULL account number, including all leading zeros, from your monthly statement or Online Banking. Payments made on a non-business day are processed the next business day.",
+        "Pay by phone free of charge with TD Bank's automated system at 1-888-751-9000, or log in to Online Banking and transfer the payment from your TD checking account to your loan. You can also pay at any of nearly 1,300 TD Bank locations.",
+        "Commercial loans, loans in a specialized status and overdrawn accounts cannot be paid online; call Customer Service at 1-800-937-5020 instead."
+      ],
+      "source": "https://www.td.com/us/en/personal-banking/learning/td-how-to/manage-your-loan"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact TD Bank",
+      "paragraphs": [
+        "Customer support is available 24/7 at 1-888-751-9000, or try TD ASAP in the TD Bank app. For home equity loans and lines of credit, call 1-800-815-6849. To make payment arrangements on a charged-off account, call Consumer Collections and Recovery at 1-800-742-2651, option 3."
+      ],
+      "source": "https://www.td.com/us/en/personal-banking/contact-us",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "one-time-pay-account-number",
+        "intent": "Using TD Bank's help pages, find what you must include when entering your account number in One Time Pay (the TD U.S. Payments Center). Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["zero"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["zero"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "The full account number, including all leading zeros." } ]
+      },
+      {
+        "slug": "home-equity-phone",
+        "intent": "Using TD Bank's contact information, find the phone number for questions about home equity loans and lines of credit. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["815-6849", "8156849"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["815-6849", "8156849"] },
+        "tags": ["help", "information", "contact"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "1-800-815-6849." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "Log In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a loan payment", "Home Equity Loan"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "leading zeros" },
+    { "page": "helpArticle", "slug": "contact-us", "contains": "1-800-815-6849" }
+  ]
+}

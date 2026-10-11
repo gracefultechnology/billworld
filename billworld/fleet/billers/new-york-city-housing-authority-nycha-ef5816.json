@@ -5,7 +5,7 @@
   "id": "new-york-city-housing-authority-nycha-ef5816",
   "name": "New York City Housing Authority (NYCHA)",
   "category": "housing",
-  "notes": "Researched from NYCHA's public Pay Rent page on nyc.gov. Online one-time payments need the 9-digit Tenant ID and 9-digit Account Number (no login) by E-Check (free), Visa/MasterCard debit (0.8%) or credit incl. Amex/Discover (2.25%; fees go to a third-party vendor) - engine models the 2.25% credit rate. E-Bill is the free recurring electronic bill paid by E-Check with multiple payment sources. Phone Payment System 833-894-0899 (before 5 PM EST same-day credit). Mail: NYCHA, P.O. Box 5543, Binghamton, NY 13902-5543. Payroll deduction for City employees via the Self-Service Portal. Payment plans only in person at the property management office (photo ID, no down payment, max 40% of household income). Customer Contact Center 718-707-7771. The Self-Service Portal (Siebel) sign-in labels were not observed; identifier left as family default. No move-out notice process on this page (template notice kept, inferred). REVIEW 2026-10-09 (independent reviewer): verified the Pay Rent page (fees, E-Bill with split payment sources, phone cutoff, P.O. box, payroll deduction, in-person payment plans, REES 718-289-8100, contact center 718-707-7771). guestLookupFields can only express the Account Number; the real form also asks for the 9-digit Tenant ID (no schema field for it). No other changes.",
+  "notes": "Researched from NYCHA's public Pay Rent page on nyc.gov. Online one-time payments need the 9-digit Tenant ID and 9-digit Account Number (no login) by E-Check (free), Visa/MasterCard debit (0.8%) or credit incl. Amex/Discover (2.25%; fees go to a third-party vendor) - engine models the 2.25% credit rate. E-Bill is the free recurring electronic bill paid by E-Check with multiple payment sources. Phone Payment System 833-894-0899 (before 5 PM EST same-day credit). Mail: NYCHA, P.O. Box 5543, Binghamton, NY 13902-5543. Payroll deduction for City employees via the Self-Service Portal. Payment plans only in person at the property management office (photo ID, no down payment, max 40% of household income). Customer Contact Center 718-707-7771. The Self-Service Portal (Siebel) sign-in labels were not observed; identifier left as family default. No move-out notice process on this page (template notice kept, inferred). REVIEW 2026-10-09 (independent reviewer): verified the Pay Rent page (fees, E-Bill with split payment sources, phone cutoff, P.O. box, payroll deduction, in-person payment plans, REES 718-289-8100, contact center 718-707-7771). guestLookupFields can only express the Account Number; the real form also asks for the 9-digit Tenant ID (no schema field for it). No other changes. FIX 2026-10-10 (housing audit fixer): guest_pay note and pay-your-bill help no longer cite the 9-digit Tenant ID/Account Number (the mock form asks Account Number + last name and synthetic account numbers are 10 digits; the real Tenant ID field cannot be expressed). Account nav item renamed to E-Bill recurring payments and the paperless label to Paperless bill so the AutoPay page and the paperless page no longer share the bare name E-Bill.",
   "officialDomains": [
     "nyc.gov"
   ],
@@ -27,7 +27,7 @@
   "labels": {
     "guestPay": "Online Payment",
     "autopay": "E-Bill recurring payments",
-    "paperless": "E-Bill",
+    "paperless": "Paperless bill",
     "accountNumber": "Account Number",
     "arrangement": "Payment plan"
   },
@@ -60,7 +60,7 @@
         "page": "pay"
       },
       {
-        "label": "E-Bill",
+        "label": "E-Bill recurring payments",
         "page": "autopay"
       },
       {
@@ -93,7 +93,7 @@
       "support": "supported",
       "evidence": "documented_official",
       "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
-      "note": "One-time online payments need only your 9-digit Tenant ID and 9-digit Account Number."
+      "note": "Use the Account Number shown on your rent bill."
     },
     "pay_online": {
       "support": "supported",
@@ -105,13 +105,13 @@
       "support": "supported",
       "evidence": "documented_official",
       "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
-      "note": "Sign up for free E-Bill to get your bill electronically and pay by E-Check from stored payment sources."
+      "note": "E-Bill recurring payments are free: get your bill electronically and pay by E-Check from stored payment sources."
     },
     "paperless": {
       "support": "supported",
       "evidence": "documented_official",
       "source": "https://www.nyc.gov/site/nycha/residents/pay-rent.page",
-      "note": "E-Bill delivers your rent bill electronically at no cost."
+      "note": "Get your rent bill electronically at no cost instead of on paper."
     },
     "pay_by_phone": {
       "support": "supported",
@@ -163,7 +163,7 @@
       "slug": "pay-your-bill",
       "title": "Ways to pay NYCHA rent",
       "paragraphs": [
-        "Rent is due on the first of each month. Pay online or at the Self-Service Kiosk in your management office with your 9-digit Tenant ID and 9-digit Account Number, an email, a phone number and either bank details (E-Check) or a card.",
+        "Rent is due on the first of each month. Pay online or at the Self-Service Kiosk in your management office with your Account Number from your rent bill, an email, a phone number and either bank details (E-Check) or a card.",
         "E-Check is free. Visa or MasterCard debit cards cost 0.8% of the payment and Visa, MasterCard, American Express or Discover credit cards cost 2.25%; these fees go to a third-party vendor, not NYCHA.",
         "You can also add NYCHA as a payee in your bank's bill pay, pay by phone at 833-894-0899, mail a check or money order, use payroll deduction if you are a City employee, or pay in person for a fee at an authorized credit union. Questions: Customer Contact Center 718-707-7771."
       ],
@@ -181,7 +181,7 @@
     },
     {
       "slug": "autopay",
-      "title": "E-Bill",
+      "title": "E-Bill recurring payments",
       "paragraphs": [
         "E-Bill is free: you receive your rent bill electronically and pay by E-Check. You can store several payment sources and split a payment among them."
       ],

@@ -5,7 +5,7 @@
   "name": "Costco Wholesale membership (Gold Star / Executive / Business)",
   "category": "streaming-subscriptions",
   "reviewedAt": "2026-10-10",
-  "notes": "Researched from public customerservice.costco.com answers and costco.com membership pages only (no sign-in). Costco membership is an annual fee: Gold Star and Business $65, Executive $130 ($65 plus a $65 upgrade). Renewing online (Account > Renew Membership) is allowed from 90 days before to 90 days after expiration; renewals are also accepted by mail, at any warehouse and through the Member Service Center. Auto Renewal charges the fee on the first day of the renewal month to a Visa credit/debit or Mastercard debit card and is turned off online, at a membership counter, by chat or by phone at least 72 hours before that day; modeled as AutoPay (card only). Costco's pages used do not describe canceling a membership online; cancel_service is unsupported with an inferred counter/phone route (evidence: inferred) — the refund-on-cancel practice (satisfaction guarantee) is only stated generally. Upgrading to Executive is possible but downgrades and level changes are not documented as online; change_plan is unsupported (inferred), noted as a gap (upgrades online vs downgrades offline is not expressible). Executive 2% reward and Shop Card promotions are not modeled. Sign-in identifier (email) is inferred: the sign-in page needs JavaScript and was not rendered. Reviewer 2026-10-10: billing.fees ({0,0}, inferred) removed: no convenience fee is published, and with fullBalanceOnly the contract's $25 card-fee check cannot run. Reviewer 2026-10-10: a_id 7661 documents upgrade to Executive online and downgrade only at a counter or by phone; change_plan stays unsupported (downgrade is the modeled task) with plans kept for the real names/prices — the note names both levels so the plan page lists them. Plans are annual fees; the streaming template prints them '/month' (cross-owner: annual plan prices).",
+  "notes": "Researched from public customerservice.costco.com answers and costco.com membership pages only (no sign-in). Costco membership is an annual fee: Gold Star and Business $65, Executive $130 ($65 plus a $65 upgrade). Renewing online (Account > Renew Membership) is allowed from 90 days before to 90 days after expiration; renewals are also accepted by mail, at any warehouse and through the Member Service Center. Auto Renewal charges the fee on the first day of the renewal month to a Visa credit/debit or Mastercard debit card and is turned off online, at a membership counter, by chat or by phone at least 72 hours before that day; modeled as AutoPay (card only). Costco's pages used do not describe canceling a membership online; cancel_service is unsupported with an inferred counter/phone route (evidence: inferred) — the refund-on-cancel practice (satisfaction guarantee) is only stated generally. Upgrading to Executive is possible but downgrades and level changes are not documented as online; change_plan is unsupported (inferred), noted as a gap (upgrades online vs downgrades offline is not expressible). Executive 2% reward and Shop Card promotions are not modeled. Sign-in identifier (email) is inferred: the sign-in page needs JavaScript and was not rendered. Reviewer 2026-10-10: billing.fees ({0,0}, inferred) removed: no convenience fee is published, and with fullBalanceOnly the contract's $25 card-fee check cannot run. Reviewer 2026-10-10: a_id 7661 documents upgrade to Executive online and downgrade only at a counter or by phone; change_plan stays unsupported (downgrade is the modeled task) with plans kept for the real names/prices — the note names both levels so the plan page lists them. Plans are annual fees; the streaming template prints them '/month' (cross-owner: annual plan prices). Integrated 2026-10-10 (agent-solvability pass): annual plans carry billing.plans[].interval 'year' so prices show per year.",
   "officialDomains": [
     "costco.com"
   ],
@@ -212,13 +212,15 @@
       {
         "id": "gold-star",
         "name": "Gold Star",
-        "cents": 6500
+        "cents": 6500,
+        "interval": "year"
       },
       {
         "id": "executive",
         "name": "Executive",
         "cents": 13000,
-        "current": true
+        "current": true,
+        "interval": "year"
       }
     ]
   },

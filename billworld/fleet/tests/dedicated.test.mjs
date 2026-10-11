@@ -76,7 +76,7 @@ test('catalog: dossiers make billers dedicated; every other biller stays on the 
   assert.equal(Object.keys(b).includes('dossier'), false, 'the dossier is non-enumerable (biller JSON stays compact)');
   const ded = new Set(catalog.dedicated);
   const fam = [...catalog.billers.values()].filter(x => !x.id.startsWith('zz-') && !ded.has(x.id));
-  assert.ok(fam.length > 59000 && fam.every(x => x.tier === 'family' && !x.dossier));
+  assert.ok(fam.length > 58000 && fam.length + ded.size >= 59477 && fam.every(x => x.tier === 'family' && !x.dossier));
   assert.ok(catalog.dedicated.every(id => catalog.billers.get(id)?.tier === 'dedicated' && catalog.billers.get(id).dossier?.id === id));
 });
 
@@ -117,7 +117,7 @@ test('tasks: limitation tasks, suppression, dossier tasks, method/MFA filtering;
   assert.equal(generateTasks(PLANS).find(t => t.id.endsWith(':downgrade-plan')).predicates.find(x => x.type === 'service').plan, 'lite');
   const lim = generateTasks(STRICT).find(t => t.id.endsWith(':cancel-service-limitation'));
   assert.deepEqual(lim.answer.expected.phones, STRICT.contact.phones.concat(STRICT.contact.payPhones || []).filter((v, i, a) => a.indexOf(v) === i));
-  assert.ok(generateTasks(STRICT).filter(t => t.predicates.some(x => x.type === 'logged_in' || x.type === 'payment')).every(t => t.scenario[STRICT.id].billNotice && /account number/.test(t.intent)), 'account-number sign-in tasks carry the bill notice');
+  assert.ok(generateTasks(STRICT).filter(t => !t.id.endsWith(':guest-pay') && t.predicates.some(x => x.type === 'logged_in' || x.type === 'payment')).every(t => t.scenario[STRICT.id].billNotice && /account number/.test(t.intent)), 'account-number sign-in tasks carry the bill notice');
   const w = new FleetWorld();
   for (const b of [STRICT, PLANS, catalog.billers.get(CONED)]) for (const t of generateTasks(b)) {
     if (t.id.endsWith(':google-login-pay')) continue;
@@ -243,4 +243,42 @@ test('engine follows cardMinCents, autopay.daysAfterBill and maxPaymentBalance; 
   assert.ok(bad({ autopay: { daysAfterBill: 40 } }).some(e => /daysAfterBill/.test(e)));
   assert.ok(bad({ autopay: { daysAfterBill: 5, leadDays: 2 } }).some(e => /daysAfterBill/.test(e)));
   assert.ok(bad({ maxPaymentBalance: 'yes' }).some(e => /maxPaymentBalance/.test(e)));
+});
+
+// Agent-solvability integration (2026-10-10): card cap at the current balance, persona facts in the instruction,
+// empty wallets on new registrations, abstention with the published line, tolerant "contains" grading, loan wording.
+const cardFrom = pick(b => b.kind === 'card' && b.capabilities.pay_online.support === 'supported');
+const CARDCAP = dedicate(cardFrom, 'zz-dedicated-cardcap-000006', { billing: { maxPaymentBalance: true } });
+test('agent-solvability: card cap, persona facts, empty new wallet, abstention, contains and loan wording', async () => {
+  const { instructionFor } = await import('../infinity/export.mjs');
+  const { gradeAnswer, noticeAccountNumber } = await import('../engine.mjs');
+  const { limitationExpected } = await import('../tasks.mjs');
+  const w = new FleetWorld(); const id = CARDCAP.id;
+  const ep = w.createEpisode({ seed: 'cardcap' }); const sid = login(w, ep, id); const a = w.account(ep, id);
+  const cur = w.cardFigures(a).current;
+  assert.ok(w.draftPayment(ep, id, sid, { amountChoice: 'current', methodId: 'pm-chk' }), 'Current Balance is accepted under maxPaymentBalance');
+  assert.throws(() => w.draftPayment(ep, id, sid, { amountChoice: 'other', amount: ((cur + 100) / 100).toFixed(2), methodId: 'pm-chk' }), e => e.code === 'amount_over_balance');
+  // Unregistered customers: empty wallet; the bill notice names the account number whatever the biller calls it.
+  const ep2 = w.createEpisode({ seed: 'newreg', scenario: { [id]: { registered: false } } }); const a2 = w.account(ep2, id);
+  assert.deepEqual(a2.methods, []); assert.ok(a2.payments.filter(p => p.seeded).length > 0, 'offline payment history kept');
+  const notice = ep2.mailbox.find(m => /bill is ready/.test(m.subject)).text;
+  assert.equal(noticeAccountNumber(notice), a2.accountNumber);
+  assert.equal(noticeAccountNumber('Member ID (account number): 123\nBill number: 9'), '123');
+  // Persona facts: guest lookups that need a phone or DOB state them in the instruction.
+  const persona = { name: 'A B', email: 'a@b.test', phone: '(555) 010-1234', dob: '1961-04-18' };
+  const ins = instructionFor({ id: 'x:guest-pay', billerId: 'x', intent: 'Pay.', personaFacts: ['phone', 'dob'] }, { persona, mailPassword: 'M' });
+  assert.match(ins, /\(555\) 010-1234/); assert.match(ins, /April 18, 1961/);
+  assert.match(instructionFor({ id: 'x:reset-then-pay', billerId: 'x', intent: 'Reset.' }, { persona, mailPassword: 'M' }), /username is your email address/);
+  // Abstention: naming the biller's published customer-service line is not an invented route.
+  const exp = { phones: [], address: null, none: true, okPhones: ['8005551212'] };
+  assert.ok(gradeAnswer({ kind: 'contact', expected: exp }, 'This is not possible online. Questions: call 800-555-1212.').pass);
+  assert.ok(!gradeAnswer({ kind: 'contact', expected: exp }, 'Not possible online; call 800-555-9999.').pass, 'an unknown number still fails');
+  assert.ok(limitationExpected({ contact: { phones: ['8005551212'] } }, { support: 'unsupported', note: 'Call 800.288.2020 or 800-288-2747.', phone: '8002882020' }).phones.includes('8002882747'));
+  // contains: parenthesised digits, punctuation and a.m./p.m. spellings do not matter.
+  assert.ok(gradeAnswer({ kind: 'contains', expected: ['three business days'] }, 'It takes three (3) business days.').pass);
+  assert.ok(gradeAnswer({ kind: 'contains', expected: ['5 pm'] }, 'by 5 p.m. ET').pass);
+  // Loans: payment intents ask for the amount due, not the principal.
+  const loan = pick(b => b.kind === 'loan' && b.capabilities.pay_online.support === 'supported' && b.capabilities.scheduled_payment.support === 'supported');
+  const lt = generateTasks(loan); const sched = lt.find(t => t.id.endsWith(':schedule-payment'));
+  assert.match(sched.intent, /amount due in full/); assert.equal(sched.scenario[loan.id].dueInDays, 17, 'the scheduled date falls before the due date');
 });

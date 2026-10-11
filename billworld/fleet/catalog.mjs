@@ -314,7 +314,7 @@ export function capabilities(entry, resolved) {
 const PHONE_RE = /(?:\+?1[\s.-]?)?\(?([2-9]\d{2})\)?[\s.-]?([2-9]\d{2})[\s.-]?(\d{4})\b/g;
 export const phoneDigits = text => { const out = []; for (const m of String(text || '').matchAll(PHONE_RE)) { const d = m[1] + m[2] + m[3]; if (!out.includes(d)) out.push(d); } return out; };
 export const formatPhone = d => `${d.slice(0, 3)}-${d.slice(3, 6)}-${d.slice(6)}`;
-const PROVENANCE = /context:|fetched|\bper [a-z0-9.-]+\.(?:com|org|gov|net|us|edu|coop)|snippet|metadata|not verified|tel: ?link|source:|https?:\/\/|<[a-z/]/i;
+const PROVENANCE = /context:|fetched|\bper [a-z0-9.-]+\.(?:com|org|gov|net|us|edu|coop)|\bper (?:the )?(?:help|faq|support|contact|billing|official)[a-z ]{0,20}(?:article|page|site)\b|snippet|metadata|not verified|tel: ?link|source:|https?:\/\/|<[a-z/]/i;
 export function cleanContactText(raw) {
   if (!raw) return null;
   let s = String(raw);
@@ -331,6 +331,7 @@ export function displayPhone(raw) {
   // Research-style annotations ("(billing dept)", "; sales", "via ...") are not footer text: show the numbers alone.
   const shown = phoneDigits(text); // numbers in the cleaned text only (provenance snippets can quote other numbers)
   if (shown.length && /\(|;|\bsupport\b|\bsales\b|\bvia\b/i.test(text.replace(/\((?:TTY|TDD|TTY\/TDD)[^()]*\)/gi, ''))) return shown.slice(0, 3).map(formatPhone).join('; ');
+  if (!shown.length) return null; // "No phone line published…" is a research remark, not a number to call
   return text.replace(/^customer service:?\s*/i, '');
 }
 const RESEARCHY_AREA = /\bHQ\b|;|\bmostly\b|\bissuer\b|research|\bper\b|fetched|\(|\bcustomers?\b/i;

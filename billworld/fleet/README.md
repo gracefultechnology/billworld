@@ -89,6 +89,8 @@ The most popular billers get a researched dossier, `billers/<billerId>.json`, wh
 - `FLEET_TIMEOUT=120000 node billworld/fleet/tests/dedicated.mjs --billers <id,...> --tag <unique>` (or `--category <c>`, `--dossiers all`) runs every standard and extended flow plus `dossier_contract` and `testExpectations`.
 - `node billworld/fleet/billers/status.mjs [--next 10]` shows progress per category.
 - Pilot: Consolidated Edison (`consolidated-edison-company-of-new-york-con-edis-1ac80c`). `FLEET_DOSSIERS=0` disables the tier.
+- **Tier 2 is complete:** 568 dossiers, 28/28 categories at 20 green (`status.mjs --goal 20`), 20,024/20,024 browser
+  flows. Agent solvability is measured in [Agent solvability](#agent-solvability-2026-10-10-measured-with-agentlab).
 - **Tier 1 is complete:** 283 dossiers (10 per category in all 28 categories, plus 3 extras), every one valid and green:
   9,998/9,998 browser flows on 2026-10-10, run one category at a time. Per-category table, integrated requests and the
   open list: [`billers/README.md`](billers/README.md#tier-1-status-and-the-next-tier).
@@ -246,6 +248,88 @@ Answers: the runner passes the agent's final message as `answer` to `/evaluate` 
 - The export makes stratified test, dev and train suites, with held-out families and per-cohort caps.
 - `google-login-pay` is excluded from exports, because it needs the IdP's second origin.
 - Exports are snapshots. Re-export after any Fleet change.
+
+## Agent solvability (2026-10-10, measured with `agentlab/`)
+
+Every popular-biller category was attempted by blind agents through `agentlab/act.mjs` (instruction, credentials and
+rendered pages only; grading revealed after the final answer). `report.mjs` counts the first finished attempt per task
+and run.
+
+| Measure | Result |
+|---|---|
+| First pass, 31 auditor runs (`aud-*`, 28 categories) | **1,191 / 1,205 tasks (98.8%)** |
+| Re-attempts after the integration fixes (`agentfix-reatt`: every task that ever failed outside the proof runs, plus the restored date-of-birth and phone lookups) | **18 / 18** |
+| Fresh sample after the fixes (`agentfix-fresh`: 20 never-attempted tasks, 20 categories, 13 task types) | **20 / 20** |
+| Latest result per distinct task, all non-proof runs | **1,228 / 1,228** (none still failing) |
+
+First pass by category (tasks passed / attempted): banks 40/40, credit-cards 43/43, credit-unions 43/43,
+dental-vision-hearing 41/43, electric 43/43, gas 40/40, government 42/43, home-services 38/40, housing 43/43,
+insurance 38/40, internet 43/43, loans 41/41, medical 44/46, medicare 41/43, mortgage 43/43, other 43/44,
+pharmacy-dme 41/42, phone-landline 43/43, phone-wireless 40/40, propane-heating-oil 43/43, property-tax 42/43,
+senior-services 41/41, storage-funeral 40/40, streaming-subscriptions 48/48, trash 44/44, tv 41/41, vehicle-tolls 46/46,
+water-sewer 56/56. Latest per template: every template is 100% (telecom 168, streaming 157, utility-account 96,
+loan-servicer 86, bank-billpay 84, insurance 77, patient-pay 74, … tasks). Latest per task type: all 19 types at 100%,
+including guest-pay 61/61, register-and-pay 72/72, reset-then-pay 77/77, mfa-sms 69/69 and limitation 61/61.
+
+**What the 14 first-pass failures were, and the generic fix for each:**
+- **Guest lookups that asked for something the agent was never told** (7: Quest, Labcorp, Western Dental, Liberty
+  Mutual, The General, Florida Blue ×2). Instructions now state the persona's date of birth and phone number whenever a
+  dossier's guest-lookup or registration form asks for them (`tasks.mjs` `personaFacts`, printed by
+  `infinity/export.mjs instructionFor`), and `tests/solve.mjs taskShapeErrors` fails any guest-pay / register-and-pay
+  task whose required field is not on the bill notice, in the persona name or in `personaFacts`. Date of birth is back
+  in the researched lookups of Quest, Labcorp, Banner, Liberty Mutual, The General, Progressive and State Farm
+  (phone + date of birth).
+- **Account-number sign-in without the account number** (Midland cancel-scheduled, failed twice): the sign-in hint and
+  bill notice now cover every signed-in predicate (`scheduled_cancelled`, `registered`), and the instruction no longer
+  claims "your username is your email address" for billers that sign in by account or phone number.
+- **Abstention graded too strictly** (4: BENEFEDS, Michigan Treasury, Albertsons, LA County): a limitation answer that
+  correctly says "not possible online" may also name the biller's own published customer-service line
+  (`expected.okPhones`); an unknown number still fails. Every 10-digit number a capability note names is an accepted
+  route.
+- **Exact-substring answer grading** (Mutual of Omaha "three (3) business days"): `contains` ignores parenthesised
+  digits, apostrophes, trailing punctuation and a.m./p.m. spelling.
+- **Agent slips** (HomeServe: a wrapper pointed at another run; Oncourse: misread confirmation; CR&R: unticked
+  confirmation checkbox). The harness now prints the run id on `start` and `answer`, notes an abandoned attempt, waits
+  for POST→redirect pages before reporting messages, and reports browser-blocked submits with the field's element number.
+
+**Other generic changes integrated from the auditors' cross-owner requests:** new online registrations start with an
+empty wallet; the bill notice names the account number with the biller's own label ("Bill number (account number)")
+and mentions paying without signing in only when guest pay exists; card `maxPaymentBalance` caps at the current
+balance (restored for Merrick Bank and Credit One); schedule-payment tasks set the due date after the requested date;
+loan payment intents ask for "the current amount due"; send-message asks for payment history when a biller mails no
+paper; registration forms drop family identity fields the dossier does not list; guest-lookup copy names the fields the
+form asks for; AutoPay wording follows `leadDays`; review steps warn when a scheduled date is after the due date;
+scheduled dates show as "Oct 15, 2026"; annual plans (`billing.plans[].interval: 'year'`) show "/year"; a home-page
+sign-in widget that posts the password signs in directly on two-step templates; "Save this method" is hidden for
+guests; the bank field reads "Bank account number"; dedicated sign-in pages no longer use captured error-page titles;
+service addresses follow single-city service areas and US territories.
+
+Caveat on the post-fix runs: the re-attempts and fresh sample were driven through `act.mjs` only, but by the integrator,
+who had read the Fleet source while fixing it (not the 20 fresh dossiers). Treat them as strong verification rather than
+an independent blind score; the 98.8% first pass is the blind number.
+
+**Remaining known agent-hard spots** (all solvable today; worth watching in larger samples):
+- Long multi-page flows: register-and-pay (≈35–47 steps), reset-then-pay (≈30), mfa/sms-pay (≈20–25) dominate step
+  counts; element numbers expire after every navigation, so agents must re-observe.
+- Two-step sign-ins (identifier, then password) and MFA pages: the code must be read in `/mail` or `/sms` and the
+  agent must navigate back to the verify page.
+- Guest forms that keep the family's extra lookup fields (statement number + amount due) alongside the dossier's fields
+  unless the dossier sets `guestLookupExact`.
+- Limitation tasks whose notes appear on home, dashboard and help (by design) make those tasks easy; tasks where the
+  note names several numbers grade by "first or at most two numbers".
+- Cosmetic, not blocking: the generic withdrawn page says "stop-service request" for memberships and rentals; flash
+  messages say "AutoPay" where a dossier labels it differently (for example Auto-Replenishment).
+
+## Verification (2026-10-10, tier 2 and agent-solvability integration)
+
+| Check | Result |
+|---|---|
+| `node billworld/fleet/billers/validate.mjs` | 568/568 dossiers valid |
+| `billers/status.mjs --goal 20` | 28/28 categories at 20 green; 560/560 picks, 568 green in total |
+| `tests/dedicated.mjs --category <c>` for all 28 categories (tags `agentfix-<c>`, concurrency 2) | 20,024/20,024 flows, 568 billers, 0 browser relaunches, 0 retries |
+| `npm run fleet:test` | 136/136 pass |
+| `tests/sweep.mjs --shards 4` (all 59,477 billers) | 0 failures: http 751,720; authed 42,641; engine 59,477; tasks 820,960; links 880,655 (203 s) |
+| `browser.mjs --per-template 1 --concurrency 2` | 437/437 flows passed |
 
 ## Verification (2026-10-10, dedicated tier integrated)
 

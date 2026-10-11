@@ -5,7 +5,7 @@
   "reviewedAt": "2026-10-09",
   "id": "spotify-premium-ce0906",
   "name": "Spotify Premium",
-  "notes": "Researched from public spotify.com and support.spotify.com pages and the public login page only (no sign-in). Premium is charged automatically each billing date to the saved payment method; canceling moves the account to the free, ad-supported tier at the next billing date (immediately during a $0 trial). No paper bill, guest pay or payment plans. The login form asks for an email first, then credentials, with Google, Facebook and Apple buttons; the engine only models Google. Prices are the published US prices. Plan members of Duo/Family cannot cancel the plan; only the plan manager can. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public spotify.com and support.spotify.com pages and the public login page only (no sign-in). Premium is charged automatically each billing date to the saved payment method; canceling moves the account to the free, ad-supported tier at the next billing date (immediately during a $0 trial). No paper bill, guest pay or payment plans. The login form asks for an email first, then credentials, with Google, Facebook and Apple buttons; the engine only models Google. Prices are the published US prices. Plan members of Duo/Family cannot cancel the plan; only the plan manager can. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. pay-partial-card suppressed (fixer, streaming-subscriptions audit 2026-10-10): the membership is charged its plan price, which is below the generated $25.00 partial amount, so that task would be an overpayment; the service has no partial-payment option.",
   "officialDomains": [
     "spotify.com"
   ],
@@ -339,7 +339,8 @@
       }
     ],
     "suppress": [
-      "setup-payment-plan"
+      "setup-payment-plan",
+      "pay-partial-card"
     ]
   },
   "testExpectations": [

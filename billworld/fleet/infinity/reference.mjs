@@ -13,6 +13,7 @@ import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { Client, parseForms, encodeForm } from '../tests/httpflows.mjs';
 import { loadTemplates, templates } from '../server.mjs';
+import { noticeAccountNumber } from '../engine.mjs';
 
 const unesc = s => String(s ?? '').replace(/&(amp|lt|gt|quot|#39|nbsp);/g, (_, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'", nbsp: ' ' }[e]));
 export const pageText = html => unesc(String(html).replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ').replace(/<br\s*\/?>/gi, '\n').replace(/<\/(p|div|li|tr|h\d|dt|dd|section|article)>/gi, '\n').replace(/<[^>]+>/g, ' ')).replace(/[ \t ]+/g, ' ').replace(/\n\s*/g, '\n').trim();
@@ -217,7 +218,7 @@ const SOLVE = {
   async 'setup-payment-plan'(a) { await a.login(); const { f } = await a.formOn('arrangement', x => x.has('months')); await a.submit(f, { months: '6' }); },
   async 'send-message'(a) {
     await a.login(); const { f } = await a.formOn('contact', x => x.has('message'));
-    const ov = { message: 'Please stop mailing paper statements to me.' }; const s = f.controls.find(c => c.name === 'subject');
+    const ov = { message: 'Please stop mailing paper statements to me, and send me a copy of my payment history.' }; const s = f.controls.find(c => c.name === 'subject');
     if (s) ov.subject = s.type === 'select' ? (s.options.find(o => /bill|statement|general|other/i.test(o)) || s.options.find(Boolean)) : 'Paper statements';
     await a.submit(f, ov);
   },
@@ -238,7 +239,7 @@ const SOLVE = {
     const notice = await a.mailFind(/bill is ready/i);
     const field = label => notice.text.match(new RegExp(`${label}: (.+)`))?.[1]?.trim();
     const { f } = await a.formOn('register', x => x.has('password') && x.has('confirm'));
-    const values = { accountNumber: field('Account number'), lastName: a.creds.last, zip: field('Service ZIP code'), email: a.creds.email, password: a.creds.portalPassword, confirm: a.creds.portalPassword };
+    const values = { accountNumber: noticeAccountNumber(notice.text), lastName: a.creds.last, zip: field('Service ZIP code'), email: a.creds.email, password: a.creds.portalPassword, confirm: a.creds.portalPassword };
     const ov = {}; for (const [k, v] of Object.entries(values)) if (f.has(k) && f.controls.find(c => c.name === k).type !== 'hidden') ov[k] = v;
     for (const c of f.controls) if (c.type === 'checkbox' && /terms|agree|accept/i.test(c.name)) ov[c.name] = true;
     await a.submit(f, ov);
@@ -251,7 +252,7 @@ const SOLVE = {
     const notice = await a.mailFind(/bill is ready/i);
     const field = label => notice.text.match(new RegExp(`${label}: (.+)`))?.[1]?.trim();
     const { f } = await a.formOn(a.t.flow.guestSteps[0], x => ['accountNumber', 'statementId', 'parcelId', 'plate'].some(n => x.has(n)));
-    const values = { accountNumber: field('Account number'), statementId: field('Statement ID') || field('Account number'), parcelId: field('Parcel number') || field('Account number'), plate: field('License plate') || field('Account number'), lastName: a.creds.last, zip: field('Service ZIP code'), amountDue: field('Amount due')?.replace(/[$,]/g, '') };
+    const values = { accountNumber: noticeAccountNumber(notice.text), statementId: field('Statement ID') || noticeAccountNumber(notice.text), parcelId: field('Parcel number') || noticeAccountNumber(notice.text), plate: field('License plate') || noticeAccountNumber(notice.text), lastName: a.creds.last, zip: field('Service ZIP code'), amountDue: field('Amount due')?.replace(/[$,]/g, '') };
     const ov = {}; for (const [k, v] of Object.entries(values)) if (f.has(k) && f.controls.find(c => c.name === k).type !== 'hidden' && v != null) ov[k] = v;
     const r = await a.submit(f, ov);
     await a.pay({ startAt: r.url, newMethod: { methodType: 'card', cardNumber: '4111111111111111', exp: '12/28', cvv: '123', holder: a.creds.name } });

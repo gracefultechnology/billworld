@@ -1,0 +1,218 @@
+{
+  "id": "discover-discover-bank-discover-card-now-part-of-d074d1",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Discover (Discover Bank / Discover card) - now part of Capital One",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public discover.com pages only (no sign-in). The Discover card has its own credit-cards catalog record, and Discover Home Loans closed (home-loans page: no new loans since July 2025, servicing transferred February 2, 2026), so the mock bill here is a Discover personal loan (same product as the loans-category record discover-personal-loans-db7b4f, re-checked 2026-10-10). Account Center sign-in: User ID + Password (FAQ steps; the public login box shows User ID, Password, Forgot User ID / Password, Register Now); Discover Card credentials may differ. Payments: app/Account Center (effective the day scheduled), automatic payment program from checking or savings (larger amounts allowed), automated phone 1-877-256-2632 option 1 (24/7), mail to Discover Personal Loans, PO Box 6105, Carol Stream, IL 60197-6105, overnight to the Bolingbrook lockbox, wire, bank bill pay. No fees of any kind (no origination, no prepayment penalty). Statements mailed about 20 days before the due date; due date may be any day from the 2nd to the 27th, changed online or by phone at most twice over the loan with 12 months between. Repayment assistance by phone 1-877-256-2660 (online request not described, so payment_arrangement stays at the family default). Customer service 1-866-248-1255 (Mon-Fri 8 a.m.-11 p.m. ET, Sat-Sun 9 a.m.-6 p.m. ET). Card payments not described (bank only).",
+  "officialDomains": [
+    "discover.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.discover.com/personal-loans/faqs/",
+      "title": "Personal Loan FAQs | Discover",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.discover.com/personal-loans/contact-us/",
+      "title": "Contact Us | Discover Personal Loans",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.discover.com/home-loans/",
+      "title": "Discover Home Loans",
+      "fetchedAt": "2026-10-10",
+      "kind": "other"
+    }
+  ],
+  "brand": {
+    "displayName": "Discover",
+    "shortName": "Discover",
+    "primary": "#a33b00",
+    "accent": "#23102d",
+    "monogram": "D"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Automatic Payments",
+    "signIn": "Log In",
+    "username": "User ID",
+    "forgot": "Forgot User ID / Password",
+    "register": "Register Account",
+    "dashboard": "Account Center",
+    "paperless": "Paperless Statements",
+    "accountName": "Personal Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Register Account", "page": "register" },
+      { "label": "Loan payment information", "helpSlug": "pay-your-bill" },
+      { "label": "Contact Us", "page": "help" }
+    ],
+    "account": [
+      { "label": "Account Center", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Automatic Payments", "page": "autopay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "Paperless Statements", "page": "paperless" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.discover.com/personal-loans/faqs/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.discover.com/personal-loans/faqs/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.discover.com/personal-loans/faqs/"
+    },
+    "scheduled_payment": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.discover.com/personal-loans/faqs/"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.discover.com/personal-loans/faqs/"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.discover.com/personal-loans/faqs/"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.discover.com/personal-loans/contact-us/",
+      "phone": "1-877-256-2632"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.discover.com/personal-loans/contact-us/"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.discover.com/personal-loans/contact-us/",
+      "note": "Discover personal loan payments are made after logging in to the Account Center or app, through the automated phone line at 1-877-256-2632, or by mail.",
+      "channel": "phone",
+      "phone": "1-877-256-2632"
+    }
+  },
+  "contact": {
+    "phone": "1-866-248-1255",
+    "payPhone": "1-877-256-2632",
+    "source": "https://www.discover.com/personal-loans/contact-us/"
+  },
+  "billing": {
+    "source": "https://www.discover.com/personal-loans/faqs/",
+    "methods": ["bank"],
+    "autopay": { "methodTypes": ["bank"] },
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.discover.com/personal-loans/faqs/"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Loan payment information",
+      "paragraphs": [
+        "Log in to the Account Center or the Discover app to make or schedule a payment; online payments are effective on the date you schedule them. You can also enroll in automatic payments there.",
+        "Pay by phone through the automated system 24/7 at 1-877-256-2632 (choose option 1). By mail, send your check to Discover Personal Loans, PO Box 6105, Carol Stream, IL 60197-6105. Wire transfers and your own bank's bill pay also work.",
+        "There are no fees of any kind on a Discover personal loan and no prepayment penalty, so you can pay extra or pay the loan off early. Extra payments go to accrued interest first, then principal."
+      ],
+      "source": "https://www.discover.com/personal-loans/contact-us/"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payments",
+      "paragraphs": [
+        "The free automatic payment program withdraws your regular monthly payment from your checking or savings account, and you can set a larger amount to pay the loan off faster. Enroll at any time: log in to the Account Center, select Payments and follow the prompts."
+      ],
+      "source": "https://www.discover.com/personal-loans/faqs/"
+    },
+    {
+      "slug": "due-date-change",
+      "title": "Statements and your due date",
+      "topic": "billing",
+      "paragraphs": [
+        "Statements are mailed about 20 days before your payment due date; you can switch to paperless statements in the Account Center. Your due date can be any day from the 2nd to the 27th of the month.",
+        "Change it in the Account Center or by calling 1-877-256-2632. You can change your due date two times over the life of the loan, with at least 12 months between requests."
+      ],
+      "source": "https://www.discover.com/personal-loans/faqs/"
+    },
+    {
+      "slug": "repayment-assistance",
+      "title": "Trouble making payments",
+      "topic": "assistance",
+      "paragraphs": [
+        "If you have a temporary setback or a long-term hardship, call Discover's repayment assistance team at 1-877-256-2660 (TDD 1-866-710-3357) to talk about your options."
+      ],
+      "source": "https://www.discover.com/personal-loans/faqs/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Discover Personal Loans",
+      "paragraphs": [
+        "Loan specialists: 1-866-248-1255, Monday to Friday 8 a.m. to 11 p.m. ET and Saturday to Sunday 9 a.m. to 6 p.m. ET. Hearing or speech impaired: dial 711.",
+        "Automated payments and general questions: 1-877-256-2632."
+      ],
+      "source": "https://www.discover.com/personal-loans/contact-us/",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "due-date-change-limit",
+        "intent": "Using Discover's personal loan help, find how many times you can change your loan's payment due date over the life of the loan. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["2", "two", "twice"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["2", "two", "twice"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Two times, at least 12 months apart." } ]
+      },
+      {
+        "slug": "statement-lead-days",
+        "intent": "Using Discover's personal loan help, find about how many days before the payment due date statements are mailed. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["20", "twenty"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["20", "twenty"] },
+        "tags": ["help", "information", "billing"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "About 20 days before the due date." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "User ID" },
+    { "page": "home", "contains": "Log In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "Automatic Payments"] },
+    { "page": "helpArticle", "slug": "due-date-change", "contains": "12 months" },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "PO Box 6105" }
+  ]
+}

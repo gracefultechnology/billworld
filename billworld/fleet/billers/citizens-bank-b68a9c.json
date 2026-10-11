@@ -1,0 +1,186 @@
+{
+  "id": "citizens-bank-b68a9c",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Citizens Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public citizensbank.com pages only (no sign-in). The mock bill is a Citizens personal loan, paid through Citizens Online Banking per the Pay My Loan page: pay from any checking or savings account (saved for later), enroll in Auto Pay, monitor the balance, enroll in eStatements; checking/savings payments post the same business day if made by 5:30 p.m. EST Monday-Friday (ATM card by 4:00 p.m. EST); no charge for the online service. Other ways: Pay by Phone 1-866-999-0216, mail to the address on the statement (allow 4 to 7 days), any branch (same-day processing). Personal loans applied for after July 12, 2019 are accessed through a separate personal-loan login (Access My Personal Loan page) - not modelled. Online Banking sign-in: User ID + password, Trouble logging in? recovery; 10-minute idle timeout; Online Banking support 1-800-656-6561 (mobile & online banking FAQ). The public Auto Pay terms page found is for credit cards (minimum/statement balance options, 3-day processing), so Auto Pay amount rules are not modelled for loans. The 'ATM card' same-day option is not modelled as a card payment (bank only).",
+  "officialDomains": [
+    "citizensbank.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx",
+      "title": "Pay My Loan | Enroll in Online Banking | Citizens",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.citizensbank.com/personal-loans/access-my-personal-loan.aspx",
+      "title": "How to Pay Off a Personal Loan | Personal Loans | Citizens",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.citizensbank.com/customer-service/faqs/mobile-and-online-banking.aspx",
+      "title": "Mobile & Online Banking: Questions & Answers | Citizens",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Citizens",
+    "shortName": "Citizens",
+    "primary": "#007a5e",
+    "accent": "#004f3d",
+    "monogram": "C"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Auto Pay",
+    "paperless": "eStatements",
+    "signIn": "Log in",
+    "username": "User ID",
+    "forgot": "Trouble logging in?",
+    "register": "Enroll in Online Banking",
+    "accountName": "Personal Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log in", "page": "login" },
+      { "label": "Enroll in Online Banking", "page": "register" },
+      { "label": "Pay My Loan", "helpSlug": "pay-your-bill" },
+      { "label": "Customer Service", "page": "help" }
+    ],
+    "account": [
+      { "label": "Accounts", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Auto Pay", "page": "autopay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "eStatements", "page": "paperless" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.citizensbank.com/customer-service/faqs/mobile-and-online-banking.aspx"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx"
+    },
+    "paperless": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx",
+      "phone": "1-866-999-0216"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx",
+      "note": "Citizens loan payments are made after logging in to Online Banking, by Pay by Phone at 1-866-999-0216, by mail or at a branch.",
+      "channel": "phone",
+      "phone": "1-866-999-0216"
+    }
+  },
+  "contact": {
+    "phone": "1-800-656-6561",
+    "payPhone": "1-866-999-0216",
+    "source": "https://www.citizensbank.com/customer-service/faqs/mobile-and-online-banking.aspx"
+  },
+  "billing": {
+    "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx",
+    "methods": ["bank"],
+    "autopay": { "methodTypes": ["bank"] },
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Pay My Loan",
+      "paragraphs": [
+        "Log in to Citizens Online Banking to pay your loan from any checking or savings account; you can save the account for future payments. There is no charge for paying online. Payments from a checking or savings account post the same business day if made by 5:30 p.m. EST, Monday through Friday.",
+        "You can also use Pay by Phone at 1-866-999-0216, mail your payment to the address on your statement (allow 4 to 7 days for delivery and processing), or pay at any Citizens branch during normal business hours for same-day processing."
+      ],
+      "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx"
+    },
+    {
+      "slug": "autopay",
+      "title": "Auto Pay and eStatements",
+      "paragraphs": [
+        "In Online Banking you can enroll in Auto Pay so your loan payment is deducted from your account automatically each month, which helps you avoid late fees. You can also enroll in eStatements to get your loan statements online; past statements stay on file for you."
+      ],
+      "source": "https://www.citizensbank.com/customer-service/pay-my-loan.aspx"
+    },
+    {
+      "slug": "trouble-logging-in",
+      "title": "Trouble logging in?",
+      "topic": "account",
+      "paragraphs": [
+        "Retype your password first. To reset it, choose Log in, then Trouble logging in?, select I forgot my password, verify your identity and create a new password. Online Banking signs you out after 10 minutes without activity. Still stuck? Call Online Banking Customer Service at 1-800-656-6561."
+      ],
+      "source": "https://www.citizensbank.com/customer-service/faqs/mobile-and-online-banking.aspx"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "same-day-cutoff",
+        "intent": "Using Citizens's Pay My Loan help, find the latest time on a weekday that a payment from a checking or savings account posts the same business day. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["5:30"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["5:30"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "5:30 p.m. EST, Monday through Friday." } ]
+      },
+      {
+        "slug": "mail-processing-days",
+        "intent": "Using Citizens's Pay My Loan help, find how many days to allow for a mailed loan payment to be delivered and processed. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["4 to 7", "4-7", "four to seven", "4 and 7"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["4 to 7", "4-7", "four to seven", "4 and 7"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Allow 4 to 7 days." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "User ID" },
+    { "page": "home", "contains": "Log in" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "Auto Pay"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "5:30 p.m. EST" },
+    { "page": "helpArticle", "slug": "trouble-logging-in", "contains": "1-800-656-6561" }
+  ]
+}

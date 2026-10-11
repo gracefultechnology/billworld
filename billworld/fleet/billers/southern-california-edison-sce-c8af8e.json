@@ -5,7 +5,7 @@
   "name": "Southern California Edison (SCE)",
   "category": "electric",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public sce.com Help Center pages only (no sign-in). My Account signs in with a User ID and password; multi-factor authentication is now required and the code can go by text, voice call or email (modelled as email_or_sms). The login form itself did not render for the fetcher, so the field label 'User ID' comes from the MFA FAQ wording. One-time card and digital-wallet payments (PayPal, Venmo, Google Pay, Apple Pay) are handled by JP Morgan Chase for a $1.65 residential fee (2.15% commercial, not modelled); checking-account payments in My Account are free. Pay as Guest uses checking-account details; card payments without an account go through the Chase link with the account number and 5-digit mailing ZIP. Auto Pay is bank-only, set from Settings > Billing & Payment, and withdraws 11 days before the due date (leadDays 11). Payment extension and installment arrangement are both offered from 'Request Payment Arrangement'; the engine models one arrangement flow. A 0.6% monthly late charge appears in an SCE collections FAQ PDF that could not be read in full, so no late fee is modelled. Stop service is done in the Move Center (dates up to 30 days ahead per search excerpt of the Move Center FAQ; not modelled).",
+  "notes": "Researched from public sce.com Help Center pages only (no sign-in). My Account signs in with a User ID and password; multi-factor authentication is now required and the code can go by text, voice call or email (modelled as email_or_sms). The login form itself did not render for the fetcher, so the field label 'User ID' comes from the MFA FAQ wording. One-time card and digital-wallet payments (PayPal, Venmo, Google Pay, Apple Pay) are handled by JP Morgan Chase for a $1.65 residential fee (2.15% commercial, not modelled); checking-account payments in My Account are free. Pay as Guest uses checking-account details; card payments without an account go through the Chase link with the account number and 5-digit mailing ZIP. Auto Pay is bank-only, set on sce.com from Settings > Billing & Payment (the mock portal and help steps use My Account > Auto Pay), and withdraws 11 days before the due date (leadDays 11). Payment extension and installment arrangement are both offered from 'Request Payment Arrangement'; the engine models one arrangement flow. A 0.6% monthly late charge appears in an SCE collections FAQ PDF that could not be read in full, so no late fee is modelled. Stop service is done in the Move Center (dates up to 30 days ahead per search excerpt of the Move Center FAQ; not modelled).",
   "officialDomains": [
     "sce.com"
   ],
@@ -224,13 +224,12 @@
       "topic": "autopay",
       "paragraphs": [
         "SCE Auto Pay withdraws your bill from a bank checking account 11 days before the due date. Credit cards and digital wallets cannot be used for Auto Pay.",
-        "You turn it on in My Account under Settings, on the Billing & Payment tab."
+        "You turn it on in My Account: choose Auto Pay, pick the bank account, accept the terms and enroll."
       ],
       "steps": [
-        "Log in to My Account and choose Settings.",
-        "On the Billing & Payment tab, switch the Auto Pay toggle on and choose Yes, Continue.",
-        "Pick or add the bank account to use, then choose Next.",
-        "Review, accept the terms and conditions, and Submit."
+        "Log in to My Account and choose Auto Pay.",
+        "Pick or add the checking account to use.",
+        "Accept the Auto Pay terms and conditions, then choose Enroll."
       ],
       "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/auto-pay/pay-bill-through-auto-pay"
     },
@@ -239,7 +238,7 @@
       "title": "Cancel Auto Pay",
       "topic": "autopay",
       "paragraphs": [
-        "You can cancel Auto Pay at any time from the billing and payment settings in My Account. It stops right away, so you must pay later bills yourself by their due dates.",
+        "You can cancel Auto Pay at any time from the Auto Pay page in My Account. It stops right away, so you must pay later bills yourself by their due dates.",
         "If you also have a payment arrangement, its scheduled installments are still withdrawn on their own due dates."
       ],
       "source": "https://www.sce.com/customer-service-center/help-center/billing-payments/auto-pay/can-i-cancel-autopay"

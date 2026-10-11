@@ -1,0 +1,185 @@
+{
+  "id": "fifth-third-bank-293d49",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Fifth Third Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public 53.com pages only (no sign-in). 53.com answers curl/WebFetch with a bot check, so the pages were read with headless Chrome (public pages, 45 s cap; FAQ accordion text read from the DOM). The mock bill is a Fifth Third personal (installment) loan per the Mortgage, Personal Loan, and Auto Loan FAQs: automatic or recurring payments from an existing Fifth Third account are set up by logging in at 53.com or the app and messaging a representative (type 'Automatic Payments') or by calling automatic payment specialists at 800-837-2000; deposit customers can set up automatic recurring payments online; one-time payment at 53.com from an external account; mail a check or money order to Fifth Third Bank, PO Box 630778, Cincinnati, OH 45263; banking centers; pay by phone 800-972-3030 (fee may apply; amount not published); wire, Western Union. Daily simple interest: paying after the due date means more interest; customers without automatic payments get a paper statement monthly. Payoff: call 800-972-3030, a banking center, or the account summary online; third-party payoffs to Attn: Installment Loans, 5050 Kingsley Drive MD 1MOC2J, Cincinnati. Payment Assistance page: personal loans & lines assistance (restructure payments), Payment Assistance Team Mon-Fri 8 a.m.-5 p.m. ET (phone options are rendered as links and were not captured). Customer service 800-972-3030 Mon-Fri 8 a.m.-6 p.m., Sat 10 a.m.-4 p.m. ET. Sign-in field labels inferred (user ID + password).",
+  "officialDomains": [
+    "53.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html",
+      "title": "Mortgage, Personal Loan, and Auto Loan FAQs | Fifth Third Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.53.com/content/fifth-third/en/personal-banking/borrowing-basics/hardship-assistance.html",
+      "title": "Payment Assistance | Fifth Third Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
+    }
+  ],
+  "brand": {
+    "displayName": "Fifth Third Bank",
+    "shortName": "Fifth Third",
+    "primary": "#00703c",
+    "accent": "#003b1f",
+    "monogram": "53"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "Automatic Payments",
+    "signIn": "Log In",
+    "arrangement": "Payment Assistance",
+    "accountName": "Personal Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Making loan payments", "helpSlug": "pay-your-bill" },
+      { "label": "Customer Service", "page": "help" }
+    ],
+    "account": [
+      { "label": "Accounts", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "Automatic Payments", "page": "autopay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "Payment History", "page": "history" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html",
+      "phone": "800-972-3030"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html"
+    },
+    "payment_assistance": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.53.com/content/fifth-third/en/personal-banking/borrowing-basics/hardship-assistance.html"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html",
+      "note": "Fifth Third loan payments are made after logging in at 53.com or in the app, by phone at 800-972-3030, by mail or at a banking center.",
+      "channel": "phone",
+      "phone": "800-972-3030"
+    }
+  },
+  "contact": {
+    "phone": "800-972-3030",
+    "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html"
+  },
+  "billing": {
+    "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html",
+    "methods": ["bank"],
+    "autopay": { "methodTypes": ["bank"] },
+    "fees": {
+      "notes": ["Pay by phone: a fee may apply."],
+      "evidence": "documented_official",
+      "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Making loan payments",
+      "paragraphs": [
+        "Log in at 53.com or in the Fifth Third mobile app to pay. You can make a one-time payment at 53.com from an account at another bank. You can also pay at any banking center.",
+        "Mail a check or money order to Fifth Third Bank, PO Box 630778, Cincinnati, OH 45263. To pay by phone, call 800-972-3030; a fee may apply. Wire transfer, Western Union and other services are available; call 800-972-3030 for help with them.",
+        "Your loan uses daily simple interest, so paying after the due date means more of your payment goes to interest. Paying more than the amount due lowers the interest you pay over the life of the loan."
+      ],
+      "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payments",
+      "paragraphs": [
+        "To set up or manage automatic or recurring payments from your Fifth Third account, log in at 53.com or the mobile app and message a representative: type Automatic Payments and answer a few quick questions. Deposit customers can also set up automatic recurring payments online, or call our automatic payment specialists at 800-837-2000.",
+        "If you are not on automatic payments, you receive a paper statement each month."
+      ],
+      "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html"
+    },
+    {
+      "slug": "payment-assistance",
+      "title": "Payment Assistance",
+      "topic": "assistance",
+      "paragraphs": [
+        "If a temporary setback or a longer-term challenge makes your personal loan payments hard to manage, Fifth Third can help restructure payments and explore available aid. Call the Payment Assistance Team, Monday through Friday, 8 a.m. to 5 p.m. ET, to find out what you may qualify for."
+      ],
+      "source": "https://www.53.com/content/fifth-third/en/personal-banking/borrowing-basics/hardship-assistance.html"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact Fifth Third",
+      "paragraphs": [
+        "Call 800-972-3030, Monday through Friday 8 a.m. to 6 p.m. and Saturday 10 a.m. to 4 p.m. ET, or message us 24/7 in online banking or the mobile app. Automatic payment specialists: 800-837-2000."
+      ],
+      "source": "https://www.53.com/content/fifth-third/en/customer-service/mortgage-personal-loan-auto-loan-faqs.html",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "autopay-specialists-phone",
+        "intent": "Using Fifth Third's loan FAQs, find the phone number for the automatic payment specialists. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["837-2000", "8372000"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["837-2000", "8372000"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "800-837-2000." } ]
+      },
+      {
+        "slug": "mail-po-box",
+        "intent": "Using Fifth Third's loan FAQs, find the PO Box for mailing a personal loan payment. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["630778"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["630778"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "PO Box 630778, Cincinnati, OH 45263." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "home", "contains": "Log In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "Automatic Payments"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "PO Box 630778" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "800-837-2000" }
+  ]
+}

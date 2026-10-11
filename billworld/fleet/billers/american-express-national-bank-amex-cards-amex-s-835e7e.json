@@ -1,0 +1,207 @@
+{
+  "id": "american-express-national-bank-amex-cards-amex-s-835e7e",
+  "version": 1,
+  "status": "dedicated",
+  "name": "American Express National Bank (Amex cards, Amex Savings & Rewards Checking)",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public americanexpress.com pages only (no sign-in). Amex cards already have a dedicated dossier in credit-cards (american-express-298cb1) and savings/checking carry no bill, so the mock bill here is an American Express Personal Loan (issued by American Express National Bank to eligible Card Members, 12-60 month terms, fixed monthly installments). Payments: electronic payment from the American Express online account (no charge, including AutoPay), Pay by Phone at 1-844-273-1384, or check by mail per the loan invoice. AutoPay debits the Monthly Payment Due from a designated bank account; debit date is no earlier than 15 days after the invoice date and can be moved online to 15-25 days after it; stop online, by phone or by writing to P.O. Box 981540, El Paso, TX 79998 at least 2 business days before the debit date. Late or returned payment fee $39; no origination fees or prepayment penalties; due date cannot be changed. Sign-in uses the same User ID and password as the card account (inferred from the FAQ: log in to your American Express online account; field labels copied from the card dossier, observed_public there). Payment assistance for loans is not described publicly, so it is left at the family default. Card payment of a loan is not offered (bank only, inferred).",
+  "officialDomains": [
+    "americanexpress.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/",
+      "title": "American Express Personal Loans FAQs",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.americanexpress.com/en-us/banking/personal-loans/autopay-terms-and-conditions/",
+      "title": "American Express Personal Loans AutoPay Terms and Conditions",
+      "fetchedAt": "2026-10-10",
+      "kind": "autopay"
+    },
+    {
+      "url": "https://www.americanexpress.com/en-us/banking/personal-loans/",
+      "title": "Personal Loans up to $50,000: Check Offers & Apply | Amex US",
+      "fetchedAt": "2026-10-10",
+      "kind": "fees"
+    },
+    {
+      "url": "https://www.americanexpress.com/us/customer-service/faq.make-payment.html",
+      "title": "Make a Payment FAQ | American Express",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "American Express",
+    "shortName": "Amex",
+    "primary": "#006fcf",
+    "accent": "#00175a",
+    "monogram": "AX"
+  },
+  "labels": {
+    "payBill": "Make a Payment",
+    "autopay": "AutoPay",
+    "signIn": "Log In",
+    "username": "User ID",
+    "forgot": "Forgot User ID or Password?",
+    "register": "Create Your Online Account",
+    "dashboard": "Account Home",
+    "help": "Customer Service",
+    "accountName": "Personal Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "Create Your Online Account", "page": "register" },
+      { "label": "Paying your Personal Loan", "helpSlug": "pay-your-bill" },
+      { "label": "Customer Service", "page": "help" }
+    ],
+    "account": [
+      { "label": "Account Home", "page": "dashboard" },
+      { "label": "Make a Payment", "page": "pay" },
+      { "label": "AutoPay", "page": "autopay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "Payment History", "page": "history" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "inferred",
+    "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/"
+    },
+    "autopay": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/"
+    },
+    "autopay_cancel": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/autopay-terms-and-conditions/",
+      "note": "Requests to stop AutoPay must reach American Express at least 2 business days before the scheduled debit date shown on your loan invoice."
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/autopay-terms-and-conditions/",
+      "phone": "1-844-273-1384"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/",
+      "note": "Personal Loan payments are made after logging in to your American Express online account, by phone at 1-844-273-1384 or by check by mail.",
+      "channel": "phone",
+      "phone": "1-844-273-1384"
+    }
+  },
+  "contact": {
+    "phone": "1-844-273-1384",
+    "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/"
+  },
+  "billing": {
+    "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/",
+    "methods": ["bank"],
+    "autopay": { "methodTypes": ["bank"] },
+    "lateFeeCents": 3900,
+    "fees": {
+      "bankCents": 0,
+      "evidence": "documented_official",
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/"
+    }
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "Paying your Personal Loan",
+      "paragraphs": [
+        "Your Personal Loan is repaid in fixed monthly installments. Log in to your American Express online account, choose the loan account and make an electronic payment from your bank account. There is no charge for payments made from your online account, including AutoPay.",
+        "You can also pay by phone through Customer Care at 1-844-273-1384, or mail a check by following the instructions on your loan invoice. Mailed checks take longer to arrive, so paying online each month or using AutoPay helps you stay on time.",
+        "You may pay extra or pay the loan off early with no prepayment penalty. To pay it off, pay the Outstanding Personal Loan Balance shown online or on your invoice before the Next Invoice Date, or additional interest may post."
+      ],
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/"
+    },
+    {
+      "slug": "autopay",
+      "title": "AutoPay for Personal Loans",
+      "paragraphs": [
+        "Turn on AutoPay in your American Express online account under Payments. Each invoice period American Express debits the Monthly Payment Due, including any fees, from the bank account you choose; your loan invoice shows the amount and the debit date.",
+        "The debit date is at least 15 days after your invoice date. You can move it online to any day from 15 to 25 days after the invoice date. If it falls on a weekend or bank holiday, the debit runs the next business day and is not treated as late.",
+        "To stop AutoPay, turn it off online, call 1-844-273-1384 or write to American Express, P.O. Box 981540, El Paso, TX 79998. Your request must arrive at least 2 business days before the scheduled debit date. You can still make extra payments while enrolled."
+      ],
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/autopay-terms-and-conditions/"
+    },
+    {
+      "slug": "loan-fees",
+      "title": "Personal Loan fees and due date",
+      "topic": "billing",
+      "paragraphs": [
+        "There are no application or origination fees and no prepayment penalty. A $39 fee applies in any month your payment arrives after the due date on your invoice, or when a payment is returned for insufficient funds; late payments may also be reported to credit bureaus.",
+        "Your payment due date is set when the loan is approved and stays the same day each month for the whole repayment period. It cannot be changed."
+      ],
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Contact American Express about your Personal Loan",
+      "paragraphs": [
+        "Chat with us after logging in to your American Express online account, or call 1-844-273-1384, Monday through Friday, 9:00 a.m. to 9:00 p.m. ET."
+      ],
+      "source": "https://www.americanexpress.com/en-us/banking/personal-loans/frequently-asked-questions/",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "late-fee-amount",
+        "intent": "Using Amex's Personal Loan help, find the fee charged when a monthly loan payment arrives after the due date. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["39"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["39"] },
+        "tags": ["help", "information", "fees"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "$39." } ]
+      },
+      {
+        "slug": "autopay-stop-notice",
+        "intent": "Using Amex's Personal Loan AutoPay help, find how many business days before the scheduled debit date a request to stop AutoPay must be received. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["2", "two"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["2", "two"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "At least 2 business days before the debit date." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "User ID" },
+    { "page": "home", "contains": "Log In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Make a Payment", "AutoPay"] },
+    { "page": "helpArticle", "slug": "autopay", "contains": "2 business days" },
+    { "page": "helpArticle", "slug": "loan-fees", "contains": "$39" }
+  ]
+}

@@ -5,7 +5,7 @@
   "reviewedAt": "2026-10-09",
   "id": "disney-0e901d",
   "name": "Disney+",
-  "notes": "Researched from public help.disneyplus.com articles only (no sign-in). Disney+ renews monthly or annually and charges the card, PayPal, Apple Pay or Cash App method on file; there is no separate AutoPay, paper bill, guest payment or payment plan. Sign-in uses a MyDisney account (email first, then password); MyDisney uses emailed 6-digit one-time passcodes for password changes and resets, so mfa is email (inferred for sign-in). The documented MyDisney password rule (at least 6 characters with a number or special character) is applied. Prices are published US prices for new subscribers as of Sept 23, 2026. Monthly Disney+-billed plans can be paused (described in help; the template cannot model pause). Partner-billed subscribers cancel with the partner. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public help.disneyplus.com articles only (no sign-in). Disney+ renews monthly or annually and charges the card, PayPal, Apple Pay or Cash App method on file; there is no separate AutoPay, paper bill, guest payment or payment plan. Sign-in uses a MyDisney account (email first, then password); MyDisney uses emailed 6-digit one-time passcodes for password changes and resets, so mfa is email (inferred for sign-in). The documented MyDisney password rule (at least 6 characters with a number or special character) is applied. Prices are published US prices for new subscribers as of Sept 23, 2026. Monthly Disney+-billed plans can be paused (described in help; the template cannot model pause). Partner-billed subscribers cancel with the partner. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. pay-partial-card suppressed (fixer, streaming-subscriptions audit 2026-10-10): the membership is charged its plan price, which is below the generated $25.00 partial amount, so that task would be an overpayment; the service has no partial-payment option.",
   "officialDomains": [
     "disneyplus.com"
   ],
@@ -364,7 +364,8 @@
       }
     ],
     "suppress": [
-      "setup-payment-plan"
+      "setup-payment-plan",
+      "pay-partial-card"
     ]
   },
   "testExpectations": [

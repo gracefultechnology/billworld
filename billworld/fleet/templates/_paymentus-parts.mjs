@@ -1,6 +1,7 @@
 // Template-local helpers shared by the paymentus, kubra and doxo templates (processor / aggregator families).
 // Only wording and markup live here; all state changes go through the standard form field names.
 import { html, raw, form, field, select, checkbox, button, hidden, dateField, money, fmtDate } from '../kit.mjs';
+import { withdrawn, withdrawnView } from './_withdrawn.mjs';
 
 export const isOffline = vm => vm.biller.capabilities.online_account.support === 'unsupported';
 export const guestOn = vm => vm.biller.capabilities.guest_pay.support !== 'unsupported';
@@ -41,7 +42,7 @@ export function cancelBody(vm, { h1, wordsFor = {} } = {}) {
     reason: html`${H(wordsFor.title || (kind === 'utility' ? 'Stop service request' : `Cancel your ${noun}`))}<p class="muted">Step 1 of 2 · Tell us why</p>${form(vm, 'cancel', html`${hidden('step', 'reason')}${select(vm, { name: 'reason', label: 'Reason for request', options: [['', 'Select a reason'], ['moving', 'Moving out of the service area'], ['cost', 'Too expensive'], ['not_using', 'No longer needed'], ['switching', 'Switching providers'], ['other', 'Other']] })}${button('Continue')}`)}`,
     offer: html`${H('Before you go')}<div class="card offer"><h2>Stay and get 50% off for 3 months</h2><p>Keep your ${noun} at half price for your next three bills.</p>${form(vm, 'cancel', html`${hidden('step', 'offer')}${button('Accept offer', { name: 'accept', value: 'yes' })} ${button('No thanks, continue', { cls: 'btn btn-secondary', name: 'accept', value: 'no' })}`)}</div>`,
     confirm: html`${H('Confirm your request')}<p class="muted">Step 2 of 2 · Confirm</p><p>${kind === 'subscription' ? `Your ${noun} will end on ${vm.dueText}, the end of your billing period.` : 'Choose the date service should end. A final bill will be sent to you.'}</p>${form(vm, 'cancel', html`${hidden('step', 'confirm')}${kind !== 'subscription' ? dateField(vm, { name: 'effectiveDate', label: 'Stop date' }) : ''}${checkbox(vm, { name: 'confirm', label: `Yes, end my ${noun}.` })}${button(wordsFor.submit || `Submit request`, { cls: 'btn btn-danger' })}`)}`,
-    done: html`${H('Request received')}<p>Your ${noun} will end on <strong>${vm.service.cancelAt ? fmtDate(vm.service.cancelAt) : ''}</strong>. Confirmation number <strong>${vm.service.confirmation || ''}</strong>.</p>`,
+    done: withdrawn(vm) ? withdrawnView(vm) : html`${H('Request received')}<p>Your ${noun} will end on <strong>${vm.service.cancelAt ? fmtDate(vm.service.cancelAt) : ''}</strong>. Confirmation number <strong>${vm.service.confirmation || ''}</strong>.</p>`,
     kept: html`${H('Thanks for staying')}<p>Your discount has been applied.</p>`
   };
   return steps[vm.step] || steps.reason;

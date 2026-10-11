@@ -5,7 +5,7 @@
   "reviewedAt": "2026-10-09",
   "id": "hulu-0556b7",
   "name": "Hulu",
-  "notes": "Researched from public help.hulu.com articles and the public sign-in page only (no sign-in). Hulu bills monthly or annually to a card, PayPal or gift card balance; renewal is automatic and only stops when the subscription is canceled, so autopay/paperless/guest pay/scheduled payments are not_applicable. Sign-in is email-first with a MyDisney account (two steps). Prices are the published US prices for new subscribers as of Sept 23, 2026. Hulu also offers Pause (up to 12 weeks, monthly Hulu-billed plans only) which the template cannot model; it is described in help. Subscribers billed by a partner (Apple, Amazon, Roku, Spotify, Verizon, etc.) cancel with that partner. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public help.hulu.com articles and the public sign-in page only (no sign-in). Hulu bills monthly or annually to a card, PayPal or gift card balance; renewal is automatic and only stops when the subscription is canceled, so autopay/paperless/guest pay/scheduled payments are not_applicable. Sign-in is email-first with a MyDisney account (two steps). Prices are the published US prices for new subscribers as of Sept 23, 2026. Hulu also offers Pause (up to 12 weeks, monthly Hulu-billed plans only) which the template cannot model; it is described in help. Subscribers billed by a partner (Apple, Amazon, Roku, Spotify, Verizon, etc.) cancel with that partner. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. pay-partial-card suppressed (fixer, streaming-subscriptions audit 2026-10-10): the membership is charged its plan price, which is below the generated $25.00 partial amount, so that task would be an overpayment; the service has no partial-payment option.",
   "officialDomains": [
     "hulu.com"
   ],
@@ -344,7 +344,8 @@
       }
     ],
     "suppress": [
-      "setup-payment-plan"
+      "setup-payment-plan",
+      "pay-partial-card"
     ]
   },
   "testExpectations": [

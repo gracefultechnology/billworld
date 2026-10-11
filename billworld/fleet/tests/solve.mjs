@@ -1,6 +1,6 @@
 // Engine-level reference solvers: drive FleetWorld directly (no HTML) to prove that every generated task is
 // satisfiable for its biller, and to run the catalog-wide lifecycle in the sweep. Used by sweep.mjs and tests.
-import { PASSWORD, isoDate, fmtDate, money, methodTypesFor, primaryMethodId, paymentLimits } from '../engine.mjs';
+import { PASSWORD, isoDate, fmtDate, money, methodTypesFor, primaryMethodId, paymentLimits, noticeAccountNumber } from '../engine.mjs';
 import { formatPhone } from '../catalog.mjs';
 // AutoPay amount the reference solutions choose: the full balance, or the statement balance where the dossier's
 // AutoPay options leave out 'full' (card issuers).
@@ -20,7 +20,7 @@ export function resetCode(ep, billerId) { const m = latestMail(ep, billerId, /^R
 export function billNotice(ep, billerId) {
   const m = latestMail(ep, billerId, /bill is ready/); if (!m) throw new Error('no bill notice in the mailbox');
   const field = label => m.text.match(new RegExp(`${label}: (.+)`))?.[1]?.trim();
-  return { accountNumber: field('Account number'), statementId: field('Statement ID'), parcelId: field('Parcel number'), plate: field('License plate'), zip: field('Service ZIP code'), amountDue: field('Amount due') };
+  return { accountNumber: noticeAccountNumber(m.text), statementId: field('Statement ID'), parcelId: field('Parcel number'), plate: field('License plate'), zip: field('Service ZIP code'), amountDue: field('Amount due') };
 }
 
 // The sign-in identifier a customer of this biller types (dossier auth.identifier; default the email address).
@@ -66,7 +66,7 @@ export const SOLVERS = {
   'downgrade-plan': (w, ep, id) => { const sid = login(w, ep, id); const cheapest = w.plans(w.account(ep, id)).slice().sort((a, b) => a.cents - b.cents)[0]; w.changePlan(ep, id, sid, { planId: cheapest.id }); },
   'remove-old-card': (w, ep, id) => { w.removeMethod(ep, id, login(w, ep, id), { methodId: w.account(ep, id).methods.find(m => m.last4 === '4444' && m.saved).id }); },
   'setup-payment-plan': (w, ep, id) => { w.setupArrangement(ep, id, login(w, ep, id), { months: 6 }); },
-  'send-message': (w, ep, id) => { w.contact(ep, id, login(w, ep, id), { subject: 'Paper statements', message: 'Please stop mailing paper statements to me.' }); },
+  'send-message': (w, ep, id) => { w.contact(ep, id, login(w, ep, id), { subject: 'Paper statements', message: 'Please stop mailing paper statements to me, and send me a copy of my payment history.' }); },
   'reset-then-pay': (w, ep, id) => {
     w.requestReset(ep, id, { identifier: ep.persona.email });
     w.resetPassword(ep, id, { code: resetCode(ep, id), password: NEW_PASSWORD, confirm: NEW_PASSWORD });
@@ -167,6 +167,11 @@ export function taskShapeErrors(task, b) {
   if (/(?:full|in full)/.test(task.intent) && task.predicates.some(p => p.type === 'payment' && p.amountCents == null && !p.amountFrom)) errs.push('full_payment_without_amount');
   if (b.template !== 'offline' && !supported(b, 'online_account')) errs.push('online_template_without_account');
   if (task.answer?.kind === 'contact' && !task.answer.expected) errs.push('answer_expected_missing');
+  // Every lookup / registration field the agent must type is visible to it: printed on the bill notice, part of the
+  // persona name in the instruction, or a persona fact the instruction states (phone, date of birth).
+  const fields = slug === 'guest-pay' ? b.dossier?.auth?.guestLookupFields : slug === 'register-and-pay' ? b.dossier?.auth?.registrationFields : null;
+  const visible = new Set(['accountNumber', 'zip', 'statementId', 'parcelId', 'plate', 'amountDue', 'lastName', 'email', ...(task.personaFacts || [])]);
+  for (const f of fields || []) if (!visible.has(f)) errs.push(`hidden_field:${f}`);
   return errs;
 }
 

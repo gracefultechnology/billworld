@@ -1,0 +1,182 @@
+{
+  "id": "regions-bank-440e90",
+  "version": 1,
+  "status": "dedicated",
+  "name": "Regions Bank",
+  "category": "banks",
+  "reviewedAt": "2026-10-10",
+  "notes": "Tier 2. Researched from public regions.com help pages only (no sign-in; the product pages answer automated reads with a bot check, so fees and rates are not modelled). The mock bill is a Regions unsecured personal loan (help FAQ 'How can I make a payment on my loan or line of credit?'). Payment ways: Online Banking (Regions Loan and Credit Payments, transferring from a Regions deposit account), the mobile app (internal transfer), a branch, phone 1-800-231-7493, regular mail to Regions Consumer Loan Processing, PO Box 71295, Charlotte, NC 28272-1295, overnight to Loan Servicing Dept, 2090 Parkway Office Circle, Hoover, AL 35244, and Automatic Payment Draft set up with a printed Automatic Debit Authorization form (so AutoPay is offline online; the form-only enrollment with a pending state is an open tier-1 request). Questions: 1-800-REGIONS (734-4667). Sign-in uses a username and password (password-reset FAQ: Find your username / Create a new password, Remember Me). Paying from an external bank or card is not described (bank only, inferred).",
+  "officialDomains": [
+    "regions.com"
+  ],
+  "sources": [
+    {
+      "url": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/how-can-i-make-a-payment-on-my-loan-or-line-of-credit",
+      "title": "How Can I Make a Payment on My Loan or Line of Credit? | Regions Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "pay"
+    },
+    {
+      "url": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/who-should-i-call-if-i-have-questions-about-my-unsecured-loan",
+      "title": "Unsecured Loans: Who to Call With Questions? | Regions Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "help"
+    },
+    {
+      "url": "https://www.regions.com/help/online-banking-help/getting-started/starting-online-banking/what-if-i-dont-remember-my-online-id-or-password",
+      "title": "Resetting username or Password | Regions Bank",
+      "fetchedAt": "2026-10-10",
+      "kind": "login"
+    }
+  ],
+  "brand": {
+    "displayName": "Regions Bank",
+    "shortName": "Regions",
+    "primary": "#3b6e16",
+    "accent": "#1f3d0c",
+    "monogram": "R"
+  },
+  "labels": {
+    "payBill": "Regions Loan and Credit Payments",
+    "autopay": "Automatic Payment Draft",
+    "signIn": "Log In",
+    "username": "Username",
+    "accountName": "Unsecured Loan"
+  },
+  "nav": {
+    "public": [
+      { "label": "Log In", "page": "login" },
+      { "label": "How to make a loan payment", "helpSlug": "pay-your-bill" },
+      { "label": "Help", "page": "help" }
+    ],
+    "account": [
+      { "label": "Accounts", "page": "dashboard" },
+      { "label": "Regions Loan and Credit Payments", "page": "pay" },
+      { "label": "Statements", "page": "statements" },
+      { "label": "Payment History", "page": "history" }
+    ]
+  },
+  "auth": {
+    "identifier": "username",
+    "loginSteps": 1,
+    "evidence": "documented_official",
+    "source": "https://www.regions.com/help/online-banking-help/getting-started/starting-online-banking/what-if-i-dont-remember-my-online-id-or-password"
+  },
+  "capabilities": {
+    "pay_online": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/how-can-i-make-a-payment-on-my-loan-or-line-of-credit"
+    },
+    "autopay": {
+      "support": "unsupported",
+      "evidence": "documented_official",
+      "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/how-can-i-make-a-payment-on-my-loan-or-line-of-credit",
+      "note": "Automatic Payment Draft is set up by completing, printing and returning the Automatic Debit Authorization form as its directions explain. For help, call 1-800-231-7493.",
+      "channel": "phone",
+      "phone": "1-800-231-7493"
+    },
+    "pay_by_phone": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/how-can-i-make-a-payment-on-my-loan-or-line-of-credit",
+      "phone": "1-800-231-7493"
+    },
+    "pay_by_mail": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/how-can-i-make-a-payment-on-my-loan-or-line-of-credit"
+    },
+    "guest_pay": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/how-can-i-make-a-payment-on-my-loan-or-line-of-credit",
+      "note": "Regions loan payments are made in Online Banking or the app from a Regions deposit account, at a branch, by phone at 1-800-231-7493 or by mail.",
+      "channel": "phone",
+      "phone": "1-800-231-7493"
+    }
+  },
+  "contact": {
+    "phone": "1-800-734-4667",
+    "payPhone": "1-800-231-7493",
+    "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/who-should-i-call-if-i-have-questions-about-my-unsecured-loan"
+  },
+  "billing": {
+    "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/how-can-i-make-a-payment-on-my-loan-or-line-of-credit",
+    "methods": ["bank"]
+  },
+  "help": [
+    {
+      "slug": "pay-your-bill",
+      "title": "How to make a loan payment",
+      "paragraphs": [
+        "In Regions Online Banking, choose Regions Loan and Credit Payments and transfer the payment from your Regions deposit account. In the Regions Mobile app, use an internal transfer from your Regions deposit account. You can also pay at any Regions branch or call 1-800-231-7493.",
+        "By regular mail, send your payment to Regions Consumer Loan Processing, PO Box 71295, Charlotte, NC 28272-1295. For overnight delivery, use Loan Servicing Dept, 2090 Parkway Office Circle, Hoover, AL 35244."
+      ],
+      "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/how-can-i-make-a-payment-on-my-loan-or-line-of-credit"
+    },
+    {
+      "slug": "autopay",
+      "title": "Automatic Payment Draft",
+      "paragraphs": [
+        "To have your loan payment drafted automatically, open the Automatic Debit Authorization form, complete and print it, and follow the directions on the form to send it in. Automatic drafts are not set up in Online Banking. Until your draft starts, keep paying by transfer, phone, mail or at a branch."
+      ],
+      "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/how-can-i-make-a-payment-on-my-loan-or-line-of-credit"
+    },
+    {
+      "slug": "forgot-username",
+      "title": "Forgot your username or password",
+      "topic": "account",
+      "paragraphs": [
+        "On the log in page, choose Find your username to retrieve a forgotten Online Banking username, or Create a new password to reset your password. Check Remember Me when you log in so your username fills in next time."
+      ],
+      "source": "https://www.regions.com/help/online-banking-help/getting-started/starting-online-banking/what-if-i-dont-remember-my-online-id-or-password"
+    },
+    {
+      "slug": "contact-us",
+      "title": "Questions about your loan",
+      "paragraphs": [
+        "For questions about your unsecured loan, call 1-800-REGIONS (1-800-734-4667). To pay by phone, call 1-800-231-7493."
+      ],
+      "source": "https://www.regions.com/help/products-services/personal-loans/unsecured-loans/who-should-i-call-if-i-have-questions-about-my-unsecured-loan",
+      "mode": "replace"
+    }
+  ],
+  "tasks": {
+    "extra": [
+      {
+        "slug": "overnight-payment-address",
+        "intent": "Using Regions's loan payment help, find the city the overnight-mail address for loan payments is in. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["Hoover"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["Hoover"] },
+        "tags": ["help", "information", "payments"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Hoover, AL (Loan Servicing Dept, 2090 Parkway Office Circle)." } ]
+      },
+      {
+        "slug": "autopay-enroll-route",
+        "intent": "Using Regions's loan help, find how to set up Automatic Payment Draft for a Regions loan. Do not make a payment or change any settings.",
+        "predicates": [
+          { "type": "no_payment" },
+          { "type": "answer", "kind": "contains", "expected": ["form"] },
+          { "type": "no_unrequested_changes", "allow": [] }
+        ],
+        "answer": { "kind": "contains", "expected": ["form"] },
+        "tags": ["help", "information", "autopay"],
+        "evidence": "documented_official",
+        "solution": [ { "op": "answer", "text": "Complete, print and send in the Automatic Debit Authorization form." } ]
+      }
+    ]
+  },
+  "testExpectations": [
+    { "page": "login", "contains": "Username" },
+    { "page": "home", "contains": "Log In" },
+    { "page": "dashboard", "signedIn": true, "contains": ["Regions Loan and Credit Payments", "Unsecured Loan"] },
+    { "page": "helpArticle", "slug": "pay-your-bill", "contains": "PO Box 71295" },
+    { "page": "helpArticle", "slug": "autopay", "contains": "Automatic Debit Authorization" }
+  ]
+}

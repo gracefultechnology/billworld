@@ -4,7 +4,7 @@
   "name": "Boost Mobile",
   "category": "phone-wireless",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public help.boostmobile.com articles only (no sign-in). Payments are made in the online account, the Boost Mobile app, a store or through Customer Care; agent-assisted payments carry a $4 convenience fee. Paying for someone else is done through the free automated phone system (phone number + exact amount), not a web guest form, so guest_pay is unsupported online. Accepted: Visa, Mastercard, American Express, Discover, Apple Pay and Google Pay; prepaid cards are not accepted online and bank accounts are not listed. AutoPay is enabled in Settings > Payment Method and charges on the due date (leadDays 0); some plans require AutoPay. The Payment Extension ($10/line up front, $5/line credited back when paid in full within 5 days, one per cycle, No Contract accounts) is modelled by the arrangement form. Early payments become account credit. Sign-in (account-security, manage-your-account pages) is email or phone number, a texted one-time passcode, then the password (modelled as two-step phone sign-in with mfa sms). Cancelling a line is by Customer Care at (833) 502-6678 (cancel_service unsupported online). Plan prices were not modelled; paperless not_applicable is inferred (no paper bills mentioned). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public help.boostmobile.com articles only (no sign-in). Payments are made in the online account, the Boost Mobile app, a store or through Customer Care; agent-assisted payments carry a $4 convenience fee. Paying for someone else is done through the free automated phone system (phone number + exact amount), not a web guest form, so guest_pay is unsupported online. Accepted: Visa, Mastercard, American Express, Discover, Apple Pay and Google Pay; prepaid cards are not accepted online and bank accounts are not listed. AutoPay is enabled in Settings > Payment Method and charges on the due date (leadDays 0); some plans require AutoPay. The Payment Extension ($10/line up front, $5/line credited back when paid in full within 5 days, one per cycle, No Contract accounts) is modelled by the arrangement form. Early payments become account credit. Sign-in (account-security, manage-your-account pages) is email or phone number, a texted one-time passcode, then the password (modelled as two-step phone sign-in with mfa sms). Cancelling a line is by Customer Care at (833) 502-6678 (cancel_service unsupported online). Plans (fixer 2026-10-10, boostmobile.com/plans): Unlimited, Global Connection, Unlimited+ and Unlimited Premium at the prices without the $5 AutoPay discount ($30/$45/$55/$65; $25/$40/$50/$60 with AutoPay); plans can be switched any time in the online account under My Lines (change_plan supported); paperless not_applicable is inferred (no paper bills mentioned). Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
   "officialDomains": [
     "boostmobile.com"
   ],
@@ -38,6 +38,12 @@
       "title": "Transferring your Boost Mobile number to another carrier | Boost Mobile Help",
       "fetchedAt": "2026-10-09",
       "kind": "cancel"
+    },
+    {
+      "url": "https://www.boostmobile.com/plans",
+      "title": "Boost Mobile plans",
+      "fetchedAt": "2026-10-10",
+      "kind": "plans"
     }
   ],
   "brand": {
@@ -154,6 +160,11 @@
       "note": "To cancel a line, contact Boost Customer Care at (833) 502-6678. If you are moving your number, do not cancel: the line closes automatically once the transfer completes.",
       "channel": "phone",
       "phone": "8335026678"
+    },
+    "change_plan": {
+      "support": "supported",
+      "evidence": "documented_official",
+      "source": "https://www.boostmobile.com/plans"
     }
   },
   "billing": {
@@ -178,7 +189,30 @@
         "card"
       ],
       "leadDays": 0
-    }
+    },
+    "plans": [
+      {
+        "id": "unlimited",
+        "name": "Unlimited",
+        "cents": 3000
+      },
+      {
+        "id": "global-connection",
+        "name": "Global Connection",
+        "cents": 4500
+      },
+      {
+        "id": "unlimited-plus",
+        "name": "Unlimited+",
+        "cents": 5500,
+        "current": true
+      },
+      {
+        "id": "unlimited-premium",
+        "name": "Unlimited Premium",
+        "cents": 6500
+      }
+    ]
   },
   "help": [
     {

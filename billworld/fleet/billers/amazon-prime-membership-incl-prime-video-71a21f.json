@@ -5,7 +5,7 @@
   "reviewedAt": "2026-10-09",
   "id": "amazon-prime-membership-incl-prime-video-71a21f",
   "name": "Amazon Prime (incl. Prime Video)",
-  "notes": "Researched from public Amazon Customer Service help pages only (no sign-in). Prime is charged automatically to an eligible payment method at the end of each membership period; there is no separate AutoPay, paper bill, guest pay or payment plan. Canceling refunds the full fee if no benefits were used in the paid period, otherwise a pro-rated refund of remaining full months (the engine does not model refunds). Monthly members who cancel can rejoin only after the paid month. Sign-in uses email or mobile number then password (two steps); Amazon 2-Step Verification is optional, so mfa stays none. Prime Access ($6.99/month for qualifying government-assistance recipients) is described in help but not modeled. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa.",
+  "notes": "Researched from public Amazon Customer Service help pages only (no sign-in). Prime is charged automatically to an eligible payment method at the end of each membership period; there is no separate AutoPay, paper bill, guest pay or payment plan. Canceling refunds the full fee if no benefits were used in the paid period, otherwise a pro-rated refund of remaining full months (the engine does not model refunds). Monthly members who cancel can rejoin only after the paid month. Sign-in uses email or mobile number then password (two steps); Amazon 2-Step Verification is optional, so mfa stays none. Prime Access ($6.99/month for qualifying government-assistance recipients) is described in help but not modeled. There are no installment plans; payment_arrangement stays at the family default only because the streaming template always renders an installments form, and the setup-payment-plan task is suppressed. Integrated 2026-10-09: billing.methods ['card']: no saved checking account; generated tasks use the saved Visa. pay-partial-card suppressed (fixer, streaming-subscriptions audit 2026-10-10): the membership is charged its plan price, which is below the generated $25.00 partial amount, so that task would be an overpayment; the service has no partial-payment option. Integrated 2026-10-10 (agent-solvability pass): annual plans carry billing.plans[].interval 'year' so prices show per year.",
   "officialDomains": [
     "amazon.com"
   ],
@@ -175,7 +175,8 @@
       {
         "id": "prime-annual",
         "name": "Amazon Prime (annual)",
-        "cents": 13900
+        "cents": 13900,
+        "interval": "year"
       }
     ]
   },
@@ -296,7 +297,8 @@
       }
     ],
     "suppress": [
-      "setup-payment-plan"
+      "setup-payment-plan",
+      "pay-partial-card"
     ]
   },
   "testExpectations": [

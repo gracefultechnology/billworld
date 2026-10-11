@@ -19,7 +19,7 @@ const B = {
   subscription: find(b => b.kind === 'subscription' && b.capabilities.cancel_service.support === 'supported', 'subscription'),
   card: find(b => b.kind === 'card', 'card'),
   medical: find(b => b.kind === 'medical', 'medical'),
-  guest: find(b => b.capabilities.guest_pay.support === 'supported', 'guest'),
+  guest: find(b => b.capabilities.guest_pay.support === 'supported' && !b.dossier, 'guest'),
   offline: [...catalog.billers.values()].find(b => b.template === 'offline').id
 };
 const U = B.utilitySynthetic;

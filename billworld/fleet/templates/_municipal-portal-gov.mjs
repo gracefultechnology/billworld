@@ -2,6 +2,7 @@
 // Only content builders live here (field names follow the kit contract); every page shell, label
 // and layout stays in the individual template.
 import { html, raw, form, field, select, checkbox, button, hidden, money, fmtDate, methodText, radio, L } from '../kit.mjs';
+import { withdrawn, withdrawnView } from './_withdrawn.mjs';
 
 export const offline = vm => vm.biller.capabilities.online_account.support === 'unsupported';
 export const sup = (vm, k) => vm.biller.capabilities[k]?.support === 'supported';
@@ -62,7 +63,7 @@ export function cancelBody(vm, { noun = 'service', title = 'Stop service', h = t
     reason: html`${h(title)}<p>Tell us why you are ending ${noun}. A final bill is mailed to your forwarding address.</p>${form(vm, 'cancel', html`${hidden('step', 'reason')}${select(vm, { name: 'reason', label: 'Reason', options: reasons || [['', 'Select a reason'], ['moving', 'Moving out of the service area'], ['selling', 'Selling the property'], ['landlord', 'Tenant moving out (landlord account)'], ['other', 'Other']] })}<div class="actions">${button('Continue')}</div>`)}`,
     offer: html`${h('Before you go')}<div class="card offer"><h2>Stay and save 50% for 3 months</h2><p>Keep your ${noun} at half price for your next three bills.</p>${form(vm, 'cancel', html`${hidden('step', 'offer')}${button('Accept offer', { name: 'accept', value: 'yes' })} ${button('No thanks, continue', { cls: 'btn', name: 'accept', value: 'no' })}`)}</div>`,
     confirm: html`${h('Confirm request')}<p>${kind === 'subscription' ? `Your ${noun} will end on ${vm.dueText}.` : 'Choose the date service should end. Meters are read on the stop date and a final bill is issued.'}</p>${form(vm, 'cancel', html`${hidden('step', 'confirm')}${kind !== 'subscription' ? html`<div class="field"><label for="f-effectiveDate">Stop date</label><input id="f-effectiveDate" type="date" name="effectiveDate" min="${vm.today}" value="${vm.values.effectiveDate || ''}"></div>` : ''}${checkbox(vm, { name: 'confirm', label: `I want to end ${noun} for this account.` })}<div class="actions">${button('Submit request', { cls: 'btn btn-danger' })}</div>`)}`,
-    done: html`${h('Request received')}<p>Your ${noun} will end on <strong>${vm.service.cancelAt ? fmtDate(vm.service.cancelAt) : ''}</strong>. Confirmation number <strong>${vm.service.confirmation || ''}</strong>.</p>`,
+    done: withdrawn(vm) ? withdrawnView(vm) : html`${h('Request received')}<p>Your ${noun} will end on <strong>${vm.service.cancelAt ? fmtDate(vm.service.cancelAt) : ''}</strong>. Confirmation number <strong>${vm.service.confirmation || ''}</strong>.</p>`,
     kept: html`${h('Thanks for staying')}<p>Your discount has been applied.</p>`
   };
   return steps[vm.step] || steps.reason;

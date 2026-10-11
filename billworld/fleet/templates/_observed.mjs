@@ -6,6 +6,7 @@
 // as plain text, so the simulation never shows a dead link.
 import * as kit from '../kit.mjs';
 import { loadCatalog } from '../catalog.mjs';
+import { HERO_JUNK } from './_hygiene.mjs';
 const { html, raw, esc } = kit;
 
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ndash: '–', mdash: '—', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“', reg: '®', trade: '™', copy: '©', hellip: '…' };
@@ -16,8 +17,8 @@ export const clean = (s, max = 120) => {
   return t.length > max ? t.slice(0, max - 1).replace(/\s+\S*$/, '') + '…' : t;
 };
 // Titles/headings that describe the capture rather than the biller (bot walls, errors, consent banners).
-const JUNK_EXACT = /^(?:(?:home)+|home ?page|welcome|menu|search|main navigation|navigation|showcase|slideshow|carousel|latest news|news|news (?:&|and) (?:events|updates)|announcements?|quick ?links|useful links|resources|our services|services|our mission|mission|about|about us|contact|contact us|events|calendar|alerts?|featured|highlights|terms (?:&|and) conditions(?: page)?|privacy(?: policy)?|sitemap|welcome to|index|default|loading|untitled|new tab|log ?in|sign ?in|log ?on|redirect(?:ing)?|object moved|document)\W*$/i;
-const JUNK_ANY = /^(?:404|403|500|502|503)\b|\b(?:page not found|not found|access denied|forbidden|just a moment|attention required|are you a robot|request rejected|site (?:is )?(?:under )?maintenance|scheduled maintenance|service unavailable|temporarily unavailable|bad gateway|internal server error|oops|something went wrong|an error (?:has )?occurred|error occurred|try again later|we.re sorry|technical difficulties|no longer available|session (?:has )?(?:expired|timed out)|unsupported browser|update your browser|page (?:you (?:are|were|.re) looking for|you requested|cannot be (?:found|displayed)|can.t be found|could not be found|does not exist|doesn.t exist|is unavailable|has (?:been )?moved))\b|cloudflare|incapsula|captcha|enable javascript|javascript (?:is )?(?:required|disabled)|we use cookies|cookies? (?:policy|settings|consent)|browser (?:is )?not supported|can.t be reached|pardon our interruption|time for an update|update (?:your )?browser|action required|data tokens|access to this page has been denied|verify you are (?:a )?human|checking your browser/i;
+const JUNK_EXACT = /^(?:submit form|please wait|(?:home)+|home ?page|welcome|menu|search|main navigation|navigation|showcase|slideshow|carousel|latest news|news|news (?:&|and) (?:events|updates)|announcements?|quick ?links|useful links|resources|our services|services|our mission|mission|about|about us|contact|contact us|events|calendar|alerts?|featured|highlights|terms (?:&|and) conditions(?: page)?|privacy(?: policy)?|sitemap|welcome to|index|default|loading|untitled|new tab|log ?in|sign ?in|log ?on|redirect(?:ing)?|object moved|document)\W*$/i;
+const JUNK_ANY = /^(?:404|403|500|502|503)\b|\b(?:time ?out|timed out|page not found|not found|access denied|forbidden|just a moment|attention required|are you a robot|request rejected|site (?:is )?(?:under )?maintenance|scheduled maintenance|service unavailable|temporarily unavailable|bad gateway|internal server error|oops|something went wrong|an error (?:has )?occurred|error occurred|try again later|we.re sorry|technical difficulties|no longer available|session (?:has )?(?:expired|timed out)|unsupported browser|update your browser|page (?:you (?:are|were|.re) looking for|you requested|cannot be (?:found|displayed)|can.t be found|could not be found|does not exist|doesn.t exist|is unavailable|has (?:been )?moved))\b|cloudflare|incapsula|captcha|enable javascript|javascript (?:is )?(?:required|disabled)|we use cookies|cookies? (?:policy|settings|consent)|browser (?:is )?not supported|can.t be reached|pardon our interruption|time for an update|update (?:your )?browser|action required|data tokens|access to this page has been denied|verify you are (?:a )?human|checking your browser/i;
 const usable = (s, max, { words = 1 } = {}) => { const t = clean(s, max).replace(/^(?:home|welcome)\s*[|\-–—:»]\s*/i, '').replace(/\s+(?:home ?page|homepage)$/i, ''); return t && t.length >= 3 && t.split(/\s+/).length >= words && !/^[\W\d]/.test(t) && !/^[^,]{0,25},\s*[A-Z]{2}$/.test(t) && !JUNK_EXACT.test(t) && !JUNK_ANY.test(t) ? t : ''; };
 // Contact details inside captured text must not compete with the simulation's own (help-phone and offline tasks
 // grade the catalog phone/address): phone numbers other than the biller's, e-mail addresses, URLs and P.O. boxes
@@ -70,7 +71,7 @@ export function normalize(p, vm = null) {
   const w = p.website || {}, l = p.login || {};
   const help = (Array.isArray(p.help) ? p.help : []).map(h => ({ kind: String(h?.kind || ''), title: usable(h?.title, 100), headings: list(h?.headings, 6, 80).filter(x => !JUNK_ANY.test(x)).map(x => redact(x, vm)), excerpt: redact(clean(h?.excerpt, 600), vm) })).filter(h => !JUNK_ANY.test(`${h.excerpt} ${h.title}`) && (h.excerpt.length >= 40 || h.headings.length));
   const o = {
-    title: redact(usable(w.title, 110), vm), description: JUNK_ANY.test(w.description || '') ? '' : redact(clean(w.description, 200), vm), theme: brandColor(w.themeColor), hero: redact(usable(w.heroHeading, 110, { words: 2 }), vm),
+    title: redact(usable(w.title, 110), vm), description: JUNK_ANY.test(w.description || '') ? '' : redact(clean(w.description, 200), vm), theme: brandColor(w.themeColor), hero: HERO_JUNK.test(w.heroHeading || '') ? '' : redact(usable(w.heroHeading, 110, { words: 2 }), vm),
     nav: list(w.navLabels, 8), footer: list(w.footerLabels, 8),
     loginTitle: redact(usable(l.title, 110), vm), fields: (Array.isArray(l.fields) ? l.fields : []).map(f => String(f).toLowerCase()),
     buttons: list(l.buttons, 6, 30), social: (Array.isArray(l.socialProviders) ? l.socialProviders : []).map(s => String(s).toLowerCase()), help
@@ -108,18 +109,21 @@ export function mapLabel(vm, label) {
     if (!vm.authenticated && has('guest') && sup(vm, 'guest_pay') && /quick|guest|one.time|express/.test(l)) return vm.url('guest');
     return has('pay') ? vm.url('pay') : null;
   }
-  if (/\bbills?\b|billing|statements?|invoices?|account summary|balance/.test(l)) return acct('bill', 'view-your-bill');
+  if (/forgot|reset (?:your )?password|recover (?:your )?(?:password|account|user)/.test(l)) return offline(vm) ? helpSlug(vm, 'reset-password') : !vm.authenticated && has('forgot') ? vm.url('forgot') : null;
+  if (/\bbills?\b|billing|statements?|invoices?|account summary|balance/.test(l) && !/accessibility|privacy|disclosure|cookie|legal/.test(l)) return acct('bill', 'view-your-bill');
   if (/log ?in|sign ?in|log ?on|sign ?on|my account|account (?:log ?in|access)|online (?:account|services|portal)|customer portal/.test(l)) return offline(vm) ? vm.url('help') : vm.authenticated ? (has('dashboard') ? vm.url('dashboard') : null) : has('login') ? vm.url('login') : null;
   return null;
 }
 const navItem = (vm, label) => { const href = mapLabel(vm, label); return href ? html`<a href="${href}">${label}</a>` : html`<span class="obs-plain" title="Not part of this simulation">${label}</span>`; };
+// The header row lists only sections that work here; unmapped real-site sections stay out of the main navigation.
+const navLinks = vm => (vm.obs?.nav || []).filter(l => mapLabel(vm, l));
 
 // The real site's top-level navigation, shown on public (signed-out) pages under the template header.
-export const obsNav = vm => vm.obs?.nav?.length && !vm.authenticated ? html`<nav class="obs-nav" aria-label="${vm.biller.brand.shortName} site"><div class="obs-in">${vm.obs.nav.map(l => navItem(vm, l))}</div></nav>` : '';
+export const obsNav = vm => navLinks(vm).length && !vm.authenticated ? html`<nav class="obs-nav" aria-label="${vm.biller.brand.shortName} site"><div class="obs-in">${navLinks(vm).map(l => navItem(vm, l))}</div></nav>` : '';
 // Footer labels as one line of mapped links / plain text.
 // Captured footer text: drop logo alt text, social links and "opens in new window" hints everywhere, and long promo lines
 // on dedicated sites (their dossier writes the wording).
-const FOOT_NOISE = /\blogo\b|facebook|twitter|\bx\.com\b|instagram|tiktok|linkedin|youtube|pinterest|opens in (?:a )?new (?:window|tab)/i;
+const FOOT_NOISE = /\blogo\b|facebook|twitter|\bx\.com\b|instagram|tiktok|linkedin|youtube|pinterest|opens in (?:a )?new (?:window|tab)|\{\d+\}|^call\s*\(|^(?:cancel|continue|cancele|contin[uú]e|return|log out|keep me logged in|apply now|learn more|go now|visit \S+\.com|"?read all reviews"?)$/i;
 export const obsFooter = vm => { const f = (vm.obs?.footer || []).filter(l => !FOOT_NOISE.test(l) && !(vm.tier === 'dedicated' && l.length > 40)); return f.length ? html`<p class="obs-foot">${f.map((l, i) => html`${i ? ' · ' : ''}${navItem(vm, l)}`)}</p>` : ''; };
 // Hero heading from the biller's public homepage (or the given fallback).
 // Dedicated billers skip the captured hero headline (often a stale promotion); their dossier wording stands.
@@ -167,7 +171,7 @@ export const articleExcerpt = vm => {
 export function finish(vm, out) {
   const o = vm.obs; if (!o || typeof out !== 'string') return out;
   let s = out;
-  const title = vm.page === 'home' && !vm.authenticated ? o.title : vm.page === 'login' && !vm.authenticated ? o.loginTitle : '';
+  const title = vm.page === 'home' && !vm.authenticated ? o.title : vm.page === 'login' && !vm.authenticated && vm.tier !== 'dedicated' ? o.loginTitle : '';
   if (title) s = s.replace(/<title>[^<]*<\/title>/, () => `<title>${esc(title)}</title>`);
   const metas = (o.theme ? `<meta name="theme-color" content="${esc(o.theme)}">` : '') + (vm.page === 'home' && o.description ? `<meta name="description" content="${esc(o.description)}">` : '');
   return metas ? s.replace('</head>', () => metas + '</head>') : s;

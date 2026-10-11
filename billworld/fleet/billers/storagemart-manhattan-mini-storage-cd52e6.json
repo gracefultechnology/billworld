@@ -5,7 +5,7 @@
   "name": "StorageMart",
   "category": "storage-funeral",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from the public StorageMart Billing and Your Account FAQs and the My Account sign-in page (no sign-in). Sign-in is passwordless: enter the account email and verify with a code. The dossier cannot express a passwordless flow, so it is modelled as email (two-step) plus email verification. Rent is due on the 1st with no grace period; partial payments are never accepted; late fees are set by the lease (not modelled). U.S. cards: Visa/Mastercard/Discover/Amex; no bank option is published, so billing.methods keeps the family default. Pay online: My Account > Payment > choose method > Payment Amount (Balance Due or Upcoming) > Pay Now. Autopay is turned on or off under My Units, with the onsite manager, or 24/7 by phone. Invoices: View Invoice, past invoices and receipts under My Units. Move-out needs 15 calendar days' notice; no online move-out is described (cancel_service unsupported, inferred). Account help 877-786-7243; general 800-264-9485. Reviewer 2026-10-09: removed the unconfirmed \"My Payment Methods\" label/nav item (public FAQ only says to add or select a payment method under Payment). Login page confirmed: only an Email Address field with Submit, \"enter the email associated to your account in order to be verified\". Reviewer 2026-10-09 (pass 2): the billing FAQ lists only credit cards (US: Visa, Mastercard, Discover, American Express) and never mentions bank/ACH, so billing is now card-only.",
+  "notes": "Researched from the public StorageMart Billing and Your Account FAQs and the My Account sign-in page (no sign-in). Sign-in is passwordless: enter the account email and verify with a code. The dossier cannot express a passwordless flow, so it is modelled as email (two-step) plus email verification. Rent is due on the 1st with no grace period; partial payments are never accepted; late fees are set by the lease (not modelled). U.S. cards: Visa/Mastercard/Discover/Amex; no bank option is published, so billing.methods keeps the family default. Pay online: My Account > Payment > choose method > Payment Amount (Balance Due or Upcoming) > Pay Now. Autopay is turned on or off under My Units, with the onsite manager, or 24/7 by phone. Invoices: View Invoice, past invoices and receipts under My Units. Move-out needs 15 calendar days' notice; no online move-out is described (cancel_service unsupported, inferred). Account help 877-786-7243; general 800-264-9485. Reviewer 2026-10-09: removed the unconfirmed \"My Payment Methods\" label/nav item (public FAQ only says to add or select a payment method under Payment). Login page confirmed: only an Email Address field with Submit, \"enter the email associated to your account in order to be verified\". Reviewer 2026-10-09 (pass 2): the billing FAQ lists only credit cards (US: Visa, Mastercard, Discover, American Express) and never mentions bank/ACH, so billing is now card-only. Fixer 2026-10-10 (audit storage-funeral): billing.fullBalanceOnly set, since the billing FAQ says partial payments are never accepted (drops pay-minimum/pay-partial-card/setup-payment-plan). The \"My Units\" nav item intentionally opens Autopay: the FAQ says Autopay is turned on or off under My Units.",
   "officialDomains": [
     "storage-mart.com"
   ],
@@ -132,7 +132,8 @@
     },
     "methods": [
       "card"
-    ]
+    ],
+    "fullBalanceOnly": true
   },
   "help": [
     {
