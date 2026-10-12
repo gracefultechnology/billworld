@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {World} from '../engine.mjs';
-import {constructionSites} from '../registry.mjs';
+import {sites} from '../registry.mjs';
 import {starnikAutoPayDays,starnikAutoPayTiming} from '../starnik-autopay.mjs';
-const site=constructionSites.get('greater-minnesota-gas');
+const site=sites.get('greater-minnesota-gas');
 function scenario(days,fn){const original=site.documented_policy,w=new World(':memory:',{construction:true});try{site.documented_policy={...original,autopay_days_before_due:days};const id=w.create({siteId:site.id,taskId:'gmg-saved-bank-payment-v1'}).episodeId,session=w.starnikLogin(id,{username:'alex.morgan',password:'Billworld-2026!'}).session,methodId=w.starnikPaymentOptions(id,session).methods.find(m=>m.kind==='bank').id;fn({w,id,session,methodId});}finally{site.documented_policy=original;w.close();}}
 function prepare(x){const q=x.w.starnikAutoPayPrepare(x.id,x.session,{methodId:x.methodId});x.w.starnikAutoPayReview(x.id,x.session,q.token);return q.token;}
 const consent={agreedToTerms:true,confirmed:true,acknowledgeTextPay:true,acknowledgeAch:true};

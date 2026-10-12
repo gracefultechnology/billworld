@@ -249,6 +249,35 @@ Answers: the runner passes the agent's final message as `answer` to `/evaluate` 
 - `google-login-pay` is excluded from exports, because it needs the IdP's second origin.
 - Exports are snapshots. Re-export after any Fleet change.
 
+## Agent solvability (2026-10-11, fresh blind audit)
+
+A fresh blind audit attempted a new rotation of tasks in every category through `agentlab/act.mjs` (see
+[agentlab/README.md](agentlab/README.md#measured-results-2026-10-11-fresh-blind-audit-of-every-hand-built-site-and-every-fleet-category)).
+Auditors reported every environment defect they hit, even on passing tasks; each was fixed at the root and the affected
+tasks were re-attempted blind.
+
+| Measure | Fleet | With the hand-built sites |
+|---|---:|---:|
+| Fresh blind first pass (14 units, 28 categories) | **595 / 595** | 733 / 733 |
+| Blind re-attempts after the defect fixes | **110 / 110** | 125 / 125 |
+| Final, latest result per task | **595 / 595** | 733 / 733 (none still failing) |
+
+Defects fixed from this audit (generic fixes, applied to every biller that shares the template or field):
+- **Dates and notice rules.** Utility stop dates default to, and cannot be earlier than, 3 business days ahead; the stop
+  page no longer promises a forwarding-address step (the final bill goes to the profile's mailing address).
+  Property-tax installments follow per-county calendars (`billing.taxSchedule`).
+- **Wording and labels.** Help text drops catalog research shorthand (`RESEARCH_PROCESS` filter in `help.mjs`, enforced
+  by `validate.mjs`); labeled phone lists show customer service first; guest-pay notes never ask for SSN/ITIN; the bill
+  email names the identifiers the guest form asks for (statement number, phone number, access code); the password
+  label follows the site ("Account PIN"); the password hint appears once.
+- **Policy-driven links.** Sign-up, payment-plan, e-statement, retention-offer and equipment-return links/steps follow the
+  dossier (`registration`, `paymentPlan`, `billing.retentionOffer`, `billing.equipmentReturn`, `billing.cancelAt`);
+  links that belong to a parent website are shown as plain text instead of mapped to portal pages.
+- **New dossier fields:** `billing.retentionOffer`, `billing.equipmentReturn`, `billing.cancelAt`, `billing.taxSchedule`,
+  `contact.locality` (city, state, ZIPs), and a registration access code (Texas Disposal Systems). All are in `billers/schema.mjs` and
+  [`billers/README.md`](billers/README.md).
+- **Harness.** `act.mjs new <label>` issues an owned run (key + wrapper) so two auditors can no longer share a runId.
+
 ## Agent solvability (2026-10-10, measured with `agentlab/`)
 
 Every popular-biller category was attempted by blind agents through `agentlab/act.mjs` (instruction, credentials and
@@ -308,17 +337,58 @@ Caveat on the post-fix runs: the re-attempts and fresh sample were driven throug
 who had read the Fleet source while fixing it (not the 20 fresh dossiers). Treat them as strong verification rather than
 an independent blind score; the 98.8% first pass is the blind number.
 
+**Gap closures (2026-10-11).**
+- Answer kind `pattern` for dossier answer tasks (regular expressions, default case-insensitive, validated to compile
+  and to reject an empty answer), next to `contains`.
+- `billing.cardBrands`: accepted card networks are honored by the engine (`card_brand_not_accepted` names the accepted
+  list), stated on every card-number field ("We accept Mastercard and Discover.") and in the Ways to pay article; the
+  seeded saved/expired cards and the task wording follow the first accepted brand; browser drivers, solvers and the
+  Infinity reference type a test card of an accepted brand (`testCardFor`).
+- Capability notes on home and the account overview render as one compact "Ways to manage your account" notice with a
+  "Learn more" link to the help article carrying each note, identical on every template; research-style notes are not
+  rendered.
+- Long flows: the MFA page names the masked inbox or phone the code went to on every template; resend, registration
+  ("We sent a verification link to j•••@…") and reset ("We sent a verification code and a reset link to j•••@…")
+  messages name the destination; reset finds the account by any identifier the biller signs in with (phone sign-ins
+  could not reset before); register and reset pages state the password rule next to the field unless the page already
+  does; a registration missing a dossier field names it; a guest lookup missing a required field names it, and a
+  mismatch says to enter each detail exactly as printed on the bill.
+- Cosmetic: the withdrawn-cancellation page says "cancellation request" and names the membership, lease, policy or
+  account (not "stop-service request" for non-service kinds); AutoPay flashes use the biller's AutoPay label.
+
 **Remaining known agent-hard spots** (all solvable today; worth watching in larger samples):
-- Long multi-page flows: register-and-pay (≈35–47 steps), reset-then-pay (≈30), mfa/sms-pay (≈20–25) dominate step
-  counts; element numbers expire after every navigation, so agents must re-observe.
-- Two-step sign-ins (identifier, then password) and MFA pages: the code must be read in `/mail` or `/sms` and the
-  agent must navigate back to the verify page.
-- Guest forms that keep the family's extra lookup fields (statement number + amount due) alongside the dossier's fields
-  unless the dossier sets `guestLookupExact`.
-- Limitation tasks whose notes appear on home, dashboard and help (by design) make those tasks easy; tasks where the
-  note names several numbers grade by "first or at most two numbers".
-- Cosmetic, not blocking: the generic withdrawn page says "stop-service request" for memberships and rentals; flash
-  messages say "AutoPay" where a dossier labels it differently (for example Auto-Replenishment).
+- Long multi-page flows: register-and-pay (≈35–47 steps), reset-then-pay (≈30), mfa/sms-pay (≈20–25) still dominate
+  step counts; element numbers expire after every navigation, so agents must re-observe.
+- Two-step sign-ins and MFA still need a trip to `/mail` or `/sms` and back to the verify page (the page now says
+  which inbox or phone to check).
+- Guest forms keep the family's extra lookup fields alongside the dossier's fields unless the dossier sets
+  `guestLookupExact` (what is required is unchanged; errors now name missing fields).
+- Limitation tasks whose notes appear on home, dashboard and help stay easy by design; tasks where the note names
+  several numbers grade by "first or at most two numbers".
+
+## Verification (2026-10-11, final integration)
+
+Run after every repair from the fresh blind audit landed (scratch logs in the session's `scratchpad/final/`).
+
+| Check | Result |
+|---|---|
+| `node billworld/fleet/billers/validate.mjs` | 568/568 dossiers valid |
+| `npm run fleet:test` | 234/234 pass |
+| `tests/sweep.mjs --shards 4 --out …/final/sweep.json` (all 59,477 billers) | 0 failures: http 752,022; authed 42,641; engine 59,477; tasks 820,958; links 881,636 |
+| `browser.mjs --per-template 1 --concurrency 1` | 437/437 flows passed (27 billers: the 26 templates plus `generic`) |
+| `tests/dedicated.mjs --category <c> --tag final-<c>` for all 28 categories, one at a time (concurrency 2) | 20,020/20,020 flows, 28/28 categories all green, 0 browser relaunches, 0 retries |
+| `billers/status.mjs --goal 20` | 28/28 categories at 20 green; 560/560 picks, 568 green in total |
+| Blind agents (`agentlab/`) | fresh first pass 595/595 (733/733 with the hand-built sites); re-attempts 110/110 (125/125); none still failing |
+
+## Verification (2026-10-11, gap closures)
+
+| Check | Result |
+|---|---|
+| `node billworld/fleet/billers/validate.mjs` | 568/568 dossiers valid |
+| `npm run fleet:test` | 143/143 pass (new `tests/gaps.test.mjs`: pattern answers, card networks, compact notices, reset/MFA/register/guest messages, withdrawn wording) |
+| `tests/sweep.mjs --shards 4` (all 59,477 billers) | 0 failures: http 751,720; authed 42,641; engine 59,477; tasks 820,960; links 880,655 |
+| `browser.mjs --per-template 1 --concurrency 2` | 437/437 flows passed |
+| `tests/dedicated.mjs --category <c>` for pharmacy-dme, streaming-subscriptions, electric (tags `fleetgaps-<c>`) | 640/640, 677/677, 751/751 flows passed; 0 relaunches, 0 retries |
 
 ## Verification (2026-10-10, tier 2 and agent-solvability integration)
 

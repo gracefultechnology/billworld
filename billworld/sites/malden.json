@@ -2,7 +2,15 @@
   "id": "malden",
   "name": "City of Malden",
   "portal_family": "Edmunds",
-  "implementation_status": "researched_not_implemented",
+  "implementation_status": "first_slice",
+  "revision": "0.1.0",
+  "default_task_id": "malden-guest-pay-v1",
+  "runtime": {
+    "kind": "wipp",
+    "frontend": "edmunds-wipp",
+    "mail_sender_slug": "malden",
+    "wipp_id": "MCPW"
+  },
   "catalog_records": [
     {
       "category": "electric",
@@ -10,6 +18,35 @@
     }
   ],
   "capture_manifest": "research/malden-public.json",
+  "bundle_evidence": "research/malden-wipp-bundle.json",
+  "public_routes": {
+    "homepage": "https://www.maldenmo.com/",
+    "public_works": "https://www.maldenmo.com/departments/public_works_office/index.php",
+    "faq": "https://www.maldenmo.com/how_do_i/faq.php",
+    "portal_legacy": "https://wipp.edmundsassoc.com/Wipp/?wippid=MCPW",
+    "portal": "https://wipp.edmundsgovtech.cloud/home?wippId=MCPW"
+  },
+  "local_routes": {
+    "homepage": "/",
+    "public_works": "/departments/public_works_office/index.php",
+    "faq": "/how_do_i/faq.php",
+    "portal_home": "/wipp/home",
+    "lookup": "/wipp/lookup",
+    "create_account": "/wipp/create-account",
+    "password": "/wipp/password",
+    "summary": "/wipp/summary",
+    "billing_accounts": "/wipp/billing-accounts",
+    "account_view": "/wipp/view/utility/{accountId}",
+    "make_payment": "/wipp/pay/{accountId}",
+    "link2gov": "/wipp/link2gov",
+    "confirmation": "/wipp/confirmation",
+    "statement": "/wipp/bill/{accountId}",
+    "e_billing": "/wipp/e-billing",
+    "e_wallet": "/wipp/e-wallet",
+    "auto_pay": "/wipp/auto-pay",
+    "direct_withdrawal": "/wipp/direct-withdrawal",
+    "profile": "/wipp/profile"
+  },
   "documented_policy": {
     "source_url": "https://www.maldenmo.com/departments/public_works_office/index.php",
     "online_payment_methods": [
@@ -24,19 +61,57 @@
     "disconnect_time": "08:00",
     "reconnection_fee_cents": 4000,
     "after_hours_additional_fee_cents": 3500,
-    "after_hours_window": "17:00\u201322:00",
-    "bank_draft": "available; online setup flow unobserved",
-    "paperless": "contact the office"
+    "after_hours_window": "17:00–22:00",
+    "bank_draft": "Automatic Bank Draft authorization with the BPW office; online setup flow unobserved",
+    "paperless": "visit or contact the office to receive the bill electronically",
+    "office": "607 N Douglass St., Malden, MO 63863; 573-276-2238; utilities@maldenmo.com; Monday-Friday 8:00 a.m. to 5:00 p.m."
   },
   "observed_public": {
-    "homepage_publicworks_faq": "captured",
-    "portal": "legacy URL redirects to WIPP cloud; blank Angular shell with failed CORS preflight for public tenant metadata",
+    "homepage_publicworks_faq": "captured (Revize CMS); Public Works accordions carry the billing and payment policy",
+    "portal": "legacy URL redirects to WIPP cloud (wipp.edmundsgovtech.cloud, wippId=MCPW); the public capture rendered a blank Angular shell with failed CORS preflight for tenant metadata",
+    "portal_bundle": "The captured main-C2AM5GGZ.js bundle (sha256 e0540c45...) contains the WIPP route table and template text: home, create-account, password, summary, billing-accounts, view/:type/:accountId, e-billing, e-wallet, auto-pay, direct-withdrawal, profile. See research/malden-wipp-bundle.json.",
+    "payment_processor": "Link2Gov (FIS) enrollment/login/payments/wallet components are loaded; template text says 'You will now be transferred to the Link2Gov website to enter your payment information.'",
     "separate_tax_portal": "not interchangeable with MCPW utility tenant"
   },
+  "evidence_labels": {
+    "observed_public": [
+      "Municipal homepage, Board of Public Works and FAQ page structure, contact details, office hours and navigation (captured HTML/screenshots)",
+      "Billing policy: bills mailed by the 25th, due the 10th, 5% late fee, disconnect 8:00 a.m. on the 26th, $40 reconnect, $35 after-hours standby fee",
+      "Online payments by credit card or check with no additional charge; Automatic Bank Draft; paperless by contacting the office"
+    ],
+    "observed_bundle_text": [
+      "Route names listed in local_routes (real paths without the /wipp prefix)",
+      "Account Log In / Forgot your password? / Don't want to login? Lookup your account to make a one-time payment.",
+      "Create Account fields (First Name, Last Name, E-Mail Address, Re-Type E-Mail Address, Mobile Phone, Password, Re-Type Password); password rules 8-30 Characters, 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character; Verify E-Mail with emailed verification code and Resend Verification E-Mail; Account Already Exists",
+      "Forgot password: 'Enter your E-Mail to reset your password.' then temporary password by email with Temporary Password / New Password / Re-Type Password and 'Previous passwords cannot be reused'; 'Password reset required'",
+      "Navigation Summary / Billing Accounts / eBilling / eWallet / AutoPay / Profile; Complete Account Setup; 'Please add at least one billing account to continue.'; Confirm Account Details",
+      "Utility search by Account Id, Tenant Name, Location; utility view labels Service, Current Bill, Current Balance, Delinquent Balance, Reading, Read Date, Usage, Account Total, View Current Bill, Print",
+      "Make Payment steps '1. Select payment method' (Credit/Debit, eCheck), '2. Select payment amount' (Bill Amount, Pay Other Amount), '3. Schedule Payment' (Scheduled Date), Terms & Conditions, Link2Gov transfer, Payment Details, Confirmation, 'A receipt has been sent to your E-Mail address'",
+      "Upcoming scheduled payments 'A payment of ... will be paid on ...', Edit Scheduled Payment, Delete Scheduled Payment confirmation",
+      "AutoPay: You're enrolled / Not enrolled; Select a Payment Method; Confirm Unenroll; 3-business-day change note; 'This Account cannot be enrolled in AutoPay because it is already enrolled in Direct Withdrawal.'; 'Another user is already enrolled in AutoPay for this account.'; Make Payment warning 'This account is enrolled in AutoPay. A scheduled AutoPay payment may still process for the current bill.'",
+      "ACH Direct Withdrawal page: complete the form, attach a voided check, drop off or mail it",
+      "eBilling: Enrolled / Not Enrolled in eBilling, 'Also receive printed bill'",
+      "eWallet: My Payment Methods, Add Checking Account (Bank Nickname, Personal/Business, Account Type, Routing Number, Account Number, Re-Type Account Number), card (Card Nickname, Card Number, Name on Card, Expiration Date, CVV) and Billing Information; Unable to Delete",
+      "Service Disconnected: 'Utility service has been disconnected for non-payment. Payment must be made at the office in order to restore service.'; 'Online payments cannot be accepted for this account.'",
+      "Profile: First Name, Last Name, Email, Mobile Number, Change Password, Delete Account"
+    ],
+    "synthetic": [
+      "All accounts, names, balances, meter readings, bills, confirmations and payment records",
+      "Visual layout of every WIPP and Link2Gov screen (the capture never rendered); Link2Gov is reconstructed in-page on the same origin",
+      "Add Billing Account ownership proof: Account ID plus matching current balance (the observed columns are Type / Account ID / Balance)",
+      "Guest lookup matching rules, verification-code format and 30-minute lifetime, temporary-password format and 60-minute lifetime, session lifetime",
+      "Zero fee for card and eCheck (documented 'no additional charge'); immediate posting; partial payments $1.00 to balance, no overpayment; scheduled payments up to 60 days and only with a saved eWallet method",
+      "AutoPay execution: amount locks at midnight UTC after the third business day before the due date and debits on the due date even if paid after the lock",
+      "Virtual-clock execution of the documented late fee (day after due date) and disconnection (08:00 UTC on the 26th)",
+      "Registration accepts only the fixture mailbox alex@billworld.test"
+    ]
+  },
   "fidelity_limits": [
-    "No working portal UI, login, lookup, recovery, billing or payment flow was observed.",
-    "Empty HTTP 200 application shell and its scripts are excluded as candidate visual references.",
-    "Published policies have not been exercised in a reconstructed runtime.",
-    "No runtime or scored task exists yet."
+    "No working WIPP portal UI was rendered or exercised; labels and route names come from the public JavaScript bundle and the layout is a reconstruction.",
+    "The municipal homepage is a hand-built reconstruction of the captured Revize page; calendar, news slider, weather, search and the separate tax portal are inert.",
+    "Link2Gov hosted-payment screens are unobserved and reconstructed on the same origin.",
+    "Direct Withdrawal enrollment is an offline paper form; the slice only displays the instructions and enforces the AutoPay conflict.",
+    "Reconnection fees, office/night-drop/mail payments, property tax, PILOT and AR account types are not implemented.",
+    "Statement is an HTML printable view; the production bill PDF is unobserved."
   ]
 }

@@ -20,6 +20,18 @@ export const clean = (s, max = 120) => {
 const JUNK_EXACT = /^(?:submit form|please wait|(?:home)+|home ?page|welcome|menu|search|main navigation|navigation|showcase|slideshow|carousel|latest news|news|news (?:&|and) (?:events|updates)|announcements?|quick ?links|useful links|resources|our services|services|our mission|mission|about|about us|contact|contact us|events|calendar|alerts?|featured|highlights|terms (?:&|and) conditions(?: page)?|privacy(?: policy)?|sitemap|welcome to|index|default|loading|untitled|new tab|log ?in|sign ?in|log ?on|redirect(?:ing)?|object moved|document)\W*$/i;
 const JUNK_ANY = /^(?:404|403|500|502|503)\b|\b(?:time ?out|timed out|page not found|not found|access denied|forbidden|just a moment|attention required|are you a robot|request rejected|site (?:is )?(?:under )?maintenance|scheduled maintenance|service unavailable|temporarily unavailable|bad gateway|internal server error|oops|something went wrong|an error (?:has )?occurred|error occurred|try again later|we.re sorry|technical difficulties|no longer available|session (?:has )?(?:expired|timed out)|unsupported browser|update your browser|page (?:you (?:are|were|.re) looking for|you requested|cannot be (?:found|displayed)|can.t be found|could not be found|does not exist|doesn.t exist|is unavailable|has (?:been )?moved))\b|cloudflare|incapsula|captcha|enable javascript|javascript (?:is )?(?:required|disabled)|we use cookies|cookies? (?:policy|settings|consent)|browser (?:is )?not supported|can.t be reached|pardon our interruption|time for an update|update (?:your )?browser|action required|data tokens|access to this page has been denied|verify you are (?:a )?human|checking your browser/i;
 const usable = (s, max, { words = 1 } = {}) => { const t = clean(s, max).replace(/^(?:home|welcome)\s*[|\-–—:»]\s*/i, '').replace(/\s+(?:home ?page|homepage)$/i, ''); return t && t.length >= 3 && t.split(/\s+/).length >= words && !/^[\W\d]/.test(t) && !/^[^,]{0,25},\s*[A-Z]{2}$/.test(t) && !JUNK_EXACT.test(t) && !JUNK_ANY.test(t) ? t : ''; };
+// Captured page text can repeat itself (a teaser and its FAQ answer captured back to back) and end on the next FAQ
+// question: drop repeated sentences (two sentences opening with the same eight words keep only the later, complete
+// one), a list lead-in whose list was not captured, and a trailing question.
+export function tidyExcerpt(text) {
+  const parts = String(text || '').split(/(?<=[.!?])\s+(?=[A-Z0-9"“‘(])/).map(x => x.trim()).filter(Boolean);
+  const key = x => x.toLowerCase().replace(/[^a-z0-9 ]+/g, '').split(/\s+/).slice(0, 8).join(' ');
+  const kept = parts.filter((x, i) => { const k = key(x); return !(k.split(' ').length >= 8 && parts.slice(i + 1).some(y => key(y) === k)) && parts.findIndex(y => y.toLowerCase() === x.toLowerCase()) === i; });
+  // A list the capture dropped leaves its lead-in behind ("assistance with rent and food: St."): drop that sentence.
+  for (let i = kept.length - 1; i >= 0; i--) { const tail = kept[i].split(':'); if (tail.length > 1 && tail.at(-1).trim().split(/\s+/).filter(Boolean).length <= 2) kept.splice(i, 1); }
+  while (kept.length > 1 && /\?$/.test(kept.at(-1))) kept.pop();
+  return kept.join(' ');
+}
 // Contact details inside captured text must not compete with the simulation's own (help-phone and offline tasks
 // grade the catalog phone/address): phone numbers other than the biller's, e-mail addresses, URLs and P.O. boxes
 // are replaced with a pointer to the simulated Contact page.
@@ -65,11 +77,13 @@ export function brandColor(theme) {
 
 // ---------- normalized view of the profile ----------
 const NAV_SKIP = /^(?:skip\b.*|menu\b.*|close\b.*|search\b.*|toggle\b.*|open (?:menu|search|navigation)\b.*|opens? a dialog.*|open|main menu|navigation|more|back|top|back to top|english|español|espanol|translate|select language|language|x|×|\W+|\d+)$/i;
-const list = (a, max, len = 40) => { const seen = new Set(); const out = []; for (const v of Array.isArray(a) ? a : []) { const t = clean(v, len + 1); if (!t || t.length > len || NAV_SKIP.test(t) || seen.has(t.toLowerCase())) continue; seen.add(t.toLowerCase()); out.push(t); if (out.length >= max) break; } return out; };
+// Scraped icon class names standing in for link text ("smrt-icon smrt-icon-x", "icomoon--Facebook").
+export const CLASS_TOKENS = /^[a-z0-9]+(?:[-_][a-z0-9]+)+(?:\s+[a-z0-9]+(?:[-_][a-z0-9]+)+)+$|(?:^|[\s_-])icons?(?:$|[\s_-])|icomoon|^fa[srb]? fa-/;
+const list = (a, max, len = 40) => { const seen = new Set(); const out = []; for (const v of Array.isArray(a) ? a : []) { const t = clean(v, len + 1); if (!t || t.length > len || NAV_SKIP.test(t) || CLASS_TOKENS.test(t) || seen.has(t.toLowerCase())) continue; seen.add(t.toLowerCase()); out.push(t); if (out.length >= max) break; } return out; };
 export function normalize(p, vm = null) {
   if (!p || typeof p !== 'object') return null;
   const w = p.website || {}, l = p.login || {};
-  const help = (Array.isArray(p.help) ? p.help : []).map(h => ({ kind: String(h?.kind || ''), title: usable(h?.title, 100), headings: list(h?.headings, 6, 80).filter(x => !JUNK_ANY.test(x)).map(x => redact(x, vm)), excerpt: redact(clean(h?.excerpt, 600), vm) })).filter(h => !JUNK_ANY.test(`${h.excerpt} ${h.title}`) && (h.excerpt.length >= 40 || h.headings.length));
+  const help = (Array.isArray(p.help) ? p.help : []).map(h => ({ kind: String(h?.kind || ''), title: usable(h?.title, 100), headings: list(h?.headings, 6, 80).filter(x => !JUNK_ANY.test(x)).map(x => redact(x, vm)), excerpt: redact(tidyExcerpt(clean(h?.excerpt, 600)), vm) })).filter(h => !JUNK_ANY.test(`${h.excerpt} ${h.title}`) && (h.excerpt.length >= 40 || h.headings.length));
   const o = {
     title: redact(usable(w.title, 110), vm), description: JUNK_ANY.test(w.description || '') ? '' : redact(clean(w.description, 200), vm), theme: brandColor(w.themeColor), hero: HERO_JUNK.test(w.heroHeading || '') ? '' : redact(usable(w.heroHeading, 110, { words: 2 }), vm),
     nav: list(w.navLabels, 8), footer: list(w.footerLabels, 8),
@@ -98,19 +112,24 @@ export function mapLabel(vm, label) {
   const l = label.toLowerCase();
   const has = p => typeof vm.has === 'function' ? vm.has(p) : false;
   const acct = (p, slug) => offline(vm) ? helpSlug(vm, slug) : has(p) ? vm.url(p) : null;
+  // Civic and corporate links of a parent site ("Register to vote", "nyc.gov home", "Careers") are not this portal's pages.
+  if (/\b(?:vote|voter|voting|elections?|jury|careers?|jobs)\b|\b[a-z0-9-]+\.(?:gov|com|org|net|us)\b/.test(l)) return null;
   if (/\bhome\b/.test(l) && l.length <= 12) return vm.url('home');
   if (/auto ?pay|automatic (?:bill )?pay|recurring pay|auto-?draft/.test(l)) return acct('autopay', 'autopay');
   if (/paperless|e-?bill|e-?statement|go green|electronic (?:bill|statement)/.test(l)) return acct('paperless', 'paperless');
+  // Where-to-pay links (payment centers, authorized agents, pay in person / by mail) are information, not the pay form.
+  if (/payment (?:centers?|locations?|agents?)|pay(?:ment)? (?:in person|by mail|by phone)|where to pay|authorized (?:payment )?(?:agents?|locations?)|ways to pay|payment options/.test(l)) return helpSlug(vm, 'pay-your-bill');
   if (/contact|customer (?:service|care|support)|call us|get in touch|locations?\b|office/.test(l)) return helpSlug(vm, 'contact-us');
   if (/\bhelp\b|faq|support|questions|how (?:do|to)/.test(l)) return vm.url('help');
-  if (/register|sign ?up|create (?:an )?account|enroll|new user|first.time/.test(l)) return offline(vm) ? helpSlug(vm, 'register') : has('register') && !vm.authenticated ? vm.url('register') : null;
+  if (/register|sign ?up|create (?:an )?account|enroll|new user|first.time/.test(l)) return offline(vm) || vm.biller.capabilities?.registration?.support === 'unsupported' ? helpSlug(vm, 'register') : has('register') && !vm.authenticated ? vm.url('register') : null;
   if (/\bpay\b|payments?\b|pay ?(?:my|your|a|online)|quick ?pay|one.time/.test(l)) {
     if (offline(vm)) return helpSlug(vm, 'pay-your-bill');
-    if (!vm.authenticated && has('guest') && sup(vm, 'guest_pay') && /quick|guest|one.time|express/.test(l)) return vm.url('guest');
+    if (!vm.authenticated && has('guest') && sup(vm, 'guest_pay') && /quick|guest|one.time|express|rush|without (?:signing|logging) in/.test(l)) return vm.url('guest');
     return has('pay') ? vm.url('pay') : null;
   }
   if (/forgot|reset (?:your )?password|recover (?:your )?(?:password|account|user)/.test(l)) return offline(vm) ? helpSlug(vm, 'reset-password') : !vm.authenticated && has('forgot') ? vm.url('forgot') : null;
-  if (/\bbills?\b|billing|statements?|invoices?|account summary|balance/.test(l) && !/accessibility|privacy|disclosure|cookie|legal/.test(l)) return acct('bill', 'view-your-bill');
+  if (/\bbills?\b|billing|statements?|invoices?|account summary|balance/.test(l) && !/accessibility|privacy|disclosure|cookie|legal|vision|mission|values|diversity|sustainab|environmental|annual report|financial statements|proxy|investor|policy|policies|terms/.test(l)) return acct('bill', 'view-your-bill');
+  if (/account (?:information|info|details|settings)|my profile|\bprofile\b|contact (?:information|info)|update (?:my )?(?:email|phone|address)/.test(l)) return acct('profile', 'contact-us');
   if (/log ?in|sign ?in|log ?on|sign ?on|my account|account (?:log ?in|access)|online (?:account|services|portal)|customer portal/.test(l)) return offline(vm) ? vm.url('help') : vm.authenticated ? (has('dashboard') ? vm.url('dashboard') : null) : has('login') ? vm.url('login') : null;
   return null;
 }
@@ -123,8 +142,9 @@ export const obsNav = vm => navLinks(vm).length && !vm.authenticated ? html`<nav
 // Footer labels as one line of mapped links / plain text.
 // Captured footer text: drop logo alt text, social links and "opens in new window" hints everywhere, and long promo lines
 // on dedicated sites (their dossier writes the wording).
-const FOOT_NOISE = /\blogo\b|facebook|twitter|\bx\.com\b|instagram|tiktok|linkedin|youtube|pinterest|opens in (?:a )?new (?:window|tab)|\{\d+\}|^call\s*\(|^(?:cancel|continue|cancele|contin[uú]e|return|log out|keep me logged in|apply now|learn more|go now|visit \S+\.com|"?read all reviews"?)$/i;
-export const obsFooter = vm => { const f = (vm.obs?.footer || []).filter(l => !FOOT_NOISE.test(l) && !(vm.tier === 'dedicated' && l.length > 40)); return f.length ? html`<p class="obs-foot">${f.map((l, i) => html`${i ? ' · ' : ''}${navItem(vm, l)}`)}</p>` : ''; };
+const FOOT_NOISE = /\blogo\b|facebook|twitter|\bx\.com\b|instagram|tiktok|linkedin|youtube|pinterest|opens in (?:a )?new (?:window|tab)|\{\d+\}|^call\s*\(|cookie|^(?:save (?:&|and) accept|accept(?: all)?(?: cookies)?|reject all|decline|manage (?:preferences|settings))$|^(?:cancel|continue|cancele|contin[uú]e|return|log out|keep me logged in|apply now|learn more|go now|visit \S+\.com|"?read all reviews"?)$/i;
+// Dedicated sites list only labels that lead somewhere here: unlinked text styled as footer links reads as broken links.
+export const obsFooter = vm => { const f = (vm.obs?.footer || []).filter(l => !FOOT_NOISE.test(l) && !(vm.tier === 'dedicated' && (l.length > 40 || !mapLabel(vm, l)))); return f.length ? html`<p class="obs-foot">${f.map((l, i) => html`${i ? ' · ' : ''}${navItem(vm, l)}`)}</p>` : ''; };
 // Hero heading from the biller's public homepage (or the given fallback).
 // Dedicated billers skip the captured hero headline (often a stale promotion); their dossier wording stands.
 export const heroText = (vm, fallback) => (vm.tier === 'dedicated' ? null : vm.obs?.hero) || fallback;

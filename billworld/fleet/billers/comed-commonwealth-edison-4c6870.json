@@ -154,10 +154,10 @@
         "intent": "Using ComEd's help pages, find out by how many calendar days a residential customer can extend a bill's due date. Do not request an extension or change anything.",
         "predicates": [
           { "type": "no_payment" },
-          { "type": "answer", "kind": "contains", "expected": ["21"] },
+          { "type": "answer", "kind": "pattern", "expected": ["\\b(?:21|twenty[\\s-]one)[\\s-]*(?:(?:business|calendar|working)[\\s-]*)?days?\\b"] },
           { "type": "no_unrequested_changes", "allow": [] }
         ],
-        "answer": { "kind": "contains", "expected": ["21"] },
+        "answer": { "kind": "pattern", "expected": ["\\b(?:21|twenty[\\s-]one)[\\s-]*(?:(?:business|calendar|working)[\\s-]*)?days?\\b"] },
         "tags": ["help", "information", "arrangement"],
         "evidence": "documented_official",
         "solution": [ { "op": "answer", "text": "Residential customers can extend the due date by 21 calendar days, up to twice a year." } ]
@@ -167,10 +167,10 @@
         "intent": "Find the longest number of months ComEd lets you spread a past-due balance over with a Deferred Payment Arrangement. Do not enroll in anything.",
         "predicates": [
           { "type": "no_payment" },
-          { "type": "answer", "kind": "contains", "expected": ["12"] },
+          { "type": "answer", "kind": "pattern", "expected": ["\\b(?:12|twelve)[\\s-]*months?\\b"] },
           { "type": "no_unrequested_changes", "allow": [] }
         ],
-        "answer": { "kind": "contains", "expected": ["12"] },
+        "answer": { "kind": "pattern", "expected": ["\\b(?:12|twelve)[\\s-]*months?\\b"] },
         "tags": ["help", "information", "arrangement"],
         "evidence": "documented_official",
         "solution": [ { "op": "answer", "text": "Between 4 and 12 months, after a down payment." } ]

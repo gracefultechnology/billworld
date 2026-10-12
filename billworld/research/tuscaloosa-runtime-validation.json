@@ -1,0 +1,50 @@
+{
+  "validated_at": "2026-10-11",
+  "site_id": "tuscaloosa-water",
+  "implementation_status": "first_slice",
+  "runtime": "tuscaloosa.mjs + tuscaloosa-server.mjs + public/tuscaloosa.{html,js,css}",
+  "additional_public_sources_checked": [
+    {
+      "url": "https://www.tuscaloosa.com/ebill",
+      "status": 200,
+      "used_for": "eBill terms; embedded Smartsheet form"
+    },
+    {
+      "url": "https://www.tuscaloosa.com/onlineservices/useful-forms",
+      "status": 200,
+      "used_for": "forms list incl. bank draft cancellation"
+    },
+    {
+      "url": "https://www.tuscaloosa.com/pay-water-bill",
+      "status": 403,
+      "final_url": "https://ipn4.paymentus.com/cp/tusl",
+      "used_for": "redirect target only"
+    },
+    {
+      "url": "https://app.smartsheet.com/b/form/8553f269632340ac91a7bd765c4df99c",
+      "status": 200,
+      "used_for": "none; form rendered no fields to a read-only fetch"
+    }
+  ],
+  "released_tasks": {
+    "task_tus1": "tuscaloosa-pay-current-bank-v1",
+    "task_tus2": "tuscaloosa-guest-card-pay-v1",
+    "task_tus3": "tuscaloosa-register-autopay-v1",
+    "task_tus4": "tuscaloosa-recover-login-v1",
+    "task_tus5": "tuscaloosa-edit-scheduled-v1",
+    "task_tus6": "tuscaloosa-change-cancel-autopay-v1",
+    "task_tus7": "tuscaloosa-ebill-enroll-v1",
+    "task_tus8": "tuscaloosa-download-bill-v1"
+  },
+  "checks": {
+    "domain_tests": "node --test billworld/tests/tuscaloosa.test.mjs: 11/11 pass",
+    "npm_test": "467 tests, 466 pass, 0 fail (full suite at validation time)",
+    "browser": "npm run test:browser:tuscaloosa: 8 reference journeys + 5 UI robustness scenarios pass; no page errors, no outbound requests",
+    "infinity_smoke": "smoke.py --task-ids task_tus1..task_tus8: all 8 pass upstream lifecycle + UI + private verifier, plus lifecycle failure checks",
+    "infinity_overlay": "test_infinity_overlay passes with 8 added released definitions"
+  },
+  "limits": [
+    "Scripted references validate solvability and grader wiring, not autonomous-agent success rates.",
+    "Portal layout is family-documented (Paymentus guide for Batavia); Tuscaloosa's tenant returned HTTP 403."
+  ]
+}

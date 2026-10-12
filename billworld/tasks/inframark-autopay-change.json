@@ -1,0 +1,20 @@
+{
+  "id": "inframark-autopay-change-v1",
+  "version": 1,
+  "site_id": "inframark",
+  "evidence_cohort": "documented_recurring_card_payments_synthetic_timing",
+  "prompt": "Sign in to the local Inframark Resident Portal as alex.inframark / Inframark-2026! and open AutoPay. AutoPay currently drafts the saved Checking account ending 1048. Change AutoPay to the saved Visa ending 4242 (3% card fee): select the card, review and agree to the terms, and confirm. Reload AutoPay to verify it is enabled with the Visa. Do not disable AutoPay first, make a payment, or change any other settings or accounts. The local rule drafts on the due date; timing is undocumented.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_tenant_autopay",
+    "account_id": "acct-primary",
+    "enabled": true,
+    "initial_method_id": "inframark-bank-1048",
+    "method_id": "inframark-card-4242",
+    "bank_id": "inframark-bank-1048",
+    "card_id": "inframark-card-4242"
+  }
+}

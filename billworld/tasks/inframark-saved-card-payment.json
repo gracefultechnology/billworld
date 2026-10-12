@@ -1,0 +1,20 @@
+{
+  "id": "inframark-saved-card-payment-v1",
+  "version": 1,
+  "site_id": "inframark",
+  "evidence_cohort": "documented_operator_fees_synthetic_signed_checkout",
+  "prompt": "Sign in to the local Inframark Resident Portal as alex.inframark / Inframark-2026!. Open Pay My Bill and use the saved Visa ending 4242 to pay $20.00 toward the current bill. Review the $0.60 card convenience fee (3% of the payment) and authorize once. View the receipt, then return to Pay My Bill to verify the remaining balance is $64.32. Keep saved methods, AutoPay, scheduled payments, credentials and all other accounts unchanged. The signed-in checkout layout and processor behavior are simulated. Operator-level fees are used; district-specific exceptions remain unverified.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_signed_payment",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "method_id": "inframark-card-4242",
+    "amount_cents": 2000,
+    "fee_cents": 60,
+    "remaining_cents": 6432
+  }
+}

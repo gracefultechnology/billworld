@@ -1,0 +1,18 @@
+{
+  "id": "gmg-autopay-change-v1",
+  "version": 1,
+  "site_id": "greater-minnesota-gas",
+  "evidence_cohort": "documented_autopay_change_synthetic_private_layout",
+  "prompt": "Sign in to Greater Minnesota Gas as alex.morgan / Billworld-2026! and open AutoPay. AutoPay is currently enabled with the saved Checking account ending 1048. Change the AutoPay payment method to the saved Visa ending 4242 without disabling AutoPay first. Review the change and agree to the terms, including the documented 2.75% (minimum $1.50) card fee, and acknowledge the separate ACH warning without changing that ACH enrollment. Confirm the change, then reload AutoPay to verify the final status. Do not make a payment or change any other accounts, credentials or billing settings. Private layout, terms and conflict fixtures are simulated; GMG documents automatic payment three days before the due date.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_autopay",
+    "account_id": "acct-primary",
+    "enabled": true,
+    "initial_method_id": "gmg-bank-1048",
+    "method_id": "gmg-card-4242"
+  }
+}

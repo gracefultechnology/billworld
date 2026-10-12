@@ -1,0 +1,19 @@
+{
+  "id": "inframark-autopay-enable-v1",
+  "version": 1,
+  "site_id": "inframark",
+  "evidence_cohort": "documented_recurring_bank_draft_synthetic_timing",
+  "prompt": "Sign in to the local Inframark Resident Portal as alex.inframark / Inframark-2026! and open AutoPay. Enroll in automatic bank draft using the saved Checking account ending 1048. Review the terms and the $1.00 electronic check fee disclosure, agree, and confirm. Reload AutoPay to verify it is enabled with that account. Do not make a payment, schedule a payment or change any other settings or accounts. Inframark documents bank draft and card recurring payments but not their timing; the local rule drafts on the due date.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_tenant_autopay",
+    "account_id": "acct-primary",
+    "enabled": true,
+    "method_id": "inframark-bank-1048",
+    "bank_id": "inframark-bank-1048",
+    "card_id": "inframark-card-4242"
+  }
+}

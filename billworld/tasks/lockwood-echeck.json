@@ -1,0 +1,23 @@
+{
+  "id": "lockwood-echeck-link-pay-v1",
+  "version": 1,
+  "site_id": "lockwood",
+  "evidence_cohort": "family_documented_private_flow_synthetic_layout_and_policy",
+  "prompt": "Sign in to the local City of Lockwood Missouri ePayUB portal with username alex.morgan and password Billworld-2026!. View the current bill. In My Payment Methods, link checking account routing 021000021, account number 000001048, name on account Alex Morgan, account type Checking, linked-account email alex@billworld.test, and authorize verification. Then pay the current bill's full $84.32 balance by E-Check with that linked account (service fee $0.00), authorize once, and open Account History to confirm the payment is listed. Report the confirmation number. Do not save cards, schedule drafts, or change AutoPay or preferences. Signed-in screens, fees and timing are simulated.",
+  "budget": {
+    "seconds": 600,
+    "actions": 150
+  },
+  "goal": {
+    "type": "cusi_portal_echeck",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "amount_cents": 8432,
+    "fee_cents": 0,
+    "routing": "021000021",
+    "account_number": "000001048",
+    "name": "Alex Morgan",
+    "account_type": "Checking",
+    "link_email": "alex@billworld.test"
+  }
+}

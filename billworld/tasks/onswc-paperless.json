@@ -1,0 +1,16 @@
+{
+  "id": "onswc-paperless-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "observed_ebill_client_controls_synthetic_tenant_flags",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. Open eBill Settings. Change bill delivery from Paper only to eBill only (paperless), then reload the page to verify the saved preference. Leave payments, AutoPay, ACH Auto Draft, saved methods, credentials and all other accounts unchanged. The client option sequence is observed in the shared Starnik client; account flags and private layout are simulated.",
+  "budget": {
+    "seconds": 240,
+    "actions": 80
+  },
+  "goal": {
+    "type": "starnik_ebill",
+    "account_id": "acct-primary",
+    "option": 1
+  }
+}

@@ -2,7 +2,7 @@
   "id": "charlotte-county-utilities",
   "name": "Charlotte County Utilities",
   "portal_family": "Paymentus",
-  "implementation_status": "researched_not_implemented",
+  "implementation_status": "first_slice",
   "catalog_records": [
     {
       "category": "water-sewer",
@@ -49,7 +49,9 @@
     "FAQ Setup/Automatic Payments wording may reflect the earlier eBill system; actual Paymentus controls are unobserved.",
     "County employee Password Self-Service is not utility customer authentication.",
     "Digital payment wallets are not observed Google account login providers.",
-    "No production login, registration, recovery or payment form was submitted."
+    "No production login, registration, recovery or payment form was submitted.",
+    "payment-options.pdf lists eBill (enrolled) as ACH-only while the current Pay My Utility Bill page says Paymentus accepts debit/credit/ACH and charges $2.95 for card AutoPay; the runtime follows the current page and allows cards when signed in. The chart may predate the Paymentus migration.",
+    "Paymentus guest lookup fields, registration fields and AutoPay timing options for this tenant are unobserved (HTTP 403)."
   ],
   "public_reconstruction": {
     "pages": 3,
@@ -58,7 +60,12 @@
       "captured public collapse accordions"
     ],
     "documents": 2,
-    "validation_manifest": "research/charlotte-county-construction-validation.json"
+    "validation_manifest": "research/charlotte-county-construction-validation.json",
+    "local_routes": {
+      "/": "website",
+      "/departments/utilities/billing/": "links-pay_bill",
+      "/departments/utilities/utilities-faq.stml": "help_center_url"
+    }
   },
   "contact": {
     "phone": "941-764-4300",
@@ -66,10 +73,76 @@
     "payment_center": "3280 South Tamiami Trail, Unit 505, Port Charlotte, FL"
   },
   "unfinished": [
-    "Usable Paymentus tenant auth/registration/recovery captures",
-    "Private bills, checkout and receipt screens",
-    "Runtime payment/auth and task integration",
-    "Scheduled payments, AutoPay, paperless and wallets",
-    "Independent source fidelity review and agent baseline"
-  ]
+    "Original private Paymentus screens, validation and confirmation formats (tenant returns HTTP 403)",
+    "Digital wallet and retail cash checkout simulation",
+    "Independent source fidelity review and autonomous agent baseline"
+  ],
+  "runtime": {
+    "kind": "charlotte_paymentus",
+    "frontend": "ccu",
+    "mail_sender_slug": "charlotte-county",
+    "portal_path": "/cp/ccfl"
+  },
+  "default_task_id": "charlotte-signed-bank-pay-v1",
+  "billing_policy": {
+    "ach_fee_cents": 100,
+    "card_fee_cents": 295,
+    "wallet_fee_cents": 295,
+    "autopay_ach_fee_cents": 100,
+    "autopay_card_fee_cents": 295,
+    "accepted_cards": [
+      "Visa",
+      "Mastercard",
+      "Discover"
+    ],
+    "posting": "same business day if submitted before 20:00 America/New_York, otherwise next business day",
+    "fee_recipient": "Paymentus (not Charlotte County Utilities)"
+  },
+  "evidence_labels": {
+    "observed": [
+      "Utilities homepage, Pay My Utility Bill page and Utilities FAQ captured 2026-10-04 (research/charlotte-county-public.json); served locally from hash-verified snapshots at /, /departments/utilities/billing/ and /departments/utilities/utilities-faq.stml",
+      "County links \"www.charlottecountyfl.gov/Paymentus\" and \"Manage your account online\" lead to the Paymentus tenant ipn4.paymentus.com/cp/ccfl (local route /cp/ccfl)",
+      "Paymentus tenant itself returned HTTP 403 (bot protection); no private screen was observed",
+      "County calendar holidays Nov 11, Nov 26 and Nov 27 2026 (used by the posting calendar)"
+    ],
+    "documented": [
+      "Fees: ACH $1.00; debit/credit card (Visa, Mastercard, Discover) $2.95; digital wallets (PayPal, PayPal Credit, Venmo, Apple Pay, Google Pay) $2.95; fees go to the provider, not the county (Pay My Utility Bill page, payment-options.pdf)",
+      "AutoPay fees: ACH $1, debit/credit $2.95 (FAQ \"Is there a fee for auto pay?\")",
+      "Posting: same business day if paid before 8 p.m., otherwise next business day, for eBill/QuickPay/telephone (payment-options.pdf)",
+      "Pay without enrollment (\"QuickPay ... No enrollment required\") and enrolled login channel (payment-options.pdf)",
+      "Re-enrollment: customer data was not transferred from Billtrust; returning customers must register again (Paymentus FAQ)",
+      "Cancel/update automatic payments by logging in and selecting Setup > Automatic Payments; changing a payment method requires separately updating future scheduled payments (Utilities FAQ)",
+      "Monthly bill by email requires Paymentus enrollment (Utilities FAQ \"Can my monthly bill be sent by email?\")",
+      "Account number format 00000-000000 (customer number - service address number), bill fields, 3% penalty after 21 days (read-my-bill.pdf, 2010/2011 example)",
+      "Urgent notice: call 941.764.4300 when paying; name/address changes are not available online (Utilities FAQ)"
+    ],
+    "cross_tenant_paymentus_pattern": [
+      "Email/password login, Register Now, Forgot your password?, Add Account with account number plus service-address street number, paperless choice and terms acceptance follow the Paymentus family guide documented for another tenant (Batavia); not observed for Charlotte County"
+    ],
+    "synthetic": [
+      "All private layouts, wording, validation messages and field order under /cp/ccfl",
+      "Password policy (8-32 characters with a letter and a number), registration fields, reset-link format and 30-minute lifetime",
+      "Guest lookup by account number + service ZIP code",
+      "Confirmation number format, pending/posted lifecycle, 20:00 ET posting time and 06:00 ET execution time for scheduled payments and AutoPay",
+      "AutoPay rule (pay full unreserved balance on each due date), 90-day scheduling window, statement PDF layout and line-item amounts",
+      "Digital wallets and retail cash are shown as documented but are not simulated (disabled options)",
+      "Persona Alex Morgan, accounts 01048-021048 / 02099-022099, service addresses, balances and payment history"
+    ]
+  },
+  "implemented_flows": [
+    "public county pages with Paymentus links rewired to /cp/ccfl",
+    "legacy eBill login rejection with re-enrollment guidance",
+    "registration and account linking (account number + street number, paperless, terms)",
+    "password recovery through mock Gmail one-use link",
+    "Pay Without Registering (guest) bank/card payment",
+    "signed-in one-time payment with saved or new bank/card, optional save to wallet",
+    "scheduled payment create/edit/cancel (scheduled payments keep their own method)",
+    "AutoPay enroll/change/cancel with fee acknowledgement and scheduled-payment conflict warning",
+    "paperless billing and email/SMS bill alerts",
+    "My Wallet add/remove (AutoPay method protected)",
+    "payment history with pending/posted status and posting date",
+    "bill history with synthetic PDF statements",
+    "virtual-clock execution of scheduled payments, AutoPay and posting"
+  ],
+  "runtime_validation_manifest": "research/charlotte-county-runtime-validation.json"
 }

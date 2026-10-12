@@ -2,7 +2,7 @@
   "id": "greater-minnesota-gas",
   "name": "Greater Minnesota Gas",
   "portal_family": "Starnik",
-  "implementation_status": "construction_slice",
+  "implementation_status": "first_slice",
   "catalog_records": [
     {
       "category": "gas",
@@ -51,11 +51,9 @@
     "Original private payment, wallet, history, registration continuation and recovery delivery are unobserved."
   ],
   "unfinished": [
-    "Alternate registration mailbox ownership, multiple-account linking and original private auth fidelity",
-    "Authenticated-account billing, production fee rounding/limits and settlement verification",
-    "Multiple accounts and profile management",
-    "Source-resource completeness, local responsive menus, independent visual and behavioral fidelity",
-    "Private graders, Puppeteer reference tasks, isolated deployment and autonomous scoring"
+    "Alternate (non-contact) registration mailbox ownership and original private auth fidelity",
+    "Production fee rounding/limits and settlement verification",
+    "Source-resource completeness, responsive menus and independent visual fidelity certification"
   ],
   "public_reference_pages": [
     "biller_97db8399eb95ee4cb710-website",
@@ -122,10 +120,14 @@
         "page_id": "biller_97db8399eb95ee4cb710-portal-username-current",
         "interactive": true
       }
-    }
+    },
+    "starnik_features": [
+      "linked_accounts",
+      "mailing_address"
+    ]
   },
   "default_task_id": "gmg-username-login-v1",
-  "construction_stage": "observed_auth_recovery_signup_synthetic_private_continuations_not_released",
+  "construction_stage": "released_first_slice_observed_public_entry_documented_policy_synthetic_private_continuations",
   "construction_auth_policy": {
     "username": "Case-insensitive with surrounding whitespace removed; synthetic normalization",
     "session_minutes": 30,
@@ -133,8 +135,8 @@
     "google": "No button observed; unavailable"
   },
   "construction_recovery_policy": {
-    "request_username": "Observed 6\u201350 ASCII letters/digits/dot/@/underscore/hyphen, starts alphanumeric, no whitespace",
-    "reset_password": "Observed client: 8\u201324 characters, ASCII letter, digit and listed special character, no whitespace or angle brackets",
+    "request_username": "Observed 6–50 ASCII letters/digits/dot/@/underscore/hyphen, starts alphanumeric, no whitespace",
+    "reset_password": "Observed client: 8–24 characters, ASCII letter, digit and listed special character, no whitespace or angle brackets",
     "delivery": "Synthetic same episode mailbox, uniform request response",
     "grant": "Synthetic 15-minute one-use link; newer request invalidates prior link",
     "reset": "Revokes all sessions and reset grants for target account only",
@@ -146,7 +148,7 @@
     "mailbox": "Only the fixture contact mailbox is supported; alternate addresses remain unimplemented",
     "grants": "Synthetic 30-minute expiry. Pending/resend credential cannot verify; newer requests supersede prior links",
     "verification": "Email possession required before username check or creation",
-    "username": "Observed 6\u201350 ASCII letters/digits/dot/@/underscore/hyphen, starts alphanumeric; local case-insensitive uniqueness rechecked at commit",
+    "username": "Observed 6–50 ASCII letters/digits/dot/@/underscore/hyphen, starts alphanumeric; local case-insensitive uniqueness rechecked at commit",
     "password": "Same observed client requirements as password recovery",
     "continuation_layout": "Synthetic; private original not visited"
   },
@@ -257,6 +259,128 @@
       "password": "Other-2026!",
       "security_code": "GMG2099",
       "service_zip": "55001"
+    },
+    "acct-cabin": {
+      "username": "alex.cabin",
+      "password": "Cabin-2026!",
+      "security_code": "GMG3077",
+      "service_zip": "56073"
     }
+  },
+  "starnik_additional_accounts": [
+    {
+      "id": "acct-cabin",
+      "customer_number": "3003077",
+      "name": "Alex Morgan",
+      "email": "alex@billworld.test",
+      "invoices": [
+        {
+          "id": "inv-cabin",
+          "number": "2026-10-3077",
+          "period": "September 2026",
+          "dueDate": "2026-10-22",
+          "amountCents": 6150,
+          "current": true
+        }
+      ]
+    }
+  ],
+  "starnik_account_addresses": {
+    "acct-primary": {
+      "service": "1048 Prairie Wind Dr, Mankato, MN 56001",
+      "mailing": {
+        "line1": "1048 Prairie Wind Dr",
+        "line2": "",
+        "city": "Mankato",
+        "state": "MN",
+        "zip": "56001"
+      }
+    },
+    "acct-secondary": {
+      "service": "2099 Valley Rd, Afton, MN 55001",
+      "mailing": {
+        "line1": "2099 Valley Rd",
+        "line2": "",
+        "city": "Afton",
+        "state": "MN",
+        "zip": "55001"
+      }
+    },
+    "acct-cabin": {
+      "service": "3077 Cedar Lake Rd, New Ulm, MN 56073",
+      "mailing": {
+        "line1": "1048 Prairie Wind Dr",
+        "line2": "",
+        "city": "Mankato",
+        "state": "MN",
+        "zip": "56001"
+      }
+    }
+  },
+  "revision": "gmg-first-slice-1",
+  "capabilities": {
+    "public_pages": "observed_public_captured_inert_homepage_billing_autopay_bill_help_assistance_faq",
+    "username_login": "observed_public_form_local_auth",
+    "registration": "observed_security_code_email_entry_synthetic_verification_and_setup",
+    "username_recovery": "observed_entry_synthetic_mock_gmail_delivery",
+    "password_recovery": "observed_entry_and_client_rules_synthetic_one_use_reset_link",
+    "guest_payment": "observed_security_code_service_zip_lookup_documented_fees_synthetic_checkout",
+    "bill_view_and_statement": "observed_authenticated_pdf_route_synthetic_statements",
+    "one_time_payment_bank": "documented_no_fee_synthetic_saved_method_checkout",
+    "one_time_payment_card": "documented_2.75pct_min_1.50_visa_mastercard_discover_synthetic_checkout",
+    "payment_history": "documented_capability_observed_client_fields_synthetic_ledger",
+    "saved_payment_methods": "observed_client_sequence_synthetic_add_edit_delete",
+    "autopay_enroll": "documented_three_days_before_due_observed_client_sequence_synthetic_terms",
+    "autopay_change_method": "documented_autopay_synthetic_reviewed_method_change",
+    "autopay_cancel": "observed_client_sequence_synthetic",
+    "paperless": "observed_ebill_option_codes_synthetic_tenant_flags",
+    "multiple_accounts": "documented_account_number_and_security_code_synthetic_link_switch_remove",
+    "billing_address_update": "documented_snowbird_billing_address_synthetic_validation",
+    "scheduled_payment": "not_documented_not_implemented",
+    "google_login": "not_observed_unavailable"
+  },
+  "fidelity_limits": [
+    "No authenticated GMG/Starnik session, registration, recovery delivery or payment was performed; all private continuations are synthetic reconstructions labeled on each page.",
+    "Public billing and AutoPay pages document card fee 2.75% (minimum $1.50), no bank fee, Visa/Mastercard/Discover and AutoPay three days before due; rounding, limits and settlement timing are synthetic.",
+    "The public pay page lists view bills/history, AutoPay, payments, multiple accounts, paperless and billing-address updates; private layouts for these are unobserved.",
+    "The public pay page says account number and security code are needed; the observed signup asks only for the security code. Signup follows the observed form; multiple-account linking uses account number plus security code.",
+    "Scheduled/future-dated payments are not documented by GMG and are intentionally not offered.",
+    "Statements are immutable synthetic PDFs; the cabin statement is a field-substituted derivative of the reviewed fixture (starnik-statement-variant.mjs).",
+    "Captured public JavaScript is evidence only and never executed."
+  ],
+  "released_tasks": [
+    "gmg-username-login-v1",
+    "gmg-recover-username-password-v1",
+    "gmg-register-account-v1",
+    "gmg-guest-bank-payment-v1",
+    "gmg-guest-card-payment-v1",
+    "gmg-read-history-balances-v1",
+    "gmg-manage-wallet-v1",
+    "gmg-autopay-enable-v1",
+    "gmg-autopay-change-v1",
+    "gmg-autopay-cancel-v1",
+    "gmg-saved-bank-payment-v1",
+    "gmg-saved-card-payment-v1",
+    "gmg-paperless-v1",
+    "gmg-ebill-paper-v1",
+    "gmg-download-current-bill-v1",
+    "gmg-mailing-address-v1",
+    "gmg-link-account-ebill-v1"
+  ],
+  "construction_linked_accounts_policy": {
+    "source": "Public pay page: manage multiple accounts; account number and security code found on the bill",
+    "link": "Synthetic exact account number + security code match; trims outer whitespace; five failures per session then sign in again",
+    "eligibility": "Only accounts without their own online profile and not linked elsewhere",
+    "switch": "Session-scoped active account; every account page (bill, statement, history, payment, wallet, AutoPay, eBill, address) follows it",
+    "remove": "Inline confirmation; blocked while that account has AutoPay; never alters bills or payments",
+    "benchmark": "gmg-link-account-ebill-v1 requires view, one link, switch, eBill-only on the linked account, primary unchanged"
+  },
+  "construction_mailing_address_policy": {
+    "source": "Public pay page: Update billing address (Snowbirds!)",
+    "fields": "Street, optional line 2, city, US state, ZIP or ZIP+4; synthetic validation",
+    "service_address": "Read-only",
+    "concurrency": "Version check; no-change returns 'There are no new changes found.'",
+    "delivery": "Mock confirmation email",
+    "benchmark": "gmg-mailing-address-v1 requires one exact change between address views and no other mutation"
   }
 }

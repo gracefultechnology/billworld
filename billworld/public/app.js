@@ -50,10 +50,13 @@ async function render() {
   }
   if (path === '/portal/unavailable') { shell('<h1>Bill type not implemented yet</h1><p>This Billworld slice currently covers water and sewer billing. The source portal also offers other bill types, which remain in the implementation backlog.</p><a href="/portal">Return to bill types</a>'); return; }
   if (path === '/portal/login') {
-    shell('<h1>Sign In</h1>' + panel(`<form data-action="login">${input('email', 'Email address', 'email', '', 'required autocomplete="username"')}${input('password', 'Password', 'password', '', 'required autocomplete="current-password"')}<button>Sign In</button></form><p><a href="/portal/forgot">Forgot your password?</a> · <a href="/portal/register">Register Now</a></p>`)); return;
+    const pending = (await api('verify/status').catch(() => ({}))).pending; if (!isCurrent()) return;
+    shell('<h1>Sign In</h1>' + (new URLSearchParams(location.search).get('reset') === '1' ? panel('<p id="reset-success" role="status">Your password was updated. Sign in with your new password.</p>') : '') + (pending ? panel('<p>A sign-in verification code was already sent to your email. <a href="/portal/verify">Enter your verification code</a></p>') : '') + panel(`<form data-action="login">${input('email', 'Email address', 'email', '', 'required autocomplete="username"')}${input('password', 'Password', 'password', '', 'required autocomplete="current-password"')}<button>Sign In</button></form><p><a href="/portal/forgot">Forgot your password?</a> · <a href="/portal/register">Register Now</a></p>`)); return;
   }
   if (path === '/portal/verify') {
-    shell('<h1>Verify your sign-in</h1>' + panel(`<p>A verification code was sent to your email. Use the newest message.</p><form data-action="verify">${input('code', 'Verification code', 'text', '', 'required pattern="[0-9]{6}" autocomplete="one-time-code"')}<button>Verify</button></form><p><a href="/mail">Open email</a> · <a href="/portal/login">Request another code by signing in again</a></p>`)); return;
+    const status = await api('verify/status').catch(() => ({ pending: false })); if (!isCurrent()) return;
+    if (!status.pending && !challenge) { shell('<h1>Verify your sign-in</h1>' + panel('<p>No sign-in verification is pending, or the code expired. Sign in again to receive a new code.</p><a class="button" href="/portal/login">Sign In</a>')); return; }
+    shell('<h1>Verify your sign-in</h1>' + panel(`<p>A verification code was sent to your email. Use the newest message. You can open your email in this tab and return here; this page keeps your sign-in pending for 5 minutes.</p><form data-action="verify">${input('code', 'Verification code', 'text', '', 'required pattern="[0-9]{6}" autocomplete="one-time-code"')}<button>Verify</button></form><p><a href="/mail">Open email</a> · <a href="/portal/login">Request another code by signing in again</a></p>`)); return;
   }
   if (path === '/portal/register') {
     shell('<h1>Register your account</h1>' + panel(`<p>You need a customer number from an existing bill.</p><form data-action="register">${input('customerNumber', 'Customer number', 'text', '', 'required')}${input('email', 'Email address', 'email', '', 'required')}${input('confirmEmail', 'Confirm email address', 'email', '', 'required')}${input('password', 'Password', 'password', '', 'required minlength="10" maxlength="128"')}${input('confirmPassword', 'Confirm password', 'password', '', 'required')}<button>Complete Registration</button></form>`)); return;
@@ -130,10 +133,10 @@ app.addEventListener('submit', async e => {
     else if (action === 'spotify-card') { await api('subscription/card', data); navigate('/spotify/payment-methods'); }
     else if (action === 'spotify-cancel') { await api('subscription/cancel', {}); navigate('/spotify/account'); }
     else if (action === 'login') { const result = await api('login', data); if (result.challenge) { challenge = result.challenge; navigate('/portal/verify'); } else navigate('/portal/account'); }
-    else if (action === 'verify') { await api('verify', { ...data, challenge }); navigate('/portal/account'); }
+    else if (action === 'verify') { await api('verify', challenge ? { ...data, challenge } : data); challenge = null; navigate('/portal/account'); }
     else if (action === 'register') { if (data.email !== data.confirmEmail || data.password !== data.confirmPassword) throw new Error('Email addresses and passwords must match'); await api('register', data); navigate('/portal/account'); }
     else if (action === 'forgot') { const r = await api('reset/request', data); document.querySelector('#reset-notice').textContent = r.message; }
-    else if (action === 'reset') { if (data.password !== data.confirmPassword) throw new Error('Passwords must match'); await api('reset/complete', { token: new URLSearchParams(location.search).get('token'), password: data.password }); navigate('/portal/login'); }
+    else if (action === 'reset') { if (data.password !== data.confirmPassword) throw new Error('Passwords must match'); await api('reset/complete', { token: new URLSearchParams(location.search).get('token'), password: data.password }); navigate('/portal/login?reset=1'); }
     else if (action === 'search') { searchResult = await api(`invoices?customer=${encodeURIComponent(data.customerNumber)}`); navigate('/portal/results'); }
     else if (action === 'select') { invoice = searchResult.invoices.find(i => i.id === data.invoice); if (!invoice) throw new Error('Select an unpaid invoice'); quote = null; navigate('/portal/cart'); }
     else if (action === 'method') { selectedKind = data.kind; invoice.amountCentsToPay = Math.round(Number(data.amount) * 100); navigate('/portal/information'); }

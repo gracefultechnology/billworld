@@ -1,14 +1,19 @@
 // Help-center articles for every biller, built only from its research record.
 // Facts come from the catalog (phones, mail address, notes, programs); generic guidance is labeled synthetic.
 // Contact values are the cleaned display values (biller.contact): scrape provenance never reaches a page.
-import { money } from './engine.mjs';
+import { money, brandList } from './engine.mjs';
 import { contactInfo, phoneDigits } from './catalog.mjs';
+import { labelNoun, setUpLabel } from './kit.mjs';
 
 const sentences = text => String(text || '').split(/(?<=[.!?])\s+(?=[A-Z0-9])/).map(s => s.trim()).filter(s => s.length > 12);
 // Research notes can contain URLs and scrape fragments; help pages quote only clean sentences.
 // Research provenance ("per the help article", "belongs to this brand", CMS/DMEPOS catalog remarks) is not help text either.
-const clean = s => !/https?:\/\/|www\.|context:|fetched \d{4}|<[a-z/]|\bper [a-z0-9.-]+\.(?:com|org|gov|net)\b|\bper (?:the )?(?:help|faq|support|contact|billing|official)[a-z ]{0,20}(?:article|page|site)\b|belongs to this brand|\bCMS DMEPOS\b|\bcatalog (?:record|entry)\b|\bresearch(?:ed)? (?:note|record)/i.test(s);
-const about = (notes, re) => sentences(notes).filter(clean).filter(s => re.test(s));
+// Researcher shorthand ("Pay as Guest = one-time ACH", "Rendered with headless Chrome", "old slug ... serves the same article").
+export const RESEARCH_PROCESS = /\S\s=\s\S|headless (?:chrome|browser)|rendered with (?:a )?(?:headless|browser)|\bslugs?\b|\bnot captured\b|\bcaptured (?:from|on|with|via|by)\b|\bscraped?\b|\bserves the same article\b/i;
+const clean = s => !/https?:\/\/|www\.|context:|fetched \d{4}|<[a-z/]|\bper [a-z0-9.-]+\.(?:com|org|gov|net)\b|\bper (?:the )?(?:help|faq|support|contact|billing|official)[a-z ]{0,20}(?:article|page|site)\b|belongs to this brand|\bCMS DMEPOS\b|\bcatalog (?:record|entry)\b|\bresearch(?:ed)? (?:note|record)/i.test(s) && !RESEARCH_PROCESS.test(s);
+// Research digests ("Billing FAQs: explains ...; ...; ...") are summaries of a source page, not customer-facing copy.
+const digest = s => s.length > 400 || s.split(';').length > 3 || /^[^.:;]{3,60}: (?:explains|covers|describes|lists|summari[sz]es|says|shows|notes)\b/i.test(s);
+const about = (notes, re) => sentences(notes).filter(clean).filter(s => !digest(s)).filter(s => re.test(s));
 
 // The navigation labels each portal template actually shows, so help steps name links that exist.
 export const TEMPLATE_LABELS = {
@@ -42,6 +47,24 @@ const DEFAULT_LABELS = { pay: 'Pay Bill', history: 'Payment History', autopay: '
 // Dossier label keys (billers/schema.mjs LABEL_KEYS) for the help/task label names used here.
 const DOSSIER_KEY = { pay: 'payBill', history: 'history', autopay: 'autopay', paperless: 'paperless', wallet: 'wallet', statements: 'statements', bill: 'viewBill', cancel: 'cancel' };
 const dossierLabels = biller => { const l = biller.dossier?.labels; if (!l) return {}; const out = {}; for (const [k, dk] of Object.entries(DOSSIER_KEY)) if (l[dk]) out[k] = l[dk]; return out; };
+// "Customer service: a; b; c" names three numbers without saying which is which. When the research record labels them
+// ("717-787-8201 (Personal Income Tax); Delinquent collections 717-783-3000"), the first is customer service and the
+// others are listed with their own labels. Unlabeled lists and provenance-laden records keep the plain display value.
+const NUM_RE = /(?:\+?1[\s.-]?)?\(?([2-9]\d{2})\)?[\s.-]?([2-9]\d{2})[\s.-]?(\d{4})\b(?:\s*(?:ext\.?|x)\s*(\d{1,6}))?/gi;
+export function labeledPhoneText(raw, display) {
+  if (!display || !display.includes(';') || /context:|https?:|fetched|snippet|tel:/i.test(String(raw || ''))) return null;
+  const parts = [];
+  for (const seg of String(raw).split(/\s*;\s*/)) {
+    const nums = [...seg.matchAll(NUM_RE)]; if (!nums.length) continue;
+    let label = seg.replace(NUM_RE, ' ').replace(/\b\d{3}-[A-Z][A-Z0-9]{3,}\b,?/g, ' ').replace(/\(\s*[,;]?\s*/g, '(').replace(/\s*[,;]?\s*\)/g, ')').replace(/\(\s*\)/g, ' ').replace(/\s{2,}/g, ' ').trim();
+    for (let i = 0; i < 3; i++) label = label.replace(/^(?:or|and|call|at)\b\s*|\s*\b(?:or|and)$/i, '').replace(/^[\s,:–—-]+|[\s,:–—-]+$/g, '').replace(/^\(([^()]*)\)$/, '$1').trim();
+    for (const m of nums) parts.push({ num: m[0].trim().replace(/\s+/g, ' '), label }); // the number as the record writes it (1-800-…, (469) …)
+  }
+  if (parts.length < 2 || !parts.slice(1).some(p => p.label)) return null;
+  if (parts.some(p => p.label.length > 50 || /\bper\b|\([^)]*\(|\d-|^\d|[A-Z]{3,}\d|\bvia\b/.test(p.label))) return null; // research shorthand: keep the plain list
+  const [main, ...rest] = parts;
+  return { main: `${main.num}${main.label ? ` (${main.label})` : ''}`, others: rest.map(p => p.label ? `${p.label[0].toUpperCase()}${p.label.slice(1)}: ${p.num}` : p.num) };
+}
 export const labelsFor = (biller, overrides = {}) => ({ ...DEFAULT_LABELS, ...(TEMPLATE_LABELS[biller.template] || {}), ...overrides, ...dossierLabels(biller) });
 
 // labels: optional per-template nav labels (e.g. from a template's meta.helpLabels) that override the built-in table.
@@ -69,7 +92,7 @@ export function helpArticles(biller, labels = {}) {
     add('view-your-bill', 'How to view your bill', 'billing', [`Sign in and select ${L.bill} to see your current amount due, due date and itemized charges. Open ${L.statements} to download a PDF copy of a statement.`, ...about(notes, /view|statement|bill (?:is|shows)|due date/i).slice(0, 3)], l.view_bill, ['Sign in to your account.', `Select ${L.bill}.`, 'Review your amount due and due date.', `Open ${L.statements} to download a PDF.`]);
     add('billing-history', 'Payment history and past statements', 'billing', ['Your account shows up to 12 months of statements and payments. Pending payments appear until they post, usually within 1–2 business days.'], l.statements_history, ['Sign in.', `Open ${L.history} or ${L.statements}.`, 'Select a statement to view or download.']);
     if (cap.autopay.support === 'supported') {
-      add('autopay', `Set up ${L.autopay}`, 'autopay', [`${L.autopay} pays your bill automatically on the due date (or the day of the month you choose) from a bank account or card you choose.`, ...about(notes, /auto ?pay|automatic|recurring|draft/i).slice(0, 3), 'If you have a balance when you enroll, pay it separately; automatic payments start with your next bill.'], l.autopay_setup, ['Sign in to your account.', `Select ${L.autopay}.`, 'Choose a payment method and amount.', 'Accept the terms and enroll.']);
+      add('autopay', setUpLabel(L.autopay), 'autopay', [`${labelNoun(L.autopay)} pays your bill automatically on the due date (or the day of the month you choose) from a bank account or card you choose.`, ...about(notes, /auto ?pay|automatic|recurring|draft/i).slice(0, 3), 'If you have a balance when you enroll, pay it separately; automatic payments start with your next bill.'], l.autopay_setup, ['Sign in to your account.', `Select ${L.autopay}.`, 'Choose a payment method and amount.', 'Accept the terms and enroll.']);
       add('cancel-autopay', `Change or cancel ${L.autopay}`, 'autopay', [`You can change your ${L.autopay} payment method or turn it off at any time. Changes made before your payment date apply to the current bill.`, 'Cancelling automatic payments does not cancel a payment that is already processing or scheduled.'], l.autopay_cancel || l.autopay_setup, ['Sign in.', `Open ${L.autopay}.`, 'Select Cancel.', 'Confirm the cancellation.']);
     }
     if (cap.paperless.support === 'supported') add('paperless', 'Go paperless', 'billing', ['Paperless billing replaces your mailed statement with an email notice when your bill is ready.', ...about(notes, /paperless|e-?bill/i).slice(0, 2)], l.paperless, ['Sign in.', `Open ${L.paperless}.`, 'Turn on paperless billing and confirm your email.']);
@@ -79,11 +102,12 @@ export function helpArticles(biller, labels = {}) {
     if (cap.cancel_service.support === 'supported') {
       const kind = biller.kind;
       const title = kind === 'subscription' ? 'Cancel your membership' : kind === 'utility' ? 'Start, stop or move service' : kind === 'card' ? 'Close your account' : kind === 'rent' ? 'Give notice to vacate' : kind === 'insurance' ? 'Cancel your policy' : 'Cancel service';
-      add('cancel-service', title, 'account', [kind === 'subscription' ? 'You can cancel online at any time. Your access continues until the end of the current billing period, and you won\'t be charged again.' : kind === 'utility' ? `To stop service, sign in and choose ${L.cancel} with your requested stop date at least 3 business days ahead. A final bill is sent to your forwarding address.` : `Sign in and choose ${L.cancel}. Any remaining balance must still be paid.`, ...about(notes, /cancel|stop service|close|terminate/i).slice(0, 2)], null, ['Sign in.', `Open ${L.cancel}.`, 'Choose a reason and review any offers.', 'Confirm cancellation.']);
+      add('cancel-service', title, 'account', [kind === 'subscription' ? 'You can cancel online at any time. Your access continues until the end of the current billing period, and you won\'t be charged again.' : kind === 'utility' ? `To stop service, sign in and choose ${L.cancel} with your requested stop date at least 3 business days ahead. A final bill is mailed to the mailing address on your account; update it in your profile before you stop service if you are moving.` : `Sign in and choose ${L.cancel}. Any remaining balance must still be paid.`, ...about(notes, /cancel|stop service|close|terminate/i).slice(0, 2)], null, ['Sign in.', `Open ${L.cancel}.`, 'Choose a reason and review any offers.', 'Confirm cancellation.']);
     }
   }
-  if (cap.payment_assistance.support === 'supported' || e.senior_programs) add('payment-assistance', 'Payment assistance and senior programs', 'assistance', [e.senior_programs, 'Payment arrangements may be available if you can\'t pay your full balance by the due date. Contact customer service to ask about budget billing or extensions.'], l.payment_assistance);
-  add('contact-us', 'Contact us', 'contact', [phone ? `Customer service: ${phone}.` : 'Call the number on your bill.', payPhone && `Pay by phone: ${payPhone}.`, mailAddr && `Payment mailing address: ${mailAddr}.`, e.hq_address && `Office: ${e.hq_address}.`, c.serviceArea && `Service area: ${c.serviceArea}.`], e.help_center_url || e.website);
+  if (cap.payment_assistance.support === 'supported' || e.senior_programs) add('payment-assistance', 'Payment assistance and senior programs', 'assistance', [e.senior_programs, (biller.kind === 'tax' ? 'If you can\'t pay your full balance by the due date, contact the office to ask what options are available.' : biller.kind === 'utility' ? 'Payment arrangements may be available if you can\'t pay your full balance by the due date. Contact customer service to ask about budget billing or extensions.' : 'Payment arrangements may be available if you can\'t pay your full balance by the due date. Contact customer service to ask about your options.')], l.payment_assistance);
+  const lp = labeledPhoneText(e.phone_customer_service, phone);
+  add('contact-us', 'Contact us', 'contact', [lp ? `Customer service: ${lp.main}.` : phone ? `Customer service: ${phone}.` : 'Call the number on your bill.', lp && `Other numbers: ${lp.others.join('; ')}.`, payPhone && `Pay by phone: ${payPhone}.`, mailAddr && `Payment mailing address: ${mailAddr}.`, e.hq_address && `Office: ${e.hq_address}.`, c.serviceArea && `Service area: ${c.serviceArea}.`], e.help_center_url || e.website);
   const misc = sentences(notes).filter(clean).filter(s => !a.some(x => x.paragraphs.includes(s)) && s !== inPerson);
   if (misc.length) add('faq', 'Frequently asked questions', 'faq', misc.slice(0, 8), e.help_center_url);
   if (!offline) mergeObserved(a, biller, name, c);
@@ -99,7 +123,7 @@ const methodSentence = biller => {
 // Dossier articles replace (default) or extend the generated article with the same slug; new slugs are added.
 // Capabilities the dossier marks unsupported online get their note in the matching article, so the help center
 // tells customers how to do it instead (and limitation tasks can be answered from help).
-const NOTE_ARTICLE = { cancel_service: ['cancel-service', 'Stop or cancel service', 'account'], autopay: ['autopay', 'Automatic payments', 'autopay'], autopay_cancel: ['cancel-autopay', 'Change or cancel automatic payments', 'autopay'], paperless: ['paperless', 'Paperless billing', 'billing'], guest_pay: ['pay-your-bill', 'Ways to pay your bill', 'payments'], scheduled_payment: ['scheduled-payments', 'Future-dated payments', 'payments'], payment_arrangement: ['payment-assistance', 'Payment assistance', 'assistance'], registration: ['register', 'Create an online account', 'account'], pay_online: ['pay-your-bill', 'Ways to pay your bill', 'payments'] };
+const NOTE_ARTICLE = { cancel_service: ['cancel-service', 'Stop or cancel service', 'account'], autopay: ['autopay', 'Automatic payments', 'autopay'], autopay_cancel: ['cancel-autopay', 'Change or cancel automatic payments', 'autopay'], paperless: ['paperless', 'Paperless billing', 'billing'], guest_pay: ['pay-your-bill', 'Ways to pay your bill', 'payments'], scheduled_payment: ['scheduled-payments', 'Future-dated payments', 'payments'], payment_arrangement: ['payment-assistance', 'Payment assistance', 'assistance'], registration: ['register', 'Create an online account', 'account'], pay_online: ['pay-your-bill', 'Ways to pay your bill', 'payments'], pay_by_mail: ['pay-your-bill', 'Ways to pay your bill', 'payments'], pay_by_phone: ['pay-your-bill', 'Ways to pay your bill', 'payments'], pay_in_person: ['pay-your-bill', 'Ways to pay your bill', 'payments'] };
 function mergeDossier(articles, biller, L) {
   const d = biller.dossier;
   for (const h of d.help || []) {
@@ -114,7 +138,7 @@ function mergeDossier(articles, biller, L) {
     const [slug, title, topic] = NOTE_ARTICLE[k];
     let art = articles.find(x => x.slug === slug);
     if (!art) { art = { slug, title, topic, paragraphs: [], steps: null, source: c.source || null, evidence: 'documented_official', dossier: true }; articles.push(art); }
-    else if (k !== 'guest_pay' && k !== 'pay_online') { art.paragraphs = art.paragraphs.filter(p => !/^(Sign in|You can cancel online|To stop service, sign in|You can change your)/.test(p)); art.steps = null; } // generated "do it online" steps contradict the note
+    else if (!['guest_pay', 'pay_online', 'pay_by_mail', 'pay_by_phone', 'pay_in_person'].includes(k)) { art.paragraphs = art.paragraphs.filter(p => !/^(Sign in|You can cancel online|To stop service, sign in|You can change your)/.test(p)); art.steps = null; } // generated "do it online" steps contradict the note
     if (!art.paragraphs.includes(c.note)) art.paragraphs.unshift(c.note);
   }
   const bl = d.billing || {};
@@ -127,6 +151,7 @@ function mergeDossier(articles, biller, L) {
     f.autopayCardPercent != null ? `Automatic payments charged to a card carry a ${f.autopayCardPercent}% fee.` : f.autopayCardCents != null ? (f.autopayCardCents ? `Automatic payments charged to a card carry a ${money(f.autopayCardCents)} fee.` : 'Automatic payments charged to a card have no fee.') : null,
     f.guestCardCents != null ? `Paying by card without signing in costs ${f.guestCardCents ? money(f.guestCardCents) : 'nothing extra'}.` : null,
     f.guestBankCents != null ? `Paying from a bank account without signing in costs ${f.guestBankCents ? money(f.guestBankCents) : 'nothing extra'}.` : null,
+    bl.cardBrands ? `Cards accepted online: ${brandList(bl.cardBrands)}.` : null,
     bl.fullBalanceOnly ? 'Online payments must cover the full balance; partial payments and payment plans are not available online.' : null,
     ...(f.notes || [])
   ].filter(Boolean);

@@ -2,9 +2,9 @@ import puppeteer from 'puppeteer';
 import assert from 'node:assert/strict';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {start} from '../server.mjs';
-import {constructionSites} from '../registry.mjs';
+import {sites} from '../registry.mjs';
 const dir=new URL('../artifacts/starnik-fixture-browser/',import.meta.url);mkdirSync(dir,{recursive:true});
-const site=constructionSites.get('greater-minnesota-gas'),original=site.construction_account_credentials;
+const site=sites.get('greater-minnesota-gas'),original=site.construction_account_credentials;
 const r=await start({port:0,adminPort:0,dbPath:':memory:',construction:true});
 let browser;const report={scenarios:[],page_errors:[],outbound_requests:[],scope:'Synthetic credential variation on GMG fixture; no additional tenant coverage'};
 try{
@@ -13,7 +13,7 @@ try{
  page.on('pageerror',e=>report.page_errors.push(e.message));page.on('request',q=>{if(!q.url().startsWith(r.baseUrl)&&!q.url().startsWith('data:'))report.outbound_requests.push(q.url());});
  const go=p=>page.goto(r.baseUrl+p,{waitUntil:'domcontentloaded'});
  {
-  site.construction_account_credentials={'acct-primary':{username:'water.alex',password:'Water-2026!',security_code:'WATER1048',service_zip:'10001'},'acct-secondary':{username:'water.jordan',password:'Second-2026!',security_code:'WATER2099',service_zip:'10002'}};
+  site.construction_account_credentials={'acct-primary':{username:'water.alex',password:'Water-2026!',security_code:'WATER1048',service_zip:'10001'},'acct-secondary':{username:'water.jordan',password:'Second-2026!',security_code:'WATER2099',service_zip:'10002'},'acct-cabin':{username:'water.cabin',password:'Cabin-2026!',security_code:'WATER3077',service_zip:'10003'}};
   const f=r.world.create({siteId:site.id,taskId:'gmg-saved-bank-payment-v1'});
   await go(`/enter/${f.episodeId}/${f.entryToken}`);await go('/RP_Default.aspx');await page.waitForSelector('#starnik-login');
   for(const[n,v]of [['username','water.alex'],['password','Water-2026!']])await page.locator('[name="'+n+'"]').fill(v,{typingThreshold:0});

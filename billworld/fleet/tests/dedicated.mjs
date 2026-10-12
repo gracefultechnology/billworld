@@ -18,10 +18,11 @@ import assert from 'node:assert/strict';
 import { mkdirSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { start } from '../server.mjs';
+import { start, RESEARCH_NOTE } from '../server.mjs';
 import { makeCtx, FLOWS, plannedFlows, OPTIONAL_FLOWS, sleep, login, pay } from './driver.mjs';
 import { validateAll } from '../billers/validate.mjs';
 import { L as kitL } from '../kit.mjs';
+import { brandList } from '../engine.mjs';
 
 const arg = (name, dflt) => { const i = process.argv.indexOf(`--${name}`); return i > 0 ? process.argv[i + 1] : dflt; };
 const flag = name => process.argv.includes(`--${name}`);
@@ -83,7 +84,8 @@ const DOSSIER_FLOWS = {
     };
     await ctx.goto(ctx.route('home')); await snap();
     for (const n of (await page.evaluate(() => [...document.querySelectorAll('[data-capability]')].map(e => e.dataset.capability)))) void n;
-    for (const [k, c] of Object.entries(d.capabilities || {})) if (c.support !== 'supported' && c.note) assert.ok(await visible(page, c.note), `home: capability note for ${k} not shown`);
+    for (const [k, c] of Object.entries(d.capabilities || {})) if (c.support !== 'supported' && c.note && !RESEARCH_NOTE.test(c.note)) assert.ok(await visible(page, c.note), `home: capability note for ${k} not shown`);
+    if (Object.values(d.capabilities || {}).some(c => c.support !== 'supported' && c.note && !RESEARCH_NOTE.test(c.note))) assert.ok(await page.$('aside.bwf-compact a[href*="/"]'), 'home: "Ways to manage your account" notice with help links missing');
     if (d.nav?.public) await navCheck('public');
     await ctx.nav('login'); await snap();
     if (d.auth?.identifier || d.labels?.username) { const want = d.labels?.username || { email: 'Email address', username: 'Username', account: 'Account number', phone: 'Mobile phone number', email_or_username: 'Email or username' }[d.auth.identifier]; assert.ok(await page.evaluate(w => [...document.querySelectorAll('label')].some(l => l.innerText.trim().toLowerCase() === w.toLowerCase()), want), `login: identifier field label "${want}" not shown`); }
@@ -103,7 +105,7 @@ const DOSSIER_FLOWS = {
     await ctx.nav(ctx.template.flow.paySteps[0]); await snap();
     if (methods && !methods.includes('card')) assert.equal(await page.$('input[name=cardNumber]'), null, 'pay: card fields shown although cards are not accepted');
     if (methods && !methods.includes('bank')) assert.equal(await page.$('input[name=routing]'), null, 'pay: bank fields shown although bank payments are not accepted');
-    for (const pg of ['bill', 'statements', 'history', 'wallet', 'profile']) { ctx.allowDirect.add(pg); await ctx.goto(ctx.route(pg)); await snap(); }
+    for (const pg of ['bill', 'statements', 'history', 'wallet', 'profile']) { ctx.allowDirect.add(pg); await ctx.goto(ctx.route(pg)); await snap(); if (pg === 'wallet' && d.billing?.cardBrands && await page.$('input[name=cardNumber]')) assert.ok(await visible(page, `We accept ${brandList(d.billing.cardBrands)}.`), 'wallet: accepted card networks not stated next to the card number'); }
     if (b.capabilities.autopay?.support === 'supported') {
       await ctx.nav('autopay'); await snap();
       const apt = d.billing?.autopay?.methodTypes;

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {starnikFee,starnikFeeDisclosure} from '../starnik-payment.mjs';
-import {constructionSites} from '../registry.mjs';
+import {sites} from '../registry.mjs';
 import {World} from '../engine.mjs';
 const gmg={bank_fee_cents:0,card_fee_basis_points:275,card_fee_minimum_cents:150};
 // Operator FAQ example only; this does not register or certify an Inframark tenant.
@@ -26,7 +26,7 @@ test('Unknown or malformed policy and unsafe amounts cannot silently become a fe
  assert.throws(()=>starnikFee('card',Number.MAX_SAFE_INTEGER,{...gmg,card_fee_basis_points:10001}),/construction limit/);
 });
 test('Signed checkout and AutoPay disclose the configured tenant policy',()=>{
- const site=constructionSites.get('greater-minnesota-gas'),original=site.documented_policy;
+ const site=sites.get('greater-minnesota-gas'),original=site.documented_policy;
  const w=new World(':memory:',{construction:true});
  try{
   site.documented_policy={...original,...operator};
@@ -44,7 +44,7 @@ test('Signed checkout and AutoPay disclose the configured tenant policy',()=>{
 });
 
 test('Explicit unverified policy preserves account reads but prevents quotes and AutoPay enrollment',()=>{
- const site=constructionSites.get('greater-minnesota-gas'),original=site.documented_policy,w=new World(':memory:',{construction:true});
+ const site=sites.get('greater-minnesota-gas'),original=site.documented_policy,w=new World(':memory:',{construction:true});
  try{
  site.documented_policy={payment_fee_status:'unverified',autopay_days_before_due:3};
  const id=w.create({siteId:site.id,taskId:'gmg-saved-bank-payment-v1'}).episodeId,session=w.starnikLogin(id,{username:'alex.morgan',password:'Billworld-2026!'}).session;
@@ -54,7 +54,7 @@ test('Explicit unverified policy preserves account reads but prevents quotes and
  }finally{site.documented_policy=original;w.close();}
 });
 test('Unverified policy cannot reuse an old signed quote; completed receipts remain idempotent',()=>{
- const site=constructionSites.get('greater-minnesota-gas'),original=site.documented_policy,w=new World(':memory:',{construction:true});
+ const site=sites.get('greater-minnesota-gas'),original=site.documented_policy,w=new World(':memory:',{construction:true});
  try{for(const posted of [false,true]){
  site.documented_policy=original;const id=w.create({siteId:site.id,taskId:'gmg-saved-bank-payment-v1'}).episodeId,session=w.starnikLogin(id,{username:'alex.morgan',password:'Billworld-2026!'}).session,q=w.starnikPaymentPrepare(id,session,{methodId:'gmg-bank-1048',amountCents:8432});w.starnikPaymentReview(id,session,q.token);const receipt=posted?w.starnikPaymentPay(id,session,q.token,{authorize:true}):null;
  site.documented_policy={payment_fee_status:'unverified'};const before=JSON.stringify(w.state(id));if(posted)assert.deepEqual(w.starnikPaymentPay(id,session,q.token,{authorize:true}),receipt);else assert.throws(()=>w.starnikPaymentPay(id,session,q.token,{authorize:true}),/fee policy unavailable/);assert.equal(JSON.stringify(w.state(id)),before);
@@ -62,7 +62,7 @@ test('Unverified policy cannot reuse an old signed quote; completed receipts rem
 });
 
 test('Unverified fees reject guest payment and pending AutoPay activation without state changes',()=>{
- const site=constructionSites.get('greater-minnesota-gas'),original=site.documented_policy,w=new World(':memory:',{construction:true});
+ const site=sites.get('greater-minnesota-gas'),original=site.documented_policy,w=new World(':memory:',{construction:true});
  try{
  const id=w.create({siteId:site.id,taskId:'gmg-saved-bank-payment-v1'}).episodeId,session=w.starnikLogin(id,{username:'alex.morgan',password:'Billworld-2026!'}).session,guest=w.starnikGuestLookup(id,{securityCode:'GMG1048',serviceZip:'56001'}).token;
  const input={kind:'bank',amountCents:8432,name:'Alex Morgan',bankName:'Test Bank',accountType:'Checking',routing:'021000021',confirmRouting:'021000021',accountNumber:'1234561048',confirmAccountNumber:'1234561048',firstName:'Alex',lastName:'Morgan',address:'1 Test Street',city:'Mankato',state:'MN',zip:'56001',country:'United States',email:'alex@billworld.test'};

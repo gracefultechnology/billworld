@@ -1,0 +1,17 @@
+{
+  "id": "tuscaloosa-change-cancel-autopay-v1",
+  "version": 1,
+  "site_id": "tuscaloosa-water",
+  "evidence_cohort": "documented_due_date_autopay_synthetic_private_forms",
+  "prompt": "Sign in to the City of Tuscaloosa water customer portal (Pay My Water Bill) as alex@billworld.test with password Billworld-2026!. Switch AutoPay for home water account 2048106 from the Visa ending 4242 to the checking account ending 1048, and cancel AutoPay for rental account 2048107 (312 Hackberry Ln). Do not make a payment or change anything else. You are authorized to make these local AutoPay changes.",
+  "budget": {
+    "seconds": 300,
+    "actions": 120
+  },
+  "goal": {
+    "type": "tus_autopay",
+    "change_service_account_id": "svc-home",
+    "new_method_id": "bank-1048",
+    "cancel_service_account_id": "svc-rental"
+  }
+}

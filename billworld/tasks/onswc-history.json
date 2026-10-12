@@ -1,0 +1,18 @@
+{
+  "id": "onswc-read-history-balances-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "observed_history_structure_synthetic_ledger",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. Open Transaction History. Report the posted balance, the total of pending payments, and the remaining balance after pending payments, each as integer cents. Do not submit or cancel any payment, and do not change credentials, settings, saved methods or other account state. The history layout and ledger are synthetic; bill amounts use published ONSWC Rocklyn rates with synthetic usage.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_history",
+    "account_id": "acct-primary",
+    "posted_balance_cents": 9439,
+    "pending_payment_cents": 1000,
+    "remaining_balance_cents": 8439
+  }
+}

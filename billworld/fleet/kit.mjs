@@ -26,11 +26,17 @@ const ID_LABEL = { email: 'Email address', username: 'Username', account: 'Accou
 export const field = (vm, opts) => {
   let o = opts;
   if (o.name === 'password' && vm?.page === 'login' && vm.flow?.loginSteps === 2) return raw('');
+  // The biller's own password rule (dossier auth.passwordRule) replaces the family template's generic hint.
+  if (o.name === 'password' && ['register', 'reset'].includes(vm?.page) && vm.auth?.passwordRule) o = { ...o, help: vm.auth.passwordRule };
+  // No fixed AutoPay amount offered (dossier autopay policies): no "fixed amount (if selected)" box either.
+  if (o.name === 'fixedAmount' && vm?.page === 'autopay' && vm.billing?.autopayPolicies && !vm.billing.autopayPolicies.includes('fixed')) return raw('');
   if (o.name === 'username' && (vm?.labels?.username || ID_LABEL[vm?.auth?.identifier])) o = { ...o, label: vm.labels.username || ID_LABEL[vm.auth.identifier], help: undefined, ...(vm.auth?.identifier === 'account' ? { inputmode: 'numeric', autocomplete: 'username' } : vm.auth?.identifier === 'phone' ? { inputmode: 'tel' } : {}) };
   // A non-email sign-in identifier must be typeable: never an email-only input.
   if (o.name === 'username' && vm?.auth?.identifier && vm.auth.identifier !== 'email' && o.type === 'email') o = { ...o, type: vm.auth.identifier === 'phone' ? 'tel' : 'text' };
   if (o.name === 'password' && vm?.labels?.password && !/confirm|new|create/i.test(String(o.label))) o = { ...o, label: vm.labels.password };
   if (o.name === 'accountNumber' && vm?.labels?.accountNumber) o = { ...o, label: vm.labels.accountNumber };
+  // Dossier card networks (billing.cardBrands): the card number field says which cards are accepted.
+  if (o.name === 'cardNumber' && vm?.cardBrandsText && !o.help) o = { ...o, help: `We accept ${vm.cardBrandsText}.` };
   return fieldHtml(vm, o);
 };
 const fieldHtml = (vm, { name, label, type = 'text', autocomplete, required = true, placeholder, help, value, cls = 'field', inputmode, maxlength }) => html`<div class="${cls}"><label for="f-${name}">${label}</label><input id="f-${name}" name="${name}" type="${type}"${autocomplete ? raw(` autocomplete="${esc(autocomplete)}"`) : ''}${required ? raw(' required') : ''}${placeholder ? raw(` placeholder="${esc(placeholder)}"`) : ''}${inputmode ? raw(` inputmode="${esc(inputmode)}"`) : ''}${maxlength ? raw(` maxlength="${maxlength}"`) : ''} value="${value ?? (type === 'password' ? '' : vm.values[name] ?? '')}">${help ? html`<small class="help">${help}</small>` : ''}</div>`;
@@ -56,12 +62,21 @@ export function methodChooser(vm, { allowNew = true, title = 'Payment method', a
 }
 // Guest lookup copy: the fields the biller's form actually asks for (dossier guestLookupFields), else the family text.
 const GUEST_WORD = { accountNumber: 'account number', zip: 'ZIP code', phone: 'phone number', lastName: 'last name', dob: 'date of birth', statementId: 'statement number', parcelId: 'parcel number', plate: 'license plate', amountDue: 'amount due' };
-export const guestNeeds = (vm, fallback) => { const f = vm?.auth?.guestLookupFields; if (!f?.length) return fallback; const w = f.map(k => k === 'accountNumber' ? String(L(vm, 'accountNumber', 'account number')).replace(/^\w/, c => c.toLowerCase()) : GUEST_WORD[k] || k); return `your ${w.length > 1 ? `${w.slice(0, -1).join(', ')} and ${w.at(-1)}` : w[0]}`; };
+export const guestNeeds = (vm, fallback) => { const f = vm?.auth?.guestLookupFields; if (!f?.length) return fallback; const w = f.map(k => k === 'accountNumber' ? String(L(vm, 'accountNumber', 'account number')).replace(/\b[A-Z](?=[a-z])/g, c => c.toLowerCase()) : GUEST_WORD[k] || k); return `your ${w.length > 1 ? `${w.slice(0, -1).join(', ')} and ${w.at(-1)}` : w[0]}`; };
 export const newMethodFields = (vm, { allowCard: ac = true, allowBank: ab = true } = {}) => newMethodHtml(vm, { allowCard: ac && typeOk(vm, 'card'), allowBank: ab && typeOk(vm, 'bank') });
-const newMethodHtml = (vm, { allowCard, allowBank }) => html`${select(vm, { name: 'methodType', label: 'Method type', options: [['', 'Select…'], ...(allowBank ? [['bank', 'Bank account (checking/savings)']] : []), ...(allowCard ? [['card', 'Debit or credit card']] : [])] })}
+// Once a method type is chosen, the other type's fields are hidden (CSS :has, no script); both show until then.
+const METHOD_TOGGLE_CSS = ':has(>.field>select[name=methodType] option[value=bank]:checked)>.card-fields,:has(>.field>select[name=methodType] option[value=card]:checked)>.bank-fields{display:none}';
+const newMethodHtml = (vm, { allowCard, allowBank }) => html`${allowCard && allowBank ? raw(`<style nonce="${esc(vm.nonce || '')}">${METHOD_TOGGLE_CSS}</style>`) : ''}${select(vm, { name: 'methodType', label: 'Method type', options: [['', 'Select…'], ...(allowBank ? [['bank', 'Bank account (checking/savings)']] : []), ...(allowCard ? [['card', 'Debit or credit card']] : [])] })}
 ${allowBank ? html`<div class="bank-fields">${select(vm, { name: 'accountType', label: 'Account type', options: [['checking', 'Checking'], ['savings', 'Savings']] })}${field(vm, { name: 'routing', label: 'Routing number', required: false, inputmode: 'numeric', maxlength: 9 })}${field(vm, { name: 'bankAccount', label: 'Bank account number', required: false, inputmode: 'numeric' })}${field(vm, { name: 'bankAccountConfirm', label: 'Confirm bank account number', required: false, inputmode: 'numeric' })}</div>` : ''}
 ${allowCard ? html`<div class="card-fields">${field(vm, { name: 'cardNumber', label: 'Card number', required: false, autocomplete: 'cc-number', inputmode: 'numeric' })}${field(vm, { name: 'exp', label: 'Expiration (MM/YY)', required: false, autocomplete: 'cc-exp', placeholder: 'MM/YY' })}${field(vm, { name: 'cvv', label: 'Security code', required: false, autocomplete: 'cc-csc', inputmode: 'numeric', maxlength: 4 })}${field(vm, { name: 'holder', label: 'Name on card', required: false, autocomplete: 'cc-name' })}</div>` : ''}${vm.authenticated === false ? '' : checkbox(vm, { name: 'save', label: 'Save this method for future payments' })}`;
-export const dateField = (vm, { name = 'payOn', label = 'Payment date' } = {}) => html`<div class="field"><label for="f-${name}">${label}</label><input id="f-${name}" type="date" name="${name}" min="${vm.today}" value="${vm.values[name] || vm.draft?.payOn || vm.today}"></div>`;
+// A utility stop-service date (name effectiveDate) defaults to, and cannot be before, the earliest allowed stop date
+// (3 business days ahead, the notice the help center states; the engine enforces the same rule). Only the payment
+// date falls back to the payment draft's date.
+export const dateField = (vm, { name = 'payOn', label = 'Payment date', min } = {}) => { min ||= name === 'effectiveDate' ? earliestStopDate(vm) : vm.today; return html`<div class="field"><label for="f-${name}">${label}</label><input id="f-${name}" type="date" name="${name}" min="${min}" value="${vm.values[name] || (name === 'payOn' ? vm.draft?.payOn : '') || min}"></div>`; };
+// ISO date `n` business days (Mon–Fri) after the ISO date `from`.
+export const addBusinessDays = (from, n) => { const d = new Date(`${from}T12:00:00Z`); while (n > 0) { d.setUTCDate(d.getUTCDate() + 1); if (d.getUTCDay() % 6) n--; } return d.toISOString().slice(0, 10); };
+export const STOP_NOTICE_BUSINESS_DAYS = 3;
+export const earliestStopDate = vm => vm?.biller?.kind === 'utility' ? addBusinessDays(vm.today, STOP_NOTICE_BUSINESS_DAYS) : vm.today;
 
 // A small, accessible table helper.
 export const table = (headers, rows, cls = 'table') => html`<table class="${cls}"><thead><tr>${headers.map(h => html`<th scope="col">${h}</th>`)}</tr></thead><tbody>${rows.length ? rows.map(r => html`<tr>${r.map(c => html`<td>${c}</td>`)}</tr>`) : html`<tr><td colspan="${headers.length}" class="empty">No records found.</td></tr>`}</tbody></table>`;
@@ -98,6 +113,13 @@ export function L(vm, key, fallback) {
   if (typeof v === 'string' && v) return v;
   return typeof fallback === 'string' ? new Raw(fallback.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')) : fallback;
 }
+// Feature names inside sentences: dossier labels are often menu names ("Auto Pay Settings", "Paperless Options"),
+// so "Set up <label>" / "<label> is on" would read "Set up Auto Pay Settings". labelNoun drops a trailing
+// settings-style word; setUpLabel adds "Set up" only when the label does not already start with a verb.
+const SETTINGS_TAIL = /\s+(?:settings|preferences|options|program|management|enrollment|information|info)$/i;
+const VERB_HEAD = /^(?:set ?up|enroll|sign up|manage|turn on|start|activate|schedule|add|edit|change|update)\b/i;
+export function labelNoun(label) { const r = label instanceof Raw; const s = String(label ?? ''); const t = s.replace(SETTINGS_TAIL, '') || s; return r ? new Raw(t) : t; }
+export function setUpLabel(label) { const r = label instanceof Raw; const s = String(label ?? ''); const t = VERB_HEAD.test(s) ? s : `Set up ${labelNoun(s)}`; return r ? new Raw(t) : t; }
 // Ordered navigation for an area ('public' | 'account'): the dossier's nav when present, else `defaults`
 // ([page, label] or [page, label, params] tuples). Dossier items come first in their order; default pages the
 // dossier leaves out follow, so no flow loses its visible link. Items are [page, label, params].
@@ -125,7 +147,7 @@ export function dossierNavInner(vm, area) {
   const capOk = c => !c || vm.biller.capabilities?.[c]?.support === 'supported' || (c === 'autopay' && vm.biller.capabilities?.autopay_cancel?.support === 'supported');
   const items = navList(vm, area, []);
   const seen = new Set(items.map(i => i[0]));
-  const more = AREA_DEFAULTS[area].filter(([p, , c]) => !seen.has(p) && vm.has(p) && capOk(c) && !(p === 'plan' && !vm.plans?.length)).map(([p, l]) => [p, L(vm, p, l)]);
+  const more = AREA_DEFAULTS[area].filter(([p, , c]) => !seen.has(p) && vm.has(p) && capOk(c) && !(p === 'plan' && !vm.plans?.length) && !(p === 'register' && vm.biller.capabilities?.registration?.support === 'unsupported')).map(([p, l]) => [p, L(vm, p, l)]);
   const cur = p => vm.page === p || (p === 'pay' && ['payMethod', 'payReview', 'payReceipt'].includes(vm.page)) ? raw(' aria-current="page"') : '';
   return html`<style nonce="${vm.nonce}">${raw(DNAV_CSS)}</style><div class="bwf-dnav">${items.map(i => html`<a href="${navHref(vm, i)}"${cur(i[0])}>${i[1]}</a>`)}${more.length ? html`<details><summary>More</summary><div>${more.map(i => html`<a href="${navHref(vm, i)}"${cur(i[0])}>${i[1]}</a>`)}</div></details>` : ''}</div>`;
 }
@@ -134,8 +156,13 @@ export const dossierNavBar = (vm, area, { label = area === 'account' ? 'My accou
 export const DN = (vm, area, fallback) => hasDossierNav(vm, area) ? dossierNavBar(vm, area) : (typeof fallback === 'function' ? fallback() : fallback);
 // Notes for capabilities the dossier marks unsupported online (e.g. "Stop service by calling ..."). `keys` limits
 // which capabilities to show; data-capnotes marks the block so the server never injects a second copy.
-export function capabilityNotes(vm, keys = null) {
+// Home and account overview (compact: true): one small "Ways to manage your account" notice, each item linking to the
+// help article that explains it (or the help center), the same on every template.
+const CAPNOTE_CSS = '.bwf-capnotes{border:1px solid #c9d3dd;border-left:4px solid var(--brand);background:#f6f8fa;border-radius:6px;padding:10px 14px;margin:0 0 16px;color:#1f2a36}.bwf-capnotes p{margin:4px 0}.bwf-capnotes.bwf-compact{font-size:14px;line-height:1.4;padding:8px 12px}.bwf-capnotes.bwf-compact h2{font-size:15px;margin:0 0 4px;color:#1f2a36}.bwf-capnotes.bwf-compact ul{margin:0;padding:0 0 0 18px}.bwf-capnotes.bwf-compact li{margin:2px 0}.bwf-capnotes.bwf-compact a{color:var(--brand);font-weight:600;white-space:nowrap}.bwf-capnotes .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}@media(max-width:600px){.bwf-capnotes{max-height:38vh;overflow:auto}}';
+export const capNoteHelpHref = (vm, n) => { const a = (vm?.help || []).find(x => (x.paragraphs || []).includes(n.note)); return a ? vm.url('helpArticle', { slug: a.slug }) : vm.url('help'); };
+export function capabilityNotes(vm, keys = null, { compact = false } = {}) {
   const notes = (vm?.capabilityNotes || []).filter(n => !keys || keys.includes(n.capability));
   if (!notes.length) return raw('');
-  return html`<aside class="bwf-capnotes" role="note" data-capnotes="1"><style nonce="${vm.nonce}">.bwf-capnotes{border:1px solid #c9d3dd;border-left:4px solid var(--brand);background:#f6f8fa;border-radius:6px;padding:10px 14px;margin:0 0 16px;color:#1f2a36}.bwf-capnotes p{margin:4px 0}@media(max-width:600px){.bwf-capnotes{max-height:38vh;overflow:auto}}</style>${notes.map(n => html`<p data-capability="${n.capability}"><strong>${n.title}:</strong> ${n.note}</p>`)}</aside>`;
+  if (compact) return html`<aside class="bwf-capnotes bwf-compact" role="note" aria-labelledby="bwf-capnotes-h" data-capnotes="1"><style nonce="${vm.nonce}">${raw(CAPNOTE_CSS)}</style><h2 id="bwf-capnotes-h">Ways to manage your account</h2><ul>${notes.map(n => html`<li data-capability="${n.capability}"><strong>${n.title}:</strong> ${n.note} <a href="${capNoteHelpHref(vm, n)}">Learn more<span class="sr-only"> about ${String(n.title).toLowerCase()}</span></a></li>`)}</ul></aside>`;
+  return html`<aside class="bwf-capnotes" role="note" data-capnotes="1"><style nonce="${vm.nonce}">${raw(CAPNOTE_CSS)}</style>${notes.map(n => html`<p data-capability="${n.capability}"><strong>${n.title}:</strong> ${n.note}</p>`)}</aside>`;
 }

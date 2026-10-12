@@ -1,0 +1,19 @@
+{
+  "id": "tuscaloosa-edit-scheduled-v1",
+  "version": 1,
+  "site_id": "tuscaloosa-water",
+  "evidence_cohort": "synthetic_scheduled_payment_management",
+  "prompt": "Sign in to the City of Tuscaloosa water customer portal (Pay My Water Bill) as alex@billworld.test with password Billworld-2026!. Two payments are scheduled for home water account 2048106. Cancel the $20.00 payment scheduled for October 9, 2026. Change the $84.32 payment scheduled for October 14, 2026 so it uses the checking account ending 1048 and is paid on October 12, 2026, keeping the amount. Do not make any other payment or change. Report the new scheduled date.",
+  "budget": {
+    "seconds": 300,
+    "actions": 120
+  },
+  "goal": {
+    "type": "tus_schedule",
+    "edit_schedule_id": "sch-1",
+    "cancel_schedule_id": "sch-2",
+    "new_date": "2026-10-12",
+    "new_method_id": "bank-1048",
+    "amount_cents": 8432
+  }
+}

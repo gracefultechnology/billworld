@@ -17,6 +17,14 @@ from urllib.error import HTTPError
 from readiness import wait_ready
 
 ROOT = Path(__file__).resolve().parents[2]
+# The upstream evaluator needs its pinned dependencies (requests, ...). When this script is started with a Python that
+# lacks them (e.g. the system python3), re-run it under the checkout's pinned environment instead of failing on import.
+if importlib.util.find_spec('requests') is None and not os.environ.get('BILLWORLD_SMOKE_REEXEC'):
+    for candidate in (ROOT / '.upstream/smoke-venv/bin/python', ROOT / '.upstream/review-venv/bin/python'):
+        if candidate.exists() and Path(sys.executable).resolve() != candidate.resolve():
+            os.environ['BILLWORLD_SMOKE_REEXEC'] = '1'
+            print(f'smoke.py: {sys.executable} lacks the Infinity dependencies; re-running with {candidate}', file=sys.stderr, flush=True)
+            os.execv(str(candidate), [str(candidate), str(Path(__file__).resolve()), *sys.argv[1:]])
 parser = argparse.ArgumentParser()
 parser.add_argument('--connector', action='store_true', help='Also validate native BrowserUse MCP tool registration without a model')
 parser.add_argument('--lifecycle-only', action='store_true', help='Validate failure accounting without browser/model runs')

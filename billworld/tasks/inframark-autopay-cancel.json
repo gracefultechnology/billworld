@@ -1,0 +1,20 @@
+{
+  "id": "inframark-autopay-cancel-v1",
+  "version": 1,
+  "site_id": "inframark",
+  "evidence_cohort": "documented_recurring_bank_draft_synthetic_cancellation",
+  "prompt": "Sign in to the local Inframark Resident Portal as alex.inframark / Inframark-2026! and open AutoPay. Cancel the existing automatic bank draft from Checking ending 1048 by disabling AutoPay and confirming. Reload AutoPay to verify it is disabled. Do not make a payment, remove saved methods or change any other settings or accounts. The cancellation screen and confirmation are simulated.",
+  "budget": {
+    "seconds": 240,
+    "actions": 80
+  },
+  "goal": {
+    "type": "starnik_tenant_autopay",
+    "account_id": "acct-primary",
+    "enabled": false,
+    "initial_method_id": "inframark-bank-1048",
+    "method_id": null,
+    "bank_id": "inframark-bank-1048",
+    "card_id": "inframark-card-4242"
+  }
+}

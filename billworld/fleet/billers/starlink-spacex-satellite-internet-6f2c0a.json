@@ -5,7 +5,7 @@
   "name": "Starlink (SpaceX satellite internet)",
   "category": "internet",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public starlink.com help articles, the US Residential page and the public sign-in page only (no sign-in). Sign-in page observed: Email then Next (password next), so identifier=email, loginSteps=2. Starlink is a month-to-month subscription billed automatically to the payment method on file (card, Apple Pay, Google Pay, PayPal, or ACH in the US); there is no separate AutoPay to enroll in or turn off, no paper bill (e-invoices only), and no guest payment, so autopay/autopay_cancel/paperless are not_applicable and guest_pay is unsupported. Past-due balances are paid from the Billing tab with Make a Payment. Starlink does not accept checks or mailed payments, cannot offer payment plans, split payments, partial payments or deferred due dates: payment_arrangement and pay_by_mail are unsupported, scheduled_payment is unsupported (billing.scheduled.  Service plans (US Residential, starting prices, vary by location): Residential 100 Mbps $55/mo, Residential 200 Mbps $85/mo, Residential Max $130/mo; upgrades are charged pro-rated immediately, downgrades take effect at the end of the current period (the engine applies changes immediately). Cancel online: Your Subscription > Manage > Cancel Service; service runs to the end of the paid period; changes must be made before 12:00 AM UTC on the billing day. Starlink's phone line is sales; support is by ticket in the account. Integrated 2026-10-09: billing.scheduled.maxDaysAhead 0 and billing.fullBalanceOnly now modelled; partial-payment and payment-plan tasks are dropped by the engine rule instead of suppressed by hand.",
+  "notes": "Researched from public starlink.com help articles, the US Residential page and the public sign-in page only (no sign-in). Sign-in page observed: Email then Next (password next), so identifier=email, loginSteps=2. Starlink is a month-to-month subscription billed automatically to the payment method on file (card, Apple Pay, Google Pay, PayPal, or ACH in the US); there is no separate AutoPay to enroll in or turn off, no paper bill (e-invoices only), and no guest payment, so autopay/autopay_cancel/paperless are not_applicable and guest_pay is unsupported. Past-due balances are paid from the Billing tab with Make a Payment. Starlink does not accept checks or mailed payments, cannot offer payment plans, split payments, partial payments or deferred due dates: payment_arrangement and pay_by_mail are unsupported, scheduled_payment is unsupported (billing.scheduled.  Service plans (US Residential, starting prices, vary by location): Residential 100 Mbps $55/mo, Residential 200 Mbps $85/mo, Residential Max $130/mo; upgrades are charged pro-rated immediately, downgrades take effect at the end of the current period (the engine applies changes immediately). Cancel online: Your Subscription > Manage > Cancel Service; service runs to the end of the paid period; changes must be made before 12:00 AM UTC on the billing day. Starlink's phone line is sales; support is by ticket in the account. Integrated 2026-10-09: billing.scheduled.maxDaysAhead 0 and billing.fullBalanceOnly now modelled; partial-payment and payment-plan tasks are dropped by the engine rule instead of suppressed by hand. Audit 2026-10-11: no retention discount (billing.retentionOffer false) and no equipment-return copy (billing.equipmentReturn false: Starlink kit is bought outright, not leased, so there is no gateway/TV-box return); the plan page is reached as Your Subscription, where Cancel Service lives, matching the help steps; the payment-arrangement link is hidden (payment_arrangement unsupported).",
   "officialDomains": [
     "starlink.com"
   ],
@@ -82,12 +82,8 @@
         "page": "pay"
       },
       {
-        "label": "Change Plan",
+        "label": "Your Subscription",
         "page": "plan"
-      },
-      {
-        "label": "Cancel Service",
-        "page": "cancel"
       },
       {
         "label": "Help Center",
@@ -187,7 +183,9 @@
     "scheduled": {
       "maxDaysAhead": 0
     },
-    "fullBalanceOnly": true
+    "fullBalanceOnly": true,
+    "retentionOffer": false,
+    "equipmentReturn": false
   },
   "help": [
     {
@@ -216,14 +214,14 @@
       "title": "Cancel service",
       "topic": "account",
       "paragraphs": [
-        "Sign in, select Your Subscription on the Home page, choose Manage next to your service plan and click Cancel Service. Service stays active until the end of the period you paid for.",
+        "Sign in, select Your Subscription, choose Manage next to your service plan (in the app) and click Cancel Service. Service stays active until the end of the period you paid for.",
         "Billing runs on UTC time: make changes before 12:00 AM UTC on your billing day or they wait until the next one. Until the cancellation takes effect you can choose Resume in the alert at the top of the page. Reactivating later depends on capacity in your area."
       ],
       "steps": [
         "Sign in to your Starlink account.",
-        "Select Your Subscription on the Home page.",
-        "Choose Manage next to your service plan.",
-        "Click Cancel Service."
+        "Select Your Subscription.",
+        "Next to your service plan (Manage in the app), click Cancel Service.",
+        "Confirm the date service ends."
       ],
       "source": "https://starlink.com/support/article/9d43bef2-36fe-bcd1-9f6a-e0304e9cf22e"
     }
@@ -335,7 +333,7 @@
       "signedIn": true,
       "contains": [
         "Billing",
-        "Change Plan"
+        "Your Subscription"
       ]
     },
     {

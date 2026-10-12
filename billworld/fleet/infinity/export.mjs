@@ -83,7 +83,7 @@ export function instructionFor(task, { persona, mailPassword }) {
   if (slug === 'register-and-pay') access.push(`If you need to choose a portal password, use ${PASSWORD}`);
   // Billers that sign in by account or phone number: the intent already says which identifier to use.
   const ownId = /You sign in with your (?:account number|mobile phone number)/.test(task.intent);
-  if (slug !== 'register-and-pay' && !NO_PORTAL_PASSWORD.has(slug)) access.push(ownId ? `Your portal password is ${PASSWORD}` : `Your portal username is your email address and your password is ${PASSWORD}`);
+  if (slug !== 'register-and-pay' && !NO_PORTAL_PASSWORD.has(slug)) { const pw = task.passwordLabel ? ` (the site's sign-in form calls it "${task.passwordLabel}")` : ''; access.push(ownId ? `Your portal password${pw} is ${PASSWORD}` : `Your portal username is your email address and your password${pw} is ${PASSWORD}`); }
   else if (slug === 'reset-then-pay') access.push(ownId ? 'You do not know your current portal password' : 'Your portal username is your email address, but you do not know your current portal password');
   access.push(`Your email inbox is at /mail on the same site (sign in with ${persona.email} and mailbox password ${mailPassword})`);
   if (slug === 'sms-mfa-pay') access.push(`Text messages to your phone ${persona.phone} are at /sms on the same site`);

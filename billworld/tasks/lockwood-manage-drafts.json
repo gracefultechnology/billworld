@@ -1,0 +1,20 @@
+{
+  "id": "lockwood-manage-drafts-v1",
+  "version": 1,
+  "site_id": "lockwood",
+  "evidence_cohort": "family_documented_private_flow_synthetic_layout_and_policy",
+  "prompt": "Sign in to the local City of Lockwood Missouri ePayUB portal with username alex.morgan and password Billworld-2026!. Two scheduled bank drafts exist for the current bill. Change the $84.32 draft scheduled for 2026-10-14 so it runs on 2026-10-09 instead (keep its amount and bank account), and cancel the extra $20.00 draft scheduled for 2026-10-12. Then reopen Account History to check both. Do not make a payment or change payment methods, AutoPay or preferences. Signed-in screens, fees and timing are simulated.",
+  "budget": {
+    "seconds": 600,
+    "actions": 120
+  },
+  "goal": {
+    "type": "cusi_portal_manage_drafts",
+    "account_id": "acct-primary",
+    "reschedule_id": "draft-1",
+    "new_date": "2026-10-09",
+    "cancel_id": "draft-2",
+    "seed_methods": true,
+    "seed_drafts": true
+  }
+}

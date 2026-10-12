@@ -4,11 +4,11 @@ import http from 'node:http';
 import { randomBytes, timingSafeEqual, createHmac } from 'node:crypto';
 import { readdirSync, writeFileSync, mkdirSync, chmodSync, rmSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { FleetWorld, Fault, isoDate, fmtDate, money, PASSWORD, FLEET_REVISION, methodTypesFor, autopayPoliciesFor, autopayTimingText, paymentLimits } from './engine.mjs';
+import { FleetWorld, Fault, isoDate, fmtDate, money, PASSWORD, FLEET_REVISION, methodTypesFor, autopayPoliciesFor, autopayTimingText, paymentLimits, cardBrandsFor, brandList, maskEmail } from './engine.mjs';
 import { helpArticles, searchHelp } from './help.mjs';
-import { search as searchCatalog } from './catalog.mjs';
+import { search as searchCatalog, displayParent } from './catalog.mjs';
 import { textPdf } from './pdf.mjs';
-import { esc, field as kitField, capabilityNotes as kitCapabilityNotes, L as kitL, dossierNavInner as kitDossierNavInner, dossierNavBar as kitDossierNavBar } from './kit.mjs';
+import { esc, methodText as kitMethodText, field as kitField, capabilityNotes as kitCapabilityNotes, L as kitL, dossierNavInner as kitDossierNavInner, dossierNavBar as kitDossierNavBar } from './kit.mjs';
 import { loadDossiers } from './billers/load.mjs';
 import { renderMail, renderDirectory, renderNotice, mailCss } from './shell.mjs';
 import { generateTasks } from './tasks.mjs';
@@ -58,13 +58,15 @@ export const templateFor = biller => {
 const CAP_TITLE = { cancel_service: 'Stopping or cancelling service', autopay: 'Automatic payments', autopay_cancel: 'Turning off automatic payments', paperless: 'Paperless billing', guest_pay: 'Paying without signing in', scheduled_payment: 'Future-dated payments', payment_arrangement: 'Payment arrangements', registration: 'Online registration', pay_online: 'Online payments', view_bill: 'Viewing your bill', statements: 'Statements', password_reset: 'Password reset', payment_assistance: 'Payment assistance', pay_by_phone: 'Paying by phone', pay_by_mail: 'Paying by mail', google_login: 'Sign in with Google', online_account: 'Online account', change_plan: 'Changing your plan' };
 // Which pages show which capability notes (plus home, dashboard and help, which show all of them).
 const NOTE_PAGES = { cancel: ['cancel_service'], autopay: ['autopay', 'autopay_cancel'], paperless: ['paperless'], guest: ['guest_pay'], pay: ['scheduled_payment', 'pay_online'], arrangement: ['payment_arrangement'], register: ['registration'], plan: ['change_plan'] };
+export const RESEARCH_NOTE = /\binferred\b|\bnot (?:published|described|documented)\b|\bthe (?:FAQ|guide|help center|article|page|source) (?:says|covers|describes|states)\b|\b(?:dossier|researched|modell?ed as)\b/i;
 export function capabilityNotesFor(biller) {
   const out = [];
   // Notes on supported capabilities (rules such as "no AutoPay while past due") show only on that feature's own page.
-  for (const [k, c] of Object.entries(biller.capabilities || {})) if (c.dossier && c.note) out.push({ capability: k, title: CAP_TITLE[k] || k, note: c.note, channel: c.channel || null, supported: c.support === 'supported' });
+  // Capability notes render as the biller's own words; a note that reads as research ("inferred", "not published") is not shown.
+  for (const [k, c] of Object.entries(biller.capabilities || {})) if (c.dossier && c.note && !RESEARCH_NOTE.test(c.note)) out.push({ capability: k, title: CAP_TITLE[k] || k, note: c.note, channel: c.channel || null, supported: c.support === 'supported' });
   return out;
 }
-const REG_FIELD = { accountNumber: ['Account number', 'numeric'], lastName: ['Last name', null], zip: ['ZIP code', 'numeric'], email: ['Email address', null], phone: ['Phone number', 'tel'] };
+const REG_FIELD = { accountNumber: ['Account number', 'numeric'], lastName: ['Last name', null], zip: ['ZIP code', 'numeric'], email: ['Email address', null], phone: ['Phone number', 'tel'], accessCode: ['Access code', null] };
 const GUEST_FIELD = { accountNumber: ['Account number', 'numeric'], statementId: ['Statement number', null], parcelId: ['Parcel number', null], plate: ['License plate', null], phone: ['Phone number', 'tel'], lastName: ['Last name', null], zip: ['ZIP code', 'numeric'], amountDue: ['Amount due', 'decimal'], dob: ['Date of birth (YYYY-MM-DD)', null] };
 // Insert fields a dossier requires (registration / guest lookup) that the family template's form does not render,
 // just before that form's first submit button. Standard field names, so engine and driver need nothing special.
@@ -109,7 +111,7 @@ function withCapabilityNotes(out, vm) {
   const keys = overview ? null : NOTE_PAGES[vm.page];
   const notes = vm.capabilityNotes.filter(n => overview ? !n.supported : keys?.includes(n.capability));
   if (keys === undefined || !notes.length) return out;
-  const block = String(kitCapabilityNotes({ ...vm, capabilityNotes: notes }, keys));
+  const block = String(kitCapabilityNotes({ ...vm, capabilityNotes: notes }, keys, { compact: vm.page === 'home' || vm.page === 'dashboard' }));
   const h = out.indexOf('</h1>');
   if (h >= 0) return out.slice(0, h + 5) + block + out.slice(h + 5);
   const m = out.match(/<main[^>]*>/); return m ? out.replace(m[0], m[0] + block) : out;
@@ -196,7 +198,25 @@ function withLateNote(out, vm) {
   const block = `<p class="late-note-wrap" role="note">${note}</p>`;
   const h = out.indexOf('</h1>'); return h >= 0 ? out.slice(0, h + 5) + block + out.slice(h + 5) : out;
 }
-const decorateBase = (out, vm) => withLateNote(withCapabilityNotes(withoutUnsupportedForms(withAutopayOptions(withRequiredFields(withLoginPassword(withLoginStep2Action(out, vm), vm), vm), vm), vm), vm), vm);
+// Register and reset pages: the password rule is stated next to the new-password field unless the page already says it.
+const PW_RULE_SHOWN = /8\s*(?:–|-|to)\s*64|at least \d+ characters|\d+ or more characters|\d+\+\s*characters|\d+\s*(?:–|-|to)\s*\d+ characters|password must/i;
+function withPasswordHint(out, vm) {
+  if (typeof out !== 'string' || !['register', 'reset'].includes(vm.page)) return out;
+  const rule = vm.auth?.passwordRule || 'Use 8–64 characters with upper and lower case letters, a number and a symbol.';
+  const main = out.slice(out.indexOf('<body')); if (main.includes(esc(rule)) || PW_RULE_SHOWN.test(main.replace(/<[^>]+>/g, ' '))) return out;
+  return out.replace(/(<input\b[^>]*\bname="password"[^>]*>)/, `$1<small class="help bwf-pwrule">${esc(rule)}</small>`);
+}
+// Wallet "Remove" is two steps: wallet?remove=<id> shows a confirmation panel for that method (every template).
+function withRemoveConfirm(out, vm) {
+  if (typeof out !== 'string' || vm.page !== 'wallet' || !vm.authenticated || typeof vm.query?.remove !== 'string' || out.includes('bwf-rmconfirm')) return out;
+  const m = (vm.methods || []).find(x => x.id === vm.query.remove && x.saved); if (!m) return out;
+  const what = esc(kitMethodText({ ...m, expired: false })), wallet = esc(vm.url('wallet'));
+  const css = '.bwf-rmconfirm{border:2px solid #b42318;background:#fff7f6;border-radius:8px;padding:14px 16px;margin:0 0 18px;color:#1f2a36}.bwf-rmconfirm h2{font-size:18px;margin:0 0 6px}.bwf-rmconfirm p{margin:0 0 10px}.bwf-rmconfirm .bwf-rm-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.bwf-rmconfirm button{background:#b42318;color:#fff;border:0;border-radius:6px;padding:9px 16px;font-weight:600;cursor:pointer}';
+  const block = `<section class="bwf-rmconfirm" role="alertdialog" aria-labelledby="bwf-rm-h" aria-describedby="bwf-rm-d"><style nonce="${esc(vm.nonce)}">${css}</style><h2 id="bwf-rm-h">Remove ${what}?</h2><p id="bwf-rm-d">You won't be able to use it for payments unless you add it again.</p><form method="post" action="${wallet}"><input type="hidden" name="_csrf" value="${esc(vm.csrf)}"><input type="hidden" name="op" value="remove"><input type="hidden" name="methodId" value="${esc(m.id)}"><input type="hidden" name="confirmRemove" value="yes"><div class="bwf-rm-actions"><button type="submit">Yes, remove</button><a href="${wallet}">Cancel</a></div></form></section>`;
+  const h = out.indexOf('</h1>'); if (h >= 0) return out.slice(0, h + 5) + block + out.slice(h + 5);
+  const mm = out.match(/<main[^>]*>/); return mm ? out.replace(mm[0], mm[0] + block) : out;
+}
+const decorateBase = (out, vm) => withRemoveConfirm(withPasswordHint(withLateNote(withCapabilityNotes(withoutUnsupportedForms(withAutopayOptions(withRequiredFields(withLoginPassword(withLoginStep2Action(out, vm), vm), vm), vm), vm), vm), vm), vm), vm);
 
 // Malformed cookies (possibly set by another app on the same host) are skipped, never fatal.
 const safeDecode = v => { try { return decodeURIComponent(v); } catch { return null; } };
@@ -261,8 +281,8 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
     const help = helpFor(biller);
     const vm = {
       page, template: t.id, revision: FLEET_REVISION, nonce: randomBytes(9).toString('base64url'), csrf: csrfFor(ep, session ? sid : null), hasJs: !!t.js,
-      biller: { id: biller.id, name: biller.brand.displayName || biller.entry.name, brand: biller.brand, kind: biller.kind, billType: biller.entry.bill_type, category: biller.category, family: biller.family, capabilities: biller.capabilities, fees: biller.fees,
-        phone: biller.contact ? biller.contact.phone : biller.entry.phone_customer_service, payPhone: biller.dossier && ['unsupported', 'not_applicable'].includes(biller.capabilities.pay_by_phone?.support) ? null : biller.contact ? biller.contact.payPhone : biller.entry.phone_pay_by_phone, mailAddress: biller.contact ? biller.contact.mailAddress : biller.entry.mail_payment_address, serviceArea: biller.contact ? biller.contact.serviceArea : biller.entry.service_area_detail || (biller.entry.service_area || []).join(', '), signal: biller.signal, entityType: biller.entry.entity_type, parent: biller.entry.parent_company, notes: biller.entry.notes, seniorPrograms: biller.entry.senior_programs, app: biller.entry.app, processor: biller.entry.payment_processor, profile: profileOf(biller) },
+      biller: { id: biller.id, name: biller.brand.displayName || biller.entry.name, brand: biller.brand, kind: biller.kind, billType: biller.entry.bill_type, category: biller.category, family: biller.family, capabilities: biller.capabilities, fees: biller.fees, taxSchedule: biller.dossier?.billing?.taxSchedule || null,
+        phone: biller.contact ? biller.contact.phone : biller.entry.phone_customer_service, payPhone: biller.dossier && ['unsupported', 'not_applicable'].includes(biller.capabilities.pay_by_phone?.support) ? null : biller.contact ? biller.contact.payPhone : biller.entry.phone_pay_by_phone, mailAddress: biller.contact ? biller.contact.mailAddress : biller.entry.mail_payment_address, serviceArea: biller.contact ? biller.contact.serviceArea : biller.entry.service_area_detail || (biller.entry.service_area || []).join(', '), signal: biller.signal, entityType: biller.entry.entity_type, parent: displayParent(biller.entry.parent_company, biller.brand.displayName, biller.entry.name, biller.brand.shortName), notes: biller.entry.notes, seniorPrograms: biller.entry.senior_programs, app: biller.entry.app, processor: biller.entry.payment_processor, profile: profileOf(biller) },
       // The sign-out link carries the CSRF token so a cross-site GET cannot sign the user out.
       url: (pg, p = {}, q = null) => urlFor(t, biller.id, pg, p, pg === 'logout' && session ? { ...(q || {}), _csrf: csrfFor(ep, sid) } : q), has: pg => !!t.routes[pg], asset: name => `${base(biller.id)}/_assets/${name}`, mailUrl: '/mail', directoryUrl: '/',
       params, query, values, error, notice, today: isoDate(ep.clock), now: ep.clock, nowText: fmtDate(ep.clock), help, flow: t.flow,
@@ -273,9 +293,10 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
       mfaChannel: null, mfaDestination: null, smsUrl: '/sms',
       // Dedicated tier (billers/<id>.json). Family billers: empty labels, no nav/auth overrides, no notes.
       tier: biller.tier || 'family', labels: biller.dossier?.labels || {}, nav: biller.dossier?.nav || null,
-      auth: biller.dossier?.auth ? { identifier: biller.dossier.auth.identifier || null, loginSteps: t.flow.loginSteps, mfa: biller.dossier.auth.mfa || null, registrationFields: biller.dossier.auth.registrationFields || [], guestLookupFields: biller.dossier.auth.guestLookupFields || [], guestLookupExact: !!biller.dossier.auth.guestLookupExact } : null,
+      auth: biller.dossier?.auth ? { identifier: biller.dossier.auth.identifier || null, loginSteps: t.flow.loginSteps, mfa: biller.dossier.auth.mfa || null, registrationFields: biller.dossier.auth.registrationFields || [], guestLookupFields: biller.dossier.auth.guestLookupFields || [], guestLookupExact: !!biller.dossier.auth.guestLookupExact, passwordRule: biller.dossier.auth.passwordRule?.message || null } : null,
       capabilityNotes: biller.dossier ? capabilityNotesFor(biller) : [],
-      billing: biller.dossier ? { methods: methodTypesFor(biller), guestMethods: methodTypesFor(biller, { guest: true }), autopayMethodTypes: methodTypesFor(biller, { autopay: true }), autopayPolicies: autopayPoliciesFor(biller), autopayDays: biller.dossier.billing?.autopay?.days || null, autopayLeadDays: biller.dossier.billing?.autopay?.leadDays ?? null, autopayDaysAfterBill: biller.dossier.billing?.autopay?.daysAfterBill ?? null, dossierPlans: !!biller.dossier.billing?.plans, autopayTiming: autopayTimingText(biller), limits: paymentLimits(biller), lateFeePercent: biller.dossier.billing?.lateFeePercent ?? null, lateFeeCents: biller.dossier.billing?.lateFeeCents ?? null } : null,
+      cardBrands: cardBrandsFor(biller), cardBrandsText: cardBrandsFor(biller) ? brandList(cardBrandsFor(biller)) : null,
+      billing: biller.dossier ? { methods: methodTypesFor(biller), guestMethods: methodTypesFor(biller, { guest: true }), autopayMethodTypes: methodTypesFor(biller, { autopay: true }), autopayPolicies: autopayPoliciesFor(biller), autopayDays: biller.dossier.billing?.autopay?.days || null, autopayLeadDays: biller.dossier.billing?.autopay?.leadDays ?? null, autopayDaysAfterBill: biller.dossier.billing?.autopay?.daysAfterBill ?? null, dossierPlans: !!biller.dossier.billing?.plans, autopayTiming: autopayTimingText(biller), limits: paymentLimits(biller), lateFeePercent: biller.dossier.billing?.lateFeePercent ?? null, lateFeeCents: biller.dossier.billing?.lateFeeCents ?? null, cancelAtDueDate: biller.dossier.billing?.cancelAt === 'due_date', retentionOffer: biller.dossier.billing?.retentionOffer !== false, equipmentReturn: biller.dossier.billing?.equipmentReturn ?? null } : null,
       // Payment method types this page may offer (kit.methodChooser / newMethodFields honor it).
       methodTypes: biller.dossier ? methodTypesFor(biller, { guest: ['guest', 'guestPay', 'guestReview'].includes(page), autopay: page === 'autopay' }) : null,
       dossier: biller.dossier ? { id: biller.dossier.id, reviewedAt: biller.dossier.reviewedAt || null, sources: (biller.dossier.sources || []).map(x => ({ title: x.title, kind: x.kind })) } : null,
@@ -283,7 +304,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
     };
     const social = authenticated ? [] : socialFor(biller, t);
     if (social.includes('google')) { const next = typeof query?.next === 'string' && safeNext(query.next, biller.id); vm.socialProviders = ['google']; vm.googleLoginUrl = `${base(biller.id)}/auth/google${next ? `?next=${encodeURIComponent(next)}` : ''}`; vm.socialUrls = { google: vm.googleLoginUrl }; }
-    if (page === 'mfa') { const sms = smsMfaFor(ep, biller.id); vm.mfaChannel = sms ? 'sms' : 'email'; vm.mfaDestination = sms ? maskPhone(ep.persona.phone) : ep.persona.email.replace(/^(.)[^@]*/, '$1•••'); }
+    if (page === 'mfa') { const sms = smsMfaFor(ep, biller.id); vm.mfaChannel = sms ? 'sms' : 'email'; vm.mfaDestination = sms ? maskPhone(ep.persona.phone) : maskEmail(ep.persona.email); }
     if (acct) {
       const inv = world.currentInvoice(acct);
       Object.assign(vm, {
@@ -337,6 +358,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
   function act({ ep, biller, t, page, sid, input, params, cookiePath }) {
     const go = (pg, p = {}, q = null) => urlFor(t, biller.id, pg, p, q);
     const flow = t.flow; const id = biller.id;
+    const apName = biller.dossier?.labels?.autopay || 'AutoPay'; // flash wording follows the biller's own AutoPay name
     const sessionCookie = s => setCookie('bwf_sid', s, { path: cookiePath });
     const flash = text => setCookie('bwf_flash', text, { path: cookiePath, maxAge: 60 });
     const pendingUser = (u, maxAge = 600) => setCookie('bwf_lu', u, { path: cookiePath, maxAge });
@@ -353,11 +375,11 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
         return { to: r.mfa ? go('mfa', {}, { next }) : next, cookies: [sessionCookie(r.sid), ...(flow.loginSteps === 2 ? [pendingUser('', 0)] : [])] };
       }
       case 'mfa': {
-        if (input.op === 'resend') { world.resendMfa(ep, id, sid); return { to: go('mfa', {}, input.next ? { next: input.next } : null), cookies: [flash(smsMfaFor(ep, id) ? 'We sent a new code to your phone.' : 'We sent a new code to your email.')] }; }
+        if (input.op === 'resend') { world.resendMfa(ep, id, sid); return { to: go('mfa', {}, input.next ? { next: input.next } : null), cookies: [flash(smsMfaFor(ep, id) ? `We sent a new code to ${maskPhone(ep.persona.phone)}.` : `We sent a new code to ${maskEmail(ep.persona.email)}.`)] }; }
         world.verifyMfa(ep, id, sid, input); const next = safeNext(input.next, id) || go(flow.afterLogin); return { to: next }; }
-      case 'register': world.register(ep, id, input); return { to: go('login'), cookies: [flash('Check your email to verify your address and finish creating your account.')] };
+      case 'register': world.register(ep, id, input); return { to: go('login'), cookies: [flash(`We sent a verification link to ${maskEmail(ep.persona.email)}. Open that email and select the link to activate your account, then sign in here.`)] };
       case 'verify': world.verifyEmail(ep, id, input.token); return { to: go('login'), cookies: [flash('Your email is verified. You can now sign in.')] };
-      case 'forgot': world.requestReset(ep, id, input); return { to: go('reset'), cookies: [flash('If we found an account, we sent a verification code to the email on file.')] };
+      case 'forgot': { const r = world.requestReset(ep, id, input); return { to: go('reset'), cookies: [flash(r.sent ? `We sent a verification code and a reset link to ${r.to}. Enter the code below or open the link in that email. It expires in 30 minutes.` : 'If we found an account, we sent a verification code to the email on file.')] }; }
       case 'reset': world.resetPassword(ep, id, input); return { to: go('login'), cookies: [flash('Your password was reset. Sign in with your new password.')] };
       case 'guest': { const r = world.guestLookup(ep, id, input, { required: t.flow.guestFields || [] }); return { to: go(flow.guestSteps[1]), cookies: [sessionCookie(r.sid)] }; }
       case 'guestPay': case 'guestReview': {
@@ -372,9 +394,13 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
         const d = world.draftPayment(ep, id, sid, input); return { to: go(nextPay(flow.paySteps, page, d)) };
       }
       case 'history': if (input.op === 'cancel') { world.cancelScheduled(ep, id, sid, input); return { to: go('history'), cookies: [flash('Your scheduled payment was cancelled.')] }; } break;
-      case 'autopay': { const r = world.autopay(ep, id, sid, input); return { to: go('autopay'), cookies: [flash(r.enrolled ? 'Your AutoPay settings have been saved.' : 'AutoPay has been cancelled.')] }; }
+      case 'autopay': { const r = world.autopay(ep, id, sid, input); return { to: go('autopay'), cookies: [flash(r.enrolled ? `Your ${apName} settings have been saved.` : `${apName} has been cancelled.`)] }; }
       case 'paperless': { const r = world.setPaperless(ep, id, sid, input); return { to: go('paperless'), cookies: [flash(r.paperless ? 'You are enrolled in paperless billing.' : 'You will receive paper bills.')] }; }
-      case 'wallet': if (input.op === 'remove') { world.removeMethod(ep, id, sid, input); return { to: go('wallet'), cookies: [flash('Payment method removed.')] }; } world.addMethod(ep, id, sid, input); return { to: go('wallet'), cookies: [flash('Payment method saved.')] };
+      case 'wallet': if (input.op === 'remove') {
+        // Two steps, as on real sites: Remove asks "Remove Visa ending in 4444?" (wallet?remove=<id>), and only the
+        // confirmation (confirmRemove=yes) removes it. A method that cannot be removed is refused at the first step.
+        if (input.confirmRemove !== 'yes') { world.removeMethod(ep, id, sid, { methodId: input.methodId, check: true }); return { to: go('wallet', {}, { remove: input.methodId }) }; }
+        world.removeMethod(ep, id, sid, { methodId: input.methodId }); return { to: go('wallet'), cookies: [flash('Payment method removed.')] }; } world.addMethod(ep, id, sid, input); return { to: go('wallet'), cookies: [flash('Payment method saved.')] };
       case 'cancel': { const r = world.cancelService(ep, id, sid, input); return { to: go('cancel', {}, { step: r.next || 'done' }) }; }
       case 'plan': world.changePlan(ep, id, sid, input); return { to: go('plan'), cookies: [flash('Your plan has been updated.')] };
       case 'arrangement': world.setupArrangement(ep, id, sid, input); return { to: go('arrangement'), cookies: [flash('Your payment plan is set up.')] };
@@ -428,7 +454,9 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
         const values = { ...input }; for (const k of ['password', 'confirm', 'cardNumber', 'cvv', 'bankAccount', 'bankAccountConfirm']) delete values[k];
         // A review page without a complete draft (e.g. after a decline) falls back to the first pay step.
         const draftDone = draftOk(sid);
-        const shown = page === 'payReview' && !draftDone ? t.flow.paySteps[0] : page === 'guestReview' && !draftDone ? t.flow.guestSteps[1] : page;
+        // When the amount is already chosen (a declined card clears only the method), reopen the method step, not the amount step.
+        const keptAmount = page === 'payReview' && !draftDone && t.flow.paySteps.length > 2 && (() => { const d = world.account(ep, billerId).draft; return !!(sid && d?.sid === sid && d.amountCents); })();
+        const shown = page === 'payReview' && !draftDone ? t.flow.paySteps[keptAmount ? 1 : 0] : page === 'guestReview' && !draftDone ? t.flow.guestSteps[1] : page;
         const q2 = input.next && typeof input.next === 'string' ? { ...query, next: input.next } : query; // keep the post-login target on error re-renders
         const vm = viewModel({ ep, biller, t, page: shown, sid, params, query: q2, values, error: e.message, extra: pageExtras(ep, biller, t, shown, params, q2, sid) });
         return send(res, e.status >= 500 ? 500 : 400, decorate(withSocial(t.render(shown, vm), vm), vm, t), 'text/html; charset=utf-8', { 'Set-Cookie': set, 'Content-Security-Policy': csp(vm) });
@@ -443,7 +471,7 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
       const acct = world.account(ep, billerId); const inv = acct.invoices.find(i => i.id === params.id || i.number === params.id);
       if (!inv) throw new Fault('Statement not found', 404);
       world.event(ep, billerId, 'statement_downloaded', { invoiceId: inv.id });
-      const pdf = textPdf([`# ${biller.entry.name}`, `Account number: ${acct.accountNumber}`, `Customer: ${ep.persona.name}`, `Service address: ${acct.serviceAddress}`, `Statement number: ${acct.statementId && inv.id === acct.invoices.at(-1).id ? acct.statementId : inv.number}`, `Billing period: ${inv.period}`, `Statement date: ${fmtDate(inv.issuedAt)}`, `Payment due date: ${fmtDate(inv.dueAt)}`, '# Charges', ...inv.lines.map(l => `${l.desc}: ${money(l.cents)}`), inv.previousBalanceCents ? `Previous balance: ${money(inv.previousBalanceCents)}` : '', inv.creditAppliedCents ? `Credit applied: -${money(inv.creditAppliedCents)}` : '', `# Total amount due: ${money(inv.totalDueCents ?? inv.amountCents)}`, contactOf(biller).mailAddress ? `Mail payments to: ${contactOf(biller).mailAddress}` : '', contactOf(biller).phone ? `Questions? Call ${contactOf(biller).phone}` : ''].filter(Boolean), { title: `${biller.brand.shortName} statement ${fmtDate(inv.issuedAt)}` });
+      const pdf = textPdf([`# ${biller.entry.name}`, `Account number: ${acct.accountNumber}`, `Customer: ${ep.persona.name}`, `Service address: ${acct.serviceAddress}`, ...(acct.accessCode ? [`Access code: ${acct.accessCode}`] : []), `Statement number: ${acct.statementId && inv.id === acct.invoices.at(-1).id ? acct.statementId : inv.number}`, `Billing period: ${inv.period}`, `Statement date: ${fmtDate(inv.issuedAt)}`, `Payment due date: ${fmtDate(inv.dueAt)}`, '# Charges', ...inv.lines.map(l => `${l.desc}: ${money(l.cents)}`), inv.previousBalanceCents ? `Previous balance: ${money(inv.previousBalanceCents)}` : '', inv.creditAppliedCents ? `Credit applied: -${money(inv.creditAppliedCents)}` : '', `# Total amount due: ${money(inv.totalDueCents ?? inv.amountCents)}`, contactOf(biller).mailAddress ? `Mail payments to: ${contactOf(biller).mailAddress}` : '', contactOf(biller).phone ? `Questions? Call ${contactOf(biller).phone}` : ''].filter(Boolean), { title: `${biller.brand.shortName} statement ${fmtDate(inv.issuedAt)}` });
       return send(res, 200, pdf, 'application/pdf', { 'Content-Disposition': `inline; filename="statement-${inv.number}.pdf"`, 'Set-Cookie': set });
     }
     const pendingUser = cookies.bwf_lu || query.u || ''; // query.u: legacy links
@@ -467,7 +495,9 @@ export async function start({ port = 3200, adminPort = 3201, host = '127.0.0.1',
   // Templates render kit.socialButtons(vm) themselves; for one that does not (yet), the buttons are placed right after
   // its sign-in form so every Google-enabled biller has a working entry point.
   function withSocial(out, vm) {
-    if (vm.page !== 'login' || !vm.socialProviders?.length || typeof out !== 'string' || out.includes('data-social-login')) return out;
+    if (!vm.socialProviders?.length || typeof out !== 'string' || out.includes('data-social-login')) return out;
+    // The home page's own sign-in card gets the same buttons (a Google user should not need a second login page).
+    if (vm.page !== 'login' && !(vm.page === 'home' && out.includes(`action="${esc(vm.url('login'))}`))) return out;
     const block = String(socialButtons(vm));
     const at = out.indexOf(`action="${esc(vm.url('login'))}`);
     const end = at >= 0 ? out.indexOf('</form>', at) : -1;

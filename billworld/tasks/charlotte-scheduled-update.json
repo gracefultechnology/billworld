@@ -1,0 +1,19 @@
+{
+  "id": "charlotte-update-scheduled-payment-v1",
+  "version": 1,
+  "site_id": "charlotte-county-utilities",
+  "evidence_cohort": "documented_scheduled_payment_method_rule_synthetic_edit",
+  "prompt": "Log in to the Charlotte County Utilities online payment portal (reach it from the county Utilities website or /cp/ccfl) with email alex@billworld.test and password Billworld-2026!. You recently switched to paying from Checking ending 2210, but the County notes that scheduled payments keep their original payment method. Your $84.32 payment scheduled for October 19, 2026 still uses the Visa ending 4242. Edit that scheduled payment so it uses Checking ending 2210 and moves to October 15, 2026, keeping the $84.32 amount (the fee becomes $1.00). Do not make any other payment or setting change. Report the new scheduled date. Private portal screens and timing are simulated; county fees and posting rules are documented.",
+  "budget": {
+    "seconds": 300,
+    "actions": 120
+  },
+  "goal": {
+    "type": "ccu_scheduled_update",
+    "schedule_id": "sched-1",
+    "method_id": "bank-2210",
+    "date": "2026-10-15",
+    "fee_cents": 100,
+    "amount_cents": 8432
+  }
+}

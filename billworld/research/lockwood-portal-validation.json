@@ -1,0 +1,126 @@
+{
+  "validated_at": "2026-10-11",
+  "site": "lockwood",
+  "status": "first_slice",
+  "environment_revision": "0.50.0",
+  "evidence": {
+    "tenant_observed": [
+      "research/lockwood-public.json",
+      "research/lockwood-password-policy.json"
+    ],
+    "family_documented": [
+      "research/cusi-payment-evidence.json (CUSI Plaid verification guide)",
+      "HPUD ePayUB brochure (sites/lockwood.json family_documentation, sha256 3852c17d…)"
+    ]
+  },
+  "checks": {
+    "domain": {
+      "command": "node --test billworld/tests/lockwood-portal.test.mjs billworld/tests/cusi*.test.mjs",
+      "result": "38 passed",
+      "covers": [
+        "E-Check requires linked verified bank, review and later history read",
+        "grader rejects card instead of E-Check, wrong bank, second payment",
+        "draft date future/late-acknowledgement/disconnect-cutoff/bank-only rules and execution",
+        "exact reschedule+cancel grading; cancelled drafts never execute; underfunded draft fails instead of double-paying",
+        "AutoPay enroll/change/cancel review, versioning, idempotency and exact grading; Maximum skip and Fixed cap",
+        "paperless rules; documented 10% penalty on the 16th",
+        "session and other-account isolation"
+      ]
+    },
+    "browser": {
+      "command": "npm run test:browser:lockwood",
+      "result": "10 scenarios passed; no page errors, no outbound requests, no unlabeled visible controls",
+      "artifact": "artifacts/lockwood-portal-browser/report.json"
+    },
+    "existing_cusi_browser": {
+      "commands": [
+        "test:browser:cusi",
+        "test:browser:cusi-payment",
+        "test:browser:cusi-registration",
+        "test:browser:cusi-profile-recovery",
+        "test:browser:cusi-registration-recovery",
+        "test:browser:lockwood-public"
+      ],
+      "result": "all passed"
+    },
+    "npm_test": {
+      "result": "467 tests: 466 passed, 0 failed (one skip: no construction site remains for the construction-entry isolation test)"
+    },
+    "research": {
+      "command": "npm run test:research",
+      "result": "142 ran, OK (1 skipped)"
+    },
+    "infinity": {
+      "command": ".upstream/smoke-venv/bin/python billworld/infinity/smoke.py --task-ids task_lw1,…,task_lw11",
+      "artifacts": "billworld/artifacts/infinity/lockwood-release-1791751758",
+      "lifecycle_checks": "passed (no-action, crash, setup failure, timeout, cancellation, deadline, action budget, repetition lineage, SIGKILL recovery)",
+      "tasks": [
+        {
+          "task_id": "task_lw1",
+          "billworld_task_id": "lockwood-username-login-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw2",
+          "billworld_task_id": "lockwood-recover-login-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw3",
+          "billworld_task_id": "lockwood-pay-current-card-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw4",
+          "billworld_task_id": "lockwood-register-login-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw5",
+          "billworld_task_id": "lockwood-echeck-link-pay-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw6",
+          "billworld_task_id": "lockwood-schedule-draft-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw7",
+          "billworld_task_id": "lockwood-manage-drafts-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw8",
+          "billworld_task_id": "lockwood-autopay-enroll-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw9",
+          "billworld_task_id": "lockwood-autopay-change-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw10",
+          "billworld_task_id": "lockwood-autopay-cancel-v1",
+          "success": true
+        },
+        {
+          "task_id": "task_lw11",
+          "billworld_task_id": "lockwood-paperless-v1",
+          "success": true
+        }
+      ]
+    }
+  },
+  "one_tab_agent_properties": [
+    "Every pending review (payment, draft, AutoPay) is stored server-side and referenced by an HttpOnly episode-bound cookie; reload restores it",
+    "All visible inputs, selects, buttons and links have accessible names (checked on every portal page by the browser test)",
+    "Hidden sections (AutoPay form, cancel confirmations, payment-option panels) are revealed by visible labelled controls; no state requires another tab except mock Gmail at /mail for recovery",
+    "Cookie banner from the capture remains and is dismissed with Agree to Required"
+  ],
+  "limits": [
+    "Reference scripts are not autonomous-agent results",
+    "Signed-in layouts and listed synthetic policies are not certified against the live Lockwood tenant"
+  ]
+}

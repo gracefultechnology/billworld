@@ -13,7 +13,8 @@ import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { Client, parseForms, encodeForm } from '../tests/httpflows.mjs';
 import { loadTemplates, templates } from '../server.mjs';
-import { noticeAccountNumber } from '../engine.mjs';
+import { noticeAccountNumber, testCardFor } from '../engine.mjs';
+import { loadCatalog } from '../catalog.mjs';
 
 const unesc = s => String(s ?? '').replace(/&(amp|lt|gt|quot|#39|nbsp);/g, (_, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'", nbsp: ' ' }[e]));
 export const pageText = html => unesc(String(html).replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ').replace(/<br\s*\/?>/gi, '\n').replace(/<\/(p|div|li|tr|h\d|dt|dd|section|article)>/gi, '\n').replace(/<[^>]+>/g, ' ')).replace(/[ \t ]+/g, ' ').replace(/\n\s*/g, '\n').trim();
@@ -26,7 +27,7 @@ const PHONE = /(?:\+?1[\s.-]?)?\(?([2-9]\d{2})\)?[\s.-]?(\d{3})[\s.-]?(\d{4})\b/
 export function credentialsFrom(instruction) {
   const email = instruction.match(/\(email ([^\s)]+@[^\s)]+)\)/)?.[1];
   const mailPassword = instruction.match(/mailbox password (\S+?)\)/)?.[1];
-  const portalPassword = instruction.match(/your password is (\S+?)\.(?:\s|$)/)?.[1] || instruction.match(/choose a portal password, use (\S+?)\.(?:\s|$)/)?.[1] || null;
+  const portalPassword = instruction.match(/[Yy]our (?:portal )?password(?: \([^)]*\))? is (\S+?)\.(?:\s|$)/)?.[1] || instruction.match(/choose a portal password, use (\S+?)\.(?:\s|$)/)?.[1] || null;
   const name = instruction.match(/You are ([^(]+?) \(email/)?.[1];
   return { email, mailPassword, portalPassword, name, last: name?.split(' ').slice(-1)[0] };
 }
@@ -213,7 +214,10 @@ const SOLVE = {
     const forms = parseForms(r.body).filter(f => f.method === 'post' && f.has('methodId') && (f.valuesOf('op').includes('remove') || f.buttons.some(b => b.value === 'remove' || /remove|delete/i.test(b.text))));
     const target = forms.find(f => { const id = f.valuesOf('methodId')[0]; const i = r.body.indexOf(`value="${id}"`); return /4444/.test(pageText(r.body.slice(Math.max(0, i - 600), i))); });
     if (!target) throw new Error('no remove control for the card ending 4444');
-    await a.submit(target, {}, { button: 'remove' });
+    const r2 = await a.submit(target, {}, { button: 'remove' });
+    // The site asks "Remove … ending in 4444?" before removing: submit that confirmation.
+    const confirm = parseForms(r2.body).find(f => f.method === 'post' && f.valuesOf('confirmRemove').includes('yes'));
+    if (confirm) await a.submit(confirm);
   },
   async 'setup-payment-plan'(a) { await a.login(); const { f } = await a.formOn('arrangement', x => x.has('months')); await a.submit(f, { months: '6' }); },
   async 'send-message'(a) {
@@ -239,7 +243,7 @@ const SOLVE = {
     const notice = await a.mailFind(/bill is ready/i);
     const field = label => notice.text.match(new RegExp(`${label}: (.+)`))?.[1]?.trim();
     const { f } = await a.formOn('register', x => x.has('password') && x.has('confirm'));
-    const values = { accountNumber: noticeAccountNumber(notice.text), lastName: a.creds.last, zip: field('Service ZIP code'), email: a.creds.email, password: a.creds.portalPassword, confirm: a.creds.portalPassword };
+    const values = { accountNumber: noticeAccountNumber(notice.text), lastName: a.creds.last, zip: field('Service ZIP code'), accessCode: field('Access code[^:]*'), email: a.creds.email, password: a.creds.portalPassword, confirm: a.creds.portalPassword };
     const ov = {}; for (const [k, v] of Object.entries(values)) if (f.has(k) && f.controls.find(c => c.name === k).type !== 'hidden') ov[k] = v;
     for (const c of f.controls) if (c.type === 'checkbox' && /terms|agree|accept/i.test(c.name)) ov[c.name] = true;
     await a.submit(f, ov);
@@ -252,10 +256,10 @@ const SOLVE = {
     const notice = await a.mailFind(/bill is ready/i);
     const field = label => notice.text.match(new RegExp(`${label}: (.+)`))?.[1]?.trim();
     const { f } = await a.formOn(a.t.flow.guestSteps[0], x => ['accountNumber', 'statementId', 'parcelId', 'plate'].some(n => x.has(n)));
-    const values = { accountNumber: noticeAccountNumber(notice.text), statementId: field('Statement ID') || noticeAccountNumber(notice.text), parcelId: field('Parcel number') || noticeAccountNumber(notice.text), plate: field('License plate') || noticeAccountNumber(notice.text), lastName: a.creds.last, zip: field('Service ZIP code'), amountDue: field('Amount due')?.replace(/[$,]/g, '') };
+    const values = { accountNumber: noticeAccountNumber(notice.text), statementId: field('Statement ID') || field('Statement number') || noticeAccountNumber(notice.text), parcelId: field('Parcel number') || noticeAccountNumber(notice.text), plate: field('License plate') || noticeAccountNumber(notice.text), lastName: a.creds.last, zip: field('Service ZIP code'), amountDue: field('Amount due')?.replace(/[$,]/g, '') };
     const ov = {}; for (const [k, v] of Object.entries(values)) if (f.has(k) && f.controls.find(c => c.name === k).type !== 'hidden' && v != null) ov[k] = v;
     const r = await a.submit(f, ov);
-    await a.pay({ startAt: r.url, newMethod: { methodType: 'card', cardNumber: '4111111111111111', exp: '12/28', cvv: '123', holder: a.creds.name } });
+    await a.pay({ startAt: r.url, newMethod: { methodType: 'card', cardNumber: testCardFor(loadCatalog().billers.get(a.billerId), '1111'), exp: '12/28', cvv: '123', holder: a.creds.name } });
   },
   async 'declined-retry'(a) {
     await a.login();

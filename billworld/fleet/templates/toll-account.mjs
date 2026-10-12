@@ -50,6 +50,8 @@ export const routes = {
 };
 export const flow = { paySteps: ['pay', 'payReview'], loginSteps: 1, guestSteps: ['guest', 'guestPay', 'guestReview'] };
 
+// A dossier says payment plans are not set up online: the server drops the plan form, so no "split your balance" teaser either.
+const planOffline = vm => { const c = vm.biller.capabilities.payment_arrangement; return !!c?.dossier && !!c.support && c.support !== 'supported'; };
 const sup = (vm, cap) => vm.biller.capabilities[cap]?.support === 'supported';
 const offline = vm => vm.biller.capabilities.online_account.support === 'unsupported';
 // "Pay a Toll Bill" is the primary public action of every toll agency researched; hide it only when explicitly unsupported.
@@ -172,7 +174,7 @@ ${vm.scheduled.length ? html`<div class="box box-info">${vm.scheduled.length} sc
   },
   plan(vm) { return notOffered(vm, 'Account Plan', 'Account plan changes are handled by customer service.', html`<p>Discount and commuter plans are applied by the toll agency. Call ${vm.biller.phone || 'customer service'} for eligibility.</p>`); },
   arrangement(vm) {
-    return shell(vm, 'Payment Plan', html`<h1>${L(vm, 'arrangement', 'Payment Plan')}</h1>${vm.account.arrangement ? html`<section class="card ok"><p>You're paying ${money(vm.account.arrangement.monthlyCents)} per month for ${vm.account.arrangement.months} months.</p></section>` : html`<section class="card"><p>Unable to pay your balance of ${money(vm.balanceCents)} at once? Split unpaid tolls and fees into monthly payments.</p>${form(vm, 'arrangement', html`${select(vm, { name: 'months', label: 'Number of monthly payments', options: [['3', '3 months'], ['6', '6 months'], ['12', '12 months']] })}${button('Request Payment Plan')}`)}</section>`}`);
+    return shell(vm, 'Payment Plan', html`<h1>${L(vm, 'arrangement', 'Payment Plan')}</h1>${vm.account.arrangement ? html`<section class="card ok"><p>You're paying ${money(vm.account.arrangement.monthlyCents)} per month for ${vm.account.arrangement.months} months.</p></section>` : html`<section class="card">${planOffline(vm) ? '' : html`<p>Unable to pay your balance of ${money(vm.balanceCents)} at once? Split unpaid tolls and fees into monthly payments.</p>`}${form(vm, 'arrangement', html`${select(vm, { name: 'months', label: 'Number of monthly payments', options: [['3', '3 months'], ['6', '6 months'], ['12', '12 months']] })}${button('Request Payment Plan')}`)}</section>`}`);
   },
   contact(vm) { return shell(vm, 'Messages', html`<h1>${L(vm, 'contact', 'Messages')}</h1>${vm.account.messages.length ? html`<section class="card"><ul>${vm.account.messages.map(m => html`<li>${fmtDate(m.at)} – ${m.subject} (${m.status})</li>`)}</ul></section>` : ''}<section class="card"><h2>Send a message</h2>${form(vm, 'contact', html`${field(vm, { name: 'subject', label: 'Subject' })}<div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" rows="5" required>${vm.values.message || ''}</textarea></div>${button('Send Message')}`)}</section>`); },
   profile(vm) {

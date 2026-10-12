@@ -2,7 +2,13 @@
   "id": "batavia-utilities",
   "name": "City of Batavia utility billing",
   "portal_family": "Paymentus",
-  "implementation_status": "construction_slice",
+  "implementation_status": "first_slice",
+  "revision": "1.0.0",
+  "evidence_legend": {
+    "observed_public": "Captured from live public city pages on 2026-10-04 (read-only, no form submission).",
+    "documented": "Stated in the city-linked six-page Paymentus guide (5il.co/3a7g4), the Paymentus FAQ (5il.co/3a7g3), the current Billing & Payment page or the city Direct Payment form (5il.co/3emxt).",
+    "synthetic": "Reconstructed for this environment because the live Paymentus tenant (ipn2.paymentus.com/cp/cobi) returns HTTP 403 to public capture; values are fixtures, not production behavior."
+  },
   "catalog_records": [
     {
       "category": "water-sewer",
@@ -10,6 +16,18 @@
     }
   ],
   "capture_manifest": "research/batavia-public.json",
+  "public_routes": {
+    "homepage": "https://www.bataviail.gov/",
+    "billing": "https://www.bataviail.gov/o/cob/page/billing-payment",
+    "assistance": "https://www.bataviail.gov/o/cob/page/budget-billing-payment-assistance",
+    "portal": "https://ipn2.paymentus.com/cp/cobi",
+    "guide_pdf": "https://5il.co/3a7g4",
+    "faq_pdf": "https://5il.co/3a7g3",
+    "city_draft_form": "https://5il.co/3emxt",
+    "local_login": "/paymentus/login",
+    "local_registration": "/paymentus/register",
+    "local_recovery": "/paymentus/recover"
+  },
   "observed_public": {
     "identity": "Batavia Illinois city utility billing; catalog water-sewer record only. City billing may combine services; no other Batavia records are mapped.",
     "home": "https://www.bataviail.gov/",
@@ -34,7 +52,18 @@
       "email",
       "SMS"
     ],
-    "funding_method_optional_for_viewing": true
+    "funding_method_optional_for_viewing": true,
+    "payment_methods": [
+      "Visa",
+      "MasterCard",
+      "Discover",
+      "debit cards",
+      "eCheck (ACH)",
+      "PayPal",
+      "Venmo"
+    ],
+    "history_retention": "18 months going forward (FAQ, 2020)",
+    "multi_account": "FAQ: tie all accounts to the Paymentus account and make one payment; guide menu: make a payment on one or more accounts"
   },
   "documented_guide_behavior": {
     "source": "https://5il.co/3a7g4",
@@ -108,7 +137,50 @@
       "guide_page": 5,
       "capability": "View or change methods of payment",
       "exact_forms_and_storage_policy": "unknown"
-    }
+    },
+    "my_profile": "Guide page 5: View or change general settings for your login",
+    "payment_history_scope": "Guide page 5: shows payments made online or through your bank only; not mail or in person"
+  },
+  "capabilities": {
+    "homepage_and_billing_pages": "observed_public_snapshot",
+    "portal_handoff": "observed_public_link_local_portal",
+    "email_password_login": "documented_guide_fields_synthetic_validation",
+    "registration": "documented_guide_fields_synthetic_validation",
+    "account_linking": "documented_guide_stages_synthetic_verification",
+    "password_recovery": "documented_email_entry_synthetic_mock_gmail_link",
+    "accounts_summary": "documented_guide_layout_synthetic_ledger",
+    "left_menu_navigation": "documented_guide_menu_on_all_signed_in_pages",
+    "bank_payment": "documented_echeck_synthetic_checkout",
+    "card_payment": "documented_card_brands_synthetic_checkout",
+    "multi_account_payment": "documented_capability_synthetic_checkout_one_fee",
+    "scheduled_payment": "synthetic_platform_rule_not_documented_by_batavia",
+    "scheduled_payment_edit_cancel": "synthetic_platform_rule_not_documented_by_batavia",
+    "payment_history": "documented_navigation_synthetic_ledger",
+    "bill_history": "documented_navigation_synthetic_ledger",
+    "statement_pdf": "documented_view_bill_download_synthetic_pdf",
+    "paperless_and_notifications": "documented_capability_synthetic_form",
+    "wallet": "documented_navigation_synthetic_forms",
+    "autopay_enroll_change_cancel": "documented_navigation_synthetic_forms_and_execution",
+    "city_bank_draft_duplicate_warning": "observed_public_warning_enforced_acknowledgement",
+    "city_bank_draft_enrollment": "documented_offline_only_not_online",
+    "my_profile": "documented_navigation_synthetic_form",
+    "password_change": "synthetic_my_profile_control",
+    "guest_quick_pay": "not_documented_not_implemented",
+    "paypal_venmo": "documented_faq_not_implemented",
+    "pay_by_phone": "documented_out_of_scope",
+    "commercial_fee_tier": "documented_historical_not_implemented",
+    "sign_in_with_google": "not_observed_not_implemented"
+  },
+  "synthetic_schedule_policy": {
+    "synthetic": true,
+    "evidence": "Neither the city guide nor FAQ documents future-dated payments; this follows common Paymentus portal behavior and is labeled synthetic.",
+    "earliest": "next UTC day",
+    "latest": "invoice due date",
+    "execution": "00:00 UTC on the chosen date, before same-instant AutoPay",
+    "reservation": "none until execution; balance, link and saved-method version rechecked then",
+    "fee": "flat service fee from review",
+    "edit": "date and amount while scheduled, with optimistic version",
+    "cancel": "explicit confirmation; no charge"
   },
   "source_conflicts_and_limits": [
     "FAQ describes a December 14, 2020 upgrade, not a new 2026 rollout.",
@@ -119,10 +191,18 @@
     "Google Pay/payment wallets do not imply Sign in with Google.",
     "The 141 child sources collected from city pages belong to the Apptegy city frontend, not the inaccessible Paymentus authenticated SPA. They do not establish billing portal source completeness."
   ],
+  "fidelity_limits": [
+    "No authenticated production session or payment has been observed; the live Paymentus tenant is HTTP 403 to public capture.",
+    "Entry fields, menu and Accounts layout follow the 2020 city guide; visual styling is a reconstruction.",
+    "Scheduled payments are a synthetic Paymentus-platform rule; Batavia documents none.",
+    "Multi-account payments are recorded as one confirmation with per-account ledger rows and the single fee on the first row.",
+    "Mock Gmail delivers all notices locally; SMS is never sent."
+  ],
   "unfinished": [
-    "Usable current live portal auth/registration/recovery captures",
-    "Original private checkout/receipt layout, current fee quote and settlement policy",
-    "Original wallet layout/policy, original AutoPay forms/timing, original bill document fidelity, live history retention/channel coverage and profile management",
+    "Usable current live portal auth/registration/recovery captures (tenant returns HTTP 403)",
+    "Original private checkout/receipt layout, current fee quote, settlement and cutoff policy",
+    "Commercial fee tier, PayPal/Venmo wallets and pay-by-phone",
+    "Original statement PDF layout/line items and live history retention",
     "Independent fidelity review, isolated deployment and autonomous agent evaluation"
   ],
   "runtime": {
@@ -131,10 +211,10 @@
     "mail_sender_slug": "batavia"
   },
   "default_task_id": "batavia-email-login-v1",
-  "construction_stage": "documented_auth_registration_linking_preferences_synthetic_wallet_autopay_checkout_history_statements_not_released",
+  "construction_stage": "first_slice_released",
   "construction_draft": {
     "login": "Documented email/password labels and navigation; synthetic credential validation and account continuation",
-    "recovery": "Documented email entry and delivery; synthetic reset link, 15-minute expiry, 10\u2013128-character passwords, one-use grants and session revocation",
+    "recovery": "Documented email entry and delivery; synthetic reset link, 15-minute expiry, 10–128-character passwords, one-use grants and session revocation",
     "registration": "Guide-based portal registration, account/address-prefix verification, consent, paperless and notifications; backend validation, review lifetime, terms and sample data synthetic",
     "billing": "Guide navigation and synthetic authenticated linked-account bill/bank/card review/receipt, backed by authoritative ledger; current checkout layout, fees and settlement unverified",
     "validation_manifest": "research/batavia-auth-construction-validation.json",
@@ -158,13 +238,14 @@
     "synthetic": true,
     "bank_fee_cents": 350,
     "transaction_max_cents": 50000,
-    "description": "Construction fixture only: $3.50 per bank/card payment and $500 bill-amount limit. Historical guide values provide scenario values; current live fees/limits are unverified.",
+    "description": "Fixture values: $3.50 per bank/card payment and $500 per-payment limit, from the guide's historical residential tier ($8.25/$5,000 commercial tier not modeled). Current live fees/limits are unverified.",
     "supported_methods": [
       "bank",
       "card"
     ],
     "posting": "Immediate posted synthetic outcome; current processor settlement and cutoff unverified",
-    "card_fee_cents": 350
+    "card_fee_cents": 350,
+    "multi_account": "One service fee per combined payment; total limited to transaction_max_cents"
   },
   "construction_autopay_policy": {
     "evidence": "synthetic; guide documents AutoPay navigation only",

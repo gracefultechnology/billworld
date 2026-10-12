@@ -7,7 +7,7 @@
 // direct navigation unless the flow whitelisted that page in ctx.allowDirect. ctx.goto() is reserved for deliberate
 // entry points and probes (episode entry, protected-page redirects), which are not navigation by the user.
 import assert from 'node:assert/strict';
-import { primaryMethodId } from '../engine.mjs';
+import { primaryMethodId, testCardFor } from '../engine.mjs';
 // Type of the saved method flows pay with: checking, or the Visa for card-only billers.
 const primaryType = (ctx, o) => primaryMethodId(ctx.biller, o) === 'pm-chk' ? 'bank' : 'card';
 
@@ -231,6 +231,15 @@ async function removeMethod(ctx, methodId) {
   }, methodId, ctx.route('wallet'));
   if (!ok) throw new Error(`No visible remove control for ${methodId}`);
   await Promise.all([ctx.page.waitForNavigation({ waitUntil: 'domcontentloaded' }), ctx.page.click('[data-bw-click="1"]')]);
+  // Remove asks "Remove … ending in NNNN?" first; nothing is removed until that is confirmed.
+  const confirm = await ctx.page.$(`.bwf-rmconfirm form:has(input[name=methodId][value="${methodId}"]) button[type=submit]`);
+  if (!confirm) return false;
+  const m = (await ctx.account()).methods.find(x => x.id === methodId);
+  assert.ok(!m?.removed, 'method removed before the "Remove …?" confirmation');
+  const q = await ctx.page.evaluate(() => document.querySelector('.bwf-rmconfirm h2')?.innerText || '');
+  assert.match(q, /^Remove .+ ending in \d{4}\?$/, `remove confirmation question: ${q}`);
+  await Promise.all([ctx.page.waitForNavigation({ waitUntil: 'domcontentloaded' }), confirm.click()]);
+  return true;
 }
 
 // Sign out with the visible control (link to the logout route, or a "Sign out"-style link/button).
@@ -513,6 +522,7 @@ export const FLOWS = {
     if (await has(ctx.page, 'lastName')) vals.lastName = ctx.episode.persona.last;
     if (await has(ctx.page, 'zip')) vals.zip = ctx.episode.persona.zip;
     if (await has(ctx.page, 'phone')) vals.phone = ctx.episode.persona.phone;
+    if (await has(ctx.page, 'accessCode')) vals.accessCode = acct.accessCode;
     await fill(ctx.page, vals); await submit(ctx.page, { field: 'accountNumber' });
     assert.equal(await ctx.errorText(), '');
     await followMailLink(ctx, 'verify');
@@ -528,7 +538,7 @@ export const FLOWS = {
     const err = await ctx.errorText(); if (err) throw new Error(`Guest lookup: ${err}`);
     const gm = ctx.biller.dossier?.billing?.guestMethods || ctx.biller.dossier?.billing?.methods || ['bank', 'card'];
     const card = gm.includes('card');
-    await pay(ctx, { guest: true, newMethod: card ? { methodType: 'card', cardNumber: '4111111111111111', exp: '12/28', cvv: '123', holder: ctx.episode.persona.name } : { methodType: 'bank', routing: '021000021', bankAccount: '000123456789', bankAccountConfirm: '000123456789' } });
+    await pay(ctx, { guest: true, newMethod: card ? { methodType: 'card', cardNumber: testCardFor(ctx.biller, '1111'), exp: '12/28', cvv: '123', holder: ctx.episode.persona.name } : { methodType: 'bank', routing: '021000021', bankAccount: '000123456789', bankAccountConfirm: '000123456789' } });
     const r = await ctx.evaluate([{ type: 'payment', methodType: card ? 'card' : 'bank', source: 'guest', count: 1 }]); assert.ok(r.success, JSON.stringify(r.results));
   },
   // A guest lookup with a wrong secondary identifier is refused and opens no guest session.
@@ -599,7 +609,7 @@ export const FLOWS = {
     const { page } = ctx; await ctx.goto(ctx.route('home')); await login(ctx); await ctx.nav('wallet');
     // Card-only billers save a card instead of a bank account (last 4 digits 4321 either way).
     const bankOk = primaryMethodId(ctx.biller) === 'pm-chk';
-    const vals = bankOk ? { methodType: 'bank', routing: '021000021', bankAccount: '000987654321', bankAccountConfirm: '000987654321' } : { methodType: 'card', cardNumber: '4000056655064321', exp: '12/29', cvv: '123', holder: ctx.episode.persona.name };
+    const vals = bankOk ? { methodType: 'bank', routing: '021000021', bankAccount: '000987654321', bankAccountConfirm: '000987654321' } : { methodType: 'card', cardNumber: testCardFor(ctx.biller, '4321'), exp: '12/29', cvv: '123', holder: ctx.episode.persona.name };
     if (bankOk && await has(page, 'accountType')) vals.accountType = 'checking';
     if (await has(page, 'nickname')) vals.nickname = 'Test savings';
     const known = new Set((await ctx.account()).methods.map(m => m.id)); // a seeded method may also end in 4321
@@ -607,7 +617,7 @@ export const FLOWS = {
     assert.equal(await ctx.errorText(), '', 'method saved');
     let acct = await ctx.account(); const added = acct.methods.find(m => !known.has(m.id) && m.last4 === '4321' && m.saved && !m.removed);
     assert.ok(added, 'new method is saved'); assert.ok((await ctx.text()).includes('4321'), 'wallet lists the new method');
-    await removeMethod(ctx, added.id);
+    assert.ok(await removeMethod(ctx, added.id), 'Remove asks "Remove … ending in 4321?" before removing');
     assert.ok((await ctx.account()).methods.find(m => m.id === added.id).removed, 'method removed in the ledger');
     const r = await ctx.evaluate([{ type: 'method_removed', last4: '4321' }]); assert.ok(r.success, 'method removed');
     assert.equal(await page.$(`[name=methodId][value="${added.id}"]`), null, 'removed method no longer listed');
@@ -625,6 +635,8 @@ export const FLOWS = {
       ctx.allowDirect.add('arrangement'); return;
     }
     await fill(ctx.page, { months: '6' }); await submit(ctx.page, { field: 'months' });
+    // A review step (schedule + consent) before the plan is created.
+    if (await has(ctx.page, 'planConsent')) { assert.ok(/\b6 monthly payments\b/.test(await ctx.text()), 'review shows the 6-payment schedule'); await fill(ctx.page, { planConsent: true }); await submit(ctx.page, { field: 'planConsent' }); }
     assert.equal(await ctx.errorText(), '', 'plan set up');
     const r = await ctx.evaluate([{ type: 'payment_plan', months: 6 }, { type: 'no_payment' }]); assert.ok(r.success, JSON.stringify(r.results));
     assert.ok(/\b6 (monthly )?(payments|months|installments)\b|\b6-month/i.test(await ctx.text()), 'page confirms the 6-month plan');
@@ -878,6 +890,8 @@ function allFlows(biller, template, options) {
   // Full-balance-only billers: the flows that pay or edit to a partial amount do not apply.
   const drop = new Set();
   if (biller.dossier?.billing?.fullBalanceOnly) for (const f of ['pay_card_other', 'stale_review_two_tabs', 'back_edit_stale_token']) drop.add(f);
+  // No self sign-up (registration unsupported): the site has no visible sign-up link to drive.
+  if (c.registration?.support === 'unsupported') drop.add('register_verify');
   if (methods && !methods.includes('card')) for (const f of ['pay_card_other', 'declined_then_bank']) drop.add(f);
   // Card-only billers: no bank account to pay from or fall back to.
   if (methods && !methods.includes('bank')) for (const f of ['pay_new_bank', 'declined_then_bank']) drop.add(f);

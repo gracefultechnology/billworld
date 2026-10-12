@@ -38,7 +38,10 @@ export function cleanText(value, max = 80) {
 }
 // Titles of block pages, bot walls and errors are not the real site's title.
 const JUNK = /^(home|index|untitled|login|log ?in|sign ?in|welcome|loading\.*|redirecting\.*|document|page)$|just a moment|attention required|access denied|forbidden|not found|\b40[0-9]\b|\b50[0-9]\b|error|cloudflare|captcha|are you a robot|request rejected|site maintenance|under construction|incapsula|unsupported browser|\blogo\b|parked domain|domain (?:is )?for sale|custom domain|\bbitly\b|godaddy|this domain|google drive|instagram|facebook|linkedin|youtube/i;
-const okTitle = (t, max) => { const c = cleanText(t, max); return c && !JUNK.test(c) && /[a-z]/i.test(c) ? c : ''; };
+// Captures can repeat a heading into the title ("City of ChicagoCity of Chicago Utility Payments") or cut a word off
+// before a separator ("... - Login Ca :: ..."); both are scrape artifacts, not the real title.
+const tidyTitle = t => String(t ?? '').replace(/^(.{4,}?)(?=\1)/, '').replace(/\s+(?!Us\b|Co\b|St\b|Dr\b|Jr\b|Sr\b)[A-Z][a-z](?=\s+::\s)/g, '');
+const okTitle = (t, max) => { const c = cleanText(tidyTitle(t), max); return c && !JUNK.test(c) && /[a-z]/i.test(c) ? c : ''; };
 
 export const siteTitle = vm => okTitle(profileOf(vm)?.website?.title, 90);
 // A login capture's title is used only when it reads as this biller's sign-in page (not the home page, and not a
@@ -223,7 +226,13 @@ export function helpExcerpts(vm, slug = null, { cls = '' } = {}) {
 // Neutral styles; each template's own palette comes through var(--brand) and inherited fonts.
 // ---------- MFA page: where the code went (vm.mfaChannel 'sms' | 'email') and a "Resend code" form ----------
 // The resend form posts op=resend to the mfa page (server act(): engine.resendMfa supersedes the old code).
-export const mfaSent = (vm, emailText) => vm?.mfaChannel === 'sms' ? `We texted a 6-digit code to ${vm.mfaDestination || 'your phone'}. Enter it below. It expires in 10 minutes.` : emailText;
+// The code's destination is always named (masked), so the user knows which inbox or phone to check.
+const MFA_TO = /\bto (?:you|your email address|the (?:email )?address (?:on (?:your |the )?(?:MyAccount )?(?:account|profile|file)|registered to this account))(?=[\s.,])/i;
+export const mfaSent = (vm, emailText) => {
+  if (vm?.mfaChannel === 'sms') return `We texted a 6-digit code to ${vm.mfaDestination || 'your phone'}. Enter it below. It expires in 10 minutes.`;
+  const dest = vm?.mfaChannel === 'email' && vm.mfaDestination; if (!dest) return emailText;
+  return MFA_TO.test(emailText) ? emailText.replace(MFA_TO, `to ${dest}`) : `${emailText} We sent it to ${dest}.`;
+};
 export const mfaResend = (vm, label = 'Resend code') => kit.form(vm, 'mfa', html`${kit.hidden('op', 'resend')}${kit.hidden('next', vm.query?.next || '')}<p class="pf-resend-row">Didn't get it? ${kit.button(label, { cls: 'pf-linkbtn' })}</p>`, { cls: 'pf-resend' });
 
 export const PROFILE_CSS = `.pf-resend{margin:10px 0 0}.pf-resend-row{margin:0;font-size:14px}.pf-linkbtn{border:0;background:none;padding:2px 0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer;font-weight:600}.pf-linkbtn:focus-visible{outline:2px solid currentColor;outline-offset:2px}.pf-nav{min-width:0}.pf-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px 4px}.pf-nav li{min-width:0}.pf-nav a{display:inline-block;padding:6px 10px;border-radius:4px;text-decoration:none;font-size:14px;line-height:1.3;overflow-wrap:anywhere}.pf-nav a:hover{text-decoration:underline}.pf-nav a:focus-visible{outline:2px solid currentColor;outline-offset:2px}

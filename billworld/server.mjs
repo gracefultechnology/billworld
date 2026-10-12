@@ -7,6 +7,9 @@ import { resolve } from 'node:path';
 import { World, Fault, ENVIRONMENT_REVISION } from './engine.mjs';
 import { MockGoogle } from './google.mjs';
 import { SnapshotStore } from './snapshot-store.mjs';
+import { charlotteRoute } from './charlotte-routes.mjs';
+import { wippApi, wippPage } from './wipp-server.mjs';
+import { tuscaloosaRoute } from './tuscaloosa-server.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const assets = new Map(['index.html', 'app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','personapay.css','paymentus.js','paymentus.css','paymentus.html','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css', 'google.html', 'google.js'].map(name => [name, readFileSync(`${root}/public/${name}`)]));
@@ -14,6 +17,7 @@ assets.set('starnik.css',readFileSync(`${root}/public/starnik.css`));
 assets.set('starnik.js',readFileSync(`${root}/public/starnik.js`));
 assets.set('onswc-public.js',readFileSync(`${root}/public/onswc-public.js`));
 assets.set('catalog-public.js',readFileSync(`${root}/public/catalog-public.js`));
+assets.set('inframark-public.js',readFileSync(`${root}/public/inframark-public.js`));
 const publicSnapshots = new SnapshotStore(`${root}/public/reference-pages`, {verifyBehavior(manifest){
   if (manifest.local_behavior && (!['public/municipal.js','public/mychart.js','public/wvu-public.js','public/mychart-activation.js','public/mychart-recovery.js','public/catalog-public.js','public/onswc-public.js'].includes(manifest.local_behavior.file) || createHash('sha256').update(assets.get(manifest.local_behavior.file.split('/').at(-1))).digest('hex') !== manifest.local_behavior.sha256)) throw Error('Public snapshot behavior hash mismatch');
 }});
@@ -66,7 +70,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
       const entry = url.pathname.match(/^\/enter\/([^/]+)\/([^/]+)$/);
       if (entry && req.method === 'GET') {
         world.enter(entry[1], entry[2]);
-        res.writeHead(302, { Location: '/', 'Set-Cookie': [cookie('bw_episode', entry[1]), cookie('bw_access', entry[2]), cookie('bw_session', '', 0), cookie('bw_mail', '', 0), cookie('bw_lookup', '', 0),cookie('bw_paymentus_link','',0),cookie('bw_paymentus_reset','',0),cookie('bw_paymentus_quote','',0),cookie('bw_starnik_payment','',0),cookie('bw_starnik_autopay','',0),cookie('bw_starnik_wallet','',0),cookie('bw_starnik_quote','',0),cookie('bw_starnik_guest','',0),cookie('bw_starnik_pending','',0),cookie('bw_starnik_signup','',0),cookie('bw_starnik_reset','',0),cookie('bw_paymentus_autopay','',0),cookie('bw_cusi_registration','',0),cookie('bw_cusi_reset','',0),cookie('bw_cusi_quote','',0)] }); return res.end();
+        res.writeHead(302, { Location: '/', 'Set-Cookie': [cookie('bw_episode', entry[1]), cookie('bw_access', entry[2]), cookie('bw_session', '', 0), cookie('bw_otp', '', 0), cookie('bw_mail', '', 0), cookie('bw_lookup', '', 0),cookie('bw_paymentus_link','',0),cookie('bw_paymentus_reset','',0),cookie('bw_paymentus_quote','',0),cookie('bw_starnik_payment','',0),cookie('bw_starnik_autopay','',0),cookie('bw_starnik_ach','',0),cookie('bw_starnik_wallet','',0),cookie('bw_starnik_quote','',0),cookie('bw_starnik_guest','',0),cookie('bw_starnik_pending','',0),cookie('bw_starnik_signup','',0),cookie('bw_starnik_reset','',0),cookie('bw_paymentus_autopay','',0),cookie('bw_cusi_registration','',0),cookie('bw_cusi_reset','',0),cookie('bw_cusi_quote','',0),cookie('bw_cusi_autopay','',0)] }); return res.end();
       }
       if (url.pathname.startsWith('/connector/')) {
         const id = req.headers['x-billworld-episode'];
@@ -81,6 +85,8 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
         throw new Fault('Connector operation not found', 404);
       }
       const c = parseCookies(req);
+      if (await tuscaloosaRoute({ req, res, url, c, world, json, body, cookie })) return;
+      if (await charlotteRoute({ req, res, url, c, world, body, json, Fault, cookie, snapshots: publicSnapshots })) return;
       if (req.method === 'GET' && url.pathname === '/auth/google/callback') {
         const identityDestination=world.session(c.bw_episode,null).site.id==='duluth-comfortsystems'?'/utility/account':'/spotify/account';
         world.enter(c.bw_episode, c.bw_access);
@@ -95,13 +101,18 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
         world.enter(c.bw_episode, c.bw_access);
         if (req.method === 'POST' && req.headers.origin !== `http://${req.headers.host}`) throw new Fault('Same-origin request required', 403);
         const id = c.bw_episode, session = c.bw_session;
+        if(world.session(id,null).site.runtime.kind==='wipp'){
+          if(url.pathname.startsWith('/api/wipp/')){const cookies=[];const result=wippApi(world,{id,session,method:req.method,url,input:req.method==='POST'?await body(req):{},setCookie:v=>cookies.push(v),cookie});if(cookies.length)res.setHeader('Set-Cookie',cookies);return json(res,result);}
+          if(!url.pathname.startsWith('/api/mail')&&url.pathname!=='/api/session')throw new Fault('This operation is not available on the City of Malden WIPP portal',404);
+        }
+        else if(url.pathname.startsWith('/api/wipp/'))throw new Fault('WIPP operation unavailable',404);
         const starnikSite=world.session(id,null).site.runtime.kind==='starnik';
         if(url.pathname.startsWith('/api/starnik/')&&!starnikSite)throw new Fault('Starnik operation unavailable',404);
-        if(starnikSite&&!url.pathname.startsWith('/api/mail')&&!['/api/session','/api/starnik/ebill','/api/starnik/ebill/preference','/api/starnik/payment','/api/starnik/payment/prepare','/api/starnik/payment/review','/api/starnik/payment/receipt','/api/starnik/payment/pay','/api/starnik/autopay','/api/starnik/autopay/prepare','/api/starnik/autopay/review','/api/starnik/autopay/enable','/api/starnik/autopay/disable','/api/starnik/wallet','/api/starnik/wallet/method','/api/starnik/wallet/prepare','/api/starnik/wallet/review','/api/starnik/wallet/save','/api/starnik/wallet/remove','/api/starnik/guest/quote','/api/starnik/guest/review','/api/starnik/guest/pay','/api/starnik/guest/receipt','/api/starnik/guest/lookup','/api/starnik/guest/account','/api/starnik/login','/api/starnik/logout','/api/starnik/history','/api/starnik/account','/api/starnik/recovery/request','/api/starnik/recovery/grant','/api/starnik/recovery/complete','/api/starnik/signup/request','/api/starnik/signup/resend','/api/starnik/signup/grant','/api/starnik/signup/username','/api/starnik/signup/complete'].includes(url.pathname))throw new Fault('This operation is not implemented for the Starnik construction slice',404);
+        if(starnikSite&&!url.pathname.startsWith('/api/mail')&&!['/api/session','/api/starnik/ebill','/api/starnik/ebill/preference','/api/starnik/payment','/api/starnik/payment/prepare','/api/starnik/payment/review','/api/starnik/payment/receipt','/api/starnik/payment/pay','/api/starnik/autopay','/api/starnik/autopay/prepare','/api/starnik/autopay/review','/api/starnik/autopay/enable','/api/starnik/autopay/disable','/api/starnik/ach','/api/starnik/ach/prepare','/api/starnik/ach/review','/api/starnik/ach/save','/api/starnik/ach/deactivate','/api/starnik/ach/delete','/api/starnik/wallet','/api/starnik/wallet/method','/api/starnik/wallet/prepare','/api/starnik/wallet/review','/api/starnik/wallet/save','/api/starnik/wallet/remove','/api/starnik/guest/quote','/api/starnik/guest/review','/api/starnik/guest/pay','/api/starnik/guest/receipt','/api/starnik/guest/lookup','/api/starnik/guest/account','/api/starnik/login','/api/starnik/logout','/api/starnik/history','/api/starnik/account','/api/starnik/recovery/request','/api/starnik/recovery/grant','/api/starnik/recovery/complete','/api/starnik/signup/request','/api/starnik/signup/resend','/api/starnik/signup/grant','/api/starnik/signup/username','/api/starnik/signup/complete','/api/starnik/scheduled','/api/starnik/scheduled/review','/api/starnik/scheduled/prepare','/api/starnik/scheduled/confirm','/api/starnik/scheduled/cancel','/api/starnik/accounts','/api/starnik/accounts/link','/api/starnik/accounts/switch','/api/starnik/accounts/unlink','/api/starnik/mailing-address'].includes(url.pathname))throw new Fault('This operation is not implemented for the Starnik construction slice',404);
         const cusiSite=world.session(id,null).site.runtime.kind==='cusi';
         const paymentusSite=world.session(id,null).site.runtime.kind==='paymentus';
         if(url.pathname.startsWith('/api/paymentus/')&&!paymentusSite)throw new Fault('Paymentus operation unavailable',404);
-        if(paymentusSite&&!url.pathname.startsWith('/api/mail')&&!['/api/session','/api/login','/api/logout','/api/reset/request','/api/paymentus/register','/api/paymentus/link/verify','/api/paymentus/link/review','/api/paymentus/link/add','/api/paymentus/link/receipt','/api/paymentus/account','/api/paymentus/autopay','/api/paymentus/autopay/quote','/api/paymentus/autopay/review','/api/paymentus/autopay/confirm','/api/paymentus/wallet','/api/paymentus/wallet/save','/api/paymentus/wallet/edit','/api/paymentus/wallet/remove','/api/paymentus/preferences','/api/paymentus/bills','/api/paymentus/history','/api/paymentus/bill-history','/api/paymentus/statement','/api/paymentus/quote','/api/paymentus/review','/api/paymentus/pay','/api/paymentus/receipt','/api/paymentus/recovery/grant','/api/paymentus/recovery/complete'].includes(url.pathname))throw new Fault('This operation is not implemented for the Paymentus construction slice',404);
+        if(paymentusSite&&!url.pathname.startsWith('/api/mail')&&!url.pathname.startsWith('/api/paymentus/portal/')&&!['/api/session','/api/login','/api/logout','/api/reset/request','/api/paymentus/register','/api/paymentus/link/verify','/api/paymentus/link/review','/api/paymentus/link/add','/api/paymentus/link/receipt','/api/paymentus/account','/api/paymentus/autopay','/api/paymentus/autopay/quote','/api/paymentus/autopay/review','/api/paymentus/autopay/confirm','/api/paymentus/wallet','/api/paymentus/wallet/save','/api/paymentus/wallet/edit','/api/paymentus/wallet/remove','/api/paymentus/preferences','/api/paymentus/bills','/api/paymentus/history','/api/paymentus/bill-history','/api/paymentus/statement','/api/paymentus/quote','/api/paymentus/review','/api/paymentus/pay','/api/paymentus/receipt','/api/paymentus/recovery/grant','/api/paymentus/recovery/complete'].includes(url.pathname))throw new Fault('This operation is not implemented for the Paymentus construction slice',404);
         if(url.pathname.startsWith('/api/cusi/')&&!cusiSite)throw new Fault('CUSI operation unavailable',404);
         if(cusiSite&&!url.pathname.startsWith('/api/cusi/')&&!url.pathname.startsWith('/api/mail')&&url.pathname!=='/api/session')throw new Fault('This operation is not implemented for the CUSI construction slice',404);
         if(url.pathname.startsWith('/api/mychart/')&&world.session(id,null).site.runtime.kind!=='medical')throw new Fault('Medical operation unavailable',404);
@@ -116,12 +127,18 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           if(url.pathname==='/api/starnik/payment')return json(res,world.starnikPaymentOptions(id,session));
           if(['/api/starnik/payment/review','/api/starnik/payment/receipt'].includes(url.pathname))return json(res,world.starnikPaymentReview(id,session,c.bw_starnik_payment,url.pathname.endsWith('/receipt')));
           if(url.pathname==='/api/starnik/autopay')return json(res,world.starnikAutoPay(id,session));
+          if(url.pathname==='/api/starnik/ach')return json(res,world.starnikAchAction(id,session,'view'));
+          if(url.pathname==='/api/starnik/ach/review')return json(res,world.starnikAchAction(id,session,'review',{},c.bw_starnik_ach));
           if(url.pathname==='/api/starnik/autopay/review')return json(res,world.starnikAutoPayReview(id,session,c.bw_starnik_autopay));
           if(url.pathname==='/api/starnik/wallet/method')return json(res,world.starnikWalletMethod(id,session,url.searchParams.get('methodId')));
           if(url.pathname==='/api/starnik/wallet')return json(res,world.starnikWallet(id,session));
           if(url.pathname==='/api/starnik/wallet/review')return json(res,world.starnikWalletReview(id,session,c.bw_starnik_wallet));
           if(url.pathname==='/api/starnik/history'){const filter=url.searchParams.get('showAll');if(filter!==null&&!['true','false'].includes(filter))throw new Fault('Invalid history filter');return json(res,world.starnikHistory(id,session,{accountId:url.searchParams.get('accountId')??undefined,showAll:filter==='true'}));}
           if(url.pathname==='/api/starnik/account')return json(res,world.starnikAccount(id,session));
+          if(url.pathname==='/api/starnik/scheduled')return json(res,world.starnikScheduleOp(id,'list',{session}));
+          if(url.pathname==='/api/starnik/scheduled/review')return json(res,world.starnikScheduleOp(id,'review',{session,token:c.bw_starnik_schedule}));
+          if(url.pathname==='/api/starnik/accounts')return json(res,world.starnikAccounts(id,session));
+          if(url.pathname==='/api/starnik/mailing-address')return json(res,world.starnikMailing(id,session));
           if(url.pathname==='/api/paymentus/link/review')return json(res,world.paymentusLinkReview(id,session,c.bw_paymentus_link));
           if(url.pathname==='/api/paymentus/link/receipt')return json(res,world.paymentusLinkReview(id,session,c.bw_paymentus_link,true));
           if(url.pathname==='/api/paymentus/preferences')return json(res,world.paymentusPreferences(id,session,url.searchParams.get('accountId')));
@@ -137,9 +154,11 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
             res.writeHead(200,{'Content-Type':'application/pdf','Content-Disposition':`attachment; filename="${document.filename}"`,'Content-Length':document.bytes.length,'Cache-Control':'no-store'});
             return res.end(document.bytes);
           }
+          if(url.pathname.startsWith('/api/paymentus/portal/'))return json(res,world.paymentusPortal(id,session,url.pathname.slice('/api/paymentus/portal/'.length),Object.fromEntries(url.searchParams),{quote:c.bw_paymentus_quote},'GET').result);
           if(url.pathname==='/api/paymentus/review')return json(res,world.paymentusReview(id,session,c.bw_paymentus_quote));
           if(url.pathname==='/api/paymentus/receipt')return json(res,world.paymentusReview(id,session,c.bw_paymentus_quote,true));
           if(url.pathname==='/api/paymentus/recovery/grant')return json(res,world.paymentusRecoveryGrant(id,c.bw_paymentus_reset));
+          if(url.pathname.startsWith('/api/cusi/portal/')){const op=url.pathname.slice(17);if(!['overview','bill','history','wallet','payment/options','payment/review','payment/receipt','scheduled','autopay','autopay/review','preferences'].includes(op))throw new Fault('Unknown portal operation',404);return json(res,world.cusiPortal(id,session,op,{invoiceId:url.searchParams.get('invoiceId'),scheduleId:url.searchParams.get('scheduleId')},op.startsWith('autopay')?c.bw_cusi_autopay:c.bw_cusi_quote));}
           if(url.pathname==='/api/cusi/account')return json(res,world.cusiAccount(id,session));
           if(url.pathname==='/api/cusi/bill')return json(res,world.cusiBill(id,session,url.searchParams.get('invoiceId')));
           if(url.pathname==='/api/cusi/review')return json(res,world.cusiReview(id,session,c.bw_cusi_quote));
@@ -158,6 +177,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           if(url.pathname==='/api/mychart/review')return json(res,world.medicalReview(id,session,c.bw_medical_quote));
           if(url.pathname==='/api/mychart/receipt')return json(res,world.medicalReceipt(id,c.bw_medical_quote));
           if (url.pathname === '/api/session') return json(res, world.session(id, session));
+          if (url.pathname === '/api/verify/status') return json(res, world.otpStatus(id, c.bw_otp));
           if (['/api/authoritypay/guest', '/api/smarthub/guest', '/api/utility/guest'].includes(url.pathname)) return json(res, world.smartGuestDashboard(id, c.bw_lookup));
           if (url.pathname === '/api/dashboard') return json(res, world.dashboard(id, session));
           if (url.pathname === '/api/bank-draft/submission') return json(res,world.bankDraftReceipt(id,c.bw_draft));
@@ -180,6 +200,8 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           else if(url.pathname==='/api/starnik/payment/pay')result=world.starnikPaymentPay(id,session,c.bw_starnik_payment,{authorize:input.authorize});
           else if(url.pathname==='/api/starnik/autopay/prepare'){const r=world.starnikAutoPayPrepare(id,session,input);res.setHeader('Set-Cookie',cookie('bw_starnik_autopay',r.token,600));result={ok:true};}
           else if(url.pathname==='/api/starnik/autopay/enable')result=world.starnikAutoPayEnable(id,session,c.bw_starnik_autopay,input);
+          else if(url.pathname==='/api/starnik/ach/prepare'){const r=world.starnikAchAction(id,session,'prepare',input);res.setHeader('Set-Cookie',cookie('bw_starnik_ach',r.token,900));result={ok:true};}
+          else if(['/api/starnik/ach/save','/api/starnik/ach/deactivate','/api/starnik/ach/delete'].includes(url.pathname))result=world.starnikAchAction(id,session,url.pathname.split('/').at(-1),input,c.bw_starnik_ach);
           else if(url.pathname==='/api/starnik/autopay/disable')result=world.starnikAutoPayDisable(id,session,input);
           else if(url.pathname==='/api/starnik/wallet/prepare'){const r=world.starnikWalletPrepare(id,session,input);res.setHeader('Set-Cookie',cookie('bw_starnik_wallet',r.token,600));result={ok:true};}
           else if(url.pathname==='/api/starnik/wallet/save')result=world.starnikWalletSave(id,session,c.bw_starnik_wallet,{authorize:input.authorize});
@@ -192,7 +214,15 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           else if(url.pathname==='/api/starnik/signup/complete')result=world.starnikRegistrationComplete(id,c.bw_starnik_signup,input);
           else if(url.pathname==='/api/starnik/recovery/request')result=world.starnikRecoveryRequest(id,input);
           else if(url.pathname==='/api/starnik/recovery/complete'){result=world.starnikRecoveryComplete(id,{...input,token:c.bw_starnik_reset});res.setHeader('Set-Cookie',[cookie('bw_starnik_reset','',0),cookie('bw_session','',0)]);}
+          else if(url.pathname==='/api/starnik/accounts/link')result=world.starnikAccountLink(id,session,input);
+          else if(url.pathname==='/api/starnik/accounts/switch')result=world.starnikAccountSwitch(id,session,input);
+          else if(url.pathname==='/api/starnik/accounts/unlink')result=world.starnikAccountUnlink(id,session,input);
+          else if(url.pathname==='/api/starnik/mailing-address')result=world.starnikMailingSave(id,session,input);
+          else if(url.pathname==='/api/starnik/scheduled/prepare'){const r=world.starnikScheduleOp(id,'prepare',{session,input});res.setHeader('Set-Cookie',cookie('bw_starnik_schedule',r.token,600));result={ok:true};}
+          else if(url.pathname==='/api/starnik/scheduled/confirm')result=world.starnikScheduleOp(id,'confirm',{session,token:c.bw_starnik_schedule,input});
+          else if(url.pathname==='/api/starnik/scheduled/cancel')result=world.starnikScheduleOp(id,'cancel',{session,input});
           else if(url.pathname==='/api/starnik/logout'){result=world.logout(id,session);res.setHeader('Set-Cookie',cookie('bw_session','',0));}
+          else if(url.pathname.startsWith('/api/paymentus/portal/')){const r=world.paymentusPortal(id,session,url.pathname.slice('/api/paymentus/portal/'.length),input,{quote:c.bw_paymentus_quote},'POST');if(r.cookie)res.setHeader('Set-Cookie',cookie(r.cookie.name,r.cookie.value,r.cookie.maxAge));result=r.result;}
           else if(url.pathname==='/api/paymentus/quote'){const r=world.paymentusQuote(id,session,input);res.setHeader('Set-Cookie',cookie('bw_paymentus_quote',r.token,600));const{token,...safe}=r;result=safe;}
           else if(url.pathname==='/api/paymentus/autopay/quote'){const r=world.paymentusAutoPayQuote(id,session,input);res.setHeader('Set-Cookie',cookie('bw_paymentus_autopay',r.token,600));const{token,...safe}=r;result=safe;}
           else if(url.pathname==='/api/paymentus/autopay/confirm')result=world.paymentusAutoPayConfirm(id,session,{token:c.bw_paymentus_autopay,authorize:input.authorize,acknowledgeCityDraft:input.acknowledgeCityDraft});
@@ -208,6 +238,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           else if(url.pathname==='/api/cusi/registration/complete')result=world.cusiRegistrationComplete(id,{...input,token:c.bw_cusi_registration});
           else if(url.pathname==='/api/cusi/registration/recovery')result=world.cusiRegistrationRecovery(id,c.bw_cusi_registration);
           else if(url.pathname==='/api/cusi/login')result=world.cusiLogin(id,input);
+          else if(url.pathname.startsWith('/api/cusi/portal/')){const op=url.pathname.slice(17);if(!['wallet/card','wallet/bank','wallet/remove','payment/quote','payment/confirm','scheduled/update','scheduled/cancel','autopay/quote','autopay/confirm','autopay/cancel','preferences/save'].includes(op))throw new Fault('Unknown portal operation',404);const autopayOp=op.startsWith('autopay');result=world.cusiPortal(id,session,op,input,autopayOp?c.bw_cusi_autopay:c.bw_cusi_quote);if(op.endsWith('/quote')){res.setHeader('Set-Cookie',cookie(autopayOp?'bw_cusi_autopay':'bw_cusi_quote',result.token,3600));result={ok:true};}}
           else if(url.pathname==='/api/cusi/quote'){const r=world.cusiQuote(id,session,input);res.setHeader('Set-Cookie',cookie('bw_cusi_quote',r.token,3600));const{token,...safe}=r;result=safe;}
           else if(url.pathname==='/api/cusi/pay')result=world.cusiPay(id,session,{token:c.bw_cusi_quote,authorize:input.authorize});
           else if(url.pathname==='/api/cusi/logout'){result=world.logout(id,session);res.setHeader('Set-Cookie',cookie('bw_session','',0));}
@@ -231,9 +262,9 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           else if (url.pathname === '/api/identity/begin') result=world.identityBegin(id,input);
           else if (url.pathname.startsWith('/api/wallet/')) result=world.wallet(id,session,url.pathname.slice('/api/wallet/'.length),input);
           else if (url.pathname === '/api/paperless') result=world.paperless(id,session,input);
-          else if (url.pathname === '/api/login') result = world.login(id, input);
+          else if (url.pathname === '/api/login') { result = world.login(id, input); if (result.challenge) res.setHeader('Set-Cookie', cookie('bw_otp', result.challenge, 300)); }
           else if (url.pathname === '/api/google/begin') { result = google.begin(id, `http://127.0.0.1:${publicServer.address().port}`); res.setHeader('Set-Cookie', cookie('bw_oauth', result.state, 600)); result = { authorizationUrl: result.authorizationUrl }; }
-          else if (url.pathname === '/api/verify') result = world.verifyOtp(id, input);
+          else if (url.pathname === '/api/verify') { result = world.verifyOtp(id, { ...input, challenge: input.challenge || c.bw_otp }); res.setHeader('Set-Cookie', cookie('bw_otp', '', 0)); }
           else if (['/api/authoritypay/lookup', '/api/smarthub/lookup', '/api/utility/lookup'].includes(url.pathname)) { result = world.smartLookup(id, input); if (result.lookupToken) res.setHeader('Set-Cookie', cookie('bw_lookup', result.lookupToken, 900)); }
           else if (url.pathname === '/api/smarthub/recover-email') result = world.recoverRegisteredEmail(id, input);
           else if (url.pathname === '/api/smarthub/change-password') result=world.changeFirstPassword(id,input);
@@ -262,12 +293,13 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           else if (url.pathname === '/api/mail/logout') { res.setHeader('Set-Cookie', cookie('bw_mail', '', 0)); result = { ok: true }; }
           else throw new Fault('Operation not found', 404);
           if (result.rejected) throw new Fault(result.message,401);
-          if (result.session) { res.setHeader('Set-Cookie', cookie('bw_session', result.session)); const { session: _, ...safe } = result; result = safe; }
+          if (result.session) { res.setHeader('Set-Cookie', [...[res.getHeader('Set-Cookie') || []].flat(), cookie('bw_session', result.session)]); const { session: _, ...safe } = result; result = safe; }
           return json(res, result);
         }
         throw new Fault('Operation not found', 404);
       }
       if (req.method === 'GET') {
+        if(c.bw_episode){world.enter(c.bw_episode,c.bw_access);if(world.session(c.bw_episode,null).site.runtime.kind==='wipp')return wippPage(url,res);}
         let snapshotPath = url.pathname, dentalBehavior=false;
         let cusiBehavior=false,cusiPage=false;
         let paymentusPage=false,starnikPage=false,starnikBehavior=false;
@@ -286,11 +318,11 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           if(world.session(c.bw_episode,null).site.runtime.kind==='paymentus'){
             paymentusPage=true;
             if(url.pathname==='/paymentus/reset'&&url.searchParams.has('token')){world.paymentusRecoveryGrant(c.bw_episode,url.searchParams.get('token'),true);res.writeHead(302,{Location:'/paymentus/reset','Set-Cookie':cookie('bw_paymentus_reset',url.searchParams.get('token'),900)});return res.end();}
-            if(['/paymentus/login','/paymentus/recover','/paymentus/reset','/paymentus/accounts','/paymentus/register','/paymentus/add-account','/paymentus/verify-account','/paymentus/account-created','/paymentus/terms','/paymentus/bills','/paymentus/history','/paymentus/bill-history','/paymentus/autopay','/paymentus/autopay/review','/paymentus/autopay/confirmation','/paymentus/wallet','/paymentus/wallet/add','/paymentus/wallet/edit','/paymentus/wallet/remove','/paymentus/preferences','/paymentus/pay','/paymentus/review','/paymentus/receipt'].includes(url.pathname)){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});return res.end(assets.get('paymentus.html'));}
+            if(['/paymentus/login','/paymentus/recover','/paymentus/reset','/paymentus/accounts','/paymentus/register','/paymentus/add-account','/paymentus/verify-account','/paymentus/account-created','/paymentus/terms','/paymentus/bills','/paymentus/history','/paymentus/bill-history','/paymentus/autopay','/paymentus/autopay/review','/paymentus/autopay/confirmation','/paymentus/wallet','/paymentus/wallet/add','/paymentus/wallet/edit','/paymentus/wallet/remove','/paymentus/preferences','/paymentus/pay','/paymentus/review','/paymentus/receipt','/paymentus/profile','/paymentus/scheduled','/paymentus/scheduled/edit','/paymentus/scheduled/cancel','/paymentus/pay-multiple','/paymentus/multi-review','/paymentus/multi-receipt'].includes(url.pathname)){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});return res.end(assets.get('paymentus.html'));}
             if(url.pathname==='/')snapshotPath='/reference-pages/biller_c8edde62f56ee14f50e0-website/index.html';
           }
           if(world.session(c.bw_episode,null).site.runtime.kind==='cusi'){
-            cusiPage=true;const kind=Object.keys(cusiRoutes).find(k=>cusiRoutes[k]===url.pathname)||(['/Account/Overview','/Account/Bill','/Account/Payment','/Account/PaymentReview','/Account/Receipt','/Account/ResetPassword'].includes(url.pathname)?'links-pay_bill':null);
+            cusiPage=true;const kind=Object.keys(cusiRoutes).find(k=>cusiRoutes[k]===url.pathname)||(['/Account/Overview','/Account/Bill','/Account/Payment','/Account/PaymentReview','/Account/Receipt','/Account/ResetPassword','/Account/History','/Account/PaymentMethods','/Account/ScheduledPayment','/Account/AutoPay','/Account/AutoPayReview','/Account/Preferences','/Help/PaymentBilling'].includes(url.pathname)?'links-pay_bill':null);
             if(url.pathname==='/Account/ResetPassword'&&url.searchParams.has('token')){world.cusiRecoveryGrant(c.bw_episode,url.searchParams.get('token'));res.writeHead(302,{Location:'/Account/ResetPassword','Set-Cookie':cookie('bw_cusi_reset',url.searchParams.get('token'),900)});return res.end();}
             if(kind){snapshotPath='/reference-pages/biller_182c5bcdeb2841397831-'+kind+'/index.html';cusiBehavior=['links-pay_bill','recovery','registration'].includes(kind);}
           }
@@ -312,7 +344,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
         if (publicSnapshots.has(snapshotPath)) {
           const snapshot = publicSnapshots.get(snapshotPath);
           res.writeHead(200, { 'Content-Type': snapshot.contentType==='text/html'?'text/html; charset=utf-8':snapshot.contentType, 'Cache-Control': 'no-store' });
-          if(starnikPage&&snapshot.contentType==='text/html'){let markup=starnikSourceLinks(snapshot.content.toString('utf8'),starnikSourceRoutes);if(starnikBehavior)markup=markup.replace('</head>','<link rel="stylesheet" href="/starnik.css"></head>').replace('</body>','<script src="/starnik.js" defer></script></body>');return res.end(markup);}
+          if(starnikPage&&snapshot.contentType==='text/html'){let markup=starnikSourceLinks(snapshot.content.toString('utf8'),starnikSourceRoutes);if(starnikBehavior)markup=markup.replace('</head>','<link rel="stylesheet" href="/starnik.css"></head>').replace('</body>','<script src="/starnik.js"'+(world.session(c.bw_episode,null).site.runtime.inline_confirmations===true?' data-inline-confirm="true"':'')+' defer></script></body>');else if(world.session(c.bw_episode,null).site.runtime.public_behavior==='inframark-public.js')markup=markup.replace('</body>','<script src="/inframark-public.js" defer></script></body>');return res.end(markup);}
           if(cusiPage&&snapshot.contentType==='text/html'){let markup=snapshot.content.toString('utf8');for(const [kind,path]of Object.entries(cusiRoutes))markup=markup.replaceAll('href="/reference-pages/biller_182c5bcdeb2841397831-'+kind+'/index.html"','href="'+path+'"');if(cusiBehavior)markup=markup.replace('</head>','<link rel="stylesheet" href="/cusi.css"></head>').replace('</body>','<script src="/cusi.js" defer></script></body>');return res.end(markup);}
           if(paymentusPage&&snapshot.contentType==='text/html')return res.end(snapshot.content.toString('utf8').replace('<a rel="noopener" aria-disabled="true" title="This destination is not yet available in Billworld">Visit the Paymentus Customer Portal link</a>','<a href="/paymentus/login">Visit the Paymentus Customer Portal link</a>'));
           return res.end(dentalBehavior?snapshot.content.toString('utf8').replace('</head>','<link rel="stylesheet" href="/personapay.css"></head>').replace('</body>','<script src="/personapay.js" defer></script></body>'):snapshot.content);
@@ -331,10 +363,10 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           res.writeHead(200, { 'Content-Type': 'image/png' }); return res.end(assets.get('juneau-logo.png'));
         }
         const requestedAsset = url.pathname.slice(1);
-        if(starnikPage&&!['starnik.js','starnik.css','catalog-public.js','onswc-public.js'].includes(requestedAsset))throw new Fault('Starnik route not implemented',404);
+        if(starnikPage&&!['starnik.js','starnik.css','catalog-public.js','onswc-public.js','inframark-public.js'].includes(requestedAsset))throw new Fault('Starnik route not implemented',404);
         if(paymentusPage&&!['paymentus.js','paymentus.css','catalog-public.js','onswc-public.js'].includes(requestedAsset))throw new Fault('Paymentus route not implemented',404);
         if(cusiPage&&!assets.has(requestedAsset))throw new Fault('CUSI route not implemented',404);
-        const name = ['starnik.css','starnik.js','paymentus.js','paymentus.css','catalog-public.js','onswc-public.js','app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','personapay.css','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css'].includes(requestedAsset) ? requestedAsset : 'index.html';
+        const name = ['starnik.css','starnik.js','inframark-public.js','paymentus.js','paymentus.css','catalog-public.js','onswc-public.js','app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','personapay.css','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css'].includes(requestedAsset) ? requestedAsset : 'index.html';
         res.writeHead(200, { 'Content-Type': name.endsWith('.js') ? 'text/javascript' : name.endsWith('.css') ? 'text/css' : 'text/html', 'Cache-Control': 'no-store' });
         return res.end(assets.get(name));
       }
@@ -432,6 +464,10 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   for(const [filename,taskId]of [['western-dental-runner.json','western-dental-full-pay-v1'],['western-dental-partial-runner.json','western-dental-partial-pay-v1'],['western-dental-overpay-runner.json','western-dental-overpay-pay-v1'],['western-dental-recurring-plan-runner.json','western-dental-recurring-plan-v1'],['western-dental-future-plan-runner.json','western-dental-future-plan-v1']]){
     const f=server.world.create({siteId:'western-dental',taskId}),r={...f,startUrl:`${server.baseUrl}/enter/${f.episodeId}/${f.entryToken}`,adminUrl:server.adminUrl,adminToken:server.adminToken};
     writeFileSync(`${root}/data/${filename}`,JSON.stringify(r,null,2),{mode:0o600});console.log(`Western Dental (${taskId}): ${r.startUrl}`);
+  }
+  for(const taskId of ['charlotte-signed-bank-pay-v1','charlotte-quickpay-card-v1','charlotte-register-link-pay-v1']){
+    const f=server.world.create({siteId:'charlotte-county-utilities',taskId}),r={...f,startUrl:`${server.baseUrl}/enter/${f.episodeId}/${f.entryToken}`,adminUrl:server.adminUrl,adminToken:server.adminToken};
+    writeFileSync(`${root}/data/${taskId.replace(/-v1$/,'')}-runner.json`,JSON.stringify(r,null,2),{mode:0o600});console.log(`Charlotte County Utilities (${taskId}): ${r.startUrl}`);
   }
   console.log(`Juneau: ${runner.startUrl}\nSpotify: ${spotifyRunner.startUrl}\nAVEC: ${avecRunner.startUrl}\nHomer: ${homerRunners[0].startUrl}\nHomer registration: ${homerRunners[1].startUrl}\nRunner credentials: billworld/data/*-runner.json\nPrivate grader: ${server.adminUrl}\nMock Google: ${server.googleUrl}`);
   const stop = async () => { await server.close(); process.exit(0); }; process.on('SIGINT', stop); process.on('SIGTERM', stop);

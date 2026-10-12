@@ -2,9 +2,9 @@ import puppeteer from 'puppeteer';
 import assert from 'node:assert/strict';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {start} from '../server.mjs';
-import {constructionSites} from '../registry.mjs';
+import {sites} from '../registry.mjs';
 const dir=new URL('../artifacts/starnik-brand-browser/',import.meta.url);mkdirSync(dir,{recursive:true});
-const site=constructionSites.get('greater-minnesota-gas'),original={name:site.name,runtime:site.runtime};
+const site=sites.get('greater-minnesota-gas'),original={name:site.name,runtime:site.runtime};
 const r=await start({port:0,adminPort:0,dbPath:':memory:',construction:true});
 let browser;const report={scenarios:[],page_errors:[],outbound_requests:[],scope:'Synthetic branding variation on GMG fixture; no additional tenant coverage'};
 try{

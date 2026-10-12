@@ -1,0 +1,19 @@
+{
+  "id": "charlotte-change-autopay-method-v1",
+  "version": 1,
+  "site_id": "charlotte-county-utilities",
+  "evidence_cohort": "documented_autopay_fee_difference_synthetic_change",
+  "prompt": "Log in to the Charlotte County Utilities online payment portal (reach it from the county Utilities website or /cp/ccfl) with email alex@billworld.test and password Billworld-2026!. AutoPay for account 01048-021048 currently charges your Visa ending 4242 ($2.95 fee per payment). Change AutoPay to the saved Checking account ending 1048 so each automatic payment costs $1.00 instead. Do not pay today or change anything else. Afterwards open Automatic Payments again to confirm the change. Private portal screens and timing are simulated; county fees and posting rules are documented.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "ccu_autopay",
+    "billing_account_id": "acct-primary",
+    "enabled": true,
+    "method_id": "bank-1048",
+    "fee_cents": 100,
+    "seed_autopay": "card-4242"
+  }
+}

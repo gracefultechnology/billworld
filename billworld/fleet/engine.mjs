@@ -3,6 +3,7 @@
 import { randomBytes, randomInt, createHash } from 'node:crypto';
 import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'node:fs';
 import { loadCatalog, hash, phoneDigits, AUTOPAY_BANK_ONLY } from './catalog.mjs';
+import { cityIn, placeIn } from './places.mjs';
 
 export const FLEET_REVISION = 'fleet-0.2.0';
 export const START_TIME = Date.parse('2026-10-03T16:00:00Z'); // 12:00 America/New_York
@@ -43,15 +44,38 @@ export function parseMoney(value) {
   return Number(whole || 0) * 100 + Number((frac + '00').slice(0, 2));
 }
 export const isoDate = ms => new Date(ms).toISOString().slice(0, 10);
+// ISO date `n` business days (Mon–Fri) after the ISO date `from` (same rule as kit.addBusinessDays).
+const addBusinessDaysIso = (from, n) => { const d = new Date(`${from}T12:00:00Z`); while (n > 0) { d.setUTCDate(d.getUTCDate() + 1); if (d.getUTCDay() % 6) n--; } return d.toISOString().slice(0, 10); };
 const DATE_FMT = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', year: 'numeric' });
 export const fmtDate = ms => DATE_FMT.format(new Date(ms)); // cached formatter: toLocaleDateString builds one per call (~0.1ms)
 const token = (n = 18) => randomBytes(n).toString('base64url');
 const code6 = () => String(randomInt(100000, 1000000)); // verification codes are never derivable from the episode seed
 const digits = (r, n) => Array.from({ length: n }, () => Math.floor(r() * 10)).join('');
 const filled = v => v != null && String(v).trim() !== '';
+const GUEST_WORD = { accountNumber: 'account number', statementId: 'statement number', parcelId: 'parcel number', plate: 'license plate', phone: 'phone number', lastName: 'last name', zip: 'ZIP code', amountDue: 'amount due', dob: 'date of birth' };
+const REG_WORD = { accountNumber: 'account number', lastName: 'last name', zip: 'ZIP code', email: 'email address', phone: 'phone number', accessCode: 'access code' };
+export const maskEmail = e => String(e || '').replace(/^(.)[^@]*/, '$1•••');
 const luhnCard = (prefix, len) => { let s = prefix; while (s.length < len - 1) s += '4'; let sum = 0; for (let i = 0; i < s.length; i++) { let d = +s[s.length - 1 - i]; if (i % 2 === 0) { d *= 2; if (d > 9) d -= 9; } sum += d; } return s + ((10 - sum % 10) % 10); };
 export const luhn = number => { const s = String(number).replace(/\D/g, ''); if (s.length < 13) return false; let sum = 0; for (let i = 0; i < s.length; i++) { let d = +s[s.length - 1 - i]; if (i % 2 === 1) { d *= 2; if (d > 9) d -= 9; } sum += d; } return sum % 10 === 0; };
-export const TEST_CARDS = { visa: luhnCard('4', 16), mastercard: luhnCard('5', 16), declined: '4000000000000002' };
+export const TEST_CARDS = { visa: luhnCard('4', 16), mastercard: luhnCard('5', 16), amex: luhnCard('37', 15), discover: luhnCard('6011', 16), declined: '4000000000000002' };
+// Card networks. A dossier's billing.cardBrands lists the networks the biller accepts online (default: all four).
+export const CARD_BRANDS = { visa: 'Visa', mastercard: 'Mastercard', amex: 'American Express', discover: 'Discover' };
+export const cardBrandOf = number => { const s = String(number || '').replace(/\D/g, ''); return /^4/.test(s) ? 'visa' : /^3[47]/.test(s) ? 'amex' : /^(?:5|2[2-7])/.test(s) ? 'mastercard' : /^6/.test(s) ? 'discover' : /^3/.test(s) ? 'amex' : null; };
+export const cardBrandsFor = b => b?.dossier?.billing?.cardBrands || null;
+export const brandList = keys => { const w = keys.map(k => CARD_BRANDS[k]); return w.length > 1 ? `${w.slice(0, -1).join(', ')}${w.length > 2 ? ',' : ''} and ${w.at(-1)}` : w[0]; };
+// The brand of the seeded saved card (Visa unless the biller does not take Visa) and a typeable test number for it.
+export const savedCardBrand = b => { const l = cardBrandsFor(b); return !l || l.includes('visa') ? 'visa' : ['mastercard', 'discover', 'amex'].find(k => l.includes(k)); };
+export const expiredCardBrand = b => { const l = cardBrandsFor(b); return !l || l.includes('mastercard') ? 'mastercard' : l.find(k => k !== savedCardBrand(b)) || savedCardBrand(b); };
+// A Luhn-valid test number of the biller's first accepted brand, optionally ending in `last4` (e.g. '1111', '4321').
+const VISA_CLASSIC = { 1111: '4111111111111111', 4321: '4000056655064321' };
+const BRAND_PREFIX = { visa: ['4', 16], mastercard: ['5', 16], amex: ['37', 15], discover: ['6011', 16] };
+export const testCardFor = (b, last4 = null) => {
+  const brand = savedCardBrand(b); if (!last4) return TEST_CARDS[brand];
+  if (brand === 'visa' && VISA_CLASSIC[last4]) return VISA_CLASSIC[last4];
+  const [pre, len] = BRAND_PREFIX[brand];
+  for (let d = 0; d < 10; d++) { const n = `${pre}${'0'.repeat(len - pre.length - 5)}${d}${last4}`; if (luhn(n)) return n; }
+  return TEST_CARDS[brand];
+};
 // MM/YY (or MM/YYYY) → { mm, year } or null.
 const parseExp = exp => { const m = String(exp || '').trim().match(/^(\d{1,2})\s*\/\s*(\d{2}|\d{4})$/); if (!m) return null; const mm = +m[1]; const year = m[2].length === 4 ? +m[2] : 2000 + +m[2]; return mm >= 1 && mm <= 12 ? { mm, year } : null; };
 const monthIndex = ms => new Date(ms).getUTCFullYear() * 12 + new Date(ms).getUTCMonth() + 1;
@@ -64,6 +88,15 @@ const LINES = {
   subscription: ['Membership'], card: ['Purchases', 'Interest charged'], loan: ['Principal', 'Interest', 'Escrow'], medical: ['Office visit', 'Laboratory', 'Insurance adjustment'],
   tax: ['Tax due'], government: ['Registration fee', 'County fee'], toll: ['Toll transactions', 'Account replenishment'], rent: ['Rent', 'Utilities', 'Amenity fee'], insurance: ['Premium'], invoice: ['Services rendered']
 };
+// Home-services billers whose name says the trade get that trade's two line items (same count as the default pair,
+// so the generated amounts do not change); security, warranty and other plans keep 'Service plan' + 'Equipment'.
+const HOME_LINES = [
+  [/lawn|turf|landscap|tree care|weed|tru ?green|lawn doctor|weed man/i, ['Lawn care service', 'Additional treatments']],
+  [/pest|termite|exterminat|orkin|terminix|mosquito|rodent|bug\b/i, ['Pest control service', 'Additional treatments']],
+  [/\bpools?\b|\bspa\b/i, ['Pool service', 'Chemicals & supplies']],
+  [/clean|maid|janitor|carpet/i, ['Cleaning service', 'Supplies']]
+];
+const homeLines = b => HOME_LINES.find(([re]) => re.test(`${b.name || ''} ${b.brand?.shortName || ''}`))?.[1];
 const PLANS = {
   subscription: [['basic', 'Basic', 799], ['standard', 'Standard', 1549], ['premium', 'Premium', 2299]],
   telecom: [['essential', 'Essential 100', 4999], ['plus', 'Plus 500', 6999], ['gig', 'Gigabit', 8999]],
@@ -73,14 +106,36 @@ const BASE = { utility: [4500, 22000], telecom: [5500, 18000], subscription: [79
 const MFA_MODES = ['none', 'email', 'sms'];
 // Dedicated-tier dossier (billers/<id>.json) accessors. Every default below is the family behavior.
 const dossier = b => b?.dossier || null;
-export function plansFor(b) { const d = dossier(b)?.billing?.plans; return d ? d.map(p => [p.id, p.name, p.cents]) : PLANS[b?.kind] || null; }
-export function defaultPlan(b) { const d = dossier(b)?.billing?.plans; if (d) return (d.find(p => p.current) || d[1] || d[0]).id; const l = PLANS[b.kind]; return l ? l[1][0] : null; }
+// Satellite and fixed-wireless ISPs cannot sell gigabit tiers: they get capacity-appropriate family plans.
+const LOW_CAPACITY_PLANS = [['standard', 'Standard 25 Mbps', 4999], ['plus', 'Plus 50 Mbps', 6999], ['max', 'Max 100 Mbps', 8999]];
+export const lowCapacityIsp = b => b?.kind === 'telecom' && b.category === 'internet' && /satellite|fixed[- ]wireless/i.test(`${b.entry?.name || ''} ${b.entry?.service_area_detail || ''}`) && !/fiber|fios|cable/i.test(b.entry?.name || '');
+const familyPlans = b => lowCapacityIsp(b) ? LOW_CAPACITY_PLANS : PLANS[b?.kind];
+export function plansFor(b) { const d = dossier(b)?.billing?.plans; return d ? d.map(p => [p.id, p.name, p.cents]) : familyPlans(b) || null; }
+export function defaultPlan(b) { const d = dossier(b)?.billing?.plans; if (d) return (d.find(p => p.current) || d[1] || d[0]).id; const l = familyPlans(b); return l ? l[1][0] : null; }
+// The cancel flow's "stay and save" step: subscription/telecom kinds, unless the dossier says the biller has none.
+export const retentionOfferFor = b => ['subscription', 'telecom'].includes(b?.kind) && dossier(b)?.billing?.retentionOffer !== false;
 export function methodTypesFor(b, { guest = false, autopay = false } = {}) {
   const bl = dossier(b)?.billing || {};
   if (autopay) { if (bl.autopay?.methodTypes) return bl.autopay.methodTypes; const def = AUTOPAY_BANK_ONLY.has(b?.template) ? ['bank'] : ['bank', 'card']; const both = bl.methods ? def.filter(t => bl.methods.includes(t)) : def; return both.length ? both : bl.methods; }
   return (guest && bl.guestMethods) || bl.methods || ['bank', 'card'];
 }
 // The saved method generated tasks and reference solutions use: the checking account, or the Visa for card-only billers.
+// Bills that renew yearly rather than monthly (vehicle registration, property and income tax): seeded history is
+// yearly renewal notices or tax bills, each paid once, not twelve monthly bills.
+export const annualBill = b => b.entry?.bill_type === 'vehicle-registration' || b.kind === 'tax';
+// Next dates of a dossier tax calendar (billing.taxSchedule.installments [{due: 'MM-DD'}]) after `clock`, in order, at
+// the clock's time of day. The first is at least 7 days out, so the open bill is never due today. null without a schedule.
+export function taxDueDates(b, clock) {
+  const list = dossier(b)?.billing?.taxSchedule?.installments; if (!list?.length) return null;
+  const c = new Date(clock); const out = []; let prev = clock + 6 * DAY;
+  for (const { due } of list) {
+    const [mm, dd] = String(due).split('-').map(Number); let y = new Date(prev).getUTCFullYear();
+    let t = Date.UTC(y, mm - 1, dd, c.getUTCHours(), c.getUTCMinutes());
+    while (t <= prev) t = Date.UTC(++y, mm - 1, dd, c.getUTCHours(), c.getUTCMinutes());
+    out.push(t); prev = t;
+  }
+  return out;
+}
 export const hasBank = b => methodTypesFor(b).includes('bank') || methodTypesFor(b, { autopay: true }).includes('bank');
 export const primaryMethodId = (b, { autopay = false } = {}) => methodTypesFor(b, { autopay }).includes('bank') ? 'pm-chk' : 'pm-card';
 // When AutoPay drafts, in words (no chosen day): the dossier's daysAfterBill / leadDays, else the due date.
@@ -147,29 +202,34 @@ export class FleetWorld {
   // Kind-specific, internally consistent line items for one bill of `cents`.
   billLines(b, kind, cents, r, ctx = {}) {
     if (kind === 'subscription' && ctx.planCents === cents) return [{ desc: 'Membership', cents }];
+    if (kind === 'invoice' && ctx.planLine && ctx.planCents === cents) return [{ desc: ctx.planLine, cents }];
     if (kind === 'telecom' && ctx.telecom) { const { service, equipment, taxes } = ctx.telecom; return [{ desc: 'Monthly service', cents: service }, { desc: 'Equipment rental', cents: equipment }, { desc: 'Taxes, fees & surcharges', cents: taxes }]; }
     if (kind === 'card') { const interest = ctx.interestCents ?? Math.round(cents * between(r, 15, 25) / 1000); return [{ desc: 'Purchases', cents: cents - interest }, { desc: 'Interest charged', cents: interest }]; }
     if (kind === 'loan') {
       const escrow = ctx.escrowCents || 0; const pi = cents - escrow; const interest = Math.round(pi * (ctx.interestShare ?? 0.4));
       return [{ desc: 'Principal', cents: pi - interest }, { desc: 'Interest', cents: interest }, ...(escrow ? [{ desc: 'Escrow', cents: escrow }] : [])];
     }
-    const names = kind === 'utility' ? (LINES.utility[b.entry.bill_type] || LINES.utility.water) : LINES[kind] || LINES.invoice;
+    const names = kind === 'utility' ? ((b.entry.bill_type === 'home-services' && homeLines(b)) || LINES.utility[b.entry.bill_type] || LINES.utility.water) : LINES[kind] || LINES.invoice;
     const parts = names.map(() => 1 + r() * 3); const total = parts.reduce((a, c) => a + c, 0); const out = parts.map(p => Math.floor(cents * p / total)); out[0] += cents - out.reduce((a, c) => a + c, 0);
     return names.map((desc, i) => ({ desc, cents: out[i] }));
   }
   telecomBill(planCents, r) { const equipment = between(r, 0, 3) * 500; const taxes = Math.round((planCents + equipment) * between(r, 6, 14) / 100); return { service: planCents, equipment, taxes, total: planCents + equipment + taxes }; }
-  // Service address in the biller's state: the biller's own city/ZIP when its HQ is in that state, else the capital with a valid ZIP prefix.
+  // Service address in the biller's state: the biller's own city/ZIP when its HQ is in that state, else a city it serves, else the capital (real ZIPs).
   serviceLocation(ep, b) {
     const r = rng(`${ep.seed}:${b.id}:addr`);
+    const lo = b.dossier?.contact?.locality; // dossier: the biller's real locality (city and its ZIPs)
+    if (lo) return { city: lo.city, state: lo.state, zip: String(lo.zips[between(r, 0, lo.zips.length - 1)]) };
     const hq = String(b.entry.hq_address || '').match(/,\s*([A-Za-z .'-]+?),?\s+([A-Z]{2})\s+(\d{5})\b/);
     const area = (b.entry.service_area || []).find(s => STATES[s]);
     const state = area || (hq && STATES[hq[2]] ? hq[2] : null) || 'OH';
     if (hq && hq[2] === state) return { city: hq[1].trim(), state, zip: hq[3] };
     // A municipal service area that names one city ("City of Philadelphia"): the customer lives in that city.
     const town = String(b.contact?.serviceArea || '').match(/^(?:the )?(?:City|Town|Village|Borough) of ([A-Z][A-Za-z.' -]{1,40})$/);
+    // A city this biller names (service area, name, raw research area): that city's own ZIPs (places.mjs).
+    const named = cityIn(state, [b.contact?.serviceArea, b.entry.name, b.entry.service_area_detail]);
+    if (named) return { city: named.city, state, ...placeIn(state, [named.city], r) };
     if (town && STATES[state]) { const [, lo, hi] = STATES[state]; return { city: town[1].trim(), state, zip: `${String(between(r, lo, hi)).padStart(3, '0')}${digits(r, 2)}` }; }
-    const [city, lo, hi] = STATES[state];
-    return { city, state, zip: `${String(between(r, lo, hi)).padStart(3, '0')}${digits(r, 2)}` };
+    return { state, ...placeIn(state, [], r) }; // the state capital with one of its own ZIPs
   }
 
   // ---------- account seeding (lazy, deterministic per seed + biller) ----------
@@ -187,22 +247,33 @@ export class FleetWorld {
     let amount = sc.amountCents ?? between(r, base[0], base[1]);
     let telecom = null;
     if (sc.amountCents == null && kind === 'subscription' && planCents) amount = planCents; // the bill is the plan price
+    // Protection plans and other invoice billers with dossier plan prices (AppleCare One, Asurion Home+) bill the plan price.
+    const invoicePlan = kind === 'invoice' && !!planCents && !!dossier(b)?.billing?.plans;
+    if (sc.amountCents == null && invoicePlan) amount = planCents;
+    // A documented fixed recurring charge without plan tiers (dossier billing.recurringCents, e.g. Asurion Home+ $34.99/mo).
+    const recurring = !planCents && sc.amountCents == null ? dossier(b)?.billing?.recurringCents || null : null;
+    if (recurring) amount = recurring;
     if (sc.amountCents == null && kind === 'telecom' && planCents) { telecom = this.telecomBill(planCents, r); amount = telecom.total; }
     const escrowCents = kind === 'loan' && b.entry.bill_type === 'mortgage' ? Math.round(amount * 0.28) : 0;
     const rateBps = between(r, 299, 899); const interestShare = between(r, 20, 65) / 100;
-    const lineCtx = { planCents, telecom, escrowCents, interestShare };
-    const dueOffset = sc.dueInDays ?? between(r, 6, 19);
+    const lineCtx = { planCents, telecom, escrowCents, interestShare, planLine: invoicePlan ? planList.find(p => p[0] === plan)?.[1] : recurring && kind === 'invoice' ? 'Monthly plan charge' : null, ...(recurring ? { planCents: recurring } : {}) };
+    // A tax biller with a documented calendar (dossier billing.taxSchedule) is due on its real installment dates;
+    // the rolled offset is still drawn so every other seeded value stays the same.
+    const taxDues = kind === 'tax' ? taxDueDates(b, ep.clock) : null;
+    const dueOffset = sc.dueInDays ?? (rolled => taxDues ? Math.round((taxDues[0] - ep.clock) / DAY) : rolled)(between(r, 6, 19));
     const invoices = [];
-    for (let m = 11; m >= 0; m--) {
-      const due = ep.clock + dueOffset * DAY - m * 30 * DAY;
-      const fixed = ['subscription', 'telecom', 'loan'].includes(kind); // plan prices and loan payments do not drift month to month
-      const cents = m === 0 || fixed ? amount : Math.max(100, Math.round(amount * (0.8 + r() * 0.4)));
+    // Vehicle registrations renew once a year: four yearly renewal notices instead of twelve monthly bills.
+    const annual = annualBill(b); const cycleDays = annual ? 365 : 30;
+    for (let m = annual ? 3 : 11; m >= 0; m--) {
+      const due = ep.clock + dueOffset * DAY - m * cycleDays * DAY;
+      const fixed = ['subscription', 'telecom', 'loan'].includes(kind) || (invoicePlan && sc.amountCents == null) || !!recurring; // plan prices and loan payments do not drift month to month
+      const cents = m === 0 || fixed ? amount : Math.max(100, Math.round(amount * (annual ? 0.94 + r() * 0.08 : 0.8 + r() * 0.4)));
       const issuedAt = m === 0 ? Math.min(due - 20 * DAY, ep.clock - DAY) : due - 20 * DAY; // a current bill is never issued in the future
-      invoices.push({ id: `inv-${hash(`${billerId}:${m}:${ep.seed}`, 8)}`, number: `${digits(r, 7)}`, period: `${fmtDate(issuedAt - 30 * DAY)} – ${fmtDate(issuedAt)}`, issuedAt, dueAt: due, amountCents: cents, balanceCents: m === 0 ? cents : 0, lines: this.billLines(b, kind, cents, r, lineCtx), status: m === 0 ? 'open' : 'paid', previousBalanceCents: 0, totalDueCents: m === 0 ? cents : cents });
+      invoices.push({ id: `inv-${hash(`${billerId}:${m}:${ep.seed}`, 8)}`, number: `${digits(r, 7)}`, period: `${fmtDate(issuedAt - cycleDays * DAY)} – ${fmtDate(issuedAt)}`, issuedAt, dueAt: due, amountCents: cents, balanceCents: m === 0 ? cents : 0, lines: this.billLines(b, kind, cents, r, lineCtx), status: m === 0 ? 'open' : 'paid', previousBalanceCents: 0, totalDueCents: m === 0 ? cents : cents });
     }
-    const cur = invoices[11];
+    const cur = invoices.at(-1), prior = invoices.at(-2);
     if (sc.pastDueCents) {
-      invoices[10].balanceCents = sc.pastDueCents; invoices[10].status = 'past_due'; cur.previousBalanceCents = sc.pastDueCents;
+      prior.balanceCents = sc.pastDueCents; prior.status = 'past_due'; cur.previousBalanceCents = sc.pastDueCents;
       const late = this.lateFee(b, sc.pastDueCents); // dossier late payment charge on the unpaid prior balance
       if (late) { cur.lines.push({ desc: 'Late payment charge', cents: late }); cur.amountCents += late; cur.balanceCents += late; }
       cur.totalDueCents = cur.amountCents + sc.pastDueCents;
@@ -217,23 +288,28 @@ export class FleetWorld {
     };
     // Card-only billers (dossier billing.methods without 'bank') get no saved checking account: the saved Visa is primary.
     if (hasBank(b)) acct.methods.push({ id: 'pm-chk', type: 'bank', label: 'Checking', bankName: 'Billworld Federal Credit Union', last4: digits(r, 4), routing: '021000021', holder: ep.persona.name, saved: true, nickname: 'Everyday checking' });
-    if ((sc.savedCard !== false || !hasBank(b)) && methodTypesFor(b).includes('card')) acct.methods.push({ id: 'pm-card', type: 'card', label: 'Visa', brand: 'Visa', last4: TEST_CARDS.visa.slice(-4), exp: '09/29', holder: ep.persona.name, saved: true, nickname: 'Visa rewards' });
-    if (sc.expiredCard && methodTypesFor(b).includes('card')) acct.methods.push({ id: 'pm-old', type: 'card', label: 'Mastercard', brand: 'Mastercard', last4: '4444', exp: '01/26', holder: ep.persona.name, saved: true, expired: true });
+    const sb = CARD_BRANDS[savedCardBrand(b)], xb = CARD_BRANDS[expiredCardBrand(b)];
+    if ((sc.savedCard !== false || !hasBank(b)) && methodTypesFor(b).includes('card')) acct.methods.push({ id: 'pm-card', type: 'card', label: sb, brand: sb, last4: TEST_CARDS[savedCardBrand(b)].slice(-4), exp: '09/29', holder: ep.persona.name, saved: true, nickname: `${sb === 'American Express' ? 'Amex' : sb} rewards` });
+    if (sc.expiredCard && methodTypesFor(b).includes('card')) acct.methods.push({ id: 'pm-old', type: 'card', label: xb, brand: xb, last4: '4444', exp: '01/26', holder: ep.persona.name, saved: true, expired: true });
     if (sc.forgotPassword) acct.password = `Forgotten-${token(6)}!1a`;
     if (sc.declineSavedCard) { const card = acct.methods.find(m => m.id === 'pm-card'); if (card) card.declines = true; }
-    if (acct.autopay.enrolled) { acct.autopay.methodId = primaryMethodId(b, { autopay: true }); acct.autopay.enrolledAt = ep.clock - 90 * DAY; acct.autopay.history.push({ at: ep.clock - 90 * DAY, action: 'enrolled' }); }
+    // A biller that drafts only on fixed days of the month (dossier billing.autopay.days, offered as a draft-day choice by
+    // these templates) has its seeded enrollment on the first of them, so the AutoPay form shows the day it already uses.
+    if (acct.autopay.enrolled) { const apDays = b.dossier?.billing?.autopay?.days; if (Array.isArray(apDays) && apDays.length && ['utility-account', 'rent-portal'].includes(b.template)) acct.autopay.day = apDays[0]; acct.autopay.methodId = primaryMethodId(b, { autopay: true }); acct.autopay.enrolledAt = ep.clock - 90 * DAY; acct.autopay.history.push({ at: ep.clock - 90 * DAY, action: 'enrolled' }); }
     // Payment history: each paid prior bill has the posted payment that paid it (seeded: never counted as the agent's).
     const chk = acct.methods[0];
-    invoices.slice(0, 11).forEach((inv, i) => {
+    invoices.slice(0, -1).forEach((inv, i) => {
       const cents = inv.amountCents - inv.balanceCents; if (cents <= 0) return;
       const at = inv.dueAt - between(r, 1, 6) * DAY; const auto = acct.autopay.enrolled;
       acct.payments.push({ id: `pay-h${hash(`${billerId}:${i}:${ep.seed}`, 6)}`, confirmation: `${auto ? 'AP' : b.brand.monogram}${digits(r, 9)}`, idempotencyKey: null, amountCents: cents, feeCents: 0, methodId: chk.id, methodType: chk.type, methodLast4: chk.last4, methodLabel: chk.label, source: auto ? 'autopay' : 'one_time', createdAt: at, appliedAt: at, postedAt: at + 2 * DAY, payOn: null, status: 'posted', amountKey: 'due', allocations: [{ invoiceId: inv.id, cents }], seeded: true, history: true });
     });
-    if (sc.scheduledPayment) acct.payments.push({ id: `pay-${hash(`${billerId}:sched:${ep.seed}`, 6)}`, confirmation: `SP${digits(r, 9)}`, idempotencyKey: null, amountCents: amount, feeCents: 0, methodId: chk.id, methodType: chk.type, methodLast4: chk.last4, methodLabel: chk.label, source: 'one_time', createdAt: ep.clock - 2 * DAY, payOn: isoDate(ep.clock + 5 * DAY), wasScheduled: true, status: 'scheduled', amountKey: 'due', seeded: true });
+    if (sc.scheduledPayment) acct.payments.push({ id: `pay-${hash(`${billerId}:sched:${ep.seed}`, 6)}`, confirmation: `${b.brand.monogram}${digits(r, 9)}`, idempotencyKey: null, amountCents: amount, feeCents: 0, methodId: chk.id, methodType: chk.type, methodLast4: chk.last4, methodLabel: chk.label, source: 'one_time', createdAt: ep.clock - 2 * DAY, payOn: isoDate(ep.clock + 5 * DAY), wasScheduled: true, status: 'scheduled', amountKey: 'due', seeded: true });
     // No online account yet (register / guest tasks): the earlier payments were made offline, and the new online
     // account starts with an empty wallet.
     if (sc.registered === false && !sc.autopay && !sc.scheduledPayment) acct.methods = [];
     if (planList) acct.service.plan = plan;
+    // Account numbers with a documented prefix (dossier billing.accountNumberPrefix, e.g. TrueAccord's 47-XXXX-XXXX).
+    const prefix = dossier(b)?.billing?.accountNumberPrefix; if (prefix && !sc.accountNumber) acct.accountNumber = `${prefix}${acct.accountNumber.slice(String(prefix).length)}`;
     if (sc.cancelPending && b.capabilities.cancel_service.support === 'supported') Object.assign(acct.service, { status: 'cancel_pending', cancelAt: ep.clock + 12 * DAY, reason: 'moving', requestedAt: ep.clock - 2 * DAY, confirmation: `CX${digits(r, 8)}` });
     if (kind === 'card') {
       const minimumDueCents = this.cardMinimum(b, amount, cur.lines.find(l => l.desc === 'Interest charged')?.cents || 0);
@@ -241,10 +317,18 @@ export class FleetWorld {
     }
     if (kind === 'loan') { const interest = cur.lines.find(l => l.desc === 'Interest')?.cents || 0; Object.assign(acct, { principalCents: Math.max(amount * 12, Math.round(interest * 12 * 10000 / rateBps)), escrowCents, rateBps, minimumDueCents: amount }); }
     if (kind === 'medical') Object.assign(acct, { guarantorId: `G${digits(r, 7)}`, statementId: `S${digits(r, 9)}`, visits: [{ date: fmtDate(ep.clock - 40 * DAY), provider: 'Outpatient services', cents: amount }] });
-    if (kind === 'tax') Object.assign(acct, { parcelId: `${digits(r, 2)}-${digits(r, 3)}-${digits(r, 2)}-${digits(r, 3)}.000`, taxYear: 2026, installments: [{ n: 1, dueAt: ep.clock + dueOffset * DAY, cents: Math.round(amount / 2), paid: false }, { n: 2, dueAt: ep.clock + (dueOffset + 120) * DAY, cents: amount - Math.round(amount / 2), paid: false }] });
+    if (kind === 'tax') {
+      const sched = dossier(b)?.billing?.taxSchedule?.installments;
+      const first = ep.clock + dueOffset * DAY; // scenario dueInDays moves the whole calendar, keeping its gaps
+      const dues = taxDues ? taxDues.map(t => t - taxDues[0] + first) : [first, first + 120 * DAY];
+      const each = Math.round(amount / dues.length);
+      Object.assign(acct, { parcelId: `${digits(r, 2)}-${digits(r, 3)}-${digits(r, 2)}-${digits(r, 3)}.000`, taxYear: dossier(b)?.billing?.taxSchedule?.calendarYear ? new Date(dues[0]).getUTCFullYear() : 2026, installments: dues.map((dueAt, i) => ({ n: i + 1, ...(sched ? { label: sched[i].label } : {}), dueAt, cents: i === dues.length - 1 ? amount - each * i : each, paid: false })) });
+    }
     if (kind === 'toll' || kind === 'government') Object.assign(acct, { plate: `${pick(r, ['BWL', 'KXT', 'MNR', 'TQA'])}${digits(r, 4)}`, vehicles: [{ plate: null, year: 2019, make: pick(r, ['Toyota', 'Honda', 'Ford', 'Subaru']) }] });
     if (kind === 'rent') Object.assign(acct, { unit: `Unit ${between(r, 101, 940)}`, leaseEnds: fmtDate(ep.clock + 200 * DAY) });
     if (kind === 'insurance') Object.assign(acct, { policyNumber: `${pick(r, ['HP', 'AU', 'MA', 'LF'])}${digits(r, 8)}` });
+    // A biller whose sign-up asks for the access code printed on the bill (dossier auth.registrationFields): seed one (own rng: other seeded values do not move).
+    if (dossier(b)?.auth?.registrationFields?.includes('accessCode')) { const ra = rng(`${ep.seed}:${billerId}:access`); acct.accessCode = Array.from({ length: 8 }, () => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[Math.floor(ra() * 32)]).join(''); }
     ep.accounts[billerId] = acct;
     // Snapshots for grading: amounts and settings at episode start, before the agent acts.
     const opts = this.amountOptions(acct); const opt = k => opts.find(o => o.key === k)?.cents ?? null;
@@ -256,8 +340,11 @@ export class FleetWorld {
   }
   billNotice(ep, b, acct) {
     const inv = this.currentInvoice(acct);
-    const ids = [`${noticeLabel(b)}: ${acct.accountNumber}`, acct.statementId && `Statement ID: ${acct.statementId}`, acct.guarantorId && `Guarantor ID: ${acct.guarantorId}`, acct.parcelId && `Parcel number: ${acct.parcelId}`, acct.plate && `License plate: ${acct.plate}`, acct.policyNumber && `Policy number: ${acct.policyNumber}`, !acct.statementId && `${/bill number/i.test(noticeLabel(b)) ? 'Invoice number' : 'Bill number'}: ${inv.number}`, `Service ZIP code: ${acct.zip}`].filter(Boolean);
-    this.mail(ep, b.id, { subject: `Your ${b.brand.shortName} bill is ready`, text: `Hi ${ep.persona.first},\n\nYour statement dated ${fmtDate(inv.issuedAt)} is ready.\n\n${ids.join('\n')}\nAmount due: ${money(Math.max(0, this.balance(acct)))}\nDue date: ${fmtDate(inv.dueAt)}\n\nPay online: {{link:home}}\nKeep this notice: you need your ${noticeLabel(b).toLowerCase()} ${b.capabilities.guest_pay?.support === 'supported' ? 'to register or to pay without signing in' : 'to register for online access'}.`, links: [{ key: 'home', page: 'home', query: null }] });
+    const ids = [`${noticeLabel(b)}: ${acct.accountNumber}`, acct.statementId && `Statement ID: ${acct.statementId}`, acct.guarantorId && `Guarantor ID: ${acct.guarantorId}`, acct.parcelId && b.template !== 'income-tax' && `Parcel number: ${acct.parcelId}`, acct.plate && `License plate: ${acct.plate}`, acct.policyNumber && `Policy number: ${acct.policyNumber}`, acct.accessCode && `Access code (for online registration): ${acct.accessCode}`, !acct.statementId && `${dossier(b)?.auth?.guestLookupFields?.includes('statementId') ? String(dossier(b).labels?.statementId || 'Statement number') : /bill number/i.test(noticeLabel(b)) ? 'Invoice number' : 'Bill number'}: ${inv.number}`, `${acct.kind === 'tax' ? 'ZIP code' : 'Service ZIP code'}: ${acct.zip}`,
+      // Phone-number lookups / sign-in (dossier guestLookupFields or identifier 'phone'): the notice carries the number too.
+      (b.dossier?.auth?.guestLookupFields?.includes('phone') || b.dossier?.auth?.identifier === 'phone') && `${/wireless|mobile|cell/i.test(`${b.entry?.bill_type || ''} ${b.category || ''}`) ? 'Mobile number' : 'Phone number'}: ${ep.persona.phone}`].filter(Boolean);
+    // Subscriptions and memberships bill per renewal, not as monthly statements (the subject keeps "bill is ready" for solvers).
+    this.mail(ep, b.id, { subject: `Your ${b.brand.shortName} ${b.kind === 'subscription' ? 'renewal ' : ''}bill is ready`, text: `Hi ${ep.persona.first},\n\nYour ${b.kind === 'subscription' ? 'renewal bill' : 'statement'} dated ${fmtDate(inv.issuedAt)} is ready.\n\n${ids.join('\n')}\nAmount due: ${money(Math.max(0, this.balance(acct)))}\nDue date: ${fmtDate(inv.dueAt)}\n\nPay online: {{link:home}}\nKeep this notice: you need your ${noticeLabel(b).replace(/\b[A-Z](?=[a-z])/g, c => c.toLowerCase())} ${b.capabilities.guest_pay?.support === 'supported' ? 'to register or to pay without signing in' : 'to register for online access'}.`, links: [{ key: 'home', page: 'home', query: null }] });
   }
   balance(acct) { return acct.invoices.reduce((a, i) => a + i.balanceCents, 0) - (acct.creditCents || 0); }
   currentInvoice(acct) { return acct.invoices[acct.invoices.length - 1]; }
@@ -376,8 +463,10 @@ export class FleetWorld {
     if (input.lastName != null && String(input.lastName).trim().toLowerCase() !== ep.persona.last.toLowerCase()) throw noMatch('no_match');
     if (input.zip != null && ![ep.persona.zip, acct.zip].includes(String(input.zip).trim())) throw noMatch('no_match');
     if (String(input.email || '').trim().toLowerCase() !== ep.persona.email) throw noMatch('email_mismatch');
-    for (const f of dossier(this.biller(billerId))?.auth?.registrationFields || []) if (!filled(input[f])) throw new Fault('Complete every required field.', 400, 'missing');
+    const missing = (dossier(this.biller(billerId))?.auth?.registrationFields || []).filter(f => !filled(input[f]));
+    if (missing.length) throw new Fault(`Complete every required field (missing: ${missing.map(f => REG_WORD[f] || f).join(', ')}).`, 400, 'missing');
     if (input.phone != null && filled(input.phone) && String(input.phone).replace(/\D/g, '').slice(-10) !== ep.persona.phone.replace(/\D/g, '')) throw noMatch('no_match');
+    if (acct.accessCode && String(input.accessCode || '').replace(/[\s-]/g, '').toUpperCase() !== acct.accessCode) throw noMatch('no_match');
     this.checkPassword(input.password, input.confirm, this.biller(billerId));
     acct.registered = true; acct.emailVerified = false; acct.password = input.password; acct.username = ep.persona.email;
     acct.verification = { token: token(12), expiresAt: ep.clock + DAY };
@@ -399,17 +488,19 @@ export class FleetWorld {
     this.guard(ep); const acct = this.account(ep, billerId);
     const id = String(identifier || '').trim().toLowerCase();
     this.event(ep, billerId, 'reset_requested');
-    if (acct.registered && [acct.username.toLowerCase(), acct.accountNumber].includes(id)) {
+    // Any identifier the biller signs in with (email, account number, username, phone) finds the account.
+    if (acct.registered && ([acct.username.toLowerCase(), acct.accountNumber].includes(id) || this.identifierMatches(this.biller(billerId), ep, acct, id))) {
       const now = Date.now(); acct.resetRequests = (acct.resetRequests || []).filter(t => now - t < 3600000);
-      if (acct.resetRequests.length >= 10) { this.event(ep, billerId, 'reset_throttled'); this.persist(ep); return { ok: true }; } // silently throttled: same response
+      if (acct.resetRequests.length >= 10) { this.event(ep, billerId, 'reset_throttled'); this.persist(ep); return { ok: true, sent: false }; } // silently throttled: same response
       acct.resetRequests.push(now);
       acct.resetChallenges.forEach(c => { c.superseded = true; });
       const code = code6();
       const ch = { code, token: token(12), expiresAt: ep.clock + 30 * MINUTE, issuedWall: now, attempts: 0, used: false, superseded: false };
       acct.resetChallenges.push(ch);
       this.mail(ep, billerId, { subject: `Reset your ${this.biller(billerId).brand.shortName} password`, text: `We received a request to reset your password.\n\nVerification code: ${code}\n\nOr open this link: {{link:reset}}\n\nThe code expires in 30 minutes. If you didn't request this, you can ignore this email.`, links: [{ key: 'reset', page: 'reset', query: { token: ch.token } }] });
+      this.persist(ep); return { ok: true, sent: true, to: maskEmail(acct.username) };
     }
-    this.persist(ep); return { ok: true }; // Same response either way: no account enumeration.
+    this.persist(ep); return { ok: true, sent: false }; // The page says the same either way: no account enumeration.
   }
   resetPassword(ep, billerId, { code, token: tok, password, confirm }) {
     this.guard(ep); const acct = this.account(ep, billerId);
@@ -462,16 +553,21 @@ export class FleetWorld {
     const e = parseExp(input.exp); const nowYear = new Date(ep.clock).getUTCFullYear();
     if (!e || e.year * 12 + e.mm < monthIndex(ep.clock) || e.year > nowYear + 20) throw new Fault('Enter a valid, unexpired expiration date (MM/YY).', 400, 'bad_exp');
     if (!/^\d{3,4}$/.test(String(input.cvv || ''))) throw new Fault('Enter the security code.', 400, 'bad_cvv');
-    const m = { id: `pm-${token(5)}`, type: 'card', label: number[0] === '5' ? 'Mastercard' : number[0] === '3' ? 'American Express' : number[0] === '6' ? 'Discover' : 'Visa', brand: null, last4: number.slice(-4), exp: `${String(e.mm).padStart(2, '0')}/${String(e.year % 100).padStart(2, '0')}`, holder: input.holder || ep.persona.name, saved: save, declines: number === TEST_CARDS.declined, ...(guest ? { guestSid: sid } : {}) };
+    const brand = cardBrandOf(number), accepted = cardBrandsFor(this.catalog.billers.get(acct.billerId));
+    if (accepted && !accepted.includes(brand)) throw new Fault(`${brand ? CARD_BRANDS[brand] : 'This card'} is not accepted. We accept ${brandList(accepted)}.`, 400, 'card_brand_not_accepted');
+    const m = { id: `pm-${token(5)}`, type: 'card', label: brand ? CARD_BRANDS[brand] : 'Card', brand: null, last4: number.slice(-4), exp: `${String(e.mm).padStart(2, '0')}/${String(e.year % 100).padStart(2, '0')}`, holder: input.holder || ep.persona.name, saved: save, declines: number === TEST_CARDS.declined, ...(guest ? { guestSid: sid } : {}) };
     m.brand = m.label; acct.methods.push(m); return m;
   }
   abaValid(r) { const d = r.split('').map(Number); return (3 * (d[0] + d[3] + d[6]) + 7 * (d[1] + d[4] + d[7]) + (d[2] + d[5] + d[8])) % 10 === 0; }
   addMethod(ep, billerId, sid, input) { this.guard(ep); const acct = this.requireSession(ep, billerId, sid); const m = this.methodFromInput(ep, acct, { ...input, methodId: null, save: true }); m.saved = true; if (input.nickname) m.nickname = String(input.nickname).slice(0, 40); this.event(ep, billerId, 'method_added', { methodId: m.id, type: m.type }); this.persist(ep); return m; }
-  removeMethod(ep, billerId, sid, { methodId }) {
+  // check: true validates the removal (method exists, not used by AutoPay or a scheduled payment) without removing it,
+  // so the site can ask "Remove … ?" first and still refuse an AutoPay method at once.
+  removeMethod(ep, billerId, sid, { methodId, check = false }) {
     this.guard(ep); const acct = this.requireSession(ep, billerId, sid); const m = acct.methods.find(x => x.id === methodId && !x.removed && x.saved);
     if (!m) throw new Fault('Payment method not found.', 404, 'no_method');
     if (acct.autopay.enrolled && acct.autopay.methodId === methodId) throw new Fault('This method is used for AutoPay. Change or cancel AutoPay before removing it.', 409, 'in_use');
     if (acct.payments.some(p => p.status === 'scheduled' && p.methodId === methodId)) throw new Fault('This method has a scheduled payment. Cancel the payment before removing it.', 409, 'in_use');
+    if (check) return { ok: true, method: m };
     m.removed = true; m.saved = false;
     if (acct.draft?.methodId === methodId) Object.assign(acct.draft, { methodId: null, token: null, feeCents: 0, sig: null });
     this.event(ep, billerId, 'method_removed', { methodId, last4: m.last4 }); this.persist(ep); return { ok: true };
@@ -503,11 +599,11 @@ export class FleetWorld {
     if (acct.kind === 'card') { const f = this.cardFigures(acct); opts.push({ key: 'minimum', label: 'Minimum payment due', cents: f.minimum }, { key: 'statement', label: 'Statement balance', cents: f.statement }, { key: 'current', label: 'Current balance', cents: f.current }); }
     if (acct.kind === 'tax') {
       const inst = acct.installments.find(i => !i.paid);
-      if (inst) {
+      if (inst && acct.installments.length > 1) { // a single annual bill has no separate installment amount
         const cur = this.currentInvoice(acct); const paid = cur.amountCents - Math.max(0, cur.balanceCents);
         const cumulative = acct.installments.filter(i => i.n <= inst.n).reduce((a, i) => a + i.cents, 0);
         const pastDue = acct.invoices.slice(0, -1).reduce((a, i) => a + Math.max(0, i.balanceCents), 0);
-        opts.push({ key: 'installment', label: `Installment ${inst.n}`, cents: Math.min(bal, pastDue + Math.max(0, cumulative - paid)) });
+        opts.push({ key: 'installment', label: inst.label || `Installment ${inst.n}`, cents: Math.min(bal, pastDue + Math.max(0, cumulative - paid)) });
       }
     }
     // fullBalanceOnly: no "other amount" while there is a balance to pay (the engine would refuse it anyway).
@@ -633,8 +729,14 @@ export class FleetWorld {
     const secondary = Object.keys(checks).filter(k => filled(input[k]));
     // The statement / bill number printed on the current bill also identifies it (statementId fields).
     const exact = !!b.dossier?.auth?.guestLookupExact; // the biller's real lookup asks only for these fields (e.g. account number alone)
-    const ok = primaries.length > 0 && primaries.every(k => k === 'phone' ? phoneOk(input[k]) : ids.includes(norm(input[k])) || (k === 'statementId' && norm(input[k]) === norm(inv.number))) && secondary.every(k => checks[k](input[k])) && (secondary.length >= 1 || primaries.length >= 2 || exact) && required.every(k => filled(input[k]));
-    if (!ok) { this.event(ep, billerId, 'guest_lookup_failed'); this.persist(ep); throw new Fault('We could not find a bill matching that information.', 404, 'no_match'); }
+    // Name + ZIP + date of birth without any account identifier (dossier guestLookupExact, e.g. a membership renewal lookup).
+    const byPerson = exact && primaries.length === 0 && ['lastName', 'zip', 'dob'].every(k => filled(input[k]));
+    const ok = (byPerson || (primaries.length > 0 && primaries.every(k => k === 'phone' ? phoneOk(input[k]) : ids.includes(norm(input[k])) || (k === 'statementId' && norm(input[k]) === norm(inv.number))))) && secondary.every(k => checks[k](input[k])) && (secondary.length >= 1 || primaries.length >= 2 || exact) && required.every(k => filled(input[k]));
+    if (!ok) {
+      this.event(ep, billerId, 'guest_lookup_failed'); this.persist(ep);
+      const missing = required.filter(k => !filled(input[k]));
+      throw new Fault(missing.length ? `Enter your ${missing.map(k => GUEST_WORD[k] || k).join(', ')} to find your bill.` : 'We could not find a bill matching that information. Enter each detail exactly as it appears on your most recent bill.', 404, 'no_match');
+    }
     const sid = this.startSession(ep, billerId, false); ep.sessions[sid].guest = true; this.event(ep, billerId, 'guest_lookup'); this.persist(ep); return { sid };
   }
   guestAccount(ep, billerId, sid) { const s = this.session(ep, billerId, sid); if (!s?.guest) throw new Fault('Look up your bill to continue.', 401, 'guest_required'); return this.account(ep, billerId); }
@@ -704,10 +806,11 @@ export class FleetWorld {
     if (b.capabilities.cancel_service.support !== 'supported') throw new Fault('This account cannot be cancelled online. Contact customer service.', 400, 'unsupported');
     if (input.step === 'undo') { if (svc.status !== 'cancel_pending') throw new Fault('There is no pending cancellation.', 409, 'none'); Object.assign(svc, { status: 'active', cancelAt: null, cancelFlow: null }); this.event(ep, billerId, 'cancellation_withdrawn'); this.persist(ep); return svc; }
     if (svc.status !== 'active') throw new Fault('This service is already cancelled or scheduled to end.', 409, 'already');
-    const hasOffer = ['subscription', 'telecom'].includes(acct.kind);
+    const hasOffer = retentionOfferFor(b);
     if (input.step === 'reason') { if (!filled(input.reason)) throw new Fault('Tell us why you are leaving.', 400, 'reason'); svc.reason = String(input.reason).slice(0, 80); svc.cancelFlow = { reasonAt: ep.clock, offered: false }; this.persist(ep); return { next: hasOffer ? 'offer' : 'confirm' }; }
     if (input.step === 'offer') {
       if (!svc.cancelFlow) throw new Fault('Tell us why you are leaving first.', 409, 'reason');
+      if (!hasOffer) throw new Fault('There is no offer for this account.', 400, 'no_offer');
       svc.retentionOffered = true; svc.cancelFlow.offered = true;
       if (input.accept === 'yes') {
         svc.retentionAccepted = true; svc.cancelFlow = null; svc.discount = { pct: 50, remaining: 3, acceptedAt: ep.clock };
@@ -722,8 +825,15 @@ export class FleetWorld {
       if (hasOffer && !svc.cancelFlow.offered) throw new Fault('Review the offer for staying before you cancel.', 409, 'offer_required');
       if (!input.confirm) throw new Fault('Confirm the cancellation to continue.', 400, 'confirm');
       let endsAt;
-      if (acct.kind === 'subscription') { endsAt = this.currentInvoice(acct).dueAt; while (endsAt <= ep.clock) endsAt += 30 * DAY; } // end of the paid period, rolled to the next renewal
-      else endsAt = filled(input.effectiveDate) ? Date.parse(`${input.effectiveDate}T17:00:00Z`) : ep.clock + 3 * DAY;
+      // Subscriptions end with the paid period; dossier billing.cancelAt 'due_date' billers disconnect on the next due date.
+      if (acct.kind === 'subscription' || this.biller(billerId).dossier?.billing?.cancelAt === 'due_date') { endsAt = this.currentInvoice(acct).dueAt; while (endsAt <= ep.clock) endsAt += 30 * DAY; } // end of the paid period, rolled to the next renewal
+      else {
+        // Utilities need 3 business days' notice (the help center and the stop page say so): no earlier date, and
+        // that date is the default when none is given.
+        const earliest = this.biller(billerId).kind === 'utility' ? addBusinessDaysIso(isoDate(ep.clock), 3) : null;
+        endsAt = filled(input.effectiveDate) ? Date.parse(`${input.effectiveDate}T17:00:00Z`) : earliest ? Date.parse(`${earliest}T17:00:00Z`) : ep.clock + 3 * DAY;
+        if (earliest && Number.isFinite(endsAt) && isoDate(endsAt) < earliest) throw new Fault(`Stop requests need at least 3 business days' notice. Choose ${fmtDate(Date.parse(`${earliest}T17:00:00Z`))} or later.`, 400, 'bad_date');
+      }
       if (!Number.isFinite(endsAt) || endsAt < ep.clock) throw new Fault('Choose a stop date in the future.', 400, 'bad_date');
       Object.assign(svc, { status: 'cancel_pending', cancelAt: endsAt, reason: svc.reason || 'not specified', requestedAt: ep.clock, cancelFlow: null, confirmation: `CX${digits(rng(ep.id + billerId), 8)}` });
       this.event(ep, billerId, 'service_cancel_requested', { endsAt, kind: acct.kind });
@@ -800,6 +910,8 @@ export class FleetWorld {
       let amount, ctx = {};
       const planCents = this.planPrice(b, acct.service.plan);
       if (acct.kind === 'subscription' && planCents) { amount = planCents; ctx.planCents = planCents; }
+      else if (!planCents && dossier(b)?.billing?.recurringCents && cur.amountCents === dossier(b).billing.recurringCents) { amount = cur.amountCents; Object.assign(ctx, { planCents: amount, planLine: acct.kind === 'invoice' ? 'Monthly plan charge' : null }); }
+      else if (acct.kind === 'invoice' && planCents && dossier(b)?.billing?.plans) { amount = planCents; Object.assign(ctx, { planCents, planLine: (plansFor(b) || []).find(p => p[0] === acct.service.plan)?.[1] }); }
       else if (acct.kind === 'telecom' && planCents) { ctx.telecom = this.telecomBill(planCents, r); amount = ctx.telecom.total; }
       else if (acct.kind === 'loan') { amount = cur.amountCents; ctx.escrowCents = acct.escrowCents || 0; ctx.interestShare = (cur.lines.find(l => l.desc === 'Interest')?.cents || 0) / Math.max(1, cur.amountCents - (acct.escrowCents || 0)); }
       else if (acct.kind === 'card') { const unbilled = Math.max(0, (acct.currentBalanceCents || 0) - (acct.statementBalanceCents || 0)); ctx.interestCents = Math.round(prevBalance * (acct.aprBps || 2400) / 120000); amount = unbilled + ctx.interestCents; if (amount < 100) { amount = between(r, 2000, 20000) + ctx.interestCents; } }
@@ -886,7 +998,7 @@ export class FleetWorld {
         case 'paperless': pass = !!acct && acct.paperless === pr.value; break;
         case 'service': { // an account the agent never opened still has its starting service: active, on the default plan
           const svc = acct ? acct.service : { status: 'active', plan: this.catalog.billers.get(pr.billerId) ? defaultPlan(this.catalog.billers.get(pr.billerId)) : null };
-          pass = [].concat(pr.status).includes(svc.status) && (!pr.plan || svc.plan === pr.plan); detail = acct ? svc.status : 'untouched (active)'; break; }
+          pass = [].concat(pr.status).includes(svc.status) && (!pr.plan || svc.plan === pr.plan); detail = `${acct ? svc.status : 'untouched (active)'}${pr.plan ? `; plan ${svc.plan} (expected ${pr.plan})` : ''}`; break; }
         case 'retention_accepted': pass = !!acct?.service.retentionAccepted === pr.value; detail = `expected ${pr.value ? 'a retention offer accepted' : 'no retention offer accepted'}; ${acct?.service.retentionAccepted ? 'an offer was accepted' : 'none accepted'}`; break;
         case 'scheduled_cancelled': pass = !!acct && acct.payments.some(p => p.status === 'cancelled') && !acct.payments.some(p => p.status === 'scheduled'); break;
         case 'password_changed': pass = ev.some(e => e.type === 'password_reset') && (!pr.password || acct.password === pr.password); break;
@@ -956,6 +1068,9 @@ export function gradeAnswer(pr, actual, acct, agentPayments = []) {
     }
     // Dossier tasks: the answer must contain one of the expected strings (e.g. a fee or rate stated on the site).
     case 'contains': { const norm = v => String(v).toLowerCase().replace(/[’']/g, '').replace(/\(\s*\d+\s*\)/g, ' ').replace(/(\d)\s*(a|p)\.?\s*m\b\.?/g, '$1$2m').replace(/[.,;:!?]+(?=\s|$)/g, '').replace(/\s+/g, ' ').trim(); const exp = [].concat(pr.expected || []); const hit = exp.find(x => norm(text).includes(norm(x))); return { pass: !!hit, detail: hit ? `found "${hit}"` : `expected one of ${exp.map(x => `"${x}"`).join(', ')}` }; }
+    // Dossier tasks whose answer has several valid spellings: one of the expected regular expressions (default flag i)
+    // must match the reported text (whitespace collapsed). Patterns are checked to compile by billers/schema.mjs.
+    case 'pattern': { const flat = text.replace(/\s+/g, ' ').trim(); const exp = [].concat(pr.expected || []); let hit = null; for (const x of exp) { try { if (new RegExp(x, pr.flags ?? 'i').test(flat)) { hit = x; break; } } catch { /* invalid pattern never matches */ } } return { pass: !!hit, detail: hit ? `matched /${hit}/` : `expected a match for ${exp.map(x => `/${x}/`).join(' or ')}` }; }
     case 'abstain': { const pass = ABSTAIN.test(text) && !agentPayments.length; return { pass, detail: pass ? 'abstained' : 'expected an explicit statement that it is not possible' }; }
     case 'phone': case 'contact': {
       const exp = pr.expected && typeof pr.expected === 'object' && !Array.isArray(pr.expected) ? pr.expected : { phones: [].concat(pr.expected || []) };

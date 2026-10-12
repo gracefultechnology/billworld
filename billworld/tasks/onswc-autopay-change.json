@@ -1,0 +1,19 @@
+{
+  "id": "onswc-autopay-change-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "observed_shared_autopay_sequence_synthetic_tenant_timing",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. AutoPay is currently enabled with the Checking account ending 1048. Open AutoPay and switch it to the saved Visa ending 4242: review and agree to the terms (including the card processing fee) and confirm. Reload AutoPay to verify it is enabled using the Visa ending 4242. Do not disable AutoPay, make a payment, or change ACH Auto Draft, methods, credentials or other accounts. Timing and fee amounts are synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_autopay",
+    "account_id": "acct-primary",
+    "enabled": true,
+    "initial_method_id": "onswc-bank-1048",
+    "method_id": "onswc-card-4242",
+    "ach_active": false
+  }
+}

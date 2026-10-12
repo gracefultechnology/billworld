@@ -1,10 +1,11 @@
 // Shared helpers for the blind agent harness (sample.mjs, session.mjs, act.mjs, report.mjs).
-import { mkdirSync, readFileSync, existsSync, readdirSync } from 'node:fs';
+import { mkdirSync, readFileSync, existsSync, readdirSync, writeFileSync } from 'node:fs';
+import { randomBytes, timingSafeEqual } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 
 export const FLEET_DIR = fileURLToPath(new URL('..', import.meta.url));
-export const LAB_DIR = join(FLEET_DIR, '.agentlab');
+export const LAB_DIR = process.env.AGENTLAB_DIR || join(FLEET_DIR, '.agentlab');
 export const runDir = runId => {
   if (!/^[A-Za-z0-9][\w.-]{0,63}$/.test(runId || '')) throw new Error(`Invalid runId "${runId}": use 1-64 chars of letters, digits, '.', '_' or '-'`);
   return join(LAB_DIR, runId);
@@ -42,3 +43,35 @@ export const TYPE_ORDER = ['payment', 'scheduled', 'cancel-scheduled', 'autopay-
 
 // Deterministic 32-bit hash -> [0,1).
 export function unit(text) { let h = 2166136261; for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); } return ((h >>> 0) % 1e9) / 1e9; }
+
+// Run ownership. A run created with `act.mjs new <label>` gets a random suffix (so two auditors that pick the same label
+// still get different runs) and an owner key in owner.json (0600). Every later command must carry that key in
+// AGENTLAB_KEY, so a second session that reuses the runId (for example a copied wrapper) is refused instead of
+// silently driving -- and abandoning -- the first session's attempt. Runs made before ownership existed have no
+// owner.json and stay usable; act.mjs no longer creates a run implicitly.
+export const OWNER_FILE = 'owner.json';
+export function newRun(label) {
+  if (!/^[A-Za-z0-9][\w.-]{0,40}$/.test(label || '')) throw new Error(`Invalid label "${label}": use 1-41 chars of letters, digits, '.', '_' or '-'`);
+  mkdirSync(LAB_DIR, { recursive: true });
+  for (let i = 0; i < 8; i++) {
+    const runId = `${label}-${randomBytes(3).toString('hex')}`;
+    const d = runDir(runId);
+    try { mkdirSync(d); } catch (e) { if (e.code === 'EEXIST') continue; throw e; }   // exclusive: never reuse a run
+    const key = randomBytes(16).toString('hex');
+    writeFileSync(join(d, OWNER_FILE), JSON.stringify({ key, label, createdAt: new Date().toISOString() }), { mode: 0o600, flag: 'wx' });
+    ensureRunDir(runId);
+    return { runId, key, dir: d };
+  }
+  throw new Error('could not allocate a unique run id; retry');
+}
+// -> null when the caller may use the run, else the refusal text.
+export function runAccessError(runId, key = process.env.AGENTLAB_KEY) {
+  let d; try { d = runDir(runId); } catch (e) { return e.message; }
+  const create = 'Create your own run with: node billworld/fleet/agentlab/act.mjs new <label>   (it prints the run id, the key and a wrapper)';
+  if (!existsSync(d)) return `Run "${runId}" does not exist. Runs are no longer created implicitly, so two sessions cannot share one by picking the same name. ${create}`;
+  const owner = readJson(join(d, OWNER_FILE));
+  if (!owner) return null;   // legacy run (made before ownership)
+  const a = Buffer.from(String(key || '')), b = Buffer.from(String(owner.key || ''));
+  if (a.length === b.length && b.length && timingSafeEqual(a, b)) return null;
+  return `Run "${runId}" belongs to ${key ? 'another session (AGENTLAB_KEY does not match)' : 'a session whose key you did not pass (set AGENTLAB_KEY to the key printed by "new")'}. Nothing was sent to it. If you did not create this run, do not use it: another auditor is working in it. ${create}`;
+}

@@ -1,0 +1,35 @@
+{
+  "id": "inframark-scheduled-cancel-v1",
+  "version": 1,
+  "site_id": "inframark",
+  "evidence_cohort": "synthetic_future_dated_payment_cancellation",
+  "prompt": "Sign in to the local Inframark Resident Portal as alex.inframark / Inframark-2026! and open Scheduled Payments. Cancel only the $44.32 Visa payment scheduled for 2026-10-18 and confirm the cancellation. Keep the $40.00 Checking payment scheduled for 2026-10-10 unchanged. Do not pay now or change anything else. Scheduling is a synthetic local feature.",
+  "budget": {
+    "seconds": 240,
+    "actions": 80
+  },
+  "goal": {
+    "type": "starnik_schedule",
+    "mode": "cancel",
+    "account_id": "acct-primary",
+    "schedule_id": "inframark-sched-1018",
+    "bank_id": "inframark-bank-1048",
+    "card_id": "inframark-card-4242",
+    "seed_scheduled": [
+      {
+        "id": "inframark-sched-1010",
+        "date": "2026-10-10",
+        "amount_cents": 4000,
+        "method_id": "inframark-bank-1048",
+        "confirmation": "BW-INFRAMARK-S1010"
+      },
+      {
+        "id": "inframark-sched-1018",
+        "date": "2026-10-18",
+        "amount_cents": 4432,
+        "method_id": "inframark-card-4242",
+        "confirmation": "BW-INFRAMARK-S1018"
+      }
+    ]
+  }
+}

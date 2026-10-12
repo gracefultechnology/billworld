@@ -2,7 +2,8 @@
   "id": "tuscaloosa-water",
   "name": "City of Tuscaloosa Water and Sewer",
   "portal_family": "Paymentus",
-  "implementation_status": "researched_not_implemented",
+  "revision": "0.1.0",
+  "implementation_status": "first_slice",
   "catalog_records": [
     {
       "category": "water-sewer",
@@ -10,45 +11,101 @@
     }
   ],
   "capture_manifest": "research/tuscaloosa-public.json",
+  "public_routes": {
+    "homepage": "https://www.tuscaloosa.com/",
+    "billing_information": "https://www.tuscaloosa.com/billinfo",
+    "autopay_help": "https://www.tuscaloosa.com/ach",
+    "account_service_center": "https://www.tuscaloosa.com/onlineservices",
+    "useful_forms": "https://www.tuscaloosa.com/onlineservices/useful-forms",
+    "ebill": "https://www.tuscaloosa.com/ebill",
+    "ebill_form": "https://app.smartsheet.com/b/form/8553f269632340ac91a7bd765c4df99c",
+    "faqs": "https://www.tuscaloosa.com/faqs",
+    "pay_water_bill": "https://www.tuscaloosa.com/pay-water-bill",
+    "portal": "https://ipn4.paymentus.com/cp/tusl"
+  },
+  "evidence": [
+    {"url": "https://www.tuscaloosa.com/", "type": "observed_public", "checked": "2026-10-04", "supports": ["homepage_tiles", "pay_my_water_bill_entry"]},
+    {"url": "https://www.tuscaloosa.com/billinfo", "type": "observed_public", "checked": "2026-10-04", "supports": ["billing_cycle", "payment_channels", "check_policy", "delinquency", "rates_units"]},
+    {"url": "https://www.tuscaloosa.com/ach", "type": "observed_public", "checked": "2026-10-04", "supports": ["portal_registration_then_autopay", "no_fee_methods", "nsf_fee", "autopay_due_date_1st_or_15th", "immediate_activation", "first_draft_next_due_date", "confirmation_email_5_to_10_minutes"]},
+    {"url": "https://www.tuscaloosa.com/onlineservices", "type": "observed_public", "checked": "2026-10-04", "supports": ["account_and_customer_number_required", "ebill_entry", "forms"]},
+    {"url": "https://www.tuscaloosa.com/faqs", "type": "observed_public", "checked": "2026-10-04", "supports": ["no_service_charge", "past_12_bills", "usage_information", "account_number_and_customer_id", "bank_draft_forms"]},
+    {"url": "https://www.tuscaloosa.com/ebill", "type": "observed_public", "checked": "2026-10-11", "supports": ["ebill_terms", "paper_stops_after_confirmation_email", "unsubscribe_by_resubmitting", "no_cost"]},
+    {"url": "https://www.tuscaloosa.com/onlineservices/useful-forms", "type": "observed_public", "checked": "2026-10-11", "supports": ["useful_forms_list", "bank_draft_cancellation_form"]},
+    {"url": "https://ipn4.paymentus.com/cp/tusl", "type": "blocked", "checked": "2026-10-11", "supports": [], "note": "HTTP 403 bot challenge; no portal markup, assets or private flow observed. /pay-water-bill redirects here."},
+    {"url": "https://app.smartsheet.com/b/form/8553f269632340ac91a7bd765c4df99c", "type": "blocked", "checked": "2026-10-11", "supports": [], "note": "Embedded eBill form rendered no fields to a read-only fetch; field list is reconstructed."}
+  ],
   "documented_policy": {
     "source_urls": [
       "https://www.tuscaloosa.com/billinfo",
       "https://www.tuscaloosa.com/ach",
-      "https://www.tuscaloosa.com/onlineservices"
+      "https://www.tuscaloosa.com/onlineservices",
+      "https://www.tuscaloosa.com/faqs",
+      "https://www.tuscaloosa.com/ebill"
     ],
-    "payment_methods": [
-      "PayPal",
-      "PayPal Credit",
-      "Venmo",
-      "Apple Pay",
-      "Google Pay",
-      "Amazon Pay",
-      "eCheck/ACH",
-      "debit/credit cards"
-    ],
+    "payment_methods": ["PayPal", "PayPal Credit", "Venmo", "Apple Pay", "Google Pay", "Amazon Pay", "eCheck/ACH", "debit/credit cards"],
     "payment_fee_cents": 0,
     "autopay_timing": "bill due date, either 1st or 15th",
     "autopay_activation": "immediate; first draft on following due date",
-    "enrollment_email_delay_minutes": [
-      5,
-      10
-    ],
+    "enrollment_email_delay_minutes": [5, 10],
     "insufficient_funds_fee_cents": 3000,
-    "lookup_identifiers": [
-      "account number",
-      "customer number"
-    ],
-    "email_billing": "eBill enrollment through municipal website"
+    "lookup_identifiers": ["account number", "customer number"],
+    "online_bill_history": "past 12 bills and usage information",
+    "usage_units": "10 cubic feet = 74.8 gallons",
+    "email_billing": "eBill enrollment through municipal website (separate from the payment portal); paper stops after the confirmation email is delivered; unsubscribe by completing the form again",
+    "city_bank_draft": "Separate form-based Automatic Bill Payment Option (bank draft) returned to ubcontact@tuscaloosa.com; cancellation by form. Not an online flow."
   },
   "observed_public": {
-    "city_homepage": "captured",
-    "billing_docs": "captured",
-    "processor_login": "HTTP 403; not usable as billing UI reference"
+    "city_homepage": "captured; reconstructed as local page",
+    "billing_docs": "captured; reconstructed as local pages (/billinfo, /ach, /onlineservices, /onlineservices/useful-forms, /ebill, /faqs water billing subset)",
+    "processor_login": "HTTP 403; not usable as billing UI reference",
+    "production_forms_submitted": false
+  },
+  "capabilities": {
+    "public_pages": "observed_public_text_reconstructed_layout",
+    "password_login": "family_documented_paymentus_fields_synthetic_validation",
+    "registration": "documented_entry_from_ach_page_family_documented_fields_synthetic_rules",
+    "account_linking": "documented_identifiers_account_and_customer_number_synthetic_two_step_verify",
+    "password_reset": "family_documented_email_entry_synthetic_link_continuation",
+    "guest_payment": "documented_identifiers_synthetic_one_time_checkout",
+    "bank_payment": "documented_no_fee_synthetic_checkout",
+    "card_payment": "documented_no_fee_synthetic_checkout",
+    "digital_wallets": "documented_listed_not_implemented_locally",
+    "scheduled_payment": "synthetic_future_dated_payment_edit_cancel",
+    "payment_history": "family_documented_navigation_synthetic_ledger",
+    "bill_view_and_history": "documented_past_12_bills_and_usage_synthetic_amounts",
+    "statement_pdf": "synthetic_generated_pdf",
+    "autopay": "documented_due_date_timing_and_confirmation_email_synthetic_forms",
+    "autopay_execution": "documented_due_date_synthetic_engine",
+    "nsf_fee": "documented_amount_synthetic_trigger",
+    "wallet": "family_documented_navigation_synthetic_forms",
+    "ebill": "documented_terms_reconstructed_form",
+    "paperless_in_portal": "not_documented_not_implemented",
+    "google_login": "not_observed_not_implemented",
+    "city_bank_draft_forms": "documented_offline_described_only"
+  },
+  "synthetic_rules": {
+    "service_accounts": "Alex Morgan has customer number 1001048 with home account 2048106 (due the 15th) and rental account 2048107 (due the 1st); Jordan Lee has 2099207 / 2002099.",
+    "charges": "Water 11.26 + 0.38/unit, sewer 12.40 + 0.45/unit, garbage 17.50 (synthetic; the posted rate schedule PDF was not modeled).",
+    "password_policy": "8-64 characters, at least one letter and one number, no spaces.",
+    "scheduling_window_days": 60,
+    "reset_link_minutes": 30,
+    "nsf_trigger": "New bank account numbers ending 0009 are returned when drafted by AutoPay or a scheduled payment; the documented $30 fee is then billed.",
+    "confirmation_email_delay": "Delivered immediately (live delay documented as 5-10 minutes).",
+    "posting": "Immediate posting for same-day payments; due-date drafts at 06:00 UTC on simulated clock advance; no retries or catch-up.",
+    "payments_apply": "Account balance, oldest unpaid bill first; amount may not exceed the balance."
   },
   "fidelity_limits": [
-    "Processor login, recovery, registration, payment and private navigation remain unobserved.",
-    "HTTP 403 assets belong to the failure response and must not be reused as application code.",
-    "Catalog verified flag does not establish environment fidelity.",
-    "No runtime or scored task exists yet."
-  ]
+    "The Paymentus tenant (ipn4.paymentus.com/cp/tusl) returns HTTP 403 to automated fetches; portal layout follows the Paymentus family guide documented for Batavia and is not a capture of Tuscaloosa's portal.",
+    "HTTP 403 assets belong to the failure response and are not reused as application code.",
+    "PayPal, PayPal Credit, Venmo, Apple Pay, Google Pay and Amazon Pay are documented but shown as unavailable locally; only bank and card checkout are implemented.",
+    "The Smartsheet eBill form fields are reconstructed; the live form was not rendered or submitted.",
+    "Bill amounts, usage, statement PDF layout, confirmation numbers and timing are synthetic.",
+    "No production form was submitted and no live account was accessed."
+  ],
+  "runtime": {
+    "kind": "tuscaloosa",
+    "frontend": "tuscaloosa",
+    "mail_sender_slug": "tuscaloosa"
+  },
+  "default_task_id": "tuscaloosa-pay-current-bank-v1"
 }

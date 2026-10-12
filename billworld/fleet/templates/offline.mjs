@@ -6,6 +6,7 @@
 import { observe, finish, obsNav, obsFooter, heroText, heroLine, idLabel, submitLabel, social, helpExcerpts, articleExcerpt, OBS_CSS } from './_observed.mjs';
 import { html, doc, logo, alert, helpList, helpBody, helpSearchForm, L } from '../kit.mjs';
 import { loadCatalog } from '../catalog.mjs';
+import { RESEARCH_PROCESS } from '../help.mjs';
 
 export const meta = {
   id: 'offline',
@@ -46,7 +47,7 @@ function consolidation(vm) {
   if (!CONSOLIDATED.test(text)) return null;
   // The catalog signal also matches phrases like "pay the local office"; require real consolidated-billing language.
   if (!/consolidated billing|appear(?:s)? (?:as a line )?on (?:your|the)|line (?:item )?on (?:your|the)|billed (?:on|with|through) (?:your|the)|pay the (?:local )?utility/i.test(text)) return null;
-  const s = sentences(vm.biller.notes).filter(x => /appear|consolidat|billed (?:on|with|through)|pay the (?:local )?utility|line (?:item )?on/i.test(x)).slice(0, 2);
+  const s = sentences(vm.biller.notes).filter(x => /appear|consolidat|billed (?:on|with|through)|pay the (?:local )?utility|line (?:item )?on/i.test(x) && !RESEARCH_PROCESS.test(x)).slice(0, 2);
   const where = /property|tax bill/i.test(text) ? 'your property tax bill' : /water|sewer/i.test(text) ? 'your water/sewer bill' : /utility|electric|gas|supply/i.test(text) ? 'your local utility bill' : 'another company’s bill';
   return { where, detail: s, processor: vm.biller.processor };
 }

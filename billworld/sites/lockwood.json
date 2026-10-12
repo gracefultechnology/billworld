@@ -2,7 +2,7 @@
   "id": "lockwood",
   "name": "Lockwood Water & Light Company",
   "portal_family": "ePay Utilities/CUSI",
-  "implementation_status": "construction_slice",
+  "implementation_status": "first_slice",
   "catalog_records": [
     {
       "category": "electric",
@@ -40,20 +40,21 @@
     "deposit_business_cents": 10000,
     "deposit_refund": "after final bill payment",
     "trash_monthly_cents": 1300,
-    "online_payment_fees": "unobserved"
+    "online_payment_fees": "unobserved; synthetic fixture fees in construction_payment_policy"
   },
   "contact": {
     "phone": "417-232-4221",
     "address": "400 Main Street, Lockwood, MO 65682",
-    "hours": "Monday\u2013Friday 7:30 am\u20134:00 pm"
+    "hours": "Monday–Friday 7:30 am–4:00 pm"
   },
   "fidelity_limits": [
     "This is the Missouri electric catalog record, not the unrelated Montana Lockwood Water and Sewer District.",
-    "Original scripts remain inert; captured login/recovery forms are bound only on explicitly enabled construction workers.",
-    "No production account lookup, login, registration or recovery submission was performed.",
-    "Private billing/card screens and $2.50 construction card fee are synthetic. Actual payment fees, bank verification provider, AutoPay and paperless remain unobserved. Registration stages and client-side field rules follow captured public code; continuation layouts, account lookup responses, duplicate-account recovery modal and private validation remain unobserved. Recovery grant, password maximum/character-class interpretation, case normalization and session lifetime are synthetic. Minimum length and required character classes come from public company configuration.",
-    "Captured policy text has not been exercised by a runtime scheduler.",
-    "Four construction-only tasks exist; this site is absent from the released registry and released Infinity task inventory."
+    "Original scripts remain inert; captured login/recovery/registration forms are bound to local behavior.",
+    "No production account lookup, login, registration, recovery or payment was performed.",
+    "Signed-in screens follow CUSI family documentation (Plaid guide, HPUD ePayUB brochure); Lockwood private layouts are unobserved and reconstructed.",
+    "Fees, bank verification outcome, execution timing, AutoPay option semantics and paperless rules are synthetic and labeled in implemented_flows.synthetic.",
+    "Recovery grant, password maximum/character-class interpretation, case normalization and session lifetime are synthetic. Minimum length and required character classes come from public company configuration.",
+    "Released as a first slice with eleven tasks; reference scripts passing is not autonomous-agent performance or independent fidelity certification."
   ],
   "runtime": {
     "kind": "cusi",
@@ -61,37 +62,16 @@
     "mail_sender_slug": "lockwood"
   },
   "default_task_id": "lockwood-username-login-v1",
-  "construction_stage": "auth_recovery_registration_card_payment_not_released",
-  "construction_draft": {
-    "activated_in_release": false,
-    "authentication": "Captured username/password login bound to authoritative sessions",
-    "recovery": "Captured username/Email Link request with synthetic Gmail grant, password reset and revocation",
-    "validation_manifest": "research/cusi-construction-validation.json",
-    "capabilities_unimplemented": [
-      "AutoPay",
-      "paperless",
-      "preferences",
-      "original CAPTCHA",
-      "complete cookie settings",
-      "slideshow animation",
-      "bank verification/payments",
-      "faithful private billing layout and original fee policy",
-      "faithful private registration layout and validation",
-      "already-registered account recovery modal",
-      "alternative registration email ownership and mailbox delivery"
-    ],
-    "payment": "Synthetic account/bill/card review/receipt backed by existing ledger; $2.50 fixture fee",
-    "payment_validation_manifest": "research/cusi-payment-construction-validation.json",
-    "registration": "Captured account/phone lookup and public client stage sequence with synthetic matched-account review, consent, credential creation, receipt and new-user login"
-  },
   "construction_payment_policy": {
     "synthetic": true,
     "card_fee_cents": 250,
-    "description": "Construction fixture only: $2.50 per card payment. Lockwood online fees remain unobserved. This fee is not a claim about the live tenant.",
+    "description": "Synthetic fixture: $2.50 service fee per card payment or card AutoPay draft; $0.00 for E-Check, Scheduled Bank Draft and bank AutoPay. Lockwood's live online fees are unobserved; this is not a claim about the live tenant.",
     "supported_methods": [
-      "card"
+      "card",
+      "bank"
     ],
-    "bank_verification": "unimplemented; Plaid/MicroBilt deployment unknown"
+    "bank_verification": "Synthetic instant verification of linked bank accounts (CUSI family guide documents Plaid statuses including micro-deposit verification; Lockwood's deployment is unobserved).",
+    "bank_fee_cents": 0
   },
   "family_payment_evidence": "research/cusi-payment-evidence.json",
   "password_policy": {
@@ -123,5 +103,95 @@
     "consent": "Explicit terms/privacy acceptance; exact continuation label unobserved",
     "already_registered": "Public family client has a reset-email dialog when multi-registration is disabled. Local draft uses matched account/phone, reviewed account grant and idempotent reset email; tenant flag, dialog layout and private delivery are synthetic/unobserved",
     "grant": "Synthetic ten-minute episode-bound enrollment grant; confirmation and credential creation are separate"
+  },
+  "release": {
+    "released_tasks": [
+      "lockwood-username-login-v1",
+      "lockwood-recover-login-v1",
+      "lockwood-pay-current-card-v1",
+      "lockwood-register-login-v1",
+      "lockwood-echeck-link-pay-v1",
+      "lockwood-schedule-draft-v1",
+      "lockwood-manage-drafts-v1",
+      "lockwood-autopay-enroll-v1",
+      "lockwood-autopay-change-v1",
+      "lockwood-autopay-cancel-v1",
+      "lockwood-paperless-v1"
+    ],
+    "infinity_task_ids": "task_lw1–task_lw11",
+    "browser_test": "npm run test:browser:lockwood",
+    "domain_tests": "billworld/tests/lockwood-portal.test.mjs",
+    "validation_manifest": "research/lockwood-portal-validation.json",
+    "prior_construction_validation": "research/cusi-construction-validation.json"
+  },
+  "family_documentation": [
+    {
+      "id": "cusi-plaid-2024",
+      "file": "research-data/cusi-docs/plaid-verification-2024.pdf",
+      "sha256": "85c443d2bcffb8a1b76585d85eccf4c3c649d35d6e953a07569c5703c128bd33",
+      "documents": [
+        "View Current Bill / Make A Payment navigation",
+        "Payment options: card (Mastercard/Visa), E-Check, Scheduled Bank Draft",
+        "Linked bank account Status column: Pending Auto Verification, Pending Micro Deposit Verification, Requires Update, Update Name On Account, Verified",
+        "LINK ACCOUNT / UNLINK, Name on Account, linked-account email used only for linked-account communication"
+      ]
+    },
+    {
+      "id": "hpud-epayub-brochure-2025",
+      "publisher": "Hallsdale-Powell Utility District (same ePayUB/CUSI portal family)",
+      "url": "https://hpud.org/wp-content/uploads/2025/04/Portal-Brochure-1.pdf",
+      "fetched_at": "2026-10-11",
+      "file": "research-data/cusi-docs/hpud-portal-brochure-2025.pdf",
+      "sha256": "3852c17d78a390c3baa717c212730c40ec0c6a8d5e7a9c5b6cbd1c1a89abb4b8",
+      "rendered_pages": [
+        "research-data/cusi-docs/hpud-portal-brochure-page1.png",
+        "research-data/cusi-docs/hpud-portal-brochure-page2.png"
+      ],
+      "documents": [
+        "Account history including statements, usage and payments",
+        "Communication preferences: Email, Phone Call or Printed notifications",
+        "Store payment methods in an online wallet",
+        "Make a Payment > Schedule Bank Draft with a Schedule For future date; saved bank accounts selectable; receipt with confirmation number; service fees displayed before confirmation; confirmation by email",
+        "AutoPay via Help > Payment & Billing > I want to set up AutoPay; SET AUTOPAY; Payment Option Maximum or Fixed Amount; CONFIRM / CANCEL; ADD NEW CREDIT/DEBIT CARD AUTO PAY; SAVE",
+        "Registration: account number plus phone or SSN/TaxID last four, review customer name and address, choose username, editable email",
+        "Quick Pay (account number + email + phone) on the HPUD login page"
+      ]
+    }
+  ],
+  "implemented_flows": {
+    "observed_public": [
+      "Municipal homepage, services (billing policy), contact, terms and privacy reconstructed from captures",
+      "Username/password login with Show password",
+      "Username recovery entry (Email Link)",
+      "Registration step 1 account lookup (account number + associated phone) and four-stage labels"
+    ],
+    "family_documented_with_synthetic_layout": [
+      "Account Overview Pay Bill card (Account Balance, due date, last payment, View Current Bill, Make A Payment)",
+      "Bill/statement view with service lines and usage (line split and usage synthetic; $13 trash line documented)",
+      "Make A Payment: Credit/Debit Card, E-Check, Scheduled Bank Draft with Schedule For date; fees shown before confirmation; receipt with confirmation number and email",
+      "My Payment Methods: link bank account with status/verification and linked-account email, add card, remove (blocked while used by AutoPay or a scheduled draft)",
+      "Account History: payments, scheduled payments (edit date/amount/bank, cancel with inline confirmation), statements and usage",
+      "AutoPay: Help > Payment & Billing > I want to set up AutoPay; SET AUTOPAY; Maximum or Fixed Amount; saved method or ADD NEW CREDIT/DEBIT CARD AUTO PAY; review/authorize/SAVE; change; cancel",
+      "Account Preferences: Email / Phone Call / Printed notifications and paperless billing"
+    ],
+    "observed_policy_exercised_by_runtime": [
+      "Bills due by the 15th: Scheduled Bank Draft after the 15th requires a late-penalty acknowledgement",
+      "10% late penalty added as a separate charge the day after the due date on any unpaid balance",
+      "Service discontinued after the 25th: Schedule For dates after the 25th are rejected"
+    ],
+    "synthetic": [
+      "$2.50 card service fee and $0.00 bank fee",
+      "Instant Verified status for linked banks (Plaid/MicroBilt deployment unobserved)",
+      "Execution at 00:00 UTC: drafts on Schedule For date, AutoPay on the due date, penalty the next day; no retries or catch-up",
+      "AutoPay Maximum Amount skips (and emails) when the bill exceeds the maximum; Fixed Amount pays up to the unpaid balance",
+      "A scheduled draft larger than the remaining balance fails without paying (prevents duplicate payment after a one-time payment)",
+      "Paperless requires Email and excludes Printed notifications",
+      "Service addresses, statement line split and usage",
+      "Private layouts of all signed-in screens"
+    ],
+    "not_implemented": [
+      "Quick Pay / guest payment: documented for the HPUD tenant but no Quick Pay control appears on the captured Lockwood login page",
+      "SMS/text receipts, multiple linked accounts/account selector switching, original CAPTCHA, complete cookie settings, slideshow animation, statement PDFs"
+    ]
   }
 }

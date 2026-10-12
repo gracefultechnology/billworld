@@ -1,0 +1,70 @@
+{
+  "validated_at": "2026-10-11T20:46:25.017187+00:00",
+  "site_id": "charlotte-county-utilities",
+  "implementation_status": "first_slice",
+  "runtime_kind": "charlotte_paymentus",
+  "released_tasks": {
+    "task_ccu1": "charlotte-quickpay-card-v1",
+    "task_ccu2": "charlotte-register-link-pay-v1",
+    "task_ccu3": "charlotte-recover-login-v1",
+    "task_ccu4": "charlotte-signed-bank-pay-v1",
+    "task_ccu5": "charlotte-schedule-payment-v1",
+    "task_ccu6": "charlotte-update-scheduled-payment-v1",
+    "task_ccu7": "charlotte-cancel-scheduled-payment-v1",
+    "task_ccu8": "charlotte-enroll-autopay-v1",
+    "task_ccu9": "charlotte-change-autopay-method-v1",
+    "task_ccu10": "charlotte-cancel-autopay-v1",
+    "task_ccu11": "charlotte-paperless-email-v1",
+    "task_ccu12": "charlotte-download-bill-v1",
+    "task_ccu13": "charlotte-read-payment-history-v1"
+  },
+  "verification": {
+    "domain": {
+      "command": "node --test billworld/tests/charlotte.test.mjs",
+      "tests": 13,
+      "passed": 13
+    },
+    "browser": {
+      "command": "npm run test:browser:charlotte",
+      "scenarios": 17,
+      "all_passed": true,
+      "page_errors": [],
+      "outbound_requests": [],
+      "browser": "Chrome/154.0.8037.57",
+      "report": "billworld/artifacts/charlotte-browser/report.json",
+      "runs_without_failure": 2
+    },
+    "infinity": {
+      "command": ".upstream/smoke-venv/bin/python billworld/infinity/smoke.py --task-ids task_ccu1..task_ccu13",
+      "tasks_passed": 13,
+      "lifecycle_checks_passed": true,
+      "artifacts": "billworld/artifacts/infinity/charlotte-final-1791751549",
+      "kind": "reference_script_not_autonomous_agent"
+    },
+    "npm_test": {
+      "tests": 454,
+      "passed": 452,
+      "failed_unrelated": [
+        "Batavia remains construction only (paymentus-auth.test.mjs; Batavia promotion in progress by another slice)"
+      ]
+    },
+    "catalog_public_browser": "4/4 passed (public snapshots unchanged outside Charlotte episodes)"
+  },
+  "one_tab_agent": "All journeys use one tab with labelled controls; pending payment/AutoPay/link reviews are stored server-side per session, guest checkout per episode, reset grants per token; recovery reads the link in /mail in the same tab.",
+  "source_hashes": {
+    "charlotte.mjs": "d39e60cbb9a88fed5f897f8c2289dbcffa5202c1014647c99ce0b2d562526ed5",
+    "charlotte-routes.mjs": "215d254e550e0f88a65f5e971159182bda0ecad84ee076865829cc896810db4f",
+    "public/ccu.js": "d9892a41fd99532c9a72364d2b747b8b5ef80a9661a7ec6f24d774d566cec212",
+    "public/ccu.css": "3d2158bfcfdb1be4523e98031cb3576b6228833f7e1fbf3e374965d3409fa466",
+    "public/ccu.html": "dcf91a825c02658b76006cdc30101603cf0950cc81abce13ba81010d7518d5c9",
+    "infinity/reference-charlotte.mjs": "cb53f6a9d73d526acf0b455f6e2ce3dc853aa4fc393e858b8352e2761ff0c50a",
+    "tests/charlotte.test.mjs": "a188997dbc30d352812ee8dc2f1b466f83b1643df2d899d1b5e7a786648b95cc",
+    "tests/charlotte-browser.mjs": "dba6f496637928d5fbccb5e4bcd0decfadec2de47fc070c9d6360d18fcf3092c",
+    "sites/charlotte-county.json": "ad5b2554bac2575b8be0dbd04212da3def781b947996185228ffdd47f2bf9e53"
+  },
+  "limits": [
+    "Private Paymentus tenant screens unobserved (HTTP 403); layouts, validation, confirmation numbers and timings are synthetic",
+    "Digital wallet and retail cash checkout not simulated",
+    "Scripted references are not autonomous-agent scores"
+  ]
+}

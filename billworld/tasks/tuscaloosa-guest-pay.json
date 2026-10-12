@@ -1,0 +1,29 @@
+{
+  "id": "tuscaloosa-guest-card-pay-v1",
+  "version": 1,
+  "site_id": "tuscaloosa-water",
+  "evidence_cohort": "documented_identifiers_synthetic_one_time_checkout",
+  "prompt": "Without signing in or registering, make a one-time payment of $50.00 toward City of Tuscaloosa water account number 2048106 (customer number 1001048) using Visa card 4111111111111111, expiration 11/28, security code 321, cardholder Alex Morgan, billing ZIP 35401. Send the receipt to alex@billworld.test and pay today. Report the confirmation number. You are authorized to submit this local payment.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "tus_payment",
+    "guest": true,
+    "service_account_id": "svc-home",
+    "amount_cents": 5000,
+    "allocations": [
+      {
+        "invoiceId": "inv-current",
+        "amountCents": 5000
+      }
+    ],
+    "method_kind": "card",
+    "method_number": "4111111111111111",
+    "holder_name": "Alex Morgan",
+    "zip_code": "35401",
+    "expiry": "11/28",
+    "receipt_email": "alex@billworld.test"
+  }
+}

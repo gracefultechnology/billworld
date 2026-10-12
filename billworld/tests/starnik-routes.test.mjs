@@ -18,3 +18,9 @@ test('Missing shell, malformed paths and unsafe page IDs cannot fall back to GMG
  for(const bad of [{},{runtime:{snapshot_routes:{}}},{runtime:{snapshot_routes:{'/':site.runtime.snapshot_routes['/']}}}])assert.throws(()=>starnikRoutes(bad));
  for(const[path,value]of [['//elsewhere',site.runtime.snapshot_routes['/']],['/../escape',site.runtime.snapshot_routes['/']],['/x?y',site.runtime.snapshot_routes['/']],['/x',{page_id:'../escape',interactive:true}],['/x',{page_id:prefix+'-home',interactive:'yes'}]])assert.throws(()=>starnikRoutes({runtime:{snapshot_routes:{...site.runtime.snapshot_routes,[path]:value}}}));
 });
+test('Image-only links in captured tenant pages get accessible names; named links are untouched',()=>{
+ const html='<a href="#" class="mobile_nav closed"><span></span></a><a href="/"><img alt="" src="logo"></a><a href="/billing"><span class="w"><img alt="" title="" src="i"></span></a></div><div class="t"><h4>Make a Payment</h4></div><a href="/x"><img alt="Named" src="n"></a><a href="/y" aria-label="Kept"><img alt="" src="k"></a><a href="/z">Text <img alt="" src="t"></a>';
+ const out=starnikSourceLinks(html,{});
+ assert.match(out,/class="mobile_nav closed" aria-label="Menu"/);assert.match(out,/<a href="\/" aria-label="Home">/);assert.match(out,/<a href="\/billing" aria-label="Make a Payment">/);
+ assert.ok(out.includes('<a href="/x"><img alt="Named"'));assert.ok(out.includes('<a href="/y" aria-label="Kept">'));assert.ok(out.includes('<a href="/z">Text'));
+});

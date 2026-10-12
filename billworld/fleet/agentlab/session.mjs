@@ -67,7 +67,7 @@ async function getBrowser() {
 // S.active: {taskId, billerId, episodeId, entryPath, instruction, startUrl, startedAt, steps, attempt, meta}
 const S = { active: null, attempts: {}, ...(readJson(F.state) || {}) };
 const saveState = () => write0600(F.state, JSON.stringify(S, null, 1));
-let ctx = null, pages = [], cur = 0, lastObs = null, textOffset = 0, notes = [], blocked = [], dialogs = [];
+let ctx = null, pages = [], cur = 0, lastObs = null, textOffset = 0, notes = [], blocked = [], dialogs = [], downloadCdp = null;
 const pageInfo = new WeakMap(); // page -> {pdf: {url, text}}
 const allowedUrl = u => { try { const x = new URL(u); if (/^(data|about|blob|chrome|chrome-extension|devtools):$/.test(x.protocol)) return true; return x.origin === fleetOrigin || (googleOrigin && x.origin === googleOrigin); } catch { return false; } };
 
@@ -104,6 +104,16 @@ async function newContext() {
   try { await ctx?.close(); } catch {}
   const b = await getBrowser();
   ctx = await b.createBrowserContext(); pages = []; cur = 0; lastObs = null; textOffset = 0;
+  // Report downloads (the suggested filename) to the agent, as a browser's download bar would; without this a
+  // "download the bill and report its filename" task is unanswerable through the blind interface.
+  try {
+    const dl = join(dir, 'downloads'); if (!existsSync(dl)) (await import('node:fs')).mkdirSync(dl, { recursive: true });
+    try { await downloadCdp?.detach(); } catch {}
+    downloadCdp = await b.target().createCDPSession();
+    await downloadCdp.send('Browser.setDownloadBehavior', { behavior: 'allowAndName', browserContextId: ctx.id, downloadPath: dl, eventsEnabled: true });
+    downloadCdp.on('Browser.downloadWillBegin', e => notes.push(`Download started: "${e.suggestedFilename}" (from ${String(e.url).replace(/^https?:\/\/[^/]+/, '')})`));
+    downloadCdp.on('Browser.downloadProgress', e => { if (e.state === 'completed') notes.push('Download completed.'); });
+  } catch (e) { log(`download events unavailable: ${e.message}`); }
   ctx.on('targetcreated', async t => { if (t.type() !== 'page' || !t.opener()) return; try { const p = await t.page(); if (p && !pages.includes(p)) { await setupPage(p); pages.push(p); notes.push(`A new tab opened (tab ${pages.length}); it is now the current tab.`); cur = pages.length - 1; } } catch {} });
   const p = await ctx.newPage(); if (!pages.includes(p)) { await setupPage(p); pages.push(p); } cur = pages.indexOf(p); notes = [];
   return p;
@@ -210,7 +220,7 @@ async function feedback() {
       const norm = s => String(s || '').replace(/\s+/g, ' ').trim();
       const sel = '[role=alert], [role=status], [aria-live], .error, .errors, .alert, .flash, .notice, .field-error, [aria-invalid=true]';
       const seen = new Set(); const out = [];
-      for (const el of document.querySelectorAll(sel)) { const r = el.getBoundingClientRect(); if (!r.width || !r.height) continue; const t = norm(el.innerText).slice(0, 300); if (t && !seen.has(t)) { seen.add(t); out.push(t); } }
+      for (const el of document.querySelectorAll(sel)) { const r = el.getBoundingClientRect(); if (!r.width || !r.height) continue; const t = norm(String(el.innerText || '').replace(/[\u200b-\u200d\u2060\ufeff]/g, '')).slice(0, 300); if (t && /[\p{L}\p{N}]/u.test(t) && !seen.has(t)) { seen.add(t); out.push(t); } }
       // Native form validation blocks a submit silently: report the invalid field the browser focused (and the
       // other invalid fields of that form) with its element number and the browser's message.
       const a = document.activeElement;
@@ -326,6 +336,11 @@ const COMMANDS = {
   async back() { needTask(); await settle(() => page().goBack({ waitUntil: 'domcontentloaded' })); return 'Went back'; },
   async forward() { needTask(); await settle(() => page().goForward({ waitUntil: 'domcontentloaded' })); return 'Went forward'; },
   async reload() { needTask(); await settle(() => page().reload({ waitUntil: 'domcontentloaded' })); return 'Reloaded'; },
+  async newtab([raw]) {
+    needTask(); const p = await ctx.newPage(); if (!pages.includes(p)) { await setupPage(p); pages.push(p); } cur = pages.indexOf(p); await p.bringToFront().catch(() => {});
+    const opened = raw ? `\n${await COMMANDS.goto([raw])}` : '';
+    return `Opened a new tab (tab ${cur + 1}); it is now the current tab. Use switch <n> to go back to another tab.${opened}`;
+  },
   async tabs() { needTask(); const rows = []; for (const [i, p] of pages.entries()) { let t = ''; try { t = await p.title(); } catch {} rows.push(`${i + 1}${i === cur ? '*' : ' '} ${p.url()}  ${q(t)}`); } return rows.join('\n'); },
   async switch([n]) { needTask(); const i = Number(n) - 1; if (!pages[i]) throw new UserError(`No tab ${n}. Run tabs.`); cur = i; await page().bringToFront().catch(() => {}); return `Switched to tab ${n}`; },
   async close() { needTask(); if (pages.length < 2) throw new UserError('Cannot close the last tab.'); const p = pages.splice(cur, 1)[0]; await p.close().catch(() => {}); cur = Math.max(0, cur - 1); return `Closed the tab; now on tab ${cur + 1}`; },
@@ -356,13 +371,13 @@ async function toggle(n, want) {
 }
 function record(r, answerText, lastSnap, termination) {
   const a = S.active;
-  const preds = (r.results || []).map(x => ({ type: x.type, pass: x.pass, detail: x.detail, ...(x.kind ? { kind: x.kind } : {}), ...(x.event ? { event: x.event } : {}) }));
+  const preds = (r.results || []).map(x => ({ type: x.type, pass: x.pass, detail: x.detail, ...(x.kind ? { kind: x.kind } : {}), ...(x.event ? { event: x.event } : {}), ...(x.plan ? { plan: x.plan } : {}), ...(x.status && x.type === 'service' ? { status: [].concat(x.status).join('|') } : {}) }));
   const res = { runId, taskId: a.taskId, billerId: a.billerId, attempt: a.attempt, ...a.meta, success: !!r.success, termination, answer: answerText, steps: a.steps, ms: Date.now() - a.startedAt, predicates: preds, replay: !!r.replay,
     lastUrl: lastSnap?.url || null, lastObservation: lastSnap ? `${lastSnap.title}\n${String(lastSnap.text).replace(/\s+\n/g, '\n').slice(0, 1500)}` : null, finishedAt: new Date().toISOString() };
   appendFileSync(F.results, JSON.stringify(res) + '\n');
   a.finished = { success: res.success, at: Date.now(), termination }; saveState();
   const lines = [`RESULT: ${res.success ? 'PASS' : 'FAIL'}  run ${runId}  task ${a.taskId}  (${res.steps} steps, ${Math.round(res.ms / 1000)} s)`, 'Predicates:'];
-  for (const p of preds) lines.push(`  ${p.pass ? 'PASS' : 'FAIL'} ${p.type}${typeof p.value === 'boolean' ? `=${p.value}` : ''}${p.kind ? `(${p.kind})` : ''}${p.event ? `(${p.event})` : ''}${p.detail ? ` - ${p.detail}` : ''}`);
+  for (const p of preds) lines.push(`  ${p.pass ? 'PASS' : 'FAIL'} ${p.type}${typeof p.value === 'boolean' ? `=${p.value}` : ''}${p.kind ? `(${p.kind})` : ''}${p.event ? `(${p.event})` : ''}${p.status ? ` status=${p.status}` : ''}${p.plan ? ` plan=${p.plan}` : ''}${p.detail ? ` - ${p.detail}` : ''}`);
   return lines.join('\n');
 }
 async function abandon(reason) {
@@ -381,6 +396,7 @@ const HELP = `Commands (act.mjs <runId> <command>):
   press <key>             press a key in the focused element (Enter, Tab, Escape, ...)
   goto <url|/path>        open a URL on this site (e.g. /mail, /sms) or the sign-in provider
   back / forward / reload
+  newtab [url|/path]      open a new tab (optionally at a URL), e.g. newtab /mail to read a code without leaving a form
   tabs / switch <n> / close
   screenshot [viewport]   save a PNG (full page by default) and print its path
   status                  task, step count, elapsed time
@@ -393,7 +409,7 @@ const ctlToken = randomBytes(24).toString('base64url');
 let chain = Promise.resolve(), idleTimer = null;
 const touchIdle = () => { clearTimeout(idleTimer); idleTimer = setTimeout(() => shutdown('idle'), IDLE_MS); };
 const withTimeout = (p, ms, what) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error(`${what} timed out after ${ms / 1000} s`)), ms))]);
-const ACTIONS = new Set(['click', 'type', 'select', 'check', 'uncheck', 'press', 'goto', 'back', 'forward', 'reload', 'switch', 'close']);
+const ACTIONS = new Set(['click', 'type', 'select', 'check', 'uncheck', 'press', 'goto', 'newtab', 'back', 'forward', 'reload', 'switch', 'close']);
 async function run(cmd, args, opts = {}) {
   const fn = COMMANDS[cmd]; if (!fn) throw new UserError(`Unknown command "${cmd}". Run help.`);
   if (S.active && !S.active.finished && cmd !== 'start' && !ctx) await restore();
@@ -404,7 +420,7 @@ async function run(cmd, args, opts = {}) {
   try {
     out = await withTimeout(fn(args), CMD_TIMEOUT, cmd);
     if (ACTIONS.has(cmd)) {
-      const fb = await feedback(); out += `\n${await pageSummary()}`;
+      const fb = (await feedback()).filter(t => String(t || '').trim()); out += `\n${await pageSummary()}`; // never an empty "Messages" header
       if (fb.length) out += `\nMessages on the page:\n${fb.map(t => `  - ${t}`).join('\n')}`;
       if (opts.observe) { const o = await COMMANDS.observe(); out += `\n\n${o}`; }
     }

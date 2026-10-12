@@ -1,0 +1,105 @@
+{
+  "recorded_at": "2026-10-11T20:48:15.797021+00:00",
+  "kind": "inframark_first_slice_validation",
+  "status": "first_slice",
+  "tasks": {
+    "task_inf1": "inframark-username-login-v1",
+    "task_inf2": "inframark-guest-bank-payment-v1",
+    "task_inf3": "inframark-guest-card-payment-v1",
+    "task_inf4": "inframark-register-account-v1",
+    "task_inf5": "inframark-recover-username-password-v1",
+    "task_inf6": "inframark-saved-bank-payment-v1",
+    "task_inf7": "inframark-saved-card-payment-v1",
+    "task_inf8": "inframark-read-history-balances-v1",
+    "task_inf9": "inframark-download-current-bill-v1",
+    "task_inf10": "inframark-paperless-v1",
+    "task_inf11": "inframark-manage-wallet-v1",
+    "task_inf12": "inframark-autopay-enable-v1",
+    "task_inf13": "inframark-autopay-change-v1",
+    "task_inf14": "inframark-autopay-cancel-v1",
+    "task_inf15": "inframark-schedule-payment-v1",
+    "task_inf16": "inframark-scheduled-edit-v1",
+    "task_inf17": "inframark-scheduled-cancel-v1"
+  },
+  "validation": {
+    "npm_test": "466 passed, 0 failed (467 total incl. 1 skipped) on the shared tree at record time",
+    "inframark_domain_tests": 10,
+    "browser_tasks_passed": 17,
+    "browser_page_errors": 0,
+    "browser_outbound_requests": 0,
+    "unnamed_controls": 0,
+    "safeguards": {
+      "schedule_autopay_ack": true,
+      "schedule_executes": true,
+      "mobile_no_overflow": true
+    },
+    "infinity_smoke_reference_passed": 17,
+    "infinity_lifecycle_checks_passed": true,
+    "infinity_artifacts": "artifacts/infinity/inframark-first-slice-final-20261011134740",
+    "regression_checks": [
+      "test:browser:gmg",
+      "starnik-routes-browser",
+      "starnik-statements-browser",
+      "starnik-autopay-browser",
+      "starnik-guest-browser",
+      "onswc-browser",
+      "test_infinity_overlay"
+    ]
+  },
+  "evidence_labels": {
+    "observed": [
+      "operator homepage and FAQ capture (2026-10-05)",
+      "Starnik login, signup, forgot username/password and GuestPay lookup captures"
+    ],
+    "documented": [
+      "$1.00 eCheck and 3% card convenience fees",
+      "GuestPay URL",
+      "registration via security code + email then eBill/AutoPay option",
+      "bank draft and card recurring payments",
+      "paper bill unless paperless",
+      "payment ID for bank bill pay; security code and payment ID in bill top-right box",
+      "P.O. box mail payments, late fee, regional water authority fee"
+    ],
+    "synthetic": [
+      "accounts, invoices, statement charges",
+      "AutoPay timing (due date)",
+      "scheduled payments (create/edit/cancel/execute)",
+      "private screen layouts, settlement, wallet continuation",
+      "Customer Portal dropdown behavior (reconstructed locally; original scripts excluded)"
+    ]
+  },
+  "limits": [
+    "Scripted references are unmetered validation, not autonomous-agent success rates",
+    "District-specific fees/late fees unverified; operator-level policy only",
+    "www.inframark.com returned HTTP 403 to scripted fetches on 2026-10-11; no new public evidence was captured"
+  ],
+  "artifacts": {
+    "sites/inframark.json": "01073db68f18543ed2213c39e2289217100911d1f0c9793b1860104cc8c2b4f6",
+    "starnik-schedule.mjs": "f265104dbc413b5b6fd2e384f4eadce818265ea4f2e614a3301f6eff88d0f073",
+    "starnik-inframark.mjs": "d548842ac5812cc99011b7f68016d444b7a2ceb6c53be773229769befa2e0dd8",
+    "public/inframark-public.js": "69d016dfe138861b906d55392e6f026cd64e716e695f5ec678b968d9e5fd5113",
+    "public/starnik.js": "3c70d0f550012ff33de39b65ce20b5f7ada33ebfcf264d82a91f70c4d1b4a8fd",
+    "infinity/reference-inframark.mjs": "5c5bf057fcf174735bc4a08d2fbf071a4ca76e60d051e1f7fc3f82f92209ddd8",
+    "tests/inframark.test.mjs": "70f4b2c5ab82a0e2eef85d5abfc3e9bbbe355888c23185d62296c691cee1a9f3",
+    "tests/inframark-browser.mjs": "859e88e3684ff50f2819b278ada0eb48dee29ee4f4ff4bd3e1270b5d8444d1f7",
+    "build_inframark_statements.py": "e8f3b5ccf7e13de0b58e95cd3df777bfd6d1ca92e946add80a7b94ac0ab2f5dd",
+    "research/inframark-statements.json": "1a923b30d3abc6a16254d475be72eb6e04e67e885d0d123771e65008805c3761",
+    "tasks/inframark-autopay-cancel.json": "371e21c04e3ffd84c1187ac4af35eb02664403a71d7f251600b0c27093c6918d",
+    "tasks/inframark-autopay-change.json": "2a685246c16f3d8e4005b79ec5469a37bdecfe904457c4ad819dce399a4bfd84",
+    "tasks/inframark-autopay-enable.json": "6f811620b8e9a02c6e8faee2ea5f149f625aaf4cc66a7d2dce0a6059d5d4a642",
+    "tasks/inframark-guest-bank-payment.json": "ac9f9b7e847fe135f21e9fa4ddeb9d7d218a73adaded1ee52909d51e0d805898",
+    "tasks/inframark-guest-card-payment.json": "19ae2c8759decf168c3691fe6c77bbe6bee4ae42cb4674c3c8d121c35acc5286",
+    "tasks/inframark-history.json": "d9f27c85b1eaf7771204238e3f59f0fd0628923f04619f742f970c5f8801f93c",
+    "tasks/inframark-login.json": "9a0fbf8ee4e5bd9cec4f0a06d59bd1596724c297ca71c15001db1e071e95e33a",
+    "tasks/inframark-paperless.json": "551f66b5e4569c49e470e5cd3cc5f1f5a84f5d4af45b7ccdf49bd7c41ab8cd21",
+    "tasks/inframark-recovery.json": "4085d9ac81e4e0fd4970672fe1ee160e23acd9a7afe5224fdda4aedf475bfa78",
+    "tasks/inframark-registration.json": "8c1f23f9264a548748462ba39960f15a49eaffb870a0d181091ad583c481d752",
+    "tasks/inframark-saved-bank-payment.json": "13ae621fdea6f3eb0074d10abbcb2b64b2fa4c137e694d72f5cf87c2eadef672",
+    "tasks/inframark-saved-card-payment.json": "47556b6058828be7e76aff1cc301dd4025004fd7662b6da5126138355992ad7e",
+    "tasks/inframark-schedule.json": "5dec0162d8d9cbd06652be7b12b358cd69d5dda900e5fec05572721541bdbe84",
+    "tasks/inframark-scheduled-cancel.json": "7d4f6be0d7269c76c7bdc6f0c80f5c2bbb6005499a240e00bf46b5cf903b63af",
+    "tasks/inframark-scheduled-edit.json": "fe04a40e24760c2a6ed0752df1e983e990eee9a216de33a3b287647f618317b4",
+    "tasks/inframark-statement.json": "7d80c14d6e27d508c4a6e1ac0354673c8e28575f8e54d3dec96e1e6cba74ce47",
+    "tasks/inframark-wallet.json": "07aca202675069c8ed68f0975de6c3baa71131578b71572ea51ee69332d97119"
+  }
+}

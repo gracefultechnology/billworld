@@ -2,7 +2,7 @@
   "id": "onswc",
   "name": "Old North State Water Company",
   "portal_family": "Starnik",
-  "implementation_status": "construction_slice",
+  "implementation_status": "first_slice",
   "catalog_records": [
     {
       "category": "water-sewer",
@@ -50,7 +50,8 @@
         "page_id": "biller_f8c0443c690b342b429a-portal-forgot-username",
         "interactive": true
       }
-    }
+    },
+    "inline_confirmations": true
   },
   "default_task_id": "onswc-username-login-v1",
   "construction_account_credentials": {
@@ -72,7 +73,29 @@
       "https://onswc.com/faqs/",
       "https://onswc.com/our-rates/"
     ],
-    "payment_fee_status": "unverified"
+    "payment_fee_status": "documented_existence_synthetic_amount",
+    "payment_fee_documentation": "FAQ: payments through the online account include a processing fee. No amount is published on onswc.com (checked 2026-10-05 and 2026-10-11); the amounts below are synthetic construction values.",
+    "bank_fee_cents": 150,
+    "card_fee_basis_points": 300,
+    "card_fee_minimum_cents": 200,
+    "card_brands": [
+      "Visa",
+      "Mastercard",
+      "Discover"
+    ],
+    "autopay_days_before_due": 0,
+    "autopay_timing_documentation": "Rates page: bills are due on the billing date and past due 15 days after it. Portal AutoPay drafting on the due date (0 days before) is a synthetic rule.",
+    "ach_draft": {
+      "enabled_for_community": true,
+      "documentation": "FAQ lists 'ACH Auto Draft by calling Customer Service' as a payment option. The shared Starnik client (captured ACHPage bundle) provides the online ACH page; its availability for this community is a synthetic assumption.",
+      "customer_service_phone": "877-511-2911",
+      "account_types": [
+        "Checking",
+        "Savings"
+      ],
+      "agreement_text": "I authorize Old North State Water Company to initiate recurring ACH debits from the bank account entered above for the full amount of each monthly water and wastewater bill on its billing date, until I deactivate ACH in the portal or by calling Customer Service at 877-511-2911. (Synthetic local agreement text; the original agreement is served privately.)",
+      "autopay_warning": "This account is also enrolled in online AutoPay. Keeping both ACH Auto Draft and AutoPay active can draft the same bill twice. Disable AutoPay if ACH Auto Draft should be your only automatic payment. (Synthetic local wording; the original warning message is served privately.)"
+    }
   },
   "public_reference_pages": [
     "biller_f8c0443c690b342b429a-website",
@@ -85,20 +108,162 @@
     "biller_f8c0443c690b342b429a-rates",
     "biller_f8c0443c690b342b429a-signup-legacy"
   ],
-  "construction_stage": "observed_public_entries_synthetic_private_flows",
+  "construction_stage": "first_slice_observed_public_entries_documented_policy_synthetic_private_flows",
   "source_conflicts_and_limits": [
-    "Online processing fee is published without amount; checkout unavailable in this construction environment until fee configuration is supported by evidence.",
-    "ACH Auto Draft enrollment is documented through customer service; execution timing unknown.",
-    "Published water/wastewater late-charge thresholds differ; existing invoice amounts/dates remain synthetic, not tariff calculations.",
+    "Online processing fee is documented without an amount; the configured bank/card fees are synthetic construction values.",
+    "ACH Auto Draft is documented as a Customer Service phone enrollment; the online ACH page is reconstructed from the shared Starnik client and its availability for ONSWC is assumed.",
+    "Published water/wastewater late-charge thresholds differ (25 vs 15 days); finance charges are shown on statements but not computed.",
     "Shared Starnik client establishes public UI reuse, not original private backend behavior.",
     "No guest payment entry observed for this operator; guest route is not exposed.",
-    "Missing assets/glyphs, responsive menus, unsupported navigation, source document coverage and private continuation fidelity remain unfinished."
+    "Missing assets/glyphs, responsive menus and some unsupported navigation on captured public pages remain."
   ],
   "unfinished": [
-    "Verified checkout fees and tenant payment flows",
-    "Auto Draft policy and service-specific invoice calculation",
-    "Tenant statements and remaining service documents",
-    "Menus and complete public navigation",
-    "Autonomous evaluation and full catalog"
+    "Original private screen layouts and backend validation (all private screens are reconstructions)",
+    "ACH Auto Draft execution and portal AutoPay generation of future invoices",
+    "Late finance charge computation and per-system rate selection beyond the seeded Rocklyn/other-system bills",
+    "Responsive menus and complete public navigation"
+  ],
+  "tenant_fixture": {
+    "evidence": "Invoice amounts are computed from the published Rocklyn water and wastewater rates (onswc.com/our-rates, captured 2026-10-05); consumption, dates, names and numbers are synthetic.",
+    "invoices": [
+      {
+        "id": "inv-current",
+        "number": "ONS-2026-10-1048",
+        "period": "September 2026",
+        "billDate": "2026-10-01",
+        "dueDate": "2026-10-01",
+        "pastDueDate": "2026-10-16",
+        "amountCents": 9439,
+        "lines": [
+          {
+            "label": "Water base rate (zero usage)",
+            "amountCents": 2411
+          },
+          {
+            "label": "Water usage 4,000 gal @ $5.57 per 1,000 (Rocklyn)",
+            "amountCents": 2228
+          },
+          {
+            "label": "Wastewater base (Rocklyn)",
+            "amountCents": 2000
+          },
+          {
+            "label": "Wastewater usage 4,000 gal @ $7.00 per 1,000 (Rocklyn)",
+            "amountCents": 2800
+          }
+        ]
+      },
+      {
+        "id": "inv-old",
+        "number": "ONS-2026-09-1048",
+        "period": "August 2026",
+        "billDate": "2026-09-01",
+        "dueDate": "2026-09-01",
+        "pastDueDate": "2026-09-16",
+        "amountCents": 8182,
+        "lines": [
+          {
+            "label": "Water base rate (zero usage)",
+            "amountCents": 2411
+          },
+          {
+            "label": "Water usage 3,000 gal @ $5.57 per 1,000 (Rocklyn)",
+            "amountCents": 1671
+          },
+          {
+            "label": "Wastewater base (Rocklyn)",
+            "amountCents": 2000
+          },
+          {
+            "label": "Wastewater usage 3,000 gal @ $7.00 per 1,000 (Rocklyn)",
+            "amountCents": 2100
+          }
+        ]
+      },
+      {
+        "id": "inv-other",
+        "number": "ONS-2026-10-2099",
+        "period": "September 2026",
+        "billDate": "2026-10-01",
+        "dueDate": "2026-10-01",
+        "pastDueDate": "2026-10-16",
+        "amountCents": 4682,
+        "lines": [
+          {
+            "label": "Water base rate (zero usage)",
+            "amountCents": 2411
+          },
+          {
+            "label": "Water usage 3,000 gal @ $7.57 per 1,000 (all other systems)",
+            "amountCents": 2271
+          }
+        ]
+      }
+    ],
+    "service_addresses": {
+      "acct-primary": "1048 Rocklyn Way, Chapel Hill, NC 27516",
+      "acct-secondary": "2099 Pine Hollow Dr, Chapel Hill, NC 27517"
+    },
+    "text_pay": false,
+    "billing": {
+      "address": "1048 Rocklyn Way",
+      "city": "Chapel Hill",
+      "state": "NC",
+      "zip": "27516",
+      "country": "United States"
+    }
+  },
+  "construction_schedule_policy": {
+    "synthetic": true,
+    "min_days_ahead": 1,
+    "max_days_ahead": 30,
+    "max_active_per_account": 3,
+    "execution": "00:00 UTC on the selected date; amount capped at the outstanding balance; tenant fee recomputed at execution",
+    "documentation": "ONSWC does not document future-dated portal payments; this shared Starnik scheduling feature is a synthetic construction addition (same local rules as Inframark).",
+    "autopay_conflict": "When AutoPay is enabled the review requires acknowledging a possible duplicate draft"
+  },
+  "evidence_labels": {
+    "observed": [
+      "Public homepage, Customer Services, FAQ (accordion) and Our Rates (water/wastewater tabs) pages with local behavior (captured 2026-10-05)",
+      "Starnik ASP.NET username/password login at integrawater.starnik.net/RP_Default.aspx",
+      "React /RP/signup (security code + email), /RP/forgot-password (username) and /RP/forgot-username (email) entry forms and client password rules",
+      "Shared Starnik client bundles (captured from the same Starnik platform): eBill option sequence, payment methods add/edit/delete, AutoPay terms/review, transaction history, authenticated PDF bill download, and the ACH page (resident list, ON/OFF switch, bank/account type/routing/account with confirmations, agreement, AutoPay Warning, deactivate and delete confirmations)",
+      "Published privacy policy and terms PDFs linked from the footer"
+    ],
+    "documented": [
+      "FAQ: four payment options - online account payment (includes a processing fee), bank bill pay, ACH Auto Draft by calling Customer Service, mailed check",
+      "FAQ: account balance visible on the portal home screen; contact updates under My Account",
+      "Rates: Rocklyn water $24.11 base + $5.57/1,000 gal; Rocklyn wastewater $20 + $7/1,000 gal; all other systems water $7.57/1,000 gal",
+      "Rates: bills due on billing date, past due 15 days after; monthly in arrears; 1% late finance charge after 25 days (water) / 15 days (wastewater)",
+      "Remit address P.O. Box 738601, Dallas, TX 75373-8601; Customer Service (877) 511-2911"
+    ],
+    "synthetic": [
+      "Processing fee amounts: bank $1.50 flat; card 3% with $2.00 minimum (existence documented, amount unpublished)",
+      "Account personas, usage, bill numbers/dates, service addresses and the private account/billing screens",
+      "Portal AutoPay timing (on the due date) and execution; ACH Auto Draft online enablement for this community, its agreement and AutoPay-warning wording; ACH drafts are recorded but not executed",
+      "Future-dated (scheduled) payments: not documented by ONSWC; shared Starnik synthetic scheduling rules (1-30 days ahead, 3 active)",
+      "Email delivery (mock Gmail), reset/verification link lifetimes, statement PDF layout",
+      "Guest/quick pay is not exposed: no ONSWC guest entry was observed"
+    ]
+  },
+  "released_tasks": [
+    "onswc-username-login-v1",
+    "onswc-register-account-v1",
+    "onswc-recover-username-password-v1",
+    "onswc-saved-bank-payment-v1",
+    "onswc-saved-card-payment-v1",
+    "onswc-read-history-balances-v1",
+    "onswc-download-current-bill-v1",
+    "onswc-paperless-v1",
+    "onswc-manage-wallet-v1",
+    "onswc-autopay-enable-v1",
+    "onswc-autopay-change-v1",
+    "onswc-autopay-cancel-v1",
+    "onswc-ach-enroll-v1",
+    "onswc-ach-change-v1",
+    "onswc-ach-stop-v1",
+    "onswc-schedule-payment-v1",
+    "onswc-scheduled-edit-v1",
+    "onswc-scheduled-cancel-v1"
   ]
 }

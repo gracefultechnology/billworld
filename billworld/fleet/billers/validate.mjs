@@ -8,7 +8,7 @@
 import { readDossierFiles } from './load.mjs';
 import { validateDossier } from './schema.mjs';
 import { loadCatalog } from '../catalog.mjs';
-import { helpArticles } from '../help.mjs';
+import { helpArticles, RESEARCH_PROCESS } from '../help.mjs';
 import { generateTasks } from '../tasks.mjs';
 import { FleetWorld } from '../engine.mjs';
 import { readdirSync } from 'node:fs';
@@ -32,9 +32,14 @@ export async function validateAll({ ids = null } = {}) {
     if (b && !errs.length) {
       if (!catalog.dedicated.includes(b.id)) errs.push(`catalog: dossier not applied (${(catalog.dossierErrors[b.id] || ['unknown reason']).join('; ')})`);
       const help = helpArticles(b);
+      // Customer-facing help must not carry the research process ("Rendered with headless Chrome", "X = Y" shorthand, slugs).
+      for (const a of help) for (const t of [a.title, ...(a.paragraphs || []), ...(a.steps || [])]) if (RESEARCH_PROCESS.test(String(t || ''))) errs.push(`help "${a.slug}": research-note text shown to customers: "${String(t).slice(0, 90)}"`);
       for (const area of ['public', 'account']) for (const it of f.data.nav?.[area] || []) if (it.helpSlug && !help.some(a => a.slug === it.helpSlug)) errs.push(`nav.${area}: helpSlug "${it.helpSlug}" is not a help article for this biller (have: ${help.map(a => a.slug).join(', ')})`);
       for (const x of f.data.testExpectations || []) if (x.page === 'helpArticle' && !help.some(a => a.slug === x.slug)) errs.push(`testExpectations: help article "${x.slug}" does not exist`);
       for (const [k, c] of Object.entries(f.data.capabilities || {})) if (c.support === 'unsupported' && c.channel === 'phone' && !c.phone && !(b.contact?.phones?.length || b.contact?.payPhones?.length)) errs.push(`capabilities.${k}: channel phone but no phone in the dossier or the catalog contact`);
+      // The guest-pay note is shown above the guest form: it must not ask for an identifier no template form takes (SSN / ITIN).
+      const gNote = f.data.capabilities?.guest_pay?.note || '';
+      if (/\bSSN\b|\bITIN\b|Social Security/i.test(gNote)) errs.push(`capabilities.guest_pay.note: asks for an SSN/ITIN but the guest form takes ${(f.data.auth?.guestLookupFields || ['accountNumber', 'lastName']).join(' + ')}; describe what the form asks for ("${gNote.slice(0, 80)}")`);
       // Every task: well formed, and its reference solution satisfies its predicates while a no-op does not.
       const world = new FleetWorld();
       let tasks = [];

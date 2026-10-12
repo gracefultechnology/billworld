@@ -1,0 +1,18 @@
+{
+  "id": "charlotte-enroll-autopay-v1",
+  "version": 1,
+  "site_id": "charlotte-county-utilities",
+  "evidence_cohort": "documented_setup_automatic_payments_fees_synthetic_timing",
+  "prompt": "Log in to the Charlotte County Utilities online payment portal (reach it from the county Utilities website or /cp/ccfl) with email alex@billworld.test and password Billworld-2026!. Under Setup, turn on Automatic Payments for account 01048-021048 using the saved Checking account ending 1048, acknowledging the documented $1.00 ACH fee per automatic payment. Do not pay today or change anything else. Afterwards open Automatic Payments again to confirm it is on. Private portal screens and timing are simulated; county fees and posting rules are documented.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "ccu_autopay",
+    "billing_account_id": "acct-primary",
+    "enabled": true,
+    "method_id": "bank-1048",
+    "fee_cents": 100
+  }
+}

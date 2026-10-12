@@ -1,0 +1,32 @@
+{
+  "id": "onswc-scheduled-edit-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "synthetic_future_dated_payment_documented_fee_existence",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. Open Scheduled Payments. Edit the $50.00 payment scheduled for 2026-10-12 so that it pays $94.39 on 2026-10-15 from the saved Visa ending 4242. Review the $2.83 card processing fee, authorize the change and confirm the updated payment appears as Scheduled. Do not create another scheduled payment, pay now, or change anything else. Report the new scheduled date. Scheduling is a synthetic local feature.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_schedule",
+    "mode": "edit",
+    "account_id": "acct-primary",
+    "schedule_id": "onswc-sched-1012",
+    "method_id": "onswc-card-4242",
+    "amount_cents": 9439,
+    "fee_cents": 283,
+    "date": "2026-10-15",
+    "bank_id": "onswc-bank-1048",
+    "card_id": "onswc-card-4242",
+    "seed_scheduled": [
+      {
+        "id": "onswc-sched-1012",
+        "date": "2026-10-12",
+        "amount_cents": 5000,
+        "method_id": "onswc-bank-1048",
+        "confirmation": "BW-ONSWC-S1012"
+      }
+    ]
+  }
+}

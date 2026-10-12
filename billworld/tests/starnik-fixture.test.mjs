@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {World} from '../engine.mjs';import {constructionSites} from '../registry.mjs';import {starnikFixtureCredentials} from '../starnik-fixture.mjs';
-const site=constructionSites.get('greater-minnesota-gas'),ids=['acct-primary','acct-secondary'];
-function scenario(taskId,fn){const old=site.construction_account_credentials,w=new World(':memory:',{construction:true});try{site.construction_account_credentials={'acct-primary':{username:'water.alex',password:'Water-2026!',security_code:'WATER1048',service_zip:'10001'},'acct-secondary':{username:'water.jordan',password:'Second-2026!',security_code:'WATER2099',service_zip:'10002'}};const fixture=w.create({siteId:site.id,taskId});fn(w,fixture);}finally{site.construction_account_credentials=old;w.close();}}
+import {World} from '../engine.mjs';import {sites} from '../registry.mjs';import {starnikFixtureCredentials} from '../starnik-fixture.mjs';
+const site=sites.get('greater-minnesota-gas'),ids=['acct-primary','acct-secondary','acct-cabin'];
+function scenario(taskId,fn){const old=site.construction_account_credentials,w=new World(':memory:',{construction:true});try{site.construction_account_credentials={'acct-primary':{username:'water.alex',password:'Water-2026!',security_code:'WATER1048',service_zip:'10001'},'acct-secondary':{username:'water.jordan',password:'Second-2026!',security_code:'WATER2099',service_zip:'10002'},'acct-cabin':{username:'water.cabin',password:'Cabin-2026!',security_code:'WATER3077',service_zip:'10003'}};const fixture=w.create({siteId:site.id,taskId});fn(w,fixture);}finally{site.construction_account_credentials=old;w.close();}}
 test('Missing, duplicate and malformed fixture fields never inherit GMG identities',()=>{
  assert.throws(()=>starnikFixtureCredentials({},ids),/unavailable/);
  for(const delta of [{username:'bad'},{password:'short'},{security_code:''},{service_zip:'1000'}, {username:'JORDAN.LEE'},{security_code:'GMG2099'}]){const copy=structuredClone(site);Object.assign(copy.construction_account_credentials['acct-primary'],delta);assert.throws(()=>starnikFixtureCredentials(copy,ids));}

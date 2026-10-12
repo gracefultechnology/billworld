@@ -1,0 +1,33 @@
+{
+  "id": "onswc-manage-wallet-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "observed_wallet_sequence_synthetic_private_layout",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. Open Payment Methods. Update the existing Visa ending 4242 to expiration 12/31, re-entering synthetic Visa 4242424242424242 and security code 123; keep its other details unchanged. Add a Savings account at Test Bank: holder Alex Morgan, routing and confirmation 021000021, account and confirmation 1234561048. Billing for both: Alex Morgan, 1048 Rocklyn Way, Chapel Hill, NC 27516, United States; email alex@billworld.test. Review and authorize each save. Delete the obsolete Checking account ending 2099, then reload Payment Methods to verify exactly the updated Visa and the new Savings remain. Make no payments and leave AutoPay, ACH Auto Draft and all other settings unchanged. Private screens and full-number re-entry are simulated.",
+  "budget": {
+    "seconds": 420,
+    "actions": 160
+  },
+  "goal": {
+    "type": "starnik_wallet",
+    "account_id": "acct-primary",
+    "card_id": "onswc-card-4242",
+    "remove_id": "onswc-bank-2099",
+    "expiry": "12/31",
+    "new_bank_number": "1234561048",
+    "routing": "021000021",
+    "holder": "Alex Morgan",
+    "bank_name": "Test Bank",
+    "account_type": "Savings",
+    "billing": {
+      "firstName": "Alex",
+      "lastName": "Morgan",
+      "address": "1048 Rocklyn Way",
+      "city": "Chapel Hill",
+      "state": "NC",
+      "zip": "27516",
+      "country": "United States",
+      "email": "alex@billworld.test"
+    }
+  }
+}

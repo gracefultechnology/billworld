@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {World} from '../engine.mjs';
-import {constructionSites} from '../registry.mjs';
+import {sites} from '../registry.mjs';
 import {starnikBrand} from '../starnik-brand.mjs';
-const site=constructionSites.get('greater-minnesota-gas');
+const site=sites.get('greater-minnesota-gas');
 function setup(fn){const original={name:site.name,runtime:site.runtime},w=new World(':memory:',{construction:true});try{site.name='Example Water & Sewer';site.runtime={...site.runtime,mail_display_name:'Example Water',payment_confirmation_prefix:'BW-EXAMPLE',autopay_confirmation_prefix:'BWEXAMPLEAP'};const id=w.create({siteId:site.id,taskId:'gmg-saved-bank-payment-v1'}).episodeId,session=w.starnikLogin(id,{username:'alex.morgan',password:'Billworld-2026!'}).session;fn({w,id,session});}finally{Object.assign(site,original);w.close();}}
 test('Brand configuration is explicit and rejects missing or malformed names and prefixes',()=>{
  assert.equal(starnikBrand(site).mailName,'GMG');

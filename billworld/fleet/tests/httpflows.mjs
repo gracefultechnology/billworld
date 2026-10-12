@@ -5,7 +5,7 @@
 import http from 'node:http';
 import { PUBLIC_PAGES, templateFor } from '../server.mjs';
 import { loginId } from './solve.mjs';
-import { PASSWORD, primaryMethodId } from '../engine.mjs';
+import { PASSWORD, primaryMethodId, testCardFor } from '../engine.mjs';
 import { esc } from '../kit.mjs';
 
 // Research metadata must never reach a rendered page (evidence labels, capture fields, internal file names).
@@ -147,8 +147,15 @@ export async function authedChecks({ server, world, ep, biller: b, client }) {
   // ---- account forms, each followed by a ledger assertion ----
   if (t.routes.arrangement && world.balance(acct()) >= 5000) {
     const pg = await page('arrangement'); const offered = !!formOn(pg, x => x.has('months'));
-    if (!offered && !/not (offered|available)/i.test(pg.body) && !pg.body.includes('data-capability="payment_arrangement"')) fail('arrangement', 'no payment-plan form and no "not offered" explanation');
-    const res = offered ? await submitOn('arrangement', 'arrangement', x => x.has('months'), { months: '6' }) : null;
+    // Templates with a review step: a GET form picks the installments, the review page posts the plan with a consent box.
+    const reviewFirst = !offered && parseForms(pg.body).some(f => f.method === 'get' && f.has('months'));
+    if (!offered && !reviewFirst && !/not (offered|available)/i.test(pg.body) && !pg.body.includes('data-capability="payment_arrangement"')) fail('arrangement', 'no payment-plan form and no "not offered" explanation');
+    let res = offered ? await submitOn('arrangement', 'arrangement', x => x.has('months'), { months: '6' }) : null;
+    if (reviewFirst) {
+      const rv = await client.get(`${url('arrangement')}?months=6&review=1`); const f = formOn(rv, x => x.has('months') && x.has('planConsent'));
+      if (!f) fail('arrangement', 'review step has no plan form with a consent box');
+      else { res = await client.post(f.action || url('arrangement'), encodeForm(f, { planConsent: true })); if (res.status !== 303) fail('arrangement', `POST review -> ${res.status} ${alertOf(res.body)}`); }
+    }
     if (res?.status === 303 && acct().arrangement?.months !== 6) fail('arrangement', 'ledger has no 6-month plan');
   }
   if (t.routes.contact) {
@@ -166,12 +173,18 @@ export async function authedChecks({ server, world, ep, biller: b, client }) {
   if (t.routes.wallet) {
     const known = new Set(acct().methods.map(m => m.id)); // a seeded method may also end in 4321: identify the new one by id
     const viaCard = primaryMethodId(b) !== 'pm-chk'; // card-only billers save a card ending 4321 instead
-    const res = await submitOn('wallet', 'wallet', x => x.has('methodType'), viaCard ? { methodType: 'card', cardNumber: '4000056655064321', exp: '12/29', cvv: '123' } : { methodType: 'bank', routing: '021000021', bankAccount: '000987654321', bankAccountConfirm: '000987654321' });
+    const res = await submitOn('wallet', 'wallet', x => x.has('methodType'), viaCard ? { methodType: 'card', cardNumber: testCardFor(b, '4321'), exp: '12/29', cvv: '123' } : { methodType: 'bank', routing: '021000021', bankAccount: '000987654321', bankAccountConfirm: '000987654321' });
     const added = acct().methods.find(m => !known.has(m.id) && m.last4 === '4321' && m.saved && !m.removed);
     if (res?.status === 303 && !added) fail('wallet', 'added method not saved');
     if (added) {
       const rm = await submitOn('wallet', 'wallet', x => x.valuesOf('methodId').includes(added.id) && x.valuesOf('op').includes('remove'), {});
-      if (rm?.status === 303 && !acct().methods.find(m => m.id === added.id).removed) fail('wallet', 'remove did not remove');
+      // Remove asks for confirmation first (wallet?remove=<id>); the method stays until it is confirmed.
+      if (rm?.status === 303 && acct().methods.find(m => m.id === added.id).removed) fail('wallet', 'removed without confirmation');
+      if (rm?.status === 303) {
+        const cr = await client.get(rm.headers.location); const cf = formOn(cr, x => x.valuesOf('confirmRemove').includes('yes') && x.valuesOf('methodId').includes(added.id));
+        if (!cf) fail('wallet', 'no "Remove …?" confirmation after Remove');
+        else { const done = await client.post(cf.action, encodeForm(cf, {})); if (done.status !== 303 || !acct().methods.find(m => m.id === added.id).removed) fail('wallet', `confirmed remove did not remove (${done.status})`); }
+      }
     }
   }
   const sup = cap => b.capabilities[cap]?.support === 'supported';

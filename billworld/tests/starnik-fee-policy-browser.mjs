@@ -2,9 +2,9 @@ import puppeteer from 'puppeteer';
 import assert from 'node:assert/strict';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {start} from '../server.mjs';
-import {constructionSites} from '../registry.mjs';
+import {sites} from '../registry.mjs';
 const dir=new URL('../artifacts/starnik-fee-policy-browser/',import.meta.url);mkdirSync(dir,{recursive:true});
-const site=constructionSites.get('greater-minnesota-gas'),original=site.documented_policy;
+const site=sites.get('greater-minnesota-gas'),original=site.documented_policy;
 const r=await start({port:0,adminPort:0,dbPath:':memory:',construction:true});
 let browser;const report={scenarios:[],page_errors:[],outbound_requests:[],scope:'Synthetic policy variation on GMG fixture; no additional tenant coverage'};
 try{

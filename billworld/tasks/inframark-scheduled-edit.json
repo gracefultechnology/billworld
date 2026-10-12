@@ -1,0 +1,32 @@
+{
+  "id": "inframark-scheduled-edit-v1",
+  "version": 1,
+  "site_id": "inframark",
+  "evidence_cohort": "synthetic_future_dated_payment_documented_fees",
+  "prompt": "Sign in to the local Inframark Resident Portal as alex.inframark / Inframark-2026! and open Scheduled Payments. Edit the $50.00 payment scheduled for 2026-10-18 so that it pays $84.32 on 2026-10-16 from the saved Visa ending 4242. Review the $2.53 card convenience fee, authorize the change and confirm the updated payment appears as Scheduled. Do not create another scheduled payment, pay now, or change anything else. Report the new scheduled date. Scheduling is a synthetic local feature.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_schedule",
+    "mode": "edit",
+    "account_id": "acct-primary",
+    "schedule_id": "inframark-sched-1018",
+    "method_id": "inframark-card-4242",
+    "amount_cents": 8432,
+    "fee_cents": 253,
+    "date": "2026-10-16",
+    "bank_id": "inframark-bank-1048",
+    "card_id": "inframark-card-4242",
+    "seed_scheduled": [
+      {
+        "id": "inframark-sched-1018",
+        "date": "2026-10-18",
+        "amount_cents": 5000,
+        "method_id": "inframark-bank-1048",
+        "confirmation": "BW-INFRAMARK-S1018"
+      }
+    ]
+  }
+}

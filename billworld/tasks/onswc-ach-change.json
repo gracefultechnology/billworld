@@ -1,0 +1,33 @@
+{
+  "id": "onswc-ach-change-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "documented_ach_auto_draft_observed_shared_client_sequence_synthetic_enablement",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. ACH Auto Draft is active from Test Bank Checking ending 1048. Open ACH Auto Draft, choose Edit ACH Setting and replace it with bank Carolina Community Bank, account type Savings, routing number 053000196 and account number 5500987654 (enter each confirmation too). Continue, agree to the ACH terms and accept. Reopen ACH Auto Draft to verify it is on with the account ending 7654. Do not turn on AutoPay, make payments, or change saved payment methods, bill delivery, credentials or other accounts. The agreement text and local persistence are synthetic.",
+  "budget": {
+    "seconds": 360,
+    "actions": 120
+  },
+  "goal": {
+    "type": "starnik_ach",
+    "account_id": "acct-primary",
+    "prior_ach": {
+      "bank_name": "Test Bank",
+      "account_type": "Checking",
+      "routing": "021000021",
+      "account_number": "1234561048"
+    },
+    "expected": {
+      "active": true,
+      "bank_name": "Carolina Community Bank",
+      "account_type": "Savings",
+      "routing": "053000196",
+      "account_number": "5500987654"
+    },
+    "expected_changes": [
+      "starnik_ach_saved"
+    ],
+    "require_autopay_warning": false,
+    "autopay_enabled_final": false
+  }
+}

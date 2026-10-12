@@ -1,0 +1,20 @@
+{
+  "id": "onswc-saved-card-payment-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "synthetic_signed_checkout_documented_fee_existence_synthetic_amount",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. Open Pay My Bill and use the saved Visa ending 4242 to pay $40.00 toward the current bill. Review the $2.00 processing fee (the card minimum applies) and authorize once. View the receipt, then return to Pay My Bill to verify the remaining balance is $54.39. Keep saved methods, AutoPay, ACH Auto Draft, credentials and all other accounts unchanged. The fee amounts and checkout are synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_signed_payment",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "method_id": "onswc-card-4242",
+    "amount_cents": 4000,
+    "fee_cents": 200,
+    "remaining_cents": 5439
+  }
+}

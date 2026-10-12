@@ -1,0 +1,82 @@
+{
+  "recorded_at": "2026-10-11T20:43:16.186644+00:00",
+  "kind": "onswc_first_slice_validation",
+  "site_id": "onswc",
+  "implementation_status": "first_slice",
+  "tasks": {
+    "task_onswc1": "onswc-username-login-v1",
+    "task_onswc2": "onswc-register-account-v1",
+    "task_onswc3": "onswc-recover-username-password-v1",
+    "task_onswc4": "onswc-saved-bank-payment-v1",
+    "task_onswc5": "onswc-saved-card-payment-v1",
+    "task_onswc6": "onswc-read-history-balances-v1",
+    "task_onswc7": "onswc-download-current-bill-v1",
+    "task_onswc8": "onswc-paperless-v1",
+    "task_onswc9": "onswc-manage-wallet-v1",
+    "task_onswc10": "onswc-autopay-enable-v1",
+    "task_onswc11": "onswc-autopay-change-v1",
+    "task_onswc12": "onswc-autopay-cancel-v1",
+    "task_onswc13": "onswc-ach-enroll-v1",
+    "task_onswc14": "onswc-ach-change-v1",
+    "task_onswc15": "onswc-ach-stop-v1",
+    "task_onswc16": "onswc-schedule-payment-v1",
+    "task_onswc17": "onswc-scheduled-edit-v1",
+    "task_onswc18": "onswc-scheduled-cancel-v1"
+  },
+  "capabilities": [
+    "homepage/billing/FAQ/rates public pages",
+    "username login",
+    "security-code registration with mock Gmail verification",
+    "username + password recovery via mock Gmail",
+    "account summary with tariff-derived bills and statement PDFs",
+    "saved bank/card one-time payment with synthetic processing fee",
+    "transaction history with pending payments",
+    "eBill/paperless",
+    "wallet add/edit/delete",
+    "AutoPay enable/change/cancel with ACH duplicate warning",
+    "ACH Auto Draft enroll/change/deactivate/delete with AutoPay Warning",
+    "scheduled payment create/edit/cancel (synthetic)"
+  ],
+  "not_exposed": {
+    "guest_payment": "No ONSWC guest entry observed; /starnikERP/ returns 404"
+  },
+  "validation": {
+    "unit_tests": "node --test billworld/tests/onswc.test.mjs: 8 pass",
+    "browser": "npm run test:browser:onswc: 18 task journeys + 8 public pages, page errors 0, outbound requests 0, unnamed controls 0, native dialogs 0",
+    "journey_actions": {
+      "onswc-username-login-v1": 5,
+      "onswc-register-account-v1": 20,
+      "onswc-recover-username-password-v1": 21,
+      "onswc-saved-bank-payment-v1": 12,
+      "onswc-saved-card-payment-v1": 12,
+      "onswc-read-history-balances-v1": 6,
+      "onswc-download-current-bill-v1": 6,
+      "onswc-paperless-v1": 9,
+      "onswc-manage-wallet-v1": 43,
+      "onswc-autopay-enable-v1": 12,
+      "onswc-autopay-change-v1": 11,
+      "onswc-autopay-cancel-v1": 8,
+      "onswc-ach-enroll-v1": 21,
+      "onswc-ach-change-v1": 16,
+      "onswc-ach-stop-v1": 8,
+      "onswc-schedule-payment-v1": 11,
+      "onswc-scheduled-edit-v1": 12,
+      "onswc-scheduled-cancel-v1": 8
+    },
+    "infinity": "smoke.py --task-ids task_onswc1..task_onswc18: 18/18 reference journeys pass through the upstream lifecycle and private verifier; lifecycle failure suite passes",
+    "regression": "onswc-public, onswc-documents, starnik-autopay, starnik-wallet, starnik-statements, starnik-ebill browser suites pass; npm test passes except an unrelated in-progress Batavia test"
+  },
+  "statements": {
+    "onswc-inv-current.pdf": "41e94fce08d3bf6bdf5fef3083902c2cb150f3c7bd74c023dac406ef6220d1da",
+    "onswc-inv-old.pdf": "b7884d0693b9db3607ff9ba4a52cc8ef5da49bd5c30ad952ff224800402fba70",
+    "onswc-inv-other.pdf": "f9d1e00d42c6664a24bfdc2d0e139315d2199e165d234a5b0a4a91ff4acb2a43"
+  },
+  "limits": [
+    "Online processing fee is documented without an amount; the configured bank/card fees are synthetic construction values.",
+    "ACH Auto Draft is documented as a Customer Service phone enrollment; the online ACH page is reconstructed from the shared Starnik client and its availability for ONSWC is assumed.",
+    "Published water/wastewater late-charge thresholds differ (25 vs 15 days); finance charges are shown on statements but not computed.",
+    "Shared Starnik client establishes public UI reuse, not original private backend behavior.",
+    "No guest payment entry observed for this operator; guest route is not exposed.",
+    "Missing assets/glyphs, responsive menus and some unsupported navigation on captured public pages remain."
+  ]
+}

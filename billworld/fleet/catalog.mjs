@@ -334,11 +334,23 @@ export function displayPhone(raw) {
   if (!shown.length) return null; // "No phone line published…" is a research remark, not a number to call
   return text.replace(/^customer service:?\s*/i, '');
 }
-const RESEARCHY_AREA = /\bHQ\b|;|\bmostly\b|\bissuer\b|research|\bper\b|fetched|\(|\bcustomers?\b/i;
+// The parent-company line shown in footers: research notes in parentheses ("(Warburg Pincus-backed)", "(family-owned)")
+// are dropped, and a parent that only repeats the biller's own name or is an ownership descriptor is not shown.
+const OWNERSHIP_ONLY = /^(?:member[- ]owned(?: cooperative)?|state[- ]owned|private(?:ly held)?|public|nonprofit|non-profit|municipal|family[- ]owned|employee[- ]owned|independent)$/i;
+export function displayParent(parent, ...names) {
+  let p = String(parent || ''); for (let i = 0; i < 3; i++) p = p.replace(/\s*\([^()]*\)/g, '');
+  p = p.replace(/\s*[;,]\s*(?:formerly|backed by|owned by|a subsidiary of|private equity)\b[\s\S]*$/i, '').replace(/\s{2,}/g, ' ').replace(/[\s,;:–—-]+$/, '').trim();
+  const norm = t => String(t || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  if (!p || OWNERSHIP_ONLY.test(p) || /https?:|\b(?:inferred|research|dossier)\b/i.test(p)) return null;
+  if (names.some(n => n && (norm(n) === norm(p) || norm(n).startsWith(`${norm(p)} `) && norm(p).split(' ').length >= 2))) return null;
+  return p;
+}
+const RESEARCHY_AREA = /\bHQ\b|SDWIS|PWSID|population served|;|\bmostly\b|\bissuer\b|research|\bper\b|fetched|\(|\bcustomers?\b/i;
 export function contactInfo(entry) {
   const phone = displayPhone(entry.phone_customer_service), payPhone = displayPhone(entry.phone_pay_by_phone);
   const mailAddress = cleanContactText(entry.mail_payment_address);
-  const detail = entry.service_area_detail;
+  // Research suffixes on the area ("- EPA SDWIS PWSID IL0316000, population served 2,721,308", "(Census 2024 estimate)") are not customer text.
+  const detail = entry.service_area_detail && (String(entry.service_area_detail).replace(/\s*(?:[-–—;,]\s*)?(?:EPA\s+)?(?:SDWIS\b|PWSID\b|population served\b)[\s\S]*$/i, '').replace(/\s*\((?:Census|also wholesale|system also)[^)]*\)/gi, '').replace(/^Population [\d,]+\s*$/i, '').replace(/[\s|,;:–—-]+$/, '').trim() || null);
   const serviceArea = detail && !RESEARCHY_AREA.test(detail) && detail.length <= 80 ? detail : (entry.service_area || []).filter(s => s && s !== 'US').join(', ') || null;
   return { phone, payPhone, mailAddress: mailAddress && !PROVENANCE.test(mailAddress) ? mailAddress : mailAddress?.replace(PROVENANCE, '').trim() || null, serviceArea, phones: phoneDigits(entry.phone_customer_service), payPhones: phoneDigits(entry.phone_pay_by_phone) };
 }

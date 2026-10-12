@@ -1,0 +1,18 @@
+{
+  "id": "onswc-autopay-cancel-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "observed_shared_autopay_sequence_synthetic_tenant_timing",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. Open AutoPay and disable the existing AutoPay enrollment, confirming when asked. Reload AutoPay to verify it is disabled. Keep saved payment methods, ACH Auto Draft, payments, credentials and all other accounts unchanged. The private AutoPay layout is simulated.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_autopay",
+    "account_id": "acct-primary",
+    "enabled": false,
+    "method_id": "onswc-bank-1048",
+    "ach_active": false
+  }
+}

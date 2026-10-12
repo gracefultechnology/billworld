@@ -4,7 +4,7 @@
 //   node billworld/fleet/agentlab/sample.mjs --template smarthub [--max-billers 20]
 //   node billworld/fleet/agentlab/sample.mjs --billers id1,id2
 // Options: --tier dedicated|family|all (default: dedicated for --category/--template, falling back to family billers
-// when the selection has no dedicated biller), --max-billers N (default 20), --types a,b (only these task types),
+// when the selection has no dedicated biller), --max-billers N (default: every dedicated biller of the selection; 20 for family/all tiers), --types a,b (only these task types),
 // --with-meta (adds template/category/cohort/slug to each row), --no-cover (skip the coverage pass that adds one task
 // for every supported type the rotation did not reach).
 // Output: JSON [{taskId, billerId, type}] on stdout. Types rotate across the selection so every task type that some
@@ -17,7 +17,9 @@ const category = arg('category', ''), template = arg('template', ''), billerArg 
 const perBiller = Math.max(1, Number(arg('per-biller', 3)));
 const seed = arg('seed', 'agentlab');
 const tier = arg('tier', '');
-const maxBillers = Math.max(1, Number(arg('max-billers', 20)));
+const maxArg = arg('max-billers', null);
+const maxBillers = maxArg == null ? null : Math.max(1, Number(maxArg));
+const cap = (list, dflt = 20) => list.slice(0, maxBillers ?? dflt);
 const onlyTypes = (arg('types', '') || '').split(',').filter(Boolean);
 const withMeta = process.argv.includes('--with-meta');
 if (!category && !template && !billerArg.length) { console.error('Choose: --category <c> | --template <t> | --billers a,b'); process.exit(2); }
@@ -34,10 +36,13 @@ try {
     const fam = all.filter(b => !b.dossier && match(b) && b.template !== 'offline').map(b => b.id);
     const offline = all.filter(b => !b.dossier && match(b) && b.template === 'offline').map(b => b.id);
     const order = list => list.slice().sort((a, b) => unit(`${seed}:${a}`) - unit(`${seed}:${b}`));
-    if (tier === 'family') ids = order(fam).slice(0, maxBillers);
-    else if (tier === 'all') ids = [...order(ded), ...order(fam), ...order(offline).slice(0, 1)].slice(0, maxBillers);
-    else ids = (ded.length ? order(ded) : order(fam)).slice(0, maxBillers);
-    if (template === 'offline' && !ids.length) ids = order(offline).slice(0, maxBillers);
+    if (tier === 'family') ids = cap(order(fam));
+    else if (tier === 'all') ids = cap([...order(ded), ...order(fam), ...order(offline).slice(0, 1)]);
+    else ids = ded.length ? cap(order(ded), Infinity) : cap(order(fam)); // dedicated: every dossier biller unless --max-billers
+    if (template === 'offline' && !ids.length) ids = cap(order(offline));
+    // Never drop dossier billers silently: name the ones a --max-billers cap (or the family/all cap) left out.
+    const leftOut = ded.filter(id => !ids.includes(id));
+    if (leftOut.length && tier !== 'family') console.error(`sample: ${leftOut.length} dedicated biller(s) not sampled (raise --max-billers to include them): ${order(leftOut).join(', ')}`);
     if (!ids.length) { console.error(`No billers match ${category ? `category ${category}` : ''}${template ? ` template ${template}` : ''}`); process.exit(1); }
   }
   // Each biller's tasks grouped by type.

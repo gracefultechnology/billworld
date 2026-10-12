@@ -2,7 +2,7 @@
 // Authoritative messages are fetched after mailbox authentication. Browser state
 // never supplies message bodies, identities, challenges or billing outcomes.
 (() => {
-  let snapshot = new Map(), ready = false, saving = Promise.resolve(), busy = false, revision = 0;
+  let snapshot = new Map(), ready = false, saving = Promise.resolve(), busy = false, revision = 0, lastPayload = '';
   async function api(path, input) {
     const response = await fetch('/api/mail' + path, input ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(input) } : {});
     const data = await response.json();
@@ -20,16 +20,23 @@
       category: 'primary', hasAttachments: (message.attachments||[]).length>0, attachments: (message.attachments||[]).map(a=>({...a,size:a.sizeBytes+' bytes'})) };
   };
   function accept(messages) {
+    lastPayload = JSON.stringify(messages);
     AppState.emails = messages.map(decode);
     snapshot = new Map(AppState.emails.map(email => [email.serverId, fields(email)]));
     AppState._recalculateLabelCounts();
     if (AppState.searchQuery) AppState.searchResults = AppState.searchEmails(AppState.searchQuery);
   }
+  const view = emails => JSON.stringify(emails.map(e => [e.serverId, e.subject, e.body, e.date, (e.attachments || []).length, fields(e)]));
   async function refresh() {
     if (busy) return;
     busy = true;
     const began = revision;
-    try { const messages = (await api('')).messages; if (began === revision) { accept(messages); if (ready) App.render(); } }
+    // Re-render only when the server's messages changed: an unconditional 2 s re-render replaced every element,
+    // which broke clicks/refs held by agents and assistive tech and discarded focus.
+    try { const messages = (await api('')).messages; if (began === revision && JSON.stringify(messages) !== lastPayload) {
+      // A save echo (e.g. the server confirming "read" after a message was opened) matches what is already
+      // on screen, so adopt it silently instead of replacing the message view the agent just opened.
+      const shown = view(AppState.emails); accept(messages); if (ready && view(AppState.emails) !== shown) App.render(); } }
     finally { busy = false; }
   }
   function login(error = '') {
@@ -88,12 +95,31 @@
       html += cusiLinks.map(match => `<p><a href="/Account/ResetPassword?token=${encodeURIComponent(match[1])}">Reset your Lockwood password</a></p>`).join('');
       const paymentusLinks = [...message.body.matchAll(/\/paymentus\/reset\?token=([A-Za-z0-9_-]+)/g)];
       html += paymentusLinks.map(match => `<p><a href="/paymentus/reset?token=${encodeURIComponent(match[1])}">Reset your Batavia password</a></p>`).join('');
+      const charlotteLinks = [...message.body.matchAll(/\/cp\/ccfl\/reset\?token=([A-Za-z0-9_-]+)/g)];
+      html += charlotteLinks.map(match => `<p><a href="/cp/ccfl/reset?token=${encodeURIComponent(match[1])}">Reset your Charlotte County Utilities password</a></p>`).join('');
+      // Starnik serves several billers (GMG, Inframark, ...): name the link after the biller in the subject.
+      const starnikBrand = Components.escapeHtml((String(message.subject || '').match(/your local (.+?) (?:email|password)$/i) || [])[1] || 'portal');
       const signupLinks=[...message.body.matchAll(/\/starnik\/signup\/verify\?token=([A-Za-z0-9_-]+)/g)];
-      html += signupLinks.map(match => `<p><a href="/starnik/signup/verify?token=${encodeURIComponent(match[1])}">Verify your Greater Minnesota Gas email</a></p>`).join('');
+      html += signupLinks.map(match => `<p><a href="/starnik/signup/verify?token=${encodeURIComponent(match[1])}">Verify your ${starnikBrand} email</a></p>`).join('');
       const starnikLinks=[...message.body.matchAll(/\/starnik\/reset\?token=([A-Za-z0-9_-]+)/g)];
-      html += starnikLinks.map(match => `<p><a href="/starnik/reset?token=${encodeURIComponent(match[1])}">Reset your Greater Minnesota Gas password</a></p>`).join('');
+      html += starnikLinks.map(match => `<p><a href="/starnik/reset?token=${encodeURIComponent(match[1])}">Reset your ${starnikBrand} password</a></p>`).join('');
+      const authorityLinks=[...message.body.matchAll(/\/site\/reset-password\?token=([A-Za-z0-9_-]+)/g)];
+      html += authorityLinks.map(match => `<p><a href="/site/reset-password?token=${encodeURIComponent(match[1])}">Reset your Town of Swepsonville password</a></p>`).join('');
+      const tuscaloosaLinks=[...message.body.matchAll(/\/cp\/tusl\/reset\?token=([A-Za-z0-9_-]+)/g)];
+      html += tuscaloosaLinks.map(match => `<p><a href="/cp/tusl/reset?token=${encodeURIComponent(match[1])}">Reset your City of Tuscaloosa customer portal password</a></p>`).join('');
+      // Any other same-site token link in a message body is still rendered as a clickable link.
+      const known = /^\/(?:portal\/reset|xpress\/verify-email|Account\/ResetPassword|paymentus\/reset|starnik\/signup\/verify|starnik\/reset|site\/reset-password|cp\/tusl\/reset)$/;
+      const otherLinks = [...message.body.matchAll(/(?:^|\s)(\/[A-Za-z][A-Za-z0-9\/_-]*)\?token=([A-Za-z0-9_-]+)/g)].filter(match => !known.test(match[1]));
+      html += otherLinks.map(match => `<p><a href="${Components.escapeAttr(match[1])}?token=${encodeURIComponent(match[2])}">Open link: ${Components.escapeHtml(match[1])}</a></p>`).join('');
     }
     return html;
+  };
+  // Inbox rows open via an explicit link so keyboard and accessibility-tree agents can open them.
+  const row = Views._renderEmailRow;
+  Views._renderEmailRow = function(email) {
+    const label = `Open message: ${email.subject} from ${email.from.name}`;
+    return row.call(this, email).replace(/<span class="email-subject-text">([\s\S]*?)<\/span>/, (_, subject) =>
+      `<a class="email-subject-text email-open" href="#/email/${email.id}" aria-label="${Components.escapeAttr(label)}" data-testid="email-open-${email.id}">${subject}</a>`);
   };
   const render = App.render;
   App.render = function() {
@@ -122,13 +148,13 @@
           Components.showToast('This mailbox supports reading, searching and organizing messages. This action is unavailable.', 'error');
         }
       }, true);
-      const style = document.createElement('style'); style.textContent = '[hidden]{display:none!important}'; document.head.append(style);
+      const style = document.createElement('style'); style.textContent = '[hidden]{display:none!important}a.email-open{color:inherit;text-decoration:none}a.email-open:focus-visible{outline:2px solid #1a73e8;outline-offset:2px}.email-message-body a,.email-detail a[href]{color:#1a73e8;text-decoration:underline}'; document.head.append(style);
       const banner = document.createElement('div');
       banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;padding:6px 16px;background:#e8f0fe;z-index:1000;display:flex;gap:24px;align-items:center';
       banner.innerHTML = '<h1 style="font-size:14px;margin:0">Inbox</h1><span>Billworld mock Gmail</span><a href="/">Billing site</a><button id="mail-signout">Sign out</button><span id="mail-status" role="status"></span>';
       document.body.append(banner);
       document.querySelector('#mail-signout').addEventListener('click', async () => { await api('/logout', {}); location.reload(); });
       setInterval(() => { if (ready) saving.then(refresh).catch(error => { if ([401, 403].includes(error.status)) login(error.message); }); }, 2000);
-    } catch (error) { login(error.status === 401 ? '' : error.message); }
+    } catch (error) { login([401, 403].includes(error.status) ? '' : error.message); }
   };
 })();

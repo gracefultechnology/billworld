@@ -716,7 +716,7 @@ test('seeded data is coherent: bills issued in the past, payment history, plan p
   for (const id of [U, B.card, B.subscription, X.telecom, X.mortgage, X.personalLoan, B.tax]) {
     const acct = world.account(ep, id); const b = world.biller(id);
     assert.ok(acct.invoices.every(i => i.issuedAt <= ep.clock), `${id} issued in the past`);
-    assert.equal(acct.payments.filter(p => p.seeded && p.history).length, 11, `${id} payment history`);
+    assert.equal(acct.payments.filter(p => p.seeded && p.history).length, b.kind === 'tax' ? 3 : 11, `${id} payment history`); // tax bills are yearly
     assert.ok(acct.invoices.every(i => i.lines.reduce((a, l) => a + l.cents, 0) === i.amountCents), `${id} lines add up`);
     const state = acct.serviceState; assert.match(acct.serviceAddress, new RegExp(`, ${state} \\d{5}$`));
     if ((b.entry.service_area || []).some(s => s.length === 2 && s !== 'US')) assert.ok(b.entry.service_area.includes(state) || b.entry.hq_address, `${id} state ${state}`);

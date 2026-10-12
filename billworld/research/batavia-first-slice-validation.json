@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "site_id": "batavia-utilities",
+  "implementation_status": "first_slice",
+  "validated_on": "2026-10-11",
+  "released_tasks": {
+    "task_bat1": "batavia-email-login-v1", "task_bat2": "batavia-recover-login-v1", "task_bat3": "batavia-register-link-v1",
+    "task_bat4": "batavia-pay-current-bank-v1", "task_bat5": "batavia-pay-current-card-v1", "task_bat6": "batavia-pay-verify-history-v1",
+    "task_bat7": "batavia-notifications-v1", "task_bat8": "batavia-download-current-bill-v1", "task_bat9": "batavia-manage-wallet-v1",
+    "task_bat10": "batavia-enable-autopay-v1", "task_bat11": "batavia-cancel-autopay-v1", "task_bat12": "batavia-change-autopay-v1",
+    "task_bat13": "batavia-update-profile-v1", "task_bat14": "batavia-change-password-v1", "task_bat15": "batavia-schedule-payment-v1",
+    "task_bat16": "batavia-edit-scheduled-payment-v1", "task_bat17": "batavia-cancel-scheduled-payment-v1", "task_bat18": "batavia-pay-multiple-accounts-v1"
+  },
+  "evidence": {
+    "observed_public": ["city homepage", "Billing & Payment page (free city bank-draft vs fee-bearing Paymentus AutoPay; duplicate-payment warning)", "Budget Billing & Payment Assistance page"],
+    "documented": ["six-page Paymentus guide (fields, Add Account stages, menu incl. My Profile, View Bill PDF, $3.50/$500 residential fee tier)", "Paymentus FAQ (payment methods, multi-account single payment, 18-month history, posting)", "City Direct Payment authorization form (offline only)"],
+    "synthetic": ["private portal layouts and validation", "reset link lifetime and password rule", "future-dated scheduling with edit/cancel (not documented by Batavia)", "multi-account ledger representation (one confirmation, per-account rows, single fee on first row)", "execution timing at 00:00 UTC", "statement PDF contents"]
+  },
+  "one_tab_solvability": "All pending reviews/grants are server-side records bound to HttpOnly cookies and survive reload; no control opens a new tab (terms are inline plus a same-tab page); every visible control on visited pages has an accessible name (audited by tests/batavia-portal-browser.mjs); signed-in pages keep the guide's left menu and fit a 390px viewport.",
+  "results": {
+    "domain_tests": "node --test billworld/tests/batavia-portal.test.mjs billworld/tests/paymentus-*.test.mjs: all pass; npm test: 466 pass, 0 fail (1 optional skip)",
+    "browser_tests": "npm run test:browser:batavia: 13 suites pass (public, auth, registration, bank, card, history, preferences, statements, wallet, AutoPay, account summary, portal journeys, 18 reference journeys)",
+    "infinity_smoke": "python billworld/infinity/smoke.py --task-ids task_bat1..task_bat18: lifecycle failures, action budget, repetition lineage, worker recovery and all 18 released Batavia references pass with private graders",
+    "stale_tests_fixed": ["paymentus-auth-browser expected My Wallet to be unimplemented", "paymentus-history-browser expected foreign-account reads to return data instead of 404"]
+  },
+  "limits": ["Scripted references are not autonomous-agent scores.", "Live tenant is HTTP 403; no private screen or fee was observed.", "Guest/quick pay, PayPal/Venmo, pay-by-phone and the commercial fee tier are not implemented."]
+}

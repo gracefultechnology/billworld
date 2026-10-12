@@ -1,0 +1,20 @@
+{
+  "id": "inframark-saved-bank-payment-v1",
+  "version": 1,
+  "site_id": "inframark",
+  "evidence_cohort": "documented_operator_fees_synthetic_signed_checkout",
+  "prompt": "Sign in to the local Inframark Resident Portal as alex.inframark / Inframark-2026!. Open Pay My Bill and pay the full $84.32 balance with the saved Checking account ending 1048. Review the $1.00 electronic check convenience fee and authorize once. View the receipt, then return to Pay My Bill to verify the balance is $0.00. Keep saved methods, AutoPay, scheduled payments, credentials and all other accounts unchanged. The signed-in checkout layout and processor behavior are simulated. Operator-level fees are used; district-specific exceptions remain unverified.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_signed_payment",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "method_id": "inframark-bank-1048",
+    "amount_cents": 8432,
+    "fee_cents": 100,
+    "remaining_cents": 0
+  }
+}

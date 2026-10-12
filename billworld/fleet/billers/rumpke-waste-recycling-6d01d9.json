@@ -5,7 +5,7 @@
   "name": "Rumpke Waste & Recycling",
   "category": "trash",
   "reviewedAt": "2026-10-09",
-  "notes": "Researched from public rumpke.com pages (Pay My Bill, Contact Us) and the public RumpkePay sign-in page (Kubra i-doxs; observed, never signed in). RumpkePay accepts credit cards, debit cards and bank accounts; a $2.95 convenience fee applies to every one-time online payment (card or bank) and to all phone payments, and enrolling in auto-pay avoids it (modelled as a flat $2.95 bank and card fee on one-time payments). Phone payments (800-828-8171, 24/7) take Visa, Mastercard and Discover only. Walmart MoneyCenter/customer service desks and Rumpke facilities take in-person payments (fee applies). Sign-in is Username + Password with a personal sign-in seal; Make a OneTime Payment needs no account. Paperless, autopay timing and late fees are not published (family defaults kept); payment plans are not published either, so they are marked unsupported online (inferred). No online stop-service form exists: the Contact Us page lists forms to request, transfer or update service and says to call 800-828-8171 otherwise, so cancel_service is unsupported online (inferred). Integrated 2026-10-09: labels.autopay set to \"Auto-Pay\" now that the template uses the label as a noun (\"Turn off Auto-Pay\").",
+  "notes": "Researched from public rumpke.com pages (Pay My Bill, Contact Us) and the public RumpkePay sign-in page (Kubra i-doxs; observed, never signed in). RumpkePay accepts credit cards, debit cards and bank accounts; a $2.95 convenience fee applies to every one-time online payment (card or bank) and to all phone payments, and enrolling in auto-pay avoids it (modelled as a flat $2.95 bank and card fee on one-time payments). Phone payments (800-828-8171, 24/7) take Visa, Mastercard and Discover only. Walmart MoneyCenter/customer service desks and Rumpke facilities take in-person payments (fee applies). Sign-in is Username + Password with a personal sign-in seal; Make a One-Time Payment needs no account. Paperless, autopay timing and late fees are not published (family defaults kept); payment plans are not published either, so they are marked unsupported online (inferred). No online stop-service form exists: the Contact Us page lists forms to request, transfer or update service and says to call 800-828-8171 otherwise, so cancel_service is unsupported online (inferred). Integrated 2026-10-09: labels.autopay set to \"Auto-Pay\" now that the template uses the label as a noun (\"Turn off Auto-Pay\").",
   "officialDomains": [
     "rumpke.com",
     "i-doxs.net"
@@ -39,7 +39,7 @@
   },
   "labels": {
     "payBill": "Pay My Bill",
-    "guestPay": "Make a OneTime Payment",
+    "guestPay": "Make a One-Time Payment",
     "signIn": "Sign In",
     "register": "Sign up now",
     "forgot": "Forgot your Username/Password?",
@@ -105,7 +105,14 @@
     "source": "https://secure8.i-doxs.net/BDX/default.aspx?BillerID=9oQiieNtU5"
   },
   "capabilities": {
-    "payment_arrangement": {"support": "unsupported", "evidence": "inferred", "source": "https://www.rumpke.com/contact-us", "channel": "phone", "phone": "800-828-8171", "note": "Payment plans are not offered online. Call Rumpke customer service at 800-828-8171 about a past-due balance."},
+    "payment_arrangement": {
+      "support": "unsupported",
+      "evidence": "inferred",
+      "source": "https://www.rumpke.com/contact-us",
+      "channel": "phone",
+      "phone": "800-828-8171",
+      "note": "Payment plans are not offered online. Call Rumpke customer service at 800-828-8171 about a past-due balance."
+    },
     "guest_pay": {
       "support": "supported",
       "evidence": "observed_public",
@@ -169,13 +176,13 @@
       "title": "Ways to pay your Rumpke bill",
       "topic": "payments",
       "paragraphs": [
-        "RumpkePay, Rumpke's online system powered by Kubra, takes credit cards, debit cards and bank accounts. Register to manage your account, or use Make a OneTime Payment without signing up. Each one-time online payment carries a $2.95 convenience fee; enroll in auto-pay to avoid it.",
+        "RumpkePay, Rumpke's online system powered by Kubra, takes credit cards, debit cards and bank accounts. Register to manage your account, or use Make a One-Time Payment without signing up. Each one-time online payment carries a $2.95 convenience fee; enroll in auto-pay to avoid it.",
         "Pay by phone any time at 800-828-8171 and choose the pay by phone option. Phone payments accept Visa, Mastercard and Discover and always carry the $2.95 fee.",
         "You can also pay in person at a Rumpke facility or at any Walmart MoneyCenter or customer service desk (bring your current statement and cash or a PIN debit card; a fee applies), or mail a check. Residential payments go to Rumpke, P.O. Box 538709, Cincinnati, OH 45253-8709."
       ],
       "steps": [
         "Open Pay My Bill and go to RumpkePay.",
-        "Sign In, or choose Make a OneTime Payment.",
+        "Sign In, or choose Make a One-Time Payment.",
         "Enter the amount and a card or bank account.",
         "Review the $2.95 fee and submit."
       ],
@@ -224,8 +231,14 @@
             "type": "answer",
             "kind": "contains",
             "expected": [
-              "2.95",
-              "auto"
+              "2.95"
+            ]
+          },
+          {
+            "type": "answer",
+            "kind": "pattern",
+            "expected": [
+              "auto[- ]?pay|automatic (?:payment|pay)"
             ]
           },
           {
@@ -234,10 +247,9 @@
           }
         ],
         "answer": {
-          "kind": "contains",
+          "kind": "pattern",
           "expected": [
-            "2.95",
-            "auto"
+            "^(?=.*2\\.95)(?=.*(?:auto[- ]?pay|automatic (?:payment|pay)))"
           ]
         },
         "tags": [
@@ -298,7 +310,7 @@
       "page": "home",
       "contains": [
         "Pay My Bill",
-        "Make a OneTime Payment"
+        "Make a One-Time Payment"
       ]
     },
     {

@@ -1,0 +1,20 @@
+{
+  "id": "onswc-saved-bank-payment-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "synthetic_signed_checkout_documented_fee_existence_synthetic_amount",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. Open Pay My Bill and pay the full outstanding balance of $94.39 with the saved Checking account ending 1048. Review the $1.50 online processing fee and authorize the payment once. View the receipt, then return to Pay My Bill to verify the balance is $0.00. Keep saved methods, AutoPay, ACH Auto Draft, credentials and all other accounts unchanged. ONSWC documents that online payments include a processing fee; the fee amount, checkout layout and processor behavior are synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_signed_payment",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "method_id": "onswc-bank-1048",
+    "amount_cents": 9439,
+    "fee_cents": 150,
+    "remaining_cents": 0
+  }
+}

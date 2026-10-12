@@ -1,8 +1,49 @@
 # Billworld runtime and research pipeline
 
-This release implements nine explicit billing slices: Juneau/InvoiceCloud, Spotify, AVEC/SmartHub, Homer/Xpress Bill Pay, Duluth/Utility Access, Grand Valley Power/SmartHub, Swepsonville/AuthorityPay–InvoiceCloud, WVU Medicine/MyChart and Western Dental/PersonaPay. Juneau covers invoice lookup, guest and registered payments, password login, enrollment, history, AutoPay settings, recovery and optional synthetic email MFA. Spotify adds email-first login, local Google identity, payment-method replacement, cancellation and a partner-billing limitation. Homer adds separate profile registration, Gmail email verification, organization/account linking and paperless enrollment before the documented checkout. SQLite persists episode state, payment commits and final scores. The full catalog benchmark and authenticated source fidelity remain incomplete.
+Current scope (2026-10-11): seventeen hand-built sites, all `first_slice`, with 142 released Infinity tasks and no construction-only tasks left (see [Sites and status](#sites-and-status-2026-10-11)); plus the Fleet, which serves all 59,477 catalog billers (see [fleet/README.md](fleet/README.md)). The paragraphs below are kept as the dated history of each slice; where they mention "nine sites and thirty-one tasks" or construction-only Lockwood/Batavia/GMG tasks, they describe earlier releases.
+
+The original release implemented nine explicit billing slices: Juneau/InvoiceCloud, Spotify, AVEC/SmartHub, Homer/Xpress Bill Pay, Duluth/Utility Access, Grand Valley Power/SmartHub, Swepsonville/AuthorityPay–InvoiceCloud, WVU Medicine/MyChart and Western Dental/PersonaPay. Juneau covers invoice lookup, guest and registered payments, password login, enrollment, history, AutoPay settings, recovery and optional synthetic email MFA. Spotify adds email-first login, local Google identity, payment-method replacement, cancellation and a partner-billing limitation. Homer adds separate profile registration, Gmail email verification, organization/account linking and paperless enrollment before the documented checkout. SQLite persists episode state, payment commits and final scores. The full catalog benchmark and authenticated source fidelity remain incomplete.
 
 Billworld now extends a pinned WebArena-Infinity checkout, reusing its task lifecycle and reports. See [the reuse review](infinity/REVIEW.md) and [extension instructions](infinity/README.md). Thirty-one billing tasks are wired through the upstream evaluator; validation dates and scopes are recorded below. The pinned upstream Gmail frontend is integrated with the authoritative episode mailbox at `/mail`; an SDK-based [MCP email connector](MAIL_CONNECTOR.md) exposes the same messages.
+
+## Sites and status (2026-10-11)
+
+Every hand-built site has `implementation_status: "first_slice"` in `sites/<file>.json`: a runnable public entry, sign-in or guest entry, the billing flows listed below, private graders and Infinity reference journeys. "First slice" is not a fidelity certification: private screens that could not be observed are labeled synthetic in each site file. No site is construction-only any more (`CONSTRUCTION_TASKS` in `infinity/app/harness.py` is empty).
+
+| Site (id) | Family | Infinity tasks | Main flows | Browser suite |
+|---|---|---:|---|---|
+| City and Borough of Juneau Utilities (`juneau-utilities`) | InvoiceCloud | 5 (`task_m1`, `task_m2`, `task_h1`, `task_h3`, `task_h4`) | guest/registered pay, AutoPay, scheduling, email MFA, recovery | `test:browser`, `test:browser:handbuilt-audit` |
+| Spotify (`spotify`) | subscription | 1 (`task_h2`) | Google sign-in, card replacement, partner billing | `test:browser` |
+| Alaska Village Electric Cooperative (`avec-electric`) | SmartHub | 1 (`task_m3`) | sign-in, registration, recovery, guest, pay, AutoPay, scheduling | `test:browser:smarthub` |
+| City of Homer Water/Sewer (`homer-utilities`) | Xpress Bill Pay | 2 (`task_m4`, `task_h5`) | registration + email verification + linking, paperless, pay | `test:browser:xpress` |
+| Comfort Systems, Duluth (`duluth-comfortsystems`) | Utility Access / Tyler | 4 (`task_m5`, `task_h6`–`task_h8`) | email-first and Google sign-in, registration, guest, pay, scheduling, AutoPay, wallet | `test:browser:duluth`, `test:browser:wallet` |
+| Grand Valley Power (`gvp-electric`) | SmartHub | 3 (`task_m6`, `task_m7`, `task_h9`) | pay, temporary-password registration, AutoPay | `test:browser:gvp` |
+| Town of Swepsonville (`swepsonville-water`) | AuthorityPay / InvoiceCloud | 5 (`task_m8`–`task_m10`, `task_h10`, `task_h11`) | guest pay, CID registration, recovery, bank draft, deposits | `test:browser:swepsonville`, `:bankdraft`, `:deposits`, `:municipal` |
+| WVU Medicine (`wvu-medicine`) | MyChart | 5 (`task_m11`, `task_h12`–`task_h15`) | email MFA, activation, recovery, visit-scoped guest/signed pay | `test:browser:mychart*`, `:wvu-public` |
+| Western Dental (`western-dental`) | PersonaPay | 5 (`task_m12`, `task_h16`–`task_h19`) | account/ZIP/DOB sign-in, allocation, plans | `test:browser:personapay*` |
+| Lockwood Water & Light (`lockwood`) | ePayUB / CUSI | 11 (`task_lw1`–`task_lw11`) | recovery, registration, card/E-Check, drafts, AutoPay, paperless | `test:browser:lockwood`, `:cusi*`, `:lockwood-public` |
+| City of Batavia (`batavia-utilities`) | Paymentus | 18 (`task_bat1`–`task_bat18`) | registration/linking, recovery, pay, multi-account pay, statements, wallet, AutoPay, scheduling, profile | `test:browser:batavia` (13 suites) |
+| Greater Minnesota Gas (`greater-minnesota-gas`) | Starnik | 17 (`task_gmg1`–`task_gmg17`) | guest and signed pay, wallet, AutoPay, eBill, statements, multi-account, mailing address | `test:browser:gmg` |
+| Inframark (`inframark`) | Starnik | 17 (`task_inf1`–`task_inf17`) | recovery, pay, history, statements, wallet, AutoPay, scheduling | `test:browser:inframark` |
+| Old North State Water Company (`onswc`) | Starnik | 18 (`task_onswc1`–`task_onswc18`) | recovery, pay, statements, wallet, AutoPay, ACH draft, scheduling | `test:browser:onswc` |
+| Charlotte County Utilities (`charlotte-county-utilities`) | Paymentus | 13 (`task_ccu1`–`task_ccu13`) | quick pay, re-enrollment + linking, recovery, scheduling, AutoPay, statements | `test:browser:charlotte` |
+| City of Malden (`malden`) | Edmunds WIPP | 9 (`task_md1`–`task_md9`) | guest pay, registration, recovery, scheduling, AutoPay | `test:browser:malden` |
+| City of Tuscaloosa Water and Sewer (`tuscaloosa-water`) | Paymentus | 8 (`task_tus1`–`task_tus8`) | saved/guest pay, register + link + AutoPay, recovery, scheduling, eBill, statements | `test:browser:tuscaloosa` |
+
+Total: 17 sites, 142 released tasks. Cross-site regression suites: `test:browser:handbuilt-audit`, `test:browser:handbuilt-audit3`, `test:browser:mail-attachments`, `test:browser:capture`, `test:browser:catalog-public`.
+
+### Verification (2026-10-11, integration)
+
+| Check | Result |
+|---|---|
+| `npm test` | 473 tests: 472 pass, 0 fail, 1 skipped (the construction-entry isolation test, which needs a construction site; none remain) |
+| `npm run test:research` | 142 tests OK (1 skipped) |
+| Every `npm run test:browser*` script, one at a time (47 scripts, two lanes) | 47/47 exit 0; no page errors or outbound requests reported. Includes `test:browser` 14 scenarios, `:batavia` (13 suites), `:batavia-reference` 18 tasks, `:gmg` 17 journeys / 54 audited pages, `:inframark` 17 tasks, `:onswc` 18 tasks + 8 public pages, `:charlotte` 17 checks, `:malden` 17 scenarios, `:tuscaloosa` 13 checks, `:lockwood` 11 journeys, `:handbuilt-audit` 5, `:handbuilt-audit3` 6 |
+| `python3 billworld/infinity/smoke.py` (after `bootstrap.py`) | 147/147 PASS: all 142 released tasks through upstream lifecycle + UI + private verifier, plus 5 lifecycle checks (no-action/crash/setup/timeout/cancellation/deadline failures, action budget, app without harness, repetition lineage, worker SIGKILL recovery). Artifacts: `billworld/artifacts/infinity/final-integration-1791757044` |
+
+`smoke.py` now re-runs itself under `.upstream/smoke-venv` (or `review-venv`) when started with a Python that lacks the Infinity dependencies, so the plain `python3 billworld/infinity/smoke.py` works. Fleet results for the same run are in [fleet/README.md](fleet/README.md#verification-2026-10-11-final-integration).
+
+Blind agent results (2026-10-11): a fresh blind audit of the hand-built sites passed **138/138** tasks on the first pass; the 15 tasks re-attempted after the reported environment defects were fixed passed **15/15**; none is still failing. Together with the Fleet audit: **733/733** first pass, **125/125** re-attempts. See [agentlab/README.md](fleet/agentlab/README.md#measured-results-2026-10-11-fresh-blind-audit-of-every-hand-built-site-and-every-fleet-category).
 
 ## Run locally
 
@@ -32,6 +73,7 @@ npm run test:browser:smarthub
 npm run test:browser:xpress
 npm run test:research
 npm run test:browser:duluth
+npm run test:browser:gmg
 npm run test:browser:wallet
 ```
 
@@ -103,6 +145,8 @@ An `http_captured` result only means a response body was saved. Content matching
 
 ## Evidence and remaining scope
 
+Inframark (Starnik resident portal, operator record for Texas MUD districts) is a released first slice with seventeen tasks (`task_inf1`–`task_inf17` in Infinity). It reuses the captured operator homepage/FAQ (with a reconstructed Customer Portal dropdown), Starnik login, registration, username/password recovery via mock Gmail and GuestPay lookup, and adds documented operator fees ($1.00 eCheck, 3% card), statement PDFs showing the documented security-code/payment-ID box, signed-in saved bank/card payment, history, wallet, paperless, AutoPay enroll/change/cancel and synthetic scheduled payments (create/edit/cancel, executed by `/advance`, with an AutoPay duplicate-payment acknowledgement). AutoPay timing and scheduling are local rules; see [Inframark evidence](sites/inframark.json). Run `npm run test:browser:inframark`.
+
 Homer/Xpress Bill Pay implements the captured personal-registration, login, recovery and guest lookup forms, plus guide-based account linking, paperless choice, cart, bank/card checkout, confirmation, history, scheduling/edit/cancel, AutoPay and saved-method add/edit/remove/default controls. Registration cannot bypass email verification; unlinked profiles cannot read invoices or mutate billing. Six Puppeteer scenarios and six domain tests cover the flow, including guest-task rejection, expired/cross-episode links, wrong-account linking and declined cards. Run `npm run test:browser:xpress`. Production fees, clock, identity and settlement policies are synthetic; mobile login, SMS, multiple payers, business profiles, wallet editing, statement PDFs and the complete municipal homepage are unfinished. See [Homer evidence](sites/homer.json).
 
 Release 0.16.0 validation passed 140 domain/grader tests, thirty-four research tests and all twenty-nine Infinity references. Release 0.17.0 passes 154 domain/grader tests, thirty-four research tests, thirteen PersonaPay browser scenarios and all thirty-one Infinity references. It adds recurring-plan and future-payment enrollment, consented cancellation and separate dental installment execution. Western Dental adds captured account-number/ZIP/DOB login, local account help, card/ACH payment, weighted or edited allocation, partial payments, overpayment credit and reloadable receipts. Its private checkout and account data remain synthetic. Nine first slices and thirty-one tasks are registered. Current reference results and HTML report are preserved in `artifacts/infinity/0.17-full/`; prior releases remain in their original directories. These are simulator/reference checks, not autonomous-agent scores or independent source-fidelity certification. See `research/personapay-runtime-validation.json` for browser and grading evidence; eBill and independent source-fidelity review remain unfinished.
@@ -136,6 +180,8 @@ To reconstruct GVP’s captured public homepage locally, run `python3 billworld/
 
 Swepsonville now has thirteen public captures spanning the municipality, AuthorityPay/Muni-Link auth, InvoiceCloud utility/deposit entry and a Jotform bank-draft form, plus two hashed official policy PDFs. Its [reconstruction evidence](research/SWEPSONVILLE_RECONSTRUCTION.md) records the handoffs and tenant-specific rules. Its 0.7.0 first slice adds CID registration and subsequent sign-in, Gmail recovery and InvoiceCloud guest utility payment. Run `npm run test:browser:swepsonville`. The 0.7.0 registry contained seven prototypes and nineteen Infinity tasks. Activation, password rules, private layouts, fees and settlement are synthetic. Bank-draft activation/cancellation, deposits, complete municipal pages and separate portal origins remain unfinished.
 
+Greater Minnesota Gas (Starnik) is a released first slice with seventeen tasks (`sites/greater-minnesota-gas.json` lists them and labels each capability observed, documented or synthetic). The homepage, billing/AutoPay help, legacy login, security-code signup, username/password recovery and guest security-code + service-ZIP lookup are captured public pages; the public pay page documents the 2.75% (minimum $1.50) card fee, free bank payments, AutoPay three days before due, bills/history, multiple accounts, paperless and billing-address updates. Every private continuation is synthetic: account summary and PDF statements, history, guest and signed bank/card checkout, wallet add/edit/delete, AutoPay enroll/method change/cancel with TextPay/ACH acknowledgments, eBill options, multiple-account linking by account number + security code (with account switching and removal) and the snowbird mailing-address update. GMG documents no scheduled payments, so none are offered. `npm run test:browser:gmg` drives all seventeen journeys in one tab from the homepage, checks each private grader and audits control names; the same journeys are the Infinity references `task_gmg1`–`task_gmg17`. `tests/gmg.test.mjs` covers the newer flows and grader shortcut rejection.
+
 ## Fleet: catalog-wide mock sites
 
 `billworld/fleet/` serves every one of the 59,477 catalog records as a mock biller site. Each record maps to one of 26 researched portal-family templates, all backed by one billing engine, a shared `/mail` inbox and a private grader. A catalog sweep checks all billers' pages, engine lifecycles and generated tasks; Puppeteer flows run per template. Fleet coverage is family-faithful and labeled by evidence; the hand-built slices above remain the higher-fidelity references. See [fleet/README.md](fleet/README.md).
@@ -158,6 +204,10 @@ WVU activation now reuses the captured two-part code form. A mock Gmail message 
 WVU billing guide and understanding-billing links serve three unmodified official PDFs with startup hash validation and browser link/byte checks. The construction packet has eleven usable public page references, including observed recovery-choice and contact-entry screens, plus the three PDFs. Local email recovery is implemented; its post-code continuation remains synthetic. See `research/wvu-documents.json` and `research/wvu-construction-validation.json`.
 
 MyWVUChart email recovery uses the captured login-help choice and previously enrolled email/phone entry. Mock Gmail delivers a single-use email code. Verification issues an HttpOnly episode-bound reset grant, displays the username, resets the password and invalidates sessions. Recovery codes/grants expire in ten minutes and allow five code attempts; those limits and post-code UI are synthetic. Generic utility reset links cannot bypass medical verification. SMS and Epic ID recovery are unavailable. Run `npm run test:browser:mychart-recovery` for the Gmail and negative browser scenarios.
+
+## Lockwood (ePayUB/CUSI) first slice
+
+Lockwood Missouri is now a released first slice with eleven Infinity tasks (`task_lw1`–`task_lw11`): username login, Email Link recovery, account/phone registration, card payment, bank linking plus E-Check payment, Scheduled Bank Draft, reschedule/cancel drafts, AutoPay enroll/change/cancel and paperless/communication preferences. Public pages and auth entry come from tenant captures; signed-in screens follow CUSI family documentation (the Plaid verification guide and Hallsdale-Powell's ePayUB brochure) inside the captured portal chrome. The tenant's billing rules are enforced: due by the 15th (late drafts need an acknowledgement), a 10% penalty the next day, and no drafts after the 25th. Fees ($2.50 card, $0 bank), instant bank verification, AutoPay Maximum/Fixed semantics and 00:00 UTC execution are synthetic. Quick Pay is not implemented because the Lockwood login page has no Quick Pay control. Run `npm run test:browser:lockwood` and `node --test billworld/tests/lockwood-portal.test.mjs`. See [Lockwood evidence](sites/lockwood.json) and `research/lockwood-portal-validation.json`. The construction notes below are historical.
 
 ## Construction previews
 
@@ -225,6 +275,14 @@ Accounts now shows the guide's Date Due, Amount Due, Pay Bill and More/history c
 
 `node billworld/tests/paymentus-account-summary-browser.mjs` validates posted and pending outcomes, guide navigation, account filters, logout and the existing payment grader. See `research/batavia-account-summary-validation.json`. No new task or released-site coverage is claimed for this change.
 
+## Batavia first slice (released)
+
+City of Batavia utility billing (`sites/batavia.json`, Paymentus family) is now `first_slice` with eighteen released tasks (`task_bat1`–`task_bat18` in Infinity). Evidence is labeled per capability in the site file: the public city pages are observed; the six-page guide, FAQ and Direct Payment form are documented; private Paymentus screens are synthetic because the live tenant returns HTTP 403.
+
+Flows: public city pages and portal handoff, email/password login, registration with account-number/service-address-prefix linking, mock-Gmail password recovery, Accounts summary with the guide's left menu on every signed-in page, bank and card one-time payment ($3.50 historical residential fee and $500 limit as fixtures), payment of several linked accounts in one payment with one fee (documented capability), Payment and Bill History, View Bill PDFs, paperless/email/SMS preferences, My Wallet, AutoPay enroll/change/cancel with the City's free bank-draft duplicate-payment warning and required acknowledgement, My Profile edits and password change (other sessions revoked). Future-dated scheduling with edit/cancel is a synthetic Paymentus-platform rule that the City does not document: dates after today and on or before the due date, execution at 00:00 UTC before same-instant AutoPay, balance/method rechecked at execution. Guest/quick pay, PayPal/Venmo, pay-by-phone and the commercial fee tier are not implemented.
+
+Portal-only features live in `paymentus-portal.mjs` (operations, scheduled execution, task fixtures and graders) behind `/api/paymentus/portal/*`. Tests: `node --test billworld/tests/batavia-portal.test.mjs` (domain + grader negatives), `npm run test:browser:batavia-portal` (journeys, accessible-name audit, 390px layout), `npm run test:browser:batavia-reference` (all eighteen reference journeys with private graders) and `npm run test:browser:batavia` (all thirteen Batavia/Paymentus browser suites). Validation evidence: `research/batavia-first-slice-validation.json`.
+
 ### Swepsonville synthetic review identity
 
 The local guest utility payment review displays the account number and invoice
@@ -240,3 +298,37 @@ for each quoted allocation, matched by invoice ID from the authorized statement.
 A missing match stops review rendering. This lets people verify an edited split
 using the same charge numbers they saw on the statement. It changes no payment
 or grading rules and does not claim private live-site fidelity.
+
+## ONSWC (Old North State Water Company / Starnik) first slice
+
+ONSWC is a released first slice on the shared Starnik runtime with 18 tasks (`task_onswc1`–`task_onswc18` in Infinity): login, registration and username/password recovery through mock Gmail, saved bank/card payment, transaction history, statement download, paperless, wallet, AutoPay enable/change/cancel, ACH Auto Draft enroll/change/deactivate, and scheduled payment create/edit/cancel. Bills are computed from the published Rocklyn water/wastewater rates (due on the billing date, past due after 15 days) with synthetic usage. The FAQ documents an online processing fee without an amount, so the $1.50 bank / 3% (minimum $2.00) card fees are synthetic. ACH Auto Draft is documented as a phone enrollment; the online ACH page (`/my-account/ach`, `starnik-ach.mjs`) reconstructs the shared Starnik client sequence, including its AutoPay duplicate-payment warning, and AutoPay enrollment in turn requires acknowledging an active ACH draft. Guest pay is not exposed (no ONSWC guest entry was observed). ONSWC opts into in-page confirmations (`runtime.inline_confirmations`) so a one-tab agent never meets a native dialog. Run `npm run test:browser:onswc` (every task journey graded by the private grader) and `node --test billworld/tests/onswc.test.mjs`; rebuild statements with `.upstream/review-venv/bin/python billworld/build_onswc_statements.py`. Evidence labels are in `sites/onswc.json` (`evidence_labels`); validation is in `research/onswc-first-slice-validation.json`.
+
+## Charlotte County Utilities (FL) / Paymentus first slice
+
+`charlotte-county-utilities` is a released first slice (`runtime.kind: charlotte_paymentus`). The captured county Utilities homepage, Pay My Utility Bill page and FAQ are served at `/`, `/departments/utilities/billing/` and `/departments/utilities/utilities-faq.stml`; their Paymentus links lead to a reconstructed tenant portal at `/cp/ccfl` (the live `ipn4.paymentus.com/cp/ccfl` returns HTTP 403, so all private screens are synthetic). Code: `charlotte.mjs` (domain, clock, statements, graders), `charlotte-routes.mjs` (HTTP), `public/ccu.{html,js,css}`; the engine and server only carry small hooks.
+
+Documented county rules drive the runtime: ACH $1.00 and Visa/Mastercard/Discover $2.95 convenience fees paid to the provider (American Express rejected; PayPal, Venmo, Apple Pay and Google Pay shown but not simulated); AutoPay fees by method; posting the same business day before 8 p.m. Eastern, otherwise next business day (county holidays included); re-enrollment because eBill (Billtrust) profiles were not migrated (the old login is rejected with that guidance); Setup › Automatic Payments; and scheduled payments keeping their own method when AutoPay or the wallet changes. Flows: guest Pay Without Registering, registration and account linking (account number + service street number, paperless, terms), mock-Gmail password recovery, one-time and scheduled payments, scheduled edit/cancel, AutoPay enroll/change/cancel, paperless and alerts, wallet, payment history and PDF bill history. Evidence labels (observed / documented / cross-tenant Paymentus pattern / synthetic) are in `sites/charlotte-county.json`.
+
+Thirteen released tasks (`tasks/charlotte-*.json`, Infinity `task_ccu1`–`task_ccu13`) cover quick pay by card, legacy-login re-enrollment + link + ACH payment, recovery, saved-method payment, scheduling, scheduled update and cancel, AutoPay enroll/change/cancel, paperless, statement download and history lookup. Graders compare the full business projection against the seeded baseline, require ordered view/review/commit/receipt events and reject guest-for-signed shortcuts, extra or duplicate changes, saved instruments and wrong answers.
+
+```bash
+node --test billworld/tests/charlotte.test.mjs
+npm run test:browser:charlotte
+.upstream/smoke-venv/bin/python billworld/infinity/smoke.py --task-ids task_ccu1,task_ccu2,task_ccu3,task_ccu4,task_ccu5,task_ccu6,task_ccu7,task_ccu8,task_ccu9,task_ccu10,task_ccu11,task_ccu12,task_ccu13 --artifacts-dir billworld/artifacts/infinity/<new-dir>
+```
+
+City of Malden (MO) Board of Public Works now runs as a released first slice on a reconstructed Edmunds WIPP portal (`wippId=MCPW`). The capture never rendered the portal, so route names, labels, messages and password rules come from the captured production bundle (`research/malden-wipp-bundle.json`); billing policy comes from the city's Public Works page. It implements the municipal homepage/Public Works/FAQ pages, account lookup and guest payment, registration with emailed verification code, Add Billing Account (Account ID plus current balance), temporary-password recovery through `/mail`, bill view/printable statement, Link2Gov-style card/eCheck checkout with zero fee, payment history, scheduled payment create/edit/delete, AutoPay enroll/change/cancel with the observed Direct Withdrawal and other-user conflicts, eBilling, eWallet and profile. The AutoPay lock after the 3-business-day cutoff, 5% late fee and 26th-of-month disconnection run on the virtual clock and are synthetic. Nine Infinity tasks (`task_md1`–`task_md9`) are wired. Run `npm run test:browser:malden`. See [Malden evidence](sites/malden.json).
+
+## City of Tuscaloosa Water and Sewer / Paymentus first slice
+
+`tuscaloosa-water` is a released first slice (`runtime.kind: tuscaloosa`; engine `tuscaloosa.mjs`, HTTP `tuscaloosa-server.mjs`, frontend `public/tuscaloosa.{html,js,css}`). City pages reconstructed from captured text are served at `/`, `/billinfo`, `/ach`, `/onlineservices`, `/onlineservices/useful-forms`, `/ebill` and `/faqs`; `/pay-water-bill` redirects to the local customer portal at `/cp/tusl` (the live Paymentus tenant returns HTTP 403, so portal layout follows the Paymentus family guide and is labeled synthetic).
+
+Documented rules drive the runtime: no fees for any method (PayPal/Venmo/Apple Pay/Google Pay/Amazon Pay listed but not simulated), Account Number plus Customer Number for lookup and linking, past 12 bills with usage in 10-cubic-foot units, AutoPay drafted on the bill due date (1st or 15th) with immediate activation, first draft on the next due date and a confirmation email, a $30 insufficient-funds fee, and eBill enrollment on the city website (separate from the portal; paper stops once the confirmation email is delivered; unsubscribe by resubmitting). Registration, two-step account linking, email-link password recovery, guest one-time payment, scheduled payment edit/cancel, wallet and AutoPay execution are synthetic and listed in `sites/tuscaloosa.json`.
+
+Eight released tasks (`tasks/tuscaloosa-*.json`, Infinity `task_tus1`–`task_tus8`): saved-checking payment, guest card payment, register + link + AutoPay from the city ACH page, recovery through mock Gmail, scheduled-payment edit and cancel, AutoPay change and cancel, city eBill enrollment and a Bill History PDF download. Validation: `research/tuscaloosa-runtime-validation.json`.
+
+```bash
+node --test billworld/tests/tuscaloosa.test.mjs
+npm run test:browser:tuscaloosa
+.upstream/smoke-venv/bin/python billworld/infinity/smoke.py --task-ids task_tus1,task_tus2,task_tus3,task_tus4,task_tus5,task_tus6,task_tus7,task_tus8 --artifacts-dir billworld/artifacts/infinity/tuscaloosa-<run>
+```

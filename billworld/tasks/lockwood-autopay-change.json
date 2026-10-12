@@ -1,0 +1,21 @@
+{
+  "id": "lockwood-autopay-change-v1",
+  "version": 1,
+  "site_id": "lockwood",
+  "evidence_cohort": "family_documented_private_flow_synthetic_layout_and_policy",
+  "prompt": "Sign in to the local City of Lockwood Missouri ePayUB portal with username alex.morgan and password Billworld-2026!. AutoPay currently pays a Fixed Amount of $50.00 from the saved Visa ending 4242. Change it to Payment Option Maximum Amount with a $200.00 maximum, drafted from the saved, verified Checking ending 1048. Review, authorize and save, then confirm the new AutoPay settings. Do not add or remove payment methods, make payments or change preferences. Signed-in screens, fees and timing are simulated.",
+  "budget": {
+    "seconds": 600,
+    "actions": 120
+  },
+  "goal": {
+    "type": "cusi_portal_autopay",
+    "account_id": "acct-primary",
+    "enabled": true,
+    "option": "maximum",
+    "amount_cents": 20000,
+    "method_id": "cusi-bank-1048",
+    "seed_methods": true,
+    "seed_autopay": true
+  }
+}

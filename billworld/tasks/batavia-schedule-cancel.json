@@ -1,0 +1,9 @@
+{
+  "id": "batavia-cancel-scheduled-payment-v1",
+  "version": 1,
+  "site_id": "batavia-utilities",
+  "evidence_cohort": "documented_payment_history_navigation_synthetic_scheduled_payment_cancel",
+  "prompt": "Sign in to the City of Batavia customer portal as alex@billworld.test. Cancel your scheduled payment BWS-SEED-1048 ($84.32 on 2026-10-18) so that no payment is made, then reload Scheduled Payments to confirm it shows as cancelled. Do not pay the bill now or change AutoPay, the wallet, notifications or your profile.",
+  "budget": {"seconds": 300, "actions": 100},
+  "goal": {"type": "paymentus_schedule_cancel", "account_id": "acct-primary", "billing_account_id": "acct-primary", "invoice_id": "inv-current", "schedule_id": "pms-seed", "seed_confirmation": "BWS-SEED-1048", "seed_date": "2026-10-18", "seed_amount_cents": 8432, "fee_cents": 350, "method_id": "bank-1048"}
+}

@@ -1,0 +1,29 @@
+{
+  "id": "onswc-ach-enroll-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "documented_ach_auto_draft_observed_shared_client_sequence_synthetic_enablement",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. Set up ACH Auto Draft so the utility drafts your bank account each month: open ACH Auto Draft, turn ACH on and enter bank Carolina Community Bank, account type Checking, routing number 053000196 (confirm it) and account number 7700123456 (confirm it). Continue, agree to the ACH terms and accept. The portal will warn that online AutoPay is also enabled; acknowledge the warning and enable ACH. Then, so the same bill is not drafted twice, disable online AutoPay. Finally reopen ACH Auto Draft to verify it is on with the account ending 3456. Do not make payments or change saved payment methods, bill delivery, credentials or other accounts. ONSWC documents ACH Auto Draft (by calling Customer Service); the online ACH page comes from the shared Starnik client, and its agreement and warning text are synthetic.",
+  "budget": {
+    "seconds": 420,
+    "actions": 140
+  },
+  "goal": {
+    "type": "starnik_ach",
+    "account_id": "acct-primary",
+    "autopay_method_id": "onswc-bank-1048",
+    "expected": {
+      "active": true,
+      "bank_name": "Carolina Community Bank",
+      "account_type": "Checking",
+      "routing": "053000196",
+      "account_number": "7700123456"
+    },
+    "expected_changes": [
+      "starnik_ach_saved",
+      "starnik_autopay_disabled"
+    ],
+    "require_autopay_warning": true,
+    "autopay_enabled_final": false
+  }
+}

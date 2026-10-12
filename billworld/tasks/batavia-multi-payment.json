@@ -1,0 +1,12 @@
+{
+  "id": "batavia-pay-multiple-accounts-v1",
+  "version": 1,
+  "site_id": "batavia-utilities",
+  "evidence_cohort": "documented_multi_account_payment_synthetic_checkout",
+  "prompt": "Sign in to the City of Batavia customer portal as alex@billworld.test. Two utility accounts are linked: 1001048 (36W123 Main St, current bill $84.32) and 1003048 (800 E Wilson St, current bill $41.15). Pay both current bills in full together as ONE payment from the saved Checking ending 1048; the portal charges a single $3.50 service fee ($128.97 total). Review, authorize once and report the confirmation number. Do not pay the bills separately or change AutoPay, the wallet, notifications or your profile.",
+  "budget": {"seconds": 300, "actions": 100},
+  "goal": {"type": "paymentus_multi", "account_id": "acct-primary", "method_id": "bank-1048", "fee_cents": 350,
+    "second_account": {"id": "acct-batavia-wilson", "customer_number": "1003048", "service_address": "800 E Wilson St, Batavia, IL 60510", "invoice_id": "inv-wilson", "invoice_number": "2026-10-3048", "amount_cents": 4115},
+    "allocations": [{"invoice_id": "inv-current", "account_id": "acct-primary", "amount_cents": 8432}, {"invoice_id": "inv-wilson", "account_id": "acct-batavia-wilson", "amount_cents": 4115}],
+    "remaining_cents": {"inv-current": 0, "inv-wilson": 0, "inv-old": 0, "inv-other": 5190}}
+}

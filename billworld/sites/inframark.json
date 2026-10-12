@@ -2,7 +2,7 @@
   "id": "inframark",
   "name": "Inframark",
   "portal_family": "Starnik",
-  "implementation_status": "construction_slice",
+  "implementation_status": "first_slice",
   "catalog_records": [
     {
       "category": "other",
@@ -46,7 +46,9 @@
         "page_id": "biller_79d57f82caebe2d84035-portal-guest-observed",
         "interactive": true
       }
-    }
+    },
+    "inline_confirmations": true,
+    "public_behavior": "inframark-public.js"
   },
   "default_task_id": "inframark-username-login-v1",
   "construction_account_credentials": {
@@ -69,7 +71,18 @@
     ],
     "bank_fee_cents": 100,
     "card_fee_basis_points": 300,
-    "card_fee_minimum_cents": 0
+    "card_fee_minimum_cents": 0,
+    "autopay_days_before_due": 0,
+    "documented_statements": [
+      "View and pay online after registering with the security code (top right box on the water bill) and email; create user ID and password",
+      "After registration: option to enroll in eBill or autopay; paper bill continues unless enrolled in paperless",
+      "GuestPay at /starnikERP/#/rp_guestpay",
+      "Online: credit/debit card convenience fee 3% of payment; electronic check convenience fee $1.00",
+      "Automatic bank draft or credit card recurring payments are set up in the portal",
+      "Bank online bill pay uses the payment ID (top right box on the bill), e.g. 10123-0000123456",
+      "Mail: ATTN Your MUD District, P.O. Box 3264, Houston, TX 77253-3264; late fee applies after the due date",
+      "Regional water authority fee appears on bills (Greater Houston subsidence districts)"
+    ]
   },
   "public_reference_pages": [
     "biller_79d57f82caebe2d84035-operator-home",
@@ -80,19 +93,132 @@
     "biller_79d57f82caebe2d84035-portal-forgot-username",
     "biller_79d57f82caebe2d84035-portal-guest-observed"
   ],
-  "construction_stage": "observed_public_entries_synthetic_private_flows",
+  "construction_stage": "released_first_slice_observed_public_entries_documented_fees_synthetic_private_flows",
   "source_conflicts_and_limits": [
     "Operator FAQ publishes $1 eCheck and 3% card fee; zero card minimum is a local assumption because no minimum is published",
     "Per-district policy exceptions unverified; this runtime represents the operator portal catalog record, not all 212 associated billers",
-    "AutoPay timing unverified; enrollment unavailable",
+    "AutoPay draft timing is undocumented; the local rule drafts on the due date",
+    "Scheduled (future-dated) payments are a synthetic local feature; the source portal scheduling screen was not observed",
     "Shared Starnik client supports reconstruction, not independent private behavioral fidelity",
-    "Account personas, invoices, delivery preferences, payment settlement, rounding and wallet continuation are synthetic",
-    "Original scripts excluded; source asset completeness, responsive menus and unsupported navigation remain unfinished"
+    "Account personas, invoices, statements, delivery preferences, payment settlement, rounding and wallet continuation are synthetic",
+    "www.inframark.com returned HTTP 403 to non-browser fetches on 2026-10-11; evidence uses the 2026-10-05 browser capture",
+    "Original scripts excluded; source asset completeness and responsive menus remain unfinished"
   ],
   "unfinished": [
-    "Tenant-specific statements and service details",
-    "Original private billing/auth fidelity and district-specific settings",
-    "Complete homepage/menu/help navigation",
-    "Autonomous evaluation and full catalog"
-  ]
+    "District-specific fees, late-fee amounts and statement layouts",
+    "Original private billing/auth screen fidelity",
+    "Phone (IVR) and mail payment channels (documented, out of scope)",
+    "Multiple accounts per portal profile"
+  ],
+  "observed_public": {
+    "operator_homepage": "https://www.inframark.com/ captured 2026-10-05 and inertly reconstructed at /; Customer Portal menu links to Resident Portal Login and FAQs",
+    "billing_faq": "https://www.inframark.com/customer-portal/cities-districts-hoas-we-serve/faqs/ captured and reconstructed at /billing; GuestPay links route to the local guest lookup",
+    "login": "https://inframark.starnik.net/RP_default.aspx ASP.NET username/password form; no Google or social sign-in observed",
+    "registration": "React /RP/signup: security code, email, confirm email, Send Verification Email",
+    "password_recovery": "React /RP/forgot-password: username, Send Recovery Email",
+    "username_recovery": "React /RP/forgot-username: email address, Retrieve Username",
+    "guest_lookup": "Angular /starnikERP/#/rp_guestpay/rp_guestpay: Account Security Code and Service Zip Code, VERIFY (assets shared with GMG tenant)"
+  },
+  "policy_provenance": {
+    "bank_fee_cents": "documented (operator FAQ, electronic check $1.00)",
+    "card_fee_basis_points": "documented (operator FAQ, 3% of payment)",
+    "card_fee_minimum_cents": "synthetic (no minimum published; zero assumed)",
+    "autopay_days_before_due": "synthetic (FAQ documents bank draft/card recurring payments but not timing; local rule drafts on the due date at 00:00 UTC)",
+    "scheduled_payments": "synthetic (no scheduling screen observed or documented; added as a local future-dated payment feature)",
+    "statement_layout": "synthetic content; security-code/payment-ID placement, authority fee and P.O. box are documented",
+    "accounts_invoices_methods_settlement": "synthetic"
+  },
+  "construction_schedule_policy": {
+    "synthetic": true,
+    "min_days_ahead": 1,
+    "max_days_ahead": 45,
+    "max_active_per_account": 3,
+    "execution": "00:00 UTC on the selected date; amount capped at the outstanding balance; tenant fee recomputed at execution",
+    "autopay_conflict": "When AutoPay is enabled the review requires acknowledging a possible duplicate draft"
+  },
+  "construction_fixture": {
+    "accounts": {
+      "acct-primary": {
+        "payment_id": "10123-0001001048",
+        "service_address": "1048 Cypress Creek Lane, Houston, TX 77001"
+      },
+      "acct-secondary": {
+        "payment_id": "10123-0002002099",
+        "service_address": "2099 Bayou Bend Drive, Houston, TX 77002"
+      }
+    },
+    "method_ids": {
+      "gmg-bank-1048": "inframark-bank-1048",
+      "gmg-card-4242": "inframark-card-4242"
+    },
+    "note": "Payment IDs follow the documented 5-digit district / 10-digit account format; values, addresses and methods are synthetic"
+  },
+  "capabilities": {
+    "homepage_and_faq": {
+      "evidence": "observed",
+      "task": "inframark-username-login-v1"
+    },
+    "username_login": {
+      "evidence": "observed form; synthetic account",
+      "task": "inframark-username-login-v1"
+    },
+    "registration_security_code_email": {
+      "evidence": "observed entry + documented sequence; synthetic email/setup",
+      "task": "inframark-register-account-v1"
+    },
+    "username_and_password_recovery_via_mock_gmail": {
+      "evidence": "observed entry; synthetic email/reset",
+      "task": "inframark-recover-username-password-v1"
+    },
+    "guest_pay_bank_and_card": {
+      "evidence": "observed lookup + documented fees; synthetic checkout",
+      "tasks": [
+        "inframark-guest-bank-payment-v1",
+        "inframark-guest-card-payment-v1"
+      ]
+    },
+    "account_summary_bill_view_statement_pdf": {
+      "evidence": "documented bill fields; synthetic PDF",
+      "task": "inframark-download-current-bill-v1"
+    },
+    "signed_in_payment_saved_bank_and_card": {
+      "evidence": "documented fees; synthetic checkout",
+      "tasks": [
+        "inframark-saved-bank-payment-v1",
+        "inframark-saved-card-payment-v1"
+      ]
+    },
+    "payment_history": {
+      "evidence": "synthetic ledger",
+      "task": "inframark-read-history-balances-v1"
+    },
+    "wallet_add_edit_remove": {
+      "evidence": "shared Starnik client sequence; synthetic",
+      "task": "inframark-manage-wallet-v1"
+    },
+    "autopay_enroll_change_cancel": {
+      "evidence": "documented (bank draft or card recurring); synthetic timing",
+      "tasks": [
+        "inframark-autopay-enable-v1",
+        "inframark-autopay-change-v1",
+        "inframark-autopay-cancel-v1"
+      ]
+    },
+    "paperless_ebill": {
+      "evidence": "documented; shared Starnik client options",
+      "task": "inframark-paperless-v1"
+    },
+    "scheduled_payment_create_edit_cancel": {
+      "evidence": "synthetic",
+      "tasks": [
+        "inframark-schedule-payment-v1",
+        "inframark-scheduled-edit-v1",
+        "inframark-scheduled-cancel-v1"
+      ]
+    },
+    "autopay_duplicate_warning_on_schedule": {
+      "evidence": "synthetic safeguard",
+      "task": null
+    }
+  }
 }

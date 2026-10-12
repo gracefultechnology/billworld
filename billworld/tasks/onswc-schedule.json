@@ -1,0 +1,22 @@
+{
+  "id": "onswc-schedule-payment-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "synthetic_future_dated_payment_documented_fee_existence",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. From your account, open Scheduled Payments and schedule the full $94.39 balance from the saved Checking account ending 1048 for 2026-10-14, before the bill is past due on 2026-10-16. Review the $1.50 processing fee, authorize, and confirm the payment appears as Scheduled. Do not pay now, enroll in AutoPay or ACH Auto Draft, or change anything else. Report the scheduled date. Scheduling is a synthetic local feature; ONSWC does not document future-dated portal payments.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_schedule",
+    "mode": "create",
+    "account_id": "acct-primary",
+    "method_id": "onswc-bank-1048",
+    "amount_cents": 9439,
+    "fee_cents": 150,
+    "date": "2026-10-14",
+    "bank_id": "onswc-bank-1048",
+    "card_id": "onswc-card-4242"
+  }
+}

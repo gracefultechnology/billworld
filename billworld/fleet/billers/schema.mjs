@@ -29,13 +29,14 @@ export const CAPABILITY_KEYS = ['online_account', 'registration', 'password_rese
 export const SUPPORT = ['supported', 'unsupported', 'unknown', 'not_applicable'];
 export const IDENTIFIERS = ['email', 'username', 'account', 'phone', 'email_or_username', 'email_or_account'];
 export const MFA = ['none', 'email', 'sms', 'email_or_sms'];
-export const REG_FIELDS = ['accountNumber', 'lastName', 'zip', 'email', 'phone'];
+export const REG_FIELDS = ['accountNumber', 'lastName', 'zip', 'email', 'phone', 'accessCode']; // accessCode: one-time code printed on the bill (bill notice + statement PDF)
 export const GUEST_FIELDS = ['accountNumber', 'statementId', 'parcelId', 'plate', 'phone', 'lastName', 'zip', 'amountDue', 'dob'];
 export const GUEST_PRIMARY = ['accountNumber', 'statementId', 'parcelId', 'plate', 'phone'];
 export const METHOD_TYPES = ['bank', 'card'];
 export const AUTOPAY_POLICIES = ['full', 'minimum', 'statement', 'fixed'];
 export const PREDICATE_TYPES = ['payment', 'no_payment', 'autopay', 'autopay_unchanged', 'paperless', 'service', 'retention_accepted', 'scheduled_cancelled', 'password_changed', 'logged_in', 'registered', 'method_removed', 'payment_plan', 'message_sent', 'answer', 'no_event', 'event', 'event_sequence', 'no_unrequested_changes'];
-export const ANSWER_KINDS = ['amount_due', 'confirmation', 'phone', 'contact', 'contains', 'abstain', 'text'];
+export const ANSWER_KINDS = ['amount_due', 'confirmation', 'phone', 'contact', 'contains', 'pattern', 'abstain', 'text'];
+export const CARD_BRAND_KEYS = ['visa', 'mastercard', 'amex', 'discover'];
 // Reference-solution steps for dossier tasks (tests/solve.mjs runs them against the engine).
 export const SOLUTION_OPS = ['login', 'pay', 'autopay', 'cancelAutopay', 'paperless', 'cancelService', 'changePlan', 'arrangement', 'contact', 'answer', 'reset', 'removeMethod'];
 // Built-in task slugs (tasks.mjs) a dossier may suppress or reuse as a solver.
@@ -130,7 +131,7 @@ export function validateDossier(d, { biller = null, templateIds = null, fileId =
       if (a.registrationFields != null && (!Array.isArray(a.registrationFields) || a.registrationFields.some(f => !REG_FIELDS.includes(f)))) e('auth.registrationFields', `subset of ${REG_FIELDS.join(', ')} (accountNumber and email are always required)`);
       if (a.guestLookupFields != null) {
         if (!Array.isArray(a.guestLookupFields) || a.guestLookupFields.some(f => !GUEST_FIELDS.includes(f))) e('auth.guestLookupFields', `subset of ${GUEST_FIELDS.join(', ')}`);
-        else if (!a.guestLookupFields.some(f => GUEST_PRIMARY.includes(f))) e('auth.guestLookupFields', `needs one primary identifier (${GUEST_PRIMARY.join(', ')})`);
+        else if (!a.guestLookupFields.some(f => GUEST_PRIMARY.includes(f)) && !(a.guestLookupExact === true && ['lastName', 'zip', 'dob'].every(f => a.guestLookupFields.includes(f)))) e('auth.guestLookupFields', `needs one primary identifier (${GUEST_PRIMARY.join(', ')}), or lastName + zip + dob with guestLookupExact`);
       }
       checkSource('auth.source', a.source);
     }
@@ -140,7 +141,9 @@ export function validateDossier(d, { biller = null, templateIds = null, fileId =
     const c = d.contact;
     if (!isObj(c)) e('contact', 'object {phone, payPhone, source}');
     else {
-      for (const k of Object.keys(c)) if (!['phone', 'payPhone', 'source', 'evidence'].includes(k)) e(`contact.${k}`, 'unknown field');
+      for (const k of Object.keys(c)) if (!['phone', 'payPhone', 'source', 'evidence', 'locality'].includes(k)) e(`contact.${k}`, 'unknown field');
+      // locality {city, state, zips[]}: where customers live (service addresses and bill ZIPs) when the state capital is wrong
+      if (c.locality != null) { const l = c.locality; if (!isObj(l) || typeof l.city !== 'string' || !l.city.trim() || !/^[A-Z]{2}$/.test(String(l.state)) || !Array.isArray(l.zips) || !l.zips.length || l.zips.length > 30 || !l.zips.every(z => /^\d{5}$/.test(String(z)))) e('contact.locality', '{city, state (2 letters), zips: [1-30 five-digit ZIPs]}'); }
       for (const k of ['phone', 'payPhone']) if (c[k] != null && String(c[k]).replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '').length !== 10) e(`contact.${k}`, '10-digit US phone');
       if (!c.source) e('contact.source', 'required'); checkSource('contact.source', c.source);
     }
@@ -169,7 +172,28 @@ export function validateDossier(d, { biller = null, templateIds = null, fileId =
     const b = d.billing;
     if (!isObj(b)) e('billing', 'object');
     else {
-      for (const k of Object.keys(b)) if (!['fees', 'methods', 'guestMethods', 'autopay', 'scheduled', 'minPaymentCents', 'maxPaymentCents', 'plans', 'cardMinimum', 'lateFeeCents', 'lateFeePercent', 'lateFeeMinCents', 'fullBalanceOnly', 'maxPaymentBalance', 'source'].includes(k)) e(`billing.${k}`, 'unknown field');
+      for (const k of Object.keys(b)) if (!['fees', 'methods', 'guestMethods', 'autopay', 'scheduled', 'minPaymentCents', 'maxPaymentCents', 'plans', 'cardMinimum', 'lateFeeCents', 'lateFeePercent', 'lateFeeMinCents', 'fullBalanceOnly', 'maxPaymentBalance', 'cardBrands', 'cancelAt', 'retentionOffer', 'equipmentReturn', 'accountNumberPrefix', 'recurringCents', 'taxSchedule', 'source'].includes(k)) e(`billing.${k}`, 'unknown field');
+      // taxSchedule {installments: [{label, due: 'MM-DD'}], importantDates: [text], source}: the property-tax calendar
+      // (California: two installments delinquent after Dec 10 / Apr 10; Florida: one annual bill due Mar 31 with
+      // Nov-Feb discounts). The engine dates the open bill's installments on the next such dates; the template shows the labels and dates.
+      if (b.taxSchedule != null) {
+        const t = b.taxSchedule, okDay = s => /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(String(s));
+        if (!isObj(t) || Object.keys(t).some(k => !['installments', 'importantDates', 'calendarYear', 'source'].includes(k))) e('billing.taxSchedule', '{installments, importantDates, calendarYear, source}');
+          if (t.calendarYear != null && typeof t.calendarYear !== 'boolean') e('billing.taxSchedule.calendarYear', 'boolean (the tax year is the year the bill is due, e.g. Philadelphia Real Estate Tax)');
+        else {
+          if (!Array.isArray(t.installments) || !t.installments.length || t.installments.length > 4 || t.installments.some(i => !isObj(i) || !str(i.label, 40) || !okDay(i.due))) e('billing.taxSchedule.installments', "1-4 {label (<=40 chars), due: 'MM-DD'} in payment order");
+          if (t.importantDates != null && (!Array.isArray(t.importantDates) || !t.importantDates.length || t.importantDates.length > 6 || t.importantDates.some(x => !str(x, 240)))) e('billing.taxSchedule.importantDates', '1-6 strings <=240 chars');
+          if (biller && biller.kind !== 'tax') e('billing.taxSchedule', 'only for tax billers');
+          if (!t.source) e('billing.taxSchedule.source', 'required'); checkSource('billing.taxSchedule.source', t.source);
+        }
+      }
+      if (b.recurringCents != null && (!Number.isInteger(b.recurringCents) || b.recurringCents < 100 || b.recurringCents > 100000 || b.plans)) e('billing.recurringCents', 'integer cents 100-100000: the documented fixed monthly charge, only without billing.plans');
+      if (b.accountNumberPrefix != null && !/^\d{1,4}$/.test(String(b.accountNumberPrefix))) e('billing.accountNumberPrefix', '1-4 digits the generated 10-digit account number starts with (documented format, e.g. "47")');
+      if (b.retentionOffer != null && b.retentionOffer !== false) e('billing.retentionOffer', 'false (the cancel flow has no "stay and save" discount offer; omit otherwise)');
+      if (b.equipmentReturn != null && b.equipmentReturn !== false && !str(b.equipmentReturn, 240)) e('billing.equipmentReturn', 'false (customers own their equipment) or the return instruction shown when cancelling (<=240 chars)');
+      if (b.cancelAt != null && b.cancelAt !== 'due_date') e('billing.cancelAt', "'due_date' (online cancellation takes effect on the next payment due date; the date is not chosen)");
+      if (b.cardBrands != null && (!Array.isArray(b.cardBrands) || !b.cardBrands.length || b.cardBrands.some(x => !CARD_BRAND_KEYS.includes(x)) || new Set(b.cardBrands).size !== b.cardBrands.length)) e('billing.cardBrands', `non-empty subset of ${CARD_BRAND_KEYS.join(', ')} (the card networks accepted online; default all)`);
+      if (b.cardBrands != null && b.methods && !b.methods.includes('card') && !(b.guestMethods || []).includes('card') && !(b.autopay?.methodTypes || []).includes('card')) e('billing.cardBrands', 'only where cards are accepted');
       for (const k of ['maxPaymentBalance']) if (b[k] != null && typeof b[k] !== 'boolean') e(`billing.${k}`, 'boolean');
       if (b.fullBalanceOnly != null && typeof b.fullBalanceOnly !== 'boolean') e('billing.fullBalanceOnly', 'boolean (online payments must be the full balance; no payment plans)');
       if (b.lateFeeMinCents != null && b.lateFeePercent == null) e('billing.lateFeeMinCents', 'needs lateFeePercent (the charge is the greater of the two)');
@@ -245,7 +269,7 @@ export function validateDossier(d, { biller = null, templateIds = null, fileId =
           if (!str(x.intent, 600) || x.intent.length < 20) e(`${p}.intent`, 'natural-language instruction ≥ 20 chars');
           if (x.scenario != null && !isObj(x.scenario)) e(`${p}.scenario`, 'object (engine scenario for this biller)');
           if (!Array.isArray(x.predicates) || !x.predicates.length) e(`${p}.predicates`, 'non-empty array');
-          else x.predicates.forEach((pr, j) => { if (!isObj(pr) || !PREDICATE_TYPES.includes(pr.type)) e(`${p}.predicates[${j}]`, `known predicate type (${PREDICATE_TYPES.join(', ')})`); else if (pr.type === 'answer' && !ANSWER_KINDS.includes(pr.kind)) e(`${p}.predicates[${j}].kind`, ANSWER_KINDS.join('|')); });
+          else x.predicates.forEach((pr, j) => { if (!isObj(pr) || !PREDICATE_TYPES.includes(pr.type)) e(`${p}.predicates[${j}]`, `known predicate type (${PREDICATE_TYPES.join(', ')})`); else if (pr.type === 'answer' && !ANSWER_KINDS.includes(pr.kind)) e(`${p}.predicates[${j}].kind`, ANSWER_KINDS.join('|')); else if (pr.type === 'answer' && pr.kind === 'pattern') { const xs = [].concat(pr.expected ?? []); if (!xs.length || xs.some(x => !str(x, 300))) e(`${p}.predicates[${j}].expected`, 'regular expression source string(s) ≤ 300 chars'); if (pr.flags != null && !/^[imsu]{0,4}$/.test(pr.flags)) e(`${p}.predicates[${j}].flags`, 'subset of i m s u (default i)'); for (const x of xs) { try { new RegExp(x, pr.flags ?? 'i'); if (new RegExp(x, pr.flags ?? 'i').test('')) e(`${p}.predicates[${j}].expected`, `/${x}/ matches an empty answer`); } catch (err) { e(`${p}.predicates[${j}].expected`, `valid regular expression (${err.message})`); } } } });
           if (x.answer != null && (!isObj(x.answer) || !ANSWER_KINDS.includes(x.answer.kind))) e(`${p}.answer`, `{kind: ${ANSWER_KINDS.join('|')}}`);
           if (!Array.isArray(x.tags) || !x.tags.length) e(`${p}.tags`, 'non-empty array');
           if (x.evidence != null && !EVIDENCE.includes(x.evidence)) e(`${p}.evidence`, EVIDENCE.join('|'));

@@ -4,6 +4,33 @@ Billworld should be a reproducible collection of working biller simulations with
 
 This plan audits the research repository and defines the work needed to build the gym. The catalog audit is complete. Initial Juneau, Spotify, AVEC/SmartHub, Homer/Xpress, Duluth/Utility Access, Grand Valley Power/SmartHub, Swepsonville/AuthorityPay–InvoiceCloud, WVU Medicine/MyChart and Western Dental/PersonaPay slices now exist with local mailbox, recovery, billing state, mock Google identity where supported, independent grading, aggregate reporting and reference tests; see `billworld/README.md`. Billworld extends WebArena-Infinity's runner, task format, reports and Gmail frontend; see [the reuse review](billworld/infinity/REVIEW.md). Expand billing sites through that extension rather than building a second general benchmark framework. A resumable public research queue covers all 59,477 entries. Full catalog reconstruction, authenticated fidelity review and autonomous-agent benchmarking remain incomplete. Research date: October 3, 2026, America/New_York.
 
+## Status (2026-10-11)
+
+This section supersedes the release counts in the dated milestone notes below. Those notes are history; when they say "nine sites and thirty-one tasks" or list construction-only Lockwood, Batavia or GMG tasks, they describe earlier releases.
+
+- **Hand-built sites:** 17, all `first_slice`: Juneau, Spotify, AVEC, Homer, Duluth, GVP, Swepsonville, WVU Medicine, Western Dental, Lockwood, Batavia, Greater Minnesota Gas, Inframark, ONSWC, Charlotte County, Malden and Tuscaloosa. Together they have 142 released Infinity tasks. No construction-only tasks remain. The site table is in `billworld/README.md` under "Sites and status".
+- **Fleet:** all 59,477 catalog billers are served through 26 portal-family templates. 568 researched dossiers are all green, with at least 20 per category in all 28 categories (560/560 picks). See `billworld/fleet/README.md`.
+- **Verification (2026-10-11):**
+  - `npm test`: 472/473 pass, with 1 skipped by design.
+  - Research tests: 142 OK.
+  - All 47 `test:browser*` scripts exit 0.
+  - Infinity smoke: 147/147, covering all 142 tasks plus 5 lifecycle checks.
+  - `fleet:test`: 234/234.
+  - Dossier validation: 568/568.
+  - Fleet sweep of all 59,477 billers: 0 failures.
+  - Fleet browser test: 437/437.
+  - Dedicated tests: 20,020/20,020 flows across 28 categories.
+- **Blind agents (2026-10-11):**
+  - The fresh blind first pass scored 733/733: 138 hand-built tasks and 595 Fleet tasks.
+  - Tasks re-attempted after the reported environment defects were fixed scored 125/125.
+  - No task is still failing.
+- **Still open:**
+  - Private screens of real portals are reconstructions labeled synthetic.
+  - No independent source-fidelity certification has been done.
+  - Held-out task splits are not built yet.
+  - Deployment-level isolation for untrusted agents is not built yet.
+  - Fleet tier 3 (more dossiers per category) is next.
+
 ## What the repository contains
 
 The counts below were recomputed directly from the 28 category JSON files using `python3 audit_billworld.py`. They match the entry totals in `COVERAGE.md`.

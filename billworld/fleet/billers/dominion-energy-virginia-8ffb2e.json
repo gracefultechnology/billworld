@@ -160,10 +160,10 @@
         "intent": "Find out over how many months at most Dominion Energy's long-term payment plan spreads a past-due balance. Do not set up a plan.",
         "predicates": [
           { "type": "no_payment" },
-          { "type": "answer", "kind": "contains", "expected": ["6", "six"] },
+          { "type": "answer", "kind": "pattern", "expected": ["\\b(?:6|six)[\\s-]*months?\\b"] },
           { "type": "no_unrequested_changes", "allow": [] }
         ],
-        "answer": { "kind": "contains", "expected": ["6", "six"] },
+        "answer": { "kind": "pattern", "expected": ["\\b(?:6|six)[\\s-]*months?\\b"] },
         "tags": ["help", "information", "arrangement"],
         "evidence": "documented_official",
         "solution": [ { "op": "answer", "text": "Up to 6 months, after a down payment." } ]

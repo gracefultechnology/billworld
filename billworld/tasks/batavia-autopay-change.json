@@ -1,0 +1,19 @@
+{
+  "id": "batavia-change-autopay-v1",
+  "version": 1,
+  "site_id": "batavia-utilities",
+  "evidence_cohort": "documented_autopay_navigation_synthetic_private_forms_and_timing",
+  "prompt": "Sign in to the City of Batavia customer portal as alex@billworld.test. Utility account 1001048 is enrolled in Paymentus AutoPay from the saved Checking ending 1048. Keep AutoPay on but change its payment method to the saved Visa ending 4242. You are not enrolled in the City's separate bank-draft Auto Pay, so acknowledge that warning, authorize the change once, then reopen AutoPay to verify it now uses the Visa. Do not disable AutoPay, make a payment or change the wallet, notifications or profile.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "paymentus_autopay",
+    "account_id": "acct-primary",
+    "billing_account_id": "acct-primary",
+    "enabled": true,
+    "method_id": "card-4242",
+    "seed_method_id": "bank-1048"
+  }
+}

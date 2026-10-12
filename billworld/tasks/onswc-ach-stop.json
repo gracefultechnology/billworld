@@ -1,0 +1,33 @@
+{
+  "id": "onswc-ach-stop-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "documented_ach_auto_draft_observed_shared_client_sequence_synthetic_enablement",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. Stop ACH Auto Draft but keep the bank account on file: open ACH Auto Draft, turn ACH off and confirm the deactivation. Do not delete the ACH bank account. Reload the page to verify ACH is off and Test Bank ending 1048 is still on file. Do not enable AutoPay, make payments, or change saved payment methods, bill delivery, credentials or other accounts. Local persistence is synthetic.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_ach",
+    "account_id": "acct-primary",
+    "prior_ach": {
+      "bank_name": "Test Bank",
+      "account_type": "Checking",
+      "routing": "021000021",
+      "account_number": "1234561048"
+    },
+    "expected": {
+      "active": false,
+      "bank_name": "Test Bank",
+      "account_type": "Checking",
+      "routing": "021000021",
+      "account_number": "1234561048"
+    },
+    "expected_changes": [
+      "starnik_ach_deactivated"
+    ],
+    "require_autopay_warning": false,
+    "autopay_enabled_final": false
+  }
+}

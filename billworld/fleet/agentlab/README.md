@@ -14,6 +14,7 @@ Each run keeps its files in `fleet/.agentlab/<runId>/` (gitignored):
 
 | File | Contents |
 |---|---|
+| `owner.json` (0600) | the run's owner key (runs made with `act.mjs new`) |
 | `daemon.json` (0600) | daemon pid, control port and token |
 | `state.json` (0600) | the active task |
 | `admin-token` (0600) | the run's grader token |
@@ -35,7 +36,15 @@ Each run keeps its files in `fleet/.agentlab/<runId>/` (gitignored):
    - the database or episode snapshots
 3. **Work only from the instruction and the pages.** If the site does not show something, you do not know it. Do not guess field names, URLs or codes from prior knowledge of Fleet. Typing a same-site URL with `goto` is allowed (for example `/mail` or `/sms`), but navigating by the visible links is the intended path.
 4. **One attempt per task counts.** The grading output after `answer` shows the predicates and expected values. Do not re-attempt a task you have seen graded and report that attempt as a first try. `report.mjs` counts only the first finished attempt per task and run.
-5. **Use your own run and your own scratch folder.** Keep any wrapper script under `scratchpad/<your label>/`, never at the scratchpad root, where another auditor's wrapper can redirect your commands. Each auditor uses its own unique `runId`, for example `aud-<you>-<category>`. Different runs are fully isolated. Within one run, commands are serialized, so drive one task at a time.
+5. **Create your own run with `new`, and use only its wrapper.** `act.mjs new <label> --wrapper-dir scratchpad/<label>-<random>/`
+   creates a run named `<label>-<6 hex>` that no one else can get, an owner key (`owner.json`, 0600) and a wrapper
+   `act-<runId>.sh` that carries the key. Every command on an owned run must carry `AGENTLAB_KEY`; without it, or with
+   another run's key, `act.mjs` refuses with `ERROR: Run "…" belongs to …` and sends nothing to the daemon. A runId that
+   was never created with `new` is refused too (runs are no longer created implicitly). Create your scratch folder with a
+   random suffix and plain `mkdir` (no `-p`), so it fails if another auditor already has it. This exists because two
+   auditors once picked the same folder and runId (`blind5`/`b5`): the second auditor's `start` abandoned the first
+   one's Duluth attempt and swapped the page to Lockwood mid-episode. Within one run, commands are serialized, so drive one
+   task at a time. Runs made before ownership (no `owner.json`) still work without a key.
 6. **Write a real final message.** `answer "..."` is your final message to the user. State what the instruction asks for, such as a confirmation number, an amount and due date, a phone number, or that something is not possible online.
 7. **Report harness problems separately.** Report anything that looks like a harness problem, such as a crash, a timeout or an element that cannot be clicked, as a harness issue, not as a site failure. Quote the `act.mjs` output.
 
@@ -46,11 +55,14 @@ All paths below are relative to the repo root (`/Users/shawwalters/billpay-resea
 ```bash
 # 1. Pick tasks (deterministic; types rotate so each category covers every task type it supports)
 node billworld/fleet/agentlab/sample.mjs --category electric [--per-biller 3] [--seed s] > /tmp/electric.json
-node billworld/fleet/agentlab/sample.mjs --template smarthub [--max-billers 20] [--tier dedicated|family|all]
+node billworld/fleet/agentlab/sample.mjs --template smarthub [--max-billers 20] [--tier dedicated|family|all]   # default: every dedicated biller; a cap names the ones it leaves out (stderr)
 node billworld/fleet/agentlab/sample.mjs --billers id1,id2 [--per-biller 3] [--no-cover] [--types payment,limitation] [--with-meta]
 
 # 2. Attempt a task (the agent runs only these)
-A="node billworld/fleet/agentlab/act.mjs myrun"
+mkdir scratchpad/aud-water-x7q2                          # no -p: fails if the folder is taken
+node billworld/fleet/agentlab/act.mjs new aud-water --wrapper-dir scratchpad/aud-water-x7q2
+#   RUN aud-water-3f9c1a / KEY … / WRAPPER …/act-aud-water-3f9c1a.sh
+A=scratchpad/aud-water-x7q2/act-aud-water-3f9c1a.sh     # the wrapper sets AGENTLAB_KEY and the run id
 $A start peco-energy-company-peco-3554e5:pay-bank   # prints INSTRUCTION + START URL
 $A observe                                          # URL, title, page text (6k chars), numbered elements
 $A more                                             # next 6k chars of page text
@@ -60,6 +72,7 @@ $A select 7 "Checking account ending in 6771"       # dropdown option by its vis
 $A check 20 / uncheck 20
 $A press Enter
 $A goto /mail        # also /sms, any same-site path, or the mock Google origin; external sites are blocked
+$A newtab /mail      # opens a second tab (here the mailbox) and keeps the current form in tab 1; switch 1 to return
 $A back | forward | reload | tabs | switch 2 | close
 $A screenshot [viewport]                            # saves a PNG and prints its path (full page by default)
 $A status | instruction | help
@@ -70,7 +83,7 @@ $A stop                                             # stop this run's daemon (Ch
 node billworld/fleet/agentlab/report.mjs [--runs r1,r2] [--json] [--all-attempts] [--include-abandoned] [--failures N]
 ```
 
-In zsh, `$A` does not split into words. Use `act(){ node billworld/fleet/agentlab/act.mjs myrun "$@"; }` instead.
+In zsh, `$A` does not split into words. Call the wrapper directly, or use the `act(){ AGENTLAB_KEY=… node …/act.mjs <runId> "$@"; }` line that `new` prints.
 
 ### What the agent sees
 
@@ -156,6 +169,33 @@ These attempts ran through `act.mjs` only. Every command was an `act.mjs` call, 
 | proof2 | `comed-commonwealth-edison-4c6870:view-bill` (answer read from the statement PDF) | **PASS**. Chrome was killed and the daemon was killed with `-9` during this attempt; both recovered. |
 | proof3 | `consolidated-edison-company-of-new-york-con-edis-1ac80c:sms-mfa-pay` (code read from `/sms`) | **PASS** |
 | proof1 | no-op answer `"Done."` on pay-bank, `"I could not find anything."` on the limitation task, `"Done."` on georgia-power view-bill | all **FAIL** (payment, answer and logged_in predicates fail) |
+
+## Measured results (2026-10-11, fresh blind audit of every hand-built site and every Fleet category)
+
+A second, fresh blind audit ran 18 auditor units (4 for the 17 hand-built sites, 14 pairing the 28 Fleet categories).
+Auditors worked only through the harness (`act.mjs` for Fleet; a copy of the same harness for the hand-built sites),
+seeing the instruction, credentials and rendered pages, and reported every environment or harness defect they met even when the task passed. Each reported defect was fixed at
+the root by a separate repair agent, and the affected tasks were then re-attempted blind.
+
+| Measure | Hand-built sites | Fleet | Total |
+|---|---:|---:|---:|
+| Fresh blind first pass | 138 / 138 | 595 / 595 | **733 / 733** |
+| Blind re-attempts after the defect fixes | 15 / 15 | 110 / 110 | **125 / 125** |
+| Final (latest result per task) | 138 / 138 | 595 / 595 | **733 / 733**, none still failing |
+
+First pass per unit: hand-built 9/9, 22/22, 52/52, 55/55; electric+gas 48/48; water-sewer+trash 41/41;
+propane-heating-oil+internet 41/41; tv+phone-wireless 43/43; phone-landline+streaming-subscriptions 44/44;
+credit-cards+banks 40/40; credit-unions+mortgage 41/41; loans+insurance 42/42; medicare+medical 40/40;
+dental-vision-hearing+pharmacy-dme 43/43; property-tax+government 47/47; vehicle-tolls+housing 41/41;
+home-services+senior-services 42/42; storage-funeral+other 42/42. Re-attempts per unit: hand-built 1, 1, 10, 3;
+electric+gas 11, water+trash 18, propane+internet 9, tv+wireless 9, landline+streaming 6, property-tax+government 10,
+tolls+housing 12, home+senior 12, storage+other 23 (all passed); the other five Fleet units reported no defects.
+
+The defects behind the re-attempts were wording, labeling and flow-friction issues (for example a mailbox list that
+redrew under the agent, research shorthand in help text, a missing stop-date notice rule, select boxes named after every
+option), not unsolvable tasks; the per-unit fixes are listed in [`../README.md`](../README.md#agent-solvability-2026-10-11-fresh-blind-audit).
+One harness defect was found and fixed: two auditors could share a hand-picked runId, so `act.mjs new <label>` now
+issues an owned run with its own key and wrapper (rule 5 above, `tests/agentlab-owner.test.mjs`).
 
 ## Measured results (2026-10-10)
 

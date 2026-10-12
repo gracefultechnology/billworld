@@ -1,0 +1,33 @@
+{
+  "id": "inframark-manage-wallet-v1",
+  "version": 1,
+  "site_id": "inframark",
+  "evidence_cohort": "shared_starnik_wallet_sequence_synthetic_private_layout",
+  "prompt": "Sign in to the local Inframark Resident Portal as alex.inframark / Inframark-2026! and open Payment Methods. Update the existing Visa ending 4242 to expiration 12/31, re-entering synthetic Visa 4242424242424242 and security code 123, keeping its other details unchanged. Add a Savings account at Test Bank: holder Alex Morgan, routing and confirmation 021000021, account and confirmation 1234561048. Billing for both: Alex Morgan, 1 Test Street, Mankato, MN 56001, United States; email alex@billworld.test. Review and authorize each save. Delete the obsolete Checking account ending 2099, then reload the wallet to verify exactly the updated Visa and the new Savings account remain. Make no payments, do not enable AutoPay, and leave all other accounts and settings unchanged. Private screens and full-number re-entry are simulated.",
+  "budget": {
+    "seconds": 420,
+    "actions": 160
+  },
+  "goal": {
+    "type": "starnik_wallet",
+    "account_id": "acct-primary",
+    "card_id": "inframark-card-4242",
+    "remove_id": "inframark-bank-2099",
+    "expiry": "12/31",
+    "new_bank_number": "1234561048",
+    "routing": "021000021",
+    "holder": "Alex Morgan",
+    "bank_name": "Test Bank",
+    "account_type": "Savings",
+    "billing": {
+      "firstName": "Alex",
+      "lastName": "Morgan",
+      "address": "1 Test Street",
+      "city": "Mankato",
+      "state": "MN",
+      "zip": "56001",
+      "country": "United States",
+      "email": "alex@billworld.test"
+    }
+  }
+}

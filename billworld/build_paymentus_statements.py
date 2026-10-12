@@ -17,12 +17,13 @@ def build():
     code = """
 import {World} from './billworld/engine.mjs';
 const w=new World(':memory:',{construction:true});
-try{const f=w.create({siteId:'batavia-utilities',taskId:'batavia-email-login-v1'}),s=w.state(f.episodeId);
-console.log(JSON.stringify(s.invoices.map(i=>({siteId:s.siteId,invoiceId:i.id,accountId:i.accountId,
+// The multi-account task links a second Batavia account; its bill needs a statement too.
+try{const seen=new Set(),rows=[];for(const taskId of ['batavia-email-login-v1','batavia-pay-multiple-accounts-v1']){const f=w.create({siteId:'batavia-utilities',taskId}),s=w.state(f.episodeId);
+rows.push(...s.invoices.filter(i=>!seen.has(i.id)&&seen.add(i.id)).map(i=>({siteId:s.siteId,invoiceId:i.id,accountId:i.accountId,
 number:i.number,period:i.period,dueDate:i.dueDate,amountCents:i.amountCents,
 customerNumber:s.accounts.find(a=>a.id===i.accountId).customerNumber,
 name:s.accounts.find(a=>a.id===i.accountId).name,
-serviceAddress:s.accounts.find(a=>a.id===i.accountId).serviceAddress}))));}finally{w.close();}
+serviceAddress:s.accounts.find(a=>a.id===i.accountId).serviceAddress})));}console.log(JSON.stringify(rows));}finally{w.close();}
 """
     fixtures = json.loads(subprocess.check_output(
         ['node', '--input-type=module', '-e', code], cwd=ROOT.parent, text=True))

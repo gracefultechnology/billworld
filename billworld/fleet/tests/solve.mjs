@@ -1,6 +1,6 @@
 // Engine-level reference solvers: drive FleetWorld directly (no HTML) to prove that every generated task is
 // satisfiable for its biller, and to run the catalog-wide lifecycle in the sweep. Used by sweep.mjs and tests.
-import { PASSWORD, isoDate, fmtDate, money, methodTypesFor, primaryMethodId, paymentLimits, noticeAccountNumber } from '../engine.mjs';
+import { PASSWORD, isoDate, fmtDate, money, methodTypesFor, primaryMethodId, paymentLimits, noticeAccountNumber, testCardFor } from '../engine.mjs';
 import { formatPhone } from '../catalog.mjs';
 // AutoPay amount the reference solutions choose: the full balance, or the statement balance where the dossier's
 // AutoPay options leave out 'full' (card issuers).
@@ -20,7 +20,7 @@ export function resetCode(ep, billerId) { const m = latestMail(ep, billerId, /^R
 export function billNotice(ep, billerId) {
   const m = latestMail(ep, billerId, /bill is ready/); if (!m) throw new Error('no bill notice in the mailbox');
   const field = label => m.text.match(new RegExp(`${label}: (.+)`))?.[1]?.trim();
-  return { accountNumber: noticeAccountNumber(m.text), statementId: field('Statement ID'), parcelId: field('Parcel number'), plate: field('License plate'), zip: field('Service ZIP code'), amountDue: field('Amount due') };
+  return { accountNumber: noticeAccountNumber(m.text), statementId: field('Statement ID') || field('Statement number'), parcelId: field('Parcel number'), plate: field('License plate'), zip: field('(?:Service )?ZIP code'), amountDue: field('Amount due'), accessCode: field('Access code[^:]*') };
 }
 
 // The sign-in identifier a customer of this biller types (dossier auth.identifier; default the email address).
@@ -89,7 +89,7 @@ export const SOLVERS = {
   'register-and-pay': (w, ep, id) => {
     w.account(ep, id); // the harness seeds the account when it creates the episode (POST /episodes with billerId)
     const notice = billNotice(ep, id);
-    w.register(ep, id, { accountNumber: notice.accountNumber, lastName: ep.persona.last, zip: notice.zip, phone: ep.persona.phone, email: ep.persona.email, password: PASSWORD, confirm: PASSWORD });
+    w.register(ep, id, { accountNumber: notice.accountNumber, lastName: ep.persona.last, zip: notice.zip, phone: ep.persona.phone, accessCode: notice.accessCode, email: ep.persona.email, password: PASSWORD, confirm: PASSWORD });
     const link = latestMail(ep, id, /^Verify your email/).links.find(l => l.key === 'verify');
     w.verifyEmail(ep, id, link.query.token);
     pay(w, ep, id, login(w, ep, id), { amountChoice: 'due', methodType: 'bank', accountType: 'checking', routing: '021000021', bankAccount: '000123456789', bankAccountConfirm: '000123456789' });
@@ -97,9 +97,11 @@ export const SOLVERS = {
   'guest-pay': (w, ep, id) => {
     w.account(ep, id);
     const notice = billNotice(ep, id);
-    const { sid } = w.guestLookup(ep, id, { accountNumber: notice.accountNumber, lastName: ep.persona.last, ...(w.biller(id).dossier?.auth?.guestLookupFields?.includes('zip') ? { zip: notice.zip } : {}), ...(w.biller(id).dossier?.auth?.guestLookupFields?.includes('phone') ? { phone: ep.persona.phone } : {}) });
+    const gf = w.biller(id).dossier?.auth?.guestLookupFields || [];
+    const byPerson = gf.length && !gf.some(f => ['accountNumber', 'statementId', 'parcelId', 'plate', 'phone'].includes(f)); // name + ZIP + date of birth lookup
+    const { sid } = w.guestLookup(ep, id, { ...(byPerson ? {} : { accountNumber: notice.accountNumber }), lastName: ep.persona.last, ...(gf.includes('zip') ? { zip: notice.zip } : {}), ...(gf.includes('phone') ? { phone: ep.persona.phone } : {}), ...(gf.includes('dob') ? { dob: ep.persona.dob } : {}) });
     const card = methodTypesFor(w.biller(id), { guest: true }).includes('card');
-    pay(w, ep, id, sid, card ? { amountChoice: 'due', methodType: 'card', cardNumber: '4111 1111 1111 1111', exp: '12/28', cvv: '123' } : { amountChoice: 'due', methodType: 'bank', routing: '021000021', bankAccount: '000123456789', bankAccountConfirm: '000123456789' }, { guest: true });
+    pay(w, ep, id, sid, card ? { amountChoice: 'due', methodType: 'card', cardNumber: testCardFor(w.biller(id), '1111'), exp: '12/28', cvv: '123' } : { amountChoice: 'due', methodType: 'bank', routing: '021000021', bankAccount: '000123456789', bankAccountConfirm: '000123456789' }, { guest: true });
   },
   'declined-retry': (w, ep, id) => {
     const sid = login(w, ep, id);
@@ -170,7 +172,7 @@ export function taskShapeErrors(task, b) {
   // Every lookup / registration field the agent must type is visible to it: printed on the bill notice, part of the
   // persona name in the instruction, or a persona fact the instruction states (phone, date of birth).
   const fields = slug === 'guest-pay' ? b.dossier?.auth?.guestLookupFields : slug === 'register-and-pay' ? b.dossier?.auth?.registrationFields : null;
-  const visible = new Set(['accountNumber', 'zip', 'statementId', 'parcelId', 'plate', 'amountDue', 'lastName', 'email', ...(task.personaFacts || [])]);
+  const visible = new Set(['accountNumber', 'accessCode', 'zip', 'statementId', 'parcelId', 'plate', 'amountDue', 'lastName', 'email', ...(task.personaFacts || [])]);
   for (const f of fields || []) if (!visible.has(f)) errs.push(`hidden_field:${f}`);
   return errs;
 }

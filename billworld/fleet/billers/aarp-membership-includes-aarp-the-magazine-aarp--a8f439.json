@@ -5,7 +5,7 @@
   "name": "AARP membership",
   "category": "streaming-subscriptions",
   "reviewedAt": "2026-10-10",
-  "notes": "Researched from the public AARP Membership FAQ, the public renewal lookup page and the public log-in page only (no sign-in, no form submitted). Membership is $15 the first year with Automatic Renewal and $20 a year after; 3-year terms save 8% and 5-year terms save 21% (exact multi-year prices not published, so no billing.plans; the term is chosen at join/renewal, so change_plan is not_applicable). Automatic Renewal can be set up online with a credit/debit card, e-check or checking account; payment details and billing date are changed online (My Account > Account Details > AARP Membership Payment Details), but turning Automatic Renewal off is documented only by phone (866-804-1278) or email, so autopay_cancel is unsupported. The FAQ says membership can be canceled at any time but does not say how; cancel_service is unsupported online with the main member line (inferred). Renewal without signing in is real: the renew page looks a member up by first name, last name, ZIP/postal code, country and birthday — guest lookup by name + ZIP + date of birth without an account-number field is not expressible (guestLookupFields needs a primary identifier), so guest lookup fields are left to the family default (gap, cross-owner request). Log-in page: email address, then password (8-64 characters), also 'Log in with a one-time code'. Reviewer 2026-10-10: billing.fees ({0,0}, inferred) removed: no convenience fee is published, and with fullBalanceOnly the contract's $25 card-fee check cannot run.",
+  "notes": "Researched from the public AARP Membership FAQ, the public renewal lookup page and the public log-in page only (no sign-in, no form submitted). Membership is $15 the first year with Automatic Renewal and $20 a year after; 3-year terms save 8% and 5-year terms save 21% (exact multi-year prices not published, so billing.plans lists only the two published 1-year prices, $15 first year with Automatic Renewal and $20 a year after, current = $20; the term is chosen at join/renewal, so change_plan is not_applicable). Automatic Renewal can be set up online with a credit/debit card, e-check or checking account; payment details and billing date are changed online (My Account > Account Details > AARP Membership Payment Details), but turning Automatic Renewal off is documented only by phone (866-804-1278) or email, so autopay_cancel is unsupported. The FAQ says membership can be canceled at any time but does not say how; cancel_service is unsupported online with the main member line (inferred). Renewal without signing in is real: the renew page looks a member up by first name, last name, ZIP/postal code, country and birthday — the guest lookup asks for last name, ZIP code and date of birth (guestLookupFields lastName+zip+dob, guestLookupExact; the fleet has no first-name or country field). Repair 2026-10-11: membership number label matches the bill notice. Log-in page: email address, then password (8-64 characters), also 'Log in with a one-time code'. Reviewer 2026-10-10: billing.fees ({0,0}, inferred) removed: no convenience fee is published, and with fullBalanceOnly the contract's $25 card-fee check cannot run.",
   "officialDomains": [
     "aarp.org"
   ],
@@ -50,7 +50,8 @@
     "wallet": "AARP Membership Payment Details",
     "cancel": "Cancel Membership",
     "help": "Help",
-    "dueDate": "Renewal date"
+    "dueDate": "Renewal date",
+    "accountNumber": "Membership number"
   },
   "nav": {
     "public": [
@@ -107,7 +108,13 @@
       "message": "Use 8-64 characters. Enter a phrase you will remember."
     },
     "evidence": "observed_public",
-    "source": "https://secure.aarp.org/applications/user/login"
+    "source": "https://secure.aarp.org/applications/user/login",
+    "guestLookupFields": [
+      "lastName",
+      "zip",
+      "dob"
+    ],
+    "guestLookupExact": true
   },
   "contact": {
     "phone": "888-687-2277",
@@ -192,7 +199,22 @@
         "bank",
         "card"
       ]
-    }
+    },
+    "plans": [
+      {
+        "id": "first-year",
+        "name": "First year with Automatic Renewal",
+        "cents": 1500,
+        "interval": "year"
+      },
+      {
+        "id": "annual",
+        "name": "1-year membership",
+        "cents": 2000,
+        "interval": "year",
+        "current": true
+      }
+    ]
   },
   "help": [
     {

@@ -1,0 +1,19 @@
+{
+  "id": "onswc-download-current-bill-v1",
+  "version": 1,
+  "site_id": "onswc",
+  "evidence_cohort": "observed_pdf_download_synthetic_statement",
+  "prompt": "Sign in to the local ONSWC customer portal as alex.onswc / ONSWC-2026!. From your account summary, download the current September 2026 water and wastewater bill using View Bill (PDF), and report the filename offered by the portal. Leave credentials, preferences, methods, payments, invoices and other accounts unchanged. The authenticated PDF download is observed in the shared Starnik client; this statement layout is synthetic and its charges use published Rocklyn rates with synthetic usage.",
+  "budget": {
+    "seconds": 300,
+    "actions": 100
+  },
+  "goal": {
+    "type": "starnik_statement",
+    "account_id": "acct-primary",
+    "invoice_id": "inv-current",
+    "filename": "onswc-inv-current.pdf",
+    "document_sha256": "41e94fce08d3bf6bdf5fef3083902c2cb150f3c7bd74c023dac406ef6220d1da"
+  },
+  "grading_limit": "Private verifier confirms authorized issuance and filename answer, not the remote agent filesystem. Puppeteer reference separately verifies completed browser download and saved bytes."
+}

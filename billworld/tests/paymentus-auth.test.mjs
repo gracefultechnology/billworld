@@ -10,9 +10,9 @@ const fixture = (taskId='batavia-email-login-v1') => {
 const sign=(w,id,email='alex@billworld.test',password='Billworld-2026!')=>w.login(id,{email,password}).session;
 const token=(w,id)=>w.state(id).mail.at(-1).text.match(/token=([\w-]+)/)[1];
 const change={password:'Restored-2026!',confirmPassword:'Restored-2026!'};
-test('Batavia remains construction only and cannot enter an ordinary worker',()=>{
-  assert.equal(sites.has('batavia-utilities'),false);assert.equal(tasks.has('batavia-email-login-v1'),false);assert.ok(constructionSites.has('batavia-utilities'));
-  const {world,value,id}=fixture(),ordinary=new World();try{assert.throws(()=>ordinary.create({siteId:'batavia-utilities'}),/not implemented/);ordinary.save(world.state(id));assert.throws(()=>ordinary.enter(id,value.entryToken),/not enabled/);assert.throws(()=>ordinary.connector(id,value.connectorToken),/not enabled/);}finally{world.close();ordinary.close();}
+test('Batavia is a released first slice available to ordinary workers',()=>{
+  assert.ok(sites.has('batavia-utilities'));assert.ok(tasks.has('batavia-email-login-v1'));assert.equal(constructionSites.has('batavia-utilities'),false);
+  const ordinary=new World();try{const value=ordinary.create({siteId:'batavia-utilities'});assert.equal(ordinary.state(value.episodeId).constructionSlice,false);assert.ok(ordinary.enter(value.episodeId,value.entryToken));}finally{ordinary.close();}
 });
 test('Login grader requires the correct active account and subsequent Accounts navigation',()=>{
   const {world:w,id}=fixture();try{assert.throws(()=>sign(w,id,'alex@billworld.test','wrong'),/incorrect/);assert.throws(()=>w.paymentusAccount(id,'bad'),/sign in/);assert.equal(w.evaluate(id,{}).success,false);const session=sign(w,id);assert.equal(w.evaluate(id,{}).success,false);assert.equal(w.paymentusAccount(id,session).account.email,'alex@billworld.test');assert.equal(w.evaluate(id,{}).success,true);w.logout(id,session);assert.equal(w.evaluate(id,{}).success,false);}finally{w.close();}
