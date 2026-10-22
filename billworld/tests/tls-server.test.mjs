@@ -3,6 +3,7 @@ import {existsSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import test from 'node:test';
+import {X509Certificate} from 'node:crypto';
 import assert from 'node:assert/strict';
 import https from 'node:https';
 import {start} from '../server.mjs';
@@ -12,11 +13,11 @@ test('HTTPS preserves episode, mailbox, OAuth origins and secure session cookies
  const fixture=await localTlsFixture();let server;
  try{
   server=await start({port:0,adminPort:0,dbPath:':memory:',tls:fixture.tls});
-  await assert.rejects(new Promise((resolve,reject)=>{const request=https.get(server.baseUrl+'/health',resolve);request.on('error',reject);}),error=>error.code==='DEPTH_ZERO_SELF_SIGNED_CERT');
+  await assert.rejects(new Promise((resolve,reject)=>{const request=https.get(server.baseUrl+'/health',resolve);request.on('error',reject);}),error=>['UNABLE_TO_VERIFY_LEAF_SIGNATURE','UNABLE_TO_GET_ISSUER_CERT_LOCALLY'].includes(error.code));
   const jar=new Map();
   const req=(url,body,origin=new URL(url).origin)=>new Promise((resolve,reject)=>{
    const billing=new URL(url).origin===server.baseUrl;
-   const request=https.request(url,{ca:fixture.tls.cert,method:body?'POST':'GET',headers:{Origin:origin,...(billing?{Cookie:[...jar].map(([k,v])=>`${k}=${v}`).join('; ')}:{}),...(body?{'Content-Type':'application/json'}:{})}},res=>{
+   const request=https.request(url,{ca:fixture.ca,method:body?'POST':'GET',headers:{Origin:origin,...(billing?{Cookie:[...jar].map(([k,v])=>`${k}=${v}`).join('; ')}:{}),...(body?{'Content-Type':'application/json'}:{})}},res=>{
     if(billing)for(const cookie of res.headers['set-cookie']||[]){assert.match(cookie,/; Secure/);const [name,value]=cookie.split(';')[0].split('=');jar.set(name,value);}
     let raw='';res.on('data',c=>raw+=c);res.on('end',()=>resolve({status:res.statusCode,headers:res.headers,data:raw.startsWith('{')?JSON.parse(raw):raw}));
    });request.on('error',reject);request.end(body?JSON.stringify(body):undefined);
@@ -26,7 +27,7 @@ test('HTTPS preserves episode, mailbox, OAuth origins and secure session cookies
   assert.equal(new URL(f.startUrl).origin,server.baseUrl);assert.equal(new URL(f.connectorUrl).origin,server.baseUrl);
   assert.equal(new URL(f.startUrl).protocol,'https:');
   assert.equal((await req(f.startUrl)).status,302);
-  const connector=await new Promise((resolve,reject)=>{https.get(f.connectorUrl,{ca:fixture.tls.cert,headers:{Authorization:`Bearer ${f.connectorToken}`,'X-Billworld-Episode':f.episodeId}},res=>{res.resume();res.on('end',()=>resolve(res.statusCode));}).on('error',reject);});
+  const connector=await new Promise((resolve,reject)=>{https.get(f.connectorUrl,{ca:fixture.ca,headers:{Authorization:`Bearer ${f.connectorToken}`,'X-Billworld-Episode':f.episodeId}},res=>{res.resume();res.on('end',()=>resolve(res.statusCode));}).on('error',reject);});
   assert.equal(connector,200);
   assert.equal((await req(`${server.baseUrl}/enter/${f.episodeId}/${f.entryToken}`)).status,302);
   assert.equal((await req(server.baseUrl+'/api/mail/login',{email:'alex@billworld.test',password:'Mailbox-2026!'})).status,200);
@@ -56,4 +57,16 @@ test('malformed TLS configuration fails before creating a database',async()=>{
   for(const tls of [{key:'invalid'}, {key:'invalid',cert:'invalid'}])await assert.rejects(start({port:0,adminPort:0,dbPath,tls}));
   assert.equal(existsSync(dbPath),false);
  }finally{await rm(dir,{recursive:true,force:true});}
+});
+
+test('temporary test CA signs a separate loopback-only server leaf and is removed',async()=>{
+ const fixture=await localTlsFixture();
+ try{
+  const ca=new X509Certificate(fixture.ca),leaf=new X509Certificate(fixture.tls.cert);
+  assert.equal(ca.ca,true);assert.equal(leaf.ca,false);assert.equal(leaf.verify(ca.publicKey),true);
+  assert.equal(leaf.checkHost('localhost'),'localhost');assert.equal(leaf.checkIP('127.0.0.1'),'127.0.0.1');
+  assert.equal(leaf.checkHost('example.com'),undefined);assert.match(fixture.caSubjectHash,/^[0-9a-f]{8}$/);
+  assert.equal(existsSync(fixture.caPath),true);
+ }finally{await fixture.close();}
+ assert.equal(existsSync(fixture.caPath),false);
 });
