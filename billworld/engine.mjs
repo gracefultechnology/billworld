@@ -1355,7 +1355,11 @@ export class World {
     });
   }
   evaluate(id, { confirmation = '', billingDate = '', scheduledDate = '', statementFilename = '',postedBalanceCents,pendingPaymentCents,remainingBalanceCents } = {}) {
-    const state = this.state(id);
+    const stored = this.state(id);
+    // Website-operation checks must not classify the supervisor's meter as a
+    // website side effect. Keep the persisted audit trail and actionBudget
+    // intact; finish() independently enforces exhaustion and the action limit.
+    const state = {...stored, events: stored.events.filter(e => !['action_budget_started', 'agent_action_reserved', 'action_budget_exhausted'].includes(e.type))};
     const currentTask=taskFor(state);
     if(ccu(state))return evaluateCharlotte(state,currentTask,{confirmation,scheduledDate,statementFilename},charlotteHelpers);
     if(siteFor(state).runtime?.kind==='wipp')return this.wippEvaluate(state,currentTask,{confirmation,billingDate,scheduledDate,remainingBalanceCents});
