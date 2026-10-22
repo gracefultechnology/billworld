@@ -9,6 +9,27 @@ const trial={kind:'agent',agent:'budget-fixture',runId:'budget-run'};
 const bank={invoiceId:'inv-current',customerNumber:'1001048',amountCents:8432,kind:'bank',name:'Alex',routing:'021000021',accountNumber:'000001048'};
 const pay=(w,id)=>{const q=w.quote(id,null,bank);return w.pay(id,null,{token:q.token}).confirmation;};
 
+test('metered website grading ignores budget bookkeeping but retains forbidden effects and exhaustion',()=>{
+ for(const mode of ['normal','forbidden','exhausted']){
+  const w=new World();try{
+   const f=w.create({siteId:'malden',taskId:'malden-signed-card-pay-v1',trial});const id=f.episodeId;
+   const budget=w.startActionBudget(id,{unit:'browser_tool_invocation'});w.consumeAction(id,{name:'observe'});
+   const session=w.wippLogin(id,{email:f.credentials.email,password:f.credentials.password}).session;
+   w.wippCheckoutStart(id,session,{accountId:'1001048',methodType:'card',amountChoice:'other',amount:'50.00',terms:true});
+   w.wippCheckoutDetails(id,session,{source:'saved',methodId:'alex-card-4242',email:f.credentials.email});
+   const receipt=w.wippCheckoutSubmit(id,session,{authorize:true}).receipt;
+   if(mode==='forbidden')w.wippProfileSave(id,session,{firstName:'Alex',lastName:'Changed',mobile:'5735550148'});
+   if(mode==='exhausted')for(let i=1;i<=budget.limit;i++)w.consumeAction(id,{name:'observe'});
+   const before=JSON.stringify(w.state(id).events),score=w.evaluate(id,{confirmation:receipt.confirmation});
+   assert.equal(score.checks.no_forbidden_operations,mode!=='forbidden');
+   assert.equal(JSON.stringify(w.state(id).events),before,'grading preserves the complete audit trail');
+   const final=w.finish(id,{confirmation:receipt.confirmation});
+   assert.equal(final.success,mode==='normal',JSON.stringify(final.failureReasons));
+   if(mode==='exhausted')assert.ok(final.failureReasons.includes('action_budget'));
+  }finally{w.close();}
+ }
+});
+
 test('Exact action limit can pass; one further reservation fails even with completed payment and a forged low reported count',()=>{
  for(const exceed of [false,true]){const w=new World();try{const{id}= {id:w.create({trial}).episodeId};const budget=w.startActionBudget(id,{unit:'browser_tool_invocation'});const confirmation=pay(w,id);
   for(let n=0;n<budget.limit;n++)assert.equal(w.consumeAction(id,{name:'click'}).allowed,true);
