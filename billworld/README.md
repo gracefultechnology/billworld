@@ -332,3 +332,9 @@ node --test billworld/tests/tuscaloosa.test.mjs
 npm run test:browser:tuscaloosa
 .upstream/smoke-venv/bin/python billworld/infinity/smoke.py --task-ids task_tus1,task_tus2,task_tus3,task_tus4,task_tus5,task_tus6,task_tus7,task_tus8 --artifacts-dir billworld/artifacts/infinity/tuscaloosa-<run>
 ```
+
+### HTTPS for embedded Grace integration (2026-10-22)
+
+`start({tls: {key, cert}})` accepts PEM contents and serves the billing site and mock Google over HTTPS. The CLI accepts paths through both `BILLWORLD_TLS_KEY_FILE` and `BILLWORLD_TLS_CERT_FILE`. Use a certificate with SANs for `127.0.0.1` and `localhost`, trusted by the intended client. Both listeners remain loopback-only; the private grader remains a separate HTTP loopback listener. OAuth callbacks, episode URLs and connector URLs use the selected transport. HTTPS cookies include Secure, HttpOnly and SameSite=Lax. Origin checks derive the scheme from the connection and do not trust forwarded headers.
+
+Run `node --test billworld/tests/tls-server.test.mjs` for certificate-verified Node transport and OAuth checks. Run `BILLWORLD_TEST_TLS=1 node billworld/tests/duluth-browser.mjs` for the seven browser journeys over TLS. Tests generate and remove temporary keys; Chromium permits only the temporary certificate's SPKI in its test process. No system or Android trust store is changed. Android trust, device routing, the Grace runtime pin and installed live-agent acceptance still require integration work.

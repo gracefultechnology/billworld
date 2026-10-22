@@ -1,3 +1,4 @@
+import {requestOrigin} from './transport.mjs';
 // HTTP surface for the City of Tuscaloosa / Paymentus slice. server.mjs dispatches here once per request.
 import {readFileSync} from 'node:fs';
 import {Fault} from './engine.mjs';
@@ -37,7 +38,7 @@ export async function tuscaloosaRoute({req, res, url, c, world, json, body, cook
     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store'}); res.end(shell); return true;
   }
   if (!path.startsWith('/api/')) throw new Fault('Not found', 404);
-  if (req.method === 'POST' && req.headers.origin !== `http://${req.headers.host}`) throw new Fault('Same-origin request required', 403);
+  if (req.method === 'POST' && req.headers.origin !== requestOrigin(req)) throw new Fault('Same-origin request required', 403);
   const cookies = [], set = (name, value, age) => cookies.push(cookie(name, value, age));
   const send = data => { if (cookies.length) res.setHeader('Set-Cookie', cookies); json(res, data); return true; };
   if (req.method === 'GET') {
