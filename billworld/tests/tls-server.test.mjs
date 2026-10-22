@@ -1,3 +1,7 @@
+import {mkdtemp,rm} from 'node:fs/promises';
+import {existsSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import https from 'node:https';
@@ -17,7 +21,13 @@ test('HTTPS preserves episode, mailbox, OAuth origins and secure session cookies
     let raw='';res.on('data',c=>raw+=c);res.on('end',()=>resolve({status:res.statusCode,headers:res.headers,data:raw.startsWith('{')?JSON.parse(raw):raw}));
    });request.on('error',reject);request.end(body?JSON.stringify(body):undefined);
   });
-  const f=server.world.create({siteId:'duluth-comfortsystems',taskId:'duluth-google-pay-v1'});
+  const created=await fetch(server.adminUrl+'/episodes',{method:'POST',headers:{Authorization:`Bearer ${server.adminToken}`,'Content-Type':'application/json'},body:JSON.stringify({siteId:'duluth-comfortsystems',taskId:'duluth-google-pay-v1'})});
+  assert.equal(created.status,200);const f=await created.json();
+  assert.equal(new URL(f.startUrl).origin,server.baseUrl);assert.equal(new URL(f.connectorUrl).origin,server.baseUrl);
+  assert.equal(new URL(f.startUrl).protocol,'https:');
+  assert.equal((await req(f.startUrl)).status,302);
+  const connector=await new Promise((resolve,reject)=>{https.get(f.connectorUrl,{ca:fixture.tls.cert,headers:{Authorization:`Bearer ${f.connectorToken}`,'X-Billworld-Episode':f.episodeId}},res=>{res.resume();res.on('end',()=>resolve(res.statusCode));}).on('error',reject);});
+  assert.equal(connector,200);
   assert.equal((await req(`${server.baseUrl}/enter/${f.episodeId}/${f.entryToken}`)).status,302);
   assert.equal((await req(server.baseUrl+'/api/mail/login',{email:'alex@billworld.test',password:'Mailbox-2026!'})).status,200);
   assert.equal((await req(server.baseUrl+'/api/mail')).status,200);
@@ -37,4 +47,13 @@ test('HTTPS preserves episode, mailbox, OAuth origins and secure session cookies
 test('connection scheme cannot be overridden by forwarded headers',()=>{
  assert.equal(requestOrigin({headers:{host:'localhost:3100','x-forwarded-proto':'https'},socket:{}}),'http://localhost:3100');
  assert.equal(requestOrigin({headers:{host:'localhost:3100','x-forwarded-proto':'http'},socket:{encrypted:true}}),'https://localhost:3100');
+});
+
+test('malformed TLS configuration fails before creating a database',async()=>{
+ const dir=await mkdtemp(join(tmpdir(),'billworld-invalid-tls-'));
+ const dbPath=join(dir,'world.sqlite');
+ try{
+  for(const tls of [{key:'invalid'}, {key:'invalid',cert:'invalid'}])await assert.rejects(start({port:0,adminPort:0,dbPath,tls}));
+  assert.equal(existsSync(dbPath),false);
+ }finally{await rm(dir,{recursive:true,force:true});}
 });

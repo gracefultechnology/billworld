@@ -2,6 +2,7 @@ import {requestOrigin} from './transport.mjs';
 import {starnikRoutes,starnikSourceRoute,starnikSourceLinks} from './starnik-routes.mjs';
 import http from 'node:http';
 import https from 'node:https';
+import {createSecureContext} from 'node:tls';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { readFileSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -49,6 +50,8 @@ function isToken(actual, expected) { return typeof actual === 'string' && actual
 
 export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbPath = `${root}/data/world.sqlite`, adminToken = randomBytes(32).toString('base64url'), compatibilityReady = false, construction = false, tls = null } = {}) {
   if (tls && (!tls.key || !tls.cert)) throw new TypeError('TLS requires both key and cert');
+  // Reject malformed PEM before opening the world database or its monitor.
+  if (tls) createSecureContext({key:tls.key,cert:tls.cert});
   const scheme = tls ? 'https' : 'http';
   const createPublicServer = listener => tls ? https.createServer({key:tls.key,cert:tls.cert},listener) : http.createServer(listener);
   const cookie = (name,value,maxAge=3600) => `${name}=${value}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${maxAge}${tls ? '; Secure' : ''}`;
