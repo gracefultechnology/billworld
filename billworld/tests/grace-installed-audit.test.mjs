@@ -11,6 +11,38 @@ test('triage exposes action counts without raw arguments or credentials',()=>{co
 
 test('controlledWebsite is a fixture declaration, not proof of agent action',()=>{const f=fixture();f.agent.controlledWebsite=false;assert.equal(assessInstalledEvidence(f).candidateForReview,true);});
 
+test('native diagnostics distinguish successful validation from failed follow and cleanup',()=>{
+ const f=fixture();f.agent.calls=[
+  {action:'follow',completed:true,durationMs:7},
+  {action:'follow',completed:false,durationMs:24,errorCode:'UNCERTAIN_OUTCOME'},
+  {action:'guide',completed:true,durationMs:18},
+  {action:'guide',completed:true,durationMs:6},
+ ];
+ const result=assessInstalledEvidence(f);
+ assert.equal(result.nativeCalls.invocations,4);
+ assert.equal(result.nativeCalls.completed,3);
+ assert.equal(result.nativeCalls.failed,1);
+ assert.equal(result.nativeCalls.unreported,0);
+ assert.deepEqual(result.nativeCalls.failures,[{index:1,action:'follow',errorCode:'UNCERTAIN_OUTCOME',durationMs:24}]);
+ assert.match(result.nativeCalls.scope,/completion does not establish/);
+ // Diagnostics cannot override authoritative terminal state in either direction.
+ assert.equal(result.candidateForReview,true);
+ f.report.completed=false;
+ assert.equal(assessInstalledEvidence(f).candidateForReview,false);
+});
+test('legacy and incomplete native calls remain unreported',()=>{
+ const f=fixture();f.agent.calls=[{action:'follow'},{action:'snapshot',completed:'true'}];
+ const d=assessInstalledEvidence(f).nativeCalls;
+ assert.equal(d.completed,0);assert.equal(d.failed,0);assert.equal(d.unreported,2);
+ assert.deepEqual(d.failures,[]);
+});
+test('failure diagnostics whitelist codes and omit raw errors and arguments',()=>{
+ const f=fixture();f.agent.calls=[{action:'follow',completed:false,errorCode:'SECRET_ERROR',error:'SECRET_MESSAGE',args:{password:'SECRET_PASSWORD'},durationMs:-1}];
+ const d=assessInstalledEvidence(f).nativeCalls;
+ assert.deepEqual(d.failures,[{index:0,action:'follow',errorCode:'OTHER',durationMs:null}]);
+ assert.ok(!JSON.stringify(d).includes('SECRET'));
+});
+
 test('reference scripts cannot qualify as installed agent evidence',()=>{for(const kind of ['reference_script','grader_validation',undefined]){const f=fixture();f.report.finished.kind=kind;assert.equal(assessInstalledEvidence(f).candidateForReview,false);}});
 
 test('legacy successful evidence has unknown assistance, never autonomous success',()=>{
