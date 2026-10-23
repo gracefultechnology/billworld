@@ -1,9 +1,12 @@
+import {readFileSync} from 'node:fs';
 import {mkdtemp,writeFile,readFile,rm,chmod} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
 import {X509Certificate,createHash,randomUUID} from 'node:crypto';
+
+export const TLS_FIXTURE_SOURCE_SHA256=createHash('sha256').update(readFileSync(new URL(import.meta.url))).digest('hex');
 
 // Test-only material. Consumers may temporarily trust caPath in an owned test
 // device, but must remove that trust before close(). This helper installs none.

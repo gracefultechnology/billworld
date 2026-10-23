@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import {mkdtemp,readFile,rm,readdir,stat} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import {tmpdir} from 'node:os';
-import {join} from 'node:path';
+import {join,dirname} from 'node:path';
+import {World} from '../engine.mjs';
 import https from 'node:https';
 import http from 'node:http';
 import net from 'node:net';
@@ -19,8 +20,10 @@ const read=(url,ca,headers={})=>new Promise((resolve,reject)=>{
 test('HTTPS host separates agent inputs, grades recovered receipt and cleans up',async()=>{
  const outputRoot=await mkdtemp(join(tmpdir(),'billworld-host-test-'));let host,browser;
  try{
-  host=await startHttpsEpisode({siteId:'homer-utilities',outputRoot});
+  host=await startHttpsEpisode({siteId:'homer-utilities',outputRoot,trial:{kind:'reference_script',agent:'puppeteer-host-regression'}});
   const {agentInputs:input,deviceTrust:trust}=host;
+  await host.startActionBudget({unit:'browser_tool_invocation'});
+  assert.equal((await host.reserveAction({name:'browser_flow'})).allowed,true);
   for(const scoped of [input.persona,input.connector,trust]){assert.equal(scoped.episodeId,input.episodeId);assert.equal(scoped.runId,input.runId);}
   assert.deepEqual(Object.keys(input.task).sort(),['budget','id','prompt','version']);
   for(const name of ['goal','adminToken','adminUrl','world','grade','caPath'])assert.equal(Object.hasOwn(input,name),false);
@@ -57,10 +60,13 @@ test('HTTPS host separates agent inputs, grades recovered receipt and cleans up'
   const outcome=await host.grade({confirmation:recovered.find(value=>value===confirmation)});
   assert.equal(outcome.grade.success,true);assert.equal(outcome.exactlyOnePayment,true);assert.equal(outcome.confirmationMatchesPayment,true);
   assert.deepEqual(errors,[]);assert.deepEqual(outbound,[]);
+  const finished=await host.finish({confirmation},{agentSteps:1});
+  assert.equal(finished.success,true);assert.equal(finished.runId,input.runId);assert.equal(finished.actionsUsed,1);
+  assert.deepEqual(await host.finish({}, {termination:'agent_error'}),finished,'terminal result cannot be revised');
   await browser.close();browser=null;
   await Promise.all([host.close({reason:'completed'}),host.close()]);
   assert.equal(existsSync(trust.caPath),false);
-  const report=JSON.parse(await readFile(host.reportPath));assert.equal(report.phase,'closed');assert.equal(report.termination,'completed');assert.equal(report.completed,true);assert.equal(report.buildUnchanged,true);assert.equal(report.observations.length,2);assert.deepEqual(report.cleanupErrors,[]);
+  const report=JSON.parse(await readFile(host.reportPath));assert.equal(report.phase,'closed');assert.equal(report.termination,'completed');assert.equal(report.completed,true);assert.equal(report.buildUnchanged,true);assert.equal(report.observations.length,3);assert.deepEqual(report.cleanupErrors,[]);
   await assert.rejects(host.grade({confirmation}),/closed/);
   await assert.rejects(read(trust.billingOrigin+'/health',ca),error=>error.code==='ECONNREFUSED');
  }finally{await browser?.close();await host?.close();await rm(outputRoot,{recursive:true,force:true});}
@@ -92,5 +98,52 @@ test('default close records interruption, never completion',async()=>{
  try{
   host=await startHttpsEpisode({outputRoot});await host.close();
   const report=JSON.parse(await readFile(host.reportPath));assert.equal(report.termination,'interrupted');assert.equal(report.completed,false);assert.deepEqual(report.observations,[]);
+ }finally{await host?.close();await rm(outputRoot,{recursive:true,force:true});}
+});
+
+
+test('supervisor budget is authoritative, episode-bound and absent from agent inputs',async()=>{
+ const outputRoot=await mkdtemp(join(tmpdir(),'billworld-host-budget-'));let host;
+ try{
+  host=await startHttpsEpisode({outputRoot,trial:{kind:'grader_validation',agent:'budget-test'}});
+  for(const key of ['finish','startActionBudget','reserveAction','trial'])assert.equal(Object.hasOwn(host.agentInputs,key),false);
+  await assert.rejects(host.reserveAction({name:'click'}),/not started/);
+  const budget=await host.startActionBudget({unit:'vision_action'});
+  await assert.rejects(host.startActionBudget({unit:'browser_tool_invocation'}),/cannot change/);
+  for(let i=0;i<budget.limit;i++)assert.equal((await host.reserveAction({name:'click'})).allowed,true);
+  assert.equal((await host.reserveAction({name:'click'})).allowed,false);
+  const finished=await host.finish();assert.equal(finished.termination,'action_budget_exceeded');
+  assert.equal(finished.actionBudgetEnforced,true);assert.equal(finished.actionsUsed,budget.limit);assert.equal(finished.withinActionBudget,false);
+  await host.close({reason:'completed'});
+  const report=JSON.parse(await readFile(host.reportPath));assert.equal(report.completed,false);assert.equal(report.termination,'action_budget_exceeded');
+ }finally{await host?.close();await rm(outputRoot,{recursive:true,force:true});}
+});
+
+test('trial close without finish seals cancellation and rejects late actions',async()=>{
+ const outputRoot=await mkdtemp(join(tmpdir(),'billworld-host-cancel-'));let host;
+ try{
+  host=await startHttpsEpisode({outputRoot,trial:{kind:'grader_validation',agent:'cancel-test'}});
+  await host.startActionBudget({unit:'vision_action'});await host.close();
+  const report=JSON.parse(await readFile(host.reportPath));assert.equal(report.finished.termination,'cancelled');assert.equal(report.completed,false);
+  await assert.rejects(host.reserveAction({name:'click'}),/closed/);
+ }finally{await host?.close();await rm(outputRoot,{recursive:true,force:true});}
+});
+
+
+test('trial deadline overrides completion and completed trials require metering',async()=>{
+ const outputRoot=await mkdtemp(join(tmpdir(),'billworld-host-timeout-'));let host;
+ try{
+  host=await startHttpsEpisode({outputRoot,trial:{kind:'grader_validation',agent:'deadline-test'}});
+  await assert.rejects(host.finish(),/Start action budget/);
+  await host.startActionBudget({unit:'vision_action'});
+  const world=new World(join(dirname(host.reportPath),'world.sqlite'));
+  try{
+   const state=world.state(host.agentInputs.episodeId);
+   state.createdAt=Date.now()-(host.agentInputs.task.budget.seconds+1)*1000;
+   state.trial.deadlineAt=Date.now()-1000;world.save(state);
+  }finally{world.close();}
+  const finished=await host.finish();assert.equal(finished.termination,'timeout');assert.equal(finished.withinTimeBudget,false);
+  await host.close({reason:'completed'});
+  const report=JSON.parse(await readFile(host.reportPath));assert.equal(report.completed,false);assert.equal(report.termination,'timeout');
  }finally{await host?.close();await rm(outputRoot,{recursive:true,force:true});}
 });
