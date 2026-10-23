@@ -5,6 +5,20 @@ import {join,resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 const counts=(items,key)=>Object.fromEntries([...new Set(items.map(x=>x[key]).filter(x=>typeof x==='string'))].sort().map(k=>[k,items.filter(x=>x[key]===k).length]));
+// These are bridge invocations, including validation, not counts of effects.
+// Old recorders omitted completion fields; absence must not imply success.
+export function summarizeNativeCalls(calls){
+ const actions=new Set(['createSurface','snapshot','guide','follow','click','fill','select','scroll']);
+ const codes=new Set(['UNAVAILABLE','UNCERTAIN_OUTCOME','STALE_REF','BUSY','POLICY_BLOCKED','INVALID_REQUEST','UNSUPPORTED','TIMEOUT','OTHER']);
+ const result={invocations:calls.length,completed:0,failed:0,unreported:0,failures:[],scope:'Bridge invocation outcomes; validation calls are included and completion does not establish an executed or verified effect.'};
+ calls.forEach((call,index)=>{
+  if(call?.completed===true){result.completed++;return;}
+  if(call?.completed!==false){result.unreported++;return;}
+  result.failed++;
+  result.failures.push({index,action:actions.has(call.action)?call.action:'other',errorCode:codes.has(call.errorCode)?call.errorCode:'OTHER',durationMs:Number.isSafeInteger(call.durationMs)&&call.durationMs>=0?call.durationMs:null});
+ });
+ return result;
+}
 // A complete recorder declaration is needed even for zero handoffs. This is
 // evidence classification, not proof that an external person never intervened.
 export function assessAssistance(agent,episodeId){
@@ -39,7 +53,8 @@ export function assessInstalledEvidence({report,agent,verification,variant}){
  if(Object.hasOwn(observation?.grade?.checks??{},'exactly_one_payment'))checks.paymentReceipt=observation?.paymentCount===1&&observation?.confirmationMatchesPayment===true&&typeof agent?.outcome?.confirmation==='string'&&agent.outcome.confirmation===observation?.reportedConfirmation;
  const calls=Array.isArray(agent?.calls)?agent.calls:[],events=agent?.events?.events??[];
  const assistance=assessAssistance(agent,report?.episodeId),candidateForReview=Object.values(checks).every(Boolean);
- return {declaredControlledWebsite:agent?.controlledWebsite??null,candidateForReview,assistance,autonomousCandidateForReview:candidateForReview&&assistance.classification==='autonomous',assistedCandidateForReview:candidateForReview&&assistance.classification==='assisted',checks,failedChecks:Object.keys(checks).filter(k=>!checks[k]),termination:report?.termination??null,paymentCount:observation?.paymentCount??null,actionsUsed:final?.actionsUsed??null,methodCounts:counts(calls,'method'),actionCounts:counts(calls,'action'),eventKinds:counts(events,'kind'),scope:'Retained evidence consistency only; not independent installed-agent certification'};
+ const nativeCalls=summarizeNativeCalls(calls);
+ return {nativeCalls,declaredControlledWebsite:agent?.controlledWebsite??null,candidateForReview,assistance,autonomousCandidateForReview:candidateForReview&&assistance.classification==='autonomous',assistedCandidateForReview:candidateForReview&&assistance.classification==='assisted',checks,failedChecks:Object.keys(checks).filter(k=>!checks[k]),termination:report?.termination??null,paymentCount:observation?.paymentCount??null,actionsUsed:final?.actionsUsed??null,methodCounts:counts(calls,'method'),actionCounts:counts(calls,'action'),eventKinds:counts(events,'kind'),scope:'Retained evidence consistency only; not independent installed-agent certification'};
 }
 export async function auditInstalledDirectory(directory){
  const inputs=[];const read=async file=>{try{const bytes=await readFile(file);inputs.push({file,sha256:createHash('sha256').update(bytes).digest('hex')});return JSON.parse(bytes);}catch(error){if(error.code==='ENOENT')return null;throw error;}};
