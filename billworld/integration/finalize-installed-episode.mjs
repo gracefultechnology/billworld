@@ -17,7 +17,8 @@ export async function finalizeInstalledEpisode({episode,meter,trust,outcome={},t
  await attempt('close',()=>episode.close({reason}));
  const report=await attempt('readFinalReport',async()=>JSON.parse(await readFile(reportPath,'utf8')));
  const identity=episode.agentInputs;
- const matches=Boolean(identity&&report&&report.episodeId===identity.episodeId&&report.runId===identity.runId&&report.finished?.runId===identity.runId&&report.finished?.environmentBuildId===report.environmentBuildId&&report.finished?.evaluatorBuildId===report.evaluatorBuildId);
- const accepted=errors.length===0&&matches&&report.phase==='closed'&&report.completed===true&&report.buildUnchanged===true&&report.finished?.success===true&&report.finished?.actionBudgetEnforced===true&&report.finished?.withinActionBudget===true&&report.finished?.withinTimeBudget===true&&Array.isArray(report.cleanupErrors)&&report.cleanupErrors.length===0;
+ const nonempty=value=>typeof value==='string'&&value.length>0;
+ const matches=Boolean(identity&&report&&[identity.episodeId,identity.runId,report.environmentBuildId,report.evaluatorBuildId].every(nonempty)&&report.episodeId===identity.episodeId&&report.runId===identity.runId&&report.finished?.runId===identity.runId&&report.finished?.environmentBuildId===report.environmentBuildId&&report.finished?.evaluatorBuildId===report.evaluatorBuildId);
+ const accepted=termination==='completed'&&errors.length===0&&matches&&observed?.grade?.success===true&&finished?.success===true&&report.termination==='completed'&&report.phase==='closed'&&report.completed===true&&report.buildUnchanged===true&&report.finished?.success===true&&report.finished?.actionBudgetEnforced===true&&report.finished?.withinActionBudget===true&&report.finished?.withinTimeBudget===true&&Array.isArray(report.cleanupErrors)&&report.cleanupErrors.length===0;
  return {accepted,errors,reportPath,report,observed,finished};
 }
