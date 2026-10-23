@@ -21,7 +21,7 @@ async function request(path, input) {
 const result = value => ({ content: [{ type: 'text', text: JSON.stringify(value) }] });
 const safe = fn => async input => { try { return result(await fn(input)); } catch (error) { return { isError: true, content: [{ type: 'text', text: error.message }] }; } };
 server.registerTool('gmail_list_messages', {
-  description: 'List/search ordinary messages in this episode. Query supports text, quoted phrases, from:, to:, subject:, is:unread and has:attachment. Newest messages first. No access to billing or grader state.',
+  description: 'List/search ordinary messages in this episode. Query supports text, quoted phrases, from:, to:, subject:, is:unread, has:attachment, {term term} alternatives, and after:/before: Unix seconds. Newest messages first. No access to billing or grader state.',
   inputSchema: { q: z.string().max(1000).optional(), limit: z.number().int().min(1).max(100).default(25), cursor: messageId.optional() },
   annotations: { readOnlyHint: true, openWorldHint: false },
 }, safe(async ({ q = '', limit, cursor }) => {

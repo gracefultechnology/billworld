@@ -1,3 +1,4 @@
+import {matchesMailQuery} from './mail-search.mjs';
 import {starnikFixtureCredentials} from './starnik-fixture.mjs';
 import {starnikBrand} from './starnik-brand.mjs';
 import { DatabaseSync } from 'node:sqlite';
@@ -1230,17 +1231,8 @@ export class World {
     const s = this.state(id); need(email === 'alex@billworld.test' && matches(password, s.mailboxCredential), 'Mailbox email or password is incorrect', 401); return { token: s.connectorToken };
   }
   messages(id, token, query = '') {
-    const s = this.connector(id, token); let items = s.mail.filter(m => m.to === 'alex@billworld.test');
-    const terms = query.match(/(?:[^\s"]+|"[^"]*")+/g) || [];
-    for (const term of terms) {
-      const clean = term.replaceAll('"', '');
-      if (clean === 'is:unread') items = items.filter(m => m.unread);
-      else if (clean === 'has:attachment') items = items.filter(m => (m.attachments||[]).length>0);
-      else if (clean.startsWith('from:')) items = items.filter(m => m.from.includes(clean.slice(5)));
-      else if (clean.startsWith('to:')) items = items.filter(m => m.to.includes(clean.slice(3)));
-      else if (clean.startsWith('subject:')) items = items.filter(m => m.subject.toLowerCase().includes(clean.slice(8).toLowerCase()));
-      else items = items.filter(m => `${m.subject} ${m.text}`.toLowerCase().includes(clean.toLowerCase()));
-    }
+    const s = this.connector(id, token);
+    const items = s.mail.filter(m => m.to === 'alex@billworld.test' && matchesMailQuery(m,query));
     return items.reverse().map(mailboxProjection);
   }
   attachment(id, token, messageId, attachmentId) {
