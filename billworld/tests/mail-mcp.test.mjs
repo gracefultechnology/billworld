@@ -25,6 +25,9 @@ test('actual MCP stdio tools share mailbox state, paginate and reject another ep
     assert.equal((await client.callTool({name:'gmail_get_attachment',arguments:{messageId:'mail-1',attachmentId:'attachment-1'}})).isError,true);
     const first = decode(await client.callTool({ name: 'gmail_list_messages', arguments: { limit: 1 } }));
     assert.equal(first.messages[0].id, 'mail-2'); assert.equal(first.nextCursor, 'mail-2');
+    const bill=first.messages[0],after=Math.floor(Date.parse(bill.receivedAt)/1000)-1;
+    const graceSearch=decode(await client.callTool({name:'gmail_list_messages',arguments:{q:`{from:missing@billworld.test from:${bill.from}} after:${after}`}}));
+    assert.ok(graceSearch.messages.some(message=>message.id===bill.id),'Grace arrival query survives MCP and HTTP transport');
     const next = decode(await client.callTool({ name: 'gmail_list_messages', arguments: { limit: 1, cursor: first.nextCursor } }));
     assert.equal(next.messages[0].id, 'mail-1'); assert.equal(next.nextCursor, null);
     runtime.world.resetRequest(fixture.episodeId, { email: fixture.credentials.email });
