@@ -11,6 +11,7 @@ export function assessInstalledEvidence({report,agent,verification,variant}){
   finalClosed:report?.phase==='closed', finalAccepted:report?.completed===true,
   provenanceUnchanged:report?.buildUnchanged===true,
   hostCleanup:Array.isArray(report?.cleanupErrors)&&report.cleanupErrors.length===0,
+  agentTrial:final?.kind==='agent',
   authoritativeFinish:final?.success===true&&final?.termination==='completed',
   budgets:final?.actionBudgetEnforced===true&&final?.withinTimeBudget===true&&final?.withinActionBudget===true,
   episodeBinding:typeof report?.episodeId==='string'&&report.episodeId===agent?.episodeId,

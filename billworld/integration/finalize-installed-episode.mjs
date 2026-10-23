@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 // trust must never leave the simulator listening or its trial unsealed.
 export async function finalizeInstalledEpisode({episode,meter,trust,outcome={},termination='interrupted'}){
  const errors=[];
- const attempt=async(stage,operation)=>{try{return await operation();}catch(error){errors.push({stage,message:error.message});return null;}};
+ const attempt=async(stage,operation)=>{try{return await operation();}catch(error){errors.push({stage,message:error instanceof Error ? error.message : 'Cleanup or finalization rejected without an Error'});return null;}};
  await attempt('meter',()=>meter?.close());
  await attempt('deviceTrust',()=>trust?.close());
  if(!episode)return {accepted:false,errors,report:null,observed:null,finished:null};

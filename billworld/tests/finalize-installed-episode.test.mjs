@@ -44,3 +44,12 @@ test('missing identity or unsuccessful current grade cannot qualify a retained r
  await fixture(async({input,report})=>{delete input.episode.agentInputs.runId;delete report.runId;delete report.finished.runId;assert.equal((await finalizeInstalledEpisode(input)).accepted,false);});
  await fixture(async({input})=>{input.episode.grade=async()=>({grade:{success:false}});assert.equal((await finalizeInstalledEpisode(input)).accepted,false);});
 });
+
+test('non-Error cleanup rejections cannot skip later cleanup or close',async()=>{
+ for(const rejection of [null,undefined,'rejected'])await fixture(async({input,calls})=>{
+  input.meter.close=async()=>{calls.push('meter');throw rejection;};
+  const result=await finalizeInstalledEpisode(input);
+  assert.equal(result.accepted,false);assert.deepEqual(calls,['meter','trust','grade','finish:environment_error','close:environment_error']);
+  assert.equal(result.errors[0].stage,'meter');
+ });
+});
