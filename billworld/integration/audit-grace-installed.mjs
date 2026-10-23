@@ -5,6 +5,17 @@ import {join,resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 const counts=(items,key)=>Object.fromEntries([...new Set(items.map(x=>x[key]).filter(x=>typeof x==='string'))].sort().map(k=>[k,items.filter(x=>x[key]===k).length]));
+// A complete recorder declaration is needed even for zero handoffs. This is
+// evidence classification, not proof that an external person never intervened.
+export function assessAssistance(agent,episodeId){
+ const value=agent?.assistance;
+ const unknown={classification:'unreported',handoffCount:null,actorCounts:{},kindCounts:{}};
+ if(!value||value.version!==1||value.recordingComplete!==true||typeof episodeId!=='string'||!episodeId||value.episodeId!==episodeId||!Array.isArray(value.actions))return unknown;
+ const actors=new Set(['person','simulated_person']);
+ const kinds=new Set(['protected_entry','payment_submit','approval','navigation','other']);
+ if(value.actions.some(action=>!action||!actors.has(action.actor)||!kinds.has(action.kind)))return unknown;
+ return {classification:value.actions.length?'assisted':'autonomous',handoffCount:value.actions.length,actorCounts:counts(value.actions,'actor'),kindCounts:counts(value.actions,'kind')};
+}
 export function assessInstalledEvidence({report,agent,verification,variant}){
  const final=report?.finished,observation=report?.observations?.at(-1),record=verification?.variants?.find(x=>x.variant===variant);
  const checks={
@@ -27,7 +38,8 @@ export function assessInstalledEvidence({report,agent,verification,variant}){
  // Payment tasks are recognized from their private evaluator, not task naming.
  if(Object.hasOwn(observation?.grade?.checks??{},'exactly_one_payment'))checks.paymentReceipt=observation?.paymentCount===1&&observation?.confirmationMatchesPayment===true&&typeof agent?.outcome?.confirmation==='string'&&agent.outcome.confirmation===observation?.reportedConfirmation;
  const calls=Array.isArray(agent?.calls)?agent.calls:[],events=agent?.events?.events??[];
- return {declaredControlledWebsite:agent?.controlledWebsite??null,candidateForReview:Object.values(checks).every(Boolean),checks,failedChecks:Object.keys(checks).filter(k=>!checks[k]),termination:report?.termination??null,paymentCount:observation?.paymentCount??null,actionsUsed:final?.actionsUsed??null,methodCounts:counts(calls,'method'),actionCounts:counts(calls,'action'),eventKinds:counts(events,'kind'),scope:'Retained evidence consistency only; not independent installed-agent certification'};
+ const assistance=assessAssistance(agent,report?.episodeId),candidateForReview=Object.values(checks).every(Boolean);
+ return {declaredControlledWebsite:agent?.controlledWebsite??null,candidateForReview,assistance,autonomousCandidateForReview:candidateForReview&&assistance.classification==='autonomous',assistedCandidateForReview:candidateForReview&&assistance.classification==='assisted',checks,failedChecks:Object.keys(checks).filter(k=>!checks[k]),termination:report?.termination??null,paymentCount:observation?.paymentCount??null,actionsUsed:final?.actionsUsed??null,methodCounts:counts(calls,'method'),actionCounts:counts(calls,'action'),eventKinds:counts(events,'kind'),scope:'Retained evidence consistency only; not independent installed-agent certification'};
 }
 export async function auditInstalledDirectory(directory){
  const inputs=[];const read=async file=>{try{const bytes=await readFile(file);inputs.push({file,sha256:createHash('sha256').update(bytes).digest('hex')});return JSON.parse(bytes);}catch(error){if(error.code==='ENOENT')return null;throw error;}};
