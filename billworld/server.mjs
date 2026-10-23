@@ -430,9 +430,17 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
       throw new Fault('Not found', 404);
     } catch (error) { json(res, { error: error instanceof Fault ? error.message : 'Internal identity error' }, error.status || 500); }
   });
-  await new Promise(r => publicServer.listen(port, '127.0.0.1', r));
-  await new Promise(r => adminServer.listen(adminPort, '127.0.0.1', r));
-  await new Promise(r => googleServer.listen(googlePort, '127.0.0.1', r));
+  const listen = (server,port) => new Promise((resolve,reject) => {
+    const failed=error=>reject(error);server.once('error',failed);
+    server.listen(port,'127.0.0.1',()=>{server.removeListener('error',failed);resolve();});
+  });
+  try {
+    await listen(publicServer,port);await listen(adminServer,adminPort);await listen(googleServer,googlePort);
+  } catch(error) {
+    clearInterval(deadlineMonitor);
+    await Promise.all([publicServer,adminServer,googleServer].map(server=>new Promise(resolve=>{server.closeAllConnections?.();server.close(()=>resolve());})));
+    world.close();throw error;
+  }
   google.issuer = `${scheme}://localhost:${googleServer.address().port}`;
   return { world, google, publicServer, adminServer, googleServer, adminToken, googleUrl: google.issuer,
     baseUrl: `${scheme}://127.0.0.1:${publicServer.address().port}`, adminUrl: `http://127.0.0.1:${adminServer.address().port}`,
