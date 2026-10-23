@@ -1,5 +1,8 @@
+import {requestOrigin} from './transport.mjs';
 import {starnikRoutes,starnikSourceRoute,starnikSourceLinks} from './starnik-routes.mjs';
 import http from 'node:http';
+import https from 'node:https';
+import {createSecureContext} from 'node:tls';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { readFileSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -38,7 +41,6 @@ for (const document of JSON.parse(readFileSync(`${root}/research/wvu-documents.j
 }
 export const auditPublicSnapshots = () => publicSnapshots.audit();
 const parseCookies = req => Object.fromEntries((req.headers.cookie || '').split(';').map(v => v.trim().split('=')).filter(v => v.length === 2));
-const cookie = (name, value, maxAge = 3600) => `${name}=${value}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${maxAge}`;
 function json(res, data, status = 200) { res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(data)); }
 async function body(req) {
   let data = ''; for await (const chunk of req) { data += chunk; if (data.length > 16384) throw new Fault('Request too large', 413); }
@@ -46,17 +48,23 @@ async function body(req) {
 }
 function isToken(actual, expected) { return typeof actual === 'string' && actual.length === expected.length && timingSafeEqual(Buffer.from(actual), Buffer.from(expected)); }
 
-export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbPath = `${root}/data/world.sqlite`, adminToken = randomBytes(32).toString('base64url'), compatibilityReady = false, construction = false } = {}) {
+export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbPath = `${root}/data/world.sqlite`, adminToken = randomBytes(32).toString('base64url'), compatibilityReady = false, construction = false, tls = null } = {}) {
+  if (tls && (!tls.key || !tls.cert)) throw new TypeError('TLS requires both key and cert');
+  // Reject malformed PEM before opening the world database or its monitor.
+  if (tls) createSecureContext({key:tls.key,cert:tls.cert});
+  const scheme = tls ? 'https' : 'http';
+  const createPublicServer = listener => tls ? https.createServer({key:tls.key,cert:tls.cert},listener) : http.createServer(listener);
+  const cookie = (name,value,maxAge=3600) => `${name}=${value}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${maxAge}${tls ? '; Secure' : ''}`;
   const world = new World(dbPath,{construction});
   world.expireTrials();
   const deadlineMonitor = setInterval(() => { try { world.expireTrials(); } catch (error) { console.error('Trial deadline monitor failed:', error.message); } }, 1000);
   deadlineMonitor.unref();
   const google = new MockGoogle(world);
-  const publicServer = http.createServer(async (req, res) => {
+  const publicServer = createPublicServer(async (req, res) => {
     try {
       res.setHeader('X-Content-Type-Options', 'nosniff');
       res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'");
-      const url = new URL(req.url, `http://${req.headers.host}`);
+      const url = new URL(req.url, requestOrigin(req));
       if (req.method === 'GET' && url.pathname === '/health') return json(res, { status: 'ok', version: ENVIRONMENT_REVISION });
       // Infinity polls this route on agent setup. No private state is exposed.
       if (compatibilityReady && req.method === 'GET' && url.pathname === '/api/state') return json(res, { ready: true });
@@ -99,7 +107,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
       }
       if (url.pathname.startsWith('/api/')) {
         world.enter(c.bw_episode, c.bw_access);
-        if (req.method === 'POST' && req.headers.origin !== `http://${req.headers.host}`) throw new Fault('Same-origin request required', 403);
+        if (req.method === 'POST' && req.headers.origin !== requestOrigin(req)) throw new Fault('Same-origin request required', 403);
         const id = c.bw_episode, session = c.bw_session;
         if(world.session(id,null).site.runtime.kind==='wipp'){
           if(url.pathname.startsWith('/api/wipp/')){const cookies=[];const result=wippApi(world,{id,session,method:req.method,url,input:req.method==='POST'?await body(req):{},setCookie:v=>cookies.push(v),cookie});if(cookies.length)res.setHeader('Set-Cookie',cookies);return json(res,result);}
@@ -263,7 +271,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           else if (url.pathname.startsWith('/api/wallet/')) result=world.wallet(id,session,url.pathname.slice('/api/wallet/'.length),input);
           else if (url.pathname === '/api/paperless') result=world.paperless(id,session,input);
           else if (url.pathname === '/api/login') { result = world.login(id, input); if (result.challenge) res.setHeader('Set-Cookie', cookie('bw_otp', result.challenge, 300)); }
-          else if (url.pathname === '/api/google/begin') { result = google.begin(id, `http://127.0.0.1:${publicServer.address().port}`); res.setHeader('Set-Cookie', cookie('bw_oauth', result.state, 600)); result = { authorizationUrl: result.authorizationUrl }; }
+          else if (url.pathname === '/api/google/begin') { result = google.begin(id, `${scheme}://127.0.0.1:${publicServer.address().port}`); res.setHeader('Set-Cookie', cookie('bw_oauth', result.state, 600)); result = { authorizationUrl: result.authorizationUrl }; }
           else if (url.pathname === '/api/verify') { result = world.verifyOtp(id, { ...input, challenge: input.challenge || c.bw_otp }); res.setHeader('Set-Cookie', cookie('bw_otp', '', 0)); }
           else if (['/api/authoritypay/lookup', '/api/smarthub/lookup', '/api/utility/lookup'].includes(url.pathname)) { result = world.smartLookup(id, input); if (result.lookupToken) res.setHeader('Set-Cookie', cookie('bw_lookup', result.lookupToken, 900)); }
           else if (url.pathname === '/api/smarthub/recover-email') result = world.recoverRegisteredEmail(id, input);
@@ -381,7 +389,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
       const url = new URL(req.url, 'http://localhost'); const input = await body(req);
       if (url.pathname === '/episodes') {
         const fixture = world.create(input); const actualPort = publicServer.address().port;
-        return json(res, { ...fixture, startUrl: `http://127.0.0.1:${actualPort}/enter/${fixture.episodeId}/${fixture.entryToken}`, connectorUrl: `http://127.0.0.1:${actualPort}/connector/messages` });
+        return json(res, { ...fixture, startUrl: `${scheme}://127.0.0.1:${actualPort}/enter/${fixture.episodeId}/${fixture.entryToken}`, connectorUrl: `${scheme}://127.0.0.1:${actualPort}/connector/messages` });
       }
       if (url.pathname === '/evaluate') return json(res, world.evaluate(input.episodeId, { confirmation: input.confirmation, billingDate: input.billingDate, scheduledDate: input.scheduledDate,statementFilename:input.statementFilename,postedBalanceCents:input.postedBalanceCents,pendingPaymentCents:input.pendingPaymentCents,remainingBalanceCents:input.remainingBalanceCents }));
       if (url.pathname === '/actions/start') return json(res,world.startActionBudget(input.episodeId,input));
@@ -393,7 +401,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
       throw new Fault('Admin operation not found', 404);
     } catch (error) { json(res, { error: error instanceof Fault ? error.message : 'Internal server error' }, error.status || 500); }
   });
-  const googleServer = http.createServer(async (req, res) => {
+  const googleServer = createPublicServer(async (req, res) => {
     try {
       res.setHeader('X-Content-Type-Options', 'nosniff');
       res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'; form-action 'self'");
@@ -422,17 +430,28 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
       throw new Fault('Not found', 404);
     } catch (error) { json(res, { error: error instanceof Fault ? error.message : 'Internal identity error' }, error.status || 500); }
   });
-  await new Promise(r => publicServer.listen(port, '127.0.0.1', r));
-  await new Promise(r => adminServer.listen(adminPort, '127.0.0.1', r));
-  await new Promise(r => googleServer.listen(googlePort, '127.0.0.1', r));
-  google.issuer = `http://localhost:${googleServer.address().port}`;
+  const listen = (server,port) => new Promise((resolve,reject) => {
+    const failed=error=>reject(error);server.once('error',failed);
+    server.listen(port,'127.0.0.1',()=>{server.removeListener('error',failed);resolve();});
+  });
+  try {
+    await listen(publicServer,port);await listen(adminServer,adminPort);await listen(googleServer,googlePort);
+  } catch(error) {
+    clearInterval(deadlineMonitor);
+    await Promise.all([publicServer,adminServer,googleServer].map(server=>new Promise(resolve=>{server.closeAllConnections?.();server.close(()=>resolve());})));
+    world.close();throw error;
+  }
+  google.issuer = `${scheme}://localhost:${googleServer.address().port}`;
   return { world, google, publicServer, adminServer, googleServer, adminToken, googleUrl: google.issuer,
-    baseUrl: `http://127.0.0.1:${publicServer.address().port}`, adminUrl: `http://127.0.0.1:${adminServer.address().port}`,
+    baseUrl: `${scheme}://127.0.0.1:${publicServer.address().port}`, adminUrl: `http://127.0.0.1:${adminServer.address().port}`,
     close: async () => { clearInterval(deadlineMonitor); world.sealActiveTrials('environment_error'); await Promise.all([new Promise(r => publicServer.close(r)), new Promise(r => adminServer.close(r)), new Promise(r => googleServer.close(r))]); world.close(); } };
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const server = await start({ port: Number(process.env.BILLWORLD_PORT || 3100), adminPort: Number(process.env.BILLWORLD_ADMIN_PORT || 3101), ...(process.env.BILLWORLD_ADMIN_TOKEN ? { adminToken: process.env.BILLWORLD_ADMIN_TOKEN } : {}) });
+  const {BILLWORLD_TLS_KEY_FILE:keyFile,BILLWORLD_TLS_CERT_FILE:certFile}=process.env;
+  if (!!keyFile !== !!certFile) throw new TypeError('Set both BILLWORLD_TLS_KEY_FILE and BILLWORLD_TLS_CERT_FILE');
+  const tls=keyFile?{key:readFileSync(keyFile),cert:readFileSync(certFile)}:null;
+  const server = await start({ tls, port: Number(process.env.BILLWORLD_PORT || 3100), adminPort: Number(process.env.BILLWORLD_ADMIN_PORT || 3101), ...(process.env.BILLWORLD_ADMIN_TOKEN ? { adminToken: process.env.BILLWORLD_ADMIN_TOKEN } : {}) });
   const fixture = server.world.create();
   const runner = { ...fixture, startUrl: `${server.baseUrl}/enter/${fixture.episodeId}/${fixture.entryToken}`, adminUrl: server.adminUrl, adminToken: server.adminToken };
   mkdirSync(`${root}/data`, { recursive: true }); writeFileSync(`${root}/data/local-runner.json`, JSON.stringify(runner, null, 2), { mode: 0o600 });

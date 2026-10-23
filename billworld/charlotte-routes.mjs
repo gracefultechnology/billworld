@@ -1,3 +1,4 @@
+import {requestOrigin} from './transport.mjs';
 // HTTP routing for the Charlotte County Utilities slice. Mounted by server.mjs before the shared router;
 // it only claims requests for episodes whose site runtime is charlotte_paymentus (plus /api/ccu/* rejection elsewhere).
 import {readFileSync} from 'node:fs';
@@ -25,7 +26,7 @@ export async function charlotteRoute({req, res, url, c, world, body, json, Fault
   if (path.startsWith('/api/')) {
     if (path === '/api/session' || path.startsWith('/api/mail')) return false;
     if (!api) throw new Fault('This operation is not available for Charlotte County Utilities', 404);
-    if (req.method === 'POST' && req.headers.origin !== `http://${req.headers.host}`) throw new Fault('Same-origin request required', 403);
+    if (req.method === 'POST' && req.headers.origin !== requestOrigin(req)) throw new Fault('Same-origin request required', 403);
     if (!['GET', 'POST'].includes(req.method)) throw new Fault('Method not allowed', 405);
     const input = req.method === 'POST' ? await body(req) : {};
     const result = world.charlotte(c.bw_episode, req.method, path.slice('/api/ccu/'.length), {session: c.bw_session, query: Object.fromEntries(url.searchParams), input});
