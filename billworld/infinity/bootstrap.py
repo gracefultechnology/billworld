@@ -30,7 +30,7 @@ def install(checkout):
     for app_name, construction in [('billworld', False), ('billworld-construction', True)]:
         app = checkout / 'apps' / app_name
         app.mkdir(exist_ok=True)
-        for name in ('server.py', 'harness.py', 'verify.py'):
+        for name in ('server.py', 'harness.py', 'verify.py', 'tasks.json'):
             shutil.copy2(OVERLAY / 'app' / name, app / name)
         (app / 'billworld-root.json').write_text(json.dumps({'root': str(ROOT), 'construction': construction}))
         definitions = []

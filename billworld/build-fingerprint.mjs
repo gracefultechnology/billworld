@@ -41,11 +41,11 @@ export function fingerprint(base=root){
  // cold-read/audit responsibility; hashing all catalog bytes at startup would
  // undo lazy loading. This identifier is not an integrity certification.
  const environmentInputs=entries(base,files);
- const evaluatorFiles=['billworld/engine.mjs','billworld/registry.mjs','billworld/build-fingerprint.mjs','billworld/infinity/app/harness.py','billworld/infinity/app/verify.py','billworld/infinity/app/server.py','billworld/infinity/worker.mjs','billworld/infinity/readiness.py',
+ const evaluatorFiles=['billworld/engine.mjs','billworld/registry.mjs','billworld/build-fingerprint.mjs','billworld/infinity/app/harness.py','billworld/infinity/app/tasks.json','billworld/infinity/app/verify.py','billworld/infinity/app/server.py','billworld/infinity/worker.mjs','billworld/infinity/readiness.py',
   ...['tasks.py','agents.py','vision_agents.py','run_eval_parallel.py','report.py'].map(x=>'.upstream/webarena-infinity/evaluation/'+x),'.upstream/webarena-infinity/pyproject.toml','.upstream/webarena-infinity/uv.lock'];
  evaluatorFiles.push(...collect(base,'billworld/tasks',x=>x.endsWith('.json')));
  for(const app of ['billworld','billworld-construction']){
-  evaluatorFiles.push(...collect(base,'.upstream/webarena-infinity/apps/'+app,x=>x.endsWith('.py')),
+  evaluatorFiles.push(...collect(base,'.upstream/webarena-infinity/apps/'+app,x=>x.endsWith('.py')||x==='tasks.json'),
    ...collect(base,'.upstream/webarena-infinity/apps/'+app+'/tasks',x=>x.endsWith('.json')));
  }
  const evaluatorInputs=entries(base,evaluatorFiles.filter(x=>existsSync(resolve(base,x))));
