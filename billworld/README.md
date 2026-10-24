@@ -8,7 +8,7 @@ Billworld now extends a pinned WebArena-Infinity checkout, reusing its task life
 
 ## Sites and status (2026-10-11)
 
-Every hand-built site has `implementation_status: "first_slice"` in `sites/<file>.json`: a runnable public entry, sign-in or guest entry, the billing flows listed below, private graders and Infinity reference journeys. "First slice" is not a fidelity certification: private screens that could not be observed are labeled synthetic in each site file. No site is construction-only any more (`CONSTRUCTION_TASKS` in `infinity/app/harness.py` is empty).
+Every hand-built site has `implementation_status: "first_slice"` in `sites/<file>.json`: a runnable public entry, sign-in or guest entry, the billing flows listed below, private graders and Infinity reference journeys. "First slice" is not a fidelity certification: private screens that could not be observed are labeled synthetic in each site file. No site is construction-only any more (the `construction` mapping in `infinity/app/tasks.json` is empty).
 
 | Site (id) | Family | Infinity tasks | Main flows | Browser suite |
 |---|---|---:|---|---|

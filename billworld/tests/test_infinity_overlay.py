@@ -31,12 +31,10 @@ class InfinityOverlayTests(unittest.TestCase):
             for name in ['agents.py','tasks.py','vision_agents.py']:
                 compile((checkout/'evaluation'/name).read_text(),name,'exec')
             inventories = {}
-            # Counts follow the canonical harness inventories, which each site owner edits;
+            # Counts follow the canonical task mappings in tasks.json, which each site owner edits;
             # set equality below still requires generated definitions to match them exactly.
-            import ast as _ast
-            _tree = _ast.parse((bootstrap.OVERLAY/'app'/'harness.py').read_text())
-            _counts = {node.targets[0].id: len(node.value.keys) for node in _tree.body if isinstance(node, _ast.Assign) and getattr(node.targets[0], 'id', '') in ('RELEASED_TASKS', 'CONSTRUCTION_TASKS')}
-            for app_name, cohort, count in [('billworld','released',_counts['RELEASED_TASKS']),('billworld-construction','construction',_counts['CONSTRUCTION_TASKS'])]:
+            _counts = {cohort: len(tasks) for cohort, tasks in json.loads((bootstrap.OVERLAY/'app'/'tasks.json').read_text()).items()}
+            for app_name, cohort, count in [('billworld','released',_counts['released']),('billworld-construction','construction',_counts['construction'])]:
                 app = checkout/'apps'/app_name
                 definitions = json.loads((app/'real-tasks.json').read_text())
                 config = json.loads((app/'billworld-root.json').read_text())
