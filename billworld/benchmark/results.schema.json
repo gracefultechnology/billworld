@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gracefultechnology/billworld/billworld/benchmark/results.schema.json",
+  "title": "Billworld results submission",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["billworldCommit", "split", "cohort", "agent", "assistance", "runAt", "trials"],
+  "properties": {
+    "billworldCommit": {"type": "string", "pattern": "^[a-f0-9]{40}$", "description": "The simulator commit every trial ran at"},
+    "split": {"enum": ["released", "billpay-core-10"]},
+    "cohort": {"enum": ["agent", "reference_script", "grader_validation"]},
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "model"],
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string", "description": "The agent's own commit or release"},
+        "model": {"type": ["string", "null"]},
+        "accessMode": {"type": "string", "description": "How the agent reached the page, for example browser_only"}
+      }
+    },
+    "assistance": {
+      "enum": ["none", "person_answers_questions", "person_types_protected_values", "person_presses_commits"],
+      "description": "The most help a person gave in any trial; assisted and autonomous results are separate cohorts"
+    },
+    "runAt": {"type": "string", "format": "date-time"},
+    "trials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["referenceId", "taskId", "success", "termination"],
+        "properties": {
+          "referenceId": {"type": "string", "pattern": "^task_[a-z]+\\d+$"},
+          "taskId": {"type": "string"},
+          "success": {"type": "boolean", "description": "The finished episode's private grade"},
+          "termination": {"enum": ["completed", "timeout", "action_budget_exceeded", "agent_error", "environment_error", "cancelled"]},
+          "agentActions": {"type": "integer", "minimum": 0},
+          "personActions": {"type": "integer", "minimum": 0},
+          "elapsedMilliseconds": {"type": "integer", "minimum": 0},
+          "evidence": {"type": "string", "description": "Where the trajectory, recordings and report are kept"}
+        }
+      }
+    }
+  }
+}
