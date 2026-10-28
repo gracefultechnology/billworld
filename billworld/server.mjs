@@ -15,7 +15,7 @@ import { wippApi, wippPage } from './wipp-server.mjs';
 import { tuscaloosaRoute } from './tuscaloosa-server.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
-const assets = new Map(['index.html', 'app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','personapay.css','paymentus.js','paymentus.css','paymentus.html','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css', 'google.html', 'google.js'].map(name => [name, readFileSync(`${root}/public/${name}`)]));
+const assets = new Map(['index.html', 'app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','captured-consent.js','personapay.css','paymentus.js','paymentus.css','paymentus.html','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css', 'google.html', 'google.js'].map(name => [name, readFileSync(`${root}/public/${name}`)]));
 assets.set('starnik.css',readFileSync(`${root}/public/starnik.css`));
 assets.set('starnik.js',readFileSync(`${root}/public/starnik.js`));
 assets.set('onswc-public.js',readFileSync(`${root}/public/onswc-public.js`));
@@ -355,7 +355,10 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           if(starnikPage&&snapshot.contentType==='text/html'){let markup=starnikSourceLinks(snapshot.content.toString('utf8'),starnikSourceRoutes);if(starnikBehavior)markup=markup.replace('</head>','<link rel="stylesheet" href="/starnik.css"></head>').replace('</body>','<script src="/starnik.js"'+(world.session(c.bw_episode,null).site.runtime.inline_confirmations===true?' data-inline-confirm="true"':'')+' defer></script></body>');else if(world.session(c.bw_episode,null).site.runtime.public_behavior==='inframark-public.js')markup=markup.replace('</body>','<script src="/inframark-public.js" defer></script></body>');return res.end(markup);}
           if(cusiPage&&snapshot.contentType==='text/html'){let markup=snapshot.content.toString('utf8');for(const [kind,path]of Object.entries(cusiRoutes))markup=markup.replaceAll('href="/reference-pages/biller_182c5bcdeb2841397831-'+kind+'/index.html"','href="'+path+'"');if(cusiBehavior)markup=markup.replace('</head>','<link rel="stylesheet" href="/cusi.css"></head>').replace('</body>','<script src="/cusi.js" defer></script></body>');return res.end(markup);}
           if(paymentusPage&&snapshot.contentType==='text/html')return res.end(snapshot.content.toString('utf8').replace('<a rel="noopener" aria-disabled="true" title="This destination is not yet available in Billworld">Visit the Paymentus Customer Portal link</a>','<a href="/paymentus/login">Visit the Paymentus Customer Portal link</a>'));
-          return res.end(dentalBehavior?snapshot.content.toString('utf8').replace('</head>','<link rel="stylesheet" href="/personapay.css"></head>').replace('</body>','<script src="/personapay.js" defer></script></body>'):snapshot.content);
+          let markup=dentalBehavior?snapshot.content.toString('utf8').replace('</head>','<link rel="stylesheet" href="/personapay.css"></head>').replace('</body>','<script src="/personapay.js" defer></script></body>'):null;
+          // A captured cookie banner is closable, as on the source site (captured-consent.js).
+          if(snapshot.contentType==='text/html'&&(markup??snapshot.content.toString('utf8')).includes('cookie-consent-banner__btn'))markup=(markup??snapshot.content.toString('utf8')).replace('</body>','<script src="/captured-consent.js" defer></script></body>');
+          return res.end(markup??snapshot.content);
         }
         if (referenceDocuments.has(url.pathname)) {
           res.writeHead(200, { 'Content-Type': 'application/pdf', 'Cache-Control': 'no-store' });
@@ -374,7 +377,7 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
         if(starnikPage&&!['starnik.js','starnik.css','catalog-public.js','onswc-public.js','inframark-public.js'].includes(requestedAsset))throw new Fault('Starnik route not implemented',404);
         if(paymentusPage&&!['paymentus.js','paymentus.css','catalog-public.js','onswc-public.js'].includes(requestedAsset))throw new Fault('Paymentus route not implemented',404);
         if(cusiPage&&!assets.has(requestedAsset))throw new Fault('CUSI route not implemented',404);
-        const name = ['starnik.css','starnik.js','inframark-public.js','paymentus.js','paymentus.css','catalog-public.js','onswc-public.js','app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','personapay.css','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css'].includes(requestedAsset) ? requestedAsset : 'index.html';
+        const name = ['starnik.css','starnik.js','inframark-public.js','paymentus.js','paymentus.css','catalog-public.js','onswc-public.js','app.js', 'authoritypay.js','bank-draft.js','deposits.js','municipal.js','mychart.js','wvu-public.js','mychart-activation.js','mychart-recovery.js','personapay.js','personapay.css','captured-consent.js','cusi.js','cusi.css', 'authoritypay.css', 'spotify.js', 'smarthub.js', 'smarthub.css', 'xpress.js', 'xpress.css', 'duluth.js', 'duluth.css', 'style.css'].includes(requestedAsset) ? requestedAsset : 'index.html';
         res.writeHead(200, { 'Content-Type': name.endsWith('.js') ? 'text/javascript' : name.endsWith('.css') ? 'text/css' : 'text/html', 'Cache-Control': 'no-store' });
         return res.end(assets.get(name));
       }
