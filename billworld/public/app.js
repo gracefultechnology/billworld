@@ -7,6 +7,11 @@ const app = document.querySelector('#app');
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);
 let auth = null, siteInfo = null, searchResult = null, invoice = null, quote = null, receipt = null, challenge = null, selectedKind = 'bank';
+// The checkout (search, selected invoice, quote, receipt) survives a reload or a directly opened
+// portal address in this tab, as a server-side cart does on the source portal.
+const CHECKOUT_KEY = 'billworld-portal-checkout';
+try { ({ searchResult = null, invoice = null, quote = null, receipt = null, selectedKind = 'bank' } = JSON.parse(sessionStorage.getItem(CHECKOUT_KEY) ?? '{}')); } catch {}
+const keepCheckout = () => { try { sessionStorage.setItem(CHECKOUT_KEY, JSON.stringify({ searchResult, invoice, quote, receipt, selectedKind })); } catch {} };
 async function api(path, data) {
   const res = await fetch(`/api/${path}`, data === undefined ? {} : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
   const result = await res.json(); if (!res.ok) throw new Error(result.error); return result;
@@ -24,6 +29,7 @@ function invoicesTable(items) {
 }
 let renderRevision = 0, renderedUrl;
 async function render() {
+  keepCheckout();
   const revision = ++renderRevision, url = location.href;
   renderedUrl = url;
   const isCurrent = () => revision === renderRevision && location.href === url;
