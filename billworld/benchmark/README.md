@@ -51,8 +51,10 @@ the simulator's own billing state and event history, not the agent's words or th
 | `results.schema.json` | The shape of a results submission |
 
 `node billworld/benchmark/export.mjs` writes these files from the task manifests and
-`infinity/app/tasks.json`; `npm test` fails when they are stale. Goals, graders, persona
-credentials and captured assets stay in the runtime and are never exported.
+`infinity/app/tasks.json`; `npm test` fails when they are stale. Goals, graders, the episode's
+persona and captured assets stay in the runtime and are never exported. Some prompts state
+synthetic values the task itself supplies (a sign-in, a test routing number); they are fixtures,
+not real credentials.
 
 ## Running an agent
 
@@ -61,16 +63,17 @@ only the public task and the website.
 
 1. Start the simulator: `npm start` (or `start()` from `billworld/server.mjs`), which serves the
    sites, a local Google identity, a mock Gmail at `/mail`, and an admin API on its own port.
-2. For each task, `POST /episodes` with `siteId`, `taskId`, a seed (the row's position in
-   `released`, starting at 1, keeps runs comparable) and `trial` metadata naming the agent. The
+2. For each task, `POST /episodes` with `siteId`, `taskId`, a seed (the task's position in the
+   `released` list of `data/splits.json`, starting at 1, keeps runs comparable) and `trial`
+   metadata naming the agent. The
    reply gives the start URL and the synthetic persona (email, password, bank and card numbers)
    for the person the agent works for.
 3. Give the agent the task `prompt` and the start URL. Persona values reach the agent only the
    way the agent's own design allows (typed by a person, held by a vault); record which.
 4. Meter every browser action: `POST /actions/start` once, then `POST /actions/consume` per action
    (`unit: browser_tool_invocation`). The budget is enforced by the simulator, not the agent.
-5. `POST /finish` with the episode, the agent's reported outcome (`confirmation`, or the date the
-   task asks for) and `termination` (`completed`, `timeout`, `action_budget_exceeded`,
+5. `POST /finish` with the episode, the agent's reported `outcome` (`confirmation`, or the date the
+   task asks for) and `metadata.termination` (`completed`, `timeout`, `action_budget_exceeded`,
    `agent_error`, `environment_error`, `cancelled`). The score is immutable from then on.
 
 The admin API, cohorts and lifecycle rules are described in

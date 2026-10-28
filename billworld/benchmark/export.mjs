@@ -32,7 +32,7 @@ export function build(){
     return {reference_id:referenceId,task_id:task.id,version:task.version,site_id:siteId,site_name:site.name,portal_family:site.portal_family,
       category:category(task.id),prompt:task.prompt,budget_seconds:task.budget.seconds,budget_actions:task.budget.actions,evidence_cohort:task.evidence_cohort,
       splits:['released',...(BILLPAY_CORE.includes(referenceId)?['billpay-core-10']:[])]};
-  }).sort((a,b)=>a.reference_id.localeCompare(b.reference_id,'en',{numeric:true}));
+  }); // The evaluator's order: a task's seed is its position in it, starting at 1.
   const core=tasks.filter(task=>task.splits.includes('billpay-core-10'));
   if(core.length!==BILLPAY_CORE.length||new Set(core.map(task=>task.site_id)).size!==BILLPAY_CORE.length||core.some(task=>task.category!=='payment'))
     throw Error('The core split must be ten payment tasks on ten different sites');
