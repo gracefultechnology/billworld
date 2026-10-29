@@ -99,3 +99,20 @@ test('score counts split tasks without a trial as failures and checks task versi
   assert.ok(score({...results([]),extra:1}).errors.some(error=>/unexpected extra/.test(error)));
   const [low,high]=wilson(0,10);assert.equal(low,0);assert.ok(Math.abs(high-0.2775)<0.001);
 });
+
+test('the runner and scorer take the held-out split',async()=>{
+  const dir=mkdtempSync(join(tmpdir(),'billworld-run-test-'));
+  try{
+    const {results}=await run({split:'held_out',only:['task_m2'],out:join(dir,'out'),dbPath:':memory:',log:()=>{},
+      agentCmd:`${JSON.stringify(process.execPath)} -e "console.log('{}')"`});
+    assert.equal(results.split,'held_out');assert.equal(results.trials[0].seed,released.indexOf('task_m2')+1);assert.equal(results.trials[0].success,false);
+    const report=score(results,undefined,{commitTasks:()=>null});
+    assert.deepEqual(report.errors,[]);
+    assert.deepEqual(Object.keys(report.splits),['held_out']);
+    assert.deepEqual([report.splits.held_out.passed,report.splits.held_out.total,report.splits.held_out.missing],[0,35,34]);
+  }finally{rmSync(dir,{recursive:true,force:true});}
+  // A core task is not in the held-out split, and a released run is scored on both.
+  assert.match(score({...results([trial('task_m1','juneau-pay-current-no-fee-v1',1,true)]),split:'held_out'},undefined,{commitTasks:()=>null}).errors[0],/not in split held_out/);
+  const all=score({...results([trial('task_m1','juneau-pay-current-no-fee-v1',1,true)]),split:'released'},undefined,{commitTasks:()=>null});
+  assert.deepEqual(Object.keys(all.splits),['released','billpay_core_10','held_out']);
+});

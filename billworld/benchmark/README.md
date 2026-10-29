@@ -22,6 +22,8 @@ configs:
         path: data/tasks.jsonl
       - split: billpay_core_10
         path: data/billpay_core_10.jsonl
+      - split: held_out
+        path: data/held_out.jsonl
   - config_name: sites
     data_files:
       - split: sites
@@ -40,6 +42,7 @@ the simulator's own billing state and event history, and compares any value the 
 |---|---|
 | Released tasks | 142 on 17 hand-built sites (`data/tasks.jsonl`, split `released`) |
 | Core bill-pay split | 10 payment tasks on 10 sites, 9 portal families (`data/billpay_core_10.jsonl`, split `billpay_core_10`) |
+| Held-out split | 35 tasks on 12 sites, 8 portal families (`data/held_out.jsonl`, split `held_out`): never tune on these; see [Held-out split](#held-out-split) |
 | Portal families | 12, named as exported: AuthorityPay/Muni-Link with InvoiceCloud QuickPay handoff, Edmunds, Epic MyChart, InvoiceCloud, Municipal Online Payments / Tyler Utility Access, Paymentus, PersonaPay, SmartHub, Spotify account, Starnik, Xpress Bill Pay, ePay Utilities/CUSI |
 | Grading | Strict private predicates per task: right invoice, account, amount, method, fee, exactly one new payment, unchanged settings, and reported values that match state |
 | Budgets | Per task, in wall-clock seconds and in metered browser actions |
@@ -50,10 +53,11 @@ the simulator's own billing state and event history, and compares any value the 
 |---|---|
 | `data/tasks.jsonl` | One row per released task: `reference_id`, `task_id`, `version`, `site_id`, `site_name`, `portal_family`, `category`, `prompt`, `budget_seconds`, `budget_actions`, `outcome_fields`, `evidence_cohort`, `splits` |
 | `data/billpay_core_10.jsonl` | The same rows for the ten core tasks, in split order |
+| `data/held_out.jsonl` | The same rows for the 35 held-out tasks, in released order |
 | `data/sites.jsonl` | One row per site: `site_id`, `site_name`, `portal_family`, `implementation_status`, `revision`, `released_tasks`, `fidelity_limits` |
 | `data/splits.json` | The reference IDs in each split, in order |
 | `results.schema.json` | The shape of a results submission (hand-written) |
-| `run.mjs`, `score.mjs` | The reference runner and scorer |
+| `run.mjs`, `score.mjs`, `leaderboard.mjs` | The reference runner, scorer and leaderboard builder |
 
 `outcome_fields` names the keys of the outcome the task's private grader reads (`confirmation`,
 `billingDate`, `scheduledDate`, `statementFilename`, `postedBalanceCents`, `pendingPaymentCents`,
@@ -68,6 +72,29 @@ full fidelity.
 data files are stale. Goals, graders, the episode's persona and captured assets stay in the runtime
 and are never exported. Some prompts state synthetic values the task itself supplies (a sign-in, a
 test routing number); they are fixtures, not real credentials.
+
+## Held-out split
+
+`held_out` is the test split. Agents, prompts, tools, retries and harness settings must not be developed,
+tuned or selected on it: develop on the released tasks outside it (the core split is among them), and run
+`held_out` only to report. Its graders, like every task's, stay private in the runtime; its prompts are public, as
+for every task, so it guards against tuning, not against reading. A result tuned on held-out tasks is not a
+held-out result.
+
+The split is 35 of the 142 released tasks (24.6%), disjoint from `billpay_core_10`. `selectHeldOut()` in
+`export.mjs` picked it deterministically from the public rows, and the list is frozen in `HELD_OUT` so a release
+never moves a task in or out silently (the export fails if the pick and the frozen list ever differ):
+
+1. Candidates are the released tasks outside `billpay_core_10`.
+2. Each category is a stratum and holds out `round(n / 4)` of its `n` candidates, so a single-task category
+   (`view`) holds out none.
+3. Categories are filled smallest first. Within a category, each pick is the candidate whose portal family, then
+   site, would have the smallest share of its candidates held out, so families and sites are held out in
+   proportion to their size; ties go to the lowest SHA-256 of `billworld-held-out-v1:<reference_id>`.
+
+Every portal family and site with at least four candidates has between one task and 30% of its candidates held out.
+The families with fewer (Spotify account, Xpress Bill Pay, Municipal Online Payments / Tyler Utility Access and
+SmartHub) have none, and stay entirely developable.
 
 ## Setup
 
@@ -115,12 +142,29 @@ node billworld/benchmark/run.mjs --split billpay_core_10 --agent no-action --coh
   --agent-cmd "node -e \"process.stdin.resume();process.stdin.on('end',()=>console.log('{}'))\""
 ```
 
-`--task task_m1` (repeatable) runs part of a split; `score.mjs` still counts the tasks without a
+`--split` takes any split in `data/splits.json` (`released`, `billpay_core_10`, `held_out`). `--task task_m1` (repeatable) runs part of a split; `score.mjs` still counts the tasks without a
 trial as failures. `score.mjs` validates the file against the schema, checks each trial's `taskId`
 and `taskVersion` against `data/tasks.jsonl`, warns when `billworldCommit` is not in the checkout or
 its task data differ, and prints the pass rate with a Wilson 95% interval per split and per
 category from each task's first attempt. A run from a checkout with uncommitted changes under `billworld/`
 is marked `billworldDirty: true`, and `score.mjs` warns that it did not run exactly `billworldCommit`.
+
+## Leaderboard
+
+Submit a run as its `results.json` with its evidence directory, the agent's own commit and the model, the same
+provenance a baseline row needs. Only runs of the commit in this checkout's task data compare cleanly; `score.mjs`
+warns otherwise. Build the boards from any number of results files:
+
+```sh
+node billworld/benchmark/leaderboard.mjs runs/*/results.json --out leaderboard
+```
+
+Every file is checked exactly as `score.mjs` checks it, and any file it rejects (or a run submitted twice) fails the
+build. For each split it writes `<split>.md` and `<split>.json`: one table per cohort and assistance level, never
+pooled, ranking each run by its first-attempt strict pass rate with the Wilson 95% interval, and listing the agent,
+version, model, access mode, `billworldCommit`, `runAt` and passed / total. A run of one split is also ranked on the
+splits inside it (a `released` run appears on `billpay_core_10` and `held_out`), from the same first attempts; its
+`runSplit` says which it ran. A row with scorer warnings is marked † and its warnings are in the JSON file.
 
 ### Admin API (for your own harness)
 
