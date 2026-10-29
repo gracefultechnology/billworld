@@ -127,3 +127,12 @@ A missing link is `null`.
 
 Links were checked between Sep 29 and Oct 3, 2026; check them again before showing them to
 anyone. A missing link means it wasn't found.
+
+## Licence
+
+Billworld code (simulator, benchmark runner, scorer, export and tests) is under the MIT licence
+in [LICENSE](LICENSE). The benchmark task data and dataset card in `billworld/benchmark/` are
+under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode); see
+[billworld/benchmark/LICENSE-DATA](billworld/benchmark/LICENSE-DATA). Copyright 2026 Grace
+Technology. Pages and assets captured from real billers' websites are not covered by either
+licence and are not part of the dataset export; vendored third-party code keeps its own licence.

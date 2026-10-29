@@ -89,3 +89,17 @@ test('every exported split is a results split and has a card config',()=>{
   assert.deepEqual(schema.properties.split.enum.toSorted(),Object.keys(splits).toSorted());
   for(const name of Object.keys(splits))assert.match(card,new RegExp(`- split: ${name}\\n`));
 });
+
+test('the card and data are CC BY 4.0, the code is MIT, and captured assets are excluded',()=>{
+  const card=committed('README.md'),data=committed('LICENSE-DATA');
+  const root=readFileSync(new URL('../../LICENSE',import.meta.url),'utf8');
+  const pkg=JSON.parse(readFileSync(new URL('../../package.json',import.meta.url),'utf8'));
+  assert.match(card,/^---\n(?:.*\n)*?license: cc-by-4\.0\n(?:.*\n)*?---\n/);
+  assert.ok(!/license_name|license_details|unreleased/i.test(card));
+  assert.ok(data.includes('https://creativecommons.org/licenses/by/4.0/legalcode'));
+  assert.ok(data.includes('Copyright (c) 2026 Grace Technology'));
+  assert.match(root,/^MIT License\n\nCopyright \(c\) 2026 Grace Technology\n/);
+  assert.equal(pkg.license,'MIT');
+  for(const text of [card,data,root])assert.match(text.replace(/\s+/g,' '),/captured from real billers' websites/);
+});
+

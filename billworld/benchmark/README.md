@@ -1,8 +1,6 @@
 ---
 pretty_name: Billworld
-license: other
-license_name: billworld-unreleased
-license_details: Not yet licensed for redistribution. The license and any public release await an owner decision; redistribution terms for the captured reference assets are not settled. Task prompts and site metadata here are synthetic; the runtime's captured pages are not part of this export.
+license: cc-by-4.0
 language:
   - en
 task_categories:
@@ -260,8 +258,13 @@ versions.
 
 ## License
 
-Not yet licensed (`license: other`, `billworld-unreleased`). The license and any public release
-await an owner decision.
+The task data (`data/`) and this card are licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode) (`LICENSE-DATA`), copyright
+2026 Grace Technology. The simulator, runner, scorer, export and tests are code under the MIT
+licence in the repository's `LICENSE`.
+
+Pages, screenshots, images, logos and other assets captured from real billers' websites are not
+covered by either licence and are not part of this export: they belong to their owners.
 
 ## Citation
 
@@ -270,7 +273,8 @@ await an owner decision.
   title        = {Billworld: a benchmark for browser agents that pay bills},
   author       = {{Grace Technology}},
   howpublished = {\url{https://github.com/gracefultechnology/billworld}},
-  note         = {Unreleased; citation to be confirmed}
+  year         = {2026},
+  note         = {Dataset under CC BY 4.0; code under MIT}
 }
 ```
 
