@@ -9,7 +9,8 @@ async function login(){
   const inputs=['Validation1-4','Validation3-5','Validation2-6'].map(id=>document.getElementById(id));const button=document.getElementById('rs-loading-button');
   if(inputs.some(i=>!i)||!button)throw Error('Captured login fields unavailable');
   const old=inputs[0].closest('.captured-form');const form=document.createElement('form');for(const a of old.attributes)form.setAttribute(a.name,a.value);form.append(...old.childNodes);old.replaceWith(form);
-  const names=['accountNumber','zipCode','dateOfBirth'];inputs.forEach((i,index)=>{i.disabled=false;i.required=true;i.name=names[index];i.autocomplete='off';});
+  const names=['accountNumber','zipCode','dateOfBirth'];inputs.forEach((i,index)=>{i.disabled=false;i.required=true;i.name=names[index];i.autocomplete='off';i.removeAttribute('aria-invalid');i.addEventListener('blur',()=>{if(i.value)i.setAttribute('aria-invalid',String(!i.checkValidity()));else i.removeAttribute('aria-invalid');});});
+  // The capture froze every box as aria-invalid; a box reports invalid only once it is left holding a value that fails its pattern.
   inputs[0].minLength=5;inputs[0].maxLength=10;inputs[0].pattern='[0-9]{5,10}';inputs[1].pattern='[0-9]{5}';inputs[1].maxLength=5;inputs[2].pattern='[0-9]{2}/[0-9]{2}/[0-9]{4}';
   for(const i of inputs.slice(0,2))i.addEventListener('input',()=>{i.value=i.value.replace(/\D/g,'');});
   button.disabled=false;button.type='submit';

@@ -7,6 +7,13 @@ const app = document.querySelector('#app');
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);
 let auth = null, siteInfo = null, searchResult = null, invoice = null, quote = null, receipt = null, challenge = null, selectedKind = 'bank';
+// The checkout (search, selected invoice, quote, receipt) survives a reload or a directly opened
+// portal address in this tab, as a server-side cart does on the source portal.
+// A checkout saved by another episode in this tab is dropped once the session names its episode.
+const CHECKOUT_KEY = 'billworld-portal-checkout';
+let checkoutEpisode = null;
+try { ({ episode: checkoutEpisode = null, searchResult = null, invoice = null, quote = null, receipt = null, selectedKind = 'bank' } = JSON.parse(sessionStorage.getItem(CHECKOUT_KEY) ?? '{}')); } catch {}
+const keepCheckout = () => { try { sessionStorage.setItem(CHECKOUT_KEY, JSON.stringify({ episode: checkoutEpisode, searchResult, invoice, quote, receipt, selectedKind })); } catch {} };
 async function api(path, data) {
   const res = await fetch(`/api/${path}`, data === undefined ? {} : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
   const result = await res.json(); if (!res.ok) throw new Error(result.error); return result;
@@ -24,11 +31,12 @@ function invoicesTable(items) {
 }
 let renderRevision = 0, renderedUrl;
 async function render() {
+  keepCheckout();
   const revision = ++renderRevision, url = location.href;
   renderedUrl = url;
   const isCurrent = () => revision === renderRevision && location.href === url;
   const path = location.pathname;
-  try { const session = await api('session'); if (!isCurrent()) return; auth = session.account; siteInfo = session.site; document.title = `${siteInfo.name} · Billworld`; }
+  try { const session = await api('session'); if (!isCurrent()) return; auth = session.account; siteInfo = session.site; if (session.episode !== checkoutEpisode) { searchResult = invoice = quote = receipt = null; selectedKind = 'bank'; checkoutEpisode = session.episode; keepCheckout(); } document.title = `${siteInfo.name} · Billworld`; }
   catch { if (!isCurrent()) return; shell('<h1>Start a Billworld episode</h1><p>Use the episode URL supplied by the runner. Each episode has isolated billing and email state.</p>'); return; }
   if(siteInfo.runtime?.frontend==='authoritypay'){await renderAuthorityPay({site:siteInfo,auth,api,app,escape,money,navigate,refresh:render});return;}
   if (siteInfo.id === 'duluth-comfortsystems' && path!=='/mail') { await renderDuluth({auth,api,app,escape,money,navigate,refresh:render}); return; }
