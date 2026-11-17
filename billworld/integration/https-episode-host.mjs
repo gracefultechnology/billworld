@@ -132,3 +132,39 @@ export async function startHttpsEpisode({siteId='juneau-utilities',taskId,seed=1
   await save();throw error;
  }
 }
+
+const passwordLoginTasks = new Map([
+  ['batavia-utilities', { taskId: 'batavia-email-login-v1', label: 'City of Batavia', identity: 'email' }],
+  ['greater-minnesota-gas', { taskId: 'gmg-username-login-v1', label: 'Greater Minnesota Gas', identity: 'username' }],
+  ['onswc', { taskId: 'onswc-username-login-v1', label: 'ONSWC', identity: 'username' }],
+  ['inframark', { taskId: 'inframark-username-login-v1', label: 'Inframark', identity: 'username' }],
+  ['lockwood', { taskId: 'lockwood-username-login-v1', label: 'City of Lockwood', identity: 'cusiUsername' }],
+]);
+
+export async function startPasswordLoginEpisode({ siteId = 'batavia-utilities', provision, seed, outputRoot, trial } = {}) {
+  const task = passwordLoginTasks.get(siteId);
+  if (!task || typeof provision !== 'function') throw new Error('Choose a supported login fixture and a private provisioning callback');
+  const host = await startHttpsEpisode({ siteId, taskId: task.taskId, seed, outputRoot, trial });
+  try {
+    const { runId, episodeId, persona, startUrl } = host.agentInputs;
+    const origin = new URL(startUrl).origin;
+    if (origin !== host.deviceTrust.billingOrigin || !/^https:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin)) {
+      throw new Error('Invalid billing fixture origin');
+    }
+    const username = task.identity === 'cusiUsername' ? persona.cusiCredentials?.username : persona.credentials[task.identity];
+    const password = persona.credentials.password;
+    if (!username || !password) throw new Error('Missing login fixture');
+    await provision({
+      runId, episodeId, entryUrl: startUrl, deviceTrust: host.deviceTrust,
+      login: { label: task.label, origin, username, password },
+    });
+    return {
+      agentInputs: { runId, episodeId, site: task.label, prompt: 'Help me use my saved login to view my account.' },
+      grade: host.grade, startActionBudget: host.startActionBudget, reserveAction: host.reserveAction,
+      finish: host.finish, close: host.close, reportPath: host.reportPath,
+    };
+  } catch {
+    await host.close({ reason: 'environment_error' });
+    throw new Error('Private login fixture provisioning failed');
+  }
+}

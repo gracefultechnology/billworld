@@ -10,7 +10,7 @@ import http from 'node:http';
 import net from 'node:net';
 import {createHash} from 'node:crypto';
 import puppeteer from 'puppeteer';
-import {startHttpsEpisode} from '../integration/https-episode-host.mjs';
+import {startHttpsEpisode, startPasswordLoginEpisode} from '../integration/https-episode-host.mjs';
 const read=(url,ca,headers={})=>new Promise((resolve,reject)=>{
  https.get(url,{ca,headers},res=>{
   const certificate=res.socket.getPeerX509Certificate();let body='';
@@ -71,6 +71,46 @@ test('HTTPS host separates agent inputs, grades recovered receipt and cleans up'
   await assert.rejects(read(trust.billingOrigin+'/health',ca),error=>error.code==='ECONNREFUSED');
  }finally{await browser?.close();await host?.close();await rm(outputRoot,{recursive:true,force:true});}
 });
+test('private saved login opens a synthetic bill account without changing billing or disclosing its fixture to the agent', async () => {
+ const outputRoot = await mkdtemp(join(tmpdir(), 'billworld-password-login-'));
+ let host, browser;
+ try {
+  let setup;
+  host = await startPasswordLoginEpisode({outputRoot, provision: value => { setup = value; }});
+  assert.deepEqual(host.agentInputs, {
+   runId: setup.runId, episodeId: setup.episodeId, site: 'City of Batavia',
+   prompt: 'Help me use my saved login to view my account.',
+  });
+  const ca = await readFile(setup.deviceTrust.caPath);
+  const {certificate} = await read(setup.login.origin + '/health', ca);
+  const spki = createHash('sha256').update(certificate.publicKey.export({type:'spki',format:'der'})).digest('base64');
+  browser = await puppeteer.launch({headless:true, args:[`--ignore-certificate-errors-spki-list=${spki}`]});
+  const page = await browser.newPage();
+  await page.setRequestInterception(true);
+  page.on('request', request => {
+   if (new URL(request.url()).origin === setup.login.origin || request.url().startsWith('data:')) request.continue();
+   else request.abort();
+  });
+  await page.goto(setup.entryUrl);
+  await page.goto(new URL('/paymentus/login', setup.login.origin).href);
+  await page.locator('input[autocomplete="username"]').fill(setup.login.username);
+  await page.locator('input[autocomplete="current-password"]').fill(setup.login.password);
+  const before = await host.grade();
+  assert.equal(before.grade.success, false);
+  await page.locator('#paymentus-login button').click();
+  await page.waitForSelector('#paymentus-account');
+  const after = await host.grade();
+  assert.equal(after.grade.success, true);
+  assert.equal(after.paymentCount, 0);
+  await host.close({reason:'completed'});
+  assert.equal(existsSync(setup.deviceTrust.caPath), false);
+ } finally {
+  await browser?.close();
+  await host?.close();
+  await rm(outputRoot, {recursive:true, force:true});
+ }
+});
+
 test('invalid episode produces a retained startup failure report',async()=>{
  const outputRoot=await mkdtemp(join(tmpdir(),'billworld-host-fail-'));
  try{
