@@ -341,6 +341,14 @@ Run `node --test billworld/tests/tls-server.test.mjs` for certificate-verified N
 
 The reusable `tests/tls-fixture.mjs` helper returns a separate temporary CA (`ca`, `caPath`, Android-compatible `caSubjectHash`) and a signed, non-CA server leaf limited to localhost/127.0.0.1. Each CA has a unique identity; keys remain in a private temporary directory. The helper installs no trust. A device harness must remove any installed CA before calling `close()`, which deletes all temporary material.
 
+### Saved password login in Grace
+
+Use `startPasswordLoginEpisode` from `integration/https-episode-host.mjs` for the login-only scenarios in Batavia, Greater Minnesota Gas, ONSWC, Inframark and Lockwood. Select the biller's site ID. The supervisor passes a private `provision` callback. Its `login` object contains the label, exact HTTPS origin including port, username and synthetic password. Its `entryUrl` starts the episode inside the private browser profile. The callback also receives the episode-scoped test CA information.
+
+Seed only a disposable test person's vault through the protected editor or a test-only native fixture. Match the exact origin, then have the person unlock, choose the saved login and submit the simulator's form. The agent can receive the returned `agentInputs` with a public service label and a fixed instruction. Keep the provisioning payload, entry URL, test CA, grade and private report in the supervisor. Raw catalog prompts for these tasks contain fixture passwords and the general episode host carries a private persona and authorized mail connector.
+
+Call `grade()` after the simulator shows the account, then `close()` in cleanup. The Chromium login journey verifies the form, the login-only grade, and unchanged payments. Installed Android acceptance must additionally exercise the native vault and authenticated Autofill picker.
+
 ### HTTPS episode host for installed-app tests
 
 Import `startHttpsEpisode` from `billworld/integration/https-episode-host.mjs`. It accepts `siteId`, optional `taskId`, `seed`, `outputRoot`, `billingPort`, `googlePort` and optional `trial` metadata. The return value separates:
