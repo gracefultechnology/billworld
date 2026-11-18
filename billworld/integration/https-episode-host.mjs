@@ -21,11 +21,11 @@ const sourceChecks=()=>{
 // deviceTrust and evidence directory in the host. It never installs device trust.
 export async function startHttpsEpisode({siteId='juneau-utilities',taskId,seed=1,
  outputRoot=fileURLToPath(new URL('../artifacts/https-episodes/',import.meta.url)),
- billingPort=0,googlePort=0,trial}={}){
+ billingPort=0,googlePort=0,trial,entryPath='/'}={}){
  await mkdir(outputRoot,{recursive:true,mode:0o700});
  const directory=await mkdtemp(join(resolve(outputRoot),'run-'));
  const reportPath=join(directory,'private-report.json');
- let certificates,server,closed=false,closing;
+ let certificates,server,entryEpisodeId,closed=false,closing;
  const report={schemaVersion:1,runId:randomUUID(),startedAt:new Date().toISOString(),phase:'starting',
   qualification:'HTTPS episode host; not installed-agent acceptance',observations:[]};
  const save=async()=>{
@@ -40,9 +40,11 @@ export async function startHttpsEpisode({siteId='juneau-utilities',taskId,seed=1
   report.startupProvenanceChecks=sourceChecks();
   if(!Object.values(report.startupProvenanceChecks).every(Boolean))throw Object.assign(Error('Source changed since module import; start a fresh process'),{code:'SOURCE_CHANGED_SINCE_IMPORT'});
   certificates=await localTlsFixture();
-  server=await start({port:billingPort,googlePort,adminPort:0,dbPath:join(directory,'world.sqlite'),tls:certificates.tls});
+  server=await start({port:billingPort,googlePort,adminPort:0,dbPath:join(directory,'world.sqlite'),tls:certificates.tls,
+   episodeEntryPath:id=>id===entryEpisodeId?entryPath:'/'});
   if(trial?.runId!==undefined&&trial.runId!==report.runId)throw Error('Adapter owns trial runId; omit it from trial metadata');
   const fixture=server.world.create({siteId,taskId,seed,...(trial?{trial:{...trial,runId:report.runId}}:{})});
+  entryEpisodeId=fixture.episodeId;
   report.trial=server.world.state(fixture.episodeId).trial??null;
   report.episodeId=fixture.episodeId;report.taskId=fixture.task.id;report.siteId=siteId;report.seed=seed;
   report.phase='ready';await save();
@@ -134,17 +136,17 @@ export async function startHttpsEpisode({siteId='juneau-utilities',taskId,seed=1
 }
 
 const passwordLoginTasks = new Map([
-  ['batavia-utilities', { taskId: 'batavia-email-login-v1', label: 'City of Batavia', identity: 'email' }],
-  ['greater-minnesota-gas', { taskId: 'gmg-username-login-v1', label: 'Greater Minnesota Gas', identity: 'username' }],
-  ['onswc', { taskId: 'onswc-username-login-v1', label: 'ONSWC', identity: 'username' }],
-  ['inframark', { taskId: 'inframark-username-login-v1', label: 'Inframark', identity: 'username' }],
-  ['lockwood', { taskId: 'lockwood-username-login-v1', label: 'City of Lockwood', identity: 'cusiUsername' }],
+  ['batavia-utilities', { taskId: 'batavia-email-login-v1', label: 'City of Batavia', identity: 'email', entryPath: '/paymentus/login' }],
+  ['greater-minnesota-gas', { taskId: 'gmg-username-login-v1', label: 'Greater Minnesota Gas', identity: 'username', entryPath: '/RP_Default.aspx' }],
+  ['onswc', { taskId: 'onswc-username-login-v1', label: 'ONSWC', identity: 'username', entryPath: '/RP_Default.aspx' }],
+  ['inframark', { taskId: 'inframark-username-login-v1', label: 'Inframark', identity: 'username', entryPath: '/RP_Default.aspx' }],
+  ['lockwood', { taskId: 'lockwood-username-login-v1', label: 'City of Lockwood', identity: 'cusiUsername', entryPath: '/Account/Login' }],
 ]);
 
 export async function startPasswordLoginEpisode({ siteId = 'batavia-utilities', provision, seed, outputRoot, trial } = {}) {
   const task = passwordLoginTasks.get(siteId);
   if (!task || typeof provision !== 'function') throw new Error('Choose a supported login fixture and a private provisioning callback');
-  const host = await startHttpsEpisode({ siteId, taskId: task.taskId, seed, outputRoot, trial });
+  const host = await startHttpsEpisode({ siteId, taskId: task.taskId, seed, outputRoot, trial, entryPath: task.entryPath });
   try {
     const { runId, episodeId, persona, startUrl } = host.agentInputs;
     const origin = new URL(startUrl).origin;

@@ -91,8 +91,9 @@ test('private saved login opens a synthetic bill account without changing billin
    if (new URL(request.url()).origin === setup.login.origin || request.url().startsWith('data:')) request.continue();
    else request.abort();
   });
-  await page.goto(setup.entryUrl);
-  await page.goto(new URL('/paymentus/login', setup.login.origin).href);
+  const login = await page.goto(setup.entryUrl);
+  assert.equal(login.status(), 200);
+  assert.equal(login.url(), new URL('/paymentus/login', setup.login.origin).href);
   await page.locator('input[autocomplete="username"]').fill(setup.login.username);
   await page.locator('input[autocomplete="current-password"]').fill(setup.login.password);
   const before = await host.grade();
@@ -109,6 +110,32 @@ test('private saved login opens a synthetic bill account without changing billin
   await host?.close();
   await rm(outputRoot, {recursive:true, force:true});
  }
+});
+
+test('each password episode redirects within its origin to its fixture login while keeping bootstrap opaque', async () => {
+ const outputRoot = await mkdtemp(join(tmpdir(), 'billworld-password-start-'));
+ try {
+  for (const [siteId, path] of [
+   ['greater-minnesota-gas', '/RP_Default.aspx'],
+   ['onswc', '/RP_Default.aspx'],
+   ['inframark', '/RP_Default.aspx'],
+   ['lockwood', '/Account/Login'],
+  ]) {
+   let setup;
+   const episode = await startPasswordLoginEpisode({siteId, outputRoot, provision: value => { setup = value; }});
+   try {
+    const ca = await readFile(setup.deviceTrust.caPath);
+    const entry = await read(setup.entryUrl, ca);
+    assert.equal(entry.status, 302);
+    assert.equal(entry.headers.location, path);
+    assert.equal(new URL(entry.headers.location, setup.entryUrl).origin, setup.login.origin);
+    const cookies = entry.headers['set-cookie'];
+    assert.ok(cookies.some(cookie => cookie.startsWith('bw_episode=') && cookie.includes('HttpOnly') && cookie.includes('Secure')));
+    assert.ok(cookies.some(cookie => cookie.startsWith('bw_access=') && cookie.includes('HttpOnly') && cookie.includes('Secure')));
+    assert.equal((await episode.grade()).paymentCount, 0);
+   } finally { await episode.close(); }
+  }
+ } finally { await rm(outputRoot, {recursive:true, force:true}); }
 });
 
 test('invalid episode produces a retained startup failure report',async()=>{
