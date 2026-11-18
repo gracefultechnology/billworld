@@ -6,6 +6,7 @@ import {createHash,X509Certificate,randomUUID} from 'node:crypto';
 import {start} from '../server.mjs';
 import {fingerprint,PROCESS_BUILD} from '../build-fingerprint.mjs';
 import {localTlsFixture,TLS_FIXTURE_SOURCE_SHA256} from '../tests/tls-fixture.mjs';
+import {passwordLoginFixture} from '../password-login-fixtures.mjs';
 
 const hashFile=url=>createHash('sha256').update(readFileSync(url)).digest('hex');
 const ADAPTER_SOURCE_SHA256=hashFile(new URL(import.meta.url));
@@ -135,16 +136,8 @@ export async function startHttpsEpisode({siteId='juneau-utilities',taskId,seed=1
  }
 }
 
-const passwordLoginTasks = new Map([
-  ['batavia-utilities', { taskId: 'batavia-email-login-v1', label: 'City of Batavia', identity: 'email', entryPath: '/paymentus/login' }],
-  ['greater-minnesota-gas', { taskId: 'gmg-username-login-v1', label: 'Greater Minnesota Gas', identity: 'username', entryPath: '/RP_Default.aspx' }],
-  ['onswc', { taskId: 'onswc-username-login-v1', label: 'ONSWC', identity: 'username', entryPath: '/RP_Default.aspx' }],
-  ['inframark', { taskId: 'inframark-username-login-v1', label: 'Inframark', identity: 'username', entryPath: '/RP_Default.aspx' }],
-  ['lockwood', { taskId: 'lockwood-username-login-v1', label: 'City of Lockwood', identity: 'cusiUsername', entryPath: '/Account/Login' }],
-]);
-
 export async function startPasswordLoginEpisode({ siteId = 'batavia-utilities', provision, seed, outputRoot, trial } = {}) {
-  const task = passwordLoginTasks.get(siteId);
+  const task = passwordLoginFixture(siteId);
   if (!task || typeof provision !== 'function') throw new Error('Choose a supported login fixture and a private provisioning callback');
   const host = await startHttpsEpisode({ siteId, taskId: task.taskId, seed, outputRoot, trial, entryPath: task.entryPath });
   try {

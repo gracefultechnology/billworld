@@ -10,6 +10,7 @@ import { resolve } from 'node:path';
 import { World, Fault, ENVIRONMENT_REVISION } from './engine.mjs';
 import { MockGoogle } from './google.mjs';
 import { SnapshotStore } from './snapshot-store.mjs';
+import { passwordLoginFixture } from './password-login-fixtures.mjs';
 import { charlotteRoute } from './charlotte-routes.mjs';
 import { wippApi, wippPage } from './wipp-server.mjs';
 import { tuscaloosaRoute } from './tuscaloosa-server.mjs';
@@ -21,6 +22,8 @@ assets.set('starnik.js',readFileSync(`${root}/public/starnik.js`));
 assets.set('onswc-public.js',readFileSync(`${root}/public/onswc-public.js`));
 assets.set('catalog-public.js',readFileSync(`${root}/public/catalog-public.js`));
 assets.set('inframark-public.js',readFileSync(`${root}/public/inframark-public.js`));
+const passwordFixturePage = readFileSync(`${root}/public/password-fixture.html`, 'utf8');
+const passwordFixtureScript = readFileSync(`${root}/public/password-fixture.js`);
 const publicSnapshots = new SnapshotStore(`${root}/public/reference-pages`, {verifyBehavior(manifest){
   if (manifest.local_behavior && (!['public/municipal.js','public/mychart.js','public/wvu-public.js','public/mychart-activation.js','public/mychart-recovery.js','public/catalog-public.js','public/onswc-public.js'].includes(manifest.local_behavior.file) || createHash('sha256').update(assets.get(manifest.local_behavior.file.split('/').at(-1))).digest('hex') !== manifest.local_behavior.sha256)) throw Error('Public snapshot behavior hash mismatch');
 }});
@@ -361,6 +364,20 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
           // A captured cookie banner is closable, as on the source site (captured-consent.js).
           if(snapshot.contentType==='text/html'&&(markup??snapshot.content.toString('utf8')).includes('cookie-consent-banner__btn'))markup=(markup??snapshot.content.toString('utf8')).replace('</body>','<script src="/captured-consent.js" defer></script></body>');
           return res.end(markup??snapshot.content);
+        }
+        if (tls && c.bw_episode && (starnikPage || cusiPage)) {
+          const { siteId, taskId } = world.state(c.bw_episode);
+          const fixture = passwordLoginFixture(siteId);
+          if (fixture?.fallback && taskId === fixture.taskId && episodeEntryPath(c.bw_episode) === fixture.entryPath) {
+            if (url.pathname === fixture.entryPath) {
+              res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+              return res.end(passwordFixturePage.replace('%FAMILY%', fixture.fallback));
+            }
+            if (url.pathname === '/password-fixture.js') {
+              res.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8', 'Cache-Control': 'no-store' });
+              return res.end(passwordFixtureScript);
+            }
+          }
         }
         if (referenceDocuments.has(url.pathname)) {
           res.writeHead(200, { 'Content-Type': 'application/pdf', 'Cache-Control': 'no-store' });
