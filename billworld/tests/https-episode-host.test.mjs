@@ -112,7 +112,7 @@ test('private saved login opens a synthetic bill account without changing billin
  }
 });
 
-test('each password episode redirects within its origin to its fixture login while keeping bootstrap opaque', async () => {
+test('the four password-only portal forms grade a synthetic account view without payments', async () => {
  const outputRoot = await mkdtemp(join(tmpdir(), 'billworld-password-start-'));
  try {
   for (const [siteId, path] of [
@@ -123,6 +123,7 @@ test('each password episode redirects within its origin to its fixture login whi
   ]) {
    let setup;
    const episode = await startPasswordLoginEpisode({siteId, outputRoot, provision: value => { setup = value; }});
+   let browser;
    try {
     const ca = await readFile(setup.deviceTrust.caPath);
     const entry = await read(setup.entryUrl, ca);
@@ -132,8 +133,36 @@ test('each password episode redirects within its origin to its fixture login whi
     const cookies = entry.headers['set-cookie'];
     assert.ok(cookies.some(cookie => cookie.startsWith('bw_episode=') && cookie.includes('HttpOnly') && cookie.includes('Secure')));
     assert.ok(cookies.some(cookie => cookie.startsWith('bw_access=') && cookie.includes('HttpOnly') && cookie.includes('Secure')));
-    assert.equal((await episode.grade()).paymentCount, 0);
-   } finally { await episode.close(); }
+    const before = await episode.grade();
+    assert.equal(before.grade.success, false);
+    assert.equal(before.paymentCount, 0);
+    const unstaged = await read(new URL(path, setup.entryUrl).href, ca);
+    assert.ok(!unstaged.body.includes('id="password-fixture"'));
+    const spki = createHash('sha256').update(entry.certificate.publicKey.export({type:'spki',format:'der'})).digest('base64');
+    browser = await puppeteer.launch({headless:true, args:[`--ignore-certificate-errors-spki-list=${spki}`]});
+    const page = await browser.newPage();
+    await page.setRequestInterception(true);
+    page.on('request', request => {
+     if (new URL(request.url()).origin === setup.login.origin || request.url().startsWith('data:')) request.continue();
+     else request.abort();
+    });
+    const login = await page.goto(setup.entryUrl);
+    assert.equal(login.status(), 200);
+    const synthetic = await page.$('#password-fixture') !== null;
+    if (synthetic) assert.equal(await page.$eval('h1', heading=>heading.textContent), 'BillWorld simulation');
+    const form = synthetic ? ['#password-fixture [name=username]', '#password-fixture [name=password]', '#password-fixture button', '#account:not([hidden])']
+     : siteId === 'lockwood' ? ['#Username', '#Password', '#btn-login', '#cusi-username']
+     : ['[name=username]', '[name=password]', '#ctl04_ctl00_btnLogin', '#starnik-username'];
+    const [username, password, submit, account] = form;
+    await page.locator(username).fill(setup.login.username);
+    await page.locator(password).fill(setup.login.password);
+    assert.equal((await episode.grade()).grade.success, false);
+    await page.locator(submit).click();
+    await page.waitForSelector(account, {visible:true});
+    const graded = await episode.grade();
+    assert.equal(graded.grade.success, true);
+    assert.equal(graded.paymentCount, 0);
+   } finally { await browser?.close(); await episode.close(); }
   }
  } finally { await rm(outputRoot, {recursive:true, force:true}); }
 });
