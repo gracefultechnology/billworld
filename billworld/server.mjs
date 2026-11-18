@@ -48,7 +48,7 @@ async function body(req) {
 }
 function isToken(actual, expected) { return typeof actual === 'string' && actual.length === expected.length && timingSafeEqual(Buffer.from(actual), Buffer.from(expected)); }
 
-export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbPath = `${root}/data/world.sqlite`, adminToken = randomBytes(32).toString('base64url'), compatibilityReady = false, construction = false, tls = null } = {}) {
+export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbPath = `${root}/data/world.sqlite`, adminToken = randomBytes(32).toString('base64url'), compatibilityReady = false, construction = false, tls = null, episodeEntryPath = () => '/' } = {}) {
   if (tls && (!tls.key || !tls.cert)) throw new TypeError('TLS requires both key and cert');
   // Reject malformed PEM before opening the world database or its monitor.
   if (tls) createSecureContext({key:tls.key,cert:tls.cert});
@@ -78,7 +78,9 @@ export async function start({ port = 3100, adminPort = 3101, googlePort = 0, dbP
       const entry = url.pathname.match(/^\/enter\/([^/]+)\/([^/]+)$/);
       if (entry && req.method === 'GET') {
         world.enter(entry[1], entry[2]);
-        res.writeHead(302, { Location: '/', 'Set-Cookie': [cookie('bw_episode', entry[1]), cookie('bw_access', entry[2]), cookie('bw_session', '', 0), cookie('bw_otp', '', 0), cookie('bw_mail', '', 0), cookie('bw_lookup', '', 0),cookie('bw_paymentus_link','',0),cookie('bw_paymentus_reset','',0),cookie('bw_paymentus_quote','',0),cookie('bw_starnik_payment','',0),cookie('bw_starnik_autopay','',0),cookie('bw_starnik_ach','',0),cookie('bw_starnik_wallet','',0),cookie('bw_starnik_quote','',0),cookie('bw_starnik_guest','',0),cookie('bw_starnik_pending','',0),cookie('bw_starnik_signup','',0),cookie('bw_starnik_reset','',0),cookie('bw_paymentus_autopay','',0),cookie('bw_cusi_registration','',0),cookie('bw_cusi_reset','',0),cookie('bw_cusi_quote','',0),cookie('bw_cusi_autopay','',0)] }); return res.end();
+        const destination = episodeEntryPath(entry[1]);
+        if (typeof destination !== 'string' || !/^\/(?!\/)[A-Za-z0-9_./-]*$/.test(destination) || destination.split('/').some(part => part === '.' || part === '..')) throw new Fault('Invalid episode start page', 500);
+        res.writeHead(302, { Location: destination, 'Set-Cookie': [cookie('bw_episode', entry[1]), cookie('bw_access', entry[2]), cookie('bw_session', '', 0), cookie('bw_otp', '', 0), cookie('bw_mail', '', 0), cookie('bw_lookup', '', 0),cookie('bw_paymentus_link','',0),cookie('bw_paymentus_reset','',0),cookie('bw_paymentus_quote','',0),cookie('bw_starnik_payment','',0),cookie('bw_starnik_autopay','',0),cookie('bw_starnik_ach','',0),cookie('bw_starnik_wallet','',0),cookie('bw_starnik_quote','',0),cookie('bw_starnik_guest','',0),cookie('bw_starnik_pending','',0),cookie('bw_starnik_signup','',0),cookie('bw_starnik_reset','',0),cookie('bw_paymentus_autopay','',0),cookie('bw_cusi_registration','',0),cookie('bw_cusi_reset','',0),cookie('bw_cusi_quote','',0),cookie('bw_cusi_autopay','',0)] }); return res.end();
       }
       if (url.pathname.startsWith('/connector/')) {
         const id = req.headers['x-billworld-episode'];
